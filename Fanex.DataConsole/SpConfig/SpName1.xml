@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Functions>
+    <Function Name="Report">
+        <Setting Key="Acc_Rpt_WinlostRacingLicensee_Details" SpName="Acc_Rpt_WinlostRacingLicensee_Details" DbName="Licensee" />
+        <Setting Key="Acc_Rpt_WinlostRacingLicensee_BetList_Details" SpName="Acc_Rpt_WinlostRacingLicensee_BetList_Details" DbName="Licensee" />
+        <Setting Key="Acc_Rpt_WinlostRacingLicensee_BetList_Details14" SpName="Acc_Rpt_WinlostRacingLicensee_BetList_Details14" DbName="Licensee" />
+        <Setting Key="OA_Rpt_GetTotalTicket" SpName="OA_Rpt_GetTotalTicket" DbName="Licensee" />
+        <Setting Key="Age_SelBalanceUpDay" SpName="Age_SelBalanceUpDay" DbName="Licensee" />
+        <Setting Key="Acc_Rpt_LicWinloss" SpName="Acc_Rpt_LicWinloss" DbName="Licensee" />
+        <Setting Key="Acc_Rpt_LicWinloss2" SpName="Acc_Rpt_LicWinloss2" DbName="Licensee" />
+        <Setting Key="Acc_Rpt_LicWinlossDetail_Ag" SpName="Acc_Rpt_LicWinlossDetail_Ag" DbName="Licensee" />
+        <Setting Key="Acc_Rpt_LicWinlossDetail_Ag2" SpName="Acc_Rpt_LicWinlossDetail_Ag2" DbName="Licensee" />
+        <Setting Key="Acc_Rpt_LicWinlossDetail" SpName="Acc_Rpt_LicWinlossDetail" DbName="Licensee" />
+        <Setting Key="Acc_Rpt_LicWinlossDetail2" SpName="Acc_Rpt_LicWinlossDetail2" DbName="Licensee" />
+        <Setting Key="Acc_BetList_SelWinloss_Mem" SpName="Acc_BetList_SelWinloss_Mem" DbName="Licensee" />
+        <Setting Key="Acc_BetList_SelWinloss_Mem2" SpName="Acc_BetList_SelWinloss_Mem2" DbName="Licensee" />
+        <Setting Key="Lrf_BetList_SelParlayDetail" SpName="Lrf_BetList_SelParlayDetailxxx" DbName="Licensee" />
+        <Setting Key="uspGetEmployeeManagers" SpName="uspGetEmployeeManager_xtest" DbName="Adv" Plain="1" />
+    </Function>
+</Functions>

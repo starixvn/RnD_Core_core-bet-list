@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Functions>
+  <Function Name="Report">    
+    <Setting Key="OA_GetFunctionByUserAndParentID" SpName="OA_GetFunctionByUserAndParentID" DbName="Licensee">
+      <Mapping DataField="FunctionName" ObjectProperty="Name" />
+      <Mapping DataField="FunctionID" ObjectProperty="Id" />
+    </Setting>
+
+  </Function>
+ 
+ 
+</Functions>

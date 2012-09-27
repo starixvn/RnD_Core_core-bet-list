@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Functions>
+    <!--<Function Name="AdventureWorks">
+    <Setting Key="GetAllProduct" SpName="GetAllProduct" DbName="AdventureWorks" Plain="1" />
+  </Function>-->
+    <Function Name="Report">
+        
+        <Setting Key="Lrf_SelBalanceUpDay" SpName="Lrf_SelBalanceUpDay" DbName="main" Plain="1"  ></Setting>
+        <Setting Key="FanexTestPerformanceMapping" SpName="FanexTestPerformanceMapping" DbName="main" Plain="1"  ></Setting>
+        <Setting Key="Acc_Rpt_WinlostRacingLicensee_Details" SpName="Acc_Rpt_WinlostRacingLicensee_Details" DbName="Licensee" />
+        <Setting Key="Acc_Rpt_WinlostRacingLicensee_BetList_Details" SpName="Acc_Rpt_WinlostRacingLicensee_BetList_Details" DbName="Licensee" />
+        <Setting Key="Acc_Rpt_WinlostRacingLicensee_BetList_Details14" SpName="Acc_Rpt_WinlostRacingLicensee_BetList_Details14" DbName="Licensee" />
+        <Setting Key="OA_Rpt_GetTotalTicket" SpName="OA_Rpt_GetTotalTicket" DbName="Licensee" />
+        <Setting Key="Age_SelBalanceUpDay" SpName="Age_SelBalanceUpDay" DbName="Licensee" />
+        <Setting Key="Acc_Rpt_LicWinloss" SpName="Acc_Rpt_LicWinloss" DbName="Licensee" />
+        <Setting Key="Acc_Rpt_LicWinloss2" SpName="Acc_Rpt_LicWinloss2" DbName="Licensee" />
+        <Setting Key="Acc_Rpt_LicWinlossDetail_Ag" SpName="Acc_Rpt_LicWinlossDetail_Ag" DbName="Licensee" />
+        <Setting Key="Acc_Rpt_LicWinlossDetail_Ag2" SpName="Acc_Rpt_LicWinlossDetail_Ag2" DbName="Licensee" />
+        <Setting Key="Acc_Rpt_LicWinlossDetail" SpName="Acc_Rpt_LicWinlossDetail" DbName="Licensee" />
+        <Setting Key="Acc_Rpt_LicWinlossDetail2" SpName="Acc_Rpt_LicWinlossDetail2" DbName="Licensee" />
+        <Setting Key="Acc_BetList_SelWinloss_Mem" SpName="Acc_BetList_SelWinloss_Mem" DbName="Licensee" />
+        <Setting Key="Acc_BetList_SelWinloss_Mem2" SpName="Acc_BetList_SelWinloss_Mem2" DbName="Licensee" />
+        <Setting Key="Lrf_BetList_SelParlayDetail" SpName="Lrf_BetList_SelParlayDetail" DbName="Licensee" />
+        <Setting Key="Acc_BA_LicConfigSel" SpName="Acc_BA_LicConfigSel" DbName="Licensee" />
+    </Function>
+    <Function Name="Licensee">
+        <Setting Key="Acc_LicenseeSelAll" SpName="Acc_LicenseeSelAll" DbName="Licensee" />
+        <Setting Key="Acc_LicenseeByResellerSel" SpName="Acc_LicenseeByResellerSel" DbName="Licensee" />
+        <Setting Key="Lrf_LicenseeSel" SpName="Lrf_LicenseeSel" DbName="Licensee" />
+        <Setting Key="Acc_SelCurrencyByLicensee" SpName="Acc_SelCurrencyByLicensee" DbName="Licensee" />
+        <Setting Key="Lrf_CustomerSelCheckBelonging" SpName="Lrf_CustomerSelCheckBelonging" DbName="Licensee" />
+        <Setting Key="OA_LicenseesGetByResellerID" SpName="OA_LicenseesGetByResellerID" DbName="Licensee" />
+        <Setting Key="OA_ResellersGet" SpName="OA_ResellersGet" DbName="Licensee" />
+    </Function>
+    <Function Name="User">
+        <Setting Key="OA_UserLogin" SpName="OA_UserLogin" DbName="Licensee" />
+        <Setting Key="OA_UserLogout" SpName="OA_UserLogout" DbName="Licensee" />
+        <Setting Key="OA_UserSaltGet" SpName="OA_UserSaltGet" DbName="Licensee" />
+        <Setting Key="OA_User_ReCheckIn" SpName="OA_User_ReCheckIn" DbName="Licensee" />
+        <Setting Key="OA_UserCheckIn" SpName="OA_UserCheckIn" DbName="Licensee" />
+        <Setting Key="OA_CheckUserPermissionOnFunctionID" SpName="OA_CheckUserPermissionOnFunctionID" DbName="Licensee" />
+        <Setting Key="OA_GetMenusByUserID" SpName="OA_GetMenusByUserID" DbName="Licensee" />
+        <Setting Key="OA_rptUserLicenseesGetByUserID" SpName="OA_rptUserLicenseesGetByUserID" DbName="Licensee" />
+        <Setting Key="OA_rptUserResellersGetByUserID" SpName="OA_rptUserResellersGetByUserID" DbName="Licensee" />
+        <Setting Key="OA_UserFunctionsDelete" SpName="OA_UserFunctionsDelete" DbName="Licensee" />
+        <Setting Key="OA_UserFunctionsGetByUserID" SpName="OA_UserFunctionsGetByUserID" DbName="Licensee" />
+        <Setting Key="OA_UserFunctionsModify" SpName="OA_UserFunctionsModify" DbName="Licensee" />
+        <Setting Key="OA_UserGroupFunctionsGetByUserID" SpName="OA_UserGroupFunctionsGetByUserID" DbName="Licensee" />
+        <Setting Key="OA_UserLicenseesDelete" SpName="OA_UserLicenseesDelete" DbName="Licensee" />
+        <Setting Key="OA_UserLicenseesGetByUserID" SpName="OA_UserLicenseesGetByUserID" DbName="Licensee" />
+        <Setting Key="OA_UserLicenseesModify" SpName="OA_UserLicenseesModify" DbName="Licensee" />
+        <Setting Key="OA_UserLicenseeSettingroductGetByUserID" SpName="OA_UserLicenseeSettingroductGetByUserID" DbName="Licensee" />
+        <Setting Key="OA_UserPasswordUpd" SpName="OA_UserPasswordUpd" DbName="Licensee" />
+        <Setting Key="OA_UserPwdReset" SpName="OA_UserPwdReset" DbName="Licensee" />
+        <Setting Key="OA_UserResellersDelete" SpName="OA_UserResellersDelete" DbName="Licensee" />
+        <Setting Key="OA_UserResellersGetByUserID" SpName="OA_UserResellersGetByUserID" DbName="Licensee" />
+        <Setting Key="OA_UserResellersModify" SpName="OA_UserResellersModify" DbName="Licensee" />
+        <Setting Key="OA_UsersGetAll" SpName="OA_UsersGetAll" DbName="Licensee" />
+        <Setting Key="OA_UsersGetbyGroupID" SpName="OA_UsersGetbyGroupID" DbName="Licensee" />
+        <Setting Key="OA_UsersGetByUserID" SpName="OA_UsersGetByUserID" DbName="Licensee" />
+        <Setting Key="OA_UsersGetByUsername" SpName="OA_UsersGetByUsername" DbName="Licensee" />
+        <Setting Key="OA_UsersModify" SpName="OA_UsersModify" DbName="Licensee" />
+        <Setting Key="Lrf_IsUserExisted" SpName="Lrf_IsUserExisted" DbName="Licensee" />
+        <Setting Key="Update_Licensees_TestTin" SpName="Update_Licensees_TestTin" DbName="Licensee" />
+        <Setting Key="GetAllLicenseesTestTin" SpName="GetAllLicenseesTestTin" DbName="Licensee" />
+    </Function>
+    <Function Name="Group">
+        <Setting Key="OA_GroupFunctionsDelete" SpName="OA_GroupFunctionsDelete" DbName="Licensee" />
+        <Setting Key="OA_GroupFunctionsGetByGroupID" SpName="OA_GroupFunctionsGetByGroupID" DbName="Licensee" />
+        <Setting Key="OA_GroupFunctionsModify" SpName="OA_GroupFunctionsModify" DbName="Licensee" />
+        <Setting Key="OA_GroupLicenseesDelete" SpName="OA_GroupLicenseesDelete" DbName="Licensee" />
+        <Setting Key="OA_GroupLicenseesGetByGroupID" SpName="OA_GroupLicenseesGetByGroupID" DbName="Licensee" />
+        <Setting Key="OA_GroupLicenseesModify" SpName="OA_GroupLicenseesModify" DbName="Licensee" />
+        <Setting Key="OA_GroupResellersDelete" SpName="OA_GroupResellersDelete" DbName="Licensee" />
+        <Setting Key="OA_GroupResellersGetByGroupID" SpName="OA_GroupResellersGetByGroupID" DbName="Licensee" />
+        <Setting Key="OA_GroupResellersModify" SpName="OA_GroupResellersModify" DbName="Licensee" />
+        <Setting Key="OA_GroupsGetAll" SpName="OA_GroupsGetAll" DbName="Licensee" />
+        <Setting Key="OA_GroupsGetByGroupID" SpName="OA_GroupsGetByGroupID" DbName="Licensee" />
+        <Setting Key="OA_GroupsGetByName" SpName="OA_GroupsGetByName" DbName="Licensee" />
+        <Setting Key="OA_GroupsModify" SpName="OA_GroupsModify" DbName="Licensee" />
+    </Function>
+    <Function Name="Function">
+        <Setting Key="OA_FunctionsGetAll" SpName="OA_FunctionsGetAll" DbName="Licensee" />
+        <Setting Key="OA_FunctionLicenseesDelete" SpName="OA_FunctionLicenseesDelete" DbName="Licensee" />
+        <Setting Key="OA_FunctionLicenseesGetByFunctionID" SpName="OA_FunctionLicenseesGetByFunctionID" DbName="Licensee" />
+        <Setting Key="OA_FunctionLicenseesModify" SpName="OA_FunctionLicenseesModify" DbName="Licensee" />
+        <Setting Key="OA_FunctionResellersDelete" SpName="OA_FunctionResellersDelete" DbName="Licensee" />
+        <Setting Key="OA_FunctionResellersGetByFunctionID" SpName="OA_FunctionResellersGetByFunctionID" DbName="Licensee" />
+        <Setting Key="OA_FunctionsGetByFunctionID" SpName="OA_FunctionsGetByFunctionID" DbName="Licensee" />
+        <Setting Key="OA_FunctionsModify" SpName="OA_FunctionsModify" DbName="Licensee" />
+    </Function>
+    <Function Name="Menu">
+        <Setting Key="OA_MenusGetAll" SpName="OA_MenusGetAll" DbName="Licensee" />
+        <Setting Key="OA_MenusGetByMenuID" SpName="OA_MenusGetByMenuID" DbName="Licensee" />
+        <Setting Key="OA_MenusModify" SpName="OA_MenusModify" DbName="Licensee" />
+    </Function>
+    <Function Name="IP">
+        <Setting Key="Acc_GetIPInfo_Full" SpName="Acc_GetIPInfo_Full" DbName="Licensee" />
+        <Setting Key="GetIPVN" SpName="GetIPVN" DbName="Licensee" />
+    </Function>
+    <Function Name="Misc">
+        <Setting Key="OA_WriteLog_UserLog_Login" SpName="OA_WriteLog_UserLog_Login" DbName="Licensee" />
+        <Setting Key="OA_WriteLog_UserLog_RunSetting" SpName="OA_WriteLog_UserLog_RunSetting" DbName="Licensee" />
+    </Function>
+    <Function Name="RTS">
+        <Setting Key="CheckPerformanceQueryMap" SpName="CheckPerformanceQueryMap" DbName="RTSportcast" Plain="1"></Setting>
+        
+
+    </Function>
+</Functions>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Statistics>
+  <Statistic NumRecord="5000" AutoMap="9.6549" EntlibReader="33.4874" ADOReader="38.8834" />
+  <Statistic NumRecord="10000" AutoMap="18.2041" EntlibReader="36.6147" ADOReader="60.621100000000006" />
+  <Statistic NumRecord="15000" AutoMap="26.185200000000002" EntlibReader="49.847500000000004" ADOReader="87.93310000000001" />
+  <Statistic NumRecord="20000" AutoMap="43.6177" EntlibReader="58.5887" ADOReader="133.80100000000002" />
+  <Statistic NumRecord="25000" AutoMap="55.609300000000005" EntlibReader="82.259700000000009" ADOReader="160.4058" />
+  <Statistic NumRecord="30000" AutoMap="58.944" EntlibReader="99.851700000000008" ADOReader="193.0164" />
+  <Statistic NumRecord="35000" AutoMap="77.9869" EntlibReader="122.4315" ADOReader="213.4533" />
+  <Statistic NumRecord="40000" AutoMap="84.9601" EntlibReader="142.1636" ADOReader="251.82000000000002" />
+  <Statistic NumRecord="45000" AutoMap="85.32480000000001" EntlibReader="154.9425" ADOReader="283.336" />
+</Statistics>
