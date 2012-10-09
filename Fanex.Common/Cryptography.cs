@@ -23,6 +23,9 @@ using Microsoft.VisualBasic;
 
 namespace Fanex.Common
 {
+    /// <summary>
+    /// test
+    /// </summary>
     public static class Cryptography
     {
         #region Const Params
