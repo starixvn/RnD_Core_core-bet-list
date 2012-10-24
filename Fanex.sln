@@ -87,6 +87,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{B9F3B3BF-966
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.CachingUnitTest", "Fanex.CachingUnitTest\Fanex.CachingUnitTest.csproj", "{C9FA1EFD-D477-4527-8D63-39DD66D1E334}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StyleCop", "StyleCop", "{6F90F0CC-C5BA-4866-9E73-E6BD31AB7AA1}"
+	ProjectSection(SolutionItems) = preProject
+		Settings.StyleCop = Settings.StyleCop
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Fanex2.vsmdi
@@ -121,7 +126,6 @@ Global
 		{5A5A7B5A-0DAD-4E1E-9A20-A71B6FE950C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5A5A7B5A-0DAD-4E1E-9A20-A71B6FE950C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A5A7B5A-0DAD-4E1E-9A20-A71B6FE950C6}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{5A5A7B5A-0DAD-4E1E-9A20-A71B6FE950C6}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{5A5A7B5A-0DAD-4E1E-9A20-A71B6FE950C6}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{5A5A7B5A-0DAD-4E1E-9A20-A71B6FE950C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A5A7B5A-0DAD-4E1E-9A20-A71B6FE950C6}.Release|Any CPU.Build.0 = Release|Any CPU
@@ -151,7 +155,6 @@ Global
 		{B9FF7938-4839-499F-B21C-EC2C1A9177C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B9FF7938-4839-499F-B21C-EC2C1A9177C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9FF7938-4839-499F-B21C-EC2C1A9177C3}.Debug|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{B9FF7938-4839-499F-B21C-EC2C1A9177C3}.Debug|Mixed Platforms.Build.0 = Release|Any CPU
 		{B9FF7938-4839-499F-B21C-EC2C1A9177C3}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{B9FF7938-4839-499F-B21C-EC2C1A9177C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9FF7938-4839-499F-B21C-EC2C1A9177C3}.Release|Any CPU.Build.0 = Release|Any CPU
@@ -160,7 +163,6 @@ Global
 		{B9FF7938-4839-499F-B21C-EC2C1A9177C3}.Release|x86.ActiveCfg = Release|Any CPU
 		{A9FAA896-8345-4BFA-8146-2F8736D5A388}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{A9FAA896-8345-4BFA-8146-2F8736D5A388}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{A9FAA896-8345-4BFA-8146-2F8736D5A388}.Debug|Mixed Platforms.Build.0 = Debug|x86
 		{A9FAA896-8345-4BFA-8146-2F8736D5A388}.Debug|x86.ActiveCfg = Debug|x86
 		{A9FAA896-8345-4BFA-8146-2F8736D5A388}.Debug|x86.Build.0 = Debug|x86
 		{A9FAA896-8345-4BFA-8146-2F8736D5A388}.Release|Any CPU.ActiveCfg = Release|x86
@@ -180,7 +182,6 @@ Global
 		{D26AF936-5216-40D9-A570-2F9706C8F4A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D26AF936-5216-40D9-A570-2F9706C8F4A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D26AF936-5216-40D9-A570-2F9706C8F4A1}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{D26AF936-5216-40D9-A570-2F9706C8F4A1}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{D26AF936-5216-40D9-A570-2F9706C8F4A1}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{D26AF936-5216-40D9-A570-2F9706C8F4A1}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{D26AF936-5216-40D9-A570-2F9706C8F4A1}.Release|Any CPU.Build.0 = Debug|Any CPU

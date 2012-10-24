@@ -55,9 +55,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="NPOI, Version=1.2.5.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\NAP\Fanex.NAP\_Dependencies\NPOI\NPOI.dll</HintPath>
+    <Reference Include="NPOI">
+      <HintPath>..\Dependencies\NPOI\NPOI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
