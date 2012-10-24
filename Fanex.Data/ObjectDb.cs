@@ -260,9 +260,13 @@ namespace Fanex.Data
                     {
                         if (paramItem.Direction == ParameterDirection.InputOutput || paramItem.Direction == ParameterDirection.Output)
                         {
-                            if (parameters.ContainsKey(paramItem.GetLowerName()))
+                            string paramName = paramItem.GetName();
+
+                            string paramLowerName = paramName.ToLower();
+
+                            if (parameters.ContainsKey(paramLowerName))
                             {
-                                parameters[paramItem.GetLowerName()] = dynamicParamas.Get<object>(paramItem.GetLowerName());
+                                parameters[paramLowerName] = dynamicParamas.Get<object>(paramName);
                             }
                         }
                     }
@@ -327,9 +331,13 @@ namespace Fanex.Data
                     {
                         if (paramItem.Direction == ParameterDirection.InputOutput || paramItem.Direction == ParameterDirection.Output)
                         {
-                            if (parameters.ContainsKey(paramItem.GetLowerName()))
+                            string paramName = paramItem.GetName();
+
+                            string paramLowerName = paramName.ToLower();
+
+                            if (parameters.ContainsKey(paramLowerName))
                             {
-                                parameters[paramItem.GetLowerName()] = dynamicParamas.Get<object>(paramItem.GetLowerName());
+                                parameters[paramLowerName] = dynamicParamas.Get<object>(paramName);
                             }
                         }
                     }
@@ -393,9 +401,13 @@ namespace Fanex.Data
                     {
                         if (paramItem.Direction == ParameterDirection.InputOutput || paramItem.Direction == ParameterDirection.Output)
                         {
-                            if (parameters.ContainsKey(paramItem.GetLowerName()))
+                            string paramName = paramItem.GetName();
+
+                            string paramLowerName = paramName.ToLower();
+
+                            if (parameters.ContainsKey(paramLowerName))
                             {
-                                parameters[paramItem.GetLowerName()] = dynamicParamas.Get<object>(paramItem.GetLowerName());
+                                parameters[paramLowerName] = dynamicParamas.Get<object>(paramName);
                             }
                         }
                     }
@@ -462,9 +474,13 @@ namespace Fanex.Data
                     {
                         if (paramItem.Direction == ParameterDirection.InputOutput || paramItem.Direction == ParameterDirection.Output)
                         {
-                            if (parameters.ContainsKey(paramItem.GetLowerName()))
+                            string paramName = paramItem.GetName();
+
+                            string paramLowerName = paramName.ToLower();
+
+                            if (parameters.ContainsKey(paramLowerName))
                             {
-                                parameters[paramItem.GetLowerName()] = dynamicParamas.Get<object>(paramItem.GetLowerName());
+                                parameters[paramLowerName] = dynamicParamas.Get<object>(paramName);
                             }
                         }
                     }
