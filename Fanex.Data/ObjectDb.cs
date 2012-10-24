@@ -151,7 +151,7 @@ namespace Fanex.Data
             IEnumerable<T> results;
             using (var connection = DbConnection)
             {
-                connection.Open();
+                connection.Open();                
 
                 if (param is Hashtable)
                 {
@@ -187,7 +187,10 @@ namespace Fanex.Data
                                  , CommandType.StoredProcedure);
                 }
 
-                connection.Close();
+                if (!buffer)
+                {
+                    connection.Close();
+                }
             }
 
             return results;
