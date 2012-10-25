@@ -13,21 +13,17 @@ namespace Fanex.Data.Configuration
     using System;
     using System.Collections;
     using System.Collections.Generic;
-    using System.Collections.Specialized;
     using System.IO;
     using System.Linq;
-    using System.Runtime.Caching;
-    using System.Security.Permissions;
     using System.Xml.Linq;    
     
-
     /// <summary>
     /// Support multi setting xml resource files
     /// </summary>
     public class XmlDbSettingProvider2 : XmlDbSettingProvider
     {     
         /// <summary>
-        /// start run file system watcher to fire event ResouceChangedEvent
+        /// start run file system watcher to fire event Resource Changed Event
         /// whenever the resource change
         /// </summary>
         /// <param name="path">resource path</param>
@@ -57,7 +53,7 @@ namespace Fanex.Data.Configuration
         }
         
         /// <summary>
-        /// Get all dbsetting configuration from the datasource and than add to cache
+        /// Get all db setting configuration from the data source and than add to cache
         /// </summary>
         /// <param name="resourcePath">path to resource file for folder</param>        
         protected override void AddDataSourceToCache(string resourcePath)

@@ -56,7 +56,7 @@ namespace Fanex.Data.Configuration
         private static volatile ObjectCache cacheManager;
 
         /// <summary>
-        /// get setting datasource from cache
+        /// get setting data source from cache
         /// </summary>
         public override Dictionary<string, IDbSetting> SettingDataSource
         {
@@ -166,7 +166,7 @@ namespace Fanex.Data.Configuration
         }
 
         /// <summary>
-        /// start run file system watcher to fire event ResouceChangedEvent
+        /// start run file system watcher to fire event ResourceChangedEvent
         /// whenever the resource change
         /// </summary>
         /// <param name="path">resource path</param>
@@ -209,7 +209,7 @@ namespace Fanex.Data.Configuration
         }
 
         /// <summary>
-        /// Get all dbsetting configuration from the datasource and than add to cache
+        /// Get all db setting configuration from the data source and than add to cache
         /// </summary>
         /// <param name="resourcePath">path to resource file</param>        
         protected virtual void AddDataSourceToCache(string resourcePath)
@@ -281,7 +281,6 @@ namespace Fanex.Data.Configuration
         {
             return null;
         }
-
 
         #endregion
     }

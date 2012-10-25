@@ -11,20 +11,25 @@
 //  <change who="Qui" date="2012.03.06">Add serializable</change>
 // </history>
 
-using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Collections;
-using System.Data;
-
 namespace Fanex.Data.DNAide
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Runtime.Serialization;
+    using System.Collections;
+    using System.Data;
+    using System.Diagnostics.CodeAnalysis;
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Reviewed. Suppression is OK here.")]
     [Serializable]
     public class DbResult : ISerializable
     {
         [NonSerialized]
         private Hashtable _output;
+
         /// <summary>
         /// DataSet to store all the result sets from database.
         /// </summary>
@@ -54,7 +59,7 @@ namespace Fanex.Data.DNAide
         }
 
         /// <summary>
-        /// store resultset returned by store procedure
+        /// store result set returned by store procedure
         /// </summary>
         public DataSet ResultSet
         {
@@ -93,7 +98,8 @@ namespace Fanex.Data.DNAide
                 outputKeys.Add(key as string);
 
                 object objValue = _output[key];
-                if (objValue is DBNull) // Resolve DBNull case
+                // Resolve DBNull case
+                if (objValue is DBNull) 
                 {
                     objValue = string.Empty;
                 }

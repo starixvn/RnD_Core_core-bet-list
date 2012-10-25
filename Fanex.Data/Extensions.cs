@@ -18,21 +18,21 @@ namespace Fanex.Data
     using System.Collections;
     
     /// <summary>
-    /// This class extend some funtions DBCommand and SqlParamater
+    /// This class extend some functions DBCommand and SqlParameter
     /// </summary>
     public static class Extensions
     {
         /// <summary>
-        /// Sql return param name
+        /// Sql return parameter name
         /// </summary>
         private const string ReturnValueParamName = "@RETURN_VALUE";
 
         /// <summary>
-        /// Determines whether [has output param] [the specified db command].
+        /// Determines whether [has output parameter] [the specified db command].
         /// </summary>
         /// <param name="databaseCmd">The db command.</param>
         /// <returns>
-        ///   <c>true</c> if [has output param] [the specified db command]; otherwise, <c>false</c>.
+        ///   <c>true</c> if [has output parameter] [the specified db command]; otherwise, <c>false</c>.
         /// </returns>
         public static bool HasOutputParam(this DbCommand databaseCmd)
         {
@@ -49,11 +49,11 @@ namespace Fanex.Data
         }
 
         /// <summary>
-        /// Determines whether [is not return value] [the specified param].
+        /// Determines whether [is not return value] [the specified parameter].
         /// </summary>
-        /// <param name="param">The param.</param>
+        /// <param name="param">The parameter.</param>
         /// <returns>
-        ///   <c>true</c> if [is not return value] [the specified param]; otherwise, <c>false</c>.
+        ///   <c>true</c> if [is not return value] [the specified parameter]; otherwise, <c>false</c>.
         /// </returns>
         public static bool IsNotReturnValue(this SqlParameter param)
         {
@@ -61,17 +61,17 @@ namespace Fanex.Data
         }
 
         /// <summary>
-        /// Gets the name of sql param without prefix @
+        /// Gets the name of sql parameter without prefix @
         /// </summary>
-        /// <param name="param">The param.</param>
-        /// <returns>paramater name</returns>
+        /// <param name="param">The parameter.</param>
+        /// <returns>parameter name</returns>
         public static string GetLowerName(this SqlParameter param)
         {
             return param.GetName().ToLowerInvariant();
         }
         
         /// <summary>
-        /// Gets the name of sql param without prefix @
+        /// Gets the name of sql parameter without prefix @
         /// </summary>
         /// <param name="param"></param>
         /// <returns></returns>
@@ -79,11 +79,14 @@ namespace Fanex.Data
         {
             return param.ParameterName.TrimStart('@');
         }
+
         /// <summary>
-        /// For get out put param from datareader
+        /// For get out put parameter from data reader
         /// </summary>
         /// <param name="paramaterValues"></param>
-        public static void GetReaderOutParam(this ObjectDb objectDb,Hashtable paramaterValues)
+        public static void GetReaderOutParam(
+            this ObjectDb objectDb,
+            Hashtable paramaterValues)
         {
             //AssignDynamicParamsValue(DbCommand, paramaterValues);
             //IDataReader reader= Database.ExecuteReader(DbCommand);
@@ -95,7 +98,6 @@ namespace Fanex.Data
                     paramaterValues[paramItem.GetLowerName()] = value;
                 }
             }
-
             //return reader;
         }
     }

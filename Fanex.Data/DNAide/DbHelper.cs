@@ -18,23 +18,24 @@
 //  <change who="Anders" date="2012.01.04">Refactor - Remove check key null or whitespace</change>
 //  <change who="Anders" date="2012.01.05">Add Paramater Cache</change>
 // </history>
-using System;
-using System.Collections;
-using System.Data;
-using System.Data.SqlClient;
-using System.Data.Common;
-using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
-using Microsoft.Practices.EnterpriseLibrary.Data;
-using System.Collections.Generic;
-using Fanex.Data.Dapper;
-using Fanex.Data.Configuration;
-using Fanex.Common.Extensions;
-
 namespace Fanex.Data.DNAide
 {
+    using System;
+    using System.Collections;
+    using System.Data;
+    using System.Data.SqlClient;
+    using System.Data.Common;
+    using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
+    using System.Collections.Generic;
+    using Fanex.Data.Dapper;
+    using Fanex.Data.Configuration;
+    using Fanex.Common.Extensions;
+    using System.Diagnostics.CodeAnalysis;
+
     /// <summary>
-    ///Provides data access methods through stored procedure
+    /// Provides data access methods through stored procedure
     /// </summary>
+    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Reviewed. Suppression is OK here.")]
     public static class DbHelper
     {
         /// <summary>
@@ -42,26 +43,49 @@ namespace Fanex.Data.DNAide
         /// </summary>
         private const int TimeOutDefault = 120;
 
-
         #region Execute return DBResult
+        /// <summary>
+        /// Execute
+        /// </summary>
+        /// <param name="settingKey"></param>
+        /// <returns></returns>
         [Obsolete("Use ExecuteDbResult instead")]
         public static DbResult Execute(string settingKey)
         {
             return ExecuteDbResult(settingKey, TimeOutDefault);
         }
 
+        /// <summary>
+        /// Execute
+        /// </summary>
+        /// <param name="settingKey"></param>
+        /// <param name="timeOut"></param>
+        /// <returns></returns>
         [Obsolete("Use ExecuteDbResult instead")]
         public static DbResult Execute(string settingKey, int timeOut)
         {
             return ExecuteDbResult(settingKey, null, timeOut);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="settingKey"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
         [Obsolete("Use ExecuteDbResult instead")]
         public static DbResult Execute(string settingKey, Hashtable parameters)
         {
             return ExecuteDbResult(settingKey, parameters, TimeOutDefault);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="settingKey"></param>
+        /// <param name="parameters"></param>
+        /// <param name="timeOut"></param>
+        /// <returns></returns>
         [Obsolete("Use ExecuteDbResult instead")]
         public static DbResult Execute(string settingKey, Hashtable parameters, int timeOut)
         {
@@ -107,7 +131,7 @@ namespace Fanex.Data.DNAide
         /// 
         /// </summary>
         /// <param name="settingKey">db setting key</param>
-        /// <param name="parameterValues">hash table param, the key must be lower case</param>
+        /// <param name="parameterValues">hash table parameter, the key must be lower case</param>
         /// <param name="timeOut">second unit</param>
         /// <returns><see cref="DbResult"/></returns>
         public static DbResult ExecuteDbResult(string settingKey, Hashtable parameterValues, int timeOut)
@@ -132,7 +156,6 @@ namespace Fanex.Data.DNAide
             return ExecuteDbResult(settingKey, parameterValues, TimeOutDefault);
         }
 
-
         public static DbResult ExecuteDbResult(string settingKey, dynamic parameterValues, int timeOut)
         {
             DbResult result = null;
@@ -145,7 +168,6 @@ namespace Fanex.Data.DNAide
                 DataSet ds = objectDb.ExecuteDataSet(parameterValues);
                 Hashtable hashParams = GetOuputParams(objectDb.Database, objectDb.DbCommand);
                 result = new DbResult(hashParams, ds);
-
             }
 
             return result;
@@ -194,7 +216,6 @@ namespace Fanex.Data.DNAide
             return new DataSet();
         }
 
-
         #endregion
 
         #region ExecuteDataTable
@@ -237,6 +258,7 @@ namespace Fanex.Data.DNAide
             {
                 return dataSet.Tables[0];
             }
+
             return new DataTable();
         }
         #endregion
@@ -274,7 +296,7 @@ namespace Fanex.Data.DNAide
         }
 
         /// <summary>
-        /// have to call this function inside using statement to ensure dispose datareader 
+        /// have to call this function inside using statement to ensure dispose data reader 
         /// </summary>
         /// <param name="settingKey"></param>
         /// <param name="timeOut"></param>
@@ -283,6 +305,7 @@ namespace Fanex.Data.DNAide
         public static IDataReader ExecuteReader(string settingKey, int timeOut, dynamic parameterValues)
         {
             ObjectDb objDb = new ObjectDb(settingKey, timeOut);
+
             return objDb.ExecuteReader(parameterValues);
         }
         #endregion
@@ -313,6 +336,7 @@ namespace Fanex.Data.DNAide
                 objectDb.AssignParamValues(parameterValues);
                 rowAffected = db.ExecuteNonQuery(dbCommand);
             }
+
             return rowAffected;
         }
 
@@ -348,7 +372,6 @@ namespace Fanex.Data.DNAide
 
         public static object ExecuteScalar(string settingKey, Hashtable parameterValues, int timeOut)
         {
-
             using (ObjectDb objectDb = new ObjectDb(settingKey))
             {
                 var db = objectDb.Database;
@@ -369,7 +392,6 @@ namespace Fanex.Data.DNAide
 
         public static object ExecuteScalar(string settingKey, int timeOut, dynamic parameterValues)
         {
-
             using (ObjectDb objectDb = new ObjectDb(settingKey, timeOut))
             {
                 return objectDb.ExecuteScalar(parameterValues);
@@ -385,7 +407,6 @@ namespace Fanex.Data.DNAide
         /// <typeparam name="T"></typeparam>
         /// <param name="settingKey"><see cref="TimeOutDefault"/></param>
         /// <returns></returns>
-
         public static IEnumerable<T> Query<T>(string settingKey)
         {
             return Query<T>(settingKey, null, TimeOutDefault);
@@ -417,16 +438,17 @@ namespace Fanex.Data.DNAide
             {
                 using (DbConnection dbConnection = objectDb.DbConnection)
                 {
-                    DynamicParameters dynamicParams = objectDb.AssignDynamicParamsValueFromHashtable( parameterValues);
+                    DynamicParameters dynamicParams = objectDb.AssignDynamicParamsValueFromHashtable(parameterValues);
 
                     dbConnection.Open();
 
-                    result = dbConnection.Query<T>(dbSetting.SpName
-                          , dynamicParams
-                          , null
-                          , true
-                          , timeOut
-                          , CommandType.StoredProcedure);
+                    result = dbConnection.Query<T>(
+                           dbSetting.SpName,
+                           dynamicParams,
+                           null,
+                           true,
+                           timeOut,
+                           CommandType.StoredProcedure);
 
                     if (dbConnection.State != ConnectionState.Closed)
                     {
@@ -454,12 +476,13 @@ namespace Fanex.Data.DNAide
                     DynamicParameters dynamicParams = objectDb.AssignDynamicParamsValue(parameterValues);
 
                     dbConnection.Open();
-                    result = dbConnection.Query<T>(dbSetting.SpName
-                          , dynamicParams
-                          , null
-                          , true
-                          , TimeOutDefault
-                          , CommandType.StoredProcedure);
+                    result = dbConnection.Query<T>(
+                        dbSetting.SpName,
+                        dynamicParams,
+                        null,
+                        true,
+                        TimeOutDefault,
+                        CommandType.StoredProcedure);
 
                     if (dbConnection.State != ConnectionState.Closed)
                     {
@@ -470,7 +493,6 @@ namespace Fanex.Data.DNAide
                 return result;
             }
         }
-
 
         public static T QueryEntity<T>(string settingKey)
         {
@@ -508,10 +530,8 @@ namespace Fanex.Data.DNAide
 
         #region Util functions
 
-
-
         /// <summary>
-        /// get output param
+        /// get output parameter
         /// </summary>
         /// <param name="cmd"></param>
         /// <returns></returns>
@@ -538,6 +558,5 @@ namespace Fanex.Data.DNAide
         }
 
         #endregion
-
     }
 }

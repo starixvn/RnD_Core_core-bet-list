@@ -24,13 +24,14 @@ namespace Fanex.Data
     using Fanex.Data.Dapper;
     using Microsoft.Practices.EnterpriseLibrary.Data;
     using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
-    using System.Text;
+    using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
     /// Composite data access object,
     /// provide SqlDatabase Entlib object, DBCommand,
     /// and DBConnection (include Fanex.Data.Dapper to use useful extension mothods)
     /// </summary>
+    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Reviewed. Suppression is OK here.")]
     public sealed class ObjectDb : IDisposable
     {
         private static volatile ParameterCache _parameterCache = new ParameterCache();
@@ -51,21 +52,25 @@ namespace Fanex.Data
         public ObjectDb(string key, int commandTimeOut = TimeOutDefault)
         {
             if (string.IsNullOrWhiteSpace(key))
+            {
                 throw new ArgumentNullException();
+            }
 
             _commandTimeOut = commandTimeOut;
             _dbSetting = DbSettingProviderManager.Current.GetSetting(key);
         }
 
         /// <summary>
-        /// Create instance with dbsetting and command timeout default
+        /// Create instance with db setting and command timeout default
         /// </summary>
         /// <param name="setting"></param>
         /// <param name="commandTimeOut"></param>
         public ObjectDb(IDbSetting setting, int commandTimeOut = TimeOutDefault)
         {
             if (ReferenceEquals(setting, null))
+            {
                 throw new ArgumentNullException();
+            }
 
             _commandTimeOut = commandTimeOut;
             _dbSetting = setting;
@@ -107,6 +112,7 @@ namespace Fanex.Data
                     _dbCommand = Database.GetStoredProcCommand(_dbSetting.SpName);
                     _dbCommand.CommandTimeout = _commandTimeOut;
                 }
+
                 return _dbCommand;
             }
         }
@@ -144,7 +150,7 @@ namespace Fanex.Data
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="mappingColumns">{key:value}={fieldname:property-name}</param>
-        /// <param name="param">if param is hashtable,auto mapping dynamic object</param>
+        /// <param name="param">if param is hashtable, auto mapping dynamic object</param>
         /// <param name="transaction"></param>
         /// <param name="buffer">true to minimizes shared locks in the db
         /// and cuts down on db network time.
@@ -152,8 +158,11 @@ namespace Fanex.Data
         /// </param>
         /// <param name="commandTimeout">commandTimeout</param>
         /// <returns>IEnumerable<T></returns>
-        public IEnumerable<T> Query<T>(dynamic param = null, IDbTransaction transaction = null
-           , bool buffer = true, int? commandTimeout = null)
+        public IEnumerable<T> Query<T>(
+            dynamic param = null,
+            IDbTransaction transaction = null,
+            bool buffer = true,
+            int? commandTimeout = null)
         {
             IEnumerable<T> results;
             using (var connection = DbConnection)
@@ -165,11 +174,14 @@ namespace Fanex.Data
                     Hashtable parameters = (Hashtable)param;
                     DynamicParameters dynamicParamas = new DynamicParameters();
                     dynamicParamas = this.AssignDynamicParamsValueFromHashtable(parameters);
-                    results = connection.Query<T>(DbSetting.CustomMappingColumns, DbSetting.SpName, dynamicParamas
-                                     , transaction
-                                     , buffer
-                                     , commandTimeout ?? TimeOutDefault
-                                     , CommandType.StoredProcedure);
+                    results = connection.Query<T>(
+                                    DbSetting.CustomMappingColumns,
+                                    DbSetting.SpName,
+                                    dynamicParamas,
+                                    transaction,
+                                    buffer,
+                                    commandTimeout ?? TimeOutDefault,
+                                    CommandType.StoredProcedure);
 
                     foreach (SqlParameter paramItem in DbCommand.Parameters)
                     {
@@ -188,9 +200,14 @@ namespace Fanex.Data
                 }
                 else
                 {
-                    results = connection.Query<T>(DbSetting.CustomMappingColumns, DbSetting.SpName, (object)param, transaction, buffer
-                                 , commandTimeout ?? TimeOutDefault
-                                 , CommandType.StoredProcedure);
+                    results = connection.Query<T>(
+                        DbSetting.CustomMappingColumns,
+                        DbSetting.SpName,
+                        (object)param,
+                        transaction,
+                        buffer,
+                        commandTimeout ?? TimeOutDefault,
+                        CommandType.StoredProcedure);
                 }
 
                 if (!buffer)
@@ -209,13 +226,12 @@ namespace Fanex.Data
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="mappingColumns">The mapping columns.</param>
-        /// <param name="param">The param.</param>
+        /// <param name="param">The parameter.</param>
         /// <param name="transaction">The transaction.</param>
         /// <param name="buffer">if set to <c>true</c> [buffer].</param>
         /// <param name="commandTimeout">The command timeout.</param>
         /// <returns></returns>
-        public T QueryEntity<T>(dynamic param = null, IDbTransaction transaction = null
-         , int? commandTimeout = null)
+        public T QueryEntity<T>(dynamic param = null, IDbTransaction transaction = null, int? commandTimeout = null)
         {
             IEnumerable<T> results = Query<T>(param, transaction, true, commandTimeout);
 
@@ -232,8 +248,13 @@ namespace Fanex.Data
         /// <typeparam name="T"></typeparam>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public IEnumerable<TResult> Query<TFirst, TSecond, TResult>(Func<TFirst, TSecond, TResult> func, string splitOn = "Id"
-            , dynamic parameterValues = null, IDbTransaction transaction = null, bool buffer = true, int? commandTimeout = null)
+        public IEnumerable<TResult> Query<TFirst, TSecond, TResult>(
+            Func<TFirst, TSecond, TResult> func,
+            string splitOn = "Id",
+            dynamic parameterValues = null,
+            IDbTransaction transaction = null,
+            bool buffer = true,
+            int? commandTimeout = null)
         {
             IEnumerable<TResult> result;
             using (var db = DbConnection)
@@ -246,15 +267,15 @@ namespace Fanex.Data
                     DynamicParameters dynamicParamas = new DynamicParameters();
                     dynamicParamas = this.AssignDynamicParamsValueFromHashtable(parameters);
                     result = db.Query<TFirst, TSecond, TResult>(
-                                    DbSetting.CustomMappingColumns
-                                    , DbSetting.SpName
-                                    , func
-                                    , dynamicParamas
-                                    , transaction
-                                    , buffer
-                                    , splitOn
-                                    , commandTimeout ?? TimeOutDefault
-                                    , CommandType.StoredProcedure);
+                                    DbSetting.CustomMappingColumns,
+                                    DbSetting.SpName,
+                                    func,
+                                    dynamicParamas,
+                                    transaction,
+                                    buffer,
+                                    splitOn,
+                                    commandTimeout ?? TimeOutDefault,
+                                    CommandType.StoredProcedure);
 
                     foreach (SqlParameter paramItem in DbCommand.Parameters)
                     {
@@ -274,15 +295,15 @@ namespace Fanex.Data
                 else
                 {
                     result = db.Query<TFirst, TSecond, TResult>(
-                                    DbSetting.CustomMappingColumns
-                                    , DbSetting.SpName
-                                    , func
-                                    , (object)parameterValues
-                                    , transaction
-                                    , buffer
-                                    , splitOn
-                                    , commandTimeout ?? TimeOutDefault
-                                    , CommandType.StoredProcedure);
+                                    DbSetting.CustomMappingColumns,
+                                    DbSetting.SpName,
+                                    func,
+                                    (object)parameterValues,
+                                    transaction,
+                                    buffer,
+                                    splitOn,
+                                    commandTimeout ?? TimeOutDefault,
+                                    CommandType.StoredProcedure);
                 }
 
                 if (!buffer)
@@ -296,15 +317,19 @@ namespace Fanex.Data
             return result;
         }
 
-
         /// <summary>
         /// Query nested class
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public IEnumerable<TResult> Query<TFirst, TSecond, TThird, TResult>(Func<TFirst, TSecond, TThird, TResult> func, string splitOn = "Id"
-            , dynamic parameterValues = null, IDbTransaction transaction = null, bool buffer = true, int? commandTimeout = null)
+        public IEnumerable<TResult> Query<TFirst, TSecond, TThird, TResult>(
+            Func<TFirst, TSecond, TThird, TResult> func,
+            string splitOn = "Id",
+            dynamic parameterValues = null,
+            IDbTransaction transaction = null,
+            bool buffer = true,
+            int? commandTimeout = null)
         {
             IEnumerable<TResult> result;
             using (var db = DbConnection)
@@ -317,15 +342,15 @@ namespace Fanex.Data
                     DynamicParameters dynamicParamas = new DynamicParameters();
                     dynamicParamas = this.AssignDynamicParamsValueFromHashtable(parameters);
                     result = db.Query<TFirst, TSecond, TThird, TResult>(
-                                      DbSetting.CustomMappingColumns
-                                    , DbSetting.SpName
-                                    , func
-                                    , dynamicParamas
-                                    , transaction
-                                    , buffer
-                                    , splitOn
-                                    , commandTimeout ?? TimeOutDefault
-                                    , CommandType.StoredProcedure);
+                                    DbSetting.CustomMappingColumns,
+                                    DbSetting.SpName,
+                                    func,
+                                    dynamicParamas,
+                                    transaction,
+                                    buffer,
+                                    splitOn,
+                                    commandTimeout ?? TimeOutDefault,
+                                    CommandType.StoredProcedure);
 
                     foreach (SqlParameter paramItem in DbCommand.Parameters)
                     {
@@ -345,15 +370,15 @@ namespace Fanex.Data
                 else
                 {
                     result = db.Query<TFirst, TSecond, TThird, TResult>(
-                              DbSetting.CustomMappingColumns
-                        , DbSetting.SpName
-                            , func
-                            , (object)parameterValues
-                            , transaction
-                            , buffer
-                            , splitOn
-                            , commandTimeout ?? TimeOutDefault
-                            , CommandType.StoredProcedure);
+                            DbSetting.CustomMappingColumns,
+                            DbSetting.SpName,
+                            func,
+                            (object)parameterValues,
+                            transaction,
+                            buffer,
+                            splitOn,
+                            commandTimeout ?? TimeOutDefault,
+                            CommandType.StoredProcedure);
                 }
 
                 if (!buffer)
@@ -363,9 +388,9 @@ namespace Fanex.Data
 
                 db.Close();
             }
+
             return result;
         }
-
 
         /// <summary>
         /// Query nested class
@@ -373,8 +398,13 @@ namespace Fanex.Data
         /// <typeparam name="T"></typeparam>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public IEnumerable<TResult> Query<TFirst, TSecond, TThird, TFourth, TResult>(Func<TFirst, TSecond, TThird, TFourth, TResult> func
-            , string splitOn = "Id", dynamic parameterValues = null, IDbTransaction transaction = null, bool buffer = true, int? commandTimeout = null)
+        public IEnumerable<TResult> Query<TFirst, TSecond, TThird, TFourth, TResult>(
+            Func<TFirst, TSecond, TThird, TFourth, TResult> func,
+            string splitOn = "Id",
+            dynamic parameterValues = null,
+            IDbTransaction transaction = null,
+            bool buffer = true,
+            int? commandTimeout = null)
         {
             IEnumerable<TResult> result;
             using (var db = DbConnection)
@@ -387,15 +417,15 @@ namespace Fanex.Data
                     DynamicParameters dynamicParamas = new DynamicParameters();
                     dynamicParamas = this.AssignDynamicParamsValueFromHashtable(parameters);
                     result = db.Query<TFirst, TSecond, TThird, TFourth, TResult>(
-                                      DbSetting.CustomMappingColumns
-                                    , DbSetting.SpName
-                                    , func
-                                     , dynamicParamas
-                                     , transaction
-                                     , buffer
-                                     , splitOn
-                                     , commandTimeout ?? TimeOutDefault
-                                     , CommandType.StoredProcedure);
+                                    DbSetting.CustomMappingColumns,
+                                    DbSetting.SpName,
+                                    func,
+                                    dynamicParamas,
+                                    transaction,
+                                    buffer,
+                                    splitOn,
+                                    commandTimeout ?? TimeOutDefault,
+                                    CommandType.StoredProcedure);
 
                     foreach (SqlParameter paramItem in DbCommand.Parameters)
                     {
@@ -415,16 +445,15 @@ namespace Fanex.Data
                 else
                 {
                     result = db.Query<TFirst, TSecond, TThird, TFourth, TResult>(
-                          DbSetting.CustomMappingColumns
-                        , DbSetting.SpName
-                            , func
-                            , (object)parameterValues
-                            , transaction
-                            , buffer
-                            , splitOn
-                            , commandTimeout ?? TimeOutDefault
-                            , CommandType.StoredProcedure);
-
+                            DbSetting.CustomMappingColumns,
+                            DbSetting.SpName,
+                            func,
+                            (object)parameterValues,
+                            transaction,
+                            buffer,
+                            splitOn,
+                            commandTimeout ?? TimeOutDefault,
+                            CommandType.StoredProcedure);
                 }
 
                 if (!buffer)
@@ -438,16 +467,19 @@ namespace Fanex.Data
             return result;
         }
 
-
-
         /// <summary>
         /// Query nested class
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public IEnumerable<TResult> Query<TFirst, TSecond, TThird, TFourth, TFifth, TResult>(Func<TFirst, TSecond, TThird, TFourth, TFifth, TResult> func
-            , string splitOn = "Id", dynamic parameterValues = null, IDbTransaction transaction = null, bool buffer = true, int? commandTimeout = null)
+        public IEnumerable<TResult> Query<TFirst, TSecond, TThird, TFourth, TFifth, TResult>(
+            Func<TFirst, TSecond, TThird, TFourth, TFifth, TResult> func,
+            string splitOn = "Id",
+            dynamic parameterValues = null,
+            IDbTransaction transaction = null,
+            bool buffer = true,
+            int? commandTimeout = null)
         {
             IEnumerable<TResult> result;
             using (var db = DbConnection)
@@ -460,15 +492,15 @@ namespace Fanex.Data
                     DynamicParameters dynamicParamas = new DynamicParameters();
                     dynamicParamas = this.AssignDynamicParamsValueFromHashtable(parameters);
                     result = db.Query<TFirst, TSecond, TThird, TFourth, TFifth, TResult>(
-                                      DbSetting.CustomMappingColumns
-                                    , DbSetting.SpName
-                                    , func
-                                     , dynamicParamas
-                                     , transaction
-                                     , buffer
-                                     , splitOn
-                                     , commandTimeout ?? TimeOutDefault
-                                     , CommandType.StoredProcedure);
+                                    DbSetting.CustomMappingColumns,
+                                    DbSetting.SpName,
+                                    func,
+                                    dynamicParamas,
+                                    transaction,
+                                    buffer,
+                                    splitOn,
+                                    commandTimeout ?? TimeOutDefault,
+                                    CommandType.StoredProcedure);
 
                     foreach (SqlParameter paramItem in DbCommand.Parameters)
                     {
@@ -488,15 +520,15 @@ namespace Fanex.Data
                 else
                 {
                     result = db.Query<TFirst, TSecond, TThird, TFourth, TFifth, TResult>(
-                          DbSetting.CustomMappingColumns
-                        , DbSetting.SpName
-                            , func
-                            , (object)parameterValues
-                            , transaction
-                            , buffer
-                            , splitOn
-                            , commandTimeout ?? TimeOutDefault
-                            , CommandType.StoredProcedure);
+                            DbSetting.CustomMappingColumns,
+                            DbSetting.SpName,
+                            func,
+                            (object)parameterValues,
+                            transaction,
+                            buffer,
+                            splitOn,
+                            commandTimeout ?? TimeOutDefault,
+                            CommandType.StoredProcedure);
                 }
 
                 if (!buffer)
@@ -510,65 +542,77 @@ namespace Fanex.Data
             return result;
         }
 
-
-
         /// <summary>
         /// Query nested class
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public TResult QueryEntity<TFirst, TSecond, TResult>(Func<TFirst, TSecond, TResult> func, string splitOn = "Id"
-            , dynamic parameters = null, IDbTransaction transaction = null, bool buffer = true, int? commandTimeout = null)
+        public TResult QueryEntity<TFirst, TSecond, TResult>(
+            Func<TFirst, TSecond, TResult> func,
+            string splitOn = "Id",
+            dynamic parameters = null,
+            IDbTransaction transaction = null,
+            bool buffer = true,
+            int? commandTimeout = null)
         {
             IEnumerable<TResult> result = Query<TFirst, TSecond, TResult>(func, splitOn, parameters, transaction, buffer, commandTimeout);
             return result.FirstOrDefault();
         }
 
-
-
         /// <summary>
         /// Query nested class
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public TResult QueryEntity<TFirst, TSecond, TThird, TResult>(Func<TFirst, TSecond, TThird, TResult> func, string splitOn = "Id"
-            , dynamic parameters = null, IDbTransaction transaction = null, bool buffer = true, int? commandTimeout = null)
+        public TResult QueryEntity<TFirst, TSecond, TThird, TResult>(
+            Func<TFirst, TSecond, TThird, TResult> func,
+            string splitOn = "Id",
+            dynamic parameters = null,
+            IDbTransaction transaction = null,
+            bool buffer = true,
+            int? commandTimeout = null)
         {
             IEnumerable<TResult> result = Query<TFirst, TSecond, TThird, TResult>(func, splitOn, parameters, transaction, buffer, commandTimeout);
             return result.FirstOrDefault();
         }
 
-
         /// <summary>
         /// Query nested class
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public TResult QueryEntity<TFirst, TSecond, TThird, TFourth, TResult>(Func<TFirst, TSecond, TThird, TFourth, TResult> func, string splitOn = "Id"
-            , dynamic parameters = null, IDbTransaction transaction = null, bool buffer = true, int? commandTimeout = null)
+        public TResult QueryEntity<TFirst, TSecond, TThird, TFourth, TResult>(
+            Func<TFirst, TSecond, TThird, TFourth, TResult> func,
+            string splitOn = "Id",
+            dynamic parameters = null,
+            IDbTransaction transaction = null,
+            bool buffer = true,
+            int? commandTimeout = null)
         {
             IEnumerable<TResult> result = Query<TFirst, TSecond, TThird, TFourth, TResult>(func, splitOn, parameters, transaction, buffer, commandTimeout);
             return result.FirstOrDefault();
         }
 
-
-
         /// <summary>
         /// Query nested class
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public TResult QueryEntity<TFirst, TSecond, TThird, TFourth, TFifth, TResult>(Func<TFirst, TSecond, TThird, TFourth, TFifth, TResult> func
-            , string splitOn = "Id", dynamic parameters = null, IDbTransaction transaction = null, bool buffer = true, int? commandTimeout = null)
+        public TResult QueryEntity<TFirst, TSecond, TThird, TFourth, TFifth, TResult>(
+            Func<TFirst, TSecond, TThird, TFourth, TFifth, TResult> func,
+            string splitOn = "Id",
+            dynamic parameters = null,
+            IDbTransaction transaction = null,
+            bool buffer = true,
+            int? commandTimeout = null)
         {
             IEnumerable<TResult> result = Query<TFirst, TSecond, TThird, TFourth, TFifth, TResult>(func, splitOn, parameters, transaction, buffer, commandTimeout);
             return result.FirstOrDefault();
         }
-
 
         #endregion Nested Class
 
@@ -590,6 +634,7 @@ namespace Fanex.Data
         public DataSet ExecuteDataSet(DbTransaction transaction, dynamic paramaterValues)
         {
             AssignDynamicParamsValue(DbCommand, paramaterValues);
+
             return Database.ExecuteDataSet(transaction, DbSetting.SpName, paramaterValues);
         }
 
@@ -605,6 +650,7 @@ namespace Fanex.Data
                     paramaterValues[paramItem.GetLowerName()] = value;
                 }
             }
+
             return ds;
         }
 
@@ -624,11 +670,12 @@ namespace Fanex.Data
         /// <summary>
         /// Executes the non query.
         /// </summary>
-        /// <param name="paramaterValues">The paramater values.</param>
+        /// <param name="parameterValues">The parameter values.</param>
         /// <returns></returns>
-        public int ExecuteNonQuery(dynamic paramaterValues)
+        public int ExecuteNonQuery(dynamic parameterValues)
         {
-            AssignDynamicParamsValue(DbCommand, paramaterValues);
+            AssignDynamicParamsValue(DbCommand, parameterValues);
+
             return Database.ExecuteNonQuery(DbCommand);
         }
 
@@ -636,12 +683,13 @@ namespace Fanex.Data
         /// Executes the non query.
         /// </summary>
         /// <param name="transaction">The transaction.</param>
-        /// <param name="paramaterValues">The paramater values.</param>
+        /// <param name="parameterValues">The parameter values.</param>
         /// <returns></returns>
-        public int ExecuteNonQuery(DbTransaction transaction, dynamic paramaterValues)
+        public int ExecuteNonQuery(DbTransaction transaction, dynamic parameterValues)
         {
-            AssignDynamicParamsValue(DbCommand, paramaterValues);
-            return Database.ExecuteNonQuery(transaction, DbSetting.SpName, paramaterValues);
+            AssignDynamicParamsValue(DbCommand, parameterValues);
+
+            return Database.ExecuteNonQuery(transaction, DbSetting.SpName, parameterValues);
         }
 
         public void ExecuteNonQuery(Hashtable paramaterValues)
@@ -674,11 +722,11 @@ namespace Fanex.Data
         /// <summary>
         /// Executes the reader.
         /// </summary>
-        /// <param name="paramaterValues">The paramater values.</param>
+        /// <param name="parameterValues">The parameter values.</param>
         /// <returns>return IDataReader</returns>
-        public IDataReader ExecuteReader(dynamic paramaterValues)
+        public IDataReader ExecuteReader(dynamic parameterValues)
         {
-            AssignDynamicParamsValue(DbCommand, paramaterValues);
+            AssignDynamicParamsValue(DbCommand, parameterValues);
             return Database.ExecuteReader(DbCommand);
         }
 
@@ -686,12 +734,12 @@ namespace Fanex.Data
         /// Executes the reader.
         /// </summary>
         /// <param name="transaction">The transaction.</param>
-        /// <param name="paramaterValues">The paramater values.</param>
+        /// <param name="parameterValues">The parameter values.</param>
         /// <returns>return IDataReader</returns>
-        public IDataReader ExecuteReader(DbTransaction transaction, dynamic paramaterValues)
+        public IDataReader ExecuteReader(DbTransaction transaction, dynamic parameterValues)
         {
-            AssignDynamicParamsValue(DbCommand, paramaterValues);
-            return Database.ExecuteReader(transaction, DbSetting.SpName, paramaterValues);
+            AssignDynamicParamsValue(DbCommand, parameterValues);
+            return Database.ExecuteReader(transaction, DbSetting.SpName, parameterValues);
         }
 
         public IDataReader ExecuteReader(Hashtable paramaterValues)
@@ -715,11 +763,11 @@ namespace Fanex.Data
         /// <summary>
         /// Executes the scalar.
         /// </summary>
-        /// <param name="paramaterValues">The paramater values.</param>
+        /// <param name="parameterValues">The parameter values.</param>
         /// <returns></returns>
-        public object ExecuteScalar(dynamic paramaterValues)
+        public object ExecuteScalar(dynamic parameterValues)
         {
-            AssignDynamicParamsValue(DbCommand, paramaterValues);
+            AssignDynamicParamsValue(DbCommand, parameterValues);
             return Database.ExecuteScalar(DbCommand);
         }
 
@@ -727,26 +775,27 @@ namespace Fanex.Data
         /// Executes the scalar.
         /// </summary>
         /// <param name="transaction">The transaction.</param>
-        /// <param name="paramaterValues">The paramater values.</param>
+        /// <param name="parameterValues">The parameter values.</param>
         /// <returns></returns>
-        public object ExecuteScalar(DbTransaction transaction, dynamic paramaterValues)
+        public object ExecuteScalar(DbTransaction transaction, dynamic parameterValues)
         {
-            AssignDynamicParamsValue(DbCommand, paramaterValues);
-            return Database.ExecuteScalar(transaction, DbSetting.SpName, paramaterValues);
+            AssignDynamicParamsValue(DbCommand, parameterValues);
+            return Database.ExecuteScalar(transaction, DbSetting.SpName, parameterValues);
         }
 
-        public object ExecuteScalar(Hashtable paramaterValues)
+        public object ExecuteScalar(Hashtable parameterValues)
         {
-            AssignDynamicParamsValue(DbCommand, paramaterValues);
+            AssignDynamicParamsValue(DbCommand, parameterValues);
             object obj = Database.ExecuteScalar(DbCommand);
             foreach (SqlParameter paramItem in DbCommand.Parameters)
             {
                 if (paramItem.Direction == ParameterDirection.Output || paramItem.Direction == ParameterDirection.InputOutput)
                 {
                     object value = Database.GetParameterValue(DbCommand, paramItem.GetLowerName());
-                    paramaterValues[paramItem.GetLowerName()] = value;
+                    parameterValues[paramItem.GetLowerName()] = value;
                 }
             }
+
             return obj;
         }
 
@@ -787,7 +836,7 @@ namespace Fanex.Data
         }
 
         /// <summary>
-        /// set paramater value
+        /// set parameter value
         /// </summary>
         /// <param name="parameterName"></param>
         /// <param name="value"></param>
@@ -797,7 +846,7 @@ namespace Fanex.Data
         }
 
         /// <summary>
-        /// Create paramater
+        /// Create parameter
         /// </summary>
         /// <param name="name"></param>
         /// <param name="dbType"></param>
@@ -807,7 +856,7 @@ namespace Fanex.Data
         }
 
         /// <summary>
-        /// Auto discover paramater from sp and assign value get from cache
+        /// Auto discover parameter from sp and assign value get from cache
         /// </summary>
         /// <param name="parameterCache"><see cref="Microsoft.Practices.EnterpriseLibrary.Data.ParameterCache"/></param>
         /// <param name="parameters">Hashtable</param>
@@ -854,7 +903,7 @@ namespace Fanex.Data
         #region DynamicParameters functions
 
         /// <summary>
-        /// Assigns the dynamic params value.
+        /// Assigns the dynamic parameters value.
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns></returns>
@@ -869,9 +918,12 @@ namespace Fanex.Data
                 {
                     if (param.IsNotReturnValue())
                     {
-                        dynamicParams.Add(param.ParameterName, parameters.GetValue(i++)
-                            , null, param.Direction
-                            , param.Size);
+                        dynamicParams.Add(
+                            param.ParameterName,
+                            parameters.GetValue(i++),
+                            null,
+                            param.Direction,
+                            param.Size);
                     }
                 }
             }
@@ -879,11 +931,12 @@ namespace Fanex.Data
             {
                 dynamicParams = AssignDynamicParamsValue();
             }
+
             return dynamicParams;
         }
 
         /// <summary>
-        /// Assigns the dynamic params value.
+        /// Assigns the dynamic parameters value.
         /// </summary>
         /// <returns></returns>
         public DynamicParameters AssignDynamicParamsValue()
@@ -895,18 +948,21 @@ namespace Fanex.Data
                 {
                     if (param.IsNotReturnValue())
                     {
-                        dynamicParams.Add(param.ParameterName
-                            , param.Value
-                            , null, param.Direction
-                            , param.Size);
+                        dynamicParams.Add(
+                            param.ParameterName,
+                            param.Value,
+                            null,
+                            param.Direction,
+                            param.Size);
                     }
                 }
             }
+
             return dynamicParams;
         }
 
         /// <summary>
-        /// Assigns the dynamic params value.
+        /// Assigns the dynamic parameters value.
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns></returns>
@@ -920,19 +976,21 @@ namespace Fanex.Data
                 {
                     if (param.IsNotReturnValue())
                     {
-                        dynamicParams.Add(param.ParameterName
-                            , value: parameters[param.GetLowerName()]
-                            , dbType: param.DbType
-                            , direction: param.Direction
-                            , size: param.Size);
+                        dynamicParams.Add(
+                            param.ParameterName,
+                            value: parameters[param.GetLowerName()],
+                            dbType: param.DbType,
+                            direction: param.Direction,
+                            size: param.Size);
                     }
                 }
             }
+
             return dynamicParams;
         }
 
         /// <summary>
-        /// get output param
+        /// get output parameter
         /// </summary>
         /// <param name="cmd"></param>
         /// <returns></returns>
@@ -962,10 +1020,10 @@ namespace Fanex.Data
         }
 
         /// <summary>
-        /// Assigns the dynamic params value.
+        /// Assigns the dynamic parameters value.
         /// </summary>
         /// <param name="dbCommand">The db command.</param>
-        /// <param name="paramaterValues">The paramater values.</param>
+        /// <param name="paramaterValues">The parameter values.</param>
         private void AssignDynamicParamsValue(DbCommand dbCommand, dynamic paramaterValues)
         {
             if (!ReferenceEquals(paramaterValues, null))
@@ -995,10 +1053,10 @@ namespace Fanex.Data
                     {
                         dbCommand.Parameters.Clear();
                     }
+
                     action(dbCommand, obj);
                 }
             }
-
         }
 
         #endregion DynamicParameters functions
