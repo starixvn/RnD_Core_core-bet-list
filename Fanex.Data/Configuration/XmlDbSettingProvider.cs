@@ -22,7 +22,7 @@ namespace Fanex.Data.Configuration
     using System.Linq;
     using System.Runtime.Caching;
     using System.Security.Permissions;
-    using System.Xml.Linq;    
+    using System.Xml.Linq;
     using Microsoft.Practices.EnterpriseLibrary.Caching;
 
     /// <summary>
@@ -54,6 +54,11 @@ namespace Fanex.Data.Configuration
         /// cache manager
         /// </summary>
         private static volatile ObjectCache cacheManager;
+
+        /// <summary>
+        /// default execute time out
+        /// </summary>
+        protected const int TimeOutDefault = 120;
 
         /// <summary>
         /// get setting data source from cache
@@ -171,7 +176,7 @@ namespace Fanex.Data.Configuration
         /// </summary>
         /// <param name="path">resource path</param>
         protected virtual void StartWatchResource(string path)
-        {           
+        {
             this.EnsureTargetFileAccessible(path);
 
             // remember to check security on the folter to watch
@@ -204,7 +209,7 @@ namespace Fanex.Data.Configuration
         /// <param name="sender">file change</param>
         /// <param name="e">FileSystemEventArgs args</param>
         protected void ResourceChangedEvent(object sender, FileSystemEventArgs e)
-        {          
+        {
             this.AddDataSourceToCache(ResourcePath);
         }
 
@@ -230,7 +235,8 @@ namespace Fanex.Data.Configuration
                             var databaseSetting = new DbSetting
                             {
                                 SpName = setting.Attribute("SpName").Value.Trim(),
-                                DbName = setting.Attribute("DbName").Value.Trim()
+                                DbName = setting.Attribute("DbName").Value.Trim(),
+                                ExecuteTimeOut = setting.Attribute("TimeOut") != null ? Convert.ToInt32(setting.Attribute("TimeOut").Value.Trim()) : TimeOutDefault
                             };
 
                             // Add custom column for spname

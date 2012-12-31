@@ -3,7 +3,8 @@
 // </copyright>
 //
 // <history>
-// <change who="quangle" date="2012.2.11">Created</change>
+//   <change who="quangle" date="2012.2.11">Created</change>
+//   <change who="Edward.Nguyen" date="2012.12.31">add execute time out</change>
 // </history>
 namespace Fanex.Data
 {
@@ -50,6 +51,11 @@ namespace Fanex.Data
         /// The connection string.
         /// </value>
         public string ConnectionString { get; set; }
+
+        /// <summary>
+        /// Get or set execute time out  (seconds)
+        /// </summary>
+        public int ExecuteTimeOut { get; set; }
 
         /// <summary>
         /// Determines whether this instance is valid.
