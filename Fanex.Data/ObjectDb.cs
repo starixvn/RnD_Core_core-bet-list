@@ -255,8 +255,7 @@ namespace Fanex.Data
             string splitOn = "Id",
             dynamic parameterValues = null,
             IDbTransaction transaction = null,
-            bool buffer = true,
-            int? commandTimeout = TimeOutDefault)
+            bool buffer = true)
         {
             IEnumerable<TResult> result;
             using (var db = DbConnection)
@@ -276,7 +275,7 @@ namespace Fanex.Data
                                     transaction,
                                     buffer,
                                     splitOn,
-                                    commandTimeout != TimeOutDefault ? commandTimeout : DbSetting.ExecuteTimeOut,
+                                    _commandTimeOut,
                                     CommandType.StoredProcedure);
 
                     foreach (SqlParameter paramItem in DbCommand.Parameters)
@@ -304,7 +303,7 @@ namespace Fanex.Data
                                     transaction,
                                     buffer,
                                     splitOn,
-                                    commandTimeout != TimeOutDefault ? commandTimeout : DbSetting.ExecuteTimeOut,
+                                    _commandTimeOut,
                                     CommandType.StoredProcedure);
                 }
 
@@ -330,8 +329,7 @@ namespace Fanex.Data
             string splitOn = "Id",
             dynamic parameterValues = null,
             IDbTransaction transaction = null,
-            bool buffer = true,
-            int? commandTimeout = TimeOutDefault)
+            bool buffer = true)
         {
             IEnumerable<TResult> result;
             using (var db = DbConnection)
@@ -351,7 +349,7 @@ namespace Fanex.Data
                                     transaction,
                                     buffer,
                                     splitOn,
-                                    commandTimeout != TimeOutDefault ? commandTimeout : DbSetting.ExecuteTimeOut,
+                                    _commandTimeOut,
                                     CommandType.StoredProcedure);
 
                     foreach (SqlParameter paramItem in DbCommand.Parameters)
@@ -379,7 +377,7 @@ namespace Fanex.Data
                             transaction,
                             buffer,
                             splitOn,
-                            commandTimeout != TimeOutDefault ? commandTimeout : DbSetting.ExecuteTimeOut,
+                            _commandTimeOut,
                             CommandType.StoredProcedure);
                 }
 
@@ -405,8 +403,7 @@ namespace Fanex.Data
             string splitOn = "Id",
             dynamic parameterValues = null,
             IDbTransaction transaction = null,
-            bool buffer = true,
-            int? commandTimeout = TimeOutDefault)
+            bool buffer = true)
         {
             IEnumerable<TResult> result;
             using (var db = DbConnection)
@@ -426,7 +423,7 @@ namespace Fanex.Data
                                     transaction,
                                     buffer,
                                     splitOn,
-                                    commandTimeout != TimeOutDefault ? commandTimeout : DbSetting.ExecuteTimeOut,
+                                    _commandTimeOut,
                                     CommandType.StoredProcedure);
 
                     foreach (SqlParameter paramItem in DbCommand.Parameters)
@@ -454,7 +451,7 @@ namespace Fanex.Data
                             transaction,
                             buffer,
                             splitOn,
-                            commandTimeout != TimeOutDefault ? commandTimeout : DbSetting.ExecuteTimeOut,
+                            _commandTimeOut,
                             CommandType.StoredProcedure);
                 }
 
@@ -480,8 +477,7 @@ namespace Fanex.Data
             string splitOn = "Id",
             dynamic parameterValues = null,
             IDbTransaction transaction = null,
-            bool buffer = true,
-            int? commandTimeout = TimeOutDefault)
+            bool buffer = true)
         {
             IEnumerable<TResult> result;
             using (var db = DbConnection)
@@ -501,7 +497,7 @@ namespace Fanex.Data
                                     transaction,
                                     buffer,
                                     splitOn,
-                                    commandTimeout != TimeOutDefault ? commandTimeout : DbSetting.ExecuteTimeOut,
+                                    _commandTimeOut,
                                     CommandType.StoredProcedure);
 
                     foreach (SqlParameter paramItem in DbCommand.Parameters)
@@ -529,7 +525,7 @@ namespace Fanex.Data
                             transaction,
                             buffer,
                             splitOn,
-                            commandTimeout != TimeOutDefault ? commandTimeout : DbSetting.ExecuteTimeOut,
+                            _commandTimeOut,
                             CommandType.StoredProcedure);
                 }
 
@@ -555,10 +551,9 @@ namespace Fanex.Data
             string splitOn = "Id",
             dynamic parameters = null,
             IDbTransaction transaction = null,
-            bool buffer = true,
-            int? commandTimeout = TimeOutDefault)
+            bool buffer = true)
         {
-            IEnumerable<TResult> result = Query<TFirst, TSecond, TResult>(func, splitOn, parameters, transaction, buffer, commandTimeout);
+            IEnumerable<TResult> result = Query<TFirst, TSecond, TResult>(func, splitOn, parameters, transaction, buffer);
             return result.FirstOrDefault();
         }
 
@@ -573,10 +568,9 @@ namespace Fanex.Data
             string splitOn = "Id",
             dynamic parameters = null,
             IDbTransaction transaction = null,
-            bool buffer = true,
-            int? commandTimeout = TimeOutDefault)
+            bool buffer = true)
         {
-            IEnumerable<TResult> result = Query<TFirst, TSecond, TThird, TResult>(func, splitOn, parameters, transaction, buffer, commandTimeout);
+            IEnumerable<TResult> result = Query<TFirst, TSecond, TThird, TResult>(func, splitOn, parameters, transaction, buffer);
             return result.FirstOrDefault();
         }
 
@@ -591,10 +585,9 @@ namespace Fanex.Data
             string splitOn = "Id",
             dynamic parameters = null,
             IDbTransaction transaction = null,
-            bool buffer = true,
-            int? commandTimeout = TimeOutDefault)
+            bool buffer = true)
         {
-            IEnumerable<TResult> result = Query<TFirst, TSecond, TThird, TFourth, TResult>(func, splitOn, parameters, transaction, buffer, commandTimeout);
+            IEnumerable<TResult> result = Query<TFirst, TSecond, TThird, TFourth, TResult>(func, splitOn, parameters, transaction, buffer);
             return result.FirstOrDefault();
         }
 
@@ -609,10 +602,9 @@ namespace Fanex.Data
             string splitOn = "Id",
             dynamic parameters = null,
             IDbTransaction transaction = null,
-            bool buffer = true,
-            int? commandTimeout = TimeOutDefault)
+            bool buffer = true)
         {
-            IEnumerable<TResult> result = Query<TFirst, TSecond, TThird, TFourth, TFifth, TResult>(func, splitOn, parameters, transaction, buffer, commandTimeout);
+            IEnumerable<TResult> result = Query<TFirst, TSecond, TThird, TFourth, TFifth, TResult>(func, splitOn, parameters, transaction, buffer);
             return result.FirstOrDefault();
         }
 
