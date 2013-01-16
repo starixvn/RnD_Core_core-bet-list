@@ -11,11 +11,11 @@ namespace Fanex.ConnectionString.Console
     {
         static void Main(string[] args)
         {
-            ConnectionString service = ConnectionString.InstanceCreation();
+            IConnnectionString connectionString = ConnectionString.InstanceCreation();
             
             while (true)
             {
-                System.Console.WriteLine(service.GetConnectionString("DB206.Main"));
+                System.Console.WriteLine(connectionString.GetConnectionString("DB206.Main"));
                 
                 Thread.Sleep(2000);
             }           
