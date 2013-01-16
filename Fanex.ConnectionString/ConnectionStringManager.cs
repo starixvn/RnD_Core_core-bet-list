@@ -14,6 +14,8 @@ namespace Fanex.ConnectionString
     using Fanex.ConnectionString.Constanst;
     using Fanex.ConnectionString.DataAccess;
     using System.Configuration;
+    using System.Collections.Generic;
+    using Fanex.ConnectionString.Domain;
 
     /// <summary>
     /// TODO: Update summary.
@@ -22,7 +24,7 @@ namespace Fanex.ConnectionString
     {
         private static readonly ConnectionStringDataAccess _dataAccess;
 
-        private static readonly ICache _cache;       
+        private static readonly ICache _cache;
 
         private static ConnectionType _connectionStringType;
 
@@ -47,7 +49,10 @@ namespace Fanex.ConnectionString
             {
                 if (_connectionStringType == ConnectionType.Remote)
                 {
-                    return _cache.Get<string>(ConectionStringConstanst.PRE_KEY + name.ToLower());
+                    var dic = new Dictionary<string, string>();
+                    dic = _cache.Get<Dictionary<string, string>>(ConectionStringConstanst.PRE_KEY);
+
+                    return dic[name.ToLower()].ToString();
                 }
                 else
                 {
@@ -82,6 +87,6 @@ namespace Fanex.ConnectionString
             {
                 throw ex;
             }
-        }        
+        }
     }
 }

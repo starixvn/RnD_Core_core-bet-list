@@ -16,31 +16,8 @@ namespace Fanex.ConnectionString.DataAccess
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    public interface IConnectionStringDataAccess
-    {
-        #region comment code
-
-        //DatabaseServer InsertSever(DatabaseServer serverItem);
-
-        //ConnectionString InserverConnectionString(ConnectionString connectionStringItem);
-
-        //bool UpdateServer(DatabaseServer serverItem);
-
-        //bool UpdateServerStatus(int serverItemId, bool isAcitve, int modifierId, DateTime modifiedDate);
-
-        //bool UpdateConnectionString(ConnectionString connectionStringItem);
-
-        //bool UpdateConnectionStringStatus(int connectionStringItemId, bool isActive, int modifierId, DateTime modifiedDate);
-
-        //DatabaseServer GetServer(int serverId);
-
-        //ConnectionString GetConnectionString(int connectionStringId);
-
-        //IEnumerable<DatabaseServer> GetAllServer();
-
-        #endregion      
-
-        IEnumerable<ConnectionString> ClientGetAll();
-
+    internal interface IConnectionStringDataAccess
+    {       
+        Dictionary<string, string> ClientGetAll();
     }
 }

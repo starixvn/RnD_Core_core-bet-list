@@ -12,7 +12,7 @@ namespace Fanex.ConnectionString.Constanst
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    public static class ConectionStringConstanst
+    internal static class ConectionStringConstanst
     {
         public const int GETALL = 0;
 

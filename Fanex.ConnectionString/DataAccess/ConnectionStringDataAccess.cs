@@ -21,7 +21,7 @@ namespace Fanex.ConnectionString.DataAccess
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    public class ConnectionStringDataAccess : IConnectionStringDataAccess
+    internal class ConnectionStringDataAccess : IConnectionStringDataAccess
     {
         #region Properties
 
@@ -448,11 +448,11 @@ namespace Fanex.ConnectionString.DataAccess
 
         #endregion
 
-        public IEnumerable<ConnectionString> ClientGetAll()
+        public Dictionary<string, string> ClientGetAll()
         {
             try
             {
-                var list = new List<ConnectionString>();
+                var dic = new Dictionary<string, string>();
 
                 var command = new SqlCommand("ConnectionString_ConnectionStrings_ClientGet", _sqlConn);
                 command.CommandType = CommandType.StoredProcedure;
@@ -500,18 +500,16 @@ namespace Fanex.ConnectionString.DataAccess
                                                             connection.Password,
                                                             connection.FreeText);
 
-                        connection.ConnectionString = tempConnection;
-
-                        list.Add(connection);
+                        dic.Add(connection.Alias.Name.ToLower(), tempConnection);
                     }
 
-                    cache.Set<List<ConnectionString>>(ConectionStringConstanst.PRE_KEY, list);
+                    cache.Set<Dictionary<string, string>>(ConectionStringConstanst.PRE_KEY, dic);
 
                     reader.Close();
                     _sqlConn.Close();
                 }
 
-                return list;
+                return dic;
             }
             catch (Exception ex)
             {

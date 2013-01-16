@@ -43,7 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\ConnectionSettings.cs" />
-    <Compile Include="ConnectionString.cs" />
+    <Compile Include="ConnectionStringManager.cs" />
     <Compile Include="ConnectionType.cs" />
     <Compile Include="Constanst\ConectionStringConstanst.cs" />
     <Compile Include="DataAccess\ConnectionStringDataAccess.cs" />
@@ -60,6 +60,18 @@
       <Project>{B9FF7938-4839-499F-B21C-EC2C1A9177C3}</Project>
       <Name>Fanex.Caching</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Readme\bootstrap\css\bootstrap-responsive.css" />
+    <Content Include="Readme\bootstrap\css\bootstrap-responsive.min.css" />
+    <Content Include="Readme\bootstrap\css\bootstrap.css" />
+    <Content Include="Readme\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Readme\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="Readme\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="Readme\bootstrap\js\bootstrap.js" />
+    <Content Include="Readme\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Readme\bootstrap\js\jquery-1.8.2.js" />
+    <Content Include="Readme\index.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

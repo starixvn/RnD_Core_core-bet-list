@@ -21,19 +21,19 @@
         <br />
         <pre class="prettyprint linenums">
         <span class="str">&lt;configsections&gt;</span>
-            <span class="str">&lt;section name="ConnectionStringSettings" type="Fanex.ConnectionString.Configuration.ConnectionStringSettings,
+            <span class="str">&lt;section name="ConnectionSettings" type="Fanex.ConnectionString.Configuration.ConnectionSettings,
                 Fanex.ConnectionString"&gt;</span>
         <span class="str">&lt;/configsections&gt;</span>
         </pre>
         <div class="bs-docs-example">
-            Add configure <code>ConnectionStringSettings</code>
+            Add configure <code>ConnectionSettings</code>
         </div>
         <br />
         <pre class="prettyprint linenums">
-        <span class="str">&lt;ConnectionStringsettings Connnection="Data Source=10.19.10.71;Initial
+        <span class="str">&lt;ConnectionSettings Connnection="Data Source=10.19.10.71;Initial
             Catalog=bodb_ConnectionString;integrated security=false; User ID=sa;Password=1234aa"
             IsLocal="false"&gt;</span>        
-        <span class="str">&lt;/ConnectionStringsettings&gt;</span>
+        <span class="str">&lt;/ConnectionSettings&gt;</span>
         </pre>
         <p>
             <span class="label label-info">Note</span></p>
@@ -52,38 +52,9 @@
             Get connection string in code C#
         </div>
         <br />
-        <pre class="prettyprint linenums">
-            IConnnectionString connectionString = ConnectionString.InstanceCreation();
-
-            var temp = connectionString.GetConnectionString("DB206.Main");
-        </pre>
-        <div class="bs-docs-example">
-           Reset cache ( refresh )
-        </div>
-        <br />
-        <pre class="prettyprint linenums">
-            IConnnectionString connectionString = ConnectionString.InstanceCreation();
-                        
-            connectionString.Reset();
-        </pre>
-         <div class="bs-docs-example">
-           Clear cache (clear all data and connection will be null)
-        </div>
-        <br />
-        <pre class="prettyprint linenums">
-            IConnnectionString connectionString = ConnectionString.InstanceCreation();
-                        
-            connectionString.Clear();
-        </pre>
-        <div class="bs-docs-example">
-           Check cache connection string contains alias name
-        </div>
-        <br />
-        <pre class="prettyprint linenums">
-            IConnnectionString connectionString = ConnectionString.InstanceCreation();
-                        
-            var check = connectionString.Contains("DB206.NAP");
-        </pre>
+        <pre class="prettyprint linenums">           
+            var temp = ConnectionStringManager.GetConnectionString("DB206.Main");
+        </pre>           
     </section>
 </body>
 </html>
