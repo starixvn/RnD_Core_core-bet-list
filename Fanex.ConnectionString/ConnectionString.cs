@@ -18,21 +18,19 @@ namespace Fanex.ConnectionString
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    public class ConnectionString : IConnnectionString
+    public static class ConnectionStringManager
     {
-        private readonly ConnectionStringDataAccess _dataAccess;
+        private static readonly ConnectionStringDataAccess _dataAccess;
 
-        private readonly ICache cache;
+        private static readonly ICache _cache;       
 
-        private volatile static ConnectionString _connectionStringObject;
+        private static ConnectionType _connectionStringType;
 
-        private ConnectionType _connectionStringType;
-
-        private ConnectionString()
+        static ConnectionStringManager()
         {
             _dataAccess = new ConnectionStringDataAccess();
 
-            _connectionStringType = Fanex.ConnectionString.Configuration.ConnectionStringSettings.Settings.IsLocal ?
+            _connectionStringType = Fanex.ConnectionString.Configuration.FanexConnectionSettings.Settings.IsLocal ?
                 ConnectionType.Local : ConnectionType.Remote;
 
             if (_connectionStringType == ConnectionType.Remote)
@@ -40,33 +38,16 @@ namespace Fanex.ConnectionString
                 _dataAccess.ClientGetAll();
             }
 
-            cache = CacheService.CreateInstance(CacheType.MemoryCache);
+            _cache = CacheService.CreateInstance(CacheType.MemoryCache);
         }
 
-        public static ConnectionString InstanceCreation()
-        {
-            object lockingObject = new object();
-            if (_connectionStringObject == null)
-            {
-                lock (lockingObject)
-                {
-                    if (_connectionStringObject == null)
-                    {
-                        _connectionStringObject = new ConnectionString();
-                    }
-                }
-            }
-
-            return _connectionStringObject;
-        }      
-
-        public string GetConnectionString(string name)
+        public static string GetConnectionString(string name)
         {
             try
             {
                 if (_connectionStringType == ConnectionType.Remote)
                 {
-                    return cache.Get<string>(ConectionStringConstanst.PRE_KEY + name.ToLower());
+                    return _cache.Get<string>(ConectionStringConstanst.PRE_KEY + name.ToLower());
                 }
                 else
                 {
@@ -79,37 +60,13 @@ namespace Fanex.ConnectionString
             }
         }
 
-        public void Clear()
-        {
-            try
-            {
-                cache.Clear();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public void Reset()
-        {
-            try
-            {
-                _dataAccess.ClientGetAll();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public bool Contains(string name)
+        public static bool Contains(string name)
         {
             try
             {
                 if (_connectionStringType == ConnectionType.Remote)
                 {
-                    return cache.Contains(ConectionStringConstanst.PRE_KEY + name.ToLower());
+                    return _cache.Contains(ConectionStringConstanst.PRE_KEY + name.ToLower());
                 }
                 else
                 {
@@ -125,11 +82,6 @@ namespace Fanex.ConnectionString
             {
                 throw ex;
             }
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
+        }        
     }
 }

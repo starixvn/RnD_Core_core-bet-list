@@ -14,7 +14,7 @@ namespace Fanex.ConnectionString.Configuration
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    public class ConnectionStringSettings : ConfigurationSection
+    internal class FanexConnectionSettings : ConfigurationSection
     {
         #region consts
 
@@ -26,9 +26,9 @@ namespace Fanex.ConnectionString.Configuration
 
         #endregion
 
-        private static ConnectionStringSettings _settings = ConfigurationManager.GetSection(__CONNECTION_STRING_SETTING) as ConnectionStringSettings;
+        private static FanexConnectionSettings _settings = ConfigurationManager.GetSection(__CONNECTION_STRING_SETTING) as FanexConnectionSettings;
 
-        public static ConnectionStringSettings Settings
+        public static FanexConnectionSettings Settings
         {
             get
             {

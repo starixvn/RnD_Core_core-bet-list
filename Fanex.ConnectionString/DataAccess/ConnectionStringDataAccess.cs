@@ -25,7 +25,7 @@ namespace Fanex.ConnectionString.DataAccess
     {
         #region Properties
 
-        private static string _connnection = ConnectionStringSettings.Settings.Connection;
+        private static string _connnection = FanexConnectionSettings.Settings.Connection;
 
         private SqlConnection _sqlConn = null;
 

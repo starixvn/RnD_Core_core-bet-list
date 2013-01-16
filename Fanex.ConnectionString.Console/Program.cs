@@ -11,7 +11,7 @@ namespace Fanex.ConnectionString.Console
     {
         static void Main(string[] args)
         {
-            IConnnectionString connectionString = ConnectionString.InstanceCreation();
+            IConnnectionString connectionString = ConnectionStringManager.InstanceCreation();
             
             while (true)
             {
