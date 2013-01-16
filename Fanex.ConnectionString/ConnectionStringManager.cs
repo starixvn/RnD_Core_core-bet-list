@@ -31,62 +31,42 @@ namespace Fanex.ConnectionString
 
         private static ConnectionStringSettingsCollection _collection;
 
-        private static Dictionary<string, string> _dic;
+        private static List<ConnectionString> _list;
 
         static ConnectionStringManager()
         {
-            _dataAccess = new ConnectionStringDataAccess();
+            _dataAccess = ConnectionStringDataAccess.InstanceCreation();
 
             _connectionStringType = Fanex.ConnectionString.Configuration.ConnectionSettings.Settings.IsLocal ?
                 ConnectionType.Local : ConnectionType.Remote;
 
             if (_connectionStringType == ConnectionType.Remote)
             {
-                _dataAccess.ClientGetAll();
+                _dataAccess.GetAll();
             }
 
             _cache = CacheService.CreateInstance(CacheType.MemoryCache);
 
             _collection = new ConnectionStringSettingsCollection();
 
-            _dic = new Dictionary<string, string>();
+            _list = new List<ConnectionString>();
         }
-
-        //public static string GetConnectionString(string name)
-        //{
-        //    try
-        //    {
-        //        if (_connectionStringType == ConnectionType.Remote)
-        //        {                   
-        //            _dic = _cache.Get<Dictionary<string, string>>(ConectionStringConstanst.PRE_KEY);
-
-        //            return _dic[name.ToLower()].ToString();
-        //        }
-        //        else
-        //        {
-        //            return ConfigurationManager.ConnectionStrings[name].ConnectionString.ToString();
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
 
         public static ConnectionStringSettingsCollection ConnectionStrings
         {
             get
             {
                 _collection.Clear();
-                _dic = _cache.Get<Dictionary<string, string>>(ConectionStringConstanst.PRE_KEY);
+                _list = _cache.Get<List<ConnectionString>>(ConectionStringConstanst.PRE_KEY);
 
-                foreach (var item in _dic)
+                foreach (var item in _list)
                 {
                     var itemConnection = new ConnectionStringSettings
                     {
-                        Name = item.Key,
-                        ConnectionString = item.Value
-                    };                    
+                        Name = item.Alias.Name.ToLower(),
+                        ConnectionString = item.Connection
+                    };
+
                     _collection.Add(itemConnection);
                 }
 
@@ -100,7 +80,18 @@ namespace Fanex.ConnectionString
             {
                 if (_connectionStringType == ConnectionType.Remote)
                 {
-                    return _cache.Contains(ConectionStringConstanst.PRE_KEY + name.ToLower());
+                    _collection.Clear();
+                    _list = _cache.Get<List<ConnectionString>>(ConectionStringConstanst.PRE_KEY);
+
+                    foreach (var item in _list)
+                    {
+                        if (item.Alias.Name == name.ToLower())
+                        {
+                            return true;
+                        }
+                    }
+
+                    return false;
                 }
                 else
                 {

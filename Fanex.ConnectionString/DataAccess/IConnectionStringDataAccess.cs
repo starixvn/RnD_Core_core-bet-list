@@ -17,7 +17,7 @@ namespace Fanex.ConnectionString.DataAccess
     /// TODO: Update summary.
     /// </summary>
     internal interface IConnectionStringDataAccess
-    {       
-        Dictionary<string, string> ClientGetAll();
+    {
+        IEnumerable<ConnectionString> GetAll();
     }
 }

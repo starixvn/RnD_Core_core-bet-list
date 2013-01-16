@@ -29,7 +29,9 @@ namespace Fanex.ConnectionString.Domain
 
         public string Password { get; set; }
 
-        public string FreeText { get; set; }        
+        public string FreeText { get; set; }
+
+        public string Connection { get; set; }        
 
         public bool IsDefault { get; set; }
 

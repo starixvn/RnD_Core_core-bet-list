@@ -17,7 +17,7 @@ namespace Fanex.ConnectionString.Console
 
             while (true)
             {
-                System.Console.WriteLine(ConnectionStringManager.ConnectionStrings["DB206.Main"]);
+                System.Console.WriteLine(ConnectionStringManager.ConnectionStrings["DB206.MAIN"]);
 
                 Thread.Sleep(2000);
                 
