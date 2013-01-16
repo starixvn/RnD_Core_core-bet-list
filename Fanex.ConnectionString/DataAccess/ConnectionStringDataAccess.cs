@@ -25,7 +25,7 @@ namespace Fanex.ConnectionString.DataAccess
     {
         #region Properties
 
-        private static string _connnection = FanexConnectionSettings.Settings.Connection;
+        private static string _connnection = ConnectionSettings.Settings.Connection;
 
         private SqlConnection _sqlConn = null;
 
@@ -500,10 +500,12 @@ namespace Fanex.ConnectionString.DataAccess
                                                             connection.Password,
                                                             connection.FreeText);
 
-                        cache.Set<string>(ConectionStringConstanst.PRE_KEY + connection.Alias.Name.ToLower(), tempConnection);
+                        connection.ConnectionString = tempConnection;
 
                         list.Add(connection);
                     }
+
+                    cache.Set<List<ConnectionString>>(ConectionStringConstanst.PRE_KEY, list);
 
                     reader.Close();
                     _sqlConn.Close();

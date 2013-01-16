@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\ConnectionStringSettings.cs" />
+    <Compile Include="Configuration\ConnectionSettings.cs" />
     <Compile Include="ConnectionString.cs" />
     <Compile Include="ConnectionType.cs" />
     <Compile Include="Constanst\ConectionStringConstanst.cs" />

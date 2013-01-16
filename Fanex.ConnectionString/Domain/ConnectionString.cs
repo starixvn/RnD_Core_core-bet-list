@@ -31,6 +31,8 @@ namespace Fanex.ConnectionString.Domain
 
         public string FreeText { get; set; }
 
+        public string ConnectionString { get; set; }
+
         public bool IsDefault { get; set; }
 
         public Users Creator { get; set; }

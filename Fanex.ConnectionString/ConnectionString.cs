@@ -30,7 +30,7 @@ namespace Fanex.ConnectionString
         {
             _dataAccess = new ConnectionStringDataAccess();
 
-            _connectionStringType = Fanex.ConnectionString.Configuration.FanexConnectionSettings.Settings.IsLocal ?
+            _connectionStringType = Fanex.ConnectionString.Configuration.ConnectionSettings.Settings.IsLocal ?
                 ConnectionType.Local : ConnectionType.Remote;
 
             if (_connectionStringType == ConnectionType.Remote)

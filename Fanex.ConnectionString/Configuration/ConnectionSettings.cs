@@ -14,11 +14,11 @@ namespace Fanex.ConnectionString.Configuration
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    internal class FanexConnectionSettings : ConfigurationSection
+    internal class ConnectionSettings : ConfigurationSection
     {
         #region consts
 
-        private const string __CONNECTION_STRING_SETTING = "ConnectionStringSettings";
+        private const string __CONNECTION_STRING_SETTING = "ConnectionSettings";
 
         private const string __CONNECTION_STRING = "Connnection";
 
@@ -26,9 +26,9 @@ namespace Fanex.ConnectionString.Configuration
 
         #endregion
 
-        private static FanexConnectionSettings _settings = ConfigurationManager.GetSection(__CONNECTION_STRING_SETTING) as FanexConnectionSettings;
+        private static ConnectionSettings _settings = ConfigurationManager.GetSection(__CONNECTION_STRING_SETTING) as ConnectionSettings;
 
-        public static FanexConnectionSettings Settings
+        public static ConnectionSettings Settings
         {
             get
             {
