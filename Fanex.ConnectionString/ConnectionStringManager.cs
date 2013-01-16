@@ -15,6 +15,7 @@ namespace Fanex.ConnectionString
     using Fanex.ConnectionString.DataAccess;
     using System.Configuration;
     using System.Collections.Generic;
+    using System.Collections;
     using Fanex.ConnectionString.Domain;
 
     /// <summary>
@@ -27,6 +28,10 @@ namespace Fanex.ConnectionString
         private static readonly ICache _cache;
 
         private static ConnectionType _connectionStringType;
+
+        private static ConnectionStringSettingsCollection _collection;
+
+        private static Dictionary<string, string> _dic;
 
         static ConnectionStringManager()
         {
@@ -41,27 +46,51 @@ namespace Fanex.ConnectionString
             }
 
             _cache = CacheService.CreateInstance(CacheType.MemoryCache);
+
+            _collection = new ConnectionStringSettingsCollection();
+
+            _dic = new Dictionary<string, string>();
         }
 
-        public static string GetConnectionString(string name)
-        {
-            try
-            {
-                if (_connectionStringType == ConnectionType.Remote)
-                {
-                    var dic = new Dictionary<string, string>();
-                    dic = _cache.Get<Dictionary<string, string>>(ConectionStringConstanst.PRE_KEY);
+        //public static string GetConnectionString(string name)
+        //{
+        //    try
+        //    {
+        //        if (_connectionStringType == ConnectionType.Remote)
+        //        {                   
+        //            _dic = _cache.Get<Dictionary<string, string>>(ConectionStringConstanst.PRE_KEY);
 
-                    return dic[name.ToLower()].ToString();
-                }
-                else
-                {
-                    return ConfigurationManager.ConnectionStrings[name].ConnectionString.ToString();
-                }
-            }
-            catch (Exception ex)
+        //            return _dic[name.ToLower()].ToString();
+        //        }
+        //        else
+        //        {
+        //            return ConfigurationManager.ConnectionStrings[name].ConnectionString.ToString();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
+
+        public static ConnectionStringSettingsCollection ConnectionStrings
+        {
+            get
             {
-                throw ex;
+                _collection.Clear();
+                _dic = _cache.Get<Dictionary<string, string>>(ConectionStringConstanst.PRE_KEY);
+
+                foreach (var item in _dic)
+                {
+                    var itemConnection = new ConnectionStringSettings
+                    {
+                        Name = item.Key,
+                        ConnectionString = item.Value
+                    };                    
+                    _collection.Add(itemConnection);
+                }
+
+                return _collection;
             }
         }
 
