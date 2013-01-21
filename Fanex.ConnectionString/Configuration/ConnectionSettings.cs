@@ -24,6 +24,8 @@ namespace Fanex.ConnectionString.Configuration
 
         private const string __IS_LOCAL = "IsLocal";
 
+        private const string __FILE_PATH = "FilePath";
+
         #endregion
 
         private static ConnectionSettings _settings = ConfigurationManager.GetSection(__CONNECTION_STRING_SETTING) as ConnectionSettings;
@@ -48,6 +50,13 @@ namespace Fanex.ConnectionString.Configuration
         {
             get { return (bool)this[__IS_LOCAL]; }
             set { this[__IS_LOCAL] = value; }
+        }
+
+        [ConfigurationProperty(__FILE_PATH, IsRequired = true)]
+        public string FilePath
+        {
+            get { return (string)this[__FILE_PATH]; }
+            set { this[__FILE_PATH] = value; }
         }
     }
 }

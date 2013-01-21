@@ -17,6 +17,7 @@ namespace Fanex.ConnectionString
     using System.Collections.Generic;
     using System.Collections;
     using Fanex.ConnectionString.Domain;
+    using System.Web.Configuration;
 
     /// <summary>
     /// TODO: Update summary.
@@ -72,7 +73,7 @@ namespace Fanex.ConnectionString
 
                 return _collection;
             }
-        }
+        }     
 
         public static bool Contains(string name)
         {

@@ -17,6 +17,11 @@ namespace Fanex.ConnectionString.DataAccess
     using Fanex.ConnectionString.Configuration;
     using Fanex.ConnectionString.Constanst;
     using Fanex.ConnectionString.Domain;
+    using System.Configuration;
+    using System.Web.Configuration;
+    using System.Xml.Linq;
+    using System.Xml;
+    using System.IO;
 
     /// <summary>
     /// TODO: Update summary.
@@ -26,6 +31,8 @@ namespace Fanex.ConnectionString.DataAccess
         #region Properties
 
         private static string _connnection = ConnectionSettings.Settings.Connection;
+
+        private static string _filePath = ConnectionSettings.Settings.FilePath;
 
         private SqlConnection _sqlConn = null;
 
@@ -68,8 +75,6 @@ namespace Fanex.ConnectionString.DataAccess
 
                 var command = new SqlCommand("ConnectionString_ConnectionStrings_ClientGet", _sqlConn);
                 command.CommandType = CommandType.StoredProcedure;
-
-                //command.Notification = null;
 
                 SqlDependency dependency = new SqlDependency(command);
 
@@ -115,6 +120,8 @@ namespace Fanex.ConnectionString.DataAccess
                         list.Add(connection);
                     }
 
+                    GenerateConnectionStringFile(list);
+
                     _cache.Set<List<ConnectionString>>(ConectionStringConstanst.PRE_KEY, list);
 
                     reader.Close();
@@ -136,6 +143,36 @@ namespace Fanex.ConnectionString.DataAccess
             dependency.OnChange -= dependency_OnChange;
 
             GetAll();
+        }
+
+        private void GenerateConnectionStringFile(List<ConnectionString> list)
+        {
+            try
+            {
+                var document = new XDocument();
+                var elementRoot = new XElement("connectionStrings");
+
+                foreach (var item in list)
+                {
+                    var elementConnection = new XElement("add");
+                    var attributeName = new XAttribute("name", item.Alias.Name.ToLower());
+                    var attributeConnectionString = new XAttribute("connectionString", item.Connection);
+                    var attributeProvider = new XAttribute("providerName", "System.Data.SqlClient");
+
+                    elementConnection.Add(attributeName);
+                    elementConnection.Add(attributeConnectionString);
+                    elementConnection.Add(attributeProvider);
+
+                    elementRoot.Add(elementConnection);
+                }
+
+                document.Add(elementRoot);
+                document.Save(_filePath);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         ~ConnectionStringDataAccess()
