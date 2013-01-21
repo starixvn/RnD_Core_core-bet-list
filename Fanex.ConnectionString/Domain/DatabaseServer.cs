@@ -10,7 +10,9 @@
 namespace Fanex.ConnectionString.Domain
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
 
+    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Reviewed. Suppression is OK here.")]
     public class DatabaseServer : IEntity<int, string>
     {
         public int Id { get; set; }

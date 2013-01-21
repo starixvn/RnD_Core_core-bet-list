@@ -9,9 +9,9 @@
 
 namespace Fanex.ConnectionString.Domain
 {
-    /// <summary>
-    /// TODO: Update summary.
-    /// </summary>
+    using System.Diagnostics.CodeAnalysis;
+
+    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Reviewed. Suppression is OK here.")]
     public class Users : IEntity<int, string>
     {
         public int Id { get; set; }

@@ -10,7 +10,10 @@
 namespace Fanex.ConnectionString.Domain
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
+    using Fanex.ConnectionString.Constanst;
 
+    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Reviewed. Suppression is OK here.")]
     public class ConnectionString : IEntity<int, string>
     {
         public int Id { get; set; }
@@ -31,7 +34,20 @@ namespace Fanex.ConnectionString.Domain
 
         public string FreeText { get; set; }
 
-        public string Connection { get; set; }        
+        public string Connection
+        {
+            get
+            {
+                string tempConnection = string.Format(ConectionStringConstanst.CONNECTIONFORMAT,
+                                                            Server.ServerIP,
+                                                            InitialCatalog,
+                                                            IntegratedSecurity,
+                                                            UserID,
+                                                            Password,
+                                                            FreeText);
+                return tempConnection;
+            }
+        }
 
         public bool IsDefault { get; set; }
 

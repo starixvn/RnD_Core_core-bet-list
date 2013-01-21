@@ -9,15 +9,15 @@
 
 namespace Fanex.ConnectionString.Constanst
 {
-    /// <summary>
-    /// TODO: Update summary.
-    /// </summary>
+    using System.Diagnostics.CodeAnalysis;
+
+    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Reviewed. Suppression is OK here.")]
     internal static class ConectionStringConstanst
     {
         public const int GETALL = 0;
 
-        public const string PRE_KEY = "Fanex_ConnectionString_";
+        public const string PREKEY = "Fanex_ConnectionString_";
 
-        public const string CONNECTION_FORMAT = "Data Source={0};Initial Catalog={1};integrated security={2}; User ID={3};Password={4};{5}";
+        public const string CONNECTIONFORMAT = "Data Source={0};Initial Catalog={1};integrated security={2}; User ID={3};Password={4};{5}";
     }
 }

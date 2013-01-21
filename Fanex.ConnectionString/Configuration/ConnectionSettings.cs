@@ -10,10 +10,9 @@
 namespace Fanex.ConnectionString.Configuration
 {
     using System.Configuration;
+    using System.Diagnostics.CodeAnalysis;
 
-    /// <summary>
-    /// TODO: Update summary.
-    /// </summary>
+    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Reviewed. Suppression is OK here.")]
     internal class ConnectionSettings : ConfigurationSection
     {
         #region consts

@@ -13,19 +13,15 @@ namespace Fanex.ConnectionString.DataAccess
     using System.Collections.Generic;
     using System.Data;
     using System.Data.SqlClient;
+    using System.Diagnostics.CodeAnalysis;
+    using System.IO;
+    using System.Xml.Linq;
     using Fanex.Caching;
     using Fanex.ConnectionString.Configuration;
     using Fanex.ConnectionString.Constanst;
     using Fanex.ConnectionString.Domain;
-    using System.Configuration;
-    using System.Web.Configuration;
-    using System.Xml.Linq;
-    using System.Xml;
-    using System.IO;
 
-    /// <summary>
-    /// TODO: Update summary.
-    /// </summary>
+    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Reviewed. Suppression is OK here.")]
     internal class ConnectionStringDataAccess : IConnectionStringDataAccess
     {
         #region Properties
@@ -49,6 +45,8 @@ namespace Fanex.ConnectionString.DataAccess
             SqlDependency.Start(_connnection);
 
             _sqlConn = new SqlConnection(_connnection);
+
+            _filePath = GetResourcePath(_filePath);
         }
 
         public static ConnectionStringDataAccess InstanceCreation()
@@ -64,6 +62,7 @@ namespace Fanex.ConnectionString.DataAccess
                     }
                 }
             }
+
             return _connectionStringDataAccess;
         }
 
@@ -78,7 +77,7 @@ namespace Fanex.ConnectionString.DataAccess
 
                 SqlDependency dependency = new SqlDependency(command);
 
-                dependency.OnChange += new OnChangeEventHandler(dependency_OnChange);
+                dependency.OnChange += new OnChangeEventHandler(DependencyOnChange);
 
                 if (_sqlConn.State == ConnectionState.Closed)
                 {
@@ -107,22 +106,14 @@ namespace Fanex.ConnectionString.DataAccess
                             UserID = reader["UserID"].ToString(),
                             Password = reader["Password"].ToString(),
                             FreeText = reader["FreeText"].ToString()
-                        };
-
-                        string tempConnection = string.Format(ConectionStringConstanst.CONNECTION_FORMAT,
-                                                            connection.Server.ServerIP,
-                                                            connection.InitialCatalog,
-                                                            connection.IntegratedSecurity,
-                                                            connection.UserID,
-                                                            connection.Password,
-                                                            connection.FreeText);
-                        connection.Connection = tempConnection;
+                        };                        
+                        
                         list.Add(connection);
                     }
 
                     GenerateConnectionStringFile(list);
 
-                    _cache.Set<List<ConnectionString>>(ConectionStringConstanst.PRE_KEY, list);
+                    _cache.Set<List<ConnectionString>>(ConectionStringConstanst.PREKEY, list);
 
                     reader.Close();
                     _sqlConn.Close();
@@ -136,11 +127,11 @@ namespace Fanex.ConnectionString.DataAccess
             }
         }
 
-        void dependency_OnChange(object sender, SqlNotificationEventArgs e)
+        private void DependencyOnChange(object sender, SqlNotificationEventArgs e)
         {
             SqlDependency dependency = sender as SqlDependency;
 
-            dependency.OnChange -= dependency_OnChange;
+            dependency.OnChange -= DependencyOnChange;
 
             GetAll();
         }
@@ -173,6 +164,34 @@ namespace Fanex.ConnectionString.DataAccess
             {
                 throw ex;
             }
+        }
+
+        private string GetResourcePath(string filePath)
+        {
+            if (string.IsNullOrWhiteSpace(filePath))
+            {
+                throw new NullReferenceException(Resources.FilePathNotSetYet);
+            }
+
+            // check root path http://msdn.microsoft.com/query/dev10.query?appId=Dev10IDEF1&l=EN-US&k=k%28SYSTEM.IO.PATH.ISPATHROOTED%29;k%28SOLUTIONITEMSPROJECT%29;k%28TargetFrameworkMoniker-%22.NETFRAMEWORK%2cVERSION%3dV4.0%22%29;k%28DevLang-CSHARP%29&rd=true
+            if (!Path.IsPathRooted(filePath))
+            {
+                if (filePath.StartsWith("~"))
+                {
+                    if (System.Web.HttpContext.Current != null)
+                    {
+                        filePath = System.Web.HttpContext.Current.Server.MapPath(filePath);
+                    }
+                }
+                else
+                {
+                    // if got the problem with window service
+                    // see http://haacked.com/archive/2004/06/29/706.aspx
+                    filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, filePath);
+                }
+            }
+
+            return filePath;
         }
 
         ~ConnectionStringDataAccess()

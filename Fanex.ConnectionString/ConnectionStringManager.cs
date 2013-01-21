@@ -10,20 +10,19 @@
 namespace Fanex.ConnectionString
 {
     using System;
+    using System.Collections.Generic;
+    using System.Configuration;
+    using System.Diagnostics.CodeAnalysis;
     using Fanex.Caching;
     using Fanex.ConnectionString.Constanst;
     using Fanex.ConnectionString.DataAccess;
-    using System.Configuration;
-    using System.Collections.Generic;
-    using System.Collections;
     using Fanex.ConnectionString.Domain;
-    using System.Web.Configuration;
 
-    /// <summary>
-    /// TODO: Update summary.
-    /// </summary>
+    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Reviewed. Suppression is OK here.")]
     public static class ConnectionStringManager
     {
+        #region Member
+
         private static readonly ConnectionStringDataAccess _dataAccess;
 
         private static readonly ICache _cache;
@@ -33,6 +32,8 @@ namespace Fanex.ConnectionString
         private static ConnectionStringSettingsCollection _collection;
 
         private static List<ConnectionString> _list;
+
+        #endregion
 
         static ConnectionStringManager()
         {
@@ -57,23 +58,30 @@ namespace Fanex.ConnectionString
         {
             get
             {
-                _collection.Clear();
-                _list = _cache.Get<List<ConnectionString>>(ConectionStringConstanst.PRE_KEY);
-
-                foreach (var item in _list)
+                try
                 {
-                    var itemConnection = new ConnectionStringSettings
+                    _collection.Clear();
+                    _list = _cache.Get<List<ConnectionString>>(ConectionStringConstanst.PREKEY);
+
+                    foreach (var item in _list)
                     {
-                        Name = item.Alias.Name.ToLower(),
-                        ConnectionString = item.Connection
-                    };
+                        var itemConnection = new ConnectionStringSettings
+                        {
+                            Name = item.Alias.Name.ToLower(),
+                            ConnectionString = item.Connection
+                        };
 
-                    _collection.Add(itemConnection);
+                        _collection.Add(itemConnection);
+                    }
+
+                    return _collection;
                 }
-
-                return _collection;
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
-        }     
+        }
 
         public static bool Contains(string name)
         {
@@ -82,7 +90,7 @@ namespace Fanex.ConnectionString
                 if (_connectionStringType == ConnectionType.Remote)
                 {
                     _collection.Clear();
-                    _list = _cache.Get<List<ConnectionString>>(ConectionStringConstanst.PRE_KEY);
+                    _list = _cache.Get<List<ConnectionString>>(ConectionStringConstanst.PREKEY);
 
                     foreach (var item in _list)
                     {
