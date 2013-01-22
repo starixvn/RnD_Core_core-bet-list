@@ -21,6 +21,8 @@ namespace Fanex.ConnectionString.Domain
 
         public string Description { get; set; }
 
+        public Site Site { get; set; }
+
         public bool IsActive { get; set; }
 
         public Users Creator { get; set; }

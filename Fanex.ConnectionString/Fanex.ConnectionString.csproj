@@ -52,6 +52,7 @@
     <Compile Include="DataAccess\IConnectionStringDataAccess.cs" />
     <Compile Include="Domain\Alias.cs" />
     <Compile Include="Domain\ConnectionString.cs" />
+    <Compile Include="Domain\Site.cs" />
     <Compile Include="Domain\IEntity.cs" />
     <Compile Include="Domain\DatabaseServer.cs" />
     <Compile Include="Domain\Users.cs" />
