@@ -72,7 +72,7 @@ namespace Fanex.ConnectionString.DataAccess
             {
                 var list = new List<ConnectionString>();
 
-                var command = new SqlCommand("ConnectionString_ConnectionStrings_ClientGet", _sqlConn);
+                var command = new SqlCommand("ConnectionString_ConnectionString_ClientGet", _sqlConn);
                 command.CommandType = CommandType.StoredProcedure;
 
                 SqlDependency dependency = new SqlDependency(command);
