@@ -13,35 +13,15 @@ namespace Fanex.ConnectionString.Console
         static void Main(string[] args)
         {
 
-            var temp = Test["tin5"];
-
             while (true)
             {
-                System.Console.WriteLine(ConnectionStringManager.ConnectionStrings["DB206.MAIN"]);
+                System.Console.WriteLine(ConnectionStringManager.ConnectionStrings["DB206.NAP"].ConnectionString);
 
                 Thread.Sleep(2000);
-                
+
             }
         }
 
-        static ConnectionStringSettingsCollection Test
-        {
-            get
-            {
-                var collection = new ConnectionStringSettingsCollection();
 
-                for (int i = 0; i < 10; i++)
-                {
-                    var item = new ConnectionStringSettings
-                    {
-                        Name = "tin" + i.ToString(),
-                        ConnectionString = "connection" + i.ToString(),                        
-                    };
-                    collection.Add(item);
-                }
-
-                return collection;
-            }
-        }
     }
 }

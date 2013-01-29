@@ -38,18 +38,25 @@ namespace Fanex.ConnectionString.Domain
         {
             get
             {
-                string tempConnection = string.Format(ConectionStringConstanst.CONNECTIONFORMAT,
-                                                            Server.ServerIP,
-                                                            InitialCatalog,
-                                                            IntegratedSecurity,
-                                                            UserID,
-                                                            Password,
-                                                            FreeText);
-                return tempConnection;
+                if (!ReferenceEquals(Server, null) && Server.ServerIP != string.Empty)
+                {
+                    string tempConnection = string.Format(ConectionStringConstanst.CONNECTIONFORMAT,
+                                                                Server.ServerIP,
+                                                                InitialCatalog,
+                                                                IntegratedSecurity,
+                                                                UserID,
+                                                                Password,
+                                                                FreeText);
+                    return tempConnection;
+                }
+
+                return string.Empty;
             }
         }
 
         public bool IsDefault { get; set; }
+
+        public ConnectionString PrimaryConnection { get; set; }        
 
         public Users Creator { get; set; }
 
