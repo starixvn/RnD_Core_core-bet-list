@@ -108,7 +108,7 @@ namespace Fanex.ConnectionString.ConnectionWatcher
 
                 _cache.Set<ConnectionStringSettingsCollection>(ConnectionStringConstant.PREKEY, collection, DateTime.MaxValue);
 
-                Task.Factory.StartNew(() => GenerateConnectionStringFile(collection));
+                GenerateConnectionStringFile(collection);
             }
             catch (Exception ex)
             {

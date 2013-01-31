@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Fanex.ConnectionString;
+using System.Threading.Tasks;
 using System.Threading;
 using System.Configuration;
 
@@ -12,10 +13,19 @@ namespace Fanex.ConnectionString.Console
     {
         static void Main(string[] args)
         {
+            DoAction();
+        }
 
+        static void DoAction()
+        {
             while (true)
             {
                 var collection = ConnectionStringManager.ConnectionStrings;
+
+                //var config = ConfigurationManager.ConnectionStrings["abcd"];
+
+                //System.Console.WriteLine(config);
+                //System.Console.WriteLine(collection);
 
                 foreach (ConnectionStringSettings item in collection)
                 {
@@ -26,9 +36,7 @@ namespace Fanex.ConnectionString.Console
                 Thread.Sleep(5000);
 
             }
-
         }
-
 
     }
 }
