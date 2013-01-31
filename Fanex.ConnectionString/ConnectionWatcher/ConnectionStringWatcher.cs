@@ -1,108 +1,91 @@
 ﻿// --------------------------------------------------------------------------
-// <copyright file="ConnectionStringDataAccess.cs" company="Nexcel Solutions Vietnam">
+// <copyright file="ConnectionStringWatcher.cs" company="Nexcel Solutions Vietnam">
 // Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------
 // <history>
-//   <change who="Edward.Nguyen" date="2013.1.11">Created</change>
+//   <change who="Edward.Nguyen" date="2013.1.31">Created</change>
 // </history>
 
 namespace Fanex.ConnectionString.ConnectionWatcher
 {
     using System;
-    using System.Collections.Generic;
+    using System.Configuration;
     using System.Data;
     using System.Data.SqlClient;
     using System.Diagnostics.CodeAnalysis;
-    using System.IO;
+    using System.Threading.Tasks;
     using System.Xml.Linq;
     using Fanex.Caching;
     using Fanex.ConnectionString.Configuration;
     using Fanex.ConnectionString.Constant;
-    using System.Threading.Tasks;
-    using System.Configuration;
 
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Reviewed. Suppression is OK here.")]
-    internal class ConnectionStringWatcher : IDisposable
+    internal static class ConnectionStringWatcher
     {
-        #region Properties
+        #region Member
 
-        private static string _connection = ConnectionSettings.Settings.Connection;
+        private static ConnectionStringDataAccess _connectionStringDataAccess;
 
-        private static string _filePath = ConnectionSettings.Settings.FilePath;
+        private static readonly string _commandText = "bodb_ConnectionString.dbo.ConnectionString_ConnectionString_ClientGet";
 
-        private SqlConnection _sqlConn = null;
+        private static readonly string _sqlConnection = ConnectionSettings.Settings.Connection;
 
-        private ICache _cache = CacheService.CreateInstance(CacheType.MemoryCache);
+        private static readonly string _filePath = ConnectionSettings.Settings.FilePath;
 
-        private int _currentSiteId = ConnectionStringConstant.GETALL;
+        private static ICache _cache = CacheService.CreateInstance(CacheType.MemoryCache);
+
+        private static readonly int _currentSiteId = ConnectionSettings.Settings.SiteId;
 
         #endregion
 
-        public ConnectionStringWatcher(int siteId)
+        /// <summary>
+        /// Start sql dependency
+        /// </summary>
+        public static void Start()
         {
-            SqlDependency.Stop(_connection);
+            //Build the command object we want to monitor (don't include a SqlConnection)
+            SqlCommand cmd = new SqlCommand();
+            cmd = new SqlCommand(_commandText);
+            cmd.CommandType = CommandType.StoredProcedure;
 
-            SqlDependency.Start(_connection);
-
-            _sqlConn = new SqlConnection(_connection);
-
-            _filePath = GetResourcePath(_filePath);
-
-            _currentSiteId = siteId;
+            //Setup the SQLWatcher
+            _connectionStringDataAccess = new ConnectionStringDataAccess(_sqlConnection, cmd, SqlWatcherNotificationType.Blocking);
+            _connectionStringDataAccess.OnChange += new ConnectionStringDataAccess.SqlWatcherEventHandler(QueueSQLWatcher_OnChange);
+            _connectionStringDataAccess.Start();
         }
 
-        public ConnectionStringSettingsCollection Fetch()
+        /// <summary>
+        /// Trace data change
+        /// </summary>
+        /// <param name="reader"></param>
+        private static void QueueSQLWatcher_OnChange(IDataReader reader)
         {
             try
             {
                 var collection = new ConnectionStringSettingsCollection();
 
-                var command = new SqlCommand("ConnectionString_ConnectionString_ClientGet", _sqlConn);
-                command.CommandType = CommandType.StoredProcedure;           
-
-                SqlDependency dependency = new SqlDependency(command);
-
-                dependency.OnChange += new OnChangeEventHandler(DependencyOnChange);
-
-                if (_sqlConn.State == ConnectionState.Closed)
+                //Do something with the updated DataSet object
+                while (reader.Read())
                 {
-                    _sqlConn.Open();
-                }
-
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
+                    var name = reader["Name"].ToString().ToLower();
+                    var serverIp = reader["ServerIP"].ToString();
+                    var initialCatalog = reader["InitialCatalog"].ToString();
+                    var integratedSecurity = Convert.ToBoolean(reader["IntegratedSecurity"].ToString());
+                    var userID = reader["UserID"].ToString();
+                    var password = reader["Password"].ToString();
+                    var freeText = reader["FreeText"].ToString();
+                    var siteId = Convert.ToInt32(reader["SiteId"].ToString());
+                    string tempConnection = string.Format(ConnectionStringConstant.CONNECTIONFORMAT,
+                                                            serverIp,
+                                                            initialCatalog,
+                                                            integratedSecurity,
+                                                            userID,
+                                                            password,
+                                                            freeText);
+                    if (_currentSiteId != 0)
                     {
-                        var name = reader["Name"].ToString().ToLower();
-                        var serverIp = reader["ServerIP"].ToString();
-                        var initialCatalog = reader["InitialCatalog"].ToString();
-                        var integratedSecurity = Convert.ToBoolean(reader["IntegratedSecurity"].ToString());
-                        var userID = reader["UserID"].ToString();
-                        var password = reader["Password"].ToString();
-                        var freeText = reader["FreeText"].ToString();
-                        var siteId = Convert.ToInt32(reader["SiteId"].ToString());
-                        string tempConnection = string.Format(ConnectionStringConstant.CONNECTIONFORMAT,
-                                                                serverIp,
-                                                                initialCatalog,
-                                                                integratedSecurity,
-                                                                userID,
-                                                                password,
-                                                                freeText);
-
-                        if (_currentSiteId != 0)
-                        {
-                            if (siteId == _currentSiteId)
-                            {
-                                collection.Add(new ConnectionStringSettings
-                                {
-                                    Name = name,
-                                    ConnectionString = tempConnection,
-                                    ProviderName = ConnectionStringConstant.PROVIDERNAME
-                                });
-                            }
-                        }
-                        else
+                        if (siteId == _currentSiteId)
                         {
                             collection.Add(new ConnectionStringSettings
                             {
@@ -111,34 +94,37 @@ namespace Fanex.ConnectionString.ConnectionWatcher
                                 ProviderName = ConnectionStringConstant.PROVIDERNAME
                             });
                         }
-
                     }
-
-                    Task.Factory.StartNew(() => GenerateConnectionStringFile(collection));
-
-                    _cache.Set<ConnectionStringSettingsCollection>(ConnectionStringConstant.PREKEY, collection, DateTime.MaxValue);
-
-                    _sqlConn.Close();
+                    else
+                    {
+                        collection.Add(new ConnectionStringSettings
+                        {
+                            Name = name,
+                            ConnectionString = tempConnection,
+                            ProviderName = ConnectionStringConstant.PROVIDERNAME
+                        });
+                    }
                 }
 
-                return collection;
+                _cache.Set<ConnectionStringSettingsCollection>(ConnectionStringConstant.PREKEY, collection, DateTime.MaxValue);
+
+                Task.Factory.StartNew(() => GenerateConnectionStringFile(collection));
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+            finally
+            {
+                reader.Close();
+            }
         }
 
-        private void DependencyOnChange(object sender, SqlNotificationEventArgs e)
-        {
-            SqlDependency dependency = sender as SqlDependency;
-
-            dependency.OnChange -= DependencyOnChange;
-
-            Fetch();
-        }
-
-        private void GenerateConnectionStringFile(ConnectionStringSettingsCollection collection)
+        /// <summary>
+        /// Generate connection string file with format xml
+        /// </summary>
+        /// <param name="collection"></param>
+        private static void GenerateConnectionStringFile(ConnectionStringSettingsCollection collection)
         {
             try
             {
@@ -168,37 +154,12 @@ namespace Fanex.ConnectionString.ConnectionWatcher
             }
         }
 
-        private string GetResourcePath(string filePath)
+        /// <summary>
+        /// Stop sql dependency
+        /// </summary>
+        public static void Stop()
         {
-            if (string.IsNullOrWhiteSpace(filePath))
-            {
-                throw new NullReferenceException(Resources.FilePathNotSetYet);
-            }
-
-            // check root path http://msdn.microsoft.com/query/dev10.query?appId=Dev10IDEF1&l=EN-US&k=k%28SYSTEM.IO.PATH.ISPATHROOTED%29;k%28SOLUTIONITEMSPROJECT%29;k%28TargetFrameworkMoniker-%22.NETFRAMEWORK%2cVERSION%3dV4.0%22%29;k%28DevLang-CSHARP%29&rd=true
-            if (!Path.IsPathRooted(filePath))
-            {
-                if (filePath.StartsWith("~"))
-                {
-                    if (System.Web.HttpContext.Current != null)
-                    {
-                        filePath = System.Web.HttpContext.Current.Server.MapPath(filePath);
-                    }
-                }
-                else
-                {
-                    // if got the problem with window service
-                    // see http://haacked.com/archive/2004/06/29/706.aspx
-                    filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, filePath);
-                }
-            }
-
-            return filePath;
-        }
-
-        public void Dispose()
-        {
-            SqlDependency.Stop(_connection);
+            _connectionStringDataAccess.Dispose();
         }
     }
 }

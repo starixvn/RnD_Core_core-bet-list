@@ -17,13 +17,13 @@ namespace Fanex.ConnectionString
     using Fanex.ConnectionString.Constant;
     using Fanex.ConnectionString.ConnectionWatcher;
     using Fanex.ConnectionString.Configuration;
+    using System.Data.SqlClient;
+    using System.Data;
 
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Reviewed. Suppression is OK here.")]
     public static class ConnectionStringManager
     {
         #region Member
-
-        private static readonly ConnectionStringWatcher _dataAccess;
 
         private static readonly ICache _cache;
 
@@ -37,16 +37,20 @@ namespace Fanex.ConnectionString
         {
             _siteId = ConnectionSettings.Settings.SiteId;
 
-            _dataAccess = new ConnectionStringWatcher(_siteId);
-
             _connectionStringType = ConnectionSettings.Settings.IsLocal ? ConnectionType.Local : ConnectionType.Remote;
 
             if (_connectionStringType == ConnectionType.Remote)
             {
-                _dataAccess.Fetch();
+                ConnectionStringWatcher.Start();
             }
 
             _cache = CacheService.CreateInstance(CacheType.MemoryCache);
+        }
+
+        public static void Start()
+        {
+            ConnectionStringWatcher.Stop();
+            ConnectionStringWatcher.Start();
         }
 
         public static ConnectionStringSettingsCollection ConnectionStrings
@@ -77,7 +81,7 @@ namespace Fanex.ConnectionString
 
         public static void Stop()
         {
-            _dataAccess.Dispose();
+            ConnectionStringWatcher.Stop();
         }
     }
 }

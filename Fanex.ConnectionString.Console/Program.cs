@@ -19,13 +19,14 @@ namespace Fanex.ConnectionString.Console
 
                 foreach (ConnectionStringSettings item in collection)
                 {
-                    System.Console.WriteLine("alias:{0},connection:{1}", item.Name, item.ConnectionString);                  
+                    System.Console.WriteLine("alias:{0},connection:{1}", item.Name, item.ConnectionString);
                 }
                 System.Console.WriteLine("----------");
 
                 Thread.Sleep(5000);
 
             }
+
         }
 
 

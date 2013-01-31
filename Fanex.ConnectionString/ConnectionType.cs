@@ -9,17 +9,15 @@
 
 namespace Fanex.ConnectionString
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
-    /// <summary>
-    /// TODO: Update summary.
-    /// </summary>
-    enum ConnectionType
+    internal enum ConnectionType
     {
         Local = 0,
         Remote = 1
+    }
+
+    internal enum SqlWatcherNotificationType
+    {
+        Blocking = 0,
+        Threaded = 1
     }
 }
