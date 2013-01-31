@@ -25,6 +25,8 @@ namespace Fanex.ConnectionString.Configuration
 
         private const string __FILE_PATH = "FilePath";
 
+        private const string __SITE_ID = "SiteId";
+
         #endregion
 
         private static ConnectionSettings _settings = ConfigurationManager.GetSection(__CONNECTION_STRING_SETTING) as ConnectionSettings;
@@ -56,6 +58,13 @@ namespace Fanex.ConnectionString.Configuration
         {
             get { return (string)this[__FILE_PATH]; }
             set { this[__FILE_PATH] = value; }
+        }
+
+        [ConfigurationProperty(__SITE_ID, IsRequired = false, DefaultValue = 0)]
+        public int SiteId
+        {
+            get { return (int)this[__SITE_ID]; }
+            set { this[__SITE_ID] = value; }
         }
     }
 }

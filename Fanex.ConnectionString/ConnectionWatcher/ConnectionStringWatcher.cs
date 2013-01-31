@@ -7,7 +7,7 @@
 //   <change who="Edward.Nguyen" date="2013.1.11">Created</change>
 // </history>
 
-namespace Fanex.ConnectionString.DataAccess
+namespace Fanex.ConnectionString.ConnectionWatcher
 {
     using System;
     using System.Collections.Generic;
@@ -18,15 +18,16 @@ namespace Fanex.ConnectionString.DataAccess
     using System.Xml.Linq;
     using Fanex.Caching;
     using Fanex.ConnectionString.Configuration;
-    using Fanex.ConnectionString.Constanst;
-    using Fanex.ConnectionString.Domain;
+    using Fanex.ConnectionString.Constant;
+    using System.Threading.Tasks;
+    using System.Configuration;
 
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Reviewed. Suppression is OK here.")]
-    internal class ConnectionStringDataAccess : IConnectionStringDataAccess
+    internal class ConnectionStringWatcher : IDisposable
     {
         #region Properties
 
-        private static string _connnection = ConnectionSettings.Settings.Connection;
+        private static string _connection = ConnectionSettings.Settings.Connection;
 
         private static string _filePath = ConnectionSettings.Settings.FilePath;
 
@@ -34,46 +35,31 @@ namespace Fanex.ConnectionString.DataAccess
 
         private ICache _cache = CacheService.CreateInstance(CacheType.MemoryCache);
 
-        private volatile static ConnectionStringDataAccess _connectionStringDataAccess;
+        private int _currentSiteId = ConnectionStringConstant.GETALL;
 
         #endregion
 
-        private ConnectionStringDataAccess()
+        public ConnectionStringWatcher(int siteId)
         {
-            SqlDependency.Stop(_connnection);
+            SqlDependency.Stop(_connection);
 
-            SqlDependency.Start(_connnection);
+            SqlDependency.Start(_connection);
 
-            _sqlConn = new SqlConnection(_connnection);
+            _sqlConn = new SqlConnection(_connection);
 
             _filePath = GetResourcePath(_filePath);
+
+            _currentSiteId = siteId;
         }
 
-        public static ConnectionStringDataAccess InstanceCreation()
-        {
-            object lockingObject = new object();
-            if (_connectionStringDataAccess == null)
-            {
-                lock (lockingObject)
-                {
-                    if (_connectionStringDataAccess == null)
-                    {
-                        _connectionStringDataAccess = new ConnectionStringDataAccess();
-                    }
-                }
-            }
-
-            return _connectionStringDataAccess;
-        }
-
-        public IEnumerable<ConnectionString> GetAll()
+        public ConnectionStringSettingsCollection Fetch()
         {
             try
             {
-                var list = new List<ConnectionString>();
+                var collection = new ConnectionStringSettingsCollection();
 
                 var command = new SqlCommand("ConnectionString_ConnectionString_ClientGet", _sqlConn);
-                command.CommandType = CommandType.StoredProcedure;
+                command.CommandType = CommandType.StoredProcedure;           
 
                 SqlDependency dependency = new SqlDependency(command);
 
@@ -88,38 +74,54 @@ namespace Fanex.ConnectionString.DataAccess
                 {
                     while (reader.Read())
                     {
-                        var connection = new ConnectionString
+                        var name = reader["Name"].ToString().ToLower();
+                        var serverIp = reader["ServerIP"].ToString();
+                        var initialCatalog = reader["InitialCatalog"].ToString();
+                        var integratedSecurity = Convert.ToBoolean(reader["IntegratedSecurity"].ToString());
+                        var userID = reader["UserID"].ToString();
+                        var password = reader["Password"].ToString();
+                        var freeText = reader["FreeText"].ToString();
+                        var siteId = Convert.ToInt32(reader["SiteId"].ToString());
+                        string tempConnection = string.Format(ConnectionStringConstant.CONNECTIONFORMAT,
+                                                                serverIp,
+                                                                initialCatalog,
+                                                                integratedSecurity,
+                                                                userID,
+                                                                password,
+                                                                freeText);
+
+                        if (_currentSiteId != 0)
                         {
-                            Id = Convert.ToInt32(reader["Id"].ToString()),
-                            Alias = new Alias
+                            if (siteId == _currentSiteId)
                             {
-                                Name = reader["Name"].ToString().ToLower()
-                            },
-                            Server = new DatabaseServer
+                                collection.Add(new ConnectionStringSettings
+                                {
+                                    Name = name,
+                                    ConnectionString = tempConnection,
+                                    ProviderName = ConnectionStringConstant.PROVIDERNAME
+                                });
+                            }
+                        }
+                        else
+                        {
+                            collection.Add(new ConnectionStringSettings
                             {
-                                Id = Convert.ToInt32(reader["ServerId"].ToString()),
-                                Name = reader["ServerName"].ToString(),
-                                ServerIP = reader["ServerIP"].ToString()
-                            },
-                            InitialCatalog = reader["InitialCatalog"].ToString(),
-                            IntegratedSecurity = Convert.ToBoolean(reader["IntegratedSecurity"].ToString()),
-                            UserID = reader["UserID"].ToString(),
-                            Password = reader["Password"].ToString(),
-                            FreeText = reader["FreeText"].ToString()
-                        };                        
-                        
-                        list.Add(connection);
+                                Name = name,
+                                ConnectionString = tempConnection,
+                                ProviderName = ConnectionStringConstant.PROVIDERNAME
+                            });
+                        }
+
                     }
 
-                    GenerateConnectionStringFile(list);
+                    Task.Factory.StartNew(() => GenerateConnectionStringFile(collection));
 
-                    _cache.Set<List<ConnectionString>>(ConectionStringConstanst.PREKEY, list);
+                    _cache.Set<ConnectionStringSettingsCollection>(ConnectionStringConstant.PREKEY, collection, DateTime.MaxValue);
 
-                    reader.Close();
                     _sqlConn.Close();
                 }
 
-                return list;
+                return collection;
             }
             catch (Exception ex)
             {
@@ -133,21 +135,21 @@ namespace Fanex.ConnectionString.DataAccess
 
             dependency.OnChange -= DependencyOnChange;
 
-            GetAll();
+            Fetch();
         }
 
-        private void GenerateConnectionStringFile(List<ConnectionString> list)
+        private void GenerateConnectionStringFile(ConnectionStringSettingsCollection collection)
         {
             try
             {
                 var document = new XDocument();
                 var elementRoot = new XElement("connectionStrings");
 
-                foreach (var item in list)
+                foreach (ConnectionStringSettings item in collection)
                 {
                     var elementConnection = new XElement("add");
-                    var attributeName = new XAttribute("name", item.Alias.Name.ToLower());
-                    var attributeConnectionString = new XAttribute("connectionString", item.Connection);
+                    var attributeName = new XAttribute("name", item.Name.ToLower());
+                    var attributeConnectionString = new XAttribute("connectionString", item.ConnectionString);
                     var attributeProvider = new XAttribute("providerName", "System.Data.SqlClient");
 
                     elementConnection.Add(attributeName);
@@ -194,9 +196,9 @@ namespace Fanex.ConnectionString.DataAccess
             return filePath;
         }
 
-        ~ConnectionStringDataAccess()
+        public void Dispose()
         {
-            SqlDependency.Stop(_connnection);
+            SqlDependency.Stop(_connection);
         }
     }
 }

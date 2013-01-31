@@ -11,7 +11,7 @@ namespace Fanex.ConnectionString.Domain
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
-    using Fanex.ConnectionString.Constanst;
+    using Fanex.ConnectionString.Constant;
 
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Reviewed. Suppression is OK here.")]
     public class ConnectionString : IEntity<int, string>
@@ -40,7 +40,7 @@ namespace Fanex.ConnectionString.Domain
             {
                 if (!ReferenceEquals(Server, null) && Server.ServerIP != string.Empty)
                 {
-                    string tempConnection = string.Format(ConectionStringConstanst.CONNECTIONFORMAT,
+                    string tempConnection = string.Format(ConnectionStringConstant.CONNECTIONFORMAT,
                                                                 Server.ServerIP,
                                                                 InitialCatalog,
                                                                 IntegratedSecurity,

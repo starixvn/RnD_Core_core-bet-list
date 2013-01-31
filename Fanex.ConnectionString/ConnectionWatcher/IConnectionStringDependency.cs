@@ -7,17 +7,17 @@
 //   <change who="Edward.Nguyen" date="2013.1.11">Created</change>
 // </history>
 
-namespace Fanex.ConnectionString.DataAccess
+namespace Fanex.ConnectionString.SqlDependency
 {
     using System;
-    using System.Collections.Generic;
-    using Fanex.ConnectionString.Domain;
+    using System.Collections.Generic;    
+    using System.Configuration;
 
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    internal interface IConnectionStringDataAccess
+    internal interface IConnectionStringDependency : IDisposable
     {
-        IEnumerable<ConnectionString> GetAll();
+        ConnectionStringSettingsCollection Fetch();
     }
 }

@@ -14,44 +14,39 @@ namespace Fanex.ConnectionString
     using System.Configuration;
     using System.Diagnostics.CodeAnalysis;
     using Fanex.Caching;
-    using Fanex.ConnectionString.Constanst;
-    using Fanex.ConnectionString.DataAccess;
-    using Fanex.ConnectionString.Domain;
+    using Fanex.ConnectionString.Constant;
+    using Fanex.ConnectionString.ConnectionWatcher;
+    using Fanex.ConnectionString.Configuration;
 
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Reviewed. Suppression is OK here.")]
     public static class ConnectionStringManager
     {
         #region Member
 
-        private static readonly ConnectionStringDataAccess _dataAccess;
+        private static readonly ConnectionStringWatcher _dataAccess;
 
         private static readonly ICache _cache;
 
         private static ConnectionType _connectionStringType;
 
-        private static ConnectionStringSettingsCollection _collection;
-
-        private static List<ConnectionString> _list;
+        private static int _siteId;
 
         #endregion
 
         static ConnectionStringManager()
         {
-            _dataAccess = ConnectionStringDataAccess.InstanceCreation();
+            _siteId = ConnectionSettings.Settings.SiteId;
 
-            _connectionStringType = Fanex.ConnectionString.Configuration.ConnectionSettings.Settings.IsLocal ?
-                ConnectionType.Local : ConnectionType.Remote;
+            _dataAccess = new ConnectionStringWatcher(_siteId);
+
+            _connectionStringType = ConnectionSettings.Settings.IsLocal ? ConnectionType.Local : ConnectionType.Remote;
 
             if (_connectionStringType == ConnectionType.Remote)
             {
-                _dataAccess.GetAll();
+                _dataAccess.Fetch();
             }
 
             _cache = CacheService.CreateInstance(CacheType.MemoryCache);
-
-            _collection = new ConnectionStringSettingsCollection();
-
-            _list = new List<ConnectionString>();
         }
 
         public static ConnectionStringSettingsCollection ConnectionStrings
@@ -60,21 +55,18 @@ namespace Fanex.ConnectionString
             {
                 try
                 {
-                    _collection.Clear();
-                    _list = _cache.Get<List<ConnectionString>>(ConectionStringConstanst.PREKEY);
+                    var collection = new ConnectionStringSettingsCollection();
 
-                    foreach (var item in _list)
+                    if (_connectionStringType == ConnectionType.Remote)
                     {
-                        var itemConnection = new ConnectionStringSettings
-                        {
-                            Name = item.Alias.Name.ToLower(),
-                            ConnectionString = item.Connection
-                        };
-
-                        _collection.Add(itemConnection);
+                        collection = _cache.Get<ConnectionStringSettingsCollection>(ConnectionStringConstant.PREKEY);
+                    }
+                    else
+                    {
+                        collection = ConfigurationManager.ConnectionStrings;
                     }
 
-                    return _collection;
+                    return collection;
                 }
                 catch (Exception ex)
                 {
@@ -83,39 +75,9 @@ namespace Fanex.ConnectionString
             }
         }
 
-        public static bool Contains(string name)
+        public static void Stop()
         {
-            try
-            {
-                if (_connectionStringType == ConnectionType.Remote)
-                {
-                    _collection.Clear();
-                    _list = _cache.Get<List<ConnectionString>>(ConectionStringConstanst.PREKEY);
-
-                    foreach (var item in _list)
-                    {
-                        if (item.Alias.Name == name.ToLower())
-                        {
-                            return true;
-                        }
-                    }
-
-                    return false;
-                }
-                else
-                {
-                    if (ConfigurationManager.ConnectionStrings[name] != null)
-                    {
-                        return true;
-                    }
-                }
-
-                return false;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            _dataAccess.Dispose();
         }
     }
 }

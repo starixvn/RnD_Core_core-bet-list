@@ -15,9 +15,15 @@ namespace Fanex.ConnectionString.Console
 
             while (true)
             {
-                System.Console.WriteLine(ConnectionStringManager.ConnectionStrings["DB206.NAP"].ConnectionString);
+                var collection = ConnectionStringManager.ConnectionStrings;
 
-                Thread.Sleep(2000);
+                foreach (ConnectionStringSettings item in collection)
+                {
+                    System.Console.WriteLine("alias:{0},connection:{1}", item.Name, item.ConnectionString);                  
+                }
+                System.Console.WriteLine("----------");
+
+                Thread.Sleep(5000);
 
             }
         }

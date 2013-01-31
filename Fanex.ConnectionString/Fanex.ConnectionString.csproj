@@ -47,15 +47,8 @@
     <Compile Include="Configuration\ConnectionSettings.cs" />
     <Compile Include="ConnectionStringManager.cs" />
     <Compile Include="ConnectionType.cs" />
-    <Compile Include="Constanst\ConectionStringConstanst.cs" />
-    <Compile Include="DataAccess\ConnectionStringDataAccess.cs" />
-    <Compile Include="DataAccess\IConnectionStringDataAccess.cs" />
-    <Compile Include="Domain\Alias.cs" />
-    <Compile Include="Domain\ConnectionString.cs" />
-    <Compile Include="Domain\Site.cs" />
-    <Compile Include="Domain\IEntity.cs" />
-    <Compile Include="Domain\DatabaseServer.cs" />
-    <Compile Include="Domain\Users.cs" />
+    <Compile Include="Constant\ConectionStringConstanst.cs" />
+    <Compile Include="ConnectionWatcher\ConnectionStringWatcher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
