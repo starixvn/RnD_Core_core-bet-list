@@ -98,8 +98,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.ConnectionString", "F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.ConnectionString.Console", "Fanex.ConnectionString.Console\Fanex.ConnectionString.Console.csproj", "{1E53D8C6-ADE0-4416-AA47-61C17877F8EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.ConnectionString.UnitTest", "Fanex.ConnectionString.UnitTest\Fanex.ConnectionString.UnitTest.csproj", "{60021DE9-F4B1-4B10-951C-5780BC8884E7}"
-EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Fanex2.vsmdi
@@ -225,16 +223,6 @@ Global
 		{1E53D8C6-ADE0-4416-AA47-61C17877F8EC}.Release|Mixed Platforms.Build.0 = Release|x86
 		{1E53D8C6-ADE0-4416-AA47-61C17877F8EC}.Release|x86.ActiveCfg = Release|x86
 		{1E53D8C6-ADE0-4416-AA47-61C17877F8EC}.Release|x86.Build.0 = Release|x86
-		{60021DE9-F4B1-4B10-951C-5780BC8884E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{60021DE9-F4B1-4B10-951C-5780BC8884E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{60021DE9-F4B1-4B10-951C-5780BC8884E7}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{60021DE9-F4B1-4B10-951C-5780BC8884E7}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{60021DE9-F4B1-4B10-951C-5780BC8884E7}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{60021DE9-F4B1-4B10-951C-5780BC8884E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{60021DE9-F4B1-4B10-951C-5780BC8884E7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{60021DE9-F4B1-4B10-951C-5780BC8884E7}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{60021DE9-F4B1-4B10-951C-5780BC8884E7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{60021DE9-F4B1-4B10-951C-5780BC8884E7}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -252,6 +240,5 @@ Global
 		{C9FA1EFD-D477-4527-8D63-39DD66D1E334} = {B80B8AB7-1AB9-4F63-A40E-BFB406C9F6FE}
 		{2095250C-9D24-4EA0-AA6C-BC4FC77C9D6D} = {67E29AEB-1970-482E-A951-13956EF1B186}
 		{1E53D8C6-ADE0-4416-AA47-61C17877F8EC} = {67E29AEB-1970-482E-A951-13956EF1B186}
-		{60021DE9-F4B1-4B10-951C-5780BC8884E7} = {67E29AEB-1970-482E-A951-13956EF1B186}
 	EndGlobalSection
 EndGlobal
