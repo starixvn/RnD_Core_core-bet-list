@@ -19,6 +19,7 @@ namespace Fanex.ConnectionString.ConnectionWatcher
     using Fanex.Caching;
     using Fanex.ConnectionString.Configuration;
     using Fanex.ConnectionString.Constant;
+    using System.IO;
 
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Reviewed. Suppression is OK here.")]
     internal static class ConnectionStringWatcher
@@ -31,7 +32,7 @@ namespace Fanex.ConnectionString.ConnectionWatcher
 
         private static readonly string _sqlConnection = ConnectionSettings.Settings.Connection;
 
-        private static readonly string _filePath = ConnectionSettings.Settings.FilePath;
+        private static string _filePath = ConnectionSettings.Settings.FilePath;
 
         private static ICache _cache = CacheService.CreateInstance(CacheType.MemoryCache);
 
@@ -44,6 +45,7 @@ namespace Fanex.ConnectionString.ConnectionWatcher
         /// </summary>
         public static void Start()
         {
+            _filePath = GetResourcePath(_filePath);
             //Build the command object we want to monitor (don't include a SqlConnection)
             SqlCommand cmd = new SqlCommand();
             cmd = new SqlCommand(_commandText);
@@ -160,6 +162,39 @@ namespace Fanex.ConnectionString.ConnectionWatcher
         public static void Stop()
         {
             _connectionStringDataAccess.Dispose();
+        }
+
+        /// <summary>
+        /// Get path
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        private static string GetResourcePath(string filePath)
+        {
+            if (string.IsNullOrWhiteSpace(filePath))
+            {
+                throw new NullReferenceException(Resources.FilePathNotSetYet);
+            }
+
+            // check root path http://msdn.microsoft.com/query/dev10.query?appId=Dev10IDEF1&l=EN-US&k=k%28SYSTEM.IO.PATH.ISPATHROOTED%29;k%28SOLUTIONITEMSPROJECT%29;k%28TargetFrameworkMoniker-%22.NETFRAMEWORK%2cVERSION%3dV4.0%22%29;k%28DevLang-CSHARP%29&rd=true
+            if (!Path.IsPathRooted(filePath))
+            {
+                if (filePath.StartsWith("~"))
+                {
+                    if (System.Web.HttpContext.Current != null)
+                    {
+                        filePath = System.Web.HttpContext.Current.Server.MapPath(filePath);
+                    }
+                }
+                else
+                {
+                    // if got the problem with window service
+                    // see http://haacked.com/archive/2004/06/29/706.aspx
+                    filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, filePath);
+                }
+            }
+
+            return filePath;
         }
     }
 }
