@@ -176,7 +176,7 @@ namespace Fanex.Data
 
             if (param is Hashtable)
             {
-                Hashtable parameters = (Hashtable)param;                
+                Hashtable parameters = (Hashtable)param;
                 DynamicParameters dynamicParamas = new DynamicParameters();
                 dynamicParamas = this.AssignDynamicParamsValueFromHashtable(parameters);
                 results = connection.Query<T>(
@@ -619,29 +619,29 @@ namespace Fanex.Data
             return Database.ExecuteDataSet(DbCommand);
         }
 
-        public DataSet ExecuteDataSet(dynamic paramaterValues)
+        public DataSet ExecuteDataSet(dynamic parameterValues)
         {
-            AssignDynamicParamsValue(DbCommand, paramaterValues);
+            AssignDynamicParamsValue(DbCommand, parameterValues);
             return Database.ExecuteDataSet(DbCommand);
         }
 
-        public DataSet ExecuteDataSet(DbTransaction transaction, dynamic paramaterValues)
+        public DataSet ExecuteDataSet(DbTransaction transaction, dynamic parameterValues)
         {
-            AssignDynamicParamsValue(DbCommand, paramaterValues);
+            AssignDynamicParamsValue(DbCommand, parameterValues);
 
-            return Database.ExecuteDataSet(transaction, DbSetting.SpName, paramaterValues);
+            return Database.ExecuteDataSet(transaction, DbSetting.SpName, parameterValues);
         }
 
-        public DataSet ExecuteDataSet(Hashtable paramaterValues)
+        public DataSet ExecuteDataSet(Hashtable parameterValues)
         {
-            AssignDynamicParamsValue(DbCommand, paramaterValues);
+            AssignDynamicParamsValue(DbCommand, parameterValues);
             DataSet ds = Database.ExecuteDataSet(DbCommand);
             foreach (SqlParameter paramItem in DbCommand.Parameters)
             {
                 if (paramItem.Direction == ParameterDirection.Output || paramItem.Direction == ParameterDirection.InputOutput)
                 {
                     object value = Database.GetParameterValue(DbCommand, paramItem.GetLowerName());
-                    paramaterValues[paramItem.GetLowerName()] = value;
+                    parameterValues[paramItem.GetLowerName()] = value;
                 }
             }
 
@@ -686,18 +686,20 @@ namespace Fanex.Data
             return Database.ExecuteNonQuery(transaction, DbSetting.SpName, parameterValues);
         }
 
-        public void ExecuteNonQuery(Hashtable paramaterValues)
+        public int ExecuteNonQuery(Hashtable parameterValues)
         {
-            AssignDynamicParamsValue(DbCommand, paramaterValues);
-            Database.ExecuteNonQuery(DbCommand);
+            AssignDynamicParamsValue(DbCommand, parameterValues);
+            var result = Database.ExecuteNonQuery(DbCommand);
             foreach (SqlParameter paramItem in DbCommand.Parameters)
             {
                 if (paramItem.Direction == ParameterDirection.Output || paramItem.Direction == ParameterDirection.InputOutput)
                 {
                     object value = Database.GetParameterValue(DbCommand, paramItem.GetLowerName());
-                    paramaterValues[paramItem.GetLowerName()] = value;
+                    parameterValues[paramItem.GetLowerName()] = value;
                 }
             }
+
+            return result;
         }
 
         #endregion ExecuteNonQuery
@@ -736,9 +738,9 @@ namespace Fanex.Data
             return Database.ExecuteReader(transaction, DbSetting.SpName, parameterValues);
         }
 
-        public IDataReader ExecuteReader(Hashtable paramaterValues)
+        public IDataReader ExecuteReader(Hashtable parameterValues)
         {
-            AssignDynamicParamsValue(DbCommand, paramaterValues);
+            AssignDynamicParamsValue(DbCommand, parameterValues);
             return Database.ExecuteReader(DbCommand);
         }
         #endregion ExecuteReader
@@ -1027,15 +1029,15 @@ namespace Fanex.Data
         /// Assigns the dynamic parameters value.
         /// </summary>
         /// <param name="dbCommand">The db command.</param>
-        /// <param name="paramaterValues">The parameter values.</param>
-        internal void AssignDynamicParamsValue(DbCommand dbCommand, dynamic paramaterValues)
+        /// <param name="parameterValues">The parameter values.</param>
+        internal void AssignDynamicParamsValue(DbCommand dbCommand, dynamic parameterValues)
         {
-            if (!ReferenceEquals(paramaterValues, null))
+            if (!ReferenceEquals(parameterValues, null))
             {
-                if (paramaterValues is Hashtable)
+                if (parameterValues is Hashtable)
                 {
                     var db = this.Database;
-                    Hashtable parameters = (Hashtable)paramaterValues;
+                    Hashtable parameters = (Hashtable)parameterValues;
 
                     _parameterCache.SetParameters(dbCommand, db);
                     if (!ReferenceEquals(parameters, null))
@@ -1051,7 +1053,7 @@ namespace Fanex.Data
                 }
                 else
                 {
-                    object obj = (object)paramaterValues;
+                    object obj = (object)parameterValues;
                     Action<IDbCommand, object> action = new Action<IDbCommand, object>(SqlMapper.CreateParamInfoGenerator(obj.GetType()));
                     if (dbCommand.Parameters.Count != 0)
                     {

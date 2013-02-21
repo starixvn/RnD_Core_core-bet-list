@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Functions>
-    <Function Name="Employee">
-        <Setting Key="Employee_GetAll" SpName="NexHRMDemo_Employee_GetAll" DbName="nexhr"  Plain="1"/>
+    <Function Name="Dog">
+        <Setting Key="DogGetAll" SpName="Demo_DogGetAll" DbName="demo">
+            <Mapping DataField="DogId" ObjectProperty="Id"/>
+            <Mapping DataField="DogName" ObjectProperty="Name"/>
+        </Setting>
     </Function>
 </Functions>

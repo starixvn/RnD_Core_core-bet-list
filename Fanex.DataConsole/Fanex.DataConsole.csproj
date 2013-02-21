@@ -92,7 +92,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="XmlDbSettingProvider_Initialize.sequencediagram" />
   </ItemGroup>
   <ItemGroup>
@@ -103,6 +105,7 @@
     <Content Include="SpConfig\HTMLPage1.htm" />
     <Content Include="SpName.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>

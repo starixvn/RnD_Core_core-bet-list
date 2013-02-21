@@ -6,7 +6,7 @@
     {
         // Code that runs on application startup
         Fanex.Data.Configuration.DbSettingProviderManager.Current.Start();
-        StackExchange.Profiling.MiniProfiler.Start();
+        //StackExchange.Profiling.MiniProfiler.Start();
     }
     
     void Application_End(object sender, EventArgs e) 
