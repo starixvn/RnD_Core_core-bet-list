@@ -31,7 +31,7 @@ namespace Fanex.Data.Configuration
         {
             this.EnsureTargetFileAccessible(path);
 
-            // remember to check security on the folter to watch
+            // remember to check security on the folder to watch
             var resourceWatcher = new FileSystemWatcherEx();
             resourceWatcher.Path = Path.GetDirectoryName(path);
 
@@ -98,7 +98,7 @@ namespace Fanex.Data.Configuration
                                     ExecuteTimeOut = setting.Attribute("TimeOut") != null ? Convert.ToInt32(setting.Attribute("TimeOut").Value.Trim()) : TimeOutDefault
                                 };
 
-                                // Add custom column for spname
+                                // Add custom column for SpName
                                 var customColumList = setting.Descendants("Mapping");
                                 Hashtable customMapping = new Hashtable();
                                 foreach (var item in customColumList)

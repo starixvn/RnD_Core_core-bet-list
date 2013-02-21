@@ -103,7 +103,15 @@
     <Content Include="Dependencies\Microsoft.Practices.ServiceLocation.dll" />
     <Content Include="Dependencies\Microsoft.Practices.Unity.dll" />
     <Content Include="SpConfig\HTMLPage1.htm" />
-    <Content Include="SpName.xml">
+    <Content Include="SpName\Copy of SpName.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SpName\SpNameABC.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SpName\SpName.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>

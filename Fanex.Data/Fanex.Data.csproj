@@ -82,7 +82,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\XmlDbSettingProvider2.cs" />
+    <Compile Include="Configuration\XmlDbSettingProvider.cs" />
     <Compile Include="FileSystemWatcherEx.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -93,7 +93,6 @@
     <Compile Include="Configuration\DbSettingProviderConfigurationSection.cs" />
     <Compile Include="Configuration\DbSettingProviderManager.cs" />
     <Compile Include="Configuration\DbSettingProviderBase.cs" />
-    <Compile Include="Configuration\XmlDbSettingProvider.cs" />
     <Compile Include="Dapper\DapperExtensions.cs" />
     <Compile Include="Dapper\SqlMapper.cs" />
     <Compile Include="Extensions.cs" />
@@ -136,6 +135,7 @@
     <Content Include="Dependencies\Microsoft.Practices.EnterpriseLibrary.Data.dll" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="Fanex.Data.cd" />
     <None Include="packages.config" />
     <None Include="XmlDbSettingProvider_Initialize.sequencediagram" />
@@ -159,7 +159,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_UseGlobalSettings="True" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_UpdateFileVersion="True" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_IncrementBeforeBuild="True" />
+      <UserProperties BuildVersion_IncrementBeforeBuild="True" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_UpdateFileVersion="True" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_UseGlobalSettings="True" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -137,7 +137,7 @@ namespace Fanex.DataConsole
 
             using (ObjectDb db = new ObjectDb("GetDogAll"))
             {
-                var dog = db.Query<Dog>(, new { Age = (int?)null, Id = guid });
+                //var dog = db.Query<Dog>(, new { Age = (int?)null, Id = guid });
             }
         }
 
