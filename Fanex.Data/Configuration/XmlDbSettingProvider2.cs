@@ -15,13 +15,13 @@ namespace Fanex.Data.Configuration
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using System.Xml.Linq;    
-    
+    using System.Xml.Linq;
+
     /// <summary>
     /// Support multi setting xml resource files
     /// </summary>
     public class XmlDbSettingProvider2 : XmlDbSettingProvider
-    {     
+    {
         /// <summary>
         /// start run file system watcher to fire event Resource Changed Event
         /// whenever the resource change
@@ -31,7 +31,7 @@ namespace Fanex.Data.Configuration
         {
             this.EnsureTargetFileAccessible(path);
 
-            // remember to check security on the folter to watch
+            // remember to check security on the folder to watch
             var resourceWatcher = new FileSystemWatcherEx();
             resourceWatcher.Path = Path.GetDirectoryName(path);
 
@@ -51,7 +51,7 @@ namespace Fanex.Data.Configuration
             // Enable watching.
             resourceWatcher.EnableRaisingEvents = true;
         }
-        
+
         /// <summary>
         /// Get all db setting configuration from the data source and than add to cache
         /// </summary>
@@ -82,7 +82,7 @@ namespace Fanex.Data.Configuration
                     var settingDataSource = new Dictionary<string, IDbSetting>();
 
                     for (int i = 0; i < resourceLength; i++)
-                    {                       
+                    {
                         var document = XDocument.Load(listOfResouces[i]);
                         var functions = document.Descendants("Function");
 
@@ -94,10 +94,11 @@ namespace Fanex.Data.Configuration
                                 var databaseSetting = new DbSetting
                                 {
                                     SpName = setting.Attribute("SpName").Value.Trim(),
-                                    DbName = setting.Attribute("DbName").Value.Trim()
+                                    DbName = setting.Attribute("DbName").Value.Trim(),
+                                    ExecuteTimeOut = setting.Attribute("TimeOut") != null ? Convert.ToInt32(setting.Attribute("TimeOut").Value.Trim()) : TimeOutDefault
                                 };
-                                
-                                // Add custom column for spname
+
+                                // Add custom column for SpName
                                 var customColumList = setting.Descendants("Mapping");
                                 Hashtable customMapping = new Hashtable();
                                 foreach (var item in customColumList)
@@ -107,7 +108,7 @@ namespace Fanex.Data.Configuration
                                     customMapping.Add(dataField, objectProperty);
                                 }
 
-                                databaseSetting.CustomMappingColumns = customMapping;                                
+                                databaseSetting.CustomMappingColumns = customMapping;
 
                                 // check connection string whether require to decrypt or not
                                 var isEncryptedConn = IsEncryptedConnection(setting);
@@ -125,17 +126,17 @@ namespace Fanex.Data.Configuration
                                     }
                                 }
                             }
-                        }                        
+                        }
                     }
 
                     // update to cache                   
-                    this.CacheManager.Set(DbSettingCacheKeyName, settingDataSource, this.GetCachePolicy());                        
+                    this.CacheManager.Set(DbSettingCacheKeyName, settingDataSource, this.GetCachePolicy());
                 }
                 catch
                 {
                     throw;
                 }
             }
-        }              
+        }
     }
 }

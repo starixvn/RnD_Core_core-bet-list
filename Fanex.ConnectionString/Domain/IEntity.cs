@@ -4,14 +4,18 @@
 // </copyright>
 // --------------------------------------------------------------------------
 // <history>
-//   <change who="Anders.Le" date="2012.5.18">Created</change>
+//   <change who="Edward.Nguyen" date="2013.1.11">Created</change>
 // </history>
-namespace Fanex.NexHR.Models
+
+namespace Fanex.ConnectionString.Domain
 {
-    public interface IEntity<TId>
+    using System.Diagnostics.CodeAnalysis;
+
+    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Reviewed. Suppression is OK here.")]
+    public interface IEntity<TId, TName>
     {
         TId Id { get; set; }
-        string Name { get; set; }
-        string Code { get; set; }
+
+        TName Name { get; set; }
     }
 }

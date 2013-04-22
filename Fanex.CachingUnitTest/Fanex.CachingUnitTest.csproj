@@ -69,6 +69,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
@@ -90,6 +91,10 @@
     <ProjectReference Include="..\Fanex.Common\Fanex.Common.csproj">
       <Project>{1766DA24-D998-494B-B850-1DA947A5AC4C}</Project>
       <Name>Fanex.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fanex.ConnectionString\Fanex.ConnectionString.csproj">
+      <Project>{2095250C-9D24-4EA0-AA6C-BC4FC77C9D6D}</Project>
+      <Name>Fanex.ConnectionString</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

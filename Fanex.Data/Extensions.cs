@@ -9,14 +9,14 @@
 // <history>
 //  <change who="Anders" date="2011.12.14">Created</change>
 //  <change who="Anders" date="2011.12.14">Add function GetFirstOrDefault for class IEnumerable</change>
+//  <change who="Edward.Nguyen" date="2013.2.7">Remove get out put parameter reader</change>
 // </history>
 namespace Fanex.Data
 {
     using System.Data;
     using System.Data.Common;
     using System.Data.SqlClient;
-    using System.Collections;
-    
+
     /// <summary>
     /// This class extend some functions DBCommand and SqlParameter
     /// </summary>
@@ -61,7 +61,7 @@ namespace Fanex.Data
         }
 
         /// <summary>
-        /// Gets the name of sql parameter without prefix @
+        /// Gets the name of Sql parameter without prefix @
         /// </summary>
         /// <param name="param">The parameter.</param>
         /// <returns>parameter name</returns>
@@ -69,36 +69,15 @@ namespace Fanex.Data
         {
             return param.GetName().ToLowerInvariant();
         }
-        
+
         /// <summary>
-        /// Gets the name of sql parameter without prefix @
+        /// Gets the name of Sql parameter without prefix @
         /// </summary>
         /// <param name="param"></param>
         /// <returns></returns>
         public static string GetName(this SqlParameter param)
         {
             return param.ParameterName.TrimStart('@');
-        }
-
-        /// <summary>
-        /// For get out put parameter from data reader
-        /// </summary>
-        /// <param name="paramaterValues"></param>
-        public static void GetReaderOutParam(
-            this ObjectDb objectDb,
-            Hashtable paramaterValues)
-        {
-            //AssignDynamicParamsValue(DbCommand, paramaterValues);
-            //IDataReader reader= Database.ExecuteReader(DbCommand);
-            foreach (SqlParameter paramItem in objectDb.DbCommand.Parameters)
-            {
-                if (paramItem.Direction == ParameterDirection.Output || paramItem.Direction == ParameterDirection.InputOutput)
-                {
-                    object value = objectDb.GetParameterValue(paramItem.GetLowerName());
-                    paramaterValues[paramItem.GetLowerName()] = value;
-                }
-            }
-            //return reader;
         }
     }
 }

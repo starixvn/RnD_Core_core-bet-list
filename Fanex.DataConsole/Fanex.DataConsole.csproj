@@ -88,23 +88,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Team2.cs" />
-    <Compile Include="Department.cs" />
-    <Compile Include="Employee.cs" />
-    <Compile Include="EntityBase.cs" />
-    <Compile Include="EventPerformances.cs" />
-    <Compile Include="Events.cs" />
-    <Compile Include="ExecuteData.cs" />
-    <Compile Include="FunctionsTestCase.cs" />
-    <Compile Include="IEntity.cs" />
-    <Compile Include="ITeam.cs" />
-    <Compile Include="Matches.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Team.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="XmlDbSettingProvider_Initialize.sequencediagram" />
   </ItemGroup>
   <ItemGroup>
@@ -113,10 +103,18 @@
     <Content Include="Dependencies\Microsoft.Practices.ServiceLocation.dll" />
     <Content Include="Dependencies\Microsoft.Practices.Unity.dll" />
     <Content Include="SpConfig\HTMLPage1.htm" />
-    <Content Include="SpName.xml">
+    <Content Include="SpName\Copy of SpName.xml">
+      <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Statistics.xml" />
+    <Content Include="SpName\SpNameABC.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SpName\SpName.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fanex.Common\Fanex.Common.csproj">

@@ -9,7 +9,7 @@
 //  <change who="Anders" date="2011.12.14">Created</change>
 //  <change who="Edward" date="2012.1.3">Add two function Query</change>
 //  <change who="Anders" date="2012.01.04">Refactor - Add assign param to objectDB</change>
-//  <change who="Edward" date="2012.2.08">Add ctor fucntion null for sp resource</change>
+//  <change who="Edward" date="2012.2.08">Add Ctor function null for sp resource</change>
 // </history>
 namespace Fanex.Data
 {
@@ -19,17 +19,17 @@ namespace Fanex.Data
     using System.Data;
     using System.Data.Common;
     using System.Data.SqlClient;
+    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
     using Fanex.Data.Configuration;
     using Fanex.Data.Dapper;
     using Microsoft.Practices.EnterpriseLibrary.Data;
     using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
-    using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
     /// Composite data access object,
     /// provide SqlDatabase Entlib object, DBCommand,
-    /// and DBConnection (include Fanex.Data.Dapper to use useful extension mothods)
+    /// and DBConnection (include Fanex.Data.Dapper to use useful extension methods)
     /// </summary>
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Reviewed. Suppression is OK here.")]
     public sealed class ObjectDb : IDisposable
@@ -56,8 +56,9 @@ namespace Fanex.Data
                 throw new ArgumentNullException();
             }
 
-            _commandTimeOut = commandTimeOut;
+            //_commandTimeOut = commandTimeOut;
             _dbSetting = DbSettingProviderManager.Current.GetSetting(key);
+            _commandTimeOut = commandTimeOut != TimeOutDefault ? commandTimeOut : _dbSetting.ExecuteTimeOut;
         }
 
         /// <summary>
@@ -72,8 +73,9 @@ namespace Fanex.Data
                 throw new ArgumentNullException();
             }
 
-            _commandTimeOut = commandTimeOut;
+            //_commandTimeOut = commandTimeOut;
             _dbSetting = setting;
+            _commandTimeOut = commandTimeOut != TimeOutDefault ? commandTimeOut : _dbSetting.ExecuteTimeOut;
         }
 
         #endregion Ctor
@@ -162,60 +164,60 @@ namespace Fanex.Data
             dynamic param = null,
             IDbTransaction transaction = null,
             bool buffer = true,
-            int? commandTimeout = null)
+            int? commandTimeout = TimeOutDefault)
         {
             IEnumerable<T> results;
-            using (var connection = DbConnection)
+            var connection = DbConnection;
+
+            if (connection.State == ConnectionState.Closed)
             {
                 connection.Open();
+            }
 
-                if (param is Hashtable)
+            if (param is Hashtable)
+            {
+                Hashtable parameters = (Hashtable)param;
+                DynamicParameters dynamicParamas = new DynamicParameters();
+                dynamicParamas = this.AssignDynamicParamsValueFromHashtable(parameters);
+                results = connection.Query<T>(
+                                DbSetting.CustomMappingColumns,
+                                DbSetting.SpName,
+                                dynamicParamas,
+                                transaction,
+                                buffer,
+                                commandTimeout != TimeOutDefault ? commandTimeout : DbSetting.ExecuteTimeOut,
+                                CommandType.StoredProcedure);
+
+                foreach (SqlParameter paramItem in DbCommand.Parameters)
                 {
-                    Hashtable parameters = (Hashtable)param;
-                    DynamicParameters dynamicParamas = new DynamicParameters();
-                    dynamicParamas = this.AssignDynamicParamsValueFromHashtable(parameters);
-                    results = connection.Query<T>(
-                                    DbSetting.CustomMappingColumns,
-                                    DbSetting.SpName,
-                                    dynamicParamas,
-                                    transaction,
-                                    buffer,
-                                    commandTimeout ?? TimeOutDefault,
-                                    CommandType.StoredProcedure);
-
-                    foreach (SqlParameter paramItem in DbCommand.Parameters)
+                    if (paramItem.Direction == ParameterDirection.InputOutput || paramItem.Direction == ParameterDirection.Output)
                     {
-                        if (paramItem.Direction == ParameterDirection.InputOutput || paramItem.Direction == ParameterDirection.Output)
+                        string paramName = paramItem.GetName();
+
+                        string paramLowerName = paramName.ToLower();
+
+                        if (parameters.ContainsKey(paramLowerName))
                         {
-                            string paramName = paramItem.GetName();
-
-                            string paramLowerName = paramName.ToLower();
-
-                            if (parameters.ContainsKey(paramLowerName))
-                            {
-                                parameters[paramLowerName] = dynamicParamas.Get<object>(paramName);
-                            }
+                            parameters[paramLowerName] = dynamicParamas.Get<object>(paramName);
                         }
                     }
                 }
-                else
-                {
-                    results = connection.Query<T>(
-                        DbSetting.CustomMappingColumns,
-                        DbSetting.SpName,
-                        (object)param,
-                        transaction,
-                        buffer,
-                        commandTimeout ?? TimeOutDefault,
-                        CommandType.StoredProcedure);
-                }
+            }
+            else
+            {
+                results = connection.Query<T>(
+                    DbSetting.CustomMappingColumns,
+                    DbSetting.SpName,
+                    (object)param,
+                    transaction,
+                    buffer,
+                    commandTimeout != TimeOutDefault ? commandTimeout : DbSetting.ExecuteTimeOut,
+                    CommandType.StoredProcedure);
+            }
 
-                if (!buffer)
-                {
-                    results = results.ToList();
-                }
-
-                connection.Close();
+            if (!buffer)
+            {
+                results = results.ToList();
             }
 
             return results;
@@ -231,7 +233,7 @@ namespace Fanex.Data
         /// <param name="buffer">if set to <c>true</c> [buffer].</param>
         /// <param name="commandTimeout">The command timeout.</param>
         /// <returns></returns>
-        public T QueryEntity<T>(dynamic param = null, IDbTransaction transaction = null, int? commandTimeout = null)
+        public T QueryEntity<T>(dynamic param = null, IDbTransaction transaction = null, int? commandTimeout = TimeOutDefault)
         {
             IEnumerable<T> results = Query<T>(param, transaction, true, commandTimeout);
 
@@ -253,65 +255,64 @@ namespace Fanex.Data
             string splitOn = "Id",
             dynamic parameterValues = null,
             IDbTransaction transaction = null,
-            bool buffer = true,
-            int? commandTimeout = null)
+            bool buffer = true)
         {
             IEnumerable<TResult> result;
-            using (var db = DbConnection)
+            var connection = DbConnection;
+
+            if (connection.State == ConnectionState.Closed)
             {
-                db.Open();
+                connection.Open();
+            }
 
-                if (parameterValues is Hashtable)
+            if (parameterValues is Hashtable)
+            {
+                Hashtable parameters = (Hashtable)parameterValues;
+                DynamicParameters dynamicParamas = new DynamicParameters();
+                dynamicParamas = this.AssignDynamicParamsValueFromHashtable(parameters);
+                result = connection.Query<TFirst, TSecond, TResult>(
+                                DbSetting.CustomMappingColumns,
+                                DbSetting.SpName,
+                                func,
+                                dynamicParamas,
+                                transaction,
+                                buffer,
+                                splitOn,
+                                _commandTimeOut,
+                                CommandType.StoredProcedure);
+
+                foreach (SqlParameter paramItem in DbCommand.Parameters)
                 {
-                    Hashtable parameters = (Hashtable)parameterValues;
-                    DynamicParameters dynamicParamas = new DynamicParameters();
-                    dynamicParamas = this.AssignDynamicParamsValueFromHashtable(parameters);
-                    result = db.Query<TFirst, TSecond, TResult>(
-                                    DbSetting.CustomMappingColumns,
-                                    DbSetting.SpName,
-                                    func,
-                                    dynamicParamas,
-                                    transaction,
-                                    buffer,
-                                    splitOn,
-                                    commandTimeout ?? TimeOutDefault,
-                                    CommandType.StoredProcedure);
-
-                    foreach (SqlParameter paramItem in DbCommand.Parameters)
+                    if (paramItem.Direction == ParameterDirection.InputOutput || paramItem.Direction == ParameterDirection.Output)
                     {
-                        if (paramItem.Direction == ParameterDirection.InputOutput || paramItem.Direction == ParameterDirection.Output)
+                        string paramName = paramItem.GetName();
+
+                        string paramLowerName = paramName.ToLower();
+
+                        if (parameters.ContainsKey(paramLowerName))
                         {
-                            string paramName = paramItem.GetName();
-
-                            string paramLowerName = paramName.ToLower();
-
-                            if (parameters.ContainsKey(paramLowerName))
-                            {
-                                parameters[paramLowerName] = dynamicParamas.Get<object>(paramName);
-                            }
+                            parameters[paramLowerName] = dynamicParamas.Get<object>(paramName);
                         }
                     }
                 }
-                else
-                {
-                    result = db.Query<TFirst, TSecond, TResult>(
-                                    DbSetting.CustomMappingColumns,
-                                    DbSetting.SpName,
-                                    func,
-                                    (object)parameterValues,
-                                    transaction,
-                                    buffer,
-                                    splitOn,
-                                    commandTimeout ?? TimeOutDefault,
-                                    CommandType.StoredProcedure);
-                }
+            }
+            else
+            {
+                result = connection.Query<TFirst, TSecond, TResult>(
+                                DbSetting.CustomMappingColumns,
+                                DbSetting.SpName,
+                                func,
+                                (object)parameterValues,
+                                transaction,
+                                buffer,
+                                splitOn,
+                                _commandTimeOut,
+                                CommandType.StoredProcedure);
+            }
 
-                if (!buffer)
-                {
-                    result = result.ToList();
-                }
-
-                db.Close();
+            if (!buffer)
+            {
+                result = result.ToList();
             }
 
             return result;
@@ -328,65 +329,64 @@ namespace Fanex.Data
             string splitOn = "Id",
             dynamic parameterValues = null,
             IDbTransaction transaction = null,
-            bool buffer = true,
-            int? commandTimeout = null)
+            bool buffer = true)
         {
             IEnumerable<TResult> result;
-            using (var db = DbConnection)
+            var connection = DbConnection;
+
+            if (connection.State == ConnectionState.Closed)
             {
-                db.Open();
+                connection.Open();
+            }
 
-                if (parameterValues is Hashtable)
+            if (parameterValues is Hashtable)
+            {
+                Hashtable parameters = (Hashtable)parameterValues;
+                DynamicParameters dynamicParamas = new DynamicParameters();
+                dynamicParamas = this.AssignDynamicParamsValueFromHashtable(parameters);
+                result = connection.Query<TFirst, TSecond, TThird, TResult>(
+                                DbSetting.CustomMappingColumns,
+                                DbSetting.SpName,
+                                func,
+                                dynamicParamas,
+                                transaction,
+                                buffer,
+                                splitOn,
+                                _commandTimeOut,
+                                CommandType.StoredProcedure);
+
+                foreach (SqlParameter paramItem in DbCommand.Parameters)
                 {
-                    Hashtable parameters = (Hashtable)parameterValues;
-                    DynamicParameters dynamicParamas = new DynamicParameters();
-                    dynamicParamas = this.AssignDynamicParamsValueFromHashtable(parameters);
-                    result = db.Query<TFirst, TSecond, TThird, TResult>(
-                                    DbSetting.CustomMappingColumns,
-                                    DbSetting.SpName,
-                                    func,
-                                    dynamicParamas,
-                                    transaction,
-                                    buffer,
-                                    splitOn,
-                                    commandTimeout ?? TimeOutDefault,
-                                    CommandType.StoredProcedure);
-
-                    foreach (SqlParameter paramItem in DbCommand.Parameters)
+                    if (paramItem.Direction == ParameterDirection.InputOutput || paramItem.Direction == ParameterDirection.Output)
                     {
-                        if (paramItem.Direction == ParameterDirection.InputOutput || paramItem.Direction == ParameterDirection.Output)
+                        string paramName = paramItem.GetName();
+
+                        string paramLowerName = paramName.ToLower();
+
+                        if (parameters.ContainsKey(paramLowerName))
                         {
-                            string paramName = paramItem.GetName();
-
-                            string paramLowerName = paramName.ToLower();
-
-                            if (parameters.ContainsKey(paramLowerName))
-                            {
-                                parameters[paramLowerName] = dynamicParamas.Get<object>(paramName);
-                            }
+                            parameters[paramLowerName] = dynamicParamas.Get<object>(paramName);
                         }
                     }
                 }
-                else
-                {
-                    result = db.Query<TFirst, TSecond, TThird, TResult>(
-                            DbSetting.CustomMappingColumns,
-                            DbSetting.SpName,
-                            func,
-                            (object)parameterValues,
-                            transaction,
-                            buffer,
-                            splitOn,
-                            commandTimeout ?? TimeOutDefault,
-                            CommandType.StoredProcedure);
-                }
+            }
+            else
+            {
+                result = connection.Query<TFirst, TSecond, TThird, TResult>(
+                        DbSetting.CustomMappingColumns,
+                        DbSetting.SpName,
+                        func,
+                        (object)parameterValues,
+                        transaction,
+                        buffer,
+                        splitOn,
+                        _commandTimeOut,
+                        CommandType.StoredProcedure);
+            }
 
-                if (!buffer)
-                {
-                    result = result.ToList();
-                }
-
-                db.Close();
+            if (!buffer)
+            {
+                result = result.ToList();
             }
 
             return result;
@@ -403,65 +403,64 @@ namespace Fanex.Data
             string splitOn = "Id",
             dynamic parameterValues = null,
             IDbTransaction transaction = null,
-            bool buffer = true,
-            int? commandTimeout = null)
+            bool buffer = true)
         {
             IEnumerable<TResult> result;
-            using (var db = DbConnection)
+            var connection = DbConnection;
+
+            if (connection.State == ConnectionState.Closed)
             {
-                db.Open();
+                connection.Open();
+            }
 
-                if (parameterValues is Hashtable)
+            if (parameterValues is Hashtable)
+            {
+                Hashtable parameters = (Hashtable)parameterValues;
+                DynamicParameters dynamicParamas = new DynamicParameters();
+                dynamicParamas = this.AssignDynamicParamsValueFromHashtable(parameters);
+                result = connection.Query<TFirst, TSecond, TThird, TFourth, TResult>(
+                                DbSetting.CustomMappingColumns,
+                                DbSetting.SpName,
+                                func,
+                                dynamicParamas,
+                                transaction,
+                                buffer,
+                                splitOn,
+                                _commandTimeOut,
+                                CommandType.StoredProcedure);
+
+                foreach (SqlParameter paramItem in DbCommand.Parameters)
                 {
-                    Hashtable parameters = (Hashtable)parameterValues;
-                    DynamicParameters dynamicParamas = new DynamicParameters();
-                    dynamicParamas = this.AssignDynamicParamsValueFromHashtable(parameters);
-                    result = db.Query<TFirst, TSecond, TThird, TFourth, TResult>(
-                                    DbSetting.CustomMappingColumns,
-                                    DbSetting.SpName,
-                                    func,
-                                    dynamicParamas,
-                                    transaction,
-                                    buffer,
-                                    splitOn,
-                                    commandTimeout ?? TimeOutDefault,
-                                    CommandType.StoredProcedure);
-
-                    foreach (SqlParameter paramItem in DbCommand.Parameters)
+                    if (paramItem.Direction == ParameterDirection.InputOutput || paramItem.Direction == ParameterDirection.Output)
                     {
-                        if (paramItem.Direction == ParameterDirection.InputOutput || paramItem.Direction == ParameterDirection.Output)
+                        string paramName = paramItem.GetName();
+
+                        string paramLowerName = paramName.ToLower();
+
+                        if (parameters.ContainsKey(paramLowerName))
                         {
-                            string paramName = paramItem.GetName();
-
-                            string paramLowerName = paramName.ToLower();
-
-                            if (parameters.ContainsKey(paramLowerName))
-                            {
-                                parameters[paramLowerName] = dynamicParamas.Get<object>(paramName);
-                            }
+                            parameters[paramLowerName] = dynamicParamas.Get<object>(paramName);
                         }
                     }
                 }
-                else
-                {
-                    result = db.Query<TFirst, TSecond, TThird, TFourth, TResult>(
-                            DbSetting.CustomMappingColumns,
-                            DbSetting.SpName,
-                            func,
-                            (object)parameterValues,
-                            transaction,
-                            buffer,
-                            splitOn,
-                            commandTimeout ?? TimeOutDefault,
-                            CommandType.StoredProcedure);
-                }
+            }
+            else
+            {
+                result = connection.Query<TFirst, TSecond, TThird, TFourth, TResult>(
+                        DbSetting.CustomMappingColumns,
+                        DbSetting.SpName,
+                        func,
+                        (object)parameterValues,
+                        transaction,
+                        buffer,
+                        splitOn,
+                        _commandTimeOut,
+                        CommandType.StoredProcedure);
+            }
 
-                if (!buffer)
-                {
-                    result = result.ToList();
-                }
-
-                db.Close();
+            if (!buffer)
+            {
+                result = result.ToList();
             }
 
             return result;
@@ -478,65 +477,64 @@ namespace Fanex.Data
             string splitOn = "Id",
             dynamic parameterValues = null,
             IDbTransaction transaction = null,
-            bool buffer = true,
-            int? commandTimeout = null)
+            bool buffer = true)
         {
             IEnumerable<TResult> result;
-            using (var db = DbConnection)
+            var connection = DbConnection;
+
+            if (connection.State == ConnectionState.Closed)
             {
-                db.Open();
+                connection.Open();
+            }
 
-                if (parameterValues is Hashtable)
+            if (parameterValues is Hashtable)
+            {
+                Hashtable parameters = (Hashtable)parameterValues;
+                DynamicParameters dynamicParamas = new DynamicParameters();
+                dynamicParamas = this.AssignDynamicParamsValueFromHashtable(parameters);
+                result = connection.Query<TFirst, TSecond, TThird, TFourth, TFifth, TResult>(
+                                DbSetting.CustomMappingColumns,
+                                DbSetting.SpName,
+                                func,
+                                dynamicParamas,
+                                transaction,
+                                buffer,
+                                splitOn,
+                                _commandTimeOut,
+                                CommandType.StoredProcedure);
+
+                foreach (SqlParameter paramItem in DbCommand.Parameters)
                 {
-                    Hashtable parameters = (Hashtable)parameterValues;
-                    DynamicParameters dynamicParamas = new DynamicParameters();
-                    dynamicParamas = this.AssignDynamicParamsValueFromHashtable(parameters);
-                    result = db.Query<TFirst, TSecond, TThird, TFourth, TFifth, TResult>(
-                                    DbSetting.CustomMappingColumns,
-                                    DbSetting.SpName,
-                                    func,
-                                    dynamicParamas,
-                                    transaction,
-                                    buffer,
-                                    splitOn,
-                                    commandTimeout ?? TimeOutDefault,
-                                    CommandType.StoredProcedure);
-
-                    foreach (SqlParameter paramItem in DbCommand.Parameters)
+                    if (paramItem.Direction == ParameterDirection.InputOutput || paramItem.Direction == ParameterDirection.Output)
                     {
-                        if (paramItem.Direction == ParameterDirection.InputOutput || paramItem.Direction == ParameterDirection.Output)
+                        string paramName = paramItem.GetName();
+
+                        string paramLowerName = paramName.ToLower();
+
+                        if (parameters.ContainsKey(paramLowerName))
                         {
-                            string paramName = paramItem.GetName();
-
-                            string paramLowerName = paramName.ToLower();
-
-                            if (parameters.ContainsKey(paramLowerName))
-                            {
-                                parameters[paramLowerName] = dynamicParamas.Get<object>(paramName);
-                            }
+                            parameters[paramLowerName] = dynamicParamas.Get<object>(paramName);
                         }
                     }
                 }
-                else
-                {
-                    result = db.Query<TFirst, TSecond, TThird, TFourth, TFifth, TResult>(
-                            DbSetting.CustomMappingColumns,
-                            DbSetting.SpName,
-                            func,
-                            (object)parameterValues,
-                            transaction,
-                            buffer,
-                            splitOn,
-                            commandTimeout ?? TimeOutDefault,
-                            CommandType.StoredProcedure);
-                }
+            }
+            else
+            {
+                result = connection.Query<TFirst, TSecond, TThird, TFourth, TFifth, TResult>(
+                        DbSetting.CustomMappingColumns,
+                        DbSetting.SpName,
+                        func,
+                        (object)parameterValues,
+                        transaction,
+                        buffer,
+                        splitOn,
+                        _commandTimeOut,
+                        CommandType.StoredProcedure);
+            }
 
-                if (!buffer)
-                {
-                    result = result.ToList();
-                }
-
-                db.Close();
+            if (!buffer)
+            {
+                result = result.ToList();
             }
 
             return result;
@@ -553,10 +551,9 @@ namespace Fanex.Data
             string splitOn = "Id",
             dynamic parameters = null,
             IDbTransaction transaction = null,
-            bool buffer = true,
-            int? commandTimeout = null)
+            bool buffer = true)
         {
-            IEnumerable<TResult> result = Query<TFirst, TSecond, TResult>(func, splitOn, parameters, transaction, buffer, commandTimeout);
+            IEnumerable<TResult> result = Query<TFirst, TSecond, TResult>(func, splitOn, parameters, transaction, buffer);
             return result.FirstOrDefault();
         }
 
@@ -571,10 +568,9 @@ namespace Fanex.Data
             string splitOn = "Id",
             dynamic parameters = null,
             IDbTransaction transaction = null,
-            bool buffer = true,
-            int? commandTimeout = null)
+            bool buffer = true)
         {
-            IEnumerable<TResult> result = Query<TFirst, TSecond, TThird, TResult>(func, splitOn, parameters, transaction, buffer, commandTimeout);
+            IEnumerable<TResult> result = Query<TFirst, TSecond, TThird, TResult>(func, splitOn, parameters, transaction, buffer);
             return result.FirstOrDefault();
         }
 
@@ -589,10 +585,9 @@ namespace Fanex.Data
             string splitOn = "Id",
             dynamic parameters = null,
             IDbTransaction transaction = null,
-            bool buffer = true,
-            int? commandTimeout = null)
+            bool buffer = true)
         {
-            IEnumerable<TResult> result = Query<TFirst, TSecond, TThird, TFourth, TResult>(func, splitOn, parameters, transaction, buffer, commandTimeout);
+            IEnumerable<TResult> result = Query<TFirst, TSecond, TThird, TFourth, TResult>(func, splitOn, parameters, transaction, buffer);
             return result.FirstOrDefault();
         }
 
@@ -607,10 +602,9 @@ namespace Fanex.Data
             string splitOn = "Id",
             dynamic parameters = null,
             IDbTransaction transaction = null,
-            bool buffer = true,
-            int? commandTimeout = null)
+            bool buffer = true)
         {
-            IEnumerable<TResult> result = Query<TFirst, TSecond, TThird, TFourth, TFifth, TResult>(func, splitOn, parameters, transaction, buffer, commandTimeout);
+            IEnumerable<TResult> result = Query<TFirst, TSecond, TThird, TFourth, TFifth, TResult>(func, splitOn, parameters, transaction, buffer);
             return result.FirstOrDefault();
         }
 
@@ -625,29 +619,29 @@ namespace Fanex.Data
             return Database.ExecuteDataSet(DbCommand);
         }
 
-        public DataSet ExecuteDataSet(dynamic paramaterValues)
+        public DataSet ExecuteDataSet(dynamic parameterValues)
         {
-            AssignDynamicParamsValue(DbCommand, paramaterValues);
+            AssignDynamicParamsValue(DbCommand, parameterValues);
             return Database.ExecuteDataSet(DbCommand);
         }
 
-        public DataSet ExecuteDataSet(DbTransaction transaction, dynamic paramaterValues)
+        public DataSet ExecuteDataSet(DbTransaction transaction, dynamic parameterValues)
         {
-            AssignDynamicParamsValue(DbCommand, paramaterValues);
+            AssignDynamicParamsValue(DbCommand, parameterValues);
 
-            return Database.ExecuteDataSet(transaction, DbSetting.SpName, paramaterValues);
+            return Database.ExecuteDataSet(transaction, DbSetting.SpName, parameterValues);
         }
 
-        public DataSet ExecuteDataSet(Hashtable paramaterValues)
+        public DataSet ExecuteDataSet(Hashtable parameterValues)
         {
-            AssignDynamicParamsValue(DbCommand, paramaterValues);
+            AssignDynamicParamsValue(DbCommand, parameterValues);
             DataSet ds = Database.ExecuteDataSet(DbCommand);
             foreach (SqlParameter paramItem in DbCommand.Parameters)
             {
                 if (paramItem.Direction == ParameterDirection.Output || paramItem.Direction == ParameterDirection.InputOutput)
                 {
                     object value = Database.GetParameterValue(DbCommand, paramItem.GetLowerName());
-                    paramaterValues[paramItem.GetLowerName()] = value;
+                    parameterValues[paramItem.GetLowerName()] = value;
                 }
             }
 
@@ -692,18 +686,20 @@ namespace Fanex.Data
             return Database.ExecuteNonQuery(transaction, DbSetting.SpName, parameterValues);
         }
 
-        public void ExecuteNonQuery(Hashtable paramaterValues)
+        public int ExecuteNonQuery(Hashtable parameterValues)
         {
-            AssignDynamicParamsValue(DbCommand, paramaterValues);
-            Database.ExecuteNonQuery(DbCommand);
+            AssignDynamicParamsValue(DbCommand, parameterValues);
+            var result = Database.ExecuteNonQuery(DbCommand);
             foreach (SqlParameter paramItem in DbCommand.Parameters)
             {
                 if (paramItem.Direction == ParameterDirection.Output || paramItem.Direction == ParameterDirection.InputOutput)
                 {
                     object value = Database.GetParameterValue(DbCommand, paramItem.GetLowerName());
-                    paramaterValues[paramItem.GetLowerName()] = value;
+                    parameterValues[paramItem.GetLowerName()] = value;
                 }
             }
+
+            return result;
         }
 
         #endregion ExecuteNonQuery
@@ -742,9 +738,9 @@ namespace Fanex.Data
             return Database.ExecuteReader(transaction, DbSetting.SpName, parameterValues);
         }
 
-        public IDataReader ExecuteReader(Hashtable paramaterValues)
+        public IDataReader ExecuteReader(Hashtable parameterValues)
         {
-            AssignDynamicParamsValue(DbCommand, paramaterValues);
+            AssignDynamicParamsValue(DbCommand, parameterValues);
             return Database.ExecuteReader(DbCommand);
         }
         #endregion ExecuteReader
@@ -859,8 +855,8 @@ namespace Fanex.Data
         /// Auto discover parameter from sp and assign value get from cache
         /// </summary>
         /// <param name="parameterCache"><see cref="Microsoft.Practices.EnterpriseLibrary.Data.ParameterCache"/></param>
-        /// <param name="parameters">Hashtable</param>
-        public void AssignParamValues(Hashtable parameters)
+        /// <param name="parameters">Hash table</param>
+        internal void AssignParamValues(Hashtable parameters)
         {
             var dbCommand = this.DbCommand;
             var db = this.Database;
@@ -886,6 +882,7 @@ namespace Fanex.Data
 
         public void Dispose()
         {
+            // for execute data
             if (_dbCommand != null && _dbCommand.Connection != null)
             {
                 if (_dbCommand.Connection.State != ConnectionState.Closed)
@@ -895,6 +892,15 @@ namespace Fanex.Data
                     _dbCommand = null;
                     _sqlDatabase = null;
                 }
+            }
+
+            // for dispose query
+            if (_dbConnection != null && _dbConnection.State != ConnectionState.Closed)
+            {
+                _dbConnection.Close();
+                _dbConnection.Dispose();
+                _dbConnection = null;
+                _sqlDatabase = null;
             }
         }
 
@@ -907,7 +913,7 @@ namespace Fanex.Data
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns></returns>
-        public DynamicParameters AssignDynamicParamsValue(params object[] parameters)
+        internal DynamicParameters AssignDynamicParamsValue(params object[] parameters)
         {
             DynamicParameters dynamicParams = new DynamicParameters();
             if (!ReferenceEquals(parameters, null))
@@ -939,7 +945,7 @@ namespace Fanex.Data
         /// Assigns the dynamic parameters value.
         /// </summary>
         /// <returns></returns>
-        public DynamicParameters AssignDynamicParamsValue()
+        internal DynamicParameters AssignDynamicParamsValue()
         {
             DynamicParameters dynamicParams = new DynamicParameters();
             if (!ReferenceEquals(this.DbCommand.Parameters, null))
@@ -966,7 +972,7 @@ namespace Fanex.Data
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns></returns>
-        public DynamicParameters AssignDynamicParamsValueFromHashtable(Hashtable parameters)
+        internal DynamicParameters AssignDynamicParamsValueFromHashtable(Hashtable parameters)
         {
             DynamicParameters dynamicParams = new DynamicParameters();
             _parameterCache.SetParameters(this.DbCommand, this.Database);
@@ -1023,15 +1029,15 @@ namespace Fanex.Data
         /// Assigns the dynamic parameters value.
         /// </summary>
         /// <param name="dbCommand">The db command.</param>
-        /// <param name="paramaterValues">The parameter values.</param>
-        private void AssignDynamicParamsValue(DbCommand dbCommand, dynamic paramaterValues)
+        /// <param name="parameterValues">The parameter values.</param>
+        internal void AssignDynamicParamsValue(DbCommand dbCommand, dynamic parameterValues)
         {
-            if (!ReferenceEquals(paramaterValues, null))
+            if (!ReferenceEquals(parameterValues, null))
             {
-                if (paramaterValues.GetType().Name == "Hashtable")
+                if (parameterValues is Hashtable)
                 {
                     var db = this.Database;
-                    Hashtable parameters = (Hashtable)paramaterValues;
+                    Hashtable parameters = (Hashtable)parameterValues;
 
                     _parameterCache.SetParameters(dbCommand, db);
                     if (!ReferenceEquals(parameters, null))
@@ -1047,7 +1053,7 @@ namespace Fanex.Data
                 }
                 else
                 {
-                    object obj = (object)paramaterValues;
+                    object obj = (object)parameterValues;
                     Action<IDbCommand, object> action = new Action<IDbCommand, object>(SqlMapper.CreateParamInfoGenerator(obj.GetType()));
                     if (dbCommand.Parameters.Count != 0)
                     {

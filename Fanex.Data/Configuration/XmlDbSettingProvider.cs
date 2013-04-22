@@ -22,7 +22,7 @@ namespace Fanex.Data.Configuration
     using System.Linq;
     using System.Runtime.Caching;
     using System.Security.Permissions;
-    using System.Xml.Linq;    
+    using System.Xml.Linq;
     using Microsoft.Practices.EnterpriseLibrary.Caching;
 
     /// <summary>
@@ -46,7 +46,7 @@ namespace Fanex.Data.Configuration
         protected const string DbSettingCacheKeyName = "XmlDbSettingProvider:DBSetting";
 
         /// <summary>
-        /// enableWatching config key name
+        /// enableWatching configure key name
         /// </summary>
         private const string EnableWatchingName = "enableWatching";
 
@@ -54,6 +54,11 @@ namespace Fanex.Data.Configuration
         /// cache manager
         /// </summary>
         private static volatile ObjectCache cacheManager;
+
+        /// <summary>
+        /// default execute time out
+        /// </summary>
+        protected const int TimeOutDefault = 120;
 
         /// <summary>
         /// get setting data source from cache
@@ -103,7 +108,7 @@ namespace Fanex.Data.Configuration
         /// <summary>
         /// insert db setting to resource
         /// </summary>
-        /// <param name="setting">setting typeof IDbSetting</param>
+        /// <param name="setting">setting type of IDbSetting</param>
         public override void InsertSetting(IDbSetting setting)
         {
             throw new NotImplementedException();
@@ -133,8 +138,8 @@ namespace Fanex.Data.Configuration
         /// Init resource watch
         /// <see cref="http://msdn.microsoft.com/en-us/library/system.io.filesystemwatcher.aspx"/>
         /// </summary>
-        /// <param name="name">name of config</param>
-        /// <param name="config">config name value collection</param>
+        /// <param name="name">name of configure</param>
+        /// <param name="config">configure name value collection</param>
         public override void Initialize(string name, NameValueCollection config)
         {
             base.Initialize(name, config);
@@ -171,20 +176,27 @@ namespace Fanex.Data.Configuration
         /// </summary>
         /// <param name="path">resource path</param>
         protected virtual void StartWatchResource(string path)
-        {           
+        {
             this.EnsureTargetFileAccessible(path);
 
-            // remember to check security on the folter to watch
+            // remember to check security on the folder to watch
             var resourceWatcher = new FileSystemWatcherEx();
             resourceWatcher.Path = Path.GetDirectoryName(path);
 
-            // "*.xml";
-            resourceWatcher.Filter = Path.GetFileName(path);
-            resourceWatcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName;
+            // just monitor files whose extension is xml only
+            resourceWatcher.Filter = "*.xml";
+            resourceWatcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.Size;
+
+            // 2s is recent change events
+            resourceWatcher.Interval = 2000;
+
+            // Add event handler
             resourceWatcher.Changed += new FileSystemEventHandler(this.ResourceChangedEvent);
+            resourceWatcher.Created += new FileSystemEventHandler(this.ResourceChangedEvent);
+            resourceWatcher.Deleted += new FileSystemEventHandler(this.ResourceChangedEvent);
             resourceWatcher.IncludeSubdirectories = false;
 
-            // Begin watching.
+            // Enable watching.
             resourceWatcher.EnableRaisingEvents = true;
         }
 
@@ -202,68 +214,90 @@ namespace Fanex.Data.Configuration
         /// Resource change - reload new resource and add to cache
         /// </summary>
         /// <param name="sender">file change</param>
-        /// <param name="e">FileSystemEventArgs args</param>
+        /// <param name="e">FileSystemEventArgs</param>
         protected void ResourceChangedEvent(object sender, FileSystemEventArgs e)
-        {          
+        {
             this.AddDataSourceToCache(ResourcePath);
         }
 
         /// <summary>
         /// Get all db setting configuration from the data source and than add to cache
         /// </summary>
-        /// <param name="resourcePath">path to resource file</param>        
-        protected virtual void AddDataSourceToCache(string resourcePath)
+        /// <param name="resourcePath">path to resource file for folder</param>        
+        protected void AddDataSourceToCache(string resourcePath)
         {
             lock (syncRoot)
             {
-                var settingDataSource = new Dictionary<string, IDbSetting>();
+                string[] listOfResouces;
+                if (IsFolder(resourcePath))
+                {
+                    // just get xml file
+                    listOfResouces = Directory.GetFiles(resourcePath);
+                    listOfResouces = listOfResouces.ToList<string>()
+                         .Where(path
+                             => Path.GetExtension(path).Equals(".xml", StringComparison.OrdinalIgnoreCase))
+                         .Select(s => s).ToArray<string>();
+                }
+                else
+                {
+                    listOfResouces = new string[] { resourcePath };
+                }
+
+                int resourceLength = listOfResouces.Length;
+
                 try
                 {
-                    var document = XDocument.Load(resourcePath);
-                    var functions = document.Descendants("Function");
+                    var settingDataSource = new Dictionary<string, IDbSetting>();
 
-                    foreach (var functionItem in functions)
+                    for (int i = 0; i < resourceLength; i++)
                     {
-                        var settingList = functionItem.Descendants("Setting");
-                        foreach (var setting in settingList)
+                        var document = XDocument.Load(listOfResouces[i]);
+                        var functions = document.Descendants("Function");
+
+                        foreach (var functionItem in functions)
                         {
-                            var databaseSetting = new DbSetting
+                            var settingList = functionItem.Descendants("Setting");
+                            foreach (var setting in settingList)
                             {
-                                SpName = setting.Attribute("SpName").Value.Trim(),
-                                DbName = setting.Attribute("DbName").Value.Trim()
-                            };
-
-                            // Add custom column for spname
-                            var customColumList = setting.Descendants("Mapping");
-                            Hashtable customMapping = new Hashtable();
-                            foreach (var item in customColumList)
-                            {
-                                string dataField = item.Attribute("DataField").Value.Trim();
-                                string objectProperty = item.Attribute("ObjectProperty").Value.Trim();
-                                customMapping.Add(dataField, objectProperty);
-                            }
-
-                            databaseSetting.CustomMappingColumns = customMapping;
-
-                            // check connection string whether require to decrypt or not
-                            var isEncryptedConn = IsEncryptedConnection(setting);
-                            databaseSetting.ConnectionString = ConnectionStringGetter.GetConnectionString(databaseSetting.DbName, isEncryptedConn);
-
-                            var key = setting.Attribute("Key").Value.Trim();
-                            if (!string.IsNullOrWhiteSpace(key))
-                            {
-                                if (databaseSetting.IsValid())
+                                var databaseSetting = new DbSetting
                                 {
-                                    if (!settingDataSource.ContainsKey(key))
+                                    SpName = setting.Attribute("SpName").Value.Trim(),
+                                    DbName = setting.Attribute("DbName").Value.Trim(),
+                                    ExecuteTimeOut = setting.Attribute("TimeOut") != null ? Convert.ToInt32(setting.Attribute("TimeOut").Value.Trim()) : TimeOutDefault
+                                };
+
+                                // Add custom column for SpName
+                                var customColumList = setting.Descendants("Mapping");
+                                Hashtable customMapping = new Hashtable();
+                                foreach (var item in customColumList)
+                                {
+                                    string dataField = item.Attribute("DataField").Value.Trim();
+                                    string objectProperty = item.Attribute("ObjectProperty").Value.Trim();
+                                    customMapping.Add(dataField, objectProperty);
+                                }
+
+                                databaseSetting.CustomMappingColumns = customMapping;
+
+                                // check connection string whether require to decrypt or not
+                                var isEncryptedConn = IsEncryptedConnection(setting);
+                                databaseSetting.ConnectionString = ConnectionStringGetter.GetConnectionString(databaseSetting.DbName, isEncryptedConn);
+
+                                var key = setting.Attribute("Key").Value.Trim();
+                                if (!string.IsNullOrWhiteSpace(key))
+                                {
+                                    if (databaseSetting.IsValid())
                                     {
-                                        settingDataSource.Add(key, databaseSetting);
+                                        if (!settingDataSource.ContainsKey(key))
+                                        {
+                                            settingDataSource.Add(key, databaseSetting);
+                                        }
                                     }
                                 }
                             }
                         }
                     }
 
-                    // update to cache
+                    // update to cache                   
                     this.CacheManager.Set(DbSettingCacheKeyName, settingDataSource, this.GetCachePolicy());
                 }
                 catch
