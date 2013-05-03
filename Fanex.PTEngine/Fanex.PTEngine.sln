@@ -1,0 +1,159 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.PTEngine", "Fanex.PTEngine.csproj", "{B16E08F3-B4F3-4878-A9B4-DBD098222B11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.PTEngine.Age", "..\Fanex.PTEngine.Age\Fanex.PTEngine.Age.csproj", "{2D00F742-F9FF-4649-AAF5-51F1229CB5A1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EE5B2A47-8D15-4DE7-BCF4-D73A7C7893FF}"
+	ProjectSection(SolutionItems) = preProject
+		Settings.StyleCop = Settings.StyleCop
+	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Agent-NewPT", "..\..\..\Samurai\Dev\Agent-NewPT", "{B42472AF-6255-4164-97FF-5D0D09FA0C5C}"
+	ProjectSection(WebsiteProperties) = preProject
+		SccProjectName = "SAK"
+		SccAuxPath = "SAK"
+		SccLocalPath = "SAK"
+		SccProvider = "SAK"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "60496"
+	EndProjectSection
+	ProjectSection(WebsiteProperties) = preProject
+		SccProjectName = "SAK"
+		SccAuxPath = "SAK"
+		SccLocalPath = "SAK"
+		SccProvider = "SAK"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "60496"
+	EndProjectSection
+	ProjectSection(WebsiteProperties) = preProject
+		SccProjectName = "SAK"
+		SccAuxPath = "SAK"
+		SccLocalPath = "SAK"
+		SccProvider = "SAK"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "60496"
+	EndProjectSection
+	ProjectSection(WebsiteProperties) = preProject
+		SccProjectName = "SAK"
+		SccAuxPath = "SAK"
+		SccLocalPath = "SAK"
+		SccProvider = "SAK"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "60496"
+	EndProjectSection
+	ProjectSection(WebsiteProperties) = preProject
+		SccProjectName = "SAK"
+		SccAuxPath = "SAK"
+		SccLocalPath = "SAK"
+		SccProvider = "SAK"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "60496"
+	EndProjectSection
+	ProjectSection(WebsiteProperties) = preProject
+		SccProjectName = "SAK"
+		SccAuxPath = "SAK"
+		SccLocalPath = "SAK"
+		SccProvider = "SAK"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "60496"
+	EndProjectSection
+	ProjectSection(WebsiteProperties) = preProject
+		SccProjectName = "SAK"
+		SccAuxPath = "SAK"
+		SccLocalPath = "SAK"
+		SccProvider = "SAK"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "60496"
+	EndProjectSection
+	ProjectSection(WebsiteProperties) = preProject
+		SccProjectName = "SAK"
+		SccAuxPath = "SAK"
+		SccLocalPath = "SAK"
+		SccProvider = "SAK"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "60496"
+	EndProjectSection
+	ProjectSection(WebsiteProperties) = preProject
+		SccProjectName = "SAK"
+		SccAuxPath = "SAK"
+		SccLocalPath = "SAK"
+		SccProvider = "SAK"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		ProjectReferences = "{B16E08F3-B4F3-4878-A9B4-DBD098222B11}|Fanex.PTEngine.dll;{2D00F742-F9FF-4649-AAF5-51F1229CB5A1}|Fanex.PTEngine.Age.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/Agent-NewPT"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\..\Samurai\Dev\Agent-NewPT\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Agent-NewPT\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/Agent-NewPT"
+		Release.AspNetCompiler.PhysicalPath = "..\..\..\Samurai\Dev\Agent-NewPT\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\Agent-NewPT\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "60496"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://10.18.200.210:8080/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Fanex.PTEngine.csproj
+		SccLocalPath1 = .
+		SccProjectUniqueName2 = ..\\Fanex.PTEngine.Age\\Fanex.PTEngine.Age.csproj
+		SccProjectName2 = ../Fanex.PTEngine.Age
+		SccLocalPath2 = ..\\Fanex.PTEngine.Age
+		SccWebProject3 = true
+		SccProjectUniqueName3 = ..\\..\\..\\Samurai\\Dev\\Agent-NewPT
+		SccProjectName3 = ../../../Samurai/Dev/Agent-NewPT
+		SccLocalPath3 = Agent-NewPT
+		SccProjectEnlistmentChoice3 = 2
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B16E08F3-B4F3-4878-A9B4-DBD098222B11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B16E08F3-B4F3-4878-A9B4-DBD098222B11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B16E08F3-B4F3-4878-A9B4-DBD098222B11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B16E08F3-B4F3-4878-A9B4-DBD098222B11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D00F742-F9FF-4649-AAF5-51F1229CB5A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D00F742-F9FF-4649-AAF5-51F1229CB5A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D00F742-F9FF-4649-AAF5-51F1229CB5A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D00F742-F9FF-4649-AAF5-51F1229CB5A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B42472AF-6255-4164-97FF-5D0D09FA0C5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B42472AF-6255-4164-97FF-5D0D09FA0C5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B42472AF-6255-4164-97FF-5D0D09FA0C5C}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{B42472AF-6255-4164-97FF-5D0D09FA0C5C}.Release|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
+EndGlobal

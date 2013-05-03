@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Sunplus.Agent.Model.BL.BetList;
+
+/// <summary>
+/// Summary description for ExampleTicketHelper
+/// </summary>
+public class ExampleTicketHelper : Fanex.BetList.Core.TicketHelper.TicketHelper
+{
+    public System.Data.DataTable GetMixParlayDetail(long transId, string language)
+    {
+        return BetListBO.GetMixParlayDetail(transId, language);
+    }
+}
+

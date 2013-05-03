@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Mappings>
+  <Mapping Value="s4$1$1$0" Target="s4" Pattern="s4${sportType}${betType}${isLive}">
+  </Mapping>
+  <Mapping Value="m3$1$1$0" Target="m3" Pattern="m3${sportType}${betType}${isLive}">
+  </Mapping>
+</Mappings>

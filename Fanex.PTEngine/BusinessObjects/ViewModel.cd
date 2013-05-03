@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Interface Name="Fanex.PTEngine.ViewModel.IBettingLimit">
+    <Position X="0.5" Y="15.25" Width="5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAQAAAAAAAAAAAAAAAAAABAAAAEAAAAAAAA=</HashCode>
+      <FileName>ViewModel\IBettingLimit.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Fanex.PTEngine.ViewModel.IBetType">
+    <Position X="0.5" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAACAAAAAAAQAQAAAAAAIIAAQAAAAAAA=</HashCode>
+      <FileName>ViewModel\IBetType.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Fanex.PTEngine.ViewModel.IBetTypeGroup">
+    <Position X="3.5" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\IBetTypeGroup.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Fanex.PTEngine.ViewModel.IBetTypeGroupSet">
+    <Position X="6.5" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAoAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>ViewModel\IBetTypeGroupSet.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Fanex.PTEngine.ViewModel.ICommissionSetting">
+    <Position X="8.25" Y="2.25" Width="4.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEIAAAQAAgAAAAAIAAAgBAFAAAAAAAEAABAAAAA=</HashCode>
+      <FileName>ViewModel\ICommissionSetting.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Fanex.PTEngine.ViewModel.ICustomer">
+    <Position X="8.25" Y="7.5" Width="4.75" />
+    <TypeIdentifier>
+      <HashCode>EgAAAEAAiWQAgAgJAAAAAAAAKAIAIUACkQFCpAABAEg=</HashCode>
+      <FileName>ViewModel\ICustomer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Fanex.PTEngine.ViewModel.IPT">
+    <Position X="4.25" Y="9.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AADAAhARAAAAAAAAAAAAADQCAABEABABAAAgAI0AAAA=</HashCode>
+      <FileName>ViewModel\IPT.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Fanex.PTEngine.ViewModel.IPTGrid">
+    <Position X="3" Y="3.25" Width="5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAACAAQAAAAgAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\IPTGrid.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Fanex.PTEngine.ViewModel.IRequestContext">
+    <Position X="0.5" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAEAAAAAAAAIAAAAAAADAAAAAAAEACAAAAAAA=</HashCode>
+      <FileName>ViewModel\IRequestContext.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Fanex.PTEngine.ViewModel.ISportType">
+    <Position X="4.25" Y="7.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAACgAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\ISportType.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Fanex.PTEngine.ViewModel.IStatusSetting">
+    <Position X="0.5" Y="7.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>ACAgAABAAAQQAAAABAAAACAAAABwBQAAgAGIAACBAAA=</HashCode>
+      <FileName>ViewModel\IStatusSetting.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Fanex.PTEngine.ViewModel.IXMLObject">
+    <Position X="4" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\IXMLObject.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Fanex.PTEngine.ViewModel.MappingType">
+    <Position X="2.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>ViewModel\EnumType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Fanex.PTEngine.ViewModel.FormType">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAgAAAAAAAQAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\EnumType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,243 @@
+﻿// ---------------------------------------------------------------------------------
+// <copyright file="Default.aspx.cs" company="Nexcel Solutions Vietnam">
+//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
+// </copyright>
+// ---------------------------------------------------------------------------------
+// <history>
+//     <change who="Marc.Bui" date="2012.12.05">Create</change>
+// </history>
+// ---------------------------------------------------------------------------------
+
+namespace Sunplus.Agent.UI._BetList
+{
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.IO;
+    using System.Text;
+    using System.Web.UI;
+    using Fanex.BetList.Age.BetListExcelBuilderExt;
+    using Fanex.BetList.Age.BetListHTMLBuilderExt;
+    using Fanex.BetList.Age.ExtTemplate;
+    using Fanex.BetList.Core.Builder;
+    using Fanex.BetList.Core.Builder.ChoiceBuilder;
+    using Fanex.BetList.Core.Entities;
+    using Fanex.BetList.Core.Factories;
+    using NPOI.SS.UserModel;
+    using Sunplus.Agent.Model.BL.BetList;
+    using Sunplus.Agent.Model.BL.Cache;
+    using Sunplus.Agent.Model.BL.Definitions;
+    using Sunplus.Agent.Model.BL.Forecast;
+    using Sunplus.Agent.Model.Entities;
+    using Sunplus.Agent.UI.BetList;
+    using Sunplus.Agent.Utilities;
+    using Fanex.BetList.Age.DTO;
+
+    public partial class BetList_Page : Fanex.Age.UI.Reports.WinlossReports_Page
+    {
+        string type = string.Empty;
+        string title = string.Empty;
+
+        bool exportExcel = false;
+        DataTable commandData;
+
+        public override void RenderContent(HtmlTextWriter writer)
+        {
+            exportExcel = Request["exporttoexcel.x"] != null ? true : false;
+
+            UserTypes userType = UserTypes.Agent;
+            BetListType betlistType = BetListType.Winlost;
+            DataTable betListData = View as DataTable;
+
+            GetCachePropertyById funcGetOddsTypeName = CacheRef.GetOddsTypeName;
+            ITicketHelper ticketHelper = new ExampleTicketHelper();
+            ticketHelper.CurrentLanguage = UserSession.Current.LangKey;
+
+            IList<ITicket> tickets = new List<ITicket>();
+
+            if (betListData != null)
+            {
+                tickets = TicketTransformer.Transform(betListData);
+                betListData.Dispose();
+            }
+            List<ITicketData> ticketData = new List<ITicketData>();
+
+            if (commandData != null)
+            {
+                ticketData = TicketDataTransformer.Transform(commandData);
+                commandData.Dispose();
+            }
+
+            bool isAdminCanViewVNIP = true;
+            string reportTitle = "Member Bet List 11/1/2012 --> 12/5/2012- JJB5656566";
+            int index = 0;
+
+            if (exportExcel)
+            {
+                BetListExcelFactory factory = new BetListExcelFactory();
+                BetListExcelBuilder builder = factory.CreateBuilder();
+
+                bool isShowWinLost = true;
+                bool isShowSuperPT = false;
+                bool isShowMasterPT = false;
+                bool isShowAgentPT = true;
+                bool isShowMember = false;
+
+                builder.BuildWorksheet("BetList", 8);
+                builder.AddCaption(reportTitle, 8);
+                builder.AddHeader(isShowWinLost, isShowSuperPT, isShowMasterPT, isShowAgentPT, isShowMember);
+
+                foreach (ITicket ticket in tickets)
+                {
+                    index++;
+                    ticketHelper.Index = index;
+
+                    builder
+                        .AddNo(index)
+                        .AddTrans(ticket, ticketHelper)
+                        .AddChoice(ticket, ticketHelper, ticketData)
+                        .AddOdds(ticket, ticketData, funcGetOddsTypeName)
+                        .AddStake(ticket)
+                        .AddWinLoss(ticket)
+                        .AddStatus(ticket, ticketHelper, ticketData, isAdminCanViewVNIP)
+                        .AddAgentPT(ticket, ticketData);
+                }
+
+
+                if (tickets.Count == 0 || (betlistType & BetListType.Winlost) == BetListType.Winlost)
+                {
+                    builder.AddFooter(tickets, isShowMember, 8);
+                }
+
+                MemoryStream ms = new MemoryStream();
+                IWorkbook resultWorkbook = builder.GetBetList();
+                resultWorkbook.Write(ms);
+
+                ExportToExcel(ms, "BetList.xls");
+                ms.Dispose();
+                return;
+
+                //int index = 0;
+                //BetListExcelFactory factory = new BetListExcelFactory();
+                //BetListExcelBuilder builder = factory.CreateBuilder();
+
+                //builder.BuildWorksheet("BetList", 8);
+
+                //ICellStyle transOddRowStyle = builder.CreateCellStyle();
+                //transOddRowStyle.CloneStyleFrom(builder.OddCellStyle);
+                //transOddRowStyle.Alignment = HorizontalAlignment.CENTER;
+
+                //ICellStyle transEvenRowStyle = builder.CreateCellStyle();
+                //transEvenRowStyle.CloneStyleFrom(builder.EvenCellStyle);
+                //transEvenRowStyle.Alignment = HorizontalAlignment.CENTER;
+
+                //foreach (ITicket ticket in tickets)
+                //{
+                //    index++;
+                //    ticketHelper.Index = index;
+
+                //    builder
+                //        .AddNo(index)
+                //        .AddTrans(ticket, ticketHelper)
+                //        .AddChoice(ticket, ticketHelper, ticketData)
+                //        .AddOdds(ticket, ticketData, funcGetOddsTypeName)
+                //        .AddStake(ticket)
+                //        .AddWinLoss(ticket)
+                //        .AddStatus(ticket, ticketHelper, ticketData, isAdminCanViewVNIP)
+                //        .AddAgentPT(ticket, ticketData);
+                //}
+
+                //MemoryStream ms = new MemoryStream();
+                //IWorkbook resultWorkbook = builder.GetBetList();
+                //resultWorkbook.Write(ms);
+
+                //ExportToExcel(ms, "BetList.xls");
+                //ms.Dispose();
+                //return;
+            }
+            else
+            {
+                BetListTemplate tpl = new BetListTemplate();
+                StringBuilder content = new StringBuilder();
+
+                tpl.title = "Member Bet List 11/1/2012 --> 12/5/2012- JJB5656566";
+
+                OpenBetList_Template betlistOpenTag = new OpenBetList_Template();
+                content.Append(betlistOpenTag);
+                Header1_Template betlistHeader = new Header1_Template();
+                betlistHeader.Member.Hide();
+                betlistHeader.Super.Hide();
+                betlistHeader.Master.Hide();
+
+                content.Append(betlistHeader);
+                content.Append("<tbody>");
+
+                ForecastBO bo = new ForecastBO(UserSession.Current.NetSessionId);
+                List<int> lstScoremap = bo.GetListBetTypeScoreMap();
+
+                bool isShowScoremap = false;
+
+                BetListHTMLFactory factory = new BetListHTMLFactory();
+                BetListHTMLBuilder builder = factory.CreateBuilder();
+
+                foreach (ITicket ticket in tickets)
+                {
+                    index++;
+                    ticketHelper.Index = index;
+
+                    builder.Append("<tr>")
+                           .AddNo(index, "<td class='w-order'>", "</td>")
+                           .AddTrans(ticket, "<td class='c'>", "</td>")
+                           .AddChoice(ticket, ticketHelper, ticketData, "<td class='r bl_evt'><div>", "</div></td>", isShowScoremap)
+                           .AddOdds(ticket, ticketData, "<td class='bl_underdog'>", "</td>", funcGetOddsTypeName)
+                           .AddStake(ticket, "<td class='bl_underdog'>", "</td>")
+                           .AddWinLoss(ticket, "<td class='r'>", "</td>")
+                           .AddStatus(ticket, ticketHelper, ticketData, "<td class='c'>", "</td>", isAdminCanViewVNIP)
+                           .AddAgentPT(ticket, ticketData, "<td class='r'>", "</td>")
+                           .Append("</tr>");
+                }
+
+                builder.AddFooter(tickets, string.Empty, string.Empty, userType, (Fanex.BetList.Age.Definition.BetListType)betlistType);
+                content.Append(builder.GetBetList());
+                content.Append("</tbody></table>");
+
+                tpl.content = content.ToString();
+                tpl.ToString(writer);
+            }
+        }
+
+        public override object InvokeData(Hashtable hash)
+        {
+            DataTable dtResult = null;
+            type = "WLByDate";
+
+            List<KeyValuePair<string, bool>> permission = new List<KeyValuePair<string, bool>>() { 
+                new KeyValuePair<string,bool>("showsb",true),
+                new KeyValuePair<string,bool>("showcasino",true),
+                new KeyValuePair<string,bool>("showrb",true),
+                new KeyValuePair<string,bool>("showng",true),
+                new KeyValuePair<string,bool>("showp2p",true),
+                new KeyValuePair<string,bool>("showlivecasino",true),
+                new KeyValuePair<string,bool>("showvs",true)
+            };
+
+            hash.Add("islive", 0);
+            hash.Add("leagueid", 0);
+            hash.Add("fdate", Cast.AsDateTime("03/01/2013"));
+            hash.Add("username", "12BETUS$011001");
+            hash.Add("bettype", 0);
+            hash.Add("transtype", 0);
+            hash.Add("tdate", Cast.AsDateTime("04/02/2013"));
+            hash.Add("custid", 2475147);
+            hash.Add("betteam", "");
+            hash.Add("matchid", 0);
+            hash.Add("language", "");
+            BetListBO betlistBO = new BetListBO("0t4nhbxkx3dhuyk51fdwv1oj");
+
+            dtResult = betlistBO.GetWinLossByDateAndMem((int)hash["custid"], (DateTime)hash["fdate"], (DateTime)hash["tdate"], new DateTime(2012, 11, 19), permission, out commandData);
+
+            return dtResult;
+        }
+    }
+}
