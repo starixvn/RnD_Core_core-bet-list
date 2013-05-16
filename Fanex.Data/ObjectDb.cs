@@ -856,7 +856,7 @@ namespace Fanex.Data
         /// </summary>
         /// <param name="parameterCache"><see cref="Microsoft.Practices.EnterpriseLibrary.Data.ParameterCache"/></param>
         /// <param name="parameters">Hash table</param>
-        internal void AssignParamValues(Hashtable parameters)
+        public void AssignParamValues(Hashtable parameters)
         {
             var dbCommand = this.DbCommand;
             var db = this.Database;
@@ -913,7 +913,7 @@ namespace Fanex.Data
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns></returns>
-        internal DynamicParameters AssignDynamicParamsValue(params object[] parameters)
+        public DynamicParameters AssignDynamicParamsValue(params object[] parameters)
         {
             DynamicParameters dynamicParams = new DynamicParameters();
             if (!ReferenceEquals(parameters, null))
@@ -945,7 +945,7 @@ namespace Fanex.Data
         /// Assigns the dynamic parameters value.
         /// </summary>
         /// <returns></returns>
-        internal DynamicParameters AssignDynamicParamsValue()
+        public DynamicParameters AssignDynamicParamsValue()
         {
             DynamicParameters dynamicParams = new DynamicParameters();
             if (!ReferenceEquals(this.DbCommand.Parameters, null))
@@ -972,7 +972,7 @@ namespace Fanex.Data
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns></returns>
-        internal DynamicParameters AssignDynamicParamsValueFromHashtable(Hashtable parameters)
+        public DynamicParameters AssignDynamicParamsValueFromHashtable(Hashtable parameters)
         {
             DynamicParameters dynamicParams = new DynamicParameters();
             _parameterCache.SetParameters(this.DbCommand, this.Database);
@@ -1030,7 +1030,7 @@ namespace Fanex.Data
         /// </summary>
         /// <param name="dbCommand">The db command.</param>
         /// <param name="parameterValues">The parameter values.</param>
-        internal void AssignDynamicParamsValue(DbCommand dbCommand, dynamic parameterValues)
+        public void AssignDynamicParamsValue(DbCommand dbCommand, dynamic parameterValues)
         {
             if (!ReferenceEquals(parameterValues, null))
             {
