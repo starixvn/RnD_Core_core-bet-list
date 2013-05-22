@@ -91,12 +91,12 @@ Fanex.PTRacing.BettingCommSetting = function (source) {
                     return false;
                 }
                 // Check maxbet < maxbetmin
-                if (typeof (item.maxBetMax) != 'undefined' && maxBet > maxBetMax) {
+                if (typeof (item.maxBetMax) != 'undefined' && maxBet > maxBetMax && maxBetMax != 0) {
                     this.ValidateMessage(item.maxBetElement, Language.MAX_BET_LOWER_THAN_MAX_MAX_BET.Format(''.FormatNumber(item.maxBetMax)));
                     return false;
                 }
                 // Check maxpermatch_min < maxpermatch < maxpermatch_max
-                if (typeof (item.maxPerMatchMax) != 'undefined' && maxPerMatch > maxPerMatchMax) {
+                if (typeof (item.maxPerMatchMax) != 'undefined' && maxPerMatch > maxPerMatchMax && maxPerMatchMax != 0) {
                     this.ValidateMessage(item.maxPerMatchElement, Language.MAX_PER_MATCH_LOWER_THAN_MAX_PER_MATCH_MAX_BET.Format(''.FormatNumber(item.maxPerMatchMax)), -130, 160);
                     return false;
                 }
