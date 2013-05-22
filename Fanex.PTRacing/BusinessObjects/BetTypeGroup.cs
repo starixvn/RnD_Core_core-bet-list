@@ -213,6 +213,14 @@
                         isUpdateDiscount = false;
                     }
                     #endregion
+
+                    #region pt
+                    if (compareBettingCommSetting.Contains("isapplypresetpt"))
+                    {
+                        this.SetParamInput(ref parameters, "updatepositiontaking", true);
+                        isChanged = true;
+                    }
+                    #endregion
                 }
                 this.SetParamInput(ref parameters, string.Format("updatedisable{0}_{1}", sportTypeId, this.Id), isUpdateStatus);
                 this.SetParamInput(ref parameters, string.Format("updateminmaxbet{0}_{1}", sportTypeId, this.Id), isUpdateMinMaxBet);
