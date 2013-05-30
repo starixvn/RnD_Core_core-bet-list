@@ -123,7 +123,7 @@
                                 bool value = false;
                                 if (reader.HasColumn(formattedPattern))
                                 {
-                                    value = reader.ToInt(formattedPattern) > 0 ? true : false;
+                                    value = reader.ToBoolean(formattedPattern);
                                 }
 
                                 propertyInfo.SetValue(this.Pt, value, null);
