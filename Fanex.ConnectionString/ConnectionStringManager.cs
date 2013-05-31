@@ -50,7 +50,7 @@ namespace Fanex.ConnectionString
         public static void Start()
         {
             ConnectionStringWatcher.Stop();
-            ConnectionStringWatcher.Start();
+            ConnectionStringWatcher.Start();            
         }
 
         public static ConnectionStringSettingsCollection ConnectionStrings
