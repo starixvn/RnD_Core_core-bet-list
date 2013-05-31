@@ -172,12 +172,14 @@ namespace Fanex.ConnectionString.ConnectionWatcher
                                 if (string.Compare(connection, collection[name].ConnectionString) != 0)
                                 {
                                     isNew = true;
+                                    break;
                                 }
 
                             }
                             else
                             {
                                 isNew = true;
+                                break;
                             }
                         }
                     }
