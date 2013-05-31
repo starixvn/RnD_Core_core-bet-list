@@ -19,7 +19,7 @@ namespace Fanex.ConnectionString.Configuration
 
         private const string __CONNECTION_STRING_SETTING = "ConnectionSettings";
 
-        private const string __CONNECTION_STRING = "Connnection";
+        private const string __CONNECTION_STRING = "Connection";
 
         private const string __IS_LOCAL = "IsLocal";
 
