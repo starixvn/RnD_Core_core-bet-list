@@ -120,6 +120,9 @@
   <data name="CannotFindConnectionStringName" xml:space="preserve">
     <value>Cannot find connection string name </value>
   </data>
+  <data name="ConfigurationSectionNotSetCorrectly" xml:space="preserve">
+    <value>Fanex.Data.DbSettingProvider configuration section is not set correctly.</value>
+  </data>
   <data name="ConnectionStringIsNullOrEmpty" xml:space="preserve">
     <value>Connection string is null or empty</value>
   </data>
@@ -131,6 +134,9 @@
   </data>
   <data name="KeyNotFound" xml:space="preserve">
     <value>Key not found exception</value>
+  </data>
+  <data name="ProcedureTooManyArguments" xml:space="preserve">
+    <value>Procedure or function {0} has too many arguments specified.</value>
   </data>
   <data name="ResourcePathHasNotBeenSetYet" xml:space="preserve">
     <value>Resource path has not been set yet</value>

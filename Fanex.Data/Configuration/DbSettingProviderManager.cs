@@ -38,7 +38,7 @@
             if (configuration == null)
             {
                 throw new ConfigurationErrorsException
-                    ("Fanex.Data.DbSettingProvider configuration section is not set correctly.");
+                    (Resources.ConfigurationSectionNotSetCorrectly);
             }
 
             _providers = new DbSettingProviderCollection();

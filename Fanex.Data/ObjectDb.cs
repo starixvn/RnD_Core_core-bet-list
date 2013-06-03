@@ -974,6 +974,8 @@ namespace Fanex.Data
         /// <returns></returns>
         public DynamicParameters AssignDynamicParamsValueFromHashtable(Hashtable parameters)
         {
+            int countParam = 0;
+
             DynamicParameters dynamicParams = new DynamicParameters();
             _parameterCache.SetParameters(this.DbCommand, this.Database);
             if (!ReferenceEquals(parameters, null))
@@ -988,8 +990,15 @@ namespace Fanex.Data
                             dbType: param.DbType,
                             direction: param.Direction,
                             size: param.Size);
+
+                        countParam++;
                     }
                 }
+            }
+
+            if (countParam < parameters.Count)
+            {
+                throw new Exception(string.Format(Resources.ProcedureTooManyArguments, DbSetting.SpName));
             }
 
             return dynamicParams;
@@ -1036,6 +1045,8 @@ namespace Fanex.Data
             {
                 if (parameterValues is Hashtable)
                 {
+                    int countParam = 0;
+
                     var db = this.Database;
                     Hashtable parameters = (Hashtable)parameterValues;
 
@@ -1047,8 +1058,14 @@ namespace Fanex.Data
                             if (param.IsNotReturnValue())
                             {
                                 param.Value = parameters[param.GetLowerName()];
+                                countParam++;
                             }
                         }
+                    }
+
+                    if (countParam < parameters.Count)
+                    {
+                        throw new Exception(string.Format(Resources.ProcedureTooManyArguments, DbSetting.SpName));
                     }
                 }
                 else
