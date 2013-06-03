@@ -14,6 +14,7 @@
 //     <change who="Marc.Bui" date="2013.03.19>Add ClientSystemParlaySubbetsDetailFunction
 //                                             & ClientMixParlaySubbetsDetailFunction
 //                                             for easy customization</change>
+//     <change who="Marc.Bui" date="2013.05.31>Add export detail for *Parlay tickets</change>
 // </history>
 // ---------------------------------------------------------------------------------
 
@@ -116,5 +117,10 @@ namespace Fanex.BetList.Core.TicketHelper
 
             return combinationOfferName.ContainsKey(key) ? combinationOfferName[key] : string.Empty;
         }
+
+        /// <summary>
+        /// Method to get *Parlay details
+        /// </summary>
+        public GetParlayTicketsById GetParlayDetailById { get; set; }
     }
 }

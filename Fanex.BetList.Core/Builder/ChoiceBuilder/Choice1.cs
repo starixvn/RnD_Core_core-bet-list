@@ -11,6 +11,8 @@
 //     <change who="Marc.Bui" date="2013.01.18">Update ScoreClassName to BL_FAVORITE (red)
 //                                              for all bettypes</change>
 //     <change who="Marc.Bui" date="2013.02.05">Update betteam when the match is Neutral </change> 
+//     <change who="Marc.Bui" date="2013.05.06">Assign ticketStatus to void if tickets is void, use for Sub-tickets markup (Mix Parlay & System Parlay)</change>
+//     <change who="Marc.Bui" date="2013.05.31">Implement export excel with detail data for *Parlay tickets</change>
 // </history>
 // ---------------------------------------------------------------------------------
 
@@ -142,6 +144,11 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             decimal handicap = ticket.Handicap2 > ticket.Handicap1 ? ticket.Handicap2 : ticket.Handicap1;
 
             this.Template.Handicap.handicap = ConvertByBetType.Hdp((this.Template.betTeamClassName == BL_FAVORITE) ? -handicap : handicap);
+
+            if ((ticket.StatusId != null && ticket.StatusId.ToString().Trim() == BetStatusId.Void) || (ticket.Status != null && ticket.Status.Trim().ToLower() == BetStatus.Void))
+            {
+                this.Template.ticketStatus = "void";
+            }
         }
 
         /// <summary>

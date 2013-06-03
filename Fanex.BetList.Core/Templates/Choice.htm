@@ -1,4 +1,4 @@
-﻿<div class='{eventClassName:}'>
+﻿<div class='{ticketStatus:}'>
     <!--ScoreMapIcon-->
     <span class='scoremap'><a href="javascript:OpenScoreMap({matchId},{betTypeId},{liveindicator});"
         title="Score Map">
@@ -22,11 +22,11 @@
     <!--/BetType-->
     <!--Match-->
     <div class="match">        
-        {homeTeam}{home_firstGoal_lastGoal}
+        <span>{homeTeam}</span>{home_firstGoal_lastGoal}
         <!--VS-->
-        &nbsp;-&nbsp;vs&nbsp;-&nbsp;
+        <span>&nbsp;-&nbsp;vs&nbsp;-&nbsp;</span>
         <!--/VS-->
-        {awayTeam}{away_firstGoal_lastGoal}
+        <span>{awayTeam}</span>{away_firstGoal_lastGoal}
     </div>
     <!--/Match-->
     <!--League-->

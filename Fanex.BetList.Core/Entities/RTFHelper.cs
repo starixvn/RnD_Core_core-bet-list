@@ -4,6 +4,7 @@
 // </copyright>
 // ---------------------------------------------------------------------------------
 // <history>
+//     <change who="Marc.Bui" date="2013.05.31">Add crossed fonts for excel - *Parlay detail tickets with status = void</change>
 //     <change who="Marc.Bui" date="2012.12.5">Create</change>
 // </history>
 // ---------------------------------------------------------------------------------
@@ -18,6 +19,28 @@ namespace Fanex.BetList.Core.Entities
         public IFont NormalFont { get; set; }
         public IFont PosFont { get; set; }
         public IFont NegFont { get; set; }
+
+        public IFont NormalFontCrossed { get; set; }
+        public IFont PosFontCrossed { get; set; }
+        public IFont NegFontCrossed { get; set; }
+
         public RtfTextRender RTFRenderer { get; set; }
+
+        public RTFHelper Clone()
+        {
+            RTFHelper tmp = new RTFHelper();
+
+            tmp.PosFont = this.PosFont;
+            tmp.NegFont = this.NegFont;
+            tmp.NormalFont = this.NormalFont;
+
+            tmp.NormalFontCrossed = this.NormalFontCrossed;
+            tmp.PosFontCrossed = this.PosFontCrossed;
+            tmp.NegFontCrossed = this.NegFontCrossed;
+
+            tmp.RTFRenderer = new RtfTextRender();
+
+            return tmp;
+        }
     }
 }

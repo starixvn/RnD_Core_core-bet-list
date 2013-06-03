@@ -14,7 +14,7 @@ namespace Fanex.BetList.Core
 		public class Choice_Template : Template
 		{
 			protected static string s0 = "<div class='";
-			public string eventClassName = "";
+			public string ticketStatus = "";
 			protected static string s1 = "'>";
 			public Choice_ScoreMapIcon_Block ScoreMapIcon = new Choice_ScoreMapIcon_Block();
 			protected static string s2 = "<span class=\"";
@@ -35,7 +35,7 @@ namespace Fanex.BetList.Core
 				if(RenderChild)
 				{
 					bd.Append(s0);
-					bd.Append(eventClassName);
+					bd.Append(ticketStatus);
 					bd.Append(s1);
 					if(null != ScoreMapIcon) ScoreMapIcon.ToString(ref bd);
 					bd.Append(s2);
@@ -180,13 +180,16 @@ namespace Fanex.BetList.Core
 
 		public class Choice_Match_Block: Block
 		{
-			protected static string s20 = "<div class=\"match\">";
+			protected static string s20 = "<div class=\"match\"><span>";
 			public string homeTeam = "{homeTeam}";
+			protected static string s21 = "</span>";
 			public string home_firstGoal_lastGoal = "{home_firstGoal_lastGoal}";
 			public Choice_Match_VS_Block VS = new Choice_Match_VS_Block();
+			protected static string s22 = "<span>";
 			public string awayTeam = "{awayTeam}";
+			protected static string s23 = "</span>";
 			public string away_firstGoal_lastGoal = "{away_firstGoal_lastGoal}";
-			protected static string s21 = "</div>";
+			protected static string s24 = "</div>";
 			public override void ToString(ref StringBuilder bd)
 			{
 				if(!Visible) return;
@@ -194,11 +197,14 @@ namespace Fanex.BetList.Core
 				{
 					bd.Append(s20);
 					bd.Append(homeTeam);
+					bd.Append(s21);
 					bd.Append(home_firstGoal_lastGoal);
 					if(null != VS) VS.ToString(ref bd);
+					bd.Append(s22);
 					bd.Append(awayTeam);
+					bd.Append(s23);
 					bd.Append(away_firstGoal_lastGoal);
-					bd.Append(s21);
+					bd.Append(s24);
 				}
 				if(IsAssigned){bd.Append(Value);}
 			}
@@ -206,13 +212,13 @@ namespace Fanex.BetList.Core
 
 		public class Choice_Match_VS_Block: Block
 		{
-			protected static string s22 = "&nbsp;-&nbsp;vs&nbsp;-&nbsp;";
+			protected static string s25 = "<span>&nbsp;-&nbsp;vs&nbsp;-&nbsp;</span>";
 			public override void ToString(ref StringBuilder bd)
 			{
 				if(!Visible) return;
 				if(RenderChild)
 				{
-					bd.Append(s22);
+					bd.Append(s25);
 				}
 				if(IsAssigned){bd.Append(Value);}
 			}
@@ -220,21 +226,21 @@ namespace Fanex.BetList.Core
 
 		public class Choice_League_Block: Block
 		{
-			protected static string s23 = "<div class=\"league\"><span class=\"sport\">";
+			protected static string s26 = "<div class=\"league\"><span class=\"sport\">";
 			public string sportTypeName = "{sportTypeName}";
-			protected static string s24 = "</span>";
+			protected static string s27 = "</span>";
 			public Choice_League_LeagueName_Block LeagueName = new Choice_League_LeagueName_Block();
-			protected static string s25 = "</div>";
+			protected static string s28 = "</div>";
 			public override void ToString(ref StringBuilder bd)
 			{
 				if(!Visible) return;
 				if(RenderChild)
 				{
-					bd.Append(s23);
+					bd.Append(s26);
 					bd.Append(sportTypeName);
-					bd.Append(s24);
+					bd.Append(s27);
 					if(null != LeagueName) LeagueName.ToString(ref bd);
-					bd.Append(s25);
+					bd.Append(s28);
 				}
 				if(IsAssigned){bd.Append(Value);}
 			}
@@ -242,17 +248,17 @@ namespace Fanex.BetList.Core
 
 		public class Choice_League_LeagueName_Block: Block
 		{
-			protected static string s26 = "<span class=\"leagueName\">&nbsp;";
+			protected static string s29 = "<span class=\"leagueName\">&nbsp;";
 			public string leagueName = "{leagueName}";
-			protected static string s27 = "</span>";
+			protected static string s30 = "</span>";
 			public override void ToString(ref StringBuilder bd)
 			{
 				if(!Visible) return;
 				if(RenderChild)
 				{
-					bd.Append(s26);
+					bd.Append(s29);
 					bd.Append(leagueName);
-					bd.Append(s27);
+					bd.Append(s30);
 				}
 				if(IsAssigned){bd.Append(Value);}
 			}
