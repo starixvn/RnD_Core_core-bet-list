@@ -117,44 +117,6 @@ namespace Sunplus.Agent.UI._BetList
                 ExportToExcel(ms, "BetList.xls");
                 ms.Dispose();
                 return;
-
-                //int index = 0;
-                //BetListExcelFactory factory = new BetListExcelFactory();
-                //BetListExcelBuilder builder = factory.CreateBuilder();
-
-                //builder.BuildWorksheet("BetList", 8);
-
-                //ICellStyle transOddRowStyle = builder.CreateCellStyle();
-                //transOddRowStyle.CloneStyleFrom(builder.OddCellStyle);
-                //transOddRowStyle.Alignment = HorizontalAlignment.CENTER;
-
-                //ICellStyle transEvenRowStyle = builder.CreateCellStyle();
-                //transEvenRowStyle.CloneStyleFrom(builder.EvenCellStyle);
-                //transEvenRowStyle.Alignment = HorizontalAlignment.CENTER;
-
-                //foreach (ITicket ticket in tickets)
-                //{
-                //    index++;
-                //    ticketHelper.Index = index;
-
-                //    builder
-                //        .AddNo(index)
-                //        .AddTrans(ticket, ticketHelper)
-                //        .AddChoice(ticket, ticketHelper, ticketData)
-                //        .AddOdds(ticket, ticketData, funcGetOddsTypeName)
-                //        .AddStake(ticket)
-                //        .AddWinLoss(ticket)
-                //        .AddStatus(ticket, ticketHelper, ticketData, isAdminCanViewVNIP)
-                //        .AddAgentPT(ticket, ticketData);
-                //}
-
-                //MemoryStream ms = new MemoryStream();
-                //IWorkbook resultWorkbook = builder.GetBetList();
-                //resultWorkbook.Write(ms);
-
-                //ExportToExcel(ms, "BetList.xls");
-                //ms.Dispose();
-                //return;
             }
             else
             {
