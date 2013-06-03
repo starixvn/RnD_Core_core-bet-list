@@ -22,12 +22,7 @@ namespace Fanex.ConnectionString.Console
         {
             while (true)
             {
-                var collection = ConnectionStringManager.ConnectionStrings;
-
-                //var config = ConfigurationManager.ConnectionStrings["abcd"];
-
-                //System.Console.WriteLine(config);
-                //System.Console.WriteLine(collection);
+                var collection = ConnectionStringManager.ConnectionStrings;                
 
                 foreach (ConnectionStringSettings item in collection)
                 {
