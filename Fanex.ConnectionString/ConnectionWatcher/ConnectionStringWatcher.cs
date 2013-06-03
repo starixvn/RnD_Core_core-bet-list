@@ -126,7 +126,7 @@ namespace Fanex.ConnectionString.ConnectionWatcher
         /// Generate connection string file with format xml
         /// </summary>
         /// <param name="collection"></param>
-        private static void GenerateConnectionStringFile(ConnectionStringSettingsCollection collection)
+        public static void GenerateConnectionStringFile(ConnectionStringSettingsCollection collection)
         {
             try
             {
@@ -148,7 +148,49 @@ namespace Fanex.ConnectionString.ConnectionWatcher
                 }
 
                 document.Add(elementRoot);
-                document.Save(_filePath);
+
+                var isNew = true;
+
+                if (File.Exists(_filePath))
+                {
+                    isNew = false;
+                    var configDocument = XDocument.Load(_filePath);
+                    var elementConnectionRoot = configDocument.Descendants("connectionStrings");
+                    var count = 0;
+
+                    foreach (var item in elementConnectionRoot)
+                    {
+                        var elementName = item.Descendants("add");
+
+                        foreach (var itemName in elementName)
+                        {
+                            count++;
+                            string name = itemName.Attribute("name").Value;
+                            if (collection[name] != null)
+                            {
+                                string connection = itemName.Attribute("connectionString").Value;
+                                if (string.Compare(connection, collection[name].ConnectionString) != 0)
+                                {
+                                    isNew = true;
+                                    break;
+                                }
+
+                            }
+                            else
+                            {
+                                isNew = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    isNew = count == 0 ? true : isNew;
+                }
+
+                if (isNew)
+                {
+                    document.Save(_filePath);
+                }
             }
             catch (Exception ex)
             {

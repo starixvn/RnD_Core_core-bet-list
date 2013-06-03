@@ -13,6 +13,8 @@ namespace Fanex.ConnectionString.Console
     {
         static void Main(string[] args)
         {
+            ConnectionStringManager.Start();
+
             DoAction();
         }
 
