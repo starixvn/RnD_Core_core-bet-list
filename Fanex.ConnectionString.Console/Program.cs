@@ -15,7 +15,7 @@ namespace Fanex.ConnectionString.Console
         {
             ConnectionStringManager.Start();
 
-            DoAction();
+            DoAction();//
         }
 
         static void DoAction()
