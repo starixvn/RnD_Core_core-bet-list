@@ -13,19 +13,16 @@ namespace Fanex.ConnectionString.Console
     {
         static void Main(string[] args)
         {
-            DoAction();
+            ConnectionStringManager.Start();
+
+            DoAction();//
         }
 
         static void DoAction()
         {
             while (true)
             {
-                var collection = ConnectionStringManager.ConnectionStrings;
-
-                //var config = ConfigurationManager.ConnectionStrings["abcd"];
-
-                //System.Console.WriteLine(config);
-                //System.Console.WriteLine(collection);
+                var collection = ConnectionStringManager.ConnectionStrings;                
 
                 foreach (ConnectionStringSettings item in collection)
                 {

@@ -4,8 +4,9 @@
 // </copyright>
 // ---------------------------------------------------------------------------------
 // <history>
-//     <change who="Marc.Bui" date="2012.11.16">Create</change>
+//     <change who="Marc.Bui" date="2013.05.31">Add export detail for *Parlay tickets</change>
 //     <change who="Marc.Bui" date="2013.01.29">Update line-breaks in MS Office</change>
+//     <change who="Marc.Bui" date="2012.11.16">Create</change>
 // </history>
 // ---------------------------------------------------------------------------------
 
@@ -17,6 +18,8 @@ namespace Fanex.BetList.Core.Builder
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Builder.OddsBuilder;
     using Fanex.BetList.Core.Builder.StakeBuilder;
+    using Fanex.BetList.Core.Builder.StatusBuilder;
+    using Fanex.BetList.Core.Builder.TransBuilder;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Utils;
     using Fanex.BetList.Core.Utils.NPOIExt;
@@ -24,10 +27,6 @@ namespace Fanex.BetList.Core.Builder
     using NPOI.HSSF.UserModel;
     using NPOI.SS.UserModel;
     using NPOI.SS.Util;
-    using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.Builder.TransBuilder;
-    using Fanex.BetList.Core.Builder.StatusBuilder;
-    using Fanex.BetList.Core.App_GlobalResources;
 
     /// <summary>
     /// CoreBetList Excel Builder
@@ -75,12 +74,15 @@ namespace Fanex.BetList.Core.Builder
             _nextCellIndex = -1;
 
             RTFHelper = new RTFHelper()
-                        {
-                            NegFont = _workbook.CreateFont(),
-                            NormalFont = _workbook.CreateFont(),
-                            PosFont = _workbook.CreateFont(),
-                            RTFRenderer = new RtfTextRender()
-                        };
+            {
+                NegFont = _workbook.CreateFont(),
+                NormalFont = _workbook.CreateFont(),
+                PosFont = _workbook.CreateFont(),
+                NegFontCrossed = _workbook.CreateFont(),
+                NormalFontCrossed = _workbook.CreateFont(),
+                PosFontCrossed = _workbook.CreateFont(),
+                RTFRenderer = new RtfTextRender()
+            };
 
             InitDefaultRTFHelper();
             InitDefaultCellStyles();
@@ -264,7 +266,8 @@ namespace Fanex.BetList.Core.Builder
         public BetListExcelBuilder AddChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             IChoice choiceBuilder = CreateChoiceBuilder(ticket.BetTypeId);
-            List<IRichTextString> rtfChoiceList = choiceBuilder.RenderRTF(ticket, ticketHelper, ticketData, false, RTFHelper);
+            List<IRichTextString> rtfChoiceList = choiceBuilder.RenderRTF(ticket, ticketHelper, ticketData, false, RTFHelper); 
+
             foreach (IRichTextString rtfString in rtfChoiceList)
             {
                 AddCell(rtfString);
@@ -557,14 +560,17 @@ namespace Fanex.BetList.Core.Builder
         /// </summary>
         private void InitDefaultRTFHelper()
         {
-            RTFHelper.PosFont.Boldweight = (short)FontBoldWeight.BOLD;
-            RTFHelper.NegFont.Boldweight = (short)FontBoldWeight.BOLD;
-            RTFHelper.NormalFont.Boldweight = (short)FontBoldWeight.NORMAL;
+            RTFHelper.PosFont.Boldweight = RTFHelper.PosFontCrossed.Boldweight = (short)FontBoldWeight.BOLD;
+            RTFHelper.NegFont.Boldweight = RTFHelper.NegFontCrossed.Boldweight = (short)FontBoldWeight.BOLD;
+            RTFHelper.NormalFont.Boldweight = RTFHelper.NormalFontCrossed.Boldweight = (short)FontBoldWeight.NORMAL;
 
-            RTFHelper.NegFont.FontName = RTFHelper.NormalFont.FontName = RTFHelper.PosFont.FontName = "Tahoma";
-            RTFHelper.NegFont.FontHeightInPoints = RTFHelper.NormalFont.FontHeightInPoints = RTFHelper.PosFont.FontHeightInPoints = 9;
+            RTFHelper.NegFont.FontName = RTFHelper.NegFontCrossed.FontName = RTFHelper.NormalFont.FontName = RTFHelper.NormalFontCrossed.FontName = RTFHelper.PosFont.FontName = RTFHelper.PosFontCrossed.FontName = "Tahoma";
 
-            RTFHelper.NegFont.Color = IndexedColors.RED.Index;
+            RTFHelper.NegFont.FontHeightInPoints = RTFHelper.NegFontCrossed.FontHeightInPoints = RTFHelper.NormalFont.FontHeightInPoints = RTFHelper.NormalFontCrossed.FontHeightInPoints = RTFHelper.PosFont.FontHeightInPoints = RTFHelper.PosFontCrossed.FontHeightInPoints = 9;
+
+            RTFHelper.NormalFontCrossed.IsStrikeout = RTFHelper.PosFontCrossed.IsStrikeout = RTFHelper.NegFontCrossed.IsStrikeout = true;
+
+            RTFHelper.NegFont.Color = RTFHelper.NegFontCrossed.Color = IndexedColors.RED.Index;
         }
 
         /// <summary>
@@ -587,7 +593,7 @@ namespace Fanex.BetList.Core.Builder
             EvenCellStyle.FillBackgroundColor = 27;
 
             OddCellStyle.SetFont(RTFHelper.NormalFont);
-            EvenCellStyle.SetFont(RTFHelper.NormalFont);            
+            EvenCellStyle.SetFont(RTFHelper.NormalFont);
 
             OddCellStyleCenterAligned.CloneStyleFrom(OddCellStyle);
             OddCellStyleCenterAligned.Alignment = HorizontalAlignment.CENTER;

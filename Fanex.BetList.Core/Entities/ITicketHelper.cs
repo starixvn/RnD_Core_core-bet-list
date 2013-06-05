@@ -50,7 +50,7 @@ namespace Fanex.BetList.Core.Entities
         int Index { get; set; }
 
         string CurrentLanguage { get; set; }
-        
+
         /// <summary>
         /// Determine if the current render show Odds values for each ticket (Ex: in MixParlay sub-tickets)
         /// </summary>
@@ -81,7 +81,14 @@ namespace Fanex.BetList.Core.Entities
         bool ShowLeague { get; set; }
 
         bool ShowSystemParlayDetail { get; set; }
+
+        /// <summary>
+        /// Method to get *Parlay details
+        /// </summary>
+        GetParlayTicketsById GetParlayDetailById { get; set; }
     }
 
     public delegate string GetCachePropertyById(object id);
+
+    public delegate IList<ITicket> GetParlayTicketsById(object id);
 }
