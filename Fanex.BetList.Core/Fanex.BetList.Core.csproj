@@ -56,9 +56,6 @@
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="TplBuilder">
-      <HintPath>C:\Users\david.tran\Desktop\TplBuilder2010\TplBuilder.dll</HintPath>
-    </Reference>
     <Reference Include="TplCore, Version=1.0.4694.29951, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Users\david.tran\Desktop\TplBuilder2010\TplCore.dll</HintPath>
@@ -148,6 +145,8 @@
     <Compile Include="Builder\ChoiceBuilder\Choice1002.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1101.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1102.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice1103.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice1104.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice12.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1201.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1203.cs" />
