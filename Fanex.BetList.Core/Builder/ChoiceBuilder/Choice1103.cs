@@ -23,7 +23,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
                 if (foundTicketData != null && foundTicketData.Count > 0)
                 {
-                    string betTeamName;
+                    string betTeamName;  
                     string odds;
                     StringBuilder betTeam = new StringBuilder();
 
