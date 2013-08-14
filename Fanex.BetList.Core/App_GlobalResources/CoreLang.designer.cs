@@ -8265,9 +8265,9 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         /// <summary>
         ///   Looks up a localized string similar to Party Baccarat.
         /// </summary>
-        public static string partybaccarat {
+        public static string PartyBaccarat {
             get {
-                return ResourceManager.GetString("partybaccarat", resourceCulture);
+                return ResourceManager.GetString("PartyBaccarat", resourceCulture);
             }
         }
         

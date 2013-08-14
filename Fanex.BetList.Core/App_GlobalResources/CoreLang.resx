@@ -3659,7 +3659,7 @@ Now, gross commission = (your commission percentage) * turnover (excluding Draw 
   <data name="gameTypeAndTableNumber" xml:space="preserve">
     <value>Game Type - Table Number</value>
   </data>
-  <data name="partybaccarat" xml:space="preserve">
+  <data name="PartyBaccarat" xml:space="preserve">
     <value>Party Baccarat</value>
   </data>
   <data name="noChangeToUpdate" xml:space="preserve">
