@@ -5,13 +5,14 @@
 // ---------------------------------------------------------------------------------
 // <history>
 //     <change who="Marc.Bui" date="2012.11.16">Create</change>
+//     <change who="Marc.Bui" date="2013.10.09">Check stylecop & refactor</change>
 // </history>
 // ---------------------------------------------------------------------------------
 
 namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     /// <summary>
-    /// Texas Hold'em
+    /// Texas HOLD'EM.
     /// </summary>
     public class Choice1002 : Choice1000
     {

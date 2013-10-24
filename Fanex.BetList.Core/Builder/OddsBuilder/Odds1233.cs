@@ -12,13 +12,13 @@
 namespace Fanex.BetList.Core.Builder.OddsBuilder
 {
     using System.Collections.Generic;
+    using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
     using Fanex.BetList.Core.Utils;
-    using Fanex.BetList.Core.App_GlobalResources;
 
     /// <summary>
-    /// Virtual Horse Racing - Win/Place
+    /// Virtual Horse Racing - Win/Place.
     /// </summary>
     public class Odds1233 : Odds33
     {
@@ -27,30 +27,31 @@ namespace Fanex.BetList.Core.Builder.OddsBuilder
         /// </summary>
         public Odds1233()
         {
-            winBetId = 1231;
-            placeBetId = 1232;
+            WinBetId = 1231;
+            PlaceBetId = 1232;
         }
 
-        public override Odds_Template Render(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById FuncGetOddsTypeName)
+        /// <summary>
+        /// Renders the specified ticket.
+        /// </summary>
+        /// <param name="ticket">The ticket.</param>
+        /// <param name="ticketData">The ticket data.</param>
+        /// <param name="funcGetOddsTypeName">Name of the function get odds type.</param>
+        /// <returns>Odds_Template object.</returns>
+        public override Odds_Template Render(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
         {
             if (ticketData != null && ticketData.Count > 0)
             {
-                #region declare params
-
                 string odds_win = string.Empty;
                 string odds_place = string.Empty;
-                string oddsWinMarkup, oddsPlaceMarkup;
-
-                #endregion
+                string oddsWinMarkup, oddsPlaceMarkup;               
 
                 List<ITicketData> foundTicketData = this.GetReferenceData(ticket, ticketData);
 
                 if (foundTicketData != null && foundTicketData.Count > 1)
                 {
-                    #region Win/Place
-
-                    ITicketData winTicket = foundTicketData.Find(item => item.BetTypeId == winBetId);
-                    ITicketData placeTicket = foundTicketData.Find(item => item.BetTypeId == placeBetId);
+                    ITicketData winTicket = foundTicketData.Find(item => item.BetTypeId == WinBetId);
+                    ITicketData placeTicket = foundTicketData.Find(item => item.BetTypeId == PlaceBetId);
 
                     string oddsWin = Formatter.FormatNumber3(winTicket.Odds);
                     string oddsPlace = Formatter.FormatNumber3(placeTicket.Odds);
@@ -58,40 +59,13 @@ namespace Fanex.BetList.Core.Builder.OddsBuilder
                     oddsWinMarkup = string.Join(null, new string[] { CoreBetList.win, ": ", "<b>", oddsWin, "</b>" });
                     oddsPlaceMarkup = string.Join(null, new string[] { CoreBetList.place, ": ", "<b>", oddsPlace, "</b>" });
 
-                    #endregion
-
                     string status = ticket.Status.ToLower();
 
-                    odds_win = string.Join(
-                                                null,
-                                                new string[]
-                                                    {
-                                                        "<span class='blue' style='font-weight:normal;'>",
-                                                        oddsWinMarkup,
-                                                        "</span>"
-                                                    }
-                                          );
+                    odds_win = string.Join(null, new string[] { "<span class='blue' style='font-weight:normal;'>", oddsWinMarkup, "</span>" });
 
-                    odds_place = string.Join(
-                                                null,
-                                                new string[]
-                                                    {
-                                                        "<span class='' style='font-weight:normal;'>",
-                                                        oddsPlaceMarkup,
-                                                        "</span>"
-                                                    }
-                                            );
+                    odds_place = string.Join(null, new string[] { "<span class='' style='font-weight:normal;'>", oddsPlaceMarkup, "</span>" });
 
-                    this.Template.odds = string.Join(
-                                                    null,
-                                                    new string[]
-                                                        {
-                                                            odds_win,
-                                                            "<br>",
-                                                            odds_place
-                                                        }
-                                               );
-
+                    this.Template.odds = string.Join(null, new string[] { odds_win, "<br>", odds_place });
                 }
                 else
                 {
@@ -103,7 +77,7 @@ namespace Fanex.BetList.Core.Builder.OddsBuilder
                 this.Template.odds = "-";
             }
 
-            this.Template.oddsType = FuncGetOddsTypeName(ConvertByBetType.OddsType(ticket.BetTypeId, ticket.OddsType));
+            this.Template.oddsType = funcGetOddsTypeName(ConvertByBetType.OddsType(ticket.BetTypeId, ticket.OddsType));
 
             return this.Template;
         }
@@ -113,7 +87,7 @@ namespace Fanex.BetList.Core.Builder.OddsBuilder
         /// </summary>
         /// <param name="ticket">The ticket.</param>
         /// <param name="ticketData">The ticket data.</param>
-        /// <returns></returns>
+        /// <returns>List of reference data.</returns>
         protected override List<ITicketData> GetReferenceData(ITicket ticket, List<ITicketData> ticketData)
         {
             return ticketData.FindAll(item => item.RefNo.Equals(ticket.RefNo));

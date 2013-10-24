@@ -5,18 +5,19 @@
 // ---------------------------------------------------------------------------------
 // <history>
 //     <change who="Marc.Bui" date="2012.11.16">Create</change>
-//     <change who="Marc.Bui" date="2012.11.26">Add Odds to show in Mix Parlay bettypes 
-//                                              (ones with RefNo != 100000000000) </change> 
-//     <change who="Marc.Bui" date="2012.12.4">Add Excel rendering </change> 
-
-//     <change who="Marc.Bui" date="2013.01.18">Update ScoreClassName to BL_FAVORITE (red)
-//                                              for all bettypes</change>
+//     <change who="Marc.Bui" date="2012.11.26">Add Odds to show in Mix Parlay bettypes (ones with RefNo != 100000000000)</change> 
+//     <change who="Marc.Bui" date="2012.12.04">Add Excel rendering </change> 
+//     <change who="Marc.Bui" date="2013.01.18">Update ScoreClassName to BLFAVORITE (red) for all bettypes</change>
 //     <change who="Marc.Bui" date="2013.02.05">Update betteam when the match is Neutral </change> 
 //     <change who="Marc.Bui" date="2013.05.06">Assign ticketStatus to void if tickets is void, use for Sub-tickets markup (Mix Parlay & System Parlay)</change>
 //     <change who="Marc.Bui" date="2013.05.31">Implement export excel with detail data for *Parlay tickets</change>
+//     <change who="Marc.Bui" date="2013.10.09">Check stylecop & refactor</change>
 // </history>
 // ---------------------------------------------------------------------------------
 
+/// <summary>
+/// The ChoiceBuilder namespace.
+/// </summary>
 namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System;
@@ -27,14 +28,14 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using NPOI.SS.UserModel;
 
     /// <summary>
-    /// Handicap
+    /// Bet type name: Handicap.
     /// </summary>
     public class Choice1 : IChoice
     {
         #region Attributes
 
-        protected const string BL_UNDER_DOG = "underdog";
-        protected const string BL_FAVORITE = "favorite";
+        protected const string BLUNDERDOG = "underdog";
+        protected const string BLFAVORITE = "favorite";
 
         #endregion
 
@@ -62,8 +63,8 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         /// <param name="ticket">The ticket.</param>
         /// <param name="ticketHelper">The ticket helper.</param>
         /// <param name="ticketData">The ticket data.</param>
-        /// <param name="isShowScoreMap">if set to <c>true</c> [is show score map].</param>
-        /// <returns>Choice_Template.</returns>
+        /// <param name="isShowScoreMap">If set to <c>true</c> [the score map icon is shown].</param>
+        /// <returns>Choice_Template: the whole Choice block built for input data.</returns>
         public virtual Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
         {
             this.BuildChoice(ticket, ticketHelper, ticketData);
@@ -79,9 +80,15 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         /// <param name="ticket">The ticket.</param>
         /// <param name="ticketHelper">The ticket helper.</param>
         /// <param name="ticketData">The ticket data.</param>
-        /// <param name="isShowScoreMap">if set to <c>true</c> [is show score map].</param>
-        /// <returns>Choice_Template.</returns>
-        public virtual List<IRichTextString> RenderRTF(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap, RTFHelper rtfHelper)
+        /// <param name="isShowScoreMap">If set to <c>true</c> [is show score map].</param>
+        /// <param name="rtfHelper">The RTF helper.</param>
+        /// <returns>List of IRichTextString for input data.</returns>
+        public virtual List<IRichTextString> RenderRTF(
+                                ITicket ticket,
+                                ITicketHelper ticketHelper,
+                                List<ITicketData> ticketData,
+                                bool isShowScoreMap,
+                                RTFHelper rtfHelper)
         {
             this.Render(ticket, ticketHelper, ticketData, isShowScoreMap);
             var choiceData = BuildRTFChoice(ticket, rtfHelper, ticketHelper);
@@ -117,14 +124,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             this.Template.Score.Visible = ticket.IsLive;
             this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
-            this.Template.Match.homeTeam = string.Join(
-                                                    null,
-                                                    new string[] 
-                                                    { 
-                                                        homeName, 
-                                                        ticket.IsNeutral ? " (N) " : string.Empty 
-                                                    }
-                                                );
+            this.Template.Match.homeTeam = string.Join(null, new string[] { homeName, ticket.IsNeutral ? " (N) " : string.Empty });
 
             this.Template.Match.awayTeam = awayName;
             this.Template.League.sportTypeName = ticketHelper.GetSportNameById(ticket.SportTypeId);
@@ -138,15 +138,23 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             this.Template.betTeam = betHomeTeam ? this.Template.Match.homeTeam : awayName;
 
-            this.Template.betTeamClassName = betHomeTeam ? (ticket.Handicap2 >= ticket.Handicap1 ? BL_UNDER_DOG : BL_FAVORITE) : (ticket.Handicap2 <= ticket.Handicap1 ? BL_UNDER_DOG : BL_FAVORITE);
+            if (betHomeTeam)
+            {
+                this.Template.betTeamClassName = ticket.Handicap2 >= ticket.Handicap1 ? BLUNDERDOG : BLFAVORITE;
+            }
+            else
+            {
+                this.Template.betTeamClassName = ticket.Handicap2 <= ticket.Handicap1 ? BLUNDERDOG : BLFAVORITE;
+            }
 
-            this.Template.Score.scoreClassName = BL_FAVORITE;
+            this.Template.Score.scoreClassName = BLFAVORITE;
 
             decimal handicap = ticket.Handicap2 > ticket.Handicap1 ? ticket.Handicap2 : ticket.Handicap1;
 
-            this.Template.Handicap.handicap = ConvertByBetType.Hdp((this.Template.betTeamClassName == BL_FAVORITE) ? -handicap : handicap);
+            this.Template.Handicap.handicap = ConvertByBetType.Hdp((this.Template.betTeamClassName == BLFAVORITE) ? -handicap : handicap);
 
-            if ((ticket.StatusId != null && ticket.StatusId.ToString().Trim() == BetStatusId.Void) || (ticket.Status != null && ticket.Status.Trim().ToLower() == BetStatus.Void))
+            if ((ticket.StatusId != null && ticket.StatusId.ToString().Trim() == BetStatusId.Void)
+                || (ticket.Status != null && ticket.Status.Trim().ToLower() == BetStatus.Void))
             {
                 this.Template.ticketStatus = "void";
             }
@@ -208,138 +216,24 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         /// <param name="ticket">The ticket.</param>
         /// <param name="rtfHelper">The RTF helper.</param>
         /// <param name="ticketHelper">The ticket helper.</param>
-        /// <returns></returns>
+        /// <returns>IRichTextString: the rich text string of input data.</returns>
         protected virtual IRichTextString BuildRTFChoice(ITicket ticket, RTFHelper rtfHelper, ITicketHelper ticketHelper)
         {
             bool isMixParlay = false;
 
-            // the 1st line
             this.AdjustBetTeamToRTF();
-            string choice = Template.betTeam;
 
-            if (Template.Handicap != null && Template.Handicap.Visible && Template.Handicap.handicap != null)
-            {
-                choice += string.Join(null, new string[] { " ", Template.Handicap.handicap });
-            }
-
-            if (Template.Score != null && Template.Score.Visible)
-            {
-                choice += string.Join(null, new string[] { " [", Template.Score.homeScore, "-", Template.Score.awayScore, "]" });
-            }
-
-            if (isMixParlay)
-            {
-                choice += string.Join(null, new string[] { " @ ", Formatter.FormatNumber3(ticket.Odds, null) });
-            }
-
-            if (!string.IsNullOrEmpty(choice))
-            {
-                choice = choice.Replace("&nbsp;", " ");
-                rtfHelper.RTFRenderer.AddText(choice, rtfHelper.PosFont);
-                choice = string.Empty;
-            }
+            // the 1st line
+            this.BuildBetFigure(ticket, ref rtfHelper, isMixParlay);
 
             // the 2nd line
-            if (!string.IsNullOrEmpty(Template.BetType.betTypeName))
-            {
-                choice += Template.BetType.betTypeName;
-            }
-
-            if (!string.IsNullOrEmpty(choice))
-            {
-                choice = choice.Replace("&nbsp;", " ");
-                rtfHelper.RTFRenderer.AddText("\n" + choice);
-                choice = string.Empty;
-            }
+            this.BuildBetTypeName(ref rtfHelper);
 
             // the 3rd line
-            bool isAddNewLine = false;
-
-            if (!string.IsNullOrEmpty(Template.Match.homeTeam))
-            {
-                choice += Template.Match.homeTeam;
-            }
-
-            if (!string.IsNullOrEmpty(choice))
-            {
-                isAddNewLine = true;
-                choice = choice.Replace("&nbsp;", " ");
-                rtfHelper.RTFRenderer.AddText("\n" + choice);
-            }
-
-            if (ticket.EventStatus != null)
-            {
-                Template.Match.home_firstGoal_lastGoal = string.Empty;
-                Template.Match.away_firstGoal_lastGoal = string.Empty;
-                this.CalculateFG_LG_Excel(ticket.EventStatus, ref Template.Match.home_firstGoal_lastGoal, ref Template.Match.away_firstGoal_lastGoal);
-            }
-
-            choice = string.Empty;
-
-            if (!string.IsNullOrEmpty(Template.Match.home_firstGoal_lastGoal))
-            {
-                choice = string.Join(null, new string[] { " " + Template.Match.home_firstGoal_lastGoal });
-            }
-
-            if (!string.IsNullOrEmpty(choice))
-            {
-                isAddNewLine = true;
-                choice = choice.Replace("&nbsp;", " ");
-                rtfHelper.RTFRenderer.AddText(choice, rtfHelper.PosFont);
-            }
-
-            choice = string.Empty;
-            if (Template.Match.VS != null && Template.Match.VS.Visible)
-            {
-                choice = "- vs -";
-            }
-
-            if (!string.IsNullOrEmpty(Template.Match.awayTeam))
-            {
-                choice += string.Join(null, new string[] { " ", Template.Match.awayTeam }); ;
-            }
-
-            if (!string.IsNullOrEmpty(choice))
-            {
-                isAddNewLine = true;
-                choice = choice.Replace("&nbsp;", " ");
-                rtfHelper.RTFRenderer.AddText(choice);
-            }
-
-            choice = string.Empty;
-            if (!string.IsNullOrEmpty(Template.Match.away_firstGoal_lastGoal))
-            {
-                choice = " " + Template.Match.away_firstGoal_lastGoal;
-            }
-
-            if (!string.IsNullOrEmpty(choice) || isAddNewLine)
-            {
-                choice = choice.Replace("&nbsp;", " ");
-                rtfHelper.RTFRenderer.AddText(choice, rtfHelper.PosFont);
-                choice = string.Empty;
-            }
+            this.BuildBetTeamsInfo(ticket, ref rtfHelper);
 
             // the 4th line
-            if (!string.IsNullOrEmpty(Template.League.sportTypeName))
-            {
-                choice += Template.League.sportTypeName;
-            }
-
-            if (Template.League.LeagueName != null && !string.IsNullOrEmpty(Template.League.LeagueName.leagueName))
-            {
-                if (!string.IsNullOrEmpty(choice))
-                {
-                    choice += " ";
-                }
-
-                choice += Template.League.LeagueName.leagueName;
-            }
-
-            if (!string.IsNullOrEmpty(choice))
-            {
-                choice = choice.Replace("&nbsp;", " ");
-                rtfHelper.RTFRenderer.AddText("\n" + choice);
-            }
+            this.BuildMatchInfo(ref rtfHelper);
 
             var choiceRtf = rtfHelper.RTFRenderer.Render();
             rtfHelper.RTFRenderer.Clear();
@@ -401,7 +295,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         /// Builds the score map.
         /// </summary>
         /// <param name="ticket">The ticket.</param>
-        /// <param name="isShowScoreMap">if set to <c>true</c> [is show score map].</param>
+        /// <param name="isShowScoreMap">If set to <c>true</c> [is show score map].</param>
         private void BuildScoreMap(ITicket ticket, bool isShowScoreMap)
         {
             if (isShowScoreMap)
@@ -420,6 +314,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         /// Builds the handicap odds.
         /// </summary>
         /// <param name="ticket">The ticket.</param>
+        /// <param name="ticketHelper">The ticket helper.</param>
         private void BuildHandicapOdds(ITicket ticket, ITicketHelper ticketHelper)
         {
             if (ticketHelper.IsShowOddsWithChoice)
@@ -452,6 +347,149 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                 {
                     this.Template.Handicap.Odds = null;
                 }
+            }
+        }
+
+        /// <summary>
+        /// Builds the bet figure.
+        /// </summary>
+        /// <param name="ticket">The ticket.</param>
+        /// <param name="rtfHelper">The RTF helper.</param>
+        /// <param name="isMixParlay">If set to <c>true</c> [current ticket is mix parlay].</param>
+        private void BuildBetFigure(ITicket ticket, ref RTFHelper rtfHelper, bool isMixParlay)
+        {
+            string choice = Template.betTeam;
+
+            if (Template.Handicap != null && Template.Handicap.Visible && Template.Handicap.handicap != null)
+            {
+                choice += string.Join(null, new string[] { " ", Template.Handicap.handicap });
+            }
+
+            if (Template.Score != null && Template.Score.Visible)
+            {
+                choice += string.Join(null, new string[] { " [", Template.Score.homeScore, "-", Template.Score.awayScore, "]" });
+            }
+
+            if (isMixParlay)
+            {
+                choice += string.Join(null, new string[] { " @ ", Formatter.FormatNumber3(ticket.Odds, null) });
+            }
+
+            if (!string.IsNullOrEmpty(choice))
+            {
+                choice = choice.Replace("&nbsp;", " ");
+                rtfHelper.RTFRenderer.AddText(choice, rtfHelper.PosFont);
+            }
+        }
+
+        /// <summary>
+        /// Builds the name of the bet type.
+        /// </summary>
+        /// <param name="rtfHelper">The RTF helper.</param>
+        private void BuildBetTypeName(ref RTFHelper rtfHelper)
+        {
+            string choice = string.Empty;
+
+            if (!string.IsNullOrEmpty(Template.BetType.betTypeName))
+            {
+                choice = Template.BetType.betTypeName.Replace("&nbsp;", " ");
+                rtfHelper.RTFRenderer.AddText("\n" + choice);
+            }
+        }
+
+        /// <summary>
+        /// Builds the bet teams' information.
+        /// </summary>
+        /// <param name="ticket">The ticket.</param>
+        /// <param name="rtfHelper">The RTF helper.</param>
+        private void BuildBetTeamsInfo(ITicket ticket, ref RTFHelper rtfHelper)
+        {
+            bool isAddNewLine = false;
+            string choice = string.Empty;
+            if (!string.IsNullOrEmpty(Template.Match.homeTeam))
+            {
+                choice = Template.Match.homeTeam.Replace("&nbsp;", " ");
+                isAddNewLine = true;
+                rtfHelper.RTFRenderer.AddText("\n" + choice);
+                choice = string.Empty;
+            }
+
+            this.BuildTicketFG_LG(ticket);
+
+            if (!string.IsNullOrEmpty(Template.Match.home_firstGoal_lastGoal))
+            {
+                choice = string.Join(null, new string[] { " ", Template.Match.home_firstGoal_lastGoal });
+                isAddNewLine = true;
+                choice = choice.Replace("&nbsp;", " ");
+                rtfHelper.RTFRenderer.AddText(choice, rtfHelper.PosFont);
+            }
+            
+            if (Template.Match.VS != null && Template.Match.VS.Visible)
+            {
+                choice = "- vs -";
+            }
+
+            if (!string.IsNullOrEmpty(Template.Match.awayTeam))
+            {
+                choice += string.Join(null, new string[] { " ", Template.Match.awayTeam });
+                isAddNewLine = true;
+                choice = choice.Replace("&nbsp;", " ");
+                rtfHelper.RTFRenderer.AddText(choice);
+            }
+            
+            if (!string.IsNullOrEmpty(Template.Match.away_firstGoal_lastGoal))
+            {
+                choice = " " + Template.Match.away_firstGoal_lastGoal;
+            }
+
+            if (!string.IsNullOrEmpty(choice) || isAddNewLine)
+            {
+                choice = choice.Replace("&nbsp;", " ");
+                rtfHelper.RTFRenderer.AddText(choice, rtfHelper.PosFont);
+            }
+        }
+
+        /// <summary>
+        /// Builds the match information.
+        /// </summary>
+        /// <param name="rtfHelper">The RTF helper.</param>
+        private void BuildMatchInfo(ref RTFHelper rtfHelper)
+        {
+            string choice = string.Empty;
+
+            if (!string.IsNullOrEmpty(Template.League.sportTypeName))
+            {
+                choice = Template.League.sportTypeName;
+            }
+
+            if (Template.League.LeagueName != null && !string.IsNullOrEmpty(Template.League.LeagueName.leagueName))
+            {
+                if (!string.IsNullOrEmpty(choice))
+                {
+                    choice += " ";
+                }
+
+                choice += Template.League.LeagueName.leagueName;
+            }
+
+            if (!string.IsNullOrEmpty(choice))
+            {
+                choice = choice.Replace("&nbsp;", " ");
+                rtfHelper.RTFRenderer.AddText("\n" + choice);
+            }
+        }
+
+        /// <summary>
+        /// Builds First Goal, Last Goal information.
+        /// </summary>
+        /// <param name="ticket">The ticket.</param>
+        private void BuildTicketFG_LG(ITicket ticket)
+        {
+            if (ticket.EventStatus != null)
+            {
+                Template.Match.home_firstGoal_lastGoal = string.Empty;
+                Template.Match.away_firstGoal_lastGoal = string.Empty;
+                this.CalculateFG_LG_Excel(ticket.EventStatus, ref Template.Match.home_firstGoal_lastGoal, ref Template.Match.away_firstGoal_lastGoal);
             }
         }
     }

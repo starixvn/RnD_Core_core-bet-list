@@ -13,56 +13,63 @@ namespace Fanex.BetList.Core.Utils
     using System;
     using System.Globalization;
 
+    /// <summary>
+    /// Casting utilities.
+    /// </summary>
     public static partial class Cast
     {
         /// <summary>
-        /// Returns an object as a Decimal.
+        /// Convert input value object to decimal.
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns>Decimal</returns> 
-        public static Decimal AsDecimal(object value)
+        /// <param name="value">The value.</param>
+        /// <returns>The converted value.</returns>
+        public static decimal AsDecimal(object value)
         {
             return AsDecimal(value, 0, CultureInfo.CurrentCulture);
         }
 
         /// <summary>
-        /// Returns an object as a Decimal.
+        /// Convert input value object to decimal.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="defaultValue">Value returned if cast fails</param>
-        /// <returns>Decimal</returns> 
-        public static Decimal AsDecimal(object value, Decimal defaultValue)
+        /// <param name="value">The value.</param>
+        /// <param name="defaultValue">The default value.</param>
+        /// <returns>The converted value.</returns>
+        public static decimal AsDecimal(object value, decimal defaultValue)
         {
             return AsDecimal(value, defaultValue, CultureInfo.CurrentCulture);
         }
 
         /// <summary>
-        /// Returns an object as a Decimal.
+        /// Convert input value object to decimal.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="provider">Instance of IFormatProvider</param>
-        /// <returns>Decimal</returns> 
-        public static Decimal AsDecimal(object value, IFormatProvider provider)
+        /// <param name="value">The value.</param>
+        /// <param name="provider">The provider.</param>
+        /// <returns>The converted value.</returns>
+        public static decimal AsDecimal(object value, IFormatProvider provider)
         {
             return AsDecimal(value, 0, provider);
         }
 
         /// <summary>
-        /// Returns an object as a Decimal.
+        /// Convert input value object to decimal.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="defaultValue">Value returned if cast fails</param>
-        /// <param name="provider">Instance of IFormatProvider</param>
-        /// <returns>Decimal</returns> 
-        public static Decimal AsDecimal(object value, Decimal defaultValue, IFormatProvider provider)
+        /// <param name="value">The value.</param>
+        /// <param name="defaultValue">The default value.</param>
+        /// <param name="provider">The provider.</param>
+        /// <returns>The converted value.</returns>
+        public static decimal AsDecimal(object value, decimal defaultValue, IFormatProvider provider)
         {
             if (value == null || value == System.DBNull.Value)
+            {
                 return defaultValue;
+            }
 
-            Decimal retval;
+            decimal retval;
 
             if (provider == null)
+            {
                 provider = CultureInfo.CurrentCulture;
+            }
 
             try
             {
@@ -76,30 +83,29 @@ namespace Fanex.BetList.Core.Utils
             {
                 retval = defaultValue;
             }
+
             return retval;
         }
 
-
         /// <summary>
-        /// Returns an object as a Decimal using invariant culture
+        /// Convert input value object to decimal invariant.
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public static Decimal AsDecimalInvariant(object value)
+        /// <param name="value">The value.</param>
+        /// <returns>The converted value.</returns>
+        public static decimal AsDecimalInvariant(object value)
         {
             return AsDecimal(value, 0, CultureInfo.InvariantCulture);
         }
 
         /// <summary>
-        /// Returns an object as a Decimal using invariant culture
+        /// Convert input value object to decimal invariant.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="defaultValue"></param>
-        /// <returns></returns>
-        public static Decimal AsDecimalInvariant(object value, Decimal defaultValue)
+        /// <param name="value">The value.</param>
+        /// <param name="defaultValue">The default value.</param>
+        /// <returns>The converted value.</returns>
+        public static decimal AsDecimalInvariant(object value, decimal defaultValue)
         {
             return AsDecimal(value, defaultValue, CultureInfo.InvariantCulture);
         }
-
     }
 }

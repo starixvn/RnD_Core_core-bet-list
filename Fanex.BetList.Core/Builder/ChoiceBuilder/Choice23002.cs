@@ -15,7 +15,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    /// Casino pending
+    /// Casino pending.
     /// </summary>
     public class Choice23002 : Choice1
     {
@@ -36,7 +36,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             this.Template.Handicap.handicap = null;
 
             this.Template.betTeam = CoreBetList.casinoGame;
-            this.Template.betTeamClassName = BL_FAVORITE;
+            this.Template.betTeamClassName = BLFAVORITE;
         }
     }
 }

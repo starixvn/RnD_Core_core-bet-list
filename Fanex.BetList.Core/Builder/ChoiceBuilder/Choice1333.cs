@@ -9,6 +9,9 @@
 // </history>
 // ---------------------------------------------------------------------------------
 
+/// <summary>
+/// The ChoiceBuilder namespace.
+/// </summary>
 namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
@@ -16,9 +19,9 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    ///      Set x Games y & y+1 Winner
+    ///  Set x Games y and y+1 Winner.
     /// </summary>
-    public class Choice1333 :Choice1
+    public class Choice1333 : Choice1
     {
         /// <summary>
         /// Builds the choice.
@@ -37,7 +40,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
 
             this.Template.betTeam = team1 ? this.Template.Match.homeTeam : team2 ? awayName : CoreLang.lblNeither;
-            this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);   
+            this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);
         }
     }
 }

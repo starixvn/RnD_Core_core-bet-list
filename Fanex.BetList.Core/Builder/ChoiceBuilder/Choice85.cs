@@ -5,6 +5,7 @@
 // ---------------------------------------------------------------------------------
 // <history>
 //     <change who="Marc.Bui" date="2012.11.16">Create</change>
+//     <change who="Marc.Bui" date="2013.10.09">Check stylecop & refactor</change>
 // </history>
 // ---------------------------------------------------------------------------------
 
@@ -16,7 +17,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
     /// <summary>
     /// Next Over/Under
-    /// it supports live ball, so always 37.5
+    /// it supports live ball, so always 37.5.
     /// </summary>
     public class Choice85 : Choice3
     {
@@ -48,52 +49,20 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             string bettypeName = this.Template.BetType.betTypeName;
             if (!ticket.IsLive)
             {
-                bettypeName = string.Join(
-                                                null,
-                                                new string[]
-                                                {
-                                                    CoreBetList.ft,
-                                                    ". ",
-                                                    bettypeName
-                                                }
-                                         );
+                bettypeName = string.Join(null, new string[] { CoreBetList.ft, ". ", bettypeName });
             }
             else
             {
-                bettypeName = string.Join(
-                                                null,
-                                                new string[]
-                                                {
-                                                    CoreBetList.next,
-                                                    "&nbsp;",
-                                                    bettypeName
-                                                }
-                                         );
+                bettypeName = string.Join(null, new string[] { CoreBetList.next, "&nbsp;", bettypeName });
 
-                liveScore = (!ticket.IsLive || betId == string.Empty) ? " [0]" : string.Join(
-                                                                                                null,
-                                                                                                new string[]
-                                                                                                {
-                                                                                                    " [",
-                                                                                                    betId,
-                                                                                                    "]"
-                                                                                                }
-                                                                                            );
+                liveScore = (!ticket.IsLive || betId == string.Empty) ? " [0]" : string.Join(null, new string[] { " [", betId, "]" });
             }
 
             this.Template.betTeam = betTeam + liveScore;
-            this.Template.betTeamClassName = BL_FAVORITE;
+            this.Template.betTeamClassName = BLFAVORITE;
 
-            this.Template.BetType.betTypeName = bettypeName;            
-            this.Template.Match.homeTeam = string.Join(
-                                                null,
-                                                new string[]
-                                                {
-                                                    CoreBetList.numbergameno,
-                                                    "&nbsp;",
-                                                    ticket.MatchCode
-                                                }
-                                           );
+            this.Template.BetType.betTypeName = bettypeName;
+            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, "&nbsp;", ticket.MatchCode });
         }
     }
 }

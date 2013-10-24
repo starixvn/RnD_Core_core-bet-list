@@ -15,7 +15,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Utils;
 
     /// <summary>
-    /// First Goal/Last Goal
+    /// First Goal/Last Goal.
     /// </summary>
     public class Choice14 : Choice1
     {
@@ -30,7 +30,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
             this.Template.betTeam = ConvertByBetType.GetBetTeam(ticket.BetTeam, ticket.BetTypeId);
-            this.Template.betTeamClassName = BL_FAVORITE;
+            this.Template.betTeamClassName = BLFAVORITE;
             this.Template.Handicap.handicap = null;
         }
     }

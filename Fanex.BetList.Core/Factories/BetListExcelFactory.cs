@@ -13,14 +13,14 @@ namespace Fanex.BetList.Core.Factories
     using Fanex.BetList.Core.Builder;
 
     /// <summary>
-    /// Class BetListExcelFactory
+    /// Class BetListExcelFactory.
     /// </summary>
     public class BetListExcelFactory : IBetListFactory
     {
         /// <summary>
         /// Creates the builder.
         /// </summary>
-        /// <returns>BetListExcelBuilder.</returns>
+        /// <returns>BetListExcelBuilder object.</returns>
         public BetListExcelBuilder CreateBuilder()
         {
             BetListExcelBuilder builder = new BetListExcelBuilder();

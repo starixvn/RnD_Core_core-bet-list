@@ -15,7 +15,7 @@ namespace Fanex.BetList.Core.Builder.TransBuilder
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    /// Casino Games
+    /// Casino Games.
     /// </summary>
     public class Trans71 : Trans1
     {

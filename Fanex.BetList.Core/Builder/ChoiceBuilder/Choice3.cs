@@ -5,10 +5,9 @@
 // ---------------------------------------------------------------------------------
 // <history>
 //     <change who="Marc.Bui" date="2012.11.16">Create</change>
-//     <change who="Marc.Bui" date="2013.01.18">Update ScoreClassName to BL_FAVORITE (red)
-//                                              for all bettypes</change>
+//     <change who="Marc.Bui" date="2013.01.18">Update ScoreClassName to BLFAVORITE (red) for all bettypes</change>
 //     <change who="Marc.Bui" date="2013.01.23">Update betTeamClassName to follow general rules
-//                                              Over/Under - red/black regardless whether it's live</change>
+//                                              - Over/Under - red/black regardless whether it's live</change>
 // </history>
 // ---------------------------------------------------------------------------------
 
@@ -20,7 +19,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Utils;
 
     /// <summary>
-    /// Over/Under
+    /// Bet Type: Over/Under.
     /// </summary>
     public class Choice3 : Choice1
     {

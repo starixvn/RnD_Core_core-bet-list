@@ -5,8 +5,7 @@
 // ---------------------------------------------------------------------------------
 // <history>
 //     <change who="Marc.Bui" date="2012.11.16">Create</change>
-//     <change who="Marc.Bui" date="2013.03.11">Update condition to work with 
-//                                              Template changes made by Steven</change>
+//     <change who="Marc.Bui" date="2013.03.11">Update condition to work with Template changes made by Steven</change>
 // </history>
 // ---------------------------------------------------------------------------------
 
@@ -17,7 +16,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    /// Casino Games
+    /// Casino Games.
     /// </summary>
     public class Choice71 : Choice1
     {
@@ -42,7 +41,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             this.Template.League.LeagueName.leagueName = null;
 
             this.Template.betTeam = CoreBetList.casinoGame;
-            this.Template.betTeamClassName = BL_FAVORITE;                        
+            this.Template.betTeamClassName = BLFAVORITE;                        
         }
     }
 }

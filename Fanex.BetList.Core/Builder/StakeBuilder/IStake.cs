@@ -29,14 +29,15 @@ namespace Fanex.BetList.Core.Builder.StakeBuilder
         /// Renders the specified ticket.
         /// </summary>
         /// <param name="ticket">The ticket.</param>
-        /// <returns>Stake_Template.</returns>
+        /// <returns>Stake_Template: the whole Stake block.</returns>
         Stake_Template Render(ITicket ticket);
 
         /// <summary>
         /// Renders the RTF.
         /// </summary>
         /// <param name="ticket">The ticket.</param>
-        /// <returns>IRichTextString</returns>
+        /// <param name="rtfHelper">The RTF helper.</param>
+        /// <returns>IRichTextString represents the Stake block.</returns>
         IRichTextString RenderRTF(ITicket ticket, RTFHelper rtfHelper);
     }
 }

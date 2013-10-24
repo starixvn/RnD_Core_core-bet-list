@@ -31,18 +31,18 @@ namespace Fanex.BetList.Core.Builder.OddsBuilder
         /// </summary>
         /// <param name="ticket">The ticket.</param>
         /// <param name="ticketData">The ticket data.</param>
-        /// <param name="FuncGetOddsTypeName">Name of the func get odds type.</param>
-        /// <returns>Odds_Template.</returns>
-        Odds_Template Render(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById FuncGetOddsTypeName);
+        /// <param name="funcGetOddsTypeName">Name of the function get odds type.</param>
+        /// <returns>Odds_Template: the whole Odds block, built on input data.</returns>
+        Odds_Template Render(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName);
 
         /// <summary>
         /// Renders the RTF.
         /// </summary>
         /// <param name="ticket">The ticket.</param>
         /// <param name="ticketData">The ticket data.</param>
-        /// <param name="FuncGetOddsTypeName">Name of the func get odds type.</param>
+        /// <param name="funcGetOddsTypeName">Name of the function get odds type.</param>
         /// <param name="rtfHelper">The RTF helper.</param>
-        /// <returns>IRichTextString</returns>
-        IRichTextString RenderRTF(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById FuncGetOddsTypeName, RTFHelper rtfHelper);
+        /// <returns>IRichTextString represents the Odds.</returns>
+        IRichTextString RenderRTF(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName, RTFHelper rtfHelper);
     }
 }

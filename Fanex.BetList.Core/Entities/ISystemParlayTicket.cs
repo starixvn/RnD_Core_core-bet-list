@@ -4,6 +4,7 @@
 // </copyright>
 // ---------------------------------------------------------------------------------
 // <history>
+//     <change who="Marc.Bui" date="2013.10.24">Apply stylecop</change>
 //     <change who="Jacob.Phan" date="2012.11.16">Create</change>
 // </history>
 // ---------------------------------------------------------------------------------
@@ -13,58 +14,68 @@ namespace Fanex.BetList.Core.Entities
     using System;
 
     /// <summary>
-    /// SystemParlayTicket data interface
+    /// SystemParlayTicket data interface.
     /// </summary>
     public interface ISystemParlayTicket
     {
         /// <summary>
-        /// Win Loss Date
+        /// Gets or sets Win Loss Date.
         /// </summary>
+        /// <value>The win lost date.</value>
         DateTime WinLostDate { get; set; }
 
         /// <summary>
-        /// TransId
+        /// Gets or sets TransId.
         /// </summary>
+        /// <value>The trans identifier.</value>
         long TransId { get; set; }
 
         /// <summary>
-        /// Serial number
+        /// Gets or sets Serial number.
         /// </summary>
+        /// <value>The serial.</value>
         long Serial { get; set; }
 
         /// <summary>
-        /// Status Id
+        /// Gets or sets Status Id.
         /// </summary>
+        /// <value>The status identifier.</value>
         int StatusId { get; set; }
 
         /// <summary>
-        /// Status name
+        /// Gets or sets Status name.
         /// </summary>
+        /// <value>The status.</value>
         string Status { get; set; }
 
         /// <summary>
-        /// Multiple odds
+        /// Gets or sets Multiple odds.
         /// </summary>
+        /// <value>The m odds.</value>
         decimal MOdds { get; set; }
 
         /// <summary>
-        /// Stake
+        /// Gets or sets Stake.
         /// </summary>
+        /// <value>The stake.</value>
         decimal Stake { get; set; }
 
         /// <summary>
-        /// Win Lost
+        /// Gets or sets Win-Loss.
         /// </summary>
+        /// <value>The win lost.</value>
         decimal WinLost { get; set; }
 
         /// <summary>
-        /// Commission
+        /// Gets or sets Commission.
         /// </summary>
+        /// <value>The commission.</value>
         decimal Comm { get; set; }
 
         /// <summary>
-        /// Player commission
+        /// Gets or sets Player's commission.
         /// </summary>
+        /// <value>The player commission.</value>
         decimal PlayerComm { get; set; }
     }
 }

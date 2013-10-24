@@ -10,9 +10,13 @@
 // </history>
 // ---------------------------------------------------------------------------------
 
-using System;
 namespace Fanex.BetList.Core.Entities
 {
+    using System;
+
+    /// <summary>
+    /// Ticket Data.
+    /// </summary>
     [Serializable]
     public class TicketData : ITicketData
     {
@@ -23,8 +27,10 @@ namespace Fanex.BetList.Core.Entities
         public int BetTypeId { get; set; }
 
         /// <summary>
-        /// Running, Waiting, Refund, Void, Won, Lose, Draw, Reject
+        /// Gets or sets the status.
+        /// Values: Running, Waiting, Refund, Void, Won, Lose, Draw, Reject.
         /// </summary>
+        /// <value>The status.</value>
         public string Status { get; set; }
 
         public decimal Odds { get; set; }

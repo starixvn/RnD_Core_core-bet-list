@@ -17,7 +17,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    /// Outright
+    /// Outright bet type.
     /// </summary>    
     public class Choice10 : Choice1
     {
@@ -52,7 +52,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
             this.Template.betTeam = ticketHelper.GetTeamNameById(ticket.HomeId == 0 ? ticket.AwayId : ticket.HomeId);
-            this.Template.betTeamClassName = BL_FAVORITE;
+            this.Template.betTeamClassName = BLFAVORITE;
 
             if (this.Template.League != null)
             {

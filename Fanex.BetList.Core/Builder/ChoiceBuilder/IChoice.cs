@@ -16,7 +16,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using NPOI.SS.UserModel;
 
     /// <summary>
-    /// TODO: Update summary.
+    /// The top abstract layer of Choice.
     /// </summary>
     public interface IChoice
     {
@@ -32,8 +32,8 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         /// <param name="ticket">The ticket.</param>
         /// <param name="ticketHelper">The ticket helper.</param>
         /// <param name="ticketData">The ticket data.</param>
-        /// <param name="isShowScoreMap">if set to <c>true</c> [is show score map].</param>
-        /// <returns>Choice_Template.</returns>
+        /// <param name="isShowScoreMap">If set to <c>true</c> [is show score map].</param>
+        /// <returns>Choice_Template: the whole Choice block, built on input data.</returns>
         Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap);
 
         /// <summary>
@@ -42,9 +42,9 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         /// <param name="ticket">The ticket.</param>
         /// <param name="ticketHelper">The ticket helper.</param>
         /// <param name="ticketData">The ticket data.</param>
-        /// <param name="isShowScoreMap">if set to <c>true</c> [is show score map].</param>
+        /// <param name="isShowScoreMap">If set to <c>true</c> [is show score map].</param>
         /// <param name="rtfHelper">The RTF helper.</param>
-        /// <returns>List<IRichTextString></returns>
+        /// <returns>List of IRichTextString for the whole Choice block.</returns>
         List<IRichTextString> RenderRTF(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap, RTFHelper rtfHelper);
     }
 }

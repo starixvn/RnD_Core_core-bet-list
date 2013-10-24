@@ -14,9 +14,9 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    ///  Set x Winner
+    ///  Set x Winner.
     /// </summary>
-    public class Choice1311:Choice20
+    public class Choice1311 : Choice20
     {
         /// <summary>
         /// Builds the choice.

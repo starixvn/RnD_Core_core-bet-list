@@ -13,16 +13,16 @@ namespace Fanex.BetList.Core.Builder.SystemParlayBuilder
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    /// Handicap
+    /// Bet Type: Handicap.
     /// </summary>
     public interface ISystemParlayDetail
     {
         /// <summary>
-        /// Build html
+        /// Builds the specified ticket helper.
         /// </summary>
-        /// <param name="ticketHelper"></param>
-        /// <param name="systemParlayData"></param>
-        /// <returns></returns>
+        /// <param name="ticketHelper">The ticket helper.</param>
+        /// <param name="systemParlayData">The system parlay data.</param>
+        /// <returns>System.String: HTML string represents the System Parlay detail.</returns>
         string Build(ITicketHelper ticketHelper, ISystemParlayData systemParlayData);
     }
 }

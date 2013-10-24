@@ -15,10 +15,16 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    /// Virtual Tennis - ScoreBet
+    /// Virtual Tennis - ScoreBet.
     /// </summary>
     public class Choice1235 : Choice1220
     {
+        /// <summary>
+        /// Builds the choice.
+        /// </summary>
+        /// <param name="ticket">The ticket.</param>
+        /// <param name="ticketHelper">The ticket helper.</param>
+        /// <param name="ticketData">The ticket data.</param>
         protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);

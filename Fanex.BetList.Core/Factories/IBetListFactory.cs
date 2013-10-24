@@ -14,7 +14,6 @@ namespace Fanex.BetList.Core.Factories
     /// TODO: Update summary.
     /// </summary>
     public interface IBetListFactory
-    {
-        
+    {        
     }
 }

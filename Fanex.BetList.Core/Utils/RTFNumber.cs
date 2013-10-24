@@ -12,39 +12,42 @@ namespace Fanex.BetList.Core.Utils
 {
     using NPOI.SS.UserModel;
 
+    /// <summary>
+    /// Class RTFNumber.
+    /// </summary>
     public class RTFNumber
     {
-        private IFont posFontText;
-        private IFont negFontText;
-        private RtfTextRender renderContent;
+        private IFont _posFontText;
+        private IFont _negFontText;
+        private RtfTextRender _renderContent;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RTFNumber" /> class.
         /// </summary>
         /// <param name="render">The render.</param>
-        /// <param name="posFont">The pos font.</param>
-        /// <param name="negFont">The neg font.</param>
+        /// <param name="posFont">The positive font.</param>
+        /// <param name="negFont">The negative font.</param>
         public RTFNumber(RtfTextRender render, IFont posFont, IFont negFont)
         {
-            this.renderContent = render;
-            this.posFontText = posFont;
-            this.negFontText = negFont;
+            this._renderContent = render;
+            this._posFontText = posFont;
+            this._negFontText = negFont;
         }
 
         /// <summary>
         /// Renders the specified text.
         /// </summary>
-        /// <param name="text">The text.</param>
+        /// <param name="text">The text to render.</param>
         public void Render(string text)
         {
             string removeText = text.Replace(ConvertByBetType.FontOpenTag, string.Empty).Replace(ConvertByBetType.FontCloseTag, string.Empty);
             if (text.Length == removeText.Length)
             {
-                this.renderContent.AddText(removeText, this.posFontText);
+                this._renderContent.AddText(removeText, this._posFontText);
             }
             else
             {
-                this.renderContent.AddText(removeText, this.negFontText);
+                this._renderContent.AddText(removeText, this._negFontText);
             }
         }
     }    

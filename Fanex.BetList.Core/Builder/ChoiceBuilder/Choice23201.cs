@@ -15,7 +15,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    /// Bingo Transfer
+    /// Bingo Transfer.
     /// </summary>
     public class Choice23201 : Choice1
     {
@@ -36,7 +36,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             this.Template.Handicap.handicap = null;
 
             this.Template.betTeam = string.Join(null, new string[] { CoreBetList.bingo, " - ", CoreBetList.transfer });
-            this.Template.betTeamClassName = BL_FAVORITE;
+            this.Template.betTeamClassName = BLFAVORITE;
         }
     }
 }

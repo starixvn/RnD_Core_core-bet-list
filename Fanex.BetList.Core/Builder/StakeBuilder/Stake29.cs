@@ -8,18 +8,21 @@
 // </history>
 // ---------------------------------------------------------------------------------
 
+/// <summary>
+/// The StakeBuilder namespace.
+/// </summary>
 namespace Fanex.BetList.Core.Builder.StakeBuilder
 {
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
     using Fanex.BetList.Core.Utils;
     using NPOI.SS.UserModel;
-    using NPOI.HSSF.UserModel;
 
+    /// <summary>
+    /// Combination Mix Parlay.
+    /// </summary>
     public class Stake29 : IStake
     {
-        public Stake_Template Template { get; set; }
-
         /// <summary>
         /// Initializes a new instance of the <see cref="Stake29" /> class.
         /// </summary>
@@ -28,26 +31,18 @@ namespace Fanex.BetList.Core.Builder.StakeBuilder
             this.Template = new Stake_Template();
         }
 
+        public Stake_Template Template { get; set; }
+
         /// <summary>
         /// Renders the specified ticket.
         /// </summary>
         /// <param name="ticket">The ticket.</param>
-        /// <returns>Stake_Template.</returns>
+        /// <returns>Stake_Template: the whole Stake block.</returns>
         public Stake_Template Render(ITicket ticket)
         {
             this.Template.stake = (Cast.AsDecimal(ticket.Stake) == 0)
                           ? ConvertByBetType.Stake(ticket.ActualStake)
-                          : string.Join(
-                                            null,
-                                            new string[] 
-                                            { 
-                                                ConvertByBetType.Stake(ticket.ActualStake), 
-                                                "<br/>", 
-                                                "&nbsp;(", 
-                                                ConvertByBetType.Stake(ticket.Stake), 
-                                                ")" 
-                                            }
-                                       );
+                          : string.Join(null, new string[] { ConvertByBetType.Stake(ticket.ActualStake), "<br/>", "&nbsp;(", ConvertByBetType.Stake(ticket.Stake), ")" });
             return Template;
         }
 
@@ -55,9 +50,8 @@ namespace Fanex.BetList.Core.Builder.StakeBuilder
         /// Renders the RTF.
         /// </summary>
         /// <param name="ticket">The ticket.</param>
-        /// <returns>
-        /// IRichTextString
-        /// </returns>
+        /// <param name="rtfHelper">The RTF helper.</param>
+        /// <returns>IRichTextString represents the Stake block.</returns>
         public IRichTextString RenderRTF(ITicket ticket, RTFHelper rtfHelper)
         {
             Render(ticket);

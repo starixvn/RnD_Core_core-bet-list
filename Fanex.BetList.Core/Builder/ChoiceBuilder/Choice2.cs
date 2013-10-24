@@ -6,7 +6,7 @@
 // <history>
 //     <change who="Marc.Bui" date="2012.11.16">Create</change>
 //     <change who="Marc.Bui" date="2013.01.23">Update betTeamClassName to follow general rules
-//                                              Odd/Even - red/black</change>
+//                                              - Odd/Even - red/black</change>
 // </history>
 // ---------------------------------------------------------------------------------
 
@@ -17,7 +17,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    /// Odd/Even
+    /// Bet Type: Odd/Even.
     /// </summary>
     public class Choice2 : Choice1
     {
@@ -33,8 +33,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             this.Template.Handicap.handicap = null;
             this.Template.betTeam = ticket.BetTeam == "h" ? CoreBetList.odd : CoreBetList.even;
-            this.Template.betTeamClassName = this.Template.betTeam == CoreBetList.odd ? BL_FAVORITE : BL_UNDER_DOG;
-
+            this.Template.betTeamClassName = this.Template.betTeam == CoreBetList.odd ? BLFAVORITE : BLUNDERDOG;
         }
     }
 }

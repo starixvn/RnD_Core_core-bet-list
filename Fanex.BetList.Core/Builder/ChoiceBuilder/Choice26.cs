@@ -15,9 +15,9 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    /// Both/One/Neither team to score
+    /// Both/One/Neither team to score.
     /// </summary>
-    public class Choice26:Choice1
+    public class Choice26 : Choice1
     {
         /// <summary>
         /// Builds the choice.
@@ -29,7 +29,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            this.Template.Handicap.handicap = null;      
+            this.Template.Handicap.handicap = null;
 
             if (ticket.BetTeam == "b")
             {
@@ -44,7 +44,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                 this.Template.betTeam = CoreBetList.nogoal;
             }
 
-            this.Template.betTeamClassName = BL_FAVORITE;              
+            this.Template.betTeamClassName = BLFAVORITE;
         }
     }
 }

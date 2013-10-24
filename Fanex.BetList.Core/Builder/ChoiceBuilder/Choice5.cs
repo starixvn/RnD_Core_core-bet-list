@@ -5,6 +5,7 @@
 // ---------------------------------------------------------------------------------
 // <history>
 //     <change who="Marc.Bui" date="2012.11.16">Create</change>
+//     <change who="Marc.Bui" date="2013.10.09">Check stylecop & refactor</change>
 // </history>
 // ---------------------------------------------------------------------------------
 
@@ -15,7 +16,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    /// FT. 1x2
+    /// Bet Type: FT. 1x2.
     /// </summary>
     public class Choice5 : Choice1
     {
@@ -31,16 +32,8 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             this.Template.Handicap.handicap = null;
 
-            this.Template.betTeamClassName = BL_FAVORITE;
-            this.Template.betTeam = string.Join(
-                                                    null, 
-                                                    new string[] 
-                                                    { 
-                                                        CoreBetList.ft, 
-                                                        ".", 
-                                                        ticket.BetTeam.ToUpper()
-                                                    }
-                                               );
+            this.Template.betTeamClassName = BLFAVORITE;
+            this.Template.betTeam = string.Join(null, new string[] { CoreBetList.ft, ".", ticket.BetTeam.ToUpper() });
         }
     }
 }

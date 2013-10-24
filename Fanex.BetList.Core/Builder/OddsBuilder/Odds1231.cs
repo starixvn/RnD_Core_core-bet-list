@@ -15,9 +15,19 @@ namespace Fanex.BetList.Core.Builder.OddsBuilder
     using Fanex.BetList.Core.Templates;
     using Fanex.BetList.Core.Utils;
 
+    /// <summary>
+    /// Virtual Horse Racing - Win.
+    /// </summary>
     public class Odds1231 : Odds1
     {
-        public override Odds_Template Render(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById FuncGetOddsTypeName)
+        /// <summary>
+        /// Renders the specified ticket.
+        /// </summary>
+        /// <param name="ticket">The ticket.</param>
+        /// <param name="ticketData">The ticket data.</param>
+        /// <param name="funcGetOddsTypeName">Name of the function get odds type.</param>
+        /// <returns>Odds_Template: the whole Odds block.</returns>
+        public override Odds_Template Render(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
         {
             object oddsType = new object();
 
@@ -31,7 +41,7 @@ namespace Fanex.BetList.Core.Builder.OddsBuilder
             }
 
             this.Template.odds = ConvertByBetType.VirtualHorseRacingOdds(ticket.Odds, ticket.BetTypeId, oddsType);
-            this.Template.oddsType = FuncGetOddsTypeName(ConvertByBetType.OddsType(ticket.BetTypeId, oddsType));
+            this.Template.oddsType = funcGetOddsTypeName(ConvertByBetType.OddsType(ticket.BetTypeId, oddsType));
 
             return this.Template;
         }

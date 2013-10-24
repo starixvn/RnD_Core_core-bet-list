@@ -5,9 +5,9 @@
 // ---------------------------------------------------------------------------------
 // <history>
 //     <change who="Marc.Bui" date="2012.11.16">Create</change>
-//     <change who="Marc.Bui" date="2013.01.18">Update ScoreClassName to BL_FAVORITE (red)
-//                                              for all bettypes</change>
+//     <change who="Marc.Bui" date="2013.01.18">Update ScoreClassName to BLFAVORITE (red) for all bettypes</change>
 //     <change who="Marc.Bui" date="2013.02.21">Update showing Neutral</change>
+//     <change who="Marc.Bui" date="2013.10.09">Check stylecop & refactor</change>
 // </history>
 // ---------------------------------------------------------------------------------
 
@@ -18,7 +18,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    /// Home no bet
+    /// Home no bet.
     /// </summary>
     public class Choice121 : Choice1
     {
@@ -36,7 +36,16 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
 
             this.Template.betTeam = betHomeTeam ? CoreLang.lblDraw : awayName;
-            this.Template.betTeamClassName = betHomeTeam ? (ticket.Handicap2 >= ticket.Handicap1 ? BL_UNDER_DOG : BL_FAVORITE) : (ticket.Handicap2 <= ticket.Handicap1 ? BL_UNDER_DOG : BL_FAVORITE);
+
+            if (betHomeTeam)
+            {
+                this.Template.betTeamClassName = ticket.Handicap2 >= ticket.Handicap1 ? BLUNDERDOG : BLFAVORITE;
+            }
+            else
+            {
+                this.Template.betTeamClassName = ticket.Handicap2 <= ticket.Handicap1 ? BLUNDERDOG : BLFAVORITE;
+            }
+
             this.Template.Handicap.handicap = null;
 
             this.Template.Score.homeScore = ticket.LiveHomeScore.ToString();

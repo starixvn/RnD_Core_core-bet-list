@@ -5,8 +5,7 @@
 // ---------------------------------------------------------------------------------
 // <history>
 //     <change who="Marc.Bui" date="2012.11.16">Create</change>
-//     <change who="Marc.Bui" date="2013.01.24">Update betTeamClassName to follow general rules
-//                                              Choice: black </change>
+//     <change who="Marc.Bui" date="2013.01.24">Update betTeamClassName to follow general rules Choice: black</change>
 // </history>
 // ---------------------------------------------------------------------------------
 
@@ -16,7 +15,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    /// Match Correct Score
+    /// Match Correct Score.
     /// </summary>
     public class Choice1302 : Choice1
     {
@@ -38,11 +37,11 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                 betTeam = string.Join(null, new string[] { ticket.BetTeam.Substring(0, 1), ":", ticket.BetTeam.Substring(1, 1) });
             }
 
-            // "&nbsp" because export format
+            // "&nbsp" for the export format
             this.Template.betTeam = string.Join(null, new string[] { "&nbsp;", betTeam });
             this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);
 
-            this.Template.betTeamClassName = BL_UNDER_DOG;
+            this.Template.betTeamClassName = BLUNDERDOG;
         }
     }
 }

@@ -14,23 +14,26 @@ namespace Fanex.BetList.Core.Entities
     using System.Collections.Generic;
 
     /// <summary>
-    /// SystemParlayData data class
+    /// SystemParlayData data class.
     /// </summary>
     public class SystemParlayData : ISystemParlayData
     {
         /// <summary>
-        /// Ticket List
+        /// Gets or sets Ticket List.
         /// </summary>
+        /// <value>The ticket list.</value>
         public IList<ISystemParlayTicket> TicketList { get; set; }
 
         /// <summary>
-        /// Ticket List
+        /// Gets or sets Serial List.
         /// </summary>
+        /// <value>The serial list.</value>
         public IList<ISystemParlaySerial> SerialList { get; set; }
 
         /// <summary>
-        /// Away Id
+        /// Gets or sets Away Id.
         /// </summary>
+        /// <value>The outstanding.</value>
         public decimal Outstanding { get; set; }
     }
 }

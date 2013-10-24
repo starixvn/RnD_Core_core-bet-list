@@ -15,7 +15,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    /// Next Odd/Even
+    /// Next Odd/Even.
     /// </summary>
     public class Choice86 : Choice2
     {
@@ -58,8 +58,8 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             
             this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, "&nbsp;", ticket.MatchCode });
 
-            //Bet team name is always in red for this bettype
-            this.Template.betTeamClassName = BL_FAVORITE;
+            // Bet team name is always in red for this bettype
+            this.Template.betTeamClassName = BLFAVORITE;
         }
     }
 }

@@ -19,10 +19,18 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
     using NPOI.SS.UserModel;
 
     /// <summary>
-    /// Build Status cell
+    /// Build Status cell.
     /// </summary>
     public class Status1 : IStatus
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Status1" /> class.
+        /// </summary>
+        public Status1()
+        {
+            this.Template = new Status_Template();
+        }
+
         /// <summary>
         /// Gets or sets the template.
         /// </summary>
@@ -36,50 +44,25 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
         /// </summary>
         /// <param name="ticket">The ticket.</param>
         /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data (Status33 - Win/Place)</param>
-        /// <param name="isShowVNIP">if set to <c>true</c> [is show VNIP].</param>
-        /// <returns></returns>
+        /// <param name="ticketData">The ticket data.</param>
+        /// <param name="isShowVNIP">If set to <c>true</c> [VNIP is shown].</param>
+        /// <returns>Status_Template: the whole Status block, built on input data.</returns>
         public virtual Status_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP)
         {
             string ticketBetStatus = ticket.Status.ToLower();
             Template.result = ticketBetStatus;
-            string result = string.Empty;
-
-            switch (ticket.Status.ToLower())
-            {
-                case BetStatus.Running:
-                    result = CoreBetList.running;
-                    break;
-                case BetStatus.Reject:
-                    result = CoreBetList.reject;
-                    break;
-                case BetStatus.Won:
-                    result = CoreBetList.won;
-                    break;
-                case BetStatus.Lose:
-                    result = CoreBetList.lose;
-                    break;
-                case BetStatus.Draw:
-                    result = CoreBetList.draw;
-                    break;
-                case BetStatus.Waiting:
-                    result = CoreBetList.waiting;
-                    break;
-                case BetStatus.Void:
-                    result = CoreBetList.voided;
-                    break;
-                case BetStatus.Refund:
-                    result = CoreBetList.refund;
-                    break;
-            }
+            string result = this.GetResultString(ticket.Status);            
 
             if (string.Empty != result)
             {
                 Template.result = result;
             }
 
-
-            if (ticketBetStatus.Equals(BetStatus.Running) || ticketBetStatus.Equals(BetStatus.Waiting) || ticketBetStatus.Equals(BetStatus.Void) || ticketBetStatus.Equals(BetStatus.Reject) || ticketBetStatus.Equals(BetStatus.Refund))
+            if (ticketBetStatus.Equals(BetStatus.Running) 
+                || ticketBetStatus.Equals(BetStatus.Waiting) 
+                || ticketBetStatus.Equals(BetStatus.Void) 
+                || ticketBetStatus.Equals(BetStatus.Reject) 
+                || ticketBetStatus.Equals(BetStatus.Refund))
             {
                 Template.StatusResult.Hide();
             }
@@ -92,7 +75,6 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
                 Template.StatusResult.sportType = ticket.SportTypeId.ToString();
                 Template.StatusResult.league = ticket.LeagueId.ToString();
                 Template.StatusResult.userName = ticket.UserName;
-
                 Template.StatusResult.winlostDate = Formatter.FullDateFormat(ticket.WinlostDate);
             }
 
@@ -121,9 +103,9 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
         /// <param name="ticket">The ticket.</param>
         /// <param name="ticketHelper">The ticket helper.</param>
         /// <param name="ticketData">The ticket data.</param>
-        /// <param name="isShowVNIP">if set to <c>true</c> [is show VNIP].</param>
+        /// <param name="isShowVNIP">If set to <c>true</c> [VNIP is shown].</param>
         /// <param name="rtfHelper">The RTF helper.</param>
-        /// <returns></returns>
+        /// <returns>IRichTextString represents the Status block.</returns>
         public virtual IRichTextString RenderRTF(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP, RTFHelper rtfHelper)
         {
             Render(ticket, ticketHelper, ticketData, isShowVNIP);
@@ -144,11 +126,43 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Status1" /> class.
+        /// Gets the result string.
         /// </summary>
-        public Status1()
+        /// <param name="ticketStatus">The ticket status.</param>
+        /// <returns>System.String: result.</returns>
+        private string GetResultString(string ticketStatus)
         {
-            this.Template = new Status_Template();
+            string result = string.Empty;
+
+            switch (ticketStatus.ToLower())
+            {
+                case BetStatus.Running:
+                    result = CoreBetList.running;
+                    break;
+                case BetStatus.Reject:
+                    result = CoreBetList.reject;
+                    break;
+                case BetStatus.Won:
+                    result = CoreBetList.won;
+                    break;
+                case BetStatus.Lose:
+                    result = CoreBetList.lose;
+                    break;
+                case BetStatus.Draw:
+                    result = CoreBetList.draw;
+                    break;
+                case BetStatus.Waiting:
+                    result = CoreBetList.waiting;
+                    break;
+                case BetStatus.Void:
+                    result = CoreBetList.voided;
+                    break;
+                case BetStatus.Refund:
+                    result = CoreBetList.refund;
+                    break;
+            }
+
+            return result;
         }
     }
 }

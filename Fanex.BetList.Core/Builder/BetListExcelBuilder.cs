@@ -4,12 +4,16 @@
 // </copyright>
 // ---------------------------------------------------------------------------------
 // <history>
+//     <change who="Marc.Bui" date="2013.10.08">Check stylecop & refactor</change>
 //     <change who="Marc.Bui" date="2013.05.31">Add export detail for *Parlay tickets</change>
 //     <change who="Marc.Bui" date="2013.01.29">Update line-breaks in MS Office</change>
 //     <change who="Marc.Bui" date="2012.11.16">Create</change>
 // </history>
 // ---------------------------------------------------------------------------------
 
+/// <summary>
+/// The Builder namespace.
+/// </summary>
 namespace Fanex.BetList.Core.Builder
 {
     using System;
@@ -29,36 +33,60 @@ namespace Fanex.BetList.Core.Builder
     using NPOI.SS.Util;
 
     /// <summary>
-    /// CoreBetList Excel Builder
+    /// CoreBetList Excel Builder.
     /// </summary>
     public class BetListExcelBuilder : IBetListBuilder
     {
         #region Attributes
 
-        private const string CHOICE_BUILDER_NAMESPACE = "Fanex.BetList.Core.Builder.ChoiceBuilder";
-        private const string ODDS_BUILDER_NAMESPACE = "Fanex.BetList.Core.Builder.OddsBuilder";
-        private const string STAKE_BUILDER_NAMESPACE = "Fanex.BetList.Core.Builder.StakeBuilder";
-        private const string TRANS_BUILDER_NAMESPACE = "Fanex.BetList.Core.Builder.TransBuilder";
-        private const string STATUS_BUILDER_NAMESPACE = "Fanex.BetList.Core.Builder.StatusBuilder";
+        /// <summary>
+        /// The choice builder namespace.
+        /// </summary>
+        private const string CHOICEBUILDERNAMESPACE = "Fanex.BetList.Core.Builder.ChoiceBuilder";
+
+        /// <summary>
+        /// The odds builder namespace.
+        /// </summary>
+        private const string ODDSBUILDERNAMESPACE = "Fanex.BetList.Core.Builder.OddsBuilder";
+
+        /// <summary>
+        /// The stake builder namespace.
+        /// </summary>
+        private const string STAKEBUILDERNAMESPACE = "Fanex.BetList.Core.Builder.StakeBuilder";
+
+        /// <summary>
+        /// The trans builder namespace.
+        /// </summary>
+        private const string TRANSBUILDERNAMESPACE = "Fanex.BetList.Core.Builder.TransBuilder";
+
+        /// <summary>
+        /// The status builder namespace.
+        /// </summary>
+        private const string STATUSBUILDERNAMESPACE = "Fanex.BetList.Core.Builder.StatusBuilder";
+
+        /// <summary>
+        /// The workbook.
+        /// </summary>
         private IWorkbook _workbook;
+
+        /// <summary>
+        /// The report columns number.
+        /// </summary>
         private short _reportColumnsNum;
+
+        /// <summary>
+        /// The worksheet.
+        /// </summary>
         private ISheet _worksheet;
+
+        /// <summary>
+        /// Index of the next cell in current row.
+        /// </summary>
         private int _nextCellIndex;
 
         #endregion
 
-        #region Properties
-
-        public ICellStyle OddCellStyle { get; set; }
-        public ICellStyle EvenCellStyle { get; set; }
-        public ICellStyle OddCellStyleCenterAligned { get; set; }
-        public ICellStyle EvenCellStyleCenterAligned { get; set; }
-
-        public RTFHelper RTFHelper { get; set; }
-        public int LastContentRow { get { return _worksheet.LastRowNum; } }
-
-        #endregion
-
+        #region Constructors
         /// <summary>
         /// Initializes a new instance of the <see cref="BetListExcelBuilder" /> class.
         /// </summary>
@@ -88,10 +116,58 @@ namespace Fanex.BetList.Core.Builder
             InitDefaultCellStyles();
         }
 
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the odd cell style.
+        /// </summary>
+        /// <value>The odd cell style.</value>
+        public ICellStyle OddCellStyle { get; set; }
+
+        /// <summary>
+        /// Gets or sets the even cell style.
+        /// </summary>
+        /// <value>The even cell style.</value>
+        public ICellStyle EvenCellStyle { get; set; }
+
+        /// <summary>
+        /// Gets or sets the odd cell style center aligned.
+        /// </summary>
+        /// <value>The odd cell style center aligned.</value>
+        public ICellStyle OddCellStyleCenterAligned { get; set; }
+
+        /// <summary>
+        /// Gets or sets the even cell style center aligned.
+        /// </summary>
+        /// <value>The even cell style center aligned.</value>
+        public ICellStyle EvenCellStyleCenterAligned { get; set; }
+
+        /// <summary>
+        /// Gets or sets the RTF helper.
+        /// </summary>
+        /// <value>The RTF helper.</value>
+        public RTFHelper RTFHelper { get; set; }
+
+        /// <summary>
+        /// Gets the last content row.
+        /// </summary>
+        /// <value>The last content row.</value>
+        public int LastContentRow 
+        { 
+            get 
+            {
+                return _worksheet.LastRowNum; 
+            } 
+        }
+
+        #endregion
+
         /// <summary>
         /// Creates the cell style.
         /// </summary>
-        /// <returns>ICellStyle</returns>
+        /// <returns>ICellStyle: the cell style object attaching to current workbook.</returns>
         public ICellStyle CreateCellStyle()
         {
             return _workbook.CreateCellStyle();
@@ -100,7 +176,7 @@ namespace Fanex.BetList.Core.Builder
         /// <summary>
         /// Creates the font.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>IFont: the Font object, attaching with current workbook.</returns>
         public IFont CreateFont()
         {
             return _workbook.CreateFont();
@@ -111,7 +187,7 @@ namespace Fanex.BetList.Core.Builder
         /// </summary>
         /// <param name="columnIndex">Index of the column.</param>
         /// <param name="columnWith">The column with.</param>
-        /// <returns></returns>
+        /// <returns>Current BetListExcelBuilder object.</returns>
         public BetListExcelBuilder SetColumnWidth(int columnIndex, short columnWith)
         {
             _worksheet.SetColumnWidth(columnIndex, columnWith);
@@ -124,7 +200,7 @@ namespace Fanex.BetList.Core.Builder
         /// <param name="sheetName">Name of the sheet.</param>
         /// <param name="numberOfColumns">The number of columns.</param>
         /// <param name="singleRowHeight">Height of the single row.</param>
-        /// <returns>BetListExcelBuilder</returns>
+        /// <returns>Current BetListExcelBuilder object.</returns>
         public BetListExcelBuilder BuildWorksheet(string sheetName, short numberOfColumns, short singleRowHeight = 13)
         {
             _worksheet = _workbook.CreateSheet(sheetName);
@@ -133,10 +209,11 @@ namespace Fanex.BetList.Core.Builder
             _reportColumnsNum = numberOfColumns;
             return this;
         }
+
         /// <summary>
         /// Gets the bet list.
         /// </summary>
-        /// <returns>IWorkbook</returns>
+        /// <returns>IWorkbook: current built workbook.</returns>
         public IWorkbook GetBetList()
         {
             AdaptRowHeight();
@@ -147,6 +224,7 @@ namespace Fanex.BetList.Core.Builder
         /// Adds the cell.
         /// </summary>
         /// <param name="rtfString">The RTF string.</param>
+        /// <returns>CellAddress: the address object of the newly added cell.</returns>
         public CellAddress AddCell(IRichTextString rtfString)
         {
             _nextCellIndex++;
@@ -178,6 +256,7 @@ namespace Fanex.BetList.Core.Builder
         /// </summary>
         /// <param name="rtfString">The RTF string.</param>
         /// <param name="cellStyle">The cell style.</param>
+        /// <returns>CellAddress: the address object of the newly added cell.</returns>
         public CellAddress AddCell(IRichTextString rtfString, ICellStyle cellStyle)
         {
             _nextCellIndex++;
@@ -201,7 +280,7 @@ namespace Fanex.BetList.Core.Builder
         /// <param name="rtfString">The RTF string.</param>
         /// <param name="mergedRange">The merged range.</param>
         /// <param name="cellStyle">The cell style.</param>
-        /// <returns></returns>
+        /// <returns>CellAddress: the address object of the newly merged cell.</returns>
         public CellAddress AddMergedCell(IRichTextString rtfString, CellRangeAddress mergedRange, ICellStyle cellStyle)
         {
             _nextCellIndex++;
@@ -219,9 +298,6 @@ namespace Fanex.BetList.Core.Builder
             lastCell.CellStyle = cellStyle;
             lastCell.SetCellValue(rtfString);
 
-            //ICell lastCell = lastRow.CreateCell(_nextCellIndex, cellStyle);
-            //lastRow.GetCell(1).CellStyle.
-
             return new CellAddress(lastCell.RowIndex, _nextCellIndex);
         }
 
@@ -232,7 +308,7 @@ namespace Fanex.BetList.Core.Builder
         public void MergeCell(CellRangeAddress mergeRange)
         {
             _worksheet.AddMergedRegion(mergeRange);
-            _nextCellIndex += (mergeRange.LastColumn - mergeRange.FirstColumn);
+            _nextCellIndex += mergeRange.LastColumn - mergeRange.FirstColumn;
         }
 
         /// <summary>
@@ -253,7 +329,7 @@ namespace Fanex.BetList.Core.Builder
                 }
             }
 
-            _nextCellIndex += (mergeRange.LastColumn - mergeRange.FirstColumn);
+            _nextCellIndex += mergeRange.LastColumn - mergeRange.FirstColumn;
         }
 
         /// <summary>
@@ -262,11 +338,11 @@ namespace Fanex.BetList.Core.Builder
         /// <param name="ticket">The ticket.</param>
         /// <param name="ticketHelper">The ticket helper.</param>
         /// <param name="ticketData">The ticket data.</param>
-        /// <returns>BetListExcelBuilder</returns>
+        /// <returns>Current BetListExcelBuilder object.</returns>
         public BetListExcelBuilder AddChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             IChoice choiceBuilder = CreateChoiceBuilder(ticket.BetTypeId);
-            List<IRichTextString> rtfChoiceList = choiceBuilder.RenderRTF(ticket, ticketHelper, ticketData, false, RTFHelper); 
+            List<IRichTextString> rtfChoiceList = choiceBuilder.RenderRTF(ticket, ticketHelper, ticketData, false, RTFHelper);
 
             foreach (IRichTextString rtfString in rtfChoiceList)
             {
@@ -281,12 +357,12 @@ namespace Fanex.BetList.Core.Builder
         /// </summary>
         /// <param name="ticket">The ticket.</param>
         /// <param name="ticketData">The ticket data.</param>
-        /// <param name="FuncGetOddsTypeName">Name of the func get odds type.</param>
-        /// <returns>BetListExcelBuilder</returns>
-        public BetListExcelBuilder AddOdds(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById FuncGetOddsTypeName)
+        /// <param name="funcGetOddsTypeName">Name of the function to get odds type.</param>
+        /// <returns>Current BetListExcelBuilder object.</returns>
+        public BetListExcelBuilder AddOdds(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
         {
             IOdds oddsBuilder = CreateOddsBuilder(ticket.BetTypeId);
-            IRichTextString rtfOdds = oddsBuilder.RenderRTF(ticket, ticketData, FuncGetOddsTypeName, RTFHelper);
+            IRichTextString rtfOdds = oddsBuilder.RenderRTF(ticket, ticketData, funcGetOddsTypeName, RTFHelper);
             AddCell(rtfOdds);
             return this;
         }
@@ -295,7 +371,7 @@ namespace Fanex.BetList.Core.Builder
         /// Adds the stake.
         /// </summary>
         /// <param name="ticket">The ticket.</param>
-        /// <returns>BetListExcelBuilder</returns>
+        /// <returns>Current BetListExcelBuilder object.</returns>
         public BetListExcelBuilder AddStake(ITicket ticket)
         {
             IStake stakeBuilder = CreateStakeBuilder(ticket.BetTypeId);
@@ -308,10 +384,9 @@ namespace Fanex.BetList.Core.Builder
         /// <summary>
         /// Adds the trans.
         /// </summary>
-        /// <param name="factory">The factory.</param>
         /// <param name="ticket">The ticket.</param>
         /// <param name="ticketHelper">The ticket helper.</param>
-        /// <returns></returns>
+        /// <returns>Current BetListExcelBuilder object.</returns>
         public BetListExcelBuilder AddTrans(ITicket ticket, ITicketHelper ticketHelper)
         {
             ITrans transBuilder = this.CreateTransBuilder(ticket.BetTypeId);
@@ -324,10 +399,11 @@ namespace Fanex.BetList.Core.Builder
         /// <summary>
         /// Adds the status.
         /// </summary>
-        /// <param name="factory">The factory.</param>
         /// <param name="ticket">The ticket.</param>
         /// <param name="ticketHelper">The ticket helper.</param>
-        /// <returns></returns>
+        /// <param name="ticketData">The ticket data.</param>
+        /// <param name="isShowVNIP">If set to <c>true</c> VNIP is shown.</param>
+        /// <returns>Current BetListExcelBuilder object.</returns>
         public BetListExcelBuilder AddStatus(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP)
         {
             IStatus statusBuilder = this.CreateStatusBuilder(ticket.BetTypeId);
@@ -339,7 +415,7 @@ namespace Fanex.BetList.Core.Builder
         /// <summary>
         /// Gets the last row.
         /// </summary>
-        /// <returns>IRow</returns>
+        /// <returns>IRow: last row object in the current worksheet.</returns>
         private IRow GetLastRow()
         {
             IRow lastRow = _worksheet.GetRow(_worksheet.LastRowNum);
@@ -347,18 +423,19 @@ namespace Fanex.BetList.Core.Builder
             {
                 lastRow = AddNewRow();
             }
+
             return lastRow;
         }
 
         /// <summary>
         /// Adds the new row.
         /// </summary>
-        /// <returns>IRow</returns>
+        /// <returns>IRow: new added row.</returns>
         private IRow AddNewRow()
         {
             int newRowIndex = _worksheet.LastRowNum;
 
-            if (sheetHasRows())
+            if (IsSheetHasRows())
             {
                 newRowIndex += 1;
             }
@@ -368,10 +445,10 @@ namespace Fanex.BetList.Core.Builder
         }
 
         /// <summary>
-        /// Sheets the has rows.
+        /// Determines whether the target sheet has rows.
         /// </summary>
-        /// <returns>bool</returns>
-        private bool sheetHasRows()
+        /// <returns><c>true</c> if the target sheet has rows; otherwise, <c>false</c>.</returns>
+        private bool IsSheetHasRows()
         {
             return _worksheet.GetRow(_worksheet.LastRowNum) != null;
         }
@@ -379,19 +456,11 @@ namespace Fanex.BetList.Core.Builder
         /// <summary>
         /// Creates the choice builder.
         /// </summary>
-        /// <param name="bettype">The bettype.</param>
-        /// <returns>IChoice</returns>
+        /// <param name="bettype">The bet type.</param>
+        /// <returns>IChoice: the Choice builder object.</returns>
         private IChoice CreateChoiceBuilder(int bettype)
         {
-            string typeName = string.Join(
-                                            null,
-                                            new string[] 
-                                            { 
-                                                CHOICE_BUILDER_NAMESPACE, 
-                                                ".Choice", 
-                                                bettype.ToString() 
-                                            }
-                                         );
+            string typeName = string.Join(null, new string[] { CHOICEBUILDERNAMESPACE, ".Choice", bettype.ToString() });
 
             Type type = Type.GetType(typeName);
 
@@ -408,24 +477,17 @@ namespace Fanex.BetList.Core.Builder
         /// <summary>
         /// Creates the odds builder.
         /// </summary>
-        /// <param name="bettype">The bettype.</param>
-        /// <returns>IOdds</returns>
+        /// <param name="bettype">The bet type.</param>
+        /// <returns>IOdds: the Odds builder object.</returns>
         private IOdds CreateOddsBuilder(int bettype)
         {
             if (bettype <= 1199 && bettype >= 1101)
             {
-                //Odds of Live Casino bettypes
+                // Odds of Live Casino bettypes
                 bettype = 1101;
             }
-            string typeName = string.Join(
-                                            null,
-                                            new string[] 
-                                            { 
-                                                ODDS_BUILDER_NAMESPACE, 
-                                                ".Odds", 
-                                                bettype.ToString() 
-                                            }
-                                         );
+
+            string typeName = string.Join(null, new string[] { ODDSBUILDERNAMESPACE, ".Odds", bettype.ToString() });
 
             Type type = Type.GetType(typeName);
 
@@ -442,19 +504,11 @@ namespace Fanex.BetList.Core.Builder
         /// <summary>
         /// Creates the stake builder.
         /// </summary>
-        /// <param name="bettype">The bettype.</param>
-        /// <returns>IStake</returns>
+        /// <param name="bettype">The bet type.</param>
+        /// <returns>IStake: the Stake builder object.</returns>
         private IStake CreateStakeBuilder(int bettype)
         {
-            string typeName = string.Join(
-                                            null,
-                                            new string[] 
-                                            { 
-                                                STAKE_BUILDER_NAMESPACE, 
-                                                ".Stake", 
-                                                bettype.ToString() 
-                                            }
-                                         );
+            string typeName = string.Join(null, new string[] { STAKEBUILDERNAMESPACE, ".Stake", bettype.ToString() });
 
             Type type = Type.GetType(typeName);
 
@@ -471,18 +525,11 @@ namespace Fanex.BetList.Core.Builder
         /// <summary>
         /// Creates the status builder.
         /// </summary>
-        /// <returns></returns>
+        /// <param name="bettype">The bet type.</param>
+        /// <returns>IStatus: the Status builder object.</returns>
         private IStatus CreateStatusBuilder(int bettype)
         {
-            string typeName = string.Join(
-                                            null,
-                                            new string[] 
-                                            { 
-                                                STATUS_BUILDER_NAMESPACE, 
-                                                ".Status", 
-                                                bettype.ToString() 
-                                            }
-                                         );
+            string typeName = string.Join(null, new string[] { STATUSBUILDERNAMESPACE, ".Status", bettype.ToString() });
 
             Type type = Type.GetType(typeName);
 
@@ -499,18 +546,11 @@ namespace Fanex.BetList.Core.Builder
         /// <summary>
         /// Creates the trans builder.
         /// </summary>
-        /// <returns></returns>
+        /// <param name="bettype">The bet type.</param>
+        /// <returns>ITrans: the Trans builder object.</returns>
         private ITrans CreateTransBuilder(int bettype)
         {
-            string typeName = string.Join(
-                                            null,
-                                            new string[] 
-                                            { 
-                                                TRANS_BUILDER_NAMESPACE, 
-                                                ".Trans", 
-                                                bettype.ToString() 
-                                            }
-                                         );
+            string typeName = string.Join(null, new string[] { TRANSBUILDERNAMESPACE, ".Trans", bettype.ToString() });
 
             Type type = Type.GetType(typeName);
 
@@ -556,7 +596,7 @@ namespace Fanex.BetList.Core.Builder
         }
 
         /// <summary>
-        /// Inits the default RTF helper.
+        /// Initialize the default RTF helper.
         /// </summary>
         private void InitDefaultRTFHelper()
         {
@@ -564,9 +604,11 @@ namespace Fanex.BetList.Core.Builder
             RTFHelper.NegFont.Boldweight = RTFHelper.NegFontCrossed.Boldweight = (short)FontBoldWeight.BOLD;
             RTFHelper.NormalFont.Boldweight = RTFHelper.NormalFontCrossed.Boldweight = (short)FontBoldWeight.NORMAL;
 
-            RTFHelper.NegFont.FontName = RTFHelper.NegFontCrossed.FontName = RTFHelper.NormalFont.FontName = RTFHelper.NormalFontCrossed.FontName = RTFHelper.PosFont.FontName = RTFHelper.PosFontCrossed.FontName = "Tahoma";
+            RTFHelper.NegFont.FontName = RTFHelper.NegFontCrossed.FontName = RTFHelper.NormalFont.FontName = "Tahoma";
+            RTFHelper.NormalFontCrossed.FontName = RTFHelper.PosFont.FontName = RTFHelper.PosFontCrossed.FontName = "Tahoma";
 
-            RTFHelper.NegFont.FontHeightInPoints = RTFHelper.NegFontCrossed.FontHeightInPoints = RTFHelper.NormalFont.FontHeightInPoints = RTFHelper.NormalFontCrossed.FontHeightInPoints = RTFHelper.PosFont.FontHeightInPoints = RTFHelper.PosFontCrossed.FontHeightInPoints = 9;
+            RTFHelper.NegFont.FontHeightInPoints = RTFHelper.NegFontCrossed.FontHeightInPoints = RTFHelper.NormalFont.FontHeightInPoints = 9;
+            RTFHelper.NormalFontCrossed.FontHeightInPoints = RTFHelper.PosFont.FontHeightInPoints = RTFHelper.PosFontCrossed.FontHeightInPoints = 9;
 
             RTFHelper.NormalFontCrossed.IsStrikeout = RTFHelper.PosFontCrossed.IsStrikeout = RTFHelper.NegFontCrossed.IsStrikeout = true;
 
@@ -574,7 +616,7 @@ namespace Fanex.BetList.Core.Builder
         }
 
         /// <summary>
-        /// Inits the default cell styles.
+        /// Initialize the default cell styles.
         /// </summary>
         private void InitDefaultCellStyles()
         {
@@ -582,9 +624,11 @@ namespace Fanex.BetList.Core.Builder
             OddCellStyle.VerticalAlignment = EvenCellStyle.VerticalAlignment = VerticalAlignment.TOP;
             OddCellStyle.FillPattern = EvenCellStyle.FillPattern = FillPatternType.SOLID_FOREGROUND;
 
-            OddCellStyle.BorderTop = OddCellStyle.BorderRight = OddCellStyle.BorderBottom = OddCellStyle.BorderLeft = EvenCellStyle.BorderTop = EvenCellStyle.BorderRight = EvenCellStyle.BorderBottom = EvenCellStyle.BorderLeft = CellBorderType.THIN;
+            OddCellStyle.BorderTop = OddCellStyle.BorderRight = OddCellStyle.BorderBottom = OddCellStyle.BorderLeft = CellBorderType.THIN;
+            EvenCellStyle.BorderTop = EvenCellStyle.BorderRight = EvenCellStyle.BorderBottom = EvenCellStyle.BorderLeft = CellBorderType.THIN;
 
-            OddCellStyle.TopBorderColor = OddCellStyle.RightBorderColor = OddCellStyle.BottomBorderColor = OddCellStyle.LeftBorderColor = EvenCellStyle.TopBorderColor = EvenCellStyle.RightBorderColor = EvenCellStyle.BottomBorderColor = EvenCellStyle.LeftBorderColor = 54;
+            OddCellStyle.TopBorderColor = OddCellStyle.RightBorderColor = OddCellStyle.BottomBorderColor = OddCellStyle.LeftBorderColor = 54;
+            EvenCellStyle.TopBorderColor = EvenCellStyle.RightBorderColor = EvenCellStyle.BottomBorderColor = EvenCellStyle.LeftBorderColor = 54;
 
             OddCellStyle.FillForegroundColor = 26;
             OddCellStyle.FillBackgroundColor = 43;

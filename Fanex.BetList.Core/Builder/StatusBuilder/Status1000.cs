@@ -14,7 +14,7 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    /// P2P Games
+    /// P2P Games.
     /// </summary>
     public class Status1000 : Status1
     {
@@ -22,10 +22,10 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
         /// Renders the specified ticket.
         /// </summary>
         /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper"></param>
-        /// <param name="ticketData">Ticket Reference Data for Status33 (Win/Place)</param>
-        /// <param name="isShowVNIP"></param>
-        /// <returns></returns>
+        /// <param name="ticketHelper">The ticket helper.</param>
+        /// <param name="ticketData">The ticket data.</param>
+        /// <param name="isShowVNIP">If set to <c>true</c> [VNIP is shown].</param>
+        /// <returns>Status_Template: the whole Status block, built on input data.</returns>
         public override Templates.Status_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP)
         {
             base.Render(ticket, ticketHelper, ticketData, isShowVNIP);

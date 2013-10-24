@@ -5,18 +5,19 @@
 // ---------------------------------------------------------------------------------
 // <history>
 //     <change who="Marc.Bui" date="2012.11.16">Create</change>
+//     <change who="Marc.Bui" date="2013.10.09">Check stylecop & refactor</change>
 // </history>
 // ---------------------------------------------------------------------------------
 
 namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using System.Collections.Generic;
     using System.Linq;
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
-    using System.Collections.Generic;
 
     /// <summary>
-    /// Clean Sheet
+    /// Clean Sheet.
     /// </summary>
     public class Choice13 : Choice1
     {
@@ -34,17 +35,8 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             string team = ticket.BetTeam != null && ticket.BetTeam.Contains("h") ? this.Template.Match.homeTeam : awayName;
             string yesNo = ticket.BetTeam.Contains('y') ? CoreBetList.lblYes : CoreBetList.lblNo;
-            this.Template.betTeam = string.Join(
-                                                    null,
-                                                    new string[] 
-                                                    { 
-                                                        team, 
-                                                        " <span class=\"",                                                                                                 BL_FAVORITE, 
-                                                        "\">", 
-                                                        yesNo.ToUpper(), 
-                                                        "</span>" 
-                                                    }
-                                               );
+
+            this.Template.betTeam = string.Join(null, new string[] { team, " <span class=\"", BLFAVORITE, "\">", yesNo.ToUpper(), "</span>" });
 
             this.Template.Handicap.handicap = null;
         }

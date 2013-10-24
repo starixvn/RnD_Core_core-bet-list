@@ -16,7 +16,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Templates;
 
     /// <summary>
-    /// P2P Games
+    /// P2P Games.
     /// </summary>
     public class Choice1000 : Choice1
     {
@@ -26,22 +26,11 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         /// <param name="ticket">The ticket.</param>
         /// <param name="ticketHelper">The ticket helper.</param>
         /// <param name="ticketData">The ticket data.</param>
-        /// <param name="isShowScoreMap">if set to <c>true</c> [is show score map].</param>
-        /// <returns>Choice_Template.</returns>
+        /// <param name="isShowScoreMap">If set to <c>true</c> [is show score map].</param>
+        /// <returns>Choice_Template object.</returns>
         public override Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
         {
-            string content = string.Join(
-                                            null,
-                                            new string[] 
-                                            { 
-                                                "<div><span class='", 
-                                                BL_FAVORITE, 
-                                                "'>", 
-                                                CoreLang.p2pGame, 
-                                                "</span></div>" 
-                                            }
-                                        );
-
+            string content = string.Join(null, new string[] { "<div><span class='", BLFAVORITE, "'>", CoreLang.p2pGame, "</span></div>" });
             this.Template.SetValue(content);
 
             return this.Template;

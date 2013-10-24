@@ -5,9 +5,9 @@
 // ---------------------------------------------------------------------------------
 // <history>
 //     <change who="Marc.Bui" date="2012.11.16">Create</change>
-//     <change who="Marc.Bui" date="2013.01.18">Update ScoreClassName to BL_FAVORITE (red)
-//                                              for all bettypes</change>
+//     <change who="Marc.Bui" date="2013.01.18">Update ScoreClassName to BLFAVORITE (red) for all bettypes</change>
 //     <change who="Marc.Bui" date="2013.02.21">Update showing Neutral</change>
+//     <change who="Marc.Bui" date="2013.10.09">Check stylecop & refactor</change>
 // </history>
 // ---------------------------------------------------------------------------------
 
@@ -18,7 +18,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    /// Away No Bet
+    /// Away No Bet.
     /// </summary>
     public class Choice122 : Choice1
     {
@@ -39,8 +39,16 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             this.Template.Match.homeTeam = string.Join(null, new string[] { homeName, (ticket.IsNeutral ? " (N) " : string.Empty) });
 
-            this.Template.betTeam = betHomeTeam ? this.Template.Match.homeTeam : CoreLang.lblDraw;
-            this.Template.betTeamClassName = betHomeTeam ? (ticket.Handicap2 >= ticket.Handicap1 ? BL_UNDER_DOG : BL_FAVORITE) : (ticket.Handicap2 <= ticket.Handicap1 ? BL_UNDER_DOG : BL_FAVORITE);
+            this.Template.betTeam = betHomeTeam ? this.Template.Match.homeTeam : CoreLang.lblDraw;            
+
+            if (betHomeTeam)
+            {
+                this.Template.betTeamClassName = ticket.Handicap2 >= ticket.Handicap1 ? BLUNDERDOG : BLFAVORITE;
+            }
+            else
+            {
+                this.Template.betTeamClassName = ticket.Handicap2 <= ticket.Handicap1 ? BLUNDERDOG : BLFAVORITE;
+            }
 
             this.Template.Score.homeScore = ticket.LiveHomeScore.ToString();
             this.Template.Score.awayScore = ticket.LiveAwayScore.ToString();

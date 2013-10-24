@@ -14,7 +14,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    ///  Match Winner
+    ///  Match Winner.
     /// </summary>
     public class Choice1301 : Choice20
     {

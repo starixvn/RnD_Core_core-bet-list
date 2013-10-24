@@ -16,8 +16,8 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
     /// <summary>
     /// Next Combo
-    /// do NOT show oddtype because this bettype just offer for DEC
-    /// it supports for live ball, so always 37.5
+    /// do NOT show odds type because this bet type just offer for DEC
+    /// it supports for live ball, so always 37.5.
     /// </summary>
     public class Choice89 : Choice1
     {
@@ -59,7 +59,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             betTeam += " <span style='color:#555555'>37.5</span> ";
 
             this.Template.betTeam = betTeam + liveScore;
-            this.Template.betTeamClassName = BL_FAVORITE;
+            this.Template.betTeamClassName = BLFAVORITE;
             
             this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, "&nbsp;", ticket.MatchCode });
         }

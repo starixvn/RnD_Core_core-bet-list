@@ -6,9 +6,10 @@
 // <history>
 //     <change who="Marc.Bui" date="2012.11.16">Create</change>
 //     <change who="Marc.Bui" date="2013.01.23">Update to follow general rules
-//                                              teamName: red
-//                                              handicap: grey</change>
+//                                              - teamName: red
+//                                              - handicap: grey</change>
 //     <change who="Marc.Bui" date="2013.02.21">Update showing Neutral</change>
+//     <change who="Marc.Bui" date="2013.10.09">Check stylecop & refactor</change>
 // </history>
 // ---------------------------------------------------------------------------------
 
@@ -21,7 +22,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Utils;
 
     /// <summary>
-    /// 3-way handicap
+    /// 3-way handicap.
     /// </summary>
     public class Choice28 : Choice1
     {
@@ -35,17 +36,17 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            this.Template.Handicap.handicap = null; 
+            this.Template.Handicap.handicap = null;
 
-            string teamName = CoreBetList.lblDraw;            
+            string teamName = CoreBetList.lblDraw;
             decimal hdp1 = ticket.Handicap1;
-            decimal hdp2 = ticket.Handicap2;            
-            
+            decimal hdp2 = ticket.Handicap2;
+
             string handicap = string.Empty;
-            this.Template.betTeamClassName = BL_FAVORITE;
+            this.Template.betTeamClassName = BLFAVORITE;
 
             if ("1" == ticket.BetTeam)
-            {                
+            {
                 teamName = this.Template.Match.homeTeam;
                 handicap = Formatter.FormatSignNumber((int)(hdp2 - hdp1));
             }
@@ -56,7 +57,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                 handicap = Formatter.FormatSignNumber((int)(hdp1 - hdp2));
             }
             else
-            {                
+            {
                 teamName = CoreBetList.lblDraw;
                 if (hdp1 - hdp2 > 0)
                 {
@@ -74,16 +75,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                 handicap += Formatter.FormatSignNumber((int)Math.Abs(hdp2 - hdp1));
             }
 
-            this.Template.betTeam = string.Join(
-                                                    null, 
-                                                    new string[] 
-                                                    { 
-                                                        teamName, 
-                                                        "&nbsp;<span class=\"underdog\">(", 
-                                                        handicap.ToString(), 
-                                                        ")</span>" 
-                                                    }
-                                               );            
+            this.Template.betTeam = string.Join(null, new string[] { teamName, "&nbsp;<span class=\"underdog\">(", handicap.ToString(), ")</span>" });
         }
     }
 }

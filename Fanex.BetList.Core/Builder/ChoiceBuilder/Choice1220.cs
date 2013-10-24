@@ -10,11 +10,11 @@
 
 namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.Entities;
     using System.Collections.Generic;
+    using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    /// Virtual Tennis - PlayerWin
+    /// Virtual Tennis - PlayerWin.
     /// </summary>
     public class Choice1220 : Choice1
     {
@@ -23,7 +23,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
             this.Template.Handicap = null;
-            this.Template.betTeamClassName = BL_UNDER_DOG;            
+            this.Template.betTeamClassName = BLUNDERDOG;            
         }
     }
 }

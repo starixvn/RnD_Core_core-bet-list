@@ -4,23 +4,18 @@
 // </copyright>
 // ---------------------------------------------------------------------------------
 // <history>
-//     <change who="Faisall.Tran" date="2013.6.18">Create</change>
+//     <change who="Faisall.Tran" date="2013.06.18">Create</change>
+//     <change who="Marc.Bui" date="2013.10.09">Check stylecop & refactor</change>
 // </history>
 // ---------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web;
-using Fanex.BetList.Core.App_GlobalResources;
-using Fanex.BetList.Core.Entities;
-using Fanex.BetList.Core.Utils;
-
 namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using System.Collections.Generic;
+    using Fanex.BetList.Core.App_GlobalResources;
+
     /// <summary>
-    /// LiveCasino - LiveRoullet
+    /// Live Casino - Live Roulette.
     /// </summary>
     public class Choice1104 : Choice1102
     {
@@ -28,9 +23,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            this.Template.League.LeagueName.leagueName = string.Join(null,
-                                                                     new string[] { CoreLang.LiveRoulette, "&nbsp;", ticket.ShowTime });
+            this.Template.League.LeagueName.leagueName = string.Join(null, new string[] { CoreLang.LiveRoulette, "&nbsp;", ticket.ShowTime });
         }
-
     }
 }

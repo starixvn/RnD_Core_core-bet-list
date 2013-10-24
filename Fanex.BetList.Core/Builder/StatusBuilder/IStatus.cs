@@ -16,13 +16,7 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
     using NPOI.SS.UserModel;
 
     public interface IStatus
-    {
-        /// <summary>
-        /// Gets or sets the template.
-        /// </summary>
-        /// <value>
-        /// The template.
-        /// </value>
+    {        
         Status_Template Template { get; set; }
 
         /// <summary>
@@ -30,9 +24,9 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
         /// </summary>
         /// <param name="ticket">The ticket.</param>
         /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data (Status33 - Win/Place)</param>
-        /// <param name="isShowVNIP">if set to <c>true</c> [is show VNIP].</param>
-        /// <returns></returns>
+        /// <param name="ticketData">The ticket data.</param>
+        /// <param name="isShowVNIP">If set to <c>true</c> [VNIP is shown].</param>
+        /// <returns>Status_Template: the whole Status block, built on input data.</returns>
         Status_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP);
 
         /// <summary>
@@ -41,8 +35,9 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
         /// <param name="ticket">The ticket.</param>
         /// <param name="ticketHelper">The ticket helper.</param>
         /// <param name="ticketData">The ticket data.</param>
-        /// <param name="isShowVNIP">if set to <c>true</c> [is show VNIP].</param>
-        /// <returns></returns>
+        /// <param name="isShowVNIP">If set to <c>true</c> [VNIP is shown].</param>
+        /// <param name="rtfHelper">The RTF helper.</param>
+        /// <returns>IRichTextString represents the Status block.</returns>
         IRichTextString RenderRTF(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP, RTFHelper rtfHelper);
     }
 }

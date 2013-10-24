@@ -14,9 +14,9 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    ///  Set x Total Games 2-way
+    ///  Set x Total Games 2-way.
     /// </summary>
-    public class Choice1312:Choice3
+    public class Choice1312 : Choice3
     {
         /// <summary>
         /// Builds the choice.
@@ -29,7 +29,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
             this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);
-            this.Template.betTeamClassName = BL_FAVORITE;
+            this.Template.betTeamClassName = BLFAVORITE;
         }
     }
 }

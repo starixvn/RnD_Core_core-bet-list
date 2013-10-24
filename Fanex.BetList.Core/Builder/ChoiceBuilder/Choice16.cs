@@ -15,7 +15,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Utils;
 
     /// <summary>
-    /// HT/FT
+    /// Bet Type: HT/FT.
     /// </summary>
     public class Choice16 : Choice1
     {
@@ -31,7 +31,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             this.Template.Handicap.handicap = null;
             this.Template.betTeam = ConvertByBetType.GetBetTeam(ticket.BetTeam, ticket.BetTypeId);
-            this.Template.betTeamClassName = BL_FAVORITE;            
+            this.Template.betTeamClassName = BLFAVORITE;            
         }
     }
 }

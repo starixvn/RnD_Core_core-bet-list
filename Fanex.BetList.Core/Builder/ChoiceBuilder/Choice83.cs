@@ -15,7 +15,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    /// 1st ball OE
+    /// 1st ball OE.
     /// </summary>
     public class Choice83 : Choice1
     {
@@ -32,17 +32,9 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             this.Template.Handicap.handicap = null;
             this.Template.Match.VS = null;
             this.Template.betTeam = ticket.BetTeam == "h" ? CoreBetList.odd : CoreBetList.even;
-            this.Template.betTeamClassName = BL_FAVORITE;
-            
-            this.Template.Match.homeTeam = string.Join(
-                                                    null,
-                                                    new string[]
-                                                    {
-                                                        CoreBetList.numbergameno,
-                                                        "&nbsp;",
-                                                        ticket.MatchCode
-                                                    }
-                                                );            
+            this.Template.betTeamClassName = BLFAVORITE;
+
+            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, "&nbsp;", ticket.MatchCode });
         }
     }
 }

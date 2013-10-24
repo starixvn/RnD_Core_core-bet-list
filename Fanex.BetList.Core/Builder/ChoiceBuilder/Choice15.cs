@@ -15,7 +15,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    /// 1st 1X2
+    /// Bet Type: 1st 1X2.
     /// </summary>
     public class Choice15 : Choice1
     {
@@ -27,19 +27,11 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         /// <param name="ticketData">The ticket data.</param>
         protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            base.BuildChoice(ticket, ticketHelper, ticketData);            
+            base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            this.Template.betTeam = string.Join(
-                                                    null, 
-                                                    new string[] 
-                                                    { 
-                                                        CoreBetList.ht, 
-                                                        ".", 
-                                                        ticket.BetTeam.ToUpper() 
-                                                    }
-                                               );
+            this.Template.betTeam = string.Join(null, new string[] { CoreBetList.ht, ".", ticket.BetTeam.ToUpper() });
 
-            this.Template.betTeamClassName = BL_FAVORITE;
+            this.Template.betTeamClassName = BLFAVORITE;
             this.Template.Handicap.handicap = null;
         }
     }

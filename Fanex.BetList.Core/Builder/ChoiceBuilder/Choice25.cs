@@ -14,9 +14,9 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    /// Draw no bet
+    /// Draw no bet.
     /// </summary>
-    public class Choice25:Choice1
+    public class Choice25 : Choice1
     {
         /// <summary>
         /// Builds the choice.

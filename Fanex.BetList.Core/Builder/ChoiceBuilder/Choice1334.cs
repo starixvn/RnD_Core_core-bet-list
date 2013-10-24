@@ -6,6 +6,7 @@
 // <history>
 //     <change who="Marc.Bui" date="2012.11.16">Create</change>
 //     <change who="Marc.Bui" date="2013.01.24">Update business</change>
+//     <change who="Marc.Bui" date="2013.10.09">Check stylecop & refactor</change>
 // </history>
 // ---------------------------------------------------------------------------------
 
@@ -17,7 +18,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Utils;
 
     /// <summary>
-    ///      Set x Games y & y+1 Points
+    ///   Set x Games y and y+1 Points.
     /// </summary>
     public class Choice1334 : Choice1
     {
@@ -35,7 +36,22 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             bool team1 = ticket.BetTeam == "1";
             bool team2 = ticket.BetTeam == "2";
 
-            this.Template.betTeam = team1 ? string.Join(null, new string[] { "<span class=\"underdog\">", CoreBetList.under, "</span>" }) : team2 ? string.Join(null, new string[] { "<span class=\"favorite\">", CoreBetList.over, "</span>" }) : string.Join(null, new string[] { "<span class=\"underdog\">", CoreBetList.exactly, "</span>" });
+            if (team1)
+            {
+                this.Template.betTeam = string.Join(null, new string[] { "<span class=\"underdog\">", CoreBetList.under, "</span>" });
+            }
+            else
+            {
+                if (team2)
+                {
+                    this.Template.betTeam = string.Join(null, new string[] { "<span class=\"favorite\">", CoreBetList.over, "</span>" });
+                }
+                else
+                {
+                    this.Template.betTeam = string.Join(null, new string[] { "<span class=\"underdog\">", CoreBetList.exactly, "</span>" });
+                }
+            }
+
             this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);
         }
     }

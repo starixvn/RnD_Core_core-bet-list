@@ -15,7 +15,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    /// Warrior    
+    /// Type: Warrior.
     /// </summary>
     public class Choice88 : Choice1
     {
@@ -38,7 +38,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             string bettypeName = this.Template.BetType.betTypeName;
 
             this.Template.betTeam = betTeam;
-            this.Template.betTeamClassName = BL_FAVORITE;
+            this.Template.betTeamClassName = BLFAVORITE;
 
             this.Template.BetType.betTypeName = bettypeName;
             

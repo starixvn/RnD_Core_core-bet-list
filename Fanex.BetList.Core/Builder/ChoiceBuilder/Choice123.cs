@@ -5,8 +5,7 @@
 // ---------------------------------------------------------------------------------
 // <history>
 //     <change who="Marc.Bui" date="2012.11.16">Create</change>
-//     <change who="Marc.Bui" date="2013.03.11">Update condition to work with 
-//                                              Template changes made by Steven</change>
+//     <change who="Marc.Bui" date="2013.03.11">Update condition to work with Template changes made by Steven</change>
 // </history>
 // ---------------------------------------------------------------------------------
 
@@ -17,7 +16,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    /// Draw no draw
+    /// Draw no draw.
     /// </summary>
     public class Choice123 : Choice1
     {
@@ -36,7 +35,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
 
             this.Template.betTeam = betHomeTeam ? CoreLang.lblDraw : CoreLang.lblNoDraw;
-            this.Template.betTeamClassName = BL_UNDER_DOG;            
+            this.Template.betTeamClassName = BLUNDERDOG;            
 
             this.Template.Score.homeScore = ticket.LiveHomeScore.ToString();
             this.Template.Score.awayScore = ticket.LiveAwayScore.ToString();

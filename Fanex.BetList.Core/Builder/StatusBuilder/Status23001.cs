@@ -11,7 +11,7 @@
 namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
     /// <summary>
-    /// CSTRA
+    /// Casino Transfer.
     /// </summary>
     public class Status23001 : Status71
     {

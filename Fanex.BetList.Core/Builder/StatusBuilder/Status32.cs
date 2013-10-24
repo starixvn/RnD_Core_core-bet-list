@@ -11,7 +11,7 @@
 namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
     /// <summary>
-    /// Place
+    /// Bet Type: Place.
     /// </summary>
     public class Status32 : Status31
     {

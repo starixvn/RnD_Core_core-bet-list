@@ -14,14 +14,14 @@ namespace Fanex.BetList.Core.Factories
     using Fanex.BetList.Core.Entities;    
 
     /// <summary>
-    /// Class BetListHTMLFactory
+    /// Class BetListHTMLFactory.
     /// </summary>
     public class BetListHTMLFactory : IBetListFactory
     {
         /// <summary>
         /// Creates the builder.
         /// </summary>
-        /// <returns>BetListHTMLBuilder.</returns>
+        /// <returns>BetListHTMLBuilder object.</returns>
         public BetListHTMLBuilder CreateBuilder()
         {
             BetListHTMLBuilder builder = new BetListHTMLBuilder();

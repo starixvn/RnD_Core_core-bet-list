@@ -11,16 +11,25 @@
 
 namespace Fanex.BetList.Core.Builder.TransBuilder
 {
-    using System;
+    using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.Utils;
-    using NPOI.SS.UserModel;
-    using Fanex.BetList.Core.App_GlobalResources;
     using NPOI.HSSF.UserModel;
+    using NPOI.SS.UserModel;
 
+    /// <summary>
+    /// Trans for most bet types.
+    /// </summary>
     public class Trans1 : ITrans
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Trans1" /> class.
+        /// </summary>
+        public Trans1()
+        {
+            this.Template = new Trans_Template();
+        }
+
         /// <summary>
         /// Gets or sets the template.
         /// </summary>
@@ -33,7 +42,7 @@ namespace Fanex.BetList.Core.Builder.TransBuilder
         /// Renders the specified ticket.
         /// </summary>
         /// <param name="ticket">The ticket.</param>
-        /// <returns></returns>
+        /// <returns>Trans_Template: the whole Trans block.</returns>
         public virtual Trans_Template Render(ITicket ticket)
         {
             Template.transTime = ticket.TransDate.ToString();
@@ -54,14 +63,6 @@ namespace Fanex.BetList.Core.Builder.TransBuilder
             IRichTextString rtfTrans = new HSSFRichTextString(string.Join(null, new string[] { transTime, "\n", Template.transTime }));
             
             return rtfTrans;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Trans1" /> class.
-        /// </summary>
-        public Trans1()
-        {
-            this.Template = new Trans_Template();
-        }
+        }        
     }
 }

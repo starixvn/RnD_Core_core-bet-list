@@ -14,7 +14,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    /// Total Goal
+    /// Total Goal.
     /// </summary>
     public class Choice6 : Choice1
     {
@@ -29,17 +29,11 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
             this.Template.Handicap.handicap = null;
-            //&nbsp; because export format
-            this.Template.betTeam = string.Join(
-                                                    null, 
-                                                    new string[] 
-                                                    { 
-                                                        "&nbsp;", 
-                                                        ticket.BetTeam 
-                                                    }
-                                               );
 
-            this.Template.betTeamClassName = BL_FAVORITE;
+            // &nbsp; because export format
+            this.Template.betTeam = string.Join(null, new string[] { "&nbsp;", ticket.BetTeam });
+
+            this.Template.betTeamClassName = BLFAVORITE;
         }
     }
 }

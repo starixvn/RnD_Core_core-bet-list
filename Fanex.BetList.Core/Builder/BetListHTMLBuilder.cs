@@ -4,11 +4,15 @@
 // </copyright>
 // ---------------------------------------------------------------------------------
 // <history>
+//     <change who="Marc.Bui" date="2013.10.08">Check stylecop & refactor</change>
 //     <change who="Marc.Bui" date="2013.07.22">Add BuildChoiceBlock to get sub-block</change>
 //     <change who="Marc.Bui" date="2012.11.16">Create</change>
 // </history>
 // ---------------------------------------------------------------------------------
 
+/// <summary>
+/// The Builder namespace.
+/// </summary>
 namespace Fanex.BetList.Core.Builder
 {
     using System;
@@ -18,21 +22,47 @@ namespace Fanex.BetList.Core.Builder
     using Fanex.BetList.Core.Builder.OddsBuilder;
     using Fanex.BetList.Core.Builder.StakeBuilder;
     using Fanex.BetList.Core.Builder.StatusBuilder;
+    using Fanex.BetList.Core.Builder.SystemParlayBuilder;
     using Fanex.BetList.Core.Builder.TransBuilder;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.Builder.SystemParlayBuilder;
 
+    /// <summary>
+    /// This class generates the HTML markup of the Core Bet List.
+    /// </summary>
     public class BetListHTMLBuilder : IBetListBuilder
     {
         #region Attributes
 
+        /// <summary>
+        /// The choice builder namespace.
+        /// </summary>
+        private const string CHOICEBUILDERNAMESPACE = "Fanex.BetList.Core.Builder.ChoiceBuilder";
+
+        /// <summary>
+        /// The odds builder namespace.
+        /// </summary>
+        private const string ODDSBUILDERNAMESPACE = "Fanex.BetList.Core.Builder.OddsBuilder";
+
+        /// <summary>
+        /// The stake builder namespace.
+        /// </summary>
+        private const string STAKEBUILDERNAMESPACE = "Fanex.BetList.Core.Builder.StakeBuilder";
+
+        /// <summary>
+        /// The trans builder namespace.
+        /// </summary>
+        private const string TRANSBUILDERNAMESPACE = "Fanex.BetList.Core.Builder.TransBuilder";
+
+        /// <summary>
+        /// The status builder namespace.
+        /// </summary>
+        private const string STATUSBUILDERNAMESPACE = "Fanex.BetList.Core.Builder.StatusBuilder";
+
+        /// <summary>
+        /// The _content.
+        /// </summary>
         private StringBuilder _content;
-        private const string CHOICE_BUILDER_NAMESPACE = "Fanex.BetList.Core.Builder.ChoiceBuilder";
-        private const string ODDS_BUILDER_NAMESPACE = "Fanex.BetList.Core.Builder.OddsBuilder";
-        private const string STAKE_BUILDER_NAMESPACE = "Fanex.BetList.Core.Builder.StakeBuilder";
-        private const string TRANS_BUILDER_NAMESPACE = "Fanex.BetList.Core.Builder.TransBuilder";
-        private const string STATUS_BUILDER_NAMESPACE = "Fanex.BetList.Core.Builder.StatusBuilder";
 
         #endregion
 
@@ -51,7 +81,7 @@ namespace Fanex.BetList.Core.Builder
         /// <summary>
         /// Gets the bet list.
         /// </summary>
-        /// <returns>System.String.</returns>
+        /// <returns>System.String: the current HTML markup of the bet list.</returns>
         public string GetBetList()
         {
             return this._content.ToString();
@@ -61,6 +91,7 @@ namespace Fanex.BetList.Core.Builder
         /// Appends the specified content.
         /// </summary>
         /// <param name="content">The content.</param>
+        /// <returns>BetListHTMLBuilder object.</returns>
         public BetListHTMLBuilder Append(string content)
         {
             this._content.Append(content);
@@ -75,9 +106,15 @@ namespace Fanex.BetList.Core.Builder
         /// <param name="ticketData">The ticket data.</param>
         /// <param name="openTag">The open tag.</param>
         /// <param name="closeTag">The close tag.</param>
-        /// <param name="isShowScoreMap">if set to <c>true</c> [is show score map].</param>
-        /// <returns>BetListHTMLBuilder.</returns>
-        public BetListHTMLBuilder AddChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, string openTag, string closeTag, bool isShowScoreMap)
+        /// <param name="isShowScoreMap">If set to <c>true</c> [is show score map].</param>
+        /// <returns>Current BetListHTMLBuilder object.</returns>
+        public BetListHTMLBuilder AddChoice(
+                        ITicket ticket, 
+                        ITicketHelper ticketHelper, 
+                        List<ITicketData> ticketData,
+                        string openTag, 
+                        string closeTag, 
+                        bool isShowScoreMap)
         {
             string choice = BuildChoice(ticket, ticketHelper, ticketData, isShowScoreMap);
             this._content.Append(string.Join(null, new string[] { openTag, choice, closeTag }));
@@ -90,21 +127,27 @@ namespace Fanex.BetList.Core.Builder
         /// <param name="ticket">The ticket.</param>
         /// <param name="ticketHelper">The ticket helper.</param>
         /// <param name="ticketData">The ticket data.</param>
-        /// <param name="isShowScoreMap">if set to <c>true</c> [is show score map].</param>
-        /// <returns>string</returns>
+        /// <param name="isShowScoreMap">If set to <c>true</c> [is show score map].</param>
+        /// <returns>System.String: the HTML markup of Choice for input data.</returns>
         public string BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
         {
             IChoice choiceBuilder = this.CreateChoiceBuilder(ticket.BetTypeId);
             Choice_Template choice = choiceBuilder.Render(ticket, ticketHelper, ticketData, isShowScoreMap);
 
             if (!ticketHelper.ShowBetType)
+            {
                 choice.BetType = null;
+            }
 
             if (!ticketHelper.ShowMatch)
+            {
                 choice.Match = null;
+            }
 
             if (!ticketHelper.ShowLeague)
+            {
                 choice.League = null;
+            }
 
             return choice;
         }
@@ -115,8 +158,8 @@ namespace Fanex.BetList.Core.Builder
         /// <param name="ticket">The ticket.</param>
         /// <param name="ticketHelper">The ticket helper.</param>
         /// <param name="ticketData">The ticket data.</param>
-        /// <param name="isShowScoreMap">if set to <c>true</c> [is show score map].</param>
-        /// <returns></returns>
+        /// <param name="isShowScoreMap">If set to <c>true</c> [is show score map].</param>
+        /// <returns>Choice_Template: the whole Choice block after the build.</returns>
         public Choice_Template BuildChoiceBlock(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
         {
             IChoice choiceBuilder = this.CreateChoiceBuilder(ticket.BetTypeId);
@@ -126,17 +169,17 @@ namespace Fanex.BetList.Core.Builder
         }
 
         /// <summary>
-        /// Adds the odd.
+        /// Adds the odds.
         /// </summary>
         /// <param name="ticket">The ticket.</param>
         /// <param name="ticketData">The ticket data.</param>
         /// <param name="openTag">The open tag.</param>
         /// <param name="closeTag">The close tag.</param>
-        /// <param name="FuncGetOddsTypeName">Name of the func get odds type.</param>
-        /// <returns>BetListHTMLBuilder.</returns>
-        public BetListHTMLBuilder AddOdds(ITicket ticket, List<ITicketData> ticketData, string openTag, string closeTag, GetCachePropertyById FuncGetOddsTypeName)
+        /// <param name="funcGetOddsTypeName">Name of the function get odds type.</param>
+        /// <returns>Current BetListHTMLBuilder object.</returns>
+        public BetListHTMLBuilder AddOdds(ITicket ticket, List<ITicketData> ticketData, string openTag, string closeTag, GetCachePropertyById funcGetOddsTypeName)
         {
-            string odds = BuildOdds(ticket, ticketData, FuncGetOddsTypeName);
+            string odds = BuildOdds(ticket, ticketData, funcGetOddsTypeName);
             this._content.Append(string.Join(null, new string[] { openTag, odds, closeTag }));
             return this;
         }
@@ -146,12 +189,12 @@ namespace Fanex.BetList.Core.Builder
         /// </summary>
         /// <param name="ticket">The ticket.</param>
         /// <param name="ticketData">The ticket data.</param>
-        /// <param name="FuncGetOddsTypeName">Name of the func get odds type.</param>
-        /// <returns>string</returns>
-        public string BuildOdds(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById FuncGetOddsTypeName)
+        /// <param name="funcGetOddsTypeName">Name of the function get odds type.</param>
+        /// <returns>System.String: the HTML markup of Odds for input data.</returns>
+        public string BuildOdds(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
         {
             IOdds oddsBuilder = this.CreateOddsBuilder(ticket.BetTypeId);
-            string odds = oddsBuilder.Render(ticket, ticketData, FuncGetOddsTypeName);
+            string odds = oddsBuilder.Render(ticket, ticketData, funcGetOddsTypeName);
 
             return odds;
         }
@@ -162,7 +205,7 @@ namespace Fanex.BetList.Core.Builder
         /// <param name="ticket">The ticket.</param>
         /// <param name="openTag">The open tag.</param>
         /// <param name="closeTag">The close tag.</param>
-        /// <returns>BetListHTMLBuilder.</returns>
+        /// <returns>Current BetListHTMLBuilder object.</returns>
         public BetListHTMLBuilder AddStake(ITicket ticket, string openTag, string closeTag)
         {
             string stake = BuildStake(ticket);
@@ -175,7 +218,7 @@ namespace Fanex.BetList.Core.Builder
         /// Builds the stake.
         /// </summary>
         /// <param name="ticket">The ticket.</param>
-        /// <returns>string</returns>
+        /// <returns>System.String: the HTML markup of Stake for input data.</returns>
         public string BuildStake(ITicket ticket)
         {
             IStake stakeBuilder = this.CreateStakeBuilder(ticket.BetTypeId);
@@ -190,7 +233,7 @@ namespace Fanex.BetList.Core.Builder
         /// <param name="ticket">The ticket.</param>
         /// <param name="openTag">The open tag.</param>
         /// <param name="closeTag">The close tag.</param>
-        /// <returns></returns>
+        /// <returns>Current BetListHTMLBuilder object.</returns>
         public BetListHTMLBuilder AddTrans(ITicket ticket, string openTag, string closeTag)
         {
             string trans = BuildTrans(ticket);
@@ -202,7 +245,7 @@ namespace Fanex.BetList.Core.Builder
         /// Builds the trans.
         /// </summary>
         /// <param name="ticket">The ticket.</param>
-        /// <returns></returns>
+        /// <returns>System.String: the HTML markup of Trans for input data.</returns>
         public string BuildTrans(ITicket ticket)
         {
             ITrans transBuilder = this.CreateTransBuilder(ticket.BetTypeId);
@@ -215,11 +258,11 @@ namespace Fanex.BetList.Core.Builder
         /// </summary>
         /// <param name="ticket">The ticket.</param>
         /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data (Status33 Win/Place)</param>
+        /// <param name="ticketData">The ticket data (Status33 Win/Place).</param>
         /// <param name="openTag">The open tag.</param>
         /// <param name="closeTag">The close tag.</param>
-        /// <param name="isShowVNIP">if set to <c>true</c> [is show VNIP].</param>
-        /// <returns></returns>
+        /// <param name="isShowVNIP">If set to <c>true</c> [is show VNIP].</param>
+        /// <returns>Current BetListHTMLBuilder object.</returns>
         public BetListHTMLBuilder AddStatus(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, string openTag, string closeTag, bool isShowVNIP)
         {
             string status = BuildStatus(ticket, ticketHelper, ticketData, isShowVNIP);
@@ -232,9 +275,9 @@ namespace Fanex.BetList.Core.Builder
         /// </summary>
         /// <param name="ticket">The ticket.</param>
         /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data (Status33 Win/Place)</param>
-        /// <param name="isShowVNIP">if set to <c>true</c> [is show VNIP].</param>
-        /// <returns></returns>
+        /// <param name="ticketData">The ticket data (Status33 Win/Place).</param>
+        /// <param name="isShowVNIP">If set to <c>true</c> [is show VNIP].</param>
+        /// <returns>System.String: the HTML markup of Status for input data.</returns>
         public string BuildStatus(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP)
         {
             IStatus statusBuilder = this.CreateStatusBuilder(ticket.BetTypeId);
@@ -244,21 +287,25 @@ namespace Fanex.BetList.Core.Builder
         }
 
         /// <summary>
+        /// Builds the system parlay detail.
+        /// </summary>
+        /// <param name="ticketHelper">The ticket helper.</param>
+        /// <param name="systemParlayData">The system parlay data.</param>
+        /// <returns>System.String: the HTML markup of System Parlay Detail for input data.</returns>
+        public string BuildSystemParlayDetail(ITicketHelper ticketHelper, ISystemParlayData systemParlayData)
+        {
+            var builder = new SystemParlayDetail();
+            return builder.Build(ticketHelper, systemParlayData);
+        }
+
+        /// <summary>
         /// Creates the choice builder.
         /// </summary>
-        /// <param name="bettype">The bettype.</param>
-        /// <returns>IChoice.</returns>
+        /// <param name="bettype">The bet type.</param>
+        /// <returns>IChoice: the Choice builder object.</returns>
         private IChoice CreateChoiceBuilder(int bettype)
         {
-            string typeName = string.Join(
-                                            null,
-                                            new string[] 
-                                            { 
-                                                CHOICE_BUILDER_NAMESPACE, 
-                                                ".Choice", 
-                                                bettype.ToString() 
-                                            }
-                                         );
+            string typeName = string.Join(null, new string[] { CHOICEBUILDERNAMESPACE, ".Choice", bettype.ToString() });
 
             Type type = Type.GetType(typeName);
 
@@ -275,24 +322,17 @@ namespace Fanex.BetList.Core.Builder
         /// <summary>
         /// Creates the odd builder.
         /// </summary>
-        /// <param name="bettype">The bettype.</param>
-        /// <returns>IOdds.</returns>
+        /// <param name="bettype">The bet type.</param>
+        /// <returns>IOdds: the Odds builder object.</returns>
         private IOdds CreateOddsBuilder(int bettype)
         {
             if (bettype <= 1199 && bettype >= 1101)
             {
-                //Odds of Live Casino bettypes
+                // Odds of Live Casino bettypes
                 bettype = 1101;
             }
-            string typeName = string.Join(
-                                            null,
-                                            new string[] 
-                                            { 
-                                                ODDS_BUILDER_NAMESPACE, 
-                                                ".Odds", 
-                                                bettype.ToString() 
-                                            }
-                                         );
+
+            string typeName = string.Join(null, new string[] { ODDSBUILDERNAMESPACE, ".Odds", bettype.ToString() });
 
             Type type = Type.GetType(typeName);
 
@@ -309,19 +349,11 @@ namespace Fanex.BetList.Core.Builder
         /// <summary>
         /// Creates the stake builder.
         /// </summary>
-        /// <param name="bettype">The bettype.</param>
-        /// <returns>IStake.</returns>
+        /// <param name="bettype">The bet type.</param>
+        /// <returns>IStake: the Stake builder object.</returns>
         private IStake CreateStakeBuilder(int bettype)
         {
-            string typeName = string.Join(
-                                            null,
-                                            new string[] 
-                                            { 
-                                                STAKE_BUILDER_NAMESPACE, 
-                                                ".Stake", 
-                                                bettype.ToString() 
-                                            }
-                                         );
+            string typeName = string.Join(null, new string[] { STAKEBUILDERNAMESPACE, ".Stake", bettype.ToString() });
 
             Type type = Type.GetType(typeName);
 
@@ -338,18 +370,11 @@ namespace Fanex.BetList.Core.Builder
         /// <summary>
         /// Creates the status builder.
         /// </summary>
-        /// <returns></returns>
+        /// <param name="bettype">The bet type.</param>
+        /// <returns>IStatus: the Status builder object.</returns>
         private IStatus CreateStatusBuilder(int bettype)
         {
-            string typeName = string.Join(
-                                            null,
-                                            new string[] 
-                                            { 
-                                                STATUS_BUILDER_NAMESPACE, 
-                                                ".Status", 
-                                                bettype.ToString() 
-                                            }
-                                         );
+            string typeName = string.Join(null, new string[] { STATUSBUILDERNAMESPACE, ".Status", bettype.ToString() });
 
             Type type = Type.GetType(typeName);
 
@@ -366,18 +391,11 @@ namespace Fanex.BetList.Core.Builder
         /// <summary>
         /// Creates the trans builder.
         /// </summary>
-        /// <returns></returns>
+        /// <param name="bettype">The bet type.</param>
+        /// <returns>ITrans: the Trans builder object.</returns>
         private ITrans CreateTransBuilder(int bettype)
         {
-            string typeName = string.Join(
-                                            null,
-                                            new string[] 
-                                            { 
-                                                TRANS_BUILDER_NAMESPACE, 
-                                                ".Trans", 
-                                                bettype.ToString() 
-                                            }
-                                         );
+            string typeName = string.Join(null, new string[] { TRANSBUILDERNAMESPACE, ".Trans", bettype.ToString() });
 
             Type type = Type.GetType(typeName);
 
@@ -389,12 +407,6 @@ namespace Fanex.BetList.Core.Builder
             {
                 return Activator.CreateInstance(type) as ITrans;
             }
-        }
-
-        public string BuildSystemParlayDetail(ITicketHelper ticketHelper, ISystemParlayData systemParlayData)
-        {
-            var builder =new SystemParlayDetail();
-            return builder.Build(ticketHelper, systemParlayData);
         }
     }
 }

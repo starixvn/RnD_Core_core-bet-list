@@ -15,7 +15,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    /// 1st ball OU
+    /// 1st ball OU.
     /// </summary>
     public class Choice81 : Choice1
     {
@@ -31,21 +31,11 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             this.Template.Match.VS = null;
             this.Template.betTeam = ticket.BetTeam == "h" ? CoreBetList.over : CoreBetList.under;
-            
-            
 
-            this.Template.betTeamClassName = BL_FAVORITE;
+            this.Template.betTeamClassName = BLFAVORITE;
 
-            this.Template.Handicap.handicap = "37.5";            
-            this.Template.Match.homeTeam = string.Join(
-                                                null,
-                                                new string[]
-                                                {
-                                                    CoreBetList.numbergameno,
-                                                    "&nbsp;",
-                                                    ticket.MatchCode    
-                                                }
-                                            );
+            this.Template.Handicap.handicap = "37.5";
+            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, "&nbsp;", ticket.MatchCode });
         }
     }
 }

@@ -6,20 +6,21 @@
 // <history>
 //     <change who="Marc.Bui" date="2012.11.16">Create</change>
 //     <change who="Marc.Bui" date="2013.01.31">Update export excel</change>
-// </history>D:\1.working\Git\Fanex\betlist-core-clone\Fanex.BetList.Core\App_GlobalResources\CoreLang.th-TH.resx
+//     <change who="Faisall.Tran" date="2013.07.08">Change language resource key</change>
+//     <change who="Marc.Bui" date="2013.10.09">Check stylecop & refactor</change>
+// </history>
 // ---------------------------------------------------------------------------------
 
 namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using System.Data;
     using System.Text;
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Utils;
 
     /// <summary>
-    /// Live Roulette
+    /// Live Roulette.
     /// </summary>
     public class Choice1102 : Choice1
     {
@@ -44,12 +45,12 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                     string betTeamName;
                     string odds;
                     StringBuilder betTeam = new StringBuilder();
-
+                    string betTeamFormat = "<div><span class='favorite'>{0}</span>&nbsp;<span class='stake'>{1}</span>&nbsp;@&nbsp;<span class='handicap custom'>{2}</span></div>";
                     foreach (ITicketData refDataItem in foundTicketData)
                     {
                         betTeamName = ticketHelper.GetRouletteBetItemNameById(refDataItem.BetTeam);
                         odds = ConvertByBetType.Odds(refDataItem.Odds, ticket.BetTypeId, ticket.OddsType);
-                        betTeam.AppendFormat("<div><span class='favorite'>{0}</span>&nbsp;<span class='stake'>{1}</span>&nbsp;@&nbsp;<span class='handicap custom'>{2}</span></div>", betTeamName, ConvertByBetType.Stake(refDataItem.Stake), odds);
+                        betTeam.AppendFormat(betTeamFormat, betTeamName, ConvertByBetType.Stake(refDataItem.Stake), odds);
                     }
 
                     this.Template.betTeam = betTeam.ToString();
@@ -80,7 +81,8 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                                     .Replace("<span class='handicap custom'>", string.Empty)
                                     .Replace("</div>", "\n")
                                     .Replace("<span class='stake'>", string.Empty);
-            //Remove the last line-break
+
+            // Remove the last line-break
             int lastBreak = Template.betTeam.LastIndexOf("\n");
             if (lastBreak >= 0)
             {

@@ -5,20 +5,20 @@
 // ---------------------------------------------------------------------------------
 // <history>
 //     <change who="Marc.Bui" date="2013.02.27">Create</change>
-//     <change who="Marc.Bui" date="2013.03.11">Update condition to work with 
-//                                              Template changes made by Steven</change>
+//     <change who="Marc.Bui" date="2013.03.11">Update condition to work with Template changes made by Steven</change>
 //     <change who="Marc.Bui" date="2013.03.11">Update to show MatchCode with horse name</change>
+//     <change who="Marc.Bui" date="2013.10.09">Check stylecop & refactor</change>
 // </history>
 // ---------------------------------------------------------------------------------
 
 namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using System;
     using System.Collections.Generic;
     using Fanex.BetList.Core.Entities;
-    using System;
 
     /// <summary>
-    /// Virtual Horse Racing - Win
+    /// Virtual Horse Racing - Win.
     /// </summary>
     public class Choice1231 : Choice1
     {
@@ -40,21 +40,13 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                 this.Template.Match.awayTeam = null;
             }
 
-            this.Template.Handicap.handicap = null;            
-            
+            this.Template.Handicap.handicap = null;
+
             this.Template.League.LeagueName = null;
 
-            this.Template.betTeam = string.Join(
-                                                    null,
-                                                    new string[]
-                                                    {
-                                                        ticket.MatchCode,
-                                                        " - ",
-                                                        ticketHelper.GetHorseTeamNameById(ticket.HomeId,ticket.AwayId)
-                                                    }
-                                               );
+            this.Template.betTeam = string.Join(null, new string[] { ticket.MatchCode, " - ", ticketHelper.GetHorseTeamNameById(ticket.HomeId, ticket.AwayId) });
 
-            this.Template.betTeamClassName = BL_FAVORITE;
+            this.Template.betTeamClassName = BLFAVORITE;
 
             DateTime eventTime;
 
@@ -65,7 +57,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             else
             {
                 this.Template.Match.homeTeam = ticket.ShowTime;
-            }                 
+            }
         }
 
         /// <summary>
@@ -76,7 +68,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         /// <param name="awayFGLG">The away FGLG.</param>
         protected override void CalculateFG_LG(string betStatus, ref string homeFGLG, ref string awayFGLG)
         {
-            //There's no first goal last goal for this bettype
+            // There's no first goal last goal for this bettype
             homeFGLG = string.Empty;
             awayFGLG = string.Empty;
         }
@@ -89,7 +81,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         /// <param name="awayFGLG">The away FGLG.</param>
         protected override void CalculateFG_LG_Excel(string betStatus, ref string homeFGLG, ref string awayFGLG)
         {
-            //There's no first goal last goal for this bettype
+            // There's no first goal last goal for this bettype
             homeFGLG = string.Empty;
             awayFGLG = string.Empty;
         }

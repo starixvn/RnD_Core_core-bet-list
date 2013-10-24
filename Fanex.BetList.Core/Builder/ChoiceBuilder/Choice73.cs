@@ -15,7 +15,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    /// Bingo
+    /// Bet Type: Bingo.
     /// </summary>
     public class Choice73 : Choice1
     {
@@ -40,7 +40,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             this.Template.League.LeagueName.leagueName = null;  
 
             this.Template.betTeam = CoreBetList.bingo;
-            this.Template.betTeamClassName = BL_FAVORITE;                     
+            this.Template.betTeamClassName = BLFAVORITE;                     
         }
     }
 }
