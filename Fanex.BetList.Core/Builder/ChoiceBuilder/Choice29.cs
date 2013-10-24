@@ -199,7 +199,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                     rtfHelper.RTFRenderer.AddText("\n" + eventName, posFont);
                     rtfHelper.RTFRenderer.AddText(theRest, normalFont);
                 }
-                catch (Exception ex)
+                catch 
                 {
                     throw;
                 }

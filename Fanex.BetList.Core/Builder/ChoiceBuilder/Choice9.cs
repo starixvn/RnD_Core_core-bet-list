@@ -162,7 +162,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                     tmpRtfHelper.RTFRenderer.AddText("\n" + eventName, posFont);
                     tmpRtfHelper.RTFRenderer.AddText(theRest, normalFont);
                 }
-                catch (Exception ex)
+                catch 
                 {
                     throw;
                 }
