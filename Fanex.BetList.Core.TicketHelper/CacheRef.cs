@@ -10,13 +10,12 @@
 
 namespace Fanex.BetList.Core.TicketHelper
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Reflection;
     using System.Threading;
-    using Fanex.Caching;
     using RemotingRef;
 
+    /// <summary>
+    /// Class CacheRef.
+    /// </summary>
     public class CacheRef
     {
         public static string CurrentTWLanguage

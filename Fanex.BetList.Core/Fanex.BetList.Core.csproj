@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CodeAnalysis\CodeAnalysisConfiguration.xml" />
     <Content Include="DLL\NPOI.dll" />
     <Content Include="DLL\TplCore.dll" />
     <Content Include="Templates\SystemParlayDetail.htm" />

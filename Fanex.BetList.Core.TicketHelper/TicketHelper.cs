@@ -6,29 +6,33 @@
 // <history>
 //     <change who="Marc.Bui" date="2012.12.11">Create</change>
 //     <change who="Marc.Bui" date="2012.12.19">Remove GetMixParlayDetail</change>
-//     <change who="Marc.Bui" date="2012.12.26>Amend GetHorseTeamNameById</change>
-//     <change who="Marc.Bui" date="2013.03.11>Add ClientDetailSystemParlayFunction
-//                                             for easy customization</change>
-//     <change who="Marc.Bui" date="2013.03.11>Add ClientDetailMixParlayFunction
-//                                             for easy customization</change>
-//     <change who="Marc.Bui" date="2013.03.19>Add ClientSystemParlaySubbetsDetailFunction
-//                                             & ClientMixParlaySubbetsDetailFunction
-//                                             for easy customization</change>
-//     <change who="Marc.Bui" date="2013.05.31>Add export detail for *Parlay tickets</change>
+//     <change who="Marc.Bui" date="2012.12.26">Amend GetHorseTeamNameById</change>
+//     <change who="Marc.Bui" date="2013.03.11">Add ClientDetailSystemParlayFunction for easy customization</change>
+//     <change who="Marc.Bui" date="2013.03.11">Add ClientDetailMixParlayFunction for easy customization</change>
+//     <change who="Marc.Bui" date="2013.03.19">Add ClientSystemParlaySubbetsDetailFunction & ClientMixParlaySubbetsDetailFunction</change>
+//     <change who="Marc.Bui" date="2013.05.31">Add export detail for *Parlay tickets</change>
+//     <change who="Marc.Bui" date="2013.10.24">Apply stylecop</change>
 // </history>
 // ---------------------------------------------------------------------------------
 
 namespace Fanex.BetList.Core.TicketHelper
 {
+    using System.Collections.Generic;
     using Fanex.BetList.Core.Entities;
     using Sunplus.Core.Common.IPs;
-    using System.Collections.Generic;
 
     /// <summary>
-    /// Utilities for resolving Names from IDs
+    /// Utilities for resolving Names from IDs.
     /// </summary>
     public class TicketHelper : ITicketHelper
     {
+        public TicketHelper()
+        {
+            ShowBetType = true;
+            ShowMatch = true;
+            ShowLeague = true;
+            ShowSystemParlayDetail = true;
+        }
 
         public int Index { get; set; }
 
@@ -50,13 +54,11 @@ namespace Fanex.BetList.Core.TicketHelper
 
         public bool ShowSystemParlayDetail { get; set; }
 
-        public TicketHelper()
-        {
-            ShowBetType = true;
-            ShowMatch = true;
-            ShowLeague = true;
-            ShowSystemParlayDetail = true;
-        }
+        /// <summary>
+        /// Gets or sets Method to get *Parlay details.
+        /// </summary>
+        /// <value>Function to get parlay detail by Id.</value>
+        public GetParlayTicketsById GetParlayDetailById { get; set; }        
 
         public string GetBetTypeNameById(object bettypeId)
         {
@@ -103,24 +105,42 @@ namespace Fanex.BetList.Core.TicketHelper
             return IpUtils.IsVnIp(ip);
         }
 
+        /// <summary>
+        /// Gets the name of the offered combination mix-parlay.
+        /// </summary>
+        /// <param name="key">The key of MP Combination.</param>
+        /// <returns>MP combination offered name.</returns>
         public string GetCombinationMPOfferName(string key)
         {
             Dictionary<string, string> combinationOfferName = new Dictionary<string, string> 
             { 
-                {"110","Trixie"},
-                {"1110","Yankee"},
-                {"11110","Canadian"},
-                {"111110","Heinz"},
-                {"1111110","Super Heinz"},
-                {"11111110","Goliath"}
+                { 
+                    "110",
+                    "Trixie" 
+                },
+                { 
+                    "1110",
+                    "Yankee" 
+                },
+                { 
+                    "11110",
+                    "Canadian" 
+                },
+                { 
+                    "111110",
+                    "Heinz" 
+                },
+                { 
+                    "1111110",
+                    "Super Heinz"
+                },
+                { 
+                    "11111110",
+                    "Goliath" 
+                }
             };
 
             return combinationOfferName.ContainsKey(key) ? combinationOfferName[key] : string.Empty;
-        }
-
-        /// <summary>
-        /// Method to get *Parlay details
-        /// </summary>
-        public GetParlayTicketsById GetParlayDetailById { get; set; }
+        }       
     }
 }

@@ -201,7 +201,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                 }
                 catch (Exception ex)
                 {
-                    throw ex;
+                    throw;
                 }
             }
         }

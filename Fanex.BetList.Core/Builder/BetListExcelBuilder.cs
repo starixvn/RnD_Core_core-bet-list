@@ -4,7 +4,7 @@
 // </copyright>
 // ---------------------------------------------------------------------------------
 // <history>
-//     <change who="Marc.Bui" date="2013.10.08">Check stylecop & refactor</change>
+//     <change who="Marc.Bui" date="2013.10.08">Check stylecop, Fx Cop & refactor</change>
 //     <change who="Marc.Bui" date="2013.05.31">Add export detail for *Parlay tickets</change>
 //     <change who="Marc.Bui" date="2013.01.29">Update line-breaks in MS Office</change>
 //     <change who="Marc.Bui" date="2012.11.16">Create</change>
@@ -35,7 +35,7 @@ namespace Fanex.BetList.Core.Builder
     /// <summary>
     /// CoreBetList Excel Builder.
     /// </summary>
-    public class BetListExcelBuilder : IBetListBuilder
+    public class BetListExcelBuilder : IBetListBuilder, IDisposable
     {
         #region Attributes
 
@@ -79,6 +79,8 @@ namespace Fanex.BetList.Core.Builder
         /// </summary>
         private ISheet _worksheet;
 
+        private bool _isDisposed;
+
         /// <summary>
         /// Index of the next cell in current row.
         /// </summary>
@@ -93,6 +95,8 @@ namespace Fanex.BetList.Core.Builder
         public BetListExcelBuilder()
         {
             _workbook = new HSSFWorkbook();
+
+            _isDisposed = false;
 
             OddCellStyle = _workbook.CreateCellStyle();
             EvenCellStyle = _workbook.CreateCellStyle();
@@ -160,6 +164,26 @@ namespace Fanex.BetList.Core.Builder
             {
                 return _worksheet.LastRowNum; 
             } 
+        }
+
+        #endregion        
+
+        #region IDisposable's Implementation
+
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        public void Dispose()
+        {
+            try
+            {
+                this.Dispose(true);
+                GC.SuppressFinalize(this);
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         #endregion
@@ -653,5 +677,29 @@ namespace Fanex.BetList.Core.Builder
             EvenCellStyleCenterAligned.WrapText = true;
             OddCellStyleCenterAligned.WrapText = true;
         }
+
+        #region IDisposable's Implementation
+
+        /// <summary>
+        /// Releases unmanaged and - optionally - managed resources.
+        /// </summary>
+        /// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        private void Dispose(bool disposing)
+        {
+            if (!_isDisposed)
+            {
+                if (!disposing)
+                {
+                    if (_workbook != null)
+                    {
+                        _workbook.Dispose();
+                    }
+                }
+
+                _isDisposed = true;
+            }
+        }
+
+        #endregion
     }
 }
