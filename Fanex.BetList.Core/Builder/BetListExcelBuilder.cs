@@ -225,10 +225,10 @@ namespace Fanex.BetList.Core.Builder
         /// <param name="numberOfColumns">The number of columns.</param>
         /// <param name="singleRowHeight">Height of the single row.</param>
         /// <returns>Current BetListExcelBuilder object.</returns>
-        public BetListExcelBuilder BuildWorksheet(string sheetName, short numberOfColumns, short singleRowHeight = 13)
+        public BetListExcelBuilder BuildWorksheet(string sheetName, short numberOfColumns, short singleRowHeight = 13, bool displayGridlines = false)
         {
             _worksheet = _workbook.CreateSheet(sheetName);
-            _worksheet.DisplayGridlines = false;
+            _worksheet.DisplayGridlines = displayGridlines;
             _worksheet.DefaultRowHeight = singleRowHeight;
             _reportColumnsNum = numberOfColumns;
             return this;
