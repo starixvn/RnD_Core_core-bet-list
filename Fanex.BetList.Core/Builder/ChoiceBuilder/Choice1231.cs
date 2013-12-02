@@ -40,9 +40,9 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                 this.Template.Match.awayTeam = null;
             }
 
-            this.Template.Handicap.handicap = null;            
-            
-            this.Template.League.LeagueName = null;
+            this.Template.Handicap.handicap = null;
+
+            this.Template.League.LeagueName.leagueName = ticketHelper.GetLeagueNameById(ticket.LeagueId);
 
             this.Template.betTeam = string.Join(
                                                     null,
