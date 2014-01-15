@@ -38,7 +38,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             this.Template.betTeam = betHomeTeam ? CoreLang.lblDraw : awayName;
 
-            this.Template.betTeamClassName = BLUNDERDOG;
+            this.Template.betTeamClassName = BL_UNDER_DOG;
 
             this.Template.Handicap.handicap = null;
 
