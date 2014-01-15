@@ -1,4 +1,4 @@
-﻿// ---------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------
 // <copyright file="Choice121.cs" company="Nexcel Solutions Vietnam">
 //     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
 // </copyright>
@@ -8,6 +8,7 @@
 //     <change who="Marc.Bui" date="2013.01.18">Update ScoreClassName to BLFAVORITE (red) for all bettypes</change>
 //     <change who="Marc.Bui" date="2013.02.21">Update showing Neutral</change>
 //     <change who="Marc.Bui" date="2013.10.09">Check stylecop & refactor</change>
+//     <change who="Marc.Bui" date="2014.01.15">Change betteam classname to UNDERDOG due to specs.</change>
 // </history>
 // ---------------------------------------------------------------------------------
 
@@ -37,14 +38,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             this.Template.betTeam = betHomeTeam ? CoreLang.lblDraw : awayName;
 
-            if (betHomeTeam)
-            {
-                this.Template.betTeamClassName = ticket.Handicap2 >= ticket.Handicap1 ? BLUNDERDOG : BLFAVORITE;
-            }
-            else
-            {
-                this.Template.betTeamClassName = ticket.Handicap2 <= ticket.Handicap1 ? BLUNDERDOG : BLFAVORITE;
-            }
+            this.Template.betTeamClassName = BL_UNDER_DOG;
 
             this.Template.Handicap.handicap = null;
 
