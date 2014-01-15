@@ -1,4 +1,4 @@
-// ---------------------------------------------------------------------------------
+﻿// ---------------------------------------------------------------------------------
 // <copyright file="Choice121.cs" company="Nexcel Solutions Vietnam">
 //     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
 // </copyright>
@@ -38,7 +38,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             this.Template.betTeam = betHomeTeam ? CoreLang.lblDraw : awayName;
 
-            this.Template.betTeamClassName = BL_UNDER_DOG;
+            this.Template.betTeamClassName = BLUNDERDOG;
 
             this.Template.Handicap.handicap = null;
 
