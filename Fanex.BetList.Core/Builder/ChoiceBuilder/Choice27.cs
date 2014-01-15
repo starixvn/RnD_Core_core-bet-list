@@ -5,6 +5,7 @@
 // ---------------------------------------------------------------------------------
 // <history>
 //     <change who="Marc.Bui" date="2012.11.16">Create</change>
+//     <change who="Marc.Bui" date="2014.01.15">Change betteam classname to UNDERDOG due to specs.</change>
 // </history>
 // ---------------------------------------------------------------------------------
 
@@ -29,6 +30,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
             this.Template.Handicap.handicap = null;
+            this.Template.betTeamClassName = BLUNDERDOG;
         }
     }
 }

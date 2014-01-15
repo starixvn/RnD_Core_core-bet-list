@@ -8,6 +8,7 @@
 //     <change who="Marc.Bui" date="2013.01.18">Update ScoreClassName to BLFAVORITE (red) for all bettypes</change>
 //     <change who="Marc.Bui" date="2013.02.21">Update showing Neutral</change>
 //     <change who="Marc.Bui" date="2013.10.09">Check stylecop & refactor</change>
+//     <change who="Marc.Bui" date="2014.01.15">Change betteam classname to UNDERDOG due to specs.</change>
 // </history>
 // ---------------------------------------------------------------------------------
 
@@ -39,16 +40,9 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             this.Template.Match.homeTeam = string.Join(null, new string[] { homeName, (ticket.IsNeutral ? " (N) " : string.Empty) });
 
-            this.Template.betTeam = betHomeTeam ? this.Template.Match.homeTeam : CoreLang.lblDraw;            
+            this.Template.betTeam = betHomeTeam ? this.Template.Match.homeTeam : CoreLang.lblDraw;
 
-            if (betHomeTeam)
-            {
-                this.Template.betTeamClassName = ticket.Handicap2 >= ticket.Handicap1 ? BLUNDERDOG : BLFAVORITE;
-            }
-            else
-            {
-                this.Template.betTeamClassName = ticket.Handicap2 <= ticket.Handicap1 ? BLUNDERDOG : BLFAVORITE;
-            }
+            this.Template.betTeamClassName = BLUNDERDOG;
 
             this.Template.Score.homeScore = ticket.LiveHomeScore.ToString();
             this.Template.Score.awayScore = ticket.LiveAwayScore.ToString();
