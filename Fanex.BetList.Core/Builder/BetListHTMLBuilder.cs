@@ -159,7 +159,7 @@ namespace Fanex.BetList.Core.Builder
         /// <param name="ticketHelper">The ticket helper.</param>
         /// <param name="ticketData">The ticket data.</param>
         /// <param name="isShowScoreMap">If set to <c>true</c> [is show score map].</param>
-        /// <returns>Choice_Template: the whole Choice block after the build.</returns>
+        /// <returns>Choice Template: the whole Choice block after the build.</returns>
         public Choice_Template BuildChoiceBlock(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
         {
             IChoice choiceBuilder = this.CreateChoiceBuilder(ticket.BetTypeId);
