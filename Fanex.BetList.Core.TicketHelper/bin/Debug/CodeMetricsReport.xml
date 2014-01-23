@@ -1,0 +1,405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeMetricsReport Version="10.0">
+  <Targets>
+    <Target Name="D:\GIT\Fanex.Library\Fanex.BetList.Core.TicketHelper\bin\Debug\Fanex.BetList.Core.TicketHelper.dll">
+      <Modules>
+        <Module Name="Fanex.BetList.Core.TicketHelper.dll" AssemblyVersion="1.0.5128.23017">
+          <Metrics>
+            <Metric Name="MaintainabilityIndex" Value="85" />
+            <Metric Name="CyclomaticComplexity" Value="57" />
+            <Metric Name="ClassCoupling" Value="8" />
+            <Metric Name="DepthOfInheritance" Value="1" />
+            <Metric Name="LinesOfCode" Value="80" />
+          </Metrics>
+          <Namespaces>
+            <Namespace Name="Fanex.BetList.Core.TicketHelper">
+              <Metrics>
+                <Metric Name="MaintainabilityIndex" Value="85" />
+                <Metric Name="CyclomaticComplexity" Value="57" />
+                <Metric Name="ClassCoupling" Value="8" />
+                <Metric Name="DepthOfInheritance" Value="1" />
+                <Metric Name="LinesOfCode" Value="80" />
+              </Metrics>
+              <Types>
+                <Type Name="CacheRef">
+                  <Metrics>
+                    <Metric Name="MaintainabilityIndex" Value="80" />
+                    <Metric Name="CyclomaticComplexity" Value="23" />
+                    <Metric Name="ClassCoupling" Value="4" />
+                    <Metric Name="DepthOfInheritance" Value="1" />
+                    <Metric Name="LinesOfCode" Value="32" />
+                  </Metrics>
+                  <Members>
+                    <Member Name="CurrentTWLanguage.get() : string" File="D:\GIT\Fanex.Library\Fanex.BetList.Core.TicketHelper\CacheRef.cs" Line="24">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="60" />
+                        <Metric Name="CyclomaticComplexity" Value="11" />
+                        <Metric Name="ClassCoupling" Value="3" />
+                        <Metric Name="LinesOfCode" Value="10" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="GetBettype(object) : string" File="D:\GIT\Fanex.Library\Fanex.BetList.Core.TicketHelper\CacheRef.cs" Line="40">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="86" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="0" />
+                        <Metric Name="LinesOfCode" Value="2" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="GetBettype(object, object) : string" File="D:\GIT\Fanex.Library\Fanex.BetList.Core.TicketHelper\CacheRef.cs" Line="45">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="70" />
+                        <Metric Name="CyclomaticComplexity" Value="3" />
+                        <Metric Name="ClassCoupling" Value="1" />
+                        <Metric Name="LinesOfCode" Value="5" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="GetSportName(object) : string" File="D:\GIT\Fanex.Library\Fanex.BetList.Core.TicketHelper\CacheRef.cs" Line="57">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="83" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="1" />
+                        <Metric Name="LinesOfCode" Value="2" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="GetTeamName(object) : string" File="D:\GIT\Fanex.Library\Fanex.BetList.Core.TicketHelper\CacheRef.cs" Line="62">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="83" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="1" />
+                        <Metric Name="LinesOfCode" Value="2" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="GetRouletteBetItem(object) : string" File="D:\GIT\Fanex.Library\Fanex.BetList.Core.TicketHelper\CacheRef.cs" Line="67">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="83" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="1" />
+                        <Metric Name="LinesOfCode" Value="2" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="GetCasinoBetItem(object) : string" File="D:\GIT\Fanex.Library\Fanex.BetList.Core.TicketHelper\CacheRef.cs" Line="72">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="83" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="1" />
+                        <Metric Name="LinesOfCode" Value="2" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="GetLeagueName(object) : string" File="D:\GIT\Fanex.Library\Fanex.BetList.Core.TicketHelper\CacheRef.cs" Line="77">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="83" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="1" />
+                        <Metric Name="LinesOfCode" Value="2" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="GetHorseTeamName(object) : string" File="D:\GIT\Fanex.Library\Fanex.BetList.Core.TicketHelper\CacheRef.cs" Line="82">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="84" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="1" />
+                        <Metric Name="LinesOfCode" Value="2" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="GetOddsTypeName(object) : string" File="D:\GIT\Fanex.Library\Fanex.BetList.Core.TicketHelper\CacheRef.cs" Line="87">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="84" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="1" />
+                        <Metric Name="LinesOfCode" Value="2" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="CacheRef()">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="100" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="0" />
+                        <Metric Name="LinesOfCode" Value="1" />
+                      </Metrics>
+                    </Member>
+                  </Members>
+                </Type>
+                <Type Name="TicketHelper">
+                  <Metrics>
+                    <Metric Name="MaintainabilityIndex" Value="90" />
+                    <Metric Name="CyclomaticComplexity" Value="34" />
+                    <Metric Name="ClassCoupling" Value="5" />
+                    <Metric Name="DepthOfInheritance" Value="1" />
+                    <Metric Name="LinesOfCode" Value="48" />
+                  </Metrics>
+                  <Members>
+                    <Member Name="TicketHelper()" File="D:\GIT\Fanex.Library\Fanex.BetList.Core.TicketHelper\TicketHelper.cs" Line="29">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="75" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="0" />
+                        <Metric Name="LinesOfCode" Value="5" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="Index.get() : int">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="98" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="0" />
+                        <Metric Name="LinesOfCode" Value="1" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="Index.set(int) : void">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="95" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="0" />
+                        <Metric Name="LinesOfCode" Value="1" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="CurrentLanguage.get() : string">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="98" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="0" />
+                        <Metric Name="LinesOfCode" Value="1" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="CurrentLanguage.set(string) : void">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="95" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="0" />
+                        <Metric Name="LinesOfCode" Value="1" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="IsShowOddsWithChoice.get() : bool">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="98" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="0" />
+                        <Metric Name="LinesOfCode" Value="1" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="IsShowOddsWithChoice.set(bool) : void">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="95" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="0" />
+                        <Metric Name="LinesOfCode" Value="1" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="ClientDetailSystemParlayFunction.get() : string">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="98" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="0" />
+                        <Metric Name="LinesOfCode" Value="1" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="ClientDetailSystemParlayFunction.set(string) : void">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="95" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="0" />
+                        <Metric Name="LinesOfCode" Value="1" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="ClientSystemParlaySubbetsDetailFunction.get() : string">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="98" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="0" />
+                        <Metric Name="LinesOfCode" Value="1" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="ClientSystemParlaySubbetsDetailFunction.set(string) : void">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="95" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="0" />
+                        <Metric Name="LinesOfCode" Value="1" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="ClientMixParlaySubbetsDetailFunction.get() : string">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="98" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="0" />
+                        <Metric Name="LinesOfCode" Value="1" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="ClientMixParlaySubbetsDetailFunction.set(string) : void">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="95" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="0" />
+                        <Metric Name="LinesOfCode" Value="1" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="ShowBetType.get() : bool">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="98" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="0" />
+                        <Metric Name="LinesOfCode" Value="1" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="ShowBetType.set(bool) : void">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="95" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="0" />
+                        <Metric Name="LinesOfCode" Value="1" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="ShowMatch.get() : bool">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="98" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="0" />
+                        <Metric Name="LinesOfCode" Value="1" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="ShowMatch.set(bool) : void">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="95" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="0" />
+                        <Metric Name="LinesOfCode" Value="1" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="ShowLeague.get() : bool">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="98" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="0" />
+                        <Metric Name="LinesOfCode" Value="1" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="ShowLeague.set(bool) : void">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="95" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="0" />
+                        <Metric Name="LinesOfCode" Value="1" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="ShowSystemParlayDetail.get() : bool">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="98" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="0" />
+                        <Metric Name="LinesOfCode" Value="1" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="ShowSystemParlayDetail.set(bool) : void">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="95" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="0" />
+                        <Metric Name="LinesOfCode" Value="1" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="GetParlayDetailById.get() : GetParlayTicketsById">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="98" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="1" />
+                        <Metric Name="LinesOfCode" Value="1" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="GetParlayDetailById.set(GetParlayTicketsById) : void">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="95" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="1" />
+                        <Metric Name="LinesOfCode" Value="1" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="GetBetTypeNameById(object) : string" File="D:\GIT\Fanex.Library\Fanex.BetList.Core.TicketHelper\TicketHelper.cs" Line="64">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="87" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="1" />
+                        <Metric Name="LinesOfCode" Value="2" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="GetCasinoBetTeamNameById(object) : string" File="D:\GIT\Fanex.Library\Fanex.BetList.Core.TicketHelper\TicketHelper.cs" Line="69">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="87" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="1" />
+                        <Metric Name="LinesOfCode" Value="2" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="GetLeagueNameById(object) : string" File="D:\GIT\Fanex.Library\Fanex.BetList.Core.TicketHelper\TicketHelper.cs" Line="74">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="87" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="1" />
+                        <Metric Name="LinesOfCode" Value="2" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="GetSportNameById(object) : string" File="D:\GIT\Fanex.Library\Fanex.BetList.Core.TicketHelper\TicketHelper.cs" Line="79">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="87" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="1" />
+                        <Metric Name="LinesOfCode" Value="2" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="GetTeamNameById(object) : string" File="D:\GIT\Fanex.Library\Fanex.BetList.Core.TicketHelper\TicketHelper.cs" Line="84">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="87" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="1" />
+                        <Metric Name="LinesOfCode" Value="2" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="GetHorseTeamNameById(object, object) : string" File="D:\GIT\Fanex.Library\Fanex.BetList.Core.TicketHelper\TicketHelper.cs" Line="89">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="87" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="1" />
+                        <Metric Name="LinesOfCode" Value="2" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="GetBetTypeNameById(object, object) : string" File="D:\GIT\Fanex.Library\Fanex.BetList.Core.TicketHelper\TicketHelper.cs" Line="94">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="86" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="1" />
+                        <Metric Name="LinesOfCode" Value="2" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="GetRouletteBetItemNameById(object) : string" File="D:\GIT\Fanex.Library\Fanex.BetList.Core.TicketHelper\TicketHelper.cs" Line="99">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="87" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="1" />
+                        <Metric Name="LinesOfCode" Value="2" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="IsVnIp(string) : bool" File="D:\GIT\Fanex.Library\Fanex.BetList.Core.TicketHelper\TicketHelper.cs" Line="104">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="87" />
+                        <Metric Name="CyclomaticComplexity" Value="1" />
+                        <Metric Name="ClassCoupling" Value="1" />
+                        <Metric Name="LinesOfCode" Value="2" />
+                      </Metrics>
+                    </Member>
+                    <Member Name="GetCombinationMPOfferName(string) : string" File="D:\GIT\Fanex.Library\Fanex.BetList.Core.TicketHelper\TicketHelper.cs" Line="114">
+                      <Metrics>
+                        <Metric Name="MaintainabilityIndex" Value="73" />
+                        <Metric Name="CyclomaticComplexity" Value="2" />
+                        <Metric Name="ClassCoupling" Value="1" />
+                        <Metric Name="LinesOfCode" Value="3" />
+                      </Metrics>
+                    </Member>
+                  </Members>
+                </Type>
+              </Types>
+            </Namespace>
+          </Namespaces>
+        </Module>
+      </Modules>
+    </Target>
+  </Targets>
+</CodeMetricsReport>
