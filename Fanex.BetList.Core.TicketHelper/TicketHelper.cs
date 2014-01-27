@@ -50,12 +50,15 @@ namespace Fanex.BetList.Core.TicketHelper
 
         public bool ShowSystemParlayDetail { get; set; }
 
+        public bool ShowSystemParlayPlayerComm { get; set; }
+
         public TicketHelper()
         {
             ShowBetType = true;
             ShowMatch = true;
             ShowLeague = true;
             ShowSystemParlayDetail = true;
+            ShowSystemParlayPlayerComm = false;
         }
 
         public string GetBetTypeNameById(object bettypeId)

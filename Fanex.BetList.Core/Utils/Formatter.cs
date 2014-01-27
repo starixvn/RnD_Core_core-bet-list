@@ -657,7 +657,7 @@ namespace Fanex.BetList.Core.Utils
             }
 
             return value < 0
-                       ? "<font color='#ff0000'>" + DecFormat(amount, 2) + "</font>"
+                       ? "<font color='#ff0000' class='highlight-negative'>" + DecFormat(amount, 2) + "</font>"
                        : value == 0 ? "0" : DecFormat(amount, 2);
         }
 

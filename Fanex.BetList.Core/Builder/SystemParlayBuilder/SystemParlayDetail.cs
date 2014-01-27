@@ -64,9 +64,10 @@ namespace Fanex.BetList.Core.Builder.SystemParlayBuilder
                     rowBlock.WinlossDate.Visible = j == 0;
                     rowBlock.Status = GetBetListStatusName(row.StatusId);
                     rowBlock.Winloss = Formatter.HighlightNegativeNumber(row.WinLost);
-                    rowBlock.Odds = row.MOdds == 0 ? "-" : Formatter.DecFormat(row.MOdds, 2);
+                    rowBlock.Odds = row.MOdds == 0 ? "-" : Formatter.HighlightNegativeNumber(row.MOdds);
                     rowBlock.Stake = Formatter.DecFormat(row.Stake, 2);
-
+                    rowBlock.PlayerCommission.Visible = ticketHelper.ShowSystemParlayPlayerComm;
+                    rowBlock.PlayerCommission.PlayerCommission = Formatter.DecFormat(row.PlayerComm, 2);
                     // Event
                     rowBlock.Match.Clear();
                     var eventDataRows = serialList.Where(d => d.Serial == row.Serial).ToList();
@@ -89,7 +90,8 @@ namespace Fanex.BetList.Core.Builder.SystemParlayBuilder
                 }
 
                 var subTotalBlock = new SystemParlayDetail_SubTotalContents_Block();
-                var subTotal = dataInDate.Sum(d => d.WinLost);
+                var subTotalPlayerCommission = ticketHelper.ShowSystemParlayPlayerComm ? dataInDate.Sum(d => d.PlayerComm) : 0;
+                var subTotal = dataInDate.Sum(d => d.WinLost) + subTotalPlayerCommission;
                 subTotalBlock.TotalWinloss = Formatter.HighlightNegativeNumber(subTotal);
 
                 template.Contents.Append(subTotalBlock);
@@ -115,7 +117,8 @@ namespace Fanex.BetList.Core.Builder.SystemParlayBuilder
 
             #region Render Total Rows
 
-            var totalWinLost = ticketList.Sum(d => d.WinLost);
+            var totalPlayerCommission = ticketHelper.ShowSystemParlayPlayerComm ? ticketList.Sum(d => d.PlayerComm) : 0;
+            var totalWinLost = ticketList.Sum(d => d.WinLost) + totalPlayerCommission;
             template.TotalContents.Visible = ticketList.Count > 0;
             template.TotalContents.TotalWinloss = Formatter.HighlightNegativeNumber(totalWinLost);
 
