@@ -27,6 +27,9 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Fanex.BetList.Example", "Fa
 	EndProjectSection
 EndProject
 Global
+	GlobalSection(JSLint) = preSolution
+		SolutionConfigurationLocation = JSLintOptions.xml
+	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Fanex2.vsmdi
 	EndGlobalSection
