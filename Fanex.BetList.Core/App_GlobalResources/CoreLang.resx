@@ -3659,8 +3659,8 @@ Now, gross commission = (your commission percentage) * turnover (excluding Draw 
   <data name="gameTypeAndTableNumber" xml:space="preserve">
     <value>Game Type - Table Number</value>
   </data>
-  <data name="baccarat" xml:space="preserve">
-    <value>Baccarat</value>
+  <data name="PartyBaccarat" xml:space="preserve">
+    <value>Party Baccarat</value>
   </data>
   <data name="noChangeToUpdate" xml:space="preserve">
     <value>There is no change to update</value>
@@ -3761,10 +3761,16 @@ Now, gross commission = (your commission percentage) * turnover (excluding Draw 
   <data name="VirtualSports" xml:space="preserve">
     <value>Virtual Sports</value>
   </data>
-  <data name="Roulette" xml:space="preserve">
-    <value>Roulette</value>
+  <data name="PartyRoulette" xml:space="preserve">
+    <value>Party Roulette</value>
   </data>
   <data name="TotalLosingTicket" xml:space="preserve">
     <value>Total of losing tickets</value>
+  </data>
+  <data name="LiveBaccarat" xml:space="preserve">
+    <value>Live Baccarat</value>
+  </data>
+  <data name="LiveRoulette" xml:space="preserve">
+    <value>Live Roulette</value>
   </data>
 </root>

@@ -33,7 +33,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            this.Template.League.LeagueName.leagueName = string.Join(null, new string[] { CoreLang.baccarat, "&nbsp;", ticket.ShowTime });
+            this.Template.League.LeagueName.leagueName = string.Join(null, new string[] { CoreLang.PartyBaccarat, "&nbsp;", ticket.ShowTime });
 
             if (ticketData != null && ticketData.Count > 0)
             {
@@ -64,7 +64,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             {
                 this.Template.betTeam = string.Empty;
                 this.Template.Handicap.Hide();
-                this.Template.BetType.betTypeName = CoreLang.baccarat;
+                this.Template.BetType.betTypeName = CoreLang.PartyBaccarat;
                 this.Template.betTeamClassName = string.Empty;
                 this.Template.Match.VS.Hide();
             }

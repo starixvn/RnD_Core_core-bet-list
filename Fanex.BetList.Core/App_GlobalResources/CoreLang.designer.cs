@@ -888,15 +888,6 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Baccarat.
-        /// </summary>
-        public static string baccarat {
-            get {
-                return ResourceManager.GetString("baccarat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Badminton.
         /// </summary>
         public static string Badminton {
@@ -6812,11 +6803,29 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Live Baccarat.
+        /// </summary>
+        public static string LiveBaccarat {
+            get {
+                return ResourceManager.GetString("LiveBaccarat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Live Casino.
         /// </summary>
         public static string LiveCasino {
             get {
                 return ResourceManager.GetString("LiveCasino", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Live Roulette.
+        /// </summary>
+        public static string LiveRoulette {
+            get {
+                return ResourceManager.GetString("LiveRoulette", resourceCulture);
             }
         }
         
@@ -8254,6 +8263,24 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Party Baccarat.
+        /// </summary>
+        public static string PartyBaccarat {
+            get {
+                return ResourceManager.GetString("PartyBaccarat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Party Roulette.
+        /// </summary>
+        public static string PartyRoulette {
+            get {
+                return ResourceManager.GetString("PartyRoulette", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string password {
@@ -8790,15 +8817,6 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string rollingReel {
             get {
                 return ResourceManager.GetString("rollingReel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Roulette.
-        /// </summary>
-        public static string Roulette {
-            get {
-                return ResourceManager.GetString("Roulette", resourceCulture);
             }
         }
         

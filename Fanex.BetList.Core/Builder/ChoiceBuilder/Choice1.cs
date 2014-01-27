@@ -8,6 +8,7 @@
 //     <change who="Marc.Bui" date="2012.11.26">Add Odds to show in Mix Parlay bettypes 
 //                                              (ones with RefNo != 100000000000) </change> 
 //     <change who="Marc.Bui" date="2012.12.4">Add Excel rendering </change> 
+
 //     <change who="Marc.Bui" date="2013.01.18">Update ScoreClassName to BL_FAVORITE (red)
 //                                              for all bettypes</change>
 //     <change who="Marc.Bui" date="2013.02.05">Update betteam when the match is Neutral </change> 

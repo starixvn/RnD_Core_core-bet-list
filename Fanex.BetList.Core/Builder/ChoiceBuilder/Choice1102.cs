@@ -6,7 +6,7 @@
 // <history>
 //     <change who="Marc.Bui" date="2012.11.16">Create</change>
 //     <change who="Marc.Bui" date="2013.01.31">Update export excel</change>
-// </history>
+// </history>D:\1.working\Git\Fanex\betlist-core-clone\Fanex.BetList.Core\App_GlobalResources\CoreLang.th-TH.resx
 // ---------------------------------------------------------------------------------
 
 namespace Fanex.BetList.Core.Builder.ChoiceBuilder
@@ -33,7 +33,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            this.Template.League.LeagueName.leagueName = string.Join(null, new string[] { CoreLang.Roulette, "&nbsp;", ticket.ShowTime });
+            this.Template.League.LeagueName.leagueName = string.Join(null, new string[] { CoreLang.PartyRoulette, "&nbsp;", ticket.ShowTime });
 
             if (ticketData != null && ticketData.Count > 0)
             {
@@ -63,7 +63,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             {
                 this.Template.betTeam = string.Empty;
                 this.Template.Handicap.Hide();
-                this.Template.BetType.betTypeName = CoreLang.Roulette;
+                this.Template.BetType.betTypeName = CoreLang.PartyRoulette;
                 this.Template.betTeamClassName = string.Empty;
                 this.Template.Match.VS.Hide();
             }

@@ -354,4 +354,7 @@
   <data name="virtualtennis_scorebet_win_40" xml:space="preserve">
     <value>Win-40</value>
   </data>
+  <data name="casinoProgressiveBonus" xml:space="preserve">
+    <value>Casino Progressive Bonus</value>
+  </data>
 </root>

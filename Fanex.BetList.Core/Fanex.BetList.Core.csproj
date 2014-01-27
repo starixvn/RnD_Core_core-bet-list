@@ -56,9 +56,6 @@
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="TplBuilder">
-      <HintPath>C:\Users\david.tran\Desktop\TplBuilder2010\TplBuilder.dll</HintPath>
-    </Reference>
     <Reference Include="TplCore, Version=1.0.4694.29951, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Users\david.tran\Desktop\TplBuilder2010\TplCore.dll</HintPath>
@@ -134,6 +131,36 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CoreBetList.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\CoreBetList.ja-JP.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoreBetList.ja-JP.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\CoreBetList.ko-KR.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoreBetList.ko-KR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\CoreBetList.th-TH.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoreBetList.th-TH.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\CoreBetList.vi-VN.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoreBetList.vi-VN.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\CoreBetList.zh-CN.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoreBetList.zh-CN.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\CoreBetList.zh-TW.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoreBetList.zh-TW.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_GlobalResources\CoreLang.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -148,6 +175,8 @@
     <Compile Include="Builder\ChoiceBuilder\Choice1002.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1101.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1102.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice1103.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice1104.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice12.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1201.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1203.cs" />
@@ -229,6 +258,7 @@
     <Compile Include="Builder\ChoiceBuilder\Choice6.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice7.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice71.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice72.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice73.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice8.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice81.cs" />

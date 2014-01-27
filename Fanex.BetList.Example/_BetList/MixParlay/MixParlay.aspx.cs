@@ -22,6 +22,7 @@ namespace Sunplus.Agent.UI._BetList.MixParlay
     using Fanex.BetList.Core.Factories;
     using Fanex.BetList.Core.TicketHelper;
     using Sunplus.Agent.UI.BetList;
+    using Fanex.BetList.Core.Builder.ChoiceBuilder;
 
     public partial class MixParlay_Page : TplPage
     {
