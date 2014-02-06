@@ -10,139 +10,204 @@
 
 namespace Fanex.BetList.Core.Builder.SystemParlayBuilder
 {
-    using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.Entities;
-    using System.Linq;
     using System;
-    using Fanex.BetList.Core.Utils;
     using System.Collections.Generic;
+    using System.Linq;
+    using Fanex.BetList.Core.Entities;
+    using Fanex.BetList.Core.Templates;
+    using Fanex.BetList.Core.Utils;
 
     /// <summary>
-    /// Build html for system parlay ticket detail
+    /// Build html for system parlay ticket detail.
     /// </summary>
     public class SystemParlayDetail : ISystemParlayDetail
     {
+        private SystemParlayDetail_Template _template;
+
+        private ISystemParlayData _systemParlayData;
+
+        private ITicketHelper _ticketHelper;
+
+        private IList<ISystemParlayTicket> _ticketList;
+
+        private IList<ISystemParlaySerial> _serialList;
+
         #region ISystemParlayDetail Members
 
         /// <summary>
-        /// Build html
+        /// Build html.
         /// </summary>
-        /// <param name="ticketHelper"></param>
-        /// <param name="systemParlayData"></param>
-        /// <returns></returns>
+        /// <param name="ticketHelper">Ticket helper.</param>
+        /// <param name="systemParlayData">System Parlay Data.</param>
+        /// <returns>The html string is returned to client.</returns>
         public string Build(ITicketHelper ticketHelper, ISystemParlayData systemParlayData)
         {
-            #region Render Rows
+            _ticketHelper = ticketHelper;
+            _systemParlayData = systemParlayData;
 
-            // Prepare the template
-            var template = new SystemParlayDetail_Template();
-            template.Contents.Clear();
-            template.SubTotalContents.Clear();
+            this.PrepareTemplate();
+            this.PrepareTicketListAndSerialList();
+            this.RenderRows();
+            this.RenderTotalRows();
+            this.RenderOutstanding();
 
-            var ticketList = systemParlayData.TicketList;
-            var serialList = systemParlayData.SerialList;
-
-            // Loop all date
-            var dateList = ticketList.Select(d => d.WinLostDate)
-                        .Distinct()
-                        .OrderBy(d => d)
-                        .ToList();
-            var dateCount = dateList.Count();
-
-            for (var i = 0; i < dateCount; i++)
-            {
-                var dataInDate = ticketList.Where(d => d.WinLostDate == dateList[i]).ToList();
-                var rowspan = dataInDate.Count();
-                for (var j = 0; j < rowspan; j++)
-                {
-                    var row = dataInDate[j];
-
-                    // Rows
-                    var rowBlock = new SystemParlayDetail_Contents_Block();
-                    rowBlock.WinlossDate.RowSpan = rowspan.ToString();
-                    rowBlock.WinlossDate.WinlossDate = string.Format("{0:MM/dd/yyyy}", row.WinLostDate);
-                    rowBlock.WinlossDate.Visible = j == 0;
-                    rowBlock.Status = GetBetListStatusName(row.StatusId);
-                    rowBlock.Winloss = Formatter.HighlightNegativeNumber(row.WinLost);
-                    rowBlock.Odds = row.MOdds == 0 ? "-" : Formatter.HighlightNegativeNumber(row.MOdds);
-                    rowBlock.Stake = Formatter.DecFormat(row.Stake, 2);
-                    rowBlock.PlayerCommission.Visible = ticketHelper.ShowSystemParlayPlayerComm;
-                    rowBlock.PlayerCommission.PlayerCommission = Formatter.DecFormat(row.PlayerComm, 2);
-                    // Event
-                    rowBlock.Match.Clear();
-                    var eventDataRows = serialList.Where(d => d.Serial == row.Serial).ToList();
-                    if (eventDataRows.Count > 0)
-                    {
-                        foreach (var eventRow in eventDataRows)
-                        {
-                            var matchBlock = new SystemParlayDetail_Contents_Match_Block();
-                            matchBlock.HomeTeam = ticketHelper.GetTeamNameById(eventRow.HomeId);
-                            matchBlock.AwayTeam = ticketHelper.GetTeamNameById(eventRow.AwayId);
-                            rowBlock.Match.Append(matchBlock);
-                        }
-                    }
-                    else
-                    {
-                        rowBlock.Match.SetValue(App_GlobalResources.CoreLang.TotalLosingTicket);
-                    }
-
-                    template.Contents.Append(rowBlock);
-                }
-
-                var subTotalBlock = new SystemParlayDetail_SubTotalContents_Block();
-                var subTotalPlayerCommission = ticketHelper.ShowSystemParlayPlayerComm ? dataInDate.Sum(d => d.PlayerComm) : 0;
-                var subTotal = dataInDate.Sum(d => d.WinLost) + subTotalPlayerCommission;
-                subTotalBlock.TotalWinloss = Formatter.HighlightNegativeNumber(subTotal);
-
-                template.Contents.Append(subTotalBlock);
-            }
-
-
-            if (ticketList.Count == 0)
-            {
-                var emptycontent = new SystemParlayDetail_Contents_Block
-                {
-                    Stake = string.Empty,
-                    Winloss = string.Empty,
-                    WinlossDate = new SystemParlayDetail_Contents_WinlossDate_Block { WinlossDate = string.Empty },
-                    Odds = string.Empty,
-                    Status = string.Empty
-                };
-
-                emptycontent.Match.Hide();
-                template.Contents.Append(emptycontent);
-            }
-
-            #endregion
-
-            #region Render Total Rows
-
-            var totalPlayerCommission = ticketHelper.ShowSystemParlayPlayerComm ? ticketList.Sum(d => d.PlayerComm) : 0;
-            var totalWinLost = ticketList.Sum(d => d.WinLost) + totalPlayerCommission;
-            template.TotalContents.Visible = ticketList.Count > 0;
-            template.TotalContents.TotalWinloss = Formatter.HighlightNegativeNumber(totalWinLost);
-
-            #endregion
-
-            #region Render Outstanding
-
-            template.Outstanding.Outstanding = Formatter.HighlightNegativeNumber(systemParlayData.Outstanding);
-
-            #endregion
-
-            return template.ToString();
+            return _template.ToString();
         }
 
         #endregion
 
         #region Utlity
 
+        protected void PrepareTemplate()
+        {
+            _template = new SystemParlayDetail_Template();
+            _template.Contents.Clear();
+            _template.SubTotalContents.Clear();
+        }
+
+        protected void PrepareTicketListAndSerialList()
+        {
+            _ticketList = _systemParlayData.TicketList;
+            _serialList = _systemParlayData.SerialList;
+        }
+
+        protected void RenderOutstanding()
+        {
+            _template.Outstanding.Outstanding = Formatter.HighlightNegativeNumber(_systemParlayData.Outstanding);
+        }
+
+        protected void RenderTotalRows()
+        {
+            var totalPlayerCommission = _ticketHelper.ShowSystemParlayPlayerComm ? _ticketList.Sum(d => d.PlayerComm) : 0;
+            var totalWinLost = _ticketList.Sum(d => d.WinLost) + totalPlayerCommission;
+            _template.TotalContents.Visible = _ticketList.Count > 0;
+            _template.TotalContents.TotalWinloss = Formatter.HighlightNegativeNumber(totalWinLost);
+        }
+
         /// <summary>
-        /// Get bet list status name
+        /// Renders the rows.
         /// </summary>
-        /// <param name="status"></param>
-        /// <returns></returns>
-        public static string GetBetListStatusName(int status)
+        protected void RenderRows()
+        {
+            var dateList = _ticketList.Select(d => d.WinLostDate)
+                        .Distinct()
+                        .OrderBy(d => d)
+                        .ToList();
+
+            foreach (var date in dateList)
+            {
+                this.RenderOneDay(date);
+            }
+
+            this.RenderEmptyRowInCaseHaveNoData();
+        }
+
+        /// <summary>
+        /// Render one day block.
+        /// </summary>
+        /// <param name="date">Date value.</param>
+        protected void RenderOneDay(DateTime date)
+        {
+            var dataInDate = _ticketList.Where(d => d.WinLostDate == date).ToList();
+            var dataCount = dataInDate.Count;
+
+            for (var j = 0; j < dataCount; j++)
+            {
+                this.RenderEvent(dataInDate, j);
+            }
+
+            this.RenderSubTotalForOneDay(dataInDate);
+        }
+
+        /// <summary>
+        /// Renders the event.
+        /// </summary>
+        /// <param name="dataInDate">The data in date.</param>
+        /// <param name="eventOrderInDay">The event order in day.</param>
+        protected void RenderEvent(List<ISystemParlayTicket> dataInDate, int eventOrderInDay)
+        {
+            var dataInRow = dataInDate[eventOrderInDay];
+            var rowBlock = new SystemParlayDetail_Contents_Block();
+
+            rowBlock.WinlossDate.RowSpan = dataInDate.Count.ToString();
+            rowBlock.WinlossDate.WinlossDate = string.Format("{0:MM/dd/yyyy}", dataInRow.WinLostDate);
+            rowBlock.WinlossDate.Visible = eventOrderInDay == 0;
+            rowBlock.Status = GetBetListStatusName(dataInRow.StatusId);
+            rowBlock.Winloss = Formatter.HighlightNegativeNumber(dataInRow.WinLost);
+            rowBlock.Odds = dataInRow.MOdds == 0 ? "-" : Formatter.HighlightNegativeNumber(dataInRow.MOdds);
+            rowBlock.Stake = Formatter.DecFormat(dataInRow.Stake, 2);
+            rowBlock.PlayerCommission.Visible = _ticketHelper.ShowSystemParlayPlayerComm;
+            rowBlock.PlayerCommission.PlayerCommission = Formatter.DecFormat(dataInRow.PlayerComm, 2);
+
+            // Event
+            RenderMatchBlock(rowBlock, dataInRow.Serial);
+
+            _template.Contents.Append(rowBlock);
+        }
+
+        /// <summary>
+        /// Render the match block.
+        /// </summary>
+        /// <param name="rowBlock">Row block.</param>
+        /// <param name="serial">Serial ID.</param>
+        protected void RenderMatchBlock(SystemParlayDetail_Contents_Block rowBlock, long serial)
+        {
+            rowBlock.Match.Clear();
+            var serialDataInOneDay = _serialList.Where(d => d.Serial == serial).ToList();
+            if (serialDataInOneDay.Count == 0)
+            {
+                rowBlock.Match.SetValue(App_GlobalResources.CoreLang.TotalLosingTicket);
+                return;
+            }
+
+            foreach (var serialData in serialDataInOneDay)
+            {
+                var matchBlock = new SystemParlayDetail_Contents_Match_Block();
+                matchBlock.HomeTeam = _ticketHelper.GetTeamNameById(serialData.HomeId);
+                matchBlock.AwayTeam = _ticketHelper.GetTeamNameById(serialData.AwayId);
+                rowBlock.Match.Append(matchBlock);
+            }
+        }
+
+        protected void RenderSubTotalForOneDay(List<ISystemParlayTicket> dataInDate)
+        {
+            var subTotalBlock = new SystemParlayDetail_SubTotalContents_Block();
+            var subTotalPlayerCommission = _ticketHelper.ShowSystemParlayPlayerComm ? dataInDate.Sum(d => d.PlayerComm) : 0;
+            var subTotal = dataInDate.Sum(d => d.WinLost) + subTotalPlayerCommission;
+
+            subTotalBlock.TotalWinloss = Formatter.HighlightNegativeNumber(subTotal);
+            _template.Contents.Append(subTotalBlock);
+        }
+
+        /// <summary>
+        /// Renders the empty row in case have no data.
+        /// </summary>
+        protected void RenderEmptyRowInCaseHaveNoData()
+        {
+            if (_ticketList.Count > 0)
+            {
+                return;
+            }
+
+            var emptycontent = new SystemParlayDetail_Contents_Block
+            {
+                Stake = string.Empty,
+                Winloss = string.Empty,
+                WinlossDate = new SystemParlayDetail_Contents_WinlossDate_Block { WinlossDate = string.Empty },
+                Odds = string.Empty,
+                Status = string.Empty
+            };
+
+            emptycontent.Match.Hide();
+            _template.Contents.Append(emptycontent);
+        }
+
+        /// <summary>
+        /// Get bet list status name.
+        /// </summary>
+        /// <param name="status">Status code.</param>
+        /// <returns>Status name in string.</returns>
+        protected string GetBetListStatusName(int status)
         {
             switch (status)
             {
