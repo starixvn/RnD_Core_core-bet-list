@@ -32,6 +32,7 @@ namespace Fanex.BetList.Core.TicketHelper
             ShowMatch = true;
             ShowLeague = true;
             ShowSystemParlayDetail = true;
+            ShowSystemParlayPlayerComm = false;
         }
 
         public int Index { get; set; }
@@ -53,6 +54,8 @@ namespace Fanex.BetList.Core.TicketHelper
         public bool ShowLeague { get; set; }
 
         public bool ShowSystemParlayDetail { get; set; }
+
+        public bool ShowSystemParlayPlayerComm { get; set; }
 
         /// <summary>
         /// Gets or sets Method to get *Parlay details.

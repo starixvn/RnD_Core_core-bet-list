@@ -65,6 +65,8 @@ namespace Fanex.BetList.Core.Entities
 
         bool ShowSystemParlayDetail { get; set; }
 
+        bool ShowSystemParlayPlayerComm { get; set; }
+
         /// <summary>
         /// Gets or sets Method to get *Parlay details.
         /// </summary>
