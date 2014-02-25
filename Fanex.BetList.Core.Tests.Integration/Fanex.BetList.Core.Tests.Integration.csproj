@@ -95,9 +95,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ParallelRunner.resx">
-      <DependentUpon>ParallelRunner.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="App.config" />
     <None Include="NewBetList.xls">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
