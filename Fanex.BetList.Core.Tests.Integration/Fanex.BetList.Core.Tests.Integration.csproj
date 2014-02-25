@@ -53,9 +53,6 @@
     <Reference Include="IBCFile">
       <HintPath>..\Fanex.BetList.Core.Tests.Dependencies\IBCFile.dll</HintPath>
     </Reference>
-    <Reference Include="KellermanSoftware.Compare-NET-Objects">
-      <HintPath>..\Fanex.BetList.Core.Tests.Dependencies\CompareObject\KellermanSoftware.Compare-NET-Objects.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Fanex.BetList.Core.Tests.Dependencies\Json.Net\Newtonsoft.Json.dll</HintPath>
