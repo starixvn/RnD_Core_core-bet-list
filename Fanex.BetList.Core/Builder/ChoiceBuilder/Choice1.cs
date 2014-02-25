@@ -22,6 +22,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
     using Fanex.BetList.Core.Utils;
@@ -402,6 +403,9 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         /// </summary>
         /// <param name="ticket">The ticket.</param>
         /// <param name="rtfHelper">The RTF helper.</param>
+        [SuppressMessage("StyleCop.CSharp.Nexcel.NexcelCustomRules",
+            "SP2101:MethodMustNotContainMoreLinesThan",
+            Justification = "The logic is simple so seperating to reduce fewer than 10 lines is not necessary.")]
         private void BuildBetTeamsInfo(ITicket ticket, ref RTFHelper rtfHelper)
         {
             bool isAddNewLine = false;
@@ -409,6 +413,10 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             if (!string.IsNullOrEmpty(Template.Match.homeTeam))
             {
                 choice = Template.Match.homeTeam.Replace("&nbsp;", " ");
+            }
+
+            if (!string.IsNullOrEmpty(choice))
+            {
                 isAddNewLine = true;
                 rtfHelper.RTFRenderer.AddText("\n" + choice);
                 choice = string.Empty;
@@ -419,9 +427,14 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             if (!string.IsNullOrEmpty(Template.Match.home_firstGoal_lastGoal))
             {
                 choice = string.Join(null, new string[] { " ", Template.Match.home_firstGoal_lastGoal });
+            }
+
+            if (!string.IsNullOrEmpty(choice))
+            {
                 isAddNewLine = true;
                 choice = choice.Replace("&nbsp;", " ");
                 rtfHelper.RTFRenderer.AddText(choice, rtfHelper.PosFont);
+                choice = string.Empty;
             }
             
             if (Template.Match.VS != null && Template.Match.VS.Visible)
@@ -432,9 +445,14 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             if (!string.IsNullOrEmpty(Template.Match.awayTeam))
             {
                 choice += string.Join(null, new string[] { " ", Template.Match.awayTeam });
+            }
+
+            if (!string.IsNullOrEmpty(choice))
+            {
                 isAddNewLine = true;
                 choice = choice.Replace("&nbsp;", " ");
                 rtfHelper.RTFRenderer.AddText(choice);
+                choice = string.Empty;
             }
             
             if (!string.IsNullOrEmpty(Template.Match.away_firstGoal_lastGoal))

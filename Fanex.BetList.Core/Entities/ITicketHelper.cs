@@ -22,7 +22,7 @@ namespace Fanex.BetList.Core.Entities
     public delegate IList<ITicket> GetParlayTicketsById(object id);
 
     /// <summary>
-    /// TODO: Update summary.
+    /// Interface ITicketHelper.
     /// </summary>
     public interface ITicketHelper
     {

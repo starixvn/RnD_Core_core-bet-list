@@ -105,7 +105,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         {
             string betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
             string mixParlay = string.Empty, custid = string.Empty;
-            if (HttpContext.Current.Request["custid"] != null)
+            if (HttpContext.Current != null && HttpContext.Current.Request != null && HttpContext.Current.Request["custid"] != null)
             {
                 custid = HttpContext.Current.Request["custid"];
             }
@@ -199,7 +199,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                     rtfHelper.RTFRenderer.AddText("\n" + eventName, posFont);
                     rtfHelper.RTFRenderer.AddText(theRest, normalFont);
                 }
-                catch 
+                catch
                 {
                     throw;
                 }

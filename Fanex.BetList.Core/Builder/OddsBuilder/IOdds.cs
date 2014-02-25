@@ -16,7 +16,7 @@ namespace Fanex.BetList.Core.Builder.OddsBuilder
     using NPOI.SS.UserModel;
 
     /// <summary>
-    /// TODO: Update summary.
+    /// Interface IOdds.
     /// </summary>
     public interface IOdds
     {

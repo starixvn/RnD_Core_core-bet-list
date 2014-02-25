@@ -38,8 +38,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="NPOI">
+    <Reference Include="NPOI, Version=1.2.4.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
       <HintPath>DLL\NPOI.dll</HintPath>
+      <Aliases>global</Aliases>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

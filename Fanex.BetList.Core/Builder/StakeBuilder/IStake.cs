@@ -15,7 +15,7 @@ namespace Fanex.BetList.Core.Builder.StakeBuilder
     using NPOI.SS.UserModel;
 
     /// <summary>
-    /// TODO: Update summary.
+    /// Interface IStake.
     /// </summary>
     public interface IStake
     {
