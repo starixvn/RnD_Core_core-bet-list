@@ -33,7 +33,7 @@ namespace Fanex.BetList.CoreVerified.Wrap
             {
                 int ticketCount = _betData.Tables[0].Rows.Count;
 
-                bool testHTML = true;
+                bool testHTML = false;
 
                 if (testHTML)
                 {

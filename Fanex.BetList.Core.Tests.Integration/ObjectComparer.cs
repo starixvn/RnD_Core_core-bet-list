@@ -11,8 +11,10 @@
 namespace Fanex.BetList.Core.Tests.Integration
 {
     using System;
+    using System.Collections.Generic;
     using System.Reflection;
     using NPOI.HSSF.UserModel;
+    using NPOI.SS.UserModel;
 
     /// <summary>
     /// Class ObjectComparer.
@@ -20,6 +22,16 @@ namespace Fanex.BetList.Core.Tests.Integration
     /// <typeparam name="T">The generic type.</typeparam>
     public static class ObjectComparer<T>
     {
+        /// <summary>
+        /// There're some different between the values in VerticalAlignment enum of NPOI versions
+        /// so we use this field as a mapping for old value and new value.
+        /// Ex: NPOI 2.0.6.0 does not have enum value 0 for VerticalAlignment, when version 1.2.4.0 does.
+        /// </summary>
+        private static Dictionary<int, VerticalAlignment> _verticalAlignOldToNew = new Dictionary<int, VerticalAlignment>
+        {
+            { 0, VerticalAlignment.Bottom }
+        };
+
         /// <summary>
         /// Compares the specified source.
         /// </summary>
@@ -30,7 +42,7 @@ namespace Fanex.BetList.Core.Tests.Integration
         {
             Type type = typeof(T);
             PropertyInfo[] properties = type.GetProperties();
-            FieldInfo[] fields = type.GetFields();           
+            FieldInfo[] fields = type.GetFields();
 
             bool propertiesEqual = CompareProperties(properties, source, destination);
             bool fieldsEqual = CompareFields(fields, source, destination);
@@ -79,7 +91,7 @@ namespace Fanex.BetList.Core.Tests.Integration
                 }
             }
 
-            if (fieldCompareFail == fields.Length - 1)
+            if (fieldCompareFail > 1 && fieldCompareFail == fields.Length - 1)
             {
                 return false;
             }
@@ -137,7 +149,7 @@ namespace Fanex.BetList.Core.Tests.Integration
                 }
             }
 
-            if (propCompareFail == properties.Length - 1)
+            if (propCompareFail > 1 && propCompareFail == properties.Length - 1)
             {
                 return false;
             }
@@ -152,7 +164,7 @@ namespace Fanex.BetList.Core.Tests.Integration
         /// <param name="des">The destination.</param>
         /// <returns><c>True</c> if equal, <c>false</c> otherwise.</returns>
         private static bool CompareCellStyle(HSSFCellStyle src, HSSFCellStyle des)
-        {   
+        {
             return
                 src.Alignment == des.Alignment &&
                 src.BorderBottom == des.BorderBottom &&
@@ -183,7 +195,7 @@ namespace Fanex.BetList.Core.Tests.Integration
                 src.ShrinkToFit == des.ShrinkToFit &&
                 src.TopBorderColor == des.TopBorderColor &&
                 src.UserStyleName == des.UserStyleName &&
-                src.VerticalAlignment == des.VerticalAlignment &&
+                src.VerticalAlignment == _verticalAlignOldToNew[(int)des.VerticalAlignment] &&
                 src.WrapText == des.WrapText;
         }
     }

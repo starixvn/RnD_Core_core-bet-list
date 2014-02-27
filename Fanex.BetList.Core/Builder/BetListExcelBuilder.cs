@@ -4,6 +4,7 @@
 // </copyright>
 // ---------------------------------------------------------------------------------
 // <history>
+//     <change who="Marc.Bui" date="2014.02.27">Upgrade to NPOI 2.0.6.0</change>
 //     <change who="Marc.Bui" date="2013.10.08">Check stylecop, Fx Cop & refactor</change>
 //     <change who="Marc.Bui" date="2013.05.31">Add export detail for *Parlay tickets</change>
 //     <change who="Marc.Bui" date="2013.01.29">Update line-breaks in MS Office</change>
@@ -625,9 +626,9 @@ namespace Fanex.BetList.Core.Builder
         /// </summary>
         private void InitDefaultRTFHelper()
         {
-            RTFHelper.PosFont.Boldweight = RTFHelper.PosFontCrossed.Boldweight = (short)FontBoldWeight.BOLD;
-            RTFHelper.NegFont.Boldweight = RTFHelper.NegFontCrossed.Boldweight = (short)FontBoldWeight.BOLD;
-            RTFHelper.NormalFont.Boldweight = RTFHelper.NormalFontCrossed.Boldweight = (short)FontBoldWeight.NORMAL;
+            RTFHelper.PosFont.Boldweight = RTFHelper.PosFontCrossed.Boldweight = (short)FontBoldWeight.Bold;
+            RTFHelper.NegFont.Boldweight = RTFHelper.NegFontCrossed.Boldweight = (short)FontBoldWeight.Bold;
+            RTFHelper.NormalFont.Boldweight = RTFHelper.NormalFontCrossed.Boldweight = (short)FontBoldWeight.Normal;
 
             RTFHelper.NegFont.FontName = RTFHelper.NegFontCrossed.FontName = RTFHelper.NormalFont.FontName = "Tahoma";
             RTFHelper.NormalFontCrossed.FontName = RTFHelper.PosFont.FontName = RTFHelper.PosFontCrossed.FontName = "Tahoma";
@@ -637,7 +638,7 @@ namespace Fanex.BetList.Core.Builder
 
             RTFHelper.NormalFontCrossed.IsStrikeout = RTFHelper.PosFontCrossed.IsStrikeout = RTFHelper.NegFontCrossed.IsStrikeout = true;
 
-            RTFHelper.NegFont.Color = RTFHelper.NegFontCrossed.Color = IndexedColors.RED.Index;
+            RTFHelper.NegFont.Color = RTFHelper.NegFontCrossed.Color = IndexedColors.Red.Index;
         }
 
         /// <summary>
@@ -645,12 +646,16 @@ namespace Fanex.BetList.Core.Builder
         /// </summary>
         private void InitDefaultCellStyles()
         {
-            OddCellStyle.Alignment = EvenCellStyle.Alignment = HorizontalAlignment.RIGHT;
-            OddCellStyle.VerticalAlignment = EvenCellStyle.VerticalAlignment = VerticalAlignment.TOP;
-            OddCellStyle.FillPattern = EvenCellStyle.FillPattern = FillPatternType.SOLID_FOREGROUND;
+            OddCellStyle.Alignment = EvenCellStyle.Alignment = HorizontalAlignment.Right;
 
-            OddCellStyle.BorderTop = OddCellStyle.BorderRight = OddCellStyle.BorderBottom = OddCellStyle.BorderLeft = CellBorderType.THIN;
-            EvenCellStyle.BorderTop = EvenCellStyle.BorderRight = EvenCellStyle.BorderBottom = EvenCellStyle.BorderLeft = CellBorderType.THIN;
+            // There's probably a bug in the VerticalAlignment enum of NPOI 2.0.6.0, 
+            // where VerticalAlignment.Top is actually resulting in middle alignment, 
+            // and VerticalAlignment.Bottom is in fact top alignment.
+            OddCellStyle.VerticalAlignment = EvenCellStyle.VerticalAlignment = VerticalAlignment.Bottom;
+            OddCellStyle.FillPattern = EvenCellStyle.FillPattern = FillPattern.SolidForeground;
+
+            OddCellStyle.BorderTop = OddCellStyle.BorderRight = OddCellStyle.BorderBottom = OddCellStyle.BorderLeft = BorderStyle.Thin;
+            EvenCellStyle.BorderTop = EvenCellStyle.BorderRight = EvenCellStyle.BorderBottom = EvenCellStyle.BorderLeft = BorderStyle.Thin;
 
             OddCellStyle.TopBorderColor = OddCellStyle.RightBorderColor = OddCellStyle.BottomBorderColor = OddCellStyle.LeftBorderColor = 54;
             EvenCellStyle.TopBorderColor = EvenCellStyle.RightBorderColor = EvenCellStyle.BottomBorderColor = EvenCellStyle.LeftBorderColor = 54;
@@ -665,11 +670,11 @@ namespace Fanex.BetList.Core.Builder
             EvenCellStyle.SetFont(RTFHelper.NormalFont);
 
             OddCellStyleCenterAligned.CloneStyleFrom(OddCellStyle);
-            OddCellStyleCenterAligned.Alignment = HorizontalAlignment.CENTER;
+            OddCellStyleCenterAligned.Alignment = HorizontalAlignment.Center;
             OddCellStyleCenterAligned.SetFont(RTFHelper.NormalFont);
 
             EvenCellStyleCenterAligned.CloneStyleFrom(EvenCellStyle);
-            EvenCellStyleCenterAligned.Alignment = HorizontalAlignment.CENTER;
+            EvenCellStyleCenterAligned.Alignment = HorizontalAlignment.Center;
             EvenCellStyleCenterAligned.SetFont(RTFHelper.NormalFont);
 
             // For line-breaks in MS Office
@@ -684,7 +689,7 @@ namespace Fanex.BetList.Core.Builder
         /// <summary>
         /// Releases unmanaged and - optionally - managed resources.
         /// </summary>
-        /// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        /// <param name="disposing"><c>True</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
         private void Dispose(bool disposing)
         {
             if (!_isDisposed)
@@ -692,8 +697,8 @@ namespace Fanex.BetList.Core.Builder
                 if (!disposing)
                 {
                     if (_workbook != null)
-                    {
-                        _workbook.Dispose();
+                    {   
+                        _workbook = null;
                     }
                 }
 

@@ -31,7 +31,7 @@ namespace Fanex.BetList.Core.Tests.Integration
     /// </summary>
     public partial class ParallelRunner : Form
     {
-        private ICoreHTMLBuilder _htmlBuilderToVerify;        
+        private ICoreHTMLBuilder _htmlBuilderToVerify;
         private DataSet _betData;
         private List<XElement> _sampleHTML;
         private IWorkbook _sampleWorkbook;
@@ -251,9 +251,9 @@ namespace Fanex.BetList.Core.Tests.Integration
 
                     bool isRowIdentical = ObjectComparer<HSSFRow>.Compare(sampleRow, rowToVerify);
 
-                    if (!isWorksheetIdentical)
+                    if (!isRowIdentical)
                     {
-                        txtOutputPanel.Text += string.Format("Whole row #{0} is different!{1}", i, Environment.NewLine);   
+                        txtOutputPanel.Text += string.Format("Whole row #{0} is different!{1}", i, Environment.NewLine);
                     }
 
                     bool isChoiceIdentical = ObjectComparer<HSSFCell>.Compare((HSSFCell)rowToVerify.GetCell(0), (HSSFCell)sampleRow.GetCell(0));

@@ -40,9 +40,8 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\Fanex.BetList.Core.Tests.Dependencies\Json.Net\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="NPOI, Version=1.2.4.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Fanex.BetList.Core.Tests.Dependencies\VerifiedCoreBetList\NPOI.dll</HintPath>
+    <Reference Include="NPOI">
+      <HintPath>..\Fanex.BetList.Core\DLL\NPOI.dll</HintPath>
     </Reference>
     <Reference Include="RemotingRef, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
