@@ -33,13 +33,15 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             this.Template.betTeam = ticketHelper.GetKenoBetChoiceName(ticket.BetTeam, out kenoBetTypeID);
             this.Template.BetType.betTypeName = ticketHelper.GetKenoBetTypeName(kenoBetTypeID);
-            
+
             this.Template.betTeamClassName = BL_FAVORITE;
 
             if (this.Template.League != null)
             {
                 this.Template.League.sportTypeName = ticketHelper.GetSportNameById(ticket.SportTypeId);
-                this.Template.League.LeagueName.leagueName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
+                string kenoLeagueInfo = string.Join(null, new string[] { ticketHelper.GetBetTypeNameById(ticket.BetTypeId), " [", ticket.MatchId.ToString(), "]" });
+
+                this.Template.League.LeagueName.leagueName = kenoLeagueInfo;
             }
         }
     }
