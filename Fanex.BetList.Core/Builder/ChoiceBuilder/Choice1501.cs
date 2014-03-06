@@ -39,7 +39,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             if (this.Template.League != null)
             {
                 this.Template.League.sportTypeName = ticketHelper.GetSportNameById(ticket.SportTypeId);
-                this.Template.League.LeagueName.leagueName = ticketHelper.GetLeagueNameById(ticket.LeagueId);
+                this.Template.League.LeagueName.leagueName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
             }
         }
     }
