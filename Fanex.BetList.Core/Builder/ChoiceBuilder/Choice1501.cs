@@ -27,7 +27,16 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         {
             // Does not show handicap, match, and score.
             this.Template.Handicap = null;
-            this.Template.Match = null;
+
+            if (this.Template.Match != null)
+            {
+                this.Template.Match.homeTeam = null;
+                this.Template.Match.awayTeam = null;
+                this.Template.Match.VS = null;
+                this.Template.Match.home_firstGoal_lastGoal = null;
+                this.Template.Match.away_firstGoal_lastGoal = null;
+            }
+            
             this.Template.Score = null;
             string kenoBetTypeID;
 
