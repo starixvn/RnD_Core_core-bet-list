@@ -29,7 +29,6 @@ namespace Fanex.BetList.Core.TicketHelper
     /// </summary>
     public class TicketHelper : ITicketHelper
     {
-
         public int Index { get; set; }
 
         public string CurrentLanguage { get; set; }
@@ -125,5 +124,15 @@ namespace Fanex.BetList.Core.TicketHelper
         /// Method to get *Parlay details
         /// </summary>
         public GetParlayTicketsById GetParlayDetailById { get; set; }
+
+        public string GetKenoBetChoiceName(string kenoBetChoiceID, out string kenoBettypeID)
+        {
+            return CacheRef.GetKenoBetChoiceName(kenoBetChoiceID, out kenoBettypeID);
+        }
+
+        public string GetKenoBetTypeName(string kenoBettypeID)
+        {
+            return CacheRef.GetKenoBetTypeName(kenoBettypeID);
+        }
     }
 }

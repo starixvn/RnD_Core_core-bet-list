@@ -41,7 +41,7 @@
     </Reference>
     <Reference Include="RemotingRef, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Samurai\Dev\Dependencies\RemotingRef.dll</HintPath>
+      <HintPath>DLL\RemotingRef.dll</HintPath>
     </Reference>
     <Reference Include="Sunplus.Core.Common">
       <HintPath>..\..\..\Samurai\Dev\Dependencies\Sunplus.Core.Common.dll</HintPath>

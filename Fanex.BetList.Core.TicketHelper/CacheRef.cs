@@ -88,5 +88,15 @@ namespace Fanex.BetList.Core.TicketHelper
         {
             return RefData.GetOddsTypeName(oddsTypeId.ToString(), CurrentTWLanguage);
         }
+
+        public static string GetKenoBetChoiceName(string kenoBetChoiceID, out string kenoBettypeID)
+        {
+            return RefData.GetKenoBetChoice(kenoBetChoiceID, CurrentTWLanguage, out kenoBettypeID);            
+        }
+
+        public static string GetKenoBetTypeName(string kenoBettypeID) 
+        {
+            return RefData.GetKenoBettype(kenoBettypeID, CurrentTWLanguage);
+        }
     }
 }

@@ -250,6 +250,12 @@ namespace Fanex.BetList.Core.Builder
         /// <returns>IChoice.</returns>
         private IChoice CreateChoiceBuilder(int bettype)
         {
+            // Keno games.
+            if (bettype <= 1599 && bettype >= 1501)
+            {
+                bettype = 1501;
+            }
+
             string typeName = string.Join(
                                             null,
                                             new string[] 
@@ -284,6 +290,11 @@ namespace Fanex.BetList.Core.Builder
                 //Odds of Live Casino bettypes
                 bettype = 1101;
             }
+            else if(bettype <= 1599 && bettype >= 1501)
+            {
+                bettype = 1501;
+            }
+
             string typeName = string.Join(
                                             null,
                                             new string[] 
@@ -341,6 +352,11 @@ namespace Fanex.BetList.Core.Builder
         /// <returns></returns>
         private IStatus CreateStatusBuilder(int bettype)
         {
+            if (bettype <= 1599 && bettype >= 1501)
+            {
+                bettype = 1501;
+            }
+
             string typeName = string.Join(
                                             null,
                                             new string[] 
@@ -369,6 +385,11 @@ namespace Fanex.BetList.Core.Builder
         /// <returns></returns>
         private ITrans CreateTransBuilder(int bettype)
         {
+            if (bettype <= 1599 && bettype >= 1501)
+            {
+                bettype = 1501;
+            }
+
             string typeName = string.Join(
                                             null,
                                             new string[] 

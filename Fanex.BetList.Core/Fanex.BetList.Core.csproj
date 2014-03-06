@@ -36,6 +36,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="NPOI">
@@ -232,6 +239,7 @@
     <Compile Include="Builder\ChoiceBuilder\Choice1334.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice14.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice15.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice1501.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice16.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice19.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice2.cs" />
@@ -281,6 +289,7 @@
     <Compile Include="Builder\OddsBuilder\Odds1231.cs" />
     <Compile Include="Builder\OddsBuilder\Odds1232.cs" />
     <Compile Include="Builder\OddsBuilder\Odds1233.cs" />
+    <Compile Include="Builder\OddsBuilder\Odds1501.cs" />
     <Compile Include="Builder\OddsBuilder\Odds29.cs" />
     <Compile Include="Builder\OddsBuilder\Odds33.cs" />
     <Compile Include="Builder\OddsBuilder\Odds71.cs" />
@@ -322,6 +331,7 @@
     <Compile Include="Builder\StatusBuilder\Status1332.cs" />
     <Compile Include="Builder\StatusBuilder\Status1333.cs" />
     <Compile Include="Builder\StatusBuilder\Status1334.cs" />
+    <Compile Include="Builder\StatusBuilder\Status1501.cs" />
     <Compile Include="Builder\StatusBuilder\Status23001.cs" />
     <Compile Include="Builder\StatusBuilder\Status23002.cs" />
     <Compile Include="Builder\StatusBuilder\Status23003.cs" />
@@ -337,6 +347,7 @@
     <Compile Include="Builder\SystemParlayBuilder\SystemParlayDetail.cs" />
     <Compile Include="Builder\TransBuilder\ITrans.cs" />
     <Compile Include="Builder\TransBuilder\Trans1.cs" />
+    <Compile Include="Builder\TransBuilder\Trans1501.cs" />
     <Compile Include="Builder\TransBuilder\Trans71.cs" />
     <Compile Include="Builder\TransBuilder\Trans73.cs" />
     <Compile Include="Entities\BetStatus.cs" />

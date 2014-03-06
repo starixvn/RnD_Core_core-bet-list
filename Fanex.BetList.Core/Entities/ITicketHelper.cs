@@ -88,6 +88,10 @@ namespace Fanex.BetList.Core.Entities
         /// Method to get *Parlay details
         /// </summary>
         GetParlayTicketsById GetParlayDetailById { get; set; }
+
+        string GetKenoBetChoiceName(string kenoBetChoiceID, out string kenoBettypeID);
+
+        string GetKenoBetTypeName(string kenoBettypeID); 
     }
 
     public delegate string GetCachePropertyById(object id);
