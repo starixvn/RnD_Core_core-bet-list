@@ -193,9 +193,10 @@ namespace Fanex.BetList.Core.Builder.SystemParlayBuilder
             {
                 Stake = string.Empty,
                 Winloss = string.Empty,
-                WinlossDate = new SystemParlayDetail_Contents_WinlossDate_Block { WinlossDate = string.Empty },
+                WinlossDate = new SystemParlayDetail_Contents_WinlossDate_Block { WinlossDate = string.Empty, RowSpan = "1" },
                 Odds = string.Empty,
-                Status = string.Empty
+                Status = string.Empty,
+                PlayerCommission = null
             };
 
             emptycontent.Match.Hide();
