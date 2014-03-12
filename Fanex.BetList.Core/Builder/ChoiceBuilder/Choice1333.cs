@@ -39,7 +39,19 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
 
-            this.Template.betTeam = team1 ? this.Template.Match.homeTeam : team2 ? awayName : CoreLang.lblNeither;
+            if (team1)
+            {
+                this.Template.betTeam = this.Template.Match.homeTeam;
+            }
+            else if (team2)
+            {
+                this.Template.betTeam = awayName;
+            }
+            else
+            {
+                this.Template.betTeam = CoreLang.lblNeither;
+            }
+
             this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);
         }
     }

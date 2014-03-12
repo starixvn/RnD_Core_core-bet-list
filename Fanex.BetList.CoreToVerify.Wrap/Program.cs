@@ -26,20 +26,43 @@ namespace Fanex.BetList.CoreToVerify.Wrap
         /// <param name="args">The arguments.</param>
         private static void Main(string[] args)
         {
-            DataSet _betData = BetListDAO.GetBetListData();
+            bool testRunningBet = true;
+            int ticketCount = 0;
+            CoreToVerifyExcel _excelBuilder = null;
 
-            if (_betData != null && _betData.Tables.Count == 2)
+            if (testRunningBet)
             {
-                int ticketCount = _betData.Tables[0].Rows.Count;
+                DataTable _betData = BetListDAO.GetRunningBetData();
+                if (_betData != null)
+                {
+                    ticketCount = _betData.Rows.Count;
+                    if (ticketCount > 0)
+                    {
+                        _excelBuilder = new CoreToVerifyExcel(_betData);
+                    }
+                }
+            }
+            else
+            {
+                DataSet _betData = BetListDAO.GetBetListData();
+                if (_betData != null && _betData.Tables != null && _betData.Tables.Count == 2)
+                {
+                    ticketCount = _betData.Tables[0].Rows.Count;
 
-                var _htmlExcelBuilder = new CoreToVerifyExcel(_betData);
+                    if (ticketCount > 0)
+                    {
+                        _excelBuilder = new CoreToVerifyExcel(_betData);                        
+                    }
+                }
+            }
+
+            if (_excelBuilder != null)
+            {
                 short numberOfColumns = 5;
-
-                _htmlExcelBuilder.InitializeWorksheet(numberOfColumns);
-
+                _excelBuilder.InitializeWorksheet(numberOfColumns);
                 for (int i = 0; i < ticketCount; i++)
                 {
-                    _htmlExcelBuilder
+                    _excelBuilder
                                     .AddChoice(i, true)
                                     .AddOdds(i)
                                     .AddStake(i)
@@ -48,8 +71,7 @@ namespace Fanex.BetList.CoreToVerify.Wrap
                 }
 
                 string filePath = "NewBetList.xls";
-
-                _htmlExcelBuilder.FinalizeAndSave(filePath);
+                _excelBuilder.FinalizeAndSave(filePath);
             }
         }
     }

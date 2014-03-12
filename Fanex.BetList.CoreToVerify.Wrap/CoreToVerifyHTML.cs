@@ -25,6 +25,7 @@ namespace Fanex.BetList.CoreToVerify.Wrap
     /// </summary>
     public class CoreToVerifyHTML : ICoreHTMLBuilder
     {
+        private static readonly List<int> WinplaceBetTypesId = new List<int> { 33, 1233 };
         private BetListHTMLBuilder _builder;
         private ITicketHelper _ticketHelper;
         private List<ITicket> _tickets;
@@ -35,6 +36,17 @@ namespace Fanex.BetList.CoreToVerify.Wrap
         {
             _tickets = this.BindDataToTicketList(datasource.Tables[0]);
             _ticketData = this.BindDataToTicketDataList(datasource.Tables[1]);
+
+            var factory = new BetListHTMLFactory();
+            _builder = factory.CreateBuilder();
+            _ticketHelper = new TicketHelper();
+            _funcGetCachePropById = CacheRef.GetOddsTypeName;
+        }
+
+        public CoreToVerifyHTML(DataTable datasource)
+        {
+            _tickets = this.BindDataToTicketList(datasource);
+            _ticketData = null;
 
             var factory = new BetListHTMLFactory();
             _builder = factory.CreateBuilder();
@@ -66,7 +78,9 @@ namespace Fanex.BetList.CoreToVerify.Wrap
         public string BuildChoice(int dataIndex, bool isShowScoreMap)
         {
             ITicket ticket = _tickets[dataIndex];
-            string result = _builder.BuildChoice(ticket, _ticketHelper, _ticketData, isShowScoreMap);
+            List<ITicketData> ticketData = _ticketData ?? CreateWinPlaceTicketData(ticket);
+
+            string result = _builder.BuildChoice(ticket, _ticketHelper, ticketData, isShowScoreMap);
             return result;
         }
 
@@ -74,7 +88,9 @@ namespace Fanex.BetList.CoreToVerify.Wrap
         {
             ITicket ticket = _tickets[dataIndex];
             GetCachePropertyById funcGetCachePropById = CacheRef.GetOddsTypeName;
-            string result = _builder.BuildOdds(ticket, _ticketData, funcGetCachePropById);
+            List<ITicketData> ticketData = _ticketData ?? CreateWinPlaceTicketData(ticket);
+
+            string result = _builder.BuildOdds(ticket, ticketData, funcGetCachePropById);
             return result;
         }
 
@@ -88,7 +104,9 @@ namespace Fanex.BetList.CoreToVerify.Wrap
         public string BuildStatus(int dataIndex, bool isShowVNIP)
         {
             ITicket ticket = _tickets[dataIndex];
-            string result = _builder.BuildStatus(ticket, _ticketHelper, _ticketData, isShowVNIP);
+            List<ITicketData> ticketData = _ticketData ?? CreateWinPlaceTicketData(ticket);
+
+            string result = _builder.BuildStatus(ticket, _ticketHelper, ticketData, isShowVNIP);
             return result;
         }
 
@@ -112,6 +130,40 @@ namespace Fanex.BetList.CoreToVerify.Wrap
         private List<ITicketData> BindDataToTicketDataList(DataTable data)
         {
             return TicketDataTransformer.Transform(data);
+        }
+
+        /// <summary>
+        /// Creates the ticket data for Win/Place bet-types.
+        /// </summary>
+        /// <param name="ticket">The ticket.</param>
+        /// <returns>Return tickets.</returns>
+        private List<ITicketData> CreateWinPlaceTicketData(ITicket ticket)
+        {
+            if (WinplaceBetTypesId.Contains(ticket.BetTypeId))
+            {
+                return new List<ITicketData> 
+                { 
+                    new TicketData
+                    {
+                        // Win
+                        RefNo = ticket.RefNo,
+                        Status = ticket.Status,
+                        BetTeam = ticket.BetTeam,
+                        BetTypeId = ticket.BetTypeId == 33 ? 31 : 1231,
+                        Odds = ticket.Handicap1                           
+                    },
+                    new TicketData
+                    {
+                        // Place
+                        RefNo = ticket.RefNo,   
+                        Status = ticket.Status,
+                        BetTypeId = ticket.BetTypeId == 33 ? 32 : 1232,
+                        Odds = ticket.Handicap2
+                    }
+                };
+            }
+
+            return null;
         }
     }
 }

@@ -33,9 +33,11 @@ namespace Fanex.BetList.Core.Tests.Integration
     {
         private ICoreHTMLBuilder _htmlBuilderToVerify;
         private DataSet _betData;
+        private DataTable _runningBetData;
         private List<XElement> _sampleHTML;
         private IWorkbook _sampleWorkbook;
         private IWorkbook _workbookToVerify;
+        private bool _testRunningBet;
 
         public ParallelRunner()
         {
@@ -49,13 +51,30 @@ namespace Fanex.BetList.Core.Tests.Integration
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnHTMLRunTest_Click(object sender, EventArgs e)
         {
-            this.InitializeSampleHTML();
+            _testRunningBet = true;
+            this.InitializeSampleHTML();            
             this.InitializeData();
 
-            if (_betData != null && _betData.Tables.Count == 2 && _sampleHTML != null)
+            if (_sampleHTML != null)
             {
-                _htmlBuilderToVerify = new CoreToVerifyHTML(_betData);
+                if (_testRunningBet)
+                {
+                    if (_runningBetData != null)
+                    {
+                        _htmlBuilderToVerify = new CoreToVerifyHTML(_runningBetData);
+                    }
+                }
+                else
+                {
+                    if (_betData != null && _betData.Tables.Count == 2)
+                    {
+                        _htmlBuilderToVerify = new CoreToVerifyHTML(_betData);
+                    }
+                }
+            }
 
+            if (_htmlBuilderToVerify != null)
+            {
                 this.RunHTMLTest();
             }
         }
@@ -71,9 +90,19 @@ namespace Fanex.BetList.Core.Tests.Integration
 
         private void InitializeData()
         {
-            if (_betData == null)
+            if (_testRunningBet)
             {
-                _betData = BetListDAO.GetBetListData();
+                if (_runningBetData == null)
+                {
+                    _runningBetData = BetListDAO.GetRunningBetData();
+                }
+            }
+            else
+            {
+                if (_betData == null)
+                {
+                    _betData = BetListDAO.GetBetListData();
+                }
             }
         }
 
@@ -104,7 +133,16 @@ namespace Fanex.BetList.Core.Tests.Integration
         /// </summary>
         private void RunHTMLTest()
         {
-            int ticketCount = _betData.Tables[0].Rows.Count;
+            int ticketCount;
+
+            if (_testRunningBet)
+            {
+                ticketCount = _runningBetData.Rows.Count;
+            }
+            else
+            {
+                ticketCount = _betData.Tables[0].Rows.Count;
+            }            
 
             if (ticketCount == _sampleHTML.Count && ticketCount == _htmlBuilderToVerify.TicketCount)
             {

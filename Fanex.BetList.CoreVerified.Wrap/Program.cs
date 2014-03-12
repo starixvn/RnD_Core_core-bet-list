@@ -27,52 +27,103 @@ namespace Fanex.BetList.CoreVerified.Wrap
         /// <param name="args">The arguments.</param>
         private static void Main(string[] args)
         {
-            DataSet _betData = BetListDAO.GetBetListData();
+            bool testRunningBet = true;
+            bool testHTML = true;
 
-            if (_betData != null && _betData.Tables.Count == 2)
+            int ticketCount = 0;
+            CoreVerifiedHTML _htmlBuilderVerified = null;
+            CoreVerifiedExcel _htmlExcelBuilder = null;
+
+            PrepareBuilder(testRunningBet, testHTML, ref _htmlBuilderVerified, ref _htmlExcelBuilder, ref ticketCount);            
+
+            // Start generating
+            if (testHTML)
             {
-                int ticketCount = _betData.Tables[0].Rows.Count;
+                XMLLogger.Start();
 
-                bool testHTML = false;
-
-                if (testHTML)
+                for (int i = 0; i < ticketCount; i++)
                 {
-                    var _htmlBuilderVerified = new CoreVerifiedHTML(_betData);
+                    string choice = _htmlBuilderVerified.BuildChoice(i, true);
+                    string odds = _htmlBuilderVerified.BuildOdds(i);
+                    string stake = _htmlBuilderVerified.BuildStake(i);
+                    string status = _htmlBuilderVerified.BuildStatus(i, true);
+                    string trans = _htmlBuilderVerified.BuildTrans(i);
 
-                    XMLLogger.Start();
-
-                    for (int i = 0; i < ticketCount; i++)
-                    {
-                        string choice = _htmlBuilderVerified.BuildChoice(i, true);
-                        string odds = _htmlBuilderVerified.BuildOdds(i);
-                        string stake = _htmlBuilderVerified.BuildStake(i);
-                        string status = _htmlBuilderVerified.BuildStatus(i, true);
-                        string trans = _htmlBuilderVerified.BuildTrans(i);
-
-                        XMLLogger.Write(i, choice, odds, stake, status, trans);
-                    }
-
-                    XMLLogger.End();
+                    XMLLogger.Write(i, choice, odds, stake, status, trans);
                 }
-                else
+
+                XMLLogger.End();
+            }
+            else
+            {   
+                short numberOfColumns = 5;
+
+                _htmlExcelBuilder.InitializeWorksheet(numberOfColumns);
+
+                for (int i = 0; i < ticketCount; i++)
                 {
-                    var _htmlExcelBuilder = new CoreVerifiedExcel(_betData);
-                    short numberOfColumns = 5;
+                    _htmlExcelBuilder
+                                    .AddChoice(i, true)
+                                    .AddOdds(i)
+                                    .AddStake(i)
+                                    .AddStatus(i, true)
+                                    .AddTrans(i);
+                }
 
-                    _htmlExcelBuilder.InitializeWorksheet(numberOfColumns);
+                string filePath = "OldBetList.xls";
+                _htmlExcelBuilder.FinalizeAndSave(filePath);
+            }
+        }
 
-                    for (int i = 0; i < ticketCount; i++)
+        /// <summary>
+        /// Prepares the builder.
+        /// </summary>
+        /// <param name="testRunningBet">If set to <c>true</c> [test running bet].</param>
+        /// <param name="testHTML">If set to <c>true</c> [test HTML].</param>
+        /// <param name="htmlBuilderVerified">The HTML builder verified.</param>
+        /// <param name="excelBuilderVerified">The excel builder verified.</param>
+        /// <param name="ticketCount">The ticket count.</param>
+        private static void PrepareBuilder(
+            bool testRunningBet, 
+            bool testHTML, 
+            ref CoreVerifiedHTML htmlBuilderVerified, 
+            ref CoreVerifiedExcel excelBuilderVerified, 
+            ref int ticketCount)
+        {
+            if (testRunningBet)
+            {
+                DataTable _betData = BetListDAO.GetRunningBetData();
+
+                if (_betData != null && _betData.Rows.Count > 0)
+                {
+                    ticketCount = _betData.Rows.Count;
+
+                    if (testHTML)
                     {
-                        _htmlExcelBuilder
-                                        .AddChoice(i, true)
-                                        .AddOdds(i)
-                                        .AddStake(i)
-                                        .AddStatus(i, true)
-                                        .AddTrans(i);
+                        htmlBuilderVerified = new CoreVerifiedHTML(_betData);
                     }
+                    else
+                    {
+                        excelBuilderVerified = new CoreVerifiedExcel(_betData);
+                    }
+                }
+            }
+            else
+            {
+                DataSet _betData = BetListDAO.GetBetListData();
 
-                    string filePath = "OldBetList.xls";
-                    _htmlExcelBuilder.FinalizeAndSave(filePath);
+                if (_betData != null && _betData.Tables.Count == 2)
+                {
+                    ticketCount = _betData.Tables[0].Rows.Count;
+
+                    if (testHTML)
+                    {
+                        htmlBuilderVerified = new CoreVerifiedHTML(_betData);
+                    }
+                    else
+                    {
+                        excelBuilderVerified = new CoreVerifiedExcel(_betData);
+                    }
                 }
             }
         }

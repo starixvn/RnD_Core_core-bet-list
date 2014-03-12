@@ -23,9 +23,9 @@ namespace Fanex.BetList.Core.Tests.Integration
     public static class ObjectComparer<T>
     {
         /// <summary>
-        /// There're some different between the values in VerticalAlignment enum of NPOI versions
+        /// There're some different between the values in VerticalAlignment ENUM of NPOI versions
         /// so we use this field as a mapping for old value and new value.
-        /// Ex: NPOI 2.0.6.0 does not have enum value 0 for VerticalAlignment, when version 1.2.4.0 does.
+        /// Ex: NPOI 2.0.6.0 does not have ENUM value 0 for VerticalAlignment, when version 1.2.4.0 does.
         /// </summary>
         private static Dictionary<int, VerticalAlignment> _verticalAlignOldToNew = new Dictionary<int, VerticalAlignment>
         {
