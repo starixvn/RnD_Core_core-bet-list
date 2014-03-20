@@ -144,6 +144,16 @@ namespace Fanex.BetList.Core.TicketHelper
             };
 
             return combinationOfferName.ContainsKey(key) ? combinationOfferName[key] : string.Empty;
-        }       
+        }
+
+        public string GetKenoBetChoiceName(string kenoBetChoiceID, out string kenoBettypeID)
+        {
+            return CacheRef.GetKenoBetChoiceName(kenoBetChoiceID, out kenoBettypeID);
+        }
+
+        public string GetKenoBetTypeName(string kenoBettypeID)
+        {
+            return CacheRef.GetKenoBetTypeName(kenoBettypeID);
+        }
     }
 }

@@ -4,6 +4,7 @@
 // </copyright>
 // ---------------------------------------------------------------------------------
 // <history>
+//     <change who="Jacob.Phan" date="2014.03.12">Hide PlayerComm System Parlay Detail if there is no data</change>
 //     <change who="Jacob.Phan" date="2012.11.16">Create</change>
 // </history>
 // ---------------------------------------------------------------------------------
@@ -195,7 +196,8 @@ namespace Fanex.BetList.Core.Builder.SystemParlayBuilder
                 Winloss = string.Empty,
                 WinlossDate = new SystemParlayDetail_Contents_WinlossDate_Block { WinlossDate = string.Empty },
                 Odds = string.Empty,
-                Status = string.Empty
+                Status = string.Empty,
+                PlayerCommission = null
             };
 
             emptycontent.Match.Hide();

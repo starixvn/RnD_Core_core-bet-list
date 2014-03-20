@@ -305,6 +305,12 @@ namespace Fanex.BetList.Core.Builder
         /// <returns>IChoice: the Choice builder object.</returns>
         private IChoice CreateChoiceBuilder(int bettype)
         {
+            // Keno games.
+            if (bettype <= 1599 && bettype >= 1501)
+            {
+                bettype = 1501;
+            }
+
             string typeName = string.Join(null, new string[] { CHOICEBUILDERNAMESPACE, ".Choice", bettype.ToString() });
 
             Type type = Type.GetType(typeName);
@@ -330,6 +336,11 @@ namespace Fanex.BetList.Core.Builder
             {
                 // Odds of Live Casino bettypes
                 bettype = 1101;
+            }
+            else if (bettype <= 1599 && bettype >= 1501)
+            {
+                // Odds of Keno games
+                bettype = 1501;
             }
 
             string typeName = string.Join(null, new string[] { ODDSBUILDERNAMESPACE, ".Odds", bettype.ToString() });
@@ -374,6 +385,12 @@ namespace Fanex.BetList.Core.Builder
         /// <returns>IStatus: the Status builder object.</returns>
         private IStatus CreateStatusBuilder(int bettype)
         {
+            // Keno games
+            if (bettype <= 1599 && bettype >= 1501)
+            {
+                bettype = 1501;
+            }
+
             string typeName = string.Join(null, new string[] { STATUSBUILDERNAMESPACE, ".Status", bettype.ToString() });
 
             Type type = Type.GetType(typeName);
@@ -395,6 +412,12 @@ namespace Fanex.BetList.Core.Builder
         /// <returns>ITrans: the Trans builder object.</returns>
         private ITrans CreateTransBuilder(int bettype)
         {
+            // Keno games
+            if (bettype <= 1599 && bettype >= 1501)
+            {
+                bettype = 1501;
+            }
+
             string typeName = string.Join(null, new string[] { TRANSBUILDERNAMESPACE, ".Trans", bettype.ToString() });
 
             Type type = Type.GetType(typeName);

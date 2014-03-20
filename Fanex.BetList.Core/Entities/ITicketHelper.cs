@@ -100,6 +100,10 @@ namespace Fanex.BetList.Core.Entities
 
         string GetCombinationMPOfferName(string key);
 
+        string GetKenoBetChoiceName(string kenoBetChoiceID, out string kenoBettypeID);
+
+        string GetKenoBetTypeName(string kenoBettypeID); 
+
         #endregion
     }
 }
