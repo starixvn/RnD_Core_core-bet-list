@@ -157,7 +157,7 @@ namespace Fanex.BetList.Core.Builder.SystemParlayBuilder
             var serialDataInOneDay = _serialList.Where(d => d.Serial == serial).ToList();
             if (serialDataInOneDay.Count == 0)
             {
-                rowBlock.Match.SetValue(App_GlobalResources.CoreLang.TotalLosingTicket);
+                rowBlock.Match.SetValue(App_GlobalResources.CoreBetList.losingtickets);
                 return;
             }
 
