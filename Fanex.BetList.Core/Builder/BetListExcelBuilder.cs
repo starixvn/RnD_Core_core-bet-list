@@ -1,9 +1,10 @@
-﻿// ---------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------
 // <copyright file="BetListExcelBuilder.cs" company="Nexcel Solutions Vietnam">
 //     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
 // </copyright>
 // ---------------------------------------------------------------------------------
 // <history>
+//     <change who="Marc.Bui" date="2014.11.04">Adjust builder creation to work with 3rd products which have negative bettype ids (internal convention)</change>
 //     <change who="Marc.Bui" date="2014.02.27">Upgrade to NPOI 2.0.6.0</change>
 //     <change who="Marc.Bui" date="2013.10.08">Check stylecop, Fx Cop & refactor</change>
 //     <change who="Marc.Bui" date="2013.05.31">Add export detail for *Parlay tickets</change>
@@ -486,13 +487,20 @@ namespace Fanex.BetList.Core.Builder
         /// <returns>IChoice: the Choice builder object.</returns>
         private IChoice CreateChoiceBuilder(int bettype)
         {
-            // Keno games.
-            if (bettype <= 1599 && bettype >= 1501)
+            string choiceName = ".Choice";
+
+            if (bettype < 0)
             {
+                // Internal conventional bettype id of 3rd products
+                choiceName = "._3rd.Choice";
+            }
+            else if (bettype <= 1599 && bettype >= 1501)
+            {
+                // Keno games.
                 bettype = 1501;
             }
 
-            string typeName = string.Join(null, new string[] { CHOICEBUILDERNAMESPACE, ".Choice", bettype.ToString() });
+            string typeName = string.Join(null, new string[] { CHOICEBUILDERNAMESPACE, choiceName, bettype.ToString().Replace('-', '_') });
 
             Type type = Type.GetType(typeName);
 
@@ -513,18 +521,25 @@ namespace Fanex.BetList.Core.Builder
         /// <returns>IOdds: the Odds builder object.</returns>
         private IOdds CreateOddsBuilder(int bettype)
         {
-            if (bettype <= 1199 && bettype >= 1101)
+            string oddsName = ".Odds";
+
+            if (bettype < 0)
+            {
+                // Internal conventional bettype id of 3rd products
+                oddsName = "._3rd.Odds";
+            }
+            else if (bettype <= 1199 && bettype >= 1101)
             {
                 // Odds of Live Casino bettypes
                 bettype = 1101;
             }
             else if (bettype <= 1599 && bettype >= 1501)
             {
-                // Keno games
+                // Odds of Keno games
                 bettype = 1501;
             }
 
-            string typeName = string.Join(null, new string[] { ODDSBUILDERNAMESPACE, ".Odds", bettype.ToString() });
+            string typeName = string.Join(null, new string[] { ODDSBUILDERNAMESPACE, oddsName, bettype.ToString().Replace('-', '_') });
 
             Type type = Type.GetType(typeName);
 
@@ -545,7 +560,15 @@ namespace Fanex.BetList.Core.Builder
         /// <returns>IStake: the Stake builder object.</returns>
         private IStake CreateStakeBuilder(int bettype)
         {
-            string typeName = string.Join(null, new string[] { STAKEBUILDERNAMESPACE, ".Stake", bettype.ToString() });
+            string stakeName = ".Stake";
+
+            if (bettype < 0)
+            {
+                // Internal conventional bettype id of 3rd products
+                stakeName = "._3rd.Stake";
+            }
+
+            string typeName = string.Join(null, new string[] { STAKEBUILDERNAMESPACE, stakeName, bettype.ToString().Replace('-', '_') });
 
             Type type = Type.GetType(typeName);
 
@@ -566,13 +589,20 @@ namespace Fanex.BetList.Core.Builder
         /// <returns>IStatus: the Status builder object.</returns>
         private IStatus CreateStatusBuilder(int bettype)
         {
-            if (bettype <= 1599 && bettype >= 1501)
+            string statusName = ".Status";
+
+            if (bettype < 0)
+            {
+                // Internal conventional bettype id of 3rd products
+                statusName = "._3rd.Status";
+            }
+            else if (bettype <= 1599 && bettype >= 1501)
             {
                 // Keno games
                 bettype = 1501;
             }
 
-            string typeName = string.Join(null, new string[] { STATUSBUILDERNAMESPACE, ".Status", bettype.ToString() });
+            string typeName = string.Join(null, new string[] { STATUSBUILDERNAMESPACE, statusName, bettype.ToString().Replace('-', '_') });
 
             Type type = Type.GetType(typeName);
 
@@ -593,13 +623,20 @@ namespace Fanex.BetList.Core.Builder
         /// <returns>ITrans: the Trans builder object.</returns>
         private ITrans CreateTransBuilder(int bettype)
         {
-            if (bettype <= 1599 && bettype >= 1501)
+            string transName = ".Trans";
+
+            if (bettype < 0)
+            {
+                // Internal conventional bettype id of 3rd products
+                transName = "._3rd.Trans";
+            }
+            else if (bettype <= 1599 && bettype >= 1501)
             {
                 // Keno games
                 bettype = 1501;
             }
 
-            string typeName = string.Join(null, new string[] { TRANSBUILDERNAMESPACE, ".Trans", bettype.ToString() });
+            string typeName = string.Join(null, new string[] { TRANSBUILDERNAMESPACE, transName, bettype.ToString().Replace('-', '_') });
 
             Type type = Type.GetType(typeName);
 

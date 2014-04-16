@@ -12,6 +12,7 @@
 //     <change who="Marc.Bui" date="2013.05.06">Assign ticketStatus to void if tickets is void, use for Sub-tickets markup (Mix Parlay & System Parlay)</change>
 //     <change who="Marc.Bui" date="2013.05.31">Implement export excel with detail data for *Parlay tickets</change>
 //     <change who="Marc.Bui" date="2013.10.09">Check stylecop & refactor</change>
+//     <change who="Marc.Bui" date="2014.11.04">Adjust excel creation to work with 3rd products which have negative bettype ids (internal convention)</change>
 // </history>
 // ---------------------------------------------------------------------------------
 
@@ -54,7 +55,11 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
         #region Properties
 
-        public Choice_Template Template { get; set; }
+        public Choice_Template Template
+        {
+            get;
+            set;
+        }
 
         #endregion
 
@@ -391,7 +396,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         {
             string choice = string.Empty;
 
-            if (!string.IsNullOrEmpty(Template.BetType.betTypeName))
+            if (Template.BetType != null && !string.IsNullOrEmpty(Template.BetType.betTypeName))
             {
                 choice = Template.BetType.betTypeName.Replace("&nbsp;", " ");
                 rtfHelper.RTFRenderer.AddText("\n" + choice);
@@ -408,62 +413,65 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             Justification = "The logic is simple so seperating to reduce fewer than 10 lines is not necessary.")]
         private void BuildBetTeamsInfo(ITicket ticket, ref RTFHelper rtfHelper)
         {
-            bool isAddNewLine = false;
-            string choice = string.Empty;
-            if (!string.IsNullOrEmpty(Template.Match.homeTeam))
+            if (Template.Match != null)
             {
-                choice = Template.Match.homeTeam.Replace("&nbsp;", " ");
-            }
+                bool isAddNewLine = false;
+                string choice = string.Empty;
+                if (!string.IsNullOrEmpty(Template.Match.homeTeam))
+                {
+                    choice = Template.Match.homeTeam.Replace("&nbsp;", " ");
+                }
 
-            if (!string.IsNullOrEmpty(choice))
-            {
-                isAddNewLine = true;
-                rtfHelper.RTFRenderer.AddText("\n" + choice);
-                choice = string.Empty;
-            }
+                if (!string.IsNullOrEmpty(choice))
+                {
+                    isAddNewLine = true;
+                    rtfHelper.RTFRenderer.AddText("\n" + choice);
+                    choice = string.Empty;
+                }
 
-            this.BuildTicketFG_LG(ticket);
+                this.BuildTicketFG_LG(ticket);
 
-            if (!string.IsNullOrEmpty(Template.Match.home_firstGoal_lastGoal))
-            {
-                choice = string.Join(null, new string[] { " ", Template.Match.home_firstGoal_lastGoal });
-            }
+                if (!string.IsNullOrEmpty(Template.Match.home_firstGoal_lastGoal))
+                {
+                    choice = string.Join(null, new string[] { " ", Template.Match.home_firstGoal_lastGoal });
+                }
 
-            if (!string.IsNullOrEmpty(choice))
-            {
-                isAddNewLine = true;
-                choice = choice.Replace("&nbsp;", " ");
-                rtfHelper.RTFRenderer.AddText(choice, rtfHelper.PosFont);
-                choice = string.Empty;
-            }
-            
-            if (Template.Match.VS != null && Template.Match.VS.Visible)
-            {
-                choice = "- vs -";
-            }
+                if (!string.IsNullOrEmpty(choice))
+                {
+                    isAddNewLine = true;
+                    choice = choice.Replace("&nbsp;", " ");
+                    rtfHelper.RTFRenderer.AddText(choice, rtfHelper.PosFont);
+                    choice = string.Empty;
+                }
 
-            if (!string.IsNullOrEmpty(Template.Match.awayTeam))
-            {
-                choice += string.Join(null, new string[] { " ", Template.Match.awayTeam });
-            }
+                if (Template.Match.VS != null && Template.Match.VS.Visible)
+                {
+                    choice = "- vs -";
+                }
 
-            if (!string.IsNullOrEmpty(choice))
-            {
-                isAddNewLine = true;
-                choice = choice.Replace("&nbsp;", " ");
-                rtfHelper.RTFRenderer.AddText(choice);
-                choice = string.Empty;
-            }
-            
-            if (!string.IsNullOrEmpty(Template.Match.away_firstGoal_lastGoal))
-            {
-                choice = " " + Template.Match.away_firstGoal_lastGoal;
-            }
+                if (!string.IsNullOrEmpty(Template.Match.awayTeam))
+                {
+                    choice += string.Join(null, new string[] { " ", Template.Match.awayTeam });
+                }
 
-            if (!string.IsNullOrEmpty(choice) || isAddNewLine)
-            {
-                choice = choice.Replace("&nbsp;", " ");
-                rtfHelper.RTFRenderer.AddText(choice, rtfHelper.PosFont);
+                if (!string.IsNullOrEmpty(choice))
+                {
+                    isAddNewLine = true;
+                    choice = choice.Replace("&nbsp;", " ");
+                    rtfHelper.RTFRenderer.AddText(choice);
+                    choice = string.Empty;
+                }
+
+                if (!string.IsNullOrEmpty(Template.Match.away_firstGoal_lastGoal))
+                {
+                    choice = " " + Template.Match.away_firstGoal_lastGoal;
+                }
+
+                if (!string.IsNullOrEmpty(choice) || isAddNewLine)
+                {
+                    choice = choice.Replace("&nbsp;", " ");
+                    rtfHelper.RTFRenderer.AddText(choice, rtfHelper.PosFont);
+                }
             }
         }
 
@@ -473,27 +481,30 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         /// <param name="rtfHelper">The RTF helper.</param>
         private void BuildMatchInfo(ref RTFHelper rtfHelper)
         {
-            string choice = string.Empty;
-
-            if (!string.IsNullOrEmpty(Template.League.sportTypeName))
+            if (Template.League != null)
             {
-                choice = Template.League.sportTypeName;
-            }
+                string choice = string.Empty;
 
-            if (Template.League.LeagueName != null && !string.IsNullOrEmpty(Template.League.LeagueName.leagueName))
-            {
-                if (!string.IsNullOrEmpty(choice))
+                if (!string.IsNullOrEmpty(Template.League.sportTypeName))
                 {
-                    choice += " ";
+                    choice = Template.League.sportTypeName;
                 }
 
-                choice += Template.League.LeagueName.leagueName;
-            }
+                if (Template.League.LeagueName != null && !string.IsNullOrEmpty(Template.League.LeagueName.leagueName))
+                {
+                    if (!string.IsNullOrEmpty(choice))
+                    {
+                        choice += " ";
+                    }
 
-            if (!string.IsNullOrEmpty(choice))
-            {
-                choice = choice.Replace("&nbsp;", " ");
-                rtfHelper.RTFRenderer.AddText("\n" + choice);
+                    choice += Template.League.LeagueName.leagueName;
+                }
+
+                if (!string.IsNullOrEmpty(choice))
+                {
+                    choice = choice.Replace("&nbsp;", " ");
+                    rtfHelper.RTFRenderer.AddText("\n" + choice);
+                }
             }
         }
 
@@ -503,7 +514,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         /// <param name="ticket">The ticket.</param>
         private void BuildTicketFG_LG(ITicket ticket)
         {
-            if (ticket.EventStatus != null)
+            if (ticket.EventStatus != null && Template.Match != null)
             {
                 Template.Match.home_firstGoal_lastGoal = string.Empty;
                 Template.Match.away_firstGoal_lastGoal = string.Empty;

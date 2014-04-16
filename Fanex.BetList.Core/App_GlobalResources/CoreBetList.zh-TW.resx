@@ -336,4 +336,7 @@
   <data name="casinoProgressiveBonus" xml:space="preserve">
     <value>Casino Progressive Bonus</value>
   </data>
+  <data name="playtechcasino" xml:space="preserve">
+    <value>PlayTech Casino</value>
+  </data>
 </root>

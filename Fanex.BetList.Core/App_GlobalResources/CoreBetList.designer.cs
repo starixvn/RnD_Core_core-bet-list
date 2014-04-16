@@ -484,6 +484,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PlayTech Casino.
+        /// </summary>
+        public static string playtechcasino {
+            get {
+                return ResourceManager.GetString("playtechcasino", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Points.
         /// </summary>
         public static string points {

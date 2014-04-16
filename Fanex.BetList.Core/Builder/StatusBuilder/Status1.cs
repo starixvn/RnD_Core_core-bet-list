@@ -6,6 +6,7 @@
 // <history>
 //     <change who="Marc.Bui" date="2012.12.25">Create</change>
 //     <change who="Marc.Bui" date="2013.01.24">Hide result link for Refunded tickets</change>
+//     <change who="Marc.Bui" date="2014.11.04">Check ShowIP block is null</change>
 // </history>
 // ---------------------------------------------------------------------------------
 
@@ -113,7 +114,7 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
             string status = Template.result;
             rtfHelper.RTFRenderer.AddText(status, rtfHelper.PosFont);
 
-            if (Template.ShowIP.Visible)
+            if (Template.ShowIP != null && Template.ShowIP.Visible)
             {
                 status = string.Join(null, new string[] { "\n", Template.ShowIP.betIp });
                 rtfHelper.RTFRenderer.AddText(status);
