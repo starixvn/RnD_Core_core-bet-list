@@ -61,7 +61,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         }
 
         /// <summary>
-        /// Calculates the F g_ LG.
+        /// Calculates the FG _ LG.
         /// </summary>
         /// <param name="betStatus">The bet status.</param>
         /// <param name="homeFGLG">The home FGLG.</param>

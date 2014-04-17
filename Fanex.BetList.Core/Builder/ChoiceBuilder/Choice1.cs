@@ -13,6 +13,7 @@
 //     <change who="Marc.Bui" date="2013.05.31">Implement export excel with detail data for *Parlay tickets</change>
 //     <change who="Marc.Bui" date="2013.10.09">Check stylecop & refactor</change>
 //     <change who="Marc.Bui" date="2014.11.04">Adjust excel creation to work with 3rd products which have negative bettype ids (internal convention)</change>
+//     <change who="Marc.Bui" date="2014.17.04">Adjust FGLG creation to work with new bet types: First-Half Total Goal (126) and First-Half FGLG (127)</change>
 // </history>
 // ---------------------------------------------------------------------------------
 
@@ -167,7 +168,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         }
 
         /// <summary>
-        /// Calculates the F g_ LG.
+        /// Calculates the FG _ LG.
         /// </summary>
         /// <param name="betStatus">The bet status.</param>
         /// <param name="homeFGLG">The home FGLG.</param>
@@ -179,31 +180,29 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                 return;
             }
 
-            // Format: FL:1-2
-            string[] args = betStatus.Split(new char[] { ':', '-' });
+            /*
+            // Possible formats: 
+            // Refund HT;1FL:1-2;FL:2-0
+            // 1FL:1-2;FL:2-0
+            // Refund HT;FL:2-0
+            // Refund HT;1FL:1-2
+            // FL:2-0
+            // Refund HT
+            // 1FL:1-2            
+            */
 
-            if (args.Length != 3)
-            {
-                return;
-            }
+            string firstGoalClassName = "firstGoal ";
+            string lastGoalClassName = "lastGoal";
+            string firstHalfFirstGoalClassName = "fhFirstGoal";
+            string firstHalfLastGoalClassName = "fhLastGoal";
 
-            if (args[1] == "1")
-            {
-                homeFGLG += "<div class=\"firstGoal\">&nbsp;</div>";
-            }
-            else if (args[1] == "2")
-            {
-                awayFGLG += "<div class=\"firstGoal\">&nbsp;</div>";
-            }
+            string[] betStatusParts = betStatus.ToLower().Split(';');
 
-            if (args[2] == "1")
-            {
-                homeFGLG += "<div class=\"lastGoal\">&nbsp;</div>";
-            }
-            else if (args[2] == "2")
-            {
-                awayFGLG += "<div class=\"lastGoal\">&nbsp;</div>";
-            }
+            string[] fglg = this.GetBetStatusPart(betStatusParts, "fl");
+            this.UpdateFG_LG(firstGoalClassName, lastGoalClassName, fglg, ref homeFGLG, ref awayFGLG);
+
+            string[] fhfglg = this.GetBetStatusPart(betStatusParts, "1fl");
+            this.UpdateFG_LG(firstHalfFirstGoalClassName, firstHalfLastGoalClassName, fhfglg, ref homeFGLG, ref awayFGLG);            
 
             if (!homeFGLG.Equals(string.Empty))
             {
@@ -270,31 +269,29 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                 return;
             }
 
-            // Format: FL:1-2
-            string[] args = betStatus.Split(new char[] { ':', '-' });
+            /*
+            // Possible formats: 
+            // Refund HT;1FL:1-2;FL:2-0
+            // 1FL:1-2;FL:2-0
+            // Refund HT;FL:2-0
+            // Refund HT;1FL:1-2
+            // FL:2-0
+            // Refund HT
+            // 1FL:1-2            
+            */
 
-            if (args.Length != 3)
-            {
-                return;
-            }
+            string firstGoalTextName = "(F) ";
+            string lastGoalTextName = "(L)";
+            string firstHalfFirstGoalTextName = "(1F)";
+            string firstHalfLastGoalTextName = "(1L)";
 
-            if (args[1] == "1")
-            {
-                homeFGLG += "(F)";
-            }
-            else if (args[1] == "2")
-            {
-                awayFGLG += "(F)";
-            }
+            string[] betStatusParts = betStatus.ToLower().Split(';');
 
-            if (args[2] == "1")
-            {
-                homeFGLG += "(L)";
-            }
-            else if (args[2] == "2")
-            {
-                awayFGLG += "(L)";
-            }
+            string[] fglg = this.GetBetStatusPart(betStatusParts, "fl");
+            this.UpdateFG_LG_Excel(firstGoalTextName, lastGoalTextName, fglg, ref homeFGLG, ref awayFGLG);
+
+            string[] fhfglg = this.GetBetStatusPart(betStatusParts, "1fl");
+            this.UpdateFG_LG_Excel(firstHalfFirstGoalTextName, firstHalfLastGoalTextName, fhfglg, ref homeFGLG, ref awayFGLG);
         }
 
         /// <summary>
@@ -519,6 +516,97 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                 Template.Match.home_firstGoal_lastGoal = string.Empty;
                 Template.Match.away_firstGoal_lastGoal = string.Empty;
                 this.CalculateFG_LG_Excel(ticket.EventStatus, ref Template.Match.home_firstGoal_lastGoal, ref Template.Match.away_firstGoal_lastGoal);
+            }
+        }
+
+        /// <summary>
+        /// Get part of bet status by name (1FL or FL).
+        /// </summary>
+        /// <param name="source">The source string array.</param>
+        /// <param name="partName">The part name (1FL or FL).</param>
+        /// <returns>The targeted part.</returns>
+        private string[] GetBetStatusPart(string[] source, string partName)
+        {
+            string part = string.Empty;
+
+            for (int i = 0; i < source.Length; i++)
+            {
+                if (source[i].StartsWith(partName))
+                {
+                    part = source[i];
+                    break;
+                }
+            }
+
+            string[] partValue = part.Split(new char[] { ':', '-' });
+            return partValue;
+        }
+
+        /// <summary>
+        /// Update First Goal, Last Goal icon group.
+        /// </summary>
+        /// <param name="firstClassName">CSS class name of first case.</param>
+        /// <param name="lastClassName">CSS class name of last case.</param>
+        /// <param name="statusPart">The data of currently processed part.</param>
+        /// <param name="homeFGLG">Reference to home FGLG.</param>
+        /// <param name="awayFGLG">Reference to away FGLG.</param>
+        private void UpdateFG_LG(string firstClassName, string lastClassName, string[] statusPart, ref string homeFGLG, ref string awayFGLG)
+        {
+            if (statusPart.Length != 3)
+            {
+                return;
+            }
+
+            if (statusPart[1] == "1")
+            {
+                homeFGLG += string.Join(null, new string[] { "<div class='", firstClassName, "'>&nbsp;</div>" });
+            }
+            else if (statusPart[1] == "2")
+            {
+                awayFGLG += string.Join(null, new string[] { "<div class='", firstClassName, "'>&nbsp;</div>" });
+            }
+
+            if (statusPart[2] == "1")
+            {
+                homeFGLG += string.Join(null, new string[] { "<div class='", lastClassName, "'>&nbsp;</div>" });
+            }
+            else if (statusPart[2] == "2")
+            {
+                awayFGLG += string.Join(null, new string[] { "<div class='", lastClassName, "'>&nbsp;</div>" });
+            }
+        }
+
+        /// <summary>
+        /// Update First Goal, Last Goal text group.
+        /// </summary>
+        /// <param name="firstTextName">Text name of first case.</param>
+        /// <param name="lastTextName">Text class name of last case.</param>
+        /// <param name="statusPart">The data of currently processed part.</param>
+        /// <param name="homeFGLG">Reference to home FGLG.</param>
+        /// <param name="awayFGLG">Reference to away FGLG.</param>
+        private void UpdateFG_LG_Excel(string firstTextName, string lastTextName, string[] statusPart, ref string homeFGLG, ref string awayFGLG)
+        {
+            if (statusPart.Length != 3)
+            {
+                return;
+            }
+
+            if (statusPart[1] == "1")
+            {
+                homeFGLG += firstTextName;
+            }
+            else if (statusPart[1] == "2")
+            {
+                awayFGLG += firstTextName;
+            }
+
+            if (statusPart[2] == "1")
+            {
+                homeFGLG += lastTextName;
+            }
+            else if (statusPart[2] == "2")
+            {
+                awayFGLG += lastTextName;
             }
         }
     }

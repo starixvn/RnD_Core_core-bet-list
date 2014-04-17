@@ -77,6 +77,11 @@
     <Content Include="DLL\NPOI.OpenXmlFormats.dll" />
     <Content Include="DLL\NPOI.XML" />
     <Content Include="DLL\TplCore.dll" />
+    <Content Include="Styles\CoreBetList.css" />
+    <Content Include="Styles\Images\1F.gif" />
+    <Content Include="Styles\Images\1L.gif" />
+    <Content Include="Styles\Images\firstGoal.gif" />
+    <Content Include="Styles\Images\lastGoal.gif" />
     <Content Include="Templates\SystemParlayDetail.htm" />
     <Content Include="Templates\Status.htm" />
     <Content Include="Templates\Template.htm" />
@@ -320,6 +325,8 @@
     <Compile Include="Builder\ChoiceBuilder\Choice89.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice90.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice126.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice127.cs" />
     <Compile Include="Builder\ChoiceBuilder\IChoice.cs" />
     <Compile Include="Builder\IBetListBuilder.cs" />
     <Compile Include="Builder\OddsBuilder\3rd\Odds_22006.cs" />
