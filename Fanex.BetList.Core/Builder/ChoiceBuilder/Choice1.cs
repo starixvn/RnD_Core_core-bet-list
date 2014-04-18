@@ -280,7 +280,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             // 1FL:1-2            
             */
 
-            string firstGoalTextName = "(F) ";
+            string firstGoalTextName = "(F)";
             string lastGoalTextName = "(L)";
             string firstHalfFirstGoalTextName = "(1F)";
             string firstHalfLastGoalTextName = "(1L)";

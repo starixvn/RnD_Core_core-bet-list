@@ -7,6 +7,7 @@
 //     <change who="Marc.Bui" date="2012.11.16">Create</change>
 //     <change who="Marc.Bui" date="2013.01.23">Update format string for Stake to follow general rules: show all significant decimals</change>
 //     <change who="Marc.Bui" date="2013.01.29">Update show Odds value: 0 instead of -</change>
+//     <change who="Marc.Bui" date="2014.04.18">Add 1H FGLG (127) to ConvertByBetType.GetBetTeam</change>
 // </history>
 // ---------------------------------------------------------------------------------
 
@@ -114,9 +115,9 @@ namespace Fanex.BetList.Core.Utils
 
             string returnValue = string.Empty;
             
-            if (betType == 14)
+            if (betType == 14 || betType == 127)
             {
-                // FGLG
+                // FGLG or 1H FGLG
                 returnValue = GetFGLGBetTeam(betType, chars);
             }            
             else if (betType == 16)
@@ -440,7 +441,7 @@ namespace Fanex.BetList.Core.Utils
             var returnValue = string.Empty;
             int c = chars.Length;
 
-            if (betType == 14)
+            if (betType == 14 || betType == 127)
             {
                 if (chars[0] == '1')
                 {
