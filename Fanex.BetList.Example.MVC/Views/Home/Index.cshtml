@@ -1,0 +1,91 @@
+﻿@using Fanex.BetList.Core.Entities
+@using Fanex.BetList.Core.Factories
+@using Fanex.BetList.Core.Builder
+@using Fanex.BetList.Example.MVC.ViewModel
+@using Fanex.BetList.Core.TicketHelper
+@using Fanex.BetList.Example.Extension.BetListHTMLBuilderExt
+@model BetListData
+@{
+    ViewBag.Title = "Example Bet List";
+
+    IList<ITicket> tickets = Model.Tickets;
+    List<ITicketData> ticketData = Model.TicketData;
+
+    BetListHTMLFactory factory = new BetListHTMLFactory();
+    BetListHTMLBuilder builder = factory.CreateBuilder();
+
+    ITicketHelper ticketHelper = new TicketHelper();
+
+    GetCachePropertyById funcGetOddsTypeName = CacheRef.GetOddsTypeName;
+
+    var rowIndex = 0;
+}
+@section head
+{
+    <link rel="Stylesheet" href=@Url.Content("Content/CoreBetList.css") />
+    <link rel="Stylesheet" href=@Url.Content("Content/BetListExt.css") />
+}
+<div id="main">
+    <table id="listPanel">
+        <tr>
+            <td>
+                <h2>
+                    Core Bet List Demo</h2>
+            </td>
+            <td>
+                <p class="xport">@Html.ActionLink("Export list to excel", "ExportExcel")</p>
+            </td>
+        </tr>
+    </table>
+    <table id="tabBetList">
+        <thead>
+            <tr>
+                <td>
+                    #
+                </td>
+                <td>
+                    Trans.Time
+                </td>
+                <td>
+                    Username
+                </td>
+                <td>
+                    Choice
+                </td>
+                <td>
+                    Odds
+                </td>
+                <td>
+                    Stake
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ticket in tickets)
+            {
+                rowIndex++;
+        
+                <tr>
+                    <td class="r">
+                        @rowIndex
+                    </td>
+                    <td class="c">
+                        @Html.Raw(builder.BuildTrans(ticket))
+                    </td>
+                    <td class="c">
+                        @Html.Raw(builder.BuildUsername(ticket))
+                    </td>
+                    <td class="r">
+                        @Html.Raw(builder.BuildChoice(ticket, ticketHelper, ticketData, false))
+                    </td>
+                    <td class="r">
+                        @Html.Raw(builder.BuildOdds(ticket, ticketData, funcGetOddsTypeName))
+                    </td>
+                    <td class="r">
+                        @Html.Raw(builder.BuildStake(ticket))
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

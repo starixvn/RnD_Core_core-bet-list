@@ -1,0 +1,31 @@
+#main
+{
+    width: 70%;
+}
+#listPanel, #tabBetList
+{
+    width: 100%;
+}
+#tabBetList
+{
+    border-collapse: collapse;
+}
+#tabBetList td
+{
+    vertical-align: top;
+    border: 1px solid #999;
+}
+#listPanel
+.xport
+{
+    float: right;
+}
+.c {
+    text-align: center;
+}
+.r {
+    text-align: right;
+}
+.l {
+    text-align: left;
+}
