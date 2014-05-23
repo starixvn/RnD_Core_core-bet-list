@@ -8,7 +8,7 @@
 @{
     ViewBag.Title = "Example Bet List";
 
-    IList<ITicket> tickets = Model.Tickets;
+    IList<ITicket> tickets = Model.Tickets.Where(x => x.BetTypeId == 1 && x.IsLive).ToList();
     List<ITicketData> ticketData = Model.TicketData;
 
     BetListHTMLFactory factory = new BetListHTMLFactory();
@@ -23,7 +23,6 @@
 @section head
 {
     <link rel="Stylesheet" href=@Url.Content("Content/CoreBetList.css") />
-    <link rel="Stylesheet" href=@Url.Content("Content/BetListExt.css") />
 }
 <div id="main">
     <table id="listPanel">
@@ -58,6 +57,9 @@
                 <td>
                     Stake
                 </td>
+                <td>
+                    Status
+                </td>
             </tr>
         </thead>
         <tbody>
@@ -83,6 +85,9 @@
                     </td>
                     <td class="r">
                         @Html.Raw(builder.BuildStake(ticket))
+                    </td>
+                    <td class="r">
+                        @Html.Raw(builder.BuildStatus(ticket, ticketHelper, ticketData, true))
                     </td>
                 </tr>
             }
