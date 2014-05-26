@@ -1,0 +1,518 @@
+﻿// --------------------------------------------------------------------------
+// <copyright file="UltilData.cs" company="Nexcel Solutions Vietnam">
+// Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
+// </copyright>
+// --------------------------------------------------------------------------
+// <history>
+//   <change who="Edward.Nguyen" date="2014.5.16">Created</change>
+// </history>
+
+namespace Fanex.BetList.Core.UnitTest.Ultils
+{
+    using System.Collections.Generic;
+    using System.Linq;
+    using Fanex.BetList.Core.Entities;
+    using Fanex.BetList.Core.UnitTest.Ultils.Enums;
+    using System;
+
+    public static class UltilBetType1
+    {
+        public static IEnumerable<ITicket> Tickets
+        {
+            get
+            {
+                return UltilData.GetTickets((int)BetTypes.Handicap);
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_EventStatus_IsNull
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.EventStatus = null;
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_IsLive
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.IsLive = true;
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_IsLive_False
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.IsLive = false;
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_IsNeutral
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.IsNeutral = true;
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_IsNeutral_False
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.IsNeutral = false;
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_EventStatus_FL_1_1
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.EventStatus = "FL:1-1";
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_EventStatus_FL_2_2
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.EventStatus = "FL:2-2";
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_EventStatus_FL_1_0
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.EventStatus = "FL:1-0";
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_EventStatus_FL_2_0
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.EventStatus = "FL:2-0";
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_EventStatus_FHFL_1_1
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.EventStatus = "1FL:1-1";
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_EventStatus_FHFL_2_2
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.EventStatus = "1FL:2-2";
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_EventStatus_FHFL_1_0
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.EventStatus = "1FL:1-0";
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_EventStatus_FHFL_2_0
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.EventStatus = "1FL:2-0";
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_EventStatus_FL_1_1_1FL_1_1
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.EventStatus = "FL:1-1;1FL:1-1";
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_EventStatus_FL_2_2_1FL_2_2
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.EventStatus = "FL:2-2;1FL:2-2";
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_EventStatus_FL_1_1_1FL_1_0
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.EventStatus = "FL:1-1;1FL:1-0";
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_EventStatus_FL_2_2_1FL_2_0
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.EventStatus = "FL:2-2;1FL:2-0";
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_EventStatus_FL_1_0_1FL_1_1
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.EventStatus = "FL:1-0;1FL:1-1";
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_EventStatus_FL_2_0_1FL_2_2
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.EventStatus = "FL:2-0;1FL:2-2";
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_EventStatus_FL_1_0_1FL_1_0
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.EventStatus = "FL:1-0;1FL:1-0";
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_EventStatus_FL_2_0_1FL_2_0
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.EventStatus = "FL:2-0;1FL:2-0";
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_BetTeam_ContainsH_IsNeutral
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.BetTeam = "abch";
+                    item.IsNeutral = true;
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_BetTeam_ContainsH_IsNeutral_False
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.BetTeam = "abch";
+                    item.IsNeutral = false;
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_BetTeam_NotContainsH
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.BetTeam = string.Empty;
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_BetTeam_ContainsH_Handicap2_2_Handicap1_1
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.BetTeam = "abch";
+                    item.Handicap2 = 2;
+                    item.Handicap1 = 1;
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_BetTeam_ContainsH_Handicap2_1_Handicap1_1
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.BetTeam = "abch";
+                    item.Handicap2 = 1;
+                    item.Handicap1 = 1;
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_BetTeam_ContainsH_Handicap2_1_Handicap1_2
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.BetTeam = "abch";
+                    item.Handicap2 = 1M;
+                    item.Handicap1 = 2;
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_BetTeam_NotContainsH_Handicap2_2_Handicap1_1
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.BetTeam = null;
+                    item.Handicap2 = 2;
+                    item.Handicap1 = 1;
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_BetTeam_NotContainsH_Handicap2_1_Handicap1_1
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.BetTeam = null;
+                    item.Handicap2 = 1;
+                    item.Handicap1 = 1;
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_BetTeam_NotContainsH_Handicap2_1_Handicap1_2
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.BetTeam = null;
+                    item.Handicap2 = 1;
+                    item.Handicap1 = 2;
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_StatusId_Void
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.StatusId = Convert.ToInt32(BetStatusId.Void);
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_Status_Void
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.Status = BetStatus.Void;
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_StatusId_Null
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.StatusId = null;
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_Status_Null
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.Status = null;
+                }
+
+                return list;
+            }
+        }
+    }
+}
