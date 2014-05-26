@@ -101,10 +101,6 @@
       <Project>{59049F18-4C0D-4144-8266-39CEDA41DE61}</Project>
       <Name>Fanex.BetList.Core.Tests.Integration.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.Core.TicketHelper\Fanex.BetList.Core.TicketHelper.csproj">
-      <Project>{5384E9C5-8CF1-42F8-8D12-8089EA725351}</Project>
-      <Name>Fanex.BetList.Core.TicketHelper</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.CoreToVerify.Wrap\Fanex.BetList.CoreToVerify.Wrap.csproj">
       <Project>{30F6198E-FFCC-41CA-A1F6-7757EE058523}</Project>
       <Name>Fanex.BetList.CoreToVerify.Wrap</Name>

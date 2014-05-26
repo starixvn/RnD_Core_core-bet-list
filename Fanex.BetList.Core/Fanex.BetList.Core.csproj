@@ -41,11 +41,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Fanex.Caching, Version=1.0.404.95, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="NPOI, Version=2.0.6.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>DLL\NPOI.dll</HintPath>
     </Reference>
+    <Reference Include="RemotingRef, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Sunplus.Core.Common, Version=1.1.4505.19054, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
@@ -68,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CodeAnalysis\CodeAnalysisConfiguration.xml" />
+    <Content Include="DLL\Fanex.Caching.dll" />
     <Content Include="DLL\ICSharpCode.SharpZipLib.dll" />
     <Content Include="DLL\NPOI.dll" />
     <Content Include="DLL\NPOI.OOXML.dll" />
@@ -76,6 +80,8 @@
     <Content Include="DLL\NPOI.OpenXml4Net.XML" />
     <Content Include="DLL\NPOI.OpenXmlFormats.dll" />
     <Content Include="DLL\NPOI.XML" />
+    <Content Include="DLL\RemotingRef.dll" />
+    <Content Include="DLL\Sunplus.Core.Common.dll" />
     <Content Include="DLL\TplCore.dll" />
     <Content Include="Styles\CoreBetList.css" />
     <Content Include="Styles\Images\1F.gif" />
@@ -429,6 +435,8 @@
     <Compile Include="Templates\SystemParlayDetail.htm.cs" />
     <Compile Include="Templates\Template.htm.cs" />
     <Compile Include="Templates\Trans.htm.cs" />
+    <Compile Include="TicketHelper\CacheRef.cs" />
+    <Compile Include="TicketHelper\TicketHelper.cs" />
     <Compile Include="Utils\Cast.cs" />
     <Compile Include="Utils\ConvertByBetType.cs" />
     <Compile Include="Utils\Formatter.cs" />
