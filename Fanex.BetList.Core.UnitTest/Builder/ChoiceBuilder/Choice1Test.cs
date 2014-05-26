@@ -684,8 +684,8 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             Assert.AreEqual(expected, actualValue);
         }
 
-        [Test, TestCaseSource(typeof(UltilBetType1), "Ticket_StatusId_Void")]
-        public void Render_TicketStatusIdVoid_ShowClassVoid(ITicket ticket)
+        [Test, TestCaseSource(typeof(UltilBetType1), "Ticket_StatusId_Null")]
+        public void Render_TicketStatusIdNull_ShowClassVoid(ITicket ticket)
         {
             HtmlDocument htmlDoc = GetHtmlDoc(ticket);
 
