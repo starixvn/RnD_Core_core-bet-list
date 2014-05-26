@@ -692,7 +692,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(XPATHROOT).FirstOrDefault();
 
             string expected = VOID;
-            string actualValue = htmlNode.Attributes["class"].Value;
+            string actualValue = string.Empty;
 
             Assert.AreEqual(expected, actualValue);
         }
