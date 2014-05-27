@@ -20,15 +20,17 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
     using HtmlAgilityPack;
     using NUnit.Framework;
     using Ultils;
+    using Fanex.BetList.Core.Utils;
 
     public class Choice1Test
     {
         private Choice1 _choice;
-        private ITicketHelper _ticketHelperStub = new TicketHelperStub();
+        private ITicketHelper _ticketHelperStub;
         private List<ITicketData> _ticketData;
         private const string BLUNDERDOG = "underdog";
         private const string BLFAVORITE = "favorite";
         private const string VOID = "void";
+        private const string MINUS = "<font color='#B50000'>{0}</font>";
 
         private const string TEMPLATESCORE = "<span class=\"favorite\"> [{0}-{1}]</span>";
         private const string TEMPLATELEAGUE_SPORT = "<span class=\"sport\">{0}</span>";
@@ -42,6 +44,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         private const string TEMPLATEMATCH_LASTGOAL = "<div class='lastGoal'>&nbsp;</div>";
         private const string TEMPLATEMATCH_FHLASTGOAL = "<div class='fhLastGoal'>&nbsp;</div>";
         private const string TEMPLATESCOREMAP = "<span class='scoremap'><a href=\"javascript:OpenScoreMap({0},{1},{2});\" title=\"Score Map\"><div class='scoremapIcon'></div></a></span>";
+        private const string TEMPLATEBETTEAM_ODDS = "<span class=\"odds\"> @ {0}</span>";
 
         private const string XPATHSCORE = "/div/span/span[2][@class=\"favorite\"]";
         private const string XPATHLEAGUE_SPORTTYPENAME = "/div/div[3][@class=\"league\"]/span[1][@class=\"sport\"]";
@@ -60,6 +63,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         private const string XPATHMATCH_FHLASTGOAL = "/div/div[2][@class=\"match\"]/div[{0}][@class=\"fhLastGoal\"]";
         private const string XPATHBETTEAM = "/div/span[1]";
         private const string XPATHBETTEAM_HANDICAP = "/div/span[1]/span[1][@class=\"handicap\"]";
+        private const string XPATHBETTEAM_ODDS = "/div/span[1]/span[1]/span[1][@class=\"odds\"]";
         private const string XPATHROOT = "/div";
 
         [SetUp]
@@ -67,6 +71,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         {
             _choice = new Choice1();
             _ticketData = UltilData.GetTicketData();
+            _ticketHelperStub = new TicketHelperStub();
         }
 
         [Test, TestCaseSource(typeof(UltilBetType1), "Ticket_IsLive")]
@@ -685,16 +690,80 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test, TestCaseSource(typeof(UltilBetType1), "Ticket_StatusId_Null")]
-        public void Render_TicketStatusIdNull_ShowClassVoid(ITicket ticket)
+        public void Render_TicketStatusIdNull_VisibleClass(ITicket ticket)
         {
             HtmlDocument htmlDoc = GetHtmlDoc(ticket);
 
             HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(XPATHROOT).FirstOrDefault();
 
-            string expected = VOID;
-            string actualValue = string.Empty;
+            string expected = string.Empty;
+            string actualValue = htmlNode.Attributes["class"].Value;
 
             Assert.AreEqual(expected, actualValue);
+        }
+
+        [Test, TestCaseSource(typeof(UltilBetType1), "Ticket_Status_Null")]
+        public void Render_TicketStatusNull_VisibleClass(ITicket ticket)
+        {
+            HtmlDocument htmlDoc = GetHtmlDoc(ticket);
+
+            HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(XPATHROOT).FirstOrDefault();
+
+            string expected = string.Empty;
+            string actualValue = htmlNode.Attributes["class"].Value;
+
+            Assert.AreEqual(expected, actualValue);
+        }
+
+        [Test, TestCaseSource(typeof(UltilBetType1), "Ticket_OddsType_IsEmpty")]
+        public void Render_TicketOddsTypeIsEmpty_VisibleClass(ITicket ticket)
+        {
+            _ticketHelperStub.IsShowOddsWithChoice = true;
+            HtmlDocument htmlDoc = GetHtmlDoc(ticket);
+
+            HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(XPATHBETTEAM_ODDS).FirstOrDefault();
+
+            string expected = string.Format(TEMPLATEBETTEAM_ODDS, string.Format(MINUS, ticket.Odds));
+            string actualValue = htmlNode.OuterHtml;
+
+            Assert.AreEqual(expected, actualValue);
+        }
+
+        [Test, TestCaseSource(typeof(UltilBetType1), "Ticket_OddsType_1")]
+        public void Render_TicketOddsType1_VisibleClass(ITicket ticket)
+        {
+            _ticketHelperStub.IsShowOddsWithChoice = true;
+            HtmlDocument htmlDoc = GetHtmlDoc(ticket);
+
+            HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(XPATHBETTEAM_ODDS).FirstOrDefault();
+
+            string expected = string.Format(TEMPLATEBETTEAM_ODDS, 0.27M);
+            string actualValue = htmlNode.OuterHtml;
+
+            Assert.AreEqual(expected, actualValue);
+        }
+
+        [Test, TestCaseSource(typeof(UltilBetType1), "Ticket_Odds_0")]
+        public void Render_TicketOdds0_VisibleClass(ITicket ticket)
+        {
+            _ticketHelperStub.IsShowOddsWithChoice = true;
+            HtmlDocument htmlDoc = GetHtmlDoc(ticket);
+
+            HtmlNodeCollection htmlNodes = htmlDoc.DocumentNode.SelectNodes(XPATHBETTEAM_ODDS);
+
+            string expected = null;
+
+            Assert.AreEqual(expected, htmlNodes);
+        }
+
+        [Test, TestCaseSource(typeof(UltilBetType1), "Tickets")]
+        public void RenderRTF_Tickets_VisibleClass(ITicket ticket)
+        {
+            RTFHelper rtfHelper = new RTFHelper();
+            rtfHelper.RTFRenderer = new RtfTextRender();
+
+            _choice.RenderRTF(ticket, _ticketHelperStub, _ticketData, false, rtfHelper);
+
         }
 
         private void AssertFirstGoalLastGoalTeamName(long teamId, HtmlNode htmlNodeFisrtGoal)

@@ -515,5 +515,47 @@ namespace Fanex.BetList.Core.UnitTest.Ultils
                 return list;
             }
         }
+
+        public static IEnumerable<ITicket> Ticket_OddsType_IsEmpty
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.OddsType = string.Empty;
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_OddsType_1
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.OddsType = "1";
+                }
+
+                return list;
+            }
+        }
+
+        public static IEnumerable<ITicket> Ticket_Odds_0
+        {
+            get
+            {
+                List<ITicket> list = Tickets.ToList();
+                foreach (var item in list)
+                {
+                    item.Odds = 0;
+                }
+
+                return list;
+            }
+        }
     }
 }
