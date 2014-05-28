@@ -10,13 +10,13 @@
 
 namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using System.Collections.Generic;
     using System.Linq;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
     using Fanex.BetList.Core.UnitTest.Stubs;
     using Fanex.BetList.Core.UnitTest.Templates;
+    using Fanex.BetList.Core.UnitTest.Ultils.Enums;
     using HtmlAgilityPack;
     using NUnit.Framework;
     using Ultils;
@@ -25,20 +25,20 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
     {
         private Choice10 _choice;
         private ITicketHelper _ticketHelperStub;
-        private List<ITicketData> _ticketData;
+        private ITicket _ticket;
 
         [SetUp]
         public void Setup()
         {
             _choice = new Choice10();
-            _ticketData = UltilData.GetTicketData();
             _ticketHelperStub = new TicketHelperStub();
+            _ticket = UltilData.GetTicket((int)BetTypes.Outright);
         }
 
-        [Test, TestCaseSource(typeof(UltilBetType10), "Tickets")]
-        public void Tickets_VisibleHandicap(ITicket ticket)
+        [Test]
+        public void Tickets_VisibleHandicap()
         {
-            HtmlDocument htmlDoc = GetHtmlDoc(ticket);
+            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
 
             HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.BetTeamHandicap).FirstOrDefault();
             string expected = " ";
@@ -47,10 +47,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             Assert.AreEqual(expected, actualValue);
         }
 
-        [Test, TestCaseSource(typeof(UltilBetType10), "Tickets")]
-        public void Tickets_MatchEmpty(ITicket ticket)
+        [Test]
+        public void Tickets_MatchEmpty()
         {
-            HtmlDocument htmlDoc = GetHtmlDoc(ticket);
+            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
 
             HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.Match).FirstOrDefault();
             string expected = string.Format(ChoiceTemplate.MatchTeamName, string.Empty) + string.Format(ChoiceTemplate.MatchTeamName, string.Empty);
@@ -59,22 +59,24 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             Assert.AreEqual(expected, actualValue);
         }
 
-        [Test, TestCaseSource(typeof(UltilBetType10), "Ticket_IsLive")]
-        public void TicketIsLive_ShowScore(ITicket ticket)
+        [Test]
+        public void TicketIsLive_ShowScore()
         {
-            HtmlDocument htmlDoc = GetHtmlDoc(ticket);
+            _ticket.IsLive = true;
+            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
 
             HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.Score).FirstOrDefault();
-            string expectedHtml = string.Format(ChoiceTemplate.Score, ticket.LiveHomeScore, ticket.LiveAwayScore);
+            string expectedHtml = string.Format(ChoiceTemplate.Score, _ticket.LiveHomeScore, _ticket.LiveAwayScore);
             string actualHtml = htmlNode.OuterHtml;
 
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
-        [Test, TestCaseSource(typeof(UltilBetType10), "Ticket_IsLive_False")]
-        public void TicketDeadBall_VisibleLiveScore(ITicket ticket)
+        [Test]
+        public void TicketDeadBall_VisibleLiveScore()
         {
-            HtmlDocument htmlDoc = GetHtmlDoc(ticket);
+            _ticket.IsLive = false;
+            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
 
             HtmlNodeCollection actualHtmlNodes = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.Score);
             HtmlNodeCollection expected = null;
@@ -82,48 +84,50 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             Assert.AreEqual(expected, actualHtmlNodes);
         }
 
-        [Test, TestCaseSource(typeof(UltilBetType10), "Tickets")]
-        public void Ticket_ShowBetTypeName(ITicket ticket)
+        [Test]
+        public void Ticket_ShowBetTypeName()
         {
-            HtmlDocument htmlDoc = GetHtmlDoc(ticket);
+            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
 
             HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.BetType).FirstOrDefault();
-            string expectedHtml = string.Format(ChoiceTemplate.BetType, _ticketHelperStub.GetBetTypeNameById(ticket.BetTypeId));
+            string expectedHtml = string.Format(ChoiceTemplate.BetType, _ticketHelperStub.GetBetTypeNameById(_ticket.BetTypeId));
             string actualHtml = htmlNode.OuterHtml;
 
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
-        [Test, TestCaseSource(typeof(UltilBetType10), "Ticket_HomeId_0")]
-        public void TicketHomeId0_ShowBetTeamIsAwayTeam(ITicket ticket)
+        [Test]
+        public void TicketHomeId0_ShowBetTeamIsAwayTeam()
         {
-            HtmlDocument htmlDoc = GetHtmlDoc(ticket);
+            _ticket.HomeId = 0;
+            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
 
             HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.BetTeam).FirstOrDefault();
 
-            string expected = _ticketHelperStub.GetTeamNameById(ticket.AwayId);
+            string expected = _ticketHelperStub.GetTeamNameById(_ticket.AwayId);
             string actualValue = htmlNode.FirstChild.InnerHtml;
 
             Assert.AreEqual(expected, actualValue);
         }
 
-        [Test, TestCaseSource(typeof(UltilBetType10), "Ticket_HomeId_100")]
-        public void TicketHomeId100_ShowBetTeamIsHomeTeam(ITicket ticket)
+        [Test]
+        public void TicketHomeId100_ShowBetTeamIsHomeTeam()
         {
-            HtmlDocument htmlDoc = GetHtmlDoc(ticket);
+            _ticket.HomeId = 100;
+            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
 
             HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.BetTeam).FirstOrDefault();
 
-            string expected = _ticketHelperStub.GetTeamNameById(ticket.HomeId);
+            string expected = _ticketHelperStub.GetTeamNameById(_ticket.HomeId);
             string actualValue = htmlNode.FirstChild.InnerHtml;
 
             Assert.AreEqual(expected, actualValue);
         }
 
-        [Test, TestCaseSource(typeof(UltilBetType10), "Tickets")]
-        public void Tickets_BetTeamClassNameBLFavorite(ITicket ticket)
+        [Test]
+        public void Tickets_BetTeamClassNameBLFavorite()
         {
-            HtmlDocument htmlDoc = GetHtmlDoc(ticket);
+            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
 
             HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.BetTeam).FirstOrDefault();
             string expected = ChoiceTemplate.BLFavorite;
@@ -132,25 +136,25 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             Assert.AreEqual(expected, actualValue);
         }
 
-        [Test, TestCaseSource(typeof(UltilBetType10), "Tickets")]
-        public void Ticket_ShowLeagueSportName(ITicket ticket)
+        [Test]
+        public void Ticket_ShowLeagueSportName()
         {
-            HtmlDocument htmlDoc = GetHtmlDoc(ticket);
+            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
 
             HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.LeagueSportTypeName).FirstOrDefault();
-            string expectedHtml = string.Format(ChoiceTemplate.LeagueSport, _ticketHelperStub.GetSportNameById(ticket.SportTypeId));
+            string expectedHtml = string.Format(ChoiceTemplate.LeagueSport, _ticketHelperStub.GetSportNameById(_ticket.SportTypeId));
             string actualHtml = htmlNode.OuterHtml;
 
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
-        [Test, TestCaseSource(typeof(UltilBetType10), "Tickets")]
-        public void Ticket_ShowLeagueLeagueName(ITicket ticket)
+        [Test]
+        public void Ticket_ShowLeagueLeagueName()
         {
-            HtmlDocument htmlDoc = GetHtmlDoc(ticket);
+            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
 
             HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.LeagueLeagueNameLeagueName).FirstOrDefault();
-            string expectedHtml = string.Format(ChoiceTemplate.LaagueLeagueName, _ticketHelperStub.GetLeagueNameById(ticket.LeagueId));
+            string expectedHtml = string.Format(ChoiceTemplate.LaagueLeagueName, _ticketHelperStub.GetLeagueNameById(_ticket.LeagueId));
             string actualHtml = htmlNode.OuterHtml;
 
             Assert.AreEqual(expectedHtml, actualHtml);
@@ -158,7 +162,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 
         private HtmlDocument GetHtmlDoc(ITicket ticket, bool isShowSoreMap = false)
         {
-            Choice_Template choiceTemplate = _choice.Render(ticket, _ticketHelperStub, _ticketData, isShowSoreMap);
+            Choice_Template choiceTemplate = _choice.Render(ticket, _ticketHelperStub, null, isShowSoreMap);
             HtmlDocument htmlDoc = new HtmlDocument();
             htmlDoc.LoadHtml(choiceTemplate.ToString());
             return htmlDoc;

@@ -279,6 +279,8 @@ namespace Fanex.BetList.Core.UnitTest.Ultils.Enums
         /// </summary>
         Draw_NoDraw = 123,
 
+        _1h_Total_Goal = 126,
+
         /// <summary>
         /// Hard code for P2P.
         /// </summary>
@@ -348,6 +350,8 @@ namespace Fanex.BetList.Core.UnitTest.Ultils.Enums
         /// Hard code for SICBO.
         /// </summary>
         Sicbo = 1103,
+
+        LiveCasino_LiveRoulette = 1104,
 
         /// <summary>
         /// Hard code for Virtual Soccer handicap.

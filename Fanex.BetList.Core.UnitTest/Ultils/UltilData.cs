@@ -38,11 +38,10 @@ namespace Fanex.BetList.Core.UnitTest.Ultils
             }
         }
 
-        public static IList<ITicket> GetTickets(int betTypeId)
+        public static ITicket GetTicket(int betTypeId)
         {
             LazyLoadWorkbook();
             ISheet betTicketSheet = _workbook.GetSheet("BetTickets");
-            IList<ITicket> tickets = new List<ITicket>();
 
             if (betTicketSheet != null)
             {
@@ -54,7 +53,7 @@ namespace Fanex.BetList.Core.UnitTest.Ultils
                         ITicket ticket = row.ConvertToTicket();
                         if (ticket.BetTypeId == betTypeId)
                         {
-                            tickets.Add(ticket);
+                            return ticket;
                         }
                     }
 
@@ -62,7 +61,7 @@ namespace Fanex.BetList.Core.UnitTest.Ultils
                 }
             }
 
-            return tickets;
+            return new Ticket();
         }
 
         /// <summary>
