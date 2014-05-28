@@ -70,7 +70,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CodeAnalysis\CodeAnalysisConfiguration.xml" />
-    <Content Include="DLL\Fanex.Caching.dll" />
     <Content Include="DLL\ICSharpCode.SharpZipLib.dll" />
     <Content Include="DLL\NPOI.dll" />
     <Content Include="DLL\NPOI.OOXML.dll" />
@@ -80,6 +79,7 @@
     <Content Include="DLL\NPOI.OpenXmlFormats.dll" />
     <Content Include="DLL\NPOI.XML" />
     <Content Include="DLL\RemotingRef.dll" />
+    <Content Include="DLL\SPSRemoting.dll" />
     <Content Include="DLL\Sunplus.Core.Common.dll" />
     <Content Include="DLL\TplCore.dll" />
     <Content Include="Styles\CoreBetList.css" />
