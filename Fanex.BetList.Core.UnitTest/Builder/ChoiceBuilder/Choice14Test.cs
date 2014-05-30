@@ -68,7 +68,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 
             HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.BetTeam).FirstOrDefault();
 
-            string expected = "Home&nbsp;Goal";
+            string expected = " ";
             string actualValue = htmlNode.FirstChild.InnerHtml;
 
             Assert.AreEqual(expected, actualValue);

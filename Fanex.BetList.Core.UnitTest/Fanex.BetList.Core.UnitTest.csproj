@@ -74,17 +74,20 @@
     <Compile Include="Builder\ChoiceBuilder\Choice1104Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1220Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice126Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice127Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice1303Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice1308Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice1311Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice1312Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice1314Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stubs\TicketHelperStub.cs" />
     <Compile Include="Templates\ChoiceTemplate.cs" />
     <Compile Include="Templates\ChoiceXPath.cs" />
     <Compile Include="Ultils\Enums\BetTypes.cs" />
-    <Compile Include="Ultils\Enums\TicketColumnIndex.cs" />
-    <Compile Include="Ultils\Enums\TicketDataColumnIndex.cs" />
     <Compile Include="Ultils\UltilData.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Data\BetList\BetListDummyData.xls" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

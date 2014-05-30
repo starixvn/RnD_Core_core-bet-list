@@ -281,6 +281,8 @@ namespace Fanex.BetList.Core.UnitTest.Ultils.Enums
 
         _1h_Total_Goal = 126,
 
+        _1h_First_Goal_Last_Goal = 127,
+
         /// <summary>
         /// Hard code for P2P.
         /// </summary>

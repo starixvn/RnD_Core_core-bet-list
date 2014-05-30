@@ -11,208 +11,75 @@
 namespace Fanex.BetList.Core.UnitTest.Ultils
 {
     using System;
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.IO;
-    using System.Linq;
     using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.UnitTest.Ultils.Enums;
-    using NPOI.HSSF.UserModel;
-    using NPOI.POIFS.FileSystem;
-    using NPOI.SS.UserModel;
 
     public static class UltilData
     {
-        public const string DATAFOLDER = "Data";
-        public const string BETLISTFOLDER = "BetList";
-        public const string FILENAME = "BetListDummyData.xls";
-        private static IWorkbook _workbook;
-        private static IFormulaEvaluator _formulaEvaluator;
-        private static DataFormatter _dataFormatter;
-
-        public static string FilePath
+        public static ITicket Ticket
         {
             get
             {
-                return string.Format("{0}\\{1}", GetTestContentFolder(BETLISTFOLDER), FILENAME);
+                var ticket = new Ticket
+                {
+                    ActualStake = 10.22M,
+                    AgentComm = -0.01M,
+                    AgentDiscount = 0,
+                    AgentPositionTaking = 0.4M,
+                    AgentWinlost = 2.04M,
+                    AwayId = 172,
+                    BetCheck = null,
+                    BetId = 0,
+                    BetTeam = string.Empty,
+                    BetTypeId = 1,
+                    Comm = 0.01M,
+                    CommStatus = "0",
+                    CustId = 244288,
+                    EventDate = new DateTime(2013, 12, 16, 12, 05, 00),
+                    EventStatus = null,
+                    Handicap1 = 0,
+                    Handicap2 = 0.75M,
+                    HomeId = 549,
+                    IP = "202.156.8.236",
+                    IsLive = false,
+                    IsNeutral = false,
+                    LeagueId = 10,
+                    LiveAwayScore = 0,
+                    LiveHomeScore = 0,
+                    MasterDiscount = 0,
+                    MasterOdds = -0.25M,
+                    MasterPositionTaking = 0.4M,
+                    MasterWinlost = 2.04M,
+                    MatchCode = "2006",
+                    MatchId = 7435516,
+                    Odds = -0.73M,
+                    OddsType = "4",
+                    PlayerComm = 0,
+                    Race = null,
+                    RefNo = "100000000000",
+                    ShowTime = "<font color=\"red\">LIVE</font> 12:15AM",
+                    SportTypeId = 1,
+                    Stake = 14,
+                    Status = "LOSE",
+                    SuperComm = 0,
+                    SuperDiscount = 0,
+                    SuperPositionTaking = 0,
+                    SuperWinlost = 0,
+                    TransDate = new DateTime(2014, 01, 20, 11, 59, 00),
+                    TransId = 5386789330,
+                    UserName = "MHOSD06006",
+                    Winlost = -2.11M,
+                    WinlostDate = new DateTime(2014, 01, 20, 12, 00, 00)
+                };
+
+                return ticket;
             }
         }
 
         public static ITicket GetTicket(int betTypeId)
         {
-            LazyLoadWorkbook();
-            ISheet betTicketSheet = _workbook.GetSheet("BetTickets");
+            Ticket.BetTypeId = betTypeId;
 
-            if (betTicketSheet != null)
-            {
-                int index = 0;
-                foreach (IRow row in betTicketSheet)
-                {
-                    if (index > 0)
-                    {
-                        ITicket ticket = row.ConvertToTicket();
-                        if (ticket.BetTypeId == betTypeId)
-                        {
-                            return ticket;
-                        }
-                    }
-
-                    index++;
-                }
-            }
-
-            return new Ticket();
-        }
-
-        /// <summary>
-        /// Gets the ticket data.
-        /// </summary>
-        /// <returns>List of ITicketData.</returns>
-        public static List<ITicketData> GetTicketData()
-        {
-            LazyLoadWorkbook();
-
-            ISheet ticketDataSheet = _workbook.GetSheet("ReferenceData");
-
-            List<ITicketData> ticketData = new List<ITicketData>();
-
-            if (ticketDataSheet != null)
-            {
-                int index = 0;
-                foreach (IRow row in ticketDataSheet)
-                {
-                    if (index > 0)
-                    {
-                        ITicketData data = row.ConvertToTicketData();
-                        ticketData.Add(data);
-                    }
-
-                    index++;
-                }
-            }
-
-            return ticketData;
-        }
-
-        private static ITicketData ConvertToTicketData(this IRow row)
-        {
-            var data = new TicketData
-            {
-                AgentPT = Convert.ToDecimal(GetCellValue(row.GetCell((int)TicketDataColumnIndex.AgentPT))),
-                BetTeam = GetCellValue(row.GetCell((int)TicketDataColumnIndex.BetTeam)),
-                BetTypeId = Convert.ToInt32(GetCellValue(row.GetCell((int)TicketDataColumnIndex.BetTypeId))),
-                MasterPT = Convert.ToDecimal(GetCellValue(row.GetCell((int)TicketDataColumnIndex.MasterPT))),
-                Odds = Convert.ToDecimal(GetCellValue(row.GetCell((int)TicketDataColumnIndex.Odds))),
-                RefNo = GetCellValue(row.GetCell((int)TicketDataColumnIndex.RefNo)),
-                Stake = Convert.ToDecimal(GetCellValue(row.GetCell((int)TicketDataColumnIndex.Stake))),
-                Status = GetCellValue(row.GetCell((int)TicketDataColumnIndex.Status)),
-                SuperPT = Convert.ToDecimal(GetCellValue(row.GetCell((int)TicketDataColumnIndex.SuperPT)))
-            };
-
-            return data;
-        }
-
-        private static void LazyLoadWorkbook()
-        {
-            // Check to lazily initialize workbook object
-            if (_workbook == null)
-            {
-                // Check if file path is valid
-                if (!string.IsNullOrWhiteSpace(FilePath))
-                {
-                    _workbook = LoadWorkbook(FilePath);
-                    _formulaEvaluator = new HSSFFormulaEvaluator(_workbook);
-                    _dataFormatter = new HSSFDataFormatter(new CultureInfo("en-US"));
-                }
-            }
-        }
-
-        private static ITicket ConvertToTicket(this IRow row)
-        {
-            var ticket = new Ticket
-            {
-                ActualStake = Convert.ToDecimal(GetCellValue(row.GetCell((int)TicketColumnIndex.ActualStake))),
-                AgentComm = Convert.ToDecimal(GetCellValue(row.GetCell((int)TicketColumnIndex.AgentComm))),
-                AgentDiscount = Convert.ToDecimal(GetCellValue(row.GetCell((int)TicketColumnIndex.AgentDiscount))),
-                AgentPositionTaking = Convert.ToDecimal(GetCellValue(row.GetCell((int)TicketColumnIndex.AgentPositionTaking))),
-                AgentWinlost = Convert.ToDecimal(GetCellValue(row.GetCell((int)TicketColumnIndex.AgentWinlost))),
-                AwayId = Convert.ToInt64(GetCellValue(row.GetCell((int)TicketColumnIndex.AwayId))),
-                BetCheck = GetCellValue(row.GetCell((int)TicketColumnIndex.BetCheck)),
-                BetId = Convert.ToInt64(GetCellValue(row.GetCell((int)TicketColumnIndex.BetId))),
-                BetTeam = GetCellValue(row.GetCell((int)TicketColumnIndex.BetTeam)),
-                BetTypeId = Convert.ToInt32(GetCellValue(row.GetCell((int)TicketColumnIndex.BetTypeId))),
-                Comm = Convert.ToDecimal(GetCellValue(row.GetCell((int)TicketColumnIndex.Comm))),
-                CommStatus = GetCellValue(row.GetCell((int)TicketColumnIndex.CommStatus)),
-                CustId = Convert.ToInt64(GetCellValue(row.GetCell((int)TicketColumnIndex.CustId))),
-                EventDate = Convert.ToDateTime(GetCellValue(row.GetCell((int)TicketColumnIndex.EventDate))),
-                EventStatus = GetCellValue(row.GetCell((int)TicketColumnIndex.EventStatus)),
-                Handicap1 = Convert.ToDecimal(GetCellValue(row.GetCell((int)TicketColumnIndex.Handicap1))),
-                Handicap2 = Convert.ToDecimal(GetCellValue(row.GetCell((int)TicketColumnIndex.Handicap2))),
-                HomeId = Convert.ToInt64(GetCellValue(row.GetCell((int)TicketColumnIndex.HomeId))),
-                IP = GetCellValue(row.GetCell((int)TicketColumnIndex.IP)),
-                IsLive = Convert.ToBoolean(Convert.ToInt32(GetCellValue(row.GetCell((int)TicketColumnIndex.IsLive)))),
-                IsNeutral = Convert.ToBoolean(Convert.ToInt32(GetCellValue(row.GetCell((int)TicketColumnIndex.IsNeutral)))),
-                LeagueId = Convert.ToInt32(GetCellValue(row.GetCell((int)TicketColumnIndex.LeagueId))),
-                LiveAwayScore = Convert.ToInt32(GetCellValue(row.GetCell((int)TicketColumnIndex.LiveAwayScore))),
-                LiveHomeScore = Convert.ToInt32(GetCellValue(row.GetCell((int)TicketColumnIndex.LiveHomeScore))),
-                MasterDiscount = Convert.ToDecimal(GetCellValue(row.GetCell((int)TicketColumnIndex.MasterDiscount))),
-                MasterOdds = Convert.ToDecimal(GetCellValue(row.GetCell((int)TicketColumnIndex.MasterOdds))),
-                MasterPositionTaking = Convert.ToDecimal(GetCellValue(row.GetCell((int)TicketColumnIndex.MasterPositionTaking))),
-                MasterWinlost = Convert.ToDecimal(GetCellValue(row.GetCell((int)TicketColumnIndex.MasterWinlost))),
-                MatchCode = GetCellValue(row.GetCell((int)TicketColumnIndex.MatchCode)),
-                MatchId = Convert.ToInt32(GetCellValue(row.GetCell((int)TicketColumnIndex.MatchId))),
-                Odds = Convert.ToDecimal(GetCellValue(row.GetCell((int)TicketColumnIndex.Odds))),
-                OddsType = GetCellValue(row.GetCell((int)TicketColumnIndex.OddsType)),
-                PlayerComm = Convert.ToDecimal(GetCellValue(row.GetCell((int)TicketColumnIndex.PlayerComm))),
-                Race = GetCellValue(row.GetCell((int)TicketColumnIndex.Race)),
-                RefNo = GetCellValue(row.GetCell((int)TicketColumnIndex.RefNo)),
-                ShowTime = GetCellValue(row.GetCell((int)TicketColumnIndex.ShowTime)),
-                SportTypeId = Convert.ToInt32(GetCellValue(row.GetCell((int)TicketColumnIndex.SportTypeId))),
-                Stake = Convert.ToDecimal(GetCellValue(row.GetCell((int)TicketColumnIndex.Stake))),
-                Status = GetCellValue(row.GetCell((int)TicketColumnIndex.Status)),
-                SuperComm = Convert.ToDecimal(GetCellValue(row.GetCell((int)TicketColumnIndex.SuperComm))),
-                SuperDiscount = Convert.ToDecimal(GetCellValue(row.GetCell((int)TicketColumnIndex.SuperDiscount))),
-                SuperPositionTaking = Convert.ToDecimal(GetCellValue(row.GetCell((int)TicketColumnIndex.SuperPositionTaking))),
-                SuperWinlost = Convert.ToDecimal(GetCellValue(row.GetCell((int)TicketColumnIndex.SuperWinlost))),
-                TransDate = Convert.ToDateTime(GetCellValue(row.GetCell((int)TicketColumnIndex.TransDate))),
-                TransId = Convert.ToInt64(GetCellValue(row.GetCell((int)TicketColumnIndex.TransId))),
-                UserName = GetCellValue(row.GetCell((int)TicketColumnIndex.UserName)),
-                Winlost = Convert.ToDecimal(GetCellValue(row.GetCell((int)TicketColumnIndex.Winlost))),
-                WinlostDate = Convert.ToDateTime(GetCellValue(row.GetCell((int)TicketColumnIndex.WinlostDate)))
-            };
-
-            return ticket;
-        }
-
-        private static IWorkbook LoadWorkbook(string filePath)
-        {
-            using (StreamReader input = new StreamReader(filePath))
-            {
-                IWorkbook workbook = new HSSFWorkbook(new POIFSFileSystem(input.BaseStream));
-
-                return workbook;
-            }
-        }
-
-        private static string GetCellValue(ICell cell)
-        {
-            string ret = string.Empty;
-
-            if (cell == null)
-            {
-                return ret;
-            }
-
-            ret = _dataFormatter.FormatCellValue(cell, _formulaEvaluator);
-
-            // remove line break
-            return ret.Replace("\n", " ");
-        }
-
-        private static string GetTestContentFolder(string folderName)
-        {
-            DirectoryInfo thisDirectory = new DirectoryInfo(".");
-            return Path.Combine(Path.Combine(thisDirectory.Parent.Parent.FullName, DATAFOLDER), folderName);
+            return Ticket;
         }
     }
 }
