@@ -35,7 +35,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         {
             _choice = new Choice13();
             _ticketHelperStub = new TicketHelperStub();
-            _ticket = UltilData.GetTicket((int)BetTypes.Clean_Sheet);
+            _ticket = TestData.CreateTicket((int)BetTypes.Clean_Sheet);
         }
 
         [Test]

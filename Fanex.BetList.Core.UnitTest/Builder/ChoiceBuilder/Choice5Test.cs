@@ -32,7 +32,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         {
             _choice = new Choice5();
             _ticketHelperStub = new TicketHelperStub();
-            _ticket = UltilData.GetTicket((int)BetTypes.FT_1X2);
+            _ticket = TestData.CreateTicket((int)BetTypes.FT_1X2);
         }
 
         [Test]

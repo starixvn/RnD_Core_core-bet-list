@@ -33,7 +33,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         {
             _choice = new Choice1103();
             _ticketHelperStub = new TicketHelperStub();
-            _ticket = UltilData.GetTicket((int)BetTypes.Sicbo);
+            _ticket = TestData.CreateTicket((int)BetTypes.Sicbo);
         }
 
         [Test]
