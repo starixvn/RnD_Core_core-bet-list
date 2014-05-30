@@ -107,7 +107,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void NeutralTicket_ShowHomeTeamNameWithN()
+        public void NeutralTicket_ShowSpanHomeTeamNameWithNInParentheses()
         {
             // Arrange
             _ticket.IsNeutral = true;
@@ -123,395 +123,445 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void TicketIsNotNeutral_ShowHomeTeamWithoutN()
+        public void NotNeutralTicket_ShowSpanHomeTeamName()
         {
+            // Arrange
             _ticket.IsNeutral = false;
-            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
 
+            // Act
+            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
             HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.MatchHomeTeam).FirstOrDefault();
+
+            // Assert
             string expectedHtml = string.Format(ChoiceTemplate.MatchTeamName, _ticketHelperStub.GetTeamNameById(_ticket.HomeId));
             string actualHtml = htmlNode.OuterHtml;
-
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
         [Test]
-        public void Ticket_ShowHomeVsAway()
+        public void Ticket_ShowSpanVSBetweenHomeTeamAndAwayTeam()
         {
+            // Act
             HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
-
             HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.MatchVS).FirstOrDefault();
+
+            // Assert
             string expectedHtml = ChoiceTemplate.MatchVS;
             string actualHtml = htmlNode.OuterHtml;
-
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
         [Test]
-        public void Ticket_ShowAwayTeam()
+        public void Ticket_ShowSpanAwayTeamName()
         {
+            // Act
             HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
-
             HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.MatchAwayTeam).FirstOrDefault();
+
+            // Assert
             string expectedHtml = string.Format(ChoiceTemplate.MatchTeamName, _ticketHelperStub.GetTeamNameById(_ticket.AwayId));
             string actualHtml = htmlNode.OuterHtml;
-
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
         [Test]
-        public void TicketIsScoreMapIcon_ShowScoreMapIcon()
+        public void TicketAndShowScoreMapIconIsTrue_ShowSpanScoreMapIcon()
         {
+            // Act
             HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket, true);
-
             HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.ScoreMap).FirstOrDefault();
+
+            // Assert
             string expectedHtml = string.Format(ChoiceTemplate.ScoreMap, _ticket.MatchId, _ticket.BetTypeId, Convert.ToInt32(_ticket.IsLive));
             string actualHtml = htmlNode.OuterHtml;
-
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
         [Test]
-        public void TicketIsNotScoreMapIcon_VisibleScoreMapIcon()
+        public void TicketAndShowScoreMapIconIsFalse_VisibleSpanScoreMapIcon()
         {
+            // Act
             HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
-
             HtmlNodeCollection htmlNodes = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.ScoreMap);
-            string expectedHtmlNode = null;
 
+            // Assert
+            string expectedHtmlNode = null;
             Assert.AreEqual(expectedHtmlNode, htmlNodes);
         }
 
         [Test]
-        public void TicketEventStatusIsNull_VisibleHomeAwayFirstGoalLastGoal()
+        public void EventStatusOfTicketIsNull_VisibleSpanHomeAndAwayFirstGoalLastGoal()
         {
+            // Arrange
             _ticket.EventStatus = null;
+
+            // Act
             HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
-
             HtmlNodeCollection htmlNodes = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.MatchFirstGoalLastGoal);
-            string expectedHtmlNode = null;
 
+            // Assert
+            string expectedHtmlNode = null;
             Assert.AreEqual(expectedHtmlNode, htmlNodes);
         }
 
         [Test]
-        public void TicketEventStatusFL11_ShowSpaceAfterHomeTeamName()
+        public void EventStatusOfTicketIsFL11_ShowSpaceAfterHomeTeamName()
         {
+            // Arrange
             var indexFirstGoal = 1;
             _ticket.EventStatus = "FL:1-1";
-            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
 
+            // Act
+            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
             HtmlNode htmlNodeFisrtGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchFirstGoal, indexFirstGoal)).FirstOrDefault();
 
+            // Assert
             string expectedHtml = "&nbsp;";
             string actualHtml = htmlNodeFisrtGoal.PreviousSibling.OuterHtml;
-
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
         [Test]
-        public void TicketEventStatusFL22_ShowSpaceAfterAwayTeamName()
+        public void EventStatusOfTicketIsFL22_ShowSpaceAfterAwayTeamName()
         {
+            // Arrange
             var indexFirstGoal = 1;
             _ticket.EventStatus = "FL:2-2";
-            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
 
+            // Act
+            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
             HtmlNode htmlNodeFisrtGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchFirstGoal, indexFirstGoal)).FirstOrDefault();
 
+            // Assert
             string expectedHtml = "&nbsp;";
             string actualHtml = htmlNodeFisrtGoal.PreviousSibling.OuterHtml;
-
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
         [Test]
-        public void TicketEventStatusFL11_ShowHomeFirstGoalLastGoal()
+        public void EventStatusOfTicketIsFL11_ShowDivFirstGoalLastGoalAtHomeTeam()
         {
+            // Arrange
             var indexFirstGoal = 1;
             var indexLastGoal = 2;
             _ticket.EventStatus = "FL:1-1";
-            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
 
+            // Act
+            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
             HtmlNode htmlNodeFisrtGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchFirstGoal, indexFirstGoal)).FirstOrDefault();
             HtmlNode htmlNodeLastGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchLastGoal, indexLastGoal)).FirstOrDefault();
+
+            // Assert
             string expectedHtml = string.Format("{0}{1}", ChoiceTemplate.MatchFirstGoal, ChoiceTemplate.MatchLastGoal);
             string actualHtml = string.Format("{0}{1}", htmlNodeFisrtGoal.OuterHtml, htmlNodeLastGoal.OuterHtml);
-
             AssertFirstGoalLastGoalTeamName(_ticket.HomeId, htmlNodeFisrtGoal);
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
         [Test]
-        public void TicketEventStatusFL22_ShowAwayFirstGoalLastGoal()
+        public void EventStatusOfTicketIsFL22_ShowDivFirstGoalLastGoalAtAwayTeam()
         {
+            // Arrange
             var indexFirstGoal = 1;
             var indexLastGoal = 2;
             _ticket.EventStatus = "FL:2-2";
-            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
 
+            // Act
+            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
             HtmlNode htmlNodeFisrtGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchFirstGoal, indexFirstGoal)).FirstOrDefault();
             HtmlNode htmlNodeLastGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchLastGoal, indexLastGoal)).FirstOrDefault();
+
+            // Assert
             string expectedHtml = string.Format("{0}{1}", ChoiceTemplate.MatchFirstGoal, ChoiceTemplate.MatchLastGoal);
             string actualHtml = string.Format("{0}{1}", htmlNodeFisrtGoal.OuterHtml, htmlNodeLastGoal.OuterHtml);
-
             AssertFirstGoalLastGoalTeamName(_ticket.AwayId, htmlNodeFisrtGoal);
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
         [Test]
-        public void TicketEventStatusFL10_ShowHomeFirstGoal()
+        public void EventStatusOfTicketIsFL10_ShowDivFirstGoalAtHomeTeam()
         {
+            // Arrange
             var indexFirstGoal = 1;
             _ticket.EventStatus = "FL:1-0";
-            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
 
+            // Act
+            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
             HtmlNode htmlNodeFisrtGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchFirstGoal, indexFirstGoal)).FirstOrDefault();
 
+            // Assert
             string expectedHtml = string.Format(ChoiceTemplate.MatchFirstGoal, indexFirstGoal);
             string actualHtml = htmlNodeFisrtGoal.OuterHtml;
-
             AssertFirstGoalLastGoalTeamName(_ticket.HomeId, htmlNodeFisrtGoal);
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
         [Test]
-        public void TicketEventStatusFL20_ShowAwayFirstGoal()
+        public void EventStatusOfTicketIsFL20_ShowDivFirstGoalAtAwayTeam()
         {
+            // Arrange
             var indexFirstGoal = 1;
             _ticket.EventStatus = "FL:2-0";
-            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
 
+            // Act
+            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
             HtmlNode htmlNodeFisrtGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchFirstGoal, indexFirstGoal)).FirstOrDefault();
 
+            // Assert
             string expectedHtml = string.Format(ChoiceTemplate.MatchFirstGoal, indexFirstGoal);
             string actualHtml = htmlNodeFisrtGoal.OuterHtml;
-
             AssertFirstGoalLastGoalTeamName(_ticket.AwayId, htmlNodeFisrtGoal);
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
         [Test]
-        public void TicketEventStatusFHFL11_ShowHomeFirstGoalLastGoal()
+        public void EventStatusOfTicketIs1FL11_ShowDivFhFirstGoalFhLastGoalAtHomeTeam()
         {
+            // Arrange
             var indexFHFirstGoal = 1;
             var indexFHLastGoal = 2;
             _ticket.EventStatus = "1FL:1-1";
-            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
 
+            // Act
+            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
             HtmlNode htmlNodeFHFisrtGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchFHFirstGoal, indexFHFirstGoal)).FirstOrDefault();
             HtmlNode htmlNodeFHLastGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchFHLastGoal, indexFHLastGoal)).FirstOrDefault();
+
+            // Assert
             string expectedHtml = string.Format("{0}{1}", ChoiceTemplate.MatchFHFirstGoal, ChoiceTemplate.MatchFHLastGoal);
             string actualHtml = string.Format("{0}{1}", htmlNodeFHFisrtGoal.OuterHtml, htmlNodeFHLastGoal.OuterHtml);
-
             AssertFirstGoalLastGoalTeamName(_ticket.HomeId, htmlNodeFHFisrtGoal);
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
         [Test]
-        public void TicketEventStatusFHFL22_ShowAwayFirstGoalLastGoal()
+        public void EventStatusOfTicketIs1FL22_ShowDivFhFirstGoalFhLastGoalAtAwayTeam()
         {
+            // Arrange
             var indexFHFirstGoal = 1;
             var indexFHLastGoal = 2;
             _ticket.EventStatus = "1FL:2-2";
-            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
 
+            // Act
+            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
             HtmlNode htmlNodeFHFisrtGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchFHFirstGoal, indexFHFirstGoal)).FirstOrDefault();
             HtmlNode htmlNodeFHLastGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchFHLastGoal, indexFHLastGoal)).FirstOrDefault();
+
+            // Assert
             string expectedHtml = string.Format("{0}{1}", ChoiceTemplate.MatchFHFirstGoal, ChoiceTemplate.MatchFHLastGoal);
             string actualHtml = string.Format("{0}{1}", htmlNodeFHFisrtGoal.OuterHtml, htmlNodeFHLastGoal.OuterHtml);
-
             AssertFirstGoalLastGoalTeamName(_ticket.AwayId, htmlNodeFHFisrtGoal);
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
         [Test]
-        public void TicketEventStatusFHFL10_ShowHomeFirstGoal()
+        public void EventStatusOfTicketIs1FL10_ShowDivFhFirstGoalAtHomeTeam()
         {
+            // Arrange
             var indexFHFirstGoal = 1;
             _ticket.EventStatus = "1FL:1-0";
-            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
 
+            // Act
+            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
             HtmlNode htmlNodeFisrtGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchFHFirstGoal, indexFHFirstGoal)).FirstOrDefault();
 
+            // Assert
             string expectedHtml = ChoiceTemplate.MatchFHFirstGoal;
             string actualHtml = htmlNodeFisrtGoal.OuterHtml;
-
             AssertFirstGoalLastGoalTeamName(_ticket.HomeId, htmlNodeFisrtGoal);
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
         [Test]
-        public void TicketEventStatusFHFL20_ShowAwayFirstGoal()
+        public void EventStatusOfTicketIs1FL20_ShowDivFhFirstGoalAtAwayTeam()
         {
+            // Arrange
             var indexFHFirstGoal = 1;
             _ticket.EventStatus = "1FL:2-0";
-            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
 
+            // Act
+            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
             HtmlNode htmlNodeFisrtGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchFHFirstGoal, indexFHFirstGoal)).FirstOrDefault();
 
+            // Assert
             string expectedHtml = ChoiceTemplate.MatchFHFirstGoal;
             string actualHtml = htmlNodeFisrtGoal.OuterHtml;
-
             AssertFirstGoalLastGoalTeamName(_ticket.AwayId, htmlNodeFisrtGoal);
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
         [Test]
-        public void TicketEventStatusFL11FHFL11_ShowHomeFirstGoal()
+        public void EventStatusOfTicketIsFL11And1FL11_ShowDivFirstGoalLastGoalFhFirstGoalFhLastGoalAtHomeTeam()
         {
+            // Arrange
             var indexFirstGoal = 1;
             var indexLastGoal = 2;
             var indexFHFirstGoal = 3;
             var indexFHLastGoal = 4;
             _ticket.EventStatus = "FL:1-1;1FL:1-1";
-            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
 
+            // Act
+            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
             HtmlNode htmlNodeFisrtGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchFirstGoal, indexFirstGoal)).FirstOrDefault();
             HtmlNode htmlNodeLastGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchLastGoal, indexLastGoal)).FirstOrDefault();
             HtmlNode htmlNodeFHFisrtGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchFHFirstGoal, indexFHFirstGoal)).FirstOrDefault();
             HtmlNode htmlNodeFHLastGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchFHLastGoal, indexFHLastGoal)).FirstOrDefault();
 
+            // Assert
             string expectedHtml = string.Format("{0}{1}{2}{3}", ChoiceTemplate.MatchFirstGoal, ChoiceTemplate.MatchLastGoal, ChoiceTemplate.MatchFHFirstGoal, ChoiceTemplate.MatchFHLastGoal);
             string actualHtml = string.Format("{0}{1}{2}{3}", htmlNodeFisrtGoal.OuterHtml, htmlNodeLastGoal.OuterHtml, htmlNodeFHFisrtGoal.OuterHtml, htmlNodeFHLastGoal.OuterHtml);
-
             AssertFirstGoalLastGoalTeamName(_ticket.HomeId, htmlNodeFisrtGoal);
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
         [Test]
-        public void TicketEventStatusFL22FHFL22_ShowAwayFirstGoal()
+        public void EventStatusOfTicketIsFL22And1FL22_ShowDivFirstGoalLastGoalFhFirstGoalFhLastGoalAtAwayTeam()
         {
+            // Arrange
             var indexFirstGoal = 1;
             var indexLastGoal = 2;
             var indexFHFirstGoal = 3;
             var indexFHLastGoal = 4;
             _ticket.EventStatus = "FL:2-2;1FL:2-2";
-            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
 
+            // Act
+            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
             HtmlNode htmlNodeFisrtGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchFirstGoal, indexFirstGoal)).FirstOrDefault();
             HtmlNode htmlNodeLastGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchLastGoal, indexLastGoal)).FirstOrDefault();
             HtmlNode htmlNodeFHFisrtGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchFHFirstGoal, indexFHFirstGoal)).FirstOrDefault();
             HtmlNode htmlNodeFHLastGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchFHLastGoal, indexFHLastGoal)).FirstOrDefault();
 
+            // Assert
             string expectedHtml = string.Format("{0}{1}{2}{3}", ChoiceTemplate.MatchFirstGoal, ChoiceTemplate.MatchLastGoal, ChoiceTemplate.MatchFHFirstGoal, ChoiceTemplate.MatchFHLastGoal);
             string actualHtml = string.Format("{0}{1}{2}{3}", htmlNodeFisrtGoal.OuterHtml, htmlNodeLastGoal.OuterHtml, htmlNodeFHFisrtGoal.OuterHtml, htmlNodeFHLastGoal.OuterHtml);
-
             AssertFirstGoalLastGoalTeamName(_ticket.AwayId, htmlNodeFisrtGoal);
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
         [Test]
-        public void TicketEventStatusFL11FHFL10_ShowHomeFirstGoal()
+        public void EventStatusOfTicketIsFL11And1FL10_ShowDivFirstGoalLastGoalFhFirstGoalAtHomeTeam()
         {
+            // Arrange
             var indexFirstGoal = 1;
             var indexLastGoal = 2;
             var indexFHFirstGoal = 3;
             _ticket.EventStatus = "FL:1-1;1FL:1-0";
-            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
 
+            // Act
+            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
             HtmlNode htmlNodeFisrtGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchFirstGoal, indexFirstGoal)).FirstOrDefault();
             HtmlNode htmlNodeLastGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchLastGoal, indexLastGoal)).FirstOrDefault();
             HtmlNode htmlNodeFHFisrtGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchFHFirstGoal, indexFHFirstGoal)).FirstOrDefault();
 
+            // Assert
             string expectedHtml = string.Format("{0}{1}{2}", ChoiceTemplate.MatchFirstGoal, ChoiceTemplate.MatchLastGoal, ChoiceTemplate.MatchFHFirstGoal);
             string actualHtml = string.Format("{0}{1}{2}", htmlNodeFisrtGoal.OuterHtml, htmlNodeLastGoal.OuterHtml, htmlNodeFHFisrtGoal.OuterHtml);
-
             AssertFirstGoalLastGoalTeamName(_ticket.HomeId, htmlNodeFisrtGoal);
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
         [Test]
-        public void TicketEventStatusFL22FHFL20_ShowAwayFirstGoal()
+        public void EventStatusOfTicketIsFL22And1FL20_ShowDivFirstGoalLastGoalFhFirstGoalAtAwayTeam()
         {
+            // Arrange
             var indexFirstGoal = 1;
             var indexLastGoal = 2;
             var indexFHFirstGoal = 3;
             _ticket.EventStatus = "FL:2-2;1FL:2-0";
-            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
 
+            // Act
+            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
             HtmlNode htmlNodeFisrtGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchFirstGoal, indexFirstGoal)).FirstOrDefault();
             HtmlNode htmlNodeLastGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchLastGoal, indexLastGoal)).FirstOrDefault();
             HtmlNode htmlNodeFHFisrtGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchFHFirstGoal, indexFHFirstGoal)).FirstOrDefault();
 
+            // Assert
             string expectedHtml = string.Format("{0}{1}{2}", ChoiceTemplate.MatchFirstGoal, ChoiceTemplate.MatchLastGoal, ChoiceTemplate.MatchFHFirstGoal);
             string actualHtml = string.Format("{0}{1}{2}", htmlNodeFisrtGoal.OuterHtml, htmlNodeLastGoal.OuterHtml, htmlNodeFHFisrtGoal.OuterHtml);
-
             AssertFirstGoalLastGoalTeamName(_ticket.AwayId, htmlNodeFisrtGoal);
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
         [Test]
-        public void TicketEventStatusFL10FHFL11_ShowHomeFirstGoal()
+        public void EventStatusOfTicketIsFL10And1FL11_ShowDivFirstGoalFhFirstGoalFhLastGoalAtHomeTeam()
         {
+            // Arrange
             var indexFirstGoal = 1;
             var indexFHFirstGoal = 2;
             var indexFHLastGoal = 3;
             _ticket.EventStatus = "FL:1-0;1FL:1-1";
-            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
 
+            // Act
+            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
             HtmlNode htmlNodeFisrtGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchFirstGoal, indexFirstGoal)).FirstOrDefault();
             HtmlNode htmlNodeFHFisrtGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchFHFirstGoal, indexFHFirstGoal)).FirstOrDefault();
             HtmlNode htmlNodeFHLastGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchFHLastGoal, indexFHLastGoal)).FirstOrDefault();
 
+            // Assert
             string expectedHtml = string.Format("{0}{1}{2}", ChoiceTemplate.MatchFirstGoal, ChoiceTemplate.MatchFHFirstGoal, ChoiceTemplate.MatchFHLastGoal);
             string actualHtml = string.Format("{0}{1}{2}", htmlNodeFisrtGoal.OuterHtml, htmlNodeFHFisrtGoal.OuterHtml, htmlNodeFHLastGoal.OuterHtml);
-
             AssertFirstGoalLastGoalTeamName(_ticket.HomeId, htmlNodeFisrtGoal);
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
         [Test]
-        public void TicketEventStatusFL20FHFL22_ShowAwayFirstGoal()
+        public void EventStatusOfTicketIsFL20And1FL22_ShowDivFirstGoalFhFirstGoalFhLastGoalAtAwayTeam()
         {
+            // Arrange
             var indexFirstGoal = 1;
             var indexFHFirstGoal = 2;
             var indexFHLastGoal = 3;
             _ticket.EventStatus = "FL:2-0;1FL:2-2";
-            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
 
+            // Act
+            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
             HtmlNode htmlNodeFisrtGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchFirstGoal, indexFirstGoal)).FirstOrDefault();
             HtmlNode htmlNodeFHFisrtGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchFHFirstGoal, indexFHFirstGoal)).FirstOrDefault();
             HtmlNode htmlNodeFHLastGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchFHLastGoal, indexFHLastGoal)).FirstOrDefault();
 
+            // Assert
             string expectedHtml = string.Format("{0}{1}{2}", ChoiceTemplate.MatchFirstGoal, ChoiceTemplate.MatchFHFirstGoal, ChoiceTemplate.MatchFHLastGoal);
             string actualHtml = string.Format("{0}{1}{2}", htmlNodeFisrtGoal.OuterHtml, htmlNodeFHFisrtGoal.OuterHtml, htmlNodeFHLastGoal.OuterHtml);
-
             AssertFirstGoalLastGoalTeamName(_ticket.AwayId, htmlNodeFisrtGoal);
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
         [Test]
-        public void TicketEventStatusFL10FHFL10_ShowHomeFirstGoal()
+        public void EventStatusOfTicketIsFL10And1FL10_ShowDivFirstGoalFhFirstGoalAtHomeTeam()
         {
+            // Arrange
             var indexFirstGoal = 1;
             var indexFHFirstGoal = 2;
             _ticket.EventStatus = "FL:1-0;1FL:1-0";
-            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
 
+            // Act
+            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
             HtmlNode htmlNodeFisrtGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchFirstGoal, indexFirstGoal)).FirstOrDefault();
             HtmlNode htmlNodeFHFisrtGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchFHFirstGoal, indexFHFirstGoal)).FirstOrDefault();
 
+            // Assert
             string expectedHtml = string.Format("{0}{1}", ChoiceTemplate.MatchFirstGoal, ChoiceTemplate.MatchFHFirstGoal);
             string actualHtml = string.Format("{0}{1}", htmlNodeFisrtGoal.OuterHtml, htmlNodeFHFisrtGoal.OuterHtml);
-
             AssertFirstGoalLastGoalTeamName(_ticket.HomeId, htmlNodeFisrtGoal);
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
         [Test]
-        public void TicketEventStatusFL20FHFL20_ShowAwayFirstGoal()
+        public void EventStatusOfTicketIsFL20And1FL20_ShowDivFirstGoalFhFirstGoalAtAwayTeam()
         {
+            // Arrange
             var indexFirstGoal = 1;
             var indexFHFirstGoal = 2;
             _ticket.EventStatus = "FL:2-0;1FL:2-0";
-            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
 
+            // Act
+            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
             HtmlNode htmlNodeFisrtGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchFirstGoal, indexFirstGoal)).FirstOrDefault();
             HtmlNode htmlNodeFHFisrtGoal = htmlDoc.DocumentNode.SelectNodes(string.Format(ChoiceXPath.MatchFHFirstGoal, indexFHFirstGoal)).FirstOrDefault();
 
+            // Assert
             string expectedHtml = string.Format("{0}{1}", ChoiceTemplate.MatchFirstGoal, ChoiceTemplate.MatchFHFirstGoal);
             string actualHtml = string.Format("{0}{1}", htmlNodeFisrtGoal.OuterHtml, htmlNodeFHFisrtGoal.OuterHtml);
-
             AssertFirstGoalLastGoalTeamName(_ticket.AwayId, htmlNodeFisrtGoal);
             Assert.AreEqual(expectedHtml, actualHtml);
         }
