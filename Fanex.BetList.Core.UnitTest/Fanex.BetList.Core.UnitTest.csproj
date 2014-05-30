@@ -85,7 +85,7 @@
     <Compile Include="Templates\ChoiceTemplate.cs" />
     <Compile Include="Templates\ChoiceXPath.cs" />
     <Compile Include="Ultils\Enums\BetTypes.cs" />
-    <Compile Include="Ultils\UltilData.cs" />
+    <Compile Include="Ultils\TestData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
