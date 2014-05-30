@@ -9,12 +9,10 @@
 
 namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using System.Linq;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
     using Fanex.BetList.Core.UnitTest.Stubs;
-    using Fanex.BetList.Core.UnitTest.Templates;
     using Fanex.BetList.Core.UnitTest.Ultils.Enums;
     using HtmlAgilityPack;
     using NUnit.Framework;
@@ -32,7 +30,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         {
             _choice = new Choice9();
             _ticketHelperStub = new TicketHelperStub();
-            _ticket = TestData.CreateTicket((int)BetTypes.MixParlay);
+            _ticket = TestData.CreateTicket(BetTypes.MixParlay);
         }
 
         [Test]

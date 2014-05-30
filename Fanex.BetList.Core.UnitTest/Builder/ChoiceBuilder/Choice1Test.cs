@@ -33,19 +33,22 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         {
             _choice = new Choice1();
             _ticketHelperStub = new TicketHelperStub();
-            _ticket = TestData.CreateTicket((int)BetTypes.Handicap);
+            _ticket = TestData.CreateTicket(BetTypes.Handicap);
         }
 
         [Test]
         public void TicketIsLive_ShowLiveScore()
         {
+            // Arrange
             _ticket.IsLive = true;
-            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
 
+            // Act
+            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
             HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.Score).FirstOrDefault();
             string expectedHtml = string.Format(ChoiceTemplate.Score, _ticket.LiveHomeScore, _ticket.LiveAwayScore);
             string actualHtml = htmlNode.OuterHtml;
 
+            // Assert
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
