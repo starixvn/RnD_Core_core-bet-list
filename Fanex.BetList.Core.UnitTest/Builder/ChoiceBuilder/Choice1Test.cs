@@ -28,6 +28,20 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
+        public void LiveTicket_ShowSpanLiveScore()
+        {
+            // Arrange
+            _choiceCreator.Ticket.IsLive = true;
+
+            // Act
+            string actualHtml = _choiceCreator.GetOuterHtml(ChoiceXPath.Score);
+
+            // Assert
+            string expectedHtml = string.Format(ChoiceTemplate.Score, _choiceCreator.Ticket.LiveHomeScore, _choiceCreator.Ticket.LiveAwayScore);
+            Assert.AreEqual(expectedHtml, actualHtml);
+        }
+
+        [Test]
         public void DeadBallTicket_VisibleSpanLiveScore()
         {
             // Arrange
@@ -66,7 +80,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         [Test]
         public void Ticket_ShowSpanBetTypeName()
         {
-            // Act            
+            // Act
             string actualHtml = _choiceCreator.GetOuterHtml(ChoiceXPath.BetType);
 
             // Assert
@@ -141,7 +155,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         [Test]
         public void TicketAndShowScoreMapIconIsFalse_VisibleSpanScoreMapIcon()
         {
-            // Act            
+            // Act
             bool actual = _choiceCreator.IsExist(ChoiceXPath.ScoreMap);
 
             // Assert
@@ -559,7 +573,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choiceCreator.Ticket.BetTeam = "abch";
             _choiceCreator.Ticket.IsNeutral = false;
 
-            // Act            
+            // Act
             string actualValue = _choiceCreator.GetFirstChildInnerHtml(ChoiceXPath.BetTeam);
 
             // Assert

@@ -266,6 +266,11 @@ namespace Fanex.BetList.Core.UnitTest.Ultils.Enums
         public const int P2P_Games = 72;
 
         /// <summary>
+        /// BetType = 73.
+        /// </summary>
+        public const int Bingo = 73;
+
+        /// <summary>
         /// BetType = 121.
         /// </summary>
         public const int Home_No_Bet = 121;
@@ -614,5 +619,34 @@ namespace Fanex.BetList.Core.UnitTest.Ultils.Enums
         /// BetType = 30.
         /// </summary>
         public const int FirstCorrectScore = 30;
+        /// <summary>
+        /// BetType = 1501.
+        /// </summary>
+        public const int KenoGames = 1501;
+
+        /// <summary>
+        /// BetType = 23001.
+        /// </summary>
+        public const int CasinoTransfer = 23001;
+
+        /// <summary>
+        /// BetType = 23002.
+        /// </summary>
+        public const int CasinoPending = 23002;
+
+        /// <summary>
+        /// BetType = 23101.
+        /// </summary>
+        public const int P2PTransfer = 23101;
+
+        /// <summary>
+        /// BetType = 23201.
+        /// </summary>
+        public const int BingoTransfer = 23201;
+
+        /// <summary>
+        /// BetType = 23202.
+        /// </summary>
+        public const int BingoPending = 23202;
     }
 }

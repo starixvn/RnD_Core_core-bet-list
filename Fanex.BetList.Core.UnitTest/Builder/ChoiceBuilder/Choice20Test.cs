@@ -10,41 +10,29 @@
 
 namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using System.Linq;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.UnitTest.Stubs;
     using Fanex.BetList.Core.UnitTest.Templates;
     using Fanex.BetList.Core.UnitTest.Ultils.Enums;
-    using HtmlAgilityPack;
     using NUnit.Framework;
-    using Ultils;
 
     public class Choice20Test
     {
-        private Choice20 _choice;
-        private ITicketHelper _ticketHelperStub;
-        private ITicket _ticket;
+        private ChoiceCreator _choiceCreator;
 
         [SetUp]
         public void Setup()
         {
-            _choice = new Choice20();
-            _ticketHelperStub = new TicketHelperStub();
-            _ticket = TestData.CreateTicket(BetTypes.Money_Line);
+            _choiceCreator = new ChoiceCreator(new Choice2(), BetTypes.Money_Line);
         }
 
         [Test]
         public void Ticket_VisibleSpanHandicap()
         {
             // Act
-            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
-            HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.BetTeamHandicap).FirstOrDefault();
+            string actualValue = _choiceCreator.GetFirstChildInnerHtml(ChoiceXPath.BetTeamHandicap);
 
             // Assert
             string expected = " ";
-            string actualValue = htmlNode.FirstChild.InnerHtml;
             Assert.AreEqual(expected, actualValue);
         }
 
@@ -52,21 +40,11 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         public void Ticket_ShowBetTeamClassNameIsUnderDog()
         {
             // Act
-            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
-            HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.BetTeam).FirstOrDefault();
+            string actualValue = _choiceCreator.GetHtmlClassValue(ChoiceXPath.BetTeam);
 
             // Assert
             string expected = ChoiceTemplate.BLUnderDog;
-            string actualValue = htmlNode.Attributes["class"].Value;
             Assert.AreEqual(expected, actualValue);
-        }
-
-        private HtmlDocument ConvertToHtmlDocument(ITicket ticket, bool isShowSoreMap = false)
-        {
-            Choice_Template choiceTemplate = _choice.Render(ticket, _ticketHelperStub, null, isShowSoreMap);
-            HtmlDocument htmlDoc = new HtmlDocument();
-            htmlDoc.LoadHtml(choiceTemplate.ToString());
-            return htmlDoc;
         }
     }
 }

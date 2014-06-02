@@ -39,7 +39,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         [Test]
         public void Ticket_ShowBetTeamClassNameIsFavorite()
         {
-            // Act            
+            // Act
             string actualValue = _choiceCreator.GetHtmlClassValue(ChoiceXPath.BetTeam);
 
             // Assert
@@ -50,7 +50,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         [Test]
         public void Ticket_ShowBetTeamIsNoGoal()
         {
-            // Act            
+            // Act
             string actualValue = _choiceCreator.GetFirstChildInnerHtml(ChoiceXPath.BetTeam);
 
             // Assert

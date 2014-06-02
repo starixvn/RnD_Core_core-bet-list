@@ -11,6 +11,7 @@
 namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
+    using Fanex.BetList.Core.UnitTest.Templates;
     using Fanex.BetList.Core.UnitTest.Ultils.Enums;
     using NUnit.Framework;
 
@@ -22,6 +23,45 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         public void Setup()
         {
             _choiceCreator = new ChoiceCreator(new Choice1314(), BetTypes.SetXWillThereBeATiebreak);
+        }
+
+        [Test]
+        public void BetTeamOfTicketIsH_ShowBetTeamIsYes()
+        {
+            // Arrange
+            _choiceCreator.Ticket.BetTeam = "h";
+
+            // Act
+            string actualValue = _choiceCreator.GetFirstChildInnerHtml(ChoiceXPath.BetTeam);
+
+            // Assert
+            string expected = ChoiceTemplate.Yes;
+            Assert.AreEqual(expected, actualValue);
+        }
+
+        [Test]
+        public void BetTeamOfTicketIsEmpty_ShowBetTeamIsNo()
+        {
+            // Arrange
+            _choiceCreator.Ticket.BetTeam = string.Empty;
+
+            // Act
+            string actualValue = _choiceCreator.GetFirstChildInnerHtml(ChoiceXPath.BetTeam);
+
+            // Assert
+            string expected = ChoiceTemplate.No;
+            Assert.AreEqual(expected, actualValue);
+        }
+
+        [Test]
+        public void Ticket_ShowSpanBetTypeName()
+        {
+            // Act
+            string actualHtml = _choiceCreator.GetOuterHtml(ChoiceXPath.BetType);
+
+            // Assert
+            string expectedHtml = string.Format(ChoiceTemplate.BetType, _choiceCreator.TicketHelperStub.GetBetTypeNameById(_choiceCreator.Ticket.BetTypeId, _choiceCreator.Ticket.BetId));
+            Assert.AreEqual(expectedHtml, actualHtml);
         }
     }
 }

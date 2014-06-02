@@ -11,7 +11,6 @@
 namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Templates;
     using Fanex.BetList.Core.UnitTest.Ultils.Enums;
     using NUnit.Framework;
 
@@ -29,11 +28,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         public void Ticket_ShowContentIsPokerGames()
         {
             // Act
-            Choice_Template choiceTemplate = _choiceCreator.Choice.Render(_choiceCreator.Ticket, _choiceCreator.TicketHelperStub, null, false);
-            
+            string actualValue = _choiceCreator.HtmlDocument.DocumentNode.OuterHtml;
+
             // Assert
             string expected = "<div><span class='favorite'>Poker Games</span></div>";
-            string actualValue = choiceTemplate.ToString();
             Assert.AreEqual(expected, actualValue);
         }
     }

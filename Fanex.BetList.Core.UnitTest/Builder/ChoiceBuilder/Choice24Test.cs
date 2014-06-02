@@ -10,50 +10,96 @@
 
 namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using System.Linq;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.UnitTest.Stubs;
     using Fanex.BetList.Core.UnitTest.Templates;
     using Fanex.BetList.Core.UnitTest.Ultils.Enums;
-    using HtmlAgilityPack;
     using NUnit.Framework;
-    using Ultils;
 
     public class Choice24Test
     {
-        private Choice24 _choice;
-        private ITicketHelper _ticketHelperStub;
-        private ITicket _ticket;
+        private ChoiceCreator _choiceCreator;
+        private const string BetTeamHandicap = "/div/span[1]/span[3][@class=\"handicap\"]";
+        private const string BetTeamTemplate = " <span class=\"favorite\">{0}</span>&nbsp;or <span class=\"favorite\">&nbsp;{1}</span><span class='handicap'> </span>";
 
         [SetUp]
         public void Setup()
         {
-            _choice = new Choice24();
-            _ticketHelperStub = new TicketHelperStub();
-            _ticket = TestData.CreateTicket(BetTypes.Double_Change);
+            _choiceCreator = new ChoiceCreator(new Choice24(), BetTypes.Double_Change);
         }
 
-        //[Test]
+        [Test]
         public void Ticket_VisibleSpanHandicap()
         {
             // Act
-            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
-            HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.BetTeamHandicap).FirstOrDefault();
+            string actualValue = _choiceCreator.GetFirstChildInnerHtml(BetTeamHandicap);
 
             // Assert
             string expected = " ";
-            string actualValue = htmlNode.FirstChild.InnerHtml;
             Assert.AreEqual(expected, actualValue);
         }
 
-        private HtmlDocument ConvertToHtmlDocument(ITicket ticket, bool isShowSoreMap = false)
+        [Test]
+        public void BetTeamOfTicketContains1AndEndWith3_ShowBetTeamWithSpanTeamIsHomeTeamNameAndSpanDrawAwayIsAwayTeamName()
         {
-            Choice_Template choiceTemplate = _choice.Render(ticket, _ticketHelperStub, null, isShowSoreMap);
-            HtmlDocument htmlDoc = new HtmlDocument();
-            htmlDoc.LoadHtml(choiceTemplate.ToString());
-            return htmlDoc;
+            // Arrange
+            _choiceCreator.Ticket.BetTeam = "123";
+
+            // Act
+            string actualValue = _choiceCreator.GetInnerHtml(ChoiceXPath.BetTeam);
+
+            // Assert
+            string expected = string.Format(BetTeamTemplate,
+                _choiceCreator.TicketHelperStub.GetTeamNameById(_choiceCreator.Ticket.HomeId),
+                _choiceCreator.TicketHelperStub.GetTeamNameById(_choiceCreator.Ticket.AwayId));
+            Assert.AreEqual(expected, actualValue);
+        }
+
+        [Test]
+        public void BetTeamOfTicketContains1AndEndWithx_ShowBetTeamWithSpanTeamIsHomeTeamNameAndSpanDrawAwayIsLableDraw()
+        {
+            // Arrange
+            _choiceCreator.Ticket.BetTeam = "123x";
+
+            // Act
+            string actualValue = _choiceCreator.GetInnerHtml(ChoiceXPath.BetTeam);
+
+            // Assert
+            string expected = string.Format(BetTeamTemplate,
+                _choiceCreator.TicketHelperStub.GetTeamNameById(_choiceCreator.Ticket.HomeId),
+                ChoiceTemplate.Draw);
+            Assert.AreEqual(expected, actualValue);
+        }
+
+        [Test]
+        public void BetTeamOfTicketNotContains1AndEndWith3_ShowBetTeamWithSpanTeamIsAwayTeamNameAndSpanDrawAwayIsAwayTeamName()
+        {
+            // Arrange
+            _choiceCreator.Ticket.BetTeam = "23";
+
+            // Act
+            string actualValue = _choiceCreator.GetInnerHtml(ChoiceXPath.BetTeam);
+
+            // Assert
+            string expected = string.Format(BetTeamTemplate,
+                _choiceCreator.TicketHelperStub.GetTeamNameById(_choiceCreator.Ticket.AwayId),
+                _choiceCreator.TicketHelperStub.GetTeamNameById(_choiceCreator.Ticket.AwayId));
+            Assert.AreEqual(expected, actualValue);
+        }
+
+        [Test]
+        public void BetTeamOfTicketNotContains1AndEndWithx_ShowBetTeamWithSpanTeamIsAwayTeamNameAndSpanDrawAwayIsLableDraw()
+        {
+            // Arrange
+            _choiceCreator.Ticket.BetTeam = "23x";
+
+            // Act
+            string actualValue = _choiceCreator.GetInnerHtml(ChoiceXPath.BetTeam);
+
+            // Assert
+            string expected = string.Format(BetTeamTemplate,
+                _choiceCreator.TicketHelperStub.GetTeamNameById(_choiceCreator.Ticket.AwayId),
+                ChoiceTemplate.Draw);
+            Assert.AreEqual(expected, actualValue);
         }
     }
 }

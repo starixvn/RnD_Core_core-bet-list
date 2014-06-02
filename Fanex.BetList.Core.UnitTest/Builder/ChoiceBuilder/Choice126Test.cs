@@ -50,7 +50,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         [Test]
         public void Ticket_ShowBetTeamNamIsBetTeam()
         {
-            // Act            
+            // Act
             string actualValue = _choiceCreator.GetFirstChildInnerHtml(ChoiceXPath.BetTeam);
 
             // Assert

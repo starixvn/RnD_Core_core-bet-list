@@ -11,41 +11,31 @@
 namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.UnitTest.Stubs;
     using Fanex.BetList.Core.UnitTest.Ultils.Enums;
-    using HtmlAgilityPack;
     using NUnit.Framework;
-    using Ultils;
 
     public class Choice9Test
     {
-        private Choice9 _choice;
-        private ITicketHelper _ticketHelperStub;
-        private ITicket _ticket;
+        private ChoiceCreator _choiceCreator;
         private const string Template = "<a id=\"hidden0\" href=\"{0}\">{1}</a><br><br><div id=\"divEvent_{2}\" style=\"display: none\"></div>";
 
         [SetUp]
         public void Setup()
         {
-            _choice = new Choice9();
-            _ticketHelperStub = new TicketHelperStub();
-            _ticket = TestData.CreateTicket(BetTypes.MixParlay);
+            _choiceCreator = new ChoiceCreator(new Choice9(), BetTypes.MixParlay);
         }
 
         [Test]
         public void TicketHelperClientMixParlaySubbetsDetailFunctionIsABC_TheValueOfHrefIsABC()
         {
             // Arrange
-            _ticketHelperStub.ClientMixParlaySubbetsDetailFunction = "ABC";
+            _choiceCreator.TicketHelperStub.ClientMixParlaySubbetsDetailFunction = "ABC";
 
             // Act
-            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
-            
+            string actual = _choiceCreator.HtmlDocument.DocumentNode.OuterHtml;
+
             // Assert
-            string expected = string.Format(Template, _ticketHelperStub.ClientMixParlaySubbetsDetailFunction, _ticketHelperStub.GetBetTypeNameById(_ticket.BetTypeId), _ticket.TransId);
-            string actual = htmlDoc.DocumentNode.OuterHtml;
+            string expected = string.Format(Template, _choiceCreator.TicketHelperStub.ClientMixParlaySubbetsDetailFunction, _choiceCreator.TicketHelperStub.GetBetTypeNameById(_choiceCreator.Ticket.BetTypeId), _choiceCreator.Ticket.TransId);
             Assert.AreEqual(expected, actual);
         }
 
@@ -53,24 +43,15 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         public void TicketHelperClientMixParlaySubbetsDetailFunctionIsEmpty_TheValueOfHrefIsClientMixParlayDetailFunction()
         {
             // Arrange
-            _ticketHelperStub.ClientMixParlaySubbetsDetailFunction = string.Empty;
-            
-            // Act
-            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
-            
-            // Assert
-            string clientMixParlayDetailFunction = string.Format("javascript:showMP(&quot;{0}&quot;,&quot;{1}&quot;);", _ticket.TransId, _ticket.RefNo);
-            string expected = string.Format(Template, clientMixParlayDetailFunction, _ticketHelperStub.GetBetTypeNameById(_ticket.BetTypeId), _ticket.TransId);
-            string actual = htmlDoc.DocumentNode.OuterHtml;
-            Assert.AreEqual(expected, actual);
-        }
+            _choiceCreator.TicketHelperStub.ClientMixParlaySubbetsDetailFunction = string.Empty;
 
-        private HtmlDocument ConvertToHtmlDocument(ITicket ticket, bool isShowSoreMap = false)
-        {
-            Choice_Template choiceTemplate = _choice.Render(ticket, _ticketHelperStub, null, isShowSoreMap);
-            HtmlDocument htmlDoc = new HtmlDocument();
-            htmlDoc.LoadHtml(choiceTemplate.ToString());
-            return htmlDoc;
+            // Act
+            string actual = _choiceCreator.HtmlDocument.DocumentNode.OuterHtml;
+
+            // Assert
+            string clientMixParlayDetailFunction = string.Format("javascript:showMP(&quot;{0}&quot;,&quot;{1}&quot;);", _choiceCreator.Ticket.TransId, _choiceCreator.Ticket.RefNo);
+            string expected = string.Format(Template, clientMixParlayDetailFunction, _choiceCreator.TicketHelperStub.GetBetTypeNameById(_choiceCreator.Ticket.BetTypeId), _choiceCreator.Ticket.TransId);
+            Assert.AreEqual(expected, actual);
         }
     }
 }

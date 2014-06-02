@@ -19,6 +19,8 @@ namespace Fanex.BetList.Core.UnitTest.Stubs
         private string _teamName = "Team";
         private string _sportName = "Sport";
         private string _betTypeName = "Bet";
+        private string _betTeamName = "BetTeam";
+        private string _gameName = "Game";
 
         public int Index { get; set; }
 
@@ -76,32 +78,34 @@ namespace Fanex.BetList.Core.UnitTest.Stubs
 
         public string GetCasinoBetTeamNameById(object betteamId)
         {
-            throw new NotImplementedException();
+            return this._betTeamName + betteamId.ToString();
         }
 
         public string GetHorseTeamNameById(object homeId, object awayId)
         {
-            throw new NotImplementedException();
+            return this._teamName + homeId.ToString() + awayId.ToString();
         }
 
         public string GetRouletteBetItemNameById(object itemId)
         {
-            throw new NotImplementedException();
+            return this._betTypeName + itemId.ToString();
         }
 
         public string GetCombinationMPOfferName(string key)
         {
-            throw new NotImplementedException();
+            return this._betTeamName + key;
         }
 
         public string GetKenoBetChoiceName(string kenoBetChoiceID, out string kenoBettypeID)
         {
-            throw new NotImplementedException();
+            kenoBettypeID = this._gameName + kenoBetChoiceID;
+
+            return this._gameName + kenoBetChoiceID;
         }
 
         public string GetKenoBetTypeName(string kenoBettypeID)
         {
-            throw new NotImplementedException();
+            return this._betTypeName + kenoBettypeID;
         }
     }
 }

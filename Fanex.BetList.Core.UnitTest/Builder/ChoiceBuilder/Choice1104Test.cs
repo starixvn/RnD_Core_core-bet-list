@@ -28,7 +28,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         [Test]
         public void Ticket_ShowLeagueLeagueNameIsLiveRouletteWithShowTime()
         {
-            // Act            
+            // Act
             string actualHtml = _choiceCreator.GetOuterHtml(ChoiceXPath.LeagueLeagueNameLeagueName);
 
             // Assert
