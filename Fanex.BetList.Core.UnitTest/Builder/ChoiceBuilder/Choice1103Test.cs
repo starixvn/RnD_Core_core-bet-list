@@ -10,50 +10,30 @@
 
 namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using System.Linq;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.UnitTest.Stubs;
     using Fanex.BetList.Core.UnitTest.Templates;
     using Fanex.BetList.Core.UnitTest.Ultils.Enums;
-    using HtmlAgilityPack;
     using NUnit.Framework;
-    using Ultils;
-    using System;
 
     public class Choice1103Test
     {
-        private Choice1103 _choice;
-        private ITicketHelper _ticketHelperStub;
-        private ITicket _ticket;
+        private ChoiceCreator _choiceCreator;
 
         [SetUp]
         public void Setup()
         {
-            _choice = new Choice1103();
-            _ticketHelperStub = new TicketHelperStub();
-            _ticket = TestData.CreateTicket(BetTypes.Sicbo);
+            _choiceCreator = new ChoiceCreator(new Choice1103(), BetTypes.Sicbo);
         }
 
         [Test]
-        public void Ticket_ShowLeagueLeagueName()
+        public void Ticket_ShowLeagueLeagueNameIsLiveBaccaratWithShowTime()
         {
-            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
+            // Act
+            string actualHtml = _choiceCreator.GetOuterHtml(ChoiceXPath.LeagueLeagueNameLeagueName);
 
-            HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.LeagueLeagueNameLeagueName).FirstOrDefault();
-            string expectedHtml = string.Format(ChoiceTemplate.LaagueLeagueName, "Live Baccarat&nbsp;" + _ticket.ShowTime);
-            string actualHtml = htmlNode.OuterHtml;
-
+            // Assert
+            string expectedHtml = string.Format(ChoiceTemplate.LaagueLeagueName, "Live Baccarat&nbsp;" + _choiceCreator.Ticket.ShowTime);
             Assert.AreEqual(expectedHtml, actualHtml);
-        }
-
-        private HtmlDocument GetHtmlDoc(ITicket ticket, bool isShowSoreMap = false)
-        {
-            Choice_Template choiceTemplate = _choice.Render(ticket, _ticketHelperStub, null, isShowSoreMap);
-            HtmlDocument htmlDoc = new HtmlDocument();
-            htmlDoc.LoadHtml(choiceTemplate.ToString());
-            return htmlDoc;
         }
     }
 }

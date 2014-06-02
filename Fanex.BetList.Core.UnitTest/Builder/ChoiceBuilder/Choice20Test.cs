@@ -20,7 +20,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
     using HtmlAgilityPack;
     using NUnit.Framework;
     using Ultils;
-    using System;
 
     public class Choice20Test
     {
@@ -37,31 +36,32 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void Tickets_VisibleHandicap()
+        public void Ticket_VisibleSpanHandicap()
         {
-            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
-
+            // Act
+            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
             HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.BetTeamHandicap).FirstOrDefault();
+
+            // Assert
             string expected = " ";
             string actualValue = htmlNode.FirstChild.InnerHtml;
-
             Assert.AreEqual(expected, actualValue);
         }
 
         [Test]
-        public void Tickets_BetTeamClassNameBLUnderDog()
+        public void Ticket_ShowBetTeamClassNameIsUnderDog()
         {
-            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
-
+            // Act
+            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
             HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.BetTeam).FirstOrDefault();
 
+            // Assert
             string expected = ChoiceTemplate.BLUnderDog;
             string actualValue = htmlNode.Attributes["class"].Value;
-
             Assert.AreEqual(expected, actualValue);
         }
 
-        private HtmlDocument GetHtmlDoc(ITicket ticket, bool isShowSoreMap = false)
+        private HtmlDocument ConvertToHtmlDocument(ITicket ticket, bool isShowSoreMap = false)
         {
             Choice_Template choiceTemplate = _choice.Render(ticket, _ticketHelperStub, null, isShowSoreMap);
             HtmlDocument htmlDoc = new HtmlDocument();

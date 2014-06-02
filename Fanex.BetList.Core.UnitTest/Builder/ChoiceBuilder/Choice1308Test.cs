@@ -10,49 +10,30 @@
 
 namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using System.Linq;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.UnitTest.Stubs;
     using Fanex.BetList.Core.UnitTest.Templates;
     using Fanex.BetList.Core.UnitTest.Ultils.Enums;
-    using HtmlAgilityPack;
     using NUnit.Framework;
-    using Ultils;
 
     public class Choice1308Test
     {
-        private Choice1308 _choice;
-        private ITicketHelper _ticketHelperStub;
-        private ITicket _ticket;
+        private ChoiceCreator _choiceCreator;
 
         [SetUp]
         public void Setup()
         {
-            _choice = new Choice1308();
-            _ticketHelperStub = new TicketHelperStub();
-            _ticket = TestData.CreateTicket(BetTypes.MatchHandicapGames2Way);
+            _choiceCreator = new ChoiceCreator(new Choice1308(), BetTypes.MatchHandicapGames2Way);
         }
 
         [Test]
-        public void Tickets_BetTeamIsNoGoal()
+        public void Ticket_ShowBetTeamIsTeam172()
         {
-            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
+            // Act            
+            string actualValue = _choiceCreator.GetFirstChildInnerHtml(ChoiceXPath.BetTeam);
 
-            HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.BetTeam).FirstOrDefault();
+            // Assert
             string expected = "Team172";
-            string actualValue = htmlNode.FirstChild.InnerHtml;
-
             Assert.AreEqual(expected, actualValue);
-        }
-
-        private HtmlDocument GetHtmlDoc(ITicket ticket, bool isShowSoreMap = false)
-        {
-            Choice_Template choiceTemplate = _choice.Render(ticket, _ticketHelperStub, null, isShowSoreMap);
-            HtmlDocument htmlDoc = new HtmlDocument();
-            htmlDoc.LoadHtml(choiceTemplate.ToString());
-            return htmlDoc;
         }
     }
 }

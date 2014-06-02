@@ -10,40 +10,30 @@
 
 namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using System.Linq;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.UnitTest.Stubs;
-    using Fanex.BetList.Core.UnitTest.Templates;
     using Fanex.BetList.Core.UnitTest.Ultils.Enums;
-    using HtmlAgilityPack;
     using NUnit.Framework;
-    using Ultils;
-    using System;
 
     public class Choice1000Test
     {
-        private Choice1000 _choice;
-        private ITicketHelper _ticketHelperStub;
-        private ITicket _ticket;
+        private ChoiceCreator _choiceCreator;
 
         [SetUp]
         public void Setup()
         {
-            _choice = new Choice1000();
-            _ticketHelperStub = new TicketHelperStub();
-            _ticket = TestData.CreateTicket(BetTypes.P2P);
+            _choiceCreator = new ChoiceCreator(new Choice1000(), BetTypes.P2P);
         }
 
         [Test]
-        public void Tickets_FullContent()
+        public void Ticket_ShowContentIsPokerGames()
         {
-            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelperStub, null, false);
-
+            // Act
+            Choice_Template choiceTemplate = _choiceCreator.Choice.Render(_choiceCreator.Ticket, _choiceCreator.TicketHelperStub, null, false);
+            
+            // Assert
             string expected = "<div><span class='favorite'>Poker Games</span></div>";
             string actualValue = choiceTemplate.ToString();
-
             Assert.AreEqual(expected, actualValue);
         }
     }

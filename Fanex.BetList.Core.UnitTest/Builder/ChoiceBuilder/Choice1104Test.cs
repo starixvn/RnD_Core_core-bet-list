@@ -10,50 +10,30 @@
 
 namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using System.Linq;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.UnitTest.Stubs;
     using Fanex.BetList.Core.UnitTest.Templates;
     using Fanex.BetList.Core.UnitTest.Ultils.Enums;
-    using HtmlAgilityPack;
     using NUnit.Framework;
-    using Ultils;
-    using System;
 
     public class Choice1104Test
     {
-        private Choice1104 _choice;
-        private ITicketHelper _ticketHelperStub;
-        private ITicket _ticket;
+        private ChoiceCreator _choiceCreator;
 
         [SetUp]
         public void Setup()
         {
-            _choice = new Choice1104();
-            _ticketHelperStub = new TicketHelperStub();
-            _ticket = TestData.CreateTicket(BetTypes.LiveCasino_LiveRoulette);
+            _choiceCreator = new ChoiceCreator(new Choice1104(), BetTypes.LiveCasino_LiveRoulette);
         }
 
         [Test]
-        public void Ticket_ShowLeagueLeagueName()
+        public void Ticket_ShowLeagueLeagueNameIsLiveRouletteWithShowTime()
         {
-            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
+            // Act            
+            string actualHtml = _choiceCreator.GetOuterHtml(ChoiceXPath.LeagueLeagueNameLeagueName);
 
-            HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.LeagueLeagueNameLeagueName).FirstOrDefault();
-            string expectedHtml = string.Format(ChoiceTemplate.LaagueLeagueName, "Live Roulette&nbsp;" + _ticket.ShowTime);
-            string actualHtml = htmlNode.OuterHtml;
-
+            // Assert
+            string expectedHtml = string.Format(ChoiceTemplate.LaagueLeagueName, "Live Roulette&nbsp;" + _choiceCreator.Ticket.ShowTime);
             Assert.AreEqual(expectedHtml, actualHtml);
-        }
-
-        private HtmlDocument GetHtmlDoc(ITicket ticket, bool isShowSoreMap = false)
-        {
-            Choice_Template choiceTemplate = _choice.Render(ticket, _ticketHelperStub, null, isShowSoreMap);
-            HtmlDocument htmlDoc = new HtmlDocument();
-            htmlDoc.LoadHtml(choiceTemplate.ToString());
-            return htmlDoc;
         }
     }
 }

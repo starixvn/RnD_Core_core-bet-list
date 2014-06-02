@@ -225,7 +225,9 @@
     <Compile Include="Builder\BetListExcelBuilder.cs" />
     <Compile Include="Builder\BetListHTMLBuilder.cs" />
     <Compile Include="Builder\ChoiceBuilder\3rd\Choice_22006.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice1.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Builder\ChoiceBuilder\Choice10.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1000.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1001.cs" />

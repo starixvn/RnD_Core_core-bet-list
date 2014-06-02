@@ -12,7 +12,14 @@ namespace Fanex.BetList.Core.UnitTest.Templates
 {
     public class ChoiceTemplate
     {
+        /// <summary>
+        /// BLUnderDog = "underdog".
+        /// </summary>
         public const string BLUnderDog = "underdog";
+
+        /// <summary>
+        ///  BLFavorite = "favorite".
+        /// </summary>
         public const string BLFavorite = "favorite";
         public const string Void = "void";
         public const string Minus = "<font color='#B50000'>{0}</font>";

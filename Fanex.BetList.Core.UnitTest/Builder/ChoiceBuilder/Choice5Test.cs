@@ -36,42 +36,45 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void Tickets_VisibleHandicap()
+        public void Ticket_VisibleSpanHandicap()
         {
-            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
-
+            // Act
+            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
             HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.BetTeamHandicap).FirstOrDefault();
+
+            // Assert
             string expected = " ";
             string actualValue = htmlNode.FirstChild.InnerHtml;
-
             Assert.AreEqual(expected, actualValue);
         }
 
         [Test]
-        public void Tickets_BetTeamClassNameBLFavorite()
+        public void Ticket_ShowBetTeamClassNameIsFavorite()
         {
-            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
-
+            // Act
+            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
             HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.BetTeam).FirstOrDefault();
+
+            // Assert
             string expected = ChoiceTemplate.BLFavorite;
             string actualValue = htmlNode.Attributes["class"].Value;
-
             Assert.AreEqual(expected, actualValue);
         }
 
         [Test]
-        public void Tickets_FTBetTeam()
+        public void Ticket_ShowBetTeamIsFT()
         {
-            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
-
+            // Act
+            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
             HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.BetTeam).FirstOrDefault();
+
+            // Assert
             string expected = string.Format("{0}.{1}", ChoiceTemplate.FT, _ticket.BetTeam.ToUpper());
             string actualValue = htmlNode.FirstChild.InnerHtml;
-
             Assert.AreEqual(expected, actualValue);
         }
 
-        private HtmlDocument GetHtmlDoc(ITicket ticket, bool isShowSoreMap = false)
+        private HtmlDocument ConvertToHtmlDocument(ITicket ticket, bool isShowSoreMap = false)
         {
             Choice_Template choiceTemplate = _choice.Render(ticket, _ticketHelperStub, null, isShowSoreMap);
             HtmlDocument htmlDoc = new HtmlDocument();

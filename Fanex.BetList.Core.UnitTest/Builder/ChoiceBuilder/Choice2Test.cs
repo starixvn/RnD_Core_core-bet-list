@@ -36,24 +36,29 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void Tickets_VisibleHandicap()
+        public void Ticket_VisibleSpanHandicap()
         {
-            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
-
+            // Act
+            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
             HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.BetTeamHandicap).FirstOrDefault();
+
+            // Assert
             string expected = " ";
             string actualValue = htmlNode.FirstChild.InnerHtml;
-
             Assert.AreEqual(expected, actualValue);
         }
 
         [Test]
-        public void TicketBetTeamIsH_ShowBetTeamIsOdd()
+        public void BetTeamOfTicketIsH_ShowBetTeamIsOdd()
         {
+            // Arrange
             _ticket.BetTeam = "h";
-            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
 
+            // Act
+            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
             HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.BetTeam).FirstOrDefault();
+
+            // Assert
             string expected = ChoiceTemplate.Odd;
             string actualValue = htmlNode.FirstChild.InnerHtml;
 
@@ -61,47 +66,54 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void TicketBetTeamIsEmpty_ShowBetTeamIsEven()
+        public void BetTeamOfTicketIsEmpty_ShowBetTeamIsEven()
         {
+            // Arrange
             _ticket.BetTeam = string.Empty;
-            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
 
+            // Act
+            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
             HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.BetTeam).FirstOrDefault();
+
+            // Assert
             string expected = ChoiceTemplate.Even;
             string actualValue = htmlNode.FirstChild.InnerHtml;
-
             Assert.AreEqual(expected, actualValue);
         }
 
         [Test]
-        public void TicketBetTeamIsH_BetTeamClassNameBLFavorite()
+        public void BetTeamOfTicketIsH_ShowBetTeamClassNameIsFavorite()
         {
+            // Arrange
             _ticket.BetTeam = "h";
-            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
 
+            // Act
+            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
             HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.BetTeam).FirstOrDefault();
 
+            // Assert
             string expected = ChoiceTemplate.BLFavorite;
             string actualValue = htmlNode.Attributes["class"].Value;
-
             Assert.AreEqual(expected, actualValue);
         }
 
         [Test]
-        public void TicketBetTeamIsH_BetTeamClassNameBLUnderDog()
+        public void BetTeamOfTicketIsH_ShowBetTeamClassNameIsUnderDog()
         {
+            // Arrange
             _ticket.BetTeam = string.Empty;
-            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
 
+            // Act
+            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
             HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.BetTeam).FirstOrDefault();
 
+            // Assert
             string expected = ChoiceTemplate.BLUnderDog;
             string actualValue = htmlNode.Attributes["class"].Value;
-
             Assert.AreEqual(expected, actualValue);
         }
 
-        private HtmlDocument GetHtmlDoc(ITicket ticket, bool isShowSoreMap = false)
+        private HtmlDocument ConvertToHtmlDocument(ITicket ticket, bool isShowSoreMap = false)
         {
             Choice_Template choiceTemplate = _choice.Render(ticket, _ticketHelperStub, null, isShowSoreMap);
             HtmlDocument htmlDoc = new HtmlDocument();

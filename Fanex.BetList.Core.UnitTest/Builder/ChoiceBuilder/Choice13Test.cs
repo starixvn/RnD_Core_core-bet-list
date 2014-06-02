@@ -10,112 +10,109 @@
 
 namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using System.Linq;
+    using System;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.UnitTest.Stubs;
     using Fanex.BetList.Core.UnitTest.Templates;
     using Fanex.BetList.Core.UnitTest.Ultils.Enums;
     using HtmlAgilityPack;
     using NUnit.Framework;
-    using Ultils;
-    using System;
 
     public class Choice13Test
     {
-        private Choice13 _choice;
-        private ITicketHelper _ticketHelperStub;
-        private ITicket _ticket;
+        private ChoiceCreator _choiceCreator;
         private const string XPathBetTeamHandicap = "/div/span[1]/span[2][@class=\"handicap\"]";
         private const string TemplateBetTeamLable = "<span class=\"favorite\">{0}</span>";
 
         [SetUp]
         public void Setup()
         {
-            _choice = new Choice13();
-            _ticketHelperStub = new TicketHelperStub();
-            _ticket = TestData.CreateTicket(BetTypes.Clean_Sheet);
+            _choiceCreator = new ChoiceCreator(new Choice13(), BetTypes.Clean_Sheet);
         }
 
         [Test]
-        public void Tickets_VisibleHandicap()
+        public void Ticket_VisibleSpanHandicap()
         {
-            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
+            // Act
+            string actualValue = _choiceCreator.GetFirstChildInnerHtml(XPathBetTeamHandicap);
 
-            HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(XPathBetTeamHandicap).FirstOrDefault();
+            // Assert
             string expected = " ";
-            string actualValue = htmlNode.FirstChild.InnerHtml;
-
             Assert.AreEqual(expected, actualValue);
         }
 
         [Test]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TicketBetTeamIsNull_ThrowArgumentNullException()
+        public void BetTeamOfTicketIsNull_ThrowArgumentNullException()
         {
-            _ticket.BetTeam = null;
-            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
+            // Arrange
+            _choiceCreator.Ticket.BetTeam = null;
+
+            // Act
+            HtmlDocument htmlDoc = _choiceCreator.HtmlDocument;
         }
 
         [Test]
-        public void TicketBetTeamIsEmpty_ShowBetTeamIsAwayTeamWithLableNo()
+        public void BetTeamOfTicketIsEmpty_ShowBetTeamIsAwayTeamWithLableNo()
         {
-            _ticket.BetTeam = string.Empty;
-            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
+            // Arrange
+            _choiceCreator.Ticket.BetTeam = string.Empty;
 
-            HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.BetTeam).FirstOrDefault();
-            string expected = string.Format("{0} {1}", _ticketHelperStub.GetTeamNameById(_ticket.AwayId), string.Format(TemplateBetTeamLable, "NO"));
-            string actualValue = htmlNode.FirstChild.InnerHtml + htmlNode.FirstChild.NextSibling.OuterHtml;
+            // Act
+            string teamNameHtml = _choiceCreator.GetFirstChildInnerHtml(ChoiceXPath.BetTeam);
+            string lableHtml = _choiceCreator.GetFirstChildNextSiblingOuterHtml(ChoiceXPath.BetTeam);
 
+            // Assert
+            string expected = string.Format("{0} {1}", _choiceCreator.TicketHelperStub.GetTeamNameById(_choiceCreator.Ticket.AwayId), string.Format(TemplateBetTeamLable, "NO"));
+            string actualValue = teamNameHtml + lableHtml;
             Assert.AreEqual(expected, actualValue);
         }
 
         [Test]
-        public void TicketBetTeamIsH_ShowBetTeamIsHomeTeamWithLableNo()
+        public void BetTeamOfTicketIsH_ShowBetTeamIsHomeTeamWithLableNo()
         {
-            _ticket.BetTeam = "h";
-            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
+            // Arrange
+            _choiceCreator.Ticket.BetTeam = "h";
 
-            HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.BetTeam).FirstOrDefault();
-            string expected = string.Format("{0} {1}", _ticketHelperStub.GetTeamNameById(_ticket.HomeId), string.Format(TemplateBetTeamLable, "NO"));
-            string actualValue = htmlNode.FirstChild.InnerHtml + htmlNode.FirstChild.NextSibling.OuterHtml;
+            // Act
+            string teamNameHtml = _choiceCreator.GetFirstChildInnerHtml(ChoiceXPath.BetTeam);
+            string lableHtml = _choiceCreator.GetFirstChildNextSiblingOuterHtml(ChoiceXPath.BetTeam);
 
+            // Assert
+            string expected = string.Format("{0} {1}", _choiceCreator.TicketHelperStub.GetTeamNameById(_choiceCreator.Ticket.HomeId), string.Format(TemplateBetTeamLable, "NO"));
+            string actualValue = teamNameHtml + lableHtml;
             Assert.AreEqual(expected, actualValue);
         }
 
         [Test]
-        public void TicketBetTeamIsY_ShowBetTeamIsAwayTeamWithLableYes()
+        public void BetTeamOfTicketIsY_ShowBetTeamIsAwayTeamWithLableYes()
         {
-            _ticket.BetTeam = "y";
-            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
+            // Arrange
+            _choiceCreator.Ticket.BetTeam = "y";
 
-            HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.BetTeam).FirstOrDefault();
-            string expected = string.Format("{0} {1}", _ticketHelperStub.GetTeamNameById(_ticket.AwayId), string.Format(TemplateBetTeamLable, "YES"));
-            string actualValue = htmlNode.FirstChild.InnerHtml + htmlNode.FirstChild.NextSibling.OuterHtml;
+            // Act
+            string teamNameHtml = _choiceCreator.GetFirstChildInnerHtml(ChoiceXPath.BetTeam);
+            string lableHtml = _choiceCreator.GetFirstChildNextSiblingOuterHtml(ChoiceXPath.BetTeam);
 
+            // Assert
+            string expected = string.Format("{0} {1}", _choiceCreator.TicketHelperStub.GetTeamNameById(_choiceCreator.Ticket.AwayId), string.Format(TemplateBetTeamLable, "YES"));
+            string actualValue = teamNameHtml + lableHtml;
             Assert.AreEqual(expected, actualValue);
         }
 
         [Test]
-        public void TicketBetTeamIsHY_ShowBetTeamIsHomeTeamWithLableYes()
+        public void BetTeamOfTicketIsHY_ShowBetTeamIsHomeTeamWithLableYes()
         {
-            _ticket.BetTeam = "hy";
-            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
+            // Arrange
+            _choiceCreator.Ticket.BetTeam = "hy";
 
-            HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.BetTeam).FirstOrDefault();
-            string expected = string.Format("{0} {1}", _ticketHelperStub.GetTeamNameById(_ticket.HomeId), string.Format(TemplateBetTeamLable, "YES"));
-            string actualValue = htmlNode.FirstChild.InnerHtml + htmlNode.FirstChild.NextSibling.OuterHtml;
+            // Act
+            string teamNameHtml = _choiceCreator.GetFirstChildInnerHtml(ChoiceXPath.BetTeam);
+            string lableHtml = _choiceCreator.GetFirstChildNextSiblingOuterHtml(ChoiceXPath.BetTeam);
 
+            // Assert
+            string expected = string.Format("{0} {1}", _choiceCreator.TicketHelperStub.GetTeamNameById(_choiceCreator.Ticket.HomeId), string.Format(TemplateBetTeamLable, "YES"));
+            string actualValue = teamNameHtml + lableHtml;
             Assert.AreEqual(expected, actualValue);
-        }
-
-        private HtmlDocument GetHtmlDoc(ITicket ticket, bool isShowSoreMap = false)
-        {
-            Choice_Template choiceTemplate = _choice.Render(ticket, _ticketHelperStub, null, isShowSoreMap);
-            HtmlDocument htmlDoc = new HtmlDocument();
-            htmlDoc.LoadHtml(choiceTemplate.ToString());
-            return htmlDoc;
         }
     }
 }

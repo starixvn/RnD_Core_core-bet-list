@@ -36,44 +36,51 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void Tickets_HandicapIsHandicap1()
+        public void Ticket_ShowHandicapIsHandicap1()
         {
-            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
-
+            // Act
+            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
             HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.BetTeamHandicap).FirstOrDefault();
+
+            // Assert
             string expected = string.Format(" {0}", _ticket.Handicap1);
             string actualValue = htmlNode.FirstChild.InnerHtml;
-
             Assert.AreEqual(expected, actualValue);
         }
 
         [Test]
-        public void TicketBetTeamIsH_ShowBetTeamIsOver()
+        public void BetTeamOfTicketIsH_ShowBetTeamIsOver()
         {
+            // Arrange
             _ticket.BetTeam = "h";
-            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
 
+            // Act
+            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
             HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.BetTeam).FirstOrDefault();
+
+            // Assert
             string expected = ChoiceTemplate.Over;
             string actualValue = htmlNode.FirstChild.InnerHtml;
-
             Assert.AreEqual(expected, actualValue);
         }
 
         [Test]
-        public void TicketBetTeamIsEmpty_ShowBetTeamIsUnder()
+        public void BetTeamOfTicketIsEmpty_ShowBetTeamIsUnder()
         {
+            // Arrange
             _ticket.BetTeam = string.Empty;
-            HtmlDocument htmlDoc = GetHtmlDoc(_ticket);
 
+            // Act
+            HtmlDocument htmlDoc = ConvertToHtmlDocument(_ticket);
             HtmlNode htmlNode = htmlDoc.DocumentNode.SelectNodes(ChoiceXPath.BetTeam).FirstOrDefault();
+
+            // Assert
             string expected = ChoiceTemplate.Under;
             string actualValue = htmlNode.FirstChild.InnerHtml;
-
             Assert.AreEqual(expected, actualValue);
         }
 
-        private HtmlDocument GetHtmlDoc(ITicket ticket, bool isShowSoreMap = false)
+        private HtmlDocument ConvertToHtmlDocument(ITicket ticket, bool isShowSoreMap = false)
         {
             Choice_Template choiceTemplate = _choice.Render(ticket, _ticketHelperStub, null, isShowSoreMap);
             HtmlDocument htmlDoc = new HtmlDocument();
