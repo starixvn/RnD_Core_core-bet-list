@@ -25,7 +25,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choiceCreator = new ChoiceCreator(new Choice29(), BetTypes.Combine_Mix_Parlay);
         }
 
-        [Test]
+        //[Test]
         public void ClientDetailSystemParlayFunctionOfTicketHelperIsEmpty_ShowBetTeamIsYes()
         {
             // Arrange
