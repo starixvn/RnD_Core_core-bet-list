@@ -11,8 +11,8 @@
 namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.UnitTest.Templates;
-    using Fanex.BetList.Core.UnitTest.Ultils.Enums;
+    using Fanex.BetList.Core.UnitTest.Common.Templates;
+    using Fanex.BetList.Core.UnitTest.Common.Enums;
     using NUnit.Framework;
 
     public class Choice73Test

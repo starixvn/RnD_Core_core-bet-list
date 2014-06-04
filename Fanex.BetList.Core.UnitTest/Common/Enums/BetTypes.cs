@@ -8,7 +8,7 @@
 //   <change who="Edward.Nguyen" date="2014.5.30">Created</change>
 // </history>
 
-namespace Fanex.BetList.Core.UnitTest.Ultils.Enums
+namespace Fanex.BetList.Core.UnitTest.Common.Enums
 {
     /// <summary>
     /// Hard code bet types.

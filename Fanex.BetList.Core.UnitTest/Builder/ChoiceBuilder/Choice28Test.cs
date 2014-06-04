@@ -11,8 +11,8 @@
 namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.UnitTest.Templates;
-    using Fanex.BetList.Core.UnitTest.Ultils.Enums;
+    using Fanex.BetList.Core.UnitTest.Common.Templates;
+    using Fanex.BetList.Core.UnitTest.Common.Enums;
     using NUnit.Framework;
     using System;
 
@@ -48,7 +48,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choiceCreator.Ticket.Handicap2 = 2;
 
             // Act
-            string actualValue = _choiceCreator.GetInnerHtml(ChoiceXPath.BetTeam);
+            string actualValue = _choiceCreator.GetInnerHtml(XPathChoice.BetTeam);
 
             // Assert
             string handicap = "+" + (_choiceCreator.Ticket.Handicap2 - _choiceCreator.Ticket.Handicap1).ToString();
@@ -65,7 +65,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choiceCreator.Ticket.Handicap2 = 1;
 
             // Act
-            string actualValue = _choiceCreator.GetInnerHtml(ChoiceXPath.BetTeam);
+            string actualValue = _choiceCreator.GetInnerHtml(XPathChoice.BetTeam);
 
             // Assert
             string handicap = "+" + (_choiceCreator.Ticket.Handicap1 - _choiceCreator.Ticket.Handicap2).ToString();
@@ -82,11 +82,11 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choiceCreator.Ticket.Handicap2 = 1;
 
             // Act
-            string actualValue = _choiceCreator.GetInnerHtml(ChoiceXPath.BetTeam);
+            string actualValue = _choiceCreator.GetInnerHtml(XPathChoice.BetTeam);
 
             // Assert
             string handicap = "A&nbsp;+" + (_choiceCreator.Ticket.Handicap1 - _choiceCreator.Ticket.Handicap2).ToString();
-            string expected = string.Format(BetTeamTemplate, ChoiceTemplate.Draw, handicap);
+            string expected = string.Format(BetTeamTemplate, TemplateChoice.Draw, handicap);
             Assert.AreEqual(expected, actualValue);
         }
 
@@ -99,11 +99,11 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choiceCreator.Ticket.Handicap2 = 2;
 
             // Act
-            string actualValue = _choiceCreator.GetInnerHtml(ChoiceXPath.BetTeam);
+            string actualValue = _choiceCreator.GetInnerHtml(XPathChoice.BetTeam);
 
             // Assert
             string handicap = "H&nbsp;+" + (Math.Abs(_choiceCreator.Ticket.Handicap1 - _choiceCreator.Ticket.Handicap2)).ToString();
-            string expected = string.Format(BetTeamTemplate, ChoiceTemplate.Draw, handicap);
+            string expected = string.Format(BetTeamTemplate, TemplateChoice.Draw, handicap);
             Assert.AreEqual(expected, actualValue);
         }
 
@@ -116,11 +116,11 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choiceCreator.Ticket.Handicap2 = 1;
 
             // Act
-            string actualValue = _choiceCreator.GetInnerHtml(ChoiceXPath.BetTeam);
+            string actualValue = _choiceCreator.GetInnerHtml(XPathChoice.BetTeam);
 
             // Assert
             string handicap = (_choiceCreator.Ticket.Handicap1 - _choiceCreator.Ticket.Handicap2).ToString();
-            string expected = string.Format(BetTeamTemplate, ChoiceTemplate.Draw, handicap);
+            string expected = string.Format(BetTeamTemplate, TemplateChoice.Draw, handicap);
             Assert.AreEqual(expected, actualValue);
         }
 
@@ -128,10 +128,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         public void Ticket_ShowBetTeamClassNameIsFavorite()
         {
             // Act
-            string actualValue = _choiceCreator.GetHtmlClassValue(ChoiceXPath.BetTeam);
+            string actualValue = _choiceCreator.GetHtmlClassValue(XPathChoice.BetTeam);
 
             // Assert
-            string expected = ChoiceTemplate.BLFavorite;
+            string expected = TemplateChoice.BLFavorite;
             Assert.AreEqual(expected, actualValue);
         }
     }

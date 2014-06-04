@@ -11,8 +11,8 @@
 namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.UnitTest.Templates;
-    using Fanex.BetList.Core.UnitTest.Ultils.Enums;
+    using Fanex.BetList.Core.UnitTest.Common.Templates;
+    using Fanex.BetList.Core.UnitTest.Common.Enums;
     using NUnit.Framework;
 
     public class Choice15Test
@@ -29,10 +29,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         public void Ticket_ShowBetTeamIsLableHTDotBetTeamUpperCase()
         {
             // Act
-            string actualValue = _choiceCreator.GetFirstChildInnerHtml(ChoiceXPath.BetTeam);
+            string actualValue = _choiceCreator.GetFirstChildInnerHtml(XPathChoice.BetTeam);
 
             // Assert
-            string expected = string.Format("{0}.{1}", ChoiceTemplate.HT, _choiceCreator.Ticket.BetTeam.ToUpper());
+            string expected = string.Format("{0}.{1}", TemplateChoice.HT, _choiceCreator.Ticket.BetTeam.ToUpper());
             Assert.AreEqual(expected, actualValue);
         }
 
@@ -40,10 +40,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         public void Ticket_ShowBetTeamClassNameIsFavorite()
         {
             // Act
-            string actualValue = _choiceCreator.GetHtmlClassValue(ChoiceXPath.BetTeam);
+            string actualValue = _choiceCreator.GetHtmlClassValue(XPathChoice.BetTeam);
 
             // Assert
-            string expected = ChoiceTemplate.BLFavorite;
+            string expected = TemplateChoice.BLFavorite;
             Assert.AreEqual(expected, actualValue);
         }
 
@@ -54,7 +54,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choiceCreator.Ticket.BetTeam = string.Empty;
 
             // Act
-            string actualValue = _choiceCreator.GetFirstChildInnerHtml(ChoiceXPath.BetTeamHandicap);
+            string actualValue = _choiceCreator.GetFirstChildInnerHtml(XPathChoice.BetTeamHandicap);
 
             // Assert
             string expected = " ";

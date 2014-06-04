@@ -11,8 +11,8 @@
 namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.UnitTest.Templates;
-    using Fanex.BetList.Core.UnitTest.Ultils.Enums;
+    using Fanex.BetList.Core.UnitTest.Common.Templates;
+    using Fanex.BetList.Core.UnitTest.Common.Enums;
     using NUnit.Framework;
 
     public class Choice1220Test
@@ -29,7 +29,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         public void Ticket_VisibleSpanHandicap()
         {
             // Act
-            bool actual = _choiceCreator.IsExist(ChoiceXPath.BetTeamHandicap);
+            bool actual = _choiceCreator.IsExist(XPathChoice.BetTeamHandicap);
 
             // Assert
             bool expected = false;
@@ -40,10 +40,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         public void Ticket_ShowBetTeamClassNameIsUnderDog()
         {
             // Act
-            string actualValue = _choiceCreator.GetHtmlClassValue(ChoiceXPath.BetTeam);
+            string actualValue = _choiceCreator.GetHtmlClassValue(XPathChoice.BetTeam);
 
             // Assert
-            string expected = ChoiceTemplate.BLUnderDog;
+            string expected = TemplateChoice.BLUnderDog;
             Assert.AreEqual(expected, actualValue);
         }
     }

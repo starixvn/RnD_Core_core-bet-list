@@ -12,8 +12,8 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using System;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.UnitTest.Templates;
-    using Fanex.BetList.Core.UnitTest.Ultils.Enums;
+    using Fanex.BetList.Core.UnitTest.Common.Templates;
+    using Fanex.BetList.Core.UnitTest.Common.Enums;
     using HtmlAgilityPack;
     using NUnit.Framework;
 
@@ -58,8 +58,8 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choiceCreator.Ticket.BetTeam = string.Empty;
 
             // Act
-            string teamNameHtml = _choiceCreator.GetFirstChildInnerHtml(ChoiceXPath.BetTeam);
-            string lableHtml = _choiceCreator.GetFirstChildNextSiblingOuterHtml(ChoiceXPath.BetTeam);
+            string teamNameHtml = _choiceCreator.GetFirstChildInnerHtml(XPathChoice.BetTeam);
+            string lableHtml = _choiceCreator.GetFirstChildNextSiblingOuterHtml(XPathChoice.BetTeam);
 
             // Assert
             string expected = string.Format("{0} {1}", _choiceCreator.TicketHelperStub.GetTeamNameById(_choiceCreator.Ticket.AwayId), string.Format(TemplateBetTeamLable, "NO"));
@@ -74,8 +74,8 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choiceCreator.Ticket.BetTeam = "h";
 
             // Act
-            string teamNameHtml = _choiceCreator.GetFirstChildInnerHtml(ChoiceXPath.BetTeam);
-            string lableHtml = _choiceCreator.GetFirstChildNextSiblingOuterHtml(ChoiceXPath.BetTeam);
+            string teamNameHtml = _choiceCreator.GetFirstChildInnerHtml(XPathChoice.BetTeam);
+            string lableHtml = _choiceCreator.GetFirstChildNextSiblingOuterHtml(XPathChoice.BetTeam);
 
             // Assert
             string expected = string.Format("{0} {1}", _choiceCreator.TicketHelperStub.GetTeamNameById(_choiceCreator.Ticket.HomeId), string.Format(TemplateBetTeamLable, "NO"));
@@ -90,8 +90,8 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choiceCreator.Ticket.BetTeam = "y";
 
             // Act
-            string teamNameHtml = _choiceCreator.GetFirstChildInnerHtml(ChoiceXPath.BetTeam);
-            string lableHtml = _choiceCreator.GetFirstChildNextSiblingOuterHtml(ChoiceXPath.BetTeam);
+            string teamNameHtml = _choiceCreator.GetFirstChildInnerHtml(XPathChoice.BetTeam);
+            string lableHtml = _choiceCreator.GetFirstChildNextSiblingOuterHtml(XPathChoice.BetTeam);
 
             // Assert
             string expected = string.Format("{0} {1}", _choiceCreator.TicketHelperStub.GetTeamNameById(_choiceCreator.Ticket.AwayId), string.Format(TemplateBetTeamLable, "YES"));
@@ -106,8 +106,8 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choiceCreator.Ticket.BetTeam = "hy";
 
             // Act
-            string teamNameHtml = _choiceCreator.GetFirstChildInnerHtml(ChoiceXPath.BetTeam);
-            string lableHtml = _choiceCreator.GetFirstChildNextSiblingOuterHtml(ChoiceXPath.BetTeam);
+            string teamNameHtml = _choiceCreator.GetFirstChildInnerHtml(XPathChoice.BetTeam);
+            string lableHtml = _choiceCreator.GetFirstChildNextSiblingOuterHtml(XPathChoice.BetTeam);
 
             // Assert
             string expected = string.Format("{0} {1}", _choiceCreator.TicketHelperStub.GetTeamNameById(_choiceCreator.Ticket.HomeId), string.Format(TemplateBetTeamLable, "YES"));

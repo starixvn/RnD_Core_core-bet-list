@@ -11,8 +11,8 @@
 namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.UnitTest.Templates;
-    using Fanex.BetList.Core.UnitTest.Ultils.Enums;
+    using Fanex.BetList.Core.UnitTest.Common.Templates;
+    using Fanex.BetList.Core.UnitTest.Common.Enums;
     using NUnit.Framework;
 
     public class Choice1304Test
@@ -29,10 +29,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         public void Ticket_ShowSpanBetTypeName()
         {
             // Act
-            string actualHtml = _choiceCreator.GetOuterHtml(ChoiceXPath.BetType);
+            string actualHtml = _choiceCreator.GetOuterHtml(XPathChoice.BetType);
 
             // Assert
-            string expectedHtml = string.Format(ChoiceTemplate.BetType, _choiceCreator.TicketHelperStub.GetBetTypeNameById(_choiceCreator.Ticket.BetTypeId, _choiceCreator.Ticket.BetId));
+            string expectedHtml = string.Format(TemplateChoice.BetType, _choiceCreator.TicketHelperStub.GetBetTypeNameById(_choiceCreator.Ticket.BetTypeId, _choiceCreator.Ticket.BetId));
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
@@ -40,10 +40,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         public void Ticket_ShowBetTeamClassNameIsFavorite()
         {
             // Act
-            string actualValue = _choiceCreator.GetHtmlClassValue(ChoiceXPath.BetTeam);
+            string actualValue = _choiceCreator.GetHtmlClassValue(XPathChoice.BetTeam);
 
             // Assert
-            string expected = ChoiceTemplate.BLFavorite;
+            string expected = TemplateChoice.BLFavorite;
             Assert.AreEqual(expected, actualValue);
         }
     }

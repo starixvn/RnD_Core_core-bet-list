@@ -8,7 +8,7 @@
 //   <change who="Edward.Nguyen" date="2014.5.16">Created</change>
 // </history>
 
-namespace Fanex.BetList.Core.UnitTest.Ultils
+namespace Fanex.BetList.Core.UnitTest.Common
 {
     using System;
     using Fanex.BetList.Core.Entities;

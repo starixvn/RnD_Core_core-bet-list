@@ -11,8 +11,8 @@
 namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.UnitTest.Templates;
-    using Fanex.BetList.Core.UnitTest.Ultils.Enums;
+    using Fanex.BetList.Core.UnitTest.Common.Templates;
+    using Fanex.BetList.Core.UnitTest.Common.Enums;
     using NUnit.Framework;
 
     public class Choice1235Test
@@ -32,7 +32,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choiceCreator.Ticket.BetTeam = "1";
 
             // Act
-            string actualValue = _choiceCreator.GetFirstChildInnerHtml(ChoiceXPath.BetTeam);
+            string actualValue = _choiceCreator.GetFirstChildInnerHtml(XPathChoice.BetTeam);
 
             // Assert
             string expected = "Win-0";
@@ -46,7 +46,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choiceCreator.Ticket.BetTeam = "2";
 
             // Act
-            string actualValue = _choiceCreator.GetFirstChildInnerHtml(ChoiceXPath.BetTeam);
+            string actualValue = _choiceCreator.GetFirstChildInnerHtml(XPathChoice.BetTeam);
 
             // Assert
             string expected = "Win-15";
@@ -60,7 +60,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choiceCreator.Ticket.BetTeam = "3";
 
             // Act
-            string actualValue = _choiceCreator.GetFirstChildInnerHtml(ChoiceXPath.BetTeam);
+            string actualValue = _choiceCreator.GetFirstChildInnerHtml(XPathChoice.BetTeam);
 
             // Assert
             string expected = "Win-30";
@@ -74,7 +74,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choiceCreator.Ticket.BetTeam = "4";
 
             // Act
-            string actualValue = _choiceCreator.GetFirstChildInnerHtml(ChoiceXPath.BetTeam);
+            string actualValue = _choiceCreator.GetFirstChildInnerHtml(XPathChoice.BetTeam);
 
             // Assert
             string expected = "Win-40";
@@ -88,7 +88,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choiceCreator.Ticket.BetTeam = "5";
 
             // Act
-            string actualValue = _choiceCreator.GetFirstChildInnerHtml(ChoiceXPath.BetTeam);
+            string actualValue = _choiceCreator.GetFirstChildInnerHtml(XPathChoice.BetTeam);
 
             // Assert
             string expected = "0-Win";
@@ -102,7 +102,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choiceCreator.Ticket.BetTeam = "6";
 
             // Act
-            string actualValue = _choiceCreator.GetFirstChildInnerHtml(ChoiceXPath.BetTeam);
+            string actualValue = _choiceCreator.GetFirstChildInnerHtml(XPathChoice.BetTeam);
 
             // Assert
             string expected = "15-Win";
@@ -116,7 +116,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choiceCreator.Ticket.BetTeam = "7";
 
             // Act
-            string actualValue = _choiceCreator.GetFirstChildInnerHtml(ChoiceXPath.BetTeam);
+            string actualValue = _choiceCreator.GetFirstChildInnerHtml(XPathChoice.BetTeam);
 
             // Assert
             string expected = "30-Win";
@@ -130,7 +130,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choiceCreator.Ticket.BetTeam = "8";
 
             // Act
-            string actualValue = _choiceCreator.GetFirstChildInnerHtml(ChoiceXPath.BetTeam);
+            string actualValue = _choiceCreator.GetFirstChildInnerHtml(XPathChoice.BetTeam);
 
             // Assert
             string expected = "40-Win";

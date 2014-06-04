@@ -8,17 +8,17 @@
 //   <change who="Edward.Nguyen" date="2014.5.27">Created</change>
 // </history>
 
-namespace Fanex.BetList.Core.UnitTest.Templates
+namespace Fanex.BetList.Core.UnitTest.Common.Templates
 {
-    public class ChoiceXPath
+    public class XPathChoice
     {
-        public const string ScoreMap = "/div/span[1][@class=\"scoremap\"]";
+        public const string ScoreMapIcon = "/div/span[@class=\"scoremap\"]";
         public const string BetTeam = "/div/span[1]";
         public const string BetTeamHandicap = "/div/span[1]/span[1][@class=\"handicap\"]";
         public const string BetTeamOdds = "/div/span[1]/span[1]/span[1][@class=\"odds\"]";
-        public const string Score = "/div/span/span[2][@class=\"favorite\"]";
-        public const string BetType = "/div/div[1][@class=\"bettype\"]";
-        public const string Match = "/div/div[2][@class=\"match\"]";
+        public const string Score = "/div/span/span[@class=\"favorite\"]";
+        public const string BetType = "/div/div[@class=\"bettype\"]";
+        public const string Match = "/div/div[@class=\"match\"]";
         public const string MatchHomeTeam = "/div/div[2][@class=\"match\"]/span[1]";
         public const string MatchVS = "/div/div[2][@class=\"match\"]/span[2]";
         public const string MatchAwayTeam = "/div/div[2][@class=\"match\"]/span[3]";
@@ -27,8 +27,9 @@ namespace Fanex.BetList.Core.UnitTest.Templates
         public const string MatchLastGoal = "/div/div[2][@class=\"match\"]/div[{0}][@class=\"lastGoal\"]";
         public const string MatchFHFirstGoal = "/div/div[2][@class=\"match\"]/div[{0}][@class=\"fhFirstGoal\"]";
         public const string MatchFHLastGoal = "/div/div[2][@class=\"match\"]/div[{0}][@class=\"fhLastGoal\"]";
-        public const string LeagueSportTypeName = "/div/div[3][@class=\"league\"]/span[1][@class=\"sport\"]";
-        public const string LeagueLeagueNameLeagueName = "/div/div[3][@class=\"league\"]/span[2][@class=\"leagueName\"]";
+        public const string SportTypeName = "/div/div[@class=\"league\"]/span[@class=\"sport\"]";
+        public const string LeagueName = "/div/div[@class=\"league\"]/span[@class=\"leagueName\"]";
+        public const string League = "/div/div[@class=\"league\"]";
         public const string Root = "/div";
     }
 }

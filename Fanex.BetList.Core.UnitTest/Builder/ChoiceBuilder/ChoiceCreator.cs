@@ -15,40 +15,22 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
     using Fanex.BetList.Core.UnitTest.Stubs;
-    using Fanex.BetList.Core.UnitTest.Ultils;
+    using Fanex.BetList.Core.UnitTest.Common;
     using HtmlAgilityPack;
+    using Fanex.BetList.Core.UnitTest.Common.Helper;
+    using Fanex.BetList.Core.UnitTest.Common.Templates;
 
     public class ChoiceCreator
     {
         private IChoice _choice;
-        private ITicketHelper _ticketHelperStub;
-        private ITicket _ticket;
         private bool _isShowScoreMap;
         private HtmlDocument _htmlDoc;
 
-        public ChoiceCreator(IChoice choice, int betTypeId)
+        public ChoiceCreator(IChoice choice)
         {
             _choice = choice;
-            _ticketHelperStub = new TicketHelperStub();
-            _ticket = TestData.CreateTicket(betTypeId);
             _isShowScoreMap = false;
             _htmlDoc = null;
-        }
-
-        public ITicket Ticket
-        {
-            get
-            {
-                return _ticket;
-            }
-        }
-
-        public ITicketHelper TicketHelperStub
-        {
-            get
-            {
-                return _ticketHelperStub;
-            }
         }
 
         public bool IsShowScoreMap
@@ -64,80 +46,219 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             }
         }
 
-        public HtmlDocument HtmlDocument
+        public void Build(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            Choice_Template choiceTemplate = _choice.Render(ticket, ticketHelper, null, _isShowScoreMap);
+            _htmlDoc = new HtmlDocument();
+            _htmlDoc.LoadHtml(choiceTemplate.ToString());
+        }
+
+        public string Score
         {
             get
             {
-                if (ReferenceEquals(_htmlDoc, null))
+                var htmlNode = _htmlDoc.DocumentNode.SelectSingleNode(XPathChoice.Score);
+
+                return htmlNode != null ? htmlNode.OuterHtml : string.Empty;
+            }
+        }
+
+        public string League
+        {
+            get
+            {
+                var htmlNode = _htmlDoc.DocumentNode.SelectSingleNode(XPathChoice.League);
+
+                return htmlNode != null ? htmlNode.OuterHtml : string.Empty;
+            }
+        }
+
+        public string Sport
+        {
+            get
+            {
+                var htmlNode = _htmlDoc.DocumentNode.SelectSingleNode(XPathChoice.SportTypeName);
+
+                return htmlNode != null ? htmlNode.OuterHtml : string.Empty;
+            }
+        }
+
+        public string LeagueName
+        {
+            get
+            {
+                var htmlNode = _htmlDoc.DocumentNode.SelectSingleNode(XPathChoice.LeagueName);
+
+                return htmlNode != null ? htmlNode.OuterHtml : string.Empty;
+            }
+        }
+
+        public string BetType
+        {
+            get
+            {
+                var htmlNode = _htmlDoc.DocumentNode.SelectSingleNode(XPathChoice.BetType);
+
+                return htmlNode != null ? htmlNode.OuterHtml : string.Empty;
+            }
+        }
+
+        public string ScoreMapIcon
+        {
+            get
+            {
+                var htmlNode = _htmlDoc.DocumentNode.SelectSingleNode(XPathChoice.ScoreMapIcon);
+
+                return htmlNode != null ? htmlNode.OuterHtml : string.Empty;
+            }
+        }
+
+        public string HomeTeam
+        {
+            get
+            {
+                var htmlNode = _htmlDoc.DocumentNode.SelectSingleNode(XPathChoice.Match);
+
+                return htmlNode != null ? htmlNode.FirstChild.OuterHtml : string.Empty;
+            }
+        }
+
+        public string HomeFirstGoalLastGoal
+        {
+            get
+            {
+                var htmlNode = _htmlDoc.DocumentNode.SelectSingleNode(XPathChoice.Match);
+                var htmlNodeCollection = htmlNode.ChildNodes;
+                var homeFGLG = string.Empty;
+                var countNode = htmlNodeCollection.Count;
+
+                for (int i = 1; i < countNode; i++)
                 {
-                    Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelperStub, null, _isShowScoreMap);
-                    _htmlDoc = new HtmlDocument();
-                    _htmlDoc.LoadHtml(choiceTemplate.ToString());
+                    var tempHtmlNode = htmlNodeCollection[i];
+
+                    if (tempHtmlNode.Name != "span")
+                    {
+                        homeFGLG += tempHtmlNode.OuterHtml;
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
 
-                return _htmlDoc;
+                return homeFGLG;
+            }
+        }
+
+        public string HomeTeamVsAwayTeam
+        {
+            get
+            {
+                var htmlNode = _htmlDoc.DocumentNode.SelectSingleNode(XPathChoice.Match);
+                var htmlNodeCollection = htmlNode.ChildNodes;
+                var countNode = htmlNodeCollection.Count;
+
+                for (int i = 1; i < countNode; i++)
+                {
+                    var tempHtmlNode = htmlNodeCollection[i];
+
+                    if (tempHtmlNode.Name == "span" && tempHtmlNode.OuterHtml == TemplateChoice.MatchVS)
+                    {
+                        return TemplateChoice.MatchVS;
+                    }
+                }
+
+                return string.Empty;
+            }
+        }
+
+        public string AwayTeam
+        {
+            get
+            {
+                var htmlNode = _htmlDoc.DocumentNode.SelectSingleNode(XPathChoice.Match);
+                var htmlNodeCollection = htmlNode.ChildNodes;
+                var countNode = htmlNodeCollection.Count;
+
+                for (int i = 1; i < countNode; i++)
+                {
+                    var tempHtmlNode = htmlNodeCollection[i];
+
+                    if (tempHtmlNode.Name == "span" && tempHtmlNode.OuterHtml != TemplateChoice.MatchVS)
+                    {
+                        return tempHtmlNode.OuterHtml;
+                    }
+                }
+
+                return string.Empty;
+            }
+        }
+
+        public string AwayFirstGoalLastGoal
+        {
+            get
+            {
+                var htmlNode = _htmlDoc.DocumentNode.SelectSingleNode(XPathChoice.Match);
+                var htmlNodeCollection = htmlNode.ChildNodes;
+                var countNode = htmlNodeCollection.Count;
+
+                for (int i = 1; i < countNode; i++)
+                {
+                    var tempHtmlNode = htmlNodeCollection[i];
+
+                    if (tempHtmlNode.Name == "span" && tempHtmlNode.OuterHtml != TemplateChoice.MatchVS)
+                    {
+                        var awayFGLG = string.Empty;
+
+                        for (int j = i; j < countNode; j++)
+                        {
+                            //awayFGLG+=
+                        }
+                    }
+                }
+
+                return string.Empty;
             }
         }
 
         public string GetOuterHtml(string xPath)
         {
-            HtmlNode htmlNode = HtmlDocument.DocumentNode.SelectNodes(xPath).FirstOrDefault();
-
-            return htmlNode.OuterHtml;
+            return _htmlDoc.GetOuterHtml(xPath);
         }
 
         public string GetInnerHtml(string xPath)
         {
-            HtmlNode htmlNode = HtmlDocument.DocumentNode.SelectNodes(xPath).FirstOrDefault();
-
-            return htmlNode.InnerHtml;
+            return _htmlDoc.GetInnerHtml(xPath);
         }
 
         public string GetPreviousSiblingOuterHtml(string xPath, int length = 1)
         {
-            HtmlNode htmlNode = HtmlDocument.DocumentNode.SelectNodes(xPath).FirstOrDefault();
-
-            for (int i = 0; i < length; i++)
-            {
-                htmlNode = htmlNode.PreviousSibling;
-            }
-
-            return htmlNode.OuterHtml;
+            return _htmlDoc.GetPreviousSiblingOuterHtml(xPath, length);
         }
 
         public string GetFirstChildInnerHtml(string xPath)
         {
-            HtmlNode htmlNode = HtmlDocument.DocumentNode.SelectNodes(xPath).FirstOrDefault();
-
-            return htmlNode.FirstChild.InnerHtml;
+            return _htmlDoc.GetFirstChildInnerHtml(xPath);
         }
 
         public string GetFirstChildOuterHtml(string xPath)
         {
-            HtmlNode htmlNode = HtmlDocument.DocumentNode.SelectNodes(xPath).FirstOrDefault();
-
-            return htmlNode.FirstChild.OuterHtml;
+            return _htmlDoc.GetFirstChildOuterHtml(xPath);
         }
 
         public string GetFirstChildNextSiblingOuterHtml(string xPath)
         {
-            HtmlNode htmlNode = HtmlDocument.DocumentNode.SelectNodes(xPath).FirstOrDefault();
-
-            return htmlNode.FirstChild.NextSibling.OuterHtml;
+            return _htmlDoc.GetFirstChildNextSiblingOuterHtml(xPath);
         }
 
         public string GetHtmlClassValue(string xPath)
         {
-            HtmlNode htmlNode = HtmlDocument.DocumentNode.SelectNodes(xPath).FirstOrDefault();
-
-            return htmlNode.Attributes["class"].Value;
+            return _htmlDoc.GetHtmlClassValue(xPath);
         }
 
         public bool IsExist(string xPath)
         {
-            HtmlNodeCollection htmlNode = HtmlDocument.DocumentNode.SelectNodes(xPath);
-
-            return !ReferenceEquals(htmlNode, null);
+            return _htmlDoc.IsExist(xPath);
         }
     }
 }

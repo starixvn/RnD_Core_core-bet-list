@@ -12,8 +12,8 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using System;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.UnitTest.Templates;
-    using Fanex.BetList.Core.UnitTest.Ultils.Enums;
+    using Fanex.BetList.Core.UnitTest.Common.Templates;
+    using Fanex.BetList.Core.UnitTest.Common.Enums;
     using NUnit.Framework;
 
     public class Choice122Test
@@ -33,10 +33,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choiceCreator.Ticket.BetTeam = null;
 
             // Act
-            string betTeamHtml = _choiceCreator.GetFirstChildInnerHtml(ChoiceXPath.BetTeam);
+            string betTeamHtml = _choiceCreator.GetFirstChildInnerHtml(XPathChoice.BetTeam);
 
             // Assert
-            string expectedHtml = ChoiceTemplate.Draw;
+            string expectedHtml = TemplateChoice.Draw;
             Assert.AreEqual(expectedHtml, betTeamHtml);
         }
 
@@ -47,10 +47,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choiceCreator.Ticket.BetTeam = string.Empty;
 
             // Act
-            string betTeamHtml = _choiceCreator.GetFirstChildInnerHtml(ChoiceXPath.BetTeam);
+            string betTeamHtml = _choiceCreator.GetFirstChildInnerHtml(XPathChoice.BetTeam);
 
             // Assert
-            string expectedHtml = ChoiceTemplate.Draw;
+            string expectedHtml = TemplateChoice.Draw;
             Assert.AreEqual(expectedHtml, betTeamHtml);
         }
 
@@ -61,7 +61,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choiceCreator.Ticket.BetTeam = "ahbc";
 
             // Act
-            string betTeamHtml = _choiceCreator.GetFirstChildInnerHtml(ChoiceXPath.BetTeam);
+            string betTeamHtml = _choiceCreator.GetFirstChildInnerHtml(XPathChoice.BetTeam);
 
             // Assert
             string expectedHtml = _choiceCreator.TicketHelperStub.GetTeamNameById(_choiceCreator.Ticket.HomeId);
@@ -72,10 +72,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         public void Ticket_ShowBetTeamClassNameIsUnderDog()
         {
             // Act
-            string actualValue = _choiceCreator.GetHtmlClassValue(ChoiceXPath.BetTeam);
+            string actualValue = _choiceCreator.GetHtmlClassValue(XPathChoice.BetTeam);
 
             // Assert
-            string expected = ChoiceTemplate.BLUnderDog;
+            string expected = TemplateChoice.BLUnderDog;
             Assert.AreEqual(expected, actualValue);
         }
 
@@ -83,7 +83,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         public void Ticket_VisibleSpanHandicap()
         {
             // Act
-            string actualValue = _choiceCreator.GetFirstChildInnerHtml(ChoiceXPath.BetTeamHandicap);
+            string actualValue = _choiceCreator.GetFirstChildInnerHtml(XPathChoice.BetTeamHandicap);
 
             // Assert
             string expected = " ";
@@ -97,10 +97,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choiceCreator.Ticket.IsLive = true;
 
             // Act
-            string actualHtml = _choiceCreator.GetOuterHtml(ChoiceXPath.Score);
+            string actualHtml = _choiceCreator.GetOuterHtml(XPathChoice.Score);
 
             // Assert
-            string expectedHtml = string.Format(ChoiceTemplate.Score, _choiceCreator.Ticket.LiveHomeScore, _choiceCreator.Ticket.LiveAwayScore);
+            string expectedHtml = string.Format(TemplateChoice.Score, _choiceCreator.Ticket.LiveHomeScore, _choiceCreator.Ticket.LiveAwayScore);
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
@@ -112,7 +112,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 
             // Act
             bool expected = false;
-            bool actual = _choiceCreator.IsExist(ChoiceXPath.Score);
+            bool actual = _choiceCreator.IsExist(XPathChoice.Score);
 
             // Assert
             Assert.AreEqual(expected, actual);
@@ -122,10 +122,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         public void Ticket_ShowSpanBetTypeName()
         {
             // Act
-            string actualHtml = _choiceCreator.GetOuterHtml(ChoiceXPath.BetType);
+            string actualHtml = _choiceCreator.GetOuterHtml(XPathChoice.BetType);
 
             // Assert
-            string expectedHtml = string.Format(ChoiceTemplate.BetType, _choiceCreator.TicketHelperStub.GetBetTypeNameById(_choiceCreator.Ticket.BetTypeId));
+            string expectedHtml = string.Format(TemplateChoice.BetType, _choiceCreator.TicketHelperStub.GetBetTypeNameById(_choiceCreator.Ticket.BetTypeId));
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
@@ -136,10 +136,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choiceCreator.Ticket.IsNeutral = true;
 
             // Act
-            string actualHtml = _choiceCreator.GetOuterHtml(ChoiceXPath.MatchHomeTeam);
+            string actualHtml = _choiceCreator.GetOuterHtml(XPathChoice.MatchHomeTeam);
 
             // Assert
-            string expectedHtml = string.Format(ChoiceTemplate.MatchHomeTeamIsNeutral, _choiceCreator.TicketHelperStub.GetTeamNameById(_choiceCreator.Ticket.HomeId));
+            string expectedHtml = string.Format(TemplateChoice.MatchHomeTeamIsNeutral, _choiceCreator.TicketHelperStub.GetTeamNameById(_choiceCreator.Ticket.HomeId));
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
@@ -150,10 +150,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choiceCreator.Ticket.IsNeutral = false;
 
             // Act
-            string actualHtml = _choiceCreator.GetOuterHtml(ChoiceXPath.MatchHomeTeam);
+            string actualHtml = _choiceCreator.GetOuterHtml(XPathChoice.MatchHomeTeam);
 
             // Assert
-            string expectedHtml = string.Format(ChoiceTemplate.MatchTeamName, _choiceCreator.TicketHelperStub.GetTeamNameById(_choiceCreator.Ticket.HomeId));
+            string expectedHtml = string.Format(TemplateChoice.MatchTeamName, _choiceCreator.TicketHelperStub.GetTeamNameById(_choiceCreator.Ticket.HomeId));
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
@@ -161,10 +161,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         public void Ticket_ShowSpanAwayTeamName()
         {
             // Act
-            string actualHtml = _choiceCreator.GetOuterHtml(ChoiceXPath.MatchAwayTeam);
+            string actualHtml = _choiceCreator.GetOuterHtml(XPathChoice.MatchAwayTeam);
 
             // Assert
-            string expectedHtml = string.Format(ChoiceTemplate.MatchTeamName, _choiceCreator.TicketHelperStub.GetTeamNameById(_choiceCreator.Ticket.AwayId));
+            string expectedHtml = string.Format(TemplateChoice.MatchTeamName, _choiceCreator.TicketHelperStub.GetTeamNameById(_choiceCreator.Ticket.AwayId));
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
@@ -175,10 +175,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choiceCreator.IsShowScoreMap = true;
 
             // Act
-            string actualHtml = _choiceCreator.GetOuterHtml(ChoiceXPath.ScoreMap);
+            string actualHtml = _choiceCreator.GetOuterHtml(XPathChoice.ScoreMapIcon);
 
             // Assert
-            string expectedHtml = string.Format(ChoiceTemplate.ScoreMap, _choiceCreator.Ticket.MatchId, _choiceCreator.Ticket.BetTypeId, Convert.ToInt32(_choiceCreator.Ticket.IsLive));
+            string expectedHtml = string.Format(TemplateChoice.ScoreMap, _choiceCreator.Ticket.MatchId, _choiceCreator.Ticket.BetTypeId, Convert.ToInt32(_choiceCreator.Ticket.IsLive));
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
@@ -186,7 +186,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         public void TicketAndShowScoreMapIconIsFalse_VisibleSpanScoreMapIcon()
         {
             // Act
-            bool actual = _choiceCreator.IsExist(ChoiceXPath.ScoreMap);
+            bool actual = _choiceCreator.IsExist(XPathChoice.ScoreMapIcon);
 
             // Assert
             bool expected = false;
@@ -197,10 +197,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         public void Ticket_ShowSpanSportTypeName()
         {
             // Act
-            string actualHtml = _choiceCreator.GetOuterHtml(ChoiceXPath.LeagueSportTypeName);
+            string actualHtml = _choiceCreator.GetOuterHtml(XPathChoice.SportTypeName);
 
             // Assert
-            string expectedHtml = string.Format(ChoiceTemplate.LeagueSport, _choiceCreator.TicketHelperStub.GetSportNameById(_choiceCreator.Ticket.SportTypeId));
+            string expectedHtml = string.Format(TemplateChoice.LeagueSport, _choiceCreator.TicketHelperStub.GetSportNameById(_choiceCreator.Ticket.SportTypeId));
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 
@@ -208,10 +208,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         public void Ticket_ShowSpanLeagueName()
         {
             // Act
-            string actualHtml = _choiceCreator.GetOuterHtml(ChoiceXPath.LeagueLeagueNameLeagueName);
+            string actualHtml = _choiceCreator.GetOuterHtml(XPathChoice.LeagueName);
 
             // Assert
-            string expectedHtml = string.Format(ChoiceTemplate.LaagueLeagueName, _choiceCreator.TicketHelperStub.GetLeagueNameById(_choiceCreator.Ticket.LeagueId));
+            string expectedHtml = string.Format(TemplateChoice.LaagueLeagueName, _choiceCreator.TicketHelperStub.GetLeagueNameById(_choiceCreator.Ticket.LeagueId));
             Assert.AreEqual(expectedHtml, actualHtml);
         }
     }

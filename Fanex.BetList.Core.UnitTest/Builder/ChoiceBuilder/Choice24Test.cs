@@ -11,8 +11,8 @@
 namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.UnitTest.Templates;
-    using Fanex.BetList.Core.UnitTest.Ultils.Enums;
+    using Fanex.BetList.Core.UnitTest.Common.Templates;
+    using Fanex.BetList.Core.UnitTest.Common.Enums;
     using NUnit.Framework;
 
     public class Choice24Test
@@ -45,7 +45,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choiceCreator.Ticket.BetTeam = "123";
 
             // Act
-            string actualValue = _choiceCreator.GetInnerHtml(ChoiceXPath.BetTeam);
+            string actualValue = _choiceCreator.GetInnerHtml(XPathChoice.BetTeam);
 
             // Assert
             string expected = string.Format(BetTeamTemplate,
@@ -61,12 +61,12 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choiceCreator.Ticket.BetTeam = "123x";
 
             // Act
-            string actualValue = _choiceCreator.GetInnerHtml(ChoiceXPath.BetTeam);
+            string actualValue = _choiceCreator.GetInnerHtml(XPathChoice.BetTeam);
 
             // Assert
             string expected = string.Format(BetTeamTemplate,
                 _choiceCreator.TicketHelperStub.GetTeamNameById(_choiceCreator.Ticket.HomeId),
-                ChoiceTemplate.Draw);
+                TemplateChoice.Draw);
             Assert.AreEqual(expected, actualValue);
         }
 
@@ -77,7 +77,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choiceCreator.Ticket.BetTeam = "23";
 
             // Act
-            string actualValue = _choiceCreator.GetInnerHtml(ChoiceXPath.BetTeam);
+            string actualValue = _choiceCreator.GetInnerHtml(XPathChoice.BetTeam);
 
             // Assert
             string expected = string.Format(BetTeamTemplate,
@@ -93,12 +93,12 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choiceCreator.Ticket.BetTeam = "23x";
 
             // Act
-            string actualValue = _choiceCreator.GetInnerHtml(ChoiceXPath.BetTeam);
+            string actualValue = _choiceCreator.GetInnerHtml(XPathChoice.BetTeam);
 
             // Assert
             string expected = string.Format(BetTeamTemplate,
                 _choiceCreator.TicketHelperStub.GetTeamNameById(_choiceCreator.Ticket.AwayId),
-                ChoiceTemplate.Draw);
+                TemplateChoice.Draw);
             Assert.AreEqual(expected, actualValue);
         }
     }

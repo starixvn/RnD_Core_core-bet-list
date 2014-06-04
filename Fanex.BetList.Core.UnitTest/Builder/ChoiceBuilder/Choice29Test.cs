@@ -11,13 +11,15 @@
 namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.UnitTest.Templates;
-    using Fanex.BetList.Core.UnitTest.Ultils.Enums;
+    using Fanex.BetList.Core.UnitTest.Common.Templates;
+    using Fanex.BetList.Core.UnitTest.Common.Enums;
     using NUnit.Framework;
 
     public class Choice29Test
     {
         private ChoiceCreator _choiceCreator;
+        private const string MixParlayMarkupTemplate = "<div class=\"combinationLink\"><a id=\"hidden0\" href='{0}'>{1}</a> - <span style=\"color:#3a3a3a\">{2}</span></div><div id=\"divEvent_{3}{4}\" style=\"display: none\"></div>{5}";
+        private const string SystemParlayDetailFunctionTemplate="<div class=\"detail\" onclick=\"showCombMPDetail(&quot;{0}&quot;,&quot;{1}&quot;,&quot;{2}&quot;,&quot;0&quot;,&quot;{3}&quot;);\"><a style=\"color:#755200;font-weight:bold\" href='javascript:void(\"\");'>Details</a></div>";
 
         [SetUp]
         public void Setup()
@@ -34,10 +36,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choiceCreator.Ticket.BetTeam = "h";
 
             // Act
-            string actualValue = _choiceCreator.GetFirstChildInnerHtml(ChoiceXPath.BetTeam);
+            string actualValue = _choiceCreator.GetFirstChildInnerHtml(XPathChoice.BetTeam);
 
             // Assert
-            string expected = ChoiceTemplate.Yes;
+            string expected = TemplateChoice.Yes;
             Assert.AreEqual(expected, actualValue);
         }
     }

@@ -8,9 +8,9 @@
 //   <change who="Edward.Nguyen" date="2014.5.27">Created</change>
 // </history>
 
-namespace Fanex.BetList.Core.UnitTest.Templates
+namespace Fanex.BetList.Core.UnitTest.Common.Templates
 {
-    public class ChoiceTemplate
+    public class TemplateChoice
     {
         /// <summary>
         /// BLUnderDog = "underdog".

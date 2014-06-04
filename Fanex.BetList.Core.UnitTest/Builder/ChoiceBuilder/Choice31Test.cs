@@ -11,8 +11,8 @@
 namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.UnitTest.Templates;
-    using Fanex.BetList.Core.UnitTest.Ultils.Enums;
+    using Fanex.BetList.Core.UnitTest.Common.Templates;
+    using Fanex.BetList.Core.UnitTest.Common.Enums;
     using NUnit.Framework;
 
     public class Choice31Test
@@ -29,7 +29,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         public void Ticket_ShowBetTeamIsMatchCodeHyphenHorseTeamName()
         {
             // Act
-            string actualValue = _choiceCreator.GetFirstChildInnerHtml(ChoiceXPath.BetTeam);
+            string actualValue = _choiceCreator.GetFirstChildInnerHtml(XPathChoice.BetTeam);
 
             // Assert
             string expected = string.Format("{0} - {1}",
@@ -42,10 +42,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         public void Ticket_ShowBetTeamClassNameIsFavorite()
         {
             // Act
-            string actualValue = _choiceCreator.GetHtmlClassValue(ChoiceXPath.BetTeam);
+            string actualValue = _choiceCreator.GetHtmlClassValue(XPathChoice.BetTeam);
 
             // Assert
-            string expected = ChoiceTemplate.BLFavorite;
+            string expected = TemplateChoice.BLFavorite;
             Assert.AreEqual(expected, actualValue);
         }
 
@@ -53,10 +53,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         public void Ticket_ShowMacthIsOnlyLableRaceWithRaceOfTicket()
         {
             // Act
-            string actualValue = _choiceCreator.GetInnerHtml(ChoiceXPath.Match);
+            string actualValue = _choiceCreator.GetInnerHtml(XPathChoice.Match);
 
             // Assert
-            string expected = string.Format("<span>{0}&nbsp;{1}</span><span></span>", ChoiceTemplate.Race, _choiceCreator.Ticket.Race);
+            string expected = string.Format("<span>{0}&nbsp;{1}</span><span></span>", TemplateChoice.Race, _choiceCreator.Ticket.Race);
             Assert.AreEqual(expected, actualValue);
         }
     }

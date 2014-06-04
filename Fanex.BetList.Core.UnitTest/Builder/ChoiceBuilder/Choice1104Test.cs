@@ -11,8 +11,8 @@
 namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.UnitTest.Templates;
-    using Fanex.BetList.Core.UnitTest.Ultils.Enums;
+    using Fanex.BetList.Core.UnitTest.Common.Templates;
+    using Fanex.BetList.Core.UnitTest.Common.Enums;
     using NUnit.Framework;
 
     public class Choice1104Test
@@ -29,10 +29,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         public void Ticket_ShowLeagueLeagueNameIsLiveRouletteWithShowTime()
         {
             // Act
-            string actualHtml = _choiceCreator.GetOuterHtml(ChoiceXPath.LeagueLeagueNameLeagueName);
+            string actualHtml = _choiceCreator.GetOuterHtml(XPathChoice.LeagueName);
 
             // Assert
-            string expectedHtml = string.Format(ChoiceTemplate.LaagueLeagueName, "Live Roulette&nbsp;" + _choiceCreator.Ticket.ShowTime);
+            string expectedHtml = string.Format(TemplateChoice.LaagueLeagueName, "Live Roulette&nbsp;" + _choiceCreator.Ticket.ShowTime);
             Assert.AreEqual(expectedHtml, actualHtml);
         }
     }
