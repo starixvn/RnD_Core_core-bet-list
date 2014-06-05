@@ -61,10 +61,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         {
             // Act            
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-            var actual = choiceTemplate.Score;
+            var actualScore = choiceTemplate.Score;
 
             // Assert
-            Assert.IsNull(actual);
+            Assert.IsNull(actualScore);
         }
 
         [Test]
@@ -72,10 +72,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         {
             // Act
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-            var actual = choiceTemplate.Match.VS;
+            var actualMatchVs = choiceTemplate.Match.VS;
 
             // Assert
-            Assert.IsNull(actual);
+            Assert.IsNull(actualMatchVs);
         }
 
         [Test]
@@ -83,10 +83,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         {
             // Act
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-            var actual = choiceTemplate.Handicap.handicap;
+            var actualHandicapValue = choiceTemplate.Handicap.handicap;
 
             // Assert            
-            Assert.IsNullOrEmpty(actual);
+            Assert.IsNullOrEmpty(actualHandicapValue);
         }
 
         [Test]
@@ -94,11 +94,11 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         {
             // Act
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-            var actual = choiceTemplate.BetType.betTypeName;
+            var actualBetTypeName = choiceTemplate.BetType.betTypeName;
 
             // Assert
-            var expected = CoreLang.numberGroup;
-            Assert.AreEqual(expected, actual);
+            var expectedBetTypeName = CoreLang.numberGroup;
+            Assert.AreEqual(expectedBetTypeName, actualBetTypeName);
         }
 
         [Test]
@@ -109,11 +109,11 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 
             // Act
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-            var actual = choiceTemplate.Match.homeTeam;
+            var actualHomeTeam = choiceTemplate.Match.homeTeam;
 
             // Assert
-            var expected = string.Join(null, new string[] { CoreLang.numbergameno, "&nbsp;", _ticket.MatchCode });
-            Assert.AreEqual(expected, actual);
+            var expectedHomeTeam = string.Join(null, new string[] { CoreLang.numbergameno, "&nbsp;", _ticket.MatchCode });
+            Assert.AreEqual(expectedHomeTeam, actualHomeTeam);
         }
 
         [Test]
@@ -121,11 +121,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         {
             // Act
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-            var actual = choiceTemplate.betTeamClassName;
+            var actualBetTeamCssClass = choiceTemplate.betTeamClassName;
 
-            // Assert
-            var expected = "favorite";
-            Assert.AreEqual(expected, actual);
+            // Assert            
+            Assert.AreEqual("favorite", actualBetTeamCssClass);
         }
 
         [Test]
@@ -133,7 +132,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         {
             // Arrange
             _ticket.IsLive = false;
-            _ticket.BetId = Arg.Any<long?>();
+            _ticket.BetId = 10000;
             var choiceWrapper = new Choice90Wrapper();
 
             // Act            

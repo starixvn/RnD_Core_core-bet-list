@@ -62,6 +62,7 @@
     </Compile>
     <Compile Include="Builder\ChoiceBuilder\Choice90Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\ChoiceCreator.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice89Test.cs" />
     <Compile Include="Common\Helper\XPathHelper.cs">
       <SubType>Code</SubType>
     </Compile>

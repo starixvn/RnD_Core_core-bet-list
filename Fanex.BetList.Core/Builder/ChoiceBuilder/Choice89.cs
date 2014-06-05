@@ -35,14 +35,18 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             this.Template.Match.VS = null;
             this.Template.Handicap.handicap = null;
 
-            string betId = ticket.BetId.ToString();
-            if (betId == "0")
-            {
-                betId = string.Empty;
-            }
+            string liveScore = GetLiveScore(ticket);
 
-            string liveScore = (!ticket.IsLive || betId == string.Empty) ? " [0]" : string.Join(null, new string[] { " [", betId, "]" });
+            string betTeam = GetBetTeam(ticket, liveScore);
 
+            this.Template.betTeam = betTeam;
+            this.Template.betTeamClassName = BLFAVORITE;
+            
+            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, "&nbsp;", ticket.MatchCode });
+        }
+
+        protected static string GetBetTeam(ITicket ticket, string liveScore)
+        {
             string betTeam = string.Empty;
             switch (ticket.BetTeam)
             {
@@ -57,11 +61,19 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             }
 
             betTeam += " <span style='color:#555555'>37.5</span> ";
+            return betTeam + liveScore;
+        }
 
-            this.Template.betTeam = betTeam + liveScore;
-            this.Template.betTeamClassName = BLFAVORITE;
-            
-            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, "&nbsp;", ticket.MatchCode });
+        protected static string GetLiveScore(ITicket ticket)
+        {
+            string betId = ticket.BetId.ToString();
+            if (betId == "0")
+            {
+                betId = string.Empty;
+            }
+
+            string liveScore = (!ticket.IsLive || betId == string.Empty) ? " [0]" : string.Join(null, new string[] { " [", betId, "]" });
+            return liveScore;
         }
     }
 }
