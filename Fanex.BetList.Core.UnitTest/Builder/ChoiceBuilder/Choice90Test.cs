@@ -18,26 +18,27 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
     using NSubstitute;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.App_GlobalResources;
+    using System.Collections.Generic;
 
     /// <summary>
     ///  This class public unit cannot test from parent class Choice90
     /// </summary>
     public class Choice90Wrapper : Choice90
     {
-        //public string GetLiveScoreCopied(ITicket ticket)
-        //{
-        //    return GetLiveScore(ticket);
-        //}
+        public string GetLiveScoreCopied(ITicket ticket)
+        {
+            return GetLiveScore(ticket);
+        }
 
-        //public string GetBetTeamKeyCopied(ITicket ticket)
-        //{
-        //    return GetBetTeamKey(ticket);
-        //}
+        public string GetBetTeamKeyCopied(ITicket ticket)
+        {
+            return GetBetTeamKey(ticket);
+        }
 
-        //public string GetBetTeamNameCopied(string betTeamKey)
-        //{
-        //    return GetBetTeamName(betTeamKey);
-        //}
+        public string GetBetTeamNameCopied(string betTeamKey)
+        {
+            return GetBetTeamName(betTeamKey);
+        }
     }
 
     public class Choice90Test
@@ -127,198 +128,215 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             Assert.AreEqual(expected, actual);
         }
 
-        //[Test]
-        //public void GetLiveScore_NonLiveTicket_Return_Empty()
-        //{
-        //    // Arrange
-        //    _ticket.IsLive = false;
-        //    _ticket.BetId = Arg.Any<long?>();
-        //    var choiceWrapper = new Choice90Wrapper();
+        [Test]
+        public void GetLiveScore_NonLiveTicket_Return_Empty()
+        {
+            // Arrange
+            _ticket.IsLive = false;
+            _ticket.BetId = Arg.Any<long?>();
+            var choiceWrapper = new Choice90Wrapper();
 
-        //    // Act            
-        //    var actualLiveScore = choiceWrapper.GetLiveScoreCopied(_ticket);
+            // Act            
+            var actualLiveScore = choiceWrapper.GetLiveScoreCopied(_ticket);
 
-        //    // Assert
-        //    Assert.AreEqual(string.Empty, actualLiveScore);
-        //}
+            // Assert
+            Assert.AreEqual(string.Empty, actualLiveScore);
+        }
 
-        //[Test]
-        //public void GetLiveScore_LiveTicket_And_BetId_Has_Value_Return_BetId_Between_SquareBracket()
-        //{
-        //    // Arrange
-        //    _ticket.IsLive = true;
-        //    var betId = 1000;
-        //    _ticket.BetId = betId;
-        //    var choiceWrapper = new Choice90Wrapper();
+        [Test]
+        public void GetLiveScore_LiveTicket_And_BetId_Has_Value_Return_BetId_Between_SquareBracket()
+        {
+            // Arrange
+            _ticket.IsLive = true;
+            var betId = 1000;
+            _ticket.BetId = betId;
+            var choiceWrapper = new Choice90Wrapper();
 
-        //    // Act
-        //    var actualLiveScore = choiceWrapper.GetLiveScoreCopied(_ticket);
+            // Act
+            var actualLiveScore = choiceWrapper.GetLiveScoreCopied(_ticket);
 
-        //    // Assert
-        //    var expectedLiveScore = " [" + betId + "]";
-        //    Assert.AreEqual(expectedLiveScore, actualLiveScore);
-        //}
+            // Assert
+            var expectedLiveScore = " [" + betId + "]";
+            Assert.AreEqual(expectedLiveScore, actualLiveScore);
+        }
 
-        //[Test]
-        //public void GetLiveScore_BetId_Is_Null_Return_Emptry_String()
-        //{
-        //    // Arrange
-        //    _ticket.IsLive = Arg.Any<bool>();
-        //    _ticket.BetId = null;
-        //    var choiceWrapper = new Choice90Wrapper();
+        [Test]
+        public void GetLiveScore_BetId_Is_Null_Return_Emptry_String()
+        {
+            // Arrange
+            _ticket.IsLive = Arg.Any<bool>();
+            _ticket.BetId = null;
+            var choiceWrapper = new Choice90Wrapper();
 
-        //    // Act            
-        //    var actualLiveScore = choiceWrapper.GetLiveScoreCopied(_ticket);
+            // Act            
+            var actualLiveScore = choiceWrapper.GetLiveScoreCopied(_ticket);
 
-        //    // Assert
-        //    Assert.AreEqual(string.Empty, actualLiveScore);
-        //}
+            // Assert
+            Assert.AreEqual(string.Empty, actualLiveScore);
+        }
 
-        //[Test]
-        //public void GetBetTeamKey_BetTeam_Is_Not_Number_Return_Key_With_Suffix_Zero()
-        //{
-        //    // Arrange            
-        //    _ticket.BetTeam = "betteam";
-        //    _ticket.Handicap1 = Arg.Any<decimal>();
-        //    var choiceWrapper = new Choice90Wrapper();
+        [Test]
+        public void GetBetTeamKey_BetTeam_Is_Not_Number_Return_Key_With_Suffix_Zero()
+        {
+            // Arrange            
+            _ticket.BetTeam = "betteam";
+            _ticket.Handicap1 = Arg.Any<decimal>();
+            var choiceWrapper = new Choice90Wrapper();
 
-        //    // Act
-        //    var actualBetTeamKey = choiceWrapper.GetBetTeamKeyCopied(_ticket);
+            // Act
+            var actualBetTeamKey = choiceWrapper.GetBetTeamKeyCopied(_ticket);
 
-        //    // Assert
-        //    Assert.IsTrue(actualBetTeamKey.EndsWith("-0"));
-        //}
+            // Assert
+            Assert.IsTrue(actualBetTeamKey.EndsWith("-0"));
+        }
 
-        //[Test]
-        //public void GetBetTeamKey_BetTeam_Is_Number_Join_Handicap1_And_BetTeam_With_Dash_As_Seperated()
-        //{
-        //    // Arrange
-        //    var betTeam = "10";
-        //    _ticket.BetTeam = betTeam;
-        //    var hdp1Value = Arg.Any<decimal>();
-        //    _ticket.Handicap1 = hdp1Value;
-        //    var choiceWrapper = new Choice90Wrapper();
+        [Test]
+        public void GetBetTeamKey_BetTeam_Is_Number_Join_Handicap1_And_BetTeam_With_Dash_As_Seperated()
+        {
+            // Arrange
+            var betTeam = "10";
+            _ticket.BetTeam = betTeam;
+            var hdp1Value = Arg.Any<decimal>();
+            _ticket.Handicap1 = hdp1Value;
+            var choiceWrapper = new Choice90Wrapper();
 
-        //    // Act
-        //    var actualBetTeamKey = choiceWrapper.GetBetTeamKeyCopied(_ticket);
+            // Act
+            var actualBetTeamKey = choiceWrapper.GetBetTeamKeyCopied(_ticket);
 
-        //    // Assert
-        //    var expectedBetTeamKey = string.Format("{0}-{1}", hdp1Value, betTeam);
-        //    Assert.AreEqual(expectedBetTeamKey, actualBetTeamKey);
-        //}
+            // Assert
+            var expectedBetTeamKey = string.Format("{0}-{1}", hdp1Value, betTeam);
+            Assert.AreEqual(expectedBetTeamKey, actualBetTeamKey);
+        }
 
-        //#region TestCases
-        //[TestCase("1-1", Result = "1~5")]
-        //[TestCase("1-2", Result = "6~10")]
-        //[TestCase("1-3", Result = "11~15")]
-        //[TestCase("1-4", Result = "16~20")]
-        //[TestCase("1-5", Result = "21~25")]
-        //[TestCase("1-6", Result = "26~30")]
-        //[TestCase("1-7", Result = "31~35")]
-        //[TestCase("1-8", Result = "36~40")]
-        //[TestCase("1-9", Result = "41~45")]
-        //[TestCase("1-10", Result = "46~50")]
-        //[TestCase("1-11", Result = "51~55")]
-        //[TestCase("1-12", Result = "56~60")]
-        //[TestCase("1-13", Result = "61~65")]
-        //[TestCase("1-14", Result = "66~70")]
-        //[TestCase("1-15", Result = "71~75")]
-        //[TestCase("2-1", Result = "1~15")]
-        //[TestCase("2-2", Result = "16~30")]
-        //[TestCase("2-3", Result = "31~45")]
-        //[TestCase("2-4", Result = "46~60")]
-        //[TestCase("2-5", Result = "61~75")]
-        //[TestCase("3-1", Result = "1~25")]
-        //[TestCase("3-2", Result = "26~50")]
-        //[TestCase("3-3", Result = "51~75")]
-        //[TestCase("4-1", Result = "1,6,11,16,21,26,31,36,41,46,51,56,61,66,71")]
-        //[TestCase("4-2", Result = "2,7,12,17,22,27,32,37,42,47,52,57,62,67,72")]
-        //[TestCase("4-3", Result = "3,8,13,18,23,28,33,38,43,48,53,58,63,68,73")]
-        //[TestCase("4-4", Result = "4,9,14,19,24,29,34,39,44,49,54,59,64,69,74")]
-        //[TestCase("4-5", Result = "5,10,15,20,25,30,35,40,45,50,55,60,65,70,75")]
-        //[TestCase("5-1", Result = "1")]
-        //[TestCase("5-2", Result = "2")]
-        //[TestCase("5-3", Result = "3")]
-        //[TestCase("5-4", Result = "4")]
-        //[TestCase("5-5", Result = "5")]
-        //[TestCase("5-6", Result = "6")]
-        //[TestCase("5-7", Result = "7")]
-        //[TestCase("5-8", Result = "8")]
-        //[TestCase("5-9", Result = "9")]
-        //[TestCase("5-10", Result = "10")]
-        //[TestCase("5-11", Result = "11")]
-        //[TestCase("5-12", Result = "12")]
-        //[TestCase("5-13", Result = "13")]
-        //[TestCase("5-14", Result = "14")]
-        //[TestCase("5-15", Result = "15")]
-        //[TestCase("5-16", Result = "16")]
-        //[TestCase("5-17", Result = "17")]
-        //[TestCase("5-18", Result = "18")]
-        //[TestCase("5-19", Result = "19")]
-        //[TestCase("5-20", Result = "20")]
-        //[TestCase("5-21", Result = "21")]
-        //[TestCase("5-22", Result = "22")]
-        //[TestCase("5-23", Result = "23")]
-        //[TestCase("5-24", Result = "24")]
-        //[TestCase("5-25", Result = "25")]
-        //[TestCase("5-26", Result = "26")]
-        //[TestCase("5-27", Result = "27")]
-        //[TestCase("5-28", Result = "28")]
-        //[TestCase("5-29", Result = "29")]
-        //[TestCase("5-30", Result = "30")]
-        //[TestCase("5-31", Result = "31")]
-        //[TestCase("5-32", Result = "32")]
-        //[TestCase("5-33", Result = "33")]
-        //[TestCase("5-34", Result = "34")]
-        //[TestCase("5-35", Result = "35")]
-        //[TestCase("5-36", Result = "36")]
-        //[TestCase("5-37", Result = "37")]
-        //[TestCase("5-38", Result = "38")]
-        //[TestCase("5-39", Result = "39")]
-        //[TestCase("5-40", Result = "40")]
-        //[TestCase("5-41", Result = "41")]
-        //[TestCase("5-42", Result = "42")]
-        //[TestCase("5-43", Result = "43")]
-        //[TestCase("5-44", Result = "44")]
-        //[TestCase("5-45", Result = "45")]
-        //[TestCase("5-46", Result = "46")]
-        //[TestCase("5-47", Result = "47")]
-        //[TestCase("5-48", Result = "48")]
-        //[TestCase("5-49", Result = "49")]
-        //[TestCase("5-50", Result = "50")]
-        //[TestCase("5-51", Result = "51")]
-        //[TestCase("5-52", Result = "52")]
-        //[TestCase("5-53", Result = "53")]
-        //[TestCase("5-54", Result = "54")]
-        //[TestCase("5-55", Result = "55")]
-        //[TestCase("5-56", Result = "56")]
-        //[TestCase("5-57", Result = "57")]
-        //[TestCase("5-58", Result = "58")]
-        //[TestCase("5-59", Result = "59")]
-        //[TestCase("5-60", Result = "60")]
-        //[TestCase("5-61", Result = "61")]
-        //[TestCase("5-62", Result = "62")]
-        //[TestCase("5-63", Result = "63")]
-        //[TestCase("5-64", Result = "64")]
-        //[TestCase("5-65", Result = "65")]
-        //[TestCase("5-66", Result = "66")]
-        //[TestCase("5-67", Result = "67")]
-        //[TestCase("5-68", Result = "68")]
-        //[TestCase("5-69", Result = "69")]
-        //[TestCase("5-70", Result = "70")]
-        //[TestCase("5-71", Result = "71")]
-        //[TestCase("5-72", Result = "72")]
-        //[TestCase("5-73", Result = "73")]
-        //[TestCase("5-74", Result = "74")]
-        //[TestCase("5-75", Result = "75")]
-        //#endregion
-        //public string GetBetTeamName_Return_Valid_Name(string betTeamKey)
-        //{
-        //    // Arrange
-        //    var choiceWrapper = new Choice90Wrapper();
+        #region TestCases
+        [TestCase("1-1", Result = "1~5")]
+        [TestCase("1-2", Result = "6~10")]
+        [TestCase("1-3", Result = "11~15")]
+        [TestCase("1-4", Result = "16~20")]
+        [TestCase("1-5", Result = "21~25")]
+        [TestCase("1-6", Result = "26~30")]
+        [TestCase("1-7", Result = "31~35")]
+        [TestCase("1-8", Result = "36~40")]
+        [TestCase("1-9", Result = "41~45")]
+        [TestCase("1-10", Result = "46~50")]
+        [TestCase("1-11", Result = "51~55")]
+        [TestCase("1-12", Result = "56~60")]
+        [TestCase("1-13", Result = "61~65")]
+        [TestCase("1-14", Result = "66~70")]
+        [TestCase("1-15", Result = "71~75")]
+        [TestCase("2-1", Result = "1~15")]
+        [TestCase("2-2", Result = "16~30")]
+        [TestCase("2-3", Result = "31~45")]
+        [TestCase("2-4", Result = "46~60")]
+        [TestCase("2-5", Result = "61~75")]
+        [TestCase("3-1", Result = "1~25")]
+        [TestCase("3-2", Result = "26~50")]
+        [TestCase("3-3", Result = "51~75")]
+        [TestCase("4-1", Result = "1,6,11,16,21,26,31,36,41,46,51,56,61,66,71")]
+        [TestCase("4-2", Result = "2,7,12,17,22,27,32,37,42,47,52,57,62,67,72")]
+        [TestCase("4-3", Result = "3,8,13,18,23,28,33,38,43,48,53,58,63,68,73")]
+        [TestCase("4-4", Result = "4,9,14,19,24,29,34,39,44,49,54,59,64,69,74")]
+        [TestCase("4-5", Result = "5,10,15,20,25,30,35,40,45,50,55,60,65,70,75")]
+        [TestCase("5-1", Result = "1")]
+        [TestCase("5-2", Result = "2")]
+        [TestCase("5-3", Result = "3")]
+        [TestCase("5-4", Result = "4")]
+        [TestCase("5-5", Result = "5")]
+        [TestCase("5-6", Result = "6")]
+        [TestCase("5-7", Result = "7")]
+        [TestCase("5-8", Result = "8")]
+        [TestCase("5-9", Result = "9")]
+        [TestCase("5-10", Result = "10")]
+        [TestCase("5-11", Result = "11")]
+        [TestCase("5-12", Result = "12")]
+        [TestCase("5-13", Result = "13")]
+        [TestCase("5-14", Result = "14")]
+        [TestCase("5-15", Result = "15")]
+        [TestCase("5-16", Result = "16")]
+        [TestCase("5-17", Result = "17")]
+        [TestCase("5-18", Result = "18")]
+        [TestCase("5-19", Result = "19")]
+        [TestCase("5-20", Result = "20")]
+        [TestCase("5-21", Result = "21")]
+        [TestCase("5-22", Result = "22")]
+        [TestCase("5-23", Result = "23")]
+        [TestCase("5-24", Result = "24")]
+        [TestCase("5-25", Result = "25")]
+        [TestCase("5-26", Result = "26")]
+        [TestCase("5-27", Result = "27")]
+        [TestCase("5-28", Result = "28")]
+        [TestCase("5-29", Result = "29")]
+        [TestCase("5-30", Result = "30")]
+        [TestCase("5-31", Result = "31")]
+        [TestCase("5-32", Result = "32")]
+        [TestCase("5-33", Result = "33")]
+        [TestCase("5-34", Result = "34")]
+        [TestCase("5-35", Result = "35")]
+        [TestCase("5-36", Result = "36")]
+        [TestCase("5-37", Result = "37")]
+        [TestCase("5-38", Result = "38")]
+        [TestCase("5-39", Result = "39")]
+        [TestCase("5-40", Result = "40")]
+        [TestCase("5-41", Result = "41")]
+        [TestCase("5-42", Result = "42")]
+        [TestCase("5-43", Result = "43")]
+        [TestCase("5-44", Result = "44")]
+        [TestCase("5-45", Result = "45")]
+        [TestCase("5-46", Result = "46")]
+        [TestCase("5-47", Result = "47")]
+        [TestCase("5-48", Result = "48")]
+        [TestCase("5-49", Result = "49")]
+        [TestCase("5-50", Result = "50")]
+        [TestCase("5-51", Result = "51")]
+        [TestCase("5-52", Result = "52")]
+        [TestCase("5-53", Result = "53")]
+        [TestCase("5-54", Result = "54")]
+        [TestCase("5-55", Result = "55")]
+        [TestCase("5-56", Result = "56")]
+        [TestCase("5-57", Result = "57")]
+        [TestCase("5-58", Result = "58")]
+        [TestCase("5-59", Result = "59")]
+        [TestCase("5-60", Result = "60")]
+        [TestCase("5-61", Result = "61")]
+        [TestCase("5-62", Result = "62")]
+        [TestCase("5-63", Result = "63")]
+        [TestCase("5-64", Result = "64")]
+        [TestCase("5-65", Result = "65")]
+        [TestCase("5-66", Result = "66")]
+        [TestCase("5-67", Result = "67")]
+        [TestCase("5-68", Result = "68")]
+        [TestCase("5-69", Result = "69")]
+        [TestCase("5-70", Result = "70")]
+        [TestCase("5-71", Result = "71")]
+        [TestCase("5-72", Result = "72")]
+        [TestCase("5-73", Result = "73")]
+        [TestCase("5-74", Result = "74")]
+        [TestCase("5-75", Result = "75")]
+        #endregion
+        public string GetBetTeamName_Return_Valid_Name(string betTeamKey)
+        {
+            // Arrange
+            var choiceWrapper = new Choice90Wrapper();
 
-        //    // Act
-        //    return choiceWrapper.GetBetTeamNameCopied(betTeamKey);
-        //}
+            // Act
+            return choiceWrapper.GetBetTeamNameCopied(betTeamKey);
+        }
+
+        public void BetTeam_Should_Return_From_Join_BetTeam_And_LiveScore()
+        {
+            // Arrange
+            var choiceWrapper = Substitute.For<Choice90Wrapper>();
+            string betTeamName = "My Bet Team";
+            choiceWrapper.GetBetTeamNameCopied("AnyBetTeamKey").Returns(betTeamName);
+            string liveScore = "[13232]";
+            choiceWrapper.GetLiveScoreCopied(Arg.Any<ITicket>()).Returns(liveScore);
+
+            // Act
+            var actualBetTeam = choiceWrapper.Render(Arg.Any<ITicket>(), _ticketHelper, Arg.Any<List<ITicketData>>() , Arg.Any<bool>());
+
+            // Assert
+            var expectedBetTeam = string.Join(null, betTeamName, liveScore);
+            Assert.AreEqual(expectedBetTeam, actualBetTeam);
+        }
     }
 }
