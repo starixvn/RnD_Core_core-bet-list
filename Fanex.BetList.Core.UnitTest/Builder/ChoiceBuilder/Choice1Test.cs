@@ -99,7 +99,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 
             // Assert
             string leagueName = _ticketHelperStub.GetLeagueNameById(_ticket.LeagueId);
-            string expectedHtml = string.Format(TemplateChoice.LaagueLeagueName, leagueName);
+            string expectedHtml = string.Format(TemplateChoice.LeagueLeagueName, leagueName);
             Assert.AreEqual(expectedHtml, spanLeagueName);
         }
 
@@ -181,7 +181,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             string actualHtml = _creator.GetOuterHtml(XPathChoice.ScoreMapIcon);
 
             // Assert
-            string expectedHtml = string.Format(TemplateChoice.ScoreMap, _ticket.MatchId, _ticket.BetTypeId, Convert.ToInt32(_ticket.IsLive));
+            string expectedHtml = string.Format(TemplateChoice.ScoreMapIcon, _ticket.MatchId, _ticket.BetTypeId, Convert.ToInt32(_ticket.IsLive));
             Assert.AreEqual(expectedHtml, actualHtml);
         }
 

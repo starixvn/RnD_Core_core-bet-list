@@ -47,10 +47,10 @@ namespace Fanex.BetList.Core.UnitTest.Common.Templates
         public const string One = "One";
         public const string NoGoal = "No Goal";
         public const string Race = "Race";
-        public const string ScoreMap = "<span class='scoremap'><a href=\"javascript:OpenScoreMap({0},{1},{2});\" title=\"Score Map\"><div class='scoremapIcon'></div></a></span>";
+        public const string ScoreMapIcon = "<span class='scoremap'><a href=\"javascript:OpenScoreMap({0},{1},{2});\"title=\"Score Map\"><div class='scoremapIcon'></div></a></span>";
         public const string Score = "<span class=\"favorite\"> [{0}-{1}]</span>";
         public const string LeagueSport = "<span class=\"sport\">{0}</span>";
-        public const string LaagueLeagueName = "<span class=\"leagueName\">&nbsp;{0}</span>";
+        public const string LeagueLeagueName = "<span class=\"leagueName\">&nbsp;{0}</span>";
         public const string BetType = "<div class=\"bettype\"> {0}</div>";
         public const string MatchTeamName = "<span>{0}</span>";
         public const string MatchHomeTeamIsNeutral = "<span>{0} (N) </span>";
