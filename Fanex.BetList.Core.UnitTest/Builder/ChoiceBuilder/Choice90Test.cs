@@ -322,21 +322,21 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             return choiceWrapper.GetBetTeamNameCopied(betTeamKey);
         }
 
-        public void BetTeam_Should_Return_From_Join_BetTeam_And_LiveScore()
-        {
-            // Arrange
-            var choiceWrapper = Substitute.For<Choice90Wrapper>();
-            string betTeamName = "My Bet Team";
-            choiceWrapper.GetBetTeamNameCopied("AnyBetTeamKey").Returns(betTeamName);
-            string liveScore = "[13232]";
-            choiceWrapper.GetLiveScoreCopied(Arg.Any<ITicket>()).Returns(liveScore);
+        //public void BetTeam_Should_Return_From_Join_BetTeam_And_LiveScore()
+        //{
+        //    // Arrange
+        //    var choiceWrapper = Substitute.For<Choice90Wrapper>();
+        //    string betTeamName = "My Bet Team";
+        //    choiceWrapper.GetBetTeamNameCopied("AnyBetTeamKey").Returns(betTeamName);
+        //    string liveScore = "[13232]";
+        //    choiceWrapper.GetLiveScoreCopied(Arg.Any<ITicket>()).Returns(liveScore);
 
-            // Act
-            var actualBetTeam = choiceWrapper.Render(Arg.Any<ITicket>(), _ticketHelper, Arg.Any<List<ITicketData>>() , Arg.Any<bool>());
+        //    // Act
+        //    var actualBetTeam = choiceWrapper.Render(Arg.Any<ITicket>(), _ticketHelper, Arg.Any<List<ITicketData>>() , Arg.Any<bool>());
 
-            // Assert
-            var expectedBetTeam = string.Join(null, betTeamName, liveScore);
-            Assert.AreEqual(expectedBetTeam, actualBetTeam);
-        }
+        //    // Assert
+        //    var expectedBetTeam = string.Join(null, betTeamName, liveScore);
+        //    Assert.AreEqual(expectedBetTeam, actualBetTeam);
+        //}
     }
 }
