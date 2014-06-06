@@ -5,7 +5,72 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Template
     using Fanex.BetList.Core.Templates;
     using NUnit.Framework;
 
+    public class WrapperTemplate_VS_Block : Template_VS_Block
+    {
+        public void SetAssigned(bool isAssigned)
+        {
+            this.IsAssigned = isAssigned;
+        }
+
+        public void SetValueExtend(StringBuilder value)
+        {
+            this.Value = value;
+        }
+    }
+
     public class Template_VS_BlockTest
     {
+        private const string VSTemplate = "- vs -&nbsp;";
+
+        [Test]
+        public void VisiblePropertyOfBlockIsTrue_ReturnVSString()
+        {
+            // Arrange
+            var vsHtml = new StringBuilder();
+            var block = new Template_VS_Block();
+            block.Visible = true;
+
+            // Act
+            block.ToString(ref vsHtml);
+
+            // Assert
+            var expectedHtml = VSTemplate;
+            Assert.AreEqual(expectedHtml, vsHtml.ToString());
+        }
+
+        [Test]
+        public void VisiblePropertyOfBlockIsFalse_ReturnEmptyString()
+        {
+            // Arrange
+            var vsHtml = new StringBuilder();
+            var block = new Template_VS_Block();
+            block.Visible = false;
+
+            // Act
+            block.ToString(ref vsHtml);
+
+            // Assert
+            var expectedHtml = string.Empty;
+            Assert.AreEqual(expectedHtml, vsHtml.ToString());
+        }
+
+        [Test]
+        public void AssignedPropertyOfBlockIsTrue_ReturnVSStringAndAppendValue()
+        {
+            // Arrange
+            var value = "Tennis";
+            var vsHtml = new StringBuilder();
+            var block = new WrapperTemplate_VS_Block();
+            block.Visible = true;
+            block.SetValueExtend(new StringBuilder(value));
+            block.SetAssigned(true);
+
+            // Act
+            block.ToString(ref vsHtml);
+
+            // Assert
+            var expectedHtml = VSTemplate + value;
+            Assert.AreEqual(expectedHtml, vsHtml.ToString());
+        }
     }
 }
