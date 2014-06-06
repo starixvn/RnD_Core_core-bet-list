@@ -89,7 +89,6 @@
     <Content Include="Styles\Images\lastGoal.gif" />
     <Content Include="Templates\SystemParlayDetail.htm" />
     <Content Include="Templates\Status.htm" />
-    <Content Include="Templates\Template.htm" />
     <Content Include="Templates\Stake.htm" />
     <Content Include="Templates\Odds.htm" />
     <Content Include="Templates\Resources\BetList.css" />
@@ -434,7 +433,6 @@
     <Compile Include="Templates\Stake.htm.cs" />
     <Compile Include="Templates\Status.htm.cs" />
     <Compile Include="Templates\SystemParlayDetail.htm.cs" />
-    <Compile Include="Templates\Template.htm.cs" />
     <Compile Include="Templates\Trans.htm.cs" />
     <Compile Include="TicketHelper\CacheRef.cs" />
     <Compile Include="TicketHelper\TicketHelper.cs" />

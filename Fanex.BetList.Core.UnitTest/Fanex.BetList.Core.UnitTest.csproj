@@ -96,13 +96,6 @@
     <Compile Include="Templates\SystemParlayDetail\SystemParlayDetail_Contents_PlayerCommission_BlockTest.cs" />
     <Compile Include="Templates\SystemParlayDetail\SystemParlayDetail_Contents_Match_BlockTest.cs" />
     <Compile Include="Templates\SystemParlayDetail\SystemParlayDetail_Contents_BlockTest.cs" />
-    <Compile Include="Templates\Template\Template_VS_BlockTest.cs" />
-    <Compile Include="Templates\Template\Template_TemplateTest.cs" />
-    <Compile Include="Templates\Template\Template_ScoreMapIcon_BlockTest.cs" />
-    <Compile Include="Templates\Template\Template_Score_BlockTest.cs" />
-    <Compile Include="Templates\Template\Template_OddMixParlay_BlockTest.cs" />
-    <Compile Include="Templates\Template\Template_LeagueName_BlockTest.cs" />
-    <Compile Include="Templates\Template\Template_Handicap_BlockTest.cs" />
     <Compile Include="Templates\Trans\Trans_TransTime_BlockTest.cs" />
     <Compile Include="Templates\Trans\Trans_TemplateTest.cs" />
   </ItemGroup>
