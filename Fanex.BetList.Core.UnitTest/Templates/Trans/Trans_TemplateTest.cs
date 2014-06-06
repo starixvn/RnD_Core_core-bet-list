@@ -5,7 +5,95 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Trans
     using Fanex.BetList.Core.Templates;
     using NUnit.Framework;
 
+    public class WrapperTrans_Template : Trans_Template
+    {
+        public void SetAssigned(bool isAssigned)
+        {
+            this.IsAssigned = isAssigned;
+        }
+
+        public void SetValueExtend(StringBuilder value)
+        {
+            this.Value = value;
+        }
+    }
+
     public class Trans_TemplateTest
     {
+        private const string TransTemplate = "{0}<div class=\"time\">{1}</div>";
+
+        [Test]
+        public void VisiblePropertyOfBlockIsTrue_ReturnTransString()
+        {
+            // Arrange
+            var transTime = "11/20/2013 6:54:00 AM";
+            var transHtml = string.Empty;
+            var block = new Trans_Template();
+            block.transTime = transTime;
+            block.Visible = true;
+
+            // Act
+            transHtml = block.ToString();
+
+            // Assert
+            var expectedHtml = string.Format(TransTemplate, block.TransTime.ToString(), transTime);
+            Assert.AreEqual(expectedHtml, transHtml);
+        }
+
+        [Test]
+        public void VisiblePropertyOfBlockIsTrueAndChildBlockIsNull_ReturnTransString()
+        {
+            // Arrange
+            var transTime = "11/20/2013 6:54:00 AM";
+            var transHtml = string.Empty;
+            var block = new Trans_Template();
+            block.transTime = transTime;
+            block.TransTime = null;
+            block.Visible = true;
+
+            // Act
+            transHtml = block.ToString();
+
+            // Assert
+            var expectedHtml = string.Format(TransTemplate, string.Empty, transTime);
+            Assert.AreEqual(expectedHtml, transHtml);
+        }
+
+        [Test]
+        public void VisiblePropertyOfBlockIsFalse_ReturnEmptyString()
+        {
+            // Arrange
+            var transHtml = string.Empty;
+            var block = new Trans_Template();
+            block.Visible = false;
+
+            // Act
+            transHtml = block.ToString();
+
+            // Assert
+            var expectedHtml = string.Empty;
+            Assert.AreEqual(expectedHtml, transHtml);
+        }
+
+        [Test]
+        public void AssignedPropertyOfBlockIsTrue_ReturnTransStringAndAppendValue()
+        {
+            // Arrange
+            var transTime = "11/20/2013 6:54:00 AM";
+            var transHtml = string.Empty;
+            var value = "Tennis";
+            var block = new WrapperTrans_Template();
+            block.transTime = transTime;
+            block.Visible = true;
+            block.SetValueExtend(new StringBuilder(value));
+            block.SetAssigned(true);
+
+            // Act
+            transHtml = block.ToString();
+
+            // Assert
+            var expectedHtml = string.Format(TransTemplate, block.TransTime.ToString(), transTime) + value;
+            Assert.AreEqual(expectedHtml, transHtml);
+        }
     }
 }
