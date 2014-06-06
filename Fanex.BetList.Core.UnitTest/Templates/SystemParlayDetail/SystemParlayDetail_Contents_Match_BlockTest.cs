@@ -5,7 +5,80 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
     using Fanex.BetList.Core.Templates;
     using NUnit.Framework;
 
+    public class WrapperSystemParlayDetail_Contents_Match_Block : SystemParlayDetail_Contents_Match_Block
+    {
+        public void SetAssigned(bool isAssigned)
+        {
+            this.IsAssigned = isAssigned;
+        }
+
+        public void SetValueExtend(StringBuilder value)
+        {
+            this.Value = value;
+        }
+    }
+
     public class SystemParlayDetail_Contents_Match_BlockTest
     {
+        private const string ContentsMatchTemplate = "<div style=\"padding: 3px 0px\">{0} - vs - {1}</div>";
+
+        [Test]
+        public void VisiblePropertyOfBlockIsTrue_ReturnContentsMatchString()
+        {
+            // Arrange
+            var homeTeam = "Portland Trail Blazers";
+            var awayTeam = "Denver Nuggets";
+            var contentsMatchHtml = new StringBuilder();
+            var block = new SystemParlayDetail_Contents_Match_Block();
+            block.HomeTeam = homeTeam;
+            block.AwayTeam = awayTeam;
+            block.Visible = true;
+
+            // Act
+            block.ToString(ref contentsMatchHtml);
+
+            // Assert
+            var expectedHtml = string.Format(ContentsMatchTemplate, homeTeam, awayTeam);
+            Assert.AreEqual(expectedHtml, contentsMatchHtml.ToString());
+        }
+
+        [Test]
+        public void VisiblePropertyOfBlockIsFalse_ReturnEmptyString()
+        {
+            // Arrange
+            var contentsMatchHtml = new StringBuilder();
+            var block = new SystemParlayDetail_Contents_Match_Block();
+            block.Visible = false;
+
+            // Act
+            block.ToString(ref contentsMatchHtml);
+
+            // Assert
+            var expectedHtml = string.Empty;
+            Assert.AreEqual(expectedHtml, contentsMatchHtml.ToString());
+        }
+
+        [Test]
+        public void AssignedPropertyOfBlockIsTrue_ReturnContentsMatchStringAndAppendValue()
+        {
+            // Arrange
+            var homeTeam = "Portland Trail Blazers";
+            var awayTeam = "Denver Nuggets";
+            var contentsMatchHtml = new StringBuilder();
+            var value = "Tennis";
+            var block = new WrapperSystemParlayDetail_Contents_Match_Block();
+            block.HomeTeam = homeTeam;
+            block.AwayTeam = awayTeam;
+            block.Visible = true;
+            block.SetValueExtend(new StringBuilder(value));
+            block.SetAssigned(true);
+
+            // Act
+            block.ToString(ref contentsMatchHtml);
+
+            // Assert
+            var expectedHtml = string.Format(ContentsMatchTemplate, homeTeam, awayTeam) + value;
+            Assert.AreEqual(expectedHtml, contentsMatchHtml.ToString());
+        }
     }
 }

@@ -5,7 +5,80 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
     using Fanex.BetList.Core.Templates;
     using NUnit.Framework;
 
+    public class WrapperSystemParlayDetail_Contents_WinlossDate_Block : SystemParlayDetail_Contents_WinlossDate_Block
+    {
+        public void SetAssigned(bool isAssigned)
+        {
+            this.IsAssigned = isAssigned;
+        }
+
+        public void SetValueExtend(StringBuilder value)
+        {
+            this.Value = value;
+        }
+    }
+
     public class SystemParlayDetail_Contents_WinlossDate_BlockTest
     {
+        private const string ContentsWinlossDateTemplate = "<td style=\"text-align: center; font-weight: normal\" rowspan=\"{0}\">{1}</td>";
+
+        [Test]
+        public void VisiblePropertyOfBlockIsTrue_ReturnContentsWinlossDateString()
+        {
+            // Arrange
+            var rowSpan = "2";
+            var winlossDate = "1/27/2014 4:40:00 AM";
+            var contentsWinlossDateHtml = new StringBuilder();
+            var block = new SystemParlayDetail_Contents_WinlossDate_Block();
+            block.RowSpan = rowSpan;
+            block.WinlossDate = winlossDate;
+            block.Visible = true;
+
+            // Act
+            block.ToString(ref contentsWinlossDateHtml);
+
+            // Assert
+            var expectedHtml = string.Format(ContentsWinlossDateTemplate, rowSpan, winlossDate);
+            Assert.AreEqual(expectedHtml, contentsWinlossDateHtml.ToString());
+        }
+
+        [Test]
+        public void VisiblePropertyOfBlockIsFalse_ReturnEmptyString()
+        {
+            // Arrange
+            var contentsWinlossDateHtml = new StringBuilder();
+            var block = new SystemParlayDetail_Contents_WinlossDate_Block();
+            block.Visible = false;
+
+            // Act
+            block.ToString(ref contentsWinlossDateHtml);
+
+            // Assert
+            var expectedHtml = string.Empty;
+            Assert.AreEqual(expectedHtml, contentsWinlossDateHtml.ToString());
+        }
+
+        [Test]
+        public void AssignedPropertyOfBlockIsTrue_ReturnContentsWinlossDateStringAndAppendValue()
+        {
+            // Arrange
+            var rowSpan = "2";
+            var winlossDate = "1/27/2014 4:40:00 AM";
+            var contentsWinlossDateHtml = new StringBuilder();
+            var value = "Tennis";
+            var block = new WrapperSystemParlayDetail_Contents_WinlossDate_Block();
+            block.RowSpan = rowSpan;
+            block.WinlossDate = winlossDate;
+            block.Visible = true;
+            block.SetValueExtend(new StringBuilder(value));
+            block.SetAssigned(true);
+
+            // Act
+            block.ToString(ref contentsWinlossDateHtml);
+
+            // Assert
+            var expectedHtml = string.Format(ContentsWinlossDateTemplate, rowSpan, winlossDate) + value;
+            Assert.AreEqual(expectedHtml, contentsWinlossDateHtml.ToString());
+        }
     }
 }
