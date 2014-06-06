@@ -23,7 +23,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
         private const string MatchVSTemplate = "<span>&nbsp;-&nbsp;vs&nbsp;-&nbsp;</span>";
 
         [Test]
-        public void VisiblePropertyIsTrue_ReturnMatchVSString()
+        public void VisiblePropertyIsTrue_ReturnHtmlString()
         {
             // Arrange
             var vsHtml = new StringBuilder();
@@ -34,8 +34,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
             block.ToString(ref vsHtml);
 
             // Assert
-            var expectedHtml = MatchVSTemplate;
-            Assert.AreEqual(expectedHtml, vsHtml.ToString());
+            Assert.AreEqual(MatchVSTemplate, vsHtml.ToString());
         }
 
         [Test]
@@ -54,7 +53,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
         }
 
         [Test]
-        public void AssignedPropertyIsTrue_ReturnMatchVSStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnValueAppendToHtmlString()
         {
             // Arrange
             var vsHtml = new StringBuilder();

@@ -23,7 +23,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
         private const string ScoreMapIconTemplate = "<span class='scoremap'><a href=\"javascript:OpenScoreMap({0},{1},{2});\"title=\"Score Map\"><div class='scoremapIcon'></div></a></span>";
 
         [Test]
-        public void VisiblePropertyIsTrue_ReturnScoreMapIconString()
+        public void VisiblePropertyIsTrue_ReturnHtmlString()
         {
             // Arrange
             var matchId = "1000";
@@ -60,7 +60,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
         }
 
         [Test]
-        public void AssignedPropertyIsTrue_ReturnScoreMapIconStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnValueAppendToHtmlString()
         {
             // Arrange
             var matchId = "1000";
@@ -72,7 +72,6 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
             block.matchId = matchId;
             block.betTypeId = betTypeId;
             block.liveindicator = liveIndicator;
-            block.Visible = true;
             block.SetValueExtend(new StringBuilder(value));
             block.SetAssigned(true);
 

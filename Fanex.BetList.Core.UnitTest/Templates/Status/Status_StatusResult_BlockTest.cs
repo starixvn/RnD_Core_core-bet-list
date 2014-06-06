@@ -23,7 +23,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Status
         private const string StatusTemplate = "<div class=\"result\" onclick=\"ViewResult({0}, {1}, {2}, {3}, {4}, '{5}', '{6}', {7}, {8}, {9});\">Results</div>";
 
         [Test]
-        public void VisiblePropertyIsTrue_ReturnStatusStringDefaultValue()
+        public void VisiblePropertyIsTrueAndPropertyNotSetValue_ReturnHtmlString()
         {
             // Arrange
             var matchId = "1100";
@@ -67,7 +67,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Status
         }
 
         [Test]
-        public void VisiblePropertyIsTrueAndChangeDefaultValue_ReturnStatusStringWithNewValue()
+        public void VisiblePropertyIsTrueAndPropertyBeSetValue_ReturnHtmlString()
         {
             // Arrange
             var matchId = "1100";
@@ -128,7 +128,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Status
         }
 
         [Test]
-        public void AssignedPropertyIsTrue_ReturnStakeStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnValueAppendToHtmlString()
         {
             // Arrange
             var matchId = "1100";
@@ -152,7 +152,6 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Status
             block.userName = username;
             block.winlostDate = winlostDate;
             block.league = league;
-            block.Visible = true;
             block.SetValueExtend(new StringBuilder(value));
             block.SetAssigned(true);
 

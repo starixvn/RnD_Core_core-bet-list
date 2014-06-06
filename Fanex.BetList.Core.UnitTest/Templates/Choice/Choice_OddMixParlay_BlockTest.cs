@@ -21,13 +21,12 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
     public class Choice_OddMixParlay_BlockTest
     {
         [Test]
-        public void AssignedPropertyIsTrue_ReturnOddMixParlayStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnValueAppendToHtmlString()
         {
             // Arrange
             var scoreMapIconHtml = new StringBuilder();
             var value = "Tennis";
             var block = new WrapperChoice_OddMixParlay_Block();
-            block.Visible = true;
             block.SetValueExtend(new StringBuilder(value));
             block.SetAssigned(true);
 

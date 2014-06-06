@@ -23,7 +23,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Trans
         private const string TransTimeTemplate = "Ref No: {0}";
 
         [Test]
-        public void VisiblePropertyIsTrue_ReturnTransTimeString()
+        public void VisiblePropertyIsTrue_ReturnHtmlString()
         {
             // Arrange
             var refNo = "1000000";
@@ -56,7 +56,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Trans
         }
 
         [Test]
-        public void AssignedPropertyIsTrue_ReturnTransTimeStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnValueAppendToHtmlString()
         {
             // Arrange
             var refNo = "1000000";
@@ -64,7 +64,6 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Trans
             var value = "Tennis";
             var block = new WrapperTrans_TransTime_Block();
             block.refNo = refNo;
-            block.Visible = true;
             block.SetValueExtend(new StringBuilder(value));
             block.SetAssigned(true);
 

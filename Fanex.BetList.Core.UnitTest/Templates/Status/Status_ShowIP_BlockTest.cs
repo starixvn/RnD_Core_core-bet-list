@@ -23,7 +23,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Status
         private const string StatusTemplate = "<div class=\"ip\"><br /><div class=\"{0}\" onclick=\"{1}('{2}');\">{3}</div></div>";
 
         [Test]
-        public void VisiblePropertyIsTrue_ReturnStatusStringDefaultValue()
+        public void VisiblePropertyIsTrueAndPropertyNotSetValue_ReturnHtmlString()
         {
             // Arrange
             var ipLink = "iplink";
@@ -42,7 +42,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Status
         }
 
         [Test]
-        public void VisiblePropertyIsTrueAndChangeDefaultValue_ReturnStatusStringWithNewValue()
+        public void VisiblePropertyIsTrueAndPropertyBeSetValue_ReturnHtmlString()
         {
             // Arrange
             var ipLink = "iplink-Customize";
@@ -79,7 +79,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Status
         }
 
         [Test]
-        public void AssignedPropertyIsTrue_ReturnStakeStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnValueAppendToHtmlString()
         {
             // Arrange
             var ipLink = "iplink";
@@ -88,7 +88,6 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Status
             var value = "Tennis";
             var statusHtml = new StringBuilder();
             var block = new WrapperStatus_ShowIP_Block();
-            block.Visible = true;
             block.SetValueExtend(new StringBuilder(value));
             block.SetAssigned(true);
 

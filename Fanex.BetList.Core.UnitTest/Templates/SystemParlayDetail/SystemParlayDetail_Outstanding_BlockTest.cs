@@ -23,7 +23,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
         private const string OutstandingTemplate = "<tr class=\"system-parlay-outstanding\"><td colspan=\"4\">Outstanding:</td><td style=\"border-left: none;\">{0}</td><td style=\"border-left: none;\">&nbsp;</td></tr>";
 
         [Test]
-        public void VisiblePropertyIsTrue_ReturnOutstandingString()
+        public void VisiblePropertyIsTrue_ReturnHtmlString()
         {
             // Arrange
             var outstanding = "2";
@@ -56,7 +56,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
         }
 
         [Test]
-        public void AssignedPropertyIsTrue_ReturnOutstandingStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnValueAppendToHtmlString()
         {
             // Arrange
             var outstanding = "2";
@@ -64,7 +64,6 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
             var value = "Tennis";
             var block = new WrapperSystemParlayDetail_Outstanding_Block();
             block.Outstanding = outstanding;
-            block.Visible = true;
             block.SetValueExtend(new StringBuilder(value));
             block.SetAssigned(true);
 

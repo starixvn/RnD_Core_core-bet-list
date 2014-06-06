@@ -23,7 +23,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
         private const string ChoiceTemplate = "<div class='{0}'>{1}<span class=\"{2}\">{3}{4}{5}{6}</span>{7}{8}{9}</div>";
 
         [Test]
-        public void VisiblePropertyIsTrue_ReturnChoiceString()
+        public void VisiblePropertyIsTrue_ReturnHtmlString()
         {
             // Arrange
             var ticketStatus = "void";
@@ -70,7 +70,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
         }
 
         [Test]
-        public void AllChildBlockIsNull_ReturnChoiceString()
+        public void AllChildBlockIsNull_ReturnHtmlStringWithAllChildIsEmpty()
         {
             // Arrange
             var ticketStatus = "void";
@@ -109,7 +109,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
         }
 
         [Test]
-        public void AssignedPropertyIsTrue_ReturnChoiceStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnValueAppendToHtmlString()
         {
             // Arrange
             var ticketStatus = "void";

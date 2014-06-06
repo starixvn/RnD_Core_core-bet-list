@@ -23,7 +23,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
         private const string ContentsWinlossDateTemplate = "<td style=\"text-align: center; font-weight: normal\" rowspan=\"{0}\">{1}</td>";
 
         [Test]
-        public void VisiblePropertyIsTrue_ReturnContentsWinlossDateString()
+        public void VisiblePropertyIsTrue_ReturnHtmlString()
         {
             // Arrange
             var rowSpan = "2";
@@ -58,7 +58,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
         }
 
         [Test]
-        public void AssignedPropertyIsTrue_ReturnContentsWinlossDateStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnValueAppendToHtmlString()
         {
             // Arrange
             var rowSpan = "2";
@@ -68,7 +68,6 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
             var block = new WrapperSystemParlayDetail_Contents_WinlossDate_Block();
             block.RowSpan = rowSpan;
             block.WinlossDate = winlossDate;
-            block.Visible = true;
             block.SetValueExtend(new StringBuilder(value));
             block.SetAssigned(true);
 

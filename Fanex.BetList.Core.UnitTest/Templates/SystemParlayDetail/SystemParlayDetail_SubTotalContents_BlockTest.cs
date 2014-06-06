@@ -23,7 +23,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
         private const string SubTotalContentsTemplate = "<tr class=\"system-parlay-subtotal\"><td colspan=\"4\">Sub Total:</td><td style=\"border-left: none;\">{0}</td><td style=\"border-left: none;\">&nbsp;</td></tr>";
 
         [Test]
-        public void VisiblePropertyIsTrue_ReturnSubTotalContentsString()
+        public void VisiblePropertyIsTrue_ReturnHtmlString()
         {
             // Arrange
             var totalWinloss = "20000";
@@ -56,7 +56,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
         }
 
         [Test]
-        public void AssignedPropertyIsTrue_ReturnSubTotalContentsStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnValueAppendToHtmlString()
         {
             // Arrange
             var totalWinloss = "20000";
@@ -64,7 +64,6 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
             var value = "Tennis";
             var block = new WrapperSystemParlayDetail_SubTotalContents_Block();
             block.TotalWinloss = totalWinloss;
-            block.Visible = true;
             block.SetValueExtend(new StringBuilder(value));
             block.SetAssigned(true);
 

@@ -23,7 +23,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
         private const string ScoreTemplate = "<span class=\"favorite\"> [{0}-{1}]</span>";
 
         [Test]
-        public void VisiblePropertyIsTrue_ReturnScoreString()
+        public void VisiblePropertyIsTrue_ReturnHtmlString()
         {
             // Arrange
             var homeScore = "1";
@@ -58,7 +58,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
         }
 
         [Test]
-        public void AssignedPropertyIsTrue_ReturnScoreStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnValueAppendToHtmlString()
         {
             // Arrange
             var homeScore = "1";
@@ -68,7 +68,6 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
             var block = new WrapperChoice_Score_Block();
             block.homeScore = homeScore;
             block.awayScore = awayScore;
-            block.Visible = true;
             block.SetValueExtend(new StringBuilder(value));
             block.SetAssigned(true);
 

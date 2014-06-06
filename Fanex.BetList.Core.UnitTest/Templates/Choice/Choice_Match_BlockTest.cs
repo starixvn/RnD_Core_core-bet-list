@@ -21,54 +21,53 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
 
     public class Choice_Match_BlockTest
     {
-        private const string MatchTemplate = "<div class=\"match\">{0}{1}{2}{3}{4}</div>";
+        private const string MatchTemplate = "<div class=\"match\"><span>{0}</span>{1}{2}<span>{3}</span>{4}</div>";
 
         [Test]
-        public void VisiblePropertyIsTrue_ReturnMatchString()
+        public void VisiblePropertyIsTrue_ReturnHtmlString()
         {
             // Arrange
             var homeTeamName = "Luton Hats";
             var awayTeamName = "Milan Reds";
+            var firstGoal = "first-goal";
+            var lastGoal = "last-goal";
             var matchHtml = new StringBuilder();
             var block = new Choice_Match_Block();
             block.homeTeam = homeTeamName;
-            block.home_firstGoal_lastGoal = TemplateChoice.MatchFirstGoal;
+            block.home_firstGoal_lastGoal = firstGoal;
             block.awayTeam = awayTeamName;
-            block.away_firstGoal_lastGoal = TemplateChoice.MatchLastGoal;
+            block.away_firstGoal_lastGoal = lastGoal;
             block.Visible = true;
 
             // Act
             block.ToString(ref matchHtml);
 
             // Assert
-            var homeTeamHtml = string.Format(TemplateChoice.MatchTeamName, homeTeamName);
-            var awayTeamHtml = string.Format(TemplateChoice.MatchTeamName, awayTeamName);
-            var expectedHtml = string.Format(MatchTemplate, homeTeamHtml, TemplateChoice.MatchFirstGoal, block.VS.ToString(), awayTeamHtml, TemplateChoice.MatchLastGoal);
+            var expectedHtml = string.Format(MatchTemplate, homeTeamName, firstGoal, block.VS.ToString(), awayTeamName, lastGoal);
             Assert.AreEqual(expectedHtml, matchHtml.ToString());
         }
 
         [Test]
-        public void BlockVSIsNull_ReturnMatchStringWihoutVS()
+        public void BlockVSIsNull_ReturnHtmlStringWithVSIsEmpty()
         {
             // Arrange
             var homeTeamName = "Luton Hats";
             var awayTeamName = "Milan Reds";
+            var firstGoal = "first-goal";
+            var lastGoal = "last-goal";
             var matchHtml = new StringBuilder();
             var block = new Choice_Match_Block();
             block.homeTeam = homeTeamName;
-            block.home_firstGoal_lastGoal = TemplateChoice.MatchFirstGoal;
+            block.home_firstGoal_lastGoal = firstGoal;
             block.awayTeam = awayTeamName;
-            block.away_firstGoal_lastGoal = TemplateChoice.MatchLastGoal;
-            block.Visible = true;
+            block.away_firstGoal_lastGoal = lastGoal;
             block.VS = null;
 
             // Act
             block.ToString(ref matchHtml);
 
             // Assert
-            var homeTeamHtml = string.Format(TemplateChoice.MatchTeamName, homeTeamName);
-            var awayTeamHtml = string.Format(TemplateChoice.MatchTeamName, awayTeamName);
-            var expectedHtml = string.Format(MatchTemplate, homeTeamHtml, TemplateChoice.MatchFirstGoal, string.Empty, awayTeamHtml, TemplateChoice.MatchLastGoal);
+            var expectedHtml = string.Format(MatchTemplate, homeTeamName, firstGoal, string.Empty, awayTeamName, lastGoal);
             Assert.AreEqual(expectedHtml, matchHtml.ToString());
         }
 
@@ -88,19 +87,20 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
         }
 
         [Test]
-        public void AssignedPropertyIsTrue_ReturnLeagueStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnValueAppendToHtmlString()
         {
             // Arrange
             var homeTeamName = "Luton Hats";
             var awayTeamName = "Milan Reds";
+            var firstGoal = "first-goal";
+            var lastGoal = "last-goal";
             var value = "Tennis";
             var matchHtml = new StringBuilder();
             var block = new WrapperChoice_Match_BlockTest();
             block.homeTeam = homeTeamName;
-            block.home_firstGoal_lastGoal = TemplateChoice.MatchFirstGoal;
+            block.home_firstGoal_lastGoal = firstGoal;
             block.awayTeam = awayTeamName;
-            block.away_firstGoal_lastGoal = TemplateChoice.MatchLastGoal;
-            block.Visible = true;
+            block.away_firstGoal_lastGoal = lastGoal;
             block.SetValueExtend(new StringBuilder(value));
             block.SetAssigned(true);
 
@@ -108,9 +108,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
             block.ToString(ref matchHtml);
 
             // Assert
-            var homeTeamHtml = string.Format(TemplateChoice.MatchTeamName, homeTeamName);
-            var awayTeamHtml = string.Format(TemplateChoice.MatchTeamName, awayTeamName);
-            var expectedHtml = string.Format(MatchTemplate, homeTeamHtml, TemplateChoice.MatchFirstGoal, block.VS.ToString(), awayTeamHtml, TemplateChoice.MatchLastGoal) + value;
+            var expectedHtml = string.Format(MatchTemplate, homeTeamName, firstGoal, block.VS.ToString(), awayTeamName, lastGoal) + value;
             Assert.AreEqual(expectedHtml, matchHtml.ToString());
         }
     }

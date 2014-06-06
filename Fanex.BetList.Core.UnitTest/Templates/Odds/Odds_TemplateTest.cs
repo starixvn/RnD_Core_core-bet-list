@@ -23,7 +23,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Odds
         private const string OddsTemplate = "<span class=\"underdog\">{0}</span><br /><span class=\"oddstype\">{1}</span>";
 
         [Test]
-        public void VisiblePropertyIsTrue_ReturnOddsString()
+        public void VisiblePropertyIsTrue_ReturnHtmlString()
         {
             // Arrange
             var odds = "1";
@@ -58,7 +58,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Odds
         }
 
         [Test]
-        public void AssignedPropertyIsTrue_ReturnOddsStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnValueAppendToHtmlString()
         {
             // Arrange
             var odds = "1";
@@ -68,7 +68,6 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Odds
             var block = new WrapperOdds_Template();
             block.odds = odds;
             block.oddsType = oddType;
-            block.Visible = true;
             block.SetValueExtend(new StringBuilder(value));
             block.SetAssigned(true);
 

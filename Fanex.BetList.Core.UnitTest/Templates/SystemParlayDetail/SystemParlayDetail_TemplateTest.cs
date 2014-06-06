@@ -23,7 +23,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
         private const string SystemParlayDetailTemplate = "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" class=\"system-parlay-detail\" style=\"text-align: right;white-space: nowrap; width: 100%; font-weight: bold\"><tr class=\"system-parlay-header\"><th width=\"100\">Date</th><th>Event</th><th width=\"80\">Odds</th><th width=\"80\">Stake</th><th width=\"80\">Win Loss</th><th width=\"80\">Status</th></tr>{0}{1}{2}{3}</table>";
 
         [Test]
-        public void VisiblePropertyIsTrue_ReturnSystemParlayDetailString()
+        public void VisiblePropertyIsTrue_ReturnHtmlString()
         {
             // Arrange
             var systemParlayDetailsHtml = string.Empty;
@@ -39,7 +39,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
         }
 
         [Test]
-        public void VisiblePropertyIsTrueAndChildBlockIsNull_ReturnSystemParlayDetailString()
+        public void AllChildBlockIsNull_ReturnHtmlStringWithAllChildBlockIsEmpty()
         {
             // Arrange
             var systemParlayDetailsHtml = string.Empty;
@@ -74,13 +74,12 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
         }
 
         [Test]
-        public void AssignedPropertyIsTrue_ReturnSystemParlayDetailStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnValueAppendToHtmlString()
         {
             // Arrange
             var systemParlayDetailsHtml = string.Empty;
             var value = "Tennis";
             var block = new WrapperSystemParlayDetail_Template();
-            block.Visible = true;
             block.SetValueExtend(new StringBuilder(value));
             block.SetAssigned(true);
 

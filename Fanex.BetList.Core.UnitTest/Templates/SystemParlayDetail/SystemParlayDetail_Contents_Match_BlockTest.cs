@@ -23,7 +23,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
         private const string ContentsMatchTemplate = "<div style=\"padding: 3px 0px\">{0} - vs - {1}</div>";
 
         [Test]
-        public void VisiblePropertyIsTrue_ReturnContentsMatchString()
+        public void VisiblePropertyIsTrue_ReturnHtmlString()
         {
             // Arrange
             var homeTeam = "Portland Trail Blazers";
@@ -58,7 +58,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
         }
 
         [Test]
-        public void AssignedPropertyIsTrue_ReturnContentsMatchStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnValueAppendToHtmlString()
         {
             // Arrange
             var homeTeam = "Portland Trail Blazers";
@@ -68,7 +68,6 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
             var block = new WrapperSystemParlayDetail_Contents_Match_Block();
             block.HomeTeam = homeTeam;
             block.AwayTeam = awayTeam;
-            block.Visible = true;
             block.SetValueExtend(new StringBuilder(value));
             block.SetAssigned(true);
 

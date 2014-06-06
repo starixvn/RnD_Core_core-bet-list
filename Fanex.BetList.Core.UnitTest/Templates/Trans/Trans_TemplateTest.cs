@@ -23,7 +23,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Trans
         private const string TransTemplate = "{0}<div class=\"time\">{1}</div>";
 
         [Test]
-        public void VisiblePropertyIsTrue_ReturnTransString()
+        public void VisiblePropertyIsTrue_ReturnHtmlString()
         {
             // Arrange
             var transTime = "11/20/2013 6:54:00 AM";
@@ -41,7 +41,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Trans
         }
 
         [Test]
-        public void VisiblePropertyIsTrueAndChildBlockIsNull_ReturnTransString()
+        public void AllChildBlockIsNull_ReturnHtmlStringWithAllChildBlockIsEmpty()
         {
             // Arrange
             var transTime = "11/20/2013 6:54:00 AM";
@@ -75,7 +75,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Trans
         }
 
         [Test]
-        public void AssignedPropertyIsTrue_ReturnTransStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnValueAppendToHtmlString()
         {
             // Arrange
             var transTime = "11/20/2013 6:54:00 AM";
