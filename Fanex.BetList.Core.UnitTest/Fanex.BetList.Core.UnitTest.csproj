@@ -63,6 +63,8 @@
     <Compile Include="Builder\ChoiceBuilder\Choice90Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\ChoiceCreator.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice89Test.cs" />
+    <Compile Include="Builder\StakeBuilder\Stake29Test.cs" />
+    <Compile Include="Builder\StakeBuilder\Stake1Test.cs" />
     <Compile Include="Builder\TransBuilder\Trans71Test.cs" />
     <Compile Include="Builder\TransBuilder\Trans1Test.cs" />
     <Compile Include="Common\Helper\XPathHelper.cs">
