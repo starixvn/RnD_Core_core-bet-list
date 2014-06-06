@@ -5,7 +5,76 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Trans
     using Fanex.BetList.Core.Templates;
     using NUnit.Framework;
 
+    public class WrapperTrans_TransTime_Block : Trans_TransTime_Block
+    {
+        public void SetAssigned(bool isAssigned)
+        {
+            this.IsAssigned = isAssigned;
+        }
+
+        public void SetValueExtend(StringBuilder value)
+        {
+            this.Value = value;
+        }
+    }
+
     public class Trans_TransTime_BlockTest
     {
+        private const string TransTimeTemplate = "Ref No: {0}";
+
+        [Test]
+        public void VisiblePropertyOfBlockIsTrue_ReturnTransTimeString()
+        {
+            // Arrange
+            var refNo = "1000000";
+            var transTimeHtml = new StringBuilder();
+            var block = new Trans_TransTime_Block();
+            block.refNo = refNo;
+            block.Visible = true;
+
+            // Act
+            block.ToString(ref transTimeHtml);
+
+            // Assert
+            var expectedHtml = string.Format(TransTimeTemplate, refNo);
+            Assert.AreEqual(expectedHtml, transTimeHtml.ToString());
+        }
+
+        [Test]
+        public void VisiblePropertyOfBlockIsFalse_ReturnEmptyString()
+        {
+            // Arrange
+            var transTimeHtml = new StringBuilder();
+            var block = new Trans_TransTime_Block();
+            block.Visible = false;
+
+            // Act
+            block.ToString(ref transTimeHtml);
+
+            // Assert
+            var expectedHtml = string.Empty;
+            Assert.AreEqual(expectedHtml, transTimeHtml.ToString());
+        }
+
+        [Test]
+        public void AssignedPropertyOfBlockIsTrue_ReturnTransTimeStringAndAppendValue()
+        {
+            // Arrange
+            var refNo = "1000000";
+            var transTimeHtml = new StringBuilder();
+            var value = "Tennis";
+            var block = new WrapperTrans_TransTime_Block();
+            block.refNo = refNo;
+            block.Visible = true;
+            block.SetValueExtend(new StringBuilder(value));
+            block.SetAssigned(true);
+
+            // Act
+            block.ToString(ref transTimeHtml);
+
+            // Assert
+            var expectedHtml = string.Format(TransTimeTemplate, refNo) + value;
+            Assert.AreEqual(expectedHtml, transTimeHtml.ToString());
+        }
     }
 }
