@@ -52,8 +52,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Status
             statusHtml = block.ToString();
 
             // Assert
-            var expectedHtml = string.Empty;
-            Assert.AreEqual(expectedHtml, statusHtml);
+            Assert.IsNullOrEmpty(statusHtml);
         }
 
         [Test]

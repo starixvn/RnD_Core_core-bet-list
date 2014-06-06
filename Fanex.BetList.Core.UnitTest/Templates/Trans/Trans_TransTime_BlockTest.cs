@@ -52,8 +52,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Trans
             block.ToString(ref transTimeHtml);
 
             // Assert
-            var expectedHtml = string.Empty;
-            Assert.AreEqual(expectedHtml, transTimeHtml.ToString());
+            Assert.IsNullOrEmpty(transTimeHtml.ToString());
         }
 
         [Test]

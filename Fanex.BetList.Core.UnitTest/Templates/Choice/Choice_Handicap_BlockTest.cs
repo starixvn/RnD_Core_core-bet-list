@@ -43,7 +43,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
         }
 
         [Test]
-        public void BlockOddsIsNull_ReturnHandicapStringWihoutOdds()
+        public void BlockOddsIsNull_ReturnHtmlStringWithOddsIsEmpty()
         {
             // Arrange
             var handicap = "1-2";
@@ -73,12 +73,11 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
             block.ToString(ref handicapHtml);
 
             // Assert
-            var expectedHtml = string.Empty;
-            Assert.AreEqual(expectedHtml, handicapHtml.ToString());
+            Assert.IsNullOrEmpty(handicapHtml.ToString());
         }
 
         [Test]
-        public void AssignedPropertyIsTrue_ReturnHandicapStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnValueAppendToHtmlString()
         {
             // Arrange
             var handicap = "1-2";

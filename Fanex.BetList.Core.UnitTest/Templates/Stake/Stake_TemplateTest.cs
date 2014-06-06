@@ -52,8 +52,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Stake
             stakeHtml = block.ToString();
 
             // Assert
-            var expectedHtml = string.Empty;
-            Assert.AreEqual(expectedHtml, stakeHtml);
+            Assert.IsNullOrEmpty(stakeHtml);
         }
 
         [Test]

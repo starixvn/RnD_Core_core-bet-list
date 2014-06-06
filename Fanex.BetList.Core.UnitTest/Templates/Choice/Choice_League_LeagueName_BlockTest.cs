@@ -3,7 +3,6 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
 {
     using System.Text;
     using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.UnitTest.Common.Templates;
     using NUnit.Framework;
 
     public class WrapperChoice_League_LeagueName_Block : Choice_League_LeagueName_Block
@@ -21,8 +20,10 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
 
     public class Choice_League_LeagueName_BlockTest
     {
+        private const string LeagueNameTemplate = "<span class=\"leagueName\">&nbsp;{0}</span>";
+
         [Test]
-        public void VisiblePropertyIsTrue_ReturnLeagueNameString()
+        public void VisiblePropertyIsTrue_ReturnHtmlString()
         {
             // Arrange
             var leagueName = "WTA - Australian Open (First Set - Game Winner)";
@@ -35,7 +36,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
             block.ToString(ref leagueNameHtml);
 
             // Assert
-            var expectedHtml = string.Format(TemplateChoice.LeagueLeagueName, leagueName);
+            var expectedHtml = string.Format(LeagueNameTemplate, leagueName);
             Assert.AreEqual(expectedHtml, leagueNameHtml.ToString());
         }
 
@@ -51,18 +52,18 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
             block.ToString(ref leagueNameHtml);
 
             // Assert
-            var expectedHtml = string.Empty;
-            Assert.AreEqual(expectedHtml, leagueNameHtml.ToString());
+            Assert.IsNullOrEmpty(leagueNameHtml.ToString());
         }
 
         [Test]
-        public void AssignedPropertyIsTrue_ReturnLeagueNameStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnValueAppendToHtmlString()
         {
             // Arrange
-            var leagueNameHtml = new StringBuilder();
+            var leagueName = "WTA - Australian Open (First Set - Game Winner)";
             var value = "(First Set - Game Winner)";
+            var leagueNameHtml = new StringBuilder();
             var block = new WrapperChoice_League_LeagueName_Block();
-            block.leagueName = string.Empty;
+            block.leagueName = leagueName;
             block.SetValueExtend(new StringBuilder(value));
             block.SetAssigned(true);
 
@@ -70,7 +71,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
             block.ToString(ref leagueNameHtml);
 
             // Assert
-            var expectedHtml = string.Format(TemplateChoice.LeagueLeagueName, string.Empty) + value;
+            var expectedHtml = string.Format(LeagueNameTemplate, leagueName) + value;
             Assert.AreEqual(expectedHtml, leagueNameHtml.ToString());
         }
     }

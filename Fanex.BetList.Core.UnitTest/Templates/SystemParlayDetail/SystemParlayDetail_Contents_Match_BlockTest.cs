@@ -54,8 +54,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
             block.ToString(ref contentsMatchHtml);
 
             // Assert
-            var expectedHtml = string.Empty;
-            Assert.AreEqual(expectedHtml, contentsMatchHtml.ToString());
+            Assert.IsNullOrEmpty(contentsMatchHtml.ToString());
         }
 
         [Test]

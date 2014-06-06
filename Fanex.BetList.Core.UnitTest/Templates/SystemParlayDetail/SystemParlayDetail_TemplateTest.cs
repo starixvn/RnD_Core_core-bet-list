@@ -70,8 +70,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
             systemParlayDetailsHtml = block.ToString();
 
             // Assert
-            var expectedHtml = string.Empty;
-            Assert.AreEqual(expectedHtml, systemParlayDetailsHtml);
+            Assert.IsNullOrEmpty(systemParlayDetailsHtml);
         }
 
         [Test]

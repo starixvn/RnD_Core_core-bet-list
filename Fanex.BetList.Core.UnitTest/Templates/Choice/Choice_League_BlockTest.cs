@@ -21,31 +21,28 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
 
     public class Choice_League_BlockTest
     {
-        private const string LeagueTemplate = "<div class=\"league\">{0}{1}</div>";
+        private const string LeagueTemplate = "<div class=\"league\"><span class=\"sport\">{0}</span>{1}</div>";
 
         [Test]
-        public void VisiblePropertyIsTrue_ReturnLeagueString()
+        public void VisiblePropertyIsTrue_ReturnHtmlString()
         {
             // Arrange
             var sportName = "Tennis";
-            var leagueName = "WTA - Australian Open (First Set - Game Winner)";
             var leagueHtml = new StringBuilder();
             var block = new Choice_League_Block();
             block.sportTypeName = sportName;
-            block.LeagueName.leagueName = leagueName;
             block.Visible = true;
 
             // Act
             block.ToString(ref leagueHtml);
 
             // Assert
-            var sportHtml = string.Format(TemplateChoice.LeagueSport, sportName);
-            var expectedHtml = string.Format(LeagueTemplate, sportHtml, block.LeagueName.ToString());
+            var expectedHtml = string.Format(LeagueTemplate, sportName, block.LeagueName.ToString());
             Assert.AreEqual(expectedHtml, leagueHtml.ToString());
         }
 
         [Test]
-        public void BlockLeagueNameIsNull_ReturnLeagueStringWihoutLeagueName()
+        public void BlockLeagueNameIsNull_ReturnHtmlStringWithLeagueNameIsEmpty()
         {
             // Arrange
             var sportName = "Tennis";
@@ -53,14 +50,12 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
             var block = new Choice_League_Block();
             block.sportTypeName = sportName;
             block.LeagueName = null;
-            block.Visible = true;
 
             // Act
             block.ToString(ref leagueHtml);
 
             // Assert
-            var sportHtml = string.Format(TemplateChoice.LeagueSport, sportName);
-            var expectedHtml = string.Format(LeagueTemplate, sportHtml, string.Empty);
+            var expectedHtml = string.Format(LeagueTemplate, sportName, string.Empty);
             Assert.AreEqual(expectedHtml, leagueHtml.ToString());
         }
 
@@ -76,29 +71,27 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
             block.ToString(ref leagueHtml);
 
             // Assert
-            var expectedHtml = string.Empty;
-            Assert.AreEqual(expectedHtml, leagueHtml.ToString());
+            Assert.IsNullOrEmpty(leagueHtml.ToString());
         }
 
         [Test]
-        public void AssignedPropertyIsTrue_ReturnLeagueStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnValueAppendToHtmlString()
         {
             // Arrange
-            var leagueNameHtml = new StringBuilder();
-            var value = "A";
+            var sportName = "Tennis";
+            var value = "Tennis";
+            var leagueHtml = new StringBuilder();
             var block = new WrapperChoice_League_Block();
-            block.sportTypeName = string.Empty;
-            block.LeagueName.leagueName = string.Empty;
+            block.sportTypeName = sportName;
             block.SetValueExtend(new StringBuilder(value));
             block.SetAssigned(true);
 
             // Act
-            block.ToString(ref leagueNameHtml);
+            block.ToString(ref leagueHtml);
 
             // Assert
-            var sportHtml = string.Format(TemplateChoice.LeagueSport, string.Empty);
-            var expectedHtml = string.Format(LeagueTemplate, sportHtml, block.LeagueName.ToString()) + value;
-            Assert.AreEqual(expectedHtml, leagueNameHtml.ToString());
+            var expectedHtml = string.Format(LeagueTemplate, sportName, block.LeagueName.ToString()) + value;
+            Assert.AreEqual(expectedHtml, leagueHtml.ToString());
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
         private const string BetTypeTemplate = "<div class=\"bettype\"> {0}</div>";
 
         [Test]
-        public void VisiblePropertyOfBlockIsTrue_ReturnBetTypeString()
+        public void VisiblePropertyIsTrue_ReturnHtmlString()
         {
             // Arrange
             var betTypeName = "Handicap";
@@ -41,7 +41,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
         }
 
         [Test]
-        public void VisiblePropertyOfBlockIsFalse_ReturnEmptyString()
+        public void VisiblePropertyIsFalse_ReturnEmptyString()
         {
             // Arrange
             var betTypeHtml = new StringBuilder();
@@ -52,12 +52,11 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
             block.ToString(ref betTypeHtml);
 
             // Assert
-            var expectedHtml = string.Empty;
-            Assert.AreEqual(expectedHtml, betTypeHtml.ToString());
+            Assert.IsNullOrEmpty(betTypeHtml.ToString());
         }
 
         [Test]
-        public void AssignedPropertyOfBlockIsTrue_ReturnBetTypeStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnValueAppendToHtmlString()
         {
             // Arrange
             var betTypeName = "Handicap";

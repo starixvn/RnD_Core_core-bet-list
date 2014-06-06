@@ -66,8 +66,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
             block.ToString(ref choiceHtml);
 
             // Assert
-            var expectedHtml = string.Empty;
-            Assert.AreEqual(expectedHtml, choiceHtml.ToString());
+            Assert.IsNullOrEmpty(choiceHtml.ToString());
         }
 
         [Test]

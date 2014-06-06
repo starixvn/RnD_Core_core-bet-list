@@ -54,8 +54,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Odds
             oddsHtml = block.ToString();
 
             // Assert
-            var expectedHtml = string.Empty;
-            Assert.AreEqual(expectedHtml, oddsHtml);
+            Assert.IsNullOrEmpty(oddsHtml);
         }
 
         [Test]

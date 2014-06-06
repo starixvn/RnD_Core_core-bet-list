@@ -23,7 +23,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
         private const string BetTeamOddsHandicap = "<span class=\"odds\"> @ {0}</span>";
 
         [Test]
-        public void VisiblePropertyIsTrue_ReturnOddsString()
+        public void VisiblePropertyIsTrue_ReturnHtmlString()
         {
             // Arrange
             var odds = "1";
@@ -52,12 +52,11 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
             block.ToString(ref oddsHtml);
 
             // Assert
-            var expectedHtml = string.Empty;
-            Assert.AreEqual(expectedHtml, oddsHtml.ToString());
+            Assert.IsNullOrEmpty(oddsHtml.ToString());
         }
 
         [Test]
-        public void AssignedPropertyIsTrue_ReturnBetTypeStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnValueAppendToHtmlString()
         {
             // Arrange
             var odds = "1";

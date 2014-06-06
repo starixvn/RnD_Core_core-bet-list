@@ -71,8 +71,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Trans
             transHtml = block.ToString();
 
             // Assert
-            var expectedHtml = string.Empty;
-            Assert.AreEqual(expectedHtml, transHtml);
+            Assert.IsNullOrEmpty(transHtml);
         }
 
         [Test]

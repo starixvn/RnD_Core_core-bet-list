@@ -124,8 +124,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Status
             block.ToString(ref statusHtml);
 
             // Assert
-            var expectedHtml = string.Empty;
-            Assert.AreEqual(expectedHtml, statusHtml.ToString());
+            Assert.IsNullOrEmpty(statusHtml.ToString());
         }
 
         [Test]
