@@ -3,7 +3,6 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
 {
     using System.Text;
     using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.UnitTest.Common.Templates;
     using NUnit.Framework;
 
     public class WrapperChoice_Match_VS_Block : Choice_Match_VS_Block
@@ -21,8 +20,10 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
 
     public class Choice_Match_VS_BlockTest
     {
+        private const string MatchVSTemplate = "<span>&nbsp;-&nbsp;vs&nbsp;-&nbsp;</span>";
+
         [Test]
-        public void VisiblePropertyOfBlockIsTrue_ReturnMatchVSString()
+        public void VisiblePropertyIsTrue_ReturnMatchVSString()
         {
             // Arrange
             var vsHtml = new StringBuilder();
@@ -33,12 +34,12 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
             block.ToString(ref vsHtml);
 
             // Assert
-            var expectedHtml = TemplateChoice.MatchVS;
+            var expectedHtml = MatchVSTemplate;
             Assert.AreEqual(expectedHtml, vsHtml.ToString());
         }
 
         [Test]
-        public void VisiblePropertyOfBlockIsFalse_ReturnEmptyString()
+        public void VisiblePropertyIsFalse_ReturnEmptyString()
         {
             // Arrange
             var vsHtml = new StringBuilder();
@@ -54,7 +55,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
         }
 
         [Test]
-        public void AssignedPropertyOfBlockIsTrue_ReturnMatchVSStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnMatchVSStringAndAppendValue()
         {
             // Arrange
             var vsHtml = new StringBuilder();
@@ -67,7 +68,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
             block.ToString(ref vsHtml);
 
             // Assert
-            var expectedHtml = TemplateChoice.MatchVS + value; ;
+            var expectedHtml = MatchVSTemplate + value; ;
             Assert.AreEqual(expectedHtml, vsHtml.ToString());
         }
     }

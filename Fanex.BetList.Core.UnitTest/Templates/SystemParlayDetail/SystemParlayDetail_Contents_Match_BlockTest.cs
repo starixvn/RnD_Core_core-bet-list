@@ -23,7 +23,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
         private const string ContentsMatchTemplate = "<div style=\"padding: 3px 0px\">{0} - vs - {1}</div>";
 
         [Test]
-        public void VisiblePropertyOfBlockIsTrue_ReturnContentsMatchString()
+        public void VisiblePropertyIsTrue_ReturnContentsMatchString()
         {
             // Arrange
             var homeTeam = "Portland Trail Blazers";
@@ -43,7 +43,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
         }
 
         [Test]
-        public void VisiblePropertyOfBlockIsFalse_ReturnEmptyString()
+        public void VisiblePropertyIsFalse_ReturnEmptyString()
         {
             // Arrange
             var contentsMatchHtml = new StringBuilder();
@@ -59,7 +59,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
         }
 
         [Test]
-        public void AssignedPropertyOfBlockIsTrue_ReturnContentsMatchStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnContentsMatchStringAndAppendValue()
         {
             // Arrange
             var homeTeam = "Portland Trail Blazers";

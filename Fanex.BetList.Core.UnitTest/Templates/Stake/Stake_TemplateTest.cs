@@ -23,7 +23,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Stake
         private const string StakeTemplate = "<span class=\"stake\">{0}</span>";
 
         [Test]
-        public void VisiblePropertyOfBlockIsTrue_ReturnStakeString()
+        public void VisiblePropertyIsTrue_ReturnStakeString()
         {
             // Arrange
             var stake = "10";
@@ -41,7 +41,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Stake
         }
 
         [Test]
-        public void VisiblePropertyOfBlockIsFalse_ReturnEmptyString()
+        public void VisiblePropertyIsFalse_ReturnEmptyString()
         {
             // Arrange
             var stakeHtml = string.Empty;
@@ -57,7 +57,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Stake
         }
 
         [Test]
-        public void AssignedPropertyOfBlockIsTrue_ReturnStakeStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnStakeStringAndAppendValue()
         {
             // Arrange
             var stake = "10";

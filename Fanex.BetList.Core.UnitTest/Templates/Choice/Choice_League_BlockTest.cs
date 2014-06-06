@@ -24,7 +24,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
         private const string LeagueTemplate = "<div class=\"league\">{0}{1}</div>";
 
         [Test]
-        public void VisiblePropertyOfBlockIsTrue_ReturnLeagueString()
+        public void VisiblePropertyIsTrue_ReturnLeagueString()
         {
             // Arrange
             var sportName = "Tennis";
@@ -65,7 +65,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
         }
 
         [Test]
-        public void VisiblePropertyOfBlockIsFalse_ReturnEmptyString()
+        public void VisiblePropertyIsFalse_ReturnEmptyString()
         {
             // Arrange
             var leagueHtml = new StringBuilder();
@@ -81,7 +81,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
         }
 
         [Test]
-        public void AssignedPropertyOfBlockIsTrue_ReturnLeagueStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnLeagueStringAndAppendValue()
         {
             // Arrange
             var leagueNameHtml = new StringBuilder();

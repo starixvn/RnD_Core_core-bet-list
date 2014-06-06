@@ -23,7 +23,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
         private const string SystemParlayDetailTemplate = "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" class=\"system-parlay-detail\" style=\"text-align: right;white-space: nowrap; width: 100%; font-weight: bold\"><tr class=\"system-parlay-header\"><th width=\"100\">Date</th><th>Event</th><th width=\"80\">Odds</th><th width=\"80\">Stake</th><th width=\"80\">Win Loss</th><th width=\"80\">Status</th></tr>{0}{1}{2}{3}</table>";
 
         [Test]
-        public void VisiblePropertyOfBlockIsTrue_ReturnSystemParlayDetailString()
+        public void VisiblePropertyIsTrue_ReturnSystemParlayDetailString()
         {
             // Arrange
             var systemParlayDetailsHtml = string.Empty;
@@ -39,7 +39,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
         }
 
         [Test]
-        public void VisiblePropertyOfBlockIsTrueAndChildBlockIsNull_ReturnSystemParlayDetailString()
+        public void VisiblePropertyIsTrueAndChildBlockIsNull_ReturnSystemParlayDetailString()
         {
             // Arrange
             var systemParlayDetailsHtml = string.Empty;
@@ -59,7 +59,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
         }
 
         [Test]
-        public void VisiblePropertyOfBlockIsFalse_ReturnEmptyString()
+        public void VisiblePropertyIsFalse_ReturnEmptyString()
         {
             // Arrange
             var systemParlayDetailsHtml = string.Empty;
@@ -75,7 +75,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
         }
 
         [Test]
-        public void AssignedPropertyOfBlockIsTrue_ReturnSystemParlayDetailStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnSystemParlayDetailStringAndAppendValue()
         {
             // Arrange
             var systemParlayDetailsHtml = string.Empty;

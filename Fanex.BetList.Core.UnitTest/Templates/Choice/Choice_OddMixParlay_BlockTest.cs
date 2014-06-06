@@ -21,7 +21,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
     public class Choice_OddMixParlay_BlockTest
     {
         [Test]
-        public void AssignedPropertyOfBlockIsTrue_ReturnOddMixParlayStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnOddMixParlayStringAndAppendValue()
         {
             // Arrange
             var scoreMapIconHtml = new StringBuilder();

@@ -3,7 +3,6 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
 {
     using System.Text;
     using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.UnitTest.Common.Templates;
     using NUnit.Framework;
 
     public class WrapperChoice_Score_Block : Choice_Score_Block
@@ -21,8 +20,10 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
 
     public class Choice_Score_BlockTest
     {
+        private const string ScoreTemplate = "<span class=\"favorite\"> [{0}-{1}]</span>";
+
         [Test]
-        public void VisiblePropertyOfBlockIsTrue_ReturnScoreString()
+        public void VisiblePropertyIsTrue_ReturnScoreString()
         {
             // Arrange
             var homeScore = "1";
@@ -37,12 +38,12 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
             block.ToString(ref scoreHtml);
 
             // Assert
-            var expectedHtml = string.Format(TemplateChoice.Score, homeScore, awayScore);
+            var expectedHtml = string.Format(ScoreTemplate, homeScore, awayScore);
             Assert.AreEqual(expectedHtml, scoreHtml.ToString());
         }
 
         [Test]
-        public void VisiblePropertyOfBlockIsFalse_ReturnEmptyString()
+        public void VisiblePropertyIsFalse_ReturnEmptyString()
         {
             // Arrange
             var scoreHtml = new StringBuilder();
@@ -58,7 +59,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
         }
 
         [Test]
-        public void AssignedPropertyOfBlockIsTrue_ReturnScoreStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnScoreStringAndAppendValue()
         {
             // Arrange
             var homeScore = "1";
@@ -76,7 +77,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
             block.ToString(ref scoreHtml);
 
             // Assert
-            var expectedHtml = string.Format(TemplateChoice.Score, homeScore, awayScore) + value;
+            var expectedHtml = string.Format(ScoreTemplate, homeScore, awayScore) + value;
             Assert.AreEqual(expectedHtml, scoreHtml.ToString());
         }
     }

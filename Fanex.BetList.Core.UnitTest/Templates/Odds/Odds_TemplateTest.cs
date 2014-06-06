@@ -23,7 +23,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Odds
         private const string OddsTemplate = "<span class=\"underdog\">{0}</span><br /><span class=\"oddstype\">{1}</span>";
 
         [Test]
-        public void VisiblePropertyOfBlockIsTrue_ReturnOddsString()
+        public void VisiblePropertyIsTrue_ReturnOddsString()
         {
             // Arrange
             var odds = "1";
@@ -43,7 +43,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Odds
         }
 
         [Test]
-        public void VisiblePropertyOfBlockIsFalse_ReturnEmptyString()
+        public void VisiblePropertyIsFalse_ReturnEmptyString()
         {
             // Arrange
             var oddsHtml = string.Empty;
@@ -59,7 +59,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Odds
         }
 
         [Test]
-        public void AssignedPropertyOfBlockIsTrue_ReturnOddsStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnOddsStringAndAppendValue()
         {
             // Arrange
             var odds = "1";

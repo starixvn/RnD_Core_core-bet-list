@@ -3,7 +3,6 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
 {
     using System.Text;
     using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.UnitTest.Common.Templates;
     using NUnit.Framework;
 
     public class WrapperChoice_BetType_BlockTest : Choice_BetType_Block
@@ -21,6 +20,8 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
 
     public class Choice_BetType_BlockTest
     {
+        private const string BetTypeTemplate = "<div class=\"bettype\"> {0}</div>";
+
         [Test]
         public void VisiblePropertyOfBlockIsTrue_ReturnBetTypeString()
         {
@@ -35,7 +36,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
             block.ToString(ref betTypeHtml);
 
             // Assert
-            string expectedHtml = string.Format(TemplateChoice.BetType, betTypeName);
+            string expectedHtml = string.Format(BetTypeTemplate, betTypeName);
             Assert.AreEqual(expectedHtml, betTypeHtml.ToString());
         }
 
@@ -72,7 +73,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
             block.ToString(ref betTypeHtml);
 
             // Assert
-            var expectedHtml = string.Format(TemplateChoice.BetType, betTypeName) + value;
+            var expectedHtml = string.Format(BetTypeTemplate, betTypeName) + value;
             Assert.AreEqual(expectedHtml, betTypeHtml.ToString());
         }
     }

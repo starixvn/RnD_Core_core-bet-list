@@ -24,7 +24,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
         private const string MatchTemplate = "<div class=\"match\">{0}{1}{2}{3}{4}</div>";
 
         [Test]
-        public void VisiblePropertyOfBlockIsTrue_ReturnMatchString()
+        public void VisiblePropertyIsTrue_ReturnMatchString()
         {
             // Arrange
             var homeTeamName = "Luton Hats";
@@ -73,7 +73,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
         }
 
         [Test]
-        public void VisiblePropertyOfBlockIsFalse_ReturnEmptyString()
+        public void VisiblePropertyIsFalse_ReturnEmptyString()
         {
             // Arrange
             var matchHtml = new StringBuilder();
@@ -89,7 +89,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
         }
 
         [Test]
-        public void AssignedPropertyOfBlockIsTrue_ReturnLeagueStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnLeagueStringAndAppendValue()
         {
             // Arrange
             var homeTeamName = "Luton Hats";

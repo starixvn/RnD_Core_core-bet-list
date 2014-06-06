@@ -23,7 +23,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
         private const string HandicapTemplate = "<span class='handicap'> {0}{1}</span>";
 
         [Test]
-        public void VisiblePropertyOfBlockIsTrue_ReturnHandicapString()
+        public void VisiblePropertyIsTrue_ReturnHtmlString()
         {
             // Arrange
             var handicap = "1-2";
@@ -62,7 +62,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
         }
 
         [Test]
-        public void VisiblePropertyOfBlockIsFalse_ReturnEmptyString()
+        public void VisiblePropertyIsFalse_ReturnEmptyString()
         {
             // Arrange
             var handicapHtml = new StringBuilder();
@@ -78,7 +78,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
         }
 
         [Test]
-        public void AssignedPropertyOfBlockIsTrue_ReturnHandicapStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnHandicapStringAndAppendValue()
         {
             // Arrange
             var handicap = "1-2";

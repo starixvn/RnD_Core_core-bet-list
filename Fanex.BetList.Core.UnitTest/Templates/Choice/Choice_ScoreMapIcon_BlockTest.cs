@@ -3,7 +3,6 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
 {
     using System.Text;
     using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.UnitTest.Common.Templates;
     using NUnit.Framework;
 
     public class WrapperChoice_ScoreMapIcon_Block : Choice_ScoreMapIcon_Block
@@ -21,8 +20,10 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
 
     public class Choice_ScoreMapIcon_BlockTest
     {
+        private const string ScoreMapIconTemplate = "<span class='scoremap'><a href=\"javascript:OpenScoreMap({0},{1},{2});\"title=\"Score Map\"><div class='scoremapIcon'></div></a></span>";
+
         [Test]
-        public void VisiblePropertyOfBlockIsTrue_ReturnScoreMapIconString()
+        public void VisiblePropertyIsTrue_ReturnScoreMapIconString()
         {
             // Arrange
             var matchId = "1000";
@@ -39,12 +40,12 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
             block.ToString(ref scoreMapIconHtml);
 
             // Assert
-            var expectedHtml = string.Format(TemplateChoice.ScoreMapIcon, matchId, betTypeId, liveIndicator);
+            var expectedHtml = string.Format(ScoreMapIconTemplate, matchId, betTypeId, liveIndicator);
             Assert.AreEqual(expectedHtml, scoreMapIconHtml.ToString());
         }
 
         [Test]
-        public void VisiblePropertyOfBlockIsFalse_ReturnEmptyString()
+        public void VisiblePropertyIsFalse_ReturnEmptyString()
         {
             // Arrange
             var scoreMapIconHtml = new StringBuilder();
@@ -60,7 +61,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
         }
 
         [Test]
-        public void AssignedPropertyOfBlockIsTrue_ReturnScoreMapIconStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnScoreMapIconStringAndAppendValue()
         {
             // Arrange
             var matchId = "1000";
@@ -80,7 +81,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
             block.ToString(ref scoreMapIconHtml);
 
             // Assert
-            var expectedHtml = string.Format(TemplateChoice.ScoreMapIcon, matchId, betTypeId, liveIndicator) + value;
+            var expectedHtml = string.Format(ScoreMapIconTemplate, matchId, betTypeId, liveIndicator) + value;
             Assert.AreEqual(expectedHtml, scoreMapIconHtml.ToString());
         }
     }

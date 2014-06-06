@@ -23,7 +23,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
         private const string ContentsPlayerCommissionTemplate = "<div class=\"player-commission\">{0}</div>";
 
         [Test]
-        public void VisiblePropertyOfBlockIsTrue_ReturnContentsPlayerCommissionString()
+        public void VisiblePropertyIsTrue_ReturnContentsPlayerCommissionString()
         {
             // Arrange
             var playerCommission = "0.625";
@@ -41,7 +41,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
         }
 
         [Test]
-        public void VisiblePropertyOfBlockIsFalse_ReturnEmptyString()
+        public void VisiblePropertyIsFalse_ReturnEmptyString()
         {
             // Arrange
             var contentsPlayerCommission = new StringBuilder();
@@ -57,7 +57,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
         }
 
         [Test]
-        public void AssignedPropertyOfBlockIsTrue_ReturnContentsPlayerCommissionStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnContentsPlayerCommissionStringAndAppendValue()
         {
             // Arrange
             var playerCommission = "0.625";

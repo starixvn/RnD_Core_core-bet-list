@@ -23,7 +23,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
         private const string ContentsTemplate = "<tr>{0}<td style=\"text-align: left; font-weight: normal\">{1}</td><td>{2}</td><td>{3}</td><td>{4}{5}</td><td style=\"text-align: center;\">{6}</td></tr>";
 
         [Test]
-        public void VisiblePropertyOfBlockIsTrue_ReturnContentsString()
+        public void VisiblePropertyIsTrue_ReturnContentsString()
         {
             // Arrange
             var odds = "0.78";
@@ -47,7 +47,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
         }
 
         [Test]
-        public void VisiblePropertyOfBlockIsTrueAndChildBlockIsNull_ReturnContentsString()
+        public void VisiblePropertyIsTrueAndChildBlockIsNull_ReturnContentsString()
         {
             // Arrange
             var odds = "0.78";
@@ -74,7 +74,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
         }
 
         [Test]
-        public void VisiblePropertyOfBlockIsFalse_ReturnEmptyString()
+        public void VisiblePropertyIsFalse_ReturnEmptyString()
         {
             // Arrange
             var contentsHtml = new StringBuilder();
@@ -90,7 +90,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
         }
 
         [Test]
-        public void AssignedPropertyOfBlockIsTrue_ReturnContentsStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnContentsStringAndAppendValue()
         {
             // Arrange
             var odds = "0.78";

@@ -3,7 +3,6 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
 {
     using System.Text;
     using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.UnitTest.Common.Templates;
     using NUnit.Framework;
 
     public class WrapperChoice_Handicap_Odds_Block : Choice_Handicap_Odds_Block
@@ -21,8 +20,10 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
 
     public class Choice_Handicap_Odds_BlockTest
     {
+        private const string BetTeamOddsHandicap = "<span class=\"odds\"> @ {0}</span>";
+
         [Test]
-        public void VisiblePropertyOfBlockIsTrue_ReturnOddsString()
+        public void VisiblePropertyIsTrue_ReturnOddsString()
         {
             // Arrange
             var odds = "1";
@@ -35,12 +36,12 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
             block.ToString(ref oddsHtml);
 
             // Assert
-            var expectedHtml = string.Format(TemplateChoice.BetTeamOdds, odds);
+            var expectedHtml = string.Format(BetTeamOddsHandicap, odds);
             Assert.AreEqual(expectedHtml, oddsHtml.ToString());
         }
 
         [Test]
-        public void VisiblePropertyOfBlockIsFalse_ReturnEmptyString()
+        public void VisiblePropertyIsFalse_ReturnEmptyString()
         {
             // Arrange
             var oddsHtml = new StringBuilder();
@@ -56,7 +57,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
         }
 
         [Test]
-        public void AssignedPropertyOfBlockIsTrue_ReturnBetTypeStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnBetTypeStringAndAppendValue()
         {
             // Arrange
             var odds = "1";
@@ -72,7 +73,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
             block.ToString(ref oddsHtml);
 
             // Assert
-            var expectedHtml = string.Format(TemplateChoice.BetTeamOdds, odds) + value;
+            var expectedHtml = string.Format(BetTeamOddsHandicap, odds) + value;
             Assert.AreEqual(expectedHtml, oddsHtml.ToString());
         }
     }

@@ -22,7 +22,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
     public class Choice_League_LeagueName_BlockTest
     {
         [Test]
-        public void VisiblePropertyOfBlockIsTrue_ReturnLeagueNameString()
+        public void VisiblePropertyIsTrue_ReturnLeagueNameString()
         {
             // Arrange
             var leagueName = "WTA - Australian Open (First Set - Game Winner)";
@@ -40,7 +40,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
         }
 
         [Test]
-        public void VisiblePropertyOfBlockIsFalse_ReturnEmptyString()
+        public void VisiblePropertyIsFalse_ReturnEmptyString()
         {
             // Arrange
             var leagueNameHtml = new StringBuilder();
@@ -56,7 +56,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
         }
 
         [Test]
-        public void AssignedPropertyOfBlockIsTrue_ReturnLeagueNameStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnLeagueNameStringAndAppendValue()
         {
             // Arrange
             var leagueNameHtml = new StringBuilder();

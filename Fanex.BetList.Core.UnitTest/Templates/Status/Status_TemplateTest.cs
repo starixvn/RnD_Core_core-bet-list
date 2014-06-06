@@ -23,7 +23,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Status
         private const string StatusTemplate = "<div class=\"status\">{0}</div>{1}{2}";
 
         [Test]
-        public void VisiblePropertyOfBlockIsTrue_ReturnStatusString()
+        public void VisiblePropertyIsTrue_ReturnStatusString()
         {
             // Arrange
             var result = "void";
@@ -41,7 +41,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Status
         }
 
         [Test]
-        public void VisiblePropertyOfBlockIsFalse_ReturnEmptyString()
+        public void VisiblePropertyIsFalse_ReturnEmptyString()
         {
             // Arrange
             var statusHtml = string.Empty;
@@ -57,7 +57,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Status
         }
 
         [Test]
-        public void AssignedPropertyOfBlockIsTrue_ReturnOddsStringAndAppendValue()
+        public void AssignedPropertyIsTrue_ReturnOddsStringAndAppendValue()
         {
             // Arrange
             var result = "void";
