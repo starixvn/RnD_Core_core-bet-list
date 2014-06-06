@@ -5,7 +5,84 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Template
     using Fanex.BetList.Core.Templates;
     using NUnit.Framework;
 
+    public class WrapperTemplate_Score_Block : Template_Score_Block
+    {
+        public void SetAssigned(bool isAssigned)
+        {
+            this.IsAssigned = isAssigned;
+        }
+
+        public void SetValueExtend(StringBuilder value)
+        {
+            this.Value = value;
+        }
+    }
+
     public class Template_Score_BlockTest
     {
+        private const string HandicapTemplate = "&nbsp;<span class=\"{0}\">[{1}-{2}]</span>";
+
+        [Test]
+        public void VisiblePropertyOfBlockIsTrue_ReturnScoreString()
+        {
+            // Arrange
+            var scoreClassName = "favorite";
+            var homeScore = "1";
+            var awayScore = "2";
+            var scoreHtml = new StringBuilder();
+            var block = new Template_Score_Block();
+            block.scoreClassName = scoreClassName;
+            block.homeScore = homeScore;
+            block.awayScore = awayScore;
+            block.Visible = true;
+
+            // Act
+            block.ToString(ref scoreHtml);
+
+            // Assert
+            var expectedHtml = string.Format(HandicapTemplate, scoreClassName, homeScore, awayScore);
+            Assert.AreEqual(expectedHtml, scoreHtml.ToString());
+        }
+
+        [Test]
+        public void VisiblePropertyOfBlockIsFalse_ReturnEmptyString()
+        {
+            // Arrange
+            var scoreHtml = new StringBuilder();
+            var block = new Template_Score_Block();
+            block.Visible = false;
+
+            // Act
+            block.ToString(ref scoreHtml);
+
+            // Assert
+            var expectedHtml = string.Empty;
+            Assert.AreEqual(expectedHtml, scoreHtml.ToString());
+        }
+
+        [Test]
+        public void AssignedPropertyOfBlockIsTrue_ReturnScoresStringAndAppendValue()
+        {
+            // Arrange
+            var scoreClassName = "favorite";
+            var homeScore = "1";
+            var awayScore = "2";
+            var value = "Tennis";
+            var scoreHtml = new StringBuilder();
+            var block = new WrapperTemplate_Score_Block();
+            block.scoreClassName = scoreClassName;
+            block.homeScore = homeScore;
+            block.awayScore = awayScore;
+            block.Visible = true;
+            block.SetValueExtend(new StringBuilder(value));
+            block.SetAssigned(true);
+
+            // Act
+            block.ToString(ref scoreHtml);
+
+            // Assert
+            var expectedHtml = string.Format(HandicapTemplate, scoreClassName, homeScore, awayScore) + value;
+            Assert.AreEqual(expectedHtml, scoreHtml.ToString());
+        }
     }
 }

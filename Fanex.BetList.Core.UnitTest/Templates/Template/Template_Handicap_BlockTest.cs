@@ -5,7 +5,76 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Template
     using Fanex.BetList.Core.Templates;
     using NUnit.Framework;
 
+    public class WrapperTemplate_Handicap_Block : Template_Handicap_Block
+    {
+        public void SetAssigned(bool isAssigned)
+        {
+            this.IsAssigned = isAssigned;
+        }
+
+        public void SetValueExtend(StringBuilder value)
+        {
+            this.Value = value;
+        }
+    }
+
     public class Template_Handicap_BlockTest
     {
+        private const string HandicapTemplate = "<span class='colorHandicap'> {0} </span>";
+
+        [Test]
+        public void VisiblePropertyOfBlockIsTrue_ReturnHandicapString()
+        {
+            // Arrange
+            var handicapHtml = new StringBuilder();
+            var handicap = "1";
+            var block = new Template_Handicap_Block();
+            block.handicap = handicap;
+            block.Visible = true;
+
+            // Act
+            block.ToString(ref handicapHtml);
+
+            // Assert
+            var expectedHtml = string.Format(HandicapTemplate, handicap);
+            Assert.AreEqual(expectedHtml, handicapHtml.ToString());
+        }
+
+        [Test]
+        public void VisiblePropertyOfBlockIsFalse_ReturnEmptyString()
+        {
+            // Arrange
+            var handicapHtml = new StringBuilder();
+            var block = new Template_Handicap_Block();
+            block.Visible = false;
+
+            // Act
+            block.ToString(ref handicapHtml);
+
+            // Assert
+            var expectedHtml = string.Empty;
+            Assert.AreEqual(expectedHtml, handicapHtml.ToString());
+        }
+
+        [Test]
+        public void AssignedPropertyOfBlockIsTrue_ReturnHandicapStringAndAppendValue()
+        {
+            // Arrange
+            var handicapHtml = new StringBuilder();
+            var handicap = "1";
+            var value = "Tennis";
+            var block = new WrapperTemplate_Handicap_Block();
+            block.handicap = handicap;
+            block.Visible = true;
+            block.SetValueExtend(new StringBuilder(value));
+            block.SetAssigned(true);
+
+            // Act
+            block.ToString(ref handicapHtml);
+
+            // Assert
+            var expectedHtml = string.Format(HandicapTemplate, handicap) + value;
+            Assert.AreEqual(expectedHtml, handicapHtml.ToString());
+        }
     }
 }

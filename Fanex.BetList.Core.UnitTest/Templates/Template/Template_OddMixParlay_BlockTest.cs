@@ -5,7 +5,38 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Template
     using Fanex.BetList.Core.Templates;
     using NUnit.Framework;
 
+    public class WrapperTemplate_OddMixParlay_Block : Template_OddMixParlay_Block
+    {
+        public void SetAssigned(bool isAssigned)
+        {
+            this.IsAssigned = isAssigned;
+        }
+
+        public void SetValueExtend(StringBuilder value)
+        {
+            this.Value = value;
+        }
+    }
+
     public class Template_OddMixParlay_BlockTest
     {
+        [Test]
+        public void AssignedPropertyOfBlockIsTrue_ReturnOddMixParlayStringAndAppendValue()
+        {
+            // Arrange
+            var scoreMapIconHtml = new StringBuilder();
+            var value = "Tennis";
+            var block = new WrapperTemplate_OddMixParlay_Block();
+            block.Visible = true;
+            block.SetValueExtend(new StringBuilder(value));
+            block.SetAssigned(true);
+
+            // Act
+            block.ToString(ref scoreMapIconHtml);
+
+            // Assert
+            var expectedHtml = value;
+            Assert.AreEqual(expectedHtml, scoreMapIconHtml.ToString());
+        }
     }
 }
