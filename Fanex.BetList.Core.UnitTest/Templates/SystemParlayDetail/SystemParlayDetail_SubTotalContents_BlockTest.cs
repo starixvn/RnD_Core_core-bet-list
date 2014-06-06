@@ -5,7 +5,76 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
     using Fanex.BetList.Core.Templates;
     using NUnit.Framework;
 
+    public class WrapperSystemParlayDetail_SubTotalContents_Block : SystemParlayDetail_SubTotalContents_Block
+    {
+        public void SetAssigned(bool isAssigned)
+        {
+            this.IsAssigned = isAssigned;
+        }
+
+        public void SetValueExtend(StringBuilder value)
+        {
+            this.Value = value;
+        }
+    }
+
     public class SystemParlayDetail_SubTotalContents_BlockTest
     {
+        private const string SubTotalContentsTemplate = "<tr class=\"system-parlay-subtotal\"><td colspan=\"4\">Sub Total:</td><td style=\"border-left: none;\">{0}</td><td style=\"border-left: none;\">&nbsp;</td></tr>";
+
+        [Test]
+        public void VisiblePropertyOfBlockIsTrue_ReturnSubTotalContentsString()
+        {
+            // Arrange
+            var totalWinloss = "20000";
+            var subTotalContentsHtml = new StringBuilder();
+            var block = new SystemParlayDetail_SubTotalContents_Block();
+            block.TotalWinloss = totalWinloss;
+            block.Visible = true;
+
+            // Act
+            block.ToString(ref subTotalContentsHtml);
+
+            // Assert
+            var expectedHtml = string.Format(SubTotalContentsTemplate, totalWinloss);
+            Assert.AreEqual(expectedHtml, subTotalContentsHtml.ToString());
+        }
+
+        [Test]
+        public void VisiblePropertyOfBlockIsFalse_ReturnEmptyString()
+        {
+            // Arrange
+            var subTotalContentsHtml = new StringBuilder();
+            var block = new SystemParlayDetail_SubTotalContents_Block();
+            block.Visible = false;
+
+            // Act
+            block.ToString(ref subTotalContentsHtml);
+
+            // Assert
+            var expectedHtml = string.Empty;
+            Assert.AreEqual(expectedHtml, subTotalContentsHtml.ToString());
+        }
+
+        [Test]
+        public void AssignedPropertyOfBlockIsTrue_ReturnSubTotalContentsStringAndAppendValue()
+        {
+            // Arrange
+            var totalWinloss = "20000";
+            var subTotalContentsHtml = new StringBuilder();
+            var value = "Tennis";
+            var block = new WrapperSystemParlayDetail_SubTotalContents_Block();
+            block.TotalWinloss = totalWinloss;
+            block.Visible = true;
+            block.SetValueExtend(new StringBuilder(value));
+            block.SetAssigned(true);
+
+            // Act
+            block.ToString(ref subTotalContentsHtml);
+
+            // Assert
+            var expectedHtml = string.Format(SubTotalContentsTemplate, totalWinloss) + value;
+            Assert.AreEqual(expectedHtml, subTotalContentsHtml.ToString());
+        }
     }
 }

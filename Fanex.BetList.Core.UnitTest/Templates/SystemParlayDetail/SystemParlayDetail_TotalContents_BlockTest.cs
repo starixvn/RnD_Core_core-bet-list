@@ -5,7 +5,76 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
     using Fanex.BetList.Core.Templates;
     using NUnit.Framework;
 
+    public class WrapperSystemParlayDetail_TotalContents_Block : SystemParlayDetail_TotalContents_Block
+    {
+        public void SetAssigned(bool isAssigned)
+        {
+            this.IsAssigned = isAssigned;
+        }
+
+        public void SetValueExtend(StringBuilder value)
+        {
+            this.Value = value;
+        }
+    }
+
     public class SystemParlayDetail_TotalContents_BlockTest
     {
+        private const string TotalContentsTemplate = "<tr class=\"system-parlay-total\"><td colspan=\"4\">Total:</td><td>{0}</td><td>&nbsp;</td></tr>";
+
+        [Test]
+        public void VisiblePropertyOfBlockIsTrue_ReturnTotalContentsString()
+        {
+            // Arrange
+            var totalWinloss = "20000";
+            var totalContentsHtml = new StringBuilder();
+            var block = new SystemParlayDetail_TotalContents_Block();
+            block.TotalWinloss = totalWinloss;
+            block.Visible = true;
+
+            // Act
+            block.ToString(ref totalContentsHtml);
+
+            // Assert
+            var expectedHtml = string.Format(TotalContentsTemplate, totalWinloss);
+            Assert.AreEqual(expectedHtml, totalContentsHtml.ToString());
+        }
+
+        [Test]
+        public void VisiblePropertyOfBlockIsFalse_ReturnEmptyString()
+        {
+            // Arrange
+            var totalContentsHtml = new StringBuilder();
+            var block = new SystemParlayDetail_TotalContents_Block();
+            block.Visible = false;
+
+            // Act
+            block.ToString(ref totalContentsHtml);
+
+            // Assert
+            var expectedHtml = string.Empty;
+            Assert.AreEqual(expectedHtml, totalContentsHtml.ToString());
+        }
+
+        [Test]
+        public void AssignedPropertyOfBlockIsTrue_ReturnTotalContentsStringAndAppendValue()
+        {
+            // Arrange
+            var totalWinloss = "20000";
+            var totalContentsHtml = new StringBuilder();
+            var value = "Tennis";
+            var block = new WrapperSystemParlayDetail_TotalContents_Block();
+            block.TotalWinloss = totalWinloss;
+            block.Visible = true;
+            block.SetValueExtend(new StringBuilder(value));
+            block.SetAssigned(true);
+
+            // Act
+            block.ToString(ref totalContentsHtml);
+
+            // Assert
+            var expectedHtml = string.Format(TotalContentsTemplate, totalWinloss) + value;
+            Assert.AreEqual(expectedHtml, totalContentsHtml.ToString());
+        }
     }
 }

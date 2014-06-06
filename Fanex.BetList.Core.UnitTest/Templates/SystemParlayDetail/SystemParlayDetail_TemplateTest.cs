@@ -5,7 +5,92 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
     using Fanex.BetList.Core.Templates;
     using NUnit.Framework;
 
+    public class WrapperSystemParlayDetail_Template : SystemParlayDetail_Template
+    {
+        public void SetAssigned(bool isAssigned)
+        {
+            this.IsAssigned = isAssigned;
+        }
+
+        public void SetValueExtend(StringBuilder value)
+        {
+            this.Value = value;
+        }
+    }
+
     public class SystemParlayDetail_TemplateTest
     {
+        private const string SystemParlayDetailTemplate = "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" class=\"system-parlay-detail\" style=\"text-align: right;white-space: nowrap; width: 100%; font-weight: bold\"><tr class=\"system-parlay-header\"><th width=\"100\">Date</th><th>Event</th><th width=\"80\">Odds</th><th width=\"80\">Stake</th><th width=\"80\">Win Loss</th><th width=\"80\">Status</th></tr>{0}{1}{2}{3}</table>";
+
+        [Test]
+        public void VisiblePropertyOfBlockIsTrue_ReturnSystemParlayDetailString()
+        {
+            // Arrange
+            var systemParlayDetailsHtml = string.Empty;
+            var block = new SystemParlayDetail_Template();
+            block.Visible = true;
+
+            // Act
+            systemParlayDetailsHtml = block.ToString();
+
+            // Assert
+            var expectedHtml = string.Format(SystemParlayDetailTemplate, block.Contents.ToString(), block.SubTotalContents.ToString(), block.Outstanding.ToString(), block.TotalContents.ToString());
+            Assert.AreEqual(expectedHtml, systemParlayDetailsHtml);
+        }
+
+        [Test]
+        public void VisiblePropertyOfBlockIsTrueAndChildBlockIsNull_ReturnSystemParlayDetailString()
+        {
+            // Arrange
+            var systemParlayDetailsHtml = string.Empty;
+            var block = new SystemParlayDetail_Template();
+            block.Contents = null;
+            block.SubTotalContents = null;
+            block.Outstanding = null;
+            block.TotalContents = null;
+            block.Visible = true;
+
+            // Act
+            systemParlayDetailsHtml = block.ToString();
+
+            // Assert
+            var expectedHtml = string.Format(SystemParlayDetailTemplate, string.Empty, string.Empty, string.Empty, string.Empty);
+            Assert.AreEqual(expectedHtml, systemParlayDetailsHtml);
+        }
+
+        [Test]
+        public void VisiblePropertyOfBlockIsFalse_ReturnEmptyString()
+        {
+            // Arrange
+            var systemParlayDetailsHtml = string.Empty;
+            var block = new SystemParlayDetail_Template();
+            block.Visible = false;
+
+            // Act
+            systemParlayDetailsHtml = block.ToString();
+
+            // Assert
+            var expectedHtml = string.Empty;
+            Assert.AreEqual(expectedHtml, systemParlayDetailsHtml);
+        }
+
+        [Test]
+        public void AssignedPropertyOfBlockIsTrue_ReturnSystemParlayDetailStringAndAppendValue()
+        {
+            // Arrange
+            var systemParlayDetailsHtml = string.Empty;
+            var value = "Tennis";
+            var block = new WrapperSystemParlayDetail_Template();
+            block.Visible = true;
+            block.SetValueExtend(new StringBuilder(value));
+            block.SetAssigned(true);
+
+            // Act
+            systemParlayDetailsHtml = block.ToString();
+
+            // Assert
+            var expectedHtml = string.Format(SystemParlayDetailTemplate, block.Contents.ToString(), block.SubTotalContents.ToString(), block.Outstanding.ToString(), block.TotalContents.ToString()) + value;
+            Assert.AreEqual(expectedHtml, systemParlayDetailsHtml);
+        }
     }
 }

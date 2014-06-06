@@ -20,5 +20,100 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
 
     public class SystemParlayDetail_Contents_BlockTest
     {
+        private const string ContentsTemplate = "<tr>{0}<td style=\"text-align: left; font-weight: normal\">{1}</td><td>{2}</td><td>{3}</td><td>{4}{5}</td><td style=\"text-align: center;\">{6}</td></tr>";
+
+        [Test]
+        public void VisiblePropertyOfBlockIsTrue_ReturnContentsString()
+        {
+            // Arrange
+            var odds = "0.78";
+            var stake = "1";
+            var winloss = "1000";
+            var status = "Lose";
+            var contentsHtml = new StringBuilder();
+            var block = new SystemParlayDetail_Contents_Block();
+            block.Odds = odds;
+            block.Stake = stake;
+            block.Winloss = winloss;
+            block.Status = status;
+            block.Visible = true;
+
+            // Act
+            block.ToString(ref contentsHtml);
+
+            // Assert
+            var expectedHtml = string.Format(ContentsTemplate, block.WinlossDate.ToString(), block.Match.ToString(), odds, stake, winloss, block.PlayerCommission.ToString(), status);
+            Assert.AreEqual(expectedHtml, contentsHtml.ToString());
+        }
+
+        [Test]
+        public void VisiblePropertyOfBlockIsTrueAndChildBlockIsNull_ReturnContentsString()
+        {
+            // Arrange
+            var odds = "0.78";
+            var stake = "1";
+            var winloss = "1000";
+            var status = "Lose";
+            var contentsHtml = new StringBuilder();
+            var block = new SystemParlayDetail_Contents_Block();
+            block.WinlossDate = null;
+            block.Match = null;
+            block.Odds = odds;
+            block.Stake = stake;
+            block.Winloss = winloss;
+            block.PlayerCommission = null;
+            block.Status = status;
+            block.Visible = true;
+
+            // Act
+            block.ToString(ref contentsHtml);
+
+            // Assert
+            var expectedHtml = string.Format(ContentsTemplate, string.Empty, string.Empty, odds, stake, winloss, string.Empty, status);
+            Assert.AreEqual(expectedHtml, contentsHtml.ToString());
+        }
+
+        [Test]
+        public void VisiblePropertyOfBlockIsFalse_ReturnEmptyString()
+        {
+            // Arrange
+            var contentsHtml = new StringBuilder();
+            var block = new SystemParlayDetail_Contents_Block();
+            block.Visible = false;
+
+            // Act
+            block.ToString(ref contentsHtml);
+
+            // Assert
+            var expectedHtml = string.Empty;
+            Assert.AreEqual(expectedHtml, contentsHtml.ToString());
+        }
+
+        [Test]
+        public void AssignedPropertyOfBlockIsTrue_ReturnContentsStringAndAppendValue()
+        {
+            // Arrange
+            var odds = "0.78";
+            var stake = "1";
+            var winloss = "1000";
+            var status = "Lose";
+            var contentsHtml = new StringBuilder();
+            var value = "Tennis";
+            var block = new WrapperSystemParlayDetail_Contents_Block();
+            block.Odds = odds;
+            block.Stake = stake;
+            block.Winloss = winloss;
+            block.Status = status;
+            block.Visible = true;
+            block.SetValueExtend(new StringBuilder(value));
+            block.SetAssigned(true);
+
+            // Act
+            block.ToString(ref contentsHtml);
+
+            // Assert
+            var expectedHtml = string.Format(ContentsTemplate, block.WinlossDate.ToString(), block.Match.ToString(), odds, stake, winloss, block.PlayerCommission.ToString(), status) + value;
+            Assert.AreEqual(expectedHtml, contentsHtml.ToString());
+        }
     }
 }

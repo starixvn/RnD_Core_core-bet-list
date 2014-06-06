@@ -5,7 +5,76 @@ namespace Fanex.BetList.Core.UnitTest.Templates.SystemParlayDetail
     using Fanex.BetList.Core.Templates;
     using NUnit.Framework;
 
+    public class WrapperSystemParlayDetail_Outstanding_Block : SystemParlayDetail_Outstanding_Block
+    {
+        public void SetAssigned(bool isAssigned)
+        {
+            this.IsAssigned = isAssigned;
+        }
+
+        public void SetValueExtend(StringBuilder value)
+        {
+            this.Value = value;
+        }
+    }
+
     public class SystemParlayDetail_Outstanding_BlockTest
     {
+        private const string OutstandingTemplate = "<tr class=\"system-parlay-outstanding\"><td colspan=\"4\">Outstanding:</td><td style=\"border-left: none;\">{0}</td><td style=\"border-left: none;\">&nbsp;</td></tr>";
+
+        [Test]
+        public void VisiblePropertyOfBlockIsTrue_ReturnOutstandingString()
+        {
+            // Arrange
+            var outstanding = "2";
+            var outstandingHtml = new StringBuilder();
+            var block = new SystemParlayDetail_Outstanding_Block();
+            block.Outstanding = outstanding;
+            block.Visible = true;
+
+            // Act
+            block.ToString(ref outstandingHtml);
+
+            // Assert
+            var expectedHtml = string.Format(OutstandingTemplate, outstanding);
+            Assert.AreEqual(expectedHtml, outstandingHtml.ToString());
+        }
+
+        [Test]
+        public void VisiblePropertyOfBlockIsFalse_ReturnEmptyString()
+        {
+            // Arrange
+            var outstandingHtml = new StringBuilder();
+            var block = new SystemParlayDetail_Outstanding_Block();
+            block.Visible = false;
+
+            // Act
+            block.ToString(ref outstandingHtml);
+
+            // Assert
+            var expectedHtml = string.Empty;
+            Assert.AreEqual(expectedHtml, outstandingHtml.ToString());
+        }
+
+        [Test]
+        public void AssignedPropertyOfBlockIsTrue_ReturnOutstandingStringAndAppendValue()
+        {
+            // Arrange
+            var outstanding = "2";
+            var outstandingHtml = new StringBuilder();
+            var value = "Tennis";
+            var block = new WrapperSystemParlayDetail_Outstanding_Block();
+            block.Outstanding = outstanding;
+            block.Visible = true;
+            block.SetValueExtend(new StringBuilder(value));
+            block.SetAssigned(true);
+
+            // Act
+            block.ToString(ref outstandingHtml);
+
+            // Assert
+            var expectedHtml = string.Format(OutstandingTemplate, outstanding) + value;
+            Assert.AreEqual(expectedHtml, outstandingHtml.ToString());
+        }
     }
 }
