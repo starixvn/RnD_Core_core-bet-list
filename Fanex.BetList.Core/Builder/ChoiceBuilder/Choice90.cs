@@ -157,15 +157,15 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             this.Template.BetType.betTypeName = CoreLang.numberGroup;
             this.Template.Match.homeTeam = string.Join(null, new string[] { CoreLang.numbergameno, "&nbsp;", ticket.MatchCode });
-        }
+        }       
 
-        protected static string GetBetTeamName(string betTeamKey)
+        public virtual string GetBetTeamName(string betTeamKey)
         {
             var betTeamName = betTeamMap.ContainsKey(betTeamKey) ? betTeamMap[betTeamKey] : string.Empty;
             return betTeamName;
         }
 
-        protected static string GetBetTeamKey(ITicket ticket)
+        public virtual string GetBetTeamKey(ITicket ticket)
         {
             int betteam;
             int.TryParse(ticket.BetTeam, out betteam);
@@ -173,7 +173,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             return betTeamKey;
         }
 
-        protected static string GetLiveScore(ITicket ticket)
+        public virtual string GetLiveScore(ITicket ticket)
         {
             string betId = ticket.BetId.ToString();
             string liveScore = (!ticket.IsLive || betId == string.Empty) ? string.Empty : " [" + betId + "]";

@@ -25,21 +25,20 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
     /// </summary>
     public class Choice90Wrapper : Choice90
     {
-        public string GetLiveScoreCopied(ITicket ticket)
+        public void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            return GetLiveScore(ticket);
-        }
-
-        public string GetBetTeamKeyCopied(ITicket ticket)
-        {
-            return GetBetTeamKey(ticket);
-        }
-
-        public string GetBetTeamNameCopied(string betTeamKey)
-        {
-            return GetBetTeamName(betTeamKey);
+            base.BuildChoice(ticket, ticketHelper, ticketData);
         }
     }
+
+    //public class Choice90Wrapper2 : Choice90Wrapper
+    //{       
+       
+    //    protected override void BuildChoiceWrapper(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+    //    {
+    //        base.BuildChoice(ticket, ticketHelper, ticketData);
+    //    }
+    //}
 
     public class Choice90Test
     {
@@ -132,11 +131,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         {
             // Arrange
             _ticket.IsLive = false;
-            _ticket.BetId = 10000;
-            var choiceWrapper = new Choice90Wrapper();
+            _ticket.BetId = 10000;            
 
             // Act            
-            var actualLiveScore = choiceWrapper.GetLiveScoreCopied(_ticket);
+            var actualLiveScore = _choice.GetLiveScore(_ticket);
 
             // Assert
             Assert.AreEqual(string.Empty, actualLiveScore);
@@ -148,11 +146,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Arrange
             _ticket.IsLive = true;
             var betId = 1000;
-            _ticket.BetId = betId;
-            var choiceWrapper = new Choice90Wrapper();
+            _ticket.BetId = betId;            
 
             // Act
-            var actualLiveScore = choiceWrapper.GetLiveScoreCopied(_ticket);
+            var actualLiveScore = _choice.GetLiveScore(_ticket);
 
             // Assert
             var expectedLiveScore = " [" + betId + "]";
@@ -160,15 +157,14 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void GetLiveScore_BetId_Is_Null_Return_Emptry_String()
+        public void GetLiveScore_LiveTicket_BetId_Is_Null_Return_Emptry_String()
         {
             // Arrange
-            _ticket.IsLive = Arg.Any<bool>();
-            _ticket.BetId = null;
-            var choiceWrapper = new Choice90Wrapper();
+            _ticket.IsLive = true;
+            _ticket.BetId = null;           
 
             // Act            
-            var actualLiveScore = choiceWrapper.GetLiveScoreCopied(_ticket);
+            var actualLiveScore = _choice.GetLiveScore(_ticket);
 
             // Assert
             Assert.AreEqual(string.Empty, actualLiveScore);
@@ -179,11 +175,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         {
             // Arrange            
             _ticket.BetTeam = "betteam";
-            _ticket.Handicap1 = Arg.Any<decimal>();
-            var choiceWrapper = new Choice90Wrapper();
+            _ticket.Handicap1 = Arg.Any<decimal>();           
 
             // Act
-            var actualBetTeamKey = choiceWrapper.GetBetTeamKeyCopied(_ticket);
+            var actualBetTeamKey = _choice.GetBetTeamKey(_ticket);
 
             // Assert
             Assert.IsTrue(actualBetTeamKey.EndsWith("-0"));
@@ -196,11 +191,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             var betTeam = "10";
             _ticket.BetTeam = betTeam;
             var hdp1Value = Arg.Any<decimal>();
-            _ticket.Handicap1 = hdp1Value;
-            var choiceWrapper = new Choice90Wrapper();
+            _ticket.Handicap1 = hdp1Value;           
 
             // Act
-            var actualBetTeamKey = choiceWrapper.GetBetTeamKeyCopied(_ticket);
+            var actualBetTeamKey = _choice.GetBetTeamKey(_ticket);
 
             // Assert
             var expectedBetTeamKey = string.Format("{0}-{1}", hdp1Value, betTeam);
@@ -314,28 +308,24 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         #endregion
         public string GetBetTeamName_Return_Valid_Name(string betTeamKey)
         {
+            return _choice.GetBetTeamName(betTeamKey);
+        }
+        [Test]
+        public void BetTeam_Should_Return_From_Join_BetTeam_And_LiveScore()
+        {
             // Arrange
-            var choiceWrapper = new Choice90Wrapper();
+            var choiceStub = Substitute.For<Choice90Wrapper>();
+            string betTeamName = "My Bet Team";
+            choiceStub.GetBetTeamName(Arg.Any<string>()).Returns(betTeamName);            
+            string liveScore = "[13232]";
+            choiceStub.GetLiveScore(Arg.Any<ITicket>()).Returns(liveScore);
 
             // Act
-            return choiceWrapper.GetBetTeamNameCopied(betTeamKey);
+            choiceStub.BuildChoice(_ticket, _ticketHelper, null);
+
+            // Assert
+            var expectedBetTeam = string.Join(null, betTeamName, liveScore);
+            Assert.AreEqual(expectedBetTeam, choiceStub.Template.betTeam);
         }
-
-        //public void BetTeam_Should_Return_From_Join_BetTeam_And_LiveScore()
-        //{
-        //    // Arrange
-        //    var choiceWrapper = Substitute.For<Choice90Wrapper>();
-        //    string betTeamName = "My Bet Team";
-        //    choiceWrapper.GetBetTeamNameCopied("AnyBetTeamKey").Returns(betTeamName);
-        //    string liveScore = "[13232]";
-        //    choiceWrapper.GetLiveScoreCopied(Arg.Any<ITicket>()).Returns(liveScore);
-
-        //    // Act
-        //    var actualBetTeam = choiceWrapper.Render(Arg.Any<ITicket>(), _ticketHelper, Arg.Any<List<ITicketData>>() , Arg.Any<bool>());
-
-        //    // Assert
-        //    var expectedBetTeam = string.Join(null, betTeamName, liveScore);
-        //    Assert.AreEqual(expectedBetTeam, actualBetTeam);
-        //}
     }
 }
