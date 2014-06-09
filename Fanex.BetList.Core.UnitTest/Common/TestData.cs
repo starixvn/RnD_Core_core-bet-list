@@ -12,10 +12,11 @@ namespace Fanex.BetList.Core.UnitTest.Common
 {
     using System;
     using Fanex.BetList.Core.Entities;
+    using System.Collections.Generic;
 
     public static class TestData
     {
-        public static ITicket Ticket
+        private static ITicket Ticket
         {
             get
             {
@@ -75,11 +76,49 @@ namespace Fanex.BetList.Core.UnitTest.Common
             }
         }
 
+        private static ITicketData TicketData
+        {
+            get
+            {
+                var ticketData = new TicketData
+                {
+                    RefNo = "100000000000",
+                    Odds = 1,
+                    Stake = 5,
+                    Status = "WON",
+                    AgentPT = 0.38M,
+                    MasterPT = 0.31M,
+                    SuperPT = 0.01M,
+                    BetTypeId = 1,
+                    BetTeam = "2"
+                };
+
+                return ticketData;
+            }
+        }
+
         public static ITicket CreateTicket(int betTypeId)
         {
             Ticket.BetTypeId = betTypeId;
 
             return Ticket;
+        }
+
+        public static ITicketData CreateTicketData(int betTypeId)
+        {
+            TicketData.BetTypeId = betTypeId;
+
+            return TicketData;
+        }
+
+        public static ITicketData CreateTicketData(int betTypeId, string refNo, string status)
+        {
+            var ticketData = TicketData;
+            ticketData.BetTypeId = betTypeId;
+            ticketData.RefNo = refNo;
+            ticketData.Status = status;
+
+            return ticketData;
         }
     }
 }
