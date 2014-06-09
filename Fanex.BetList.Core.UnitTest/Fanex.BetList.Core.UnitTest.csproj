@@ -63,8 +63,16 @@
     <Compile Include="Builder\ChoiceBuilder\Choice90Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\ChoiceCreator.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice89Test.cs" />
+    <Compile Include="Builder\OddsBuilder\Odds29Test.cs" />
+    <Compile Include="Builder\OddsBuilder\Odds71Test.cs" />
+    <Compile Include="Builder\OddsBuilder\Odds33Test.cs" />
+    <Compile Include="Builder\OddsBuilder\Odds1501Test.cs" />
+    <Compile Include="Builder\OddsBuilder\Odds1233Test.cs" />
+    <Compile Include="Builder\OddsBuilder\Odds1231Test.cs" />
+    <Compile Include="Builder\OddsBuilder\Odds1Test.cs" />
     <Compile Include="Builder\StakeBuilder\Stake29Test.cs" />
     <Compile Include="Builder\StakeBuilder\Stake1Test.cs" />
+    <Compile Include="Builder\StatusBuilder\3rd\Status_22006Test.cs" />
     <Compile Include="Builder\StatusBuilder\Status9Test.cs" />
     <Compile Include="Builder\StatusBuilder\Status71Test.cs" />
     <Compile Include="Builder\StatusBuilder\Status33Test.cs" />

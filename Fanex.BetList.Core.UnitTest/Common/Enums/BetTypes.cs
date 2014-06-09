@@ -648,5 +648,10 @@ namespace Fanex.BetList.Core.UnitTest.Common.Enums
         /// BetType = 23202.
         /// </summary>
         public const int BingoPending = 23202;
+
+        /// <summary>
+        /// PlayTechCasino = 22006.
+        /// </summary>
+        public const int PlayTechCasino = 22006;
     }
 }
