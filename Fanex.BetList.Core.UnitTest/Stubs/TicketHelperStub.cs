@@ -48,7 +48,7 @@ namespace Fanex.BetList.Core.UnitTest.Stubs
 
         public bool IsVnIp(string ip)
         {
-            throw new NotImplementedException();
+            return false;
         }
 
         public string GetLeagueNameById(object leagueId)

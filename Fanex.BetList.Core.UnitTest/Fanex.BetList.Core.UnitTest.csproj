@@ -65,6 +65,16 @@
     <Compile Include="Builder\ChoiceBuilder\Choice89Test.cs" />
     <Compile Include="Builder\StakeBuilder\Stake29Test.cs" />
     <Compile Include="Builder\StakeBuilder\Stake1Test.cs" />
+    <Compile Include="Builder\StatusBuilder\Status9Test.cs" />
+    <Compile Include="Builder\StatusBuilder\Status71Test.cs" />
+    <Compile Include="Builder\StatusBuilder\Status33Test.cs" />
+    <Compile Include="Builder\StatusBuilder\Status31Test.cs" />
+    <Compile Include="Builder\StatusBuilder\Status1501Test.cs" />
+    <Compile Include="Builder\StatusBuilder\Status1311Test.cs" />
+    <Compile Include="Builder\StatusBuilder\Status1233Test.cs" />
+    <Compile Include="Builder\StatusBuilder\Status1000Test.cs" />
+    <Compile Include="Builder\StatusBuilder\Status10Test.cs" />
+    <Compile Include="Builder\StatusBuilder\Status1Test.cs" />
     <Compile Include="Builder\TransBuilder\Trans71Test.cs" />
     <Compile Include="Builder\TransBuilder\Trans1Test.cs" />
     <Compile Include="Common\Helper\XPathHelper.cs">
