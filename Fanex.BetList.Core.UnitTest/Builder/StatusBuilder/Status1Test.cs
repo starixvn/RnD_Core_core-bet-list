@@ -214,7 +214,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StatusBuilder
         }
 
         [Test]
-        public void TemplateStatusWillBeShow_MatchIdOfStatusResultTemplateIsTicketMatchId()
+        public void TemplateStatusBeShowed_MatchIdOfStatusResultTemplateIsTicketMatchId()
         {
             // Arrange
             _ticket.Status = "lose";
@@ -225,6 +225,161 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StatusBuilder
             // Assert
             string expectedValue = _ticket.MatchId.ToString();
             Assert.AreEqual(expectedValue, template.StatusResult.matchId);
+        }
+
+        [Test]
+        public void TemplateStatusBeShowed_BetTypeOfStatusResultTemplateIsTicketBetTypeId()
+        {
+            // Arrange
+            _ticket.Status = "lose";
+
+            // Act
+            Status_Template template = _status.Render(_ticket, _ticketHelperStub, null, false);
+
+            // Assert
+            string expectedValue = _ticket.BetTypeId.ToString();
+            Assert.AreEqual(expectedValue, template.StatusResult.betType);
+        }
+
+        [Test]
+        public void TemplateStatusBeShowedAndRaceTicketIsEmpty_RaceOfStatusResultTemplateIsZero()
+        {
+            // Arrange
+            _ticket.Status = "lose";
+            _ticket.Race = string.Empty;
+
+            // Act
+            Status_Template template = _status.Render(_ticket, _ticketHelperStub, null, false);
+
+            // Assert
+            string expectedValue = "0";
+            Assert.AreEqual(expectedValue, template.StatusResult.race);
+        }
+
+        [Test]
+        public void TemplateStatusBeShowedAndRaceIsNotEmpty_RaceOfStatusResultTemplateIsTicketRace()
+        {
+            // Arrange
+            _ticket.Status = "lose";
+            _ticket.Race = "10";
+
+            // Act
+            Status_Template template = _status.Render(_ticket, _ticketHelperStub, null, false);
+
+            // Assert
+            string expectedValue = "10";
+            Assert.AreEqual(expectedValue, template.StatusResult.race);
+        }
+
+        [Test]
+        public void TemplateStatusBeShowed_RefNoOfStatusResultTemplateIsTicketTransId()
+        {
+            // Arrange
+            _ticket.Status = "lose";
+
+            // Act
+            Status_Template template = _status.Render(_ticket, _ticketHelperStub, null, false);
+
+            // Assert
+            string expectedValue = _ticket.TransId.ToString();
+            Assert.AreEqual(expectedValue, template.StatusResult.refNo);
+        }
+
+        [Test]
+        public void TemplateStatusBeShowed_SportTypeOfStatusResultTemplateIsTicketSportTypeId()
+        {
+            // Arrange
+            _ticket.Status = "lose";
+
+            // Act
+            Status_Template template = _status.Render(_ticket, _ticketHelperStub, null, false);
+
+            // Assert
+            string expectedValue = _ticket.SportTypeId.ToString();
+            Assert.AreEqual(expectedValue, template.StatusResult.sportType);
+        }
+
+        [Test]
+        public void TemplateStatusBeShowed_LeagueOfStatusResultTemplateIsTicketLeagueId()
+        {
+            // Arrange
+            _ticket.Status = "lose";
+
+            // Act
+            Status_Template template = _status.Render(_ticket, _ticketHelperStub, null, false);
+
+            // Assert
+            string expectedValue = _ticket.LeagueId.ToString();
+            Assert.AreEqual(expectedValue, template.StatusResult.league);
+        }
+
+        [Test]
+        public void TemplateStatusBeShowed_UsernameOfStatusResultTemplateIsTicketUsername()
+        {
+            // Arrange
+            _ticket.Status = "lose";
+
+            // Act
+            Status_Template template = _status.Render(_ticket, _ticketHelperStub, null, false);
+
+            // Assert
+            string expectedValue = _ticket.UserName.ToString();
+            Assert.AreEqual(expectedValue, template.StatusResult.userName);
+        }
+
+        [Test]
+        public void TemplateStatusBeShowed_WinlostDateOfStatusResultTemplateIsTicketWinlostDate()
+        {
+            // Arrange
+            _ticket.Status = "lose";
+
+            // Act
+            Status_Template template = _status.Render(_ticket, _ticketHelperStub, null, false);
+
+            // Assert
+            string expectedValue = "01/20/2014 12:00:00 PM";
+            Assert.AreEqual(expectedValue, template.StatusResult.winlostDate);
+        }
+
+        [Test]
+        public void ShowVNIPIsFalseAndIPIsVNIP_VisibleTemplateShowIP()
+        {
+            // Arrange
+            _ticket.IP = "vn-ip";
+
+            // Act
+            Status_Template template = _status.Render(_ticket, _ticketHelperStub, null, false);
+
+            // Assert
+            Assert.IsFalse(template.ShowIP.Visible);
+        }
+
+        [Test]
+        public void ShowVNIPIsFalseAndIPIsNotVNIP_BetIPOfTemplateShowIPIsTicketIP()
+        {
+            // Arrange
+            _ticket.IP = "us-ip";
+
+            // Act
+            Status_Template template = _status.Render(_ticket, _ticketHelperStub, null, false);
+
+            // Assert
+            string expectedValue = _ticket.IP;
+            Assert.AreEqual(expectedValue, template.ShowIP.betIp);
+        }
+
+        [Test]
+        public void ShowVNIPIsTrueAndIPIsNotVNIP_BetIPOfTemplateShowIPIsTicketIP()
+        {
+            // Arrange
+            _ticket.IP = "us-ip";
+
+            // Act
+            Status_Template template = _status.Render(_ticket, _ticketHelperStub, null, true);
+
+            // Assert
+            string expectedValue = _ticket.IP;
+            Assert.AreEqual(expectedValue, template.ShowIP.betIp);
         }
     }
 }
