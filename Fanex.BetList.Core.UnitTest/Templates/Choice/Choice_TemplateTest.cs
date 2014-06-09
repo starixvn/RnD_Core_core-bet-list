@@ -29,7 +29,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
             var ticketStatus = "void";
             var betTeamClass = "favorite";
             var betTeam = "Milan Reds";
-            var choiceHtml = new StringBuilder();
+            var choiceHtml = string.Empty;
             var block = new Choice_Template();
             block.Visible = true;
             block.ticketStatus = ticketStatus;
@@ -37,7 +37,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
             block.betTeam = betTeam;
 
             // Act
-            block.ToString(ref choiceHtml);
+            choiceHtml = block.ToString();
 
             // Assert
             var expectedHtml = string.Format(ChoiceTemplate,
@@ -58,12 +58,12 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
         public void VisiblePropertyIsFalse_ReturnEmptyString()
         {
             // Arrange
-            var choiceHtml = new StringBuilder();
+            var choiceHtml = string.Empty;
             var block = new Choice_Template();
             block.Visible = false;
 
             // Act
-            block.ToString(ref choiceHtml);
+            choiceHtml = block.ToString();
 
             // Assert
             Assert.IsNullOrEmpty(choiceHtml.ToString());
@@ -76,7 +76,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
             var ticketStatus = "void";
             var betTeamClass = "favorite";
             var betTeam = "Milan Reds";
-            var choiceHtml = new StringBuilder();
+            var choiceHtml = string.Empty;
             var block = new Choice_Template();
             block.ScoreMapIcon = null;
             block.Handicap = null;
@@ -91,7 +91,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
             block.betTeam = betTeam;
 
             // Act
-            block.ToString(ref choiceHtml);
+            choiceHtml = block.ToString();
 
             // Assert
             var expectedHtml = string.Format(ChoiceTemplate,
@@ -116,7 +116,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
             var betTeamClass = "favorite";
             var betTeam = "Milan Reds";
             var value = "Tennis";
-            var choiceHtml = new StringBuilder();
+            var choiceHtml = string.Empty;
             var block = new WrapperChoice_Template();
             block.Visible = true;
             block.ticketStatus = ticketStatus;
@@ -126,7 +126,7 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
             block.SetAssigned(true);
 
             // Act
-            block.ToString(ref choiceHtml);
+            choiceHtml = block.ToString();
 
             // Assert
             var expectedHtml = string.Format(ChoiceTemplate,

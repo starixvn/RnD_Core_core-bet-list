@@ -3,7 +3,6 @@ namespace Fanex.BetList.Core.UnitTest.Templates.Choice
 {
     using System.Text;
     using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.UnitTest.Common.Templates;
     using NUnit.Framework;
 
     public class WrapperChoice_League_Block : Choice_League_Block
