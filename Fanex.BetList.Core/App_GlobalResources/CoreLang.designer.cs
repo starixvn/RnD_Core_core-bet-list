@@ -5912,7 +5912,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Or.
+        ///   Looks up a localized string similar to or.
         /// </summary>
         public static string lblOr {
             get {

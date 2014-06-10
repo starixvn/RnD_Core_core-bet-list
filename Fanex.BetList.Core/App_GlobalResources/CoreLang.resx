@@ -1937,7 +1937,7 @@ Note: Country and city information is provided by IP2Location™ and DNSstuff wh
     <value>One</value>
   </data>
   <data name="lblOr" xml:space="preserve">
-    <value>Or</value>
+    <value>or</value>
   </data>
   <data name="lblOtherComm" xml:space="preserve">
     <value>Others Comm</value>

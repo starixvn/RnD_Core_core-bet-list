@@ -70,6 +70,7 @@
     <Compile Include="Builder\ChoiceBuilder\Choice89Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice90Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice10Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice151Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1000Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice88Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice83Test.cs" />
