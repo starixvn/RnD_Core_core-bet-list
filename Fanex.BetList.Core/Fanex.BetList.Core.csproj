@@ -291,6 +291,9 @@
     <Compile Include="Builder\ChoiceBuilder\Choice1334.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice134.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice14.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice140.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice141.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice142.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice15.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1501.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice16.cs" />

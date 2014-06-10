@@ -3770,4 +3770,13 @@ Now, gross commission = (your commission percentage) * turnover (excluding Draw 
   <data name="LiveRoulette" xml:space="preserve">
     <value>Live Roulette</value>
   </data>
+  <data name="FirstHalf" xml:space="preserve">
+    <value>First Half</value>
+  </data>
+  <data name="SecondHalf" xml:space="preserve">
+    <value>Second Halft</value>
+  </data>
+  <data name="Tie" xml:space="preserve">
+    <value>Tie</value>
+  </data>
 </root>

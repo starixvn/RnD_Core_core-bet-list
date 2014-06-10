@@ -23,20 +23,27 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         /// <param name="ticketData">The ticket data.</param>
         protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            base.BuildChoice(ticket, ticketHelper, ticketData);
-
-            if (ticket.BetTeam == "y")
-            {
-                this.Template.betTeam = CoreBetList.lblYes;
-            }
-            else if (ticket.BetTeam == "n")
-            {
-                this.Template.betTeam = CoreBetList.lblNo;
-            }
-
+            base.BuildChoice(ticket, ticketHelper, ticketData);         
             this.Template.Handicap = null;
             this.Template.OddMixParlay = null;
             this.Template.Score = null;
+            this.Template.betTeam = GetBetTeam(ticket.BetTeam);
+        }
+
+        protected virtual string GetBetTeam(string betTeam)
+        {
+            betTeam = betTeam.ToLower();
+
+            if (betTeam == "y")
+            {
+                return CoreBetList.lblYes;
+            }
+            else if (betTeam == "n")
+            {
+                return CoreBetList.lblNo;
+            }
+
+            return betTeam;
         }
     }
 }
