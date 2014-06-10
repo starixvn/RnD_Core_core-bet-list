@@ -1,20 +1,11 @@
-﻿// --------------------------------------------------------------------------
-// <copyright file="Choice133Test.cs" company="Nexcel Solutions Vietnam">
-// Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// --------------------------------------------------------------------------
-// <history>
-//   <change who="Edward.Nguyen" date="2014.6.10">Created</change>
-// </history>
-
-namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
+    using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.UnitTest.Common;
     using Fanex.BetList.Core.UnitTest.Common.Enums;
-    using Fanex.BetList.Core.UnitTest.Stubs;
+    using NSubstitute;
     using NUnit.Framework;
 
     [TestFixture]
@@ -22,85 +13,73 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
     {
         private ITicket _ticket;
         private IChoice _choice;
-        private ITicketHelper _ticketHelperStub;
+        private ITicketHelper _ticketHelper;
 
         [SetUp]
         public void SetUp()
         {
-            _ticket = TestData.CreateTicket(BetTypes.HomeToWinBothHalves);
-            _choice = new Choice133(); _ticketHelperStub = new TicketHelperStub();
+            _ticket = Substitute.For<ITicket>();
+            _ticket.BetTypeId = BetTypes.HomeToWinBothHalves;
+            _ticketHelper = Substitute.For<ITicketHelper>();
+            _choice = new Choice133();
         }
 
         [Test]
-        public void BuildChoice_BetTeamOfTicketContainsY_ShowBetTeamIsLableYes()
+        public void BuildChoice_BetTeamIsY_ShowBetTeamIsLableYes()
         {
             // Arrange
             _ticket.BetTeam = "y";
 
             // Act
-            Choice_Template template = _choice.Render(_ticket, _ticketHelperStub, null, false);
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            string expected = "Yes";
-            Assert.AreEqual(expected, template.betTeam);
+            string expected = CoreBetList.lblYes;
+            Assert.AreEqual(expected, _choice.Template.betTeam);
         }
 
         [Test]
-        public void BuildChoice_BetTeamOfTicketContainsN_ShowBetTeamIsNO()
+        public void BuildChoice_BetTeamIsN_ShowBetTeamIsNO()
         {
             // Arrange
             _ticket.BetTeam = "n";
 
             // Act
-            Choice_Template template = _choice.Render(_ticket, _ticketHelperStub, null, false);
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            string expected = "No";
-            Assert.AreEqual(expected, template.betTeam);
-        }
-
-        [Test]
-        public void BuildChoice_BetTeamOfTicketIsEmpty_ShowBetTeamIsNo()
-        {
-            // Arrange
-            _ticket.BetTeam = string.Empty;
-
-            // Act
-            Choice_Template template = _choice.Render(_ticket, _ticketHelperStub, null, false);
-
-            // Assert
-            string expected = "No";
-            Assert.AreEqual(expected, template.betTeam);
+            string expected = CoreBetList.lblNo;
+            Assert.AreEqual(expected, _choice.Template.betTeam);
         }
 
         [Test]
         public void BuildChoice_Ticket_VisibleHandicap()
         {
             // Act
-            Choice_Template template = _choice.Render(_ticket, _ticketHelperStub, null, false);
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.IsNull(template.Handicap);
+            Assert.IsNull(_choice.Template.Handicap);
         }
 
         [Test]
         public void BuildChoice_Ticket_VisibleOddMixParlay()
         {
             // Act
-            Choice_Template template = _choice.Render(_ticket, _ticketHelperStub, null, false);
+            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.IsNull(template.OddMixParlay);
+            Assert.IsNull(_choice.Template.OddMixParlay);
         }
 
         [Test]
         public void BuildChoice_Ticket_VisibleScore()
         {
             // Act
-            Choice_Template template = _choice.Render(_ticket, _ticketHelperStub, null, false);
+            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.IsNull(template.Score);
+            Assert.IsNull(_choice.Template.Score);
         }
     }
 }

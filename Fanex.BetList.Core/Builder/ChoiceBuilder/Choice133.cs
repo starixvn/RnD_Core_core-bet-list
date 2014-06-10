@@ -24,7 +24,16 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
-            this.Template.betTeam = ticket.BetTeam.Contains("y") ? CoreBetList.lblYes : CoreBetList.lblNo;
+
+            if (ticket.BetTeam == "y")
+            {
+                this.Template.betTeam = CoreBetList.lblYes;
+            }
+            else if (ticket.BetTeam == "n")
+            {
+                this.Template.betTeam = CoreBetList.lblNo;
+            }
+
             this.Template.Handicap = null;
             this.Template.OddMixParlay = null;
             this.Template.Score = null;
