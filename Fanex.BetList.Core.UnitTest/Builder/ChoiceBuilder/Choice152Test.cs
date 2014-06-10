@@ -1,0 +1,40 @@
+﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
+{
+    using Fanex.BetList.Core.Builder.ChoiceBuilder;
+    using Fanex.BetList.Core.Entities;
+    using Fanex.BetList.Core.UnitTest.Common.Enums;
+    using NSubstitute;
+    using NUnit.Framework;
+
+    /// <summary>
+    /// TODO: Update summary.
+    /// </summary>
+    public class Choice152Test
+    {
+        private Choice152 _choice;
+        private ITicket _ticket;
+        private ITicketHelper _ticketHelper;
+
+        [SetUp]
+        public void Setup()
+        {
+            _choice = new Choice152();
+            _ticket = Substitute.For<ITicket>();
+            _ticket.BetTypeId = BetTypes.HalfTimeFullTimeCorrectScore;
+            _ticketHelper = Substitute.For<ITicketHelper>();
+        }
+
+        [Test]
+        public void GetChoice_Should_Return_BetTeam_Data()
+        {
+            // Arrange
+            _ticket.BetTeam = "A Bet Team";
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert        
+            Assert.AreEqual(_ticket.BetTeam, _choice.Template.betTeam);
+        }
+    }
+}
