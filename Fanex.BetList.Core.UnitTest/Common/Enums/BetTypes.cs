@@ -653,5 +653,75 @@ namespace Fanex.BetList.Core.UnitTest.Common.Enums
         /// PlayTechCasino = 22006.
         /// </summary>
         public const int PlayTechCasino = 22006;
+
+        /// <summary>
+        /// HomeToWinBothHalves = 133.
+        /// </summary>
+        public const int HomeToWinBothHalves = 133;
+
+        /// <summary>
+        /// AwayToWinBothHalves = 134.
+        /// </summary>
+        public const int AwayToWinBothHalves = 134;
+
+        /// <summary>
+        /// PenaltyShootoutYesNo = 135.
+        /// </summary>
+        public const int PenaltyShootoutYesNo = 135;
+
+        /// <summary>
+        /// HighestScoringHalf = 140.
+        /// </summary>
+        public const int HighestScoringHalf = 140;
+
+        /// <summary>
+        /// HighestScoringHalfHomeTeam = 141.
+        /// </summary>
+        public const int HighestScoringHalfHomeTeam = 141;
+
+        /// <summary>
+        /// HighestScoringHalfAwayTeam = 142.
+        /// </summary>
+        public const int HighestScoringHalfAwayTeam = 142;
+
+        /// <summary>
+        /// BothTeamsToScore = 145.
+        /// </summary>
+        public const int BothTeamsToScore = 145;
+
+        /// <summary>
+        /// _2ndHalfBothTeamsToScore = 146.
+        /// </summary>
+        public const int _2ndHalfBothTeamsToScore = 146;
+
+        /// <summary>
+        /// HomeToScoreInBothHalves = 147.
+        /// </summary>
+        public const int HomeToScoreInBothHalves = 147;
+
+        /// <summary>
+        /// AwayToScoreInBothHalves = 148.
+        /// </summary>
+        public const int AwayToScoreInBothHalves = 148;
+
+        /// <summary>
+        /// HomeToWinEitherHalf = 149
+        /// </summary>
+        public const int HomeToWinEitherHalf = 149;
+
+        /// <summary>
+        /// AwayToWinEitherHalf = 150.
+        /// </summary>
+        public const int AwayToWinEitherHalf = 150;
+
+        /// <summary>
+        /// _1stHalfDoubleChance = 151.
+        /// </summary>
+        public const int _1stHalfDoubleChance = 151;
+
+        /// <summary>
+        /// HalfTimeFullTimeCorrectScore = 152.
+        /// </summary>
+        public const int HalfTimeFullTimeCorrectScore = 152;
     }
 }

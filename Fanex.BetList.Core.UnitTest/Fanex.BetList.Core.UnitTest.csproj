@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builder\BetListHTMLBuilderTest.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice133Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice89Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice90Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds29Test.cs" />
