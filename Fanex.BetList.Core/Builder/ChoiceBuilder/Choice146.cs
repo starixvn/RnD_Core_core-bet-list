@@ -1,14 +1,8 @@
-﻿// --------------------------------------------------------------------------
-// <copyright file="Choice146.cs" company="Nexcel Solutions Vietnam">
-// Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// --------------------------------------------------------------------------
-// <history>
-//   <change who="Edward.Nguyen" date="2014.6.10">Created</change>
-// </history>
-
-namespace Fanex.BetList.Core.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    /// <summary>
+    /// BetRadar BetType : 2nd Half Both Teams to Score - 146.
+    /// </summary>
     public class Choice146 : Choice133
     {
     }

@@ -1,14 +1,8 @@
-﻿// --------------------------------------------------------------------------
-// <copyright file="Choice147.cs" company="Nexcel Solutions Vietnam">
-// Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// --------------------------------------------------------------------------
-// <history>
-//   <change who="Edward.Nguyen" date="2014.6.10">Created</change>
-// </history>
-
-namespace Fanex.BetList.Core.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    /// <summary>
+    /// BetRadar BetType : Home to Score in Both Halves - 147.
+    /// </summary>
     public class Choice147 : Choice133
     {
     }
