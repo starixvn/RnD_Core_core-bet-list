@@ -63,5 +63,18 @@
             // Assert
             Assert.AreEqual(CoreLang.Tie, _choice.Template.betTeam);
         }
+
+        [Test]
+        public void BuildChoice_BetTeamIsNotYAndNotN_ShowBetTeamIsEmpty()
+        {
+            // Arrange
+            _ticket.BetTeam = "any string";
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.IsEmpty(_choice.Template.betTeam);
+        }
     }
 }

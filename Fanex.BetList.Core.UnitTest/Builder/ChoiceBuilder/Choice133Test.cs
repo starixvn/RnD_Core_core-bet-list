@@ -40,7 +40,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildChoice_BetTeamIsN_ShowBetTeamIsNO()
+        public void BuildChoice_BetTeamIsN_ShowBetTeamIsNo()
         {
             // Arrange
             _ticket.BetTeam = "n";
@@ -51,6 +51,19 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Assert
             string expected = CoreBetList.lblNo;
             Assert.AreEqual(expected, _choice.Template.betTeam);
+        }
+
+        [Test]
+        public void BuildChoice_BetTeamIsNotYAndNotN_ShowBetTeamIsEmpty()
+        {
+            // Arrange
+            _ticket.BetTeam = "any string";
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.IsEmpty(_choice.Template.betTeam);
         }
 
         [Test]

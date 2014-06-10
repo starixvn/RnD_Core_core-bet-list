@@ -43,7 +43,7 @@
                 return CoreBetList.lblNo;
             }
 
-            return betTeam;
+            return string.Empty;
         }
     }
 }

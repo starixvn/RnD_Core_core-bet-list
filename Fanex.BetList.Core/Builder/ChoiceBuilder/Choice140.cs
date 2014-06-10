@@ -1,7 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using Fanex.BetList.Core.App_GlobalResources;
-        
+
     /// <summary>
     /// Choice of bet type Highest Scoring Half.
     /// </summary>
@@ -18,8 +18,9 @@
                 case "1h":
                     return CoreLang.FirstHalf;
                 case "tie":
-                default:
                     return CoreLang.Tie;
+                default:
+                    return string.Empty;
             }
         }
     }
