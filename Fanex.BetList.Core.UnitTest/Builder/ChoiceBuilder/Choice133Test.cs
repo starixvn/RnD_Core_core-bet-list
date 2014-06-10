@@ -28,8 +28,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         public void SetUp()
         {
             _ticket = TestData.CreateTicket(BetTypes.HomeToWinBothHalves);
-            _choice = new Choice133();
-            _ticketHelperStub = new TicketHelperStub();
+            _choice = new Choice133(); _ticketHelperStub = new TicketHelperStub();
         }
 
         [Test]
