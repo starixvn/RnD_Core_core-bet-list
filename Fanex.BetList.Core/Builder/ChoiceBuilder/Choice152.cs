@@ -1,7 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     /// <summary>
-    ///  BetRadar BetType : Half Time/Full Time Correct Score - 152 
+    ///  BetRadar BetType : Half Time/Full Time Correct Score - 152.
     /// </summary>
     public class Choice152 : Choice133
     {

@@ -3,10 +3,16 @@
     using Fanex.BetList.Core.App_GlobalResources;
 
     /// <summary>
-    /// Choice of bet type Highest Scoring Half.
+    /// BetRadar BetType : Choice of bet type Highest Scoring Half.
     /// </summary>
     public class Choice140 : Choice133
     {
+        /// <summary>
+        /// Gets the bet team.
+        /// </summary>
+        /// <param name="betTeam">The bet team.</param>
+        /// <returns> The choice name.
+        /// </returns>
         protected override string GetBetTeam(string betTeam)
         {
             betTeam = betTeam.ToLower();
