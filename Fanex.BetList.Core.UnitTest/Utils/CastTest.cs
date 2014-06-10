@@ -9,7 +9,7 @@ namespace Fanex.BetList.Core.UnitTest.Utils
     public class CastTest
     {
         [Test]
-        public void AsDecimal_ValidIsNull_ReturnDefaultValue()
+        public void AsDecimal_ValueIsNull_ReturnDefaultValue()
         {
             // Arrange
             object value = null;

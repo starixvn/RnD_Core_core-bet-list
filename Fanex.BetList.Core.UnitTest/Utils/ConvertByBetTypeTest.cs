@@ -55,5 +55,16 @@ namespace Fanex.BetList.Core.UnitTest.Utils
             int expected = 0;
             Assert.AreEqual(expected, result);
         }
+
+        [TestCase(14)]
+        [TestCase(127)]
+        public void GetFGLGBetTeam_A_A(int betType)
+        {
+            // Arrange
+            char[] chars = new char[] { '1', '2' };
+            var returnValue = string.Empty;
+
+            // Act
+        }
     }
 }
