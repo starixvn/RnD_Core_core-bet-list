@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -4376,10 +4376,19 @@ Lưu ý:Thông tin về Quốc gia, Thành Phố được cung cấp bởi  IP2L
   <data name="VirtualTennis" xml:space="preserve">
     <value>Virtual Tennis</value>
   </data>
-	<data name="agentList" xml:space="preserve">
+  <data name="agentList" xml:space="preserve">
     <value>Các Agent</value>
   </data>
-	<data name="memberList" xml:space="preserve">
+  <data name="memberList" xml:space="preserve">
     <value>Thành viên</value>
+  </data>
+  <data name="FirstHalf" xml:space="preserve">
+    <value>First Halft</value>
+  </data>
+  <data name="SecondHalf" xml:space="preserve">
+    <value>Second Halft</value>
+  </data>
+  <data name="Tie" xml:space="preserve">
+    <value>Tie</value>
   </data>
 </root>

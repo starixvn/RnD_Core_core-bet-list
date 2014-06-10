@@ -4065,4 +4065,13 @@
   <data name="memberList" xml:space="preserve">
     <value>會員</value>
   </data>
+  <data name="FirstHalf" xml:space="preserve">
+    <value>First Halft</value>
+  </data>
+  <data name="SecondHalf" xml:space="preserve">
+    <value>Second Halft</value>
+  </data>
+  <data name="Tie" xml:space="preserve">
+    <value>Tie</value>
+  </data>
 </root>
