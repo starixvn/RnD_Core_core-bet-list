@@ -40,10 +40,10 @@ namespace Fanex.BetList.Example.MVC.Controllers
             _ticketData = ticketDAO.GetTicketData().ToList();
         }
 
-        public ActionResult Index()
+        public ActionResult Index(BetListData model = null)
         {
-            BetListData model = new BetListData();
-            model.Tickets = _tickets ?? new List<ITicket>();
+            model = model == null ? new BetListData() : model;
+            model.Tickets = _tickets.Where(x => x.BetTypeId == model.BetTypeId || model.BetTypeId == 0).ToList() ?? new List<ITicket>();
             model.TicketData = _ticketData ?? new List<ITicketData>();
 
             return View(model);
@@ -64,7 +64,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
             int index = 0;
 
             foreach (ITicket ticket in _tickets)
-            {   
+            {
                 index++;
                 ticketHelper.Index = index;
 

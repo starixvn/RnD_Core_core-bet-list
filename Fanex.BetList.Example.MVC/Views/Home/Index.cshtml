@@ -8,13 +8,13 @@
 @{
     ViewBag.Title = "Example Bet List";
 
-    IList<ITicket> tickets = Model.Tickets.Where(x => x.BetTypeId == 133).ToList();
+    IList<ITicket> tickets = Model.Tickets;
     List<ITicketData> ticketData = Model.TicketData;
 
     BetListHTMLFactory factory = new BetListHTMLFactory();
     BetListHTMLBuilder builder = factory.CreateBuilder();
 
-    ITicketHelper ticketHelper = new TicketHelper();
+    ITicketHelper ticketHelper = new Fanex.BetList.Example.Data.TicketHelperStub();
 
     GetCachePropertyById funcGetOddsTypeName = CacheRef.GetOddsTypeName;
 
@@ -23,74 +23,99 @@
 @section head
 {
     <link rel="Stylesheet" href=@Url.Content("Content/CoreBetList.css") />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/jquery-1.9.0.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/bootstrap.min.js" type="text/javascript"></script>
 }
-<div id="main">
-    <table id="listPanel">
+@using (Html.BeginForm())
+{ 
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <b>Core Bet List Demo For BetRadar </b><span class="label label-warning">@Html.ActionLink("Export list to excel", "ExportExcel")</span>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-6">
+                    @Html.DropDownListFor(m => m.BetTypeId, new List<SelectListItem>()
+{
+    new SelectListItem{Value="0",Text="All"},
+    new SelectListItem{Value="133",Text="Home to Win Both Halves"},
+    new SelectListItem{Value="134",Text="Away to Win Both Halves"},
+    new SelectListItem{Value="135",Text="Penalty Shootout Yes/No"},
+    new SelectListItem{Value="140",Text="Highest Scoring Half"},
+    new SelectListItem{Value="141",Text="Highest Scoring Half Home Team"},
+    new SelectListItem{Value="142",Text="Highest Scoring Half Away Team"},
+    new SelectListItem{Value="145",Text="Both Teams to Score"},
+    new SelectListItem{Value="146",Text="2nd Half Both Teams to Score"},
+    new SelectListItem{Value="147",Text="Home to Score in Both Halves"},
+    new SelectListItem{Value="148",Text="Away to Score in Both Halves"},
+    new SelectListItem{Value="149",Text="Home to Win Either Half"},
+    new SelectListItem{Value="150",Text="Away to Win Either Half"},
+    new SelectListItem{Value="151",Text="1st Half Double Chance"},
+    new SelectListItem{Value="152",Text="Half Time/Full Time Correct Score"}
+}, new { @class = "form-control" })
+                </div>
+                <div class="col-lg-1">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<table class="table table-striped table-bordered table-condensed">
+    <thead>
         <tr>
             <td>
-                <h2>
-                    Core Bet List Demo</h2>
+                #
             </td>
             <td>
-                <p class="xport">@Html.ActionLink("Export list to excel", "ExportExcel")</p>
+                Trans.Time
+            </td>
+            <td>
+                Username
+            </td>
+            <td>
+                Choice
+            </td>
+            <td>
+                Odds
+            </td>
+            <td>
+                Stake
+            </td>
+            <td>
+                Status
             </td>
         </tr>
-    </table>
-    <table id="tabBetList">
-        <thead>
+    </thead>
+    <tbody>
+        @foreach (var ticket in tickets)
+        {
+            rowIndex++;
+        
             <tr>
-                <td>
-                    #
+                <td class="r">
+                    @rowIndex
                 </td>
-                <td>
-                    Trans.Time
+                <td class="c">
+                    @Html.Raw(builder.BuildTrans(ticket))
                 </td>
-                <td>
-                    Username
+                <td class="c">
+                    @Html.Raw(builder.BuildUsername(ticket))
                 </td>
-                <td>
-                    Choice
+                <td class="r">
+                    @Html.Raw(builder.BuildChoice(ticket, ticketHelper, ticketData, false))
                 </td>
-                <td>
-                    Odds
+                <td class="r">
+                    @Html.Raw(builder.BuildOdds(ticket, ticketData, funcGetOddsTypeName))
                 </td>
-                <td>
-                    Stake
+                <td class="r">
+                    @Html.Raw(builder.BuildStake(ticket))
                 </td>
-                <td>
-                    Status
+                <td class="r">
+                    @Html.Raw(builder.BuildStatus(ticket, ticketHelper, ticketData, true))
                 </td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var ticket in tickets)
-            {
-                rowIndex++;
-        
-                <tr>
-                    <td class="r">
-                        @rowIndex
-                    </td>
-                    <td class="c">
-                        @Html.Raw(builder.BuildTrans(ticket))
-                    </td>
-                    <td class="c">
-                        @Html.Raw(builder.BuildUsername(ticket))
-                    </td>
-                    <td class="r">
-                        @Html.Raw(builder.BuildChoice(ticket, ticketHelper, ticketData, false))
-                    </td>
-                    <td class="r">
-                        @Html.Raw(builder.BuildOdds(ticket, ticketData, funcGetOddsTypeName))
-                    </td>
-                    <td class="r">
-                        @Html.Raw(builder.BuildStake(ticket))
-                    </td>
-                    <td class="r">
-                        @Html.Raw(builder.BuildStatus(ticket, ticketHelper, ticketData, true))
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
+        }
+    </tbody>
+</table>

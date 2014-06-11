@@ -50,6 +50,8 @@ div.match + div.league {
     padding: 0 4px;
     width: 14px;
 }
+.fhFirstGoal{background: url(Images/1F.gif) no-repeat scroll center center transparent;display: inline;height: 10px;	padding: 0 4px;	width: 14px;}
+.fhLastGoal{background: url(Images/1L.gif) no-repeat scroll center center transparent;display: inline;	height: 10px;	padding: 0 4px;	width: 14px;}
 .match {
     color: #000000;
     font-weight: normal;
