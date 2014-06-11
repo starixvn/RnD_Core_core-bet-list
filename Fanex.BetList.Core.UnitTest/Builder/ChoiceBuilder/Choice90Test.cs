@@ -25,20 +25,11 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
     /// </summary>
     public class Choice90Wrapper : Choice90
     {
-        public void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        public void BuildChoiceOverride(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
         }
-    }
-
-    //public class Choice90Wrapper2 : Choice90Wrapper
-    //{       
-       
-    //    protected override void BuildChoiceWrapper(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-    //    {
-    //        base.BuildChoice(ticket, ticketHelper, ticketData);
-    //    }
-    //}
+    }  
 
     public class Choice90Test
     {
@@ -321,7 +312,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             choiceStub.GetLiveScore(Arg.Any<ITicket>()).Returns(liveScore);
 
             // Act
-            choiceStub.BuildChoice(_ticket, _ticketHelper, null);
+            choiceStub.BuildChoiceOverride(_ticket, _ticketHelper, null);
 
             // Assert
             var expectedBetTeam = string.Join(null, betTeamName, liveScore);
