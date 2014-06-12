@@ -15,6 +15,31 @@
         private IChoice _choice;
         private ITicket _ticket;
         private ITicketHelper _ticketHelper;
+        private const string LableFirstGoal = "<div class='firstGoal '>&nbsp;</div>";
+        private const string LableLastGoal = "<div class='lastGoal'>&nbsp;</div>";
+        private const string Lable1FirstGoal = "<div class='fhFirstGoal'>&nbsp;</div>";
+        private const string Lable1LastGoal = "<div class='fhLastGoal'>&nbsp;</div>";
+        private const string Space = "&nbsp;";
+
+        /// <summary>
+        /// Underdog = "underdog".
+        /// </summary>
+        private const string Underdog = "underdog";
+
+        /// <summary>
+        /// Favorite = "favorite".
+        /// </summary>
+        private const string Favorite = "favorite";
+
+        /// <summary>
+        /// VoidStatusId = 102.
+        /// </summary>
+        private const int VoidStatusId = 102;
+
+        /// <summary>
+        /// VoidStatus = "void".
+        /// </summary>
+        private const string VoidStatus = "void";
 
         [SetUp]
         public void Setup()
@@ -94,6 +119,615 @@
             // Assert
             string expectedBetTypeName = _ticketHelper.GetBetTypeNameById(_ticket.BetTypeId);
             Assert.AreEqual(expectedBetTypeName, _choice.Template.BetType.betTypeName);
+        }
+
+        [Test]
+        public void BuildChoice_NeutralTicket_HomeTeamIsGetTeamNameByIdAndChatacterNInParenthese()
+        {
+            // Arrange
+            _ticket.IsNeutral = true;
+            _ticketHelper.GetTeamNameById(Arg.Any<long>()).Returns<string>("Home team name");
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedHomeTeamName = string.Format("{0} (N) ", _ticketHelper.GetTeamNameById(_ticket.HomeId));
+            Assert.AreEqual(expectedHomeTeamName, _choice.Template.Match.homeTeam);
+        }
+
+        [Test]
+        public void BuildChoice_NotNeutralTicket_HomeTeamIsGetTeamNameById()
+        {
+            // Arrange
+            _ticket.IsNeutral = false;
+            _ticketHelper.GetTeamNameById(Arg.Any<long>()).Returns<string>("Home team name");
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedHomeTeamName = _ticketHelper.GetTeamNameById(_ticket.HomeId);
+            Assert.AreEqual(expectedHomeTeamName, _choice.Template.Match.homeTeam);
+        }
+
+        [Test]
+        public void BuildChoice_Ticket_AwayTeamIsGetTeamNameById()
+        {
+            // Arrange
+            _ticketHelper.GetTeamNameById(Arg.Any<long>()).Returns<string>("Away team name");
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedAwayTeamName = _ticketHelper.GetTeamNameById(_ticket.AwayId);
+            Assert.AreEqual(expectedAwayTeamName, _choice.Template.Match.awayTeam);
+        }
+
+        [TestCase("FL:0-1")]
+        [TestCase("FL:2-1")]
+        public void CalculateFGLG_EventStatusOfTicket_HomeFGLGIsLableLG(string eventStatus)
+        {
+            // Arrange
+            _ticket.EventStatus = eventStatus;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedHomeFGLG = string.Format("{0}{1}", Space, LableLastGoal);
+            Assert.AreEqual(expectedHomeFGLG, _choice.Template.Match.home_firstGoal_lastGoal);
+        }
+
+        [TestCase("1FL:0-1")]
+        [TestCase("1FL:2-1")]
+        public void CalculateFGLG_EventStatusOfTicket_HomeFGLGIsLable1LG(string eventStatus)
+        {
+            // Arrange
+            _ticket.EventStatus = eventStatus;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedHomeFGLG = string.Format("{0}{1}", Space, Lable1LastGoal);
+            Assert.AreEqual(expectedHomeFGLG, _choice.Template.Match.home_firstGoal_lastGoal);
+        }
+
+        [TestCase("FL:0-1;1FL:0-1")]
+        [TestCase("FL:2-1;1FL:2-1")]
+        public void CalculateFGLG_EventStatusOfTicket_HomeFGLGIsLableLGAndLable1LG(string eventStatus)
+        {
+            // Arrange
+            _ticket.EventStatus = eventStatus;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedHomeFGLG = string.Format("{0}{1}{2}", Space, LableLastGoal, Lable1LastGoal);
+            Assert.AreEqual(expectedHomeFGLG, _choice.Template.Match.home_firstGoal_lastGoal);
+        }
+
+        [TestCase("FL:0-2")]
+        [TestCase("FL:1-2")]
+        public void CalculateFGLG_EventStatusOfTicket_AwayFGLGIsLableLG(string eventStatus)
+        {
+            // Arrange
+            _ticket.EventStatus = eventStatus;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedHomeFGLG = string.Format("{0}{1}", Space, LableLastGoal);
+            Assert.AreEqual(expectedHomeFGLG, _choice.Template.Match.away_firstGoal_lastGoal);
+        }
+
+        [TestCase("1FL:0-2")]
+        [TestCase("1FL:1-2")]
+        public void CalculateFGLG_EventStatusOfTicket_AwayFGLGIsLable1LG(string eventStatus)
+        {
+            // Arrange
+            _ticket.EventStatus = eventStatus;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedHomeFGLG = string.Format("{0}{1}", Space, Lable1LastGoal);
+            Assert.AreEqual(expectedHomeFGLG, _choice.Template.Match.away_firstGoal_lastGoal);
+        }
+
+        [TestCase("FL:0-2;1FL:0-2")]
+        [TestCase("FL:1-2;1FL:1-2")]
+        public void CalculateFGLG_EventStatusOfTicket_AwayFGLGIsLableLGAndLable1LG(string eventStatus)
+        {
+            // Arrange
+            _ticket.EventStatus = eventStatus;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedHomeFGLG = string.Format("{0}{1}{2}", Space, LableLastGoal, Lable1LastGoal);
+            Assert.AreEqual(expectedHomeFGLG, _choice.Template.Match.away_firstGoal_lastGoal);
+        }
+
+        [TestCase("FL:1-0")]
+        [TestCase("FL:1-2")]
+        public void CalculateFGLG_EventStatusOfTicket_HomeFGLGIsLableFG(string eventStatus)
+        {
+            // Arrange
+            _ticket.EventStatus = eventStatus;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedHomeFGLG = string.Format("{0}{1}", Space, LableFirstGoal);
+            Assert.AreEqual(expectedHomeFGLG, _choice.Template.Match.home_firstGoal_lastGoal);
+        }
+
+        [TestCase("1FL:1-0")]
+        [TestCase("1FL:1-2")]
+        public void CalculateFGLG_EventStatusOfTicket_HomeFGLGIsLable1FG(string eventStatus)
+        {
+            // Arrange
+            _ticket.EventStatus = eventStatus;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedHomeFGLG = string.Format("{0}{1}", Space, Lable1FirstGoal);
+            Assert.AreEqual(expectedHomeFGLG, _choice.Template.Match.home_firstGoal_lastGoal);
+        }
+
+        [TestCase("FL:1-0;1FL:1-0")]
+        [TestCase("FL:1-2;1FL:1-2")]
+        public void CalculateFGLG_EventStatusOfTicket_HomeFGLGIsLableFGAndLable1FG(string eventStatus)
+        {
+            // Arrange
+            _ticket.EventStatus = eventStatus;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedHomeFGLG = string.Format("{0}{1}{2}", Space, LableFirstGoal, Lable1FirstGoal);
+            Assert.AreEqual(expectedHomeFGLG, _choice.Template.Match.home_firstGoal_lastGoal);
+        }
+
+        [Test]
+        public void CalculateFGLG_EventStatusOfTicketIsFL11_HomeFGLGIsLableFGAndLableLG()
+        {
+            // Arrange
+            _ticket.EventStatus = "FL:1-1";
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedHomeFGLG = string.Format("{0}{1}{2}", Space, LableFirstGoal, LableLastGoal);
+            Assert.AreEqual(expectedHomeFGLG, _choice.Template.Match.home_firstGoal_lastGoal);
+        }
+
+        [Test]
+        public void CalculateFGLG_EventStatusOfTicketIs1FL11_HomeFGLGIsLable1FGAndLable1LG()
+        {
+            // Arrange
+            _ticket.EventStatus = "1FL:1-1";
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedHomeFGLG = string.Format("{0}{1}{2}", Space, Lable1FirstGoal, Lable1LastGoal);
+            Assert.AreEqual(expectedHomeFGLG, _choice.Template.Match.home_firstGoal_lastGoal);
+        }
+
+        [Test]
+        public void CalculateFGLG_EventStatusOfTicketIsFL11And1FL11_HomeFGLGIsLableFGLableLGAndLable1FGLable1LG()
+        {
+            // Arrange
+            _ticket.EventStatus = "FL:1-1;1FL:1-1";
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedHomeFGLG = string.Format("{0}{1}{2}{3}{4}", Space, LableFirstGoal, LableLastGoal, Lable1FirstGoal, Lable1LastGoal);
+            Assert.AreEqual(expectedHomeFGLG, _choice.Template.Match.home_firstGoal_lastGoal);
+        }
+
+        [Test]
+        public void CalculateFGLG_EventStatusOfTicketIsFL22_AwayFGLGIsLableFGAndLableLG()
+        {
+            // Arrange
+            _ticket.EventStatus = "FL:2-2";
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedAwayFGLG = string.Format("{0}{1}{2}", Space, LableFirstGoal, LableLastGoal);
+            Assert.AreEqual(expectedAwayFGLG, _choice.Template.Match.away_firstGoal_lastGoal);
+        }
+
+        [Test]
+        public void CalculateFGLG_EventStatusOfTicketIs1FL22_AwayFGLGIsLable1FGAndLable1LG()
+        {
+            // Arrange
+            _ticket.EventStatus = "1FL:2-2";
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedAwayFGLG = string.Format("{0}{1}{2}", Space, Lable1FirstGoal, Lable1LastGoal);
+            Assert.AreEqual(expectedAwayFGLG, _choice.Template.Match.away_firstGoal_lastGoal);
+        }
+
+        [Test]
+        public void CalculateFGLG_EventStatusOfTicketIsFL22And1FL22_AwayFGLGIsLableFGLableLGAndLable1FGLable1LG()
+        {
+            // Arrange
+            _ticket.EventStatus = "FL:2-2;1FL:2-2";
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedAwayFGLG = string.Format("{0}{1}{2}{3}{4}", Space, LableFirstGoal, LableLastGoal, Lable1FirstGoal, Lable1LastGoal);
+            Assert.AreEqual(expectedAwayFGLG, _choice.Template.Match.away_firstGoal_lastGoal);
+        }
+
+        [TestCase("FL:2-0")]
+        [TestCase("FL:2-1")]
+        public void CalculateFGLG_EventStatusOfTicket_AwayFGLGIsLableFG(string eventStatus)
+        {
+            // Arrange
+            _ticket.EventStatus = eventStatus;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedAwayFGLG = string.Format("{0}{1}", Space, LableFirstGoal);
+            Assert.AreEqual(expectedAwayFGLG, _choice.Template.Match.away_firstGoal_lastGoal);
+        }
+
+        [TestCase("1FL:2-0")]
+        [TestCase("1FL:2-1")]
+        public void CalculateFGLG_EventStatusOfTicket_AwayFGLGIsLable1FG(string eventStatus)
+        {
+            // Arrange
+            _ticket.EventStatus = eventStatus;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedAwayFGLG = string.Format("{0}{1}", Space, Lable1FirstGoal);
+            Assert.AreEqual(expectedAwayFGLG, _choice.Template.Match.away_firstGoal_lastGoal);
+        }
+
+        [TestCase("FL:2-0;1FL:2-0")]
+        [TestCase("FL:2-1;1FL:2-1")]
+        public void CalculateFGLG_EventStatusOfTicket_AwayFGLGIsLableFGAndLable1FG(string eventStatus)
+        {
+            // Arrange
+            _ticket.EventStatus = eventStatus;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedAwayFGLG = string.Format("{0}{1}{2}", Space, LableFirstGoal, Lable1FirstGoal);
+            Assert.AreEqual(expectedAwayFGLG, _choice.Template.Match.away_firstGoal_lastGoal);
+        }
+
+        [TestCase("")]
+        [TestCase("FL:2-2")]
+        [TestCase("FL:2-0")]
+        [TestCase("FL:0-2")]
+        [TestCase("1FL:2-2")]
+        [TestCase("1FL:2-0")]
+        [TestCase("1FL:0-2")]
+        public void CalculateFGLG_EventStatusOfTicket_HomeFGLGIsEmpty(string eventStatus)
+        {
+            // Arrange
+            _ticket.EventStatus = eventStatus;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            Assert.IsEmpty(_choice.Template.Match.home_firstGoal_lastGoal);
+        }
+
+        [TestCase("")]
+        [TestCase("FL:1-1")]
+        [TestCase("FL:1-0")]
+        [TestCase("FL:0-1")]
+        [TestCase("1FL:1-1")]
+        [TestCase("1FL:1-0")]
+        [TestCase("1FL:0-1")]
+        public void CalculateFGLG_EventStatusOfTicket_AwayFGLGIsEmpty(string eventStatus)
+        {
+            // Arrange
+            _ticket.EventStatus = eventStatus;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            Assert.IsEmpty(_choice.Template.Match.away_firstGoal_lastGoal);
+        }
+
+        [Test]
+        public void BuildChoice_BetTeamOfTicketContainsCharacterH_BetTeamIsHomeTeamName()
+        {
+            // Arrange
+            _ticket.BetTeam = "text h";
+            _ticketHelper.GetTeamNameById(Arg.Any<long>()).Returns<string>("Home team name");
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedBetTeam = _choice.Template.Match.homeTeam;
+            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
+        }
+
+        [Test]
+        public void BuildChoice_BetTeamOfTicketIsNull_BetTeamIsAwayTeamName()
+        {
+            // Arrange
+            _ticket.BetTeam = null;
+            _ticketHelper.GetTeamNameById(Arg.Any<long>()).Returns<string>("Away team name");
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedBetTeam = _choice.Template.Match.awayTeam;
+            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
+        }
+
+        [Test]
+        public void BuildChoice_BetTeamOfTicketIsEmpty_BetTeamIsAwayTeamName()
+        {
+            // Arrange
+            _ticket.BetTeam = string.Empty;
+            _ticketHelper.GetTeamNameById(Arg.Any<long>()).Returns<string>("Away team name");
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedBetTeam = _choice.Template.Match.awayTeam;
+            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
+        }
+
+        [Test]
+        public void BuildChoice_BetTeamOfTicketContainsCharacterHAndHandicap2GreaterThanHandicap1_BetTeamClassNameIsUnderdog()
+        {
+            // Arrange
+            _ticket.BetTeam = "text h";
+            _ticket.Handicap1 = 1;
+            _ticket.Handicap2 = 2;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedBetTeamClassName = Underdog;
+            Assert.AreEqual(expectedBetTeamClassName, _choice.Template.betTeamClassName);
+        }
+
+        [Test]
+        public void BuildChoice_BetTeamOfTicketContainsCharacterHAndHandicap2EqualHandicap1_BetTeamClassNameIsUnderdog()
+        {
+            // Arrange
+            _ticket.BetTeam = "text h";
+            _ticket.Handicap1 = 1;
+            _ticket.Handicap2 = 1;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedBetTeamClassName = Underdog;
+            Assert.AreEqual(expectedBetTeamClassName, _choice.Template.betTeamClassName);
+        }
+
+        [Test]
+        public void BuildChoice_BetTeamOfTicketContainsCharacterHAndHandicap2LessThanHandicap1_BetTeamClassNameIsFavorite()
+        {
+            // Arrange
+            _ticket.BetTeam = "text h";
+            _ticket.Handicap1 = 2;
+            _ticket.Handicap2 = 1;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedBetTeamClassName = Favorite;
+            Assert.AreEqual(expectedBetTeamClassName, _choice.Template.betTeamClassName);
+        }
+
+        [Test]
+        public void BuildChoice_BetTeamOfTicketHasHandicap2LessThanHandicap1_BetTeamClassNameIsUnderdog()
+        {
+            // Arrange
+            _ticket.Handicap1 = 2;
+            _ticket.Handicap2 = 1;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedBetTeamClassName = Underdog;
+            Assert.AreEqual(expectedBetTeamClassName, _choice.Template.betTeamClassName);
+        }
+
+        [Test]
+        public void BuildChoice_BetTeamOfTicketHasHandicap2EqualHandicap1_BetTeamClassNameIsUnderdog()
+        {
+            // Arrange
+            _ticket.Handicap1 = 1;
+            _ticket.Handicap2 = 1;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedBetTeamClassName = Underdog;
+            Assert.AreEqual(expectedBetTeamClassName, _choice.Template.betTeamClassName);
+        }
+
+        [Test]
+        public void BuildChoice_BetTeamOfTicketHasHandicap2GreaterThanHandicap1_BetTeamClassNameIsFavorite()
+        {
+            // Arrange
+            _ticket.Handicap1 = 1;
+            _ticket.Handicap2 = 2;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedBetTeamClassName = Favorite;
+            Assert.AreEqual(expectedBetTeamClassName, _choice.Template.betTeamClassName);
+        }
+
+        [Test]
+        public void BuildChoice_Ticket_ScoreClassNameIsFavorite()
+        {
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedBetTeamClassName = Favorite;
+            Assert.AreEqual(expectedBetTeamClassName, _choice.Template.Score.scoreClassName);
+        }
+
+        [Test]
+        public void BuildChoice_BetTeamOfTicketContainsCharacterHAndHandicap2GreaterThanHandicap1_HandicapIsHandicap2()
+        {
+            // Arrange
+            _ticket.BetTeam = "text h";
+            _ticket.Handicap1 = 1;
+            _ticket.Handicap2 = 2;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedHandicap = _ticket.Handicap2.ToString();
+            Assert.AreEqual(expectedHandicap, _choice.Template.Handicap.handicap);
+        }
+
+        [Test]
+        public void BuildChoice_BetTeamOfTicketContainsCharacterHAndHandicap2LessThanHandicap1_HandicapIsMinusHandicap1()
+        {
+            // Arrange
+            _ticket.BetTeam = "text h";
+            _ticket.Handicap1 = 2;
+            _ticket.Handicap2 = 1;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedHandicap = string.Format("-{0}", _ticket.Handicap1);
+            Assert.AreEqual(expectedHandicap, _choice.Template.Handicap.handicap);
+        }
+
+        [Test]
+        public void BuildChoice_StatusIdOfTicketIsNull_TicketStatusIsEmpty()
+        {
+            // Arrange
+            _ticket.StatusId = null;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            Assert.IsEmpty(_choice.Template.ticketStatus);
+        }
+
+        [Test]
+        public void BuildChoice_StatusIdOfTicketIsVoid_TicketStatusIsVoid()
+        {
+            // Arrange
+            _ticket.StatusId = VoidStatusId;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedStatus = VoidStatus;
+            Assert.AreEqual(expectedStatus, _choice.Template.ticketStatus);
+        }
+
+        [Test]
+        public void BuildChoice_StatusOfTicketIsNull_TicketStatusIsEmpty()
+        {
+            // Arrange
+            _ticket.Status = null;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            Assert.IsEmpty(_choice.Template.ticketStatus);
+        }
+
+        [Test]
+        public void BuildChoice_StatusOfTicketIsVoid_TicketStatusIsVoid()
+        {
+            // Arrange
+            _ticket.Status = VoidStatus;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedStatus = VoidStatus;
+            Assert.AreEqual(expectedStatus, _choice.Template.ticketStatus);
+        }
+
+        [Test]
+        public void BuildHandicapOdds_IsShowOddsWithChoiceOfTicketHelperIsFalse_HandicapOddsIsNull()
+        {
+            // Arrange
+            _ticketHelper.IsShowOddsWithChoice = false;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            Assert.IsNull(_choice.Template.Handicap.Odds);
+        }
+
+        [Test]
+        public void BuildHandicapOdds_IsShowOddsWithChoiceOfTicketHelperIsTrue_HandicapOddsIsOdds()
+        {
+            // Arrange
+            _ticketHelper.IsShowOddsWithChoice = true;
+            _ticket.Odds = 1;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedOdds = string.Format("<span class=\"odds\"> @ {0}</span>", _ticket.Odds);
+            Assert.AreEqual(expectedOdds, _choice.Template.Handicap.Odds);
         }
     }
 }
