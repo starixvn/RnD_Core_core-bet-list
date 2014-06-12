@@ -6,6 +6,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
     using Fanex.BetList.Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
+    using System;
 
     /// <summary>
     /// Unit test for Choice1 class.
@@ -733,19 +734,70 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildHandicapOdds_IsShowOddsWithChoiceOfTicketHelperIsTrueAndOddsTypeTicketIs1_HandicapOddsIsOdds()
+        public void BuildHandicapOdds_IsShowOddsWithChoiceOfTicketHelperIsTrueAndOddsTypeTicketIs1_HandicapOddsIsNull()
         {
             // Arrange
             _ticketHelper.IsShowOddsWithChoice = true;
             _ticket.OddsType = "1";
-            _ticket.Odds = 1;
+            _ticket.Odds = 0;
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedOdds = _ticket.Odds.ToString();
-            Assert.AreEqual(expectedOdds, _choice.Template.Handicap.Odds.odds);
+            Assert.IsNull(_choice.Template.Handicap.Odds);
+        }
+
+        [Test]
+        public void BuildHandicapOdds_IsShowScoreMap_ScoreMapIconMatchIdIsMatchId()
+        {
+            // Arrange
+            _ticket.MatchId = 1;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, true);
+
+            // Assert
+            string expectedMatchId = _ticket.MatchId.ToString();
+            Assert.AreEqual(expectedMatchId, _choice.Template.ScoreMapIcon.matchId);
+        }
+
+        [Test]
+        public void BuildHandicapOdds_IsShowScoreMap_ScoreMapIconBetTypeIsBetTypeId()
+        {
+            // Arrange
+            _ticket.BetTypeId = 1;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, true);
+
+            // Assert
+            string expectedBetType = _ticket.BetTypeId.ToString();
+            Assert.AreEqual(expectedBetType, _choice.Template.ScoreMapIcon.betTypeId);
+        }
+
+        [Test]
+        public void BuildHandicapOdds_IsShowScoreMap_ScoreMapIconLiveIndicatorIsIsLive()
+        {
+            // Arrange
+            _ticket.IsLive = true;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, true);
+
+            // Assert
+            string expectedLiveIndicator = Convert.ToInt32(_ticket.IsLive).ToString();
+            Assert.AreEqual(expectedLiveIndicator, _choice.Template.ScoreMapIcon.liveindicator);
+        }
+
+        [Test]
+        public void BuildHandicapOdds_IsNotShowScoreMap_ScoreMapIconIsNull()
+        {
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.IsNull(_choice.Template.ScoreMapIcon);
         }
     }
 }
