@@ -36,9 +36,21 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     public class Choice1 : IChoice
     {
         #region Attributes
-
+        /// <summary>
+        /// String underdog.
+        /// </summary>
         protected const string BLUNDERDOG = "underdog";
+
+        /// <summary>
+        /// String favorite.
+        /// </summary>
         protected const string BLFAVORITE = "favorite";
+
+        /// <summary>
+        /// Represent a non-breaking space.
+        /// </summary>
+        /// <value>&amp;nbsp;</value>
+        protected const string HtmlNoneBreakingSpace = "&nbsp;";
 
         #endregion
 

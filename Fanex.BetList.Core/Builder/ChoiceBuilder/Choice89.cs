@@ -11,29 +11,48 @@
     /// </summary>
     public class Choice89 : Choice1
     {
+        private const string OneColonOne = "1:1";
+        private const string OneColonTwo = "1:2";
+        private const string TwoColonOne = "2:1";
+        private const string TwoColonTwo = "2:2";
+        private const string SpanWithValue37point5 = " <span style='color:#555555'>37.5</span> ";
+        private const string ZeroBeetweenSquareBrackets = " [0]";
+
         /// <summary>
         ///  Get Bet team by ticket and live score status.
         /// </summary>
         /// <param name="ticket"> Valid ticket. </param>
         /// <param name="liveScore"> Live score. </param>
         /// <returns>Return string with format betTeam + liveScore.</returns>
-        protected static string GetBetTeam(ITicket ticket, string liveScore)
+        public string GetBetTeam(ITicket ticket, string liveScore)
         {
             string betTeam = string.Empty;
+            betTeam = GetBetTeamFromResource(ticket);
+
+            betTeam += SpanWithValue37point5;
+            return betTeam + liveScore;
+        }
+
+        /// <summary>
+        ///  Get bet team name from resource.
+        /// </summary>
+        /// <param name="ticket"> A valid ticket. </param>
+        /// <returns>Resource string value.</returns>
+        public virtual string GetBetTeamFromResource(ITicket ticket)
+        {
             switch (ticket.BetTeam)
             {
-                case "1:1": betTeam = CoreBetList.lblOverOdd;
-                    break;
-                case "1:2": betTeam = CoreBetList.lblOverEven;
-                    break;
-                case "2:1": betTeam = CoreBetList.lblUnderOdd;
-                    break;
-                case "2:2": betTeam = CoreBetList.lblUnderEven;
-                    break;
+                case OneColonOne:
+                    return CoreBetList.lblOverOdd;                    
+                case OneColonTwo:
+                    return CoreBetList.lblOverEven;                    
+                case TwoColonOne:
+                    return CoreBetList.lblUnderOdd;                    
+                case TwoColonTwo:
+                    return CoreBetList.lblUnderEven;                    
             }
 
-            betTeam += " <span style='color:#555555'>37.5</span> ";
-            return betTeam + liveScore;
+            return string.Empty;
         }
 
         /// <summary>
@@ -41,15 +60,13 @@
         /// </summary>
         /// <param name="ticket"> Valid ticket.</param>
         /// <returns> Live score string.</returns>
-        protected static string GetLiveScore(ITicket ticket)
+        public virtual string GetLiveScore(ITicket ticket)
         {
             string betId = ticket.BetId.ToString();
-            if (betId == "0")
-            {
-                betId = string.Empty;
-            }
-
-            string liveScore = (!ticket.IsLive || betId == string.Empty) ? " [0]" : string.Join(null, new string[] { " [", betId, "]" });
+          
+            string liveScore = (!ticket.IsLive || betId == string.Empty) 
+                ? ZeroBeetweenSquareBrackets 
+                : string.Join(null, new string[] { " [", betId, "]" });
 
             return liveScore;
         }

@@ -19,6 +19,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     /// </summary>
     public class Choice88 : Choice1
     {
+        private const string h = "h";        
         /// <summary>
         /// Builds the choice.
         /// </summary>
@@ -33,16 +34,12 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             this.Template.Match.VS = null;
             this.Template.Handicap.handicap = null;
 
-            string betTeam = ticket.BetTeam == "h" ? CoreBetList.warrior2ndBall : CoreBetList.warrior3rdBall;
-
-            string bettypeName = this.Template.BetType.betTypeName;
+            string betTeam = ticket.BetTeam == h ? CoreBetList.warrior2ndBall : CoreBetList.warrior3rdBall;            
 
             this.Template.betTeam = betTeam;
-            this.Template.betTeamClassName = BLFAVORITE;
-
-            this.Template.BetType.betTypeName = bettypeName;
+            this.Template.betTeamClassName = BLFAVORITE;            
             
-            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, "&nbsp;", ticket.MatchCode });            
+            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlNoneBreakingSpace, ticket.MatchCode });            
         }
     }
 }

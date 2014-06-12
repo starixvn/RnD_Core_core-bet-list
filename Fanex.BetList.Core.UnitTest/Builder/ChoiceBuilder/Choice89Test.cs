@@ -10,41 +10,17 @@
 
 namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.UnitTest.Common.Enums;
-    using NUnit.Framework;
-    using Fanex.BetList.Core.UnitTest.Templates;
-    using Fanex.BetList.Core.Templates;
-    using NSubstitute;
-    using System;
-    using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.App_GlobalResources;
-    using System.Collections.Generic;
-
-    /// <summary>
-    ///  This class public unit cannot test from parent class Choice90
-    /// </summary>
-    public class Choice89Wrapper : Choice89
-    {
-        public string GetLiveScoreCopied(ITicket ticket)
-        {
-            return GetLiveScore(ticket);
-        }
-
-        public string GetBetTeamKeyCopied(ITicket ticket)
-        {
-            throw new NotImplementedException();           
-        }
-
-        public string GetBetTeamNameCopied(string betTeamKey)
-        {
-            throw new NotImplementedException();
-        }
-    }
+    using Fanex.BetList.Core.Builder.ChoiceBuilder;
+    using Fanex.BetList.Core.Entities;
+    using Fanex.BetList.Core.Templates;
+    using Fanex.BetList.Core.UnitTest.Common.Enums;
+    using NSubstitute;
+    using NUnit.Framework;
 
     public class Choice89Test
     {
-        private IChoice _choice;
+        private Choice89 _choice;
         private ITicket _ticket;
         private ITicketHelper _ticketHelper;
 
@@ -58,51 +34,47 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void Score_Must_Be_Null()
+        public void BuildChoice_ScoreBlockIsNull()
         {
             // Act            
-            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-            var actualScore = choiceTemplate.Score;
+            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.IsNull(actualScore);
+            Assert.IsNull(choiceTemplate.Score);
         }
 
         [Test]
-        public void VS_Must_Be_Null()
+        public void BuildChoice_MatchVSBlockIsNull()
         {
             // Act
-            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-            var actualMatchVs = choiceTemplate.Match.VS;
+            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());            
 
             // Assert
-            Assert.IsNull(actualMatchVs);
+            Assert.IsNull(choiceTemplate.Match.VS);
         }
 
         [Test]
-        public void Handicap_Value_Must_Be_Empty()
+        public void BuildChoice_HandicapIsEmpty()
         {
             // Act
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-            var actualHandicapValue = choiceTemplate.Handicap.handicap;
-
+            
             // Assert            
-            Assert.IsNullOrEmpty(actualHandicapValue);
+            Assert.IsNullOrEmpty(choiceTemplate.Handicap.handicap);
         }             
 
         [Test]
-        public void BetTeam_ClassName_Must_Be_Favorite()
+        public void BuildChoice_BetTeamCssClassNameIsFavorite()
         {
             // Act
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-            var actualBetTeamCssClass = choiceTemplate.betTeamClassName;
-
+            
             // Assert            
-            Assert.AreEqual("favorite", actualBetTeamCssClass);
+            Assert.AreEqual("favorite", choiceTemplate.betTeamClassName);
         }
 
         [Test]
-        public void HomeTeam_Must_Be_Joined_By_NumberGameNo_And_MatchCode()
+        public void BuildChoice_HomeTeamIsJoinedByNumberGameNoResourceAndMatchCode()
         {
             // Arrange
             _ticket.MatchCode = "6969";
@@ -117,98 +89,119 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void GetLiveScore_NonLiveTicket_Return_0_In_Square_Brackets()
+        public void GetLiveScore_TicketIsNotLive_ReturnZeroBetweenSquareBrackets()
         {
-            // Arrange
+            //// Arrange
             _ticket.IsLive = false;
-            _ticket.BetId = 1000;
-            var choiceWrapper = new Choice89Wrapper();
+            _ticket.BetId = Arg.Any<long>();
 
             // Act            
-            var actualLiveScore = choiceWrapper.GetLiveScoreCopied(_ticket);
+            var actualLiveScore = _choice.GetLiveScore(_ticket);
 
-            // Assert
+            //// Assert
             Assert.AreEqual(" [0]", actualLiveScore);
         }
 
         [Test]
-        public void GetLiveScore_Empty_Bet_Id_Return_0_In_Square_Brackets()
+        public void GetLiveScore_TicketIsLiveAndBetIdIsNull_ReturnZeroBetweenSquareBrackets()
         {
-            // Arrange
+            //// Arrange
             _ticket.IsLive = true;
-            _ticket.BetId = 111;
-            var choiceWrapper = new Choice89Wrapper();
-
+            _ticket.BetId = null;
+            
             // Act            
-            var actualLiveScore = choiceWrapper.GetLiveScoreCopied(_ticket);
+            var actualLiveScore = _choice.GetLiveScore(_ticket);
 
-            // Assert
+            //// Assert
             Assert.AreEqual(" [0]", actualLiveScore);
         }
 
-        //[Test]
-        //public void GetLiveScore_LiveTicket_And_BetId_Has_Value_Return_BetId_Between_SquareBracket()
-        //{
-        //    // Arrange
-        //    _ticket.IsLive = true;
-        //    var betId = 1000;
-        //    _ticket.BetId = betId;
-        //    var choiceWrapper = new Choice89Wrapper();
+        [Test]
+        public void GetLiveScore_TicketIsLiveAndBetIdIsNotNull_ReturnBetIdStringBetweenSquareBrackets()
+        {
+            // Arrange
+            _ticket.IsLive = true;
+           _ticket.BetId = 1234;           
 
-        //    // Act
-        //    var actualLiveScore = choiceWrapper.GetLiveScoreCopied(_ticket);
+            // Act            
+            var actualLiveScore = _choice.GetLiveScore(_ticket);
 
-        //    // Assert
-        //    var expectedLiveScore = " [" + betId + "]";
-        //    Assert.AreEqual(expectedLiveScore, actualLiveScore);
-        //}
+            //// Assert
+            var expectedLiveScore = string.Join(null, new string[] { " [",  _ticket.BetId.ToString(), "]" });
+            Assert.AreEqual(expectedLiveScore, actualLiveScore);
+        }
 
-        //[Test]
-        //public void GetLiveScore_BetId_Is_Null_Return_Emptry_String()
-        //{
-        //    // Arrange
-        //    _ticket.IsLive = Arg.Any<bool>();
-        //    _ticket.BetId = null;
-        //    var choiceWrapper = new Choice89Wrapper();
+        [Test]
+        public void GetBetTeamFromResource_BetTeamIsOneColonOne_ReturnOverOdd()
+        { 
+            // Arrange
+            _ticket.BetTeam =  "1:1";
 
-        //    // Act            
-        //    var actualLiveScore = choiceWrapper.GetLiveScoreCopied(_ticket);
+            // Act
+            var actualBetTeam = _choice.GetBetTeamFromResource(_ticket);
 
-        //    // Assert
-        //    Assert.AreEqual(string.Empty, actualLiveScore);
-        //}
+            // Assert
+            Assert.AreEqual(CoreBetList.lblOverOdd, actualBetTeam);
+        }
 
-        //[Test]
-        //public void GetBetTeamKey_BetTeam_Is_Not_Number_Return_Key_With_Suffix_Zero()
-        //{
-        //    // Arrange            
-        //    _ticket.BetTeam = "betteam";
-        //    _ticket.Handicap1 = Arg.Any<decimal>();
-        //    var choiceWrapper = new Choice89Wrapper();
+        [Test]
+        public void GetBetTeamFromResource_BetTeamIsOneColonTwo_ReturnOverEven()
+        {
+            // Arrange
+            _ticket.BetTeam = "1:2";
 
-        //    // Act
-        //    var actualBetTeamKey = choiceWrapper.GetBetTeamKeyCopied(_ticket);
+            // Act
+            var actualBetTeam = _choice.GetBetTeamFromResource(_ticket);
 
-        //    // Assert
-        //    Assert.IsTrue(actualBetTeamKey.EndsWith("-0"));
-        //}
+            // Assert
+            Assert.AreEqual(CoreBetList.lblOverEven, actualBetTeam);
+        }
 
-        //[Test]
-        //public void GetBetTeamKey_BetTeam_Is_Number_Join_Handicap1_And_BetTeam_With_Dash_As_Seperated()
-        //{
-        //    // Arrange
-        //    var betTeam = "10";
-        //    _ticket.BetTeam = betTeam;
-        //    var hdp1Value = Arg.Any<decimal>();
-        //    _ticket.Handicap1 = hdp1Value;
-        //    var choiceWrapper = new Choice89Wrapper();
+        [Test]
+        public void GetBetTeamFromResource_BetTeamIsTwoColonOne_ReturnUnderOdd()
+        {
+            // Arrange
+            _ticket.BetTeam = "2:1";
 
-        //    // Act
-        //    var actualBetTeamKey = choiceWrapper.GetBetTeamKeyCopied(_ticket);
+            // Act
+            var actualBetTeam = _choice.GetBetTeamFromResource(_ticket);
 
-        //    // Assert
-        //    var expectedBetTeamKey = string.Format("{0}-{1}", hdp1Value, betTeam);
-        //    Assert.AreEqual(expectedBetTeamKey, actualBetTeamKey);
-        //}    
+            // Assert
+            Assert.AreEqual(CoreBetList.lblUnderOdd, actualBetTeam);
+        }
+
+
+        [Test]
+        public void GetBetTeamFromResource_BetTeamIsTwoColonTwo_ReturnUnderEven()
+        {
+            // Arrange
+            _ticket.BetTeam = "2:2";
+
+            // Act
+            var actualBetTeam = _choice.GetBetTeamFromResource(_ticket);
+
+            // Assert
+            Assert.AreEqual(CoreBetList.lblUnderEven, actualBetTeam);
+        }
+
+        [Test]
+        public void GetBetTeam_ReturnStringWithSuffixIsSpanWithValue37point5AndLiveScore()
+        { 
+            // Arrange
+            var betTeamFromResource = "Under Odd";
+            var spanWithValue37point5 = " <span style='color:#555555'>37.5</span> ";
+            var liveScore = "livescore aaa";            
+            _choice = Substitute.For<Choice89>();
+            _choice.GetLiveScore(Arg.Any<ITicket>()).Returns(liveScore);            
+            _choice.GetBetTeamFromResource(Arg.Any<ITicket>()).Returns(betTeamFromResource);            
+
+            // Act
+            var actualBetTeam = _choice.GetBetTeam(_ticket, liveScore);
+
+            // Assert       
+            var expectedTeam = betTeamFromResource + spanWithValue37point5 + liveScore;
+            Assert.AreEqual(expectedTeam, actualBetTeam);
+        }
+
     }
 }
