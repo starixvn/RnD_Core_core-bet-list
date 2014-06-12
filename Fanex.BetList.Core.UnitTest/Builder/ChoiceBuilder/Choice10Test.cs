@@ -22,7 +22,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         {
             _choice = new Choice10();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes.NumberWheel;
+            _ticket.BetTypeId = BetTypes.Outright;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 

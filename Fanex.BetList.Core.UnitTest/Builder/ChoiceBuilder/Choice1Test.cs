@@ -48,7 +48,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         {
             _choice = new Choice1();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes.NumberWheel;
+            _ticket.BetTypeId = BetTypes.Handicap;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
