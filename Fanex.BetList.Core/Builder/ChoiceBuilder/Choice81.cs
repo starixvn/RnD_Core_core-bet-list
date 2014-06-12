@@ -1,14 +1,4 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Choice81.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.11.16">Create</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
     using Fanex.BetList.Core.App_GlobalResources;
@@ -19,6 +9,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     /// </summary>
     public class Choice81 : Choice1
     {
+        private const string HandicapValue = "37.5";
         /// <summary>
         /// Builds the choice.
         /// </summary>
@@ -30,12 +21,12 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
             this.Template.Match.VS = null;
-            this.Template.betTeam = ticket.BetTeam == "h" ? CoreBetList.over : CoreBetList.under;
+            this.Template.betTeam = ticket.BetTeam == HToLower ? CoreBetList.over : CoreBetList.under;
 
             this.Template.betTeamClassName = BLFAVORITE;
 
-            this.Template.Handicap.handicap = "37.5";
-            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, "&nbsp;", ticket.MatchCode });
+            this.Template.Handicap.handicap = HandicapValue;
+            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlNoneBreakingSpace, ticket.MatchCode });
         }
     }
 }

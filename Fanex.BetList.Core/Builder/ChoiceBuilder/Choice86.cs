@@ -1,14 +1,4 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Choice86.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.11.16">Create</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
     using Fanex.BetList.Core.App_GlobalResources;
@@ -30,16 +20,9 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
             this.Template.Score = null;
-            this.Template.Match.VS = null;
-
-            string betId = ticket.BetId.ToString();
-            if (betId == "0")
-            {
-                betId = string.Empty;
-            }
+            this.Template.Match.VS = null;                    
 
             string liveScore = string.Empty;
-
             string betTeam = this.Template.betTeam;
 
             string bettypeName = this.Template.BetType.betTypeName;
@@ -49,14 +32,20 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             }
             else
             {
-                bettypeName = CoreBetList.next + "&nbsp;" + bettypeName;
+                string betId = ticket.BetId.ToString();
+                if (betId == "0")
+                {
+                    betId = string.Empty;
+                }
+
+                bettypeName = CoreBetList.next + HtmlNoneBreakingSpace + bettypeName;
                 liveScore = (!ticket.IsLive || betId == string.Empty) ? " [0]" : string.Join(null, new string[] { " [", betId, "]" });
             }
 
             this.Template.betTeam = betTeam + liveScore;
             this.Template.BetType.betTypeName = bettypeName;
-            
-            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, "&nbsp;", ticket.MatchCode });
+
+            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlNoneBreakingSpace, ticket.MatchCode });
 
             // Bet team name is always in red for this bettype
             this.Template.betTeamClassName = BLFAVORITE;

@@ -16,7 +16,7 @@
         private const string TwoColonOne = "2:1";
         private const string TwoColonTwo = "2:2";
         private const string SpanWithValue37point5 = " <span style='color:#555555'>37.5</span> ";
-        private const string ZeroBeetweenSquareBrackets = " [0]";
+        private const string ZeroInSquareBrackets = " [0]";
 
         /// <summary>
         ///  Get Bet team by ticket and live score status.
@@ -62,11 +62,11 @@
         /// <returns> Live score string.</returns>
         public virtual string GetLiveScore(ITicket ticket)
         {
-            string betId = ticket.BetId.ToString();
+            //string betId = ticket.BetId.ToString();
           
-            string liveScore = (!ticket.IsLive || betId == string.Empty) 
-                ? ZeroBeetweenSquareBrackets 
-                : string.Join(null, new string[] { " [", betId, "]" });
+            string liveScore = (!ticket.IsLive || ticket.BetId.HasValue) 
+                ? ZeroInSquareBrackets
+                : string.Join(null, new string[] { " [", ticket.BetId.ToString(), "]" });
 
             return liveScore;
         }
