@@ -46,41 +46,38 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        [Test]
-        public void Score_Must_Be_Null()
+        [Test]        
+        public void BuildChoice_ScoreBlockIsNull()
         {
             // Act            
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-            var actualScore = choiceTemplate.Score;
-
+            
             // Assert
-            Assert.IsNull(actualScore);
+            Assert.IsNull(choiceTemplate.Score);
         }
 
         [Test]
-        public void VS_Must_Be_Null()
+        public void BuildChoice_MatchVSBlockIsNull()
         {
             // Act
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-            var actualMatchVs = choiceTemplate.Match.VS;
-
+            
             // Assert
-            Assert.IsNull(actualMatchVs);
+            Assert.IsNull(choiceTemplate.Match.VS);
         }
 
         [Test]
-        public void Handicap_Value_Must_Be_Empty()
+        public void BuildChoice_HandicapIsEmpty()
         {
             // Act
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-            var actualHandicapValue = choiceTemplate.Handicap.handicap;
-
+            
             // Assert            
-            Assert.IsNullOrEmpty(actualHandicapValue);
+            Assert.IsNullOrEmpty(choiceTemplate.Handicap.handicap);
         }
 
         [Test]
-        public void BetTypeName_Must_Be_NumberGroup()
+        public void BuildChoice_BetTypeNameIsNumberGroupResource()
         {
             // Act
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -92,7 +89,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void HomeTeam_Must_Be_Joined_By_NumberGameNo_And_MatchCode()
+        public void BuildChoice_HomeTeamIsJoinedByNumberGameNoResourceAndMatchCode()
         {
             // Arrange
             _ticket.MatchCode = "6969";
@@ -107,7 +104,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BetTeam_ClassName_Must_Be_Favorite()
+        public void BuildChoice_BetTeamCssClassNameIsFavorite()
         {
             // Act
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -118,7 +115,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void GetLiveScore_NonLiveTicket_Return_Empty()
+        public void GetLiveScore_TicketIsNotLive_ReturnEmptyString()
         {
             // Arrange
             _ticket.IsLive = false;
@@ -132,7 +129,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void GetLiveScore_LiveTicket_And_BetId_Has_Value_Return_BetId_Between_SquareBracket()
+        public void GetLiveScore_TicketIsLiveAndBetIsNotNull_ReturnBetIdBetweenSquareBracket()
         {
             // Arrange
             _ticket.IsLive = true;
@@ -148,7 +145,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void GetLiveScore_LiveTicket_BetId_Is_Null_Return_Emptry_String()
+        public void GetLiveScore_TicketIsLiveAndBetIdIsNull_ReturnEmptryString()
         {
             // Arrange
             _ticket.IsLive = true;
@@ -162,7 +159,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void GetBetTeamKey_BetTeam_Is_Not_Number_Return_Key_With_Suffix_Zero()
+        public void GetBetTeamKey_BetTeamIsNotNumber_ReturnKeyWithSuffixZero()
         {
             // Arrange            
             _ticket.BetTeam = "betteam";
@@ -176,7 +173,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void GetBetTeamKey_BetTeam_Is_Number_Join_Handicap1_And_BetTeam_With_Dash_As_Seperated()
+        public void GetBetTeamKey_BetTeamIsNumber_ReturnHandicap1AndBetTeamWithDashAsSeperated()
         {
             // Arrange
             var betTeam = "10";
@@ -297,12 +294,13 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         [TestCase("5-74", Result = "74")]
         [TestCase("5-75", Result = "75")]
         #endregion
-        public string GetBetTeamName_Return_Valid_Name(string betTeamKey)
+        public string GetBetTeamName_ReturnValidName(string betTeamKey)
         {
             return _choice.GetBetTeamName(betTeamKey);
         }
+
         [Test]
-        public void BetTeam_Should_Return_From_Join_BetTeam_And_LiveScore()
+        public void BuildChoice_BetTeamIsJoinedByBetTeamNameAndLiveScore()
         {
             // Arrange
             var choiceStub = Substitute.For<Choice90Wrapper>();
