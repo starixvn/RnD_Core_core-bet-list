@@ -53,6 +53,20 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         protected const string HtmlNoneBreakingSpace = "&nbsp;";
 
         #endregion
+        protected const string VoidStatus = "void";
+        protected const string HToLower = "h";
+        protected const string Neutral = " (N) ";
+        protected const string FirstGoalCssClass = "firstGoal ";
+        protected const string LastGoalCssClass = "lastGoal";
+        protected const string FirstHalfFirstGoalCssClass = "fhFirstGoal";
+        protected const string FirstHalfLastGoalCssClass = "fhLastGoal";
+        protected const string Space = " ";
+        protected const string FirstGoalTextName = "(F)";
+        protected const string LastGoalTextName = "(L)";
+        protected const string FirstHalfFirstGoalTextName = "(1F)";
+        protected const string FirstHalfLastGoalTextName = "(1L)";
+        protected const string BetStatusFL = "fl";
+        protected const string BetStatus1FL = "1fl";
 
         #region Constructors
 
@@ -143,7 +157,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             this.Template.Score.Visible = ticket.IsLive;
             this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
-            this.Template.Match.homeTeam = string.Join(null, new string[] { homeName, ticket.IsNeutral ? " (N) " : string.Empty });
+            this.Template.Match.homeTeam = string.Join(null, new string[] { homeName, ticket.IsNeutral ? Neutral : string.Empty });
 
             this.Template.Match.awayTeam = awayName;
             this.Template.League.sportTypeName = ticketHelper.GetSportNameById(ticket.SportTypeId);
@@ -153,7 +167,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             this.CalculateFG_LG(ticket.EventStatus, ref this.Template.Match.home_firstGoal_lastGoal, ref this.Template.Match.away_firstGoal_lastGoal);
 
-            bool betHomeTeam = ticket.BetTeam != null && ticket.BetTeam.Contains("h");
+            bool betHomeTeam = ticket.BetTeam != null && ticket.BetTeam.Contains(HToLower);
 
             this.Template.betTeam = betHomeTeam ? this.Template.Match.homeTeam : awayName;
 
@@ -175,7 +189,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             if ((ticket.StatusId != null && ticket.StatusId.ToString().Trim() == BetStatusId.Void)
                 || (ticket.Status != null && ticket.Status.Trim().ToLower() == BetStatus.Void))
             {
-                this.Template.ticketStatus = "void";
+                this.Template.ticketStatus = VoidStatus;
             }
         }
 
@@ -203,27 +217,22 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             // 1FL:1-2            
             */
 
-            string firstGoalClassName = "firstGoal ";
-            string lastGoalClassName = "lastGoal";
-            string firstHalfFirstGoalClassName = "fhFirstGoal";
-            string firstHalfLastGoalClassName = "fhLastGoal";
-
             string[] betStatusParts = betStatus.ToLower().Split(';');
 
-            string[] fglg = this.GetBetStatusPart(betStatusParts, "fl");
-            this.UpdateFG_LG(firstGoalClassName, lastGoalClassName, fglg, ref homeFGLG, ref awayFGLG);
+            string[] fglg = this.GetBetStatusPart(betStatusParts, BetStatusFL);
+            this.UpdateFG_LG(FirstGoalCssClass, LastGoalCssClass, fglg, ref homeFGLG, ref awayFGLG);
 
-            string[] fhfglg = this.GetBetStatusPart(betStatusParts, "1fl");
-            this.UpdateFG_LG(firstHalfFirstGoalClassName, firstHalfLastGoalClassName, fhfglg, ref homeFGLG, ref awayFGLG);            
+            string[] fhfglg = this.GetBetStatusPart(betStatusParts, BetStatus1FL);
+            this.UpdateFG_LG(FirstHalfFirstGoalCssClass, FirstHalfLastGoalCssClass, fhfglg, ref homeFGLG, ref awayFGLG);
 
             if (!homeFGLG.Equals(string.Empty))
             {
-                homeFGLG = string.Join(null, new string[] { "&nbsp;", homeFGLG });
+                homeFGLG = string.Join(null, new string[] { HtmlNoneBreakingSpace, homeFGLG });
             }
 
             if (!awayFGLG.Equals(string.Empty))
             {
-                awayFGLG = string.Join(null, new string[] { "&nbsp;", awayFGLG });
+                awayFGLG = string.Join(null, new string[] { HtmlNoneBreakingSpace, awayFGLG });
             }
         }
 
@@ -292,18 +301,13 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             // 1FL:1-2            
             */
 
-            string firstGoalTextName = "(F)";
-            string lastGoalTextName = "(L)";
-            string firstHalfFirstGoalTextName = "(1F)";
-            string firstHalfLastGoalTextName = "(1L)";
-
             string[] betStatusParts = betStatus.ToLower().Split(';');
 
-            string[] fglg = this.GetBetStatusPart(betStatusParts, "fl");
-            this.UpdateFG_LG_Excel(firstGoalTextName, lastGoalTextName, fglg, ref homeFGLG, ref awayFGLG);
+            string[] fglg = this.GetBetStatusPart(betStatusParts, BetStatusFL);
+            this.UpdateFG_LG_Excel(FirstGoalTextName, LastGoalTextName, fglg, ref homeFGLG, ref awayFGLG);
 
-            string[] fhfglg = this.GetBetStatusPart(betStatusParts, "1fl");
-            this.UpdateFG_LG_Excel(firstHalfFirstGoalTextName, firstHalfLastGoalTextName, fhfglg, ref homeFGLG, ref awayFGLG);
+            string[] fhfglg = this.GetBetStatusPart(betStatusParts, BetStatus1FL);
+            this.UpdateFG_LG_Excel(FirstHalfFirstGoalTextName, FirstHalfLastGoalTextName, fhfglg, ref homeFGLG, ref awayFGLG);
         }
 
         /// <summary>
@@ -377,7 +381,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             if (Template.Handicap != null && Template.Handicap.Visible && Template.Handicap.handicap != null)
             {
-                choice += string.Join(null, new string[] { " ", Template.Handicap.handicap });
+                choice += string.Join(null, new string[] { Space, Template.Handicap.handicap });
             }
 
             if (Template.Score != null && Template.Score.Visible)
@@ -392,7 +396,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             if (!string.IsNullOrEmpty(choice))
             {
-                choice = choice.Replace("&nbsp;", " ");
+                choice = choice.Replace(HtmlNoneBreakingSpace, Space);
                 rtfHelper.RTFRenderer.AddText(choice, rtfHelper.PosFont);
             }
         }
@@ -407,7 +411,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             if (Template.BetType != null && !string.IsNullOrEmpty(Template.BetType.betTypeName))
             {
-                choice = Template.BetType.betTypeName.Replace("&nbsp;", " ");
+                choice = Template.BetType.betTypeName.Replace(HtmlNoneBreakingSpace, Space);
                 rtfHelper.RTFRenderer.AddText("\n" + choice);
             }
         }
@@ -428,7 +432,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                 string choice = string.Empty;
                 if (!string.IsNullOrEmpty(Template.Match.homeTeam))
                 {
-                    choice = Template.Match.homeTeam.Replace("&nbsp;", " ");
+                    choice = Template.Match.homeTeam.Replace(HtmlNoneBreakingSpace, Space);
                 }
 
                 if (!string.IsNullOrEmpty(choice))
@@ -442,13 +446,13 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
                 if (!string.IsNullOrEmpty(Template.Match.home_firstGoal_lastGoal))
                 {
-                    choice = string.Join(null, new string[] { " ", Template.Match.home_firstGoal_lastGoal });
+                    choice = string.Join(null, new string[] { Space, Template.Match.home_firstGoal_lastGoal });
                 }
 
                 if (!string.IsNullOrEmpty(choice))
                 {
                     isAddNewLine = true;
-                    choice = choice.Replace("&nbsp;", " ");
+                    choice = choice.Replace(HtmlNoneBreakingSpace, Space);
                     rtfHelper.RTFRenderer.AddText(choice, rtfHelper.PosFont);
                     choice = string.Empty;
                 }
@@ -460,25 +464,25 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
                 if (!string.IsNullOrEmpty(Template.Match.awayTeam))
                 {
-                    choice += string.Join(null, new string[] { " ", Template.Match.awayTeam });
+                    choice += string.Join(null, new string[] { Space, Template.Match.awayTeam });
                 }
 
                 if (!string.IsNullOrEmpty(choice))
                 {
                     isAddNewLine = true;
-                    choice = choice.Replace("&nbsp;", " ");
+                    choice = choice.Replace(HtmlNoneBreakingSpace, Space);
                     rtfHelper.RTFRenderer.AddText(choice);
                     choice = string.Empty;
                 }
 
                 if (!string.IsNullOrEmpty(Template.Match.away_firstGoal_lastGoal))
                 {
-                    choice = " " + Template.Match.away_firstGoal_lastGoal;
+                    choice = Space + Template.Match.away_firstGoal_lastGoal;
                 }
 
                 if (!string.IsNullOrEmpty(choice) || isAddNewLine)
                 {
-                    choice = choice.Replace("&nbsp;", " ");
+                    choice = choice.Replace(HtmlNoneBreakingSpace, Space);
                     rtfHelper.RTFRenderer.AddText(choice, rtfHelper.PosFont);
                 }
             }
@@ -503,7 +507,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                 {
                     if (!string.IsNullOrEmpty(choice))
                     {
-                        choice += " ";
+                        choice += Space;
                     }
 
                     choice += Template.League.LeagueName.leagueName;
@@ -511,7 +515,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
                 if (!string.IsNullOrEmpty(choice))
                 {
-                    choice = choice.Replace("&nbsp;", " ");
+                    choice = choice.Replace(HtmlNoneBreakingSpace, Space);
                     rtfHelper.RTFRenderer.AddText("\n" + choice);
                 }
             }

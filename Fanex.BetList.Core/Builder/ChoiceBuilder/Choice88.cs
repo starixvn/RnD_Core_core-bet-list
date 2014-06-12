@@ -18,8 +18,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     /// Type: Warrior.
     /// </summary>
     public class Choice88 : Choice1
-    {
-        private const string h = "h";        
+    {        
         /// <summary>
         /// Builds the choice.
         /// </summary>
@@ -34,7 +33,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             this.Template.Match.VS = null;
             this.Template.Handicap.handicap = null;
 
-            string betTeam = ticket.BetTeam == h ? CoreBetList.warrior2ndBall : CoreBetList.warrior3rdBall;            
+            string betTeam = ticket.BetTeam == HToLower ? CoreBetList.warrior2ndBall : CoreBetList.warrior3rdBall;            
 
             this.Template.betTeam = betTeam;
             this.Template.betTeamClassName = BLFAVORITE;            
