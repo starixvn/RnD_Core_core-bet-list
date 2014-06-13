@@ -26,6 +26,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
+        /// <summary>
+        /// The value of Template.Handicap.handicap is always null.
+        /// </summary>
         [Test]
         public void BuildChoice_Ticket_HandicapIsNull()
         {
@@ -36,6 +39,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             Assert.IsNull(_choice.Template.Handicap.handicap);
         }
 
+        /// <summary>
+        /// The value of Template.Match.homeTeam is always null.
+        /// </summary>
         [Test]
         public void BuildChoice_Ticket_HomeTeamIsNull()
         {
@@ -46,6 +52,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             Assert.IsNull(_choice.Template.Match.homeTeam);
         }
 
+        /// <summary>
+        /// The value of Template.Match.awayTeam is always null.
+        /// </summary>
         [Test]
         public void BuildChoice_Ticket_AwayTeamIsNull()
         {
@@ -56,6 +65,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             Assert.IsNull(_choice.Template.Match.awayTeam);
         }
 
+        /// <summary>
+        /// The value of Template.Match.VS is always null.
+        /// </summary>
         [Test]
         public void BuildChoice_Ticket_MatchVSIsNull()
         {
@@ -66,6 +78,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             Assert.IsNull(_choice.Template.Match.VS);
         }
 
+        /// <summary>
+        /// The value of Template.Match.home_firstGoal_lastGoal is always null.
+        /// </summary>
         [Test]
         public void BuildChoice_Ticket_HomeFGLGIsNull()
         {
@@ -76,6 +91,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             Assert.IsNull(_choice.Template.Match.home_firstGoal_lastGoal);
         }
 
+        /// <summary>
+        /// The value of Template.Match.away_firstGoal_lastGoal is always null.
+        /// </summary>
         [Test]
         public void BuildChoice_Ticket_AwayFGLGIsNull()
         {
@@ -86,6 +104,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             Assert.IsNull(_choice.Template.Match.away_firstGoal_lastGoal);
         }
 
+        /// <summary>
+        /// The value of Template.Score is always null.
+        /// </summary>
         [Test]
         public void BuildChoice_DeadBallTicket_ScoreIsNull()
         {
@@ -99,38 +120,45 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             Assert.IsNull(_choice.Template.Score);
         }
 
+        /// <summary>
+        /// The value of Template.Score.homeScore is always Ticket.LiveHomeScore.
+        /// </summary>
         [Test]
         public void BuildChoice_LiveTicket_HomeScoreIsLiveHomeScore()
         {
             // Arrange
-            _ticket.IsLive = true;
             _ticket.LiveHomeScore = 1;
+            _ticket.IsLive = true;
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedHomeScore = _ticket.LiveHomeScore.ToString();
-            Assert.AreEqual(expectedHomeScore, _choice.Template.Score.homeScore);
+            Assert.AreEqual(_ticket.LiveHomeScore.ToString(), _choice.Template.Score.homeScore);
         }
 
+        /// <summary>
+        /// The value of Template.Score.awayScore is always Ticket.LiveAwayScore.
+        /// </summary>
         [Test]
         public void BuildChoice_LiveTicket_AwayScoreIsLiveAwayScore()
         {
             // Arrange
-            _ticket.IsLive = true;
             _ticket.LiveAwayScore = 1;
+            _ticket.IsLive = true;
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedAwayScore = _ticket.LiveAwayScore.ToString();
-            Assert.AreEqual(expectedAwayScore, _choice.Template.Score.awayScore);
+            Assert.AreEqual(_ticket.LiveAwayScore.ToString(), _choice.Template.Score.awayScore);
         }
 
+        /// <summary>
+        /// The value of Template.BetType.betTypeName is always bet type name get by identifier.
+        /// </summary>
         [Test]
-        public void BuildChoice_Ticket_BetTypeIsGetBetTypeNameById()
+        public void BuildChoice_Ticket_BetTypeIsBetTypeName()
         {
             // Arrange
             _ticketHelper.GetBetTypeNameById(Arg.Any<int>()).Returns<string>("Bet type name");
@@ -143,6 +171,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             Assert.AreEqual(expectedBetTypeName, _choice.Template.BetType.betTypeName);
         }
 
+        /// <summary>
+        /// The value of Template.betTeam is always home team name when home id != 0.
+        /// </summary>
         [Test]
         public void BuildChoice_HomeIdOfTicketNotZero_BetTeamIsHomeTeamName()
         {
@@ -158,6 +189,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
+        /// <summary>
+        /// The value of Template.betTeam is always away team name when home id = 0.
+        /// </summary>
         [Test]
         public void BuildChoice_HomeIdOfTicketIsZero_BetTeamIsAwayTeamName()
         {
@@ -173,6 +207,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
+        /// <summary>
+        /// The value of Template.betTeamClassName is always favorite.
+        /// </summary>
         [Test]
         public void BuildChoice_Ticket_BetTeamClassNameIsFavorite()
         {
@@ -180,8 +217,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedBetTeamClassName = "favorite";
-            Assert.AreEqual(expectedBetTeamClassName, _choice.Template.betTeamClassName);
+            Assert.AreEqual("favorite", _choice.Template.betTeamClassName);
         }
     }
 }

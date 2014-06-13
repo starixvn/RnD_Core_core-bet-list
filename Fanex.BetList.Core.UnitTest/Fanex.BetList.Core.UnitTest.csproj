@@ -99,6 +99,9 @@
     <Compile Include="Builder\ChoiceBuilder\Choice1314Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1315Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1328Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice1333Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice1334Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice1501Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds29Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds71Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds33Test.cs" />

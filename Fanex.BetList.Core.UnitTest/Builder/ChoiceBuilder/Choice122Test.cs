@@ -575,6 +575,7 @@
         {
             // Arrange
             _ticket.BetTeam = "text h";
+            _ticketHelper.GetTeamNameById(Arg.Any<long>()).Returns("Home team name");
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
