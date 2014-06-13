@@ -14,9 +14,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
     [TestFixture]
     public class Choice1Test
     {
-        private IChoice _choice;
-        private ITicket _ticket;
-        private ITicketHelper _ticketHelper;
         private const string LableFirstGoal = "<div class='firstGoal '>&nbsp;</div>";
         private const string LableLastGoal = "<div class='lastGoal'>&nbsp;</div>";
         private const string Lable1FirstGoal = "<div class='fhFirstGoal'>&nbsp;</div>";
@@ -42,6 +39,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         /// VoidStatus = "void".
         /// </summary>
         private const string VoidStatus = "void";
+
+        private IChoice _choice;
+        private ITicket _ticket;
+        private ITicketHelper _ticketHelper;
 
         [SetUp]
         public void Setup()
