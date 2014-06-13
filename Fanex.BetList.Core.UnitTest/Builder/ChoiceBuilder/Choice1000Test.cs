@@ -37,6 +37,5 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             string expectedTemplate = string.Format("<div><span class='favorite'>{0}</span></div>", CoreLang.p2pGame);
             Assert.AreEqual(expectedTemplate, _choice.Template.ToString());
         }
-
     }
 }

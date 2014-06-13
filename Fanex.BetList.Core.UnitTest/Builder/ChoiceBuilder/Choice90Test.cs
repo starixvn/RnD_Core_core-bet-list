@@ -10,15 +10,14 @@
 
 namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.UnitTest.Common.Enums;
-    using NUnit.Framework;
-    using Fanex.BetList.Core.UnitTest.Templates;
-    using Fanex.BetList.Core.Templates;
-    using NSubstitute;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.App_GlobalResources;
     using System.Collections.Generic;
+    using Fanex.BetList.Core.App_GlobalResources;
+    using Fanex.BetList.Core.Builder.ChoiceBuilder;
+    using Fanex.BetList.Core.Entities;
+    using Fanex.BetList.Core.Templates;
+    using Fanex.BetList.Core.UnitTest.Common.Enums;
+    using NSubstitute;
+    using NUnit.Framework;
 
     /// <summary>
     ///  This class public unit cannot test from parent class Choice90
@@ -29,7 +28,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
         }
-    }  
+    }
 
     public class Choice90Test
     {
@@ -46,12 +45,12 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        [Test]        
+        [Test]
         public void BuildChoice_ScoreBlockIsNull()
         {
-            // Act            
+            // Act
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-            
+
             // Assert
             Assert.IsNull(choiceTemplate.Score);
         }
@@ -61,7 +60,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         {
             // Act
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-            
+
             // Assert
             Assert.IsNull(choiceTemplate.Match.VS);
         }
@@ -71,8 +70,8 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         {
             // Act
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-            
-            // Assert            
+
+            // Assert
             Assert.IsNullOrEmpty(choiceTemplate.Handicap.handicap);
         }
 
@@ -110,7 +109,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
             var actualBetTeamCssClass = choiceTemplate.betTeamClassName;
 
-            // Assert            
+            // Assert
             Assert.AreEqual("favorite", actualBetTeamCssClass);
         }
 
@@ -119,9 +118,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         {
             // Arrange
             _ticket.IsLive = false;
-            _ticket.BetId = 10000;            
+            _ticket.BetId = 10000;
 
-            // Act            
+            // Act
             var actualLiveScore = _choice.GetLiveScore(_ticket);
 
             // Assert
@@ -134,7 +133,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Arrange
             _ticket.IsLive = true;
             var betId = 1000;
-            _ticket.BetId = betId;            
+            _ticket.BetId = betId;
 
             // Act
             var actualLiveScore = _choice.GetLiveScore(_ticket);
@@ -149,9 +148,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         {
             // Arrange
             _ticket.IsLive = true;
-            _ticket.BetId = null;           
+            _ticket.BetId = null;
 
-            // Act            
+            // Act
             var actualLiveScore = _choice.GetLiveScore(_ticket);
 
             // Assert
@@ -161,9 +160,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         [Test]
         public void GetBetTeamKey_BetTeamIsNotNumber_ReturnKeyWithSuffixZero()
         {
-            // Arrange            
+            // Arrange
             _ticket.BetTeam = "betteam";
-            _ticket.Handicap1 = Arg.Any<decimal>();           
+            _ticket.Handicap1 = Arg.Any<decimal>();
 
             // Act
             var actualBetTeamKey = _choice.GetBetTeamKey(_ticket);
@@ -179,7 +178,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             var betTeam = "10";
             _ticket.BetTeam = betTeam;
             var hdp1Value = Arg.Any<decimal>();
-            _ticket.Handicap1 = hdp1Value;           
+            _ticket.Handicap1 = hdp1Value;
 
             // Act
             var actualBetTeamKey = _choice.GetBetTeamKey(_ticket);
@@ -190,6 +189,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         #region TestCases
+
         [TestCase("1-1", Result = "1~5")]
         [TestCase("1-2", Result = "6~10")]
         [TestCase("1-3", Result = "11~15")]
@@ -293,7 +293,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         [TestCase("5-73", Result = "73")]
         [TestCase("5-74", Result = "74")]
         [TestCase("5-75", Result = "75")]
-        #endregion
+
+        #endregion TestCases
+
         public string GetBetTeamName_ReturnValidName(string betTeamKey)
         {
             return _choice.GetBetTeamName(betTeamKey);
@@ -305,7 +307,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Arrange
             var choiceStub = Substitute.For<Choice90Wrapper>();
             string betTeamName = "My Bet Team";
-            choiceStub.GetBetTeamName(Arg.Any<string>()).Returns(betTeamName);            
+            choiceStub.GetBetTeamName(Arg.Any<string>()).Returns(betTeamName);
             string liveScore = "[13232]";
             choiceStub.GetLiveScore(Arg.Any<ITicket>()).Returns(liveScore);
 

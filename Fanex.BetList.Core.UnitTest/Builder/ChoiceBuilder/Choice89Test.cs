@@ -3,7 +3,6 @@
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Templates;
     using Fanex.BetList.Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
@@ -26,7 +25,7 @@
         [Test]
         public void BuildChoice_ScoreBlockIsNull()
         {
-            // Act            
+            // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
@@ -49,7 +48,7 @@
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert            
+            // Assert
             Assert.IsNullOrEmpty(choiceTemplate.Handicap.handicap);
         }
 
@@ -59,7 +58,7 @@
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert            
+            // Assert
             Assert.AreEqual("favorite", choiceTemplate.betTeamClassName);
         }
 
@@ -85,7 +84,7 @@
             _ticket.IsLive = false;
             _ticket.BetId = Arg.Any<long>();
 
-            // Act            
+            // Act
             var actualLiveScore = _choice.GetLiveScore(_ticket);
 
             // Assert
@@ -99,7 +98,7 @@
             _ticket.IsLive = true;
             _ticket.BetId = null;
 
-            // Act            
+            // Act
             var actualLiveScore = _choice.GetLiveScore(_ticket);
 
             // Assert
@@ -113,7 +112,7 @@
             _ticket.IsLive = true;
             _ticket.BetId = 1234;
 
-            // Act            
+            // Act
             var actualLiveScore = _choice.GetLiveScore(_ticket);
 
             // Assert
@@ -160,7 +159,6 @@
             Assert.AreEqual(CoreBetList.lblUnderOdd, actualBetTeam);
         }
 
-
         [Test]
         public void GetBetTeamFromResource_BetTeamIsTwoColonTwo_ReturnUnderEven()
         {
@@ -188,10 +186,9 @@
             // Act
             var actualBetTeam = _choice.GetBetTeam(_ticket, liveScore);
 
-            // Assert       
+            // Assert
             var expectedTeam = betTeamFromResource + spanWithValue37point5 + liveScore;
             Assert.AreEqual(expectedTeam, actualBetTeam);
         }
-
     }
 }

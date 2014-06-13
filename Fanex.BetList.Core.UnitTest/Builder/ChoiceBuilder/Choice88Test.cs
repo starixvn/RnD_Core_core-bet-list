@@ -13,7 +13,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Templates;
     using Fanex.BetList.Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
@@ -36,7 +35,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         [Test]
         public void BuildChoice_ScoreBlockIsNull()
         {
-            // Act            
+            // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
@@ -47,7 +46,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         public void BuildChoice_MatchVSBlockIsNull()
         {
             // Act
-            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());            
+            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
             Assert.IsNull(choiceTemplate.Match.VS);
@@ -58,24 +57,24 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         {
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-            
-            // Assert            
+
+            // Assert
             Assert.IsNullOrEmpty(choiceTemplate.Handicap.handicap);
-        }             
+        }
 
         [Test]
         public void BuildChoice_BetTeamCssClassNameIsFavorite()
         {
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-            
-            // Assert            
+
+            // Assert
             Assert.AreEqual("favorite", choiceTemplate.betTeamClassName);
         }
 
         [Test]
         public void BuildChoice_BetTeamIsh_BetTeamIsWarrior2ndBallResource()
-        { 
+        {
             // Arrange
             _ticket.BetTeam = "h";
 
@@ -98,7 +97,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Assert
             Assert.AreEqual(CoreBetList.warrior3rdBall, choiceTemplate.betTeam);
         }
-        
 
         [Test]
         public void BuildChoice_HomeTeamIsJoinedByNumberGameNoResourceAndMatchCode()

@@ -3,7 +3,6 @@
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Templates;
     using Fanex.BetList.Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
@@ -26,7 +25,7 @@
         [Test]
         public void BuildChoice_ScoreBlockIsNull()
         {
-            // Act            
+            // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
@@ -37,7 +36,7 @@
         public void BuildChoice_MatchVSBlockIsNull()
         {
             // Act
-            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());            
+            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
             Assert.IsNull(choiceTemplate.Match.VS);
@@ -48,18 +47,18 @@
         {
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-            
-            // Assert            
+
+            // Assert
             Assert.IsNullOrEmpty(choiceTemplate.Handicap.handicap);
-        }             
+        }
 
         [Test]
         public void BuildChoice_BetTeamCssClassNameIsFavorite()
         {
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-            
-            // Assert            
+
+            // Assert
             Assert.AreEqual("favorite", choiceTemplate.betTeamClassName);
         }
 
@@ -70,10 +69,10 @@
             _ticket.IsLive = false;
             _ticket.BetId = Arg.Any<long>();
 
-            // Act            
+            // Act
             var actualLiveScore = _choice.GetLiveScore(_ticket);
 
-           // Assert
+            // Assert
             Assert.AreEqual(" [0]", actualLiveScore);
         }
 
@@ -84,10 +83,10 @@
             _ticket.IsLive = true;
             _ticket.BetId = null;
 
-            // Act            
+            // Act
             var actualLiveScore = _choice.GetLiveScore(_ticket);
 
-           // Assert
+            // Assert
             Assert.AreEqual(" [0]", actualLiveScore);
         }
 
@@ -98,17 +97,17 @@
             _ticket.IsLive = true;
             _ticket.BetId = 1234;
 
-            // Act            
+            // Act
             var actualLiveScore = _choice.GetLiveScore(_ticket);
 
-           // Assert
+            // Assert
             var expectedLiveScore = string.Join(null, new string[] { " [", _ticket.BetId.ToString(), "]" });
             Assert.AreEqual(expectedLiveScore, actualLiveScore);
         }
 
         [Test]
         public void GetBetTeam_BetTeamIsh_BetTeamIsJoinedByHighResourceAndLiveScore()
-        { 
+        {
             // Arrange
             _ticket.BetTeam = "h";
             var liveScoreResult = "livescore result";
@@ -126,7 +125,7 @@
         public void BuildChoice_BetTeamIsNoth_BetTeamIsJoinedLowResourceAndLiveScore()
         {
             // Arrange
-            _ticket.BetTeam = "h87898";            
+            _ticket.BetTeam = "h87898";
             var liveScoreResult = "livescore result";
             _choice = Substitute.For<Choice87>();
             _choice.GetLiveScore(_ticket).Returns(liveScoreResult);
@@ -135,8 +134,8 @@
             var actualBetTeam = _choice.GetBetTeam(_ticket, liveScoreResult);
 
             // Assert
-            Assert.AreEqual(string.Join(null, CoreBetList.low, liveScoreResult), actualBetTeam);            
-        }        
+            Assert.AreEqual(string.Join(null, CoreBetList.low, liveScoreResult), actualBetTeam);
+        }
 
         [Test]
         public void BuildChoice_HomeTeamIsJoinedByNumberGameNoResourceAndMatchCode()
