@@ -10,6 +10,8 @@
     /// </summary>
     public class Choice85 : Choice3
     {
+        private const string ZeroInSquareBrackets = " [0]";
+        private const string SpanWithValue37point5 = " <span style='color:#555555'>37.5</span> ";
         /// <summary>
         /// Builds the choice.
         /// </summary>
@@ -22,19 +24,21 @@
 
             this.Template.Score = null;
             this.Template.Match.VS = null;
-            this.Template.Handicap.handicap = null;
+            this.Template.Handicap.handicap = null;            
+            this.Template.betTeam += GetBetTeam(GetLiveScore(ticket));
+            this.Template.betTeamClassName = BLFAVORITE;            
+            this.Template.BetType.betTypeName = GetBetTypeName(ticket);
+            this.Template.Match.homeTeam = string.Join(null, 
+                new string[] { CoreBetList.numbergameno, HtmlNoneBreakingSpace, ticket.MatchCode });
+        }
 
-            string betId = ticket.BetId.ToString();
-            if (betId == "0")
-            {
-                betId = string.Empty;
-            }
+        private static string GetBetTeam(string liveScore)
+        {
+            return SpanWithValue37point5 + liveScore;
+        }
 
-            string liveScore = string.Empty;
-            string betTeam = this.Template.betTeam;
-
-            betTeam += " <span style='color:#555555'>37.5</span> ";
-
+        private string GetBetTypeName(ITicket ticket)
+        {
             string bettypeName = this.Template.BetType.betTypeName;
             if (!ticket.IsLive)
             {
@@ -42,16 +46,23 @@
             }
             else
             {
-                bettypeName = string.Join(null, new string[] { CoreBetList.next, "&nbsp;", bettypeName });
-
-                liveScore = (!ticket.IsLive || betId == string.Empty) ? " [0]" : string.Join(null, new string[] { " [", betId, "]" });
+                bettypeName = string.Join(null, new string[] { CoreBetList.next, HtmlNoneBreakingSpace, bettypeName });
             }
+            return bettypeName;
+        }
 
-            this.Template.betTeam = betTeam + liveScore;
-            this.Template.betTeamClassName = BLFAVORITE;
+        /// <summary>
+        ///  Get live score string by combining live status and bet id.
+        /// </summary>
+        /// <param name="ticket"> Valid ticket.</param>
+        /// <returns> Live score string.</returns>
+        public virtual string GetLiveScore(ITicket ticket)
+        {
+            string liveScore = (!ticket.IsLive || !ticket.BetId.HasValue)
+                ? ZeroInSquareBrackets
+                : string.Join(null, new string[] { " [", ticket.BetId.ToString(), "]" });
 
-            this.Template.BetType.betTypeName = bettypeName;
-            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, "&nbsp;", ticket.MatchCode });
+            return liveScore;
         }
     }
 }

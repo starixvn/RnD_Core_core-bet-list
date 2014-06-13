@@ -29,3 +29,5 @@ _ReSharper*/
 $tf*/
 *.suo
 Fanex.BetList.Core.suo
+/Fanex.BetList.Core.UnitTest/OpenCover
+/Fanex.BetList.Core.UnitTest/ProfilingSessions/*.sdps

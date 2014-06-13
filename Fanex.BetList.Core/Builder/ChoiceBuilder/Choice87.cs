@@ -45,7 +45,7 @@
         /// <returns> Live score string.</returns>
         public virtual string GetLiveScore(ITicket ticket)
         {
-            string liveScore = (!ticket.IsLive || ticket.BetId.HasValue)
+            string liveScore = (!ticket.IsLive || !ticket.BetId.HasValue)
                 ? ZeroInSquareBrackets
                 : string.Join(null, new string[] { " [", ticket.BetId.ToString(), "]" });
 

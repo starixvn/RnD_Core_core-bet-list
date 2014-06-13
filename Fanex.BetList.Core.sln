@@ -1,6 +1,7 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
+Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
+# SharpDevelop 5.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.Core", "Fanex.BetList.Core\Fanex.BetList.Core.csproj", "{B0838D04-2306-4362-AF22-9FCD0BE6F8E7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CodeAnalysis", "CodeAnalysis", "{806E6B7B-8CAA-49B4-B5AB-145030E6B66A}"
@@ -19,9 +20,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.Core.UnitTest", "Fanex.BetList.Core.UnitTest\Fanex.BetList.Core.UnitTest.csproj", "{879AB95E-FB73-4F65-BD8A-7E4F579BCFDB}"
 EndProject
 Global
-	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = Fanex2.vsmdi
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -81,6 +79,9 @@ Global
 		{879AB95E-FB73-4F65-BD8A-7E4F579BCFDB}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{879AB95E-FB73-4F65-BD8A-7E4F579BCFDB}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
 		{879AB95E-FB73-4F65-BD8A-7E4F579BCFDB}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = Fanex2.vsmdi
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
