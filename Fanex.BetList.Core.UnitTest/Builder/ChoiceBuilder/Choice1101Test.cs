@@ -30,10 +30,10 @@
         }
 
         /// <summary>
-        /// The ticket league name is Party Baccarat resource with show time.
+        /// The value of Template.League.LeagueName.leagueName is always Party Baccarat and Ticket.ShowTime.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_LeagueNameIsPartyBaccaratResourceWithShowTime()
+        public void BuildChoice_Ticket_LeagueNameArePartyBaccaratResourceAndShowTime()
         {
             // Arrange
             _ticket.ShowTime = "show time";
@@ -46,6 +46,9 @@
             Assert.AreEqual(expectedLeagueName, _choice.Template.League.LeagueName.leagueName);
         }
 
+        /// <summary>
+        /// The value of Template.betTeam is always empty when TicketData is null.
+        /// </summary>
         [Test]
         public void BuildChoice_TicketDataIsNull_BetTeamIsEmpty()
         {
@@ -56,6 +59,9 @@
             Assert.IsEmpty(_choice.Template.betTeam);
         }
 
+        /// <summary>
+        /// The value of Template.Handicap.Visible is always false when TicketData is null.
+        /// </summary>
         [Test]
         public void BuildChoice_TicketDataIsNull_HandicapIsVisible()
         {
@@ -66,6 +72,9 @@
             Assert.IsFalse(_choice.Template.Handicap.Visible);
         }
 
+        /// <summary>
+        /// The value of Template.BetType.betTypeName is always Party Baccarat when TicketData is null.
+        /// </summary>
         [Test]
         public void BuildChoice_TicketDataIsNull_BetTypeNameIsPartyBaccaratResource()
         {
@@ -76,6 +85,9 @@
             Assert.AreEqual(CoreLang.PartyBaccarat, _choice.Template.BetType.betTypeName);
         }
 
+        /// <summary>
+        /// The value of Template.betTeamClassName is always empty when TicketData is null.
+        /// </summary>
         [Test]
         public void BuildChoice_TicketDataIsNull_BetTeamClassNameIsEmpty()
         {
@@ -86,6 +98,9 @@
             Assert.IsEmpty(_choice.Template.betTeamClassName);
         }
 
+        /// <summary>
+        /// The value of Template.Match.VS.Visible is always false when TicketData is null.
+        /// </summary>
         [Test]
         public void BuildChoice_TicketDataIsNull_MatchVSIsVisible()
         {
@@ -96,6 +111,9 @@
             Assert.IsFalse(_choice.Template.Match.VS.Visible);
         }
 
+        /// <summary>
+        /// The value of Template.betTeam depend on ticket data founded.
+        /// </summary>
         [Test]
         public void BuildChoice_RefNoOfTicketEqualRefNoOfTicketData_BetTeamIsBetTeamFormat()
         {
@@ -119,6 +137,9 @@
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
+        /// <summary>
+        /// The value of Template.Handicap.Visible is always visible.
+        /// </summary>
         [Test]
         public void BuildChoice_RefNoOfTicketEqualRefNoOfTicketData_HandicapIsVisible()
         {
@@ -139,15 +160,17 @@
             Assert.IsFalse(_choice.Template.Handicap.Visible);
         }
 
+        /// <summary>
+        /// The value Template.BetType.betTypeName of is empty when ticket data is not null.
+        /// </summary>
         [Test]
-        public void BuildChoice_RefNoOfTicketEqualRefNoOfTicketData_BetTypeNameIsEmpt()
+        public void BuildChoice_RefNoOfTicketEqualRefNoOfTicketData_BetTypeNameIsEmpty()
         {
             // Arrange
-            var refNo = "1";
-            _ticket.RefNo = refNo;
+            _ticket.RefNo = "1";
             _ticket.OddsType = "1";
             var ticketData = Substitute.For<TicketData>();
-            ticketData.RefNo = refNo;
+            ticketData.RefNo = _ticket.RefNo;
             ticketData.Odds = 1;
             ticketData.BetTeam = string.Empty;
             _ticketDatas.Add(ticketData);
@@ -159,15 +182,17 @@
             Assert.IsEmpty(_choice.Template.BetType.betTypeName);
         }
 
+        /// <summary>
+        /// The value of Template.betTeamClassName is always empty.
+        /// </summary>
         [Test]
         public void BuildChoice_RefNoOfTicketEqualRefNoOfTicketData_BetTeamClassNameIsEmpty()
         {
             // Arrange
-            var refNo = "1";
-            _ticket.RefNo = refNo;
+            _ticket.RefNo = "1";
             _ticket.OddsType = "1";
             var ticketData = Substitute.For<TicketData>();
-            ticketData.RefNo = refNo;
+            ticketData.RefNo = _ticket.RefNo;
             ticketData.Odds = 1;
             ticketData.BetTeam = string.Empty;
             _ticketDatas.Add(ticketData);
@@ -179,15 +204,17 @@
             Assert.IsEmpty(_choice.Template.betTeamClassName);
         }
 
+        /// <summary>
+        /// The value of Template.Match.VS.Visible is always false.
+        /// </summary>
         [Test]
         public void BuildChoice_RefNoOfTicketEqualRefNoOfTicketData_MatchVSIsVisible()
         {
             // Arrange
-            var refNo = "1";
-            _ticket.RefNo = refNo;
+            _ticket.RefNo = "1";
             _ticket.OddsType = "1";
             var ticketData = Substitute.For<TicketData>();
-            ticketData.RefNo = refNo;
+            ticketData.RefNo = _ticket.RefNo;
             ticketData.Odds = 1;
             ticketData.BetTeam = string.Empty;
             _ticketDatas.Add(ticketData);
