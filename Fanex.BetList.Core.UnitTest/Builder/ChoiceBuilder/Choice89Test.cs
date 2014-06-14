@@ -4,6 +4,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Entities;
+    using Fanex.BetList.Core.Templates;
     using Fanex.BetList.Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
@@ -26,7 +27,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         [Test]
         public void BuildChoice_ScoreBlockIsNull()
         {
-            // Act
+            // Act            
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
@@ -49,7 +50,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert
+            // Assert            
             Assert.IsNullOrEmpty(choiceTemplate.Handicap.handicap);
         }
 
@@ -59,7 +60,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert
+            // Assert            
             Assert.AreEqual("favorite", choiceTemplate.betTeamClassName);
         }
 
@@ -78,118 +79,44 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             Assert.AreEqual(expectedHomeTeam, actualHomeTeam);
         }
 
-        [Test]
-        public void GetLiveScore_TicketIsNotLive_ReturnZeroBetweenSquareBrackets()
+        static string SpanClassWith37point5 = " <span style='color:#555555'>37.5</span> ";
+        static object[] BetTeamNames = 
+        {
+            // ticket.Live, betId, ticket.BetTeam, expectedValue
+            new object[] {true, 0, "1:1", string.Join(null, CoreBetList.lblOverOdd, SpanClassWith37point5, " [0]")},
+            new object[] {true, 0, "1:2", string.Join(null, CoreBetList.lblOverEven, SpanClassWith37point5, " [0]")},
+            new object[] {true, 0, "2:1", string.Join(null, CoreBetList.lblUnderOdd, SpanClassWith37point5, " [0]")},
+            new object[] {true, 0, "2:2", string.Join(null, CoreBetList.lblUnderEven, SpanClassWith37point5, " [0]")},
+
+            new object[] {false, 0, "1:1", string.Join(null, CoreBetList.lblOverOdd, SpanClassWith37point5," [0]")},
+            new object[] {false, 0, "1:2", string.Join(null, CoreBetList.lblOverEven, SpanClassWith37point5, " [0]")},
+            new object[] {false, 0, "2:1", string.Join(null, CoreBetList.lblUnderOdd, SpanClassWith37point5, " [0]")},
+            new object[] {false, 0, "2:2", string.Join(null, CoreBetList.lblUnderEven, SpanClassWith37point5, " [0]")},   
+
+            new object[] {true, 1, "1:1", string.Join(null, CoreBetList.lblOverOdd, SpanClassWith37point5, " [1]")},
+            new object[] {true, 1, "1:2", string.Join(null, CoreBetList.lblOverEven, SpanClassWith37point5, " [1]")},
+            new object[] {true, 1, "2:1", string.Join(null, CoreBetList.lblUnderOdd, SpanClassWith37point5, " [1]")},
+            new object[] {true, 1, "2:2", string.Join(null, CoreBetList.lblUnderEven, SpanClassWith37point5, " [1]")},
+
+            new object[] {false, 1, "1:1", string.Join(null, CoreBetList.lblOverOdd, SpanClassWith37point5, " [0]")},
+            new object[] {false, 1, "1:2", string.Join(null, CoreBetList.lblOverEven, SpanClassWith37point5, " [0]")},
+            new object[] {false, 1, "2:1", string.Join(null, CoreBetList.lblUnderOdd, SpanClassWith37point5, " [0]")},
+            new object[] {false, 1, "2:2", string.Join(null, CoreBetList.lblUnderEven, SpanClassWith37point5, " [0]")}             
+        };
+
+        [Test, TestCaseSource("BetTeamNames")]
+        public void BuildChoice_BetTeamIsValid(bool isLive, long betId, string ticketBetTeam, string expectedBetTeam)
         {
             // Arrange
-            _ticket.IsLive = false;
-            _ticket.BetId = Arg.Any<long>();
+            _ticket.IsLive = isLive;
+            _ticket.BetId = betId;
+            _ticket.BetTeam = ticketBetTeam;
 
             // Act
-            var actualLiveScore = _choice.GetLiveScore(_ticket);
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.AreEqual(" [0]", actualLiveScore);
-        }
-
-        [Test]
-        public void GetLiveScore_TicketIsLiveAndBetIdIsNull_ReturnZeroBetweenSquareBrackets()
-        {
-            // Arrange
-            _ticket.IsLive = true;
-            _ticket.BetId = null;
-
-            // Act
-            var actualLiveScore = _choice.GetLiveScore(_ticket);
-
-            // Assert
-            Assert.AreEqual(" [0]", actualLiveScore);
-        }
-
-        [Test]
-        public void GetLiveScore_TicketIsLiveAndBetIdIsNotNull_ReturnBetIdStringBetweenSquareBrackets()
-        {
-            // Arrange
-            _ticket.IsLive = true;
-            _ticket.BetId = 1234;
-
-            // Act
-            var actualLiveScore = _choice.GetLiveScore(_ticket);
-
-            // Assert
-            var expectedLiveScore = string.Join(null, new string[] { " [", _ticket.BetId.ToString(), "]" });
-            Assert.AreEqual(expectedLiveScore, actualLiveScore);
-        }
-
-        [Test]
-        public void GetBetTeamFromResource_BetTeamIsOneColonOne_ReturnOverOdd()
-        {
-            // Arrange
-            _ticket.BetTeam = "1:1";
-
-            // Act
-            var actualBetTeam = _choice.GetBetTeamFromResource(_ticket);
-
-            // Assert
-            Assert.AreEqual(CoreBetList.lblOverOdd, actualBetTeam);
-        }
-
-        [Test]
-        public void GetBetTeamFromResource_BetTeamIsOneColonTwo_ReturnOverEven()
-        {
-            // Arrange
-            _ticket.BetTeam = "1:2";
-
-            // Act
-            var actualBetTeam = _choice.GetBetTeamFromResource(_ticket);
-
-            // Assert
-            Assert.AreEqual(CoreBetList.lblOverEven, actualBetTeam);
-        }
-
-        [Test]
-        public void GetBetTeamFromResource_BetTeamIsTwoColonOne_ReturnUnderOdd()
-        {
-            // Arrange
-            _ticket.BetTeam = "2:1";
-
-            // Act
-            var actualBetTeam = _choice.GetBetTeamFromResource(_ticket);
-
-            // Assert
-            Assert.AreEqual(CoreBetList.lblUnderOdd, actualBetTeam);
-        }
-
-        [Test]
-        public void GetBetTeamFromResource_BetTeamIsTwoColonTwo_ReturnUnderEven()
-        {
-            // Arrange
-            _ticket.BetTeam = "2:2";
-
-            // Act
-            var actualBetTeam = _choice.GetBetTeamFromResource(_ticket);
-
-            // Assert
-            Assert.AreEqual(CoreBetList.lblUnderEven, actualBetTeam);
-        }
-
-        [Test]
-        public void GetBetTeam_ReturnStringWithSuffixIsSpanWithValue37point5AndLiveScore()
-        {
-            // Arrange
-            var betTeamFromResource = "Under Odd";
-            var spanWithValue37point5 = " <span style='color:#555555'>37.5</span> ";
-            var liveScore = "livescore aaa";
-            _choice = Substitute.For<Choice89>();
-            _choice.GetLiveScore(Arg.Any<ITicket>()).Returns(liveScore);
-            _choice.GetBetTeamFromResource(Arg.Any<ITicket>()).Returns(betTeamFromResource);
-
-            // Act
-            var actualBetTeam = _choice.GetBetTeam(_ticket, liveScore);
-
-            // Assert
-            var expectedTeam = betTeamFromResource + spanWithValue37point5 + liveScore;
-            Assert.AreEqual(expectedTeam, actualBetTeam);
+            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
     }
 }

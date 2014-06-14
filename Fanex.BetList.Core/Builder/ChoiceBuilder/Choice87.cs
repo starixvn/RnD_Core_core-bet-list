@@ -9,7 +9,6 @@
     /// </summary>
     public class Choice87 : Choice1
     {
-        private const string ZeroInSquareBrackets = " [0]";
         /// <summary>
         /// Builds the choice.
         /// </summary>
@@ -23,33 +22,34 @@
             this.Template.Score = null;
             this.Template.Match.VS = null;
             this.Template.Handicap.handicap = null;
-         
-            string liveScore = GetLiveScore(ticket);
-            this.Template.betTeam = GetBetTeam(ticket, liveScore);
-            this.Template.betTeamClassName = BLFAVORITE;
-            
 
-            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlNoneBreakingSpace, ticket.MatchCode });
+            string betId = ticket.BetId.ToString();
+            if (betId == "0")
+            {
+                betId = string.Empty;
+            }
+
+            string liveScore = (!ticket.IsLive || betId == string.Empty) ? " [0]" : string.Join(null, new string[] { " [", betId, "]" });
+
+            string betTeam = ticket.BetTeam == "h" ? CoreBetList.high : CoreBetList.low;            
+
+            this.Template.betTeam = string.Join(null, new string[] { betTeam, liveScore });
+
+            this.Template.betTeamClassName = BLFAVORITE;            
+            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, "&nbsp;", ticket.MatchCode });
         }
 
-        public string GetBetTeam(ITicket ticket, string liveScore)
+        static object[] BetTeamNames = 
         {
-            string betTeam = ticket.BetTeam == HToLower ? CoreBetList.high : CoreBetList.low;
-            return string.Join(null, new string[] { betTeam, liveScore });
-        }
-
-        /// <summary>
-        ///  Get live score string by combining live status and bet id.
-        /// </summary>
-        /// <param name="ticket"> Valid ticket.</param>
-        /// <returns> Live score string.</returns>
-        public virtual string GetLiveScore(ITicket ticket)
-        {
-            string liveScore = (!ticket.IsLive || !ticket.BetId.HasValue)
-                ? ZeroInSquareBrackets
-                : string.Join(null, new string[] { " [", ticket.BetId.ToString(), "]" });
-
-            return liveScore;
-        }
+            // ticket.Live, betId, ticket.BetTeam, expectedValues
+            new object[] {true, 0, "h", string.Join(null, CoreBetList.high, " [0]")},
+            new object[] {false, 0, "h", string.Join(null, CoreBetList.high, " [0]")},            
+            new object[] {true, 1, "h", string.Join(null, CoreBetList.high, " [1]")},
+            new object[] {false, 1, "h", string.Join(null, CoreBetList.high, " [0]")},
+            new object[] {true, 0, "is not h", string.Join(null, CoreBetList.low, " [0]")},
+            new object[] {false, 0, "is not h", string.Join(null, CoreBetList.low, " [0]")},
+            new object[] {true, 1, "is not h", string.Join(null, CoreBetList.low, " [1]")},
+            new object[] {false, 1, "is not h", string.Join(null, CoreBetList.low, " [0]")},
+        };
     }
 }

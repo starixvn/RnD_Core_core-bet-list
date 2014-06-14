@@ -1,68 +1,66 @@
-﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
+﻿// ---------------------------------------------------------------------------------
+// <copyright file="Choice85.cs" company="Nexcel Solutions Vietnam">
+//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
+// </copyright>
+// ---------------------------------------------------------------------------------
+// <history>
+//     <change who="Marc.Bui" date="2012.11.16">Create</change>
+//     <change who="Marc.Bui" date="2013.10.09">Check stylecop & refactor</change>
+// </history>
+// ---------------------------------------------------------------------------------
+
+namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Entities;
+	using System.Collections.Generic;
+	using Fanex.BetList.Core.App_GlobalResources;
+	using Fanex.BetList.Core.Entities;
 
-    /// <summary>
-    /// Next Over/Under
-    /// it supports live ball, so always 37.5.
-    /// </summary>
-    public class Choice85 : Choice3
-    {
-        private const string ZeroInSquareBrackets = " [0]";
-        private const string SpanWithValue37point5 = " <span style='color:#555555'>37.5</span> ";
-        /// <summary>
-        /// Builds the choice.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-        {
-            base.BuildChoice(ticket, ticketHelper, ticketData);
+	/// <summary>
+	/// Next Over/Under
+	/// it supports live ball, so always 37.5.
+	/// </summary>
+	public class Choice85 : Choice3
+	{
+		/// <summary>
+		/// Builds the choice.
+		/// </summary>
+		/// <param name="ticket">The ticket.</param>
+		/// <param name="ticketHelper">The ticket helper.</param>
+		/// <param name="ticketData">The ticket data.</param>
+		protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+		{
+			base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            this.Template.Score = null;
-            this.Template.Match.VS = null;
-            this.Template.Handicap.handicap = null;            
-            this.Template.betTeam += GetBetTeam(GetLiveScore(ticket));
-            this.Template.betTeamClassName = BLFAVORITE;            
-            this.Template.BetType.betTypeName = GetBetTypeName(ticket);
-            this.Template.Match.homeTeam = string.Join(null, 
-                new string[] { CoreBetList.numbergameno, HtmlNoneBreakingSpace, ticket.MatchCode });
-        }
+			this.Template.Score = null;
+			this.Template.Match.VS = null;
+			this.Template.Handicap.handicap = null;
 
-        private static string GetBetTeam(string liveScore)
-        {
-            return SpanWithValue37point5 + liveScore;
-        }
+			string betId = ticket.BetId.ToString();
+			if (betId == "0")
+			{
+				betId = string.Empty;
+			}
 
-        private string GetBetTypeName(ITicket ticket)
-        {
-            string bettypeName = this.Template.BetType.betTypeName;
-            if (!ticket.IsLive)
-            {
-                bettypeName = string.Join(null, new string[] { CoreBetList.ft, ". ", bettypeName });
-            }
-            else
-            {
-                bettypeName = string.Join(null, new string[] { CoreBetList.next, HtmlNoneBreakingSpace, bettypeName });
-            }
-            return bettypeName;
-        }
+			string liveScore = string.Empty;
+			liveScore = (!ticket.IsLive || betId == string.Empty) ? " [0]" : string.Join(null, new string[] { " [", betId, "]" });
 
-        /// <summary>
-        ///  Get live score string by combining live status and bet id.
-        /// </summary>
-        /// <param name="ticket"> Valid ticket.</param>
-        /// <returns> Live score string.</returns>
-        public virtual string GetLiveScore(ITicket ticket)
-        {
-            string liveScore = (!ticket.IsLive || !ticket.BetId.HasValue)
-                ? ZeroInSquareBrackets
-                : string.Join(null, new string[] { " [", ticket.BetId.ToString(), "]" });
+			string betTeam = this.Template.betTeam;
+			betTeam += " <span style='color:#555555'>37.5</span> ";
+			string bettypeName = this.Template.BetType.betTypeName;
+			if (!ticket.IsLive)
+			{
+				bettypeName = string.Join(null, new string[] { CoreBetList.ft, ". ", bettypeName });
+			}
+			else
+			{
+				bettypeName = string.Join(null, new string[] { CoreBetList.next, "&nbsp;", bettypeName });				
+			}
 
-            return liveScore;
-        }
-    }
+			this.Template.betTeam = betTeam + liveScore;
+			this.Template.betTeamClassName = BLFAVORITE;
+
+			this.Template.BetType.betTypeName = bettypeName;
+			this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, "&nbsp;", ticket.MatchCode });
+		}
+	}
 }

@@ -123,27 +123,6 @@
 
         #endregion
 
-        public virtual string GetBetTeamName(string betTeamKey)
-        {
-            var betTeamName = betTeamMap.ContainsKey(betTeamKey) ? betTeamMap[betTeamKey] : string.Empty;
-            return betTeamName;
-        }
-
-        public virtual string GetBetTeamKey(ITicket ticket)
-        {
-            int betteam;
-            int.TryParse(ticket.BetTeam, out betteam);
-            var betTeamKey = string.Format("{0}-{1}", (int)ticket.Handicap1, betteam);
-            return betTeamKey;
-        }
-
-        public virtual string GetLiveScore(ITicket ticket)
-        {
-            string betId = ticket.BetId.ToString();
-            string liveScore = (!ticket.IsLive || betId == string.Empty) ? string.Empty : " [" + betId + "]";
-            return liveScore;
-        }
-
         /// <summary>
         /// Builds the choice.
         /// </summary>
@@ -158,17 +137,21 @@
             this.Template.Match.VS = null;
             this.Template.Handicap.handicap = null;
 
-            string liveScore = GetLiveScore(ticket);
+            string betId = ticket.BetId.ToString();
+            string liveScore = (!ticket.IsLive || betId == string.Empty) ? string.Empty : " [" + betId + "]";
+            decimal hdp1 = ticket.Handicap1;
+            int betteam;
 
-            var betTeamKey = GetBetTeamKey(ticket);
+            int.TryParse(ticket.BetTeam, out betteam);
 
-            var betTeamName = GetBetTeamName(betTeamKey);
+            var betTeamKey = string.Format("{0}-{1}", (int)ticket.Handicap1, betteam);
+            var betTeamName = betTeamMap.ContainsKey(betTeamKey) ? betTeamMap[betTeamKey] : string.Empty;
 
             this.Template.betTeam = string.Join(null, new string[] { betTeamName, liveScore });
             this.Template.betTeamClassName = BLFAVORITE;
 
             this.Template.BetType.betTypeName = CoreLang.numberGroup;
             this.Template.Match.homeTeam = string.Join(null, new string[] { CoreLang.numbergameno, "&nbsp;", ticket.MatchCode });
-        }             
+        }
     }
 }

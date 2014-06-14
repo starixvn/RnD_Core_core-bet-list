@@ -4,6 +4,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Entities;
+    using Fanex.BetList.Core.Templates;
     using Fanex.BetList.Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
@@ -26,7 +27,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         [Test]
         public void BuildChoice_ScoreBlockIsNull()
         {
-            // Act
+            // Act            
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
@@ -49,7 +50,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert
+            // Assert            
             Assert.IsNullOrEmpty(choiceTemplate.Handicap.handicap);
         }
 
@@ -59,83 +60,8 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert
+            // Assert            
             Assert.AreEqual("favorite", choiceTemplate.betTeamClassName);
-        }     
-
-        [Test]
-        public void GetLiveScore_TicketIsNotLive_ReturnZeroBetweenSquareBrackets()
-        {
-             // Arrange
-            _ticket.IsLive = false;
-            _ticket.BetId = Arg.Any<long>();
-
-            // Act
-            var actualLiveScore = _choice.GetLiveScore(_ticket);
-
-            // Assert
-            Assert.AreEqual(" [0]", actualLiveScore);
-        }
-
-        [Test]
-        public void GetLiveScore_TicketIsLiveAndBetIdIsNull_ReturnZeroBetweenSquareBrackets()
-        {
-             // Arrange
-            _ticket.IsLive = true;
-            _ticket.BetId = null;
-
-            // Act
-            var actualLiveScore = _choice.GetLiveScore(_ticket);
-
-            // Assert
-            Assert.AreEqual(" [0]", actualLiveScore);
-        }
-
-        [Test]
-        public void GetLiveScore_TicketIsLiveAndBetIdIsNotNull_ReturnBetIdStringBetweenSquareBrackets()
-        {
-            // Arrange
-            _ticket.IsLive = true;
-            _ticket.BetId = 1234;
-
-            // Act
-            var actualLiveScore = _choice.GetLiveScore(_ticket);
-
-            // Assert
-            var expectedLiveScore = string.Join(null, new string[] { " [", _ticket.BetId.ToString(), "]" });
-            Assert.AreEqual(expectedLiveScore, actualLiveScore);
-        }
-
-        [Test]
-        public void GetBetTeam_BetTeamIsh_BetTeamIsJoinedByHighResourceAndLiveScore()
-        {
-            // Arrange
-            _ticket.BetTeam = "h";
-            var liveScoreResult = "livescore result";
-            _choice = Substitute.For<Choice87>();
-            _choice.GetLiveScore(_ticket).Returns(liveScoreResult);
-
-            // Act
-            var actualBetTeam = _choice.GetBetTeam(_ticket, liveScoreResult);
-
-            // Assert
-            Assert.AreEqual(string.Join(null, CoreBetList.high, liveScoreResult), actualBetTeam);
-        }
-
-        [Test]
-        public void BuildChoice_BetTeamIsNoth_BetTeamIsJoinedLowResourceAndLiveScore()
-        {
-            // Arrange
-            _ticket.BetTeam = "h87898";
-            var liveScoreResult = "livescore result";
-            _choice = Substitute.For<Choice87>();
-            _choice.GetLiveScore(_ticket).Returns(liveScoreResult);
-
-            // Act
-            var actualBetTeam = _choice.GetBetTeam(_ticket, liveScoreResult);
-
-            // Assert
-            Assert.AreEqual(string.Join(null, CoreBetList.low, liveScoreResult), actualBetTeam);
         }
 
         [Test]
@@ -151,6 +77,34 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Assert
             var expectedHomeTeam = string.Join(null, new string[] { CoreLang.numbergameno, "&nbsp;", _ticket.MatchCode });
             Assert.AreEqual(expectedHomeTeam, actualHomeTeam);
+        }
+
+        static object[] BetTeamNames = 
+        {
+            // ticket.Live, betId, ticket.BetTeam, expectedValue
+            new object[] {true, 0, "h", string.Join(null, CoreBetList.high, " [0]")},
+            new object[] {false, 0, "h", string.Join(null, CoreBetList.high, " [0]")},            
+            new object[] {true, 1, "h", string.Join(null, CoreBetList.high, " [1]")},
+            new object[] {false, 1, "h", string.Join(null, CoreBetList.high, " [0]")},
+            new object[] {true, 0, "is not h", string.Join(null, CoreBetList.low, " [0]")},
+            new object[] {false, 0, "is not h", string.Join(null, CoreBetList.low, " [0]")},
+            new object[] {true, 1, "is not h", string.Join(null, CoreBetList.low, " [1]")},
+            new object[] {false, 1, "is not h", string.Join(null, CoreBetList.low, " [0]")},
+        };
+
+        [Test, TestCaseSource("BetTeamNames")]
+        public void BuildChoice_BetTeamIsValid(bool isLive, long betId, string ticketBetTeam, string expectedBetTeam)
+        {
+            // Arrange
+            _ticket.IsLive = isLive;
+            _ticket.BetId = betId;
+            _ticket.BetTeam = ticketBetTeam;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
     }
 }
