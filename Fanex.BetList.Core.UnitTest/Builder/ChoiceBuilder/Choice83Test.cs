@@ -4,7 +4,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Templates;
     using Fanex.BetList.Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
@@ -79,7 +78,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert            
+            // Assert
             Assert.AreEqual("favorite", choiceTemplate.betTeamClassName);
         }
 
@@ -97,6 +96,5 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             var expectedHomeTeam = string.Join(null, new string[] { CoreLang.numbergameno, "&nbsp;", _ticket.MatchCode });
             Assert.AreEqual(expectedHomeTeam, actualHomeTeam);
         }
-
     }
 }

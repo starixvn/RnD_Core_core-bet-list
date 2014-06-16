@@ -13,32 +13,6 @@
     [TestFixture]
     public class Choice121Test
     {
-        private const string LabelFirstGoal = "<div class='firstGoal '>&nbsp;</div>";
-        private const string LabelLastGoal = "<div class='lastGoal'>&nbsp;</div>";
-        private const string Label1FirstGoal = "<div class='fhFirstGoal'>&nbsp;</div>";
-        private const string Label1LastGoal = "<div class='fhLastGoal'>&nbsp;</div>";
-        private const string Space = "&nbsp;";
-
-        /// <summary>
-        /// Underdog = "underdog".
-        /// </summary>
-        private const string Underdog = "underdog";
-
-        /// <summary>
-        /// Favorite = "favorite".
-        /// </summary>
-        private const string Favorite = "favorite";
-
-        /// <summary>
-        /// VoidStatusId = 102.
-        /// </summary>
-        private const int VoidStatusId = 102;
-
-        /// <summary>
-        /// VoidStatus = "void".
-        /// </summary>
-        private const string VoidStatus = "void";
-
         private IChoice _choice;
         private ITicket _ticket;
         private ITicketHelper _ticketHelper;
@@ -629,7 +603,8 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.AreEqual(Underdog, _choice.Template.betTeamClassName);
+            const string CSS_CLASS_UNDERDOG = "underdog";
+            Assert.AreEqual(CSS_CLASS_UNDERDOG, _choice.Template.betTeamClassName);
         }
 
         /// <summary>
@@ -642,7 +617,8 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.AreEqual(Favorite, _choice.Template.Score.scoreClassName);
+            const string CSS_CLASS_FAVORITE = "favorite";
+            Assert.AreEqual(CSS_CLASS_FAVORITE, _choice.Template.Score.scoreClassName);
         }
 
         /// <summary>

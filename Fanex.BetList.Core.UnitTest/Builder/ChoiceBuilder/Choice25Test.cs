@@ -48,7 +48,8 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.AreEqual("underdog", _choice.Template.betTeamClassName);
+            const string CSS_CLASS_UNDERDOG = "underdog";
+            Assert.AreEqual(CSS_CLASS_UNDERDOG, _choice.Template.betTeamClassName);
         }
     }
 }

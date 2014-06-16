@@ -63,7 +63,7 @@
         /// The value of Template.Handicap.Visible is always false when TicketData is null.
         /// </summary>
         [Test]
-        public void BuildChoice_TicketDataIsNull_HandicapIsVisible()
+        public void BuildChoice_TicketDataIsNull_HandicapBlockIsVisible()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -102,7 +102,7 @@
         /// The value of Template.Match.VS.Visible is always false when TicketData is null.
         /// </summary>
         [Test]
-        public void BuildChoice_TicketDataIsNull_MatchVSIsVisible()
+        public void BuildChoice_TicketDataIsNull_MatchVSBlockIsVisible()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -115,7 +115,7 @@
         /// The value of Template.betTeam depend on ticket data founded.
         /// </summary>
         [Test]
-        public void BuildChoice_RefNoEqualRefNoData_BetTeamIsBetTeamFormat()
+        public void BuildChoice_TicketDataHasRefNoEqualRefNoOfTicket_BetTeamIsBetTeamFormat()
         {
             // Arrange
             var refNo = "1";
@@ -141,7 +141,7 @@
         /// The value of Template.Handicap.Visible is always visible.
         /// </summary>
         [Test]
-        public void BuildChoice_RefNoEqualRefNoData_HandicapIsVisible()
+        public void BuildChoice_TicketDataHasRefNoEqualRefNoOfTicket_HandicapBlockIsVisible()
         {
             // Arrange
             var refNo = "1";
@@ -164,7 +164,7 @@
         /// The value Template.BetType.betTypeName of is empty when ticket data is not null.
         /// </summary>
         [Test]
-        public void BuildChoice_RefNoEqualRefNoData_BetTypeNameIsEmpty()
+        public void BuildChoice_TicketDataHasRefNoEqualRefNoOfTicket_BetTypeNameIsEmpty()
         {
             // Arrange
             _ticket.RefNo = "1";
@@ -186,7 +186,7 @@
         /// The value of Template.betTeamClassName is always empty.
         /// </summary>
         [Test]
-        public void BuildChoice_RefNoEqualRefNoData_BetTeamClassNameIsEmpty()
+        public void BuildChoice_TicketDataHasRefNoEqualRefNoOfTicket_BetTeamClassNameIsEmpty()
         {
             // Arrange
             _ticket.RefNo = "1";
@@ -208,7 +208,7 @@
         /// The value of Template.Match.VS.Visible is always false.
         /// </summary>
         [Test]
-        public void BuildChoice_RefNoEqualRefNoData_MatchVSIsVisible()
+        public void BuildChoice_TicketDataHasRefNoEqualRefNoOfTicket_MatchVSBlockIsVisible()
         {
             // Arrange
             _ticket.RefNo = "1";

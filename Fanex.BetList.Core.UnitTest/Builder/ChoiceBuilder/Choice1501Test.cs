@@ -69,7 +69,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         /// The value of Template.Match.VS is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetMatchVSIsNull()
+        public void BuildChoice_Always_SetMatchVSBlockIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -165,7 +165,8 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.AreEqual("favorite", _choice.Template.betTeamClassName);
+            const string CSS_CLASS_FAVORITE = "favorite";
+            Assert.AreEqual(CSS_CLASS_FAVORITE, _choice.Template.betTeamClassName);
         }
     }
 }

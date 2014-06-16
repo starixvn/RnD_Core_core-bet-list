@@ -4,7 +4,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Templates;
     using Fanex.BetList.Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
@@ -27,7 +26,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         [Test]
         public void BuildChoice_ScoreBlockIsNull()
         {
-            // Act            
+            // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
@@ -50,7 +49,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert            
+            // Assert
             Assert.IsNullOrEmpty(choiceTemplate.Handicap.handicap);
         }
 
@@ -60,7 +59,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert            
+            // Assert
             Assert.AreEqual("favorite", choiceTemplate.betTeamClassName);
         }
 
@@ -79,11 +78,11 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             Assert.AreEqual(expectedHomeTeam, actualHomeTeam);
         }
 
-        static object[] BetTeamNames = 
+        private static object[] BetTeamNames =
         {
             // ticket.Live, betId, ticket.BetTeam, expectedValue
             new object[] {true, 0, "h", string.Join(null, CoreBetList.high, " [0]")},
-            new object[] {false, 0, "h", string.Join(null, CoreBetList.high, " [0]")},            
+            new object[] {false, 0, "h", string.Join(null, CoreBetList.high, " [0]")},
             new object[] {true, 1, "h", string.Join(null, CoreBetList.high, " [1]")},
             new object[] {false, 1, "h", string.Join(null, CoreBetList.high, " [0]")},
             new object[] {true, 0, "is not h", string.Join(null, CoreBetList.low, " [0]")},

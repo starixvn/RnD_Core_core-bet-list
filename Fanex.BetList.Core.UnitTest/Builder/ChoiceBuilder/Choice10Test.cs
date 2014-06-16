@@ -68,7 +68,7 @@
         /// The value of Template.Match.VS is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetMatchVSIsNull()
+        public void BuildChoice_Always_SetMatchVSBlockIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -107,7 +107,7 @@
         /// The value of Template.Score is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_DeadBallTicket_ScoreIsNull()
+        public void BuildChoice_DeadBallTicket_ScoreBlockIsNull()
         {
             // Arrange
             _ticket.IsLive = false;

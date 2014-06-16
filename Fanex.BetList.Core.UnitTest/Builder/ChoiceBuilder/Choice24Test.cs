@@ -16,7 +16,7 @@
         private const string BetTeamTemplate = " <span class=\"favorite\">{0}</span>&nbsp;{1} <span class=\"favorite\">&nbsp;{2}</span>";
         private IChoice _choice;
         private ITicket _ticket;
-        private ITicketHelper _ticketHelper;        
+        private ITicketHelper _ticketHelper;
 
         [SetUp]
         public void Setup()
