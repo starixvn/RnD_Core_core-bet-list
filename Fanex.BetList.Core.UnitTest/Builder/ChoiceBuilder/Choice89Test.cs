@@ -4,12 +4,38 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Entities;
+    using Fanex.BetList.Core.Templates;
     using Fanex.BetList.Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
 
     public class Choice89Test
     {
+        private static string spanClassWith37point5 = " <span style='color:#555555'>37.5</span> ";
+        private static object[] betTeamNames = 
+        {
+            // ticket.Live, betId, ticket.BetTeam, expectedValue
+            new object[] { true, 0, "1:1", string.Join(null, CoreBetList.lblOverOdd, spanClassWith37point5, " [0]") },
+            new object[] { true, 0, "1:2", string.Join(null, CoreBetList.lblOverEven, spanClassWith37point5, " [0]") },
+            new object[] { true, 0, "2:1", string.Join(null, CoreBetList.lblUnderOdd, spanClassWith37point5, " [0]") },
+            new object[] { true, 0, "2:2", string.Join(null, CoreBetList.lblUnderEven, spanClassWith37point5, " [0]") },
+
+            new object[] { false, 0, "1:1", string.Join(null, CoreBetList.lblOverOdd, spanClassWith37point5," [0]") },
+            new object[] { false, 0, "1:2", string.Join(null, CoreBetList.lblOverEven, spanClassWith37point5, " [0]") },
+            new object[] { false, 0, "2:1", string.Join(null, CoreBetList.lblUnderOdd, spanClassWith37point5, " [0]") },
+            new object[] { false, 0, "2:2", string.Join(null, CoreBetList.lblUnderEven, spanClassWith37point5, " [0]") },   
+
+            new object[] { true, 1, "1:1", string.Join(null, CoreBetList.lblOverOdd, spanClassWith37point5, " [1]") },
+            new object[] { true, 1, "1:2", string.Join(null, CoreBetList.lblOverEven, spanClassWith37point5, " [1]") },
+            new object[] { true, 1, "2:1", string.Join(null, CoreBetList.lblUnderOdd, spanClassWith37point5, " [1]") },
+            new object[] { true, 1, "2:2", string.Join(null, CoreBetList.lblUnderEven, spanClassWith37point5, " [1]") },
+
+            new object[] { false, 1, "1:1", string.Join(null, CoreBetList.lblOverOdd, spanClassWith37point5, " [0]") },
+            new object[] { false, 1, "1:2", string.Join(null, CoreBetList.lblOverEven, spanClassWith37point5, " [0]") },
+            new object[] { false, 1, "2:1", string.Join(null, CoreBetList.lblUnderOdd, spanClassWith37point5, " [0]") },
+            new object[] { false, 1, "2:2", string.Join(null, CoreBetList.lblUnderEven, spanClassWith37point5, " [0]") }             
+        };
+
         private Choice89 _choice;
         private ITicket _ticket;
         private ITicketHelper _ticketHelper;
@@ -24,9 +50,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildChoice_ScoreBlockIsNull()
+        public void BuildChoice_Always_SetScoreBlockIsNull()
         {
-            // Act
+            // Act            
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
@@ -34,7 +60,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildChoice_MatchVSBlockIsNull()
+        public void BuildChoice_Always_SetMatchVSBlockIsNull()
         {
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -44,27 +70,27 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildChoice_HandicapIsEmpty()
+        public void BuildChoice_Always_SetHandicapIsEmpty()
         {
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert
+            // Assert            
             Assert.IsNullOrEmpty(choiceTemplate.Handicap.handicap);
         }
 
         [Test]
-        public void BuildChoice_BetTeamCssClassNameIsFavorite()
+        public void BuildChoice_Always_SetBetTeamClassNameIsFavorite()
         {
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert
+            // Assert            
             Assert.AreEqual("favorite", choiceTemplate.betTeamClassName);
         }
 
         [Test]
-        public void BuildChoice_HomeTeamIsJoinedByNumberGameNoResourceAndMatchCode()
+        public void BuildChoice_Always_SetHomeTeamIsJoinedByNumberGameNoResourceAndMatchCode()
         {
             // Arrange
             _ticket.MatchCode = "6969";
@@ -76,36 +102,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Assert
             var expectedHomeTeam = string.Join(null, new string[] { CoreLang.numbergameno, "&nbsp;", _ticket.MatchCode });
             Assert.AreEqual(expectedHomeTeam, actualHomeTeam);
-        }
+        }       
 
-        private static string SpanClassWith37point5 = " <span style='color:#555555'>37.5</span> ";
-
-        private static object[] BetTeamNames =
-        {
-            // ticket.Live, betId, ticket.BetTeam, expectedValue
-            new object[] {true, 0, "1:1", string.Join(null, CoreBetList.lblOverOdd, SpanClassWith37point5, " [0]")},
-            new object[] {true, 0, "1:2", string.Join(null, CoreBetList.lblOverEven, SpanClassWith37point5, " [0]")},
-            new object[] {true, 0, "2:1", string.Join(null, CoreBetList.lblUnderOdd, SpanClassWith37point5, " [0]")},
-            new object[] {true, 0, "2:2", string.Join(null, CoreBetList.lblUnderEven, SpanClassWith37point5, " [0]")},
-
-            new object[] {false, 0, "1:1", string.Join(null, CoreBetList.lblOverOdd, SpanClassWith37point5," [0]")},
-            new object[] {false, 0, "1:2", string.Join(null, CoreBetList.lblOverEven, SpanClassWith37point5, " [0]")},
-            new object[] {false, 0, "2:1", string.Join(null, CoreBetList.lblUnderOdd, SpanClassWith37point5, " [0]")},
-            new object[] {false, 0, "2:2", string.Join(null, CoreBetList.lblUnderEven, SpanClassWith37point5, " [0]")},
-
-            new object[] {true, 1, "1:1", string.Join(null, CoreBetList.lblOverOdd, SpanClassWith37point5, " [1]")},
-            new object[] {true, 1, "1:2", string.Join(null, CoreBetList.lblOverEven, SpanClassWith37point5, " [1]")},
-            new object[] {true, 1, "2:1", string.Join(null, CoreBetList.lblUnderOdd, SpanClassWith37point5, " [1]")},
-            new object[] {true, 1, "2:2", string.Join(null, CoreBetList.lblUnderEven, SpanClassWith37point5, " [1]")},
-
-            new object[] {false, 1, "1:1", string.Join(null, CoreBetList.lblOverOdd, SpanClassWith37point5, " [0]")},
-            new object[] {false, 1, "1:2", string.Join(null, CoreBetList.lblOverEven, SpanClassWith37point5, " [0]")},
-            new object[] {false, 1, "2:1", string.Join(null, CoreBetList.lblUnderOdd, SpanClassWith37point5, " [0]")},
-            new object[] {false, 1, "2:2", string.Join(null, CoreBetList.lblUnderEven, SpanClassWith37point5, " [0]")}
-        };
-
-        [Test, TestCaseSource("BetTeamNames")]
-        public void BuildChoice_BetTeamIsValid(bool isLive, long betId, string ticketBetTeam, string expectedBetTeam)
+        [Test, TestCaseSource("betTeamNames")]
+        public void BuildChoice_WhenCalled_SetValidNameForBetTeam(bool isLive, long betId, string ticketBetTeam, string expectedBetTeam)
         {
             // Arrange
             _ticket.IsLive = isLive;

@@ -615,15 +615,14 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         {
             // Arrange
             _ticket.BetTeam = "text h";
-            _ticket.Handicap1 = 2;
-            _ticket.Handicap2 = 1;
-
+            _ticket.Handicap1 = 2; 
+            _ticket.Handicap2 = 1;      
+     
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedHandicap = string.Format("-{0}", _ticket.Handicap1);
-            Assert.AreEqual(expectedHandicap, _choice.Template.Handicap.handicap);
+            Assert.AreEqual(string.Format("-{0}", _ticket.Handicap1), _choice.Template.Handicap.handicap);
         }
 
         [Test]

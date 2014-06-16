@@ -31,25 +31,16 @@
 
             string liveScore = (!ticket.IsLive || betId == string.Empty) ? " [0]" : string.Join(null, new string[] { " [", betId, "]" });
 
-            string betTeam = ticket.BetTeam == "h" ? CoreBetList.high : CoreBetList.low;            
+            string betTeam = ticket.BetTeam == "h" ? CoreBetList.high : CoreBetList.low;
+
+            string bettypeName = this.Template.BetType.betTypeName;
 
             this.Template.betTeam = string.Join(null, new string[] { betTeam, liveScore });
+            this.Template.betTeamClassName = BLFAVORITE;
 
-            this.Template.betTeamClassName = BLFAVORITE;            
+            this.Template.BetType.betTypeName = bettypeName;
+
             this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, "&nbsp;", ticket.MatchCode });
         }
-
-        static object[] BetTeamNames = 
-        {
-            // ticket.Live, betId, ticket.BetTeam, expectedValues
-            new object[] {true, 0, "h", string.Join(null, CoreBetList.high, " [0]")},
-            new object[] {false, 0, "h", string.Join(null, CoreBetList.high, " [0]")},            
-            new object[] {true, 1, "h", string.Join(null, CoreBetList.high, " [1]")},
-            new object[] {false, 1, "h", string.Join(null, CoreBetList.high, " [0]")},
-            new object[] {true, 0, "is not h", string.Join(null, CoreBetList.low, " [0]")},
-            new object[] {false, 0, "is not h", string.Join(null, CoreBetList.low, " [0]")},
-            new object[] {true, 1, "is not h", string.Join(null, CoreBetList.low, " [1]")},
-            new object[] {false, 1, "is not h", string.Join(null, CoreBetList.low, " [0]")},
-        };
     }
 }
