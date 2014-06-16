@@ -1,11 +1,11 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
+    using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
-    using Fanex.BetList.Core.App_GlobalResources;
 
     /// <summary>
     /// Unit test for Choice5 class.
@@ -13,10 +13,10 @@
     [TestFixture]
     public class Choice5Test
     {
+        private const string BetTeamTemplate = " <span class=\"favorite\">{0}</span>&nbsp;{1} <span class=\"favorite\">&nbsp;{2}</span>";
         private IChoice _choice;
         private ITicket _ticket;
-        private ITicketHelper _ticketHelper;
-        private const string BetTeamTemplate = " <span class=\"favorite\">{0}</span>&nbsp;{1} <span class=\"favorite\">&nbsp;{2}</span>";
+        private ITicketHelper _ticketHelper;        
 
         [SetUp]
         public void Setup()

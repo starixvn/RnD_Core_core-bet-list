@@ -5,7 +5,6 @@
     using Fanex.BetList.Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
-    using Fanex.BetList.Core.App_GlobalResources;
 
     /// <summary>
     /// Unit test for Choice4 class.

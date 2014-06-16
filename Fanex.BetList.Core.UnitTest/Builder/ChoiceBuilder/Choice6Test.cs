@@ -5,7 +5,6 @@
     using Fanex.BetList.Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
-    using Fanex.BetList.Core.App_GlobalResources;
 
     /// <summary>
     /// Unit test for Choice6 class.
@@ -13,10 +12,10 @@
     [TestFixture]
     public class Choice6Test
     {
+        private const string BetTeamTemplate = " <span class=\"favorite\">{0}</span>&nbsp;{1} <span class=\"favorite\">&nbsp;{2}</span>";
         private IChoice _choice;
         private ITicket _ticket;
-        private ITicketHelper _ticketHelper;
-        private const string BetTeamTemplate = " <span class=\"favorite\">{0}</span>&nbsp;{1} <span class=\"favorite\">&nbsp;{2}</span>";
+        private ITicketHelper _ticketHelper;        
 
         [SetUp]
         public void Setup()

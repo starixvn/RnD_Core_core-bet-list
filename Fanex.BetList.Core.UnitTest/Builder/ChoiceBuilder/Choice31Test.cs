@@ -1,11 +1,11 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
+    using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
-    using Fanex.BetList.Core.App_GlobalResources;
 
     /// <summary>
     /// Unit test for Choice31 class.
@@ -51,7 +51,6 @@
             // Assert
             Assert.IsNull(_choice.Template.Handicap.handicap);
         }
-
 
         /// <summary>
         /// The value of Template.Match.home_firstGoal_lastGoal is always null.
