@@ -23,7 +23,7 @@
             this.Template.Match.VS = null;
             this.Template.betTeam = ticket.BetTeam == HToLower ? CoreBetList.odd : CoreBetList.even;
             this.Template.betTeamClassName = BLFAVORITE;
-            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno,HtmlNoneBreakingSpace, ticket.MatchCode });
+            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlNoneBreakingSpace, ticket.MatchCode });
         }
     }
 }

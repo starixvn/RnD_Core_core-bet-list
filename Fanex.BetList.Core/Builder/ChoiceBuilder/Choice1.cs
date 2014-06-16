@@ -53,7 +53,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         protected const string HtmlNoneBreakingSpace = "&nbsp;";
 
         #endregion
-        protected const string VoidStatus = "void";
+        protected const string VoidStatus = "d";
         protected const string HToLower = "h";
         protected const string Neutral = " (N) ";
         protected const string FirstGoalCssClass = "firstGoal ";

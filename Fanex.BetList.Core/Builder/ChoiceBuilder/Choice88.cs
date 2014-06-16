@@ -22,7 +22,7 @@
             this.Template.Score = null;
             this.Template.Match.VS = null;
             this.Template.Handicap.handicap = null;
-            this.Template.betTeam = ticket.BetTeam == HToLower ? CoreBetList.warrior2ndBall : CoreBetList.warrior3rdBall; ;
+            this.Template.betTeam = ticket.BetTeam == HToLower ? CoreBetList.warrior2ndBall : CoreBetList.warrior3rdBall;
             this.Template.betTeamClassName = BLFAVORITE;           
             
             this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlNoneBreakingSpace, ticket.MatchCode });            

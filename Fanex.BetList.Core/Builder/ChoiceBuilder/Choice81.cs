@@ -10,6 +10,7 @@
     public class Choice81 : Choice1
     {
         private const string HandicapValue = "37.5";
+
         /// <summary>
         /// Builds the choice.
         /// </summary>
