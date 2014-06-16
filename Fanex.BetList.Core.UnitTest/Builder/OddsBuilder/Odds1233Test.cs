@@ -26,7 +26,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.OddsBuilder
         }
 
         [Test]
-        public void StatusOfTicketIsRunningOrWaitingOrVoidOrRejectOrRefund_ReturnResult()
+        public void StatusIsRunningOrWaitingOrVoidOrRejectOrRefund_ReturnResult()
         {
             // Arrange
             var ticketDatas = new List<ITicketData>();
@@ -46,7 +46,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.OddsBuilder
         }
 
         [Test]
-        public void StatusOfTicketIsRunningOrWaitingOrVoidOrRejectOrRefund_ReturnResult2()
+        public void StatusIsRunningOrWaitingOrVoidOrRejectOrRefund_ReturnResult2()
         {
             // Arrange
             var ticketDatas = new List<ITicketData>();
@@ -64,7 +64,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.OddsBuilder
         }
 
         [Test]
-        public void StatusOfTicketIsRunningOrWaitingOrVoidOrRejectOrRefund_ReturnResult1()
+        public void StatusIsRunningOrWaitingOrVoidOrRejectOrRefund_ReturnResult1()
         {
             // Act
             Odds_Template template = _odds.Render(_ticket, null, GetCachePropertyByIdStub);

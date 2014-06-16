@@ -24,7 +24,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StatusBuilder
         }
 
         [Test]
-        public void StatusOfTicketIsEmpty_ReturnResultIsEmpty()
+        public void StatusIsEmpty_ReturnResultIsEmpty()
         {
             // Arrange
             _ticket.Status = string.Empty;
@@ -37,7 +37,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StatusBuilder
         }
 
         [Test]
-        public void StatusOfTicketIsRunning_ReturnResultIsRunning()
+        public void StatusIsRunning_ReturnResultIsRunning()
         {
             // Arrange
             _ticket.Status = "running";
@@ -51,7 +51,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StatusBuilder
         }
 
         [Test]
-        public void StatusOfTicketIsReject_ReturnResultIsReject()
+        public void StatusIsReject_ReturnResultIsReject()
         {
             // Arrange
             _ticket.Status = "reject";
@@ -65,7 +65,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StatusBuilder
         }
 
         [Test]
-        public void StatusOfTicketIsWon_ReturnResultIsWon()
+        public void StatusIsWon_ReturnResultIsWon()
         {
             // Arrange
             _ticket.Status = "won";
@@ -79,7 +79,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StatusBuilder
         }
 
         [Test]
-        public void StatusOfTicketIsLose_ReturnResultIsLose()
+        public void StatusIsLose_ReturnResultIsLose()
         {
             // Arrange
             _ticket.Status = "lose";
@@ -93,7 +93,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StatusBuilder
         }
 
         [Test]
-        public void StatusOfTicketIsDraw_ReturnResultIsDraw()
+        public void StatusIsDraw_ReturnResultIsDraw()
         {
             // Arrange
             _ticket.Status = "draw";
@@ -107,7 +107,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StatusBuilder
         }
 
         [Test]
-        public void StatusOfTicketIsWaiting_ReturnResultIsWaiting()
+        public void StatusIsWaiting_ReturnResultIsWaiting()
         {
             // Arrange
             _ticket.Status = "waiting";
@@ -121,7 +121,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StatusBuilder
         }
 
         [Test]
-        public void StatusOfTicketIsVoided_ReturnResultIsVoided()
+        public void StatusIsVoided_ReturnResultIsVoided()
         {
             // Arrange
             _ticket.Status = "void";
@@ -135,7 +135,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StatusBuilder
         }
 
         [Test]
-        public void StatusOfTicketIsRefund_ReturnResultIsRefund()
+        public void StatusIsRefund_ReturnResultIsRefund()
         {
             // Arrange
             _ticket.Status = "refund";
@@ -149,7 +149,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StatusBuilder
         }
 
         [Test]
-        public void StatusOfTicketIsRunning_VisibleTemplateStatusResult()
+        public void StatusIsRunning_VisibleTemplateStatusResult()
         {
             // Arrange
             _ticket.Status = "running";
@@ -162,7 +162,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StatusBuilder
         }
 
         [Test]
-        public void StatusOfTicketIsWaiting_VisibleTemplateStatusResult()
+        public void StatusIsWaiting_VisibleTemplateStatusResult()
         {
             // Arrange
             _ticket.Status = "waiting";
@@ -175,7 +175,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StatusBuilder
         }
 
         [Test]
-        public void StatusOfTicketIsVoid_VisibleTemplateStatusResult()
+        public void StatusIsVoid_VisibleTemplateStatusResult()
         {
             // Arrange
             _ticket.Status = "void";
@@ -188,7 +188,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StatusBuilder
         }
 
         [Test]
-        public void StatusOfTicketIsReject_VisibleTemplateStatusResult()
+        public void StatusIsReject_VisibleTemplateStatusResult()
         {
             // Arrange
             _ticket.Status = "reject";
@@ -201,7 +201,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StatusBuilder
         }
 
         [Test]
-        public void StatusOfTicketIsRefund_VisibleTemplateStatusResult()
+        public void StatusIsRefund_VisibleTemplateStatusResult()
         {
             // Arrange
             _ticket.Status = "refund";

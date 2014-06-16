@@ -30,7 +30,7 @@
         /// The value of Template.betTeam is always [BetTeam Points] when bet team of ticket is 1.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_BetTeamAreBetTeamAndSpaceAndPointsResource()
+        public void BuildChoice_Always_SetBetTeamAreBetTeamAndSpaceAndPointsResource()
         {
             // Arrange
             _ticket.BetTeam = "bet team";

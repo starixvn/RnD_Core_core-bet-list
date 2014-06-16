@@ -30,7 +30,7 @@
         /// The value of Template.BetType.betTypeName is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_BetTypeNameIsNull()
+        public void BuildChoice_Always_SetBetTypeNameIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -43,7 +43,7 @@
         /// The value of Template.Match.VS is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_MatchVSIsNull()
+        public void BuildChoice_Always_SetMatchVSIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -56,7 +56,7 @@
         /// The value of Template.League.sportTypeName is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_SportTypeNameIsNull()
+        public void BuildChoice_Always_SetSportTypeNameIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -69,7 +69,7 @@
         /// The value of Template.Handicap.handicap is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_HandicapIsNull()
+        public void BuildChoice_Always_SetHandicapIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -82,7 +82,7 @@
         /// The value of Template.betTeam is always Bingo -  Transfer.
         /// </summary>
         [Test]
-        public void BuildChoice_HomeIdOfTicketNotZero_BetTeamAreBingoPendingResource()
+        public void BuildChoice_HomeIdNotZero_BetTeamAreBingoPendingResource()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -96,7 +96,7 @@
         /// The value of Template.betTeamClassName is always favorite.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_BetTeamClassNameIsFavorite()
+        public void BuildChoice_Always_SetBetTeamClassNameIsFavorite()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());

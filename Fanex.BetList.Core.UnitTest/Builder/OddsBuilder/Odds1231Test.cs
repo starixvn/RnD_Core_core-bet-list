@@ -24,7 +24,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.OddsBuilder
         }
 
         [Test]
-        public void OddsTypeOfTicketIsNull_OddsTypeIsZero()
+        public void OddsTypeIsNull_OddsTypeIsZero()
         {
             // Arrange
             _ticket.OddsType = null;
@@ -38,7 +38,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.OddsBuilder
         }
 
         [Test]
-        public void OddsTypeOfTicketIsNull_OddsTypeIsZero1()
+        public void OddsTypeIsNull_OddsTypeIsZero1()
         {
             // Arrange
             _ticket.OddsType = "1";
@@ -52,7 +52,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.OddsBuilder
         }
 
         [Test]
-        public void OddsTypeOfTicketIsNull_OddsTypeIsZero12()
+        public void OddsTypeIsNull_OddsTypeIsZero12()
         {
             // Arrange
             _ticket.OddsType = "1";

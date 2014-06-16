@@ -33,7 +33,7 @@
         /// The value of Template.League.LeagueName.leagueName is always Party Baccarat and Ticket.ShowTime.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_LeagueNameArePartyBaccaratResourceAndShowTime()
+        public void BuildChoice_Always_SetLeagueNameArePartyBaccaratResourceAndShowTime()
         {
             // Arrange
             _ticket.ShowTime = "show time";
@@ -115,7 +115,7 @@
         /// The value of Template.betTeam depend on ticket data founded.
         /// </summary>
         [Test]
-        public void BuildChoice_RefNoOfTicketEqualRefNoOfTicketData_BetTeamIsBetTeamFormat()
+        public void BuildChoice_RefNoEqualRefNoData_BetTeamIsBetTeamFormat()
         {
             // Arrange
             var refNo = "1";
@@ -141,7 +141,7 @@
         /// The value of Template.Handicap.Visible is always visible.
         /// </summary>
         [Test]
-        public void BuildChoice_RefNoOfTicketEqualRefNoOfTicketData_HandicapIsVisible()
+        public void BuildChoice_RefNoEqualRefNoData_HandicapIsVisible()
         {
             // Arrange
             var refNo = "1";
@@ -164,7 +164,7 @@
         /// The value Template.BetType.betTypeName of is empty when ticket data is not null.
         /// </summary>
         [Test]
-        public void BuildChoice_RefNoOfTicketEqualRefNoOfTicketData_BetTypeNameIsEmpty()
+        public void BuildChoice_RefNoEqualRefNoData_BetTypeNameIsEmpty()
         {
             // Arrange
             _ticket.RefNo = "1";
@@ -186,7 +186,7 @@
         /// The value of Template.betTeamClassName is always empty.
         /// </summary>
         [Test]
-        public void BuildChoice_RefNoOfTicketEqualRefNoOfTicketData_BetTeamClassNameIsEmpty()
+        public void BuildChoice_RefNoEqualRefNoData_BetTeamClassNameIsEmpty()
         {
             // Arrange
             _ticket.RefNo = "1";
@@ -208,7 +208,7 @@
         /// The value of Template.Match.VS.Visible is always false.
         /// </summary>
         [Test]
-        public void BuildChoice_RefNoOfTicketEqualRefNoOfTicketData_MatchVSIsVisible()
+        public void BuildChoice_RefNoEqualRefNoData_MatchVSIsVisible()
         {
             // Arrange
             _ticket.RefNo = "1";

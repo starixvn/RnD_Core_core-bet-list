@@ -30,7 +30,7 @@
         /// The value of Template.League.LeagueName.leagueName is always Live Roulette and Ticket.ShowTime.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_LeagueNameAreLiveRouletteResourceAndShowTime()
+        public void BuildChoice_Always_SetLeagueNameAreLiveRouletteResourceAndShowTime()
         {
             // Arrange
             _ticket.ShowTime = "show time";

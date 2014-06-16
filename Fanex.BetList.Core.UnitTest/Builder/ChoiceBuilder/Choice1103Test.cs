@@ -30,7 +30,7 @@
         /// The value of Template.League.LeagueName.leagueName is always Party Baccarat and Ticket.ShowTime.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_LeagueNameAreLiveBaccaratResourceAndShowTime()
+        public void BuildChoice_Always_SetLeagueNameAreLiveBaccaratResourceAndShowTime()
         {
             // Arrange
             _ticket.ShowTime = "show time";

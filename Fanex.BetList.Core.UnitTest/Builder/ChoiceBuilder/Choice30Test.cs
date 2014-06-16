@@ -24,12 +24,12 @@
             _ticket.BetTypeId = BetTypes.FirstCorrectScore;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
-        
+
         /// <summary>
         /// The value of Template.betTeam is always bet team.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamOfTicketIs04_BetTeamIsBetTeamAndUp()
+        public void BuildChoice_BetTeamIs04_BetTeamIsBetTeamAndUp()
         {
             // Arrange
             _ticket.BetTeam = "0:4";
@@ -46,7 +46,7 @@
         /// The value of Template.betTeam is always bet team.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamOfTicketIs40_BetTeamIsBetTeamAndUp()
+        public void BuildChoice_BetTeamIs40_BetTeamIsBetTeamAndUp()
         {
             // Arrange
             _ticket.BetTeam = "4:0";
@@ -63,7 +63,7 @@
         /// The value of Template.betTeam is always bet team.
         /// </summary>
         [Test]
-        public void BuildChoice_HomeIdOfTicketNotZero_BetTeamAreSpaceAndBetTeam()
+        public void BuildChoice_HomeIdNotZero_BetTeamAreSpaceAndBetTeam()
         {
             // Arrange
             _ticket.BetTeam = "bet team";

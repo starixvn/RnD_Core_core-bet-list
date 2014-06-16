@@ -24,7 +24,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.OddsBuilder
         }
 
         [Test]
-        public void StatusOfTicketIsRunning_TemplateOddsIsHyphen()
+        public void StatusIsRunning_TemplateOddsIsHyphen()
         {
             // Arrange
             _ticket.Status = "running";
@@ -38,7 +38,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.OddsBuilder
         }
 
         [Test]
-        public void StatusOfTicketIsNotRunning_TemplateOddsIsMasterOdds()
+        public void StatusIsNotRunning_TemplateOddsIsMasterOdds()
         {
             // Arrange
             _ticket.Status = "lose";
@@ -53,7 +53,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.OddsBuilder
 
 
         [Test]
-        public void OddsTypeOfTicketIsNull_OddsTypeIsZero12()
+        public void OddsTypeIsNull_OddsTypeIsZero12()
         {
             // Arrange
             _ticket.OddsType = "1";

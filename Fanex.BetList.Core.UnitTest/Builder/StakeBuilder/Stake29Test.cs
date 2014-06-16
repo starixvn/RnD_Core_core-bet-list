@@ -21,7 +21,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
         }
 
         [Test]
-        public void StakeOfTicketIsZero_ReturnStakeIsTicketActualStake()
+        public void StakeIsZero_ReturnStakeIsTicketActualStake()
         {
             // Arrange
             var template = new Stake_Template();
@@ -36,7 +36,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
         }
 
         [Test]
-        public void StakeOfTicketIsNotZero_ReturnStakeIsTicketActualStakeAndStakeInParenthese()
+        public void StakeIsNotZero_ReturnStakeIsTicketActualStakeAndStakeInParenthese()
         {
             // Arrange
             var template = new Stake_Template();

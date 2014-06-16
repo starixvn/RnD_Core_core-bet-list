@@ -30,7 +30,7 @@
         /// The value of Template.Match.VS is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_MatchVSIsNull()
+        public void BuildChoice_Always_SetMatchVSIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -43,7 +43,7 @@
         /// The value of Template.Handicap.handicap is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_HandicapIsNull()
+        public void BuildChoice_Always_SetHandicapIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -56,7 +56,7 @@
         /// The value of Template.Match.home_firstGoal_lastGoal is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_HomeFGLGIsNull()
+        public void BuildChoice_Always_SetHomeFGLGIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -69,7 +69,7 @@
         /// The value of Template.Match.awayTeam is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_AwayTeamIsNull()
+        public void BuildChoice_Always_SetAwayTeamIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -82,7 +82,7 @@
         /// The value of Template.Match.away_firstGoal_lastGoal is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_AwayFGLGIsNull()
+        public void BuildChoice_Always_SetAwayFGLGIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -95,7 +95,7 @@
         /// The value of Template.betTeam is always Casino Game.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_BetTeamIsMatchCodeAndHorseTeamName()
+        public void BuildChoice_Always_SetBetTeamIsMatchCodeAndHorseTeamName()
         {
             // Arrange
             _ticket.MatchCode = "100";
@@ -115,7 +115,7 @@
         /// The value of Template.Match.homeTeam is always Race and ticket race.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_BetTeamIsRaceResourceAndRace()
+        public void BuildChoice_Always_SetBetTeamIsRaceResourceAndRace()
         {
             // Arrange
             _ticket.Race = "1";
@@ -132,7 +132,7 @@
         /// The value of Template.betTeamClassName is always favorite.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_BetTeamClassNameIsFavorite()
+        public void BuildChoice_Always_SetBetTeamClassNameIsFavorite()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());

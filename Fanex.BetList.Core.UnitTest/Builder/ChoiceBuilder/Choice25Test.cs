@@ -29,7 +29,7 @@
         /// The value of Template.Handicap.handicap is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_HandicapIsNull()
+        public void BuildChoice_Always_SetHandicapIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -42,7 +42,7 @@
         /// The value of Template.betTeamClassName is always underdog.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_BetTeamClassNameIsUnderdog()
+        public void BuildChoice_Always_SetBetTeamClassNameIsUnderdog()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());

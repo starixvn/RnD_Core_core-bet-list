@@ -30,7 +30,7 @@
         /// The value of Template.Match.VS is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_MatchVSBlockIsNull()
+        public void BuildChoice_Always_SetMatchVSBlockIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -43,7 +43,7 @@
         /// The value of Template.Match.home_firstGoal_lastGoal is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_HomeFGLGIsNull()
+        public void BuildChoice_Always_SetHomeFGLGIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -56,7 +56,7 @@
         /// The value of Template.Match.away_firstGoal_lastGoal is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_AwayFGLGIsNull()
+        public void BuildChoice_Always_SetAwayFGLGIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -69,7 +69,7 @@
         /// The value of Template.Match.awayTeam is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_AwayTeamIsNull()
+        public void BuildChoice_Always_SetAwayTeamIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -82,7 +82,7 @@
         /// The value of Template.Handicap.handicap is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_HandicapIsNull()
+        public void BuildChoice_Always_SetHandicapIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -95,24 +95,24 @@
         /// The value of Template.League.LeagueName.leagueName is always league name get by identifier.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_LeagueNameIsLeagueName()
+        public void BuildChoice_Always_SetLeagueNameIsLeagueName()
         {
             // Arrange
-            _ticketHelper.GetLeagueNameById(Arg.Any<int>()).Returns<string>("League name");
+            const string LEAGUE_NAME = "League name";
+            _ticketHelper.GetLeagueNameById(Arg.Any<int>()).Returns<string>(LEAGUE_NAME);
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedLeagueName = _ticketHelper.GetLeagueNameById(_ticket.LeagueId);
-            Assert.AreEqual(expectedLeagueName, _choice.Template.League.LeagueName.leagueName);
+            Assert.AreEqual(LEAGUE_NAME, _choice.Template.League.LeagueName.leagueName);
         }
 
         /// <summary>
         /// The value of Template.betTeam is always Ticket.MatchCode - HorseTeamName.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_BetTeamAreMatchCodeAndHorseTeamName()
+        public void BuildChoice_Always_SetBetTeamAreMatchCodeAndHorseTeamName()
         {
             // Arrange
             _ticket.HomeId = 1;
@@ -132,7 +132,7 @@
         /// The value of Template.betTeamClassName is always favorite.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_BetTeamClassNameIsFavorite()
+        public void BuildChoice_Always_SetBetTeamClassNameIsFavorite()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -145,7 +145,7 @@
         /// The value of Template.Match.homeTeam is always Ticket.ShowTime when show time is valid format.
         /// </summary>
         [Test]
-        public void BuildChoice_ShowTimeOfTicketIsValidFormat_HomeTeamIsShowTimeBeFormatted()
+        public void BuildChoice_ShowTimeIsValidFormat_HomeTeamIsShowTimeBeFormatted()
         {
             // Arrange
             _ticket.ShowTime = "01/01/2014 15:25";
@@ -162,7 +162,7 @@
         /// The value of Template.Match.homeTeam is always Ticket.ShowTime when show time is invalid format.
         /// </summary>
         [Test]
-        public void BuildChoice_ShowTimeOfTicketIsInValidFormat_HomeTeamIsShowTime()
+        public void BuildChoice_ShowTimeIsInValidFormat_HomeTeamIsShowTime()
         {
             // Arrange
             _ticket.ShowTime = string.Empty;

@@ -30,7 +30,7 @@
         /// The value of Template.betTeam is always Over.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamOfTicketIs1_BetTeamIsOverResource()
+        public void BuildChoice_BetTeamIs1_BetTeamIsOverResource()
         {
             // Arrange
             _ticket.BetTeam = "1";
@@ -46,7 +46,7 @@
         /// The value of Template.betTeam is always Over.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamOfTicketIs2_BetTeamIsUnderResource()
+        public void BuildChoice_BetTeamIs2_BetTeamIsUnderResource()
         {
             // Arrange
             _ticket.BetTeam = "2";
@@ -62,7 +62,7 @@
         /// The value of Template.betTeam is always Between handicap 2 and handicap1.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamOfTicketNotIs1AndNotIs2_BetTeamIsBetweenResourceHandicap2AndHandicap1()
+        public void BuildChoice_BetTeamNotIs1AndNotIs2_BetTeamIsBetweenResourceHandicap2AndHandicap1()
         {
             // Arrange
             _ticket.BetTeam = string.Empty;
@@ -79,7 +79,7 @@
         /// The value of Template.BetType.betTypeName is always bet type name.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_BetTypeNameIsBetTypeName()
+        public void BuildChoice_Always_SetBetTypeNameIsBetTypeName()
         {
             // Arrange
             _ticket.BetTypeId = 1;
@@ -98,7 +98,7 @@
         /// The value of Template.betTeamClassName is always favorite when BetTeam = 1.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamOfTicketIs1_BetTeamClassNameIsFavorite()
+        public void BuildChoice_BetTeamIs1_BetTeamClassNameIsFavorite()
         {
             // Arrange
             _ticket.BetTeam = "1";
@@ -114,7 +114,7 @@
         /// The value of Template.betTeamClassName is always favorite when BetTeam != 1.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamOfTicketIsNot1_BetTeamClassNameIsUnderdog()
+        public void BuildChoice_BetTeamIsNot1_BetTeamClassNameIsUnderdog()
         {
             // Arrange
             _ticket.BetTeam = string.Empty;

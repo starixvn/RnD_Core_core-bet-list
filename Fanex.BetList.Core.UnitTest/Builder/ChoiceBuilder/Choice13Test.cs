@@ -31,7 +31,7 @@
         /// The value of Template.betTeam is always [HomeTeam YES] when bet team contains character h and not contains y.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamOfTicketContainsCharacterHAndNotContainsCharacterY_BetTeamAreHomeTeamNameAndLableNoRescoure()
+        public void BuildChoice_BetTeamContainsCharacterhAndNotContainsCharacterY_BetTeamAreHomeTeamNameAndLableNoRescoure()
         {
             // Arrange
             _ticket.BetTeam = "text h";
@@ -49,7 +49,7 @@
         /// The value of Template.betTeam is always [AwayTeam NO] when bet team not contains character h and not contains y.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamOfTicketContainsNotCharacterHAndNotContainsCharacterY_BetTeamAreAwayTeamNameAndLableNoRescoure()
+        public void BuildChoice_BetTeamContainsCharacterNotCharacterhAndNotContainsCharacterY_BetTeamAreAwayTeamNameAndLableNoRescoure()
         {
             // Arrange
             _ticket.BetTeam = string.Empty;
@@ -67,7 +67,7 @@
         /// The value of Template.betTeam is always [HomeTeam YES] when bet team contains character h and contains y.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamOfTicketContainsCharacterHAndContainsCharacterY_BetTeamAreHomeTeamNameAndLableYesRescoure()
+        public void BuildChoice_BetTeamContainsCharacterhAndContainsCharacterY_BetTeamAreHomeTeamNameAndLableYesRescoure()
         {
             // Arrange
             _ticket.BetTeam = "text h y";
@@ -85,7 +85,7 @@
         /// The value of Template.betTeam is always [AwayTeam YES] when bet team contains not character h and contains y.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamOfTicketNotContainsNotCharacterHAndContainsCharacterY_BetTeamAreAwayTeamNameAndLableYesRescoure()
+        public void BuildChoice_BetTeamNotContainsCharacterNotCharacterhAndContainsCharacterY_BetTeamAreAwayTeamNameAndLableYesRescoure()
         {
             // Arrange
             _ticket.BetTeam = "text y";
@@ -103,7 +103,7 @@
         /// The value of Template.Handicap.handicap is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_HandicapIsNull()
+        public void BuildChoice_Always_SetHandicapIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());

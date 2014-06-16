@@ -24,7 +24,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StatusBuilder
         }
 
         [Test]
-        public void BetIdfOfTicketHasLengthLessThanTwo_RefNoOfTemplateStatusResultIsZero()
+        public void BetIdfHasLengthLessThanTwo_RefNoOfTemplateStatusResultIsZero()
         {
             // Arrange
             _ticket.BetId = 1;
@@ -38,7 +38,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StatusBuilder
         }
 
         [Test]
-        public void BetIdfOfTicketHasLengthIsTwo_RefNoOfTemplateStatusResultIsZero()
+        public void BetIdfHasLengthIsTwo_RefNoOfTemplateStatusResultIsZero()
         {
             // Arrange
             _ticket.BetId = 10;
@@ -52,7 +52,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StatusBuilder
         }
 
         [Test]
-        public void BetIdfOfTicketHasLengthGreaterThanTwo_RefNoOfTemplateStatusResultIsSubstringOfBetIdFromIndexOneAndLengthIsTwo()
+        public void BetIdfHasLengthGreaterThanTwo_RefNoOfTemplateStatusResultIsSubstringOfBetIdFromIndexOneAndLengthIsTwo()
         {
             // Arrange
             _ticket.BetId = 1536;

@@ -31,7 +31,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StatusBuilder
         [TestCase("void", "Void")]
         [TestCase("reject", "Reject")]
         [TestCase("refund", "Refund")]
-        public void StatusOfTicketIsRunningOrWaitingOrVoidOrRejectOrRefund_ReturnResult(string status, string expectedResult)
+        public void StatusIsRunningOrWaitingOrVoidOrRejectOrRefund_ReturnResult(string status, string expectedResult)
         {
             // Arrange
             var ticketDatas = new List<ITicketData>();

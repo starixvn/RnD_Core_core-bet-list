@@ -30,7 +30,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         /// The value of Template.Handicap.handicap is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_HandicapBlockIsNull()
+        public void BuildChoice_Always_SetHandicapBlockIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -43,7 +43,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         /// The value of Template.Match.homeTeam is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_HomeTeamIsNull()
+        public void BuildChoice_Always_SetHomeTeamIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -56,7 +56,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         /// The value of Template.Match.awayTeam is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_AwayTeamIsNull()
+        public void BuildChoice_Always_SetAwayTeamIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -69,7 +69,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         /// The value of Template.Match.VS is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_MatchVSIsNull()
+        public void BuildChoice_Always_SetMatchVSIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -82,7 +82,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         /// The value of Template.Match.home_firstGoal_lastGoal is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_HomeFGLGIsNull()
+        public void BuildChoice_Always_SetHomeFGLGIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -95,7 +95,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         /// The value of Template.Match.away_firstGoal_lastGoal is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_AwayFGLGIsNull()
+        public void BuildChoice_Always_SetAwayFGLGIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -109,7 +109,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         /// </summary>
         [TestCase(true)]
         [TestCase(false)]
-        public void BuildChoice_Ticket_ScoreBlockIsNull(bool isLive)
+        public void BuildChoice_Always_SetScoreBlockIsNull(bool isLive)
         {
             // Arrange
             _ticket.IsLive = isLive;
@@ -125,24 +125,24 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         /// The value of Template.BetType.betTypeName is always bet type name get by identifier.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_BetTypeIsBetTypeName()
+        public void BuildChoice_Always_SetBetTypeIsKenoBetTypeName()
         {
             // Arrange
-            _ticketHelper.GetKenoBetTypeName(Arg.Any<string>()).Returns<string>("Keno bet type name");
+            const string BET_TYPE_NAME = "Keno bet type name";
+            _ticketHelper.GetKenoBetTypeName(Arg.Any<string>()).Returns<string>(BET_TYPE_NAME);
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedBetTypeName = _ticketHelper.GetKenoBetTypeName(Arg.Any<string>());
-            Assert.AreEqual(expectedBetTypeName, _choice.Template.BetType.betTypeName);
+            Assert.AreEqual(BET_TYPE_NAME, _choice.Template.BetType.betTypeName);
         }
 
         /// <summary>
         /// The value of Template.betTeam is always KenoBetChoiceName.
         /// </summary>
         [Test]
-        public void BuildChoice_HomeIdOfTicketNotZero_BetTeamIsKenoBetChoiceName()
+        public void BuildChoice_HomeIdNotZero_BetTeamIsKenoBetChoiceName()
         {
             // Arrange
             _ticket.HomeId = 1;
@@ -159,7 +159,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         /// The value of Template.betTeamClassName is always favorite.
         /// </summary>
         [Test]
-        public void BuildChoice_Ticket_BetTeamClassNameIsFavorite()
+        public void BuildChoice_Always_SetBetTeamClassNameIsFavorite()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
