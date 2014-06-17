@@ -21,11 +21,7 @@
 
             if (this.Template.Match != null)
             {
-                this.Template.Match.homeTeam = null;
-                this.Template.Match.awayTeam = null;
-                this.Template.Match.VS = null;
-                this.Template.Match.home_firstGoal_lastGoal = null;
-                this.Template.Match.away_firstGoal_lastGoal = null;
+                this.UpdateAllMatchMemberToNull();
             }
 
             this.Template.Score = null;

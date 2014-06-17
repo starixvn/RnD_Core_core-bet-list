@@ -1,21 +1,11 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Choice_22006.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2014.04.11">Create</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.ChoiceBuilder._3rd
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder._3rd
 {
     using System.Collections.Generic;
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
     /// Play Tech Casino.
-    /// </summary>    
+    /// </summary>
     public class Choice_22006 : Choice1
     {
         /// <summary>

@@ -27,22 +27,26 @@
                 case "01":
                     betTeam = "4 " + CoreBetList.points;
                     break;
+
                 case "02":
                     betTeam = "5 " + CoreBetList.points;
                     break;
+
                 case "03":
                     betTeam = "6 " + CoreBetList.points;
                     break;
+
                 case "04":
                     betTeam = "7 " + CoreBetList.upPoints;
                     break;
+
                 default:
                     break;
             }
 
             // "&nbsp" because export format
             this.Template.betTeam = "&nbsp;" + betTeam;
-            this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);  
+            this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);
         }
     }
 }

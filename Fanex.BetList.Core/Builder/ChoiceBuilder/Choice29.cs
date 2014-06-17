@@ -211,22 +211,22 @@
                         string detailSystemParlayDiv)
         {
             string combinationOpenDiv = "<div class=\"combinationLink\"><a id=\"hidden0\" href=\"";
-            string[] mixParlayCompositions = new string[] 
-                                                { 
-                                                    combinationOpenDiv, showSystemParlaySubbetsFunction, 
-                                                    "\">", 
-                                                    betTypeName, 
-                                                    "</a>", 
-                                                    " - ", 
-                                                    "<span style=\"color:#3a3a3a\">", 
-                                                    combinationMPOfferName, 
-                                                    "</span>", 
-                                                    "</div>", 
-                                                    "<div id=\"divEvent_", 
-                                                    transId, 
-                                                    transIndex, 
-                                                    "\" style=\"display: none\" ></div>", 
-                                                    detailSystemParlayDiv 
+            string[] mixParlayCompositions = new string[]
+                                                {
+                                                    combinationOpenDiv, showSystemParlaySubbetsFunction,
+                                                    "\">",
+                                                    betTypeName,
+                                                    "</a>",
+                                                    " - ",
+                                                    "<span style=\"color:#3a3a3a\">",
+                                                    combinationMPOfferName,
+                                                    "</span>",
+                                                    "</div>",
+                                                    "<div id=\"divEvent_",
+                                                    transId,
+                                                    transIndex,
+                                                    "\" style=\"display: none\" ></div>",
+                                                    detailSystemParlayDiv
                                                 };
 
             string mixParlay = string.Join(null, mixParlayCompositions);
@@ -245,23 +245,23 @@
         /// <returns>System.String: the markups.</returns>
         private string JoinSystemParlayDetailJsFunction(string refNo, string winlossDate, string transId, string betId, string custId)
         {
-            string[] markupCompositions = new string[] 
-                                            { 
-                                                "showCombMPDetail(&quot;", 
-                                                refNo, 
-                                                "&quot;", 
-                                                ",&quot;", 
-                                                winlossDate, 
-                                                "&quot;", 
-                                                ",&quot;", 
-                                                transId, 
-                                                "&quot;", 
-                                                ",&quot;", 
-                                                betId, 
-                                                "&quot;", 
-                                                ",&quot;", 
-                                                custId, 
-                                                "&quot;);" 
+            string[] markupCompositions = new string[]
+                                            {
+                                                "showCombMPDetail(&quot;",
+                                                refNo,
+                                                "&quot;",
+                                                ",&quot;",
+                                                winlossDate,
+                                                "&quot;",
+                                                ",&quot;",
+                                                transId,
+                                                "&quot;",
+                                                ",&quot;",
+                                                betId,
+                                                "&quot;",
+                                                ",&quot;",
+                                                custId,
+                                                "&quot;);"
                                             };
 
             string markups = string.Join(null, markupCompositions);
@@ -283,15 +283,15 @@
         /// <returns>System.String: the markups.</returns>
         private string JoinDetailSystemParlayDiv(string systemParlayDetailJsFunction)
         {
-            string[] markupCompositions = new string[] 
-                                            { 
-                                                "<div class=\"detail\" onclick='", 
-                                                systemParlayDetailJsFunction, 
-                                                "'>", 
-                                                "<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">", 
-                                                CoreBetList.details, 
-                                                "</a>", 
-                                                "</div>" 
+            string[] markupCompositions = new string[]
+                                            {
+                                                "<div class=\"detail\" onclick='",
+                                                systemParlayDetailJsFunction,
+                                                "'>",
+                                                "<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">",
+                                                CoreBetList.details,
+                                                "</a>",
+                                                "</div>"
                                             };
 
             string markups = string.Join(null, markupCompositions);

@@ -38,10 +38,13 @@
             {
                 case "1:1": betTeam = CoreBetList.lblOverOdd;
                     break;
+
                 case "1:2": betTeam = CoreBetList.lblOverEven;
                     break;
+
                 case "2:1": betTeam = CoreBetList.lblUnderOdd;
                     break;
+
                 case "2:2": betTeam = CoreBetList.lblUnderEven;
                     break;
             }

@@ -21,7 +21,7 @@
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
             this.Template.Handicap.handicap = ConvertByBetType.Hdp(ticket.Handicap1);
-            this.Template.betTeam = ticket.BetTeam == HToLower ? CoreBetList.over : CoreBetList.under;            
+            this.Template.betTeam = ticket.BetTeam == HToLower ? CoreBetList.over : CoreBetList.under;
         }
     }
 }

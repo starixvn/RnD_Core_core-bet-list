@@ -8,7 +8,7 @@
     /// Type: Warrior.
     /// </summary>
     public class Choice88 : Choice1
-    {        
+    {
         /// <summary>
         /// Builds the choice.
         /// </summary>
@@ -23,9 +23,9 @@
             this.Template.Match.VS = null;
             this.Template.Handicap.handicap = null;
             this.Template.betTeam = ticket.BetTeam == HToLower ? CoreBetList.warrior2ndBall : CoreBetList.warrior3rdBall;
-            this.Template.betTeamClassName = BLFAVORITE;           
-            
-            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlNoneBreakingSpace, ticket.MatchCode });            
+            this.Template.betTeamClassName = BLFAVORITE;
+
+            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlNoneBreakingSpace, ticket.MatchCode });
         }
     }
 }

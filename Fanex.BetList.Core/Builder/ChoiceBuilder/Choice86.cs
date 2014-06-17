@@ -20,7 +20,7 @@
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
             this.Template.Score = null;
-            this.Template.Match.VS = null;                    
+            this.Template.Match.VS = null;
 
             string liveScore = string.Empty;
             string betTeam = this.Template.betTeam;

@@ -5,7 +5,7 @@
 
     /// <summary>
     /// Outright bet type.
-    /// </summary>    
+    /// </summary>
     public class Choice10 : Choice1
     {
         /// <summary>
@@ -20,11 +20,7 @@
 
             if (this.Template.Match != null)
             {
-                this.Template.Match.homeTeam = null;
-                this.Template.Match.awayTeam = null;
-                this.Template.Match.VS = null;
-                this.Template.Match.home_firstGoal_lastGoal = null;
-                this.Template.Match.away_firstGoal_lastGoal = null;
+                this.UpdateAllMatchMemberToNull();
             }
 
             if (!ticket.IsLive)
@@ -34,7 +30,7 @@
             else
             {
                 this.Template.Score.homeScore = ticket.LiveHomeScore.ToString();
-                this.Template.Score.awayScore = ticket.LiveAwayScore.ToString();            
+                this.Template.Score.awayScore = ticket.LiveAwayScore.ToString();
             }
 
             this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);

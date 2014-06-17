@@ -22,11 +22,11 @@
             this.Template.Handicap.handicap = null;
             bool home = ticket.BetTeam == "1";
             bool away = ticket.BetTeam == "2";
-            
+
             string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
 
             this.Template.betTeam = home ? this.Template.Match.homeTeam : away ? awayName : CoreBetList.noTiebreak;
-            this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);         
+            this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);
         }
     }
 }

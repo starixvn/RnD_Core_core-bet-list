@@ -21,7 +21,7 @@
 
             this.Template.Handicap.handicap = null;
             this.Template.betTeam = ConvertByBetType.GetBetTeam(ticket.BetTeam, ticket.BetTypeId);
-            this.Template.betTeamClassName = BLFAVORITE;            
+            this.Template.betTeamClassName = BLFAVORITE;
         }
     }
 }

@@ -21,7 +21,7 @@
 
             bool yes = ticket.BetTeam == "h";
 
-            this.Template.betTeam = yes ? CoreLang.lblYes : CoreLang.lblNo;            
+            this.Template.betTeam = yes ? CoreLang.lblYes : CoreLang.lblNo;
 
             this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);
         }

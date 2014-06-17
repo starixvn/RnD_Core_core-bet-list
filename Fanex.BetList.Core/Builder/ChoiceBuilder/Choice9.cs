@@ -38,17 +38,17 @@
                 clientMixParlayDetailFunction = ticketHelper.ClientMixParlaySubbetsDetailFunction;
             }
 
-            components = new string[] 
-                            { 
-                                "<a id=\"hidden0\" href=\"", 
-                                clientMixParlayDetailFunction, 
-                                "\">", 
-                                betTypeName, 
-                                "</a>", 
-                                "<br/><br/>", 
-                                "<div id=\"divEvent_", 
-                                ticket.TransId.ToString(), 
-                                "\" style=\"display: none\" ></div>" 
+            components = new string[]
+                            {
+                                "<a id=\"hidden0\" href=\"",
+                                clientMixParlayDetailFunction,
+                                "\">",
+                                betTypeName,
+                                "</a>",
+                                "<br/><br/>",
+                                "<div id=\"divEvent_",
+                                ticket.TransId.ToString(),
+                                "\" style=\"display: none\" ></div>"
                             };
 
             string mixParlay = string.Join(null, components);
@@ -70,10 +70,10 @@
         /// Choice_Template object.
         /// </returns>
         public override List<IRichTextString> RenderRTF(
-                                                ITicket ticket, 
-                                                ITicketHelper ticketHelper, 
-                                                List<ITicketData> ticketData, 
-                                                bool isShowScoreMap, 
+                                                ITicket ticket,
+                                                ITicketHelper ticketHelper,
+                                                List<ITicketData> ticketData,
+                                                bool isShowScoreMap,
                                                 RTFHelper rtfHelper)
         {
             List<IRichTextString> lstRTFChoices = new List<IRichTextString>();
@@ -150,7 +150,7 @@
                     tmpRtfHelper.RTFRenderer.AddText("\n" + eventName, posFont);
                     tmpRtfHelper.RTFRenderer.AddText(theRest, normalFont);
                 }
-                catch 
+                catch
                 {
                     throw;
                 }

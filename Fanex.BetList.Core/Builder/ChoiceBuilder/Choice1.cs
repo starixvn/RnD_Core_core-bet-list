@@ -14,6 +14,7 @@
     public class Choice1 : IChoice
     {
         #region Attributes
+
         /// <summary>
         /// String underdog.
         /// </summary>
@@ -30,7 +31,8 @@
         /// <value>&amp;nbsp;</value>
         protected const string HtmlNoneBreakingSpace = "&nbsp;";
 
-        #endregion
+        #endregion Attributes
+
         protected const string VoidStatus = "void";
         protected const string HToLower = "h";
         protected const string Neutral = " (N) ";
@@ -56,7 +58,7 @@
             this.Template = new Choice_Template();
         }
 
-        #endregion
+        #endregion Constructors
 
         #region Properties
 
@@ -66,7 +68,7 @@
             set;
         }
 
-        #endregion
+        #endregion Properties
 
         /// <summary>
         /// Renders the specified ticket.
@@ -127,28 +129,26 @@
         {
             this.Template.Score.homeScore = ticket.LiveHomeScore.ToString();
             this.Template.Score.awayScore = ticket.LiveAwayScore.ToString();
+            this.Template.Score.Visible = ticket.IsLive;
+            this.Template.Score.scoreClassName = BLFAVORITE;
 
             this.Template.League.LeagueName.leagueName = ticketHelper.GetLeagueNameById(ticket.LeagueId);
+            this.Template.League.sportTypeName = ticketHelper.GetSportNameById(ticket.SportTypeId);
+
+            this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
 
             string homeName = ticketHelper.GetTeamNameById(ticket.HomeId);
             string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
 
-            this.Template.Score.Visible = ticket.IsLive;
-            this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
             this.Template.Match.homeTeam = string.Join(null, new string[] { homeName, ticket.IsNeutral ? Neutral : string.Empty });
-
             this.Template.Match.awayTeam = awayName;
-            this.Template.League.sportTypeName = ticketHelper.GetSportNameById(ticket.SportTypeId);
 
             this.Template.Match.home_firstGoal_lastGoal = string.Empty;
             this.Template.Match.away_firstGoal_lastGoal = string.Empty;
-
             this.CalculateFG_LG(ticket.EventStatus, ref this.Template.Match.home_firstGoal_lastGoal, ref this.Template.Match.away_firstGoal_lastGoal);
 
             bool betHomeTeam = ticket.BetTeam != null && ticket.BetTeam.Contains(HToLower);
-
             this.Template.betTeam = betHomeTeam ? this.Template.Match.homeTeam : awayName;
-
             if (betHomeTeam)
             {
                 this.Template.betTeamClassName = ticket.Handicap2 >= ticket.Handicap1 ? BLUNDERDOG : BLFAVORITE;
@@ -157,8 +157,6 @@
             {
                 this.Template.betTeamClassName = ticket.Handicap2 <= ticket.Handicap1 ? BLUNDERDOG : BLFAVORITE;
             }
-
-            this.Template.Score.scoreClassName = BLFAVORITE;
 
             decimal handicap = ticket.Handicap2 > ticket.Handicap1 ? ticket.Handicap2 : ticket.Handicap1;
 
@@ -185,14 +183,14 @@
             }
 
             /*
-            // Possible formats: 
+            // Possible formats:
             // Refund HT;1FL:1-2;FL:2-0
             // 1FL:1-2;FL:2-0
             // Refund HT;FL:2-0
             // Refund HT;1FL:1-2
             // FL:2-0
             // Refund HT
-            // 1FL:1-2            
+            // 1FL:1-2
             */
 
             string[] betStatusParts = betStatus.ToLower().Split(';');
@@ -269,14 +267,14 @@
             }
 
             /*
-            // Possible formats: 
+            // Possible formats:
             // Refund HT;1FL:1-2;FL:2-0
             // 1FL:1-2;FL:2-0
             // Refund HT;FL:2-0
             // Refund HT;1FL:1-2
             // FL:2-0
             // Refund HT
-            // 1FL:1-2            
+            // 1FL:1-2
             */
 
             string[] betStatusParts = betStatus.ToLower().Split(';');
@@ -401,7 +399,7 @@
         /// <param name="rtfHelper">The RTF helper.</param>
         [SuppressMessage("StyleCop.CSharp.Nexcel.NexcelCustomRules",
             "SP2101:MethodMustNotContainMoreLinesThan",
-            Justification = "The logic is simple so seperating to reduce fewer than 10 lines is not necessary.")]
+            Justification = "The logic is simple so separating to reduce fewer than 10 lines is not necessary.")]
         private void BuildBetTeamsInfo(ITicket ticket, ref RTFHelper rtfHelper)
         {
             if (Template.Match != null)
@@ -602,6 +600,21 @@
             {
                 awayFGLG += lastTextName;
             }
+        }
+
+        protected void UpdateAllMatchMemberToNull()
+        {
+            this.Template.Match.homeTeam = null;
+            this.Template.Match.awayTeam = null;
+            this.Template.Match.VS = null;
+            this.Template.Match.home_firstGoal_lastGoal = null;
+            this.Template.Match.away_firstGoal_lastGoal = null;
+        }
+
+        protected void UpdateAllLeagueMemberToNull()
+        {
+            this.Template.League.LeagueName.leagueName = null;
+            this.Template.League.sportTypeName = null;
         }
     }
 }

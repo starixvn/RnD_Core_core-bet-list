@@ -121,7 +121,7 @@
                                                                     { "5-75", "75" }
                                                                 };
 
-        #endregion
+        #endregion BETTEAM MAP
 
         /// <summary>
         /// Builds the choice.

@@ -21,7 +21,7 @@
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
             bool betOver = ticket.BetTeam == "1";
-            bool betUnder = ticket.BetTeam == "2";            
+            bool betUnder = ticket.BetTeam == "2";
 
             if (betOver)
             {

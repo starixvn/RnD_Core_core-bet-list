@@ -4,6 +4,6 @@
     /// Bet Type: Win/Place.
     /// </summary>
     public class Choice33 : Choice31
-    {        
+    {
     }
 }

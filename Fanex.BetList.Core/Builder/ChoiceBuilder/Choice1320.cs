@@ -4,6 +4,6 @@
     /// Set X Score after 2 Games.
     /// </summary>
     public class Choice1320 : Choice1302
-    {        
+    {
     }
 }

@@ -24,7 +24,7 @@
             string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
 
             this.Template.betTeam = betHomeTeam ? CoreLang.lblDraw : CoreLang.lblNoDraw;
-            this.Template.betTeamClassName = BLUNDERDOG;            
+            this.Template.betTeamClassName = BLUNDERDOG;
 
             this.Template.Score.homeScore = ticket.LiveHomeScore.ToString();
             this.Template.Score.awayScore = ticket.LiveAwayScore.ToString();

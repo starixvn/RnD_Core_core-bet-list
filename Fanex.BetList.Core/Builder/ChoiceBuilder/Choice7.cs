@@ -4,6 +4,6 @@
     /// 1st Handicap.
     /// </summary>
     public class Choice7 : Choice1
-    {        
+    {
     }
 }

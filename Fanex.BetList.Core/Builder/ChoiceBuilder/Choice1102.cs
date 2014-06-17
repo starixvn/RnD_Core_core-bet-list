@@ -41,20 +41,17 @@
                     }
 
                     this.Template.betTeam = betTeam.ToString();
-                    this.Template.Handicap.Hide();
                     this.Template.BetType.betTypeName = string.Empty;
-                    this.Template.betTeamClassName = string.Empty;
-                    this.Template.Match.VS.Hide();
                 }
             }
             else
             {
                 this.Template.betTeam = string.Empty;
-                this.Template.Handicap.Hide();
                 this.Template.BetType.betTypeName = CoreLang.PartyRoulette;
-                this.Template.betTeamClassName = string.Empty;
-                this.Template.Match.VS.Hide();
             }
+            this.Template.Handicap.Hide();
+            this.Template.betTeamClassName = string.Empty;
+            this.Template.Match.VS.Hide();
         }
 
         /// <summary>

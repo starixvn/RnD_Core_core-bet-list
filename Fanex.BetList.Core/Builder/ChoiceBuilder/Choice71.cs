@@ -18,19 +18,19 @@
         protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             this.Template.BetType.betTypeName = null;
-            this.Template.Match.VS = null;
-            this.Template.League.sportTypeName = null;
             this.Template.Score = null;
             this.Template.Handicap.handicap = null;
 
-            this.Template.Match.homeTeam = null;
-            this.Template.Match.home_firstGoal_lastGoal = null;
-            this.Template.Match.awayTeam = null;
-            this.Template.Match.away_firstGoal_lastGoal = null;
-            this.Template.League.LeagueName.leagueName = null;
+            this.UpdateAllMatchMemberToNull();
+            this.UpdateAllLeagueMemberToNull();
 
-            this.Template.betTeam = CoreBetList.casinoGame;
-            this.Template.betTeamClassName = BLFAVORITE;                        
+            this.Template.betTeam = this.GetBetTeam();
+            this.Template.betTeamClassName = BLFAVORITE;
+        }
+
+        protected virtual string GetBetTeam()
+        {
+            return CoreBetList.casinoGame;
         }
     }
 }

@@ -13,7 +13,7 @@
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
             this.Template.Handicap = null;
-            this.Template.betTeamClassName = BLUNDERDOG;            
+            this.Template.betTeamClassName = BLUNDERDOG;
         }
     }
 }

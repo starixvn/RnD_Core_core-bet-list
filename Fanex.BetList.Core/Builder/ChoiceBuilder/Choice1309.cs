@@ -40,7 +40,7 @@
             }
             else
             {
-                this.Template.betTeamClassName = BLUNDERDOG;                
+                this.Template.betTeamClassName = BLUNDERDOG;
 
                 if (ticket.Handicap2 > ticket.Handicap1)
                 {
