@@ -124,6 +124,7 @@
     <Compile Include="Builder\ChoiceBuilder\Choice28Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1309Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice29Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice9Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds29Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds71Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds33Test.cs" />
