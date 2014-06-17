@@ -137,10 +137,9 @@
 
             this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
 
-            string homeName = ticketHelper.GetTeamNameById(ticket.HomeId);
             string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
 
-            this.Template.Match.homeTeam = string.Join(null, new string[] { homeName, ticket.IsNeutral ? Neutral : string.Empty });
+            this.Template.Match.homeTeam = this.GetHomeTeamName(ticket, ticketHelper);
             this.Template.Match.awayTeam = awayName;
 
             this.Template.Match.home_firstGoal_lastGoal = string.Empty;
@@ -615,6 +614,14 @@
         {
             this.Template.League.LeagueName.leagueName = null;
             this.Template.League.sportTypeName = null;
+        }
+
+        protected virtual string GetHomeTeamName(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            string homeName = ticketHelper.GetTeamNameById(ticket.HomeId);
+            homeName = string.Join(null, new string[] { homeName, ticket.IsNeutral ? Neutral : string.Empty });
+
+            return homeName;
         }
     }
 }

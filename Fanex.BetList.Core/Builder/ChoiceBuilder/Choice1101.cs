@@ -21,7 +21,8 @@
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            this.Template.League.LeagueName.leagueName = string.Join(null, new string[] { CoreLang.PartyBaccarat, "&nbsp;", ticket.ShowTime });
+            var betTypeName = this.GetLeagueName();
+            this.Template.League.LeagueName.leagueName = string.Join(null, new string[] { betTypeName, "&nbsp;", ticket.ShowTime });
 
             if (ticketData != null && ticketData.Count > 0)
             {
@@ -35,7 +36,7 @@
                     string betTeamFormat = "<div><span class='favorite'>{0}</span>&nbsp;<span class='stake'>{1}</span>&nbsp;@&nbsp;<span class='handicap custom'>{2}</span></div>";
                     foreach (ITicketData refDataItem in foundTicketData)
                     {
-                        betTeamName = ticketHelper.GetCasinoBetTeamNameById(refDataItem.BetTeam);
+                        betTeamName = this.GetBetTypeName(refDataItem.BetTeam, ticketHelper);
                         odds = ConvertByBetType.Odds(refDataItem.Odds, ticket.BetTypeId, ticket.OddsType);
 
                         betTeam.AppendFormat(betTeamFormat, betTeamName, ConvertByBetType.Stake(refDataItem.Stake), odds);
@@ -48,7 +49,7 @@
             else
             {
                 this.Template.betTeam = string.Empty;
-                this.Template.BetType.betTypeName = CoreLang.PartyBaccarat;
+                this.Template.BetType.betTypeName = betTypeName;
             }
 
             this.Template.Handicap.Hide();
@@ -74,6 +75,16 @@
             {
                 Template.betTeam = Template.betTeam.Remove(lastBreak, 1);
             }
+        }
+
+        protected virtual string GetLeagueName()
+        {
+            return CoreLang.PartyBaccarat;
+        }
+
+        protected virtual string GetBetTypeName(string betTeam, ITicketHelper ticketHelper)
+        {
+            return ticketHelper.GetCasinoBetTeamNameById(betTeam);
         }
     }
 }

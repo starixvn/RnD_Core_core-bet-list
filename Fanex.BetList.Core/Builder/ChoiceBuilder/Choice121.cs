@@ -17,16 +17,14 @@
         /// <param name="ticketData">The ticket data.</param>
         protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            bool betHomeTeam = ticket.BetTeam != null && ticket.BetTeam.Contains("x");
+            this.Template.Handicap.handicap = null;
 
-            string homeName = ticketHelper.GetTeamNameById(ticket.HomeId);
+            string homeName = base.GetHomeTeamName(ticket, ticketHelper);
             string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
 
-            this.Template.betTeam = betHomeTeam ? CoreLang.lblDraw : awayName;
+            this.Template.betTeam = this.GetBetTeam(ticket, ticketHelper);
 
             this.Template.betTeamClassName = BLUNDERDOG;
-
-            this.Template.Handicap.handicap = null;
 
             this.Template.Score.homeScore = ticket.LiveHomeScore.ToString();
             this.Template.Score.awayScore = ticket.LiveAwayScore.ToString();
@@ -35,7 +33,7 @@
             this.Template.Score.Visible = ticket.IsLive;
 
             this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
-            this.Template.Match.homeTeam = string.Join(null, new string[] { homeName, ticket.IsNeutral ? " (N) " : string.Empty });
+            this.Template.Match.homeTeam = homeName;
             this.Template.Match.home_firstGoal_lastGoal = string.Empty;
             this.Template.Match.awayTeam = awayName;
             this.Template.Match.away_firstGoal_lastGoal = string.Empty;
@@ -44,6 +42,15 @@
 
             this.Template.League.sportTypeName = ticketHelper.GetSportNameById(ticket.SportTypeId);
             this.Template.League.LeagueName.leagueName = ticketHelper.GetLeagueNameById(ticket.LeagueId);
+        }
+
+        protected virtual string GetBetTeam(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
+            bool betHomeTeam = ticket.BetTeam != null && ticket.BetTeam.Contains("x");
+            var betTeam = betHomeTeam ? CoreLang.lblDraw : awayName;
+
+            return betTeam;
         }
     }
 }
