@@ -1,14 +1,4 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Choice1501.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2014.03.06">Create</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
     using Fanex.BetList.Core.Entities;

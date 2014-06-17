@@ -1,17 +1,4 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Choice1231.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2013.02.27">Create</change>
-//     <change who="Marc.Bui" date="2013.03.11">Update condition to work with Template changes made by Steven</change>
-//     <change who="Marc.Bui" date="2013.03.11">Update to show MatchCode with horse name</change>
-//     <change who="Marc.Bui" date="2013.10.09">Check stylecop & refactor</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System;
     using System.Collections.Generic;

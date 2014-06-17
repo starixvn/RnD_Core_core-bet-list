@@ -42,7 +42,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.AreEqual(HOME_TEAM_NAME, _choice.Template.betTeam);
+            Assert.AreEqual(_choice.Template.Match.homeTeam, _choice.Template.betTeam);
         }
 
         /// <summary>

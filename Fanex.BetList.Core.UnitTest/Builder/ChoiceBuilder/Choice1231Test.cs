@@ -107,7 +107,7 @@
             // Assert
             Assert.AreEqual(LEAGUE_NAME, _choice.Template.League.LeagueName.leagueName);
         }
-
+     
         /// <summary>
         /// The value of Template.betTeam is always Ticket.MatchCode - HorseTeamName.
         /// </summary>

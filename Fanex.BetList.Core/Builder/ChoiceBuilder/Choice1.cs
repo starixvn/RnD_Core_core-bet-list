@@ -1,26 +1,4 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Choice1.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.11.16">Create</change>
-//     <change who="Marc.Bui" date="2012.11.26">Add Odds to show in Mix Parlay bettypes (ones with RefNo != 100000000000)</change> 
-//     <change who="Marc.Bui" date="2012.12.04">Add Excel rendering </change> 
-//     <change who="Marc.Bui" date="2013.01.18">Update ScoreClassName to BLFAVORITE (red) for all bettypes</change>
-//     <change who="Marc.Bui" date="2013.02.05">Update betteam when the match is Neutral </change> 
-//     <change who="Marc.Bui" date="2013.05.06">Assign ticketStatus to void if tickets is void, use for Sub-tickets markup (Mix Parlay & System Parlay)</change>
-//     <change who="Marc.Bui" date="2013.05.31">Implement export excel with detail data for *Parlay tickets</change>
-//     <change who="Marc.Bui" date="2013.10.09">Check stylecop & refactor</change>
-//     <change who="Marc.Bui" date="2014.11.04">Adjust excel creation to work with 3rd products which have negative bettype ids (internal convention)</change>
-//     <change who="Marc.Bui" date="2014.17.04">Adjust FGLG creation to work with new bet types: First-Half Total Goal (126) and First-Half FGLG (127)</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-/// <summary>
-/// The ChoiceBuilder namespace.
-/// </summary>
-namespace Fanex.BetList.Core.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System;
     using System.Collections.Generic;

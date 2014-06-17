@@ -93,6 +93,20 @@
             Assert.AreEqual(LEAGUE_NAME, _choice.Template.League.LeagueName.leagueName);
         }
 
+        [Test]
+        public void BuildChoice_Always_SetSportNameIsSportName()
+        {
+            // Arrange
+            const string SPORT_NAME = "Sport name";
+            _ticketHelper.GetSportNameById(Arg.Any<int>()).Returns<string>(SPORT_NAME);
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            Assert.AreEqual(SPORT_NAME, _choice.Template.League.sportTypeName);
+        }
+
         /// <summary>
         /// The value of Template.BetType.betTypeName is always bet type name get by identifier.
         /// </summary>

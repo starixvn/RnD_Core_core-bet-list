@@ -1,18 +1,4 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Choice29.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2013.10.10">Check stylecop and refactor</change>
-//     <change who="Marc.Bui" date="2013.05.31">Add detail export excel</change>
-//     <change who="Marc.Bui" date="2013.03.19">Add showSystemParlaySubbetsFunction for easy customization</change>
-//     <change who="Marc.Bui" date="2013.03.11">Add ShowSystemParlayDetailJsFunction for easy customization</change>
-//     <change who="Marc.Bui" date="2012.11.16">Create</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System;
     using System.Collections.Generic;
