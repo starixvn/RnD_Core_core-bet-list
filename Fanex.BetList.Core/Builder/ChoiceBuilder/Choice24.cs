@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Constants;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Constants;
+    using Entities;
 
     /// <summary>
     /// Double Chance.
@@ -20,10 +20,10 @@
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            this.Template.Handicap.handicap = null;
+            Template.Handicap.handicap = null;
 
-            string team = ticket.BetTeam.Contains("1") ? this.Template.Match.homeTeam : this.Template.Match.awayTeam;
-            string draw_away = ticket.BetTeam.EndsWith(BetTeamValue.X) ? CoreBetList.lblDraw : this.Template.Match.awayTeam;
+            string team = ticket.BetTeam.Contains("1") ? Template.Match.homeTeam : Template.Match.awayTeam;
+            string draw_away = ticket.BetTeam.EndsWith(BetTeamValue.X) ? CoreBetList.lblDraw : Template.Match.awayTeam;
 
             string[] betteam = new string[]
                                 {
@@ -42,7 +42,7 @@
                                     "</span>"
                                 };
 
-            this.Template.betTeam = string.Join(null, betteam);
+            Template.betTeam = string.Join(null, betteam);
         }
     }
 }

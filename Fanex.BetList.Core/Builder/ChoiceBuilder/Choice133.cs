@@ -1,8 +1,8 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Entities;
 
     /// <summary>
     /// BetRadar BetType : Home to Win Both Halves - 133.
@@ -18,11 +18,11 @@
         protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
-            this.Template.Handicap = null;
-            this.Template.OddMixParlay = null;
-            this.Template.Score = null;
-            this.Template.betTeamClassName = Favorite;
-            this.Template.betTeam = GetBetTeam(ticket.BetTeam);
+            Template.Handicap = null;
+            Template.OddMixParlay = null;
+            Template.Score = null;
+            Template.betTeamClassName = Favorite;
+            Template.betTeam = GetBetTeam(ticket.BetTeam);
         }
 
         /// <summary>

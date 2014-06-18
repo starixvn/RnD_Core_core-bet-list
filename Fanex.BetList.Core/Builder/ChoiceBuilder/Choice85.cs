@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Constants;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Constants;
+    using Entities;
 
     /// <summary>
     /// Next Over/Under
@@ -21,9 +21,9 @@
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            this.Template.Score = null;
-            this.Template.Match.VS = null;
-            this.Template.Handicap.handicap = null;
+            Template.Score = null;
+            Template.Match.VS = null;
+            Template.Handicap.handicap = null;
 
             string betId = ticket.BetId.ToString();
             if (betId == "0")
@@ -34,9 +34,9 @@
             string liveScore = string.Empty;
             liveScore = (!ticket.IsLive || betId == string.Empty) ? " [0]" : string.Join(null, new string[] { " [", betId, "]" });
 
-            string betTeam = this.Template.betTeam;
+            string betTeam = Template.betTeam;
             betTeam += " <span style='color:#555555'>37.5</span> ";
-            string bettypeName = this.Template.BetType.betTypeName;
+            string bettypeName = Template.BetType.betTypeName;
             if (!ticket.IsLive)
             {
                 bettypeName = string.Join(null, new string[] { CoreBetList.ft, ". ", bettypeName });
@@ -46,11 +46,11 @@
                 bettypeName = string.Join(null, new string[] { CoreBetList.next, HtmlCharacters.NoneBreakingSpace, bettypeName });
             }
 
-            this.Template.betTeam = betTeam + liveScore;
-            this.Template.betTeamClassName = Favorite;
+            Template.betTeam = betTeam + liveScore;
+            Template.betTeamClassName = Favorite;
 
-            this.Template.BetType.betTypeName = bettypeName;
-            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
+            Template.BetType.betTypeName = bettypeName;
+            Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
         }
     }
 }

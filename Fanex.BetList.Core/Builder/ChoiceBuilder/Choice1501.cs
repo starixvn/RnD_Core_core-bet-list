@@ -1,7 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Entities;
+    using Entities;
 
     /// <summary>
     /// Keno games.
@@ -17,24 +17,24 @@
         protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             // Does not show handicap, match, and score.
-            this.Template.Handicap = null;
+            Template.Handicap = null;
 
-            this.UpdateAllMatchMemberToNull();
+            UpdateAllMatchMemberToNull();
 
-            this.Template.Score = null;
+            Template.Score = null;
             string kenoBetTypeID;
 
-            this.Template.betTeam = ticketHelper.GetKenoBetChoiceName(ticket.BetTeam, out kenoBetTypeID);
-            this.Template.BetType.betTypeName = ticketHelper.GetKenoBetTypeName(kenoBetTypeID);
+            Template.betTeam = ticketHelper.GetKenoBetChoiceName(ticket.BetTeam, out kenoBetTypeID);
+            Template.BetType.betTypeName = ticketHelper.GetKenoBetTypeName(kenoBetTypeID);
 
-            this.Template.betTeamClassName = Favorite;
+            Template.betTeamClassName = Favorite;
 
-            if (this.Template.League != null)
+            if (Template.League != null)
             {
-                this.Template.League.sportTypeName = ticketHelper.GetSportNameById(ticket.SportTypeId);
+                Template.League.sportTypeName = ticketHelper.GetSportNameById(ticket.SportTypeId);
                 string kenoLeagueInfo = string.Join(null, new string[] { ticketHelper.GetBetTypeNameById(ticket.BetTypeId), " [", ticket.MatchId.ToString(), "]" });
 
-                this.Template.League.LeagueName.leagueName = kenoLeagueInfo;
+                Template.League.LeagueName.leagueName = kenoLeagueInfo;
             }
         }
     }

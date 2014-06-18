@@ -1,8 +1,8 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Entities;
 
     /// <summary>
     /// Virtual Tennis - Total Points.
@@ -19,7 +19,7 @@
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            this.Template.betTeam = string.Join(null, new string[] { ticket.BetTeam, " ", CoreBetList.points });
+            Template.betTeam = string.Join(null, new string[] { ticket.BetTeam, " ", CoreBetList.points });
         }
     }
 }

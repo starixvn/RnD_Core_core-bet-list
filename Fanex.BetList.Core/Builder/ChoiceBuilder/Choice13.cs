@@ -1,10 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using System.Linq;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Constants;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Constants;
+    using Entities;
 
     /// <summary>
     /// Clean Sheet.
@@ -21,12 +20,12 @@
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            string team = ticket.BetTeam != null && ticket.BetTeam.Contains(BetTeamValue.H) ? this.Template.Match.homeTeam : this.Template.Match.awayTeam;
+            string team = ticket.BetTeam != null && ticket.BetTeam.Contains(BetTeamValue.H) ? Template.Match.homeTeam : Template.Match.awayTeam;
             string yesNo = ticket.BetTeam.Contains(BetTeamValue.Y) ? CoreBetList.lblYes : CoreBetList.lblNo;
 
-            this.Template.betTeam = string.Join(null, new string[] { team, " <span class=\"", Favorite, "\">", yesNo.ToUpper(), "</span>" });
+            Template.betTeam = string.Join(null, new string[] { team, " <span class=\"", Favorite, "\">", yesNo.ToUpper(), "</span>" });
 
-            this.Template.Handicap.handicap = null;
+            Template.Handicap.handicap = null;
         }
     }
 }

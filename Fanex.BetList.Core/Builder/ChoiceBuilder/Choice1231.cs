@@ -2,7 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Entities;
+    using Entities;
 
     /// <summary>
     /// Virtual Horse Racing - Win.
@@ -19,31 +19,31 @@
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            if (this.Template.Match != null)
+            if (Template.Match != null)
             {
-                this.Template.Match.VS = null;
-                this.Template.Match.home_firstGoal_lastGoal = null;
-                this.Template.Match.away_firstGoal_lastGoal = null;
-                this.Template.Match.awayTeam = null;
+                Template.Match.VS = null;
+                Template.Match.home_firstGoal_lastGoal = null;
+                Template.Match.away_firstGoal_lastGoal = null;
+                Template.Match.awayTeam = null;
             }
 
-            this.Template.Handicap.handicap = null;
+            Template.Handicap.handicap = null;
 
-            this.Template.League.LeagueName.leagueName = ticketHelper.GetLeagueNameById(ticket.LeagueId);
+            Template.League.LeagueName.leagueName = ticketHelper.GetLeagueNameById(ticket.LeagueId);
 
-            this.Template.betTeam = string.Join(null, new string[] { ticket.MatchCode, " - ", ticketHelper.GetHorseTeamNameById(ticket.HomeId, ticket.AwayId) });
+            Template.betTeam = string.Join(null, new string[] { ticket.MatchCode, " - ", ticketHelper.GetHorseTeamNameById(ticket.HomeId, ticket.AwayId) });
 
-            this.Template.betTeamClassName = Favorite;
+            Template.betTeamClassName = Favorite;
 
             DateTime eventTime;
 
             if (DateTime.TryParse(ticket.ShowTime, out eventTime))
             {
-                this.Template.Match.homeTeam = eventTime.ToString("M/d/yyyy hh:mm");
+                Template.Match.homeTeam = eventTime.ToString("M/d/yyyy hh:mm");
             }
             else
             {
-                this.Template.Match.homeTeam = ticket.ShowTime;
+                Template.Match.homeTeam = ticket.ShowTime;
             }
         }
 

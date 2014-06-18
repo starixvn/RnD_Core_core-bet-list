@@ -1,8 +1,8 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Constants;
-    using Fanex.BetList.Core.Entities;
+    using Constants;
+    using Entities;
 
     /// <summary>
     /// 1st Correct score.
@@ -23,7 +23,7 @@
             choice = (choice == "0:4" || choice == "4:0") ? choice + " UP" : choice;
 
             // "&nbsp" because export format
-            this.Template.betTeam = HtmlCharacters.NoneBreakingSpace + choice;
+            Template.betTeam = HtmlCharacters.NoneBreakingSpace + choice;
         }
     }
 }

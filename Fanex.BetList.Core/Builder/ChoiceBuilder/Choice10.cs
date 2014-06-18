@@ -1,7 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Entities;
+    using Entities;
 
     /// <summary>
     /// Outright bet type.
@@ -10,23 +10,28 @@
     {
         protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            this.BuildScore(ticket);
+            BuildScore(ticket);
 
-            this.BuildBetType(ticket, ticketHelper);
+            BuildBetType(ticket, ticketHelper);
 
-            this.BuildBetAndMatch(ticket, ticketHelper);
+            BuildBetTeamAndMatch(ticket, ticketHelper);
 
-            this.BuildLeague(ticket, ticketHelper);
+            BuildBetTeamClassNameAndHandicap(ticket);
+
+            BuildLeague(ticket, ticketHelper);
         }
 
-        protected override void BuildBetAndMatch(ITicket ticket, ITicketHelper ticketHelper)
+        protected override void BuildBetTeamAndMatch(ITicket ticket, ITicketHelper ticketHelper)
         {
-            this.Template.Handicap.handicap = null;
+            UpdateAllMatchMemberToNull();
 
-            this.UpdateAllMatchMemberToNull();
-            
-            this.Template.betTeam = ticketHelper.GetTeamNameById(ticket.HomeId == 0 ? ticket.AwayId : ticket.HomeId);
-            this.Template.betTeamClassName = Favorite;
+            Template.betTeam = ticketHelper.GetTeamNameById(ticket.HomeId == 0 ? ticket.AwayId : ticket.HomeId);
+        }
+
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            Template.Handicap.handicap = null;
+            Template.betTeamClassName = Favorite;
         }
     }
 }

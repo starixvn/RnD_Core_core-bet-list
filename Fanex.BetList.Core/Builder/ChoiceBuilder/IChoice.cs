@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Templates;
+    using Entities;
     using NPOI.SS.UserModel;
+    using Templates;
 
     /// <summary>
     /// The top abstract layer of Choice.

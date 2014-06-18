@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Utils;
+    using App_GlobalResources;
+    using Entities;
+    using Utils;
 
     /// <summary>
     ///    Match Handicap Games 3-way.
@@ -26,36 +26,36 @@
 
             if (betHome)
             {
-                this.Template.betTeam = this.Template.Match.homeTeam;
-                this.Template.betTeamClassName = ticket.Handicap2 >= ticket.Handicap1 ? Underdog : Favorite;
-                this.Template.Handicap.handicap = ConvertByBetType.Hdp((this.Template.betTeamClassName == Favorite) ? -handicap : handicap);
+                Template.betTeam = Template.Match.homeTeam;
+                Template.betTeamClassName = ticket.Handicap2 >= ticket.Handicap1 ? Underdog : Favorite;
+                Template.Handicap.handicap = ConvertByBetType.Hdp((Template.betTeamClassName == Favorite) ? -handicap : handicap);
             }
             else if (betAway)
             {
-                this.Template.betTeam = this.Template.Match.awayTeam;
-                this.Template.betTeamClassName = ticket.Handicap2 <= ticket.Handicap1 ? Underdog : Favorite;
-                this.Template.Handicap.handicap = ConvertByBetType.Hdp((this.Template.betTeamClassName == Favorite) ? -handicap : handicap);
+                Template.betTeam = Template.Match.awayTeam;
+                Template.betTeamClassName = ticket.Handicap2 <= ticket.Handicap1 ? Underdog : Favorite;
+                Template.Handicap.handicap = ConvertByBetType.Hdp((Template.betTeamClassName == Favorite) ? -handicap : handicap);
             }
             else
             {
-                this.Template.betTeamClassName = Underdog;
+                Template.betTeamClassName = Underdog;
 
                 if (ticket.Handicap2 > ticket.Handicap1)
                 {
-                    this.Template.betTeam = string.Join(null, new string[] { CoreLang.lblDraw, "&nbsp;(", CoreBetList.h, "+", ConvertByBetType.Hdp(ticket.Handicap2) + ")" });
+                    Template.betTeam = string.Join(null, new string[] { CoreLang.lblDraw, "&nbsp;(", CoreBetList.h, "+", ConvertByBetType.Hdp(ticket.Handicap2) + ")" });
                 }
                 else
                 {
-                    this.Template.betTeam = string.Join(null, new string[] { CoreLang.lblDraw, "&nbsp;(", CoreBetList.a, "+", ConvertByBetType.Hdp(ticket.Handicap1), ")" });
+                    Template.betTeam = string.Join(null, new string[] { CoreLang.lblDraw, "&nbsp;(", CoreBetList.a, "+", ConvertByBetType.Hdp(ticket.Handicap1), ")" });
                 }
 
-                this.Template.Handicap.handicap = null;
+                Template.Handicap.handicap = null;
             }
         }
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper)
         {
-            this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);
+            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);
         }
     }
 }

@@ -2,10 +2,10 @@
 {
     using System.Collections.Generic;
     using System.Text;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Constants;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Utils;
+    using App_GlobalResources;
+    using Constants;
+    using Entities;
+    using Utils;
 
     /// <summary>
     /// Bet Type: Baccarat.
@@ -22,8 +22,8 @@
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            var betTypeName = this.GetLeagueName();
-            this.Template.League.LeagueName.leagueName = string.Join(null, new string[] { betTypeName, HtmlCharacters.NoneBreakingSpace, ticket.ShowTime });
+            var betTypeName = GetLeagueName();
+            Template.League.LeagueName.leagueName = string.Join(null, new string[] { betTypeName, HtmlCharacters.NoneBreakingSpace, ticket.ShowTime });
 
             if (ticketData != null && ticketData.Count > 0)
             {
@@ -37,25 +37,25 @@
                     string betTeamFormat = "<div><span class='favorite'>{0}</span>&nbsp;<span class='stake'>{1}</span>&nbsp;@&nbsp;<span class='handicap custom'>{2}</span></div>";
                     foreach (ITicketData refDataItem in foundTicketData)
                     {
-                        betTeamName = this.GetBetTypeName(refDataItem.BetTeam, ticketHelper);
+                        betTeamName = GetBetTypeName(refDataItem.BetTeam, ticketHelper);
                         odds = ConvertByBetType.Odds(refDataItem.Odds, ticket.BetTypeId, ticket.OddsType);
 
                         betTeam.AppendFormat(betTeamFormat, betTeamName, ConvertByBetType.Stake(refDataItem.Stake), odds);
                     }
 
-                    this.Template.betTeam = betTeam.ToString();
-                    this.Template.BetType.betTypeName = string.Empty;
+                    Template.betTeam = betTeam.ToString();
+                    Template.BetType.betTypeName = string.Empty;
                 }
             }
             else
             {
-                this.Template.betTeam = string.Empty;
-                this.Template.BetType.betTypeName = betTypeName;
+                Template.betTeam = string.Empty;
+                Template.BetType.betTypeName = betTypeName;
             }
 
-            this.Template.Handicap.Hide();
-            this.Template.betTeamClassName = string.Empty;
-            this.Template.Match.VS.Hide();
+            Template.Handicap.Hide();
+            Template.betTeamClassName = string.Empty;
+            Template.Match.VS.Hide();
         }
 
         /// <summary>

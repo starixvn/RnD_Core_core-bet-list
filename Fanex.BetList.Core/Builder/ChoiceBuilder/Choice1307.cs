@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Utils;
+    using App_GlobalResources;
+    using Entities;
+    using Utils;
 
     /// <summary>
     ///   Match Total Games 3-way.
@@ -25,29 +25,29 @@
 
             if (betOver)
             {
-                this.Template.betTeam = CoreBetList.over;
+                Template.betTeam = CoreBetList.over;
             }
             else
             {
                 if (betUnder)
                 {
-                    this.Template.betTeam = CoreBetList.under;
+                    Template.betTeam = CoreBetList.under;
                 }
                 else
                 {
-                    this.Template.betTeam = string.Format(CoreBetList.betweenXandY, ConvertByBetType.Hdp(ticket.Handicap2), ConvertByBetType.Hdp(ticket.Handicap1));
+                    Template.betTeam = string.Format(CoreBetList.betweenXandY, ConvertByBetType.Hdp(ticket.Handicap2), ConvertByBetType.Hdp(ticket.Handicap1));
                 }
             }
 
-            this.Template.Handicap.handicap = betOver ? ConvertByBetType.Hdp(ticket.Handicap1) : betUnder ? ConvertByBetType.Hdp(ticket.Handicap2) : null;
+            Template.Handicap.handicap = betOver ? ConvertByBetType.Hdp(ticket.Handicap1) : betUnder ? ConvertByBetType.Hdp(ticket.Handicap2) : null;
 
             // Update betTeamClassName
-            this.Template.betTeamClassName = betOver ? Favorite : Underdog;
+            Template.betTeamClassName = betOver ? Favorite : Underdog;
         }
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper)
         {
-            this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);
+            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);
         }
     }
 }

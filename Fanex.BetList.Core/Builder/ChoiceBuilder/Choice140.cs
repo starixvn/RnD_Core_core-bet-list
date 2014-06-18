@@ -1,7 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Constants;
+    using App_GlobalResources;
+    using Constants;
 
     /// <summary>
     /// BetRadar BetType : Choice of bet type Highest Scoring Half.

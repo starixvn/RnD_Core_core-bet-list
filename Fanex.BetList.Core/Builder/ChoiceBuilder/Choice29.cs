@@ -3,8 +3,8 @@
     using System;
     using System.Collections.Generic;
     using System.Web;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Entities;
     using NPOI.HSSF.UserModel;
     using NPOI.SS.UserModel;
 
@@ -29,11 +29,11 @@
                                 ITicketHelper ticketHelper,
                                 List<ITicketData> ticketData,
                                 bool isShowScoreMap,
-                                Entities.RTFHelper rtfHelper)
+                                RTFHelper rtfHelper)
         {
             List<IRichTextString> lstRTFChoices = new List<IRichTextString>();
             RTFHelper tmpRtfHelper = rtfHelper.Clone();
-            tmpRtfHelper.RTFRenderer.AddText(App_GlobalResources.CoreLang.lblSystemParlay, tmpRtfHelper.PosFont);
+            tmpRtfHelper.RTFRenderer.AddText(CoreLang.lblSystemParlay, tmpRtfHelper.PosFont);
             tmpRtfHelper.RTFRenderer.AddText(" - " + ticketHelper.GetCombinationMPOfferName(ticket.BetTeam), tmpRtfHelper.NormalFont);
 
             if (ticketHelper.GetParlayDetailById != null)
@@ -45,9 +45,9 @@
 
                 foreach (ITicket tkt in parlayData)
                 {
-                    IChoice choiceBuilder = this.CreateChoiceBuilder(tkt.BetTypeId);
-                    this.Template = choiceBuilder.Render(tkt, ticketHelper, null, isShowScoreMap);
-                    var choiceData = this.BuildRTFChoice(tkt, rtfHelper, ticketHelper);
+                    IChoice choiceBuilder = CreateChoiceBuilder(tkt.BetTypeId);
+                    Template = choiceBuilder.Render(tkt, ticketHelper, null, isShowScoreMap);
+                    var choiceData = BuildRTFChoice(tkt, rtfHelper, ticketHelper);
                     List<IRichTextString> tmpRtfChoice;
 
                     if (choiceData is List<IRichTextString>)
@@ -70,7 +70,7 @@
                         normal = tmpRtfHelper.NormalFont;
                     }
 
-                    this.CollectRTFSubChoice(tmpRtfChoice, ref tmpRtfHelper, pos, normal);
+                    CollectRTFSubChoice(tmpRtfChoice, ref tmpRtfHelper, pos, normal);
                 }
 
                 ticketHelper.IsShowOddsWithChoice = showOdds;
@@ -104,7 +104,7 @@
             string showSystemParlayDetailJsFunction = ticketHelper.ClientDetailSystemParlayFunction;
             if (string.IsNullOrWhiteSpace(showSystemParlayDetailJsFunction))
             {
-                showSystemParlayDetailJsFunction = this.JoinSystemParlayDetailJsFunction(
+                showSystemParlayDetailJsFunction = JoinSystemParlayDetailJsFunction(
                                                             ticket.RefNo,
                                                             ticket.WinlostDate.ToString(),
                                                             ticket.TransId.ToString(),
@@ -116,18 +116,18 @@
             string showSystemParlaySubbetsFunction = ticketHelper.ClientSystemParlaySubbetsDetailFunction;
             if (string.IsNullOrWhiteSpace(showSystemParlaySubbetsFunction))
             {
-                showSystemParlaySubbetsFunction = this.JoinSystemParlaySubbetsFunction(ticket.TransId.ToString(), ticketHelper.Index.ToString(), ticket.RefNo);
+                showSystemParlaySubbetsFunction = JoinSystemParlaySubbetsFunction(ticket.TransId.ToString(), ticketHelper.Index.ToString(), ticket.RefNo);
             }
 
             string detailSystemParlayDiv = string.Empty;
             if (ticketHelper.ShowSystemParlayDetail)
             {
-                detailSystemParlayDiv = this.JoinDetailSystemParlayDiv(showSystemParlayDetailJsFunction);
+                detailSystemParlayDiv = JoinDetailSystemParlayDiv(showSystemParlayDetailJsFunction);
             }
 
             string combinationMPOfferName = ticketHelper.GetCombinationMPOfferName(ticket.BetTeam);
 
-            mixParlay = this.JoinMixParlayMarkups(
+            mixParlay = JoinMixParlayMarkups(
                                         showSystemParlaySubbetsFunction,
                                         betTypeName,
                                         combinationMPOfferName,
@@ -135,7 +135,7 @@
                                         ticketHelper.Index.ToString(),
                                         detailSystemParlayDiv);
 
-            this.Template.SetValue(mixParlay);
+            Template.SetValue(mixParlay);
         }
 
         /// <summary>

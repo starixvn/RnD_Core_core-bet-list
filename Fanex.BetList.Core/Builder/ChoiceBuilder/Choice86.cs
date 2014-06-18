@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Constants;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Constants;
+    using Entities;
 
     /// <summary>
     /// Next Odd/Even.
@@ -20,13 +20,13 @@
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            this.Template.Score = null;
-            this.Template.Match.VS = null;
+            Template.Score = null;
+            Template.Match.VS = null;
 
             string liveScore = string.Empty;
-            string betTeam = this.Template.betTeam;
+            string betTeam = Template.betTeam;
 
-            string bettypeName = this.Template.BetType.betTypeName;
+            string bettypeName = Template.BetType.betTypeName;
             if (!ticket.IsLive)
             {
                 bettypeName = string.Join(null, new string[] { CoreBetList.ft, ". ", bettypeName });
@@ -43,13 +43,13 @@
                 liveScore = (!ticket.IsLive || betId == string.Empty) ? " [0]" : string.Join(null, new string[] { " [", betId, "]" });
             }
 
-            this.Template.betTeam = betTeam + liveScore;
-            this.Template.BetType.betTypeName = bettypeName;
+            Template.betTeam = betTeam + liveScore;
+            Template.BetType.betTypeName = bettypeName;
 
-            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
+            Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
 
             // Bet team name is always in red for this bettype
-            this.Template.betTeamClassName = Favorite;
+            Template.betTeamClassName = Favorite;
         }
     }
 }

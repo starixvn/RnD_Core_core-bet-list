@@ -1,8 +1,8 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Constants;
-    using Fanex.BetList.Core.Entities;
+    using Constants;
+    using Entities;
 
     /// <summary>
     /// 1H Total Goal.
@@ -19,12 +19,12 @@
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            this.Template.Handicap.handicap = null;
+            Template.Handicap.handicap = null;
 
             // &nbsp; because export format
-            this.Template.betTeam = string.Join(null, new string[] { HtmlCharacters.NoneBreakingSpace, ticket.BetTeam });
+            Template.betTeam = string.Join(null, new string[] { HtmlCharacters.NoneBreakingSpace, ticket.BetTeam });
 
-            this.Template.betTeamClassName = Favorite;
+            Template.betTeamClassName = Favorite;
         }
     }
 }

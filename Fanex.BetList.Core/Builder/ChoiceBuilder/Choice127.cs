@@ -1,8 +1,8 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Utils;
+    using Entities;
+    using Utils;
 
     /// <summary>
     /// 1H First Goal/Last Goal.
@@ -19,9 +19,9 @@
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            this.Template.betTeam = ConvertByBetType.GetBetTeam(ticket.BetTeam, ticket.BetTypeId);
-            this.Template.betTeamClassName = Favorite;
-            this.Template.Handicap.handicap = null;
+            Template.betTeam = ConvertByBetType.GetBetTeam(ticket.BetTeam, ticket.BetTypeId);
+            Template.betTeamClassName = Favorite;
+            Template.Handicap.handicap = null;
         }
     }
 }

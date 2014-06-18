@@ -1,8 +1,8 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Constants;
-    using Fanex.BetList.Core.Entities;
+    using Constants;
+    using Entities;
 
     /// <summary>
     /// Match Correct Score.
@@ -19,7 +19,7 @@
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            this.Template.Handicap.handicap = null;
+            Template.Handicap.handicap = null;
 
             string betTeam = string.Empty;
             if (ticket.BetTeam.Length == 2)
@@ -28,14 +28,14 @@
             }
 
             // "&nbsp" for the export format
-            this.Template.betTeam = string.Join(null, new string[] { HtmlCharacters.NoneBreakingSpace, betTeam });
+            Template.betTeam = string.Join(null, new string[] { HtmlCharacters.NoneBreakingSpace, betTeam });
 
-            this.Template.betTeamClassName = Underdog;
+            Template.betTeamClassName = Underdog;
         }
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper)
         {
-            this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);
+            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);
         }
     }
 }

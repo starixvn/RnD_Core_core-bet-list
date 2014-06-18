@@ -2,10 +2,10 @@
 {
     using System;
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Constants;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Utils;
+    using App_GlobalResources;
+    using Constants;
+    using Entities;
+    using Utils;
 
     /// <summary>
     /// 3-way handicap.
@@ -22,23 +22,23 @@
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            this.Template.Handicap.handicap = null;
+            Template.Handicap.handicap = null;
 
             string teamName = CoreBetList.lblDraw;
             decimal hdp1 = ticket.Handicap1;
             decimal hdp2 = ticket.Handicap2;
 
             string handicap = string.Empty;
-            this.Template.betTeamClassName = Favorite;
+            Template.betTeamClassName = Favorite;
 
             if ("1" == ticket.BetTeam)
             {
-                teamName = this.Template.Match.homeTeam;
+                teamName = Template.Match.homeTeam;
                 handicap = Formatter.FormatSignNumber((int)(hdp2 - hdp1));
             }
             else if ("2" == ticket.BetTeam)
             {
-                teamName = this.Template.Match.awayTeam;
+                teamName = Template.Match.awayTeam;
                 handicap = Formatter.FormatSignNumber((int)(hdp1 - hdp2));
             }
             else
@@ -60,7 +60,7 @@
                 handicap += Formatter.FormatSignNumber((int)Math.Abs(hdp2 - hdp1));
             }
 
-            this.Template.betTeam = string.Join(null, new string[] { teamName, "&nbsp;<span class=\"underdog\">(", handicap.ToString(), ")</span>" });
+            Template.betTeam = string.Join(null, new string[] { teamName, "&nbsp;<span class=\"underdog\">(", handicap.ToString(), ")</span>" });
         }
     }
 }

@@ -1,10 +1,10 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Constants;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Utils;
+    using App_GlobalResources;
+    using Constants;
+    using Entities;
+    using Utils;
 
     /// <summary>
     /// Bet Type: Over/Under.
@@ -21,8 +21,8 @@
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            this.Template.Handicap.handicap = ConvertByBetType.Hdp(ticket.Handicap1);
-            this.Template.betTeam = ticket.BetTeam == BetTeamValue.H ? CoreBetList.over : CoreBetList.under;
+            Template.Handicap.handicap = ConvertByBetType.Hdp(ticket.Handicap1);
+            Template.betTeam = ticket.BetTeam == BetTeamValue.H ? CoreBetList.over : CoreBetList.under;
         }
     }
 }

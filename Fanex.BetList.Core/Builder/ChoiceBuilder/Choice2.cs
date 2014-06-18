@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Constants;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Constants;
+    using Entities;
 
     /// <summary>
     /// Bet Type: Odd/Even.
@@ -20,9 +20,9 @@
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            this.Template.Handicap.handicap = null;
-            this.Template.betTeam = ticket.BetTeam == BetTeamValue.H ? CoreBetList.odd : CoreBetList.even;
-            this.Template.betTeamClassName = this.Template.betTeam == CoreBetList.odd ? Favorite : Underdog;
+            Template.Handicap.handicap = null;
+            Template.betTeam = ticket.BetTeam == BetTeamValue.H ? CoreBetList.odd : CoreBetList.even;
+            Template.betTeamClassName = Template.betTeam == CoreBetList.odd ? Favorite : Underdog;
         }
     }
 }

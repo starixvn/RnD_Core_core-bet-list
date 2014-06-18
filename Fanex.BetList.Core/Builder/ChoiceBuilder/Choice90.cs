@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Constants;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Constants;
+    using Entities;
 
     /// <summary>
     /// Number Wheel.
@@ -134,9 +134,9 @@
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            this.Template.Score = null;
-            this.Template.Match.VS = null;
-            this.Template.Handicap.handicap = null;
+            Template.Score = null;
+            Template.Match.VS = null;
+            Template.Handicap.handicap = null;
 
             string betId = ticket.BetId.ToString();
             string liveScore = (!ticket.IsLive || betId == string.Empty) ? string.Empty : " [" + betId + "]";
@@ -148,15 +148,15 @@
             var betTeamKey = string.Format("{0}-{1}", (int)ticket.Handicap1, betteam);
             var betTeamName = betTeamMap.ContainsKey(betTeamKey) ? betTeamMap[betTeamKey] : string.Empty;
 
-            this.Template.betTeam = string.Join(null, new string[] { betTeamName, liveScore });
-            this.Template.betTeamClassName = Favorite;
+            Template.betTeam = string.Join(null, new string[] { betTeamName, liveScore });
+            Template.betTeamClassName = Favorite;
 
-            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreLang.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
+            Template.Match.homeTeam = string.Join(null, new string[] { CoreLang.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
         }
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper)
         {
-            this.Template.BetType.betTypeName = CoreLang.numberGroup;
+            Template.BetType.betTypeName = CoreLang.numberGroup;
         }
     }
 }

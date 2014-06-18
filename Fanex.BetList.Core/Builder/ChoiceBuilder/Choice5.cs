@@ -1,8 +1,8 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Entities;
 
     /// <summary>
     /// Bet Type: FT. 1x2.
@@ -19,10 +19,10 @@
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            this.Template.Handicap.handicap = null;
+            Template.Handicap.handicap = null;
 
-            this.Template.betTeamClassName = Favorite;
-            this.Template.betTeam = string.Join(null, new string[] { CoreBetList.ft, ".", ticket.BetTeam.ToUpper() });
+            Template.betTeamClassName = Favorite;
+            Template.betTeam = string.Join(null, new string[] { CoreBetList.ft, ".", ticket.BetTeam.ToUpper() });
         }
     }
 }

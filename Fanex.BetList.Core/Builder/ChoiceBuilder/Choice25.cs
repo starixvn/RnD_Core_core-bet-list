@@ -1,7 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Entities;
+    using Entities;
 
     /// <summary>
     /// Draw no bet.
@@ -18,8 +18,8 @@
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            this.Template.Handicap.handicap = null;
-            this.Template.betTeamClassName = Underdog;
+            Template.Handicap.handicap = null;
+            Template.betTeamClassName = Underdog;
         }
     }
 }

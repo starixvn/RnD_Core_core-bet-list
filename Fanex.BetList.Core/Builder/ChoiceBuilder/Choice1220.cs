@@ -1,7 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Entities;
+    using Entities;
 
     /// <summary>
     /// Virtual Tennis - PlayerWin.
@@ -12,8 +12,8 @@
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            this.Template.Handicap = null;
-            this.Template.betTeamClassName = Underdog;
+            Template.Handicap = null;
+            Template.betTeamClassName = Underdog;
         }
     }
 }

@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Constants;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Constants;
+    using Entities;
 
     /// <summary>
     /// Home no bet.
@@ -18,32 +18,36 @@
         /// <param name="ticketData">The ticket data.</param>
         protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            this.BuildScore(ticket);
+            BuildScore(ticket);
 
-            this.BuildBetType(ticket, ticketHelper);
+            BuildBetType(ticket, ticketHelper);
 
-            this.BuildBetAndMatch(ticket, ticketHelper);
+            BuildBetTeamAndMatch(ticket, ticketHelper);
 
-            this.BuildLeague(ticket, ticketHelper);
+            BuildBetTeamClassNameAndHandicap(ticket);
+
+            BuildLeague(ticket, ticketHelper);
         }
 
-        protected override void BuildBetAndMatch(ITicket ticket, ITicketHelper ticketHelper)
+        protected override void BuildBetTeamAndMatch(ITicket ticket, ITicketHelper ticketHelper)
         {
-            this.Template.Handicap.handicap = null;
-
-            string homeName = this.GetHomeTeamName(ticket, ticketHelper);
+            string homeName = GetHomeTeamName(ticket, ticketHelper);
             string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
 
-            this.Template.betTeam = this.GetBetTeam(ticket, ticketHelper);
+            Template.betTeam = GetBetTeam(ticket, ticketHelper);
 
-            this.Template.betTeamClassName = Underdog;
-            
-            this.Template.Match.homeTeam = homeName;
-            this.Template.Match.home_firstGoal_lastGoal = string.Empty;
-            this.Template.Match.awayTeam = awayName;
-            this.Template.Match.away_firstGoal_lastGoal = string.Empty;
+            Template.Match.homeTeam = homeName;
+            Template.Match.home_firstGoal_lastGoal = string.Empty;
+            Template.Match.awayTeam = awayName;
+            Template.Match.away_firstGoal_lastGoal = string.Empty;
 
-            this.CalculateFG_LG(ticket.EventStatus, ref this.Template.Match.home_firstGoal_lastGoal, ref this.Template.Match.away_firstGoal_lastGoal);
+            CalculateFG_LG(ticket.EventStatus, ref Template.Match.home_firstGoal_lastGoal, ref Template.Match.away_firstGoal_lastGoal);
+        }
+
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            Template.Handicap.handicap = null;
+            Template.betTeamClassName = Underdog;
         }
 
         protected virtual string GetBetTeam(ITicket ticket, ITicketHelper ticketHelper)

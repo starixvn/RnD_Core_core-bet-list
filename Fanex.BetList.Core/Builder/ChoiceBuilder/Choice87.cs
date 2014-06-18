@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Constants;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Constants;
+    using Entities;
 
     /// <summary>
     /// Next High/Low.
@@ -20,9 +20,9 @@
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            this.Template.Score = null;
-            this.Template.Match.VS = null;
-            this.Template.Handicap.handicap = null;
+            Template.Score = null;
+            Template.Match.VS = null;
+            Template.Handicap.handicap = null;
 
             string betId = ticket.BetId.ToString();
             if (betId == "0")
@@ -34,10 +34,10 @@
 
             string betTeam = ticket.BetTeam == BetTeamValue.H ? CoreBetList.high : CoreBetList.low;
 
-            this.Template.betTeam = string.Join(null, new string[] { betTeam, liveScore });
-            this.Template.betTeamClassName = Favorite;
+            Template.betTeam = string.Join(null, new string[] { betTeam, liveScore });
+            Template.betTeamClassName = Favorite;
 
-            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
+            Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
         }
     }
 }

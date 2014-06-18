@@ -2,10 +2,11 @@
 {
     using System;
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Templates;
+    using App_GlobalResources;
+    using Entities;
     using NPOI.HSSF.UserModel;
     using NPOI.SS.UserModel;
+    using Templates;
 
     /// <summary>
     /// Mix Parlay.
@@ -53,9 +54,9 @@
 
             string mixParlay = string.Join(null, components);
 
-            this.Template.SetValue(mixParlay);
+            Template.SetValue(mixParlay);
 
-            return this.Template;
+            return Template;
         }
 
         /// <summary>
@@ -79,7 +80,7 @@
             List<IRichTextString> lstRTFChoices = new List<IRichTextString>();
             RTFHelper tmpRtfHelper = rtfHelper.Clone();
 
-            tmpRtfHelper.RTFRenderer.AddText(App_GlobalResources.CoreLang.lblMixParlay, tmpRtfHelper.PosFont);
+            tmpRtfHelper.RTFRenderer.AddText(CoreLang.lblMixParlay, tmpRtfHelper.PosFont);
 
             if (ticketHelper.GetParlayDetailById != null)
             {
@@ -90,9 +91,9 @@
 
                 foreach (ITicket tkt in parlayData)
                 {
-                    IChoice choiceBuilder = this.CreateChoiceBuilder(tkt.BetTypeId);
-                    this.Template = choiceBuilder.Render(tkt, ticketHelper, null, isShowScoreMap);
-                    var choiceData = this.BuildRTFChoice(tkt, rtfHelper, ticketHelper);
+                    IChoice choiceBuilder = CreateChoiceBuilder(tkt.BetTypeId);
+                    Template = choiceBuilder.Render(tkt, ticketHelper, null, isShowScoreMap);
+                    var choiceData = BuildRTFChoice(tkt, rtfHelper, ticketHelper);
                     List<IRichTextString> tmpRtfChoice;
                     if (choiceData is List<IRichTextString>)
                     {
@@ -114,7 +115,7 @@
                         normal = tmpRtfHelper.NormalFont;
                     }
 
-                    this.CombineSubRichTextString(tmpRtfChoice, ref tmpRtfHelper, pos, normal);
+                    CombineSubRichTextString(tmpRtfChoice, ref tmpRtfHelper, pos, normal);
                 }
 
                 ticketHelper.IsShowOddsWithChoice = showOdds;

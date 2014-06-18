@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Constants;
+    using App_GlobalResources;
+    using Constants;
+    using Entities;
 
     /// <summary>
     /// Both/One/Neither team to score.
@@ -20,22 +20,22 @@
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            this.Template.Handicap.handicap = null;
+            Template.Handicap.handicap = null;
 
             if (ticket.BetTeam == BetTeamValue.B)
             {
-                this.Template.betTeam = CoreBetList.lblBoth;
+                Template.betTeam = CoreBetList.lblBoth;
             }
             else if (ticket.BetTeam == BetTeamValue.O)
             {
-                this.Template.betTeam = CoreBetList.lblOne;
+                Template.betTeam = CoreBetList.lblOne;
             }
             else if (ticket.BetTeam == BetTeamValue.N)
             {
-                this.Template.betTeam = CoreBetList.nogoal;
+                Template.betTeam = CoreBetList.nogoal;
             }
 
-            this.Template.betTeamClassName = Favorite;
+            Template.betTeamClassName = Favorite;
         }
     }
 }

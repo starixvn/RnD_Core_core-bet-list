@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Constants;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Constants;
+    using Entities;
 
     /// <summary>
     /// Type: Warrior.
@@ -20,13 +20,13 @@
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            this.Template.Score = null;
-            this.Template.Match.VS = null;
-            this.Template.Handicap.handicap = null;
-            this.Template.betTeam = ticket.BetTeam == BetTeamValue.H ? CoreBetList.warrior2ndBall : CoreBetList.warrior3rdBall;
-            this.Template.betTeamClassName = Favorite;
+            Template.Score = null;
+            Template.Match.VS = null;
+            Template.Handicap.handicap = null;
+            Template.betTeam = ticket.BetTeam == BetTeamValue.H ? CoreBetList.warrior2ndBall : CoreBetList.warrior3rdBall;
+            Template.betTeamClassName = Favorite;
 
-            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
+            Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
         }
     }
 }

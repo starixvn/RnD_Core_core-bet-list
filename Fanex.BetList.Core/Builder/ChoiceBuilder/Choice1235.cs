@@ -1,8 +1,8 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Entities;
 
     /// <summary>
     /// Virtual Tennis - ScoreBet.
@@ -55,7 +55,7 @@
                     break;
             }
 
-            this.Template.betTeam = choice;
+            Template.betTeam = choice;
         }
     }
 }

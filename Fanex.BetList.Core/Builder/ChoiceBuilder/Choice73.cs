@@ -1,6 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.App_GlobalResources;
+    using App_GlobalResources;
 
     /// <summary>
     /// Bet Type: Bingo.

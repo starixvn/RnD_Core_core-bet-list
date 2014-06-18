@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Constants;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Constants;
+    using Entities;
 
     /// <summary>
     /// Bet Type: Win.
@@ -20,17 +20,17 @@
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            this.Template.Match.VS = null;
-            this.Template.Handicap.handicap = null;
-            this.Template.Match.home_firstGoal_lastGoal = null;
-            this.Template.Match.away_firstGoal_lastGoal = null;
-            this.Template.Match.awayTeam = null;
+            Template.Match.VS = null;
+            Template.Handicap.handicap = null;
+            Template.Match.home_firstGoal_lastGoal = null;
+            Template.Match.away_firstGoal_lastGoal = null;
+            Template.Match.awayTeam = null;
 
-            this.Template.betTeam = string.Join(null, new string[] { ticket.MatchCode, " - ", ticketHelper.GetHorseTeamNameById(ticket.HomeId, ticket.AwayId) });
+            Template.betTeam = string.Join(null, new string[] { ticket.MatchCode, " - ", ticketHelper.GetHorseTeamNameById(ticket.HomeId, ticket.AwayId) });
 
-            this.Template.betTeamClassName = Favorite;
+            Template.betTeamClassName = Favorite;
 
-            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.race, HtmlCharacters.NoneBreakingSpace, ticket.Race });
+            Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.race, HtmlCharacters.NoneBreakingSpace, ticket.Race });
         }
     }
 }

@@ -121,7 +121,9 @@
 
             BuildBetType(ticket, ticketHelper);
 
-            BuildBetAndMatch(ticket, ticketHelper);
+            BuildBetTeamAndMatch(ticket, ticketHelper);
+
+            BuildBetTeamClassNameAndHandicap(ticket);
 
             BuildLeague(ticket, ticketHelper);
 
@@ -152,7 +154,7 @@
             Template.League.sportTypeName = ticketHelper.GetSportNameById(ticket.SportTypeId);
         }
 
-        protected virtual void BuildBetAndMatch(ITicket ticket, ITicketHelper ticketHelper)
+        protected virtual void BuildBetTeamAndMatch(ITicket ticket, ITicketHelper ticketHelper)
         {
             string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
             string homeName = GetHomeTeamName(ticket, ticketHelper);
@@ -164,8 +166,14 @@
             Template.Match.away_firstGoal_lastGoal = string.Empty;
             CalculateFG_LG(ticket.EventStatus, ref Template.Match.home_firstGoal_lastGoal, ref Template.Match.away_firstGoal_lastGoal);
 
-            bool betHomeTeam = ticket.BetTeam != null && ticket.BetTeam.Contains(BetTeamValue.H);
+            bool betHomeTeam = IsBetHomeTeam(ticket);
             Template.betTeam = betHomeTeam ? homeName : awayName;
+        }
+
+        protected virtual void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            bool betHomeTeam = IsBetHomeTeam(ticket);
+
             if (betHomeTeam)
             {
                 Template.betTeamClassName = ticket.Handicap2 >= ticket.Handicap1 ? Underdog : Favorite;
@@ -199,9 +207,11 @@
             }
         }
 
-        protected virtual void BuildHandicap(ITicket ticket)
+        private bool IsBetHomeTeam(ITicket ticket)
         {
+            bool betHomeTeam = ticket.BetTeam != null && ticket.BetTeam.Contains(BetTeamValue.H);
 
+            return betHomeTeam;
         }
 
         protected virtual string GetHomeTeamName(ITicket ticket, ITicketHelper ticketHelper)

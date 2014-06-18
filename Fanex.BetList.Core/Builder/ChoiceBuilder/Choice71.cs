@@ -1,8 +1,8 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Entities;
 
     /// <summary>
     /// Casino Games.
@@ -17,17 +17,17 @@
         /// <param name="ticketData">The ticket data.</param>
         protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            this.BuildBetType(ticket, ticketHelper);
+            BuildBetType(ticket, ticketHelper);
 
-            this.Template.Score = null;
-            this.Template.Handicap.handicap = null;
+            Template.Score = null;
+            Template.Handicap.handicap = null;
 
-            this.UpdateAllMatchMemberToNull();
+            UpdateAllMatchMemberToNull();
 
-            this.UpdateAllLeagueMemberToNull();
+            UpdateAllLeagueMemberToNull();
 
-            this.Template.betTeam = this.GetBetTeam();
-            this.Template.betTeamClassName = Favorite;
+            Template.betTeam = GetBetTeam();
+            Template.betTeamClassName = Favorite;
         }
 
         protected virtual string GetBetTeam()
@@ -37,7 +37,7 @@
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper)
         {
-            this.Template.BetType.betTypeName = null;
+            Template.BetType.betTypeName = null;
         }
     }
 }

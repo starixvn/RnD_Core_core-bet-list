@@ -1,8 +1,8 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Entities;
 
     /// <summary>
     /// P2P Transfer.
@@ -18,19 +18,19 @@
         protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
-         
-            this.Template.Match.VS = null;
-            this.Template.League.sportTypeName = null;
-            this.Template.Score = null;
-            this.Template.Handicap.handicap = null;
 
-            this.Template.betTeam = string.Join(null, new string[] { CoreLang.p2pGame, " - ", CoreBetList.transfer });
-            this.Template.betTeamClassName = Favorite;
+            Template.Match.VS = null;
+            Template.League.sportTypeName = null;
+            Template.Score = null;
+            Template.Handicap.handicap = null;
+
+            Template.betTeam = string.Join(null, new string[] { CoreLang.p2pGame, " - ", CoreBetList.transfer });
+            Template.betTeamClassName = Favorite;
         }
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper)
         {
-            this.Template.BetType.betTypeName = null;
+            Template.BetType.betTypeName = null;
         }
     }
 }
