@@ -19,8 +19,6 @@
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            Template.Handicap.handicap = null;
-
             string betTeam = string.Empty;
             if (ticket.BetTeam.Length == 2)
             {
@@ -29,8 +27,12 @@
 
             // "&nbsp" for the export format
             Template.betTeam = string.Join(null, new string[] { HtmlCharacters.NoneBreakingSpace, betTeam });
+        }
 
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
             Template.betTeamClassName = Underdog;
+            Template.Handicap.handicap = null;
         }
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper)

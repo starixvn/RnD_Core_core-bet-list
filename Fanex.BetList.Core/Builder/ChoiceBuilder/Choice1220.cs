@@ -1,6 +1,5 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System.Collections.Generic;
     using Entities;
 
     /// <summary>
@@ -8,10 +7,8 @@
     /// </summary>
     public class Choice1220 : Choice1
     {
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
-            base.BuildChoice(ticket, ticketHelper, ticketData);
-
             Template.Handicap = null;
             Template.betTeamClassName = Underdog;
         }

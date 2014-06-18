@@ -19,6 +19,8 @@
             BuildBetTeamClassNameAndHandicap(ticket);
 
             BuildLeague(ticket, ticketHelper);
+
+            BuildSport(ticket, ticketHelper);
         }
 
         protected override void BuildBetTeamAndMatch(ITicket ticket, ITicketHelper ticketHelper)

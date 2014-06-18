@@ -20,8 +20,12 @@
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
             Template.betTeam = ConvertByBetType.GetBetTeam(ticket.BetTeam, ticket.BetTypeId);
-            Template.betTeamClassName = Favorite;
+        }
+
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
             Template.Handicap.handicap = null;
+            Template.betTeamClassName = Favorite;
         }
     }
 }

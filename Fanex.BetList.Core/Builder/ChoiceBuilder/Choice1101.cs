@@ -52,10 +52,14 @@
                 Template.betTeam = string.Empty;
                 Template.BetType.betTypeName = betTypeName;
             }
+            
+            Template.Match.VS.Hide();
+        }
 
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
             Template.Handicap.Hide();
             Template.betTeamClassName = string.Empty;
-            Template.Match.VS.Hide();
         }
 
         /// <summary>

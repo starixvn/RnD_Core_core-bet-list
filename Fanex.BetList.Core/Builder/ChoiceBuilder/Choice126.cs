@@ -19,11 +19,13 @@
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            Template.Handicap.handicap = null;
-
             // &nbsp; because export format
             Template.betTeam = string.Join(null, new string[] { HtmlCharacters.NoneBreakingSpace, ticket.BetTeam });
+        }
 
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            Template.Handicap.handicap = null;
             Template.betTeamClassName = Favorite;
         }
     }

@@ -127,6 +127,8 @@
 
             BuildLeague(ticket, ticketHelper);
 
+            BuildSport(ticket, ticketHelper);
+
             BuildTicketStatus(ticket);
         }
 
@@ -145,14 +147,26 @@
 
         protected virtual void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
         {
-            if (Template.League == null)
+            if (Template.League == null
+                || Template.League.LeagueName == null)
             {
                 return;
             }
 
             Template.League.LeagueName.leagueName = ticketHelper.GetLeagueNameById(ticket.LeagueId);
+
+        }
+
+        protected virtual void BuildSport(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            if (Template.League == null)
+            {
+                return;
+            }
+
             Template.League.sportTypeName = ticketHelper.GetSportNameById(ticket.SportTypeId);
         }
+
 
         protected virtual void BuildBetTeamAndMatch(ITicket ticket, ITicketHelper ticketHelper)
         {
