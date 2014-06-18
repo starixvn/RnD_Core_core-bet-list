@@ -18,20 +18,23 @@
         /// <param name="ticketData">The ticket data.</param>
         protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
+            this.BuildScore(ticket);
+
+            this.BuildBetAndMatch(ticket, ticketHelper);
+
+            this.BuildLeague(ticket, ticketHelper);
+        }
+
+        protected override void BuildBetAndMatch(ITicket ticket, ITicketHelper ticketHelper)
+        {
             this.Template.Handicap.handicap = null;
 
-            string homeName = GetHomeTeamName(ticket, ticketHelper);
+            string homeName = this.GetHomeTeamName(ticket, ticketHelper);
             string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
 
             this.Template.betTeam = this.GetBetTeam(ticket, ticketHelper);
 
             this.Template.betTeamClassName = BLUNDERDOG;
-
-            this.Template.Score.homeScore = ticket.LiveHomeScore.ToString();
-            this.Template.Score.awayScore = ticket.LiveAwayScore.ToString();
-
-            // For special cases
-            this.Template.Score.Visible = ticket.IsLive;
 
             this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
             this.Template.Match.homeTeam = homeName;
@@ -40,9 +43,6 @@
             this.Template.Match.away_firstGoal_lastGoal = string.Empty;
 
             this.CalculateFG_LG(ticket.EventStatus, ref this.Template.Match.home_firstGoal_lastGoal, ref this.Template.Match.away_firstGoal_lastGoal);
-
-            this.Template.League.sportTypeName = ticketHelper.GetSportNameById(ticket.SportTypeId);
-            this.Template.League.LeagueName.leagueName = ticketHelper.GetLeagueNameById(ticket.LeagueId);
         }
 
         protected virtual string GetBetTeam(ITicket ticket, ITicketHelper ticketHelper)

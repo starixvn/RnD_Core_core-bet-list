@@ -22,6 +22,7 @@
             this.Template.Handicap.handicap = null;
 
             this.UpdateAllMatchMemberToNull();
+
             this.UpdateAllLeagueMemberToNull();
 
             this.Template.betTeam = this.GetBetTeam();

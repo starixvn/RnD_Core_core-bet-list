@@ -21,9 +21,8 @@
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
             this.Template.Handicap.handicap = null;
-            string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
 
-            string team = ticket.BetTeam.Contains("1") ? this.Template.Match.homeTeam : awayName;
+            string team = ticket.BetTeam.Contains("1") ? this.Template.Match.homeTeam : this.Template.Match.awayTeam;
             string draw_away = ticket.BetTeam.EndsWith(BetTeamValue.X) ? CoreBetList.lblDraw : this.Template.Match.awayTeam;
 
             string[] betteam = new string[]

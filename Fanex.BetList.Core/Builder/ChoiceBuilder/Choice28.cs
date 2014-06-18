@@ -38,8 +38,7 @@
             }
             else if ("2" == ticket.BetTeam)
             {
-                string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
-                teamName = awayName;
+                teamName = this.Template.Match.awayTeam;
                 handicap = Formatter.FormatSignNumber((int)(hdp1 - hdp2));
             }
             else

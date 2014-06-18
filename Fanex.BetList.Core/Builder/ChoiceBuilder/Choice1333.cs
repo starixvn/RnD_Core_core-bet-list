@@ -23,15 +23,13 @@
             bool team1 = ticket.BetTeam == "1";
             bool team2 = ticket.BetTeam == "2";
 
-            string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
-
             if (team1)
             {
                 this.Template.betTeam = this.Template.Match.homeTeam;
             }
             else if (team2)
             {
-                this.Template.betTeam = awayName;
+                this.Template.betTeam = this.Template.Match.awayTeam;
             }
             else
             {

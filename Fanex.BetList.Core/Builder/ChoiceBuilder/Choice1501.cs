@@ -19,10 +19,7 @@
             // Does not show handicap, match, and score.
             this.Template.Handicap = null;
 
-            if (this.Template.Match != null)
-            {
-                this.UpdateAllMatchMemberToNull();
-            }
+            this.UpdateAllMatchMemberToNull();
 
             this.Template.Score = null;
             string kenoBetTypeID;

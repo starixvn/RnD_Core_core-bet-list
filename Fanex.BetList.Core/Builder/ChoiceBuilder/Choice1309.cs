@@ -20,8 +20,6 @@
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
-
             bool betHome = ticket.BetTeam == "1";
             bool betAway = ticket.BetTeam == "2";
             decimal handicap = ticket.Handicap2 > ticket.Handicap1 ? ticket.Handicap2 : ticket.Handicap1;
@@ -34,7 +32,7 @@
             }
             else if (betAway)
             {
-                this.Template.betTeam = awayName;
+                this.Template.betTeam = this.Template.Match.awayTeam;
                 this.Template.betTeamClassName = ticket.Handicap2 <= ticket.Handicap1 ? BLUNDERDOG : BLFAVORITE;
                 this.Template.Handicap.handicap = ConvertByBetType.Hdp((this.Template.betTeamClassName == BLFAVORITE) ? -handicap : handicap);
             }

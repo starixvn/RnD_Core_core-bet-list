@@ -23,9 +23,7 @@
             bool home = ticket.BetTeam == "1";
             bool away = ticket.BetTeam == "2";
 
-            string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
-
-            this.Template.betTeam = home ? this.Template.Match.homeTeam : away ? awayName : CoreBetList.noTiebreak;
+            this.Template.betTeam = home ? this.Template.Match.homeTeam : away ? this.Template.Match.awayTeam : CoreBetList.noTiebreak;
             this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);
         }
     }

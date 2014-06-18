@@ -8,40 +8,24 @@
     /// </summary>
     public class Choice10 : Choice1
     {
-        /// <summary>
-        /// Builds the choice.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
         protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {
+            this.BuildScore(ticket);
+
+            this.BuildBetAndMatch(ticket, ticketHelper);
+
+            this.BuildLeague(ticket, ticketHelper);
+        }
+
+        protected override void BuildBetAndMatch(ITicket ticket, ITicketHelper ticketHelper)
         {
             this.Template.Handicap.handicap = null;
 
-            if (this.Template.Match != null)
-            {
-                this.UpdateAllMatchMemberToNull();
-            }
-
-            if (!ticket.IsLive)
-            {
-                this.Template.Score = null;
-            }
-            else
-            {
-                this.Template.Score.homeScore = ticket.LiveHomeScore.ToString();
-                this.Template.Score.awayScore = ticket.LiveAwayScore.ToString();
-            }
+            this.UpdateAllMatchMemberToNull();
 
             this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
             this.Template.betTeam = ticketHelper.GetTeamNameById(ticket.HomeId == 0 ? ticket.AwayId : ticket.HomeId);
             this.Template.betTeamClassName = BLFAVORITE;
-
-            if (this.Template.League != null)
-            {
-                this.Template.League.sportTypeName = ticketHelper.GetSportNameById(ticket.SportTypeId);
-                this.Template.League.LeagueName.leagueName = ticketHelper.GetLeagueNameById(ticket.LeagueId);
-            }
         }
     }
 }

@@ -104,19 +104,20 @@
         }
 
         /// <summary>
-        /// The value of Template.Score is always null.
+        /// The value of Template.Match.away_firstGoal_lastGoal is always null.
         /// </summary>
-        [Test]
-        public void BuildChoice_DeadBallTicket_ScoreBlockIsNull()
+        [TestCase(true)]
+        [TestCase(false)]
+        public void BuildChoice_Always_SetScoreVisibleIsIsLive(bool isLive)
         {
             // Arrange
-            _ticket.IsLive = false;
+            _ticket.IsLive = isLive;
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.IsNull(_choice.Template.Score);
+            Assert.AreEqual(isLive, _choice.Template.Score.Visible);
         }
 
         /// <summary>

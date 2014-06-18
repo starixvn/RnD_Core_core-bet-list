@@ -21,9 +21,7 @@
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
-
-            string team = ticket.BetTeam != null && ticket.BetTeam.Contains(BetTeamValue.H) ? this.Template.Match.homeTeam : awayName;
+            string team = ticket.BetTeam != null && ticket.BetTeam.Contains(BetTeamValue.H) ? this.Template.Match.homeTeam : this.Template.Match.awayTeam;
             string yesNo = ticket.BetTeam.Contains(BetTeamValue.Y) ? CoreBetList.lblYes : CoreBetList.lblNo;
 
             this.Template.betTeam = string.Join(null, new string[] { team, " <span class=\"", BLFAVORITE, "\">", yesNo.ToUpper(), "</span>" });

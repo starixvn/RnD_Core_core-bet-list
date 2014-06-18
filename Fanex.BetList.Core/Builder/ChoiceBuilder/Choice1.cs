@@ -122,9 +122,36 @@
         protected virtual void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             this.BuildScore(ticket);
+
+            this.BuildBetAndMatch(ticket, ticketHelper);
+
             this.BuildLeague(ticket, ticketHelper);
 
+            this.BuildTicketStatus(ticket);
+        }
 
+        protected virtual void BuildScore(ITicket ticket)
+        {
+            if (this.Template.Score != null)
+            {
+                this.Template.Score.homeScore = ticket.LiveHomeScore.ToString();
+                this.Template.Score.awayScore = ticket.LiveAwayScore.ToString();
+                this.Template.Score.Visible = ticket.IsLive;
+                this.Template.Score.scoreClassName = BLFAVORITE;
+            }
+        }
+
+        protected virtual void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            if (this.Template.League != null)
+            {
+                this.Template.League.LeagueName.leagueName = ticketHelper.GetLeagueNameById(ticket.LeagueId);
+                this.Template.League.sportTypeName = ticketHelper.GetSportNameById(ticket.SportTypeId);
+            }
+        }
+
+        protected virtual void BuildBetAndMatch(ITicket ticket, ITicketHelper ticketHelper)
+        {
             this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
 
             string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
@@ -151,27 +178,6 @@
             decimal handicap = ticket.Handicap2 > ticket.Handicap1 ? ticket.Handicap2 : ticket.Handicap1;
 
             this.Template.Handicap.handicap = ConvertByBetType.Hdp((this.Template.betTeamClassName == BLFAVORITE) ? -handicap : handicap);
-
-            this.BuildTicketStatus(ticket);
-        }
-
-        protected virtual void BuildScore(ITicket ticket)
-        {
-            this.Template.Score.homeScore = ticket.LiveHomeScore.ToString();
-            this.Template.Score.awayScore = ticket.LiveAwayScore.ToString();
-            this.Template.Score.Visible = ticket.IsLive;
-            this.Template.Score.scoreClassName = BLFAVORITE;
-        }
-
-        protected virtual void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
-        {
-            this.Template.League.LeagueName.leagueName = ticketHelper.GetLeagueNameById(ticket.LeagueId);
-            this.Template.League.sportTypeName = ticketHelper.GetSportNameById(ticket.SportTypeId);
-        }
-
-        protected virtual void BuildBetType(Ticket ticket, ITicketHelper ticketHelper)
-        {
-
         }
 
         protected virtual void BuildTicketStatus(ITicket ticket)
@@ -310,17 +316,23 @@
 
         protected void UpdateAllMatchMemberToNull()
         {
-            this.Template.Match.homeTeam = null;
-            this.Template.Match.awayTeam = null;
-            this.Template.Match.VS = null;
-            this.Template.Match.home_firstGoal_lastGoal = null;
-            this.Template.Match.away_firstGoal_lastGoal = null;
+            if (Template.Match != null)
+            {
+                this.Template.Match.homeTeam = null;
+                this.Template.Match.awayTeam = null;
+                this.Template.Match.VS = null;
+                this.Template.Match.home_firstGoal_lastGoal = null;
+                this.Template.Match.away_firstGoal_lastGoal = null;
+            }
         }
 
         protected void UpdateAllLeagueMemberToNull()
         {
-            this.Template.League.LeagueName.leagueName = null;
-            this.Template.League.sportTypeName = null;
+            if (Template.League != null)
+            {
+                this.Template.League.LeagueName.leagueName = null;
+                this.Template.League.sportTypeName = null;
+            }
         }
 
         /// <summary>
