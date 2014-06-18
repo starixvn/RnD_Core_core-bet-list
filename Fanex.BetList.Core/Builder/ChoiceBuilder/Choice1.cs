@@ -285,6 +285,29 @@
             this.UpdateFG_LG_Excel(FirstHalfFirstGoalTextName, FirstHalfLastGoalTextName, fhfglg, ref homeFGLG, ref awayFGLG);
         }
 
+        protected void UpdateAllMatchMemberToNull()
+        {
+            this.Template.Match.homeTeam = null;
+            this.Template.Match.awayTeam = null;
+            this.Template.Match.VS = null;
+            this.Template.Match.home_firstGoal_lastGoal = null;
+            this.Template.Match.away_firstGoal_lastGoal = null;
+        }
+
+        protected void UpdateAllLeagueMemberToNull()
+        {
+            this.Template.League.LeagueName.leagueName = null;
+            this.Template.League.sportTypeName = null;
+        }
+
+        protected virtual string GetHomeTeamName(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            string homeName = ticketHelper.GetTeamNameById(ticket.HomeId);
+            homeName = string.Join(null, new string[] { homeName, ticket.IsNeutral ? Neutral : string.Empty });
+
+            return homeName;
+        }
+
         /// <summary>
         /// Builds the score map.
         /// </summary>
@@ -599,29 +622,6 @@
             {
                 awayFGLG += lastTextName;
             }
-        }
-
-        protected void UpdateAllMatchMemberToNull()
-        {
-            this.Template.Match.homeTeam = null;
-            this.Template.Match.awayTeam = null;
-            this.Template.Match.VS = null;
-            this.Template.Match.home_firstGoal_lastGoal = null;
-            this.Template.Match.away_firstGoal_lastGoal = null;
-        }
-
-        protected void UpdateAllLeagueMemberToNull()
-        {
-            this.Template.League.LeagueName.leagueName = null;
-            this.Template.League.sportTypeName = null;
-        }
-
-        protected virtual string GetHomeTeamName(ITicket ticket, ITicketHelper ticketHelper)
-        {
-            string homeName = ticketHelper.GetTeamNameById(ticket.HomeId);
-            homeName = string.Join(null, new string[] { homeName, ticket.IsNeutral ? Neutral : string.Empty });
-
-            return homeName;
-        }
+        }        
     }
 }

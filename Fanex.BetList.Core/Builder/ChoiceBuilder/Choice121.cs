@@ -19,7 +19,7 @@
         {
             this.Template.Handicap.handicap = null;
 
-            string homeName = base.GetHomeTeamName(ticket, ticketHelper);
+            string homeName = GetHomeTeamName(ticket, ticketHelper);
             string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
 
             this.Template.betTeam = this.GetBetTeam(ticket, ticketHelper);

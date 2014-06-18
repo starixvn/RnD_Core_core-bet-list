@@ -93,6 +93,9 @@
             Assert.AreEqual(LEAGUE_NAME, _choice.Template.League.LeagueName.leagueName);
         }
 
+        /// <summary>
+        /// The value of Template.League.LeagueName.leagueName is always league name get by identifier.
+        /// </summary>
         [Test]
         public void BuildChoice_Always_SetSportNameIsSportName()
         {
