@@ -35,7 +35,10 @@
             {
                 this.Template.betTeam = CoreLang.lblNeither;
             }
+        }
 
+        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper)
+        {
             this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);
         }
     }

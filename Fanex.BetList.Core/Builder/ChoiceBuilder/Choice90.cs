@@ -151,8 +151,12 @@
             this.Template.betTeam = string.Join(null, new string[] { betTeamName, liveScore });
             this.Template.betTeamClassName = BLFAVORITE;
 
-            this.Template.BetType.betTypeName = CoreLang.numberGroup;
             this.Template.Match.homeTeam = string.Join(null, new string[] { CoreLang.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
+        }
+
+        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            this.Template.BetType.betTypeName = CoreLang.numberGroup;
         }
     }
 }

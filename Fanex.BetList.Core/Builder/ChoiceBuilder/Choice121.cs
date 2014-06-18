@@ -20,6 +20,8 @@
         {
             this.BuildScore(ticket);
 
+            this.BuildBetType(ticket, ticketHelper);
+
             this.BuildBetAndMatch(ticket, ticketHelper);
 
             this.BuildLeague(ticket, ticketHelper);
@@ -35,8 +37,7 @@
             this.Template.betTeam = this.GetBetTeam(ticket, ticketHelper);
 
             this.Template.betTeamClassName = BLUNDERDOG;
-
-            this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
+            
             this.Template.Match.homeTeam = homeName;
             this.Template.Match.home_firstGoal_lastGoal = string.Empty;
             this.Template.Match.awayTeam = awayName;

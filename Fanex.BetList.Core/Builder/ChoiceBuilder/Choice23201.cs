@@ -18,8 +18,7 @@
         protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
-
-            this.Template.BetType.betTypeName = null;
+         
             this.Template.Match.VS = null;
             this.Template.League.sportTypeName = null;
             this.Template.Score = null;
@@ -27,6 +26,11 @@
 
             this.Template.betTeam = string.Join(null, new string[] { CoreBetList.bingo, " - ", CoreBetList.transfer });
             this.Template.betTeamClassName = BLFAVORITE;
+        }
+
+        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            this.Template.BetType.betTypeName = null;
         }
     }
 }

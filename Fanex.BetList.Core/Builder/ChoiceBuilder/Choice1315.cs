@@ -24,6 +24,10 @@
             bool away = ticket.BetTeam == "2";
 
             this.Template.betTeam = home ? this.Template.Match.homeTeam : away ? this.Template.Match.awayTeam : CoreBetList.noTiebreak;
+        }
+
+        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper)
+        {
             this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);
         }
     }

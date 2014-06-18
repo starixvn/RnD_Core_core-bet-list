@@ -39,7 +39,10 @@
                     this.Template.betTeam = string.Join(null, new string[] { "<span class=\"underdog\">", CoreBetList.exactly, "</span>" });
                 }
             }
+        }
 
+        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper)
+        {
             this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);
         }
     }

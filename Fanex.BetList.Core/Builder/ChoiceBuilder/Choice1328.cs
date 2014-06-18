@@ -47,6 +47,10 @@
 
             // "&nbsp" because export format
             this.Template.betTeam = HtmlCharacters.NoneBreakingSpace + betTeam;
+        }
+
+        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper)
+        {
             this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);
         }
     }

@@ -34,12 +34,8 @@
 
             string betTeam = ticket.BetTeam == BetTeamValue.H ? CoreBetList.high : CoreBetList.low;
 
-            string bettypeName = this.Template.BetType.betTypeName;
-
             this.Template.betTeam = string.Join(null, new string[] { betTeam, liveScore });
             this.Template.betTeamClassName = BLFAVORITE;
-
-            this.Template.BetType.betTypeName = bettypeName;
 
             this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
         }
