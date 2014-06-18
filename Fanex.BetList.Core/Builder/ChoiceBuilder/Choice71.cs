@@ -27,7 +27,7 @@
             this.UpdateAllLeagueMemberToNull();
 
             this.Template.betTeam = this.GetBetTeam();
-            this.Template.betTeamClassName = BLFAVORITE;
+            this.Template.betTeamClassName = Favorite;
         }
 
         protected virtual string GetBetTeam()

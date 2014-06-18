@@ -33,7 +33,7 @@
 
             this.Template.betTeam = string.Join(null, new string[] { ticket.MatchCode, " - ", ticketHelper.GetHorseTeamNameById(ticket.HomeId, ticket.AwayId) });
 
-            this.Template.betTeamClassName = BLFAVORITE;
+            this.Template.betTeamClassName = Favorite;
 
             DateTime eventTime;
 

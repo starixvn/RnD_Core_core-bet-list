@@ -18,7 +18,7 @@
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
          
-            this.Template.betTeamClassName = BLFAVORITE;
+            this.Template.betTeamClassName = Favorite;
         }
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper)

@@ -149,7 +149,7 @@
             var betTeamName = betTeamMap.ContainsKey(betTeamKey) ? betTeamMap[betTeamKey] : string.Empty;
 
             this.Template.betTeam = string.Join(null, new string[] { betTeamName, liveScore });
-            this.Template.betTeamClassName = BLFAVORITE;
+            this.Template.betTeamClassName = Favorite;
 
             this.Template.Match.homeTeam = string.Join(null, new string[] { CoreLang.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
         }

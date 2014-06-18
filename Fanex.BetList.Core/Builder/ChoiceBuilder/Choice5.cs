@@ -21,7 +21,7 @@
 
             this.Template.Handicap.handicap = null;
 
-            this.Template.betTeamClassName = BLFAVORITE;
+            this.Template.betTeamClassName = Favorite;
             this.Template.betTeam = string.Join(null, new string[] { CoreBetList.ft, ".", ticket.BetTeam.ToUpper() });
         }
     }

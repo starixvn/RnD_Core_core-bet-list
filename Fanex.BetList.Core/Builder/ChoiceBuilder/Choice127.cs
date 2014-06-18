@@ -20,7 +20,7 @@
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
             this.Template.betTeam = ConvertByBetType.GetBetTeam(ticket.BetTeam, ticket.BetTypeId);
-            this.Template.betTeamClassName = BLFAVORITE;
+            this.Template.betTeamClassName = Favorite;
             this.Template.Handicap.handicap = null;
         }
     }

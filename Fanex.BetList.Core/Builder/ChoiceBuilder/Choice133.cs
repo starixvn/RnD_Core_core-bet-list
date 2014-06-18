@@ -21,7 +21,7 @@
             this.Template.Handicap = null;
             this.Template.OddMixParlay = null;
             this.Template.Score = null;
-            this.Template.betTeamClassName = BLFAVORITE;
+            this.Template.betTeamClassName = Favorite;
             this.Template.betTeam = GetBetTeam(ticket.BetTeam);
         }
 

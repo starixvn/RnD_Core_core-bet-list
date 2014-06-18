@@ -29,7 +29,7 @@
             decimal hdp2 = ticket.Handicap2;
 
             string handicap = string.Empty;
-            this.Template.betTeamClassName = BLFAVORITE;
+            this.Template.betTeamClassName = Favorite;
 
             if ("1" == ticket.BetTeam)
             {

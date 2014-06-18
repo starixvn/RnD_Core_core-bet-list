@@ -28,14 +28,14 @@
             string[] betteam = new string[]
                                 {
                                     " <span class=\"",
-                                    BLFAVORITE,
+                                    Favorite,
                                     "\">",
                                     team,
                                     "</span>",
                                     HtmlCharacters.NoneBreakingSpace,
                                     CoreBetList.lblOr.ToLower(),
                                     " <span class=\"",
-                                    BLFAVORITE,
+                                    Favorite,
                                     "\">",
                                     HtmlCharacters.NoneBreakingSpace,
                                     draw_away,

@@ -42,7 +42,7 @@
             this.Template.Handicap.handicap = betOver ? ConvertByBetType.Hdp(ticket.Handicap1) : betUnder ? ConvertByBetType.Hdp(ticket.Handicap2) : null;
 
             // Update betTeamClassName
-            this.Template.betTeamClassName = betOver ? BLFAVORITE : BLUNDERDOG;
+            this.Template.betTeamClassName = betOver ? Favorite : Underdog;
         }
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper)

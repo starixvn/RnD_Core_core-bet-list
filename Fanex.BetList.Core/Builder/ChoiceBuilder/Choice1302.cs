@@ -30,7 +30,7 @@
             // "&nbsp" for the export format
             this.Template.betTeam = string.Join(null, new string[] { HtmlCharacters.NoneBreakingSpace, betTeam });
 
-            this.Template.betTeamClassName = BLUNDERDOG;
+            this.Template.betTeamClassName = Underdog;
         }
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper)

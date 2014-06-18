@@ -27,18 +27,18 @@
             if (betHome)
             {
                 this.Template.betTeam = this.Template.Match.homeTeam;
-                this.Template.betTeamClassName = ticket.Handicap2 >= ticket.Handicap1 ? BLUNDERDOG : BLFAVORITE;
-                this.Template.Handicap.handicap = ConvertByBetType.Hdp((this.Template.betTeamClassName == BLFAVORITE) ? -handicap : handicap);
+                this.Template.betTeamClassName = ticket.Handicap2 >= ticket.Handicap1 ? Underdog : Favorite;
+                this.Template.Handicap.handicap = ConvertByBetType.Hdp((this.Template.betTeamClassName == Favorite) ? -handicap : handicap);
             }
             else if (betAway)
             {
                 this.Template.betTeam = this.Template.Match.awayTeam;
-                this.Template.betTeamClassName = ticket.Handicap2 <= ticket.Handicap1 ? BLUNDERDOG : BLFAVORITE;
-                this.Template.Handicap.handicap = ConvertByBetType.Hdp((this.Template.betTeamClassName == BLFAVORITE) ? -handicap : handicap);
+                this.Template.betTeamClassName = ticket.Handicap2 <= ticket.Handicap1 ? Underdog : Favorite;
+                this.Template.Handicap.handicap = ConvertByBetType.Hdp((this.Template.betTeamClassName == Favorite) ? -handicap : handicap);
             }
             else
             {
-                this.Template.betTeamClassName = BLUNDERDOG;
+                this.Template.betTeamClassName = Underdog;
 
                 if (ticket.Handicap2 > ticket.Handicap1)
                 {

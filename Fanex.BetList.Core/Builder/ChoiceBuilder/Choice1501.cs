@@ -27,7 +27,7 @@
             this.Template.betTeam = ticketHelper.GetKenoBetChoiceName(ticket.BetTeam, out kenoBetTypeID);
             this.Template.BetType.betTypeName = ticketHelper.GetKenoBetTypeName(kenoBetTypeID);
 
-            this.Template.betTeamClassName = BLFAVORITE;
+            this.Template.betTeamClassName = Favorite;
 
             if (this.Template.League != null)
             {

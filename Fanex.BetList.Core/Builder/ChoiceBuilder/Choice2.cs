@@ -22,7 +22,7 @@
 
             this.Template.Handicap.handicap = null;
             this.Template.betTeam = ticket.BetTeam == BetTeamValue.H ? CoreBetList.odd : CoreBetList.even;
-            this.Template.betTeamClassName = this.Template.betTeam == CoreBetList.odd ? BLFAVORITE : BLUNDERDOG;
+            this.Template.betTeamClassName = this.Template.betTeam == CoreBetList.odd ? Favorite : Underdog;
         }
     }
 }

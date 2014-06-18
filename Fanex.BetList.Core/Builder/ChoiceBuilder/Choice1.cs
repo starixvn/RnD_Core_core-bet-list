@@ -3,11 +3,11 @@
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
-    using Fanex.BetList.Core.Constants;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.Utils;
+    using Constants;
+    using Entities;
     using NPOI.SS.UserModel;
+    using Templates;
+    using Utils;
 
     /// <summary>
     /// Bet type name: Handicap.
@@ -19,28 +19,28 @@
         /// <summary>
         /// String underdog.
         /// </summary>
-        protected const string BLUNDERDOG = "underdog";
+        protected const string Underdog = "underdog";
 
         /// <summary>
         /// String favorite.
         /// </summary>
-        protected const string BLFAVORITE = "favorite";
+        protected const string Favorite = "favorite";
 
         #endregion Attributes
 
-        protected const string VoidStatus = "void";
-        protected const string Neutral = " (N) ";
-        protected const string FirstGoalCssClass = "firstGoal ";
-        protected const string LastGoalCssClass = "lastGoal";
-        protected const string FirstHalfFirstGoalCssClass = "fhFirstGoal";
-        protected const string FirstHalfLastGoalCssClass = "fhLastGoal";
-        protected const string Space = " ";
-        protected const string FirstGoalTextName = "(F)";
-        protected const string LastGoalTextName = "(L)";
-        protected const string FirstHalfFirstGoalTextName = "(1F)";
-        protected const string FirstHalfLastGoalTextName = "(1L)";
-        protected const string BetStatusFL = "fl";
-        protected const string BetStatus1FL = "1fl";
+        private const string VoidStatus = "void";
+        private const string Neutral = " (N) ";
+        private const string FirstGoalCssClass = "firstGoal ";
+        private const string LastGoalCssClass = "lastGoal";
+        private const string FirstHalfFirstGoalCssClass = "fhFirstGoal";
+        private const string FirstHalfLastGoalCssClass = "fhLastGoal";
+        private const string Space = " ";
+        private const string FirstGoalTextName = "(F)";
+        private const string LastGoalTextName = "(L)";
+        private const string FirstHalfFirstGoalTextName = "(1F)";
+        private const string FirstHalfLastGoalTextName = "(1L)";
+        private const string BetStatusFl = "fl";
+        private const string BetStatus1Fl = "1fl";
 
         #region Constructors
 
@@ -49,18 +49,14 @@
         /// </summary>
         public Choice1()
         {
-            this.Template = new Choice_Template();
+            Template = new Choice_Template();
         }
 
         #endregion Constructors
 
         #region Properties
 
-        public Choice_Template Template
-        {
-            get;
-            set;
-        }
+        public Choice_Template Template { get; set; }
 
         #endregion Properties
 
@@ -74,11 +70,11 @@
         /// <returns>Choice_Template: the whole Choice block built for input data.</returns>
         public virtual Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
         {
-            this.BuildChoice(ticket, ticketHelper, ticketData);
-            this.BuildHandicapOdds(ticket, ticketHelper);
-            this.BuildScoreMap(ticket, isShowScoreMap);
+            BuildChoice(ticket, ticketHelper, ticketData);
+            BuildHandicapOdds(ticket, ticketHelper);
+            BuildScoreMap(ticket, isShowScoreMap);
 
-            return this.Template;
+            return Template;
         }
 
         /// <summary>
@@ -97,7 +93,7 @@
                                 bool isShowScoreMap,
                                 RTFHelper rtfHelper)
         {
-            this.Render(ticket, ticketHelper, ticketData, isShowScoreMap);
+            Render(ticket, ticketHelper, ticketData, isShowScoreMap);
             var choiceData = BuildRTFChoice(ticket, rtfHelper, ticketHelper);
             List<IRichTextString> rtfChoice;
 
@@ -121,68 +117,77 @@
         /// <param name="ticketData">The ticket data.</param>
         protected virtual void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            this.BuildScore(ticket);
+            BuildScore(ticket);
 
-            this.BuildBetType(ticket, ticketHelper);
+            BuildBetType(ticket, ticketHelper);
 
-            this.BuildBetAndMatch(ticket, ticketHelper);
+            BuildBetAndMatch(ticket, ticketHelper);
 
-            this.BuildLeague(ticket, ticketHelper);
+            BuildLeague(ticket, ticketHelper);
 
-            this.BuildTicketStatus(ticket);
+            BuildTicketStatus(ticket);
         }
 
         protected virtual void BuildScore(ITicket ticket)
         {
-            if (this.Template.Score != null)
+            if (Template.Score == null)
             {
-                this.Template.Score.homeScore = ticket.LiveHomeScore.ToString();
-                this.Template.Score.awayScore = ticket.LiveAwayScore.ToString();
-                this.Template.Score.Visible = ticket.IsLive;
-                this.Template.Score.scoreClassName = BLFAVORITE;
+                return;
             }
+
+            Template.Score.homeScore = ticket.LiveHomeScore.ToString();
+            Template.Score.awayScore = ticket.LiveAwayScore.ToString();
+            Template.Score.Visible = ticket.IsLive;
+            Template.Score.scoreClassName = Favorite;
         }
 
         protected virtual void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
         {
-            if (this.Template.League != null)
+            if (Template.League == null)
             {
-                this.Template.League.LeagueName.leagueName = ticketHelper.GetLeagueNameById(ticket.LeagueId);
-                this.Template.League.sportTypeName = ticketHelper.GetSportNameById(ticket.SportTypeId);
+                return;
             }
+
+            Template.League.LeagueName.leagueName = ticketHelper.GetLeagueNameById(ticket.LeagueId);
+            Template.League.sportTypeName = ticketHelper.GetSportNameById(ticket.SportTypeId);
         }
 
         protected virtual void BuildBetAndMatch(ITicket ticket, ITicketHelper ticketHelper)
         {
             string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
-            string homeName = this.GetHomeTeamName(ticket, ticketHelper);
+            string homeName = GetHomeTeamName(ticket, ticketHelper);
 
-            this.Template.Match.homeTeam = homeName;
-            this.Template.Match.awayTeam = awayName;
+            Template.Match.homeTeam = homeName;
+            Template.Match.awayTeam = awayName;
 
-            this.Template.Match.home_firstGoal_lastGoal = string.Empty;
-            this.Template.Match.away_firstGoal_lastGoal = string.Empty;
-            this.CalculateFG_LG(ticket.EventStatus, ref this.Template.Match.home_firstGoal_lastGoal, ref this.Template.Match.away_firstGoal_lastGoal);
+            Template.Match.home_firstGoal_lastGoal = string.Empty;
+            Template.Match.away_firstGoal_lastGoal = string.Empty;
+            CalculateFG_LG(ticket.EventStatus, ref Template.Match.home_firstGoal_lastGoal, ref Template.Match.away_firstGoal_lastGoal);
 
             bool betHomeTeam = ticket.BetTeam != null && ticket.BetTeam.Contains(BetTeamValue.H);
-            this.Template.betTeam = betHomeTeam ? homeName : awayName;
+            Template.betTeam = betHomeTeam ? homeName : awayName;
             if (betHomeTeam)
             {
-                this.Template.betTeamClassName = ticket.Handicap2 >= ticket.Handicap1 ? BLUNDERDOG : BLFAVORITE;
+                Template.betTeamClassName = ticket.Handicap2 >= ticket.Handicap1 ? Underdog : Favorite;
             }
             else
             {
-                this.Template.betTeamClassName = ticket.Handicap2 <= ticket.Handicap1 ? BLUNDERDOG : BLFAVORITE;
+                Template.betTeamClassName = ticket.Handicap2 <= ticket.Handicap1 ? Underdog : Favorite;
             }
 
             decimal handicap = ticket.Handicap2 > ticket.Handicap1 ? ticket.Handicap2 : ticket.Handicap1;
 
-            this.Template.Handicap.handicap = ConvertByBetType.Hdp((this.Template.betTeamClassName == BLFAVORITE) ? -handicap : handicap);
+            Template.Handicap.handicap = ConvertByBetType.Hdp((Template.betTeamClassName == Favorite) ? -handicap : handicap);
         }
 
         protected virtual void BuildBetType(ITicket ticket, ITicketHelper ticketHelper)
         {
-            this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
+            if (Template.BetType == null)
+            {
+                return;
+            }
+
+            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
         }
 
         protected virtual void BuildTicketStatus(ITicket ticket)
@@ -190,8 +195,13 @@
             if ((ticket.StatusId != null && ticket.StatusId.ToString().Trim() == BetStatusId.Void)
                 || (ticket.Status != null && ticket.Status.Trim().ToLower() == BetStatus.Void))
             {
-                this.Template.ticketStatus = VoidStatus;
+                Template.ticketStatus = VoidStatus;
             }
+        }
+
+        protected virtual void BuildHandicap(ITicket ticket)
+        {
+
         }
 
         protected virtual string GetHomeTeamName(ITicket ticket, ITicketHelper ticketHelper)
@@ -228,11 +238,11 @@
 
             string[] betStatusParts = betStatus.ToLower().Split(';');
 
-            string[] fglg = this.GetBetStatusPart(betStatusParts, BetStatusFL);
-            this.UpdateFG_LG(FirstGoalCssClass, LastGoalCssClass, fglg, ref homeFGLG, ref awayFGLG);
+            string[] fglg = GetBetStatusPart(betStatusParts, BetStatusFl);
+            UpdateFG_LG(FirstGoalCssClass, LastGoalCssClass, fglg, ref homeFGLG, ref awayFGLG);
 
-            string[] fhfglg = this.GetBetStatusPart(betStatusParts, BetStatus1FL);
-            this.UpdateFG_LG(FirstHalfFirstGoalCssClass, FirstHalfLastGoalCssClass, fhfglg, ref homeFGLG, ref awayFGLG);
+            string[] fhfglg = GetBetStatusPart(betStatusParts, BetStatus1Fl);
+            UpdateFG_LG(FirstHalfFirstGoalCssClass, FirstHalfLastGoalCssClass, fhfglg, ref homeFGLG, ref awayFGLG);
 
             if (!homeFGLG.Equals(string.Empty))
             {
@@ -256,19 +266,19 @@
         {
             bool isMixParlay = false;
 
-            this.AdjustBetTeamToRTF();
+            AdjustBetTeamToRTF();
 
             // the 1st line
-            this.BuildBetFigure(ticket, ref rtfHelper, isMixParlay);
+            BuildBetFigure(ticket, ref rtfHelper, isMixParlay);
 
             // the 2nd line
-            this.BuildBetTypeName(ref rtfHelper);
+            BuildBetTypeName(ref rtfHelper);
 
             // the 3rd line
-            this.BuildBetTeamsInfo(ticket, ref rtfHelper);
+            BuildBetTeamsInfo(ticket, ref rtfHelper);
 
             // the 4th line
-            this.BuildMatchInfo(ref rtfHelper);
+            BuildMatchInfo(ref rtfHelper);
 
             var choiceRtf = rtfHelper.RTFRenderer.Render();
             rtfHelper.RTFRenderer.Clear();
@@ -312,22 +322,22 @@
 
             string[] betStatusParts = betStatus.ToLower().Split(';');
 
-            string[] fglg = this.GetBetStatusPart(betStatusParts, BetStatusFL);
-            this.UpdateFG_LG_Excel(FirstGoalTextName, LastGoalTextName, fglg, ref homeFGLG, ref awayFGLG);
+            string[] fglg = GetBetStatusPart(betStatusParts, BetStatusFl);
+            UpdateFG_LG_Excel(FirstGoalTextName, LastGoalTextName, fglg, ref homeFGLG, ref awayFGLG);
 
-            string[] fhfglg = this.GetBetStatusPart(betStatusParts, BetStatus1FL);
-            this.UpdateFG_LG_Excel(FirstHalfFirstGoalTextName, FirstHalfLastGoalTextName, fhfglg, ref homeFGLG, ref awayFGLG);
+            string[] fhfglg = GetBetStatusPart(betStatusParts, BetStatus1Fl);
+            UpdateFG_LG_Excel(FirstHalfFirstGoalTextName, FirstHalfLastGoalTextName, fhfglg, ref homeFGLG, ref awayFGLG);
         }
 
         protected void UpdateAllMatchMemberToNull()
         {
             if (Template.Match != null)
             {
-                this.Template.Match.homeTeam = null;
-                this.Template.Match.awayTeam = null;
-                this.Template.Match.VS = null;
-                this.Template.Match.home_firstGoal_lastGoal = null;
-                this.Template.Match.away_firstGoal_lastGoal = null;
+                Template.Match.homeTeam = null;
+                Template.Match.awayTeam = null;
+                Template.Match.VS = null;
+                Template.Match.home_firstGoal_lastGoal = null;
+                Template.Match.away_firstGoal_lastGoal = null;
             }
         }
 
@@ -335,8 +345,8 @@
         {
             if (Template.League != null)
             {
-                this.Template.League.LeagueName.leagueName = null;
-                this.Template.League.sportTypeName = null;
+                Template.League.LeagueName.leagueName = null;
+                Template.League.sportTypeName = null;
             }
         }
 
@@ -349,13 +359,13 @@
         {
             if (isShowScoreMap)
             {
-                this.Template.ScoreMapIcon.matchId = ticket.MatchId.ToString();
-                this.Template.ScoreMapIcon.betTypeId = ticket.BetTypeId.ToString();
-                this.Template.ScoreMapIcon.liveindicator = Convert.ToInt32(ticket.IsLive).ToString();
+                Template.ScoreMapIcon.matchId = ticket.MatchId.ToString();
+                Template.ScoreMapIcon.betTypeId = ticket.BetTypeId.ToString();
+                Template.ScoreMapIcon.liveindicator = Convert.ToInt32(ticket.IsLive).ToString();
             }
             else
             {
-                this.Template.ScoreMapIcon = null;
+                Template.ScoreMapIcon = null;
             }
         }
 
@@ -383,18 +393,18 @@
 
                 if (odds.Equals("-"))
                 {
-                    this.Template.Handicap.Odds = null;
+                    Template.Handicap.Odds = null;
                 }
                 else
                 {
-                    this.Template.Handicap.Odds.odds = odds;
+                    Template.Handicap.Odds.odds = odds;
                 }
             }
             else
             {
-                if (this.Template.Handicap != null)
+                if (Template.Handicap != null)
                 {
-                    this.Template.Handicap.Odds = null;
+                    Template.Handicap.Odds = null;
                 }
             }
         }
@@ -437,7 +447,7 @@
         /// <param name="rtfHelper">The RTF helper.</param>
         private void BuildBetTypeName(ref RTFHelper rtfHelper)
         {
-            string choice = string.Empty;
+            var choice = string.Empty;
 
             if (Template.BetType != null && !string.IsNullOrEmpty(Template.BetType.betTypeName))
             {
@@ -472,7 +482,7 @@
                     choice = string.Empty;
                 }
 
-                this.BuildTicketFG_LG(ticket);
+                BuildTicketFG_LG(ticket);
 
                 if (!string.IsNullOrEmpty(Template.Match.home_firstGoal_lastGoal))
                 {
@@ -561,7 +571,7 @@
             {
                 Template.Match.home_firstGoal_lastGoal = string.Empty;
                 Template.Match.away_firstGoal_lastGoal = string.Empty;
-                this.CalculateFG_LG_Excel(ticket.EventStatus, ref Template.Match.home_firstGoal_lastGoal, ref Template.Match.away_firstGoal_lastGoal);
+                CalculateFG_LG_Excel(ticket.EventStatus, ref Template.Match.home_firstGoal_lastGoal, ref Template.Match.away_firstGoal_lastGoal);
             }
         }
 

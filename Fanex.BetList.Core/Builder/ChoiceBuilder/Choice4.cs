@@ -26,7 +26,7 @@
             // "&nbsp" because export format
             this.Template.betTeam = string.Join(null, new string[] { HtmlCharacters.NoneBreakingSpace, choice });
 
-            this.Template.betTeamClassName = BLFAVORITE;
+            this.Template.betTeamClassName = Favorite;
         }
     }
 }

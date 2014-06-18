@@ -35,7 +35,7 @@
                 this.Template.betTeam = CoreBetList.nogoal;
             }
 
-            this.Template.betTeamClassName = BLFAVORITE;
+            this.Template.betTeamClassName = Favorite;
         }
     }
 }

@@ -21,7 +21,7 @@
         /// <returns>Choice_Template object.</returns>
         public override Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
         {
-            string content = string.Join(null, new string[] { "<div><span class='", BLFAVORITE, "'>", CoreLang.p2pGame, "</span></div>" });
+            string content = string.Join(null, new string[] { "<div><span class='", Favorite, "'>", CoreLang.p2pGame, "</span></div>" });
             this.Template.SetValue(content);
 
             return this.Template;

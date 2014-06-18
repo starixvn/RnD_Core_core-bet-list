@@ -36,7 +36,7 @@
 
             this.Template.betTeam = this.GetBetTeam(ticket, ticketHelper);
 
-            this.Template.betTeamClassName = BLUNDERDOG;
+            this.Template.betTeamClassName = Underdog;
             
             this.Template.Match.homeTeam = homeName;
             this.Template.Match.home_firstGoal_lastGoal = string.Empty;

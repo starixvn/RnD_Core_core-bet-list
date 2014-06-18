@@ -25,7 +25,7 @@
             this.Template.Handicap.handicap = null;
 
             this.Template.betTeam = string.Join(null, new string[] { CoreBetList.casinoGame, " - ", CoreBetList.transfer });
-            this.Template.betTeamClassName = BLFAVORITE;
+            this.Template.betTeamClassName = Favorite;
         }
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper)

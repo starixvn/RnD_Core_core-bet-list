@@ -23,7 +23,7 @@ namespace Fanex.BetList.Core.Factories
         /// <returns>BetListExcelBuilder object.</returns>
         public BetListExcelBuilder CreateBuilder()
         {
-            BetListExcelBuilder builder = new BetListExcelBuilder();
+            var builder = new BetListExcelBuilder();
             return builder;
         }
     }

@@ -53,7 +53,7 @@
             betTeam += " <span style='color:#555555'>37.5</span> ";
 
             this.Template.betTeam = betTeam + liveScore;
-            this.Template.betTeamClassName = BLFAVORITE;
+            this.Template.betTeamClassName = Favorite;
 
             this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
         }

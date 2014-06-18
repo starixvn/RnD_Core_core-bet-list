@@ -24,7 +24,7 @@
             this.Template.BetType.betTypeName = App_GlobalResources.CoreBetList.playtechcasino;
 
             this.Template.betTeam = ticket.BetTeam;
-            this.Template.betTeamClassName = BLFAVORITE;
+            this.Template.betTeamClassName = Favorite;
         }
     }
 }

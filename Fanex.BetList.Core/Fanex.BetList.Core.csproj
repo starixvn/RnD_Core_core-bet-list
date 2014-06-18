@@ -221,6 +221,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CoreLang.zh-TW.resx</DependentUpon>
     </Compile>
+    <Compile Include="Builder\BetListBaseBuilder.cs" />
     <Compile Include="Builder\BetListExcelBuilder.cs" />
     <Compile Include="Builder\BetListHTMLBuilder.cs" />
     <Compile Include="Builder\ChoiceBuilder\3rd\Choice_22006.cs" />
