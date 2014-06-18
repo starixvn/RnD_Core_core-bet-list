@@ -131,7 +131,7 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
         /// </summary>
         /// <param name="ticketStatus">The ticket status.</param>
         /// <returns>System.String: result.</returns>
-        private string GetResultString(string ticketStatus)
+        protected string GetResultString(string ticketStatus)
         {
             string result = string.Empty;
 

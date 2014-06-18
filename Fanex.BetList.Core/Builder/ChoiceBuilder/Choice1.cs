@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
+    using Fanex.BetList.Core.Constants;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
     using Fanex.BetList.Core.Utils;
@@ -24,12 +25,6 @@
         /// String favorite.
         /// </summary>
         protected const string BLFAVORITE = "favorite";
-
-        /// <summary>
-        /// Represent a non-breaking space.
-        /// </summary>
-        /// <value>&amp;nbsp;</value>
-        protected const string HtmlNoneBreakingSpace = "&nbsp;";
 
         #endregion Attributes
 
@@ -202,12 +197,12 @@
 
             if (!homeFGLG.Equals(string.Empty))
             {
-                homeFGLG = string.Join(null, new string[] { HtmlNoneBreakingSpace, homeFGLG });
+                homeFGLG = string.Join(null, new string[] { HtmlCharacter.NoneBreakingSpace, homeFGLG });
             }
 
             if (!awayFGLG.Equals(string.Empty))
             {
-                awayFGLG = string.Join(null, new string[] { HtmlNoneBreakingSpace, awayFGLG });
+                awayFGLG = string.Join(null, new string[] { HtmlCharacter.NoneBreakingSpace, awayFGLG });
             }
         }
 
@@ -394,7 +389,7 @@
 
             if (!string.IsNullOrEmpty(choice))
             {
-                choice = choice.Replace(HtmlNoneBreakingSpace, Space);
+                choice = choice.Replace(HtmlCharacter.NoneBreakingSpace, Space);
                 rtfHelper.RTFRenderer.AddText(choice, rtfHelper.PosFont);
             }
         }
@@ -409,7 +404,7 @@
 
             if (Template.BetType != null && !string.IsNullOrEmpty(Template.BetType.betTypeName))
             {
-                choice = Template.BetType.betTypeName.Replace(HtmlNoneBreakingSpace, Space);
+                choice = Template.BetType.betTypeName.Replace(HtmlCharacter.NoneBreakingSpace, Space);
                 rtfHelper.RTFRenderer.AddText("\n" + choice);
             }
         }
@@ -430,7 +425,7 @@
                 string choice = string.Empty;
                 if (!string.IsNullOrEmpty(Template.Match.homeTeam))
                 {
-                    choice = Template.Match.homeTeam.Replace(HtmlNoneBreakingSpace, Space);
+                    choice = Template.Match.homeTeam.Replace(HtmlCharacter.NoneBreakingSpace, Space);
                 }
 
                 if (!string.IsNullOrEmpty(choice))
@@ -450,7 +445,7 @@
                 if (!string.IsNullOrEmpty(choice))
                 {
                     isAddNewLine = true;
-                    choice = choice.Replace(HtmlNoneBreakingSpace, Space);
+                    choice = choice.Replace(HtmlCharacter.NoneBreakingSpace, Space);
                     rtfHelper.RTFRenderer.AddText(choice, rtfHelper.PosFont);
                     choice = string.Empty;
                 }
@@ -468,7 +463,7 @@
                 if (!string.IsNullOrEmpty(choice))
                 {
                     isAddNewLine = true;
-                    choice = choice.Replace(HtmlNoneBreakingSpace, Space);
+                    choice = choice.Replace(HtmlCharacter.NoneBreakingSpace, Space);
                     rtfHelper.RTFRenderer.AddText(choice);
                     choice = string.Empty;
                 }
@@ -480,7 +475,7 @@
 
                 if (!string.IsNullOrEmpty(choice) || isAddNewLine)
                 {
-                    choice = choice.Replace(HtmlNoneBreakingSpace, Space);
+                    choice = choice.Replace(HtmlCharacter.NoneBreakingSpace, Space);
                     rtfHelper.RTFRenderer.AddText(choice, rtfHelper.PosFont);
                 }
             }
@@ -513,7 +508,7 @@
 
                 if (!string.IsNullOrEmpty(choice))
                 {
-                    choice = choice.Replace(HtmlNoneBreakingSpace, Space);
+                    choice = choice.Replace(HtmlCharacter.NoneBreakingSpace, Space);
                     rtfHelper.RTFRenderer.AddText("\n" + choice);
                 }
             }
@@ -622,6 +617,6 @@
             {
                 awayFGLG += lastTextName;
             }
-        }        
+        }
     }
 }

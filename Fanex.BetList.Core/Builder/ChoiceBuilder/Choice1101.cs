@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.Text;
     using Fanex.BetList.Core.App_GlobalResources;
+    using Fanex.BetList.Core.Constants;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Utils;
 
@@ -22,7 +23,7 @@
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
             var betTypeName = this.GetLeagueName();
-            this.Template.League.LeagueName.leagueName = string.Join(null, new string[] { betTypeName, "&nbsp;", ticket.ShowTime });
+            this.Template.League.LeagueName.leagueName = string.Join(null, new string[] { betTypeName, HtmlCharacter.NoneBreakingSpace, ticket.ShowTime });
 
             if (ticketData != null && ticketData.Count > 0)
             {

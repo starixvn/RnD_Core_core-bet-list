@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using Fanex.BetList.Core.App_GlobalResources;
+    using Fanex.BetList.Core.Constants;
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
@@ -29,7 +30,7 @@
 
             this.Template.betTeamClassName = BLFAVORITE;
 
-            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.race, "&nbsp;", ticket.Race });
+            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.race, HtmlCharacter.NoneBreakingSpace, ticket.Race });
         }
     }
 }

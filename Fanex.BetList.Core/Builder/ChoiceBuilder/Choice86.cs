@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using Fanex.BetList.Core.App_GlobalResources;
+    using Fanex.BetList.Core.Constants;
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
@@ -38,14 +39,14 @@
                     betId = string.Empty;
                 }
 
-                bettypeName = CoreBetList.next + HtmlNoneBreakingSpace + bettypeName;
+                bettypeName = CoreBetList.next + HtmlCharacter.NoneBreakingSpace + bettypeName;
                 liveScore = (!ticket.IsLive || betId == string.Empty) ? " [0]" : string.Join(null, new string[] { " [", betId, "]" });
             }
 
             this.Template.betTeam = betTeam + liveScore;
             this.Template.BetType.betTypeName = bettypeName;
 
-            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlNoneBreakingSpace, ticket.MatchCode });
+            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlCharacter.NoneBreakingSpace, ticket.MatchCode });
 
             // Bet team name is always in red for this bettype
             this.Template.betTeamClassName = BLFAVORITE;

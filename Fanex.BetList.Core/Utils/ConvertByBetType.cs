@@ -19,6 +19,7 @@ namespace Fanex.BetList.Core.Utils
     using System;
     using System.Collections.Generic;
     using Fanex.BetList.Core.App_GlobalResources;
+    using Fanex.BetList.Core.Constants;
 
     /// <summary>
     /// Class ConvertByBetType.
@@ -458,15 +459,15 @@ namespace Fanex.BetList.Core.Utils
 
                 if (chars[c - 1] == '1')
                 {
-                    returnValue += "&nbsp;" + CoreLang.FG;
+                    returnValue += HtmlCharacter.NoneBreakingSpace + CoreLang.FG;
                 }
                 else if (chars[c - 1] == '2')
                 {
-                    returnValue += "&nbsp;" + CoreLang.LG;
+                    returnValue += HtmlCharacter.NoneBreakingSpace + CoreLang.LG;
                 }
                 else
                 {
-                    returnValue += "&nbsp;" + CoreLang.goal;
+                    returnValue += HtmlCharacter.NoneBreakingSpace + CoreLang.goal;
                 }
             }
 

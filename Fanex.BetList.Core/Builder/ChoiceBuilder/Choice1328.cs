@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using Fanex.BetList.Core.App_GlobalResources;
+    using Fanex.BetList.Core.Constants;
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
@@ -45,7 +46,7 @@
             }
 
             // "&nbsp" because export format
-            this.Template.betTeam = "&nbsp;" + betTeam;
+            this.Template.betTeam = HtmlCharacter.NoneBreakingSpace + betTeam;
             this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);
         }
     }

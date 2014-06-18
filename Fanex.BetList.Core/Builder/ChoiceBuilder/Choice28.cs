@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using Fanex.BetList.Core.App_GlobalResources;
+    using Fanex.BetList.Core.Constants;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Utils;
 
@@ -46,11 +47,11 @@
                 teamName = CoreBetList.lblDraw;
                 if (hdp1 - hdp2 > 0)
                 {
-                    handicap = CoreBetList.a + "&nbsp;";
+                    handicap = CoreBetList.a + HtmlCharacter.NoneBreakingSpace;
                 }
                 else if (hdp1 - hdp2 < 0)
                 {
-                    handicap = CoreBetList.h + "&nbsp;";
+                    handicap = CoreBetList.h + HtmlCharacter.NoneBreakingSpace;
                 }
                 else
                 {

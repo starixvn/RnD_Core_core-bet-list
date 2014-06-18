@@ -1,6 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
+    using Fanex.BetList.Core.Constants;
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
@@ -27,7 +28,7 @@
             }
 
             // "&nbsp" for the export format
-            this.Template.betTeam = string.Join(null, new string[] { "&nbsp;", betTeam });
+            this.Template.betTeam = string.Join(null, new string[] { HtmlCharacter.NoneBreakingSpace, betTeam });
             this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);
 
             this.Template.betTeamClassName = BLUNDERDOG;

@@ -4,6 +4,7 @@
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
+    using NPOI.SS.UserModel;
 
     /// <summary>
     /// P2P Games.
@@ -26,7 +27,7 @@
             return this.Template;
         }
 
-        protected override NPOI.SS.UserModel.IRichTextString BuildRTFChoice(ITicket ticket, RTFHelper rtfHelper, ITicketHelper ticketHelper)
+        protected override IRichTextString BuildRTFChoice(ITicket ticket, RTFHelper rtfHelper, ITicketHelper ticketHelper)
         {
             rtfHelper.RTFRenderer.AddText(CoreLang.p2pGame, rtfHelper.PosFont);
 

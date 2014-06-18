@@ -1,6 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
+    using Fanex.BetList.Core.Constants;
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
@@ -23,7 +24,7 @@
             string choice = (ticket.BetTeam == "0:5" || ticket.BetTeam == "5:0") ? ticket.BetTeam + " UP" : ticket.BetTeam;
 
             // "&nbsp" because export format
-            this.Template.betTeam = string.Join(null, new string[] { "&nbsp;", choice });
+            this.Template.betTeam = string.Join(null, new string[] { HtmlCharacter.NoneBreakingSpace, choice });
 
             this.Template.betTeamClassName = BLFAVORITE;
         }

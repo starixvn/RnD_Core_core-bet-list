@@ -421,6 +421,7 @@
     <Compile Include="Builder\TransBuilder\Trans1501.cs" />
     <Compile Include="Builder\TransBuilder\Trans71.cs" />
     <Compile Include="Builder\TransBuilder\Trans73.cs" />
+    <Compile Include="Constants\HtmlCharacter.cs" />
     <Compile Include="Entities\BetStatus.cs" />
     <Compile Include="Entities\CellAddress.cs" />
     <Compile Include="Entities\SystemParlayData.cs" />

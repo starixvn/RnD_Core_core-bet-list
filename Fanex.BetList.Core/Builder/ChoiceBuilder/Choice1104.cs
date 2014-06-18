@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using Fanex.BetList.Core.App_GlobalResources;
+    using Fanex.BetList.Core.Constants;
 
     /// <summary>
     /// Live Casino - Live Roulette.
@@ -12,7 +13,7 @@
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            this.Template.League.LeagueName.leagueName = string.Join(null, new string[] { CoreLang.LiveRoulette, "&nbsp;", ticket.ShowTime });
+            this.Template.League.LeagueName.leagueName = string.Join(null, new string[] { CoreLang.LiveRoulette, HtmlCharacter.NoneBreakingSpace, ticket.ShowTime });
         }
     }
 }
