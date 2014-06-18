@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using Fanex.BetList.Core.App_GlobalResources;
+    using Fanex.BetList.Core.Constants;
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
@@ -19,7 +20,7 @@
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            bool yes = ticket.BetTeam == "h";
+            bool yes = ticket.BetTeam == BetTeamValue.H;
 
             this.Template.betTeam = yes ? CoreLang.lblYes : CoreLang.lblNo;
 

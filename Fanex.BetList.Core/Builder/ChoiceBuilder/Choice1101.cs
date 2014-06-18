@@ -23,7 +23,7 @@
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
             var betTypeName = this.GetLeagueName();
-            this.Template.League.LeagueName.leagueName = string.Join(null, new string[] { betTypeName, HtmlCharacter.NoneBreakingSpace, ticket.ShowTime });
+            this.Template.League.LeagueName.leagueName = string.Join(null, new string[] { betTypeName, HtmlCharacters.NoneBreakingSpace, ticket.ShowTime });
 
             if (ticketData != null && ticketData.Count > 0)
             {

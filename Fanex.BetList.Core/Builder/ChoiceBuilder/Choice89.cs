@@ -55,7 +55,7 @@
             this.Template.betTeam = betTeam + liveScore;
             this.Template.betTeamClassName = BLFAVORITE;
 
-            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlCharacter.NoneBreakingSpace, ticket.MatchCode });
+            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
         }
     }
 }

@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using BetList.Core.App_GlobalResources;
+    using Fanex.BetList.Core.Constants;
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
@@ -47,7 +48,7 @@
         protected virtual string GetBetTeam(ITicket ticket, ITicketHelper ticketHelper)
         {
             string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
-            bool betHomeTeam = ticket.BetTeam != null && ticket.BetTeam.Contains("x");
+            bool betHomeTeam = ticket.BetTeam != null && ticket.BetTeam.Contains(BetTeamValue.X);
             var betTeam = betHomeTeam ? CoreLang.lblDraw : awayName;
 
             return betTeam;

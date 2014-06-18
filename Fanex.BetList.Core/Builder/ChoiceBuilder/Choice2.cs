@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using Fanex.BetList.Core.App_GlobalResources;
+    using Fanex.BetList.Core.Constants;
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
@@ -20,7 +21,7 @@
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
             this.Template.Handicap.handicap = null;
-            this.Template.betTeam = ticket.BetTeam == "h" ? CoreBetList.odd : CoreBetList.even;
+            this.Template.betTeam = ticket.BetTeam == BetTeamValue.H ? CoreBetList.odd : CoreBetList.even;
             this.Template.betTeamClassName = this.Template.betTeam == CoreBetList.odd ? BLFAVORITE : BLUNDERDOG;
         }
     }

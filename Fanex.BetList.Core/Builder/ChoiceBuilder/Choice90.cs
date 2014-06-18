@@ -152,7 +152,7 @@
             this.Template.betTeamClassName = BLFAVORITE;
 
             this.Template.BetType.betTypeName = CoreLang.numberGroup;
-            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreLang.numbergameno, HtmlCharacter.NoneBreakingSpace, ticket.MatchCode });
+            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreLang.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
         }
     }
 }

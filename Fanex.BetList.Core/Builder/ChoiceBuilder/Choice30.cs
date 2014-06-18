@@ -23,7 +23,7 @@
             choice = (choice == "0:4" || choice == "4:0") ? choice + " UP" : choice;
 
             // "&nbsp" because export format
-            this.Template.betTeam = HtmlCharacter.NoneBreakingSpace + choice;
+            this.Template.betTeam = HtmlCharacters.NoneBreakingSpace + choice;
         }
     }
 }

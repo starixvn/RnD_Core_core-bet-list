@@ -1,6 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using Fanex.BetList.Core.App_GlobalResources;
+    using Fanex.BetList.Core.Constants;
 
     /// <summary>
     /// BetRadar BetType : Choice of bet type Highest Scoring Half.
@@ -19,11 +20,11 @@
 
             switch (betTeam)
             {
-                case "2h":
+                case BetTeamValue.TwoH:
                     return CoreLang.SecondHalf;
-                case "1h":
+                case BetTeamValue.OneH:
                     return CoreLang.FirstHalf;
-                case "tie":
+                case BetTeamValue.Tie:
                     return CoreLang.Tie;
                 default:
                     return string.Empty;

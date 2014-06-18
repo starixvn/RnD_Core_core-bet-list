@@ -24,7 +24,7 @@
             string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
 
             string team = ticket.BetTeam.Contains("1") ? this.Template.Match.homeTeam : awayName;
-            string draw_away = ticket.BetTeam.EndsWith("x") ? CoreBetList.lblDraw : this.Template.Match.awayTeam;
+            string draw_away = ticket.BetTeam.EndsWith(BetTeamValue.X) ? CoreBetList.lblDraw : this.Template.Match.awayTeam;
 
             string[] betteam = new string[]
                                 {
@@ -33,12 +33,12 @@
                                     "\">",
                                     team,
                                     "</span>",
-                                    HtmlCharacter.NoneBreakingSpace,
+                                    HtmlCharacters.NoneBreakingSpace,
                                     CoreBetList.lblOr.ToLower(),
                                     " <span class=\"",
                                     BLFAVORITE,
                                     "\">",
-                                    HtmlCharacter.NoneBreakingSpace,
+                                    HtmlCharacters.NoneBreakingSpace,
                                     draw_away,
                                     "</span>"
                                 };

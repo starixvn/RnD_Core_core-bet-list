@@ -32,7 +32,7 @@
 
             string liveScore = (!ticket.IsLive || betId == string.Empty) ? " [0]" : string.Join(null, new string[] { " [", betId, "]" });
 
-            string betTeam = ticket.BetTeam == "h" ? CoreBetList.high : CoreBetList.low;
+            string betTeam = ticket.BetTeam == BetTeamValue.H ? CoreBetList.high : CoreBetList.low;
 
             string bettypeName = this.Template.BetType.betTypeName;
 
@@ -41,7 +41,7 @@
 
             this.Template.BetType.betTypeName = bettypeName;
 
-            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlCharacter.NoneBreakingSpace, ticket.MatchCode });
+            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
         }
     }
 }

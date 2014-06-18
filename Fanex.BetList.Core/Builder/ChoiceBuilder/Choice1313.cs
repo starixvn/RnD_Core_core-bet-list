@@ -23,13 +23,6 @@
             bool betOver = ticket.BetTeam == "1";
             bool betUnder = ticket.BetTeam == "2";
 
-            string x_y_Format = CoreBetList.betweenXandY;
-
-            if (x_y_Format == null)
-            {
-                x_y_Format = "{0} - {1}";
-            }
-
             if (betOver)
             {
                 this.Template.betTeam = CoreBetList.over;
@@ -42,7 +35,7 @@
                 }
                 else
                 {
-                    this.Template.betTeam = string.Format(x_y_Format, ConvertByBetType.Hdp(ticket.Handicap2), ConvertByBetType.Hdp(ticket.Handicap1));
+                    this.Template.betTeam = string.Format(CoreBetList.betweenXandY, ConvertByBetType.Hdp(ticket.Handicap2), ConvertByBetType.Hdp(ticket.Handicap1));
                 }
             }
 

@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
+    using Fanex.BetList.Core.Constants;
 
     /// <summary>
     /// Both/One/Neither team to score.
@@ -21,15 +22,15 @@
 
             this.Template.Handicap.handicap = null;
 
-            if (ticket.BetTeam == "b")
+            if (ticket.BetTeam == BetTeamValue.B)
             {
                 this.Template.betTeam = CoreBetList.lblBoth;
             }
-            else if (ticket.BetTeam == "o")
+            else if (ticket.BetTeam == BetTeamValue.O)
             {
                 this.Template.betTeam = CoreBetList.lblOne;
             }
-            else if (ticket.BetTeam == "n")
+            else if (ticket.BetTeam == BetTeamValue.N)
             {
                 this.Template.betTeam = CoreBetList.nogoal;
             }

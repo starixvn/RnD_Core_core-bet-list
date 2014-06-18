@@ -46,7 +46,7 @@
             }
 
             // "&nbsp" because export format
-            this.Template.betTeam = HtmlCharacter.NoneBreakingSpace + betTeam;
+            this.Template.betTeam = HtmlCharacters.NoneBreakingSpace + betTeam;
             this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);
         }
     }

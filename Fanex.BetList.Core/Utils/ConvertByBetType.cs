@@ -459,15 +459,15 @@ namespace Fanex.BetList.Core.Utils
 
                 if (chars[c - 1] == '1')
                 {
-                    returnValue += HtmlCharacter.NoneBreakingSpace + CoreLang.FG;
+                    returnValue += HtmlCharacters.NoneBreakingSpace + CoreLang.FG;
                 }
                 else if (chars[c - 1] == '2')
                 {
-                    returnValue += HtmlCharacter.NoneBreakingSpace + CoreLang.LG;
+                    returnValue += HtmlCharacters.NoneBreakingSpace + CoreLang.LG;
                 }
                 else
                 {
-                    returnValue += HtmlCharacter.NoneBreakingSpace + CoreLang.goal;
+                    returnValue += HtmlCharacters.NoneBreakingSpace + CoreLang.goal;
                 }
             }
 

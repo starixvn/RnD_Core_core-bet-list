@@ -404,6 +404,8 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 
         [TestCase("FL:2-0;1FL:2-0")]
         [TestCase("FL:2-1;1FL:2-1")]
+        [TestCase("1FL:2-0;FL:2-0")]
+        [TestCase("1FL:2-1;FL:2-1")]
         public void CalculateFGLG_EventStatus_AwayFGLGAreLableFGAndLable1FG(string eventStatus)
         {
             // Arrange

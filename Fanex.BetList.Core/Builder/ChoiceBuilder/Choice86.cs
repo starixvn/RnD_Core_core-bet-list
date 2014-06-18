@@ -39,14 +39,14 @@
                     betId = string.Empty;
                 }
 
-                bettypeName = CoreBetList.next + HtmlCharacter.NoneBreakingSpace + bettypeName;
+                bettypeName = CoreBetList.next + HtmlCharacters.NoneBreakingSpace + bettypeName;
                 liveScore = (!ticket.IsLive || betId == string.Empty) ? " [0]" : string.Join(null, new string[] { " [", betId, "]" });
             }
 
             this.Template.betTeam = betTeam + liveScore;
             this.Template.BetType.betTypeName = bettypeName;
 
-            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlCharacter.NoneBreakingSpace, ticket.MatchCode });
+            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
 
             // Bet team name is always in red for this bettype
             this.Template.betTeamClassName = BLFAVORITE;

@@ -22,9 +22,9 @@
 
             this.Template.Handicap.handicap = null;
             this.Template.Match.VS = null;
-            this.Template.betTeam = ticket.BetTeam == HToLower ? CoreBetList.odd : CoreBetList.even;
+            this.Template.betTeam = ticket.BetTeam == BetTeamValue.H ? CoreBetList.odd : CoreBetList.even;
             this.Template.betTeamClassName = BLFAVORITE;
-            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlCharacter.NoneBreakingSpace, ticket.MatchCode });
+            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
         }
     }
 }

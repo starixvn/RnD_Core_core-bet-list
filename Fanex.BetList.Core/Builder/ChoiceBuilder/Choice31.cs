@@ -30,7 +30,7 @@
 
             this.Template.betTeamClassName = BLFAVORITE;
 
-            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.race, HtmlCharacter.NoneBreakingSpace, ticket.Race });
+            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.race, HtmlCharacters.NoneBreakingSpace, ticket.Race });
         }
     }
 }

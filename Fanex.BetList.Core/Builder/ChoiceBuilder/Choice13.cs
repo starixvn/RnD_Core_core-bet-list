@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using Fanex.BetList.Core.App_GlobalResources;
+    using Fanex.BetList.Core.Constants;
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
@@ -22,8 +23,8 @@
 
             string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
 
-            string team = ticket.BetTeam != null && ticket.BetTeam.Contains("h") ? this.Template.Match.homeTeam : awayName;
-            string yesNo = ticket.BetTeam.Contains('y') ? CoreBetList.lblYes : CoreBetList.lblNo;
+            string team = ticket.BetTeam != null && ticket.BetTeam.Contains(BetTeamValue.H) ? this.Template.Match.homeTeam : awayName;
+            string yesNo = ticket.BetTeam.Contains(BetTeamValue.Y) ? CoreBetList.lblYes : CoreBetList.lblNo;
 
             this.Template.betTeam = string.Join(null, new string[] { team, " <span class=\"", BLFAVORITE, "\">", yesNo.ToUpper(), "</span>" });
 

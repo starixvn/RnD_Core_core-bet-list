@@ -13,7 +13,7 @@
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            this.Template.League.LeagueName.leagueName = string.Join(null, new string[] { CoreLang.LiveRoulette, HtmlCharacter.NoneBreakingSpace, ticket.ShowTime });
+            this.Template.League.LeagueName.leagueName = string.Join(null, new string[] { CoreLang.LiveRoulette, HtmlCharacters.NoneBreakingSpace, ticket.ShowTime });
         }
     }
 }

@@ -29,7 +29,6 @@
         #endregion Attributes
 
         protected const string VoidStatus = "void";
-        protected const string HToLower = "h";
         protected const string Neutral = " (N) ";
         protected const string FirstGoalCssClass = "firstGoal ";
         protected const string LastGoalCssClass = "lastGoal";
@@ -122,27 +121,24 @@
         /// <param name="ticketData">The ticket data.</param>
         protected virtual void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            this.Template.Score.homeScore = ticket.LiveHomeScore.ToString();
-            this.Template.Score.awayScore = ticket.LiveAwayScore.ToString();
-            this.Template.Score.Visible = ticket.IsLive;
-            this.Template.Score.scoreClassName = BLFAVORITE;
+            this.BuildScore(ticket);
+            this.BuildLeague(ticket, ticketHelper);
 
-            this.Template.League.LeagueName.leagueName = ticketHelper.GetLeagueNameById(ticket.LeagueId);
-            this.Template.League.sportTypeName = ticketHelper.GetSportNameById(ticket.SportTypeId);
 
             this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
 
             string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
+            string homeName = this.GetHomeTeamName(ticket, ticketHelper);
 
-            this.Template.Match.homeTeam = this.GetHomeTeamName(ticket, ticketHelper);
+            this.Template.Match.homeTeam = homeName;
             this.Template.Match.awayTeam = awayName;
 
             this.Template.Match.home_firstGoal_lastGoal = string.Empty;
             this.Template.Match.away_firstGoal_lastGoal = string.Empty;
             this.CalculateFG_LG(ticket.EventStatus, ref this.Template.Match.home_firstGoal_lastGoal, ref this.Template.Match.away_firstGoal_lastGoal);
 
-            bool betHomeTeam = ticket.BetTeam != null && ticket.BetTeam.Contains(HToLower);
-            this.Template.betTeam = betHomeTeam ? this.Template.Match.homeTeam : awayName;
+            bool betHomeTeam = ticket.BetTeam != null && ticket.BetTeam.Contains(BetTeamValue.H);
+            this.Template.betTeam = betHomeTeam ? homeName : awayName;
             if (betHomeTeam)
             {
                 this.Template.betTeamClassName = ticket.Handicap2 >= ticket.Handicap1 ? BLUNDERDOG : BLFAVORITE;
@@ -156,11 +152,43 @@
 
             this.Template.Handicap.handicap = ConvertByBetType.Hdp((this.Template.betTeamClassName == BLFAVORITE) ? -handicap : handicap);
 
+            this.BuildTicketStatus(ticket);
+        }
+
+        protected virtual void BuildScore(ITicket ticket)
+        {
+            this.Template.Score.homeScore = ticket.LiveHomeScore.ToString();
+            this.Template.Score.awayScore = ticket.LiveAwayScore.ToString();
+            this.Template.Score.Visible = ticket.IsLive;
+            this.Template.Score.scoreClassName = BLFAVORITE;
+        }
+
+        protected virtual void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            this.Template.League.LeagueName.leagueName = ticketHelper.GetLeagueNameById(ticket.LeagueId);
+            this.Template.League.sportTypeName = ticketHelper.GetSportNameById(ticket.SportTypeId);
+        }
+
+        protected virtual void BuildBetType(Ticket ticket, ITicketHelper ticketHelper)
+        {
+
+        }
+
+        protected virtual void BuildTicketStatus(ITicket ticket)
+        {
             if ((ticket.StatusId != null && ticket.StatusId.ToString().Trim() == BetStatusId.Void)
                 || (ticket.Status != null && ticket.Status.Trim().ToLower() == BetStatus.Void))
             {
                 this.Template.ticketStatus = VoidStatus;
             }
+        }
+
+        protected virtual string GetHomeTeamName(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            string homeName = ticketHelper.GetTeamNameById(ticket.HomeId);
+            homeName = string.Join(null, new string[] { homeName, ticket.IsNeutral ? Neutral : string.Empty });
+
+            return homeName;
         }
 
         /// <summary>
@@ -197,12 +225,12 @@
 
             if (!homeFGLG.Equals(string.Empty))
             {
-                homeFGLG = string.Join(null, new string[] { HtmlCharacter.NoneBreakingSpace, homeFGLG });
+                homeFGLG = string.Join(null, new string[] { HtmlCharacters.NoneBreakingSpace, homeFGLG });
             }
 
             if (!awayFGLG.Equals(string.Empty))
             {
-                awayFGLG = string.Join(null, new string[] { HtmlCharacter.NoneBreakingSpace, awayFGLG });
+                awayFGLG = string.Join(null, new string[] { HtmlCharacters.NoneBreakingSpace, awayFGLG });
             }
         }
 
@@ -295,14 +323,6 @@
             this.Template.League.sportTypeName = null;
         }
 
-        protected virtual string GetHomeTeamName(ITicket ticket, ITicketHelper ticketHelper)
-        {
-            string homeName = ticketHelper.GetTeamNameById(ticket.HomeId);
-            homeName = string.Join(null, new string[] { homeName, ticket.IsNeutral ? Neutral : string.Empty });
-
-            return homeName;
-        }
-
         /// <summary>
         /// Builds the score map.
         /// </summary>
@@ -389,7 +409,7 @@
 
             if (!string.IsNullOrEmpty(choice))
             {
-                choice = choice.Replace(HtmlCharacter.NoneBreakingSpace, Space);
+                choice = choice.Replace(HtmlCharacters.NoneBreakingSpace, Space);
                 rtfHelper.RTFRenderer.AddText(choice, rtfHelper.PosFont);
             }
         }
@@ -404,7 +424,7 @@
 
             if (Template.BetType != null && !string.IsNullOrEmpty(Template.BetType.betTypeName))
             {
-                choice = Template.BetType.betTypeName.Replace(HtmlCharacter.NoneBreakingSpace, Space);
+                choice = Template.BetType.betTypeName.Replace(HtmlCharacters.NoneBreakingSpace, Space);
                 rtfHelper.RTFRenderer.AddText("\n" + choice);
             }
         }
@@ -425,7 +445,7 @@
                 string choice = string.Empty;
                 if (!string.IsNullOrEmpty(Template.Match.homeTeam))
                 {
-                    choice = Template.Match.homeTeam.Replace(HtmlCharacter.NoneBreakingSpace, Space);
+                    choice = Template.Match.homeTeam.Replace(HtmlCharacters.NoneBreakingSpace, Space);
                 }
 
                 if (!string.IsNullOrEmpty(choice))
@@ -445,7 +465,7 @@
                 if (!string.IsNullOrEmpty(choice))
                 {
                     isAddNewLine = true;
-                    choice = choice.Replace(HtmlCharacter.NoneBreakingSpace, Space);
+                    choice = choice.Replace(HtmlCharacters.NoneBreakingSpace, Space);
                     rtfHelper.RTFRenderer.AddText(choice, rtfHelper.PosFont);
                     choice = string.Empty;
                 }
@@ -463,7 +483,7 @@
                 if (!string.IsNullOrEmpty(choice))
                 {
                     isAddNewLine = true;
-                    choice = choice.Replace(HtmlCharacter.NoneBreakingSpace, Space);
+                    choice = choice.Replace(HtmlCharacters.NoneBreakingSpace, Space);
                     rtfHelper.RTFRenderer.AddText(choice);
                     choice = string.Empty;
                 }
@@ -475,7 +495,7 @@
 
                 if (!string.IsNullOrEmpty(choice) || isAddNewLine)
                 {
-                    choice = choice.Replace(HtmlCharacter.NoneBreakingSpace, Space);
+                    choice = choice.Replace(HtmlCharacters.NoneBreakingSpace, Space);
                     rtfHelper.RTFRenderer.AddText(choice, rtfHelper.PosFont);
                 }
             }
@@ -508,7 +528,7 @@
 
                 if (!string.IsNullOrEmpty(choice))
                 {
-                    choice = choice.Replace(HtmlCharacter.NoneBreakingSpace, Space);
+                    choice = choice.Replace(HtmlCharacters.NoneBreakingSpace, Space);
                     rtfHelper.RTFRenderer.AddText("\n" + choice);
                 }
             }
