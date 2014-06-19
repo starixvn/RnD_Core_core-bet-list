@@ -17,9 +17,8 @@
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
             bool betHomeTeam = ticket.BetTeam != null && ticket.BetTeam.Contains(BetTeamValue.X);
-            var betTeam = betHomeTeam ? CoreLang.lblDraw : awayName;
+            var betTeam = betHomeTeam ? CoreLang.lblDraw : Template.Match.awayTeam;
 
             Template.betTeam = betTeam;
         }
@@ -34,7 +33,7 @@
             Template.Match.awayTeam = awayName;
             Template.Match.away_firstGoal_lastGoal = string.Empty;
 
-            CalculateFG_LG(ticket.EventStatus, ref Template.Match.home_firstGoal_lastGoal, ref Template.Match.away_firstGoal_lastGoal);
+            BuildFGLGLabel(ticket.EventStatus, ref Template.Match.home_firstGoal_lastGoal, ref Template.Match.away_firstGoal_lastGoal);
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)

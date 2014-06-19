@@ -12,10 +12,8 @@
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
-            string homeName = GetHomeTeamName(ticket, ticketHelper);
-            string team = ticket.BetTeam.Contains("1") ? homeName : awayName;
-            string draw_away = ticket.BetTeam.EndsWith(BetTeamValue.X) ? CoreBetList.lblDraw : awayName;
+            string team = ticket.BetTeam.Contains("1") ? Template.Match.homeTeam : Template.Match.awayTeam;
+            string drawAway = ticket.BetTeam.EndsWith(BetTeamValue.X) ? CoreBetList.lblDraw : Template.Match.awayTeam;
 
             string[] betteam = new string[]
                                 {
@@ -30,7 +28,7 @@
                                     Favorite,
                                     "\">",
                                     HtmlCharacters.NoneBreakingSpace,
-                                    draw_away,
+                                    drawAway,
                                     "</span>"
                                 };
 

@@ -19,10 +19,7 @@
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
-            string homeName = GetHomeTeamName(ticket, ticketHelper);
-
-            string team = ticket.BetTeam != null && ticket.BetTeam.Contains(BetTeamValue.H) ? homeName : awayName;
+            string team = ticket.BetTeam != null && ticket.BetTeam.Contains(BetTeamValue.H) ? Template.Match.homeTeam : Template.Match.awayTeam;
             string yesNo = ticket.BetTeam != null && ticket.BetTeam.Contains(BetTeamValue.Y) ? CoreBetList.lblYes : CoreBetList.lblNo;
 
             Template.betTeam = string.Join(null, new string[] { team, " <span class=\"", Favorite, "\">", yesNo.ToUpper(), "</span>" });

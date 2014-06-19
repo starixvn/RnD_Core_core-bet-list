@@ -35,18 +35,16 @@
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
-            string homeName = GetHomeTeamName(ticket, ticketHelper);
             bool betHome = IsBetHome(ticket);
             bool betAway = IsBetAway(ticket);
 
             if (betHome)
             {
-                Template.betTeam = homeName;
+                Template.betTeam = Template.Match.homeTeam;
             }
             else if (betAway)
             {
-                Template.betTeam = awayName;
+                Template.betTeam = Template.Match.awayTeam;
             }
             else
             {

@@ -14,22 +14,19 @@
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
-            string homeName = GetHomeTeamName(ticket, ticketHelper);
-
-            var teamName = string.Empty;
-            var handicap = string.Empty;
+            string teamName;
+            string handicap;
             decimal hdp1 = ticket.Handicap1;
             decimal hdp2 = ticket.Handicap2;
 
             if ("1" == ticket.BetTeam)
             {
-                teamName = homeName;
+                teamName = Template.Match.homeTeam;
                 handicap = Formatter.FormatSignNumber((int)(hdp2 - hdp1));
             }
             else if ("2" == ticket.BetTeam)
             {
-                teamName = awayName;
+                teamName = Template.Match.awayTeam;
                 handicap = Formatter.FormatSignNumber((int)(hdp1 - hdp2));
             }
             else
