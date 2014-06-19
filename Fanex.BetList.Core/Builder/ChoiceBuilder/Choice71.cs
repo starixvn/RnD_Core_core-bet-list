@@ -17,7 +17,7 @@
         /// <param name="ticketData">The ticket data.</param>
         protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            BuildBetType(ticket, ticketHelper);
+            BuildBetType(ticket, ticketHelper, ticketData);
 
             Template.Score = null;
             Template.Handicap.handicap = null;
@@ -35,7 +35,7 @@
             return CoreBetList.casinoGame;
         }
 
-        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper)
+        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             Template.BetType.betTypeName = null;
         }

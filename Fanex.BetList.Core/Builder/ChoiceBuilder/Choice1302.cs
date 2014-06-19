@@ -35,7 +35,7 @@
             Template.Handicap.handicap = null;
         }
 
-        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper)
+        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);
         }

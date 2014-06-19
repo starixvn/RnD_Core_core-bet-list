@@ -154,7 +154,7 @@
             Template.Match.homeTeam = string.Join(null, new string[] { CoreLang.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
         }
 
-        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper)
+        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             Template.BetType.betTypeName = CoreLang.numberGroup;
         }

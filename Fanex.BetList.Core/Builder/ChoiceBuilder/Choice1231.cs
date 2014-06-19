@@ -1,6 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System;
+    using System.Collections.Generic;
     using Entities;
 
     /// <summary>
@@ -8,7 +9,7 @@
     /// </summary>
     public class Choice1231 : Choice1
     {
-        protected override void BuildBetTeamAndMatch(ITicket ticket, ITicketHelper ticketHelper)
+        protected override void BuildBetTeamAndMatch(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             if (Template.Match != null)
             {

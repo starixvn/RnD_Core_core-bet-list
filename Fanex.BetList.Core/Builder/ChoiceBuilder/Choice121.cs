@@ -20,9 +20,9 @@
         {
             BuildScore(ticket);
 
-            BuildBetType(ticket, ticketHelper);
+            BuildBetType(ticket, ticketHelper, ticketData);
 
-            BuildBetTeamAndMatch(ticket, ticketHelper);
+            BuildBetTeamAndMatch(ticket, ticketHelper, ticketData);
 
             BuildBetTeamClassNameAndHandicap(ticket);
 
@@ -31,7 +31,7 @@
             BuildSport(ticket, ticketHelper);
         }
 
-        protected override void BuildBetTeamAndMatch(ITicket ticket, ITicketHelper ticketHelper)
+        protected override void BuildBetTeamAndMatch(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             string homeName = GetHomeTeamName(ticket, ticketHelper);
             string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);

@@ -119,9 +119,9 @@
         {
             BuildScore(ticket);
 
-            BuildBetType(ticket, ticketHelper);
+            BuildBetType(ticket, ticketHelper, ticketData);
 
-            BuildBetTeamAndMatch(ticket, ticketHelper);
+            BuildBetTeamAndMatch(ticket, ticketHelper, ticketData);
 
             BuildBetTeamClassNameAndHandicap(ticket);
 
@@ -168,7 +168,7 @@
         }
 
 
-        protected virtual void BuildBetTeamAndMatch(ITicket ticket, ITicketHelper ticketHelper)
+        protected virtual void BuildBetTeamAndMatch(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
             string homeName = GetHomeTeamName(ticket, ticketHelper);
@@ -202,7 +202,7 @@
             Template.Handicap.handicap = ConvertByBetType.Hdp((Template.betTeamClassName == Favorite) ? -handicap : handicap);
         }
 
-        protected virtual void BuildBetType(ITicket ticket, ITicketHelper ticketHelper)
+        protected virtual void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             if (Template.BetType == null)
             {
