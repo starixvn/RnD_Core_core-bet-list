@@ -12,6 +12,8 @@
     /// </summary>
     public class Choice1101 : Choice1
     {
+        private const string BetTeamFormat = "<div><span class='favorite'>{0}</span>&nbsp;<span class='stake'>{1}</span>&nbsp;@&nbsp;<span class='handicap custom'>{2}</span></div>";
+
         /// <summary>
         /// Builds the choice.
         /// </summary>
@@ -22,25 +24,19 @@
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
 
-            var betTypeName = GetLeagueName();
-            Template.League.LeagueName.leagueName = string.Join(null, new string[] { betTypeName, HtmlCharacters.NoneBreakingSpace, ticket.ShowTime });
-
             if (ticketData != null && ticketData.Count > 0)
             {
                 List<ITicketData> foundTicketData = ticketData.FindAll(item => item.RefNo.Equals(ticket.RefNo));
 
-                if (foundTicketData != null && foundTicketData.Count > 0)
+                if (foundTicketData.Count > 0)
                 {
-                    string betTeamName;
-                    string odds;
-                    StringBuilder betTeam = new StringBuilder();
-                    string betTeamFormat = "<div><span class='favorite'>{0}</span>&nbsp;<span class='stake'>{1}</span>&nbsp;@&nbsp;<span class='handicap custom'>{2}</span></div>";
+                    var betTeam = new StringBuilder();
                     foreach (ITicketData refDataItem in foundTicketData)
                     {
-                        betTeamName = GetBetTypeName(refDataItem.BetTeam, ticketHelper);
-                        odds = ConvertByBetType.Odds(refDataItem.Odds, ticket.BetTypeId, ticket.OddsType);
+                        string betTeamName = GetBetTypeName(refDataItem.BetTeam, ticketHelper);
+                        string odds = ConvertByBetType.Odds(refDataItem.Odds, ticket.BetTypeId, ticket.OddsType);
 
-                        betTeam.AppendFormat(betTeamFormat, betTeamName, ConvertByBetType.Stake(refDataItem.Stake), odds);
+                        betTeam.AppendFormat(BetTeamFormat, betTeamName, ConvertByBetType.Stake(refDataItem.Stake), odds);
                     }
 
                     Template.betTeam = betTeam.ToString();
@@ -50,10 +46,15 @@
             else
             {
                 Template.betTeam = string.Empty;
-                Template.BetType.betTypeName = betTypeName;
+                Template.BetType.betTypeName = CoreLang.PartyBaccarat;
             }
-            
+
             Template.Match.VS.Hide();
+        }
+
+        protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            Template.League.LeagueName.leagueName = string.Join(null, new string[] { CoreLang.PartyBaccarat, HtmlCharacters.NoneBreakingSpace, ticket.ShowTime });
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
