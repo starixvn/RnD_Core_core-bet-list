@@ -17,11 +17,10 @@
             string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
             string homeName = GetHomeTeamName(ticket, ticketHelper);
 
-            string teamName = CoreBetList.lblDraw;
+            var teamName = string.Empty;
+            var handicap = string.Empty;
             decimal hdp1 = ticket.Handicap1;
             decimal hdp2 = ticket.Handicap2;
-
-            string handicap = string.Empty;
 
             if ("1" == ticket.BetTeam)
             {

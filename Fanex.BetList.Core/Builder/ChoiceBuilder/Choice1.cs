@@ -60,14 +60,6 @@
 
         #endregion Properties
 
-        /// <summary>
-        /// Renders the specified ticket.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        /// <param name="isShowScoreMap">If set to <c>true</c> [the score map icon is shown].</param>
-        /// <returns>Choice_Template: the whole Choice block built for input data.</returns>
         public virtual Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
         {
             BuildChoice(ticket, ticketHelper, ticketData);
@@ -76,35 +68,13 @@
 
             return Template;
         }
-
-        /// <summary>
-        /// Renders the RTF.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        /// <param name="isShowScoreMap">If set to <c>true</c> [is show score map].</param>
-        /// <param name="rtfHelper">The RTF helper.</param>
-        /// <returns>List of IRichTextString for input data.</returns>
-        public virtual List<IRichTextString> RenderRTF(
-                                ITicket ticket,
-                                ITicketHelper ticketHelper,
-                                List<ITicketData> ticketData,
-                                bool isShowScoreMap,
-                                RTFHelper rtfHelper)
+        
+        public virtual List<IRichTextString> RenderRTF(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap, RTFHelper rtfHelper)
         {
             Render(ticket, ticketHelper, ticketData, isShowScoreMap);
             var choiceData = BuildRTFChoice(ticket, rtfHelper, ticketHelper);
-            List<IRichTextString> rtfChoice;
 
-            if (choiceData is List<IRichTextString>)
-            {
-                rtfChoice = (List<IRichTextString>)choiceData;
-            }
-            else
-            {
-                rtfChoice = new List<IRichTextString>() { (IRichTextString)choiceData };
-            }
+            var rtfChoice = new List<IRichTextString>() { (IRichTextString)choiceData };
 
             return rtfChoice;
         }
@@ -370,15 +340,6 @@
                 Template.Match.VS = null;
                 Template.Match.home_firstGoal_lastGoal = null;
                 Template.Match.away_firstGoal_lastGoal = null;
-            }
-        }
-
-        protected void UpdateAllLeagueMemberToNull()
-        {
-            if (Template.League != null)
-            {
-                Template.League.LeagueName.leagueName = null;
-                Template.League.sportTypeName = null;
             }
         }
 
