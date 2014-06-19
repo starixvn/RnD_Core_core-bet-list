@@ -10,18 +10,21 @@
     /// </summary>
     public class Choice1307 : Choice1
     {
-        /// <summary>
-        /// Builds the choice.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
-            base.BuildChoice(ticket, ticketHelper, ticketData);
+            bool betOver = IsBetOver(ticket);
+            bool betUnder = IsBetUnder(ticket);
 
-            bool betOver = ticket.BetTeam == "1";
-            bool betUnder = ticket.BetTeam == "2";
+            Template.Handicap.handicap = betOver ? ConvertByBetType.Hdp(ticket.Handicap1) : betUnder ? ConvertByBetType.Hdp(ticket.Handicap2) : null;
+
+            // Update betTeamClassName
+            Template.betTeamClassName = betOver ? Favorite : Underdog;
+        }
+
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {
+            bool betOver = IsBetOver(ticket);
+            bool betUnder = IsBetUnder(ticket);
 
             if (betOver)
             {
@@ -38,16 +41,25 @@
                     Template.betTeam = string.Format(CoreBetList.betweenXandY, ConvertByBetType.Hdp(ticket.Handicap2), ConvertByBetType.Hdp(ticket.Handicap1));
                 }
             }
-
-            Template.Handicap.handicap = betOver ? ConvertByBetType.Hdp(ticket.Handicap1) : betUnder ? ConvertByBetType.Hdp(ticket.Handicap2) : null;
-
-            // Update betTeamClassName
-            Template.betTeamClassName = betOver ? Favorite : Underdog;
         }
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);
+        }
+
+        private bool IsBetOver(ITicket ticket)
+        {
+            var betOver = ticket.BetTeam == "1";
+
+            return betOver;
+        }
+
+        private bool IsBetUnder(ITicket ticket)
+        {
+            var betUnder = ticket.BetTeam == "2";
+
+            return betUnder;
         }
     }
 }

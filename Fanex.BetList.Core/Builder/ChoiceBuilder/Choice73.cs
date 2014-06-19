@@ -1,15 +1,17 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using System.Collections.Generic;
     using App_GlobalResources;
+    using Entities;
 
     /// <summary>
     /// Bet Type: Bingo.
     /// </summary>
     public class Choice73 : Choice71
     {
-        protected override string GetBetTeam()
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            return CoreBetList.bingo;
+            Template.betTeam = CoreBetList.bingo;
         }
     }
 }

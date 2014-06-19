@@ -10,17 +10,8 @@
     /// </summary>
     public class Choice1328 : Choice1
     {
-        /// <summary>
-        /// Builds the choice.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            base.BuildChoice(ticket, ticketHelper, ticketData);
-
-            Template.Handicap.handicap = null;
             string choice = ticket.BetTeam;
             var betTeam = string.Empty;
             switch (choice)
@@ -47,6 +38,13 @@
 
             // "&nbsp" because export format
             Template.betTeam = HtmlCharacters.NoneBreakingSpace + betTeam;
+        }
+
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            base.BuildBetTeamClassNameAndHandicap(ticket);
+
+            Template.Handicap.handicap = null;
         }
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)

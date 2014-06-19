@@ -1,34 +1,33 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using System.Collections.Generic;
     using App_GlobalResources;
     using Constants;
+    using Entities;
 
     /// <summary>
     /// BetRadar BetType : Choice of bet type Highest Scoring Half.
     /// </summary>
     public class Choice140 : Choice133
     {
-        /// <summary>
-        /// Gets the bet team.
-        /// </summary>
-        /// <param name="betTeam">The bet team.</param>
-        /// <returns> The choice name.
-        /// </returns>
-        protected override string GetBetTeam(string betTeam)
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            betTeam = betTeam.ToLower();
+            var betTeam = string.Empty;
 
-            switch (betTeam)
+            switch (ticket.BetTeam.ToLower())
             {
                 case BetTeamValue.TwoH:
-                    return CoreLang.SecondHalf;
+                    betTeam = CoreLang.SecondHalf;
+                    break;
                 case BetTeamValue.OneH:
-                    return CoreLang.FirstHalf;
+                    betTeam = CoreLang.FirstHalf;
+                    break;
                 case BetTeamValue.Tie:
-                    return CoreLang.Tie;
-                default:
-                    return string.Empty;
+                    betTeam = CoreLang.Tie;
+                    break;
             }
+
+            Template.betTeam = betTeam;
         }
     }
 }

@@ -9,21 +9,22 @@
     /// </summary>
     public class Choice1315 : Choice1
     {
-        /// <summary>
-        /// Builds the choice.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            base.BuildChoice(ticket, ticketHelper, ticketData);
+            string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
+            string homeName = GetHomeTeamName(ticket, ticketHelper);
 
-            Template.Handicap.handicap = null;
             bool home = ticket.BetTeam == "1";
             bool away = ticket.BetTeam == "2";
 
-            Template.betTeam = home ? Template.Match.homeTeam : away ? Template.Match.awayTeam : CoreBetList.noTiebreak;
+            Template.betTeam = home ? homeName : away ? awayName : CoreBetList.noTiebreak;
+        }
+
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            base.BuildBetTeamClassNameAndHandicap(ticket);
+
+            Template.Handicap.handicap = null;
         }
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)

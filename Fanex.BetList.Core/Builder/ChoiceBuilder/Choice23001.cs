@@ -9,22 +9,31 @@
     /// </summary>
     public class Choice23001 : Choice1
     {
-        /// <summary>
-        /// Builds the choice.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
         {
-            base.BuildChoice(ticket, ticketHelper, ticketData);
+            base.BuildMatch(ticket, ticketHelper);
 
             Template.Match.VS = null;
-            Template.League.sportTypeName = null;
-            Template.Score = null;
-            Template.Handicap.handicap = null;
+        }
 
+        protected override void BuildSport(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            Template.League.sportTypeName = null;
+        }
+
+        protected override void BuildScore(ITicket ticket)
+        {
+            Template.Score = null;
+        }
+
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {
             Template.betTeam = string.Join(null, new string[] { CoreBetList.casinoGame, " - ", CoreBetList.transfer });
+        }
+
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            Template.Handicap.handicap = null;
             Template.betTeamClassName = Favorite;
         }
 

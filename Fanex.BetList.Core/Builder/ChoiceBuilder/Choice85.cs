@@ -11,19 +11,9 @@
     /// </summary>
     public class Choice85 : Choice3
     {
-        /// <summary>
-        /// Builds the choice.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            base.BuildChoice(ticket, ticketHelper, ticketData);
-
-            Template.Score = null;
-            Template.Match.VS = null;
-            Template.Handicap.handicap = null;
+            base.BuildBetTeam(ticket, ticketHelper, ticketData);
 
             string betId = ticket.BetId.ToString();
             if (betId == "0")
@@ -36,6 +26,14 @@
 
             string betTeam = Template.betTeam;
             betTeam += " <span style='color:#555555'>37.5</span> ";
+
+            Template.betTeam = betTeam + liveScore;
+        }
+
+        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {
+            base.BuildBetType(ticket, ticketHelper, ticketData);
+
             string bettypeName = Template.BetType.betTypeName;
             if (!ticket.IsLive)
             {
@@ -46,10 +44,25 @@
                 bettypeName = string.Join(null, new string[] { CoreBetList.next, HtmlCharacters.NoneBreakingSpace, bettypeName });
             }
 
-            Template.betTeam = betTeam + liveScore;
-            Template.betTeamClassName = Favorite;
-
             Template.BetType.betTypeName = bettypeName;
+        }
+
+        protected override void BuildScore(ITicket ticket)
+        {
+            Template.Score = null;
+        }
+
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            Template.Handicap.handicap = null;
+            Template.betTeamClassName = Favorite;
+        }
+
+        protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            base.BuildMatch(ticket, ticketHelper);
+
+            Template.Match.VS = null;
             Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
         }
     }

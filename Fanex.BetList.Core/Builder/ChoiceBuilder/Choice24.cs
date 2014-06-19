@@ -10,20 +10,12 @@
     /// </summary>
     public class Choice24 : Choice1
     {
-        /// <summary>
-        /// Builds the choice.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            base.BuildChoice(ticket, ticketHelper, ticketData);
-
-            Template.Handicap.handicap = null;
-
-            string team = ticket.BetTeam.Contains("1") ? Template.Match.homeTeam : Template.Match.awayTeam;
-            string draw_away = ticket.BetTeam.EndsWith(BetTeamValue.X) ? CoreBetList.lblDraw : Template.Match.awayTeam;
+            string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
+            string homeName = GetHomeTeamName(ticket, ticketHelper);
+            string team = ticket.BetTeam.Contains("1") ? homeName : awayName;
+            string draw_away = ticket.BetTeam.EndsWith(BetTeamValue.X) ? CoreBetList.lblDraw : awayName;
 
             string[] betteam = new string[]
                                 {
@@ -43,6 +35,13 @@
                                 };
 
             Template.betTeam = string.Join(null, betteam);
+        }
+
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            base.BuildBetTeamClassNameAndHandicap(ticket);
+
+            Template.Handicap.handicap = null;
         }
     }
 }

@@ -14,47 +14,46 @@
     {
         private const string BetTeamFormat = "<div><span class='favorite'>{0}</span>&nbsp;<span class='stake'>{1}</span>&nbsp;@&nbsp;<span class='handicap custom'>{2}</span></div>";
 
-        /// <summary>
-        /// Builds the choice.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
         {
-            base.BuildChoice(ticket, ticketHelper, ticketData);
+            Template.Match.VS.Hide();
+        }
 
-            if (ticketData != null && ticketData.Count > 0)
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {
+            List<ITicketData> foundTicketData = GetTicketReference(ticket, ticketData);
+
+            if (foundTicketData.Count > 0)
             {
-                List<ITicketData> foundTicketData = ticketData.FindAll(item => item.RefNo.Equals(ticket.RefNo));
-
-                if (foundTicketData.Count > 0)
+                var betTeam = new StringBuilder();
+                foreach (ITicketData refDataItem in foundTicketData)
                 {
-                    var betTeam = new StringBuilder();
-                    foreach (ITicketData refDataItem in foundTicketData)
-                    {
-                        string betTeamName = GetBetTypeName(refDataItem.BetTeam, ticketHelper);
-                        string odds = ConvertByBetType.Odds(refDataItem.Odds, ticket.BetTypeId, ticket.OddsType);
+                    string betTeamName = GetBetTypeName(refDataItem.BetTeam, ticketHelper);
+                    string odds = ConvertByBetType.Odds(refDataItem.Odds, ticket.BetTypeId, ticket.OddsType);
 
-                        betTeam.AppendFormat(BetTeamFormat, betTeamName, ConvertByBetType.Stake(refDataItem.Stake), odds);
-                    }
-
-                    Template.betTeam = betTeam.ToString();
-                    Template.BetType.betTypeName = string.Empty;
+                    betTeam.AppendFormat(BetTeamFormat, betTeamName, ConvertByBetType.Stake(refDataItem.Stake), odds);
                 }
+
+                Template.betTeam = betTeam.ToString();
             }
             else
             {
                 Template.betTeam = string.Empty;
-                Template.BetType.betTypeName = CoreLang.PartyBaccarat;
             }
+        }
 
-            Template.Match.VS.Hide();
+        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {
+            List<ITicketData> foundTicketData = GetTicketReference(ticket, ticketData);
+
+            Template.BetType.betTypeName = foundTicketData.Count > 0 ? string.Empty : GetLeagueName();
         }
 
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
         {
-            Template.League.LeagueName.leagueName = string.Join(null, new string[] { CoreLang.PartyBaccarat, HtmlCharacters.NoneBreakingSpace, ticket.ShowTime });
+            var leagueName = GetLeagueName();
+
+            Template.League.LeagueName.leagueName = string.Join(null, new string[] { leagueName, HtmlCharacters.NoneBreakingSpace, ticket.ShowTime });
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
@@ -63,9 +62,6 @@
             Template.betTeamClassName = string.Empty;
         }
 
-        /// <summary>
-        /// Adjusts the bet team to RTF.
-        /// </summary>
         protected override void AdjustBetTeamToRTF()
         {
             Template.betTeam = Template.betTeam
@@ -91,6 +87,18 @@
         protected virtual string GetBetTypeName(string betTeam, ITicketHelper ticketHelper)
         {
             return ticketHelper.GetCasinoBetTeamNameById(betTeam);
+        }
+
+        private List<ITicketData> GetTicketReference(ITicket ticket, List<ITicketData> ticketData)
+        {
+            var foundTicketData = new List<ITicketData>();
+
+            if (ticketData != null && ticketData.Count > 0)
+            {
+                foundTicketData = ticketData.FindAll(item => item.RefNo.Equals(ticket.RefNo));
+            }
+
+            return foundTicketData;
         }
     }
 }

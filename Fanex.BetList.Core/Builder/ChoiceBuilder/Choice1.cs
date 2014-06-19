@@ -117,13 +117,15 @@
         /// <param name="ticketData">The ticket data.</param>
         protected virtual void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
+            BuildBetTeam(ticket, ticketHelper, ticketData);
+
+            BuildBetTeamClassNameAndHandicap(ticket);
+
             BuildScore(ticket);
 
             BuildBetType(ticket, ticketHelper, ticketData);
 
-            BuildBetTeamAndMatch(ticket, ticketHelper, ticketData);
-
-            BuildBetTeamClassNameAndHandicap(ticket);
+            BuildMatch(ticket, ticketHelper);
 
             BuildLeague(ticket, ticketHelper);
 
@@ -168,7 +170,7 @@
         }
 
 
-        protected virtual void BuildBetTeamAndMatch(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected virtual void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
         {
             string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
             string homeName = GetHomeTeamName(ticket, ticketHelper);
@@ -179,6 +181,12 @@
             Template.Match.home_firstGoal_lastGoal = string.Empty;
             Template.Match.away_firstGoal_lastGoal = string.Empty;
             CalculateFG_LG(ticket.EventStatus, ref Template.Match.home_firstGoal_lastGoal, ref Template.Match.away_firstGoal_lastGoal);
+        }
+
+        protected virtual void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {
+            string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
+            string homeName = GetHomeTeamName(ticket, ticketHelper);
 
             bool betHomeTeam = IsBetHomeTeam(ticket);
             Template.betTeam = betHomeTeam ? homeName : awayName;

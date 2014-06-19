@@ -7,30 +7,11 @@
     /// <summary>
     /// Casino pending.
     /// </summary>
-    public class Choice23002 : Choice1
+    public class Choice23002 : Choice23001
     {
-        /// <summary>
-        /// Builds the choice.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            base.BuildChoice(ticket, ticketHelper, ticketData);
-
-            Template.Match.VS = null;
-            Template.League.sportTypeName = null;
-            Template.Score = null;
-            Template.Handicap.handicap = null;
-
             Template.betTeam = CoreBetList.casinoGame;
-            Template.betTeamClassName = Favorite;
-        }
-
-        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-        {
-            Template.BetType.betTypeName = null;
         }
     }
 }

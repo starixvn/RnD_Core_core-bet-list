@@ -9,7 +9,7 @@
     /// </summary>
     public class Choice1231 : Choice1
     {
-        protected override void BuildBetTeamAndMatch(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
         {
             if (Template.Match != null)
             {
@@ -21,7 +21,10 @@
                 DateTime eventTime;
                 Template.Match.homeTeam = DateTime.TryParse(ticket.ShowTime, out eventTime) ? eventTime.ToString("M/d/yyyy hh:mm") : ticket.ShowTime;
             }
+        }
 
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {
             Template.betTeam = string.Join(null, new string[] { ticket.MatchCode, " - ", ticketHelper.GetHorseTeamNameById(ticket.HomeId, ticket.AwayId) });
         }
 

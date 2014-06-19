@@ -10,16 +10,8 @@
     /// </summary>
     public class Choice1314 : Choice20
     {
-        /// <summary>
-        /// Builds the choice.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            base.BuildChoice(ticket, ticketHelper, ticketData);
-
             bool yes = ticket.BetTeam == BetTeamValue.H;
 
             Template.betTeam = yes ? CoreLang.lblYes : CoreLang.lblNo;

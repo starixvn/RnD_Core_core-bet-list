@@ -8,34 +8,49 @@
     /// </summary>
     public class Choice1501 : Choice1
     {
-        /// <summary>
-        /// Builds the choice.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            // Does not show handicap, match, and score.
-            Template.Handicap = null;
-
-            UpdateAllMatchMemberToNull();
-
-            Template.Score = null;
             string kenoBetTypeID;
 
             Template.betTeam = ticketHelper.GetKenoBetChoiceName(ticket.BetTeam, out kenoBetTypeID);
+        }
+
+        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {
+            string kenoBetTypeID;
+
+            ticketHelper.GetKenoBetChoiceName(ticket.BetTeam, out kenoBetTypeID);
+
             Template.BetType.betTypeName = ticketHelper.GetKenoBetTypeName(kenoBetTypeID);
+        }
 
+        protected override void BuildSport(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            string kenoLeagueInfo = string.Join(null, new string[] { ticketHelper.GetBetTypeNameById(ticket.BetTypeId), " [", ticket.MatchId.ToString(), "]" });
+
+            Template.League.LeagueName.leagueName = kenoLeagueInfo;
+        }
+
+        protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            Template.League.sportTypeName = ticketHelper.GetSportNameById(ticket.SportTypeId);
+        }
+
+        protected override void BuildScore(ITicket ticket)
+        {
+            Template.Score = null;
+        }
+
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            // Does not show handicap, match, and score.
+            Template.Handicap = null;
             Template.betTeamClassName = Favorite;
+        }
 
-            if (Template.League != null)
-            {
-                Template.League.sportTypeName = ticketHelper.GetSportNameById(ticket.SportTypeId);
-                string kenoLeagueInfo = string.Join(null, new string[] { ticketHelper.GetBetTypeNameById(ticket.BetTypeId), " [", ticket.MatchId.ToString(), "]" });
-
-                Template.League.LeagueName.leagueName = kenoLeagueInfo;
-            }
+        protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            UpdateAllMatchMemberToNull();
         }
     }
 }

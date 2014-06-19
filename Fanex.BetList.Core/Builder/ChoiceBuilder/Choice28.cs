@@ -12,33 +12,25 @@
     /// </summary>
     public class Choice28 : Choice1
     {
-        /// <summary>
-        /// Builds the choice.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            base.BuildChoice(ticket, ticketHelper, ticketData);
-
-            Template.Handicap.handicap = null;
+            string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
+            string homeName = GetHomeTeamName(ticket, ticketHelper);
 
             string teamName = CoreBetList.lblDraw;
             decimal hdp1 = ticket.Handicap1;
             decimal hdp2 = ticket.Handicap2;
 
             string handicap = string.Empty;
-            Template.betTeamClassName = Favorite;
 
             if ("1" == ticket.BetTeam)
             {
-                teamName = Template.Match.homeTeam;
+                teamName = homeName;
                 handicap = Formatter.FormatSignNumber((int)(hdp2 - hdp1));
             }
             else if ("2" == ticket.BetTeam)
             {
-                teamName = Template.Match.awayTeam;
+                teamName = awayName;
                 handicap = Formatter.FormatSignNumber((int)(hdp1 - hdp2));
             }
             else
@@ -61,6 +53,12 @@
             }
 
             Template.betTeam = string.Join(null, new string[] { teamName, "&nbsp;<span class=\"underdog\">(", handicap.ToString(), ")</span>" });
+        }
+
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            Template.Handicap.handicap = null;
+            Template.betTeamClassName = Favorite;
         }
     }
 }

@@ -9,30 +9,35 @@
     /// </summary>
     public class Choice71 : Choice1
     {
-        /// <summary>
-        /// Builds the choice.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            BuildBetType(ticket, ticketHelper, ticketData);
-
-            Template.Score = null;
-            Template.Handicap.handicap = null;
-
-            UpdateAllMatchMemberToNull();
-
-            UpdateAllLeagueMemberToNull();
-
-            Template.betTeam = GetBetTeam();
-            Template.betTeamClassName = Favorite;
+            Template.betTeam = CoreBetList.casinoGame;
         }
 
-        protected virtual string GetBetTeam()
+        protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
         {
-            return CoreBetList.casinoGame;
+            UpdateAllMatchMemberToNull();
+        }
+
+        protected override void BuildSport(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            Template.League.sportTypeName = null;
+        }
+
+        protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            Template.League.LeagueName.leagueName = null;
+        }
+
+        protected override void BuildScore(ITicket ticket)
+        {
+            Template.Score = null;
+        }
+
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            Template.Handicap.handicap = null;
+            Template.betTeamClassName = Favorite;
         }
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)

@@ -10,31 +10,29 @@
     /// </summary>
     public class Choice26 : Choice1
     {
-        /// <summary>
-        /// Builds the choice.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            base.BuildChoice(ticket, ticketHelper, ticketData);
+            var betTeam = string.Empty;
 
+            switch (ticket.BetTeam)
+            {
+                case BetTeamValue.B:
+                    betTeam = CoreBetList.lblBoth;
+                    break;
+                case BetTeamValue.O:
+                    betTeam = CoreBetList.lblOne;
+                    break;
+                case BetTeamValue.N:
+                    betTeam = CoreBetList.nogoal;
+                    break;
+            }
+
+            Template.betTeam = betTeam;
+        }
+
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
             Template.Handicap.handicap = null;
-
-            if (ticket.BetTeam == BetTeamValue.B)
-            {
-                Template.betTeam = CoreBetList.lblBoth;
-            }
-            else if (ticket.BetTeam == BetTeamValue.O)
-            {
-                Template.betTeam = CoreBetList.lblOne;
-            }
-            else if (ticket.BetTeam == BetTeamValue.N)
-            {
-                Template.betTeam = CoreBetList.nogoal;
-            }
-
             Template.betTeamClassName = Favorite;
         }
     }

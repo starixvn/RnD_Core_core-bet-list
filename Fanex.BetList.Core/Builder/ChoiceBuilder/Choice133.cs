@@ -9,41 +9,32 @@
     /// </summary>
     public class Choice133 : Choice1
     {
-        /// <summary>
-        /// Builds the choice.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
-            base.BuildChoice(ticket, ticketHelper, ticketData);
             Template.Handicap = null;
-            Template.OddMixParlay = null;
-            Template.Score = null;
             Template.betTeamClassName = Favorite;
-            Template.betTeam = GetBetTeam(ticket.BetTeam);
         }
 
-        /// <summary>
-        /// Gets the bet team.
-        /// </summary>
-        /// <param name="betTeam">The bet team.</param>
-        /// <returns>Yes or No.</returns>
-        protected virtual string GetBetTeam(string betTeam)
+        protected override void BuildScore(ITicket ticket)
         {
-            betTeam = betTeam.ToLower();
+            Template.Score = null;
+        }
 
-            if (betTeam == "y")
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {
+            var betTeam = string.Empty;
+
+            switch (ticket.BetTeam.ToLower())
             {
-                return CoreBetList.lblYes;
-            }
-            else if (betTeam == "n")
-            {
-                return CoreBetList.lblNo;
+                case "y":
+                    betTeam = CoreBetList.lblYes;
+                    break;
+                case "n":
+                    betTeam = CoreBetList.lblNo;
+                    break;
             }
 
-            return string.Empty;
+            Template.betTeam = betTeam;
         }
     }
 }

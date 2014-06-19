@@ -77,16 +77,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildChoice_Ticket_VisibleOddMixParlay()
-        {
-            // Act
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
-
-            // Assert
-            Assert.IsNull(_choice.Template.OddMixParlay);
-        }
-
-        [Test]
         public void BuildChoice_Ticket_VisibleScore()
         {
             // Act

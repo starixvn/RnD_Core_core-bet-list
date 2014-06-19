@@ -8,25 +8,13 @@
     /// </summary>
     public class Choice10 : Choice1
     {
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-        {
-            BuildScore(ticket);
-
-            BuildBetType(ticket, ticketHelper, ticketData);
-
-            BuildBetTeamAndMatch(ticket, ticketHelper, ticketData);
-
-            BuildBetTeamClassNameAndHandicap(ticket);
-
-            BuildLeague(ticket, ticketHelper);
-
-            BuildSport(ticket, ticketHelper);
-        }
-
-        protected override void BuildBetTeamAndMatch(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
         {
             UpdateAllMatchMemberToNull();
+        }
 
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {
             Template.betTeam = ticketHelper.GetTeamNameById(ticket.HomeId == 0 ? ticket.AwayId : ticket.HomeId);
         }
 
@@ -34,6 +22,11 @@
         {
             Template.Handicap.handicap = null;
             Template.betTeamClassName = Favorite;
+        }
+
+        protected override void BuildTicketStatus(ITicket ticket)
+        {
+            Template.ticketStatus = string.Empty;
         }
     }
 }

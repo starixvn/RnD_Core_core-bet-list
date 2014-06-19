@@ -10,33 +10,24 @@
     /// </summary>
     public class Choice121 : Choice1
     {
-        /// <summary>
-        /// Builds the choice.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildTicketStatus(ITicket ticket)
         {
-            BuildScore(ticket);
-
-            BuildBetType(ticket, ticketHelper, ticketData);
-
-            BuildBetTeamAndMatch(ticket, ticketHelper, ticketData);
-
-            BuildBetTeamClassNameAndHandicap(ticket);
-
-            BuildLeague(ticket, ticketHelper);
-
-            BuildSport(ticket, ticketHelper);
+            Template.ticketStatus = string.Empty;
         }
 
-        protected override void BuildBetTeamAndMatch(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {
+            string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
+            bool betHomeTeam = ticket.BetTeam != null && ticket.BetTeam.Contains(BetTeamValue.X);
+            var betTeam = betHomeTeam ? CoreLang.lblDraw : awayName;
+
+            Template.betTeam = betTeam;
+        }
+
+        protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
         {
             string homeName = GetHomeTeamName(ticket, ticketHelper);
             string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
-
-            Template.betTeam = GetBetTeam(ticket, ticketHelper);
 
             Template.Match.homeTeam = homeName;
             Template.Match.home_firstGoal_lastGoal = string.Empty;
@@ -50,15 +41,6 @@
         {
             Template.Handicap.handicap = null;
             Template.betTeamClassName = Underdog;
-        }
-
-        protected virtual string GetBetTeam(ITicket ticket, ITicketHelper ticketHelper)
-        {
-            string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
-            bool betHomeTeam = ticket.BetTeam != null && ticket.BetTeam.Contains(BetTeamValue.X);
-            var betTeam = betHomeTeam ? CoreLang.lblDraw : awayName;
-
-            return betTeam;
         }
     }
 }

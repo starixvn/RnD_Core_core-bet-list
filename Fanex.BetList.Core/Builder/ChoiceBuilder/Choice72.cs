@@ -1,15 +1,17 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using App_GlobalResources;
+    using System.Collections.Generic;
+    using Entities;
 
     /// <summary>
     /// Progressive Bonus.
     /// </summary>
     public class Choice72 : Choice71
     {
-        protected override string GetBetTeam()
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            return CoreBetList.casinoProgressiveBonus;
+            Template.betTeam = CoreBetList.casinoProgressiveBonus;
         }
     }
 }
