@@ -1,18 +1,4 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Formatter.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.11.16">Create</change>
-//     <change who="Marc.Bui" date="2013.10.08">Check stylecop & refactor</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-/// <summary>
-/// The Utils namespace.
-/// </summary>
-namespace Fanex.BetList.Core.Utils
+﻿namespace Fanex.BetList.Core.Utils
 {
     using System;
     using System.Globalization;

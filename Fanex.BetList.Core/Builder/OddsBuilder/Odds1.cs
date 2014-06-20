@@ -31,7 +31,7 @@
             return Template;
         }
 
-        public IRichTextString RenderRTF(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName, RTFHelper rtfHelper)
+        public virtual IRichTextString RenderRTF(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName, RTFHelper rtfHelper)
         {
             Render(ticket, ticketData, funcGetOddsTypeName);
             var rtfOdds = BuildRTFOdds(rtfHelper);

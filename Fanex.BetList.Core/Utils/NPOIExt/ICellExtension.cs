@@ -1,15 +1,6 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="ICellExtension.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.12.10">Create</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Utils.NPOIExt
+﻿namespace Fanex.BetList.Core.Utils.NPOIExt
 {
+    using System;
     using NPOI.SS.UserModel;
 
     /// <summary>
@@ -54,9 +45,9 @@ namespace Fanex.BetList.Core.Utils.NPOIExt
                 {
                     cell.SetCellValue((bool)value);
                 }
-                else if (value is System.DateTime)
+                else if (value is DateTime)
                 {
-                    cell.SetCellValue((System.DateTime)value);
+                    cell.SetCellValue((DateTime)value);
                 }
                 else if (value is IRichTextString)
                 {

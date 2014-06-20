@@ -2,8 +2,8 @@
 {
     using System;
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Constants;
+    using App_GlobalResources;
+    using Constants;
 
     /// <summary>
     /// Class ConvertByBetType.
@@ -36,8 +36,8 @@
         /// <value>The minus.</value>
         public static string Minus
         {
-            get { return ConvertByBetType.minus; }
-            set { ConvertByBetType.minus = value; }
+            get { return minus; }
+            set { minus = value; }
         }
 
         /// <summary>
@@ -156,7 +156,7 @@
         /// <returns>Converted value.</returns>
         public static string Odds(object odds, object betType, object oddsType)
         {
-            double d = ConvertByBetType.GetOddsByBetType(Convert.ToDouble(odds), Convert.ToInt32(betType), Convert.ToInt32(oddsType));
+            double d = GetOddsByBetType(Convert.ToDouble(odds), Convert.ToInt32(betType), Convert.ToInt32(oddsType));
             if (d < 0)
             {
                 return string.Format(minus, string.Format(Formatter.DECIMALFORMAT3, d));
@@ -180,7 +180,7 @@
         /// <returns>Converted value.</returns>
         public static string VirtualHorseRacingOdds(object odds, object betType, object oddsType)
         {
-            double d = ConvertByBetType.GetOddsByBetType(Convert.ToDouble(odds), Convert.ToInt32(betType), Convert.ToInt32(oddsType));
+            double d = GetOddsByBetType(Convert.ToDouble(odds), Convert.ToInt32(betType), Convert.ToInt32(oddsType));
             if (d < 0)
             {
                 return string.Format(minus, string.Format(Formatter.DECIMALFORMAT3, d));
@@ -203,7 +203,7 @@
         /// <returns>Converted value.</returns>
         public static object OddsType(object betType, object oddsType)
         {
-            return ConvertByBetType.ShowOddsByBettype(Convert.ToInt32(betType), Convert.ToInt32(oddsType));
+            return ShowOddsByBettype(Convert.ToInt32(betType), Convert.ToInt32(oddsType));
         }
 
         /// <summary>
