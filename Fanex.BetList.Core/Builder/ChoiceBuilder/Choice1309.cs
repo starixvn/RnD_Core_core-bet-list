@@ -10,6 +10,10 @@
     /// </summary>
     public class Choice1309 : Choice1
     {
+        /// <summary>
+        /// Builds the bet team class name and handicap.
+        /// </summary>
+        /// <param name="ticket">The ticket.</param>
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
             bool betHome = IsBetHome(ticket);
@@ -33,6 +37,12 @@
             }
         }
 
+        /// <summary>
+        /// Builds the bet team.
+        /// </summary>
+        /// <param name="ticket">The ticket.</param>
+        /// <param name="ticketHelper">The ticket helper.</param>
+        /// <param name="ticketData">The ticket data.</param>
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             bool betHome = IsBetHome(ticket);

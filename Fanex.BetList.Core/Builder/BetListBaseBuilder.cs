@@ -7,6 +7,9 @@ namespace Fanex.BetList.Core.Builder
     using StatusBuilder;
     using TransBuilder;
 
+    /// <summary>
+    /// The bet list base builder.
+    /// </summary>
     public class BetListBaseBuilder
     {
         /// <summary>

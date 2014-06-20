@@ -10,6 +10,12 @@
     /// </summary>
     public class Choice86 : Choice2
     {
+        /// <summary>
+        /// Builds the bet team.
+        /// </summary>
+        /// <param name="ticket">The ticket.</param>
+        /// <param name="ticketHelper">The ticket helper.</param>
+        /// <param name="ticketData">The ticket data.</param>
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             base.BuildBetTeam(ticket, ticketHelper, ticketData);
@@ -33,6 +39,12 @@
             Template.betTeam = betTeam + liveScore;
         }
 
+        /// <summary>
+        /// Builds the type of the bet.
+        /// </summary>
+        /// <param name="ticket">The ticket.</param>
+        /// <param name="ticketHelper">The ticket helper.</param>
+        /// <param name="ticketData">The ticket data.</param>
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             base.BuildBetType(ticket, ticketHelper, ticketData);

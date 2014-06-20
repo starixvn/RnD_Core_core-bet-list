@@ -11,6 +11,11 @@
     {
         private const string DateTimeFormat = "M/d/yyyy hh:mm";
 
+        /// <summary>
+        /// Builds the match.
+        /// </summary>
+        /// <param name="ticket">The ticket.</param>
+        /// <param name="ticketHelper">The ticket helper.</param>
         protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
         {
             if (Template.Match != null)

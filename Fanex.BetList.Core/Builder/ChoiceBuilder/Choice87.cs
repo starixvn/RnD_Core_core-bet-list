@@ -29,6 +29,12 @@
             Template.betTeamClassName = Favorite;
         }
 
+        /// <summary>
+        /// Builds the bet team.
+        /// </summary>
+        /// <param name="ticket">The ticket.</param>
+        /// <param name="ticketHelper">The ticket helper.</param>
+        /// <param name="ticketData">The ticket data.</param>
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             base.BuildBetTeam(ticket, ticketHelper, ticketData);

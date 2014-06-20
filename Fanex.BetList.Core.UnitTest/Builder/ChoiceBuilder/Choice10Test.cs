@@ -104,8 +104,9 @@
         }
 
         /// <summary>
-        /// The value of Template.Match.away_firstGoal_lastGoal is always null.
+        /// Builds the choice_ always_ set score visible is is live.
         /// </summary>
+        /// <param name="isLive">If set to <c>true</c> [is live].</param>
         [TestCase(true)]
         [TestCase(false)]
         public void BuildChoice_Always_SetScoreVisibleIsIsLive(bool isLive)

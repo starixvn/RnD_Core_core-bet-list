@@ -23,6 +23,11 @@
             Template.betTeam = betTeam;
         }
 
+        /// <summary>
+        /// Builds the match.
+        /// </summary>
+        /// <param name="ticket">The ticket.</param>
+        /// <param name="ticketHelper">The ticket helper.</param>
         protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
         {
             string homeName = GetHomeTeamName(ticket, ticketHelper);

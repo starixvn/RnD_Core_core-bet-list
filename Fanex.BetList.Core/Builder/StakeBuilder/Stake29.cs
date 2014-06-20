@@ -8,6 +8,10 @@
     /// </summary>
     public class Stake29 : Stake1
     {
+        /// <summary>
+        /// Builds the stake.
+        /// </summary>
+        /// <param name="ticket">The ticket.</param>
         protected override void BuildStake(ITicket ticket)
         {
             decimal stake = Cast.AsDecimal(ticket.Stake);
