@@ -1,18 +1,8 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Status1501.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2014.03.05">Create</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.StatusBuilder
+﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Templates;
+    using Entities;
+    using Templates;
 
     /// <summary>
     /// Keno games.

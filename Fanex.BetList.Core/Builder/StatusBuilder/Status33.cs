@@ -1,22 +1,10 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Status33.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.12.26">Create</change>
-//     <change who="Marc.Bui" date="2013.01.25">Update export excel</change>
-//     <change who="Marc.Bui" date="2013.02.01">Change statuses to show</change>
-//     <change who="Marc.Bui" date="2013.02.27">Add GetReferenceData for Odds 1233</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.StatusBuilder
+﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Entities;
     using NPOI.SS.UserModel;
+    using Templates;
 
     /// <summary>
     /// Bet Type: Win/Place.
@@ -44,14 +32,14 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
         /// <param name="ticketData">The ticket data.</param>
         /// <param name="isShowVNIP">If set to <c>true</c> [is show VNIP].</param>
         /// <returns>Status_Template: the whole Status block, built on input data.</returns>
-        public override Templates.Status_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP)
+        public override Status_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP)
         {
             base.Render(ticket, ticketHelper, ticketData, isShowVNIP);
 
             // Custom Status generated from base class if ticketData has matched items for the current ticket
             if (ticketData != null && ticketData.Count > 0)
             {
-                List<ITicketData> foundTicketData = this.GetReferenceData(ticket, ticketData);
+                List<ITicketData> foundTicketData = GetReferenceData(ticket, ticketData);
 
                 if (foundTicketData != null && foundTicketData.Count > 1)
                 {
@@ -80,7 +68,7 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
                         case BetStatus.Refund:
                             break;
                         default:
-                            this.Template.result = string.Join(null, new string[] { winStatusMarkup, "<br/>", placeStatusMarkup });
+                            Template.result = string.Join(null, new string[] { winStatusMarkup, "<br/>", placeStatusMarkup });
                             break;
                     }
                 }
@@ -103,16 +91,16 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
             Render(ticket, ticketHelper, ticketData, isShowVNIP);
 
             // Status != Win/Lose
-            if (this.Template.result.Length < 80)
+            if (Template.result.Length < 80)
             {
-                rtfHelper.RTFRenderer.AddText(this.Template.result, rtfHelper.PosFont);
+                rtfHelper.RTFRenderer.AddText(Template.result, rtfHelper.PosFont);
             }
             else
             {
-                int breakPos = this.Template.result.IndexOf("<br/>");
+                int breakPos = Template.result.IndexOf("<br/>");
 
-                string status_WinString = this.Template.result.Substring(0, breakPos);
-                string status_PlaceString = this.Template.result.Replace(status_WinString, string.Empty);
+                string status_WinString = Template.result.Substring(0, breakPos);
+                string status_PlaceString = Template.result.Replace(status_WinString, string.Empty);
 
                 string status_Win = ExtractStringBetweenTag("b", status_WinString);
                 string status_Place = ExtractStringBetweenTag("b", status_PlaceString);

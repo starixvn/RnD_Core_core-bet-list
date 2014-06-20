@@ -1,43 +1,22 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Status1.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.12.25">Create</change>
-//     <change who="Marc.Bui" date="2013.01.24">Hide result link for Refunded tickets</change>
-//     <change who="Marc.Bui" date="2014.11.04">Check ShowIP block is null</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.StatusBuilder
+﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.Utils;
+    using App_GlobalResources;
+    using Entities;
     using NPOI.SS.UserModel;
+    using Templates;
+    using Utils;
 
     /// <summary>
     /// Build Status cell.
     /// </summary>
     public class Status1 : IStatus
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Status1" /> class.
-        /// </summary>
         public Status1()
         {
-            this.Template = new Status_Template();
+            Template = new Status_Template();
         }
 
-        /// <summary>
-        /// Gets or sets the template.
-        /// </summary>
-        /// <value>
-        /// The template.
-        /// </value>
         public Status_Template Template { get; set; }
 
         /// <summary>
@@ -52,17 +31,17 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
         {
             string ticketBetStatus = ticket.Status.ToLower();
             Template.result = ticketBetStatus;
-            string result = this.GetResultString(ticket.Status);            
+            string result = GetResultString(ticket.Status);
 
-            if (string.Empty != result)
+            if (!string.IsNullOrEmpty(result))
             {
                 Template.result = result;
             }
 
-            if (ticketBetStatus.Equals(BetStatus.Running) 
-                || ticketBetStatus.Equals(BetStatus.Waiting) 
-                || ticketBetStatus.Equals(BetStatus.Void) 
-                || ticketBetStatus.Equals(BetStatus.Reject) 
+            if (ticketBetStatus.Equals(BetStatus.Running)
+                || ticketBetStatus.Equals(BetStatus.Waiting)
+                || ticketBetStatus.Equals(BetStatus.Void)
+                || ticketBetStatus.Equals(BetStatus.Reject)
                 || ticketBetStatus.Equals(BetStatus.Refund))
             {
                 Template.StatusResult.Hide();
@@ -79,7 +58,11 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
                 Template.StatusResult.winlostDate = Formatter.FullDateFormat(ticket.WinlostDate);
             }
 
-            if (isShowVNIP == false)
+            if (isShowVNIP)
+            {
+                Template.ShowIP.betIp = ticket.IP;
+            }
+            else
             {
                 if (ticketHelper.IsVnIp(ticket.IP))
                 {
@@ -89,10 +72,6 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
                 {
                     Template.ShowIP.betIp = ticket.IP;
                 }
-            }
-            else
-            {
-                Template.ShowIP.betIp = ticket.IP;
             }
 
             return Template;
