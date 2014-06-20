@@ -1,68 +1,32 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Odds29.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.11.16">Create</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.OddsBuilder
+﻿namespace Fanex.BetList.Core.Builder.OddsBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.Utils;
+    using Entities;
     using NPOI.SS.UserModel;
+    using Templates;
+    using Utils;
 
     /// <summary>
     /// Combination Mix Parlay.
     /// </summary>
     public class Odds29 : IOdds
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Odds29" /> class.
-        /// </summary>
         public Odds29()
         {
-            this.Template = new Odds_Template();
+            Template = new Odds_Template();
         }
 
         public Odds_Template Template { get; set; }
 
-        /// <summary>
-        /// Renders the specified ticket.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        /// <param name="funcGetOddsTypeName">Name of the function get odds type.</param>
-        /// <returns>Odds_Template: the whole Odds block, built on input data.</returns>
         public Odds_Template Render(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
         {
-            string _status = ticket.Status.ToLower();
-            if (_status.Equals(BetStatus.Running))
-            {
-                this.Template.odds = "-";
-            }
-            else
-            {
-                this.Template.odds = ConvertByBetType.Odds(ticket.MasterOdds);
-            }
+            var status = ticket.Status.ToLower();
+            Template.odds = status.Equals(BetStatus.Running) ? "-" : ConvertByBetType.Odds(ticket.MasterOdds);
+            Template.oddsType = funcGetOddsTypeName(ConvertByBetType.OddsType(ticket.BetTypeId, ticket.OddsType));
 
-            this.Template.oddsType = funcGetOddsTypeName(ConvertByBetType.OddsType(ticket.BetTypeId, ticket.OddsType));
-
-            return this.Template;
+            return Template;
         }
-
-        /// <summary>
-        /// Renders the RTF.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        /// <param name="funcGetOddsTypeName">Name of the function get odds type.</param>
-        /// <param name="rtfHelper">The RTF helper.</param>
-        /// <returns>IRichTextString represents the Odds.</returns>
+        
         public IRichTextString RenderRTF(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName, RTFHelper rtfHelper)
         {
             Render(ticket, ticketData, funcGetOddsTypeName);

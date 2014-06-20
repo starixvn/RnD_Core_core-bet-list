@@ -1,20 +1,4 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="ConvertByBetType.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.11.16">Create</change>
-//     <change who="Marc.Bui" date="2013.01.23">Update format string for Stake to follow general rules: show all significant decimals</change>
-//     <change who="Marc.Bui" date="2013.01.29">Update show Odds value: 0 instead of -</change>
-//     <change who="Marc.Bui" date="2014.04.18">Add 1H FGLG (127) to ConvertByBetType.GetBetTeam</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-/// <summary>
-/// The Utils namespace.
-/// </summary>
-namespace Fanex.BetList.Core.Utils
+﻿namespace Fanex.BetList.Core.Utils
 {
     using System;
     using System.Collections.Generic;
