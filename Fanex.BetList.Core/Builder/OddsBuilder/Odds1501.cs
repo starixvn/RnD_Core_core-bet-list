@@ -9,16 +9,9 @@
     /// <summary>
     /// Keno games.
     /// </summary>
-    public class Odds1501 : IOdds
+    public class Odds1501 : Odds1
     {
-        public Odds1501()
-        {
-            Template = new Odds_Template();
-        }
-
-        public Odds_Template Template { get; set; }
-
-        public Odds_Template Render(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
+        public override Odds_Template Render(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
         {
             object oddsType = string.IsNullOrEmpty(ticket.OddsType) ? (object)0 : ticket.OddsType;
 
@@ -28,20 +21,7 @@
             return Template;
         }
 
-        public IRichTextString RenderRTF(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName, RTFHelper rtfHelper)
-        {
-            Render(ticket, ticketData, funcGetOddsTypeName);
-            var rtfOdds = BuildRTFOdds(rtfHelper);
-
-            return rtfOdds;
-        }
-
-        /// <summary>
-        /// Builds the RTF odds.
-        /// </summary>
-        /// <param name="rtfHelper">The RTF helper.</param>
-        /// <returns>IRichTextString object.</returns>
-        protected virtual IRichTextString BuildRTFOdds(RTFHelper rtfHelper)
+        protected override IRichTextString BuildRTFOdds(RTFHelper rtfHelper)
         {
             string odds = Template.odds;
             var rtfNumberRenderer = new RTFNumber(rtfHelper.RTFRenderer, rtfHelper.PosFont, rtfHelper.NegFont);

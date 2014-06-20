@@ -1,17 +1,19 @@
 ﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
-    using System.Collections.Generic;
     using Entities;
-    using Templates;
 
     /// <summary>
     ///  Set x Winner.
     /// </summary>
     public class Status1311 : Status1
     {
-        public override Status_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP)
+        /// <summary>
+        /// Builds the status result.
+        /// </summary>
+        /// <param name="ticket">The ticket.</param>
+        protected override void BuildStatusResult(ITicket ticket)
         {
-            base.Render(ticket, ticketHelper, ticketData, isShowVNIP);
+            base.BuildStatusResult(ticket);
 
             var refNo = "0";
             if (ticket.BetId.ToString().Length > 2)
@@ -20,8 +22,6 @@
             }
 
             Template.StatusResult.refNo = refNo;
-
-            return Template;
         }
     }
 }

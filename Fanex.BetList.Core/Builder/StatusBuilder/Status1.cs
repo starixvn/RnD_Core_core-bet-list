@@ -19,60 +19,13 @@
 
         public Status_Template Template { get; set; }
 
-        /// <summary>
-        /// Renders the specified ticket.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        /// <param name="isShowVNIP">If set to <c>true</c> [VNIP is shown].</param>
-        /// <returns>Status_Template: the whole Status block, built on input data.</returns>
-        public virtual Status_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP)
+        public Status_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP)
         {
-            string ticketBetStatus = ticket.Status.ToLower();
-            Template.result = ticketBetStatus;
-            string result = GetResultString(ticket.Status);
+            BuildResult(ticket, ticketData);
 
-            if (!string.IsNullOrEmpty(result))
-            {
-                Template.result = result;
-            }
+            BuildStatusResult(ticket);
 
-            if (ticketBetStatus.Equals(BetStatus.Running)
-                || ticketBetStatus.Equals(BetStatus.Waiting)
-                || ticketBetStatus.Equals(BetStatus.Void)
-                || ticketBetStatus.Equals(BetStatus.Reject)
-                || ticketBetStatus.Equals(BetStatus.Refund))
-            {
-                Template.StatusResult.Hide();
-            }
-            else
-            {
-                Template.StatusResult.matchId = ticket.MatchId.ToString();
-                Template.StatusResult.betType = ticket.BetTypeId.ToString();
-                Template.StatusResult.race = string.IsNullOrEmpty(ticket.Race) ? "0" : ticket.Race;
-                Template.StatusResult.refNo = ticket.TransId.ToString();
-                Template.StatusResult.sportType = ticket.SportTypeId.ToString();
-                Template.StatusResult.league = ticket.LeagueId.ToString();
-                Template.StatusResult.userName = ticket.UserName;
-                Template.StatusResult.winlostDate = Formatter.FullDateFormat(ticket.WinlostDate);
-            }
-
-            if (isShowVNIP)
-            {
-                Template.ShowIP.betIp = ticket.IP;
-            }
-            else
-            {
-                if (ticketHelper.IsVnIp(ticket.IP))
-                {
-                    Template.ShowIP.Hide();
-                }
-                else
-                {
-                    Template.ShowIP.betIp = ticket.IP;
-                }
-            }
+            BuildIP(ticket, ticketHelper, isShowVNIP);
 
             return Template;
         }
@@ -143,6 +96,71 @@
             }
 
             return result;
+        }
+
+        protected virtual void BuildResult(ITicket ticket, List<ITicketData> ticketData)
+        {
+            Template.result = ticket.Status.ToLower();
+            string result = GetResultString(ticket.Status);
+
+            if (!string.IsNullOrEmpty(result))
+            {
+                Template.result = result;
+            }
+        }
+
+        /// <summary>
+        /// Builds the status result.
+        /// </summary>
+        /// <param name="ticket">The ticket.</param>
+        protected virtual void BuildStatusResult(ITicket ticket)
+        {
+            var result = ticket.Status.ToLower();
+
+            if (result.Equals(BetStatus.Running)
+                || result.Equals(BetStatus.Waiting)
+                || result.Equals(BetStatus.Void)
+                || result.Equals(BetStatus.Reject)
+                || result.Equals(BetStatus.Refund))
+            {
+                Template.StatusResult.Hide();
+            }
+            else
+            {
+                Template.StatusResult.matchId = ticket.MatchId.ToString();
+                Template.StatusResult.betType = ticket.BetTypeId.ToString();
+                Template.StatusResult.race = string.IsNullOrEmpty(ticket.Race) ? "0" : ticket.Race;
+                Template.StatusResult.refNo = ticket.TransId.ToString();
+                Template.StatusResult.sportType = ticket.SportTypeId.ToString();
+                Template.StatusResult.league = ticket.LeagueId.ToString();
+                Template.StatusResult.userName = ticket.UserName;
+                Template.StatusResult.winlostDate = Formatter.FullDateFormat(ticket.WinlostDate);
+            }
+        }
+
+        /// <summary>
+        /// Builds the IP.
+        /// </summary>
+        /// <param name="ticket">The ticket.</param>
+        /// <param name="ticketHelper">The ticket helper.</param>
+        /// <param name="isShowVNIP">If set to <c>true</c> [is show VNIP].</param>
+        protected virtual void BuildIP(ITicket ticket, ITicketHelper ticketHelper, bool isShowVNIP)
+        {
+            if (isShowVNIP)
+            {
+                Template.ShowIP.betIp = ticket.IP;
+            }
+            else
+            {
+                if (ticketHelper.IsVnIp(ticket.IP))
+                {
+                    Template.ShowIP.Hide();
+                }
+                else
+                {
+                    Template.ShowIP.betIp = ticket.IP;
+                }
+            }
         }
     }
 }
