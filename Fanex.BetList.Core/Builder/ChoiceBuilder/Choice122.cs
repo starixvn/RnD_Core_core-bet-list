@@ -12,9 +12,8 @@
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            string homeName = GetHomeTeamName(ticket, ticketHelper);
             bool betHomeTeam = ticket.BetTeam != null && ticket.BetTeam.Contains(BetTeamValue.H);
-            var betTeam = betHomeTeam ? homeName : CoreLang.lblDraw;
+            var betTeam = betHomeTeam ? Template.Match.homeTeam : CoreLang.lblDraw;
 
             Template.betTeam = betTeam;
         }

@@ -12,16 +12,16 @@
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            bool team1 = ticket.BetTeam == "1";
-            bool team2 = ticket.BetTeam == "2";
+            bool betHome = ticket.BetTeam == "1";
+            bool betAway = ticket.BetTeam == "2";
 
-            if (team1)
+            if (betHome)
             {
                 Template.betTeam = string.Join(null, new string[] { "<span class=\"underdog\">", CoreBetList.under, "</span>" });
             }
             else
             {
-                if (team2)
+                if (betAway)
                 {
                     Template.betTeam = string.Join(null, new string[] { "<span class=\"favorite\">", CoreBetList.over, "</span>" });
                 }

@@ -11,44 +11,37 @@
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            var choice = string.Empty;
+            var betTeam = string.Empty;
 
             switch (ticket.BetTeam.Trim())
             {
                 case "1":
-                    choice = CoreBetList.virtualtennis_scorebet_win_0;
+                    betTeam = CoreBetList.virtualtennis_scorebet_win_0;
                     break;
-
                 case "2":
-                    choice = CoreBetList.virtualtennis_scorebet_win_15;
+                    betTeam = CoreBetList.virtualtennis_scorebet_win_15;
                     break;
-
                 case "3":
-                    choice = CoreBetList.virtualtennis_scorebet_win_30;
+                    betTeam = CoreBetList.virtualtennis_scorebet_win_30;
                     break;
-
                 case "4":
-                    choice = CoreBetList.virtualtennis_scorebet_win_40;
+                    betTeam = CoreBetList.virtualtennis_scorebet_win_40;
                     break;
-
                 case "5":
-                    choice = CoreBetList.virtualtennis_scorebet_0_win;
+                    betTeam = CoreBetList.virtualtennis_scorebet_0_win;
                     break;
-
                 case "6":
-                    choice = CoreBetList.virtualtennis_scorebet_15_win;
+                    betTeam = CoreBetList.virtualtennis_scorebet_15_win;
                     break;
-
                 case "7":
-                    choice = CoreBetList.virtualtennis_scorebet_30_win;
+                    betTeam = CoreBetList.virtualtennis_scorebet_30_win;
                     break;
-
                 case "8":
-                    choice = CoreBetList.virtualtennis_scorebet_40_win;
+                    betTeam = CoreBetList.virtualtennis_scorebet_40_win;
                     break;
             }
 
-            Template.betTeam = choice;
+            Template.betTeam = betTeam;
         }
     }
 }

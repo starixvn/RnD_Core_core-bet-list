@@ -10,18 +10,18 @@
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            string kenoBetTypeID;
+            string kenoBetTypeId;
 
-            Template.betTeam = ticketHelper.GetKenoBetChoiceName(ticket.BetTeam, out kenoBetTypeID);
+            Template.betTeam = ticketHelper.GetKenoBetChoiceName(ticket.BetTeam, out kenoBetTypeId);
         }
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            string kenoBetTypeID;
+            string kenoBetTypeId;
 
-            ticketHelper.GetKenoBetChoiceName(ticket.BetTeam, out kenoBetTypeID);
+            ticketHelper.GetKenoBetChoiceName(ticket.BetTeam, out kenoBetTypeId);
 
-            Template.BetType.betTypeName = ticketHelper.GetKenoBetTypeName(kenoBetTypeID);
+            Template.BetType.betTypeName = ticketHelper.GetKenoBetTypeName(kenoBetTypeId);
         }
 
         protected override void BuildSport(ITicket ticket, ITicketHelper ticketHelper)

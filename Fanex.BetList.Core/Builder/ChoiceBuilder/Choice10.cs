@@ -15,7 +15,9 @@
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            Template.betTeam = ticketHelper.GetTeamNameById(ticket.HomeId == 0 ? ticket.AwayId : ticket.HomeId);
+            var teamId = ticket.HomeId == 0 ? ticket.AwayId : ticket.HomeId;
+
+            Template.betTeam = ticketHelper.GetTeamNameById(teamId);
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)

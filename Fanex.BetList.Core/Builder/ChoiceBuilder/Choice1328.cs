@@ -19,20 +19,14 @@
                 case "01":
                     betTeam = "4 " + CoreBetList.points;
                     break;
-
                 case "02":
                     betTeam = "5 " + CoreBetList.points;
                     break;
-
                 case "03":
                     betTeam = "6 " + CoreBetList.points;
                     break;
-
                 case "04":
                     betTeam = "7 " + CoreBetList.upPoints;
-                    break;
-
-                default:
                     break;
             }
 
