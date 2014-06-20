@@ -1,22 +1,12 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="SystemParlayDetail.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Jacob.Phan" date="2014.03.12">Hide PlayerComm System Parlay Detail if there is no data</change>
-//     <change who="Jacob.Phan" date="2012.11.16">Create</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.SystemParlayBuilder
+﻿namespace Fanex.BetList.Core.Builder.SystemParlayBuilder
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.Utils;
+    using App_GlobalResources;
+    using Entities;
+    using Templates;
+    using Utils;
 
     /// <summary>
     /// Build html for system parlay ticket detail.
@@ -46,11 +36,11 @@ namespace Fanex.BetList.Core.Builder.SystemParlayBuilder
             _ticketHelper = ticketHelper;
             _systemParlayData = systemParlayData;
 
-            this.PrepareTemplate();
-            this.PrepareTicketListAndSerialList();
-            this.RenderRows();
-            this.RenderTotalRows();
-            this.RenderOutstanding();
+            PrepareTemplate();
+            PrepareTicketListAndSerialList();
+            RenderRows();
+            RenderTotalRows();
+            RenderOutstanding();
 
             return _template.ToString();
         }
@@ -97,10 +87,10 @@ namespace Fanex.BetList.Core.Builder.SystemParlayBuilder
 
             foreach (var date in dateList)
             {
-                this.RenderOneDay(date);
+                RenderOneDay(date);
             }
 
-            this.RenderEmptyRowInCaseHaveNoData();
+            RenderEmptyRowInCaseHaveNoData();
         }
 
         /// <summary>
@@ -114,10 +104,10 @@ namespace Fanex.BetList.Core.Builder.SystemParlayBuilder
 
             for (var j = 0; j < dataCount; j++)
             {
-                this.RenderEvent(dataInDate, j);
+                RenderEvent(dataInDate, j);
             }
 
-            this.RenderSubTotalForOneDay(dataInDate);
+            RenderSubTotalForOneDay(dataInDate);
         }
 
         /// <summary>
@@ -157,7 +147,7 @@ namespace Fanex.BetList.Core.Builder.SystemParlayBuilder
             var serialDataInOneDay = _serialList.Where(d => d.Serial == serial).ToList();
             if (serialDataInOneDay.Count == 0)
             {
-                rowBlock.Match.SetValue(App_GlobalResources.CoreBetList.losingtickets);
+                rowBlock.Match.SetValue(CoreBetList.losingtickets);
                 return;
             }
 
@@ -214,21 +204,21 @@ namespace Fanex.BetList.Core.Builder.SystemParlayBuilder
             switch (status)
             {
                 case 112:
-                    return App_GlobalResources.CoreLang.lblWon;
+                    return CoreLang.lblWon;
                 case 113:
-                    return App_GlobalResources.CoreLang.lblLose;
+                    return CoreLang.lblLose;
                 case 111:
-                    return App_GlobalResources.CoreLang.lblDraw;
+                    return CoreLang.lblDraw;
                 case 0:
-                    return App_GlobalResources.CoreLang.lblRunning;
+                    return CoreLang.lblRunning;
                 case 1:
-                    return App_GlobalResources.CoreLang.lblWaiting;
+                    return CoreLang.lblWaiting;
                 case 101:
-                    return App_GlobalResources.CoreLang.reject;
+                    return CoreLang.reject;
                 case 102:
-                    return App_GlobalResources.CoreLang.voided;
+                    return CoreLang.voided;
                 case 103:
-                    return App_GlobalResources.CoreLang.refund;
+                    return CoreLang.refund;
             }
 
             return string.Empty;
