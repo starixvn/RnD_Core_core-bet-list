@@ -29,7 +29,7 @@
         /// The value of Template.BetType.betTypeName is always bet type name.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetBetTypeNameIsBetTypeName()
+        public void BuildBetTeam_Always_SetBetTypeNameIsBetTypeName()
         {
             // Arrange
             _ticket.BetTypeId = 1;
@@ -48,7 +48,7 @@
         /// The value of Template.betTeamClassName is always favorite.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetBetTeamClassNameIsFavorite()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());

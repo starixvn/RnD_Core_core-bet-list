@@ -29,7 +29,7 @@
         /// The value of Template.ticketStatus is always void when Ticket.Status = void.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetHandicapIsNull()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -42,7 +42,7 @@
         /// The value of Template.betTeam is always [ BetTeam].
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetBetTeamAreSpaceAndBetTeam()
+        public void BuildBetTeam_Always_SetBetTeamAreSpaceAndBetTeam()
         {
             // Arrange
             _ticket.BetTeam = "bet team";
@@ -59,7 +59,7 @@
         /// The value of Template.betTeamClassName is always favorite.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetBetTeamClassNameIsFavorite()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());

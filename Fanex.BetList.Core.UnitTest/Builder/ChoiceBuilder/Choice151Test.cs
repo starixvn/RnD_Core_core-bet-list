@@ -26,7 +26,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildChoice_BetTeamIs1x_ShowBetTeamIsHomeTeamNameOrDraw()
+        public void BuildBetTeam_BetTeamIs1x_ShowBetTeamIsHomeTeamNameOrDraw()
         {
             // Arrange
             var homeTeamName = "Home team name";
@@ -42,7 +42,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildChoice_BetTeamIs2x_ShowBetTeamIsAwayTeamNameOrDraw()
+        public void BuildBetTeam_BetTeamIs2x_ShowBetTeamIsAwayTeamNameOrDraw()
         {
             // Arrange
             var awayTeamName = "Away team name";
@@ -58,7 +58,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildChoice_BetTeamIs12_ShowBetTeamIsHomeTeamNameOrAwayTeamName()
+        public void BuildBetTeam_BetTeamIs12_ShowBetTeamIsHomeTeamNameOrAwayTeamName()
         {
             // Arrange
             var teamName = "Team name";

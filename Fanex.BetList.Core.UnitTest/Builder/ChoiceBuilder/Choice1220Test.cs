@@ -29,7 +29,7 @@
         /// The value of Template.betTeamClassName is always underdog.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetBetTeamClassNameIsUnderdog()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsUnderdog()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -43,7 +43,7 @@
         /// The value of Template.ticketStatus is always void when Ticket.Status = void.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetHandicapBlockIsNull()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapBlockIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());

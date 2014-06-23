@@ -29,7 +29,7 @@
         /// The value of Template.ticketStatus is always void when Ticket.Status = void.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetHandicapIsNull()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -42,7 +42,7 @@
         /// The value of Template.betTeam is always bet team when BetTeam.Length != 2.
         /// </summary>
         [Test]
-        public void BuildChoice_LengthBetTeamNotEqual2_BetTeamIsEmpty()
+        public void BuildBetTeam_LengthBetTeamNotEqual2_BetTeamIsEmpty()
         {
             // Arrange
             _ticket.BetTeam = "bet team";
@@ -58,7 +58,7 @@
         /// The value of Template.betTeam is always [BetTeam[0]:BetTeam[1]] when BetTeam.Length == 2.
         /// </summary>
         [Test]
-        public void BuildChoice_LengthBetTeamEqual2_BetTeamIsBetTeam()
+        public void BuildBetTeam_LengthBetTeamEqual2_BetTeamIsBetTeam()
         {
             // Arrange
             _ticket.BetTeam = "ab";
@@ -74,7 +74,7 @@
         /// The value of Template.BetType.betTypeName is always bet type name.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetBetTypeNameIsBetTypeName()
+        public void BuildBetTeam_Always_SetBetTypeNameIsBetTypeName()
         {
             // Arrange
             _ticket.BetTypeId = 1;
@@ -93,7 +93,7 @@
         /// The value of Template.betTeamClassName is always underdog.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetBetTeamClassNameIsUnderdog()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsUnderdog()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());

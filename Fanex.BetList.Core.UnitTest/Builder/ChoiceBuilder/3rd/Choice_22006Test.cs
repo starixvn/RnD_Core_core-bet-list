@@ -31,7 +31,7 @@
         /// The value of Template.Handicap is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetHandicapBlockIsNull()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapBlockIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -44,7 +44,7 @@
         /// The value of Template.Match is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetMatchBlockIsNull()
+        public void BuildMatch_Always_SetMatchBlockIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -57,7 +57,7 @@
         /// The value of Template.Score is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetScoreBlockIsNull()
+        public void BuildScore_Always_SetScoreBlockIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -70,7 +70,7 @@
         /// The value of Template.League is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetLeagueBlockIsNull()
+        public void BuildLeague_Always_SetLeagueBlockIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -83,7 +83,7 @@
         /// The value of Template.betTeamClassName is always favorite.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetBetTeamClassNameIsFavorite()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -97,7 +97,7 @@
         /// The value of Template.betTeam is always bet team.
         /// </summary>
         [Test]
-        public void BuildChoice_LengthBetTeamEqual2_BetTeamIsBetTeam()
+        public void BuildBetTeam_LengthBetTeamEqual2_BetTeamIsBetTeam()
         {
             // Arrange
             _ticket.BetTeam = "bet team";
@@ -113,7 +113,7 @@
         /// The value of Template.betTeam is always play tech casino.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetBetTypeNameIsPlayTechCasioResource()
+        public void BuildBetType_Always_SetBetTypeNameIsPlayTechCasioResource()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());

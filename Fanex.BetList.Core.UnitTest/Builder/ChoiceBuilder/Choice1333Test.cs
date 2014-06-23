@@ -30,7 +30,7 @@
         /// The value of Template.ticketStatus is always void when Ticket.Status = void.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetHandicapIsNull()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -43,7 +43,7 @@
         /// The value of Template.betTeam is always Over.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs1_BetTeamIsHomeTeamName()
+        public void BuildBetTeam_BetTeamIs1_BetTeamIsHomeTeamName()
         {
             // Arrange
             _ticket.BetTeam = "1";
@@ -60,7 +60,7 @@
         /// The value of Template.betTeam is always Over.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs2_BetTeamIsAwayTeamName()
+        public void BuildBetTeam_BetTeamIs2_BetTeamIsAwayTeamName()
         {
             // Arrange
             _ticket.BetTeam = "2";
@@ -77,7 +77,7 @@
         /// The value of Template.betTeam is always Between handicap 2 and handicap1.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamNotIs1AndNotIs2_BetTeamIsNeitherResource()
+        public void BuildBetTeam_BetTeamNotIs1AndNotIs2_BetTeamIsNeitherResource()
         {
             // Arrange
             _ticket.BetTeam = string.Empty;
@@ -93,7 +93,7 @@
         /// The value of Template.BetType.betTypeName is always bet type name.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetBetTypeNameIsBetTypeName()
+        public void BuildBetTeam_Always_SetBetTypeNameIsBetTypeName()
         {
             // Arrange
             _ticket.BetTypeId = 1;

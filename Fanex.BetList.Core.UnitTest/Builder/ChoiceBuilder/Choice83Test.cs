@@ -26,7 +26,7 @@
         }
 
         [Test]
-        public void BuildChoice_Always_SetMatchVSBlockIsNull()
+        public void BuildMatch_Always_SetMatchVSBlockIsNull()
         {
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -36,7 +36,7 @@
         }
 
         [Test]
-        public void BuildChoice_Always_SetHandicapIsEmpty()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsEmpty()
         {
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -72,7 +72,7 @@
         }
 
         [Test]
-        public void BuildChoice_Always_SetBetTeamClassNameIsFavorite()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
         {
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());

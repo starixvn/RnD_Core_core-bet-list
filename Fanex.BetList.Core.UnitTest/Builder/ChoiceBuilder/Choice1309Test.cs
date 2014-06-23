@@ -30,7 +30,7 @@
         /// The value of Template.betTeam is always home team name.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs1_BetTeamIsHomeTeamName()
+        public void BuildBetTeam_BetTeamIs1_BetTeamIsHomeTeamName()
         {
             // Arrange
             const string HOME_TEAM_NAME = "Home team name";
@@ -49,7 +49,7 @@
         /// The value of Template.betTeamClassName is underdog.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs1AndHandicap2GreaterThanHandicap1_BetTeamClassNameIsUnderdog()
+        public void BuildBetTeamClassNameAndHandicap_BetTeamIs1AndHandicap2GreaterThanHandicap1_BetTeamClassNameIsUnderdog()
         {
             // Arrange
             _ticket.BetTeam = "1";
@@ -68,7 +68,7 @@
         /// The value of Template.betTeamClassName is underdog.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs1AndHandicap2EqualHandicap1_BetTeamClassNameIsUnderdog()
+        public void BuildBetTeamClassNameAndHandicap_BetTeamIs1AndHandicap2EqualHandicap1_BetTeamClassNameIsUnderdog()
         {
             // Arrange
             _ticket.BetTeam = "1";
@@ -87,7 +87,7 @@
         /// The value of Template.betTeamClassName is underdog.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs1AndHandicap2LessThanHandicap1_BetTeamClassNameIsFavorite()
+        public void BuildBetTeamClassNameAndHandicap_BetTeamIs1AndHandicap2LessThanHandicap1_BetTeamClassNameIsFavorite()
         {
             // Arrange
             _ticket.BetTeam = "1";
@@ -106,7 +106,7 @@
         /// The value of Template.betTeamClassName is underdog.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs1AndHandicap2LessThanHandicap1_HandicapIsMinusHandicap1()
+        public void BuildBetTeamClassNameAndHandicap_BetTeamIs1AndHandicap2LessThanHandicap1_HandicapIsMinusHandicap1()
         {
             // Arrange
             _ticket.BetTeam = "1";
@@ -125,7 +125,7 @@
         /// The value of Template.betTeamClassName is underdog.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs1AndHandicap2GreaterThanHandicap1_HandicapIsHandicap2()
+        public void BuildBetTeamClassNameAndHandicap_BetTeamIs1AndHandicap2GreaterThanHandicap1_HandicapIsHandicap2()
         {
             // Arrange
             _ticket.BetTeam = "1";
@@ -144,7 +144,7 @@
         /// The value of Template.betTeam is always away team name.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs2_BetTeamIsAwayTeamName()
+        public void BuildBetTeam_BetTeamIs2_BetTeamIsAwayTeamName()
         {
             // Arrange
             const string AWAY_TEAM_NAME = "Away team name";
@@ -163,7 +163,7 @@
         /// The value of Template.betTeamClassName is favorite.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs2AndHandicap2GreaterThanHandicap1_BetTeamClassNameIsFavorite()
+        public void BuildBetTeamClassNameAndHandicap_BetTeamIs2AndHandicap2GreaterThanHandicap1_BetTeamClassNameIsFavorite()
         {
             // Arrange
             _ticket.BetTeam = "2";
@@ -182,7 +182,7 @@
         /// The value of Template.betTeamClassName is underdog.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs2AndHandicap2EqualHandicap1_BetTeamClassNameIsUnderdog()
+        public void BuildBetTeamClassNameAndHandicap_BetTeamIs2AndHandicap2EqualHandicap1_BetTeamClassNameIsUnderdog()
         {
             // Arrange
             _ticket.BetTeam = "2";
@@ -201,7 +201,7 @@
         /// The value of Template.betTeamClassName is underdog.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs2AndHandicap2LessThanHandicap1_BetTeamClassNameIsUnderdog()
+        public void BuildBetTeamClassNameAndHandicap_BetTeamIs2AndHandicap2LessThanHandicap1_BetTeamClassNameIsUnderdog()
         {
             // Arrange
             _ticket.BetTeam = "2";
@@ -220,7 +220,7 @@
         /// The value of Template.betTeamClassName is underdog.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs2AndHandicap2LessThanHandicap1_HandicapIsHandicap1()
+        public void BuildBetTeamClassNameAndHandicap_BetTeamIs2AndHandicap2LessThanHandicap1_HandicapIsHandicap1()
         {
             // Arrange
             _ticket.BetTeam = "2";
@@ -239,7 +239,7 @@
         /// The value of Template.betTeamClassName is underdog.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs2AndHandicap2GreaterThanHandicap1_HandicapIsMinusHandicap2()
+        public void BuildBetTeamClassNameAndHandicap_BetTeamIs2AndHandicap2GreaterThanHandicap1_HandicapIsMinusHandicap2()
         {
             // Arrange
             _ticket.BetTeam = "2";
@@ -258,7 +258,7 @@
         /// The value of Template.betTeamClassName is underdog.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamNotIs1AndNotIs2_BetTeamClassNameIsUnderdog()
+        public void BuildBetTeamClassNameAndHandicap_BetTeamNotIs1AndNotIs2_BetTeamClassNameIsUnderdog()
         {
             // Arrange
             _ticket.BetTeam = "bet team";
@@ -275,7 +275,7 @@
         /// The value of Template.betTeamClassName is underdog.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamNotIs1AndNotIs2AndHandicap2GreaterThanHandicap1_BetTeamAreDrawResourceAndhResourceAndHandicap2()
+        public void BuildBetTeamClassNameAndHandicap_BetTeamNotIs1AndNotIs2AndHandicap2GreaterThanHandicap1_BetTeamAreDrawResourceAndhResourceAndHandicap2()
         {
             // Arrange
             _ticket.BetTeam = "bet team";
@@ -293,7 +293,7 @@
         /// The value of Template.betTeamClassName is underdog.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamNotIs1AndNotIs2AndHandicap1GreaterThanHandicap2_BetTeamAreDrawResourceAndaResourceAndHandicap1()
+        public void BuildBetTeamClassNameAndHandicap_BetTeamNotIs1AndNotIs2AndHandicap1GreaterThanHandicap2_BetTeamAreDrawResourceAndaResourceAndHandicap1()
         {
             // Arrange
             _ticket.BetTeam = "bet team";
@@ -311,7 +311,7 @@
         /// The value of Template.Handicap.handicap is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIsNot1AndIsNot2_SetHandicapIsNull()
+        public void BuildBetTeamClassNameAndHandicap_BetTeamIsNot1AndIsNot2_SetHandicapIsNull()
         {
             // Arrange
             _ticket.BetTeam = "bet team";
@@ -327,7 +327,7 @@
         /// The value of Template.BetType.betTypeName is always bet type name.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetBetTypeNameIsBetTypeName()
+        public void BuildBetTeam_Always_SetBetTypeNameIsBetTypeName()
         {
             // Arrange
             _ticket.BetTypeId = 1;

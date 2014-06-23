@@ -30,7 +30,7 @@
         /// The value of Template.betTeam is always Draw when bet team of ticket is h.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIsCharacterh_BetTeamIsLableYesResource()
+        public void BuildBetTeam_BetTeamIsCharacterh_BetTeamIsLableYesResource()
         {
             // Arrange
             _ticket.BetTeam = "h";
@@ -46,7 +46,7 @@
         /// The value of Template.betTeam is always Draw when bet team of ticket is not h.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIsNotCharacterh_BetTeamIsLableNoResource()
+        public void BuildBetTeam_BetTeamIsNotCharacterh_BetTeamIsLableNoResource()
         {
             // Arrange
             _ticket.BetTeam = string.Empty;
@@ -62,7 +62,7 @@
         /// The value of Template.BetType.betTypeName is always bet type name.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetBetTypeNameIsBetTypeName()
+        public void BuildBetTeam_Always_SetBetTypeNameIsBetTypeName()
         {
             // Arrange
             _ticket.BetTypeId = 1;

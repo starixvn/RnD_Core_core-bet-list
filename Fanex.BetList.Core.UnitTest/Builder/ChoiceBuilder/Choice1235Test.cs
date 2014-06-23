@@ -30,7 +30,7 @@
         /// The value of Template.betTeam is always Win-0 when bet team of ticket is 1.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs1_BetTeamIsVirtualTennisScoreBetWin0Resource()
+        public void BuildBetTeam_BetTeamIs1_BetTeamIsVirtualTennisScoreBetWin0Resource()
         {
             // Arrange
             _ticket.BetTeam = "1";
@@ -46,7 +46,7 @@
         /// The value of Template.betTeam is always Win-15 when bet team of ticket is 2.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs2_BetTeamIsVirtualTennisScoreBetWin15Resource()
+        public void BuildBetTeam_BetTeamIs2_BetTeamIsVirtualTennisScoreBetWin15Resource()
         {
             // Arrange
             _ticket.BetTeam = "2";
@@ -62,7 +62,7 @@
         /// The value of Template.betTeam is always Win-30 when bet team of ticket is 3.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs3_BetTeamIsVirtualTennisScoreBetWin30Resource()
+        public void BuildBetTeam_BetTeamIs3_BetTeamIsVirtualTennisScoreBetWin30Resource()
         {
             // Arrange
             _ticket.BetTeam = "3";
@@ -78,7 +78,7 @@
         /// The value of Template.betTeam is always Win-40 when bet team of ticket is 4.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs4_BetTeamIsVirtualTennisScoreBetWin40Resource()
+        public void BuildBetTeam_BetTeamIs4_BetTeamIsVirtualTennisScoreBetWin40Resource()
         {
             // Arrange
             _ticket.BetTeam = "4";
@@ -94,7 +94,7 @@
         /// The value of Template.betTeam is always 0-Win when bet team of ticket is 5.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs1_BetTeamIsVirtualTennisScoreBet0WinResource()
+        public void BuildBetTeam_BetTeamIs1_BetTeamIsVirtualTennisScoreBet0WinResource()
         {
             // Arrange
             _ticket.BetTeam = "5";
@@ -110,7 +110,7 @@
         /// The value of Template.betTeam is always 15-Win when bet team of ticket is 6.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs2_BetTeamIsVirtualTennisScoreBet15WinResource()
+        public void BuildBetTeam_BetTeamIs2_BetTeamIsVirtualTennisScoreBet15WinResource()
         {
             // Arrange
             _ticket.BetTeam = "6";
@@ -126,7 +126,7 @@
         /// The value of Template.betTeam is always 30-Win when bet team of ticket is 7.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs7_BetTeamIsVirtualTennisScoreBet30WinResource()
+        public void BuildBetTeam_BetTeamIs7_BetTeamIsVirtualTennisScoreBet30WinResource()
         {
             // Arrange
             _ticket.BetTeam = "7";
@@ -142,7 +142,7 @@
         /// The value of Template.betTeam is always 40-Win when bet team of ticket is 8.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs4_BetTeamIsVirtualTennisScoreBetWin0Resource()
+        public void BuildBetTeam_BetTeamIs4_BetTeamIsVirtualTennisScoreBetWin0Resource()
         {
             // Arrange
             _ticket.BetTeam = "8";

@@ -30,7 +30,7 @@
         /// The value of Template.Handicap.handicap is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetHandicapIsNull()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -43,7 +43,7 @@
         /// The value of Template.betTeamClassName is always favorite.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetBetTeamClassNameIsFavorite()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -57,7 +57,7 @@
         /// The value of Template.betTeam is always home team name and handicap 2 - handicap 1.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs1_BetTeamAreHomeTeamNameAndHandicapIsHandicap2SubtractHandicap1()
+        public void BuildBetTeam_BetTeamIs1_BetTeamAreHomeTeamNameAndHandicapIsHandicap2SubtractHandicap1()
         {
             // Arrange
             _ticket.BetTeam = "1";
@@ -77,7 +77,7 @@
         /// The value of Template.betTeam is always away team name and handicap 1 - handicap 2.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs2_BetTeamAreAwayTeamNameAndHandicapIsHandicap1SubtractHandicap2()
+        public void BuildBetTeam_BetTeamIs2_BetTeamAreAwayTeamNameAndHandicapIsHandicap1SubtractHandicap2()
         {
             // Arrange
             _ticket.BetTeam = "2";
@@ -97,7 +97,7 @@
         /// The value of Template.betTeam is always draw and handicap is a if handicap 1 > handicap 2.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamNotIs1AndNotIs2AndHandicap1GreaterThanHandicap2_BetTeamAreDrawResourceAndaResource()
+        public void BuildBetTeam_BetTeamNotIs1AndNotIs2AndHandicap1GreaterThanHandicap2_BetTeamAreDrawResourceAndaResource()
         {
             // Arrange
             _ticket.BetTeam = "bet team";
@@ -116,7 +116,7 @@
         /// The value of Template.betTeam is always draw and handicap is h if handicap 2> handicap 1.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamNotIs1AndNotIs2AndHandicap2GreaterThanHandicap1_BetTeamAreDrawResourceAndaResource()
+        public void BuildBetTeam_BetTeamNotIs1AndNotIs2AndHandicap2GreaterThanHandicap1_BetTeamAreDrawResourceAndaResource()
         {
             // Arrange
             _ticket.BetTeam = "bet team";
@@ -135,7 +135,7 @@
         /// The value of Template.betTeam is always draw and handicap is empty if handicap 2 = handicap 1.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamNotIs1AndNotIs2AndHandicap2EqualHandicap1_BetTeamAreDrawResourceAndaResource()
+        public void BuildBetTeam_BetTeamNotIs1AndNotIs2AndHandicap2EqualHandicap1_BetTeamAreDrawResourceAndaResource()
         {
             // Arrange
             _ticket.BetTeam = "bet team";

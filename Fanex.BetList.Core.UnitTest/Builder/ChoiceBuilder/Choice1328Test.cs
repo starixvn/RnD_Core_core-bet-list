@@ -30,7 +30,7 @@
         /// The value of Template.ticketStatus is always void when Ticket.Status = void.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetHandicapIsNull()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -43,7 +43,7 @@
         /// The value of Template.betTeam is always 4 Points.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs01_BetTeamAreSpaceAnd4AndPointResource()
+        public void BuildBetTeam_BetTeamIs01_BetTeamAreSpaceAnd4AndPointResource()
         {
             // Arrange
             _ticket.BetTeam = "01";
@@ -60,7 +60,7 @@
         /// The value of Template.betTeam is always 5 Points.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs02_BetTeamAreSpaceAnd5AndPointResource()
+        public void BuildBetTeam_BetTeamIs02_BetTeamAreSpaceAnd5AndPointResource()
         {
             // Arrange
             _ticket.BetTeam = "02";
@@ -77,7 +77,7 @@
         /// The value of Template.betTeam is always 6 Points.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs03_BetTeamAreSpaceAnd6AndPointResource()
+        public void BuildBetTeam_BetTeamIs03_BetTeamAreSpaceAnd6AndPointResource()
         {
             // Arrange
             _ticket.BetTeam = "03";
@@ -94,7 +94,7 @@
         /// The value of Template.betTeam is always 7 UP Points.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs04_BetTeamAreSpaceAnd7AndUpPointResource()
+        public void BuildBetTeam_BetTeamIs04_BetTeamAreSpaceAnd7AndUpPointResource()
         {
             // Arrange
             _ticket.BetTeam = "04";
@@ -111,7 +111,7 @@
         /// The value of Template.betTeam is always empty.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamNotAre01Or02Or03Or04_BetTeamIsEmpty()
+        public void BuildBetTeam_BetTeamNotAre01Or02Or03Or04_BetTeamIsEmpty()
         {
             // Arrange
             _ticket.BetTeam = "bet team";
@@ -127,7 +127,7 @@
         /// The value of Template.BetType.betTypeName is always bet type name.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetBetTypeNameIsBetTypeName()
+        public void BuildBetTeam_Always_SetBetTypeNameIsBetTypeName()
         {
             // Arrange
             _ticket.BetTypeId = 1;

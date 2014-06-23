@@ -25,7 +25,7 @@
         }
 
         [Test]
-        public void GetChoice_Should_Return_BetTeam_Data()
+        public void BuildBetTeam_Always_SetBetTeamIsBetTeam()
         {
             // Arrange
             _ticket.BetTeam = "A Bet Team";

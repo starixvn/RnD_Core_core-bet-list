@@ -30,7 +30,7 @@
         /// The value of Template.Handicap.handicap is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetHandicapIsNull()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -43,7 +43,7 @@
         /// The value of Template.betTeam is always Both.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIsCharacterB_BetTeamIsBothResource()
+        public void BuildBetTeam_BetTeamIsCharacterB_BetTeamIsBothResource()
         {
             // Arrange
             _ticket.BetTeam = "b";
@@ -59,7 +59,7 @@
         /// The value of Template.betTeam is always One.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIsCharacterO_BetTeamIsOneResource()
+        public void BuildBetTeam_BetTeamIsCharacterO_BetTeamIsOneResource()
         {
             // Arrange
             _ticket.BetTeam = "o";
@@ -75,7 +75,7 @@
         /// The value of Template.betTeam is always No Goal.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIsCharacterN_BetTeamIsNoGoalResource()
+        public void BuildBetTeam_BetTeamIsCharacterN_BetTeamIsNoGoalResource()
         {
             // Arrange
             _ticket.BetTeam = "n";
@@ -91,7 +91,7 @@
         /// The value of Template.betTeamClassName is always favorite.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetBetTeamClassNameIsFavorite()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());

@@ -37,7 +37,7 @@
         }
 
         [Test]
-        public void BuildChoice_Always_SetMatchVSBlockIsNull()
+        public void BuildMatch_Always_SetMatchVSBlockIsNull()
         {
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -47,7 +47,7 @@
         }
 
         [Test]
-        public void BuildChoice_Always_SetHandicapIsEmpty()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsEmpty()
         {
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -57,7 +57,7 @@
         }
 
         [Test]
-        public void BuildChoice_Always_SetBetTeamClassNameIsFavorite()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
         {
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -70,7 +70,7 @@
         ///  Test whether bet type is combined by core bet list resource full time and bet type name get from ticket.
         /// </summary>
         [Test]
-        public void BuildChoice_TicketIsNotLive_SetBetTypeNameIsFtResourcePointAndBetTypeName()
+        public void BuildBetType_TicketIsNotLive_SetBetTypeNameIsFtResourcePointAndBetTypeName()
         {
             // Arrange
             var betTypeName = "A Bettype Name";
@@ -88,7 +88,7 @@
         ///  Test whether bet type is combined by core bet list resource next and bet type name get from ticket.
         /// </summary>
         [Test]
-        public void BuildChoice_TicketIsLive_SetBetTypeNameIsNextResourceBreakingAndBetTypeName()
+        public void BuildBetType_TicketIsLive_SetBetTypeNameIsNextResourceBreakingAndBetTypeName()
         {
             // Arrange
             var betTypeName = "A Bettype Name";
@@ -109,7 +109,7 @@
         /// <param name="betId"> Bet id of ticket.</param>
         /// <param name="liveScore"> Live score string.</param>
         [Test, TestCaseSource("liveScores")]
-        public void BuildChoice_Always_SetBetTeamIsValid(bool isLive, long betId, string liveScore)
+        public void BuildBetTeam_Always_SetBetTeamIsValid(bool isLive, long betId, string liveScore)
         {
             // Arrange
             _ticket.IsLive = isLive;
@@ -123,7 +123,7 @@
         }
 
         [Test]
-        public void BuildChoice_Always_SetHomeTeamIsJoinedByNumberGameNoResourceAndMatchCode()
+        public void BuildMatch_Always_SetHomeTeamIsJoinedByNumberGameNoResourceAndMatchCode()
         {
             // Arrange
             _ticket.MatchCode = "6969";

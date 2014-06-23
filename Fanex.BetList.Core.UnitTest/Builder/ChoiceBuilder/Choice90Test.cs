@@ -149,7 +149,7 @@
         }
 
         [Test]
-        public void BuildChoice_Always_SetScoreBlockIsNull()
+        public void BuildScore_Always_SetScoreBlockIsNull()
         {
             // Act
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -159,7 +159,7 @@
         }
 
         [Test]
-        public void BuildChoice_Always_SetMatchVSBlockIsNull()
+        public void BuildMatch_Always_SetMatchVSBlockIsNull()
         {
             // Act
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -169,7 +169,7 @@
         }
 
         [Test]
-        public void BuildChoice_Always_SetHandicapIsEmpty()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsEmpty()
         {
             // Act
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -179,7 +179,7 @@
         }
 
         [Test]
-        public void BuildChoice_Always_SetBetTypeNameIsNumberGroupResource()
+        public void BuildBetType_Always_SetBetTypeNameIsNumberGroupResource()
         {
             // Act
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -194,7 +194,7 @@
         ///  Build choice function always set bet team by combined number game no and match code.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetHomeTeamIsJoinedByNumberGameNoResourceAndMatchCode()
+        public void BuildMatch_Always_SetHomeTeamIsJoinedByNumberGameNoResourceAndMatchCode()
         {
             // Arrange
             _ticket.MatchCode = "6969";
@@ -208,7 +208,7 @@
         }
 
         [Test]
-        public void BuildChoice_Always_SetBetTeamCssClassNameIsFavorite()
+        public void BuildBetTeam_Always_SetBetTeamCssClassNameIsFavorite()
         {
             // Act
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -225,7 +225,7 @@
         /// <param name="betId"> Bet id of ticket.</param>
         /// <param name="liveScore"> Live score status of ticket.</param>
         [Test, TestCaseSource("liveScores")]
-        public void BuildChoice_WhenCalled_SetValidNameForBetTeam(bool isLive, long? betId, string liveScore)
+        public void BuildBetTeam_WhenCalled_SetValidNameForBetTeam(bool isLive, long? betId, string liveScore)
         {
             foreach (string key in betTeamMap.Keys)
             {

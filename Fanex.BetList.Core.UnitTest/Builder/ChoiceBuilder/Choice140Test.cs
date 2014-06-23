@@ -26,7 +26,7 @@
         }
 
         [Test]
-        public void When_BetTeam_Is_1h_BetChoice_Should_Display_FirstHalf()
+        public void BuildBetTeam_BetTeamIs1h_BetTeamIsFirstHalfResource()
         {
             // Arrange
             _ticket.BetTeam = "1h";
@@ -39,7 +39,7 @@
         }
 
         [Test]
-        public void When_BetTeam_Is_2h_BetChoice_Should_Display_SecondHalf()
+        public void BuildBetTeam_BetTeamIs2h_BetTeamIsSecondHalfResource()
         {
             // Arrange
             _ticket.BetTeam = "2h";
@@ -52,7 +52,7 @@
         }
 
         [Test]
-        public void When_BetTeam_Is_tie_BetChoice_Display_Tie()
+        public void BuildBetTeam_BetTeamIstie_BetTeamIsTieResource()
         {
             // Arrange
             _ticket.BetTeam = "tie";
@@ -65,7 +65,7 @@
         }
 
         [Test]
-        public void BuildChoice_BetTeamIsNotYAndNotN_ShowBetTeamIsEmpty()
+        public void BuildBetTeam_BetTeamIsNotYAndNotN_BetTeamIsEmpty()
         {
             // Arrange
             _ticket.BetTeam = "any string";
