@@ -1,10 +1,9 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using System.Diagnostics.CodeAnalysis;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.UnitTest.Common.Enums;
+    using App_GlobalResources;
+    using Common.Enums;
+    using Core.Builder.ChoiceBuilder;
+    using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -13,7 +12,7 @@
     /// </summary>
     public class Choice86Test
     {
-        private static object[] liveScores = 
+        private static object[] liveScores =
         {
             // ticket.Live, betId, expectedValue
             new object[] { true, 0, " [0]" },
@@ -61,14 +60,14 @@
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert            
+            // Assert
             Assert.AreEqual("favorite", choiceTemplate.betTeamClassName);
         }
 
         /// <summary>
         ///  Check build choice function render template choice has bet type name is full time resource and bet type name.
         /// </summary>
-        [Test]        
+        [Test]
         public void BuildChoice_TicketIsNotLive_SetBetTypeNameIsFtResourcePointAndBetTypeName()
         {
             // Arrange
@@ -123,7 +122,7 @@
             var expectedBetTeam = CoreBetList.even + liveScore;
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
-        
+
         /// <summary>
         ///  Check build choice function set home team block is number game resource and match code.
         /// </summary>

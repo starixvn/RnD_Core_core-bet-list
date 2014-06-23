@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.UnitTest.Common.Enums;
+    using App_GlobalResources;
+    using Common.Enums;
+    using Core.Builder.ChoiceBuilder;
+    using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -102,7 +102,7 @@
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-            
+
             // Assert
             var expectedHomeTeam = string.Join(null, CoreLang.numbergameno, "&nbsp;", _ticket.MatchCode);
             Assert.AreEqual(expectedHomeTeam, _choice.Template.Match.homeTeam);

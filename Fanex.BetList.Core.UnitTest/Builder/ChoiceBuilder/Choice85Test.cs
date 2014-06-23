@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.UnitTest.Common.Enums;
+    using App_GlobalResources;
+    using Common.Enums;
+    using Core.Builder.ChoiceBuilder;
+    using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -62,14 +62,14 @@
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert            
+            // Assert
             Assert.AreEqual("favorite", choiceTemplate.betTeamClassName);
         }
-        
+
         /// <summary>
         ///  Test whether bet type is combined by core bet list resource full time and bet type name get from ticket.
         /// </summary>
-        [Test]                
+        [Test]
         public void BuildChoice_TicketIsNotLive_SetBetTypeNameIsFtResourcePointAndBetTypeName()
         {
             // Arrange
@@ -80,7 +80,7 @@
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert            
+            // Assert
             Assert.AreEqual(string.Join(null, CoreBetList.ft, ". ", betTypeName), _choice.Template.BetType.betTypeName);
         }
 
@@ -131,7 +131,7 @@
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert            
+            // Assert
             Assert.AreEqual(string.Join(null, CoreLang.numbergameno, "&nbsp;", _ticket.MatchCode), _choice.Template.Match.homeTeam);
         }
     }

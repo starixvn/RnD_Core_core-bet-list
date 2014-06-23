@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using System;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.UnitTest.Common.Enums;
+    using Common.Enums;
+    using Core.Builder.ChoiceBuilder;
+    using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -107,7 +107,7 @@
             // Assert
             Assert.AreEqual(LEAGUE_NAME, _choice.Template.League.LeagueName.leagueName);
         }
-     
+
         /// <summary>
         /// The value of Template.betTeam is always Ticket.MatchCode - HorseTeamName.
         /// </summary>

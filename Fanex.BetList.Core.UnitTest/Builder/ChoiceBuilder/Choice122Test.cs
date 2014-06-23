@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.UnitTest.Common.Enums;
+    using App_GlobalResources;
+    using Common.Enums;
+    using Core.Builder.ChoiceBuilder;
+    using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -602,7 +602,7 @@
             // Assert
             Assert.AreEqual(_choice.Template.Match.homeTeam, _choice.Template.betTeam);
         }
-        
+
         /// <summary>
         /// The value of Template.betTeam is always Draw when bet team of ticket is null.
         /// </summary>

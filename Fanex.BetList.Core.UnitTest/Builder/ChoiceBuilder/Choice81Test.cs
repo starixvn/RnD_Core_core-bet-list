@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.UnitTest.Common.Enums;
+    using App_GlobalResources;
+    using Common.Enums;
+    using Core.Builder.ChoiceBuilder;
+    using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -88,9 +88,9 @@
             _ticket.MatchCode = "6969";
 
             // Act
-            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());            
+            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert            
+            // Assert
             Assert.AreEqual(string.Join(null, new string[] { CoreLang.numbergameno, "&nbsp;", _ticket.MatchCode }), choiceTemplate.Match.homeTeam);
         }
     }

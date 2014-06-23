@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.UnitTest.Common.Enums;
+    using App_GlobalResources;
+    using Common.Enums;
+    using Core.Builder.ChoiceBuilder;
+    using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -13,7 +13,7 @@
     public class Choice87Test
     {
         // ticket.Live, betId, ticket.BetTeam, expectedValue
-        private static object[] betTeamNames = 
+        private static object[] betTeamNames =
         {
             new object[] { true, 0, "h", string.Join(null, CoreBetList.high, " [0]") },
             new object[] { false, 0, "h", string.Join(null, CoreBetList.high, " [0]") },
@@ -41,7 +41,7 @@
         [Test]
         public void BuildChoice_Always_SetScoreBlockIsNull()
         {
-            // Act            
+            // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
@@ -64,7 +64,7 @@
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert            
+            // Assert
             Assert.IsNullOrEmpty(choiceTemplate.Handicap.handicap);
         }
 
@@ -74,7 +74,7 @@
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert            
+            // Assert
             Assert.AreEqual("favorite", choiceTemplate.betTeamClassName);
         }
 
@@ -85,11 +85,11 @@
             _ticket.MatchCode = "6969";
 
             // Act
-            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());            
+            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert            
+            // Assert
             Assert.AreEqual(string.Join(null, CoreLang.numbergameno, "&nbsp;", _ticket.MatchCode), choiceTemplate.Match.homeTeam);
-        }      
+        }
 
         /// <summary>
         /// Check whether build choice function render choice template right.
