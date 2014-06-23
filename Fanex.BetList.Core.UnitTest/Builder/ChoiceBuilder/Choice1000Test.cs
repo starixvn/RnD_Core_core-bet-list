@@ -27,7 +27,7 @@
         }
 
         [Test]
-        public void Render_Always_SetReturnTemplateResource()
+        public void Render_WhenCalled_ReturnTemplatep2pGameResource()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());

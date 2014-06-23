@@ -2,13 +2,13 @@
 namespace Fanex.BetList.Core.UnitTest.Builder.StatusBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Builder.StatusBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.UnitTest.Common;
-    using Fanex.BetList.Core.UnitTest.Common.Enums;
-    using Fanex.BetList.Core.UnitTest.Stubs;
+    using Common;
+    using Common.Enums;
+    using Core.Builder.StatusBuilder;
+    using Core.Templates;
+    using Entities;
     using NUnit.Framework;
+    using Stubs;
 
     public class Status33Test
     {

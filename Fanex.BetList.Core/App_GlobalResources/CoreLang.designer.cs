@@ -9136,7 +9136,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Second Halft.
+        ///   Looks up a localized string similar to Second Half.
         /// </summary>
         public static string SecondHalf {
             get {

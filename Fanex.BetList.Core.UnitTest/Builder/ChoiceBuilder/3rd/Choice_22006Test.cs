@@ -28,32 +28,6 @@
         }
 
         /// <summary>
-        /// The value of Template.Handicap is always null.
-        /// </summary>
-        [Test]
-        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapBlockIsNull()
-        {
-            // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-
-            // Assert
-            Assert.IsNull(_choice.Template.Handicap);
-        }
-
-        /// <summary>
-        /// The value of Template.Match is always null.
-        /// </summary>
-        [Test]
-        public void BuildMatch_Always_SetMatchBlockIsNull()
-        {
-            // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-
-            // Assert
-            Assert.IsNull(_choice.Template.Match);
-        }
-
-        /// <summary>
         /// The value of Template.Score is always null.
         /// </summary>
         [Test]
@@ -80,6 +54,35 @@
         }
 
         /// <summary>
+        /// The value of Template.betTeam is always play tech casino.
+        /// </summary>
+        [Test]
+        public void BuildBetType_Always_SetBetTypeNameIsPlayTechCasioResource()
+        {
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            Assert.AreEqual(CoreBetList.playtechcasino, _choice.Template.BetType.betTypeName);
+        }
+
+        /// <summary>
+        /// The value of Template.betTeam is always bet team.
+        /// </summary>
+        [Test]
+        public void BuildBetTeam_Always_SetBetTeamIsBetTeam()
+        {
+            // Arrange
+            _ticket.BetTeam = "bet team";
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            Assert.AreEqual(_ticket.BetTeam, _choice.Template.betTeam);
+        }
+
+        /// <summary>
         /// The value of Template.betTeamClassName is always favorite.
         /// </summary>
         [Test]
@@ -94,32 +97,29 @@
         }
 
         /// <summary>
-        /// The value of Template.betTeam is always bet team.
+        /// The value of Template.Handicap is always null.
         /// </summary>
         [Test]
-        public void BuildBetTeam_LengthBetTeamEqual2_BetTeamIsBetTeam()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapBlockIsNull()
         {
-            // Arrange
-            _ticket.BetTeam = "bet team";
-
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.AreEqual(_ticket.BetTeam, _choice.Template.betTeam);
+            Assert.IsNull(_choice.Template.Handicap);
         }
 
         /// <summary>
-        /// The value of Template.betTeam is always play tech casino.
+        /// The value of Template.Match is always null.
         /// </summary>
         [Test]
-        public void BuildBetType_Always_SetBetTypeNameIsPlayTechCasioResource()
+        public void BuildMatch_Always_SetMatchBlockIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.AreEqual(CoreBetList.playtechcasino, _choice.Template.BetType.betTypeName);
+            Assert.IsNull(_choice.Template.Match);
         }
     }
 }
