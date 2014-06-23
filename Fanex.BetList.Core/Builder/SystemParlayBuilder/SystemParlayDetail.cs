@@ -31,7 +31,7 @@
         /// <param name="ticketHelper">Ticket helper.</param>
         /// <param name="systemParlayData">System Parlay Data.</param>
         /// <returns>The html string is returned to client.</returns>
-        public string Build(ITicketHelper ticketHelper, ISystemParlayData systemParlayData)
+        public virtual string Build(ITicketHelper ticketHelper, ISystemParlayData systemParlayData)
         {
             _ticketHelper = ticketHelper;
             _systemParlayData = systemParlayData;

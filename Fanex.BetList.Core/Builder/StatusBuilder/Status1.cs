@@ -19,7 +19,7 @@
 
         public Status_Template Template { get; set; }
 
-        public Status_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP)
+        public virtual Status_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP)
         {
             BuildResult(ticket, ticketData);
 

@@ -17,14 +17,14 @@
 
         public Stake_Template Template { get; set; }
 
-        public Stake_Template Render(ITicket ticket)
+        public virtual Stake_Template Render(ITicket ticket)
         {
             BuildStake(ticket);
 
             return Template;
         }
 
-        public IRichTextString RenderRTF(ITicket ticket, RTFHelper rtfHelper)
+        public virtual IRichTextString RenderRTF(ITicket ticket, RTFHelper rtfHelper)
         {
             Render(ticket);
             Template.stake = Template.stake.Replace("<br/>&nbsp;", "\n");

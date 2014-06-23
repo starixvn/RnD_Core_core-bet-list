@@ -12,19 +12,14 @@
     /// <summary>
     /// Win/Place bet type.
     /// </summary>
-    public class Odds33 : IOdds
+    public class Odds33 : Odds1
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Odds33" /> class.
-        /// </summary>
         public Odds33()
         {
             Template = new Odds_Template();
             WinBetId = 31;
             PlaceBetId = 32;
         }
-
-        public Odds_Template Template { get; set; }
 
         protected int WinBetId { get; set; }
 
@@ -37,7 +32,7 @@
         /// <param name="ticketData">The ticket data.</param>
         /// <param name="funcGetOddsTypeName">Name of the function get odds type.</param>
         /// <returns>Odds_Template object.</returns>
-        public virtual Odds_Template Render(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
+        public override Odds_Template Render(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
         {
             if (ticketData != null && ticketData.Count > 0)
             {
@@ -80,14 +75,6 @@
             return Template;
         }
         
-        public IRichTextString RenderRTF(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName, RTFHelper rtfHelper)
-        {
-            Render(ticket, ticketData, funcGetOddsTypeName);
-            var rtfOdds = BuildRTFOdds(rtfHelper);
-
-            return rtfOdds;
-        }
-        
         protected virtual List<ITicketData> GetReferenceData(ITicket ticket, List<ITicketData> ticketData)
         {
             return ticketData.FindAll(item => item.RefNo.Equals(ticket.TransId.ToString()));
@@ -98,7 +85,7 @@
         /// </summary>
         /// <param name="rtfHelper">The RTF helper.</param>
         /// <returns>IRichTextString object.</returns>
-        protected virtual IRichTextString BuildRTFOdds(RTFHelper rtfHelper)
+        protected override IRichTextString BuildRTFOdds(RTFHelper rtfHelper)
         {
             if (Template.odds == "-")
             {
@@ -107,21 +94,21 @@
 
             int breakPos = Template.odds.IndexOf("<br>");
 
-            string odds_WinString = Template.odds.Substring(0, breakPos);
-            string odds_PlaceString = Template.odds.Replace(odds_WinString, string.Empty);
+            string oddsWinString = Template.odds.Substring(0, breakPos);
+            string oddsPlaceString = Template.odds.Replace(oddsWinString, string.Empty);
 
-            string odds_WinVal = ExtractStringBetweenTag("b", odds_WinString);
-            string odds_PlaceVal = ExtractStringBetweenTag("b", odds_PlaceString);
+            string oddsWinVal = ExtractStringBetweenTag("b", oddsWinString);
+            string oddsPlaceVal = ExtractStringBetweenTag("b", oddsPlaceString);
 
             var rtfNumberRenderer = new RTFNumber(rtfHelper.RTFRenderer, rtfHelper.PosFont, rtfHelper.NegFont);
 
             // Add Win
             rtfHelper.RTFRenderer.AddText(string.Join(null, new string[] { CoreBetList.win, ": " }), rtfHelper.PosFont);
-            rtfNumberRenderer.Render(odds_WinVal);
+            rtfNumberRenderer.Render(oddsWinVal);
 
             // Add Place
             rtfHelper.RTFRenderer.AddText(string.Join(null, new string[] { "\n", CoreBetList.place, ": " }), rtfHelper.PosFont);
-            rtfNumberRenderer.Render(odds_PlaceVal);
+            rtfNumberRenderer.Render(oddsPlaceVal);
 
             var rtfOdds = rtfHelper.RTFRenderer.Render();
             rtfHelper.RTFRenderer.Clear();
@@ -233,9 +220,10 @@
         private string GetOddsWin(ITicketData winTicket)
         {
             string winStatus = winTicket.Status.ToLower();
-            string oddsWin = string.Empty;
+            string oddsWin;
 
-            if (!winStatus.Equals(BetStatus.Won) && !winStatus.Equals(BetStatus.Lose))
+            if (!winStatus.Equals(BetStatus.Won) 
+                && !winStatus.Equals(BetStatus.Lose))
             {
                 oddsWin = "-";
             }
@@ -256,9 +244,10 @@
         {
             string placeStatus = placeTicket.Status.ToLower();
 
-            string oddsPlace = string.Empty;
+            string oddsPlace;
 
-            if (!placeStatus.Equals(BetStatus.Won) && !placeStatus.Equals(BetStatus.Lose))
+            if (!placeStatus.Equals(BetStatus.Won) 
+                && !placeStatus.Equals(BetStatus.Lose))
             {
                 oddsPlace = "-";
             }

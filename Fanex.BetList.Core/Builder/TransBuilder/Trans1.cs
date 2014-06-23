@@ -18,7 +18,7 @@
 
         public Trans_Template Template { get; set; }
 
-        public Trans_Template Render(ITicket ticket)
+        public virtual Trans_Template Render(ITicket ticket)
         {
             BuildTransTime(ticket);
 
@@ -27,7 +27,7 @@
             return Template;
         }
 
-        public IRichTextString RenderRTF(ITicket ticket, ITicketHelper ticketHelper)
+        public virtual IRichTextString RenderRTF(ITicket ticket, ITicketHelper ticketHelper)
         {
             Render(ticket);
 

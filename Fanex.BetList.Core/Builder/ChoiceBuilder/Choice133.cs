@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using App_GlobalResources;
+    using Constants;
     using Entities;
 
     /// <summary>
@@ -32,10 +33,10 @@
 
             switch (ticket.BetTeam.ToLower())
             {
-                case "y":
+                case BetTeamValue.Y:
                     betTeam = CoreBetList.lblYes;
                     break;
-                case "n":
+                case BetTeamValue.N:
                     betTeam = CoreBetList.lblNo;
                     break;
             }
