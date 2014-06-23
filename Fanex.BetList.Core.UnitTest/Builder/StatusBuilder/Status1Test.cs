@@ -1,7 +1,6 @@
-﻿using System;
-
-namespace Fanex.BetList.Core.UnitTest.Builder.StatusBuilder
+﻿namespace Fanex.BetList.Core.UnitTest.Builder.StatusBuilder
 {
+    using System;
     using Core.Builder.StatusBuilder;
     using Entities;
     using NSubstitute;

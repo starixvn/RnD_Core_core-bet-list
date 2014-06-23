@@ -1,36 +1,35 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.StatusBuilder
 {
-    using Common;
-    using Common.Enums;
     using Core.Builder.StatusBuilder;
-    using Core.Templates;
     using Entities;
+    using NSubstitute;
     using NUnit.Framework;
-    using Stubs;
 
     public class Status1000Test
     {
         private Status1000 _status;
         private ITicket _ticket;
-        private ITicketHelper _ticketHelperStub;
+        private ITicketHelper _ticketHelper;
 
         [SetUp]
         public void Setup()
         {
             _status = new Status1000();
-            _ticket = TestData.CreateTicket(BetTypes.P2P);
-            _ticketHelperStub = new TicketHelperStub();
+            _ticket = Substitute.For<ITicket>();
+            _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
         [Test]
-        public void Ticket_RefNoOfTemplateStatusResultIsTicketBetCheck()
+        public void BuildStatusResult_Always_SetRefNoIsBetCheck()
         {
+            // Arrange
+            _ticket.BetCheck = "bet check";
+
             // Act
-            Status_Template template = _status.Render(_ticket, _ticketHelperStub, null, false);
+            _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            string expectedValue = _ticket.BetCheck;
-            Assert.AreEqual(expectedValue, template.StatusResult.refNo);
+            Assert.AreEqual(_ticket.BetCheck, _status.Template.StatusResult.refNo);
         }
     }
 }
