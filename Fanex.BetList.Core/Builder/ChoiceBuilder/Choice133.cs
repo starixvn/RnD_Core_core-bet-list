@@ -18,8 +18,7 @@
         protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
-            this.Template.Handicap = null;
-            this.Template.OddMixParlay = null;
+            this.Template.Handicap.handicap = null;
             this.Template.Score = null;
             this.Template.betTeamClassName = BLFAVORITE;
             this.Template.betTeam = GetBetTeam(ticket.BetTeam);
