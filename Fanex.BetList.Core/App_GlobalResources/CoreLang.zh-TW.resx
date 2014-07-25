@@ -4066,12 +4066,12 @@
     <value>會員</value>
   </data>
   <data name="FirstHalf" xml:space="preserve">
-    <value>First Halft</value>
+    <value>上半場</value>
   </data>
   <data name="SecondHalf" xml:space="preserve">
-    <value>Second Half</value>
+    <value>下半場</value>
   </data>
   <data name="Tie" xml:space="preserve">
-    <value>Tie</value>
+    <value>平局</value>
   </data>
 </root>

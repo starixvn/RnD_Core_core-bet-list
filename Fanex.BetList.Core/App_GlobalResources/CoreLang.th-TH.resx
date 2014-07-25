@@ -4067,12 +4067,12 @@
     <value>รายชื่อลูกค้า</value>
   </data>
   <data name="FirstHalf" xml:space="preserve">
-    <value>First Halft</value>
+    <value>ครึ่งแรก</value>
   </data>
   <data name="SecondHalf" xml:space="preserve">
-    <value>Second Half</value>
+    <value>ครึ่งหลัง</value>
   </data>
   <data name="Tie" xml:space="preserve">
-    <value>Tie</value>
+    <value>เสมอ</value>
   </data>
 </root>
