@@ -148,7 +148,7 @@
     <value>1 X 2</value>
   </data>
   <data name="lblBoth" xml:space="preserve">
-    <value>兩者</value>
+    <value>雙方</value>
   </data>
   <data name="lblDraw" xml:space="preserve">
     <value>和</value>
@@ -157,7 +157,7 @@
     <value>無</value>
   </data>
   <data name="lblOne" xml:space="preserve">
-    <value>一</value>
+    <value>一方</value>
   </data>
   <data name="lblOr" xml:space="preserve">
     <value>或者</value>
@@ -181,7 +181,7 @@
     <value>下一頁</value>
   </data>
   <data name="nogoal" xml:space="preserve">
-    <value>無得分</value>
+    <value>兩者皆不</value>
   </data>
   <data name="noInfo" xml:space="preserve">
     <value>沒資料顯示</value>
