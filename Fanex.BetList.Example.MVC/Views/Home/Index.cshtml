@@ -10,11 +10,11 @@
 
     IList<ITicket> tickets = Model.Tickets;
     List<ITicketData> ticketData = Model.TicketData;
-
+    
     BetListHTMLFactory factory = new BetListHTMLFactory();
     BetListHTMLBuilder builder = factory.CreateBuilder();
 
-    ITicketHelper ticketHelper = new Fanex.BetList.Example.Data.TicketHelperStub();
+    ITicketHelper ticketHelper = new TicketHelper();
 
     GetCachePropertyById funcGetOddsTypeName = CacheRef.GetOddsTypeName;
     

@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.UnitTest.Common.Enums;
+    using App_GlobalResources;
+    using Common.Enums;
+    using Core.Builder.ChoiceBuilder;
+    using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -30,7 +30,7 @@
         /// The value of Template.ticketStatus is always void when Ticket.Status = void.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetHandicapIsNull()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -43,7 +43,7 @@
         /// The value of Template.betTeam is always bet team name.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetBetTeamAreHtResourceAndPointAndBetTeamToUpper()
+        public void BuildBetTeam_Always_SetBetTeamAreHtResourceAndPointAndBetTeamToUpper()
         {
             // Arrange
             _ticket.BetTeam = "bet team";
@@ -60,7 +60,7 @@
         /// The value of Template.betTeamClassName is always favorite.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetBetTeamClassNameIsFavorite()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());

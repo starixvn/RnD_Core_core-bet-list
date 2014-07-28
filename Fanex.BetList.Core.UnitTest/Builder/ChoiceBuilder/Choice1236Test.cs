@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.UnitTest.Common.Enums;
+    using App_GlobalResources;
+    using Common.Enums;
+    using Core.Builder.ChoiceBuilder;
+    using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -30,7 +30,7 @@
         /// The value of Template.betTeam is always [BetTeam Points] when bet team of ticket is 1.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetBetTeamAreBetTeamAndSpaceAndPointsResource()
+        public void BuildBetTeam_Always_SetBetTeamAreBetTeamAndSpaceAndPointsResource()
         {
             // Arrange
             _ticket.BetTeam = "bet team";

@@ -1,10 +1,10 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.UnitTest.Common.Enums;
+    using App_GlobalResources;
+    using Common.Enums;
+    using Core.Builder.ChoiceBuilder;
+    using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -33,7 +33,7 @@
         /// The value of Template.League.LeagueName.leagueName is always Party Roulette and Ticket.ShowTime.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetLeagueNameArePartyRouletteResourceAndShowTime()
+        public void BuildLeague_Always_SetLeagueNameArePartyRouletteResourceAndShowTime()
         {
             // Arrange
             _ticket.ShowTime = "show time";
@@ -50,7 +50,7 @@
         /// The value of Template.betTeam is always empty when TicketData is null.
         /// </summary>
         [Test]
-        public void BuildChoice_TicketDataIsNull_BetTeamIsEmpty()
+        public void BuildBetTeam_TicketDataIsNull_BetTeamIsEmpty()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -63,7 +63,7 @@
         /// The value of Template.Handicap.Visible is always false when TicketData is null.
         /// </summary>
         [Test]
-        public void BuildChoice_TicketDataIsNull_HandicapBlockIsVisible()
+        public void BuildBetTeamClassNameAndHandicap_TicketDataIsNull_HandicapBlockIsVisible()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -76,7 +76,7 @@
         /// The value of Template.BetType.betTypeName is always Party Roulette when TicketData is null.
         /// </summary>
         [Test]
-        public void BuildChoice_TicketDataIsNull_BetTypeNameIsPartyRouletteResource()
+        public void BuildBetType_TicketDataIsNull_BetTypeNameIsPartyRouletteResource()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -89,7 +89,7 @@
         /// The value of Template.betTeamClassName is always empty when TicketData is null.
         /// </summary>
         [Test]
-        public void BuildChoice_TicketDataIsNull_BetTeamClassNameIsEmpty()
+        public void BuildBetTeamClassNameAndHandicap_TicketDataIsNull_BetTeamClassNameIsEmpty()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -102,7 +102,7 @@
         /// The value of Template.Match.VS.Visible is always false when TicketData is null.
         /// </summary>
         [Test]
-        public void BuildChoice_TicketDataIsNull_MatchVSBlockIsVisible()
+        public void BuildMatch_TicketDataIsNull_MatchVSBlockIsVisible()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -115,7 +115,7 @@
         /// The value of Template.betTeam depend on ticket data founded.
         /// </summary>
         [Test]
-        public void BuildChoice_TicketDataHasRefNoEqualRefNoOfTicket_BetTeamIsBetTeamFormat()
+        public void BuildBetTeam_TicketDataHasRefNoEqualRefNoOfTicket_BetTeamIsBetTeamFormat()
         {
             // Arrange
             var refNo = "1";
@@ -141,7 +141,7 @@
         /// The value of Template.Handicap.Visible is always visible.
         /// </summary>
         [Test]
-        public void BuildChoice_TicketDataHasRefNoEqualRefNoOfTicket_HandicapBlockIsVisible()
+        public void BuildBetTeamClassNameAndHandicap_TicketDataHasRefNoEqualRefNoOfTicket_HandicapBlockIsVisible()
         {
             // Arrange
             var refNo = "1";
@@ -164,7 +164,7 @@
         /// The value Template.BetType.betTypeName of is empty when ticket data is not null.
         /// </summary>
         [Test]
-        public void BuildChoice_TicketDataHasRefNoEqualRefNoOfTicket_BetTypeNameIsEmpty()
+        public void BuildBetType_TicketDataHasRefNoEqualRefNoOfTicket_BetTypeNameIsEmpty()
         {
             // Arrange
             _ticket.RefNo = "1";
@@ -186,7 +186,7 @@
         /// The value of Template.betTeamClassName is always empty.
         /// </summary>
         [Test]
-        public void BuildChoice_TicketDataHasRefNoEqualRefNoOfTicket_BetTeamClassNameIsEmpty()
+        public void BuildBetTeamClassNameAndHandicap_TicketDataHasRefNoEqualRefNoOfTicket_BetTeamClassNameIsEmpty()
         {
             // Arrange
             _ticket.RefNo = "1";
@@ -208,7 +208,7 @@
         /// The value of Template.Match.VS.Visible is always false.
         /// </summary>
         [Test]
-        public void BuildChoice_TicketDataHasRefNoEqualRefNoOfTicket_MatchVSBlockIsVisible()
+        public void BuildMatch_TicketDataHasRefNoEqualRefNoOfTicket_MatchVSBlockIsVisible()
         {
             // Arrange
             _ticket.RefNo = "1";

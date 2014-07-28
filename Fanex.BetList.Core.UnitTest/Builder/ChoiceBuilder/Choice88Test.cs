@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.UnitTest.Common.Enums;
+    using App_GlobalResources;
+    using Common.Enums;
+    using Core.Builder.ChoiceBuilder;
+    using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -26,7 +26,7 @@
         }
 
         [Test]
-        public void BuildChoice_Always_SetScoreBlockIsNull()
+        public void BuildScore_Always_SetScoreBlockIsNull()
         {
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -36,7 +36,7 @@
         }
 
         [Test]
-        public void BuildChoice_Always_SetMatchVSBlockIsNull()
+        public void BuildMatch_Always_SetMatchVSBlockIsNull()
         {
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -46,7 +46,7 @@
         }
 
         [Test]
-        public void BuildChoice_Always_SetHandicapIsEmpty()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsEmpty()
         {
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -56,7 +56,7 @@
         }
 
         [Test]
-        public void BuildChoice_Always_SetBetTeamClassNameIsFavorite()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
         {
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -66,7 +66,7 @@
         }
 
         [Test]
-        public void BuildChoice_BetTeamIsh_SetBetTeamIsWarrior2ndBallResource()
+        public void BuildBetTeam_BetTeamIsh_SetBetTeamIsWarrior2ndBallResource()
         {
             // Arrange
             _ticket.BetTeam = "h";
@@ -79,7 +79,7 @@
         }
 
         [Test]
-        public void BuildChoice_BetTeamIsNoth_SetBetTeamIsWarrior3rdBallResource()
+        public void BuildBetTeam_BetTeamIsNoth_SetBetTeamIsWarrior3rdBallResource()
         {
             // Arrange
             _ticket.BetTeam = "h87898";
@@ -95,14 +95,14 @@
         ///  Build choice function always set bet team by combined number game no and match code.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetHomeTeamIsJoinedByNumberGameNoResourceAndMatchCode()
+        public void BuildMatch_Always_SetHomeTeamIsJoinedByNumberGameNoResourceAndMatchCode()
         {
             // Arrange
             _ticket.MatchCode = "6969";
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-            
+
             // Assert
             var expectedHomeTeam = string.Join(null, CoreLang.numbergameno, "&nbsp;", _ticket.MatchCode);
             Assert.AreEqual(expectedHomeTeam, _choice.Template.Match.homeTeam);

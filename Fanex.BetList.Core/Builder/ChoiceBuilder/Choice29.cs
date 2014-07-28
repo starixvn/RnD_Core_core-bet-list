@@ -1,24 +1,10 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Choice29.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2013.10.10">Check stylecop and refactor</change>
-//     <change who="Marc.Bui" date="2013.05.31">Add detail export excel</change>
-//     <change who="Marc.Bui" date="2013.03.19">Add showSystemParlaySubbetsFunction for easy customization</change>
-//     <change who="Marc.Bui" date="2013.03.11">Add ShowSystemParlayDetailJsFunction for easy customization</change>
-//     <change who="Marc.Bui" date="2012.11.16">Create</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System;
     using System.Collections.Generic;
     using System.Web;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Entities;
     using NPOI.HSSF.UserModel;
     using NPOI.SS.UserModel;
 
@@ -43,11 +29,11 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                                 ITicketHelper ticketHelper,
                                 List<ITicketData> ticketData,
                                 bool isShowScoreMap,
-                                Entities.RTFHelper rtfHelper)
+                                RTFHelper rtfHelper)
         {
             List<IRichTextString> lstRTFChoices = new List<IRichTextString>();
             RTFHelper tmpRtfHelper = rtfHelper.Clone();
-            tmpRtfHelper.RTFRenderer.AddText(App_GlobalResources.CoreLang.lblSystemParlay, tmpRtfHelper.PosFont);
+            tmpRtfHelper.RTFRenderer.AddText(CoreLang.lblSystemParlay, tmpRtfHelper.PosFont);
             tmpRtfHelper.RTFRenderer.AddText(" - " + ticketHelper.GetCombinationMPOfferName(ticket.BetTeam), tmpRtfHelper.NormalFont);
 
             if (ticketHelper.GetParlayDetailById != null)
@@ -59,9 +45,9 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
                 foreach (ITicket tkt in parlayData)
                 {
-                    IChoice choiceBuilder = this.CreateChoiceBuilder(tkt.BetTypeId);
-                    this.Template = choiceBuilder.Render(tkt, ticketHelper, null, isShowScoreMap);
-                    var choiceData = this.BuildRTFChoice(tkt, rtfHelper, ticketHelper);
+                    IChoice choiceBuilder = CreateChoiceBuilder(tkt.BetTypeId);
+                    Template = choiceBuilder.Render(tkt, ticketHelper, null, isShowScoreMap);
+                    var choiceData = BuildRTFChoice(tkt, rtfHelper, ticketHelper);
                     List<IRichTextString> tmpRtfChoice;
 
                     if (choiceData is List<IRichTextString>)
@@ -84,7 +70,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                         normal = tmpRtfHelper.NormalFont;
                     }
 
-                    this.CollectRTFSubChoice(tmpRtfChoice, ref tmpRtfHelper, pos, normal);
+                    CollectRTFSubChoice(tmpRtfChoice, ref tmpRtfHelper, pos, normal);
                 }
 
                 ticketHelper.IsShowOddsWithChoice = showOdds;
@@ -118,7 +104,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             string showSystemParlayDetailJsFunction = ticketHelper.ClientDetailSystemParlayFunction;
             if (string.IsNullOrWhiteSpace(showSystemParlayDetailJsFunction))
             {
-                showSystemParlayDetailJsFunction = this.JoinSystemParlayDetailJsFunction(
+                showSystemParlayDetailJsFunction = JoinSystemParlayDetailJsFunction(
                                                             ticket.RefNo,
                                                             ticket.WinlostDate.ToString(),
                                                             ticket.TransId.ToString(),
@@ -130,18 +116,18 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             string showSystemParlaySubbetsFunction = ticketHelper.ClientSystemParlaySubbetsDetailFunction;
             if (string.IsNullOrWhiteSpace(showSystemParlaySubbetsFunction))
             {
-                showSystemParlaySubbetsFunction = this.JoinSystemParlaySubbetsFunction(ticket.TransId.ToString(), ticketHelper.Index.ToString(), ticket.RefNo);
+                showSystemParlaySubbetsFunction = JoinSystemParlaySubbetsFunction(ticket.TransId.ToString(), ticketHelper.Index.ToString(), ticket.RefNo);
             }
 
             string detailSystemParlayDiv = string.Empty;
             if (ticketHelper.ShowSystemParlayDetail)
             {
-                detailSystemParlayDiv = this.JoinDetailSystemParlayDiv(showSystemParlayDetailJsFunction);
+                detailSystemParlayDiv = JoinDetailSystemParlayDiv(showSystemParlayDetailJsFunction);
             }
 
             string combinationMPOfferName = ticketHelper.GetCombinationMPOfferName(ticket.BetTeam);
 
-            mixParlay = this.JoinMixParlayMarkups(
+            mixParlay = JoinMixParlayMarkups(
                                         showSystemParlaySubbetsFunction,
                                         betTypeName,
                                         combinationMPOfferName,
@@ -149,7 +135,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                                         ticketHelper.Index.ToString(),
                                         detailSystemParlayDiv);
 
-            this.Template.SetValue(mixParlay);
+            Template.SetValue(mixParlay);
         }
 
         /// <summary>
@@ -225,22 +211,22 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                         string detailSystemParlayDiv)
         {
             string combinationOpenDiv = "<div class=\"combinationLink\"><a id=\"hidden0\" href=\"";
-            string[] mixParlayCompositions = new string[] 
-                                                { 
-                                                    combinationOpenDiv, showSystemParlaySubbetsFunction, 
-                                                    "\">", 
-                                                    betTypeName, 
-                                                    "</a>", 
-                                                    " - ", 
-                                                    "<span style=\"color:#3a3a3a\">", 
-                                                    combinationMPOfferName, 
-                                                    "</span>", 
-                                                    "</div>", 
-                                                    "<div id=\"divEvent_", 
-                                                    transId, 
-                                                    transIndex, 
-                                                    "\" style=\"display: none\" ></div>", 
-                                                    detailSystemParlayDiv 
+            string[] mixParlayCompositions = new string[]
+                                                {
+                                                    combinationOpenDiv, showSystemParlaySubbetsFunction,
+                                                    "\">",
+                                                    betTypeName,
+                                                    "</a>",
+                                                    " - ",
+                                                    "<span style=\"color:#3a3a3a\">",
+                                                    combinationMPOfferName,
+                                                    "</span>",
+                                                    "</div>",
+                                                    "<div id=\"divEvent_",
+                                                    transId,
+                                                    transIndex,
+                                                    "\" style=\"display: none\" ></div>",
+                                                    detailSystemParlayDiv
                                                 };
 
             string mixParlay = string.Join(null, mixParlayCompositions);
@@ -259,23 +245,23 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         /// <returns>System.String: the markups.</returns>
         private string JoinSystemParlayDetailJsFunction(string refNo, string winlossDate, string transId, string betId, string custId)
         {
-            string[] markupCompositions = new string[] 
-                                            { 
-                                                "showCombMPDetail(&quot;", 
-                                                refNo, 
-                                                "&quot;", 
-                                                ",&quot;", 
-                                                winlossDate, 
-                                                "&quot;", 
-                                                ",&quot;", 
-                                                transId, 
-                                                "&quot;", 
-                                                ",&quot;", 
-                                                betId, 
-                                                "&quot;", 
-                                                ",&quot;", 
-                                                custId, 
-                                                "&quot;);" 
+            string[] markupCompositions = new string[]
+                                            {
+                                                "showCombMPDetail(&quot;",
+                                                refNo,
+                                                "&quot;",
+                                                ",&quot;",
+                                                winlossDate,
+                                                "&quot;",
+                                                ",&quot;",
+                                                transId,
+                                                "&quot;",
+                                                ",&quot;",
+                                                betId,
+                                                "&quot;",
+                                                ",&quot;",
+                                                custId,
+                                                "&quot;);"
                                             };
 
             string markups = string.Join(null, markupCompositions);
@@ -297,15 +283,15 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         /// <returns>System.String: the markups.</returns>
         private string JoinDetailSystemParlayDiv(string systemParlayDetailJsFunction)
         {
-            string[] markupCompositions = new string[] 
-                                            { 
-                                                "<div class=\"detail\" onclick='", 
-                                                systemParlayDetailJsFunction, 
-                                                "'>", 
-                                                "<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">", 
-                                                CoreBetList.details, 
-                                                "</a>", 
-                                                "</div>" 
+            string[] markupCompositions = new string[]
+                                            {
+                                                "<div class=\"detail\" onclick='",
+                                                systemParlayDetailJsFunction,
+                                                "'>",
+                                                "<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">",
+                                                CoreBetList.details,
+                                                "</a>",
+                                                "</div>"
                                             };
 
             string markups = string.Join(null, markupCompositions);

@@ -1,14 +1,4 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="CacheRef.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.12.11">Create</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.TicketHelper
+﻿namespace Fanex.BetList.Core.TicketHelper
 {
     using System.Threading;
     using RemotingRef;

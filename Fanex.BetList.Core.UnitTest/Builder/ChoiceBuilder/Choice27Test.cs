@@ -1,8 +1,8 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.UnitTest.Common.Enums;
+    using Common.Enums;
+    using Core.Builder.ChoiceBuilder;
+    using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -29,7 +29,7 @@
         /// The value of Template.Handicap.handicap is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetHandicapIsNull()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -42,7 +42,7 @@
         /// The value of Template.betTeamClassName is always underdog.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetBetTeamClassNameIsUnderdog()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsUnderdog()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());

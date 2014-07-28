@@ -1,14 +1,4 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="AssemblyInfo.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2013.10.09">Add header to pass style cop</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 

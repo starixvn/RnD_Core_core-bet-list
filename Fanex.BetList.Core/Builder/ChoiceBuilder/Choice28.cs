@@ -1,25 +1,11 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Choice28.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.11.16">Create</change>
-//     <change who="Marc.Bui" date="2013.01.23">Update to follow general rules
-//                                              - teamName: red
-//                                              - handicap: grey</change>
-//     <change who="Marc.Bui" date="2013.02.21">Update showing Neutral</change>
-//     <change who="Marc.Bui" date="2013.10.09">Check stylecop & refactor</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System;
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Utils;
+    using App_GlobalResources;
+    using Constants;
+    using Entities;
+    using Utils;
 
     /// <summary>
     /// 3-way handicap.
@@ -27,33 +13,26 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     public class Choice28 : Choice1
     {
         /// <summary>
-        /// Builds the choice.
+        /// Builds the bet team.
         /// </summary>
         /// <param name="ticket">The ticket.</param>
         /// <param name="ticketHelper">The ticket helper.</param>
         /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            base.BuildChoice(ticket, ticketHelper, ticketData);
-
-            this.Template.Handicap.handicap = null;
-
-            string teamName = CoreBetList.lblDraw;
+            string teamName;
+            string handicap;
             decimal hdp1 = ticket.Handicap1;
             decimal hdp2 = ticket.Handicap2;
 
-            string handicap = string.Empty;
-            this.Template.betTeamClassName = BLFAVORITE;
-
             if ("1" == ticket.BetTeam)
             {
-                teamName = this.Template.Match.homeTeam;
+                teamName = Template.Match.homeTeam;
                 handicap = Formatter.FormatSignNumber((int)(hdp2 - hdp1));
             }
             else if ("2" == ticket.BetTeam)
             {
-                string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
-                teamName = awayName;
+                teamName = Template.Match.awayTeam;
                 handicap = Formatter.FormatSignNumber((int)(hdp1 - hdp2));
             }
             else
@@ -61,11 +40,11 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                 teamName = CoreBetList.lblDraw;
                 if (hdp1 - hdp2 > 0)
                 {
-                    handicap = CoreBetList.a + "&nbsp;";
+                    handicap = CoreBetList.a + HtmlCharacters.NoneBreakingSpace;
                 }
                 else if (hdp1 - hdp2 < 0)
                 {
-                    handicap = CoreBetList.h + "&nbsp;";
+                    handicap = CoreBetList.h + HtmlCharacters.NoneBreakingSpace;
                 }
                 else
                 {
@@ -75,7 +54,13 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                 handicap += Formatter.FormatSignNumber((int)Math.Abs(hdp2 - hdp1));
             }
 
-            this.Template.betTeam = string.Join(null, new string[] { teamName, "&nbsp;<span class=\"underdog\">(", handicap.ToString(), ")</span>" });
+            Template.betTeam = string.Join(null, new string[] { teamName, "&nbsp;<span class=\"underdog\">(", handicap.ToString(), ")</span>" });
+        }
+
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            Template.Handicap.handicap = null;
+            Template.betTeamClassName = Favorite;
         }
     }
 }

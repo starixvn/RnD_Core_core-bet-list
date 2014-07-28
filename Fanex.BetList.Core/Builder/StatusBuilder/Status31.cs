@@ -1,37 +1,17 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Status31.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.12.31">Create</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.StatusBuilder
+﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
-    using System.Collections.Generic;
-    using Fanex.BetList.Core.Entities;
+    using Entities;
 
     /// <summary>
     /// Bet Type: Win.
     /// </summary>
     public class Status31 : Status1
     {
-        /// <summary>
-        /// Renders the specified ticket.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        /// <param name="isShowVNIP">If set to <c>true</c> [VNIP is shown].</param>
-        /// <returns>Status_Template: the whole Status block, built on input data.</returns>
-        public override Templates.Status_Template Render(Entities.ITicket ticket, Entities.ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP)
+        protected override void BuildStatusResult(ITicket ticket)
         {
-            base.Render(ticket, ticketHelper, ticketData, isShowVNIP);
-            this.Template.StatusResult.race = string.IsNullOrEmpty(ticket.Race) ? "0" : ticket.Race;
+            base.BuildStatusResult(ticket);
 
-            return this.Template;
+            Template.StatusResult.race = string.IsNullOrEmpty(ticket.Race) ? "0" : ticket.Race;
         }
     }
 }

@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.UnitTest.Common.Enums;
+    using App_GlobalResources;
+    using Common.Enums;
+    using Core.Builder.ChoiceBuilder;
+    using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -13,7 +13,7 @@
     public class Choice87Test
     {
         // ticket.Live, betId, ticket.BetTeam, expectedValue
-        private static object[] betTeamNames = 
+        private static object[] betTeamNames =
         {
             new object[] { true, 0, "h", string.Join(null, CoreBetList.high, " [0]") },
             new object[] { false, 0, "h", string.Join(null, CoreBetList.high, " [0]") },
@@ -39,9 +39,9 @@
         }
 
         [Test]
-        public void BuildChoice_Always_SetScoreBlockIsNull()
+        public void BuildScore_Always_SetScoreBlockIsNull()
         {
-            // Act            
+            // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
@@ -49,7 +49,7 @@
         }
 
         [Test]
-        public void BuildChoice_Always_SetMatchVSBlockIsNull()
+        public void BuildMatch_Always_SetMatchVSBlockIsNull()
         {
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -59,37 +59,37 @@
         }
 
         [Test]
-        public void BuildChoice_Always_SetHandicapIsEmpty()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsEmpty()
         {
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert            
+            // Assert
             Assert.IsNullOrEmpty(choiceTemplate.Handicap.handicap);
         }
 
         [Test]
-        public void BuildChoice_Always_SetBetTeamClassNameIsFavorite()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
         {
             // Act
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert            
+            // Assert
             Assert.AreEqual("favorite", choiceTemplate.betTeamClassName);
         }
 
         [Test]
-        public void BuildChoice_Always_SetHomeTeamIsJoinedByNumberGameNoResourceAndMatchCode()
+        public void BuildMatch_Always_SetHomeTeamIsJoinedByNumberGameNoResourceAndMatchCode()
         {
             // Arrange
             _ticket.MatchCode = "6969";
 
             // Act
-            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());            
+            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert            
+            // Assert
             Assert.AreEqual(string.Join(null, CoreLang.numbergameno, "&nbsp;", _ticket.MatchCode), choiceTemplate.Match.homeTeam);
-        }      
+        }
 
         /// <summary>
         /// Check whether build choice function render choice template right.
@@ -99,7 +99,7 @@
         /// <param name="ticketBetTeam"> Bet team of ticket.</param>
         /// <param name="expectedBetTeam"> Expected bet team rendered by build choice function.</param>
         [Test, TestCaseSource("betTeamNames")]
-        public void BuildChoice_WhenCalled_SetValidNameForBetTeam(bool isLive, long betId, string ticketBetTeam, string expectedBetTeam)
+        public void BuildBetTeam_WhenCalled_SetValidNameForBetTeam(bool isLive, long betId, string ticketBetTeam, string expectedBetTeam)
         {
             // Arrange
             _ticket.IsLive = isLive;

@@ -1,34 +1,16 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Choice1308.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.11.16">Create</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Entities;
+    using Entities;
 
     /// <summary>
     ///   Match Handicap Games 2-way.
     /// </summary>
     public class Choice1308 : Choice1
     {
-        /// <summary>
-        /// Builds the choice.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            base.BuildChoice(ticket, ticketHelper, ticketData);
-
-            this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);
+            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);
         }
     }
 }

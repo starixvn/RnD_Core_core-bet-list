@@ -1,56 +1,30 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Stake1.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.11.16">Create</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-/// <summary>
-/// The StakeBuilder namespace.
-/// </summary>
-namespace Fanex.BetList.Core.Builder.StakeBuilder
+﻿namespace Fanex.BetList.Core.Builder.StakeBuilder
 {
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.Utils;
+    using Entities;
     using NPOI.SS.UserModel;
+    using Templates;
+    using Utils;
 
     /// <summary>
     /// Stake for most bet types.
     /// </summary>
     public class Stake1 : IStake
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Stake1" /> class.
-        /// </summary>
         public Stake1()
         {
-            this.Template = new Stake_Template();
+            Template = new Stake_Template();
         }
 
         public Stake_Template Template { get; set; }
 
-        /// <summary>
-        /// Renders the specified ticket.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <returns>Stake_Template: the whole Stake block.</returns>
-        public Stake_Template Render(ITicket ticket)
+        public virtual Stake_Template Render(ITicket ticket)
         {
-            this.Template.stake = ConvertByBetType.Stake(ticket.Stake);
+            BuildStake(ticket);
+
             return Template;
         }
 
-        /// <summary>
-        /// Renders the RTF.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="rtfHelper">The RTF helper.</param>
-        /// <returns>IRichTextString represents the Stake block.</returns>
-        public IRichTextString RenderRTF(ITicket ticket, RTFHelper rtfHelper)
+        public virtual IRichTextString RenderRTF(ITicket ticket, RTFHelper rtfHelper)
         {
             Render(ticket);
             Template.stake = Template.stake.Replace("<br/>&nbsp;", "\n");
@@ -59,6 +33,11 @@ namespace Fanex.BetList.Core.Builder.StakeBuilder
             IRichTextString rtfStake = rtfHelper.RTFRenderer.Render();
             rtfHelper.RTFRenderer.Clear();
             return rtfStake;
+        }
+
+        protected virtual void BuildStake(ITicket ticket)
+        {
+            Template.stake = ConvertByBetType.Stake(ticket.Stake);
         }
     }
 }

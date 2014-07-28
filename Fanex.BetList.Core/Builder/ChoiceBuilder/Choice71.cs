@@ -1,47 +1,48 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Choice71.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.11.16">Create</change>
-//     <change who="Marc.Bui" date="2013.03.11">Update condition to work with Template changes made by Steven</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Entities;
 
     /// <summary>
     /// Casino Games.
     /// </summary>
     public class Choice71 : Choice1
     {
-        /// <summary>
-        /// Builds the choice.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            this.Template.BetType.betTypeName = null;
-            this.Template.Match.VS = null;
-            this.Template.League.sportTypeName = null;
-            this.Template.Score = null;
-            this.Template.Handicap.handicap = null;
+            Template.betTeam = CoreBetList.casinoGame;
+        }
 
-            this.Template.Match.homeTeam = null;
-            this.Template.Match.home_firstGoal_lastGoal = null;
-            this.Template.Match.awayTeam = null;
-            this.Template.Match.away_firstGoal_lastGoal = null;
-            this.Template.League.LeagueName.leagueName = null;
+        protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            UpdateAllMatchMemberToNull();
+        }
 
-            this.Template.betTeam = CoreBetList.casinoGame;
-            this.Template.betTeamClassName = BLFAVORITE;                        
+        protected override void BuildSport(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            Template.League.sportTypeName = null;
+        }
+
+        protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            Template.League.LeagueName.leagueName = null;
+        }
+
+        protected override void BuildScore(ITicket ticket)
+        {
+            Template.Score = null;
+        }
+
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            Template.Handicap.handicap = null;
+            Template.betTeamClassName = Favorite;
+        }
+
+        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {
+            Template.BetType.betTypeName = null;
         }
     }
 }

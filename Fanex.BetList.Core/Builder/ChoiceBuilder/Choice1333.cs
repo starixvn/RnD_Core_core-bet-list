@@ -1,22 +1,8 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Choice1333.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.11.16">Create</change>
-//     <change who="Marc.Bui" date="2013.02.21">Update showing Neutral</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-/// <summary>
-/// The ChoiceBuilder namespace.
-/// </summary>
-namespace Fanex.BetList.Core.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Entities;
 
     /// <summary>
     ///  Set x Games y and y+1 Winner.
@@ -24,35 +10,40 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     public class Choice1333 : Choice1
     {
         /// <summary>
-        /// Builds the choice.
+        /// Builds the bet team.
         /// </summary>
         /// <param name="ticket">The ticket.</param>
         /// <param name="ticketHelper">The ticket helper.</param>
         /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            base.BuildChoice(ticket, ticketHelper, ticketData);
+            bool betHome = ticket.BetTeam == "1";
+            bool betAway = ticket.BetTeam == "2";
 
-            this.Template.Handicap.handicap = null;
-            bool team1 = ticket.BetTeam == "1";
-            bool team2 = ticket.BetTeam == "2";
-
-            string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
-
-            if (team1)
+            if (betHome)
             {
-                this.Template.betTeam = this.Template.Match.homeTeam;
+                Template.betTeam = Template.Match.homeTeam;
             }
-            else if (team2)
+            else if (betAway)
             {
-                this.Template.betTeam = awayName;
+                Template.betTeam = Template.Match.awayTeam;
             }
             else
             {
-                this.Template.betTeam = CoreLang.lblNeither;
+                Template.betTeam = CoreLang.lblNeither;
             }
+        }
 
-            this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            base.BuildBetTeamClassNameAndHandicap(ticket);
+
+            Template.Handicap.handicap = null;
+        }
+
+        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {
+            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);
         }
     }
 }

@@ -1,18 +1,9 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Choice1328.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.11.16">Create</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Constants;
+    using Entities;
 
     /// <summary>
     ///   Set x Game y Total Points Exact.
@@ -20,16 +11,13 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     public class Choice1328 : Choice1
     {
         /// <summary>
-        /// Builds the choice.
+        /// Builds the bet team.
         /// </summary>
         /// <param name="ticket">The ticket.</param>
         /// <param name="ticketHelper">The ticket helper.</param>
         /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            base.BuildChoice(ticket, ticketHelper, ticketData);
-
-            this.Template.Handicap.handicap = null;
             string choice = ticket.BetTeam;
             var betTeam = string.Empty;
             switch (choice)
@@ -46,13 +34,22 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                 case "04":
                     betTeam = "7 " + CoreBetList.upPoints;
                     break;
-                default:
-                    break;
             }
 
             // "&nbsp" because export format
-            this.Template.betTeam = "&nbsp;" + betTeam;
-            this.Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);  
+            Template.betTeam = HtmlCharacters.NoneBreakingSpace + betTeam;
+        }
+
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            base.BuildBetTeamClassNameAndHandicap(ticket);
+
+            Template.Handicap.handicap = null;
+        }
+
+        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {
+            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);
         }
     }
 }

@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.UnitTest.Common.Enums;
+    using App_GlobalResources;
+    using Common.Enums;
+    using Core.Builder.ChoiceBuilder;
+    using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -30,7 +30,7 @@
         /// The value of Template.betTeam is always Over.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs1_BetTeamIsOverResource()
+        public void BuildBetTeam_BetTeamIs1_BetTeamIsOverResource()
         {
             // Arrange
             _ticket.BetTeam = "1";
@@ -46,7 +46,7 @@
         /// The value of Template.betTeam is always Over.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs2_BetTeamIsUnderResource()
+        public void BuildBetTeam_BetTeamIs2_BetTeamIsUnderResource()
         {
             // Arrange
             _ticket.BetTeam = "2";
@@ -62,7 +62,7 @@
         /// The value of Template.betTeam is always Between handicap 2 and handicap1.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamNotIs1AndNotIs2_BetTeamIsBetweenResourceHandicap2AndHandicap1()
+        public void BuildBetTeam_BetTeamNotIs1AndNotIs2_BetTeamIsBetweenResourceHandicap2AndHandicap1()
         {
             // Arrange
             _ticket.BetTeam = string.Empty;
@@ -79,7 +79,7 @@
         /// The value of Template.BetType.betTypeName is always bet type name.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetBetTypeNameIsBetTypeName()
+        public void BuildBetTeam_Always_SetBetTypeNameIsBetTypeName()
         {
             // Arrange
             _ticket.BetTypeId = 1;
@@ -98,7 +98,7 @@
         /// The value of Template.betTeamClassName is always favorite when BetTeam = 1.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs1_BetTeamClassNameIsFavorite()
+        public void BuildBetTeam_BetTeamIs1_BetTeamClassNameIsFavorite()
         {
             // Arrange
             _ticket.BetTeam = "1";
@@ -115,7 +115,7 @@
         /// The value of Template.betTeamClassName is always favorite when BetTeam != 1.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIsNot1_BetTeamClassNameIsUnderdog()
+        public void BuildBetTeamClassNameAndHandicap_BetTeamIsNot1_BetTeamClassNameIsUnderdog()
         {
             // Arrange
             _ticket.BetTeam = string.Empty;

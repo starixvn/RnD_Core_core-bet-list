@@ -1,24 +1,9 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="ConvertByBetType.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.11.16">Create</change>
-//     <change who="Marc.Bui" date="2013.01.23">Update format string for Stake to follow general rules: show all significant decimals</change>
-//     <change who="Marc.Bui" date="2013.01.29">Update show Odds value: 0 instead of -</change>
-//     <change who="Marc.Bui" date="2014.04.18">Add 1H FGLG (127) to ConvertByBetType.GetBetTeam</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-/// <summary>
-/// The Utils namespace.
-/// </summary>
-namespace Fanex.BetList.Core.Utils
+﻿namespace Fanex.BetList.Core.Utils
 {
     using System;
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
+    using App_GlobalResources;
+    using Constants;
 
     /// <summary>
     /// Class ConvertByBetType.
@@ -51,8 +36,8 @@ namespace Fanex.BetList.Core.Utils
         /// <value>The minus.</value>
         public static string Minus
         {
-            get { return ConvertByBetType.minus; }
-            set { ConvertByBetType.minus = value; }
+            get { return minus; }
+            set { minus = value; }
         }
 
         /// <summary>
@@ -171,7 +156,7 @@ namespace Fanex.BetList.Core.Utils
         /// <returns>Converted value.</returns>
         public static string Odds(object odds, object betType, object oddsType)
         {
-            double d = ConvertByBetType.GetOddsByBetType(Convert.ToDouble(odds), Convert.ToInt32(betType), Convert.ToInt32(oddsType));
+            double d = GetOddsByBetType(Convert.ToDouble(odds), Convert.ToInt32(betType), Convert.ToInt32(oddsType));
             if (d < 0)
             {
                 return string.Format(minus, string.Format(Formatter.DECIMALFORMAT3, d));
@@ -195,7 +180,7 @@ namespace Fanex.BetList.Core.Utils
         /// <returns>Converted value.</returns>
         public static string VirtualHorseRacingOdds(object odds, object betType, object oddsType)
         {
-            double d = ConvertByBetType.GetOddsByBetType(Convert.ToDouble(odds), Convert.ToInt32(betType), Convert.ToInt32(oddsType));
+            double d = GetOddsByBetType(Convert.ToDouble(odds), Convert.ToInt32(betType), Convert.ToInt32(oddsType));
             if (d < 0)
             {
                 return string.Format(minus, string.Format(Formatter.DECIMALFORMAT3, d));
@@ -218,7 +203,7 @@ namespace Fanex.BetList.Core.Utils
         /// <returns>Converted value.</returns>
         public static object OddsType(object betType, object oddsType)
         {
-            return ConvertByBetType.ShowOddsByBettype(Convert.ToInt32(betType), Convert.ToInt32(oddsType));
+            return ShowOddsByBettype(Convert.ToInt32(betType), Convert.ToInt32(oddsType));
         }
 
         /// <summary>
@@ -458,15 +443,15 @@ namespace Fanex.BetList.Core.Utils
 
                 if (chars[c - 1] == '1')
                 {
-                    returnValue += "&nbsp;" + CoreLang.FG;
+                    returnValue += HtmlCharacters.NoneBreakingSpace + CoreLang.FG;
                 }
                 else if (chars[c - 1] == '2')
                 {
-                    returnValue += "&nbsp;" + CoreLang.LG;
+                    returnValue += HtmlCharacters.NoneBreakingSpace + CoreLang.LG;
                 }
                 else
                 {
-                    returnValue += "&nbsp;" + CoreLang.goal;
+                    returnValue += HtmlCharacters.NoneBreakingSpace + CoreLang.goal;
                 }
             }
 

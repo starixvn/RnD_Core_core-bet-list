@@ -1,37 +1,23 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Choice14.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.11.16">Create</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Utils;
+    using Entities;
+    using Utils;
 
     /// <summary>
     /// First Goal/Last Goal.
     /// </summary>
     public class Choice14 : Choice1
     {
-        /// <summary>
-        /// Builds the choice.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            base.BuildChoice(ticket, ticketHelper, ticketData);
+            Template.betTeam = ConvertByBetType.GetBetTeam(ticket.BetTeam, ticket.BetTypeId);
+        }
 
-            this.Template.betTeam = ConvertByBetType.GetBetTeam(ticket.BetTeam, ticket.BetTypeId);
-            this.Template.betTeamClassName = BLFAVORITE;
-            this.Template.Handicap.handicap = null;
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            Template.betTeamClassName = Favorite;
+            Template.Handicap.handicap = null;
         }
     }
 }

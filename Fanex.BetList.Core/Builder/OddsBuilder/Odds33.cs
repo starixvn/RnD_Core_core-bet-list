@@ -1,43 +1,25 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Odds33.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.11.16">Create</change>
-//     <change who="Marc.Bui" date="2013.01.25">Update export excel</change>
-//     <change who="Marc.Bui" date="2013.01.25">Change Odds display</change>
-//     <change who="Marc.Bui" date="2013.02.27">Add GetReferenceData for Odds 1233</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.OddsBuilder
+﻿namespace Fanex.BetList.Core.Builder.OddsBuilder
 {
     using System.Collections.Generic;
     using System.Data;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.Utils;
+    using App_GlobalResources;
+    using Entities;
     using NPOI.HSSF.UserModel;
     using NPOI.SS.UserModel;
+    using Templates;
+    using Utils;
 
     /// <summary>
     /// Win/Place bet type.
     /// </summary>
-    public class Odds33 : IOdds
+    public class Odds33 : Odds1
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Odds33" /> class.
-        /// </summary>
         public Odds33()
         {
-            this.Template = new Odds_Template();
+            Template = new Odds_Template();
             WinBetId = 31;
             PlaceBetId = 32;
         }
-
-        public Odds_Template Template { get; set; }
 
         protected int WinBetId { get; set; }
 
@@ -50,76 +32,49 @@ namespace Fanex.BetList.Core.Builder.OddsBuilder
         /// <param name="ticketData">The ticket data.</param>
         /// <param name="funcGetOddsTypeName">Name of the function get odds type.</param>
         /// <returns>Odds_Template object.</returns>
-        public virtual Odds_Template Render(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
+        public override Odds_Template Render(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
         {
             if (ticketData != null && ticketData.Count > 0)
             {
-                string odds_win = string.Empty;
-                string odds_place = string.Empty;
-                string oddsWinMarkup, oddsPlaceMarkup;
-                List<ITicketData> foundTicketData = this.GetReferenceData(ticket, ticketData);
+                List<ITicketData> foundTicketData = GetReferenceData(ticket, ticketData);
 
                 if (foundTicketData != null && foundTicketData.Count > 1)
                 {
                     ITicketData winTicket = foundTicketData.Find(item => item.BetTypeId == WinBetId);
                     ITicketData placeTicket = foundTicketData.Find(item => item.BetTypeId == PlaceBetId);
 
-                    string oddsWin = this.GetOddsWin(winTicket);
-                    string oddsPlace = this.GetOddsPlace(placeTicket);                    
+                    string oddsWin = GetOddsWin(winTicket);
+                    string oddsPlace = GetOddsPlace(placeTicket);                    
 
-                    oddsWinMarkup = string.Join(null, new string[] { CoreBetList.win, ": ", "<b>", oddsWin, "</b>" });
-                    oddsPlaceMarkup = string.Join(null, new string[] { CoreBetList.place, ": ", "<b>", oddsPlace, "</b>" });
+                    var oddsWinMarkup = string.Join(null, new string[] { CoreBetList.win, ": ", "<b>", oddsWin, "</b>" });
+                    var oddsPlaceMarkup = string.Join(null, new string[] { CoreBetList.place, ": ", "<b>", oddsPlace, "</b>" });
+
                     string status = ticket.Status.ToLower();
-
                     if (status.Equals(BetStatus.Won) || status.Equals(BetStatus.Lose))
                     {
-                        odds_win = string.Join(null, new string[] { "<span class='blue' style='font-weight:normal;'>", oddsWinMarkup, "</span>" });
-                        odds_place = string.Join(null, new string[] { "<span class='' style='font-weight:normal;'>", oddsPlaceMarkup, "</span>" });
-                        this.Template.odds = string.Join(null, new string[] { odds_win, "<br>", odds_place });
+                        var oddsWinContent = string.Join(null, new string[] { "<span class='blue' style='font-weight:normal;'>", oddsWinMarkup, "</span>" });
+                        var oddsPlaceContent = string.Join(null, new string[] { "<span class='' style='font-weight:normal;'>", oddsPlaceMarkup, "</span>" });
+                        Template.odds = string.Join(null, new string[] { oddsWinContent, "<br>", oddsPlaceContent });
                     }
                     else
                     {
-                        this.Template.odds = "-";
+                        Template.odds = "-";
                     }
                 }
                 else
                 {
-                    this.Template.odds = "-";
+                    Template.odds = "-";
                 }
             }
             else
             {
-                this.Template.odds = "-";
+                Template.odds = "-";
             }
 
-            this.Template.oddsType = funcGetOddsTypeName(ConvertByBetType.OddsType(ticket.BetTypeId, ticket.OddsType));
-            return this.Template;
+            Template.oddsType = funcGetOddsTypeName(ConvertByBetType.OddsType(ticket.BetTypeId, ticket.OddsType));
+            return Template;
         }
-
-        /// <summary>
-        /// Renders the RTF.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        /// <param name="funcGetOddsTypeName">Name of the function get odds type.</param>
-        /// <param name="rtfHelper">The RTF helper.</param>
-        /// <returns>
-        /// IRichTextString object.
-        /// </returns>
-        public IRichTextString RenderRTF(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName, RTFHelper rtfHelper)
-        {
-            Render(ticket, ticketData, funcGetOddsTypeName);
-            var rtfOdds = BuildRTFOdds(rtfHelper);
-
-            return rtfOdds;
-        }
-
-        /// <summary>
-        /// Gets the reference data.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        /// <returns>List of reference data.</returns>
+        
         protected virtual List<ITicketData> GetReferenceData(ITicket ticket, List<ITicketData> ticketData)
         {
             return ticketData.FindAll(item => item.RefNo.Equals(ticket.TransId.ToString()));
@@ -130,30 +85,30 @@ namespace Fanex.BetList.Core.Builder.OddsBuilder
         /// </summary>
         /// <param name="rtfHelper">The RTF helper.</param>
         /// <returns>IRichTextString object.</returns>
-        protected virtual IRichTextString BuildRTFOdds(RTFHelper rtfHelper)
+        protected override IRichTextString BuildRTFOdds(RTFHelper rtfHelper)
         {
-            if (this.Template.odds == "-")
+            if (Template.odds == "-")
             {
                 return new HSSFRichTextString("-");
             }
 
-            int breakPos = this.Template.odds.IndexOf("<br>");
+            int breakPos = Template.odds.IndexOf("<br>");
 
-            string odds_WinString = this.Template.odds.Substring(0, breakPos);
-            string odds_PlaceString = this.Template.odds.Replace(odds_WinString, string.Empty);
+            string oddsWinString = Template.odds.Substring(0, breakPos);
+            string oddsPlaceString = Template.odds.Replace(oddsWinString, string.Empty);
 
-            string odds_WinVal = ExtractStringBetweenTag("b", odds_WinString);
-            string odds_PlaceVal = ExtractStringBetweenTag("b", odds_PlaceString);
+            string oddsWinVal = ExtractStringBetweenTag("b", oddsWinString);
+            string oddsPlaceVal = ExtractStringBetweenTag("b", oddsPlaceString);
 
             var rtfNumberRenderer = new RTFNumber(rtfHelper.RTFRenderer, rtfHelper.PosFont, rtfHelper.NegFont);
 
             // Add Win
             rtfHelper.RTFRenderer.AddText(string.Join(null, new string[] { CoreBetList.win, ": " }), rtfHelper.PosFont);
-            rtfNumberRenderer.Render(odds_WinVal);
+            rtfNumberRenderer.Render(oddsWinVal);
 
             // Add Place
             rtfHelper.RTFRenderer.AddText(string.Join(null, new string[] { "\n", CoreBetList.place, ": " }), rtfHelper.PosFont);
-            rtfNumberRenderer.Render(odds_PlaceVal);
+            rtfNumberRenderer.Render(oddsPlaceVal);
 
             var rtfOdds = rtfHelper.RTFRenderer.Render();
             rtfHelper.RTFRenderer.Clear();
@@ -233,11 +188,11 @@ namespace Fanex.BetList.Core.Builder.OddsBuilder
             {
                 odds_win = "<span class='blue' style='font-weight:normal;'>" + odds_win + "</span>";
                 odds_place = "<span class='' style='font-weight:normal;'>" + odds_place + "</span>";
-                this.Template.odds = odds_win + "<br>" + odds_place;
+                Template.odds = odds_win + "<br>" + odds_place;
             }
             else
             {
-                this.Template.odds = "-";
+                Template.odds = "-";
             }
         }
 
@@ -265,9 +220,10 @@ namespace Fanex.BetList.Core.Builder.OddsBuilder
         private string GetOddsWin(ITicketData winTicket)
         {
             string winStatus = winTicket.Status.ToLower();
-            string oddsWin = string.Empty;
+            string oddsWin;
 
-            if (!winStatus.Equals(BetStatus.Won) && !winStatus.Equals(BetStatus.Lose))
+            if (!winStatus.Equals(BetStatus.Won) 
+                && !winStatus.Equals(BetStatus.Lose))
             {
                 oddsWin = "-";
             }
@@ -288,9 +244,10 @@ namespace Fanex.BetList.Core.Builder.OddsBuilder
         {
             string placeStatus = placeTicket.Status.ToLower();
 
-            string oddsPlace = string.Empty;
+            string oddsPlace;
 
-            if (!placeStatus.Equals(BetStatus.Won) && !placeStatus.Equals(BetStatus.Lose))
+            if (!placeStatus.Equals(BetStatus.Won) 
+                && !placeStatus.Equals(BetStatus.Lose))
             {
                 oddsPlace = "-";
             }
