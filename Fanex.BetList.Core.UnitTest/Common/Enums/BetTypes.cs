@@ -98,7 +98,7 @@ namespace Fanex.BetList.Core.UnitTest.Common.Enums
         /// <summary>
         /// BetType = 16.
         /// </summary>
-        public const int HT_FT = 16;
+        public const int HT_FT = 16;            
 
         /// <summary>
         /// BetType = 17.
@@ -294,6 +294,94 @@ namespace Fanex.BetList.Core.UnitTest.Common.Enums
         /// BetType = 127.
         /// </summary>
         public const int _1h_First_Goal_Last_Goal = 127;
+
+        /// <summary>
+        /// BetType = 128.
+        /// <para>
+        /// Half Time/Full Time Odd/Even.
+        /// </para>
+        /// </summary>
+        public const int HT_FT_OE = 128;
+
+        /// <summary>
+        /// BetType = 129.
+        /// <para>
+        /// First Halft Exact Goal
+        /// </para>
+        /// </summary>
+        public const int FirstHalft_Exact_Goal = 129;
+
+        /// <summary>
+        /// BetType = 130.
+        /// <para>
+        /// Exact Goal
+        /// </para>
+        /// </summary>
+        public const int Exact_Goal = 130;
+
+        /// <summary>
+        /// BetType = 131.
+        /// <para>
+        /// Home Team Total Goal
+        /// </para>
+        /// </summary>
+        public const int Home_Team_Total_Goal = 131;
+
+        /// <summary>
+        /// BetType = 132.
+        /// <para>
+        /// Away Team Total Goal
+        /// </para>
+        /// </summary>
+        public const int Away_Team_Total_Goal = 132;
+
+        /// <summary>
+        /// BetType = 136.
+        /// <para>
+        /// 1st Home Team Odd/Even
+        /// </para>
+        /// </summary>
+        public const int First_Home_Team_OddEven = 136;
+
+        /// <summary>
+        /// BetType = 137.
+        /// <para>
+        /// Home Team Odd/Even
+        /// </para>
+        /// </summary>
+        public const int Home_Team_OddEven = 137;
+
+        /// <summary>
+        /// BetType = 138.
+        /// <para>
+        /// 1st Away Team Odd/Even
+        /// </para>
+        /// </summary>
+        public const int First_Away_Team_OddEven = 138;
+
+        /// <summary>
+        /// BetType = 139.
+        /// <para>
+        /// Away Team Odd/Even
+        /// </para>
+        /// </summary>
+        public const int Away_Team_OddEven = 139;
+
+        /// <summary>
+        /// BetType = 143.
+        /// <para>
+        /// First Result/Total Goals
+        /// </para>
+        /// </summary>
+        public const int First_Result_Total_Goals = 143;
+
+        /// <summary>
+        /// BetType = 144.
+        /// <para>
+        /// Result/Total Goals
+        /// </para>
+        /// </summary>
+        public const int Result_Total_Goals = 144;
 
         /// <summary>
         /// BetType = 1000.

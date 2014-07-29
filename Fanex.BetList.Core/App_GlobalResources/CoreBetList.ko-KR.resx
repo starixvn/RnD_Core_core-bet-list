@@ -339,4 +339,70 @@
   <data name="playtechcasino" xml:space="preserve">
     <value>PlayTech Casino</value>
   </data>
+  <data name="ee" xml:space="preserve">
+    <value>Even/Even</value>
+  </data>
+  <data name="eo" xml:space="preserve">
+    <value>Even/Odd</value>
+  </data>
+  <data name="oe" xml:space="preserve">
+    <value>Odd/Even</value>
+  </data>
+  <data name="oo" xml:space="preserve">
+    <value>Odd/Odd</value>
+  </data>
+  <data name="FiveAndOver" xml:space="preserve">
+    <value>5&amp;Over</value>
+  </data>
+  <data name="FiveGoals" xml:space="preserve">
+    <value>5 Goals</value>
+  </data>
+  <data name="FourGoals" xml:space="preserve">
+    <value>4 Goals</value>
+  </data>
+  <data name="NoGoals" xml:space="preserve">
+    <value>No Goals</value>
+  </data>
+  <data name="OneGoal" xml:space="preserve">
+    <value>1 Goal</value>
+  </data>
+  <data name="SevenAndOver" xml:space="preserve">
+    <value>7&amp;Over</value>
+  </data>
+  <data name="SixGoals" xml:space="preserve">
+    <value>6 Goals</value>
+  </data>
+  <data name="ThreeGoals" xml:space="preserve">
+    <value>3 Goals</value>
+  </data>
+  <data name="TwoGoals" xml:space="preserve">
+    <value>2 Goals</value>
+  </data>
+  <data name="virtualtennis_scorebet_0_win" xml:space="preserve">
+    <value>0-Win</value>
+  </data>
+  <data name="virtualtennis_scorebet_15_win" xml:space="preserve">
+    <value>15-Win</value>
+  </data>
+  <data name="virtualtennis_scorebet_30_win" xml:space="preserve">
+    <value>30-Win</value>
+  </data>
+  <data name="virtualtennis_scorebet_40_win" xml:space="preserve">
+    <value>40-Win</value>
+  </data>
+  <data name="virtualtennis_scorebet_win_0" xml:space="preserve">
+    <value>Win-0</value>
+  </data>
+  <data name="virtualtennis_scorebet_win_15" xml:space="preserve">
+    <value>Win-15</value>
+  </data>
+  <data name="virtualtennis_scorebet_win_30" xml:space="preserve">
+    <value>Win-30</value>
+  </data>
+  <data name="virtualtennis_scorebet_win_40" xml:space="preserve">
+    <value>Win-40</value>
+  </data>
+  <data name="FourAndOver" xml:space="preserve">
+    <value>4&amp;Over</value>
+  </data>
 </root>

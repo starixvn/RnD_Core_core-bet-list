@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using Entities;
     using Utils;
+    using Fanex.BetList.Core.App_GlobalResources;
 
     /// <summary>
     /// Bet Type: HT/FT.
@@ -11,7 +12,37 @@
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            Template.betTeam = ConvertByBetType.GetBetTeam(ticket.BetTeam, ticket.BetTypeId);
+            //Template.betTeam = ConvertByBetType.GetBetTeam(ticket.BetTeam, ticket.BetTypeId);
+
+            //char[] chars = ticket.BetTeam.ToCharArray();
+            //var betTeam = string.Empty;
+            //if (chars[0] == '1')
+            //{
+            //    betTeam = CoreLang.h;
+            //}
+            //else if (chars[0] == '2')
+            //{
+            //    betTeam = CoreLang.a;
+            //}
+            //else
+            //{
+            //    betTeam = CoreLang.d;
+            //}
+
+            //if (chars[c - 1] == '1')
+            //{
+            //    betTeam += CoreLang.h;
+            //}
+            //else if (chars[c - 1] == '2')
+            //{
+            //    betTeam += CoreLang.a;
+            //}
+            //else
+            //{
+            //    betTeam += CoreLang.d;
+            //}
+
+            //Template.betTeam = betTeam;
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)

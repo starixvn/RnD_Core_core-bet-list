@@ -1,13 +1,4 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="HomeController.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2014.02.12">Create</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
+﻿
 namespace Fanex.BetList.Example.MVC.Controllers
 {
     using System.Collections.Generic;
@@ -34,14 +25,35 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
         public HomeController()
         {
-            string dataFile = HostingEnvironment.MapPath("~/App_Data/BetListDummyData.xls");
-            TicketsExcelDAO ticketDAO = new TicketsExcelDAO(dataFile);
-            _tickets = ticketDAO.GetTickets();
-            _ticketData = ticketDAO.GetTicketData().ToList();
+           
         }
 
         public ActionResult Index(BetListData model = null)
         {
+            return BetRadar(model);
+        }
+
+        public ActionResult BetRadar(BetListData model = null)
+        {
+            string dataFile = HostingEnvironment.MapPath("~/App_Data/BetListDummyData.xls");
+            TicketsExcelDAO ticketDAO = new TicketsExcelDAO(dataFile);
+            _tickets = ticketDAO.GetTickets();
+            _ticketData = ticketDAO.GetTicketData().ToList();
+
+            model = model == null ? new BetListData() : model;
+            model.Tickets = _tickets.Where(x => x.BetTypeId == model.BetTypeId || model.BetTypeId == 0).ToList() ?? new List<ITicket>();
+            model.TicketData = _ticketData ?? new List<ITicketData>();
+
+            return View(model);
+        }
+
+        public ActionResult New11BetTypes(BetListData model = null)
+        {
+            string dataFile = HostingEnvironment.MapPath("~/App_Data/11NewBetTypeData.xls");
+            TicketsExcelDAO ticketDAO = new TicketsExcelDAO(dataFile);
+            _tickets = ticketDAO.GetTickets();
+            _ticketData = ticketDAO.GetTicketData().ToList();
+
             model = model == null ? new BetListData() : model;
             model.Tickets = _tickets.Where(x => x.BetTypeId == model.BetTypeId || model.BetTypeId == 0).ToList() ?? new List<ITicket>();
             model.TicketData = _ticketData ?? new List<ITicketData>();

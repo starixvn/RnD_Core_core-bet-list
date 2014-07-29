@@ -42,7 +42,7 @@
         /// The value of Template.betTeam is always bet team name.
         /// </summary>
         [Test]
-        public void BuildBetTeam_Always_SetBetTeamIsEmpty()
+        public void BuildBetTeam_BetTeamIsEmpty_SetBetTeamIsEmpty()
         {
             // Arrange
             _ticket.BetTeam = string.Empty;

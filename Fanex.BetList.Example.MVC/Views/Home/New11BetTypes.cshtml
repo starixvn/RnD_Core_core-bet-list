@@ -6,7 +6,7 @@
 @using Fanex.BetList.Example.Extension.BetListHTMLBuilderExt
 @model BetListData
 @{
-    ViewBag.Title = "Example Bet List";
+    ViewBag.Title = "11 New Bet Types";
 
     IList<ITicket> tickets = Model.Tickets;
     List<ITicketData> ticketData = Model.TicketData;
@@ -22,18 +22,12 @@
 
     var rowIndex = 0;
 }
-@section head
-{
-    <link rel="Stylesheet" href=@Url.Content("Content/CoreBetList.css") />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/jquery-1.9.0.min.js" type="text/javascript"></script>
-    <script src="~/Scripts/bootstrap.min.js" type="text/javascript"></script>
-}
+
 @using (Html.BeginForm())
 { 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <b>Core Bet List Demo For BetRadar </b><span class="label label-warning">@Html.ActionLink("Export list to excel", "ExportExcel")</span>
+            <span class="label label-warning">@Html.ActionLink("Export list to excel", "ExportExcel")</span>
         </div>
         <div class="panel-body">
             <div class="row">
@@ -41,20 +35,20 @@
                     @Html.DropDownListFor(m => m.BetTypeId, new List<SelectListItem>()
 {
     new SelectListItem{Value="0",Text="All"},
-    new SelectListItem{Value="133",Text="Home to Win Both Halves"},
-    new SelectListItem{Value="134",Text="Away to Win Both Halves"},
-    new SelectListItem{Value="135",Text="Penalty Shootout Yes/No"},
-    new SelectListItem{Value="140",Text="Highest Scoring Half"},
-    new SelectListItem{Value="141",Text="Highest Scoring Half Home Team"},
-    new SelectListItem{Value="142",Text="Highest Scoring Half Away Team"},
-    new SelectListItem{Value="145",Text="Both Teams to Score"},
-    new SelectListItem{Value="146",Text="2nd Half Both Teams to Score"},
-    new SelectListItem{Value="147",Text="Home to Score in Both Halves"},
-    new SelectListItem{Value="148",Text="Away to Score in Both Halves"},
-    new SelectListItem{Value="149",Text="Home to Win Either Half"},
-    new SelectListItem{Value="150",Text="Away to Win Either Half"},
-    new SelectListItem{Value="151",Text="1st Half Double Chance"},
-    new SelectListItem{Value="152",Text="Half Time/Full Time Correct Score"}
+    new SelectListItem{Value="128",Text="128 - HT/FT Odd/Even"},
+    new SelectListItem{Value="129",Text="129 - 1H Exact Goal"},
+    new SelectListItem{Value="130",Text="130- Exact Goal"},
+    new SelectListItem{Value="131",Text="131 - Home Team Total Goal"},
+    new SelectListItem{Value="132",Text="132 - Away Team Total Goal"},
+    new SelectListItem{Value="136",Text="136- 1H Home Team Odd/Even"},
+    new SelectListItem{Value="137",Text="137 - Home Team Odd/Even"},
+    new SelectListItem{Value="138",Text="138 - 1H Away Team Odd/Even"},
+    new SelectListItem{Value="139",Text="139 - Away Team Odd/Even"},    
+    new SelectListItem{Value="143",Text="143 - 1H Result/Total Goals"},
+    new SelectListItem{Value="144",Text="144 - Result/Total Goals"}    ,
+    new SelectListItem{Value="6",Text="6 - Total Goal"},
+    new SelectListItem{Value="126",Text="126 - 1H Total Goal"}
+ 
 }, new { @class = "form-control" })
                 </div>
                 <div class="col-lg-1">

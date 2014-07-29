@@ -151,6 +151,24 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Even/Even.
+        /// </summary>
+        public static string ee {
+            get {
+                return ResourceManager.GetString("ee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Even/Odd.
+        /// </summary>
+        public static string eo {
+            get {
+                return ResourceManager.GetString("eo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Even.
         /// </summary>
         public static string even {
@@ -174,6 +192,42 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string firstgoal {
             get {
                 return ResourceManager.GetString("firstgoal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 5&amp;Over.
+        /// </summary>
+        public static string FiveAndOver {
+            get {
+                return ResourceManager.GetString("FiveAndOver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 5 Goals.
+        /// </summary>
+        public static string FiveGoals {
+            get {
+                return ResourceManager.GetString("FiveGoals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 4&amp;Over.
+        /// </summary>
+        public static string FourAndOver {
+            get {
+                return ResourceManager.GetString("FourAndOver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 4 Goals.
+        /// </summary>
+        public static string FourGoals {
+            get {
+                return ResourceManager.GetString("FourGoals", resourceCulture);
             }
         }
         
@@ -412,6 +466,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No Goals.
+        /// </summary>
+        public static string NoGoals {
+            get {
+                return ResourceManager.GetString("NoGoals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No information is available.
         /// </summary>
         public static string noInfo {
@@ -453,6 +516,33 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string odds {
             get {
                 return ResourceManager.GetString("odds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odd/Even.
+        /// </summary>
+        public static string oe {
+            get {
+                return ResourceManager.GetString("oe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1 Goal.
+        /// </summary>
+        public static string OneGoal {
+            get {
+                return ResourceManager.GetString("OneGoal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odd/Odd.
+        /// </summary>
+        public static string oo {
+            get {
+                return ResourceManager.GetString("oo", resourceCulture);
             }
         }
         
@@ -565,6 +655,33 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Set.
+        /// </summary>
+        public static string set {
+            get {
+                return ResourceManager.GetString("set", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 7&amp;Over.
+        /// </summary>
+        public static string SevenAndOver {
+            get {
+                return ResourceManager.GetString("SevenAndOver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 6 Goals.
+        /// </summary>
+        public static string SixGoals {
+            get {
+                return ResourceManager.GetString("SixGoals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Stake.
         /// </summary>
         public static string stake {
@@ -610,6 +727,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 3 Goals.
+        /// </summary>
+        public static string ThreeGoals {
+            get {
+                return ResourceManager.GetString("ThreeGoals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total.
         /// </summary>
         public static string total {
@@ -633,6 +759,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string transtime {
             get {
                 return ResourceManager.GetString("transtime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2 Goals.
+        /// </summary>
+        public static string TwoGoals {
+            get {
+                return ResourceManager.GetString("TwoGoals", resourceCulture);
             }
         }
         

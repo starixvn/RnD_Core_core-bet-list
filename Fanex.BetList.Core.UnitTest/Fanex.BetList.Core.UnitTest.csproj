@@ -58,8 +58,11 @@
   <ItemGroup>
     <Compile Include="Builder\BetListHTMLBuilderTest.cs" />
     <Compile Include="Builder\ChoiceBuilder\3rd\Choice_22006Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice128Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice131Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice133Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1101Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice143Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice140Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice13Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice152Test.cs" />
@@ -130,6 +133,9 @@
     <Compile Include="Builder\ChoiceBuilder\Choice1309Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice29Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice129Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice130Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice136Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds29Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds71Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds33Test.cs" />
