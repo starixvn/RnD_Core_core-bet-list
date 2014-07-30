@@ -2,8 +2,8 @@
 {
     using System.Collections.Generic;
     using Entities;
-    using Utils;
     using Fanex.BetList.Core.App_GlobalResources;
+    using Utils;
 
     /// <summary>
     /// Bet Type: HT/FT.
@@ -12,7 +12,7 @@
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            //Template.betTeam = ConvertByBetType.GetBetTeam(ticket.BetTeam, ticket.BetTypeId);
+            Template.betTeam = ConvertByBetType.GetBetTeam(ticket.BetTeam, ticket.BetTypeId);
 
             //char[] chars = ticket.BetTeam.ToCharArray();
             //var betTeam = string.Empty;

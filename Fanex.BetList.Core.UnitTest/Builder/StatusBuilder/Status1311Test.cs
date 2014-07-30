@@ -5,6 +5,9 @@
     using NSubstitute;
     using NUnit.Framework;
 
+    /// <summary>
+    ///  Test Class Status for Bet Type 1311.
+    /// </summary>
     public class Status1311Test
     {
         private Status1311 _status;
@@ -29,9 +32,8 @@
             // Act
             _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert
-            const string REF_NO = "0";
-            Assert.AreEqual(REF_NO, _status.Template.StatusResult.refNo);
+            // Assert            
+            Assert.AreEqual("0", _status.Template.StatusResult.refNo);
         }
 
         [Test]
@@ -43,9 +45,8 @@
             // Act
             _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert
-            const string REF_NO = "53";
-            Assert.AreEqual(REF_NO, _status.Template.StatusResult.refNo);
+            // Assert            
+            Assert.AreEqual("53", _status.Template.StatusResult.refNo);
         }
     }
 }

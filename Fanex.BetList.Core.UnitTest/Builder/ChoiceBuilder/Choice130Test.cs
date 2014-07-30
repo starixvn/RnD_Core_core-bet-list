@@ -8,7 +8,7 @@
     using NUnit.Framework;
 
     /// <summary>
-    /// Unit test for bet type Exact Goal
+    /// Unit test for bet type Exact Goal.
     /// </summary>    
     [TestFixture]
     public class Choice130Test

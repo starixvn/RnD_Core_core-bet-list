@@ -28,9 +28,9 @@ namespace Fanex.BetList.Example.MVC.Controllers
            
         }
 
-        public ActionResult Index(BetListData model = null)
+        public ActionResult Index()
         {
-            return BetRadar(model);
+            return View();
         }
 
         public ActionResult BetRadar(BetListData model = null)

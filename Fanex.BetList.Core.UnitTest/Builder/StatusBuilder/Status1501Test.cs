@@ -5,6 +5,9 @@
     using NSubstitute;
     using NUnit.Framework;
 
+    /// <summary>
+    /// Status test class for bet type 1501.
+    /// </summary>
     public class Status1501Test
     {
         private Status1501 _status;

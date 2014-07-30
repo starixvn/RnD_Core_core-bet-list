@@ -3,6 +3,7 @@
     using Common.Enums;
     using Core.Builder.ChoiceBuilder;
     using Entities;
+    using Fanex.BetList.Core.App_GlobalResources;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -68,6 +69,32 @@
             // Assert
             const string CSS_CLASS_FAVORITE = "favorite";
             Assert.AreEqual(CSS_CLASS_FAVORITE, _choice.Template.betTeamClassName);
+        }
+
+        [Test]
+        public void BuildBetTeam_BetTeamIs4dashOver_SetTemplateBetTeamIsResource4AndOver()
+        { 
+            // Arrange
+            _ticket.BetTeam = "4-over";
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual(string.Join(null, new string[] { "&nbsp;", CoreBetList.FourAndOver }), _choice.Template.betTeam);
+        }
+
+        [Test]
+        public void BuildBetTeam_BetTeamIs7dashOver_SetTemplateBetTeamIsResource7AndOver()
+        {
+            // Arrange
+            _ticket.BetTeam = "7-over";
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual(string.Join(null, new string[] { "&nbsp;", CoreBetList.SevenAndOver }), _choice.Template.betTeam);
         }
     }
 }

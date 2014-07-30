@@ -20,6 +20,7 @@
             new object[] { "2", CoreBetList.TwoGoals, "Betting on the total number of goals in Half Time will be 2 goals." },
             new object[] { "3", CoreBetList.ThreeGoals, "Betting on the total number of goals in Half Time will be 3 goals." },
             new object[] { "4", CoreBetList.FourGoals, "Betting on the total number of goals in Half Time will be 4 goals." },
+            new object[] { "4&over", CoreBetList.FourAndOver, "Betting on that at least 4 goals will be scored in Half Time." },
             new object[] { "5&over", CoreBetList.FiveAndOver, "Betting on that at least 5 goals will be scored in Half Time." }
         };
 
