@@ -80,7 +80,7 @@
             List<IRichTextString> lstRTFChoices = new List<IRichTextString>();
             RTFHelper tmpRtfHelper = rtfHelper.Clone();
 
-            tmpRtfHelper.RTFRenderer.AddText(CoreLang.lblMixParlay, tmpRtfHelper.PosFont);
+            tmpRtfHelper.RTFRenderer.AddText(CoreBetList.lblMixParlay, tmpRtfHelper.PosFont);
 
             if (ticketHelper.GetParlayDetailById != null)
             {
@@ -133,12 +133,12 @@
         /// <param name="tmpRtfHelper">The temporary RTF helper.</param>
         /// <param name="posFont">The position font.</param>
         /// <param name="normalFont">The normal font.</param>
-        private void CombineSubRichTextString(List<IRichTextString> tmpRtfChoice, ref RTFHelper tmpRtfHelper, IFont posFont, IFont normalFont)
+        private static void CombineSubRichTextString(List<IRichTextString> tmpRtfChoice, ref RTFHelper tmpRtfHelper, IFont posFont, IFont normalFont)
         {
             foreach (HSSFRichTextString rtfString in tmpRtfChoice)
             {
                 // Remove extra line-breaks
-                while (rtfString.String.StartsWith("\n"))
+                while (rtfString.String.StartsWith("\n", StringComparison.OrdinalIgnoreCase))
                 {
                     rtfString.String.Remove(0, 1);
                 }

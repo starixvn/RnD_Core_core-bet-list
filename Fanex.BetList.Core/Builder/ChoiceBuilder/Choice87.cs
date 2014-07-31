@@ -45,7 +45,7 @@
                 betId = string.Empty;
             }
 
-            string liveScore = (!ticket.IsLive || betId == string.Empty) ? " [0]" : string.Join(null, new string[] { " [", betId, "]" });
+            string liveScore = (!ticket.IsLive || string.IsNullOrEmpty(betId)) ? " [0]" : string.Join(null, new string[] { " [", betId, "]" });
             string betTeam = ticket.BetTeam == BetTeamValue.H ? CoreBetList.high : CoreBetList.low;
 
             Template.betTeam = string.Join(null, new string[] { betTeam, liveScore });

@@ -2,8 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-    using App_GlobalResources;
-    using Constants;
+    using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
     /// Class ConvertByBetType.
@@ -81,7 +80,9 @@
                 return odds;
             }
         }
-     
+
+        [SuppressMessage("Microsoft.Globalization", "CA1305:SpecifyIFormatProvider", Justification = "Reviewed")]
+
         /// <summary>
         /// HDPs the specified value.
         /// </summary>

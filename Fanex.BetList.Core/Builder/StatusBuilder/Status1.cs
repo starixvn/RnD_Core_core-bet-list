@@ -1,6 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
     using System.Collections.Generic;
+    using System.Globalization;
     using App_GlobalResources;
     using Entities;
     using NPOI.SS.UserModel;
@@ -63,7 +64,7 @@
         /// </summary>
         /// <param name="ticketStatus">The ticket status.</param>
         /// <returns>System.String: result.</returns>
-        protected string GetResultString(string ticketStatus)
+        protected static string GetResultString(string ticketStatus)
         {
             string result = string.Empty;
 
@@ -100,7 +101,7 @@
 
         protected virtual void BuildResult(ITicket ticket, List<ITicketData> ticketData)
         {
-            Template.result = ticket.Status.ToLower();
+            Template.result = ticket.Status.ToLower(CultureInfo.InvariantCulture);
             string result = GetResultString(ticket.Status);
 
             if (!string.IsNullOrEmpty(result))
@@ -115,7 +116,7 @@
         /// <param name="ticket">The ticket.</param>
         protected virtual void BuildStatusResult(ITicket ticket)
         {
-            var result = ticket.Status.ToLower();
+            var result = ticket.Status.ToLower(CultureInfo.InvariantCulture);
 
             if (result.Equals(BetStatus.Running)
                 || result.Equals(BetStatus.Waiting)
@@ -127,12 +128,12 @@
             }
             else
             {
-                Template.StatusResult.matchId = ticket.MatchId.ToString();
-                Template.StatusResult.betType = ticket.BetTypeId.ToString();
+                Template.StatusResult.matchId = ticket.MatchId.ToString(CultureInfo.InvariantCulture);
+                Template.StatusResult.betType = ticket.BetTypeId.ToString(CultureInfo.InvariantCulture);
                 Template.StatusResult.race = string.IsNullOrEmpty(ticket.Race) ? "0" : ticket.Race;
-                Template.StatusResult.refNo = ticket.TransId.ToString();
-                Template.StatusResult.sportType = ticket.SportTypeId.ToString();
-                Template.StatusResult.league = ticket.LeagueId.ToString();
+                Template.StatusResult.refNo = ticket.TransId.ToString(CultureInfo.InvariantCulture);
+                Template.StatusResult.sportType = ticket.SportTypeId.ToString(CultureInfo.InvariantCulture);
+                Template.StatusResult.league = ticket.LeagueId.ToString(CultureInfo.InvariantCulture);
                 Template.StatusResult.userName = ticket.UserName;
                 Template.StatusResult.winlostDate = Formatter.FullDateFormat(ticket.WinlostDate);
             }

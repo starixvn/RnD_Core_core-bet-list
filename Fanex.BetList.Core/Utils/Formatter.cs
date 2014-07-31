@@ -68,7 +68,7 @@
             }
         }
 
-        public static CultureInfo ViCult
+        public static CultureInfo VICult
         {
             get
             {

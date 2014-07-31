@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Web;
     using App_GlobalResources;
     using Entities;
@@ -97,7 +98,7 @@
             }
             else
             {
-                custid = ticket.CustId.ToString();
+                custid = ticket.CustId.ToString(CultureInfo.InvariantCulture);
             }
 
             // Get user-customized js for winloss summary. The default is used if no customization is available
@@ -107,7 +108,7 @@
                 showSystemParlayDetailJsFunction = JoinSystemParlayDetailJsFunction(
                                                             ticket.RefNo,
                                                             ticket.WinlostDate.ToString(),
-                                                            ticket.TransId.ToString(),
+                                                            ticket.TransId.ToString(CultureInfo.InvariantCulture),
                                                             ticket.BetId.ToString(),
                                                             custid);
             }
@@ -116,7 +117,8 @@
             string showSystemParlaySubbetsFunction = ticketHelper.ClientSystemParlaySubbetsDetailFunction;
             if (string.IsNullOrWhiteSpace(showSystemParlaySubbetsFunction))
             {
-                showSystemParlaySubbetsFunction = JoinSystemParlaySubbetsFunction(ticket.TransId.ToString(), ticketHelper.Index.ToString(), ticket.RefNo);
+                showSystemParlaySubbetsFunction = 
+                    JoinSystemParlaySubbetsFunction(ticket.TransId.ToString(CultureInfo.InvariantCulture), ticketHelper.Index.ToString(CultureInfo.InvariantCulture), ticket.RefNo);
             }
 
             string detailSystemParlayDiv = string.Empty;
@@ -131,8 +133,8 @@
                                         showSystemParlaySubbetsFunction,
                                         betTypeName,
                                         combinationMPOfferName,
-                                        ticket.TransId.ToString(),
-                                        ticketHelper.Index.ToString(),
+                                        ticket.TransId.ToString(CultureInfo.InvariantCulture),
+                                        ticketHelper.Index.ToString(CultureInfo.InvariantCulture),
                                         detailSystemParlayDiv);
 
             Template.SetValue(mixParlay);
@@ -243,7 +245,7 @@
         /// <param name="betId">The bet identifier.</param>
         /// <param name="custId">The customer identifier.</param>
         /// <returns>System.String: the markups.</returns>
-        private string JoinSystemParlayDetailJsFunction(string refNo, string winlossDate, string transId, string betId, string custId)
+        private static string JoinSystemParlayDetailJsFunction(string refNo, string winlossDate, string transId, string betId, string custId)
         {
             string[] markupCompositions = new string[]
                                             {
@@ -269,7 +271,7 @@
             return markups;
         }
 
-        private string JoinSystemParlaySubbetsFunction(string transId, string transIndex, string refNo)
+        private static string JoinSystemParlaySubbetsFunction(string transId, string transIndex, string refNo)
         {
             string markups = string.Join(null, new string[] { "javascript:showCombMP(&quot;", transId, "&quot;,&quot;", transIndex, "&quot;,&quot;", refNo, "&quot;);" });
 

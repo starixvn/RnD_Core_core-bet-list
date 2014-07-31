@@ -8,6 +8,10 @@
     /// </summary>
     public class CacheRef
     {
+        private CacheRef()
+        { 
+        }
+
         public static string CurrentTWLanguage
         {
             get

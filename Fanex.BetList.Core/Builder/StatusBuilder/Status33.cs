@@ -1,6 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
     using System.Collections.Generic;
+    using System.Globalization;
     using App_GlobalResources;
     using Entities;
     using NPOI.SS.UserModel;
@@ -98,7 +99,7 @@
 
                     string placeStatusMarkup = string.Join(null, tmpPlaceStatus);
 
-                    string ticketBetStatus = ticket.Status.ToLower();
+                    string ticketBetStatus = ticket.Status.ToLower(CultureInfo.InvariantCulture);
 
                     switch (ticketBetStatus)
                     {

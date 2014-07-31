@@ -60,11 +60,11 @@
             {
                 if (ticket.Handicap2 > ticket.Handicap1)
                 {
-                    Template.betTeam = string.Join(null, new string[] { CoreLang.lblDraw, "&nbsp;(", CoreBetList.h, "+", ConvertByBetType.Hdp(ticket.Handicap2) + ")" });
+                    Template.betTeam = string.Join(null, new string[] { CoreBetList.lblDraw, "&nbsp;(", CoreBetList.h, "+", ConvertByBetType.Hdp(ticket.Handicap2) + ")" });
                 }
                 else
                 {
-                    Template.betTeam = string.Join(null, new string[] { CoreLang.lblDraw, "&nbsp;(", CoreBetList.a, "+", ConvertByBetType.Hdp(ticket.Handicap1), ")" });
+                    Template.betTeam = string.Join(null, new string[] { CoreBetList.lblDraw, "&nbsp;(", CoreBetList.a, "+", ConvertByBetType.Hdp(ticket.Handicap1), ")" });
                 }
             }
         }
@@ -74,18 +74,14 @@
             Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);
         }
 
-        private bool IsBetHome(ITicket ticket)
-        {
-            var betHome = ticket.BetTeam == "1";
-
-            return betHome;
+        private static bool IsBetHome(ITicket ticket)
+        {            
+            return ticket.BetTeam == "1";
         }
 
-        private bool IsBetAway(ITicket ticket)
-        {
-            var betAway = ticket.BetTeam == "2";
-
-            return betAway;
+        private static bool IsBetAway(ITicket ticket)
+        {           
+            return ticket.BetTeam == "2";
         }
     }
 }

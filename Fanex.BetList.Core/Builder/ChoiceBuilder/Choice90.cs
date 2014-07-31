@@ -1,6 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
+    using System.Globalization;
     using App_GlobalResources;
     using Constants;
     using Entities;
@@ -139,7 +140,7 @@
 
             int.TryParse(ticket.BetTeam, out betteam);
 
-            var betTeamKey = string.Format("{0}-{1}", (int)ticket.Handicap1, betteam);
+            var betTeamKey = string.Format(CultureInfo.InvariantCulture, "{0}-{1}", (int)ticket.Handicap1, betteam);
             var betTeamName = betTeamMap.ContainsKey(betTeamKey) ? betTeamMap[betTeamKey] : string.Empty;
 
             Template.betTeam = string.Join(null, new string[] { betTeamName, liveScore });
@@ -161,7 +162,7 @@
             base.BuildMatch(ticket, ticketHelper);
 
             Template.Match.VS = null;
-            Template.Match.homeTeam = string.Join(null, new string[] { CoreLang.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
+            Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
         }
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)

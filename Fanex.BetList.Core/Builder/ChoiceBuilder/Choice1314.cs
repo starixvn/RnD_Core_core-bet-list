@@ -14,7 +14,7 @@
         {
             bool yes = ticket.BetTeam == BetTeamValue.H;
 
-            Template.betTeam = yes ? CoreLang.lblYes : CoreLang.lblNo;
+            Template.betTeam = yes ? CoreBetList.lblYes : CoreBetList.lblNo;
         }
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)

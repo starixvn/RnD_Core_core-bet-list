@@ -267,8 +267,7 @@ namespace Fanex.BetList.Core.Builder
         /// <returns>CellAddress: the address object of the newly merged cell.</returns>
         public CellAddress AddMergedCell(IRichTextString rtfString, CellRangeAddress mergedRange, ICellStyle cellStyle)
         {
-            _nextCellIndex++;
-            IRow lastRow = GetLastRow();
+            _nextCellIndex++;        
 
             if (_nextCellIndex >= _reportColumnsNum)
             {

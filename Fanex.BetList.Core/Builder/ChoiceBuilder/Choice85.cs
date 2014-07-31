@@ -28,7 +28,7 @@
             }
 
             string liveScore = string.Empty;
-            liveScore = (!ticket.IsLive || betId == string.Empty) ? " [0]" : string.Join(null, new string[] { " [", betId, "]" });
+            liveScore = (!ticket.IsLive || string.IsNullOrEmpty(betId)) ? " [0]" : string.Join(null, new string[] { " [", betId, "]" });
 
             string betTeam = Template.betTeam;
             betTeam += " <span style='color:#555555'>37.5</span> ";

@@ -54,14 +54,14 @@
             Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);
         }
 
-        private bool IsBetOver(ITicket ticket)
+        private static bool IsBetOver(ITicket ticket)
         {
             var betOver = ticket.BetTeam == "1";
 
             return betOver;
         }
 
-        private bool IsBetUnder(ITicket ticket)
+        private static bool IsBetUnder(ITicket ticket)
         {
             var betUnder = ticket.BetTeam == "2";
 

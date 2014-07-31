@@ -1,6 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Utils.NPOIExt
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using NPOI.SS.UserModel;
 
     /// <summary>
@@ -23,7 +24,7 @@
             {
                 if (value is string)
                 {
-                    cell.SetCellValue((string)value);
+                    cell.SetCellValue(value);
                 }
                 else if (value is int)
                 {
@@ -51,7 +52,7 @@
                 }
                 else if (value is IRichTextString)
                 {
-                    cell.SetCellValue((IRichTextString)value);
+                    cell.SetCellValue(value);
                 }
                 else
                 {

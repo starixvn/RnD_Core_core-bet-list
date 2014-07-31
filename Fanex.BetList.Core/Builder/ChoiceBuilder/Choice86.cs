@@ -31,7 +31,7 @@
                     betId = string.Empty;
                 }
 
-                liveScore = (!ticket.IsLive || betId == string.Empty)
+                liveScore = (!ticket.IsLive || string.IsNullOrEmpty(betId))
                     ? " [0]"
                     : string.Join(null, new string[] { " [", betId, "]" });
             }

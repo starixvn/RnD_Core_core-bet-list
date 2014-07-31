@@ -44,6 +44,11 @@
         /// The reject status.
         /// </summary>
         public const string Reject = "reject";
+
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
     }
 
     /// <summary>
@@ -90,5 +95,10 @@
         /// The waiting status.
         /// </summary>
         public const string Waiting = "1";
+
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
     }
 }
