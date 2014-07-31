@@ -34,31 +34,30 @@ namespace Fanex.BetList.Example.MVC.Controllers
         }
 
         public ActionResult BetRadar(BetListData model = null)
-        {
-            string dataFile = HostingEnvironment.MapPath("~/App_Data/BetListDummyData.xls");
-            TicketsExcelDAO ticketDAO = new TicketsExcelDAO(dataFile);
-            _tickets = ticketDAO.GetTickets();
-            _ticketData = ticketDAO.GetTicketData().ToList();
-
-            model = model == null ? new BetListData() : model;
-            model.Tickets = _tickets.Where(x => x.BetTypeId == model.BetTypeId || model.BetTypeId == 0).ToList() ?? new List<ITicket>();
-            model.TicketData = _ticketData ?? new List<ITicketData>();
+        {            
+            model = GetDataSource(model, sourcePath: "~/App_Data/BetListDummyData.xls");           
 
             return View(model);
         }
 
         public ActionResult New11BetTypes(BetListData model = null)
         {
-            string dataFile = HostingEnvironment.MapPath("~/App_Data/11NewBetTypeData.xls");
+            model = GetDataSource(model, sourcePath: "~/App_Data/11NewBetTypeData.xls");
+            return View(model);
+        }
+
+        private BetListData GetDataSource(BetListData model, string sourcePath)
+        {
+            string dataFile = HostingEnvironment.MapPath(sourcePath);
             TicketsExcelDAO ticketDAO = new TicketsExcelDAO(dataFile);
             _tickets = ticketDAO.GetTickets();
             _ticketData = ticketDAO.GetTicketData().ToList();
 
             model = model == null ? new BetListData() : model;
             model.Tickets = _tickets.Where(x => x.BetTypeId == model.BetTypeId || model.BetTypeId == 0).ToList() ?? new List<ITicket>();
+            Session["Tickets.Data"] = model.Tickets;
             model.TicketData = _ticketData ?? new List<ITicketData>();
-
-            return View(model);
+            return model;
         }
 
         /// <summary>
@@ -71,27 +70,29 @@ namespace Fanex.BetList.Example.MVC.Controllers
             BetListExcelBuilder builder = factory.CreateBuilder();
             ITicketHelper ticketHelper = new TicketHelper();
             short excelColumns = 6;
-
             builder.BuildWorksheet("BetList", excelColumns);
             int index = 0;
-
-            foreach (ITicket ticket in _tickets)
+            _tickets = (List<ITicket>)Session["Tickets.Data"];
+            if (_tickets != null)
             {
-                index++;
-                ticketHelper.Index = index;
+                foreach (ITicket ticket in _tickets)
+                {
+                    index++;
+                    ticketHelper.Index = index;
 
-                builder.AddNo(index)
-                       .AddTrans(ticket, ticketHelper)
-                       .AddUsername(ticket, ticketHelper)
-                       .AddChoice(ticket, ticketHelper, _ticketData)
-                       .AddOdds(ticket, _ticketData, funcGetOddsTypeName)
-                       .AddStake(ticket);
+                    builder.AddNo(index)
+                           .AddTrans(ticket, ticketHelper)
+                           .AddUsername(ticket, ticketHelper)
+                           .AddChoice(ticket, ticketHelper, _ticketData)
+                           .AddOdds(ticket, _ticketData, funcGetOddsTypeName)
+                           .AddStake(ticket);
+                }
+
+                MemoryStream ms = new MemoryStream();
+                IWorkbook resultWorkbook = builder.GetBetList();
+                resultWorkbook.Write(ms);
+                ExportToExcel(ms, "BetList.xls");
             }
-
-            MemoryStream ms = new MemoryStream();
-            IWorkbook resultWorkbook = builder.GetBetList();
-            resultWorkbook.Write(ms);
-            ExportToExcel(ms, "BetList.xls");
         }
 
         private void ExportToExcel(MemoryStream excelStream, string fileName)
