@@ -3,6 +3,7 @@
     using Common.Enums;
     using Core.Builder.ChoiceBuilder;
     using Entities;
+    using Fanex.BetList.Core.App_GlobalResources;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -12,6 +13,15 @@
     [TestFixture]
     public class Choice14Test
     {
+        private static readonly object[] ExpectedBetTeams = 
+        {
+            new object[] { "0:0", CoreLang.no0 + "&nbsp;" + CoreLang.goal },
+            new object[] { "1:1", CoreLang.home + "&nbsp;" + CoreLang.FG },
+            new object[] { "1:2", CoreLang.home + "&nbsp;" + CoreLang.LG },
+            new object[] { "2:1", CoreLang.away + "&nbsp;" + CoreLang.FG },
+            new object[] { "2:2", CoreLang.away + "&nbsp;" + CoreLang.LG }
+        };
+
         private IChoice _choice;
         private ITicket _ticket;
         private ITicketHelper _ticketHelper;
@@ -67,5 +77,18 @@
             const string CSS_CLASS_FAVORITE = "favorite";
             Assert.AreEqual(CSS_CLASS_FAVORITE, _choice.Template.betTeamClassName);
         }
+
+        [Test, TestCaseSource("ExpectedBetTeams")]
+        public void BuildBetTeam_Always_SetRightBetTeam(string betTeam, string expectedResult)
+        {
+            // Arrange
+            _ticket.BetTeam = betTeam;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert            
+            Assert.AreEqual(expectedResult, _choice.Template.betTeam);
+        }       
     }
 }

@@ -33,23 +33,26 @@
             <div class="row">
                 <div class="col-lg-6">
                     @Html.DropDownListFor(m => m.BetTypeId, new List<SelectListItem>()
-{
-    new SelectListItem{Value="0",Text="All"},
-    new SelectListItem{Value="128",Text="128 - HT/FT Odd/Even"},
-    new SelectListItem{Value="129",Text="129 - 1H Exact Goal"},
-    new SelectListItem{Value="130",Text="130- Exact Goal"},
-    new SelectListItem{Value="131",Text="131 - Home Team Total Goal"},
-    new SelectListItem{Value="132",Text="132 - Away Team Total Goal"},
-    new SelectListItem{Value="136",Text="136- 1H Home Team Odd/Even"},
-    new SelectListItem{Value="137",Text="137 - Home Team Odd/Even"},
-    new SelectListItem{Value="138",Text="138 - 1H Away Team Odd/Even"},
-    new SelectListItem{Value="139",Text="139 - Away Team Odd/Even"},    
-    new SelectListItem{Value="143",Text="143 - 1H Result/Total Goals"},
-    new SelectListItem{Value="144",Text="144 - Result/Total Goals"}    ,
-    new SelectListItem{Value="6",Text="6 - Total Goal"},
-    new SelectListItem{Value="126",Text="126 - 1H Total Goal"}
+                        {
+                            new SelectListItem{Value="0",Text="All"},
+                            new SelectListItem{Value="128",Text="128 - HT/FT Odd/Even"},
+                            new SelectListItem{Value="129",Text="129 - 1H Exact Goal"},
+                            new SelectListItem{Value="130",Text="130- Exact Goal"},
+                            new SelectListItem{Value="131",Text="131 - Home Team Total Goal"},
+                            new SelectListItem{Value="132",Text="132 - Away Team Total Goal"},
+                            new SelectListItem{Value="136",Text="136- 1H Home Team Odd/Even"},
+                            new SelectListItem{Value="137",Text="137 - Home Team Odd/Even"},
+                            new SelectListItem{Value="138",Text="138 - 1H Away Team Odd/Even"},
+                            new SelectListItem{Value="139",Text="139 - Away Team Odd/Even"},    
+                            new SelectListItem{Value="143",Text="143 - 1H Result/Total Goals"},
+                            new SelectListItem{Value="144",Text="144 - Result/Total Goals"}    ,
+                            new SelectListItem{Value="6",Text="6 - Total Goal"},
+                            new SelectListItem{Value="126",Text="126 - 1H Total Goal"},
+                            new SelectListItem{Value="16",Text="16 - HT/FT"},
+                            new SelectListItem{Value="14",Text="14 - First Goal/Last Goal"},
+                            new SelectListItem{Value="127",Text="127 - 1H First Goal/Last Goal"}
  
-}, new { @class = "form-control" })
+                        }, new { @class = "form-control" })
                 </div>
                 <div class="col-lg-1">
                     <input type="submit" value="Submit" class="btn btn-primary" />

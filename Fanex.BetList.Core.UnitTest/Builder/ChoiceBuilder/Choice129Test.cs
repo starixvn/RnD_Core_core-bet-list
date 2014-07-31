@@ -13,7 +13,7 @@
     [TestFixture]
     public class Choice129Test
     {
-        private static object[] expectedBetTeams = 
+        private static readonly object[] ExpectedBetTeams = 
         {
             new object[] { "0", CoreBetList.NoGoals, "Betting on the total number of goals in Half Time will be no goals." },
             new object[] { "1", CoreBetList.OneGoal, "Betting on the total number of goals in Half Time will be 1 goal." },
@@ -37,7 +37,7 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        [Test, TestCaseSource("expectedBetTeams")]
+        [Test, TestCaseSource("ExpectedBetTeams")]
         public void BuildBetTeam_Always_SetRightBetTeam(string betTeam, string expectedResult, string expectedMessage)
         {
             // Arrange

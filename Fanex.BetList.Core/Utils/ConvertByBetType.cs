@@ -81,43 +81,7 @@
                 return odds;
             }
         }
-
-        /// <summary>
-        /// Gets the bet team.
-        /// </summary>
-        /// <param name="betTeam">The bet team.</param>
-        /// <param name="betType">Type of the bet.</param>
-        /// <returns>The bet team of input bet type.</returns>
-        public static string GetBetTeam(string betTeam, int betType)
-        {
-            if (string.IsNullOrEmpty(betTeam))
-            {
-                return betTeam;
-            }
-
-            char[] chars = betTeam.ToCharArray();
-            int c = chars.Length;
-
-            string returnValue = string.Empty;
-            
-            if (betType == 14 || betType == 127)
-            {
-                // FGLG or 1H FGLG
-                returnValue = GetFGLGBetTeam(betType, chars);
-            }            
-            else if (betType == 16)
-            {
-                // HTFT
-                returnValue = GetHTFTBetTeam(betType, chars);
-            }
-            else
-            {
-                return betTeam;
-            }
-
-            return returnValue;
-        }        
-
+     
         /// <summary>
         /// HDPs the specified value.
         /// </summary>
@@ -370,92 +334,6 @@
             {
                 return string.Format(Formatter.DECIMALFORMAT20, d);
             }
-        }
-
-        /// <summary>
-        /// Gets the HTFT bet team.
-        /// </summary>
-        /// <param name="betType">Type of the bet.</param>
-        /// <param name="chars">The chars.</param>
-        /// <returns>The bet team of input bet type.</returns>
-        private static string GetHTFTBetTeam(int betType, char[] chars)
-        {
-            var returnValue = string.Empty;
-            int c = chars.Length;
-
-            if (betType == 16)
-            {
-                if (chars[0] == '1')
-                {
-                    returnValue = CoreLang.h;
-                }
-                else if (chars[0] == '2')
-                {
-                    returnValue = CoreLang.a;
-                }
-                else
-                {
-                    returnValue = CoreLang.d;
-                }
-
-                if (chars[c - 1] == '1')
-                {
-                    returnValue += CoreLang.h;
-                }
-                else if (chars[c - 1] == '2')
-                {
-                    returnValue += CoreLang.a;
-                }
-                else
-                {
-                    returnValue += CoreLang.d;
-                }
-            }
-
-            return returnValue;
-        }
-
-        /// <summary>
-        /// Gets the FGLG bet team.
-        /// </summary>
-        /// <param name="betType">Type of the bet.</param>
-        /// <param name="chars">The chars.</param>
-        /// <returns>The bet team of input bet type.</returns>
-        private static string GetFGLGBetTeam(int betType, char[] chars)
-        {
-            var returnValue = string.Empty;
-            int c = chars.Length;
-
-            if (betType == 14 || betType == 127)
-            {
-                if (chars[0] == '1')
-                {
-                    returnValue = CoreLang.home;
-                }
-                else if (chars[0] == '2')
-                {
-                    returnValue = CoreLang.away;
-                }
-                else
-                {
-                    returnValue = CoreLang.no0;
-                }
-
-                if (chars[c - 1] == '1')
-                {
-                    returnValue += HtmlCharacters.NoneBreakingSpace + CoreLang.FG;
-                }
-                else if (chars[c - 1] == '2')
-                {
-                    returnValue += HtmlCharacters.NoneBreakingSpace + CoreLang.LG;
-                }
-                else
-                {
-                    returnValue += HtmlCharacters.NoneBreakingSpace + CoreLang.goal;
-                }
-            }
-
-            return returnValue;
-        }
+        }            
     }
 }

@@ -53,6 +53,7 @@
     </Reference>
     <Reference Include="RemotingRef">
       <HintPath>..\Fanex.BetList.Core.TicketHelper\DLL\RemotingRef.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
