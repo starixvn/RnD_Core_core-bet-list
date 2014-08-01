@@ -14,7 +14,7 @@
     /// </summary>
     public class Choice29 : Choice1
     {
-        private const string CHOICEBUILDERNAMESPACE = "Fanex.BetList.Core.Builder.ChoiceBuilder";
+        private const string CHOICEBUILDERNAMESPACE = "Fanex.BetList.Core.Builder.ChoiceBuilder";       
 
         /// <summary>
         /// Renders the RTF.
@@ -141,6 +141,48 @@
         }
 
         /// <summary>
+        /// Joins the system parlay detail JavaScripts function.
+        /// </summary>
+        /// <param name="refNo">The reference no.</param>
+        /// <param name="winlossDate">The win loss date.</param>
+        /// <param name="transId">The trans identifier.</param>
+        /// <param name="betId">The bet identifier.</param>
+        /// <param name="custId">The customer identifier.</param>
+        /// <returns>System.String: the markups.</returns>
+        private static string JoinSystemParlayDetailJsFunction(string refNo, string winlossDate, string transId, string betId, string custId)
+        {
+            string[] markupCompositions = new string[]
+                                            {
+                                                "showCombMPDetail(&quot;",
+                                                refNo,
+                                                "&quot;",
+                                                ",&quot;",
+                                                winlossDate,
+                                                "&quot;",
+                                                ",&quot;",
+                                                transId,
+                                                "&quot;",
+                                                ",&quot;",
+                                                betId,
+                                                "&quot;",
+                                                ",&quot;",
+                                                custId,
+                                                "&quot;);"
+                                            };
+
+            string markups = string.Join(null, markupCompositions);
+
+            return markups;
+        }
+
+        private static string JoinSystemParlaySubbetsFunction(string transId, string transIndex, string refNo)
+        {
+            string markups = string.Join(null, new string[] { "javascript:showCombMP(&quot;", transId, "&quot;,&quot;", transIndex, "&quot;,&quot;", refNo, "&quot;);" });
+
+            return markups;
+        }
+
+        /// <summary>
         /// Creates the choice builder.
         /// </summary>
         /// <param name="bettype">The bet type.</param>
@@ -234,49 +276,7 @@
             string mixParlay = string.Join(null, mixParlayCompositions);
 
             return mixParlay;
-        }
-
-        /// <summary>
-        /// Joins the system parlay detail JavaScripts function.
-        /// </summary>
-        /// <param name="refNo">The reference no.</param>
-        /// <param name="winlossDate">The win loss date.</param>
-        /// <param name="transId">The trans identifier.</param>
-        /// <param name="betId">The bet identifier.</param>
-        /// <param name="custId">The customer identifier.</param>
-        /// <returns>System.String: the markups.</returns>
-        private static string JoinSystemParlayDetailJsFunction(string refNo, string winlossDate, string transId, string betId, string custId)
-        {
-            string[] markupCompositions = new string[]
-                                            {
-                                                "showCombMPDetail(&quot;",
-                                                refNo,
-                                                "&quot;",
-                                                ",&quot;",
-                                                winlossDate,
-                                                "&quot;",
-                                                ",&quot;",
-                                                transId,
-                                                "&quot;",
-                                                ",&quot;",
-                                                betId,
-                                                "&quot;",
-                                                ",&quot;",
-                                                custId,
-                                                "&quot;);"
-                                            };
-
-            string markups = string.Join(null, markupCompositions);
-
-            return markups;
-        }
-
-        private static string JoinSystemParlaySubbetsFunction(string transId, string transIndex, string refNo)
-        {
-            string markups = string.Join(null, new string[] { "javascript:showCombMP(&quot;", transId, "&quot;,&quot;", transIndex, "&quot;,&quot;", refNo, "&quot;);" });
-
-            return markups;
-        }
+        }       
 
         /// <summary>
         /// Joins the detail system parlay div tag.

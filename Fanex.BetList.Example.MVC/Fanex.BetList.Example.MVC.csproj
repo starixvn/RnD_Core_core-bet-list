@@ -141,6 +141,7 @@
     <Compile Include="ViewModel\BetListData.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CodeAnalysis\CodeAnalysisConfiguration.xml" />
     <Content Include="Content\BetListExt.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
