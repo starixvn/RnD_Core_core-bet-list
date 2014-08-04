@@ -34,7 +34,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
 
             string team = ticket.BetTeam != null && ticket.BetTeam.Contains("h") ? this.Template.Match.homeTeam : awayName;
-            string yesNo = ticket.BetTeam.Contains('y') ? CoreBetList.lblYes : CoreBetList.lblNo;
+            string yesNo = ticket.BetTeam.Contains('y') ? CoreLang.lblYes : CoreLang.lblNo;
 
             this.Template.betTeam = string.Join(null, new string[] { team, " <span class=\"", BLFAVORITE, "\">", yesNo.ToUpper(), "</span>" });
 
