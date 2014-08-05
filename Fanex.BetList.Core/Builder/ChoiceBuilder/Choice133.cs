@@ -35,11 +35,11 @@
 
             if (betTeam == "y")
             {
-                return CoreBetList.lblYes;
+                return CoreLang.lblYes;
             }
             else if (betTeam == "n")
             {
-                return CoreBetList.lblNo;
+                return CoreLang.lblNo;
             }
 
             return string.Empty;

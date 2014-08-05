@@ -153,17 +153,11 @@
   <data name="lblDraw" xml:space="preserve">
     <value>เสมอ</value>
   </data>
-  <data name="lblNo" xml:space="preserve">
-    <value>ไม่</value>
-  </data>
   <data name="lblOne" xml:space="preserve">
     <value>หนึ่ง</value>
   </data>
   <data name="lblOr" xml:space="preserve">
     <value>หรือ</value>
-  </data>
-  <data name="lblYes" xml:space="preserve">
-    <value>Yes</value>
   </data>
   <data name="lose" xml:space="preserve">
     <value>แพ้</value>

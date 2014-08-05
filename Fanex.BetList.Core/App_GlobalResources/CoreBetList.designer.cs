@@ -277,15 +277,6 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No.
-        /// </summary>
-        public static string lblNo {
-            get {
-                return ResourceManager.GetString("lblNo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to One.
         /// </summary>
         public static string lblOne {
@@ -336,15 +327,6 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string lblUnderOdd {
             get {
                 return ResourceManager.GetString("lblUnderOdd", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Yes.
-        /// </summary>
-        public static string lblYes {
-            get {
-                return ResourceManager.GetString("lblYes", resourceCulture);
             }
         }
         
