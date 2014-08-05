@@ -14,49 +14,87 @@ namespace Fanex.BetList.Example.MVC.Controllers
     using Fanex.BetList.Example.Extension.BetListExcelBuilderExt;
     using Fanex.BetList.Example.MVC.ViewModel;
     using NPOI.SS.UserModel;
+    using Fanex.BetList.Example.MVC.Services;
+    using Fanex.BetList.Example.MVC.Models;
 
     /// <summary>
     /// Class HomeController.
     /// </summary>
-    public class HomeController : Controller
+    public class BetListController : Controller
     {
         private IList<ITicket> _tickets;
         private List<ITicketData> _ticketData;
+        private readonly DataService _dataService;
 
-        public HomeController()
+        public BetListController()
         {
-           
+            _dataService = new DataService();
         }
 
-        public ActionResult Index()
+        public ActionResult All(BetListData model = null)
         {
-            return View();
+            var betTypes = _dataService.QueryBetTypes();
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, sourcePath: "~/App_Data/BetListDummyData.xls");
+            return View(model);
         }
 
         public ActionResult BetRadar(BetListData model = null)
-        {            
-            model = GetDataSource(model, sourcePath: "~/App_Data/BetListDummyData.xls");           
-
-            return View(model);
+        {
+            var betTypes = _dataService.QueryBetTypes(133, 134, 135, 140, 141, 145, 146, 147, 148, 149, 150, 151, 152);
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, sourcePath: "~/App_Data/BetListDummyData.xls");
+            return BetListView(model);
         }
 
         public ActionResult New11BetTypes(BetListData model = null)
         {
+            var betTypes = _dataService.QueryBetTypes(128, 129, 130, 131, 136, 137, 138, 139, 143, 144, 14, 127, 16, 6, 126);
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, sourcePath: "~/App_Data/11NewBetTypeData.xls");
-            return View(model);
+            return BetListView(model);
+        }
+
+        private ViewResult BetListView(BetListData model)
+        {
+            return View("All", model);
+        }
+
+        private IEnumerable<SelectListItem> CreateSelectListItem(List<BetType> betTypes)
+        {
+            return betTypes.Select(betType => new SelectListItem { Text = betType.Name, Value = betType.Id.ToString()});
         }
 
         private BetListData GetDataSource(BetListData model, string sourcePath)
         {
-            string dataFile = HostingEnvironment.MapPath(sourcePath);
-            TicketsExcelDAO ticketDAO = new TicketsExcelDAO(dataFile);
-            _tickets = ticketDAO.GetTickets();
-            _ticketData = ticketDAO.GetTicketData().ToList();
+            BetListData betListData = _dataService.GetBetListData(sourcePath, model.BetTypeId);
 
-            model = model == null ? new BetListData() : model;
-            model.Tickets = _tickets.Where(x => x.BetTypeId == model.BetTypeId || model.BetTypeId == 0).ToList() ?? new List<ITicket>();
-            Session["Tickets.Data"] = model.Tickets;
-            model.TicketData = _ticketData ?? new List<ITicketData>();
+            // check whether request filter by bet type id, and does not contain select all
+            if (model.BetTypeId != 0)
+            {
+                model.Tickets = betListData
+                    .Tickets
+                    .Where(ticket => model.BetTypeId == ticket.BetTypeId)
+                    .Select(ticket => ticket)
+                    .ToList();
+
+                model.TicketData = betListData
+                  .TicketData
+                  .Where(ticketData => model.BetTypeId == ticketData.BetTypeId)
+                  .Select(ticket => ticket)
+                  .ToList();
+
+
+                model.TicketData = model.TicketData ?? new List<ITicketData>();
+                model.Tickets = model.Tickets ?? new List<ITicket>();
+
+            }
+            else
+            {
+                model.TicketData = betListData.TicketData ?? new List<ITicketData>();
+                model.Tickets = betListData.Tickets ?? new List<ITicket>();
+            }
+
             return model;
         }
 
