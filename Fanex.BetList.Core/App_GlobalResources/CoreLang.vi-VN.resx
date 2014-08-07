@@ -315,6 +315,9 @@ Hoa hồng 3(Comm 3) được áp dụng cho tất cả các  thể loại cá c
   <data name="cancel" xml:space="preserve">
     <value>Hủy</value>
   </data>
+  <data name="choice" xml:space="preserve">
+    <value>Lựa chọn</value>
+  </data>
   <data name="choonsedaily" xml:space="preserve">
     <value>Vui lòng chọn 1 ngày trong tuần</value>
   </data>
@@ -348,6 +351,9 @@ Hoa hồng 3(Comm 3) được áp dụng cho tất cả các  thể loại cá c
   </data>
   <data name="confrmtransnotdownline" xml:space="preserve">
     <value>Bạn có chắc muốn cập nhật điều kiện chuyển khoản này</value>
+  </data>
+  <data name="correctscore" xml:space="preserve">
+    <value>Điểm số chính xác</value>
   </data>
   <data name="crdproblem" xml:space="preserve">
     <value>Xin lỗi, Gia tăng hạn mức tín dụng không thành công, bạn đã vượt quá giới hạn của Agent</value>
@@ -415,6 +421,9 @@ Hoa hồng 3(Comm 3) được áp dụng cho tất cả các  thể loại cá c
   <data name="errRequireValidationCode" xml:space="preserve">
     <value>Bạn phải nhập đoạn mã có giá trị</value>
   </data>
+  <data name="even" xml:space="preserve">
+    <value>Chẵn</value>
+  </data>
   <data name="eventdate" xml:space="preserve">
     <value>Thời điểm diển ra sự kiện</value>
   </data>
@@ -435,6 +444,9 @@ Hoa hồng 3(Comm 3) được áp dụng cho tất cả các  thể loại cá c
   </data>
   <data name="first" xml:space="preserve">
     <value>Đầu tiên</value>
+  </data>
+  <data name="firstgoal" xml:space="preserve">
+    <value>Bàn thắng đầu tiên</value>
   </data>
   <data name="firsthalfscore" xml:space="preserve">
     <value>Tỷ số  hiệp 1</value>
@@ -463,6 +475,9 @@ Hoa hồng 3(Comm 3) được áp dụng cho tất cả các  thể loại cá c
   <data name="fromdate" xml:space="preserve">
     <value>Từ thời điểm</value>
     <comment>Not found</comment>
+  </data>
+  <data name="ft" xml:space="preserve">
+    <value>FT</value>
   </data>
   <data name="fullmode" xml:space="preserve">
     <value>Thiết lập đầy đủ</value>
@@ -509,6 +524,10 @@ Hoa hồng 3(Comm 3) được áp dụng cho tất cả các  thể loại cá c
   </data>
   <data name="homeaway" xml:space="preserve">
     <value>Home /Away</value>
+  </data>
+  <data name="ht" xml:space="preserve">
+    <value>HT</value>
+    <comment>Not found</comment>
   </data>
   <data name="htft" xml:space="preserve">
     <value>Hiệp 1 / Toàn thời gian</value>
@@ -572,6 +591,9 @@ Hoa hồng 3(Comm 3) được áp dụng cho tất cả các  thể loại cá c
   </data>
   <data name="lbl1stOU" xml:space="preserve">
     <value>Hiệp 1 - OU</value>
+  </data>
+  <data name="lbl1x2" xml:space="preserve">
+    <value>1 X 2</value>
   </data>
   <data name="lbl1x2_1st" xml:space="preserve">
     <value>Hiệp 1 - 1 X 2</value>
@@ -802,6 +824,9 @@ Hoa hồng 3(Comm 3) được áp dụng cho tất cả các  thể loại cá c
   <data name="lblDeadball" xml:space="preserve">
     <value>Chưa bắt đầu</value>
   </data>
+  <data name="lblDraw" xml:space="preserve">
+    <value>Hòa</value>
+  </data>
   <data name="lblEditAgent" xml:space="preserve">
     <value>Tùy chỉnh cho Agent</value>
   </data>
@@ -881,6 +906,13 @@ Hoa hồng 3(Comm 3) được áp dụng cho tất cả các  thể loại cá c
   <data name="lblMasterPresetPosition" xml:space="preserve">
     <value>Những thiết lập trước đó của Master</value>
   </data>
+  <data name="lblMasterWinLoseDetail" xml:space="preserve">
+    <value>Chi tiết thắng thua của Master</value>
+    <comment>Not found</comment>
+  </data>
+  <data name="lblMatchWinLostDetail" xml:space="preserve">
+    <value>Chi tiết thắng thua theo trận</value>
+  </data>
   <data name="lblMaxBet" xml:space="preserve">
     <value>Cược lớn nhất</value>
   </data>
@@ -892,6 +924,10 @@ Hoa hồng 3(Comm 3) được áp dụng cho tất cả các  thể loại cá c
   </data>
   <data name="lblMemberBalance" xml:space="preserve">
     <value>Tổng tiền giao dịch của Member</value>
+    <comment>Not found</comment>
+  </data>
+  <data name="lblMemberBetList" xml:space="preserve">
+    <value>Danh sách đặt cược của Member</value>
     <comment>Not found</comment>
   </data>
   <data name="lblMemberCommission" xml:space="preserve">
@@ -920,6 +956,9 @@ Hoa hồng 3(Comm 3) được áp dụng cho tất cả các  thể loại cá c
   </data>
   <data name="lblMinBet" xml:space="preserve">
     <value>Cược nhỏ nhất</value>
+  </data>
+  <data name="lblMixParlay" xml:space="preserve">
+    <value>Cá cược tổng hợp</value>
   </data>
   <data name="lblMobilePhone" xml:space="preserve">
     <value>Điện thoại di động</value>
@@ -1251,11 +1290,20 @@ Hoa hồng 3(Comm 3) được áp dụng cho tất cả các  thể loại cá c
     <value>Tin tức</value>
     <comment>Not found</comment>
   </data>
+  <data name="next" xml:space="preserve">
+    <value>Tiếp tục</value>
+  </data>
   <data name="nickname" xml:space="preserve">
     <value>Biệt danh</value>
   </data>
   <data name="no" xml:space="preserve">
     <value>#</value>
+  </data>
+  <data name="nogoal" xml:space="preserve">
+    <value>Không bàn thắng</value>
+  </data>
+  <data name="noInfo" xml:space="preserve">
+    <value>Thông tin chưa được cập nhật</value>
   </data>
   <data name="nonentered" xml:space="preserve">
     <value>Chưa có kết quả</value>
@@ -1267,6 +1315,9 @@ Hoa hồng 3(Comm 3) được áp dụng cho tất cả các  thể loại cá c
   <data name="notfound" xml:space="preserve">
     <value>Không tìm thấy</value>
     <comment>Not found</comment>
+  </data>
+  <data name="odds" xml:space="preserve">
+    <value>Tỷ lệ</value>
   </data>
   <data name="OE1x2" xml:space="preserve">
     <value>Lẻ/Chẵn + 1x2</value>
@@ -1292,6 +1343,9 @@ Hoa hồng 3(Comm 3) được áp dụng cho tất cả các  thể loại cá c
   </data>
   <data name="outtxn" xml:space="preserve">
     <value>Giao dịch chưa xử lý</value>
+  </data>
+  <data name="over" xml:space="preserve">
+    <value>Over</value>
   </data>
   <data name="P1" xml:space="preserve">
     <value>1P</value>
@@ -1342,6 +1396,13 @@ Hoa hồng 3(Comm 3) được áp dụng cho tất cả các  thể loại cá c
   <data name="Q4" xml:space="preserve">
     <value>4Q</value>
   </data>
+  <data name="refno" xml:space="preserve">
+    <value>Ref No</value>
+  </data>
+  <data name="reject" xml:space="preserve">
+    <value>Từ chối</value>
+    <comment>Not found</comment>
+  </data>
   <data name="remark" xml:space="preserve">
     <value>Ghi chú</value>
   </data>
@@ -1356,6 +1417,9 @@ Hoa hồng 3(Comm 3) được áp dụng cho tất cả các  thể loại cá c
   </data>
   <data name="ResultTime" xml:space="preserve">
     <value>Result Time</value>
+  </data>
+  <data name="running" xml:space="preserve">
+    <value>Đang diễn ra</value>
   </data>
   <data name="S1" xml:space="preserve">
     <value>1S</value>
@@ -1518,12 +1582,19 @@ Hoa hồng 3(Comm 3) được áp dụng cho tất cả các  thể loại cá c
   <data name="tpage" xml:space="preserve">
     <value>Trang</value>
   </data>
+  <data name="transfer" xml:space="preserve">
+    <value>Chuyển khoản</value>
+  </data>
   <data name="transfermoneyto" xml:space="preserve">
     <value>Chuyển tiền đến </value>
     <comment>Not found</comment>
   </data>
   <data name="transferonceeveryday" xml:space="preserve">
     <value>Bạn chỉ có thể chuyển khoản 1 lần mỗi ngày</value>
+  </data>
+  <data name="transtime" xml:space="preserve">
+    <value>Thời gian</value>
+    <comment>Not found</comment>
   </data>
   <data name="tue" xml:space="preserve">
     <value>Thứ 3</value>
@@ -1536,6 +1607,9 @@ Hoa hồng 3(Comm 3) được áp dụng cho tất cả các  thể loại cá c
   </data>
   <data name="type" xml:space="preserve">
     <value>Type</value>
+  </data>
+  <data name="under" xml:space="preserve">
+    <value>Under</value>
   </data>
   <data name="update" xml:space="preserve">
     <value>Cập nhật</value>
@@ -1562,6 +1636,10 @@ Hoa hồng 3(Comm 3) được áp dụng cho tất cả các  thể loại cá c
   <data name="voidandreject" xml:space="preserve">
     <value>Danh sách đặt cược bị Hủy/ Từ Chối (cách đây 3 ngày )</value>
   </data>
+  <data name="voided" xml:space="preserve">
+    <value>Hủy bỏ</value>
+    <comment>Not found</comment>
+  </data>
   <data name="Volleyball" xml:space="preserve">
     <value>Bóng chuyền</value>
     <comment>Not found</comment>
@@ -1574,6 +1652,9 @@ Hoa hồng 3(Comm 3) được áp dụng cho tất cả các  thể loại cá c
   </data>
   <data name="weekly" xml:space="preserve">
     <value>Hằng tuần</value>
+  </data>
+  <data name="win" xml:space="preserve">
+    <value>Thắng / Thua</value>
   </data>
   <data name="yesterday" xml:space="preserve">
     <value>Hôm qua</value>
@@ -1748,6 +1829,9 @@ Hoa hồng 3(Comm 3) được áp dụng cho tất cả các  thể loại cá c
   </data>
   <data name="WinHR" xml:space="preserve">
     <value>Win</value>
+  </data>
+  <data name="Place" xml:space="preserve">
+    <value>Place</value>
   </data>
   <data name="EachWay" xml:space="preserve">
     <value>Win Place</value>
@@ -2133,6 +2217,10 @@ Hoa hồng 3(Comm 3) được áp dụng cho tất cả các  thể loại cá c
   <data name="sportBook" xml:space="preserve">
     <value>Sportsbook</value>
   </data>
+  <data name="casinoGame" xml:space="preserve">
+    <value>Casino Games</value>
+    <comment>Not found</comment>
+  </data>
   <data name="p2pGame" xml:space="preserve">
     <value>Poker Games</value>
   </data>
@@ -2333,6 +2421,12 @@ Hoa hồng 3(Comm 3) được áp dụng cho tất cả các  thể loại cá c
   </data>
   <data name="CurrentReport" xml:space="preserve">
     <value>Quay trở lại Báo Cáo hiện tại</value>
+  </data>
+  <data name="stake" xml:space="preserve">
+    <value>Tiền cược</value>
+  </data>
+  <data name="status" xml:space="preserve">
+    <value>Trạng thái</value>
   </data>
   <data name="statusclosed" xml:space="preserve">
     <value>Trạng thái bị khóa</value>
@@ -3134,6 +3228,9 @@ Lưu ý:Thông tin về Quốc gia, Thành Phố được cung cấp bởi  IP2L
   <data name="game" xml:space="preserve">
     <value>Game</value>
   </data>
+  <data name="high" xml:space="preserve">
+    <value>Cao</value>
+  </data>
   <data name="lastball" xml:space="preserve">
     <value>Banh Cuối</value>
   </data>
@@ -3146,6 +3243,9 @@ Lưu ý:Thông tin về Quốc gia, Thành Phố được cung cấp bởi  IP2L
   <data name="lblOUFT" xml:space="preserve">
     <value>O/U FT</value>
     <comment>Not found</comment>
+  </data>
+  <data name="low" xml:space="preserve">
+    <value>Thấp</value>
   </data>
   <data name="masterRealTimeBingoWinloss" xml:space="preserve">
     <value>Thắng thua hiện tại của Master đối với Bingo</value>
@@ -3250,6 +3350,9 @@ Lưu ý:Thông tin về Quốc gia, Thành Phố được cung cấp bởi  IP2L
   <data name="lblalertMaxPerBallCompare" xml:space="preserve">
     <value>Tiền cược tối đa cho mỗi lượt banh phải ít hơn hoặc bằng {1}</value>
   </data>
+  <data name="numbergameno" xml:space="preserve">
+    <value>Number Game No</value>
+  </data>
   <data name="AutoRefresh" xml:space="preserve">
     <value>Tự động cập nhật mỗi</value>
     <comment>Not found</comment>
@@ -3260,9 +3363,27 @@ Lưu ý:Thông tin về Quốc gia, Thành Phố được cung cấp bởi  IP2L
   <data name="alertMaxPerBallLessMaxBet" xml:space="preserve">
     <value>Tiền cược tối đa cho mỗi lượt banh phải lớn hơn hoặc bằng Số tiền cược lớn nhất</value>
   </data>
+  <data name="lblBoth" xml:space="preserve">
+    <value>Both</value>
+    <comment>Not found</comment>
+  </data>
   <data name="lblNeither" xml:space="preserve">
     <value>Neither</value>
     <comment>Not found</comment>
+  </data>
+  <data name="lblOne" xml:space="preserve">
+    <value>One</value>
+    <comment>Not found</comment>
+  </data>
+  <data name="lblOr" xml:space="preserve">
+    <value>hoặc</value>
+    <comment>Not found</comment>
+  </data>
+  <data name="lblNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="lblYes" xml:space="preserve">
+    <value>Yes</value>
   </data>
   <data name="AllBetTypes" xml:space="preserve">
     <value>Tất cả loại cược</value>
@@ -3559,6 +3680,12 @@ Lưu ý:Thông tin về Quốc gia, Thành Phố được cung cấp bởi  IP2L
   <data name="warrior" xml:space="preserve">
     <value>Warrior</value>
   </data>
+  <data name="warrior2ndBall" xml:space="preserve">
+    <value>2nd ball win</value>
+  </data>
+  <data name="warrior3rdBall" xml:space="preserve">
+    <value>3rd ball win</value>
+  </data>
   <data name="lblFTOddEven" xml:space="preserve">
     <value>Full Time Odd Even</value>
   </data>
@@ -3568,8 +3695,14 @@ Lưu ý:Thông tin về Quốc gia, Thành Phố được cung cấp bởi  IP2L
   <data name="lblOO" xml:space="preserve">
     <value>O/O</value>
   </data>
+  <data name="lblOverOdd" xml:space="preserve">
+    <value>Over Odd</value>
+  </data>
   <data name="lblUE" xml:space="preserve">
     <value>U/E</value>
+  </data>
+  <data name="lblUnderEven" xml:space="preserve">
+    <value>Under Even</value>
   </data>
   <data name="lblCombMixParlay" xml:space="preserve">
     <value>Combination Parlay</value>
@@ -3601,6 +3734,12 @@ Lưu ý:Thông tin về Quốc gia, Thành Phố được cung cấp bởi  IP2L
   </data>
   <data name="editP2P" xml:space="preserve">
     <value>Poker</value>
+  </data>
+  <data name="lblOverEven" xml:space="preserve">
+    <value>Over Even</value>
+  </data>
+  <data name="lblUnderOdd" xml:space="preserve">
+    <value>Under Odd</value>
   </data>
   <data name="lblUO" xml:space="preserve">
     <value>U/O</value>
@@ -3642,6 +3781,10 @@ Lưu ý:Thông tin về Quốc gia, Thành Phố được cung cấp bởi  IP2L
   </data>
   <data name="TWinTNill" xml:space="preserve">
     <value>T.Win.T.Nil</value>
+  </data>
+  <data name="pending" xml:space="preserve">
+    <value>Chưa xử lý</value>
+    <comment>Not found</comment>
   </data>
   <data name="pendingft" xml:space="preserve">
     <value>FT chưa xử lý</value>
@@ -3768,6 +3911,10 @@ Lưu ý:Thông tin về Quốc gia, Thành Phố được cung cấp bởi  IP2L
   </data>
   <data name="noChangeToUpdate" xml:space="preserve">
     <value>Không có gi thay đổi để cập nhật</value>
+  </data>
+  <data name="hrminpt1" xml:space="preserve">
+    <value>Giá trị PT nhỏ nhất  của Racing</value>
+    <comment>Not found</comment>
   </data>
   <data name="wannaSetMinPT" xml:space="preserve">
     <value>Bạn có muốn thiết lập giá trị PT nhỏ nhất cho thành viên cấp dưới không? Hãy thử những thiết lập này ngay!</value>
@@ -4206,6 +4353,9 @@ Lưu ý:Thông tin về Quốc gia, Thành Phố được cung cấp bởi  IP2L
   <data name="lblAlertEnableUKToteDownline" xml:space="preserve">
     <value>Bạn có muốn cho phép tất cả thành viên cấp dưới trực thuộc thành viên này choi UK Tote?</value>
     <comment>Not found</comment>
+  </data>
+  <data name="bingo" xml:space="preserve">
+    <value>Bingo</value>
   </data>
   <data name="combo" xml:space="preserve">
     <value>Next Combo</value>
