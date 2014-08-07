@@ -428,9 +428,6 @@
   <data name="Billiard" xml:space="preserve">
     <value>Billiard</value>
   </data>
-  <data name="bingo" xml:space="preserve">
-    <value>Bingo</value>
-  </data>
   <data name="bingoPositionTaking" xml:space="preserve">
     <value>Bingo Position Taking (%)</value>
   </data>
@@ -464,14 +461,8 @@
   <data name="casinodownlinesdisabled" xml:space="preserve">
     <value>Casino downlines will be disabled as well</value>
   </data>
-  <data name="casinoGame" xml:space="preserve">
-    <value>Casino Games</value>
-  </data>
   <data name="casinoPositionTaking" xml:space="preserve">
     <value>Casino Position Taking (%)</value>
-  </data>
-  <data name="choice" xml:space="preserve">
-    <value>Choice</value>
   </data>
   <data name="choonsedaily" xml:space="preserve">
     <value>Please choose Daily instead of 7 days.</value>
@@ -594,9 +585,6 @@
   </data>
   <data name="copysuperpresetformember" xml:space="preserve">
     <value>Apply Super Preset PT to all members</value>
-  </data>
-  <data name="correctscore" xml:space="preserve">
-    <value>Correct Score</value>
   </data>
   <data name="country" xml:space="preserve">
     <value>Country</value>
@@ -796,9 +784,6 @@
   <data name="errRequireValidationCode" xml:space="preserve">
     <value>You must input validation code.</value>
   </data>
-  <data name="even" xml:space="preserve">
-    <value>Even</value>
-  </data>
   <data name="eventdate" xml:space="preserve">
     <value>Event Date</value>
   </data>
@@ -859,9 +844,6 @@
   <data name="first" xml:space="preserve">
     <value>First</value>
   </data>
-  <data name="firstgoal" xml:space="preserve">
-    <value>First Goal</value>
-  </data>
   <data name="firsthalfscore" xml:space="preserve">
     <value>First Half Score</value>
   </data>
@@ -921,9 +903,6 @@
   </data>
   <data name="FromStake" xml:space="preserve">
     <value>From Stake</value>
-  </data>
-  <data name="ft" xml:space="preserve">
-    <value>FT</value>
   </data>
   <data name="fullmode" xml:space="preserve">
     <value>Full Mode</value>
@@ -1006,9 +985,6 @@
   <data name="hideLeague" xml:space="preserve">
     <value>Hide League</value>
   </data>
-  <data name="high" xml:space="preserve">
-    <value>High</value>
-  </data>
   <data name="highestturnoverofthemonth" xml:space="preserve">
     <value>Highest turnover members of the month</value>
   </data>
@@ -1044,9 +1020,6 @@
   </data>
   <data name="hrminpt" xml:space="preserve">
     <value>Racing's Min PT</value>
-  </data>
-  <data name="ht" xml:space="preserve">
-    <value>HT</value>
   </data>
   <data name="htft" xml:space="preserve">
     <value>HT/FT</value>
@@ -1205,9 +1178,6 @@ Note: Country and city information is provided by IP2Location™ and DNSstuff wh
   </data>
   <data name="lbl1stOU" xml:space="preserve">
     <value>1st OU</value>
-  </data>
-  <data name="lbl1x2" xml:space="preserve">
-    <value>1 X 2</value>
   </data>
   <data name="lbl1x2Comm" xml:space="preserve">
     <value>1x2 Comm</value>
@@ -1431,9 +1401,6 @@ Note: Country and city information is provided by IP2Location™ and DNSstuff wh
   <data name="lblBold" xml:space="preserve">
     <value>Bold</value>
   </data>
-  <data name="lblBoth" xml:space="preserve">
-    <value>Both</value>
-  </data>
   <data name="lblCancelledBets" xml:space="preserve">
     <value>Cancelled Bets</value>
   </data>
@@ -1589,9 +1556,6 @@ Note: Country and city information is provided by IP2Location™ and DNSstuff wh
   </data>
   <data name="lblDisabledHR" xml:space="preserve">
     <value>Disabled Horse Racing</value>
-  </data>
-  <data name="lblDraw" xml:space="preserve">
-    <value>Draw</value>
   </data>
   <data name="lblEditAgent" xml:space="preserve">
     <value>Edit Agent</value>
@@ -1783,12 +1747,6 @@ Note: Country and city information is provided by IP2Location™ and DNSstuff wh
   <data name="lblMasterPresetPosition" xml:space="preserve">
     <value>Master Preset</value>
   </data>
-  <data name="lblMasterWinLoseDetail" xml:space="preserve">
-    <value>Master Win Lost Detail</value>
-  </data>
-  <data name="lblMatchWinLostDetail" xml:space="preserve">
-    <value>Match Win Loss Detail</value>
-  </data>
   <data name="lblMax" xml:space="preserve">
     <value>Max</value>
   </data>
@@ -1828,9 +1786,6 @@ Note: Country and city information is provided by IP2Location™ and DNSstuff wh
   <data name="lblMemberBalance" xml:space="preserve">
     <value>Member Balance</value>
   </data>
-  <data name="lblMemberBetList" xml:space="preserve">
-    <value>Member Bet List</value>
-  </data>
   <data name="lblMemberCommission" xml:space="preserve">
     <value>Member Commission</value>
   </data>
@@ -1860,9 +1815,6 @@ Note: Country and city information is provided by IP2Location™ and DNSstuff wh
   </data>
   <data name="lblMinBet" xml:space="preserve">
     <value>Min Bet</value>
-  </data>
-  <data name="lblMixParlay" xml:space="preserve">
-    <value>Mix Parlay</value>
   </data>
   <data name="lblML2" xml:space="preserve">
     <value>ML</value>
@@ -1897,9 +1849,6 @@ Note: Country and city information is provided by IP2Location™ and DNSstuff wh
   <data name="lblNextGoal" xml:space="preserve">
     <value>NG</value>
   </data>
-  <data name="lblNo" xml:space="preserve">
-    <value>No</value>
-  </data>
   <data name="lblNormal" xml:space="preserve">
     <value>Normal</value>
   </data>
@@ -1932,12 +1881,6 @@ Note: Country and city information is provided by IP2Location™ and DNSstuff wh
   </data>
   <data name="lblOldView" xml:space="preserve">
     <value>Old View</value>
-  </data>
-  <data name="lblOne" xml:space="preserve">
-    <value>One</value>
-  </data>
-  <data name="lblOr" xml:space="preserve">
-    <value>or</value>
   </data>
   <data name="lblOtherComm" xml:space="preserve">
     <value>Others Comm</value>
@@ -2171,9 +2114,6 @@ Note: Country and city information is provided by IP2Location™ and DNSstuff wh
   <data name="lblWon" xml:space="preserve">
     <value>Won</value>
   </data>
-  <data name="lblYes" xml:space="preserve">
-    <value>Yes</value>
-  </data>
   <data name="lblYesterdayCash" xml:space="preserve">
     <value>Yesterday Cash</value>
   </data>
@@ -2206,9 +2146,6 @@ Note: Country and city information is provided by IP2Location™ and DNSstuff wh
   </data>
   <data name="loginWrong5Times" xml:space="preserve">
     <value>You have entered wrong user name / password 6 times, please try again after 5 minutes.</value>
-  </data>
-  <data name="low" xml:space="preserve">
-    <value>Low</value>
   </data>
   <data name="magent" xml:space="preserve">
     <value>M.Agent</value>
@@ -2449,9 +2386,6 @@ Note: Country and city information is provided by IP2Location™ and DNSstuff wh
   <data name="news" xml:space="preserve">
     <value>News</value>
   </data>
-  <data name="next" xml:space="preserve">
-    <value>Next</value>
-  </data>
   <data name="nextBall" xml:space="preserve">
     <value>Next Ball</value>
   </data>
@@ -2485,14 +2419,8 @@ Note: Country and city information is provided by IP2Location™ and DNSstuff wh
   <data name="No5" xml:space="preserve">
     <value>5th</value>
   </data>
-  <data name="nogoal" xml:space="preserve">
-    <value>No Goal</value>
-  </data>
   <data name="noHR" xml:space="preserve">
     <value>Runner No</value>
-  </data>
-  <data name="noInfo" xml:space="preserve">
-    <value>No information is available</value>
   </data>
   <data name="noLimited" xml:space="preserve">
     <value>No limited</value>
@@ -2542,9 +2470,6 @@ Note: Country and city information is provided by IP2Location™ and DNSstuff wh
   <data name="NumberGameMaxperball" xml:space="preserve">
     <value>Number Game's Max Per Ball</value>
   </data>
-  <data name="numbergameno" xml:space="preserve">
-    <value>Number Game No</value>
-  </data>
   <data name="numberGroup" xml:space="preserve">
     <value>Number Wheel</value>
   </data>
@@ -2553,9 +2478,6 @@ Note: Country and city information is provided by IP2Location™ and DNSstuff wh
   </data>
   <data name="October" xml:space="preserve">
     <value>October</value>
-  </data>
-  <data name="odds" xml:space="preserve">
-    <value>Odds</value>
   </data>
   <data name="OE1x2" xml:space="preserve">
     <value>Odd/Even + 1x2</value>
@@ -2598,9 +2520,6 @@ Note: Country and city information is provided by IP2Location™ and DNSstuff wh
   </data>
   <data name="outtxn" xml:space="preserve">
     <value>Out. Txn</value>
-  </data>
-  <data name="over" xml:space="preserve">
-    <value>Over</value>
   </data>
   <data name="owner" xml:space="preserve">
     <value>Owner</value>
@@ -2646,9 +2565,6 @@ Note: Country and city information is provided by IP2Location™ and DNSstuff wh
   </data>
   <data name="personalmessage" xml:space="preserve">
     <value>Personal Message</value>
-  </data>
-  <data name="Place" xml:space="preserve">
-    <value>Place</value>
   </data>
   <data name="placeautote" xml:space="preserve">
     <value>Place.Aust Tote</value>
@@ -2710,9 +2626,6 @@ Note: Country and city information is provided by IP2Location™ and DNSstuff wh
   <data name="Racebook" xml:space="preserve">
     <value>Racing</value>
   </data>
-  <data name="refno" xml:space="preserve">
-    <value>Ref No</value>
-  </data>
   <data name="refresh" xml:space="preserve">
     <value>Refresh</value>
   </data>
@@ -2724,9 +2637,6 @@ Note: Country and city information is provided by IP2Location™ and DNSstuff wh
   </data>
   <data name="refundht" xml:space="preserve">
     <value>Refund HT</value>
-  </data>
-  <data name="reject" xml:space="preserve">
-    <value>Reject</value>
   </data>
   <data name="remark" xml:space="preserve">
     <value>Remark</value>
@@ -2769,9 +2679,6 @@ Note: Country and city information is provided by IP2Location™ and DNSstuff wh
   </data>
   <data name="runner" xml:space="preserve">
     <value>Runner</value>
-  </data>
-  <data name="running" xml:space="preserve">
-    <value>Running</value>
   </data>
   <data name="S1" xml:space="preserve">
     <value>1S</value>
@@ -2906,14 +2813,8 @@ Note: Country and city information is provided by IP2Location™ and DNSstuff wh
   <data name="squash" xml:space="preserve">
     <value>Squash</value>
   </data>
-  <data name="stake" xml:space="preserve">
-    <value>Stake</value>
-  </data>
   <data name="statistic" xml:space="preserve">
     <value>Your statistics</value>
-  </data>
-  <data name="status" xml:space="preserve">
-    <value>Status</value>
   </data>
   <data name="statusclosed" xml:space="preserve">
     <value>Status-Closed</value>
@@ -3147,9 +3048,6 @@ Now, gross commission = (your commission percentage) * turnover (excluding Draw 
   <data name="tpage" xml:space="preserve">
     <value>Page</value>
   </data>
-  <data name="transfer" xml:space="preserve">
-    <value>Transfer</value>
-  </data>
   <data name="transferCreditMsg" xml:space="preserve">
     <value>Max transfer credit must be between min and max limit value.</value>
   </data>
@@ -3164,9 +3062,6 @@ Now, gross commission = (your commission percentage) * turnover (excluding Draw 
   </data>
   <data name="transfersuccessful" xml:space="preserve">
     <value>Transfer Successfully</value>
-  </data>
-  <data name="transtime" xml:space="preserve">
-    <value>Trans.Time</value>
   </data>
   <data name="tue" xml:space="preserve">
     <value>Tue</value>
@@ -3204,9 +3099,6 @@ Now, gross commission = (your commission percentage) * turnover (excluding Draw 
   </data>
   <data name="uktotecommformember" xml:space="preserve">
     <value>UK Tote Comm for Member</value>
-  </data>
-  <data name="under" xml:space="preserve">
-    <value>Under</value>
   </data>
   <data name="undermaintenance" xml:space="preserve">
     <value>We are having server maintenance, website will be unavailable from {0} until {1}. Sorry for the inconveniences caused!</value>
@@ -3301,9 +3193,6 @@ Now, gross commission = (your commission percentage) * turnover (excluding Draw 
   <data name="voidandreject" xml:space="preserve">
     <value>Void/Rejected Bet List (Last 3 days)</value>
   </data>
-  <data name="voided" xml:space="preserve">
-    <value>Void</value>
-  </data>
   <data name="Volleyball" xml:space="preserve">
     <value>Volleyball</value>
   </data>
@@ -3333,9 +3222,6 @@ Now, gross commission = (your commission percentage) * turnover (excluding Draw 
   </data>
   <data name="weightlifting" xml:space="preserve">
     <value>Weightlifting</value>
-  </data>
-  <data name="win" xml:space="preserve">
-    <value>Win/Loss</value>
   </data>
   <data name="winautote" xml:space="preserve">
     <value>Win.Aust Tote</value>
@@ -3409,12 +3295,6 @@ Now, gross commission = (your commission percentage) * turnover (excluding Draw 
   <data name="nextcombo" xml:space="preserve">
     <value>Next Combo</value>
   </data>
-  <data name="warrior2ndBall" xml:space="preserve">
-    <value>2nd ball win</value>
-  </data>
-  <data name="warrior3rdBall" xml:space="preserve">
-    <value>3rd ball win</value>
-  </data>
   <data name="lblFTOddEven" xml:space="preserve">
     <value>Full Time Odd Even</value>
   </data>
@@ -3424,14 +3304,8 @@ Now, gross commission = (your commission percentage) * turnover (excluding Draw 
   <data name="lblOO" xml:space="preserve">
     <value>O/O</value>
   </data>
-  <data name="lblOverOdd" xml:space="preserve">
-    <value>Over Odd</value>
-  </data>
   <data name="lblUE" xml:space="preserve">
     <value>U/E</value>
-  </data>
-  <data name="lblUnderEven" xml:space="preserve">
-    <value>Under Even</value>
   </data>
   <data name="eventstatus" xml:space="preserve">
     <value>Event/Status</value>
@@ -3465,12 +3339,6 @@ Now, gross commission = (your commission percentage) * turnover (excluding Draw 
   </data>
   <data name="editP2P" xml:space="preserve">
     <value>Edit P2P</value>
-  </data>
-  <data name="lblOverEven" xml:space="preserve">
-    <value>Over Even</value>
-  </data>
-  <data name="lblUnderOdd" xml:space="preserve">
-    <value>Under Odd</value>
   </data>
   <data name="lblUO" xml:space="preserve">
     <value>U/O</value>
@@ -3511,9 +3379,6 @@ Now, gross commission = (your commission percentage) * turnover (excluding Draw 
   </data>
   <data name="TWinTNill" xml:space="preserve">
     <value>T.Win.T.Nil</value>
-  </data>
-  <data name="pending" xml:space="preserve">
-    <value>Pending</value>
   </data>
   <data name="pendingft" xml:space="preserve">
     <value>FT Pending</value>
@@ -3667,9 +3532,6 @@ Now, gross commission = (your commission percentage) * turnover (excluding Draw 
   </data>
   <data name="proceedWithThisSetting" xml:space="preserve">
     <value>Proceed with this setting</value>
-  </data>
-  <data name="hrminpt1" xml:space="preserve">
-    <value>Racing's Min PT</value>
   </data>
   <data name="wannaSetMinPT" xml:space="preserve">
     <value>Wanna set a minimum Position Taking on downline? Try these settings now!</value>

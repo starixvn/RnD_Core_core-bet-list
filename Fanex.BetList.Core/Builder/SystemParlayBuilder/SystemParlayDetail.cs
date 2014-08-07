@@ -204,21 +204,21 @@
             switch (status)
             {
                 case 112:
-                    return CoreLang.lblWon;
+                    return CoreBetList.lblWon;
                 case 113:
-                    return CoreLang.lblLose;
+                    return CoreBetList.lblLose;
                 case 111:
-                    return CoreLang.lblDraw;
+                    return CoreBetList.lblDraw;
                 case 0:
-                    return CoreLang.lblRunning;
+                    return CoreBetList.lblRunning;
                 case 1:
-                    return CoreLang.lblWaiting;
+                    return CoreBetList.lblWaiting;
                 case 101:
-                    return CoreLang.reject;
+                    return CoreBetList.reject;
                 case 102:
-                    return CoreLang.voided;
+                    return CoreBetList.voided;
                 case 103:
-                    return CoreLang.refund;
+                    return CoreBetList.refund;
             }
 
             return string.Empty;

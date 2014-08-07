@@ -30,7 +30,7 @@
             }
             else
             {
-                Template.betTeam = CoreLang.lblNeither;
+                Template.betTeam = CoreBetList.lblNeither;
             }
         }
 

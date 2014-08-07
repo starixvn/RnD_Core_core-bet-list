@@ -35,7 +35,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.AreEqual(CoreLang.FirstHalf, _choice.Template.betTeam);
+            Assert.AreEqual(CoreBetList.FirstHalf, _choice.Template.betTeam);
         }
 
         [Test]
@@ -48,7 +48,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.AreEqual(CoreLang.SecondHalf, _choice.Template.betTeam);
+            Assert.AreEqual(CoreBetList.SecondHalf, _choice.Template.betTeam);
         }
 
         [Test]
@@ -61,7 +61,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.AreEqual(CoreLang.Tie, _choice.Template.betTeam);
+            Assert.AreEqual(CoreBetList.Tie, _choice.Template.betTeam);
         }
 
         [Test]

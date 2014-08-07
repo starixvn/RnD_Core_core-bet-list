@@ -11,7 +11,7 @@
     {
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
         {
-            Template.League.LeagueName.leagueName = string.Join(null, new string[] { CoreLang.LiveRoulette, HtmlCharacters.NoneBreakingSpace, ticket.ShowTime });
+            Template.League.LeagueName.leagueName = string.Join(null, new string[] { CoreBetList.LiveRoulette, HtmlCharacters.NoneBreakingSpace, ticket.ShowTime });
         }
     }
 }

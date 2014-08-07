@@ -37,7 +37,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            string expected = string.Format(BetTeamTemplate, _ticketHelper.GetTeamNameById(_ticket.HomeId), CoreLang.lblOr, CoreBetList.lblDraw);
+            string expected = string.Format(BetTeamTemplate, _ticketHelper.GetTeamNameById(_ticket.HomeId), CoreBetList.lblOr, CoreBetList.lblDraw);
             Assert.AreEqual(expected, _choice.Template.betTeam);
         }
 
@@ -53,7 +53,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            string expected = string.Format(BetTeamTemplate, _ticketHelper.GetTeamNameById(_ticket.AwayId), CoreLang.lblOr, CoreBetList.lblDraw);
+            string expected = string.Format(BetTeamTemplate, _ticketHelper.GetTeamNameById(_ticket.AwayId), CoreBetList.lblOr, CoreBetList.lblDraw);
             Assert.AreEqual(expected, _choice.Template.betTeam);
         }
 
@@ -71,7 +71,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Assert
             string homeTeamName = _ticketHelper.GetTeamNameById(_ticket.HomeId);
             string awayTeamName = _ticketHelper.GetTeamNameById(_ticket.AwayId);
-            string expected = string.Format(BetTeamTemplate, homeTeamName, CoreLang.lblOr, awayTeamName);
+            string expected = string.Format(BetTeamTemplate, homeTeamName, CoreBetList.lblOr, awayTeamName);
             Assert.AreEqual(expected, _choice.Template.betTeam);
         }
     }

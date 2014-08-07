@@ -167,7 +167,7 @@
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            Template.BetType.betTypeName = CoreLang.numberGroup;
+            Template.BetType.betTypeName = CoreBetList.numberGroup;
         }
     }
 }

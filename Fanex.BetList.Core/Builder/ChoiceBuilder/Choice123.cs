@@ -13,7 +13,7 @@
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             bool betHomeTeam = ticket.BetTeam == BetTeamValue.H;
-            var betTeam = betHomeTeam ? CoreLang.lblDraw : CoreLang.lblNoDraw;
+            var betTeam = betHomeTeam ? CoreBetList.lblDraw : CoreBetList.lblNoDraw;
 
             Template.betTeam = betTeam;
         }

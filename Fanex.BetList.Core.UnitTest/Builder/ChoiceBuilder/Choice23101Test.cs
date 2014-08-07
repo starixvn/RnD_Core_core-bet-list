@@ -88,7 +88,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedBetTeam = string.Format("{0} - {1}", CoreLang.p2pGame, CoreBetList.transfer);
+            string expectedBetTeam = string.Format("{0} - {1}", CoreBetList.p2pGame, CoreBetList.transfer);
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 

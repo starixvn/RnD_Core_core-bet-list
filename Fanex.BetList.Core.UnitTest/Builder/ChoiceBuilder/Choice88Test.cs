@@ -104,7 +104,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            var expectedHomeTeam = string.Join(null, CoreLang.numbergameno, "&nbsp;", _ticket.MatchCode);
+            var expectedHomeTeam = string.Join(null, CoreBetList.numbergameno, "&nbsp;", _ticket.MatchCode);
             Assert.AreEqual(expectedHomeTeam, _choice.Template.Match.homeTeam);
         }
     }

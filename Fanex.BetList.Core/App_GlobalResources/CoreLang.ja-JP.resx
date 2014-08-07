@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="aa" xml:space="preserve">
     <value>AA</value>
@@ -301,9 +301,6 @@
   <data name="cancel" xml:space="preserve">
     <value>キャンセル</value>
   </data>
-  <data name="choice" xml:space="preserve">
-    <value>選択</value>
-  </data>
   <data name="choonsedaily" xml:space="preserve">
     <value>Please choose Daily instead of 7 days.</value>
   </data>
@@ -336,9 +333,6 @@
   </data>
   <data name="confrmtransnotdownline" xml:space="preserve">
     <value>Are you sure that you want to update this transfer condition?</value>
-  </data>
-  <data name="correctscore" xml:space="preserve">
-    <value>コレクトスコア</value>
   </data>
   <data name="crdproblem" xml:space="preserve">
     <value>Sorry, credit increase unsuccessful. You have exceeded your agent credit.</value>
@@ -403,9 +397,6 @@
   <data name="errRequireValidationCode" xml:space="preserve">
     <value>You must input validation code.</value>
   </data>
-  <data name="even" xml:space="preserve">
-    <value>イーブン</value>
-  </data>
   <data name="eventdate" xml:space="preserve">
     <value>イベント日付</value>
   </data>
@@ -426,9 +417,6 @@
   </data>
   <data name="first" xml:space="preserve">
     <value>先頭</value>
-  </data>
-  <data name="firstgoal" xml:space="preserve">
-    <value>First Goal</value>
   </data>
   <data name="firsthalfscore" xml:space="preserve">
     <value>前半戦のスコア</value>
@@ -456,9 +444,6 @@
   </data>
   <data name="fromdate" xml:space="preserve">
     <value>元</value>
-  </data>
-  <data name="ft" xml:space="preserve">
-    <value>FT</value>
   </data>
   <data name="fullmode" xml:space="preserve">
     <value>Full Mode</value>
@@ -504,9 +489,6 @@
   </data>
   <data name="homeaway" xml:space="preserve">
     <value>Home/Away</value>
-  </data>
-  <data name="ht" xml:space="preserve">
-    <value>HT</value>
   </data>
   <data name="htft" xml:space="preserve">
     <value>HT/FT</value>
@@ -564,9 +546,6 @@
   </data>
   <data name="lbl1stOU" xml:space="preserve">
     <value>前半戦 オーバー/アンダー</value>
-  </data>
-  <data name="lbl1x2" xml:space="preserve">
-    <value>1 X 2</value>
   </data>
   <data name="lbl1x2_1st" xml:space="preserve">
     <value>1st 1 X 2</value>
@@ -772,9 +751,6 @@
   <data name="lblDeadball" xml:space="preserve">
     <value>Dead Ball</value>
   </data>
-  <data name="lblDraw" xml:space="preserve">
-    <value>引き分け</value>
-  </data>
   <data name="lblEditAgent" xml:space="preserve">
     <value>エージェントを編集</value>
   </data>
@@ -847,12 +823,6 @@
   <data name="lblMasterPresetPosition" xml:space="preserve">
     <value>Master Preset Position</value>
   </data>
-  <data name="lblMasterWinLoseDetail" xml:space="preserve">
-    <value>Master Win Lost Detail</value>
-  </data>
-  <data name="lblMatchWinLostDetail" xml:space="preserve">
-    <value>試合勝ち負け詳細</value>
-  </data>
   <data name="lblMaxBet" xml:space="preserve">
     <value>最大ベット</value>
   </data>
@@ -864,9 +834,6 @@
   </data>
   <data name="lblMemberBalance" xml:space="preserve">
     <value>メンバー残高</value>
-  </data>
-  <data name="lblMemberBetList" xml:space="preserve">
-    <value>メンバーベットリスト</value>
   </data>
   <data name="lblMemberCommission" xml:space="preserve">
     <value>メンバー手数料</value>
@@ -891,9 +858,6 @@
   </data>
   <data name="lblMinBet" xml:space="preserve">
     <value>Min Bet</value>
-  </data>
-  <data name="lblMixParlay" xml:space="preserve">
-    <value>ミックスパーレー</value>
   </data>
   <data name="lblMobilePhone" xml:space="preserve">
     <value>携帯電話番号</value>
@@ -1192,20 +1156,11 @@
   <data name="news" xml:space="preserve">
     <value>News</value>
   </data>
-  <data name="next" xml:space="preserve">
-    <value>次へ</value>
-  </data>
   <data name="nickname" xml:space="preserve">
     <value>ニックネーム</value>
   </data>
   <data name="no" xml:space="preserve">
     <value>#</value>
-  </data>
-  <data name="nogoal" xml:space="preserve">
-    <value>No Goal</value>
-  </data>
-  <data name="noInfo" xml:space="preserve">
-    <value>情報がありません</value>
   </data>
   <data name="nonentered" xml:space="preserve">
     <value>入力されていません</value>
@@ -1215,9 +1170,6 @@
   </data>
   <data name="notfound" xml:space="preserve">
     <value>Not Found</value>
-  </data>
-  <data name="odds" xml:space="preserve">
-    <value>オッズ</value>
   </data>
   <data name="OE1x2" xml:space="preserve">
     <value>オッド/イーブン + 1x2</value>
@@ -1242,9 +1194,6 @@
   </data>
   <data name="outtxn" xml:space="preserve">
     <value>未払い取り引き</value>
-  </data>
-  <data name="over" xml:space="preserve">
-    <value>オーバー</value>
   </data>
   <data name="P1" xml:space="preserve">
     <value>1P</value>
@@ -1294,12 +1243,6 @@
   <data name="Q4" xml:space="preserve">
     <value>4Q</value>
   </data>
-  <data name="refno" xml:space="preserve">
-    <value>受付番号</value>
-  </data>
-  <data name="reject" xml:space="preserve">
-    <value>Reject</value>
-  </data>
   <data name="remark" xml:space="preserve">
     <value>備考</value>
   </data>
@@ -1314,9 +1257,6 @@
   </data>
   <data name="ResultTime" xml:space="preserve">
     <value>結果時間</value>
-  </data>
-  <data name="running" xml:space="preserve">
-    <value>Running</value>
   </data>
   <data name="S1" xml:space="preserve">
     <value>1S</value>
@@ -1489,20 +1429,12 @@
     <value>ページ
 </value>
   </data>
-  <data name="transfer" xml:space="preserve">
-    <value>送金
-</value>
-  </data>
   <data name="transfermoneyto" xml:space="preserve">
     <value>送金先
 </value>
   </data>
   <data name="transferonceeveryday" xml:space="preserve">
     <value>送金は 1日 につき 1 回だけです!!!
-</value>
-  </data>
-  <data name="transtime" xml:space="preserve">
-    <value>取り引き時間
 </value>
   </data>
   <data name="tue" xml:space="preserve">
@@ -1518,10 +1450,6 @@
   </data>
   <data name="type" xml:space="preserve">
     <value>種類
-</value>
-  </data>
-  <data name="under" xml:space="preserve">
-    <value>アンダー
 </value>
   </data>
   <data name="update" xml:space="preserve">
@@ -1556,10 +1484,6 @@
     <value>無効/キャンセルされたベットリスト(残り3 日
 </value>
   </data>
-  <data name="voided" xml:space="preserve">
-    <value>Void
-</value>
-  </data>
   <data name="Volleyball" xml:space="preserve">
     <value>バレーボール</value>
   </data>
@@ -1573,10 +1497,6 @@
   </data>
   <data name="weekly" xml:space="preserve">
     <value>Weekly
-</value>
-  </data>
-  <data name="win" xml:space="preserve">
-    <value>Win/Loss
 </value>
   </data>
   <data name="yesterday" xml:space="preserve">
@@ -1737,9 +1657,6 @@
   </data>
   <data name="WinHR" xml:space="preserve">
     <value>Win</value>
-  </data>
-  <data name="Place" xml:space="preserve">
-    <value>Place</value>
   </data>
   <data name="EachWay" xml:space="preserve">
     <value>Win Place</value>
@@ -2083,9 +2000,6 @@
   <data name="sportBook" xml:space="preserve">
     <value>Sportsbook</value>
   </data>
-  <data name="casinoGame" xml:space="preserve">
-    <value>Casino Games</value>
-  </data>
   <data name="p2pGame" xml:space="preserve">
     <value>Poker Games</value>
   </data>
@@ -2274,12 +2188,6 @@
   </data>
   <data name="CurrentReport" xml:space="preserve">
     <value>Back To Current Report</value>
-  </data>
-  <data name="stake" xml:space="preserve">
-    <value>ベット</value>
-  </data>
-  <data name="status" xml:space="preserve">
-    <value>状態</value>
   </data>
   <data name="statusclosed" xml:space="preserve">
     <value>Status-Closed</value>
@@ -3015,9 +2923,6 @@ Note: Country and city information is provided by IP2Location™ and DNSstuff wh
   <data name="game" xml:space="preserve">
     <value>Game</value>
   </data>
-  <data name="high" xml:space="preserve">
-    <value>High</value>
-  </data>
   <data name="lastball" xml:space="preserve">
     <value>Last Ball</value>
   </data>
@@ -3029,9 +2934,6 @@ Note: Country and city information is provided by IP2Location™ and DNSstuff wh
   </data>
   <data name="lblOUFT" xml:space="preserve">
     <value>O/U FT</value>
-  </data>
-  <data name="low" xml:space="preserve">
-    <value>Low</value>
   </data>
   <data name="masterRealTimeBingoWinloss" xml:space="preserve">
     <value>Master Real Time Bingo Winloss</value>
@@ -3129,9 +3031,6 @@ Note: Country and city information is provided by IP2Location™ and DNSstuff wh
   <data name="lblalertMaxPerBallCompare" xml:space="preserve">
     <value>Max Per Ball must be less than or equal to {1}.</value>
   </data>
-  <data name="numbergameno" xml:space="preserve">
-    <value>Number Game No</value>
-  </data>
   <data name="AutoRefresh" xml:space="preserve">
     <value>Auto refresh every</value>
   </data>
@@ -3141,23 +3040,8 @@ Note: Country and city information is provided by IP2Location™ and DNSstuff wh
   <data name="alertMaxPerBallLessMaxBet" xml:space="preserve">
     <value>Max Per Ball must be greater than or equal to Max Bet (Number Game)</value>
   </data>
-  <data name="lblBoth" xml:space="preserve">
-    <value>Both</value>
-  </data>
   <data name="lblNeither" xml:space="preserve">
     <value>Neither</value>
-  </data>
-  <data name="lblOne" xml:space="preserve">
-    <value>One</value>
-  </data>
-  <data name="lblOr" xml:space="preserve">
-    <value>Or</value>
-  </data>
-  <data name="lblNo" xml:space="preserve">
-    <value>No</value>
-  </data>
-  <data name="lblYes" xml:space="preserve">
-    <value>Yes</value>
   </data>
   <data name="AllBetTypes" xml:space="preserve">
     <value>All Bet Types</value>
@@ -3441,12 +3325,6 @@ Note: Country and city information is provided by IP2Location™ and DNSstuff wh
   <data name="warrior" xml:space="preserve">
     <value>Warrior</value>
   </data>
-  <data name="warrior2ndBall" xml:space="preserve">
-    <value>2nd ball win</value>
-  </data>
-  <data name="warrior3rdBall" xml:space="preserve">
-    <value>3rd ball win</value>
-  </data>
   <data name="lblFTOddEven" xml:space="preserve">
     <value>Full Time Odd Even</value>
   </data>
@@ -3456,14 +3334,8 @@ Note: Country and city information is provided by IP2Location™ and DNSstuff wh
   <data name="lblOO" xml:space="preserve">
     <value>O/O</value>
   </data>
-  <data name="lblOverOdd" xml:space="preserve">
-    <value>Over Odd</value>
-  </data>
   <data name="lblUE" xml:space="preserve">
     <value>U/E</value>
-  </data>
-  <data name="lblUnderEven" xml:space="preserve">
-    <value>Under Even</value>
   </data>
   <data name="lblCombMixParlay" xml:space="preserve">
     <value>Combination Parlay</value>
@@ -3494,12 +3366,6 @@ Note: Country and city information is provided by IP2Location™ and DNSstuff wh
   </data>
   <data name="editP2P" xml:space="preserve">
     <value>Edit Poker</value>
-  </data>
-  <data name="lblOverEven" xml:space="preserve">
-    <value>Over Even</value>
-  </data>
-  <data name="lblUnderOdd" xml:space="preserve">
-    <value>Under Odd</value>
   </data>
   <data name="lblUO" xml:space="preserve">
     <value>U/O</value>
@@ -3539,9 +3405,6 @@ Note: Country and city information is provided by IP2Location™ and DNSstuff wh
   </data>
   <data name="TWinTNill" xml:space="preserve">
     <value>完封勝ち</value>
-  </data>
-  <data name="pending" xml:space="preserve">
-    <value>Pending</value>
   </data>
   <data name="pendingft" xml:space="preserve">
     <value>FT Pending</value>
@@ -3662,9 +3525,6 @@ Note: Country and city information is provided by IP2Location™ and DNSstuff wh
   </data>
   <data name="noChangeToUpdate" xml:space="preserve">
     <value>There is no change to update</value>
-  </data>
-  <data name="hrminpt1" xml:space="preserve">
-    <value>Racing's Min PT</value>
   </data>
   <data name="wannaSetMinPT" xml:space="preserve">
     <value>Wanna set a minimum Position Taking on downline? Try these settings now!</value>
@@ -4085,9 +3945,6 @@ Note: Country and city information is provided by IP2Location™ and DNSstuff wh
   </data>
   <data name="lblAlertEnableUKToteDownline" xml:space="preserve">
     <value>Do you want to enable UK Tote on this all customer's downlines?</value>
-  </data>
-  <data name="bingo" xml:space="preserve">
-    <value>Bingo</value>
   </data>
   <data name="combo" xml:space="preserve">
     <value>Next Combo</value>

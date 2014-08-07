@@ -13,7 +13,7 @@
     {
         public override Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
         {
-            var content = string.Join(null, new string[] { "<div><span class='", Favorite, "'>", CoreLang.p2pGame, "</span></div>" });
+            var content = string.Join(null, new string[] { "<div><span class='", Favorite, "'>", CoreBetList.p2pGame, "</span></div>" });
             Template.SetValue(content);
 
             return Template;
@@ -21,7 +21,7 @@
 
         protected override IRichTextString BuildRTFChoice(ITicket ticket, RTFHelper rtfHelper, ITicketHelper ticketHelper)
         {
-            rtfHelper.RTFRenderer.AddText(CoreLang.p2pGame, rtfHelper.PosFont);
+            rtfHelper.RTFRenderer.AddText(CoreBetList.p2pGame, rtfHelper.PosFont);
 
             var choiceRtf = rtfHelper.RTFRenderer.Render();
             rtfHelper.RTFRenderer.Clear();

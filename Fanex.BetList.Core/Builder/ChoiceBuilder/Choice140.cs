@@ -23,13 +23,13 @@
             switch (ticket.BetTeam.ToLower())
             {
                 case BetTeamValue.TwoH:
-                    betTeam = CoreLang.SecondHalf;
+                    betTeam = CoreBetList.SecondHalf;
                     break;
                 case BetTeamValue.OneH:
-                    betTeam = CoreLang.FirstHalf;
+                    betTeam = CoreBetList.FirstHalf;
                     break;
                 case BetTeamValue.Tie:
-                    betTeam = CoreLang.Tie;
+                    betTeam = CoreBetList.Tie;
                     break;
             }
 

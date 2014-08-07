@@ -42,7 +42,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedLeagueName = string.Format("{0}&nbsp;{1}", CoreLang.PartyBaccarat, _ticket.ShowTime);
+            string expectedLeagueName = string.Format("{0}&nbsp;{1}", CoreBetList.PartyBaccarat, _ticket.ShowTime);
             Assert.AreEqual(expectedLeagueName, _choice.Template.League.LeagueName.leagueName);
         }
 
@@ -82,7 +82,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.AreEqual(CoreLang.PartyBaccarat, _choice.Template.BetType.betTypeName);
+            Assert.AreEqual(CoreBetList.PartyBaccarat, _choice.Template.BetType.betTypeName);
         }
 
         /// <summary>

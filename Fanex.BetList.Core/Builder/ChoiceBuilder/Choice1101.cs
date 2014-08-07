@@ -92,7 +92,7 @@
 
         protected virtual string GetLeagueName()
         {
-            return CoreLang.PartyBaccarat;
+            return CoreBetList.PartyBaccarat;
         }
 
         protected virtual string GetBetTypeName(string betTeam, ITicketHelper ticketHelper)

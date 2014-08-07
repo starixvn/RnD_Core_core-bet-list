@@ -33,7 +33,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedTemplate = string.Format("<div><span class='favorite'>{0}</span></div>", CoreLang.p2pGame);
+            string expectedTemplate = string.Format("<div><span class='favorite'>{0}</span></div>", CoreBetList.p2pGame);
             Assert.AreEqual(expectedTemplate, _choice.Template.ToString());
         }
     }

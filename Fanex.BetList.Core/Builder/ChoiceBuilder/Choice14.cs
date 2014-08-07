@@ -13,11 +13,11 @@
         private static readonly Dictionary<string, string> BetTeamPatterns
               = new Dictionary<string, string>
         {
-            { "0:0", CoreLang.no0 + HtmlCharacters.NoneBreakingSpace + CoreLang.goal },
-            { "1:1", CoreLang.home + HtmlCharacters.NoneBreakingSpace + CoreLang.FG },
-            { "1:2", CoreLang.home + HtmlCharacters.NoneBreakingSpace + CoreLang.LG },
-            { "2:1", CoreLang.away + HtmlCharacters.NoneBreakingSpace + CoreLang.FG },
-            { "2:2", CoreLang.away + HtmlCharacters.NoneBreakingSpace + CoreLang.LG }
+            { "0:0", CoreBetList.no0 + HtmlCharacters.NoneBreakingSpace + CoreBetList.goal },
+            { "1:1", CoreBetList.home + HtmlCharacters.NoneBreakingSpace + CoreBetList.FG },
+            { "1:2", CoreBetList.home + HtmlCharacters.NoneBreakingSpace + CoreBetList.LG },
+            { "2:1", CoreBetList.away + HtmlCharacters.NoneBreakingSpace + CoreBetList.FG },
+            { "2:2", CoreBetList.away + HtmlCharacters.NoneBreakingSpace + CoreBetList.LG }
         };
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)

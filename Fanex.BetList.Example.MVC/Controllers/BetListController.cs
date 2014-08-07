@@ -4,18 +4,15 @@ namespace Fanex.BetList.Example.MVC.Controllers
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using System.Web.Hosting;
     using System.Web.Mvc;
     using Fanex.BetList.Core.Builder;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Factories;
     using Fanex.BetList.Core.TicketHelper;
-    using Fanex.BetList.Example.Data;
     using Fanex.BetList.Example.Extension.BetListExcelBuilderExt;
-    using Fanex.BetList.Example.MVC.ViewModel;
-    using NPOI.SS.UserModel;
-    using Fanex.BetList.Example.MVC.Services;
     using Fanex.BetList.Example.MVC.Models;
+    using Fanex.BetList.Example.MVC.Services;
+    using Fanex.BetList.Example.MVC.ViewModel;
 
     /// <summary>
     /// Class HomeController.
@@ -23,7 +20,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
     public class BetListController : Controller
     {
         private IList<ITicket> _tickets;
-        private List<ITicketData> _ticketData;
+        private List<ITicketData> _ticketData = new List<ITicketData>();
         private readonly DataService _dataService;
 
         public BetListController()
@@ -60,7 +57,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
             return View("All", model);
         }
 
-        private IEnumerable<SelectListItem> CreateSelectListItem(List<BetType> betTypes)
+        private IEnumerable<SelectListItem> CreateSelectListItem(IEnumerable<BetType> betTypes)
         {
             return betTypes.Select(betType => new SelectListItem { Text = betType.Name, Value = betType.Id.ToString()});
         }
@@ -104,12 +101,12 @@ namespace Fanex.BetList.Example.MVC.Controllers
         public void ExportExcel()
         {
             GetCachePropertyById funcGetOddsTypeName = CacheRef.GetOddsTypeName;
-            BetListExcelFactory factory = new BetListExcelFactory();
+            var factory = new BetListExcelFactory();
             BetListExcelBuilder builder = factory.CreateBuilder();
             ITicketHelper ticketHelper = new TicketHelper();
-            short excelColumns = 6;
+            const short excelColumns = 6;
             builder.BuildWorksheet("BetList", excelColumns);
-            int index = 0;
+            var index = 0;
             _tickets = (List<ITicket>)Session["Tickets.Data"];
             if (_tickets != null)
             {
@@ -126,8 +123,8 @@ namespace Fanex.BetList.Example.MVC.Controllers
                            .AddStake(ticket);
                 }
 
-                MemoryStream ms = new MemoryStream();
-                IWorkbook resultWorkbook = builder.GetBetList();
+                var ms = new MemoryStream();
+                var resultWorkbook = builder.GetBetList();
                 resultWorkbook.Write(ms);
                 ExportToExcel(ms, "BetList.xls");
             }

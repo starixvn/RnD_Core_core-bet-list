@@ -15,7 +15,7 @@
     /// </summary>
     public class Choice90Test
     {
-        private static object[] liveScores =
+        private static readonly object[] LiveScores =
         {
             // ticket.Live, betId, liveScore
             new object[] { true, null, string.Empty },
@@ -186,7 +186,7 @@
             var actualBetTypeName = choiceTemplate.BetType.betTypeName;
 
             // Assert
-            var expectedBetTypeName = CoreLang.numberGroup;
+            var expectedBetTypeName = CoreBetList.numberGroup;
             Assert.AreEqual(expectedBetTypeName, actualBetTypeName);
         }
 
@@ -203,7 +203,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            var expectedHomeTeam = string.Join(null, CoreLang.numbergameno, "&nbsp;", _ticket.MatchCode);
+            var expectedHomeTeam = string.Join(null, CoreBetList.numbergameno, "&nbsp;", _ticket.MatchCode);
             Assert.AreEqual(expectedHomeTeam, _choice.Template.Match.homeTeam);
         }
 
@@ -224,7 +224,7 @@
         /// <param name="isLive"> Is live ticket.</param>
         /// <param name="betId"> Bet id of ticket.</param>
         /// <param name="liveScore"> Live score status of ticket.</param>
-        [Test, TestCaseSource("liveScores")]
+        [Test, TestCaseSource("LiveScores")]
         public void BuildBetTeam_WhenCalled_SetValidNameForBetTeam(bool isLive, long? betId, string liveScore)
         {
             foreach (string key in betTeamMap.Keys)

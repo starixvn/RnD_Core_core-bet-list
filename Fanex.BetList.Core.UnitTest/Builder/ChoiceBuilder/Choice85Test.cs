@@ -132,7 +132,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.AreEqual(string.Join(null, CoreLang.numbergameno, "&nbsp;", _ticket.MatchCode), _choice.Template.Match.homeTeam);
+            Assert.AreEqual(string.Join(null, CoreBetList.numbergameno, "&nbsp;", _ticket.MatchCode), _choice.Template.Match.homeTeam);
         }
     }
 }

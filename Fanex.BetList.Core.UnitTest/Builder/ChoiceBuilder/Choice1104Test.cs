@@ -39,7 +39,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedLeagueName = string.Format("{0}&nbsp;{1}", CoreLang.LiveRoulette, _ticket.ShowTime);
+            string expectedLeagueName = string.Format("{0}&nbsp;{1}", CoreBetList.LiveRoulette, _ticket.ShowTime);
             Assert.AreEqual(expectedLeagueName, _choice.Template.League.LeagueName.leagueName);
         }
     }

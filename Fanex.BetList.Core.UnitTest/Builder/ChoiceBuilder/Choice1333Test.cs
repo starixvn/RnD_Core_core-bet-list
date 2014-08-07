@@ -86,7 +86,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.AreEqual(CoreLang.lblNeither, _choice.Template.betTeam);
+            Assert.AreEqual(CoreBetList.lblNeither, _choice.Template.betTeam);
         }
 
         /// <summary>

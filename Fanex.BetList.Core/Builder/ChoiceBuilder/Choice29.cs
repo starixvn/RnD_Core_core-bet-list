@@ -34,7 +34,7 @@
         {
             List<IRichTextString> lstRTFChoices = new List<IRichTextString>();
             RTFHelper tmpRtfHelper = rtfHelper.Clone();
-            tmpRtfHelper.RTFRenderer.AddText(CoreLang.lblSystemParlay, tmpRtfHelper.PosFont);
+            tmpRtfHelper.RTFRenderer.AddText(CoreBetList.lblSystemParlay, tmpRtfHelper.PosFont);
             tmpRtfHelper.RTFRenderer.AddText(" - " + ticketHelper.GetCombinationMPOfferName(ticket.BetTeam), tmpRtfHelper.NormalFont);
 
             if (ticketHelper.GetParlayDetailById != null)

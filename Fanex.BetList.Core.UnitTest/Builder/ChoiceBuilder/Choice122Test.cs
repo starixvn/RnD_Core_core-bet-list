@@ -617,7 +617,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.AreEqual(CoreLang.lblDraw, _choice.Template.betTeam);
+            Assert.AreEqual(CoreBetList.lblDraw, _choice.Template.betTeam);
         }
 
         /// <summary>
@@ -634,7 +634,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.AreEqual(CoreLang.lblDraw, _choice.Template.betTeam);
+            Assert.AreEqual(CoreBetList.lblDraw, _choice.Template.betTeam);
         }
 
         /// <summary>

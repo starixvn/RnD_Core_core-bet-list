@@ -10,7 +10,7 @@
     {
         protected override string GetLeagueName()
         {
-            return CoreLang.PartyRoulette;
+            return CoreBetList.PartyRoulette;
         }
 
         protected override string GetBetTypeName(string betTeam, ITicketHelper ticketHelper)
