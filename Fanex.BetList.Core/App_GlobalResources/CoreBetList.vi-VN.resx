@@ -180,9 +180,6 @@
   <data name="lblMixParlay" xml:space="preserve">
     <value>Cá cược tổng hợp</value>
   </data>
-  <data name="lblNo" xml:space="preserve">
-    <value>Không</value>
-  </data>
   <data name="lblOne" xml:space="preserve">
     <value>Một</value>
   </data>
@@ -200,9 +197,6 @@
   </data>
   <data name="lblUnderOdd" xml:space="preserve">
     <value>Under/Odd</value>
-  </data>
-  <data name="lblYes" xml:space="preserve">
-    <value>Có</value>
   </data>
   <data name="lose" xml:space="preserve">
     <value>Thua</value>

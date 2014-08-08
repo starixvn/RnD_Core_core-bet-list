@@ -10,8 +10,9 @@
     /// </summary>
     public class Choice133 : Choice1
     {
-        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+       protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
+
             Template.betTeamClassName = Favorite;
             Template.Handicap.handicap = null;
         }

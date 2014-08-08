@@ -153,17 +153,11 @@
   <data name="lblDraw" xml:space="preserve">
     <value>和</value>
   </data>
-  <data name="lblNo" xml:space="preserve">
-    <value>無</value>
-  </data>
   <data name="lblOne" xml:space="preserve">
     <value>一方</value>
   </data>
   <data name="lblOr" xml:space="preserve">
     <value>或者</value>
-  </data>
-  <data name="lblYes" xml:space="preserve">
-    <value>Yes</value>
   </data>
   <data name="lose" xml:space="preserve">
     <value>輸</value>
