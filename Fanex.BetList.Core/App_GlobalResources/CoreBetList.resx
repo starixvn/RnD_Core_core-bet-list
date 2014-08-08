@@ -186,9 +186,6 @@
   <data name="refno" xml:space="preserve">
     <value>Ref No</value>
   </data>
-  <data name="results" xml:space="preserve">
-    <value>Results</value>
-  </data>
   <data name="stake" xml:space="preserve">
     <value>Stake</value>
   </data>
@@ -667,5 +664,14 @@
   </data>
   <data name="wed" xml:space="preserve">
     <value>Wed</value>
+  </data>
+  <data name="lblYes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="lblNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="results" xml:space="preserve">
+    <value>Results</value>
   </data>
 </root>
