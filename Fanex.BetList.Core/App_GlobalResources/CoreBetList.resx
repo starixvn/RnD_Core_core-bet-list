@@ -530,7 +530,7 @@
     <value>Live Casino</value>
   </data>
   <data name="LiveRoulette" xml:space="preserve">
-    <value>Live Roulette</value>
+    <value>Live Baccarat</value>
   </data>
   <data name="mar" xml:space="preserve">
     <value>Mar</value>
@@ -673,5 +673,11 @@
   </data>
   <data name="results" xml:space="preserve">
     <value>Results</value>
+  </data>
+  <data name="Roulette" xml:space="preserve">
+    <value>Roulette</value>
+  </data>
+  <data name="table" xml:space="preserve">
+    <value>Table</value>
   </data>
 </root>

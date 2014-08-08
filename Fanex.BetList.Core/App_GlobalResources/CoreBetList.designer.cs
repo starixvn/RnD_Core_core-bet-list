@@ -862,7 +862,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Live Roulette.
+        ///   Looks up a localized string similar to Live Baccarat.
         /// </summary>
         public static string LiveRoulette {
             get {
@@ -1321,6 +1321,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Roulette.
+        /// </summary>
+        public static string Roulette {
+            get {
+                return ResourceManager.GetString("Roulette", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Running.
         /// </summary>
         public static string running {
@@ -1443,6 +1452,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string summary {
             get {
                 return ResourceManager.GetString("summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Table.
+        /// </summary>
+        public static string table {
+            get {
+                return ResourceManager.GetString("table", resourceCulture);
             }
         }
         

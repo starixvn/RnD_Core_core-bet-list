@@ -666,4 +666,16 @@
   <data name="results" xml:space="preserve">
     <value>결과 확인</value>
   </data>
+  <data name="PartyBaccarat" xml:space="preserve">
+    <value>Party Baccarat</value>
+  </data>
+  <data name="PartyRoulette" xml:space="preserve">
+    <value>Party Roulette</value>
+  </data>
+  <data name="LiveBaccarat" xml:space="preserve">
+    <value>Live Baccarat</value>
+  </data>
+  <data name="LiveRoulette" xml:space="preserve">
+    <value>Live Baccarat</value>
+  </data>
 </root>

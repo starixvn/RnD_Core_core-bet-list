@@ -660,4 +660,22 @@
   <data name="results" xml:space="preserve">
     <value>賽果</value>
   </data>
+  <data name="PartyBaccarat" xml:space="preserve">
+    <value>Party Baccarat</value>
+  </data>
+  <data name="PartyRoulette" xml:space="preserve">
+    <value>Party Roulette</value>
+  </data>
+  <data name="NoGoals" xml:space="preserve">
+    <value>No Goals</value>
+  </data>
+  <data name="LiveBaccarat" xml:space="preserve">
+    <value>Live Baccarat</value>
+  </data>
+  <data name="LiveRoulette" xml:space="preserve">
+    <value>Live Baccarat</value>
+  </data>
+  <data name="FiveAndOver" xml:space="preserve">
+    <value>5&amp;Over</value>
+  </data>
 </root>
