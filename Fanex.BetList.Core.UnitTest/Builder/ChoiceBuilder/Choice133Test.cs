@@ -36,7 +36,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            string expected = CoreLang.lblYes;
+            string expected = CoreBetList.lblYes;
             Assert.AreEqual(expected, _choice.Template.betTeam);
         }
 
@@ -50,7 +50,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            string expected = CoreLang.lblNo;
+            string expected = CoreBetList.lblNo;
             Assert.AreEqual(expected, _choice.Template.betTeam);
         }
 
