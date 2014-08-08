@@ -186,6 +186,9 @@
   <data name="refno" xml:space="preserve">
     <value>Ref No</value>
   </data>
+  <data name="results" xml:space="preserve">
+    <value>Results</value>
+  </data>
   <data name="stake" xml:space="preserve">
     <value>Stake</value>
   </data>
@@ -472,6 +475,9 @@
   <data name="home" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="Horse" xml:space="preserve">
+    <value>Racing</value>
+  </data>
   <data name="hr" xml:space="preserve">
     <value>Racing</value>
   </data>
@@ -604,6 +610,9 @@
   <data name="reset" xml:space="preserve">
     <value>Reset</value>
   </data>
+  <data name="result" xml:space="preserve">
+    <value>Results</value>
+  </data>
   <data name="SB" xml:space="preserve">
     <value>SB</value>
   </data>
@@ -658,17 +667,5 @@
   </data>
   <data name="wed" xml:space="preserve">
     <value>Wed</value>
-  </data>
-  <data name="lblYes" xml:space="preserve">
-    <value>Yes</value>
-  </data>
-  <data name="table" xml:space="preserve">
-    <value>Table</value>
-  </data>
-  <data name="lblNo" xml:space="preserve">
-    <value>No</value>
-  </data>
-  <data name="Roulette" xml:space="preserve">
-    <value>Roulette</value>
   </data>
 </root>
