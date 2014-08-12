@@ -678,4 +678,7 @@
   <data name="FiveAndOver" xml:space="preserve">
     <value>5&amp;Over</value>
   </data>
+  <data name="lblCleanSheetYes" xml:space="preserve">
+    <value>沒有</value>
+  </data>
 </root>

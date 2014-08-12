@@ -692,4 +692,7 @@
   <data name="LiveRoulette" xml:space="preserve">
     <value>Live Baccarat</value>
   </data>
+  <data name="lblCleanSheetYes" xml:space="preserve">
+    <value>Có</value>
+  </data>
 </root>

@@ -680,4 +680,7 @@
   <data name="table" xml:space="preserve">
     <value>Table</value>
   </data>
+  <data name="lblCleanSheetYes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
 </root>

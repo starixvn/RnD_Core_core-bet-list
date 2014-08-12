@@ -87,10 +87,10 @@
       <LastGenOutput>CoreBetList.th-TH.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Content Include="App_GlobalResources\CoreBetList.vi-VN.resx">
+    <EmbeddedResource Include="App_GlobalResources\CoreBetList.vi-VN.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>CoreBetList.vi-VN.designer.cs</LastGenOutput>
-    </Content>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_GlobalResources\CoreBetList.zh-CN.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>CoreBetList.zh-CN.designer.cs</LastGenOutput>
