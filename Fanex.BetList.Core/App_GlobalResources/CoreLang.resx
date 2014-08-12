@@ -3779,4 +3779,7 @@ Now, gross commission = (your commission percentage) * turnover (excluding Draw 
   <data name="Tie" xml:space="preserve">
     <value>Tie</value>
   </data>
+  <data name="lblCleanSheetYes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
 </root>

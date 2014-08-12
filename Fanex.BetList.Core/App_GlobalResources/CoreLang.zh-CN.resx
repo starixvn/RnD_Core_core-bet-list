@@ -4076,4 +4076,7 @@
   <data name="Tie" xml:space="preserve">
     <value>平局</value>
   </data>
+  <data name="lblCleanSheetYes" xml:space="preserve">
+    <value>没有</value>
+  </data>
 </root>

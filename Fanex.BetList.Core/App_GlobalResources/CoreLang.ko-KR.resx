@@ -4077,4 +4077,7 @@ Note: Country and city information is provided by IP2Location™ and DNSstuff wh
   <data name="Tie" xml:space="preserve">
     <value>Tie</value>
   </data>
+  <data name="lblCleanSheetYes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
 </root>

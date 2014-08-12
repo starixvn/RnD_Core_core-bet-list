@@ -4427,6 +4427,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string lblCleanSheetYes {
+            get {
+                return ResourceManager.GetString("lblCleanSheetYes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Closed.
         /// </summary>
         public static string lblClosed {
@@ -9136,7 +9145,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Second Halft.
+        ///   Looks up a localized string similar to Second Half.
         /// </summary>
         public static string SecondHalf {
             get {

@@ -4075,4 +4075,7 @@
   <data name="Tie" xml:space="preserve">
     <value>เสมอ</value>
   </data>
+  <data name="lblCleanSheetYes" xml:space="preserve">
+    <value>ตกลง</value>
+  </data>
 </root>

@@ -4391,4 +4391,7 @@ Lưu ý:Thông tin về Quốc gia, Thành Phố được cung cấp bởi  IP2L
   <data name="Tie" xml:space="preserve">
     <value>Tie</value>
   </data>
+  <data name="lblCleanSheetYes" xml:space="preserve">
+    <value>Có</value>
+  </data>
 </root>
