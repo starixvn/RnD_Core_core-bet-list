@@ -12,7 +12,7 @@
     IList<ITicket> tickets = (Model!=null) ? Model.Tickets : (IList<ITicket>) new List<Ticket>();
     List<ITicketData> ticketData = Model.TicketData;
 
-    BetListHTMLFactory factory = new BetListHTMLFactory();
+    var factory = new BetListHTMLFactory();
     BetListHTMLBuilder builder = factory.CreateBuilder();
 
     ITicketHelper ticketHelper = new TicketHelper();
@@ -33,69 +33,89 @@
                     <div class="col-lg-3">
                         @Html.DropDownListFor(m => m.BetTypeId, (IEnumerable<SelectListItem>)ViewBag.BetTypes, "All", new { @class = "form-control" })
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-3">
                         <input type="submit" value="Submit" class="btn btn-primary" />
                         <span class="alert alert-succes">@Html.ActionLink("Export list to excel", "ExportExcel")</span>
+                    </div>
+                    <div class="col-lg-2">
+                    <select class="form-control" data-val="true"  id="Laguage" name="Laguage" onchange="this.form.submit()">
+                        <option value="en-US">en-US</option>
+                        <option value="ja-JP">ja-JP</option>
+                        <option value="kr-KR">kr-KR</option>
+                        <option value="th-TH">th-TH</option>
+                        <option value="vi-VN">vi-VN</option>
+                        <option value="zh-CN">zh-CN</option>
+                        <option value="zh-TW">zh-TW</option>
+                    </select>
                     </div>
                 </div>
             </div>
         </div>
+
     }
-    <table class="table table-striped table-bordered table-condensed">
-        <thead>
-            <tr class="success">
-                <th>
-                    #
-                </th>
-                <th>
-                    Trans.Time
-                </th>
-                <th>
-                    Username
-                </th>
-                <th>
-                    Choice
-                </th>
-                <th>
-                    Odds
-                </th>
-                <th>
-                    Stake
-                </th>
-                <th>
-                    Status
-                </th>
-            </tr>
-        </thead>
-        <tbody>
+<table class="table table-striped table-bordered table-condensed">
+    <thead>
+        <tr class="success">
+            <th>
+                #
+            </th>
+            <th>
+                Trans.Time
+            </th>
+            <th>
+                Username
+            </th>
+            <th>
+                Choice
+            </th>
+            <th>
+                Odds
+            </th>
+            <th>
+                Stake
+            </th>
+            <th>
+                Status
+            </th>
+        </tr>
+    </thead>
+    <tbody>
         
-            @foreach (var ticket in tickets)
-            {
-                rowIndex++;        
+        @foreach (var ticket in tickets)
+        {
+            rowIndex++;        
             
-                <tr>
-                    <td class="text-center">
-                        @rowIndex
-                    </td>
-                    <td class="c">
-                        @Html.Raw(builder.BuildTrans(ticket))
-                    </td>
-                    <td class="text-center">
-                        @Html.Raw(builder.BuildUsername(ticket))
-                    </td>
-                    <td class="text-right">
-                        @Html.Raw(builder.BuildChoice(ticket, ticketHelper, ticketData, isShowScoreMap))
-                    </td>
-                    <td class="text-center">
-                        @Html.Raw(builder.BuildOdds(ticket, ticketData, funcGetOddsTypeName))
-                    </td>
-                    <td class="text-center">
-                        @Html.Raw(builder.BuildStake(ticket))
-                    </td>
-                    <td class="text-center">
-                        @Html.Raw(builder.BuildStatus(ticket, ticketHelper, ticketData, true))
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+            <tr>
+                <td class="text-center">
+                    @rowIndex
+                </td>
+                <td class="c">
+                    @Html.Raw(builder.BuildTrans(ticket))
+                </td>
+                <td class="text-center">
+                    @Html.Raw(builder.BuildUsername(ticket))
+                </td>
+                <td class="text-right">
+                    @Html.Raw(builder.BuildChoice(ticket, ticketHelper, ticketData, isShowScoreMap))
+                </td>
+                <td class="text-center">
+                    @Html.Raw(builder.BuildOdds(ticket, ticketData, funcGetOddsTypeName))
+                </td>
+                <td class="text-center">
+                    @Html.Raw(builder.BuildStake(ticket))
+                </td>
+                <td class="text-center">
+                    @Html.Raw(builder.BuildStatus(ticket, ticketHelper, ticketData, true))
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    $(function() {
+    $("#Laguage").val("'"+ @Model.Language +"'");
+});
+    
+
+</script>

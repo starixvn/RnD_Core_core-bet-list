@@ -18,7 +18,6 @@
         /// <param name="ticketData"> A valid ticket data.</param>
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            // var betTeam = string.Empty;
             switch (ticket.BetTeam)
             { 
                 case "0":
@@ -52,8 +51,6 @@
                     Template.betTeam = CoreBetList.SevenAndOver;
                     break;
             }
-
-            // Template.betTeam = string.Join(null, new string[] { HtmlCharacters.NoneBreakingSpace, betTeam });
         }
     }
 }

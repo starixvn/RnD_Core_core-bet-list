@@ -31,6 +31,9 @@
                 case "ee":
                     Template.betTeam = CoreBetList.ee;
                     break;
+                default :
+                    Template.betTeam = string.Empty;
+                    break;  
             }            
         }
     }
