@@ -655,7 +655,7 @@
     <value>是</value>
   </data>
   <data name="lblNo" xml:space="preserve">
-    <value>無</value>
+    <value>否</value>
   </data>
   <data name="results" xml:space="preserve">
     <value>賽果</value>
@@ -677,8 +677,5 @@
   </data>
   <data name="FiveAndOver" xml:space="preserve">
     <value>5&amp;Over</value>
-  </data>
-  <data name="lblCleanSheetYes" xml:space="preserve">
-    <value>沒有</value>
   </data>
 </root>

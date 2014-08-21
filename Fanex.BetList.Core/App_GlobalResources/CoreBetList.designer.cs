@@ -655,15 +655,6 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Yes.
-        /// </summary>
-        public static string lblCleanSheetYes {
-            get {
-                return ResourceManager.GetString("lblCleanSheetYes", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Draw.
         /// </summary>
         public static string lblDraw {
