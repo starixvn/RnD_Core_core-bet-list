@@ -18,6 +18,8 @@
 
         protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
         {
+            base.BuildMatch(ticket, ticketHelper);
+
             Template.Match.VS.Hide();
         }
 

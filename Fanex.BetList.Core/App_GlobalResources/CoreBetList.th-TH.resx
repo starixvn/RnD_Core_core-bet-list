@@ -289,43 +289,43 @@
     <value>PlayTech Casino</value>
   </data>
   <data name="ee" xml:space="preserve">
-    <value>Even/Even</value>
+    <value>คู่/คู่</value>
   </data>
   <data name="eo" xml:space="preserve">
-    <value>Even/Odd</value>
+    <value>คู่/คี่</value>
   </data>
   <data name="oe" xml:space="preserve">
-    <value>Odd/Even</value>
+    <value>คี่/คู่</value>
   </data>
   <data name="oo" xml:space="preserve">
-    <value>Odd/Odd</value>
+    <value>คี่/คี่</value>
   </data>
   <data name="FiveAndOver" xml:space="preserve">
-    <value>5&amp;Over</value>
+    <value>5 ประตู หรือมากกว่า</value>
   </data>
   <data name="FiveGoals" xml:space="preserve">
-    <value>5 Goals</value>
+    <value>5 ประตู</value>
   </data>
   <data name="FourGoals" xml:space="preserve">
-    <value>4 Goals</value>
+    <value>4 ประตู</value>
   </data>
   <data name="NoGoals" xml:space="preserve">
-    <value>No Goals</value>
+    <value>ไม่มีประตู</value>
   </data>
   <data name="OneGoal" xml:space="preserve">
-    <value>1 Goal</value>
+    <value>1 ประตู</value>
   </data>
   <data name="SevenAndOver" xml:space="preserve">
-    <value>7&amp;Over</value>
+    <value>7 หรือม่ากกว่า</value>
   </data>
   <data name="SixGoals" xml:space="preserve">
-    <value>6 Goals</value>
+    <value>6 ประตู</value>
   </data>
   <data name="ThreeGoals" xml:space="preserve">
-    <value>3 Goals</value>
+    <value>3 ประตู</value>
   </data>
   <data name="TwoGoals" xml:space="preserve">
-    <value>2 Goals</value>
+    <value>2 ประตู</value>
   </data>
   <data name="virtualtennis_scorebet_0_win" xml:space="preserve">
     <value>0-Win</value>
@@ -352,7 +352,7 @@
     <value>Win-40</value>
   </data>
   <data name="FourAndOver" xml:space="preserve">
-    <value>4&amp;Over</value>
+    <value>4 ประตู หรือมากกว่า</value>
   </data>
   <data name="ad" xml:space="preserve">
     <value>ทีมเยือนนำครึ่งแรก  ครึ่งหลังเสมอกัน</value>

@@ -301,7 +301,7 @@
     <value>Odd/Odd</value>
   </data>
   <data name="FiveAndOver" xml:space="preserve">
-    <value>5&amp;Over</value>
+    <value>5或以上</value>
   </data>
   <data name="FiveGoals" xml:space="preserve">
     <value>5 Goals</value>
