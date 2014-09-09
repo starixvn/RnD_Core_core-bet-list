@@ -1,19 +1,4 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="BetStatus.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.11.16">Create</change>
-//     <change who="Marc.Bui" date="2013.05.07">Add struct BetStatusId</change>
-//     <change who="Marc.Bui" date="2013.10.08">Check stylecop & refactor</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-/// <summary>
-/// The Entities namespace.
-/// </summary>
-namespace Fanex.BetList.Core.Entities
+﻿namespace Fanex.BetList.Core.Entities
 {
     /// <summary>
     /// Struct BetStatus.
@@ -104,6 +89,6 @@ namespace Fanex.BetList.Core.Entities
         /// <summary>
         /// The waiting status.
         /// </summary>
-        public const string Waiting = "1";
+        public const string Waiting = "1";      
     }
 }

@@ -1,37 +1,37 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Choice14.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.11.16">Create</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Utils;
+    using Entities;
+    using Fanex.BetList.Core.App_GlobalResources;
+    using Fanex.BetList.Core.Constants;
 
     /// <summary>
     /// First Goal/Last Goal.
     /// </summary>
     public class Choice14 : Choice1
     {
-        /// <summary>
-        /// Builds the choice.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        private static readonly Dictionary<string, string> BetTeamPatterns
+              = new Dictionary<string, string>
         {
-            base.BuildChoice(ticket, ticketHelper, ticketData);
+            { "0:0", CoreBetList.no0 + HtmlCharacters.NoneBreakingSpace + CoreBetList.goal },
+            { "1:1", CoreBetList.home + HtmlCharacters.NoneBreakingSpace + CoreBetList.FG },
+            { "1:2", CoreBetList.home + HtmlCharacters.NoneBreakingSpace + CoreBetList.LG },
+            { "2:1", CoreBetList.away + HtmlCharacters.NoneBreakingSpace + CoreBetList.FG },
+            { "2:2", CoreBetList.away + HtmlCharacters.NoneBreakingSpace + CoreBetList.LG }
+        };
 
-            this.Template.betTeam = ConvertByBetType.GetBetTeam(ticket.BetTeam, ticket.BetTypeId);
-            this.Template.betTeamClassName = BLFAVORITE;
-            this.Template.Handicap.handicap = null;
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {            
+            Template.betTeam = 
+                (!string.IsNullOrWhiteSpace(ticket.BetTeam) && BetTeamPatterns.ContainsKey(ticket.BetTeam))
+                ? BetTeamPatterns[ticket.BetTeam]
+                : string.Empty;
+        }
+
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            Template.betTeamClassName = Favorite;
+            Template.Handicap.handicap = null;
         }
     }
 }

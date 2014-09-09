@@ -1,23 +1,12 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Choice9.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2013.10.10">Check stylecop and refactor</change>
-//     <change who="Marc.Bui" date="2013.05.31">Add detail export excel</change>
-//     <change who="Marc.Bui" date="2012.11.16">Create</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System;
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Templates;
+    using App_GlobalResources;
+    using Entities;
     using NPOI.HSSF.UserModel;
     using NPOI.SS.UserModel;
+    using Templates;
 
     /// <summary>
     /// Mix Parlay.
@@ -50,24 +39,24 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                 clientMixParlayDetailFunction = ticketHelper.ClientMixParlaySubbetsDetailFunction;
             }
 
-            components = new string[] 
-                            { 
-                                "<a id=\"hidden0\" href=\"", 
-                                clientMixParlayDetailFunction, 
-                                "\">", 
-                                betTypeName, 
-                                "</a>", 
-                                "<br/><br/>", 
-                                "<div id=\"divEvent_", 
-                                ticket.TransId.ToString(), 
-                                "\" style=\"display: none\" ></div>" 
+            components = new string[]
+                            {
+                                "<a id=\"hidden0\" href=\"",
+                                clientMixParlayDetailFunction,
+                                "\">",
+                                betTypeName,
+                                "</a>",
+                                "<br/><br/>",
+                                "<div id=\"divEvent_",
+                                ticket.TransId.ToString(),
+                                "\" style=\"display: none\" ></div>"
                             };
 
             string mixParlay = string.Join(null, components);
 
-            this.Template.SetValue(mixParlay);
+            Template.SetValue(mixParlay);
 
-            return this.Template;
+            return Template;
         }
 
         /// <summary>
@@ -82,16 +71,16 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         /// Choice_Template object.
         /// </returns>
         public override List<IRichTextString> RenderRTF(
-                                                ITicket ticket, 
-                                                ITicketHelper ticketHelper, 
-                                                List<ITicketData> ticketData, 
-                                                bool isShowScoreMap, 
+                                                ITicket ticket,
+                                                ITicketHelper ticketHelper,
+                                                List<ITicketData> ticketData,
+                                                bool isShowScoreMap,
                                                 RTFHelper rtfHelper)
         {
             List<IRichTextString> lstRTFChoices = new List<IRichTextString>();
             RTFHelper tmpRtfHelper = rtfHelper.Clone();
 
-            tmpRtfHelper.RTFRenderer.AddText(App_GlobalResources.CoreLang.lblMixParlay, tmpRtfHelper.PosFont);
+            tmpRtfHelper.RTFRenderer.AddText(CoreBetList.lblMixParlay, tmpRtfHelper.PosFont);
 
             if (ticketHelper.GetParlayDetailById != null)
             {
@@ -102,9 +91,9 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
                 foreach (ITicket tkt in parlayData)
                 {
-                    IChoice choiceBuilder = this.CreateChoiceBuilder(tkt.BetTypeId);
-                    this.Template = choiceBuilder.Render(tkt, ticketHelper, null, isShowScoreMap);
-                    var choiceData = this.BuildRTFChoice(tkt, rtfHelper, ticketHelper);
+                    IChoice choiceBuilder = CreateChoiceBuilder(tkt.BetTypeId);
+                    Template = choiceBuilder.Render(tkt, ticketHelper, null, isShowScoreMap);
+                    var choiceData = BuildRTFChoice(tkt, rtfHelper, ticketHelper);
                     List<IRichTextString> tmpRtfChoice;
                     if (choiceData is List<IRichTextString>)
                     {
@@ -126,7 +115,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                         normal = tmpRtfHelper.NormalFont;
                     }
 
-                    this.CombineSubRichTextString(tmpRtfChoice, ref tmpRtfHelper, pos, normal);
+                    CombineSubRichTextString(tmpRtfChoice, ref tmpRtfHelper, pos, normal);
                 }
 
                 ticketHelper.IsShowOddsWithChoice = showOdds;
@@ -144,12 +133,12 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         /// <param name="tmpRtfHelper">The temporary RTF helper.</param>
         /// <param name="posFont">The position font.</param>
         /// <param name="normalFont">The normal font.</param>
-        private void CombineSubRichTextString(List<IRichTextString> tmpRtfChoice, ref RTFHelper tmpRtfHelper, IFont posFont, IFont normalFont)
+        private static void CombineSubRichTextString(List<IRichTextString> tmpRtfChoice, ref RTFHelper tmpRtfHelper, IFont posFont, IFont normalFont)
         {
             foreach (HSSFRichTextString rtfString in tmpRtfChoice)
             {
                 // Remove extra line-breaks
-                while (rtfString.String.StartsWith("\n"))
+                while (rtfString.String.StartsWith("\n", StringComparison.OrdinalIgnoreCase))
                 {
                     rtfString.String.Remove(0, 1);
                 }
@@ -162,7 +151,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                     tmpRtfHelper.RTFRenderer.AddText("\n" + eventName, posFont);
                     tmpRtfHelper.RTFRenderer.AddText(theRest, normalFont);
                 }
-                catch 
+                catch
                 {
                     throw;
                 }

@@ -1,73 +1,75 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Choice1101.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.11.16">Create</change>
-//     <change who="Marc.Bui" date="2013.01.31">Update export excel</change>
-//     <change who="Marc.Bui" date="2013.10.09">Check stylecop & refactor</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.Text;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Utils;
+    using App_GlobalResources;
+    using Constants;
+    using Entities;
+    using Utils;
 
     /// <summary>
     /// Bet Type: Baccarat.
     /// </summary>
     public class Choice1101 : Choice1
     {
+        [SuppressMessage("StyleCop.CSharp.Nexcel.NexcelCustomRules", "SP2100:CodeLineMustNotBeLongerThan", Justification = "Reviewed.")]
+        private const string BetTeamFormat = "<div><span class='favorite'>{0}</span>&nbsp;<span class='stake'>{1}</span>&nbsp;@&nbsp;<span class='handicap custom'>{2}</span></div>";
+
+        protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            base.BuildMatch(ticket, ticketHelper);
+
+            Template.Match.VS.Hide();
+        }
+
         /// <summary>
-        /// Builds the choice.
+        /// Builds the bet team.
         /// </summary>
         /// <param name="ticket">The ticket.</param>
         /// <param name="ticketHelper">The ticket helper.</param>
         /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            base.BuildChoice(ticket, ticketHelper, ticketData);
+            List<ITicketData> foundTicketData = GetTicketReference(ticket, ticketData);
 
-            this.Template.League.LeagueName.leagueName = string.Join(null, new string[] { CoreLang.PartyBaccarat, "&nbsp;", ticket.ShowTime });
-
-            if (ticketData != null && ticketData.Count > 0)
+            if (foundTicketData.Count > 0)
             {
-                List<ITicketData> foundTicketData = ticketData.FindAll(item => item.RefNo.Equals(ticket.RefNo));
-
-                if (foundTicketData != null && foundTicketData.Count > 0)
+                var betTeam = new StringBuilder();
+                foreach (ITicketData refDataItem in foundTicketData)
                 {
-                    string betTeamName;
-                    string odds;
-                    StringBuilder betTeam = new StringBuilder();
-                    string betTeamFormat = "<div><span class='favorite'>{0}</span>&nbsp;<span class='stake'>{1}</span>&nbsp;@&nbsp;<span class='handicap custom'>{2}</span></div>";
-                    foreach (ITicketData refDataItem in foundTicketData)
-                    {
-                        betTeamName = ticketHelper.GetCasinoBetTeamNameById(refDataItem.BetTeam);
-                        odds = ConvertByBetType.Odds(refDataItem.Odds, ticket.BetTypeId, ticket.OddsType);
+                    string betTeamName = GetBetTypeName(refDataItem.BetTeam, ticketHelper);
+                    string odds = ConvertByBetType.Odds(refDataItem.Odds, ticket.BetTypeId, ticket.OddsType);
 
-                        betTeam.AppendFormat(betTeamFormat, betTeamName, ConvertByBetType.Stake(refDataItem.Stake), odds);
-                    }
-
-                    this.Template.betTeam = betTeam.ToString();
-                    this.Template.Handicap.Hide();
-                    this.Template.BetType.betTypeName = string.Empty;
-                    this.Template.betTeamClassName = string.Empty;
-                    this.Template.Match.VS.Hide();
+                    betTeam.AppendFormat(BetTeamFormat, betTeamName, ConvertByBetType.Stake(refDataItem.Stake), odds);
                 }
+
+                Template.betTeam = betTeam.ToString();
             }
             else
             {
-                this.Template.betTeam = string.Empty;
-                this.Template.Handicap.Hide();
-                this.Template.BetType.betTypeName = CoreLang.PartyBaccarat;
-                this.Template.betTeamClassName = string.Empty;
-                this.Template.Match.VS.Hide();
+                Template.betTeam = string.Empty;
             }
+        }
+
+        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {
+            List<ITicketData> foundTicketData = GetTicketReference(ticket, ticketData);
+
+            Template.BetType.betTypeName = foundTicketData.Count > 0 ? string.Empty : GetLeagueName();
+        }
+
+        protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            var leagueName = GetLeagueName();
+
+            Template.League.LeagueName.leagueName = string.Join(null, new string[] { leagueName, HtmlCharacters.NoneBreakingSpace, ticket.ShowTime });
+        }
+
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            Template.Handicap.Hide();
+            Template.betTeamClassName = string.Empty;
         }
 
         /// <summary>
@@ -88,6 +90,28 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             {
                 Template.betTeam = Template.betTeam.Remove(lastBreak, 1);
             }
+        }
+
+        protected virtual string GetLeagueName()
+        {
+            return CoreBetList.PartyBaccarat;
+        }
+
+        protected virtual string GetBetTypeName(string betTeam, ITicketHelper ticketHelper)
+        {
+            return ticketHelper.GetCasinoBetTeamNameById(betTeam);
+        }
+
+        private List<ITicketData> GetTicketReference(ITicket ticket, List<ITicketData> ticketData)
+        {
+            var foundTicketData = new List<ITicketData>();
+
+            if (ticketData != null && ticketData.Count > 0)
+            {
+                foundTicketData = ticketData.FindAll(item => item.RefNo.Equals(ticket.RefNo));
+            }
+
+            return foundTicketData;
         }
     }
 }

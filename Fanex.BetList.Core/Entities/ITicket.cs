@@ -1,14 +1,4 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="ITicket.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.11.16">Create</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Entities
+﻿namespace Fanex.BetList.Core.Entities
 {
     using System;
 
@@ -43,7 +33,6 @@ namespace Fanex.BetList.Core.Entities
 
         string BetTeam { get; set; }
 
-        // Running, Waiting, Refund, Void, Won, Lose, Draw, Reject.        
         string Status { get; set; }
 
         int? StatusId { get; set; }
@@ -101,8 +90,7 @@ namespace Fanex.BetList.Core.Entities
         long HomeId { get; set; }
 
         long AwayId { get; set; }
-    
-        // Match status: First Goal, Last Goal.     
+
         string EventStatus { get; set; }
 
         bool IsNeutral { get; set; }

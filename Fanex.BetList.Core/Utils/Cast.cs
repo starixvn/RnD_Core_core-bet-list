@@ -1,14 +1,4 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Cast.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.11.16">Create</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Utils
+﻿namespace Fanex.BetList.Core.Utils
 {
     using System;
     using System.Globalization;
@@ -59,7 +49,7 @@ namespace Fanex.BetList.Core.Utils
         /// <returns>The converted value.</returns>
         public static decimal AsDecimal(object value, decimal defaultValue, IFormatProvider provider)
         {
-            if (value == null || value == System.DBNull.Value)
+            if (value == null || value == DBNull.Value)
             {
                 return defaultValue;
             }

@@ -1,70 +1,27 @@
-// ---------------------------------------------------------------------------------
-// <copyright file="BetListExcelBuilder.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2014.11.04">Adjust builder creation to work with 3rd products which have negative bettype ids (internal convention)</change>
-//     <change who="Marc.Bui" date="2014.02.27">Upgrade to NPOI 2.0.6.0</change>
-//     <change who="Marc.Bui" date="2013.10.08">Check stylecop, Fx Cop & refactor</change>
-//     <change who="Marc.Bui" date="2013.05.31">Add export detail for *Parlay tickets</change>
-//     <change who="Marc.Bui" date="2013.01.29">Update line-breaks in MS Office</change>
-//     <change who="Marc.Bui" date="2012.11.16">Create</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-/// <summary>
-/// The Builder namespace.
-/// </summary>
 namespace Fanex.BetList.Core.Builder
 {
     using System;
     using System.Collections;
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Builder.OddsBuilder;
-    using Fanex.BetList.Core.Builder.StakeBuilder;
-    using Fanex.BetList.Core.Builder.StatusBuilder;
-    using Fanex.BetList.Core.Builder.TransBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Utils;
-    using Fanex.BetList.Core.Utils.NPOIExt;
-    using Fanex.BetList.Core.Utils.StringExt;
+    using ChoiceBuilder;
+    using Entities;
     using NPOI.HSSF.UserModel;
     using NPOI.SS.UserModel;
     using NPOI.SS.Util;
+    using OddsBuilder;
+    using StakeBuilder;
+    using StatusBuilder;
+    using TransBuilder;
+    using Utils;
+    using Utils.NPOIExt;
+    using Utils.StringExt;
 
     /// <summary>
     /// CoreBetList Excel Builder.
     /// </summary>
-    public class BetListExcelBuilder : IBetListBuilder, IDisposable
+    public class BetListExcelBuilder : BetListBaseBuilder, IBetListBuilder, IDisposable
     {
         #region Attributes
-
-        /// <summary>
-        /// The choice builder namespace.
-        /// </summary>
-        private const string CHOICEBUILDERNAMESPACE = "Fanex.BetList.Core.Builder.ChoiceBuilder";
-
-        /// <summary>
-        /// The odds builder namespace.
-        /// </summary>
-        private const string ODDSBUILDERNAMESPACE = "Fanex.BetList.Core.Builder.OddsBuilder";
-
-        /// <summary>
-        /// The stake builder namespace.
-        /// </summary>
-        private const string STAKEBUILDERNAMESPACE = "Fanex.BetList.Core.Builder.StakeBuilder";
-
-        /// <summary>
-        /// The trans builder namespace.
-        /// </summary>
-        private const string TRANSBUILDERNAMESPACE = "Fanex.BetList.Core.Builder.TransBuilder";
-
-        /// <summary>
-        /// The status builder namespace.
-        /// </summary>
-        private const string STATUSBUILDERNAMESPACE = "Fanex.BetList.Core.Builder.StatusBuilder";
 
         /// <summary>
         /// The workbook.
@@ -160,15 +117,15 @@ namespace Fanex.BetList.Core.Builder
         /// Gets the last content row.
         /// </summary>
         /// <value>The last content row.</value>
-        public int LastContentRow 
-        { 
-            get 
+        public int LastContentRow
+        {
+            get
             {
-                return _worksheet.LastRowNum; 
-            } 
+                return _worksheet.LastRowNum;
+            }
         }
 
-        #endregion        
+        #endregion
 
         #region IDisposable's Implementation
 
@@ -179,7 +136,7 @@ namespace Fanex.BetList.Core.Builder
         {
             try
             {
-                this.Dispose(true);
+                Dispose(true);
                 GC.SuppressFinalize(this);
             }
             catch
@@ -310,8 +267,7 @@ namespace Fanex.BetList.Core.Builder
         /// <returns>CellAddress: the address object of the newly merged cell.</returns>
         public CellAddress AddMergedCell(IRichTextString rtfString, CellRangeAddress mergedRange, ICellStyle cellStyle)
         {
-            _nextCellIndex++;
-            IRow lastRow = GetLastRow();
+            _nextCellIndex++;        
 
             if (_nextCellIndex >= _reportColumnsNum)
             {
@@ -416,10 +372,10 @@ namespace Fanex.BetList.Core.Builder
         /// <returns>Current BetListExcelBuilder object.</returns>
         public BetListExcelBuilder AddTrans(ITicket ticket, ITicketHelper ticketHelper)
         {
-            ITrans transBuilder = this.CreateTransBuilder(ticket.BetTypeId);
+            ITrans transBuilder = CreateTransBuilder(ticket.BetTypeId);
             IRichTextString rtfTrans = transBuilder.RenderRTF(ticket, ticketHelper);
 
-            this.AddCell(rtfTrans, ticketHelper.Index % 2 == 0 ? OddCellStyleCenterAligned : EvenCellStyleCenterAligned);
+            AddCell(rtfTrans, ticketHelper.Index % 2 == 0 ? OddCellStyleCenterAligned : EvenCellStyleCenterAligned);
             return this;
         }
 
@@ -433,9 +389,9 @@ namespace Fanex.BetList.Core.Builder
         /// <returns>Current BetListExcelBuilder object.</returns>
         public BetListExcelBuilder AddStatus(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP)
         {
-            IStatus statusBuilder = this.CreateStatusBuilder(ticket.BetTypeId);
+            IStatus statusBuilder = CreateStatusBuilder(ticket.BetTypeId);
             IRichTextString rtfStatus = statusBuilder.RenderRTF(ticket, ticketHelper, ticketData, isShowVNIP, RTFHelper);
-            this.AddCell(rtfStatus, ticketHelper.Index % 2 == 0 ? OddCellStyleCenterAligned : EvenCellStyleCenterAligned);
+            AddCell(rtfStatus, ticketHelper.Index % 2 == 0 ? OddCellStyleCenterAligned : EvenCellStyleCenterAligned);
             return this;
         }
 
@@ -478,176 +434,6 @@ namespace Fanex.BetList.Core.Builder
         private bool IsSheetHasRows()
         {
             return _worksheet.GetRow(_worksheet.LastRowNum) != null;
-        }
-
-        /// <summary>
-        /// Creates the choice builder.
-        /// </summary>
-        /// <param name="bettype">The bet type.</param>
-        /// <returns>IChoice: the Choice builder object.</returns>
-        private IChoice CreateChoiceBuilder(int bettype)
-        {
-            string choiceName = ".Choice";
-
-            if (bettype < 0)
-            {
-                // Internal conventional bettype id of 3rd products
-                choiceName = "._3rd.Choice";
-            }
-            else if (bettype <= 1599 && bettype >= 1501)
-            {
-                // Keno games.
-                bettype = 1501;
-            }
-
-            string typeName = string.Join(null, new string[] { CHOICEBUILDERNAMESPACE, choiceName, bettype.ToString().Replace('-', '_') });
-
-            Type type = Type.GetType(typeName);
-
-            if (type == null)
-            {
-                return new Choice1();
-            }
-            else
-            {
-                return Activator.CreateInstance(type) as IChoice;
-            }
-        }
-
-        /// <summary>
-        /// Creates the odds builder.
-        /// </summary>
-        /// <param name="bettype">The bet type.</param>
-        /// <returns>IOdds: the Odds builder object.</returns>
-        private IOdds CreateOddsBuilder(int bettype)
-        {
-            string oddsName = ".Odds";
-
-            if (bettype < 0)
-            {
-                // Internal conventional bettype id of 3rd products
-                oddsName = "._3rd.Odds";
-            }
-            else if (bettype <= 1199 && bettype >= 1101)
-            {
-                // Odds of Live Casino bettypes
-                bettype = 1101;
-            }
-            else if (bettype <= 1599 && bettype >= 1501)
-            {
-                // Odds of Keno games
-                bettype = 1501;
-            }
-
-            string typeName = string.Join(null, new string[] { ODDSBUILDERNAMESPACE, oddsName, bettype.ToString().Replace('-', '_') });
-
-            Type type = Type.GetType(typeName);
-
-            if (type == null)
-            {
-                return new Odds1();
-            }
-            else
-            {
-                return Activator.CreateInstance(type) as IOdds;
-            }
-        }
-
-        /// <summary>
-        /// Creates the stake builder.
-        /// </summary>
-        /// <param name="bettype">The bet type.</param>
-        /// <returns>IStake: the Stake builder object.</returns>
-        private IStake CreateStakeBuilder(int bettype)
-        {
-            string stakeName = ".Stake";
-
-            if (bettype < 0)
-            {
-                // Internal conventional bettype id of 3rd products
-                stakeName = "._3rd.Stake";
-            }
-
-            string typeName = string.Join(null, new string[] { STAKEBUILDERNAMESPACE, stakeName, bettype.ToString().Replace('-', '_') });
-
-            Type type = Type.GetType(typeName);
-
-            if (type == null)
-            {
-                return new Stake1();
-            }
-            else
-            {
-                return Activator.CreateInstance(type) as IStake;
-            }
-        }
-
-        /// <summary>
-        /// Creates the status builder.
-        /// </summary>
-        /// <param name="bettype">The bet type.</param>
-        /// <returns>IStatus: the Status builder object.</returns>
-        private IStatus CreateStatusBuilder(int bettype)
-        {
-            string statusName = ".Status";
-
-            if (bettype < 0)
-            {
-                // Internal conventional bettype id of 3rd products
-                statusName = "._3rd.Status";
-            }
-            else if (bettype <= 1599 && bettype >= 1501)
-            {
-                // Keno games
-                bettype = 1501;
-            }
-
-            string typeName = string.Join(null, new string[] { STATUSBUILDERNAMESPACE, statusName, bettype.ToString().Replace('-', '_') });
-
-            Type type = Type.GetType(typeName);
-
-            if (type == null)
-            {
-                return new Status1();
-            }
-            else
-            {
-                return Activator.CreateInstance(type) as IStatus;
-            }
-        }
-
-        /// <summary>
-        /// Creates the trans builder.
-        /// </summary>
-        /// <param name="bettype">The bet type.</param>
-        /// <returns>ITrans: the Trans builder object.</returns>
-        private ITrans CreateTransBuilder(int bettype)
-        {
-            string transName = ".Trans";
-
-            if (bettype < 0)
-            {
-                // Internal conventional bettype id of 3rd products
-                transName = "._3rd.Trans";
-            }
-            else if (bettype <= 1599 && bettype >= 1501)
-            {
-                // Keno games
-                bettype = 1501;
-            }
-
-            string typeName = string.Join(null, new string[] { TRANSBUILDERNAMESPACE, transName, bettype.ToString().Replace('-', '_') });
-
-            Type type = Type.GetType(typeName);
-
-            if (type == null)
-            {
-                return new Trans1();
-            }
-            else
-            {
-                return Activator.CreateInstance(type) as ITrans;
-            }
         }
 
         /// <summary>
@@ -757,7 +543,7 @@ namespace Fanex.BetList.Core.Builder
                 if (!disposing)
                 {
                     if (_workbook != null)
-                    {   
+                    {
                         _workbook = null;
                     }
                 }

@@ -1,48 +1,47 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Constants;
+    using Entities;
 
     /// <summary>
     /// BetRadar BetType : Home to Win Both Halves - 133.
     /// </summary>
     public class Choice133 : Choice1
     {
+       protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            Template.betTeamClassName = Favorite;
+            Template.Handicap.handicap = null;
+        }
+
+        protected override void BuildScore(ITicket ticket)
+        {
+            Template.Score = null;
+        }
+
         /// <summary>
-        /// Builds the choice.
+        /// Builds the bet team.
         /// </summary>
         /// <param name="ticket">The ticket.</param>
         /// <param name="ticketHelper">The ticket helper.</param>
         /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            base.BuildChoice(ticket, ticketHelper, ticketData);
-            this.Template.Handicap.handicap = null;
-            this.Template.Score = null;
-            this.Template.betTeamClassName = BLFAVORITE;
-            this.Template.betTeam = GetBetTeam(ticket.BetTeam);
-        }
+            var betTeam = string.Empty;
 
-        /// <summary>
-        /// Gets the bet team.
-        /// </summary>
-        /// <param name="betTeam">The bet team.</param>
-        /// <returns>Yes or No.</returns>
-        protected virtual string GetBetTeam(string betTeam)
-        {
-            betTeam = betTeam.ToLower();
-
-            if (betTeam == "y")
+            switch (ticket.BetTeam.ToLower())
             {
-                return CoreLang.lblYes;
-            }
-            else if (betTeam == "n")
-            {
-                return CoreLang.lblNo;
+                case BetTeamValue.Y:
+                    betTeam = CoreBetList.lblYes;
+                    break;
+                case BetTeamValue.N:
+                    betTeam = CoreBetList.lblNo;
+                    break;
             }
 
-            return string.Empty;
+            Template.betTeam = betTeam;
         }
     }
 }

@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.UnitTest.Common.Enums;
+    using App_GlobalResources;
+    using Common.Enums;
+    using Core.Builder.ChoiceBuilder;
+    using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -30,7 +30,7 @@
         /// The value of Template.BetType.betTypeName is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetBetTypeNameIsNull()
+        public void BuildBetType_Always_SetBetTypeNameIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -43,7 +43,7 @@
         /// The value of Template.Match.VS is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetMatchVSBlockIsNull()
+        public void BuildMatch_Always_SetMatchVSBlockIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -56,7 +56,7 @@
         /// The value of Template.League.sportTypeName is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetSportTypeNameIsNull()
+        public void BuildSport_Always_SetSportTypeNameIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -67,7 +67,7 @@
 
         [TestCase(true)]
         [TestCase(false)]
-        public void BuildChoice_Always_SetScoreBlockIsNull(bool isLive)
+        public void BuildScore_Always_SetScoreBlockIsNull(bool isLive)
         {
             // Arrange
             _ticket.IsLive = isLive;
@@ -83,7 +83,7 @@
         /// The value of Template.Handicap.handicap is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetHandicapIsNull()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -96,7 +96,7 @@
         /// The value of Template.Match.home_firstGoal_lastGoal is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetHomeFGLGIsNull()
+        public void BuildMatch_Always_SetHomeFGLGIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -109,7 +109,7 @@
         /// The value of Template.Match.awayTeam is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetAwayTeamIsNull()
+        public void BuildMatch_Always_SetAwayTeamIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -122,7 +122,7 @@
         /// The value of Template.Match.away_firstGoal_lastGoal is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetAwayFGLGIsNull()
+        public void BuildMatch_Always_SetAwayFGLGIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -135,7 +135,7 @@
         /// The value of Template.League.LeagueName is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetLeagueNameIsNull()
+        public void BuildLeauge_Always_SetLeagueNameIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -148,7 +148,7 @@
         /// The value of Template.betTeam is always Casino Progressive Bonus.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIsNullBetTeamIsCasinoProgressiveBonusResource()
+        public void BuildBetTeam_BetTeamIsNullBetTeamIsCasinoProgressiveBonusResource()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -161,7 +161,7 @@
         /// The value of Template.betTeamClassName is always favorite.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetBetTeamClassNameIsFavorite()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());

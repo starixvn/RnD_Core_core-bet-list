@@ -1,24 +1,8 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="ConvertByBetType.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.11.16">Create</change>
-//     <change who="Marc.Bui" date="2013.01.23">Update format string for Stake to follow general rules: show all significant decimals</change>
-//     <change who="Marc.Bui" date="2013.01.29">Update show Odds value: 0 instead of -</change>
-//     <change who="Marc.Bui" date="2014.04.18">Add 1H FGLG (127) to ConvertByBetType.GetBetTeam</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-/// <summary>
-/// The Utils namespace.
-/// </summary>
-namespace Fanex.BetList.Core.Utils
+﻿namespace Fanex.BetList.Core.Utils
 {
     using System;
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
+    using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
     /// Class ConvertByBetType.
@@ -51,8 +35,8 @@ namespace Fanex.BetList.Core.Utils
         /// <value>The minus.</value>
         public static string Minus
         {
-            get { return ConvertByBetType.minus; }
-            set { ConvertByBetType.minus = value; }
+            get { return minus; }
+            set { minus = value; }
         }
 
         /// <summary>
@@ -97,41 +81,7 @@ namespace Fanex.BetList.Core.Utils
             }
         }
 
-        /// <summary>
-        /// Gets the bet team.
-        /// </summary>
-        /// <param name="betTeam">The bet team.</param>
-        /// <param name="betType">Type of the bet.</param>
-        /// <returns>The bet team of input bet type.</returns>
-        public static string GetBetTeam(string betTeam, int betType)
-        {
-            if (string.IsNullOrEmpty(betTeam))
-            {
-                return betTeam;
-            }
-
-            char[] chars = betTeam.ToCharArray();
-            int c = chars.Length;
-
-            string returnValue = string.Empty;
-            
-            if (betType == 14 || betType == 127)
-            {
-                // FGLG or 1H FGLG
-                returnValue = GetFGLGBetTeam(betType, chars);
-            }            
-            else if (betType == 16)
-            {
-                // HTFT
-                returnValue = GetHTFTBetTeam(betType, chars);
-            }
-            else
-            {
-                return betTeam;
-            }
-
-            return returnValue;
-        }        
+        [SuppressMessage("Microsoft.Globalization", "CA1305:SpecifyIFormatProvider", Justification = "Reviewed")]
 
         /// <summary>
         /// HDPs the specified value.
@@ -171,7 +121,7 @@ namespace Fanex.BetList.Core.Utils
         /// <returns>Converted value.</returns>
         public static string Odds(object odds, object betType, object oddsType)
         {
-            double d = ConvertByBetType.GetOddsByBetType(Convert.ToDouble(odds), Convert.ToInt32(betType), Convert.ToInt32(oddsType));
+            double d = GetOddsByBetType(Convert.ToDouble(odds), Convert.ToInt32(betType), Convert.ToInt32(oddsType));
             if (d < 0)
             {
                 return string.Format(minus, string.Format(Formatter.DECIMALFORMAT3, d));
@@ -195,7 +145,7 @@ namespace Fanex.BetList.Core.Utils
         /// <returns>Converted value.</returns>
         public static string VirtualHorseRacingOdds(object odds, object betType, object oddsType)
         {
-            double d = ConvertByBetType.GetOddsByBetType(Convert.ToDouble(odds), Convert.ToInt32(betType), Convert.ToInt32(oddsType));
+            double d = GetOddsByBetType(Convert.ToDouble(odds), Convert.ToInt32(betType), Convert.ToInt32(oddsType));
             if (d < 0)
             {
                 return string.Format(minus, string.Format(Formatter.DECIMALFORMAT3, d));
@@ -218,7 +168,7 @@ namespace Fanex.BetList.Core.Utils
         /// <returns>Converted value.</returns>
         public static object OddsType(object betType, object oddsType)
         {
-            return ConvertByBetType.ShowOddsByBettype(Convert.ToInt32(betType), Convert.ToInt32(oddsType));
+            return ShowOddsByBettype(Convert.ToInt32(betType), Convert.ToInt32(oddsType));
         }
 
         /// <summary>
@@ -385,92 +335,6 @@ namespace Fanex.BetList.Core.Utils
             {
                 return string.Format(Formatter.DECIMALFORMAT20, d);
             }
-        }
-
-        /// <summary>
-        /// Gets the HTFT bet team.
-        /// </summary>
-        /// <param name="betType">Type of the bet.</param>
-        /// <param name="chars">The chars.</param>
-        /// <returns>The bet team of input bet type.</returns>
-        private static string GetHTFTBetTeam(int betType, char[] chars)
-        {
-            var returnValue = string.Empty;
-            int c = chars.Length;
-
-            if (betType == 16)
-            {
-                if (chars[0] == '1')
-                {
-                    returnValue = CoreLang.h;
-                }
-                else if (chars[0] == '2')
-                {
-                    returnValue = CoreLang.a;
-                }
-                else
-                {
-                    returnValue = CoreLang.d;
-                }
-
-                if (chars[c - 1] == '1')
-                {
-                    returnValue += CoreLang.h;
-                }
-                else if (chars[c - 1] == '2')
-                {
-                    returnValue += CoreLang.a;
-                }
-                else
-                {
-                    returnValue += CoreLang.d;
-                }
-            }
-
-            return returnValue;
-        }
-
-        /// <summary>
-        /// Gets the FGLG bet team.
-        /// </summary>
-        /// <param name="betType">Type of the bet.</param>
-        /// <param name="chars">The chars.</param>
-        /// <returns>The bet team of input bet type.</returns>
-        private static string GetFGLGBetTeam(int betType, char[] chars)
-        {
-            var returnValue = string.Empty;
-            int c = chars.Length;
-
-            if (betType == 14 || betType == 127)
-            {
-                if (chars[0] == '1')
-                {
-                    returnValue = CoreLang.home;
-                }
-                else if (chars[0] == '2')
-                {
-                    returnValue = CoreLang.away;
-                }
-                else
-                {
-                    returnValue = CoreLang.no0;
-                }
-
-                if (chars[c - 1] == '1')
-                {
-                    returnValue += "&nbsp;" + CoreLang.FG;
-                }
-                else if (chars[c - 1] == '2')
-                {
-                    returnValue += "&nbsp;" + CoreLang.LG;
-                }
-                else
-                {
-                    returnValue += "&nbsp;" + CoreLang.goal;
-                }
-            }
-
-            return returnValue;
-        }
+        }            
     }
 }

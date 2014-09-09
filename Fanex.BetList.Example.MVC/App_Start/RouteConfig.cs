@@ -19,8 +19,8 @@ namespace Fanex.BetList.Example.MVC
                 url: "{controller}/{action}/{id}",
                 defaults: new
                 {
-                    controller = "Home",
-                    action = "Index",
+                    controller = "BetList",
+                    action = "All",
                     id = UrlParameter.Optional
                 }
             );

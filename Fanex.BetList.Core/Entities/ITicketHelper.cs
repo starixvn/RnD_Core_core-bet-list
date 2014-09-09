@@ -1,19 +1,4 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="ITicketHelper.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.11.16">Create</change>
-//     <change who="Marc.Bui" date="2012.12.19">Remove GetMixParlayDetail</change>
-//     <change who="Marc.Bui" date="2012.12.26">Add awayId to GetHorseTeamNameById in case some teams use awayId to resolve sport name</change>
-//     <change who="Marc.Bui" date="2013.03.11">Add ClientDetailSystemParlayFunction for easy customization</change>
-//     <change who="Marc.Bui" date="2013.03.19">Add ClientSystemParlaySubbetsDetailFunction & ClientMixParlaySubbetsDetailFunction</change>
-//     <change who="Marc.Bui" date="2013.10.23">Refactor & apply stylecop.</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Entities
+﻿namespace Fanex.BetList.Core.Entities
 {
     using System.Collections.Generic;
 

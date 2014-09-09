@@ -1,29 +1,16 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Choice1220.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2013.02.27">Create</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System.Collections.Generic;
-    using Fanex.BetList.Core.Entities;
+    using Entities;
 
     /// <summary>
     /// Virtual Tennis - PlayerWin.
     /// </summary>
     public class Choice1220 : Choice1
     {
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
-            base.BuildChoice(ticket, ticketHelper, ticketData);
-
-            this.Template.Handicap = null;
-            this.Template.betTeamClassName = BLUNDERDOG;            
+            Template.Handicap = null;
+            Template.betTeamClassName = Underdog;
         }
     }
 }

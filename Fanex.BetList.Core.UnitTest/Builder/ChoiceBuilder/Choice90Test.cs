@@ -2,11 +2,11 @@
 {
     using System;
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.UnitTest.Common.Enums;
+    using App_GlobalResources;
+    using Common.Enums;
+    using Core.Builder.ChoiceBuilder;
+    using Core.Templates;
+    using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -15,7 +15,7 @@
     /// </summary>
     public class Choice90Test
     {
-        private static object[] liveScores = 
+        private static readonly object[] LiveScores =
         {
             // ticket.Live, betId, liveScore
             new object[] { true, null, string.Empty },
@@ -25,6 +25,7 @@
         };
 
         #region betTeamMap
+
         private static IDictionary<string, string> betTeamMap = new Dictionary<string, string>
                                                                 {
                                                                     { "1-1", "1~5" },
@@ -131,7 +132,8 @@
                                                                     { "5-74", "74" },
                                                                     { "5-75", "75" }
                                                                 };
-        #endregion
+
+        #endregion betTeamMap
 
         private Choice90 _choice;
         private ITicket _ticket;
@@ -147,9 +149,9 @@
         }
 
         [Test]
-        public void BuildChoice_Always_SetScoreBlockIsNull()
+        public void BuildScore_Always_SetScoreBlockIsNull()
         {
-            // Act            
+            // Act
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
@@ -157,7 +159,7 @@
         }
 
         [Test]
-        public void BuildChoice_Always_SetMatchVSBlockIsNull()
+        public void BuildMatch_Always_SetMatchVSBlockIsNull()
         {
             // Act
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -167,24 +169,24 @@
         }
 
         [Test]
-        public void BuildChoice_Always_SetHandicapIsEmpty()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsEmpty()
         {
             // Act
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert            
+            // Assert
             Assert.IsNullOrEmpty(choiceTemplate.Handicap.handicap);
         }
 
         [Test]
-        public void BuildChoice_Always_SetBetTypeNameIsNumberGroupResource()
+        public void BuildBetType_Always_SetBetTypeNameIsNumberGroupResource()
         {
             // Act
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
             var actualBetTypeName = choiceTemplate.BetType.betTypeName;
 
             // Assert
-            var expectedBetTypeName = CoreLang.numberGroup;
+            var expectedBetTypeName = CoreBetList.numberGroup;
             Assert.AreEqual(expectedBetTypeName, actualBetTypeName);
         }
 
@@ -192,27 +194,27 @@
         ///  Build choice function always set bet team by combined number game no and match code.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetHomeTeamIsJoinedByNumberGameNoResourceAndMatchCode()
+        public void BuildMatch_Always_SetHomeTeamIsJoinedByNumberGameNoResourceAndMatchCode()
         {
             // Arrange
             _ticket.MatchCode = "6969";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());            
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            var expectedHomeTeam = string.Join(null, CoreLang.numbergameno, "&nbsp;", _ticket.MatchCode);
+            var expectedHomeTeam = string.Join(null, CoreBetList.numbergameno, "&nbsp;", _ticket.MatchCode);
             Assert.AreEqual(expectedHomeTeam, _choice.Template.Match.homeTeam);
         }
 
         [Test]
-        public void BuildChoice_Always_SetBetTeamCssClassNameIsFavorite()
+        public void BuildBetTeam_Always_SetBetTeamCssClassNameIsFavorite()
         {
             // Act
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
             var actualBetTeamCssClass = choiceTemplate.betTeamClassName;
 
-            // Assert            
+            // Assert
             Assert.AreEqual("favorite", actualBetTeamCssClass);
         }
 
@@ -222,8 +224,8 @@
         /// <param name="isLive"> Is live ticket.</param>
         /// <param name="betId"> Bet id of ticket.</param>
         /// <param name="liveScore"> Live score status of ticket.</param>
-        [Test, TestCaseSource("liveScores")]
-        public void BuildChoice_WhenCalled_SetValidNameForBetTeam(bool isLive, long? betId, string liveScore)
+        [Test, TestCaseSource("LiveScores")]
+        public void BuildBetTeam_WhenCalled_SetValidNameForBetTeam(bool isLive, long? betId, string liveScore)
         {
             foreach (string key in betTeamMap.Keys)
             {
@@ -240,9 +242,9 @@
                 // Assert
                 Assert.AreEqual(string.Join(null, betTeamMap[key], liveScore), _choice.Template.betTeam);
 
-                // re-setup 
+                // re-setup
                 Setup();
             }
-        }       
+        }
     }
 }

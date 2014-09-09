@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.UnitTest.Common.Enums;
+    using App_GlobalResources;
+    using Common.Enums;
+    using Core.Builder.ChoiceBuilder;
+    using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -31,7 +31,7 @@
         /// The value of Template.betTeam is always [HomeTeam YES] when bet team contains character h and not contains y.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamContainsCharacterhAndNotContainsCharacterY_BetTeamAreHomeTeamNameAndLableNoRescoure()
+        public void BuildBetTeam_BetTeamContainsCharacterhAndNotContainsCharacterY_BetTeamAreHomeTeamNameAndLableNoRescoure()
         {
             // Arrange
             _ticket.BetTeam = "text h";
@@ -41,7 +41,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedBetTeam = string.Format(BetTeamTemplate, _choice.Template.Match.homeTeam, CoreLang.lblNo.ToUpper());
+            string expectedBetTeam = string.Format(BetTeamTemplate, _choice.Template.Match.homeTeam, CoreBetList.lblNo.ToUpper());
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
@@ -49,7 +49,7 @@
         /// The value of Template.betTeam is always [AwayTeam NO] when bet team not contains character h and not contains y.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamContainsCharacterNotCharacterhAndNotContainsCharacterY_BetTeamAreAwayTeamNameAndLableNoRescoure()
+        public void BuildBetTeam_BetTeamContainsCharacterNotCharacterhAndNotContainsCharacterY_BetTeamAreAwayTeamNameAndLableNoRescoure()
         {
             // Arrange
             _ticket.BetTeam = string.Empty;
@@ -59,7 +59,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedBetTeam = string.Format(BetTeamTemplate, _ticketHelper.GetTeamNameById(_ticket.AwayId), CoreLang.lblNo.ToUpper());
+            string expectedBetTeam = string.Format(BetTeamTemplate, _ticketHelper.GetTeamNameById(_ticket.AwayId), CoreBetList.lblNo.ToUpper());
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
@@ -67,7 +67,7 @@
         /// The value of Template.betTeam is always [HomeTeam YES] when bet team contains character h and contains y.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamContainsCharacterhAndContainsCharacterY_BetTeamAreHomeTeamNameAndLableYesRescoure()
+        public void BuildBetTeam_BetTeamContainsCharacterhAndContainsCharacterY_BetTeamAreHomeTeamNameAndLableYesRescoure()
         {
             // Arrange
             _ticket.BetTeam = "text h y";
@@ -77,7 +77,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedBetTeam = string.Format(BetTeamTemplate, _choice.Template.Match.homeTeam, CoreLang.lblYes.ToUpper());
+            string expectedBetTeam = string.Format(BetTeamTemplate, _choice.Template.Match.homeTeam, CoreBetList.lblYes.ToUpper());
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
@@ -85,7 +85,7 @@
         /// The value of Template.betTeam is always [AwayTeam YES] when bet team contains not character h and contains y.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamNotContainsCharacterNotCharacterhAndContainsCharacterY_BetTeamAreAwayTeamNameAndLableYesRescoure()
+        public void BuildBetTeam_BetTeamNotContainsCharacterNotCharacterhAndContainsCharacterY_BetTeamAreAwayTeamNameAndLableYesRescoure()
         {
             // Arrange
             _ticket.BetTeam = "text y";
@@ -95,7 +95,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedBetTeam = string.Format(BetTeamTemplate, _ticketHelper.GetTeamNameById(_ticket.AwayId), CoreLang.lblYes.ToUpper());
+            string expectedBetTeam = string.Format(BetTeamTemplate, _ticketHelper.GetTeamNameById(_ticket.AwayId), CoreBetList.lblYes.ToUpper());
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
@@ -103,7 +103,7 @@
         /// The value of Template.Handicap.handicap is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetHandicapIsNull()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());

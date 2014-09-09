@@ -1,17 +1,9 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Choice6.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.11.16">Create</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Entities;
+    using Constants;
+    using Entities;
+    using Fanex.BetList.Core.App_GlobalResources;
 
     /// <summary>
     /// Total Goal.
@@ -19,21 +11,35 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     public class Choice6 : Choice1
     {
         /// <summary>
-        /// Builds the choice.
+        /// Set bet team to template.
         /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        /// <param name="ticket"> Total goal ticket.</param>
+        /// <param name="ticketHelper"> Valid ticker helper instance.</param>
+        /// <param name="ticketData"> Ticket data.</param>
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            base.BuildChoice(ticket, ticketHelper, ticketData);
-
-            this.Template.Handicap.handicap = null;
-
             // &nbsp; because export format
-            this.Template.betTeam = string.Join(null, new string[] { "&nbsp;", ticket.BetTeam });
+            var betTeam = ticket.BetTeam.ToLowerInvariant();
 
-            this.Template.betTeamClassName = BLFAVORITE;
+            switch (betTeam)
+            {
+                case "4-over":
+                case "4&over":
+                    betTeam = CoreBetList.FourAndOver;
+                    break;
+                case "7-over":
+                case "7&over":
+                    betTeam = CoreBetList.SevenAndOver;
+                    break;
+            }           
+
+            Template.betTeam = string.Join(null, new string[] { HtmlCharacters.NoneBreakingSpace, betTeam });
         }
+
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            Template.Handicap.handicap = null;
+            Template.betTeamClassName = Favorite;
+        }      
     }
 }

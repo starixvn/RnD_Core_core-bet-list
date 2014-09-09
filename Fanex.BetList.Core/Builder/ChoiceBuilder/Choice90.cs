@@ -1,8 +1,10 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Entities;
+    using System.Globalization;
+    using App_GlobalResources;
+    using Constants;
+    using Entities;
 
     /// <summary>
     /// Number Wheel.
@@ -121,22 +123,16 @@
                                                                     { "5-75", "75" }
                                                                 };
 
-        #endregion
+        #endregion BETTEAM MAP
 
         /// <summary>
-        /// Builds the choice.
+        /// Builds the bet team.
         /// </summary>
         /// <param name="ticket">The ticket.</param>
         /// <param name="ticketHelper">The ticket helper.</param>
         /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            base.BuildChoice(ticket, ticketHelper, ticketData);
-
-            this.Template.Score = null;
-            this.Template.Match.VS = null;
-            this.Template.Handicap.handicap = null;
-
             string betId = ticket.BetId.ToString();
             string liveScore = (!ticket.IsLive || betId == string.Empty) ? string.Empty : " [" + betId + "]";
             decimal hdp1 = ticket.Handicap1;
@@ -144,14 +140,34 @@
 
             int.TryParse(ticket.BetTeam, out betteam);
 
-            var betTeamKey = string.Format("{0}-{1}", (int)ticket.Handicap1, betteam);
+            var betTeamKey = string.Format(CultureInfo.InvariantCulture, "{0}-{1}", (int)ticket.Handicap1, betteam);
             var betTeamName = betTeamMap.ContainsKey(betTeamKey) ? betTeamMap[betTeamKey] : string.Empty;
 
-            this.Template.betTeam = string.Join(null, new string[] { betTeamName, liveScore });
-            this.Template.betTeamClassName = BLFAVORITE;
+            Template.betTeam = string.Join(null, new string[] { betTeamName, liveScore });
+        }
 
-            this.Template.BetType.betTypeName = CoreLang.numberGroup;
-            this.Template.Match.homeTeam = string.Join(null, new string[] { CoreLang.numbergameno, "&nbsp;", ticket.MatchCode });
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            Template.Handicap.handicap = null;
+            Template.betTeamClassName = Favorite;
+        }
+
+        protected override void BuildScore(ITicket ticket)
+        {
+            Template.Score = null;
+        }
+
+        protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            base.BuildMatch(ticket, ticketHelper);
+
+            Template.Match.VS = null;
+            Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
+        }
+
+        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {
+            Template.BetType.betTypeName = CoreBetList.numberGroup;
         }
     }
 }

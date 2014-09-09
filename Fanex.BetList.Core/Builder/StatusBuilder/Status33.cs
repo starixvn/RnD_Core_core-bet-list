@@ -1,21 +1,9 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Status33.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.12.26">Create</change>
-//     <change who="Marc.Bui" date="2013.01.25">Update export excel</change>
-//     <change who="Marc.Bui" date="2013.02.01">Change statuses to show</change>
-//     <change who="Marc.Bui" date="2013.02.27">Add GetReferenceData for Odds 1233</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.StatusBuilder
+﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Entities;
+    using System.Globalization;
+    using App_GlobalResources;
+    using Entities;
     using NPOI.SS.UserModel;
 
     /// <summary>
@@ -37,59 +25,6 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
         protected int PlaceBetId { get; set; }
 
         /// <summary>
-        /// Renders the specified ticket.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        /// <param name="isShowVNIP">If set to <c>true</c> [is show VNIP].</param>
-        /// <returns>Status_Template: the whole Status block, built on input data.</returns>
-        public override Templates.Status_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP)
-        {
-            base.Render(ticket, ticketHelper, ticketData, isShowVNIP);
-
-            // Custom Status generated from base class if ticketData has matched items for the current ticket
-            if (ticketData != null && ticketData.Count > 0)
-            {
-                List<ITicketData> foundTicketData = this.GetReferenceData(ticket, ticketData);
-
-                if (foundTicketData != null && foundTicketData.Count > 1)
-                {
-                    string winStatus = foundTicketData.Find(item => item.BetTypeId == WinBetId).Status.ToLower();
-                    string placeStatus = foundTicketData.Find(item => item.BetTypeId == PlaceBetId).Status.ToLower();
-
-                    string contextWinStatus = GetContextStatus(winStatus);
-                    string contextPlaceStatus = GetContextStatus(placeStatus);
-
-                    string[] tmpWinStatus = new string[] { "<span class='blue' style='font-weight:normal;'>", CoreBetList.win, ": ", "<b>", contextWinStatus, "</b>", "</span>" };
-
-                    string winStatusMarkup = string.Join(null, tmpWinStatus);
-
-                    string[] tmpPlaceStatus = new string[] { "<span class='' style='font-weight:normal;'>", CoreBetList.place, ": ", "<b>", contextPlaceStatus, "</b>", "</span>" };
-
-                    string placeStatusMarkup = string.Join(null, tmpPlaceStatus);
-
-                    string ticketBetStatus = ticket.Status.ToLower();
-
-                    switch (ticketBetStatus)
-                    {
-                        case BetStatus.Running:
-                        case BetStatus.Waiting:
-                        case BetStatus.Void:
-                        case BetStatus.Reject:
-                        case BetStatus.Refund:
-                            break;
-                        default:
-                            this.Template.result = string.Join(null, new string[] { winStatusMarkup, "<br/>", placeStatusMarkup });
-                            break;
-                    }
-                }
-            }
-
-            return Template;
-        }
-
-        /// <summary>
         /// Renders the RTF.
         /// </summary>
         /// <param name="ticket">The ticket.</param>
@@ -97,22 +32,24 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
         /// <param name="ticketData">The ticket data.</param>
         /// <param name="isShowVNIP">If set to <c>true</c> [VNIP is shown].</param>
         /// <param name="rtfHelper">The RTF helper.</param>
-        /// <returns>IRichTextString represents the Status block.</returns>
+        /// <returns>
+        /// IRichTextString represents the Status block.
+        /// </returns>
         public override IRichTextString RenderRTF(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP, RTFHelper rtfHelper)
         {
             Render(ticket, ticketHelper, ticketData, isShowVNIP);
 
             // Status != Win/Lose
-            if (this.Template.result.Length < 80)
+            if (Template.result.Length < 80)
             {
-                rtfHelper.RTFRenderer.AddText(this.Template.result, rtfHelper.PosFont);
+                rtfHelper.RTFRenderer.AddText(Template.result, rtfHelper.PosFont);
             }
             else
             {
-                int breakPos = this.Template.result.IndexOf("<br/>");
+                int breakPos = Template.result.IndexOf("<br/>");
 
-                string status_WinString = this.Template.result.Substring(0, breakPos);
-                string status_PlaceString = this.Template.result.Replace(status_WinString, string.Empty);
+                string status_WinString = Template.result.Substring(0, breakPos);
+                string status_PlaceString = Template.result.Replace(status_WinString, string.Empty);
 
                 string status_Win = ExtractStringBetweenTag("b", status_WinString);
                 string status_Place = ExtractStringBetweenTag("b", status_PlaceString);
@@ -130,6 +67,54 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
             rtfHelper.RTFRenderer.Clear();
 
             return rtfStatus;
+        }
+
+        /// <summary>
+        /// Builds the result.
+        /// </summary>
+        /// <param name="ticket">The ticket.</param>
+        /// <param name="ticketData">The ticket data.</param>
+        protected override void BuildResult(ITicket ticket, List<ITicketData> ticketData)
+        {
+            base.BuildResult(ticket, ticketData);
+
+            // Custom Status generated from base class if ticketData has matched items for the current ticket
+            if (ticketData != null && ticketData.Count > 0)
+            {
+                List<ITicketData> foundTicketData = GetReferenceData(ticket, ticketData);
+
+                if (foundTicketData != null && foundTicketData.Count > 1)
+                {
+                    string winStatus = foundTicketData.Find(item => item.BetTypeId == WinBetId).Status.ToLower();
+                    string placeStatus = foundTicketData.Find(item => item.BetTypeId == PlaceBetId).Status.ToLower();
+
+                    string contextWinStatus = GetResultString(winStatus);
+                    string contextPlaceStatus = GetResultString(placeStatus);
+
+                    string[] tmpWinStatus = new string[] { "<span class='blue' style='font-weight:normal;'>", CoreBetList.win, ": ", "<b>", contextWinStatus, "</b>", "</span>" };
+
+                    string winStatusMarkup = string.Join(null, tmpWinStatus);
+
+                    string[] tmpPlaceStatus = new string[] { "<span class='' style='font-weight:normal;'>", CoreBetList.place, ": ", "<b>", contextPlaceStatus, "</b>", "</span>" };
+
+                    string placeStatusMarkup = string.Join(null, tmpPlaceStatus);
+
+                    string ticketBetStatus = ticket.Status.ToLower(CultureInfo.InvariantCulture);
+
+                    switch (ticketBetStatus)
+                    {
+                        case BetStatus.Running:
+                        case BetStatus.Waiting:
+                        case BetStatus.Void:
+                        case BetStatus.Reject:
+                        case BetStatus.Refund:
+                            break;
+                        default:
+                            Template.result = string.Join(null, new string[] { winStatusMarkup, "<br/>", placeStatusMarkup });
+                            break;
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -157,36 +142,6 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
             int startIndex = source.IndexOf(startTag) + startTag.Length;
             int endIndex = source.IndexOf(endTag, startIndex);
             return source.Substring(startIndex, endIndex - startIndex);
-        }
-
-        /// <summary>
-        /// Gets the context status.
-        /// </summary>
-        /// <param name="betStatus">The bet status.</param>
-        /// <returns>Status in context.</returns>
-        private string GetContextStatus(string betStatus)
-        {
-            switch (betStatus)
-            {
-                case BetStatus.Draw:
-                    return CoreBetList.draw;
-                case BetStatus.Lose:
-                    return CoreBetList.lose;
-                case BetStatus.Refund:
-                    return CoreBetList.refund;
-                case BetStatus.Reject:
-                    return CoreBetList.reject;
-                case BetStatus.Running:
-                    return CoreBetList.running;
-                case BetStatus.Void:
-                    return CoreBetList.voided;
-                case BetStatus.Waiting:
-                    return CoreBetList.waiting;
-                case BetStatus.Won:
-                    return CoreBetList.won;
-                default:
-                    return string.Empty;
-            }
         }
     }
 }

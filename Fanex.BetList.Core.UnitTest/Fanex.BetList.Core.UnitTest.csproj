@@ -58,8 +58,11 @@
   <ItemGroup>
     <Compile Include="Builder\BetListHTMLBuilderTest.cs" />
     <Compile Include="Builder\ChoiceBuilder\3rd\Choice_22006Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice128Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice131Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice133Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1101Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice143Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice140Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice13Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice152Test.cs" />
@@ -88,7 +91,6 @@
     <Compile Include="Builder\ChoiceBuilder\Choice1235Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1236Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice126Test.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice127Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1301Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1303Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1304Test.cs" />
@@ -130,6 +132,9 @@
     <Compile Include="Builder\ChoiceBuilder\Choice1309Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice29Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice129Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice130Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice136Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds29Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds71Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds33Test.cs" />
@@ -192,6 +197,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="runopencover.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="runtests.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj">
@@ -199,7 +210,9 @@
       <Name>Fanex.BetList.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="CodeAnalysis\CodeAnalysisConfiguration.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

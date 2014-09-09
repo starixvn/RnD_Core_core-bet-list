@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.UnitTest.Common.Enums;
+    using App_GlobalResources;
+    using Common.Enums;
+    using Core.Builder.ChoiceBuilder;
+    using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -31,7 +31,7 @@
         /// The value of Template.Handicap.handicap is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetHandicapIsNull()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -44,7 +44,7 @@
         /// The value of Template.betTeam is always Home or Draw.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs1x_BetTeamAreHomeTeamNameAndOrAndDrawResource()
+        public void BuildBetTeam_BetTeamIs1x_BetTeamAreHomeTeamNameAndOrAndDrawResource()
         {
             // Arrange
             _ticket.BetTeam = "1x";
@@ -62,7 +62,7 @@
         /// The value of Template.betTeam is always Away or Draw.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs2x_BetTeamAreAwayTeamNameAndOrAndDrawResource()
+        public void BuildBetTeam_BetTeamIs2x_BetTeamAreAwayTeamNameAndOrAndDrawResource()
         {
             // Arrange
             _ticket.BetTeam = "2x";
@@ -80,7 +80,7 @@
         /// The value of Template.betTeam is always Home or Away.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs12_BetTeamAreHomeTeamNameAndOrAndAwayTeamName()
+        public void BuildBetTeam_BetTeamIs12_BetTeamAreHomeTeamNameAndOrAndAwayTeamName()
         {
             // Arrange
             _ticket.BetTeam = "12";

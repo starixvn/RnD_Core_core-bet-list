@@ -1,18 +1,9 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Choice26.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.11.16">Create</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Constants;
+    using Entities;
 
     /// <summary>
     /// Both/One/Neither team to score.
@@ -20,31 +11,35 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     public class Choice26 : Choice1
     {
         /// <summary>
-        /// Builds the choice.
+        /// Builds the bet team.
         /// </summary>
         /// <param name="ticket">The ticket.</param>
         /// <param name="ticketHelper">The ticket helper.</param>
         /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            base.BuildChoice(ticket, ticketHelper, ticketData);
+            var betTeam = string.Empty;
 
-            this.Template.Handicap.handicap = null;
-
-            if (ticket.BetTeam == "b")
+            switch (ticket.BetTeam)
             {
-                this.Template.betTeam = CoreBetList.lblBoth;
-            }
-            else if (ticket.BetTeam == "o")
-            {
-                this.Template.betTeam = CoreBetList.lblOne;
-            }
-            else if (ticket.BetTeam == "n")
-            {
-                this.Template.betTeam = CoreBetList.nogoal;
+                case BetTeamValue.B:
+                    betTeam = CoreBetList.lblBoth;
+                    break;
+                case BetTeamValue.O:
+                    betTeam = CoreBetList.lblOne;
+                    break;
+                case BetTeamValue.N:
+                    betTeam = CoreBetList.nogoal;
+                    break;
             }
 
-            this.Template.betTeamClassName = BLFAVORITE;
+            Template.betTeam = betTeam;
+        }
+
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            Template.Handicap.handicap = null;
+            Template.betTeamClassName = Favorite;
         }
     }
 }

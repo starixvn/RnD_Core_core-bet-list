@@ -1,29 +1,17 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Choice1104.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Faisall.Tran" date="2013.06.18">Create</change>
-//     <change who="Marc.Bui" date="2013.10.09">Check stylecop & refactor</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
+    using App_GlobalResources;
+    using Constants;
+    using Entities;
 
     /// <summary>
     /// Live Casino - Live Roulette.
     /// </summary>
     public class Choice1104 : Choice1102
     {
-        protected override void BuildChoice(Entities.ITicket ticket, Entities.ITicketHelper ticketHelper, List<Entities.ITicketData> ticketData)
+        protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
         {
-            base.BuildChoice(ticket, ticketHelper, ticketData);
-
-            this.Template.League.LeagueName.leagueName = string.Join(null, new string[] { CoreLang.LiveRoulette, "&nbsp;", ticket.ShowTime });
+            Template.League.LeagueName.leagueName = string.Join(null, new string[] { CoreBetList.LiveRoulette, HtmlCharacters.NoneBreakingSpace, ticket.ShowTime });
         }
     }
 }

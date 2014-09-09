@@ -1,8 +1,9 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.UnitTest.Common.Enums;
+    using Common.Enums;
+    using Core.Builder.ChoiceBuilder;
+    using Entities;
+    using Fanex.BetList.Core.App_GlobalResources;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -12,6 +13,15 @@
     [TestFixture]
     public class Choice14Test
     {
+        private static readonly object[] ExpectedBetTeams = 
+        {
+            new object[] { "0:0", CoreBetList.no0 + "&nbsp;" + CoreBetList.goal },
+            new object[] { "1:1", CoreBetList.home + "&nbsp;" + CoreBetList.FG },
+            new object[] { "1:2", CoreBetList.home + "&nbsp;" + CoreBetList.LG },
+            new object[] { "2:1", CoreBetList.away + "&nbsp;" + CoreBetList.FG },
+            new object[] { "2:2", CoreBetList.away + "&nbsp;" + CoreBetList.LG }
+        };
+
         private IChoice _choice;
         private ITicket _ticket;
         private ITicketHelper _ticketHelper;
@@ -29,7 +39,7 @@
         /// The value of Template.ticketStatus is always void when Ticket.Status = void.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetHandicapIsNull()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -42,7 +52,7 @@
         /// The value of Template.betTeam is always bet team name.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetBetTeamIsEmpty()
+        public void BuildBetTeam_Always_SetBetTeamIsEmpty()
         {
             // Arrange
             _ticket.BetTeam = string.Empty;
@@ -58,7 +68,7 @@
         /// The value of Template.betTeamClassName is always favorite.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetBetTeamClassNameIsFavorite()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -67,5 +77,18 @@
             const string CSS_CLASS_FAVORITE = "favorite";
             Assert.AreEqual(CSS_CLASS_FAVORITE, _choice.Template.betTeamClassName);
         }
+
+        [Test, TestCaseSource("ExpectedBetTeams")]
+        public void BuildBetTeam_Always_SetRightBetTeam(string betTeam, string expectedResult)
+        {
+            // Arrange
+            _ticket.BetTeam = betTeam;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert            
+            Assert.AreEqual(expectedResult, _choice.Template.betTeam);
+        }       
     }
 }

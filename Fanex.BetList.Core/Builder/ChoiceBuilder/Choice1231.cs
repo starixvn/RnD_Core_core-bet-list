@@ -1,84 +1,46 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Choice1231.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2013.02.27">Create</change>
-//     <change who="Marc.Bui" date="2013.03.11">Update condition to work with Template changes made by Steven</change>
-//     <change who="Marc.Bui" date="2013.03.11">Update to show MatchCode with horse name</change>
-//     <change who="Marc.Bui" date="2013.10.09">Check stylecop & refactor</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System;
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Entities;
+    using Entities;
 
     /// <summary>
     /// Virtual Horse Racing - Win.
     /// </summary>
     public class Choice1231 : Choice1
     {
+        private const string DateTimeFormat = "M/d/yyyy hh:mm";
+
         /// <summary>
-        /// Builds the choice.
+        /// Builds the match.
         /// </summary>
         /// <param name="ticket">The ticket.</param>
         /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
         {
-            base.BuildChoice(ticket, ticketHelper, ticketData);
-
-            if (this.Template.Match != null)
+            if (Template.Match != null)
             {
-                this.Template.Match.VS = null;
-                this.Template.Match.home_firstGoal_lastGoal = null;
-                this.Template.Match.away_firstGoal_lastGoal = null;
-                this.Template.Match.awayTeam = null;
-            }
+                Template.Match.VS = null;
+                Template.Match.home_firstGoal_lastGoal = null;
+                Template.Match.away_firstGoal_lastGoal = null;
+                Template.Match.awayTeam = null;
 
-            this.Template.Handicap.handicap = null;
-
-            this.Template.League.LeagueName.leagueName = ticketHelper.GetLeagueNameById(ticket.LeagueId);
-
-            this.Template.betTeam = string.Join(null, new string[] { ticket.MatchCode, " - ", ticketHelper.GetHorseTeamNameById(ticket.HomeId, ticket.AwayId) });
-
-            this.Template.betTeamClassName = BLFAVORITE;
-
-            DateTime eventTime;
-
-            if (DateTime.TryParse(ticket.ShowTime, out eventTime))
-            {
-                this.Template.Match.homeTeam = eventTime.ToString("M/d/yyyy hh:mm");
-            }
-            else
-            {
-                this.Template.Match.homeTeam = ticket.ShowTime;
+                DateTime eventTime;
+                Template.Match.homeTeam = DateTime.TryParse(ticket.ShowTime, out eventTime) ? eventTime.ToString(DateTimeFormat) : ticket.ShowTime;
             }
         }
 
-        /// <summary>
-        /// Calculates the FG _ LG.
-        /// </summary>
-        /// <param name="betStatus">The bet status.</param>
-        /// <param name="homeFGLG">The home FGLG.</param>
-        /// <param name="awayFGLG">The away FGLG.</param>
-        protected override void CalculateFG_LG(string betStatus, ref string homeFGLG, ref string awayFGLG)
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            // There's no first goal last goal for this bettype
-            homeFGLG = string.Empty;
-            awayFGLG = string.Empty;
+            Template.betTeam = string.Join(null, new string[] { ticket.MatchCode, " - ", ticketHelper.GetHorseTeamNameById(ticket.HomeId, ticket.AwayId) });
         }
 
-        /// <summary>
-        /// Calculates the F g_ L g_ excel.
-        /// </summary>
-        /// <param name="betStatus">The bet status.</param>
-        /// <param name="homeFGLG">The home FGLG.</param>
-        /// <param name="awayFGLG">The away FGLG.</param>
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            Template.Handicap.handicap = null;
+            Template.betTeamClassName = Favorite;
+        }
+
         protected override void CalculateFG_LG_Excel(string betStatus, ref string homeFGLG, ref string awayFGLG)
         {
             // There's no first goal last goal for this bettype

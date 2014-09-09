@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.UnitTest.Common.Enums;
+    using App_GlobalResources;
+    using Common.Enums;
+    using Core.Builder.ChoiceBuilder;
+    using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -30,7 +30,7 @@
         /// The value of Template.League.LeagueName.leagueName is always Party Baccarat and Ticket.ShowTime.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetLeagueNameAreLiveBaccaratResourceAndShowTime()
+        public void BuildLeague_Always_SetLeagueNameAreLiveBaccaratResourceAndShowTime()
         {
             // Arrange
             _ticket.ShowTime = "show time";
@@ -39,7 +39,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedLeagueName = string.Format("{0}&nbsp;{1}", CoreLang.LiveBaccarat, _ticket.ShowTime);
+            string expectedLeagueName = string.Format("{0}&nbsp;{1}", CoreBetList.LiveBaccarat, _ticket.ShowTime);
             Assert.AreEqual(expectedLeagueName, _choice.Template.League.LeagueName.leagueName);
         }
     }

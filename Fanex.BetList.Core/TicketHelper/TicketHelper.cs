@@ -1,24 +1,7 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="TicketHelper.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.12.11">Create</change>
-//     <change who="Marc.Bui" date="2012.12.19">Remove GetMixParlayDetail</change>
-//     <change who="Marc.Bui" date="2012.12.26">Amend GetHorseTeamNameById</change>
-//     <change who="Marc.Bui" date="2013.03.11">Add ClientDetailSystemParlayFunction for easy customization</change>
-//     <change who="Marc.Bui" date="2013.03.11">Add ClientDetailMixParlayFunction for easy customization</change>
-//     <change who="Marc.Bui" date="2013.03.19">Add ClientSystemParlaySubbetsDetailFunction & ClientMixParlaySubbetsDetailFunction</change>
-//     <change who="Marc.Bui" date="2013.05.31">Add export detail for *Parlay tickets</change>
-//     <change who="Marc.Bui" date="2013.10.24">Apply stylecop</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.TicketHelper
+﻿namespace Fanex.BetList.Core.TicketHelper
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Entities;
+    using Entities;
     using Sunplus.Core.Common.IPs;
 
     /// <summary>

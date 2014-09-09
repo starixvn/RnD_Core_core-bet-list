@@ -1,17 +1,7 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="RtfTextRender.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.12.10">Create</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Utils
+﻿namespace Fanex.BetList.Core.Utils
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Entities;
+    using Entities;
     using NPOI.HSSF.UserModel;
     using NPOI.SS.UserModel;
 
@@ -75,8 +65,7 @@ namespace Fanex.BetList.Core.Utils
                 }
 
                 if (font != null)
-                {
-                    int startIndex = textIndex;
+                {                   
                     int endIndex = textIndex + block.Text.Length;
                     result.ApplyFont(textIndex, endIndex, font);
                 }

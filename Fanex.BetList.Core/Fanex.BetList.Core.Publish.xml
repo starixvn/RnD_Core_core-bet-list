@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="\\10.18.200.209\d$\Web\RnD\Core-Betlist" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="Styles/Images/1F.gif" publishTime="07/28/2014 12:26:38" />
+    <file relUrl="bin/NPOI.xml" publishTime="07/31/2014 15:43:42" />
+    <file relUrl="Templates/Choice.htm" publishTime="05/30/2014 09:39:17" />
+    <file relUrl="Styles/Images/lastGoal.gif" publishTime="07/28/2014 12:26:38" />
+    <file relUrl="Styles/Images/1L.gif" publishTime="07/28/2014 12:26:38" />
+    <file relUrl="bin/vi-VN/Fanex.BetList.Core.resources.dll" publishTime="08/01/2014 10:39:18" />
+    <file relUrl="bin/ko-KR/Fanex.BetList.Core.resources.dll" publishTime="08/01/2014 10:39:18" />
+    <file relUrl="Styles/Images/firstGoal.gif" publishTime="07/28/2014 12:26:38" />
+    <file relUrl="bin/Fanex.BetList.Core.pdb" publishTime="08/01/2014 10:39:17" />
+    <file relUrl="bin/SPSRemoting.dll" publishTime="07/31/2014 15:37:20" />
+    <file relUrl="Templates/Resources/BetList.css" publishTime="05/30/2014 09:39:17" />
+    <file relUrl="bin/ICSharpCode.SharpZipLib.dll" publishTime="07/31/2014 15:43:42" />
+    <file relUrl="bin/TplCore.dll" publishTime="07/28/2014 12:26:40" />
+    <file relUrl="bin/IBCFile.dll" publishTime="07/31/2014 15:37:20" />
+    <file relUrl="bin/Fanex.BetList.Core.dll" publishTime="08/01/2014 10:39:17" />
+    <file relUrl="packages.config" publishTime="07/31/2014 15:46:53" />
+    <file relUrl="Templates/Odds.htm" publishTime="05/30/2014 09:39:17" />
+    <file relUrl="bin/zh-CN/Fanex.BetList.Core.resources.dll" publishTime="08/01/2014 10:39:18" />
+    <file relUrl="Templates/Resources/Images/bgHeader.jpg" publishTime="05/30/2014 09:39:17" />
+    <file relUrl="Templates/Trans.htm" publishTime="05/30/2014 09:39:17" />
+    <file relUrl="Templates/Stake.htm" publishTime="05/30/2014 09:39:17" />
+    <file relUrl="bin/Sunplus.Core.Common.dll" publishTime="07/31/2014 15:46:53" />
+    <file relUrl="Templates/Status.htm" publishTime="05/30/2014 09:39:17" />
+    <file relUrl="bin/ja-JP/Fanex.BetList.Core.resources.dll" publishTime="08/01/2014 10:39:17" />
+    <file relUrl="bin/th-TH/Fanex.BetList.Core.resources.dll" publishTime="08/01/2014 10:39:18" />
+    <file relUrl="bin/NPOI.dll" publishTime="07/31/2014 15:43:42" />
+    <file relUrl="bin/zh-TW/Fanex.BetList.Core.resources.dll" publishTime="08/01/2014 10:39:18" />
+    <file relUrl="Styles/CoreBetList.css" publishTime="07/28/2014 12:26:38" />
+    <file relUrl="bin/RemotingRef.dll" publishTime="07/31/2014 15:37:20" />
+    <file relUrl="CodeAnalysis/CodeAnalysisConfiguration.xml" publishTime="08/01/2014 10:35:35" />
+    <file relUrl="Templates/SystemParlayDetail.htm" publishTime="07/31/2014 16:26:56" />
+  </publishProfile>
+</publishData>

@@ -1,22 +1,9 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Choice24.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.11.16">Create</change>
-//     <change who="Marc.Bui" date="2013.01.18">Update ScoreClassName to BLFAVORITE (red) for all bettypes</change>
-//     <change who="Marc.Bui" date="2013.02.21">Update showing Neutral</change>
-//     <change who="Marc.Bui" date="2013.10.09">Check stylecop & refactor</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Constants;
+    using Entities;
 
     /// <summary>
     /// Double Chance.
@@ -24,39 +11,41 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     public class Choice24 : Choice1
     {
         /// <summary>
-        /// Builds the choice.
+        /// Builds the bet team.
         /// </summary>
         /// <param name="ticket">The ticket.</param>
         /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>        
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        /// <param name="ticketData">The ticket data.</param>
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            base.BuildChoice(ticket, ticketHelper, ticketData);
+            string team = ticket.BetTeam.Contains("1") ? Template.Match.homeTeam : Template.Match.awayTeam;
+            string drawAway = ticket.BetTeam.EndsWith(BetTeamValue.X) ? CoreBetList.lblDraw : Template.Match.awayTeam;
 
-            this.Template.Handicap.handicap = null;
-            string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
-
-            string team = ticket.BetTeam.Contains("1") ? this.Template.Match.homeTeam : awayName;
-            string draw_away = ticket.BetTeam.EndsWith("x") ? CoreBetList.lblDraw : this.Template.Match.awayTeam;
-
-            string[] betteam = new string[] 
-                                { 
-                                    " <span class=\"", 
-                                    BLFAVORITE, 
-                                    "\">", 
-                                    team, 
-                                    "</span>", 
-                                    "&nbsp;", 
-                                    CoreBetList.lblOr.ToLower(), 
-                                    " <span class=\"", 
-                                    BLFAVORITE, 
-                                    "\">", 
-                                    "&nbsp;", 
-                                    draw_away, 
-                                    "</span>" 
+            string[] betteam = new string[]
+                                {
+                                    " <span class=\"",
+                                    Favorite,
+                                    "\">",
+                                    team,
+                                    "</span>",
+                                    HtmlCharacters.NoneBreakingSpace,
+                                    CoreBetList.lblOr.ToLower(),
+                                    " <span class=\"",
+                                    Favorite,
+                                    "\">",
+                                    HtmlCharacters.NoneBreakingSpace,
+                                    drawAway,
+                                    "</span>"
                                 };
 
-            this.Template.betTeam = string.Join(null, betteam);
+            Template.betTeam = string.Join(null, betteam);
+        }
+
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            base.BuildBetTeamClassNameAndHandicap(ticket);
+
+            Template.Handicap.handicap = null;
         }
     }
 }

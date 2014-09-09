@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.UnitTest.Common.Enums;
+    using App_GlobalResources;
+    using Common.Enums;
+    using Core.Builder.ChoiceBuilder;
+    using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -30,7 +30,7 @@
         /// The value of Template.Score.homeScore is always Ticket.LiveHomeScore.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetHomeScoreIsLiveHomeScore()
+        public void BuildScore_Always_SetHomeScoreIsLiveHomeScore()
         {
             // Arrange
             _ticket.LiveHomeScore = 1;
@@ -46,7 +46,7 @@
         /// The value of Template.Score.awayScore is always Ticket.LiveAwayScore.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetAwayScoreIsLiveAwayScore()
+        public void BuildScore_Always_SetAwayScoreIsLiveAwayScore()
         {
             // Arrange
             _ticket.LiveAwayScore = 1;
@@ -64,7 +64,7 @@
         /// <param name="isLive">If set to <c>true</c> [is live].</param>
         [TestCase(true)]
         [TestCase(false)]
-        public void BuildChoice_Always_SetScoreVisibleIsIsLive(bool isLive)
+        public void BuildScore_Always_SetScoreVisibleIsIsLive(bool isLive)
         {
             // Arrange
             _ticket.IsLive = isLive;
@@ -80,7 +80,7 @@
         /// The value of Template.League.LeagueName.leagueName is always league name get by identifier.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetLeagueNameIsLeagueName()
+        public void BuildLeague_Always_SetLeagueNameIsLeagueName()
         {
             // Arrange
             const string LEAGUE_NAME = "League name";
@@ -94,10 +94,27 @@
         }
 
         /// <summary>
+        /// The value of Template.League.LeagueName.leagueName is always league name get by identifier.
+        /// </summary>
+        [Test]
+        public void BuildSport_Always_SetSportNameIsSportName()
+        {
+            // Arrange
+            const string SPORT_NAME = "Sport name";
+            _ticketHelper.GetSportNameById(Arg.Any<int>()).Returns<string>(SPORT_NAME);
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            Assert.AreEqual(SPORT_NAME, _choice.Template.League.sportTypeName);
+        }
+
+        /// <summary>
         /// The value of Template.BetType.betTypeName is always bet type name get by identifier.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetBetTypeIsBetTypeName()
+        public void BuildBetType_Always_SetBetTypeIsBetTypeName()
         {
             // Arrange
             const string BET_TYPE_NAME = "Bet type name";
@@ -114,7 +131,7 @@
         /// The value of Template.Match.homeTeam is always [HomeTeamName (N)] if the ticket is neutral.
         /// </summary>
         [Test]
-        public void BuildChoice_NeutralTicket_HomeTeamAreHomeTeamNameAndSpaceAndCharacterNWithinParenthese()
+        public void BuildMatch_NeutralTicket_HomeTeamAreHomeTeamNameAndSpaceAndCharacterNWithinParenthese()
         {
             // Arrange
             _ticket.IsNeutral = true;
@@ -132,7 +149,7 @@
         /// The value of Template.Match.homeTeam is always [HomeTeamName] if the ticket is not neutral.
         /// </summary>
         [Test]
-        public void BuildChoice_NotNeutralTicket_HomeTeamIsHomeTeamName()
+        public void BuildMatch_NotNeutralTicket_HomeTeamIsHomeTeamName()
         {
             // Arrange
             const string HOME_TEAM_NAME = "Home team name";
@@ -150,7 +167,7 @@
         /// The value of Template.Match.awayTeam is always away team name.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetAwayTeamIsAwayTeamName()
+        public void BuildMatch_Always_SetAwayTeamIsAwayTeamName()
         {
             // Arrange
             const string AWAY_TEAM_NAME = "Away team name";
@@ -169,7 +186,7 @@
         /// <param name="eventStatus">The event status.</param>
         [TestCase("FL:0-1")]
         [TestCase("FL:2-1")]
-        public void CalculateFGLG_EventStatus_HomeFGLGIsLableLG(string eventStatus)
+        public void BuildFGLGLabel_EventStatus_HomeFGLGIsLableLG(string eventStatus)
         {
             // Arrange
             _ticket.EventStatus = eventStatus;
@@ -188,7 +205,7 @@
         /// <param name="eventStatus">The event status.</param>
         [TestCase("1FL:0-1")]
         [TestCase("1FL:2-1")]
-        public void CalculateFGLG_EventStatus_HomeFGLGIsLable1LG(string eventStatus)
+        public void BuildFGLGLabel_EventStatus_HomeFGLGIsLable1LG(string eventStatus)
         {
             // Arrange
             _ticket.EventStatus = eventStatus;
@@ -207,7 +224,7 @@
         /// <param name="eventStatus">The event status.</param>
         [TestCase("FL:0-1;1FL:0-1")]
         [TestCase("FL:2-1;1FL:2-1")]
-        public void CalculateFGLG_EventStatus_HomeFGLGAreLableLGAndLable1LG(string eventStatus)
+        public void BuildFGLGLabel_EventStatus_HomeFGLGAreLableLGAndLable1LG(string eventStatus)
         {
             // Arrange
             _ticket.EventStatus = eventStatus;
@@ -226,7 +243,7 @@
         /// <param name="eventStatus">The event status.</param>
         [TestCase("FL:0-2")]
         [TestCase("FL:1-2")]
-        public void CalculateFGLG_EventStatus_AwayFGLGIsLableLG(string eventStatus)
+        public void BuildFGLGLabel_EventStatus_AwayFGLGIsLableLG(string eventStatus)
         {
             // Arrange
             _ticket.EventStatus = eventStatus;
@@ -245,7 +262,7 @@
         /// <param name="eventStatus">The event status.</param>
         [TestCase("1FL:0-2")]
         [TestCase("1FL:1-2")]
-        public void CalculateFGLG_EventStatus_AwayFGLGIsLable1LG(string eventStatus)
+        public void BuildFGLGLabel_EventStatus_AwayFGLGIsLable1LG(string eventStatus)
         {
             // Arrange
             _ticket.EventStatus = eventStatus;
@@ -264,7 +281,7 @@
         /// <param name="eventStatus">The event status.</param>
         [TestCase("FL:0-2;1FL:0-2")]
         [TestCase("FL:1-2;1FL:1-2")]
-        public void CalculateFGLG_EventStatus_AwayFGLGAreLableLGAndLable1LG(string eventStatus)
+        public void BuildFGLGLabel_EventStatus_AwayFGLGAreLableLGAndLable1LG(string eventStatus)
         {
             // Arrange
             _ticket.EventStatus = eventStatus;
@@ -283,7 +300,7 @@
         /// <param name="eventStatus">The event status.</param>
         [TestCase("FL:1-0")]
         [TestCase("FL:1-2")]
-        public void CalculateFGLG_EventStatus_HomeFGLGIsLableFG(string eventStatus)
+        public void BuildFGLGLabel_EventStatus_HomeFGLGIsLableFG(string eventStatus)
         {
             // Arrange
             _ticket.EventStatus = eventStatus;
@@ -302,7 +319,7 @@
         /// <param name="eventStatus">The event status.</param>
         [TestCase("1FL:1-0")]
         [TestCase("1FL:1-2")]
-        public void CalculateFGLG_EventStatus_HomeFGLGIsLable1FG(string eventStatus)
+        public void BuildFGLGLabel_EventStatus_HomeFGLGIsLable1FG(string eventStatus)
         {
             // Arrange
             _ticket.EventStatus = eventStatus;
@@ -321,7 +338,7 @@
         /// <param name="eventStatus">The event status.</param>
         [TestCase("FL:1-0;1FL:1-0")]
         [TestCase("FL:1-2;1FL:1-2")]
-        public void CalculateFGLG_EventStatus_HomeFGLGAreLableFGAndLable1FG(string eventStatus)
+        public void BuildFGLGLabel_EventStatus_HomeFGLGAreLableFGAndLable1FG(string eventStatus)
         {
             // Arrange
             _ticket.EventStatus = eventStatus;
@@ -338,7 +355,7 @@
         /// The value of Template.Match.home_firstGoal_lastGoal is always label (F)(L) with these event status.
         /// </summary>
         [Test]
-        public void CalculateFGLG_EventStatusIsFL11_HomeFGLGAreLableFGAndLableLG()
+        public void BuildFGLGLabel_EventStatusIsFL11_HomeFGLGAreLableFGAndLableLG()
         {
             // Arrange
             _ticket.EventStatus = "FL:1-1";
@@ -355,7 +372,7 @@
         /// The value of Template.Match.home_firstGoal_lastGoal is always label (1F)(1L) with these event status.
         /// </summary>
         [Test]
-        public void CalculateFGLG_EventStatusIs1FL11_HomeFGLGAreLable1FGAndLable1LG()
+        public void BuildFGLGLabel_EventStatusIs1FL11_HomeFGLGAreLable1FGAndLable1LG()
         {
             // Arrange
             _ticket.EventStatus = "1FL:1-1";
@@ -372,7 +389,7 @@
         /// The value of Template.Match.home_firstGoal_lastGoal is always label (F)(L)(1F)(1L) with these event status.
         /// </summary>
         [Test]
-        public void CalculateFGLG_EventStatusIsFL11And1FL11_HomeFGLGAreLableFGLGAndLable1FG1LG()
+        public void BuildFGLGLabel_EventStatusIsFL11And1FL11_HomeFGLGAreLableFGLGAndLable1FG1LG()
         {
             // Arrange
             _ticket.EventStatus = "FL:1-1;1FL:1-1";
@@ -390,7 +407,7 @@
         /// The value of Template.Match.away_firstGoal_lastGoal is always label (F)(L) with these event status.
         /// </summary>
         [Test]
-        public void CalculateFGLG_EventStatusIsFL22_AwayFGLGAreLableFGAndLableLG()
+        public void BuildFGLGLabel_EventStatusIsFL22_AwayFGLGAreLableFGAndLableLG()
         {
             // Arrange
             _ticket.EventStatus = "FL:2-2";
@@ -407,7 +424,7 @@
         /// The value of Template.Match.away_firstGoal_lastGoal is always label (1F)(1L) with these event status.
         /// </summary>
         [Test]
-        public void CalculateFGLG_EventStatusIs1FL22_AwayFGLGAreLable1FGAndLable1LG()
+        public void BuildFGLGLabel_EventStatusIs1FL22_AwayFGLGAreLable1FGAndLable1LG()
         {
             // Arrange
             _ticket.EventStatus = "1FL:2-2";
@@ -424,7 +441,7 @@
         /// The value of Template.Match.away_firstGoal_lastGoal is always label (F)(L)(1F)(1L) with these event status.
         /// </summary>
         [Test]
-        public void CalculateFGLG_EventStatusIsFL22And1FL22_AwayFGLGAreLableFGLGAndLable1FG1LG()
+        public void BuildFGLGLabel_EventStatusIsFL22And1FL22_AwayFGLGAreLableFGLGAndLable1FG1LG()
         {
             // Arrange
             _ticket.EventStatus = "FL:2-2;1FL:2-2";
@@ -444,7 +461,7 @@
         /// <param name="eventStatus">The event status.</param>
         [TestCase("FL:2-0")]
         [TestCase("FL:2-1")]
-        public void CalculateFGLG_EventStatus_AwayFGLGIsLableFG(string eventStatus)
+        public void BuildFGLGLabel_EventStatus_AwayFGLGIsLableFG(string eventStatus)
         {
             // Arrange
             _ticket.EventStatus = eventStatus;
@@ -463,7 +480,7 @@
         /// <param name="eventStatus">The event status.</param>
         [TestCase("1FL:2-0")]
         [TestCase("1FL:2-1")]
-        public void CalculateFGLG_EventStatus_AwayFGLGIsLable1FG(string eventStatus)
+        public void BuildFGLGLabel_EventStatus_AwayFGLGIsLable1FG(string eventStatus)
         {
             // Arrange
             _ticket.EventStatus = eventStatus;
@@ -482,7 +499,7 @@
         /// <param name="eventStatus">The event status.</param>
         [TestCase("FL:2-0;1FL:2-0")]
         [TestCase("FL:2-1;1FL:2-1")]
-        public void CalculateFGLG_EventStatus_AwayFGLGAreLableFGAndLable1FG(string eventStatus)
+        public void BuildFGLGLabel_EventStatus_AwayFGLGAreLableFGAndLable1FG(string eventStatus)
         {
             // Arrange
             _ticket.EventStatus = eventStatus;
@@ -507,7 +524,7 @@
         [TestCase("1FL:2-2")]
         [TestCase("1FL:2-0")]
         [TestCase("1FL:0-2")]
-        public void CalculateFGLG_EventStatus_HomeFGLGIsEmpty(string eventStatus)
+        public void BuildFGLGLabel_EventStatus_HomeFGLGIsEmpty(string eventStatus)
         {
             // Arrange
             _ticket.EventStatus = eventStatus;
@@ -531,7 +548,7 @@
         [TestCase("1FL:1-1")]
         [TestCase("1FL:1-0")]
         [TestCase("1FL:0-1")]
-        public void CalculateFGLG_EventStatus_AwayFGLGIsEmpty(string eventStatus)
+        public void BuildFGLGLabel_EventStatus_AwayFGLGIsEmpty(string eventStatus)
         {
             // Arrange
             _ticket.EventStatus = eventStatus;
@@ -547,7 +564,7 @@
         /// The value of Template.betTeam is always Draw when bet team of ticket contains character x.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamContainsCharacterX_BetTeamIsDrawResource()
+        public void BuildBetTeam_BetTeamContainsCharacterX_BetTeamIsDrawResource()
         {
             // Arrange
             _ticket.BetTeam = "text x";
@@ -556,14 +573,14 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.AreEqual(CoreLang.lblDraw, _choice.Template.betTeam);
+            Assert.AreEqual(CoreBetList.lblDraw, _choice.Template.betTeam);
         }
 
         /// <summary>
         /// The value of Template.betTeam is always Template.Match.awayTeam when bet team of ticket is null.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIsNullBetTeamIsAwayTeamName()
+        public void BuildBetTeam_BetTeamIsNull_BetTeamIsAwayTeamName()
         {
             // Arrange
             _ticket.BetTeam = null;
@@ -580,7 +597,7 @@
         /// The value of Template.betTeam is always Template.Match.awayTeam when bet team of ticket is empty or not contains character h.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIsEmptyBetTeamIsAwayTeamName()
+        public void BuildBetTeam_BetTeamIsEmpty_BetTeamIsAwayTeamName()
         {
             // Arrange
             _ticket.BetTeam = string.Empty;
@@ -597,7 +614,7 @@
         /// The value of Template.betTeamClassName is always underdog.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetBetTeamClassNameIsUnderdog()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsUnderdog()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -611,7 +628,7 @@
         /// The value of Template.Score.scoreClassName is always favorite.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetScoreClassNameIsFavorite()
+        public void BuildScore_Always_SetScoreClassNameIsFavorite()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -625,7 +642,7 @@
         /// The value of Template.ticketStatus is always empty when Ticket.Status = null.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetTicketStatusIsEmpty()
+        public void BuildTicketStatus_Always_SetTicketStatusIsEmpty()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -638,7 +655,7 @@
         /// The value of Template.ticketStatus is always void when Ticket.Status = void.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetHandicapIsNull()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());

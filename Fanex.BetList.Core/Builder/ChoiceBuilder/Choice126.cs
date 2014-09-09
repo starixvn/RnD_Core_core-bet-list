@@ -1,39 +1,9 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Choice126.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2014.04.16">Create</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System.Collections.Generic;
-    using Fanex.BetList.Core.Entities;
-
     /// <summary>
     /// 1H Total Goal.
     /// </summary>
-    public class Choice126 : Choice1
+    public class Choice126 : Choice6
     {
-        /// <summary>
-        /// Builds the choice.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-        {
-            base.BuildChoice(ticket, ticketHelper, ticketData);
-
-            this.Template.Handicap.handicap = null;
-
-            // &nbsp; because export format
-            this.Template.betTeam = string.Join(null, new string[] { "&nbsp;", ticket.BetTeam });
-
-            this.Template.betTeamClassName = BLFAVORITE;
-        }
     }
 }

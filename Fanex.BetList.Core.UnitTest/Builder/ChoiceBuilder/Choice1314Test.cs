@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.UnitTest.Common.Enums;
+    using App_GlobalResources;
+    using Common.Enums;
+    using Core.Builder.ChoiceBuilder;
+    using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -30,7 +30,7 @@
         /// The value of Template.betTeam is always Draw when bet team of ticket is h.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIsCharacterh_BetTeamIsLableYesResource()
+        public void BuildBetTeam_BetTeamIsCharacterh_BetTeamIsLableYesResource()
         {
             // Arrange
             _ticket.BetTeam = "h";
@@ -39,14 +39,14 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.AreEqual(CoreLang.lblYes, _choice.Template.betTeam);
+            Assert.AreEqual(CoreBetList.lblYes, _choice.Template.betTeam);
         }
 
         /// <summary>
         /// The value of Template.betTeam is always Draw when bet team of ticket is not h.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIsNotCharacterh_BetTeamIsLableNoResource()
+        public void BuildBetTeam_BetTeamIsNotCharacterh_BetTeamIsLableNoResource()
         {
             // Arrange
             _ticket.BetTeam = string.Empty;
@@ -55,14 +55,14 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.AreEqual(CoreLang.lblNo, _choice.Template.betTeam);
+            Assert.AreEqual(CoreBetList.lblNo, _choice.Template.betTeam);
         }
 
         /// <summary>
         /// The value of Template.BetType.betTypeName is always bet type name.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetBetTypeNameIsBetTypeName()
+        public void BuildBetTeam_Always_SetBetTypeNameIsBetTypeName()
         {
             // Arrange
             _ticket.BetTypeId = 1;

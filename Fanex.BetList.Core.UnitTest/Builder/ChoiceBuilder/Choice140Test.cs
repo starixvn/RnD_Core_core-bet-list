@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.UnitTest.Common.Enums;
+    using App_GlobalResources;
+    using Common.Enums;
+    using Core.Builder.ChoiceBuilder;
+    using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -26,7 +26,7 @@
         }
 
         [Test]
-        public void When_BetTeam_Is_1h_BetChoice_Should_Display_FirstHalf()
+        public void BuildBetTeam_BetTeamIs1h_BetTeamIsFirstHalfResource()
         {
             // Arrange
             _ticket.BetTeam = "1h";
@@ -35,11 +35,11 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.AreEqual(CoreLang.FirstHalf, _choice.Template.betTeam);
+            Assert.AreEqual(CoreBetList.FirstHalf, _choice.Template.betTeam);
         }
 
         [Test]
-        public void When_BetTeam_Is_2h_BetChoice_Should_Display_SecondHalf()
+        public void BuildBetTeam_BetTeamIs2h_BetTeamIsSecondHalfResource()
         {
             // Arrange
             _ticket.BetTeam = "2h";
@@ -48,11 +48,11 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.AreEqual(CoreLang.SecondHalf, _choice.Template.betTeam);
+            Assert.AreEqual(CoreBetList.SecondHalf, _choice.Template.betTeam);
         }
 
         [Test]
-        public void When_BetTeam_Is_tie_BetChoice_Display_Tie()
+        public void BuildBetTeam_BetTeamIstie_BetTeamIsTieResource()
         {
             // Arrange
             _ticket.BetTeam = "tie";
@@ -61,11 +61,11 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.AreEqual(CoreLang.Tie, _choice.Template.betTeam);
+            Assert.AreEqual(CoreBetList.Tie, _choice.Template.betTeam);
         }
 
         [Test]
-        public void BuildChoice_BetTeamIsNotYAndNotN_ShowBetTeamIsEmpty()
+        public void BuildBetTeam_BetTeamIsNotYAndNotN_BetTeamIsEmpty()
         {
             // Arrange
             _ticket.BetTeam = "any string";

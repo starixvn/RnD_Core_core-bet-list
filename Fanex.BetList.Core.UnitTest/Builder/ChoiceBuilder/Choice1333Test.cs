@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.UnitTest.Common.Enums;
+    using App_GlobalResources;
+    using Common.Enums;
+    using Core.Builder.ChoiceBuilder;
+    using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -30,7 +30,7 @@
         /// The value of Template.ticketStatus is always void when Ticket.Status = void.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetHandicapIsNull()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -43,7 +43,7 @@
         /// The value of Template.betTeam is always Over.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs1_BetTeamIsHomeTeamName()
+        public void BuildBetTeam_BetTeamIs1_BetTeamIsHomeTeamName()
         {
             // Arrange
             _ticket.BetTeam = "1";
@@ -60,7 +60,7 @@
         /// The value of Template.betTeam is always Over.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamIs2_BetTeamIsAwayTeamName()
+        public void BuildBetTeam_BetTeamIs2_BetTeamIsAwayTeamName()
         {
             // Arrange
             _ticket.BetTeam = "2";
@@ -77,7 +77,7 @@
         /// The value of Template.betTeam is always Between handicap 2 and handicap1.
         /// </summary>
         [Test]
-        public void BuildChoice_BetTeamNotIs1AndNotIs2_BetTeamIsNeitherResource()
+        public void BuildBetTeam_BetTeamNotIs1AndNotIs2_BetTeamIsNeitherResource()
         {
             // Arrange
             _ticket.BetTeam = string.Empty;
@@ -86,14 +86,14 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.AreEqual(CoreLang.lblNeither, _choice.Template.betTeam);
+            Assert.AreEqual(CoreBetList.lblNeither, _choice.Template.betTeam);
         }
 
         /// <summary>
         /// The value of Template.BetType.betTypeName is always bet type name.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetBetTypeNameIsBetTypeName()
+        public void BuildBetTeam_Always_SetBetTypeNameIsBetTypeName()
         {
             // Arrange
             _ticket.BetTypeId = 1;

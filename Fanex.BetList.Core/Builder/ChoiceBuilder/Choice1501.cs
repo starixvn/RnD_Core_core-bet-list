@@ -1,58 +1,56 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Choice1501.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2014.03.06">Create</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Entities;
+    using Entities;
 
     /// <summary>
     /// Keno games.
     /// </summary>
     public class Choice1501 : Choice1
     {
-        /// <summary>
-        /// Builds the choice.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {
+            string kenoBetTypeId;
+
+            Template.betTeam = ticketHelper.GetKenoBetChoiceName(ticket.BetTeam, out kenoBetTypeId);
+        }
+
+        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {
+            string kenoBetTypeId;
+
+            ticketHelper.GetKenoBetChoiceName(ticket.BetTeam, out kenoBetTypeId);
+
+            Template.BetType.betTypeName = ticketHelper.GetKenoBetTypeName(kenoBetTypeId);
+        }
+
+        protected override void BuildSport(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            string kenoLeagueInfo = string.Join(null, new string[] { ticketHelper.GetBetTypeNameById(ticket.BetTypeId), " [", ticket.MatchId.ToString(), "]" });
+
+            Template.League.LeagueName.leagueName = kenoLeagueInfo;
+        }
+
+        protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            Template.League.sportTypeName = ticketHelper.GetSportNameById(ticket.SportTypeId);
+        }
+
+        protected override void BuildScore(ITicket ticket)
+        {
+            Template.Score = null;
+        }
+
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
             // Does not show handicap, match, and score.
-            this.Template.Handicap = null;
+            Template.Handicap = null;
+            Template.betTeamClassName = Favorite;
+        }
 
-            if (this.Template.Match != null)
-            {
-                this.Template.Match.homeTeam = null;
-                this.Template.Match.awayTeam = null;
-                this.Template.Match.VS = null;
-                this.Template.Match.home_firstGoal_lastGoal = null;
-                this.Template.Match.away_firstGoal_lastGoal = null;
-            }
-
-            this.Template.Score = null;
-            string kenoBetTypeID;
-
-            this.Template.betTeam = ticketHelper.GetKenoBetChoiceName(ticket.BetTeam, out kenoBetTypeID);
-            this.Template.BetType.betTypeName = ticketHelper.GetKenoBetTypeName(kenoBetTypeID);
-
-            this.Template.betTeamClassName = BLFAVORITE;
-
-            if (this.Template.League != null)
-            {
-                this.Template.League.sportTypeName = ticketHelper.GetSportNameById(ticket.SportTypeId);
-                string kenoLeagueInfo = string.Join(null, new string[] { ticketHelper.GetBetTypeNameById(ticket.BetTypeId), " [", ticket.MatchId.ToString(), "]" });
-
-                this.Template.League.LeagueName.leagueName = kenoLeagueInfo;
-            }
+        protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            UpdateAllMatchMemberToNull();
         }
     }
 }

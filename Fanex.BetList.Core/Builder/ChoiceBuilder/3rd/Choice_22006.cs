@@ -1,40 +1,43 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Choice_22006.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2014.04.11">Create</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.ChoiceBuilder._3rd
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder._3rd
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Entities;
 
     /// <summary>
     /// Play Tech Casino.
-    /// </summary>    
+    /// </summary>
     public class Choice_22006 : Choice1
     {
-        /// <summary>
-        /// Builds the choice.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildScore(ITicket ticket)
         {
-            this.Template.Handicap = null;
-            this.Template.Match = null;
-            this.Template.League = null;
-            this.Template.Score = null;
+            Template.Score = null;
+        }
 
-            this.Template.BetType.betTypeName = App_GlobalResources.CoreBetList.playtechcasino;
+        protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            Template.League = null;
+        }
 
-            this.Template.betTeam = ticket.BetTeam;
-            this.Template.betTeamClassName = BLFAVORITE;
+        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {
+            Template.BetType.betTypeName = CoreBetList.playtechcasino;
+        }
+
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {
+            Template.betTeam = ticket.BetTeam;
+        }
+
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            Template.Handicap = null;
+            Template.betTeamClassName = Favorite;
+        }
+
+        protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            Template.Match = null;
         }
     }
 }

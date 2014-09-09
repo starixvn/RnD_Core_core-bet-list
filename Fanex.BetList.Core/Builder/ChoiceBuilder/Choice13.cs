@@ -1,44 +1,28 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="Choice13.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2012.11.16">Create</change>
-//     <change who="Marc.Bui" date="2013.10.09">Check stylecop & refactor</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Core.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using System.Linq;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Constants;
+    using Entities;
 
     /// <summary>
     /// Clean Sheet.
     /// </summary>
     public class Choice13 : Choice1
     {
-        /// <summary>
-        /// Builds the choice.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
-            base.BuildChoice(ticket, ticketHelper, ticketData);
+            base.BuildBetTeamClassNameAndHandicap(ticket);
 
-            string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
+            Template.Handicap.handicap = null;
+        }
 
-            string team = ticket.BetTeam != null && ticket.BetTeam.Contains("h") ? this.Template.Match.homeTeam : awayName;
-            string yesNo = ticket.BetTeam.Contains('y') ? CoreLang.lblCleanSheetYes : CoreLang.lblNo;
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {
+            string team = ticket.BetTeam != null && ticket.BetTeam.Contains(BetTeamValue.H) ? Template.Match.homeTeam : Template.Match.awayTeam;
+            string yesNo = ticket.BetTeam != null && ticket.BetTeam.Contains(BetTeamValue.Y) ? CoreBetList.lblYes : CoreBetList.lblNo;
 
-            this.Template.betTeam = string.Join(null, new string[] { team, " <span class=\"", BLFAVORITE, "\">", yesNo.ToUpper(), "</span>" });
-
-            this.Template.Handicap.handicap = null;
+            Template.betTeam = string.Join(null, new string[] { team, " <span class=\"", Favorite, "\">", yesNo.ToUpper(), "</span>" });
         }
     }
 }

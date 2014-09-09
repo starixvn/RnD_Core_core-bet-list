@@ -1,8 +1,9 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.UnitTest.Common.Enums;
+    using Common.Enums;
+    using Core.Builder.ChoiceBuilder;
+    using Entities;
+    using Fanex.BetList.Core.App_GlobalResources;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -30,7 +31,7 @@
         /// The value of Template.Handicap.handicap is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetHandicapIsNull()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -43,7 +44,7 @@
         /// The value of Template.betTeam is always bet team.
         /// </summary>
         [Test]
-        public void BuildChoice_HomeIdNotZero_BetTeamAreSpaceAndBetTeam()
+        public void BuildBetTeam_HomeIdNotZero_BetTeamAreSpaceAndBetTeam()
         {
             // Arrange
             _ticket.BetTeam = "bet team";
@@ -60,7 +61,7 @@
         /// The value of Template.betTeamClassName is always favorite.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetBetTeamClassNameIsFavorite()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -68,6 +69,32 @@
             // Assert
             const string CSS_CLASS_FAVORITE = "favorite";
             Assert.AreEqual(CSS_CLASS_FAVORITE, _choice.Template.betTeamClassName);
+        }
+
+        [Test]
+        public void BuildBetTeam_BetTeamIs4dashOver_SetTemplateBetTeamIsResource4AndOver()
+        { 
+            // Arrange
+            _ticket.BetTeam = "4-over";
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual(string.Join(null, new string[] { "&nbsp;", CoreBetList.FourAndOver }), _choice.Template.betTeam);
+        }
+
+        [Test]
+        public void BuildBetTeam_BetTeamIs7dashOver_SetTemplateBetTeamIsResource7AndOver()
+        {
+            // Arrange
+            _ticket.BetTeam = "7-over";
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual(string.Join(null, new string[] { "&nbsp;", CoreBetList.SevenAndOver }), _choice.Template.betTeam);
         }
     }
 }

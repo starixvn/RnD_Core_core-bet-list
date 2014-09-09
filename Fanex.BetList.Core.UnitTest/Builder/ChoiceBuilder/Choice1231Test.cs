@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using System;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.UnitTest.Common.Enums;
+    using Common.Enums;
+    using Core.Builder.ChoiceBuilder;
+    using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -30,7 +30,7 @@
         /// The value of Template.Match.VS is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetMatchVSBlockIsNull()
+        public void BuildMatch_Always_SetMatchVSBlockIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -43,7 +43,7 @@
         /// The value of Template.Match.home_firstGoal_lastGoal is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetHomeFGLGIsNull()
+        public void BuildMatch_Always_SetHomeFGLGIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -56,7 +56,7 @@
         /// The value of Template.Match.away_firstGoal_lastGoal is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetAwayFGLGIsNull()
+        public void BuildMatch_Always_SetAwayFGLGIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -69,7 +69,7 @@
         /// The value of Template.Match.awayTeam is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetAwayTeamIsNull()
+        public void BuildMatch_Always_SetAwayTeamIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -82,7 +82,7 @@
         /// The value of Template.Handicap.handicap is always null.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetHandicapIsNull()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -95,7 +95,7 @@
         /// The value of Template.League.LeagueName.leagueName is always league name get by identifier.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetLeagueNameIsLeagueName()
+        public void BuildLeague_Always_SetLeagueNameIsLeagueName()
         {
             // Arrange
             const string LEAGUE_NAME = "League name";
@@ -112,7 +112,7 @@
         /// The value of Template.betTeam is always Ticket.MatchCode - HorseTeamName.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetBetTeamAreMatchCodeAndHorseTeamName()
+        public void BuildBetTeam_Always_SetBetTeamAreMatchCodeAndHorseTeamName()
         {
             // Arrange
             _ticket.HomeId = 1;
@@ -132,7 +132,7 @@
         /// The value of Template.betTeamClassName is always favorite.
         /// </summary>
         [Test]
-        public void BuildChoice_Always_SetBetTeamClassNameIsFavorite()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -146,7 +146,7 @@
         /// The value of Template.Match.homeTeam is always Ticket.ShowTime when show time is valid format.
         /// </summary>
         [Test]
-        public void BuildChoice_ShowTimeIsValidFormat_HomeTeamIsShowTimeBeFormatted()
+        public void BuildMatch_ShowTimeIsValidFormat_HomeTeamIsShowTimeBeFormatted()
         {
             // Arrange
             _ticket.ShowTime = "01/01/2014 15:25";
@@ -163,7 +163,7 @@
         /// The value of Template.Match.homeTeam is always Ticket.ShowTime when show time is invalid format.
         /// </summary>
         [Test]
-        public void BuildChoice_ShowTimeIsInValidFormat_HomeTeamIsShowTime()
+        public void BuildMatch_ShowTimeIsInValidFormat_HomeTeamIsShowTime()
         {
             // Arrange
             _ticket.ShowTime = string.Empty;

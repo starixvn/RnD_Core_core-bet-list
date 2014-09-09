@@ -2,9 +2,9 @@
 namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using System;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.UnitTest.Common.Enums;
+    using Common.Enums;
+    using Core.Builder.ChoiceBuilder;
+    using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -28,7 +28,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildChoice_Always_SetHomeScoreIsLiveHomeScore()
+        public void BuildScore_Always_SetHomeScoreIsLiveHomeScore()
         {
             // Arrange
             _ticket.LiveHomeScore = 1;
@@ -41,7 +41,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildChoice_Always_SetAwayScoreIsLiveAwayScore()
+        public void BuildScore_Always_SetAwayScoreIsLiveAwayScore()
         {
             // Arrange
             _ticket.LiveAwayScore = 1;
@@ -55,7 +55,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 
         [TestCase(true)]
         [TestCase(false)]
-        public void BuildChoice_Always_SetScoreVisibleIsIsLive(bool isLive)
+        public void BuildScore_Always_SetScoreVisibleIsIsLive(bool isLive)
         {
             // Arrange
             _ticket.IsLive = isLive;
@@ -68,7 +68,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildChoice_Always_SetLeagueNameIsLeagueName()
+        public void BuildLeague_Always_SetLeagueNameIsLeagueName()
         {
             // Arrange
             const string LEAGUE_NAME = "League name";
@@ -82,7 +82,21 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildChoice_Always_SetBetTypeIsBetTypeName()
+        public void BuildSport_Always_SetSportNameIsSportName()
+        {
+            // Arrange
+            const string SPORT_NAME = "Sport name";
+            _ticketHelper.GetSportNameById(Arg.Any<int>()).Returns<string>(SPORT_NAME);
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            Assert.AreEqual(SPORT_NAME, _choice.Template.League.sportTypeName);
+        }
+
+        [Test]
+        public void BuildBetType_Always_SetBetTypeIsBetTypeName()
         {
             // Arrange
             const string BET_TYPE_NAME = "Bet type name";
@@ -96,7 +110,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildChoice_NeutralTicket_HomeTeamAreHomeTeamNameAndSpaceAndCharacterNWithinParenthese()
+        public void BuildMatch_NeutralTicket_HomeTeamAreHomeTeamNameAndSpaceAndCharacterNWithinParenthese()
         {
             // Arrange
             _ticket.IsNeutral = true;
@@ -111,7 +125,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildChoice_NotNeutralTicket_HomeTeamIsHomeTeamName()
+        public void BuildMatch_NotNeutralTicket_HomeTeamIsHomeTeamName()
         {
             // Arrange
             const string HOME_TEAM_NAME = "Home team name";
@@ -126,7 +140,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildChoice_Always_SetAwayTeamIsAwayTeamName()
+        public void BuildMatch_Always_SetAwayTeamIsAwayTeamName()
         {
             // Arrange
             const string AWAY_TEAM_NAME = "Away team name";
@@ -141,7 +155,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 
         [TestCase("FL:0-1")]
         [TestCase("FL:2-1")]
-        public void CalculateFGLG_EventStatus_HomeFGLGIsLableLG(string eventStatus)
+        public void BuildFGLGLabel_EventStatus_HomeFGLGIsLableLG(string eventStatus)
         {
             // Arrange
             _ticket.EventStatus = eventStatus;
@@ -156,7 +170,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 
         [TestCase("1FL:0-1")]
         [TestCase("1FL:2-1")]
-        public void CalculateFGLG_EventStatus_HomeFGLGIsLable1LG(string eventStatus)
+        public void BuildFGLGLabel_EventStatus_HomeFGLGIsLable1LG(string eventStatus)
         {
             // Arrange
             _ticket.EventStatus = eventStatus;
@@ -171,7 +185,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 
         [TestCase("FL:0-1;1FL:0-1")]
         [TestCase("FL:2-1;1FL:2-1")]
-        public void CalculateFGLG_EventStatus_HomeFGLGAreLableLGAndLable1LG(string eventStatus)
+        public void BuildFGLGLabel_EventStatus_HomeFGLGAreLableLGAndLable1LG(string eventStatus)
         {
             // Arrange
             _ticket.EventStatus = eventStatus;
@@ -186,7 +200,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 
         [TestCase("FL:0-2")]
         [TestCase("FL:1-2")]
-        public void CalculateFGLG_EventStatus_AwayFGLGIsLableLG(string eventStatus)
+        public void BuildFGLGLabel_EventStatus_AwayFGLGIsLableLG(string eventStatus)
         {
             // Arrange
             _ticket.EventStatus = eventStatus;
@@ -201,7 +215,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 
         [TestCase("1FL:0-2")]
         [TestCase("1FL:1-2")]
-        public void CalculateFGLG_EventStatus_AwayFGLGIsLable1LG(string eventStatus)
+        public void BuildFGLGLabel_EventStatus_AwayFGLGIsLable1LG(string eventStatus)
         {
             // Arrange
             _ticket.EventStatus = eventStatus;
@@ -216,7 +230,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 
         [TestCase("FL:0-2;1FL:0-2")]
         [TestCase("FL:1-2;1FL:1-2")]
-        public void CalculateFGLG_EventStatus_AwayFGLGAreLableLGAndLable1LG(string eventStatus)
+        public void BuildFGLGLabel_EventStatus_AwayFGLGAreLableLGAndLable1LG(string eventStatus)
         {
             // Arrange
             _ticket.EventStatus = eventStatus;
@@ -231,7 +245,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 
         [TestCase("FL:1-0")]
         [TestCase("FL:1-2")]
-        public void CalculateFGLG_EventStatus_HomeFGLGIsLableFG(string eventStatus)
+        public void BuildFGLGLabel_EventStatus_HomeFGLGIsLableFG(string eventStatus)
         {
             // Arrange
             _ticket.EventStatus = eventStatus;
@@ -246,7 +260,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 
         [TestCase("1FL:1-0")]
         [TestCase("1FL:1-2")]
-        public void CalculateFGLG_EventStatus_HomeFGLGIsLable1FG(string eventStatus)
+        public void BuildFGLGLabel_EventStatus_HomeFGLGIsLable1FG(string eventStatus)
         {
             // Arrange
             _ticket.EventStatus = eventStatus;
@@ -261,7 +275,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 
         [TestCase("FL:1-0;1FL:1-0")]
         [TestCase("FL:1-2;1FL:1-2")]
-        public void CalculateFGLG_EventStatus_HomeFGLGAreLableFGAndLable1FG(string eventStatus)
+        public void BuildFGLGLabel_EventStatus_HomeFGLGAreLableFGAndLable1FG(string eventStatus)
         {
             // Arrange
             _ticket.EventStatus = eventStatus;
@@ -275,7 +289,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void CalculateFGLG_EventStatusIsFL11_HomeFGLGAreLableFGAndLableLG()
+        public void BuildFGLGLabel_EventStatusIsFL11_HomeFGLGAreLableFGAndLableLG()
         {
             // Arrange
             _ticket.EventStatus = "FL:1-1";
@@ -289,7 +303,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void CalculateFGLG_EventStatusIs1FL11_HomeFGLGAreLable1FGAndLable1LG()
+        public void BuildFGLGLabel_EventStatusIs1FL11_HomeFGLGAreLable1FGAndLable1LG()
         {
             // Arrange
             _ticket.EventStatus = "1FL:1-1";
@@ -303,7 +317,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void CalculateFGLG_EventStatusIsFL11And1FL11_HomeFGLGAreLableFGLGAndLable1FG1LG()
+        public void BuildFGLGLabel_EventStatusIsFL11And1FL11_HomeFGLGAreLableFGLGAndLable1FG1LG()
         {
             // Arrange
             _ticket.EventStatus = "FL:1-1;1FL:1-1";
@@ -317,7 +331,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void CalculateFGLG_EventStatusIsFL22_AwayFGLGAreLableFGAndLableLG()
+        public void BuildFGLGLabel_EventStatusIsFL22_AwayFGLGAreLableFGAndLableLG()
         {
             // Arrange
             _ticket.EventStatus = "FL:2-2";
@@ -331,7 +345,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void CalculateFGLG_EventStatusIs1FL22_AwayFGLGAreLable1FGAndLable1LG()
+        public void BuildFGLGLabel_EventStatusIs1FL22_AwayFGLGAreLable1FGAndLable1LG()
         {
             // Arrange
             _ticket.EventStatus = "1FL:2-2";
@@ -345,7 +359,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void CalculateFGLG_EventStatusIsFL22And1FL22_AwayFGLGAreLableFGLGAndLable1FG1LG()
+        public void BuildFGLGLabel_EventStatusIsFL22And1FL22_AwayFGLGAreLableFGLGAndLable1FG1LG()
         {
             // Arrange
             _ticket.EventStatus = "FL:2-2;1FL:2-2";
@@ -360,7 +374,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 
         [TestCase("FL:2-0")]
         [TestCase("FL:2-1")]
-        public void CalculateFGLG_EventStatus_AwayFGLGIsLableFG(string eventStatus)
+        public void BuildFGLGLabel_EventStatus_AwayFGLGIsLableFG(string eventStatus)
         {
             // Arrange
             _ticket.EventStatus = eventStatus;
@@ -375,7 +389,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 
         [TestCase("1FL:2-0")]
         [TestCase("1FL:2-1")]
-        public void CalculateFGLG_EventStatus_AwayFGLGIsLable1FG(string eventStatus)
+        public void BuildFGLGLabel_EventStatus_AwayFGLGIsLable1FG(string eventStatus)
         {
             // Arrange
             _ticket.EventStatus = eventStatus;
@@ -390,7 +404,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 
         [TestCase("FL:2-0;1FL:2-0")]
         [TestCase("FL:2-1;1FL:2-1")]
-        public void CalculateFGLG_EventStatus_AwayFGLGAreLableFGAndLable1FG(string eventStatus)
+        [TestCase("1FL:2-0;FL:2-0")]
+        [TestCase("1FL:2-1;FL:2-1")]
+        public void BuildFGLGLabel_EventStatus_AwayFGLGAreLableFGAndLable1FG(string eventStatus)
         {
             // Arrange
             _ticket.EventStatus = eventStatus;
@@ -411,7 +427,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         [TestCase("1FL:2-2")]
         [TestCase("1FL:2-0")]
         [TestCase("1FL:0-2")]
-        public void CalculateFGLG_EventStatus_HomeFGLGIsEmpty(string eventStatus)
+        public void BuildFGLGLabel_EventStatus_HomeFGLGIsEmpty(string eventStatus)
         {
             // Arrange
             _ticket.EventStatus = eventStatus;
@@ -431,7 +447,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         [TestCase("1FL:1-1")]
         [TestCase("1FL:1-0")]
         [TestCase("1FL:0-1")]
-        public void CalculateFGLG_EventStatus_AwayFGLGIsEmpty(string eventStatus)
+        public void BuildFGLGLabel_EventStatus_AwayFGLGIsEmpty(string eventStatus)
         {
             // Arrange
             _ticket.EventStatus = eventStatus;
@@ -444,7 +460,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildChoice_BetTeamContainsCharacterh_BetTeamIsHomeTeamName()
+        public void BuildBetTeam_BetTeamContainsCharacterh_BetTeamIsHomeTeamName()
         {
             // Arrange
             const string HOME_TEAM_NAME = "Home team name";
@@ -459,7 +475,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildChoice_BetTeamIsNull_BetTeamIsAwayTeamName()
+        public void BuildBetTeam_BetTeamIsNull_BetTeamIsAwayTeamName()
         {
             // Arrange
             const string AWAY_TEAM_NAME = "Away team name";
@@ -474,7 +490,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildChoice_BetTeamIsEmpty_BetTeamIsAwayTeamName()
+        public void BuildBetTeam_BetTeamIsEmpty_BetTeamIsAwayTeamName()
         {
             // Arrange
             const string AWAY_TEAM_NAME = "Away team name";
@@ -489,7 +505,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildChoice_BetTeamContainsCharacterhAndHandicap2GreaterThanHandicap1_BetTeamClassNameIsUnderdog()
+        public void BuildBetTeamClassNameAndHandicap_BetTeamContainsCharacterhAndHandicap2GreaterThanHandicap1_BetTeamClassNameIsUnderdog()
         {
             // Arrange
             _ticket.BetTeam = "text h";
@@ -505,7 +521,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildChoice_BetTeamContainsCharacterhAndHandicap2EqualHandicap1_BetTeamClassNameIsUnderdog()
+        public void BuildBetTeamClassNameAndHandicap_BetTeamContainsCharacterhAndHandicap2EqualHandicap1_BetTeamClassNameIsUnderdog()
         {
             // Arrange
             _ticket.BetTeam = "text h";
@@ -521,7 +537,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildChoice_BetTeamContainsCharacterhAndHandicap2LessThanHandicap1_BetTeamClassNameIsFavorite()
+        public void BuildBetTeamClassNameAndHandicap_BetTeamContainsCharacterhAndHandicap2LessThanHandicap1_BetTeamClassNameIsFavorite()
         {
             // Arrange
             _ticket.BetTeam = "text h";
@@ -537,7 +553,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildChoice_BetTeamNotContainsCharacterhAndHandicap2LessThanHandicap1_BetTeamClassNameIsUnderdog()
+        public void BuildBetTeamClassNameAndHandicap_BetTeamNotContainsCharacterhAndHandicap2LessThanHandicap1_BetTeamClassNameIsUnderdog()
         {
             // Arrange
             _ticket.BetTeam = string.Empty;
@@ -553,7 +569,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildChoice_BetTeamNotContainsCharacterhAndHandicap2EqualHandicap1_BetTeamClassNameIsUnderdog()
+        public void BuildBetTeamClassNameAndHandicap_BetTeamNotContainsCharacterhAndHandicap2EqualHandicap1_BetTeamClassNameIsUnderdog()
         {
             // Arrange
             _ticket.BetTeam = string.Empty;
@@ -569,7 +585,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildChoice_BetTeamNotContainsCharacterhAndHandicap2GreaterThanHandicap1_BetTeamClassNameIsFavorite()
+        public void BuildBetTeamClassNameAndHandicap_BetTeamNotContainsCharacterhAndHandicap2GreaterThanHandicap1_BetTeamClassNameIsFavorite()
         {
             // Arrange
             _ticket.BetTeam = string.Empty;
@@ -585,7 +601,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildChoice_Always_SetScoreClassNameIsFavorite()
+        public void BuildScore_Always_SetScoreClassNameIsFavorite()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -596,7 +612,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildChoice_BetTeamContainsCharacterhAndHandicap2GreaterThanHandicap1_HandicapIsHandicap2()
+        public void BuildBetTeamClassNameAndHandicap_BetTeamContainsCharacterhAndHandicap2GreaterThanHandicap1_HandicapIsHandicap2()
         {
             // Arrange
             _ticket.BetTeam = "text h";
@@ -611,13 +627,13 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildChoice_BetTeamContainsCharacterhAndHandicap2LessThanHandicap1_HandicapIsMinusHandicap1()
+        public void BuildBetTeamClassNameAndHandicap_BetTeamContainsCharacterhAndHandicap2LessThanHandicap1_HandicapIsMinusHandicap1()
         {
             // Arrange
             _ticket.BetTeam = "text h";
-            _ticket.Handicap1 = 2; 
-            _ticket.Handicap2 = 1;      
-     
+            _ticket.Handicap1 = 2;
+            _ticket.Handicap2 = 1;
+
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
@@ -626,7 +642,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildChoice_StatusIdIsNull_TicketStatusIsEmpty()
+        public void BuildTicketStatus_StatusIdIsNull_TicketStatusIsEmpty()
         {
             // Arrange
             _ticket.StatusId = null;
@@ -639,7 +655,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildChoice_StatusIdIsVoid_TicketStatusIsVoid()
+        public void BuildTicketStatus_StatusIdIsVoid_TicketStatusIsVoid()
         {
             // Arrange
             const int VOID_STATUSID = 102;
@@ -654,7 +670,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildChoice_StatusIsNull_TicketStatusIsEmpty()
+        public void BuildTicketStatus_StatusIsNull_TicketStatusIsEmpty()
         {
             // Arrange
             _ticket.Status = null;
@@ -667,7 +683,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildChoice_StatusIsVoid_TicketStatusIsVoid()
+        public void BuildTicketStatus_StatusIsVoid_TicketStatusIsVoid()
         {
             // Arrange
             const string VOID_STATUS = "void";
