@@ -1,7 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.TransBuilder
 {
     /// <summary>
-    ///  Type: Bingo.
+    /// Type: Bingo.
     /// </summary>
     public class Trans73 : Trans71
     {

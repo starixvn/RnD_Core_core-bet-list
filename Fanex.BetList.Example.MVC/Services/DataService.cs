@@ -16,14 +16,14 @@ namespace Fanex.BetList.Example.MVC.Services
 
     public class DataService
     {
-        private static readonly string BetTypeFilePath = HostingEnvironment.MapPath("~/App_Data/BetTypes.xls");      
+        private static readonly string BetTypeFilePath = HostingEnvironment.MapPath("~/App_Data/BetTypes.xls");
 
         public List<BetType> QueryBetTypes(params int[] betTypeIds)
         {
             ObjectCache cache = MemoryCache.Default;
             var betTypes = (List<BetType>)cache.Get("BetTypes");
 
-            if (betTypes == null || !betTypes.Any() )
+            if (betTypes == null || !betTypes.Any())
             {
                 betTypes = new List<BetType>();
                 using (var input = new StreamReader(BetTypeFilePath))
@@ -64,7 +64,7 @@ namespace Fanex.BetList.Example.MVC.Services
             if (betListData == null || !betListData.Tickets.Any())
             {
                 betListData = new BetListData();
-                
+
                 TicketsExcelDAO ticketDAO = new TicketsExcelDAO(absolutePath);
                 betListData.Tickets = ticketDAO.GetTickets();
                 betListData.TicketData = ticketDAO.GetTicketData().ToList();
@@ -72,7 +72,7 @@ namespace Fanex.BetList.Example.MVC.Services
                 CacheItemPolicy policy = new CacheItemPolicy();
                 policy.ChangeMonitors.Add(new HostFileChangeMonitor(new List<string> { absolutePath }));
                 cache.Set(absolutePath, betListData, policy);
-            }           
+            }
 
             return betListData;
         }

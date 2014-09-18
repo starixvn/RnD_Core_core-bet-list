@@ -98,7 +98,7 @@ namespace Fanex.BetList.Core.UnitTest.Common.Enums
         /// <summary>
         /// BetType = 16.
         /// </summary>
-        public const int HT_FT = 16;            
+        public const int HT_FT = 16;
 
         /// <summary>
         /// BetType = 17.
@@ -382,6 +382,11 @@ namespace Fanex.BetList.Core.UnitTest.Common.Enums
         /// </para>
         /// </summary>
         public const int Result_Total_Goals = 144;
+
+        /// <summary>
+        /// Set X Total Game O/U.
+        /// </summary>
+        public const int Set_X_Total_Game_OU = 156;
 
         /// <summary>
         /// BetType = 1000.
@@ -707,6 +712,7 @@ namespace Fanex.BetList.Core.UnitTest.Common.Enums
         /// BetType = 30.
         /// </summary>
         public const int FirstCorrectScore = 30;
+
         /// <summary>
         /// BetType = 1501.
         /// </summary>

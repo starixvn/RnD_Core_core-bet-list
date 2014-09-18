@@ -10,7 +10,7 @@
         private IFont _posFontText;
         private IFont _negFontText;
         private RtfTextRender _renderContent;
-        
+
         public RTFNumber(RtfTextRender render, IFont posFont, IFont negFont)
         {
             _renderContent = render;
@@ -34,5 +34,5 @@
                 _renderContent.AddText(removeText, _negFontText);
             }
         }
-    }    
+    }
 }

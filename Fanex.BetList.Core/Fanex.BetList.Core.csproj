@@ -227,6 +227,10 @@
     <Compile Include="Builder\ChoiceBuilder\Choice1501.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice151.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice152.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice153.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice154.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice155.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice156.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice16.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice19.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice2.cs" />

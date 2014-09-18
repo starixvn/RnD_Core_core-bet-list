@@ -73,24 +73,31 @@
                 case BetStatus.Running:
                     result = CoreBetList.running;
                     break;
+
                 case BetStatus.Reject:
                     result = CoreBetList.reject;
                     break;
+
                 case BetStatus.Won:
                     result = CoreBetList.won;
                     break;
+
                 case BetStatus.Lose:
                     result = CoreBetList.lose;
                     break;
+
                 case BetStatus.Draw:
                     result = CoreBetList.draw;
                     break;
+
                 case BetStatus.Waiting:
                     result = CoreBetList.waiting;
                     break;
+
                 case BetStatus.Void:
                     result = CoreBetList.voided;
                     break;
+
                 case BetStatus.Refund:
                     result = CoreBetList.refund;
                     break;

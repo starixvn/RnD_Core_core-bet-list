@@ -44,7 +44,7 @@
         /// Gets or sets Method to get *Parlay details.
         /// </summary>
         /// <value>Function to get parlay detail by Id.</value>
-        public GetParlayTicketsById GetParlayDetailById { get; set; }        
+        public GetParlayTicketsById GetParlayDetailById { get; set; }
 
         public string GetBetTypeNameById(object bettypeId)
         {
@@ -98,31 +98,31 @@
         /// <returns>MP combination offered name.</returns>
         public string GetCombinationMPOfferName(string key)
         {
-            Dictionary<string, string> combinationOfferName = new Dictionary<string, string> 
-            { 
-                { 
+            Dictionary<string, string> combinationOfferName = new Dictionary<string, string>
+            {
+                {
                     "110",
-                    "Trixie" 
+                    "Trixie"
                 },
-                { 
+                {
                     "1110",
-                    "Yankee" 
+                    "Yankee"
                 },
-                { 
+                {
                     "11110",
-                    "Canadian" 
+                    "Canadian"
                 },
-                { 
+                {
                     "111110",
-                    "Heinz" 
+                    "Heinz"
                 },
-                { 
+                {
                     "1111110",
                     "Super Heinz"
                 },
-                { 
+                {
                     "11111110",
-                    "Goliath" 
+                    "Goliath"
                 }
             };
 

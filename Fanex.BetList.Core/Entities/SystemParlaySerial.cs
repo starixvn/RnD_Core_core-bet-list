@@ -6,9 +6,9 @@
     public class SystemParlaySerial : ISystemParlaySerial
     {
         public long Serial { get; set; }
-        
+
         public int HomeId { get; set; }
-        
+
         public int AwayId { get; set; }
     }
 }

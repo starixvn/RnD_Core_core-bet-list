@@ -7,7 +7,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StatusBuilder
     using Entities;
     using NSubstitute;
     using NUnit.Framework;
-    
+
     public class Status1Test
     {
         private Status1 _status;
@@ -82,7 +82,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StatusBuilder
         [TestCase("won")]
         [TestCase("lose")]
         [TestCase("draw")]
-        
         public void BuildStatusResult_Status_BetTypeIsBetTypeId(string status)
         {
             // Arrange

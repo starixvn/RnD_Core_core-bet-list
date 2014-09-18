@@ -54,6 +54,6 @@ namespace Fanex.BetList.Core.UnitTest.Utils
             // Assert
             int expected = 0;
             Assert.AreEqual(expected, result);
-        }       
+        }
     }
 }

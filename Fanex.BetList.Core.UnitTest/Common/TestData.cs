@@ -12,7 +12,6 @@ namespace Fanex.BetList.Core.UnitTest.Common
 {
     using System;
     using Fanex.BetList.Core.Entities;
-    using System.Collections.Generic;
 
     public static class TestData
     {

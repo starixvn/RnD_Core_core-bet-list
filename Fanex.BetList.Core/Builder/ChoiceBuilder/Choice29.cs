@@ -14,7 +14,7 @@
     /// </summary>
     public class Choice29 : Choice1
     {
-        private const string CHOICEBUILDERNAMESPACE = "Fanex.BetList.Core.Builder.ChoiceBuilder";       
+        private const string CHOICEBUILDERNAMESPACE = "Fanex.BetList.Core.Builder.ChoiceBuilder";
 
         /// <summary>
         /// Renders the RTF.
@@ -117,7 +117,7 @@
             string showSystemParlaySubbetsFunction = ticketHelper.ClientSystemParlaySubbetsDetailFunction;
             if (string.IsNullOrWhiteSpace(showSystemParlaySubbetsFunction))
             {
-                showSystemParlaySubbetsFunction = 
+                showSystemParlaySubbetsFunction =
                     JoinSystemParlaySubbetsFunction(ticket.TransId.ToString(CultureInfo.InvariantCulture), ticketHelper.Index.ToString(CultureInfo.InvariantCulture), ticket.RefNo);
             }
 
@@ -276,7 +276,7 @@
             string mixParlay = string.Join(null, mixParlayCompositions);
 
             return mixParlay;
-        }       
+        }
 
         /// <summary>
         /// Joins the detail system parlay div tag.

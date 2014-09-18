@@ -25,9 +25,11 @@
                 case BetTeamValue.B:
                     betTeam = CoreBetList.lblBoth;
                     break;
+
                 case BetTeamValue.O:
                     betTeam = CoreBetList.lblOne;
                     break;
+
                 case BetTeamValue.N:
                     betTeam = CoreBetList.nogoal;
                     break;

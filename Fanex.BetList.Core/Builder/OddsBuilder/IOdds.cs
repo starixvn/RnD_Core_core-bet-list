@@ -11,9 +11,9 @@
     public interface IOdds
     {
         Odds_Template Template { get; set; }
-     
+
         Odds_Template Render(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName);
-        
+
         IRichTextString RenderRTF(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName, RTFHelper rtfHelper);
     }
 }

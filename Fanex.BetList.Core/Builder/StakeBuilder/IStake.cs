@@ -10,9 +10,9 @@
     public interface IStake
     {
         Stake_Template Template { get; set; }
-     
+
         Stake_Template Render(ITicket ticket);
-        
+
         IRichTextString RenderRTF(ITicket ticket, RTFHelper rtfHelper);
     }
 }

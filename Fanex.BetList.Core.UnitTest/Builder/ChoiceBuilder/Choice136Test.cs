@@ -9,19 +9,19 @@
 
     /// <summary>
     /// Unit test for bet type 1H Home Team Odd/Even - 136.
-    /// </summary>    
+    /// </summary>
     [TestFixture]
     public class Choice136Test
     {
-        private static object[] expectedBetTeams = 
+        private static object[] expectedBetTeams =
         {
             new object[] { "o", CoreBetList.odd, "Betting on that total number of goals scored by Home Team in First Half will be odd." },
-            new object[] { "e",  CoreBetList.even, "Betting on that total number of goals scored by Home Team in First Half will be even." }            
+            new object[] { "e",  CoreBetList.even, "Betting on that total number of goals scored by Home Team in First Half will be even." }
         };
 
         private IChoice _choice;
         private ITicket _ticket;
-        private ITicketHelper _ticketHelper;      
+        private ITicketHelper _ticketHelper;
 
         [SetUp]
         public void Setup()
@@ -31,7 +31,7 @@
             _ticket.BetTypeId = BetTypes.First_Home_Team_OddEven;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
-       
+
         [Test, TestCaseSource("expectedBetTeams")]
         public void BuildBetTeam_Always_SetRightBetTeam(string betTeam, string expectedResult, string expectedMessage)
         {
@@ -41,7 +41,7 @@
             // Act
             _choice.Render(_ticket, _ticketHelper, null, false);
 
-            // Assert            
+            // Assert
             Assert.AreEqual(expectedResult, _choice.Template.betTeam, expectedMessage);
         }
     }

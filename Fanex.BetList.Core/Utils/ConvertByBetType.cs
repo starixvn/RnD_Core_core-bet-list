@@ -105,7 +105,7 @@
             if (d < 0)
             {
                 return string.Format(minus, string.Format(Formatter.DECIMALFORMAT3, d));
-            }            
+            }
             else
             {
                 return string.Format(Formatter.DECIMALFORMAT3, d);
@@ -335,6 +335,6 @@
             {
                 return string.Format(Formatter.DECIMALFORMAT20, d);
             }
-        }            
+        }
     }
 }

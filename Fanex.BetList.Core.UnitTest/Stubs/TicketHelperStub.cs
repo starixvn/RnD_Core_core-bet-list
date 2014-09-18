@@ -10,7 +10,6 @@
 
 namespace Fanex.BetList.Core.UnitTest.Stubs
 {
-    using System;
     using Fanex.BetList.Core.Entities;
 
     public class TicketHelperStub : ITicketHelper

@@ -27,11 +27,12 @@
                 case "4&over":
                     betTeam = CoreBetList.FourAndOver;
                     break;
+
                 case "7-over":
                 case "7&over":
                     betTeam = CoreBetList.SevenAndOver;
                     break;
-            }           
+            }
 
             Template.betTeam = string.Join(null, new string[] { HtmlCharacters.NoneBreakingSpace, betTeam });
         }
@@ -40,6 +41,6 @@
         {
             Template.Handicap.handicap = null;
             Template.betTeamClassName = Favorite;
-        }      
+        }
     }
 }

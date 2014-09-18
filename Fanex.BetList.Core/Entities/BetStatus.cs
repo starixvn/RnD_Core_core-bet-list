@@ -89,6 +89,6 @@
         /// <summary>
         /// The waiting status.
         /// </summary>
-        public const string Waiting = "1";      
+        public const string Waiting = "1";
     }
 }

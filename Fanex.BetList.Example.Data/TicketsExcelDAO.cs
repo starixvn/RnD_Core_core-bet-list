@@ -134,7 +134,7 @@ namespace Fanex.BetList.Example.Data
         /// </summary>
         /// <param name="row">The IRow object.</param>
         /// <returns>ITicket object.</returns>
-        [SuppressMessage("StyleCop.CSharp.Nexcel.NexcelCustomRules", "SP2101:MethodMustNotContainMoreLinesThan", Justification = "Reviewed. Suppression is OK here.")] 
+        [SuppressMessage("StyleCop.CSharp.Nexcel.NexcelCustomRules", "SP2101:MethodMustNotContainMoreLinesThan", Justification = "Reviewed. Suppression is OK here.")]
         private ITicket MapRowToTicketObject(IRow row)
         {
             ITicket ticket = new Ticket();
@@ -177,7 +177,7 @@ namespace Fanex.BetList.Example.Data
             ticket.ShowTime = this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.ShowTime));
             ticket.SportTypeId = Convert.ToInt32(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.SportTypeId)));
             ticket.Stake = Convert.ToDecimal(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.Stake)));
-            ticket.Status = this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.Status));            
+            ticket.Status = this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.Status));
             ticket.SuperComm = Convert.ToDecimal(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.SuperComm)));
             ticket.SuperDiscount = Convert.ToDecimal(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.SuperDiscount)));
             ticket.SuperPositionTaking = Convert.ToDecimal(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.SuperPositionTaking)));

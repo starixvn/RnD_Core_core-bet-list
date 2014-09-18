@@ -73,7 +73,7 @@
 
         [Test]
         public void BuildBetTeam_BetTeamIs4dashOver_SetTemplateBetTeamIsResource4AndOver()
-        { 
+        {
             // Arrange
             _ticket.BetTeam = "4-over";
 

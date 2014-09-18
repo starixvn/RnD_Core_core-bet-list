@@ -1,7 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Utils.NPOIExt
 {
     using System;
-    using System.Diagnostics.CodeAnalysis;
     using NPOI.SS.UserModel;
 
     /// <summary>

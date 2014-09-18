@@ -9,11 +9,11 @@
 
     /// <summary>
     /// Unit test for bet type First Half Exact Goal.
-    /// </summary>    
+    /// </summary>
     [TestFixture]
     public class Choice129Test
     {
-        private static readonly object[] ExpectedBetTeams = 
+        private static readonly object[] ExpectedBetTeams =
         {
             new object[] { "0", CoreBetList.NoGoals, "Betting on the total number of goals in Half Time will be no goals." },
             new object[] { "1", CoreBetList.OneGoal, "Betting on the total number of goals in Half Time will be 1 goal." },
@@ -46,8 +46,8 @@
             // Act
             _choice.Render(_ticket, _ticketHelper, null, false);
 
-            // Assert            
+            // Assert
             Assert.AreEqual(expectedResult, _choice.Template.betTeam, expectedMessage);
-        }       
+        }
     }
 }

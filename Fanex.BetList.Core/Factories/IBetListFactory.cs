@@ -4,6 +4,6 @@
     /// Interface IBetListFactory.
     /// </summary>
     public interface IBetListFactory
-    {        
+    {
     }
 }

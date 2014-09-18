@@ -1,6 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Constants
 {
     using System.Diagnostics.CodeAnalysis;
+
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed.")]
 
     /// <summary>

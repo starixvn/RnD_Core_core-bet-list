@@ -1,8 +1,5 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Utils.NPOIExt
 {
-    using System;
-    using Fanex.BetList.Core.Utils.NPOIExt;
-    using NPOI.HSSF.UserModel;
     using NPOI.SS.UserModel;
     using NSubstitute;
     using NUnit.Framework;

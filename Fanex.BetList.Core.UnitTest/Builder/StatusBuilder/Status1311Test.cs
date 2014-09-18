@@ -32,7 +32,7 @@
             // Act
             _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert            
+            // Assert
             Assert.AreEqual("0", _status.Template.StatusResult.refNo);
         }
 
@@ -45,7 +45,7 @@
             // Act
             _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert            
+            // Assert
             Assert.AreEqual("53", _status.Template.StatusResult.refNo);
         }
     }

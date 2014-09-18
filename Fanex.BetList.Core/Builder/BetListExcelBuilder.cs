@@ -45,9 +45,10 @@ namespace Fanex.BetList.Core.Builder
         /// </summary>
         private int _nextCellIndex;
 
-        #endregion
+        #endregion Attributes
 
         #region Constructors
+
         /// <summary>
         /// Initializes a new instance of the <see cref="BetListExcelBuilder" /> class.
         /// </summary>
@@ -79,7 +80,7 @@ namespace Fanex.BetList.Core.Builder
             InitDefaultCellStyles();
         }
 
-        #endregion
+        #endregion Constructors
 
         #region Properties
 
@@ -125,7 +126,7 @@ namespace Fanex.BetList.Core.Builder
             }
         }
 
-        #endregion
+        #endregion Properties
 
         #region IDisposable's Implementation
 
@@ -145,7 +146,7 @@ namespace Fanex.BetList.Core.Builder
             }
         }
 
-        #endregion
+        #endregion IDisposable's Implementation
 
         /// <summary>
         /// Creates the cell style.
@@ -267,7 +268,7 @@ namespace Fanex.BetList.Core.Builder
         /// <returns>CellAddress: the address object of the newly merged cell.</returns>
         public CellAddress AddMergedCell(IRichTextString rtfString, CellRangeAddress mergedRange, ICellStyle cellStyle)
         {
-            _nextCellIndex++;        
+            _nextCellIndex++;
 
             if (_nextCellIndex >= _reportColumnsNum)
             {
@@ -494,8 +495,8 @@ namespace Fanex.BetList.Core.Builder
         {
             OddCellStyle.Alignment = EvenCellStyle.Alignment = HorizontalAlignment.Right;
 
-            // There's probably a bug in the VerticalAlignment enum of NPOI 2.0.6.0, 
-            // where VerticalAlignment.Top is actually resulting in middle alignment, 
+            // There's probably a bug in the VerticalAlignment enum of NPOI 2.0.6.0,
+            // where VerticalAlignment.Top is actually resulting in middle alignment,
             // and VerticalAlignment.Bottom is in fact top alignment.
             OddCellStyle.VerticalAlignment = EvenCellStyle.VerticalAlignment = VerticalAlignment.Bottom;
             OddCellStyle.FillPattern = EvenCellStyle.FillPattern = FillPattern.SolidForeground;
@@ -552,6 +553,6 @@ namespace Fanex.BetList.Core.Builder
             }
         }
 
-        #endregion
+        #endregion IDisposable's Implementation
     }
 }

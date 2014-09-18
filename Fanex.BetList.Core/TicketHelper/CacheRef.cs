@@ -9,7 +9,7 @@
     public class CacheRef
     {
         private CacheRef()
-        { 
+        {
         }
 
         public static string CurrentTWLanguage
@@ -28,7 +28,7 @@
                     default: return "en";
                 }
             }
-        }       
+        }
 
         public static string GetBettype(object bettypeId)
         {
@@ -42,7 +42,7 @@
             if (betID != null && betID.ToString().Length > 1)
             {
                 resourceId = betID.ToString().Substring(1);
-            }           
+            }
 
             return RefData.GetBetTypeName(bettypeId.ToString(), CurrentTWLanguage, string.Empty, resourceId);
         }

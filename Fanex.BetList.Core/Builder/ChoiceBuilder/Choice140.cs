@@ -25,9 +25,11 @@
                 case BetTeamValue.TwoH:
                     betTeam = CoreBetList.SecondHalf;
                     break;
+
                 case BetTeamValue.OneH:
                     betTeam = CoreBetList.FirstHalf;
                     break;
+
                 case BetTeamValue.Tie:
                     betTeam = CoreBetList.Tie;
                     break;

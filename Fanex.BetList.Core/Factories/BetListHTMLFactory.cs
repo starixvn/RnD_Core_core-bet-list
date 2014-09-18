@@ -1,7 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Factories
 {
     using Builder;
-    using Entities;    
 
     /// <summary>
     /// Class BetListHTMLFactory.

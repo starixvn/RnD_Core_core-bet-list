@@ -1,7 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Entities
 {
     /// <summary>
-    /// Reference data for bet types: 
+    /// Reference data for bet types:
     ///                     1) Horse Racing (33) => Build Odds.
     ///                     2) Live Casino Baccarat (1101) => Build Choice.
     ///                     3) Live Roulette (1102) => Build Choice.
@@ -19,7 +19,7 @@
         decimal Stake { get; set; }
 
         string BetTeam { get; set; }
-        
+
         decimal SuperPT { get; set; }
 
         decimal MasterPT { get; set; }

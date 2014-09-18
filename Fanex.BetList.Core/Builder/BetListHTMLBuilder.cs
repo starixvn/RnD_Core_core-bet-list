@@ -48,7 +48,7 @@
         /// </summary>
         private StringBuilder _content;
 
-        #endregion
+        #endregion Attributes
 
         #region Constructors
 
@@ -60,7 +60,7 @@
             _content = new StringBuilder();
         }
 
-        #endregion
+        #endregion Constructors
 
         /// <summary>
         /// Gets the bet list.

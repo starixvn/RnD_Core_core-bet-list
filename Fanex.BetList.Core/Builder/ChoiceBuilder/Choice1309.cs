@@ -75,12 +75,12 @@
         }
 
         private static bool IsBetHome(ITicket ticket)
-        {            
+        {
             return ticket.BetTeam == "1";
         }
 
         private static bool IsBetAway(ITicket ticket)
-        {           
+        {
             return ticket.BetTeam == "2";
         }
     }

@@ -1,6 +1,5 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Common.Enums;
     using Core.Builder.ChoiceBuilder;
     using Entities;
     using Fanex.BetList.Core.App_GlobalResources;
@@ -9,8 +8,8 @@
 
     /// <summary>
     /// Unit test for bet type Half Time / Full Time Odd/Even.
-    /// </summary>    
-     [TestFixture]
+    /// </summary>
+    [TestFixture]
     public class Choice128Test
     {
         private IChoice _choice;
@@ -21,7 +20,7 @@
         public void Setup()
         {
             _choice = new Choice128();
-            _ticket = Substitute.For<ITicket>();            
+            _ticket = Substitute.For<ITicket>();
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
@@ -38,7 +37,7 @@
             Assert.AreEqual(CoreBetList.oo, _choice.Template.betTeam);
         }
 
-        [Test]        
+        [Test]
         public void BuildBetTeam_BetTeamIsOE_SetBetTeamOddEven()
         {
             // Arrange

@@ -13,7 +13,7 @@
     [TestFixture]
     public class Choice14Test
     {
-        private static readonly object[] ExpectedBetTeams = 
+        private static readonly object[] ExpectedBetTeams =
         {
             new object[] { "0:0", CoreBetList.no0 + "&nbsp;" + CoreBetList.goal },
             new object[] { "1:1", CoreBetList.home + "&nbsp;" + CoreBetList.FG },
@@ -87,8 +87,8 @@
             // Act
             _choice.Render(_ticket, _ticketHelper, null, false);
 
-            // Assert            
+            // Assert
             Assert.AreEqual(expectedResult, _choice.Template.betTeam);
-        }       
+        }
     }
 }

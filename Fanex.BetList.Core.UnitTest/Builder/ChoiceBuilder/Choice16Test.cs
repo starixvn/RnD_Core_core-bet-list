@@ -12,7 +12,7 @@
     [TestFixture]
     public class Choice16Test
     {
-        private static object[] expectedBetTeams = 
+        private static object[] expectedBetTeams =
         {
             new object[] { "0:0", "DD" },
             new object[] { "0:1", "DH" },
@@ -65,7 +65,7 @@
 
             // Assert
             Assert.IsEmpty(_choice.Template.betTeam);
-        }       
+        }
 
         [Test, TestCaseSource("expectedBetTeams")]
         public void BuildBetTeam_Always_SetRightBetTeam(string betTeam, string expectedResult)
@@ -76,9 +76,9 @@
             // Act
             _choice.Render(_ticket, _ticketHelper, null, false);
 
-            // Assert            
+            // Assert
             Assert.AreEqual(expectedResult, _choice.Template.betTeam);
-        }       
+        }
 
         /// <summary>
         /// The value of Template.betTeamClassName is always favorite.

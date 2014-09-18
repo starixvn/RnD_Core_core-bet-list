@@ -44,7 +44,7 @@
                     ITicketData placeTicket = foundTicketData.Find(item => item.BetTypeId == PlaceBetId);
 
                     string oddsWin = GetOddsWin(winTicket);
-                    string oddsPlace = GetOddsPlace(placeTicket);                    
+                    string oddsPlace = GetOddsPlace(placeTicket);
 
                     var oddsWinMarkup = string.Join(null, new string[] { CoreBetList.win, ": ", "<b>", oddsWin, "</b>" });
                     var oddsPlaceMarkup = string.Join(null, new string[] { CoreBetList.place, ": ", "<b>", oddsPlace, "</b>" });
@@ -74,7 +74,7 @@
             Template.oddsType = funcGetOddsTypeName(ConvertByBetType.OddsType(ticket.BetTypeId, ticket.OddsType));
             return Template;
         }
-        
+
         protected virtual List<ITicketData> GetReferenceData(ITicket ticket, List<ITicketData> ticketData)
         {
             return ticketData.FindAll(item => item.RefNo.Equals(ticket.TransId.ToString()));
@@ -222,7 +222,7 @@
             string winStatus = winTicket.Status.ToLower();
             string oddsWin;
 
-            if (!winStatus.Equals(BetStatus.Won) 
+            if (!winStatus.Equals(BetStatus.Won)
                 && !winStatus.Equals(BetStatus.Lose))
             {
                 oddsWin = "-";
@@ -246,7 +246,7 @@
 
             string oddsPlace;
 
-            if (!placeStatus.Equals(BetStatus.Won) 
+            if (!placeStatus.Equals(BetStatus.Won)
                 && !placeStatus.Equals(BetStatus.Lose))
             {
                 oddsPlace = "-";

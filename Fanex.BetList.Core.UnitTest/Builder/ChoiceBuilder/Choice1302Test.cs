@@ -90,17 +90,17 @@
         }
 
         /// <summary>
-        /// The value of Template.betTeamClassName is always underdog.
+        /// The value of Template.betTeamClassName is always favorite.
         /// </summary>
         [Test]
-        public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsUnderdog()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            const string CSS_CLASS_UNDERDOG = "underdog";
-            Assert.AreEqual(CSS_CLASS_UNDERDOG, _choice.Template.betTeamClassName);
+            string expectedTeamClassName = "favorite";
+            Assert.AreEqual(expectedTeamClassName, _choice.Template.betTeamClassName);
         }
     }
 }

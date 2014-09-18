@@ -24,24 +24,31 @@
                 case "1":
                     betTeam = CoreBetList.virtualtennis_scorebet_win_0;
                     break;
+
                 case "2":
                     betTeam = CoreBetList.virtualtennis_scorebet_win_15;
                     break;
+
                 case "3":
                     betTeam = CoreBetList.virtualtennis_scorebet_win_30;
                     break;
+
                 case "4":
                     betTeam = CoreBetList.virtualtennis_scorebet_win_40;
                     break;
+
                 case "5":
                     betTeam = CoreBetList.virtualtennis_scorebet_0_win;
                     break;
+
                 case "6":
                     betTeam = CoreBetList.virtualtennis_scorebet_15_win;
                     break;
+
                 case "7":
                     betTeam = CoreBetList.virtualtennis_scorebet_30_win;
                     break;
+
                 case "8":
                     betTeam = CoreBetList.virtualtennis_scorebet_40_win;
                     break;

@@ -2,17 +2,17 @@
 {
     using System.Collections.Generic;
     using Entities;
+    using Fanex.BetList.Core.App_GlobalResources;
+    using Fanex.BetList.Core.Constants;
 
     /// <summary>
     ///  Set x Total Games 2-way.
     /// </summary>
     public class Choice1312 : Choice3
     {
-        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            base.BuildBetTeamClassNameAndHandicap(ticket);
-
-            Template.betTeamClassName = Favorite;
+            Template.betTeam = ticket.BetTeam == BetTeamValue.O ? CoreBetList.over : CoreBetList.under;
         }
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)

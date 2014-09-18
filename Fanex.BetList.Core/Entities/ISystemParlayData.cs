@@ -8,9 +8,9 @@
     public interface ISystemParlayData
     {
         IList<ISystemParlayTicket> TicketList { get; set; }
-     
+
         IList<ISystemParlaySerial> SerialList { get; set; }
-        
+
         decimal Outstanding { get; set; }
     }
 }

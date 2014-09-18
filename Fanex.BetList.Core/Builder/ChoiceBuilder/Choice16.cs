@@ -10,7 +10,7 @@
     {
         private static readonly Dictionary<string, string> BetTeamPatterns
                 = new Dictionary<string, string>
-                {                  
+                {
                     { "0:0", "DD" },
                     { "0:1", "DH" },
                     { "0:2", "DA" },

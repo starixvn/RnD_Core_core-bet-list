@@ -87,8 +87,8 @@
 
         string GetKenoBetChoiceName(string kenoBetChoiceID, out string kenoBettypeID);
 
-        string GetKenoBetTypeName(string kenoBettypeID); 
+        string GetKenoBetTypeName(string kenoBettypeID);
 
-        #endregion
+        #endregion METHODS TO RESOLVE NAMES FROM IDS
     }
 }

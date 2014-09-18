@@ -7,18 +7,18 @@
     using Fanex.BetList.Core.Utils;
     using NSubstitute;
     using NUnit.Framework;
-    
+
     /// <summary>
     /// Unit test for bet type 1H Home Team Odd/Even - 136.
-    /// </summary>        
+    /// </summary>
     [SuppressMessage("StyleCop.CSharp.Nexcel.NexcelCustomRules", "EX1003:MethodMustBeDocumented", Justification = "Reviewed.")]
-    [TestFixture]    
+    [TestFixture]
     public class Choice143Test
     {
         private const string TeamName = "Chelsea";
         private IChoice _choice;
         private ITicket _ticket;
-        private ITicketHelper _ticketHelper;        
+        private ITicketHelper _ticketHelper;
 
         [SetUp]
         public void Setup()
@@ -28,14 +28,14 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        [Test]        
+        [Test]
         public void BuildBetTeam_BetTeamIsHO_SetBetTeamIsHomeTeamNameAndOver()
         {
-            // Arrange            
+            // Arrange
             _ticket.BetTeam = "ho"; // <<Home>> & Over
             _ticketHelper.GetTeamNameById(Arg.Any<int>()).ReturnsForAnyArgs(TeamName);
 
-            // Act                        
+            // Act
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
@@ -45,11 +45,11 @@
         [Test]
         public void BuildBetTeam_BetTeamIsHU_SetBetTeamIsHomeTeamNameAndUnder()
         {
-            // Arrange            
+            // Arrange
             _ticket.BetTeam = "hu"; // <<Home>> & Over
             _ticketHelper.GetTeamNameById(Arg.Any<int>()).ReturnsForAnyArgs(TeamName);
 
-            // Act                        
+            // Act
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
@@ -59,11 +59,11 @@
         [Test]
         public void BuildBetTeam_BetTeamIsAO_SetBetTeamIsHomeTeamNameAndOver()
         {
-            // Arrange            
+            // Arrange
             _ticket.BetTeam = "ao"; // <<Home>> & Over
             _ticketHelper.GetTeamNameById(Arg.Any<int>()).ReturnsForAnyArgs(TeamName);
 
-            // Act                        
+            // Act
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
@@ -73,11 +73,11 @@
         [Test]
         public void BuildBetTeam_BetTeamIsAU_SetBetTeamIsHomeTeamNameAndUnder()
         {
-            // Arrange            
+            // Arrange
             _ticket.BetTeam = "au"; // <<Home>> & Over
             _ticketHelper.GetTeamNameById(Arg.Any<int>()).ReturnsForAnyArgs(TeamName);
 
-            // Act                        
+            // Act
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
@@ -87,11 +87,11 @@
         [Test]
         public void BuildBetTeam_BetTeamIsDO_SetBetTeamIsDrawAndOver()
         {
-            // Arrange            
+            // Arrange
             _ticket.BetTeam = "do"; // Draw & Over
             _ticketHelper.GetTeamNameById(Arg.Any<int>()).ReturnsForAnyArgs(TeamName);
 
-            // Act                        
+            // Act
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
@@ -101,11 +101,11 @@
         [Test]
         public void BuildBetTeam_BetTeamIsDU_SetBetTeamIsDrawAndUnder()
         {
-            // Arrange            
+            // Arrange
             _ticket.BetTeam = "du"; // Draw & Under
             _ticketHelper.GetTeamNameById(Arg.Any<int>()).ReturnsForAnyArgs(TeamName);
 
-            // Act                        
+            // Act
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
@@ -144,7 +144,7 @@
         public void BuildBetTeam_Always_SetHandicapValueIsHandicap1()
         {
             // Arrange
-            _ticket.Handicap1 = 12;            
+            _ticket.Handicap1 = 12;
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, false);

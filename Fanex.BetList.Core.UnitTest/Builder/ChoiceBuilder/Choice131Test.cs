@@ -9,11 +9,11 @@
 
     /// <summary>
     /// Unit test for bet type Home Team Total Goal 131.
-    /// </summary>    
+    /// </summary>
     [TestFixture]
     public class Choice131Test
     {
-        private static object[] expectedBetTeams = 
+        private static object[] expectedBetTeams =
         {
             new object[] { "0-1", "0-1", "Betting on that 0 or 1 goal will be scored by Home Team." },
             new object[] { "2-3",  "2-3", "Betting on the total number of goals in Half Time will be 1 goal." },
@@ -42,7 +42,7 @@
             // Act
             _choice.Render(_ticket, _ticketHelper, null, false);
 
-            // Assert            
+            // Assert
             Assert.AreEqual(string.Join(null, new string[] { "&nbsp;", expectedResult }), _choice.Template.betTeam, expectedMessage);
         }
     }

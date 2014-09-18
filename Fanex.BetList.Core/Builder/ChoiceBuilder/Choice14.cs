@@ -21,8 +21,8 @@
         };
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-        {            
-            Template.betTeam = 
+        {
+            Template.betTeam =
                 (!string.IsNullOrWhiteSpace(ticket.BetTeam) && BetTeamPatterns.ContainsKey(ticket.BetTeam))
                 ? BetTeamPatterns[ticket.BetTeam]
                 : string.Empty;

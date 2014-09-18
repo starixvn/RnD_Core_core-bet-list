@@ -15,4 +15,4 @@
             Template.betTeam = (ticket.BetTeam == BetTeamValue.O) ? CoreBetList.odd : CoreBetList.even;
         }
     }
-}   
+}

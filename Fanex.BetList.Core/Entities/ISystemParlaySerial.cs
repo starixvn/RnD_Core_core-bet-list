@@ -6,9 +6,9 @@
     public interface ISystemParlaySerial
     {
         long Serial { get; set; }
-     
+
         int HomeId { get; set; }
-        
+
         int AwayId { get; set; }
     }
 }

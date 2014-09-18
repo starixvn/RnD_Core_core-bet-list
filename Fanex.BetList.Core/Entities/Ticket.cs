@@ -108,6 +108,6 @@
 
         public DateTime EventDate { get; set; }
 
-        #endregion
+        #endregion ITicket Members
     }
 }

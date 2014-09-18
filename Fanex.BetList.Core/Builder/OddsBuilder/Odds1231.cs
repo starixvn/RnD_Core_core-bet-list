@@ -1,14 +1,13 @@
 ﻿namespace Fanex.BetList.Core.Builder.OddsBuilder
 {
     using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
     using Entities;
     using Templates;
-    using Utils;   
+    using Utils;
 
     /// <summary>
     /// Virtual Horse Racing - Win.
-    /// </summary>    
+    /// </summary>
     public class Odds1231 : Odds1
     {
         public override Odds_Template Render(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)

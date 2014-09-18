@@ -45,7 +45,7 @@
             return _template.ToString();
         }
 
-        #endregion
+        #endregion ISystemParlayDetail Members
 
         #region Utlity
 
@@ -224,6 +224,6 @@
             return string.Empty;
         }
 
-        #endregion
+        #endregion Utlity
     }
 }

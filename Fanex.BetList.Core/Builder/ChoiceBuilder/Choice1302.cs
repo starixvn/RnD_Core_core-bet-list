@@ -23,7 +23,7 @@
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
-            Template.betTeamClassName = Underdog;
+            Template.betTeamClassName = Favorite;
             Template.Handicap.handicap = null;
         }
 

@@ -36,7 +36,7 @@ namespace Fanex.BetList.Example.Data
             ret = dataFormatter.FormatCellValue(cell, formulaEvaluator);
 
             // remove line break
-            return ret.Replace("\n", " "); 
+            return ret.Replace("\n", " ");
         }
     }
 }

@@ -32,7 +32,6 @@
         public void BuildBetTeam_Always_SetBetTypeNameIsBetTypeName()
         {
             // Arrange
-            _ticket.BetTypeId = 1;
             _ticket.BetId = 1;
             _ticketHelper.GetBetTypeNameById(Arg.Any<int>(), Arg.Any<long>()).Returns("Bet type name");
 
@@ -42,6 +41,40 @@
             // Assert
             string expectedBetTypeName = _ticketHelper.GetBetTypeNameById(_ticket.BetTypeId, _ticket.BetId);
             Assert.AreEqual(expectedBetTypeName, _choice.Template.BetType.betTypeName);
+        }
+
+        /// <summary>
+        /// If the value of ticket.BetTeam is 'o', the Template.betTeam will be 'Odd'.
+        /// </summary>
+        [Test]
+        public void BuildBetTeam_BetTeamIsCharacterO_BetTeamIsOdd()
+        {
+            // Arrange
+            _ticket.BetTeam = "o";
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedBetTeam = "Odd";
+            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
+        }
+
+        /// <summary>
+        /// If the value of ticket.BetTeam is 'e', the Template.betTeam will be 'Even'.
+        /// </summary>
+        [Test]
+        public void BuildBetTeam_BetTeamIsCharacterE_BetTeamIsEven()
+        {
+            // Arrange
+            _ticket.BetTeam = "e";
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedBetTeam = "Even";
+            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
     }
 }

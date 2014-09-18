@@ -19,7 +19,7 @@
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             var betTeam = ticket.BetTeam.Equals("4&over", System.StringComparison.OrdinalIgnoreCase) ? CoreBetList.FourAndOver : ticket.BetTeam;
-           
+
             Template.betTeam = string.Join(null, new string[] { HtmlCharacters.NoneBreakingSpace, betTeam });
         }
     }

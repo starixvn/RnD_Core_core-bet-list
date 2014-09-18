@@ -1,6 +1,5 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Common.Enums;
     using Core.Builder.ChoiceBuilder;
     using Entities;
     using Fanex.BetList.Core.App_GlobalResources;
@@ -9,11 +8,11 @@
 
     /// <summary>
     /// Unit test for bet type Exact Goal.
-    /// </summary>    
+    /// </summary>
     [TestFixture]
     public class Choice130Test
     {
-        private static object[] expectedBetTeams = 
+        private static object[] expectedBetTeams =
         {
             new object[] { "0", CoreBetList.NoGoals, "Betting on the total number of goals in Half Time will be no goals." },
             new object[] { "1", CoreBetList.OneGoal, "Betting on the total number of goals in Half Time will be 1 goal." },
@@ -46,8 +45,8 @@
             // Act
             _choice.Render(_ticket, _ticketHelper, null, false);
 
-            // Assert            
+            // Assert
             Assert.AreEqual(expectedResult, _choice.Template.betTeam, expectedMessage);
-        }       
+        }
     }
 }

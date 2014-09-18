@@ -59,7 +59,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
         private IEnumerable<SelectListItem> CreateSelectListItem(IEnumerable<BetType> betTypes)
         {
-            return betTypes.Select(betType => new SelectListItem { Text = betType.Name, Value = betType.Id.ToString()});
+            return betTypes.Select(betType => new SelectListItem { Text = betType.Name, Value = betType.Id.ToString() });
         }
 
         private BetListData GetDataSource(BetListData model, string sourcePath)
@@ -81,10 +81,8 @@ namespace Fanex.BetList.Example.MVC.Controllers
                   .Select(ticket => ticket)
                   .ToList();
 
-
                 model.TicketData = model.TicketData ?? new List<ITicketData>();
                 model.Tickets = model.Tickets ?? new List<ITicket>();
-
             }
             else
             {

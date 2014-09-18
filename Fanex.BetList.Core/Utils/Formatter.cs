@@ -43,7 +43,7 @@
 
         public const string TIMEFORMATMILISEC = "HH:mm:ss fff";
 
-        #endregion
+        #endregion FORMAT STRINGS CONST
 
         #region CULTURE CONST
 
@@ -51,7 +51,7 @@
         private static CultureInfo vietnameseCult = CultureInfo.CreateSpecificCulture("vi-VN");
         private static CultureInfo cult = new CultureInfo("en-US");
 
-        #endregion
+        #endregion CULTURE CONST
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Formatter"/> class.
@@ -129,7 +129,7 @@
             {
                 int a = (int)Math.Pow(10, decDigits);
 
-                // Returns the largest integer less than or equal number 
+                // Returns the largest integer less than or equal number
                 // If the value is negative, then we use Ceiling() function instead of Floor() function
                 if (value < 0)
                 {
@@ -152,7 +152,7 @@
             return DecFormat(Convert.ToDecimal(value), decDigits, chop);
         }
 
-        #endregion
+        #endregion Decimal
 
         #region Float
 
@@ -178,7 +178,7 @@
             return FloatFormat(Convert.ToSingle(value), decDigits);
         }
 
-        #endregion
+        #endregion Float
 
         #region Double
 
@@ -204,7 +204,7 @@
             return DoubleFormat(Convert.ToDouble(value), decDigits);
         }
 
-        #endregion
+        #endregion Double
 
         #region Number
 
@@ -443,7 +443,8 @@
 
             return number.ToString();
         }
-        #endregion
+
+        #endregion Number
 
         #region Date
 
@@ -746,7 +747,7 @@
             return ResetStartDate(date).Add(new TimeSpan(23, 59, 59));
         }
 
-        #endregion
+        #endregion Date
 
         #region String
 
@@ -804,6 +805,6 @@
                        : value == 0 ? "0" : DecFormat(amount, 2);
         }
 
-        #endregion
+        #endregion String
     }
 }

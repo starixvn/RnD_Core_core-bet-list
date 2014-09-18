@@ -32,7 +32,6 @@
         public void BuildBetTeam_Always_SetBetTypeNameIsBetTypeName()
         {
             // Arrange
-            _ticket.BetTypeId = 1;
             _ticket.BetId = 1;
             _ticketHelper.GetBetTypeNameById(Arg.Any<int>(), Arg.Any<long>()).Returns("Bet type name");
 
@@ -45,17 +44,37 @@
         }
 
         /// <summary>
-        /// The value of Template.betTeamClassName is always favorite.
+        /// If the value of ticket.BetTeam is 'o', the Template.betTeam will be 'Over'.
         /// </summary>
         [Test]
-        public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
+        public void BuildBetTeam_BetTeamIsCharacterO_BetTeamIsOver()
         {
+            // Arrange
+            _ticket.BetTeam = "o";
+
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            const string CSS_CLASS_FAVORITE = "favorite";
-            Assert.AreEqual(CSS_CLASS_FAVORITE, _choice.Template.betTeamClassName);
+            string expectedBetTeam = "Over";
+            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
+        }
+
+        /// <summary>
+        /// If the value of ticket.BetTeam is 'u', the Template.betTeam will be 'Under'.
+        /// </summary>
+        [Test]
+        public void BuildBetTeam_BetTeamIsCharacterU_BetTeamIsUnder()
+        {
+            // Arrange
+            _ticket.BetTeam = "u";
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedBetTeam = "Under";
+            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
     }
 }

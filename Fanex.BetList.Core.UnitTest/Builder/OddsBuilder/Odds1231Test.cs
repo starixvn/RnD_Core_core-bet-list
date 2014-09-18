@@ -7,7 +7,7 @@
     using Fanex.BetList.Core.UnitTest.Stubs;
     using NSubstitute;
     using NUnit.Framework;
-    
+
     /// <summary>
     /// Odd test class for bet type 1231.
     /// </summary>
@@ -20,7 +20,7 @@
         [SetUp]
         public void Setup()
         {
-            _odds = new Odds1231();           
+            _odds = new Odds1231();
             _ticket = TestData.CreateTicket(BetTypes.VHR_Win);
             _ticketHelperStub = new TicketHelperStub();
         }
@@ -60,7 +60,7 @@
             // Act
             _odds.Render(_ticket, null, GetCachePropertyByIdStub);
 
-            // Assert            
+            // Assert
             Assert.AreEqual("1", _odds.Template.oddsType);
         }
 

@@ -3,7 +3,7 @@
     using Entities;
 
     /// <summary>
-    ///  Set x Winner.
+    /// Set x Winner.
     /// </summary>
     public class Status1311 : Status1
     {

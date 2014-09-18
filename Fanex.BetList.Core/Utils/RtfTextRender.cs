@@ -65,7 +65,7 @@
                 }
 
                 if (font != null)
-                {                   
+                {
                     int endIndex = textIndex + block.Text.Length;
                     result.ApplyFont(textIndex, endIndex, font);
                 }
