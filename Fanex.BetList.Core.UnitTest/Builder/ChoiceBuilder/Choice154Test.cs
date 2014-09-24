@@ -1,16 +1,16 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Common.Enums;
-    using Core.Builder.ChoiceBuilder;
-    using Entities;
+    using Fanex.BetList.Core.Builder.ChoiceBuilder;
+    using Fanex.BetList.Core.Entities;
+    using Fanex.BetList.Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
 
     /// <summary>
-    /// Unit test for Choice1308 class.
+    /// Unit test for Choice154: Set x Winner.
     /// </summary>
     [TestFixture]
-    public class Choice1308Test
+    public class Choice154Test
     {
         private IChoice _choice;
         private ITicket _ticket;
@@ -19,9 +19,9 @@
         [SetUp]
         public void Setup()
         {
-            _choice = new Choice1308();
+            _choice = new Choice154();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes.MatchHandicapGames2Way;
+            _ticket.BetTypeId = BetTypes.Set_X_Winner;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
@@ -32,15 +32,14 @@
         public void BuildBetTeam_Always_SetBetTypeNameIsBetTypeName()
         {
             // Arrange
-            _ticket.BetTypeId = 1;
-            _ticket.BetId = 1;
-            _ticketHelper.GetBetTypeNameById(Arg.Any<int>(), Arg.Any<long>()).Returns("Bet type name");
+            _ticket.BetId = 801;
+            _ticketHelper.GetBetTypeNameById(Arg.Any<int>(), Arg.Any<object>(), Arg.Any<object>()).Returns("Bet type name");
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedBetTypeName = _ticketHelper.GetBetTypeNameById(_ticket.BetTypeId, _ticket.BetId);
+            string expectedBetTypeName = _ticketHelper.GetBetTypeNameById(_ticket.BetTypeId, _ticket.BetId, _ticket.BetCheck);
             Assert.AreEqual(expectedBetTypeName, _choice.Template.BetType.betTypeName);
         }
     }

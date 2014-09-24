@@ -26,24 +26,6 @@
         }
 
         /// <summary>
-        /// The value of Template.BetType.betTypeName is always bet type name.
-        /// </summary>
-        [Test]
-        public void BuildBetTeam_Always_SetBetTypeNameIsBetTypeName()
-        {
-            // Arrange
-            _ticket.BetId = 1;
-            _ticketHelper.GetBetTypeNameById(Arg.Any<int>(), Arg.Any<long>()).Returns("Bet type name");
-
-            // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-
-            // Assert
-            string expectedBetTypeName = _ticketHelper.GetBetTypeNameById(_ticket.BetTypeId, _ticket.BetId);
-            Assert.AreEqual(expectedBetTypeName, _choice.Template.BetType.betTypeName);
-        }
-
-        /// <summary>
         /// If the value of ticket.BetTeam is 'o', the Template.betTeam will be 'Odd'.
         /// </summary>
         [Test]

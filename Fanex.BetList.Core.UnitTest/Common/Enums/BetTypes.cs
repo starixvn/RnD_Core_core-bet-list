@@ -384,9 +384,19 @@ namespace Fanex.BetList.Core.UnitTest.Common.Enums
         public const int Result_Total_Goals = 144;
 
         /// <summary>
-        /// Set X Total Game O/U.
+        /// Set x Winner.
         /// </summary>
-        public const int Set_X_Total_Game_OU = 156;
+        public const int Set_X_Winner = 154;
+
+        /// <summary>
+        /// Set x Game Handicap.
+        /// </summary>
+        public const int Set_X_Game_Handicap = 155;
+
+        /// <summary>
+        /// Set X Total Game.
+        /// </summary>
+        public const int Set_X_Total_Games = 156;
 
         /// <summary>
         /// BetType = 1000.
@@ -534,19 +544,9 @@ namespace Fanex.BetList.Core.UnitTest.Common.Enums
         public const int VT_TotalPoints = 1236;
 
         /// <summary>
-        /// BetType = 1301.
-        /// </summary>
-        public const int MatchWinner = 1301;
-
-        /// <summary>
         /// BetType = 1302.
         /// </summary>
         public const int MatchCorrectScore = 1302;
-
-        /// <summary>
-        /// BetType = 1303.
-        /// </summary>
-        public const int SetHandicap = 1303;
 
         /// <summary>
         /// BetType = 1304.
@@ -561,17 +561,12 @@ namespace Fanex.BetList.Core.UnitTest.Common.Enums
         /// <summary>
         /// BetType = 1306.
         /// </summary>
-        public const int MatchTotalGames2Way = 1306;
+        public const int MatchTotalGamesOverUnder = 1306;
 
         /// <summary>
         /// BetType = 1307.
         /// </summary>
         public const int MatchTotalGames3Way = 1307;
-
-        /// <summary>
-        /// BetType = 1308.
-        /// </summary>
-        public const int MatchHandicapGames2Way = 1308;
 
         /// <summary>
         /// BetType = 1309.

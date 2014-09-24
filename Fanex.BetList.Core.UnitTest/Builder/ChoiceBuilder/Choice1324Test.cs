@@ -7,10 +7,10 @@
     using NUnit.Framework;
 
     /// <summary>
-    /// Unit test for Choice1301 class.
+    /// Unit test for Choice1324 class.
     /// </summary>
     [TestFixture]
-    public class Choice1301Test
+    public class Choice1324Test
     {
         private IChoice _choice;
         private ITicket _ticket;
@@ -19,9 +19,9 @@
         [SetUp]
         public void Setup()
         {
-            _choice = new Choice1301();
+            _choice = new Choice1324();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes.MatchWinner;
+            _ticket.BetTypeId = BetTypes.SetXGameYWinner;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
@@ -29,18 +29,17 @@
         /// The value of Template.BetType.betTypeName is always bet type name.
         /// </summary>
         [Test]
-        public void BuildBetTeam_Always_SetBetTypeNameIsBetTypeName()
+        public void BuildBetType_Always_SetBetTypeNameIsBetTypeName()
         {
             // Arrange
-            _ticket.BetTypeId = 1;
-            _ticket.BetId = 1;
-            _ticketHelper.GetBetTypeNameById(Arg.Any<int>(), Arg.Any<long>()).Returns("Bet type name");
+            _ticket.BetId = 80102;
+            _ticketHelper.GetBetTypeNameById(Arg.Any<int>(), Arg.Any<object>(), Arg.Any<object>()).Returns("Bet type name");
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedBetTypeName = _ticketHelper.GetBetTypeNameById(_ticket.BetTypeId, _ticket.BetId);
+            string expectedBetTypeName = _ticketHelper.GetBetTypeNameById(_ticket.BetTypeId, _ticket.BetId, _ticket.BetCheck);
             Assert.AreEqual(expectedBetTypeName, _choice.Template.BetType.betTypeName);
         }
     }

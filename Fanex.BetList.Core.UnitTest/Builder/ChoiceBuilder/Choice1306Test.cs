@@ -7,7 +7,7 @@
     using NUnit.Framework;
 
     /// <summary>
-    /// Unit test for Choice1306: Match Total Game 2-way.
+    /// Unit test for Choice1306: Match Total Game Over/Under.
     /// </summary>
     [TestFixture]
     public class Choice1306Test
@@ -21,26 +21,8 @@
         {
             _choice = new Choice1306();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes.MatchTotalGames2Way;
+            _ticket.BetTypeId = BetTypes.MatchTotalGamesOverUnder;
             _ticketHelper = Substitute.For<ITicketHelper>();
-        }
-
-        /// <summary>
-        /// The value of Template.BetType.betTypeName is always bet type name.
-        /// </summary>
-        [Test]
-        public void BuildBetTeam_Always_SetBetTypeNameIsBetTypeName()
-        {
-            // Arrange
-            _ticket.BetId = 1;
-            _ticketHelper.GetBetTypeNameById(Arg.Any<int>(), Arg.Any<long>()).Returns("Bet type name");
-
-            // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-
-            // Assert
-            string expectedBetTypeName = _ticketHelper.GetBetTypeNameById(_ticket.BetTypeId, _ticket.BetId);
-            Assert.AreEqual(expectedBetTypeName, _choice.Template.BetType.betTypeName);
         }
 
         /// <summary>

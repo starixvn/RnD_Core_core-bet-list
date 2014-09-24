@@ -76,9 +76,9 @@
             return CacheRef.GetHorseTeamName(homeId);
         }
 
-        public string GetBetTypeNameById(object bettypeId, object betId)
+        public string GetBetTypeNameById(object bettypeId, object betId, object betCheck = null)
         {
-            return CacheRef.GetBettype(bettypeId, betId);
+            return CacheRef.GetBettype(bettypeId, betId, betCheck);
         }
 
         public string GetRouletteBetItemNameById(object itemId)

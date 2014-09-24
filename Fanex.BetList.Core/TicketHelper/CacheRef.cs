@@ -32,16 +32,28 @@
 
         public static string GetBettype(object bettypeId)
         {
-            return GetBettype(bettypeId, null);
+            return GetBettype(bettypeId, null, null);
         }
 
-        public static string GetBettype(object bettypeId, object betID)
+        /// <summary>
+        /// Gets bet type name.
+        /// </summary>
+        /// <param name="bettypeId">The ID of the bet type which needs to get the name.</param>
+        /// <param name="betId">In the case of single ticket, the resource ID is the bet ID.</param>
+        /// <param name="betCheck">In the case of sub-ticket of a parlay ticket, the resource ID is the BetCheck.</param>
+        /// <returns>The bet name of the passed bet type ID with associate resource.</returns>
+        public static string GetBettype(object bettypeId, object betId, object betCheck)
         {
-            // resourceId remove first character
             string resourceId = string.Empty;
-            if (betID != null && betID.ToString().Length > 1)
+
+            // Remove first character in the case of the resource is betId.
+            if (betId != null && betId.ToString().Length > 1)
             {
-                resourceId = betID.ToString().Substring(1);
+                resourceId = betId.ToString().Substring(1);
+            }
+            else if (betCheck != null)
+            {
+                resourceId = betCheck.ToString();
             }
 
             return RefData.GetBetTypeName(bettypeId.ToString(), CurrentTWLanguage, string.Empty, resourceId);

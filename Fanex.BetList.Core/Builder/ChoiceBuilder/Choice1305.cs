@@ -14,10 +14,5 @@
         {
             Template.betTeam = ticket.BetTeam == BetTeamValue.O ? CoreBetList.odd : CoreBetList.even;
         }
-
-        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-        {
-            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId);
-        }
     }
 }

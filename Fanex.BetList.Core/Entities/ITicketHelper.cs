@@ -73,7 +73,7 @@
 
         string GetBetTypeNameById(object bettypeId);
 
-        string GetBetTypeNameById(object bettypeId, object betID);
+        string GetBetTypeNameById(object bettypeId, object betId, object betCheck = null);
 
         string GetSportNameById(object sportId);
 
