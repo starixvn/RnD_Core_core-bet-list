@@ -25,6 +25,8 @@
         protected const string Favorite = "favorite";
 
         private const string VoidStatus = "void";
+        private const string RejectStatus = "reject";
+        private const string RefundStatus = "refund";
         private const string Neutral = " (N) ";
         private const string FirstGoalCssClass = "firstGoal ";
         private const string LastGoalCssClass = "lastGoal";
@@ -385,10 +387,22 @@
         /// <param name="ticket">The ticket.</param>
         protected virtual void BuildTicketStatus(ITicket ticket)
         {
-            if ((ticket.StatusId != null && ticket.StatusId.ToString().Trim() == BetStatusId.Void)
-                || (ticket.Status != null && ticket.Status.Trim().ToLower() == BetStatus.Void))
+            string statusId = ticket.StatusId != null ? ticket.StatusId.ToString() : string.Empty;
+            string status = ticket.Status ?? string.Empty;
+
+            status = status.Trim().ToLower();
+
+            if (statusId == BetStatusId.Void || status == BetStatus.Void)
             {
                 Template.ticketStatus = VoidStatus;
+            }
+            else if (statusId == BetStatusId.Reject || status == BetStatus.Reject)
+            {
+                Template.ticketStatus = RejectStatus;
+            }
+            else if (statusId == BetStatusId.Refund || status == BetStatus.Refund)
+            {
+                Template.ticketStatus = RefundStatus;
             }
         }
 

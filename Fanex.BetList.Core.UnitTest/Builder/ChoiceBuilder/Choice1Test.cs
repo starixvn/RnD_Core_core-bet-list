@@ -697,6 +697,64 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
+        public void BuildTicketStatus_StatusIdIsRefund_TicketStatusIsRefund()
+        {
+            // Arrange
+            const int REFUND_STATUSID = 103;
+            _ticket.StatusId = REFUND_STATUSID;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            const string REFUND_STATUS = "refund";
+            Assert.AreEqual(REFUND_STATUS, _choice.Template.ticketStatus);
+        }
+
+        [Test]
+        public void BuildTicketStatus_StatusIsRefund_TicketStatusIsRefund()
+        {
+            // Arrange
+            const string REFUND_STATUS = "refund";
+            _ticket.Status = REFUND_STATUS;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            Assert.AreEqual(REFUND_STATUS, _choice.Template.ticketStatus);
+        }
+
+        [Test]
+        public void BuildTicketStatus_StatusIdIsReject_TicketStatusIsReject()
+        {
+            // Arrange
+            const int REJECT_STATUSID = 101;
+            _ticket.StatusId = REJECT_STATUSID;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            const string REJECT_STATUS = "reject";
+            Assert.AreEqual(REJECT_STATUS, _choice.Template.ticketStatus);
+        }
+
+        [Test]
+        public void BuildTicketStatus_StatusIsReject_TicketStatusIsReject()
+        {
+            // Arrange
+            const string REJECT_STATUS = "reject";
+            _ticket.Status = REJECT_STATUS;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            Assert.AreEqual(REJECT_STATUS, _choice.Template.ticketStatus);
+        }
+
+        [Test]
         public void BuildHandicapOdds_IsShowOddsWithChoiceHelperIsFalse_HandicapOddsIsNull()
         {
             // Arrange
