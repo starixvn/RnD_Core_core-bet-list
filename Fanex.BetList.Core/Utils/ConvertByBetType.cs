@@ -22,7 +22,40 @@
         /// <summary>
         /// The odds bet types.
         /// </summary>
-        private static List<int> oddsBettypes = new List<int>(new int[] { 1, 2, 3, 7, 12, 8, 20, 124, 125, 81, 82, 83, 84, 85, 86, 87, 88 });
+        private static List<int> oddsBettypes = new List<int>(new int[]
+        {
+            1,
+            2,
+            3,
+            7,
+            12,
+            8,
+            20,
+            124,
+            125,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            153,
+            154,
+            155,
+            156,
+            1301,
+            1303,
+            1305,
+            1306,
+            1308,
+            1311,
+            1312,
+            1316,
+            1318,
+            1324
+        });
 
         /// <summary>
         /// The minus.
