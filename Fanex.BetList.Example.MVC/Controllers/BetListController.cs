@@ -54,7 +54,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
         public ActionResult SportingSolutionBetTypes(BetListData model = null)
         {
-            var betTypes = _dataService.QueryBetTypes(153, 154, 155, 156, 1301, 1302, 1303, 1305, 1305, 1311, 1312, 1316, 1317, 1318, 1324);
+            var betTypes = _dataService.QueryBetTypes(153, 154, 155, 156, 1301, 1302, 1303, 1305, 1306, 1311, 1312, 1316, 1317, 1318, 1324);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, sourcePath: "~/App_Data/SportingSolutionBetTypesData.xls");
