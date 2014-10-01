@@ -26,6 +26,40 @@
         }
 
         /// <summary>
+        /// If the value of ticket.BetTeam is 'o', the Template.betTeam will be 'Odd'.
+        /// </summary>
+        [Test]
+        public void BuildBetTeam_BetTeamIsCharacterO_BetTeamIsOdd()
+        {
+            // Arrange
+            _ticket.BetTeam = "o";
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedBetTeam = "Odd";
+            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
+        }
+
+        /// <summary>
+        /// If the value of ticket.BetTeam is 'e', the Template.betTeam will be 'Even'.
+        /// </summary>
+        [Test]
+        public void BuildBetTeam_BetTeamIsCharacterU_BetTeamIsUnder()
+        {
+            // Arrange
+            _ticket.BetTeam = "e";
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedBetTeam = "Even";
+            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
+        }
+
+        /// <summary>
         /// The value of Template.BetType.betTypeName is always bet type name.
         /// </summary>
         [Test]
