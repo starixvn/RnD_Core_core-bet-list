@@ -862,7 +862,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Live Baccarat.
+        ///   Looks up a localized string similar to Live Roulette.
         /// </summary>
         public static string LiveRoulette {
             get {
