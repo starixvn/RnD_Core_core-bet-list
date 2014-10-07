@@ -60,6 +60,40 @@
         }
 
         /// <summary>
+        /// The value of bet team class is 'favorite' when bet team is 'o'.
+        /// </summary>
+        [Test]
+        public void BuildBetTeamClassNameAndHandicap_BetTeamIsCharacterO_BetTeamClassNameIsFavorite()
+        {
+            // Arrange
+            _ticket.BetTeam = "o";
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedBetTeamClassName = "favorite";
+            Assert.AreEqual(expectedBetTeamClassName, _choice.Template.betTeamClassName);
+        }
+
+        /// <summary>
+        /// The value of bet team class is 'underdog' when bet team is 'u'.
+        /// </summary>
+        [Test]
+        public void BuildBetTeamClassNameAndHandicap_BetTeamIsCharacterU_BetTeamClassNameIsUnderdog()
+        {
+            // Arrange
+            _ticket.BetTeam = "u";
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedBetTeamClassName = "underdog";
+            Assert.AreEqual(expectedBetTeamClassName, _choice.Template.betTeamClassName);
+        }
+
+        /// <summary>
         /// The value of Template.BetType.betTypeName is always bet type name.
         /// </summary>
         [Test]
