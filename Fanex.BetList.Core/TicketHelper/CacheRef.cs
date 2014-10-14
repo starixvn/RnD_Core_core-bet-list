@@ -45,15 +45,12 @@
         public static string GetBettype(object bettypeId, object betId, object betCheck)
         {
             string resourceId = string.Empty;
+            object resource = betId ?? betCheck;
 
-            // Remove first character in the case of the resource is betId.
-            if (betId != null && betId.ToString().Length > 1)
+            // Remove first character of the resource.
+            if (resource != null && resource.ToString().Length > 1)
             {
-                resourceId = betId.ToString().Substring(1);
-            }
-            else if (betCheck != null)
-            {
-                resourceId = betCheck.ToString();
+                resourceId = resource.ToString().Substring(1);
             }
 
             return RefData.GetBetTypeName(bettypeId.ToString(), CurrentTWLanguage, string.Empty, resourceId);
