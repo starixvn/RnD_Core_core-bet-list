@@ -26,14 +26,14 @@
         }
 
         /// <summary>
-        /// The value of Template.BetType.betTypeName is always bet type name.
+        /// The value of Template.BetType.betTypeName is always the parrent bet type name.
         /// </summary>
         [Test]
-        public void BuildBetType_Always_SetBetTypeNameIsBetTypeName()
+        public void BuildBetType_Always_SetBetTypeNameIsParentBetTypeName()
         {
             // Arrange
             _ticket.BetId = 801;
-            _ticketHelper.GetBetTypeNameById(Arg.Any<int>(), Arg.Any<object>(), Arg.Any<object>()).Returns("Bet type name");
+            _ticketHelper.GetBetTypeNameById(Arg.Any<object>(), Arg.Any<object>()).Returns("Bet type name");
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());

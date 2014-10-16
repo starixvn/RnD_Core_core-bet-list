@@ -59,6 +59,13 @@
     <Compile Include="Builder\BetListHTMLBuilderTest.cs" />
     <Compile Include="Builder\ChoiceBuilder\3rd\Choice_22006Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice128Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice1301Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice1303Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice1305Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice1306Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice1308Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice1312Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice1316Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1317Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1318Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice131Test.cs" />

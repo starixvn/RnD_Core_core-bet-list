@@ -10,7 +10,9 @@
     {
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId, ticket.BetCheck);
+            string parentBettypeId = ticketHelper.GetParentIdByBetTypeId(ticket.BetTypeId);
+
+            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(parentBettypeId, ticket.BetId, ticket.BetCheck);
         }
     }
 }

@@ -56,6 +56,11 @@
             return RefData.GetBetTypeName(bettypeId.ToString(), CurrentTWLanguage, string.Empty, resourceId);
         }
 
+        public static string GetParentIdByBetTypeId(object betTypeId, object defaultParentId)
+        {
+            return RefData.GetParentIdByBetTypeId(betTypeId.ToString(), defaultParentId.ToString());
+        }
+
         public static string GetSportName(object sportId)
         {
             return RefData.GetSportName(sportId.ToString(), CurrentTWLanguage, string.Empty);

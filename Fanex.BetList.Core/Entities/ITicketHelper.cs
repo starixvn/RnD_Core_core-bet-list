@@ -75,6 +75,8 @@
 
         string GetBetTypeNameById(object bettypeId, object betId, object betCheck = null);
 
+        string GetParentIdByBetTypeId(object betTypeId, object defaultParentId = null);
+
         string GetSportNameById(object sportId);
 
         string GetCasinoBetTeamNameById(object betteamId);

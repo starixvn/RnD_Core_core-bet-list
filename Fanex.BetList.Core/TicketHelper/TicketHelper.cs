@@ -81,6 +81,13 @@
             return CacheRef.GetBettype(bettypeId, betId, betCheck);
         }
 
+        public string GetParentIdByBetTypeId(object betTypeId, object defaultParentId = null)
+        {
+            defaultParentId = defaultParentId ?? string.Empty;
+
+            return CacheRef.GetParentIdByBetTypeId(betTypeId, defaultParentId);
+        }
+
         public string GetRouletteBetItemNameById(object itemId)
         {
             return CacheRef.GetRouletteBetItem(itemId);

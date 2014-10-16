@@ -544,9 +544,19 @@ namespace Fanex.BetList.Core.UnitTest.Common.Enums
         public const int VT_TotalPoints = 1236;
 
         /// <summary>
+        /// BetType = 1301.
+        /// </summary>
+        public const int MatchWinner = 1301;
+
+        /// <summary>
         /// BetType = 1302.
         /// </summary>
         public const int MatchCorrectScore = 1302;
+
+        /// <summary>
+        /// BetType = 1303.
+        /// </summary>
+        public const int SetHandicap = 1303;
 
         /// <summary>
         /// BetType = 1304.
@@ -567,6 +577,11 @@ namespace Fanex.BetList.Core.UnitTest.Common.Enums
         /// BetType = 1307.
         /// </summary>
         public const int MatchTotalGames3Way = 1307;
+
+        /// <summary>
+        /// BetType = 1308.
+        /// </summary>
+        public const int GameHandicap3rd = 1308;
 
         /// <summary>
         /// BetType = 1309.

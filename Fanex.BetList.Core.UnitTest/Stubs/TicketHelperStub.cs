@@ -65,6 +65,11 @@ namespace Fanex.BetList.Core.UnitTest.Stubs
             return this._betTypeName + bettypeId.ToString();
         }
 
+        public string GetParentIdByBetTypeId(object betTypeId, object defaultParentId = null)
+        {
+            return "Parent bet type of " + betTypeId.ToString();
+        }
+
         public string GetBetTypeNameById(object bettypeId, object betId, object betCheck = null)
         {
             return this._betTypeName + bettypeId.ToString() + betId.ToString() + betCheck.ToString();
