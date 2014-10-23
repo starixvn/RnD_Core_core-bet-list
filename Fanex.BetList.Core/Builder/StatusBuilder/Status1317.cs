@@ -3,7 +3,7 @@
     /// <summary>
     /// Set x Correct Score.
     /// </summary>
-    public class Status1317 : Status1311
+    public class Status1317 : Status154
     {
     }
 }

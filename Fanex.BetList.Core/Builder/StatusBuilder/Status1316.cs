@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
     /// <summary>
-    ///     Set x Game Handicap.
+    /// Set x Game Handicap (3rd).
     /// </summary>
-    public class Status1316 : Status1311
+    public class Status1316 : Status154
     {
     }
 }

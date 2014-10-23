@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
     /// <summary>
-    ///  Set x Total Games 2-way.
+    /// Set x Total Games O/U.
     /// </summary>
-    public class Status1312 : Status1311
+    public class Status1312 : Status154
     {
     }
 }

@@ -158,7 +158,7 @@
     <Compile Include="Builder\StatusBuilder\Status33Test.cs" />
     <Compile Include="Builder\StatusBuilder\Status31Test.cs" />
     <Compile Include="Builder\StatusBuilder\Status1501Test.cs" />
-    <Compile Include="Builder\StatusBuilder\Status1311Test.cs" />
+    <Compile Include="Builder\StatusBuilder\Status154Test.cs" />
     <Compile Include="Builder\StatusBuilder\Status1233Test.cs" />
     <Compile Include="Builder\StatusBuilder\Status1000Test.cs" />
     <Compile Include="Builder\StatusBuilder\Status10Test.cs" />

@@ -337,6 +337,9 @@
     <Compile Include="Builder\StatusBuilder\Status1333.cs" />
     <Compile Include="Builder\StatusBuilder\Status1334.cs" />
     <Compile Include="Builder\StatusBuilder\Status1501.cs" />
+    <Compile Include="Builder\StatusBuilder\Status154.cs" />
+    <Compile Include="Builder\StatusBuilder\Status155.cs" />
+    <Compile Include="Builder\StatusBuilder\Status156.cs" />
     <Compile Include="Builder\StatusBuilder\Status23001.cs" />
     <Compile Include="Builder\StatusBuilder\Status23002.cs" />
     <Compile Include="Builder\StatusBuilder\Status23003.cs" />

@@ -3,7 +3,7 @@
     /// <summary>
     /// Set x Game y Winner.
     /// </summary>
-    public class Status1324 : Status1311
+    public class Status1324 : Status154
     {
     }
 }

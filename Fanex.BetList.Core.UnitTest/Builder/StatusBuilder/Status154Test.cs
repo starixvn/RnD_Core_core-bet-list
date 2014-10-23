@@ -6,47 +6,45 @@
     using NUnit.Framework;
 
     /// <summary>
-    ///  Test Class Status for Bet Type 1311.
+    ///  Test Class Status for Bet Type 154.
     /// </summary>
-    public class Status1311Test
+    public class Status154Test
     {
-        private Status1311 _status;
+        private IStatus _status;
         private ITicket _ticket;
         private ITicketHelper _ticketHelper;
 
         [SetUp]
         public void Setup()
         {
-            _status = new Status1311();
+            _status = new Status154();
             _ticket = Substitute.For<ITicket>();
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        [TestCase(1)]
-        [TestCase(12)]
-        public void BuildStatusResult_BetIdHasLengthLessThanOrEqual2_RefNoOfIsZero(int betId)
+        public void BuildStatusResult_BetIdIsNull_BetIdIsZero()
         {
             // Arrange
-            _ticket.BetId = betId;
+            _ticket.BetId = null;
 
             // Act
             _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.AreEqual("0", _status.Template.StatusResult.refNo);
+            Assert.AreEqual("0", _status.Template.StatusResult.betId);
         }
 
         [Test]
-        public void BuildStatusResult_BetIdHasLengthGreaterThan2_RefNoOfIsSubstringOfBetIdFromIndexOneAndLengthIsTwo()
+        public void BuildStatusResult_BetIdIsAnyValue_BetIdIsBetId()
         {
             // Arrange
-            _ticket.BetId = 1536;
+            _ticket.BetId = 80101;
 
             // Act
             _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.AreEqual("53", _status.Template.StatusResult.refNo);
+            Assert.AreEqual("80101", _status.Template.StatusResult.betId);
         }
     }
 }

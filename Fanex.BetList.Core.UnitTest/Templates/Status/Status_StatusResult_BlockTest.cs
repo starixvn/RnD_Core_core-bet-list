@@ -28,7 +28,7 @@
     [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleClass", Justification = "Reviewed.")]
     public class Status_StatusResult_BlockTest
     {
-        private const string StatusTemplate = "<div class=\"result\" onclick=\"ViewResult({0}, {1}, {2}, {3}, {4}, '{5}', '{6}', {7}, {8}, {9});\">Results</div>";
+        private const string StatusTemplate = "<div class=\"result\" onclick=\"ViewResult({0}, {1}, {2}, {3}, {4}, '{5}', '{6}', {7}, {8}, {9}, {10});\">Results</div>";
 
         /// <summary>
         /// Visible the property is true return HTML string.
@@ -47,6 +47,7 @@
             var refNoMixParlay = "0";
             var league = "NBA BASKETBALL - SPECIALS (Most 3-Point Shots Scored)";
             var isOutright = "0";
+            var betId = "801";
             var statusHtml = new StringBuilder();
             var block = new Status_StatusResult_Block();
             block.matchId = matchId;
@@ -57,6 +58,7 @@
             block.userName = username;
             block.winlostDate = winlostDate;
             block.league = league;
+            block.betId = betId;
 
             // Act
             block.ToString(ref statusHtml);
@@ -73,7 +75,8 @@
                                         winlostDate,
                                         refNoMixParlay,
                                         league,
-                                        isOutright);
+                                        isOutright,
+                                        betId);
             Assert.AreEqual(expectedHtml, statusHtml.ToString());
         }
 
@@ -94,6 +97,7 @@
             var refNoMixParlay = "1000000000";
             var league = "NBA BASKETBALL - SPECIALS (Most 3-Point Shots Scored)";
             var isOutright = "1";
+            var betId = "80101";
             var statusHtml = new StringBuilder();
             var block = new Status_StatusResult_Block();
             block.matchId = matchId;
@@ -106,6 +110,7 @@
             block.winlostDate = winlostDate;
             block.league = league;
             block.isoutright = isOutright;
+            block.betId = betId;
 
             // Act
             block.ToString(ref statusHtml);
@@ -122,7 +127,8 @@
                                         winlostDate,
                                         refNoMixParlay,
                                         league,
-                                        isOutright);
+                                        isOutright,
+                                        betId);
             Assert.AreEqual(expectedHtml, statusHtml.ToString());
         }
 
@@ -161,6 +167,7 @@
             var refNoMixParlay = "0";
             var league = "NBA BASKETBALL - SPECIALS (Most 3-Point Shots Scored)";
             var isOutright = "0";
+            var betId = "801";
             var value = "Tennis";
             var statusHtml = new StringBuilder();
             var block = new WrapperStatus_StatusResult_Block();
@@ -172,6 +179,7 @@
             block.userName = username;
             block.winlostDate = winlostDate;
             block.league = league;
+            block.betId = betId;
             block.SetValueExtend(new StringBuilder(value));
             block.SetAssigned(true);
 
@@ -190,7 +198,8 @@
                                         winlostDate,
                                         refNoMixParlay,
                                         league,
-                                        isOutright) + value;
+                                        isOutright,
+                                        betId) + value;
             Assert.AreEqual(expectedHtml, statusHtml.ToString());
         }
     }

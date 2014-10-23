@@ -3,7 +3,7 @@
     /// <summary>
     /// Set x Total Games Odd/Even.
     /// </summary>
-    public class Status1318 : Status1311
+    public class Status1318 : Status154
     {
     }
 }
