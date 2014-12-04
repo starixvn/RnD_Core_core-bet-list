@@ -101,5 +101,21 @@
         /// </para>
         /// </summary>
         public const string DU = "du";
+
+        /// <summary>
+        /// Is  HAOS = "haos".
+        /// <para>
+        /// Bet team value is Home To Win Any Other Score.
+        /// </para>
+        /// </summary>
+        public const string HAOS = "haos";
+
+        /// <summary>
+        /// Is  AAOS = "aaos".
+        /// <para>
+        /// Bet team value is Away To Win Any Other Score.
+        /// </para>
+        /// </summary>
+        public const string AAOS = "aaos";
     }
 }

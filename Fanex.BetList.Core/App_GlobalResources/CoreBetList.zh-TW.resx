@@ -678,4 +678,10 @@
   <data name="FiveAndOver" xml:space="preserve">
     <value>5&amp;Over</value>
   </data>
+  <data name="AwayToWinAnyOtherScore" xml:space="preserve">
+    <value>客贏其他比分</value>
+  </data>
+  <data name="HomeToWinAnyOtherScore" xml:space="preserve">
+    <value>主贏其他比分</value>
+  </data>
 </root>

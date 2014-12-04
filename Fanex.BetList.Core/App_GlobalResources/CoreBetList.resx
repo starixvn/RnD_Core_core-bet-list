@@ -680,4 +680,10 @@
   <data name="table" xml:space="preserve">
     <value>Table</value>
   </data>
+  <data name="AwayToWinAnyOtherScore" xml:space="preserve">
+    <value>Away To Win Any Other Score</value>
+  </data>
+  <data name="HomeToWinAnyOtherScore" xml:space="preserve">
+    <value>Home To Win Any Other Score</value>
+  </data>
 </root>

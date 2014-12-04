@@ -26,6 +26,70 @@
         }
 
         /// <summary>
+        /// The value of Template.betTeam is Home To Win Any Other Score when BetTeam is haos.
+        /// </summary>
+        [Test]
+        public void BuildBetTeam_LengthBetTeamIsHAOS_BetTeamIsHomeToWinAnyOtherScore()
+        {
+            // Arrange
+            _ticket.BetTeam = "haos";
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            Assert.AreEqual("&nbsp;Home To Win Any Other Score", _choice.Template.betTeam);
+        }
+
+        /// <summary>
+        /// The value of Template.betTeam is Away To Win Any Other Score when BetTeam is aaos.
+        /// </summary>
+        [Test]
+        public void BuildBetTeam_LengthBetTeamIsAAOS_BetTeamIsAwayToWinAnyOtherScore()
+        {
+            // Arrange
+            _ticket.BetTeam = "aaos";
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            Assert.AreEqual("&nbsp;Away To Win Any Other Score", _choice.Template.betTeam);
+        }
+
+        /// <summary>
+        /// The value of Template.betTeam is always [BetTeam[0]:BetTeam[1]] when BetTeam.Length == 2.
+        /// </summary>
+        [Test]
+        public void BuildBetTeam_BetTeamIsAB_BetTeamIsAColonB()
+        {
+            // Arrange
+            _ticket.BetTeam = "ab";
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            Assert.AreEqual("&nbsp;a:b", _choice.Template.betTeam);
+        }
+
+        /// <summary>
+        /// The value of Template.betTeam is empty when BetTeam.Length != 2 and not haos or aaos.
+        /// </summary>
+        [Test]
+        public void BuildBetTeam_LengthBetTeamNotEqual2HAOSAAOS_BetTeamIsEmpty()
+        {
+            // Arrange
+            _ticket.BetTeam = "bet team";
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            Assert.AreEqual("&nbsp;", _choice.Template.betTeam);
+        }
+
+        /// <summary>
         /// The value of Template.BetType.betTypeName is always bet type name.
         /// </summary>
         [Test]
