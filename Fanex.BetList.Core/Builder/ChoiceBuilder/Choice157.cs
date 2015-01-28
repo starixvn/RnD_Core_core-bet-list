@@ -1,12 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Constants;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Utils;
-
-    public class Choice157
+    /// <summary>
+    /// Bet type name: Odd/Even (3rd).
+    /// </summary>
+    public class Choice157 : Choice2
     {
     }
 }

@@ -686,4 +686,64 @@
   <data name="HomeToWinAnyOtherScore" xml:space="preserve">
     <value>Home To Win Any Other Score</value>
   </data>
+  <data name="ZeroGoals" xml:space="preserve">
+    <value>0 Goals</value>
+  </data>
+  <data name="SixAndOver" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="ThreeGoalsAndOver" xml:space="preserve">
+    <value>3 Goals &amp;Over</value>
+  </data>
+  <data name="ExtraTimeHTDotOne" xml:space="preserve">
+    <value>Extra Time HT.1</value>
+  </data>
+  <data name="ExtraTimeHTDotX" xml:space="preserve">
+    <value>Extra Time HT.X</value>
+  </data>
+  <data name="ExtraTimeHTDotTwo" xml:space="preserve">
+    <value>Extra Time HT.2</value>
+  </data>
+  <data name="Min" xml:space="preserve">
+    <value>Min</value>
+  </data>
+  <data name="ToWinByOneGoal" xml:space="preserve">
+    <value>to Win by 1 Goal</value>
+  </data>
+  <data name="ToWinByTwoGoals" xml:space="preserve">
+    <value>to Win by 2 Goals</value>
+  </data>
+  <data name="ToWinByThreeUpGoals" xml:space="preserve">
+    <value>to Win by 3up Goals</value>
+  </data>
+  <data name="RegularTime" xml:space="preserve">
+    <value>Regular Time</value>
+  </data>
+  <data name="ExtraTime" xml:space="preserve">
+    <value>Extra Time</value>
+  </data>
+  <data name="Penalty" xml:space="preserve">
+    <value>Penalty</value>
+  </data>
+  <data name="TwoHDotOne" xml:space="preserve">
+    <value>2H.1</value>
+  </data>
+  <data name="TwoHDotTwo" xml:space="preserve">
+    <value>2H.2</value>
+  </data>
+  <data name="TwoHDotX" xml:space="preserve">
+    <value>2H.X</value>
+  </data>
+  <data name="SevenAndOverCorners" xml:space="preserve">
+    <value>7&amp;Over Corners</value>
+  </data>
+  <data name="Corners" xml:space="preserve">
+    <value>Corners</value>
+  </data>
+  <data name="TwelveAndOverCorners" xml:space="preserve">
+    <value>12&amp;Over Corners</value>
+  </data>
+  <data name="FourAndOverCorners" xml:space="preserve">
+    <value>4&amp;Over Corners</value>
+  </data>
 </root>
