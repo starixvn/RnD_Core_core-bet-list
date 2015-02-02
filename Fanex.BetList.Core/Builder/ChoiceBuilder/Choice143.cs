@@ -14,7 +14,6 @@
     public class Choice143 : Choice1
     {
         [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "ao is ok here.")]
-
 #pragma warning disable 1587
         /// <summary>
         /// Set bet team to template by ticket bet team pattern with following rules:
@@ -38,20 +37,22 @@
                     case 'h':
                         teamName = ticketHelper.GetTeamNameById(ticket.HomeId);
                         break;
+
                     case 'a':
                         teamName = ticketHelper.GetTeamNameById(ticket.AwayId);
                         break;
+
                     case 'd':
                         teamName = CoreBetList.draw;
                         break;
                 }
 
-                var resultOverUnder = (ticket.BetTeam[1].ToString(CultureInfo.InvariantCulture) == BetTeamValue.O) 
-                    ? CoreBetList.over 
+                var resultOverUnder = (ticket.BetTeam[1].ToString(CultureInfo.InvariantCulture) == BetTeamValue.O)
+                    ? CoreBetList.over
                     : CoreBetList.under;
 
                 Template.betTeam = string.Join(" & ", new string[] { teamName, resultOverUnder });
-            }            
+            }
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)

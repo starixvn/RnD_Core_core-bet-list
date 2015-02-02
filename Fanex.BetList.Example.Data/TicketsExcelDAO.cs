@@ -54,8 +54,11 @@ namespace Fanex.BetList.Example.Data
 
                 foreach (IRow row in betTicketSheet)
                 {
-                    ITicket ticket = this.MapRowToTicketObject(row);
-                    tickets.Add(ticket);
+                    if (row.Cells.Count >= 46)
+                    {
+                        ITicket ticket = this.MapRowToTicketObject(row);
+                        tickets.Add(ticket);
+                    }
                 }
             }
 

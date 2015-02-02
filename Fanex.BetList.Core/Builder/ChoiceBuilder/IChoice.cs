@@ -11,9 +11,9 @@
     public interface IChoice
     {
         Choice_Template Template { get; set; }
-     
+
         Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap);
-        
+
         List<IRichTextString> RenderRTF(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap, RTFHelper rtfHelper);
     }
 }

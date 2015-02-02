@@ -6,22 +6,30 @@
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    /// Bet type name: 2nd Half 1x2.
+    /// Bet type name: 2ND Half 1x2.
     /// </summary>
     public class Choice177 : Choice1
     {
+        /// <summary>
+        /// Builds the bet team.
+        /// </summary>
+        /// <param name="ticket">The ticket.</param>
+        /// <param name="ticketHelper">The ticket helper.</param>
+        /// <param name="ticketData">The ticket data.</param>
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             var betTeam = string.Empty;
 
             switch (ticket.BetTeam.ToLowerInvariant())
             {
-                case "1":
+                case BetTeamValue.NumberOne:
                     betTeam = CoreBetList.TwoHDotOne;
                     break;
-                case "2":
+
+                case BetTeamValue.NumberTwo:
                     betTeam = CoreBetList.TwoHDotTwo;
                     break;
+
                 case BetTeamValue.X:
                     betTeam = CoreBetList.TwoHDotX;
                     break;

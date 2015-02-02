@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     /// <summary>
-    /// Bet type name: 2nd Half Odd/Even.
+    /// Bet type name: 2ND Half Odd/Even.
     /// </summary>
-    public class Choice184 : Choice2
+    public class Choice184 : Choice136
     {
     }
 }

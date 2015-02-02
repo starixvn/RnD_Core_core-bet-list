@@ -6,10 +6,16 @@
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    /// Bet type name: Exact 2nd Half Goals.
+    /// Bet type name: Exact 2ND Half Goals.
     /// </summary>
     public class Choice187 : Choice1
     {
+        /// <summary>
+        /// Builds the bet team.
+        /// </summary>
+        /// <param name="ticket">The ticket.</param>
+        /// <param name="ticketHelper">The ticket helper.</param>
+        /// <param name="ticketData">The ticket data.</param>
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             var betTeam = string.Empty;
@@ -19,11 +25,13 @@
                 case BetTeamValue.G0:
                     betTeam = CoreBetList.ZeroGoals;
                     break;
+
                 case BetTeamValue.G1:
                     betTeam = CoreBetList.OneGoal;
                     break;
+
                 case BetTeamValue.G2:
-                    betTeam = CoreBetList.TwoGoals;
+                    betTeam = CoreBetList.TwoGoalsAndOver;
                     break;
             }
 

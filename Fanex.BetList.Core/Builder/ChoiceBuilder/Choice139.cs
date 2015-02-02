@@ -4,6 +4,6 @@
     /// Bet Type: Away Team Odd/Even - 139.
     /// </summary>
     public class Choice139 : Choice136
-    {       
+    {
     }
 }

@@ -3,7 +3,7 @@
     /// <summary>
     /// Bet type name: Corners Odd/Even.
     /// </summary>
-    public class Choice194 : Choice2
+    public class Choice194 : Choice136
     {
     }
 }

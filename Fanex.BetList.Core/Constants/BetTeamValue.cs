@@ -119,153 +119,188 @@
         public const string AAOS = "aaos";
 
         /// <summary>
-        /// The g0.
+        /// Is G0 = "g0".
         /// </summary>
         public const string G0 = "g0";
 
         /// <summary>
-        /// The g1.
+        /// Is G1 = "g1".
         /// </summary>
         public const string G1 = "g1";
 
         /// <summary>
-        /// The g2.
+        /// Is G2 = "g2".
         /// </summary>
         public const string G2 = "g2";
 
         /// <summary>
-        /// The g3.
+        /// Is G3 = "g3".
         /// </summary>
         public const string G3 = "g3";
 
         /// <summary>
-        /// The g4.
+        /// Is G4 = "g4".
         /// </summary>
         public const string G4 = "g4";
 
         /// <summary>
-        /// The g5.
+        /// Is G5 = "g5".
         /// </summary>
         public const string G5 = "g5";
 
         /// <summary>
-        /// The g6.
+        /// Is G6 = "g6".
         /// </summary>
         public const string G6 = "g6";
 
         /// <summary>
-        /// The none.
+        /// Is None = "none".
         /// </summary>
         public const string None = "none";
 
         /// <summary>
-        /// The a.
+        /// Is A = "a".
         /// </summary>
         public const string A = "a";
 
         /// <summary>
-        /// The h1.
+        /// Is H1 = "h1".
         /// </summary>
         public const string H1 = "h1";
 
         /// <summary>
-        /// The h2.
+        /// Is H2 = "h2".
         /// </summary>
         public const string H2 = "h2";
 
         /// <summary>
-        /// The h3.
+        /// Is H3 = "h3".
         /// </summary>
         public const string H3 = "h3";
 
         /// <summary>
-        /// The a1.
+        /// Is A1 = "a1".
         /// </summary>
         public const string A1 = "a1";
 
         /// <summary>
-        /// The a2.
+        /// Is A2 = "a2".
         /// </summary>
         public const string A2 = "a2";
 
         /// <summary>
-        /// The a3.
+        /// Is A3 = "a3".
         /// </summary>
         public const string A3 = "a3";
 
         /// <summary>
-        /// The d.
+        /// Is D = "d".
         /// </summary>
         public const string D = "d";
 
         /// <summary>
-        /// The hh.
+        /// Is HH = "hh".
         /// </summary>
         public const string HH = "hh";
 
         /// <summary>
-        /// The hd.
+        /// Is HD = "hd".
         /// </summary>
         public const string HD = "hd";
 
         /// <summary>
-        /// The ha.
+        /// Is HA = "ha".
         /// </summary>
         public const string HA = "ha";
 
         /// <summary>
-        /// The ah.
+        /// Is AH = "ah".
         /// </summary>
         public const string AH = "ah";
 
         /// <summary>
-        /// The ad.
+        /// Is AD = "ad".
         /// </summary>
         public const string AD = "ad";
 
         /// <summary>
-        /// The aa.
+        /// Is AA = "aa".
         /// </summary>
         public const string AA = "aa";
 
         /// <summary>
-        /// The no.
+        /// Is NO = "no".
         /// </summary>
         public const string NO = "no";
 
         /// <summary>
-        /// The hr.
+        /// Is HR = "hr".
         /// </summary>
         public const string HR = "hr";
 
         /// <summary>
-        /// The he.
+        /// Is HE = "he".
         /// </summary>
         public const string HE = "he";
 
         /// <summary>
-        /// The hp.
+        /// Is HP = "hp".
         /// </summary>
         public const string HP = "hp";
 
         /// <summary>
-        /// The ar.
+        /// Is AR = "ar".
         /// </summary>
         public const string AR = "ar";
 
         /// <summary>
-        /// The ae.
+        /// Is AE = "ae".
         /// </summary>
         public const string AE = "ae";
 
         /// <summary>
-        /// The ap.
+        /// Is AP = "ap".
         /// </summary>
         public const string AP = "ap";
 
         /// <summary>
-        /// The da.
+        /// Is DA = "da".
         /// </summary>
         public const string DA = "da";
+
+        /// <summary>
+        /// Is U = "u".
+        /// </summary>
+        public const string U = "u";
+
+        /// <summary>
+        /// Is E = "e".
+        /// </summary>
+        public const string E = "e";
+
+        /// <summary>
+        /// Is FourOver = "4-over".
+        /// </summary>
+        public const string FourOver = "4-over";
+
+        /// <summary>
+        /// Is SevenOver = "7-over".
+        /// </summary>
+        public const string SevenOver = "7-over";
+
+        /// <summary>
+        /// Is TewlveOver = "12-over".
+        /// </summary>
+        public const string TewlveOver = "12-over";
+
+        /// <summary>
+        /// The number one 1.
+        /// </summary>
+        public const string NumberOne = "1";
+
+        /// <summary>
+        /// The number two 2.
+        /// </summary>
+        public const string NumberTwo = "2";
     }
 }

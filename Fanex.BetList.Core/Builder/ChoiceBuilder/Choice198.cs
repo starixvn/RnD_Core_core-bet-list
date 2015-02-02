@@ -3,7 +3,7 @@
     /// <summary>
     /// Bet type name: Away Team Total Corners Over/Under.
     /// </summary>
-    public class Choice198 : Choice3
+    public class Choice198 : Choice178
     {
     }
 }

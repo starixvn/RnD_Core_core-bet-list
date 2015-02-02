@@ -3,7 +3,7 @@
     /// <summary>
     /// Bet type name: 1H Away Corner Over/Under.
     /// </summary>
-    public class Choice205 : Choice3
+    public class Choice205 : Choice178
     {
     }
 }

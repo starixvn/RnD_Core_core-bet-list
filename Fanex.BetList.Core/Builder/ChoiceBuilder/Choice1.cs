@@ -81,7 +81,7 @@
             return rtfChoice;
         }
 
-        #endregion
+        #endregion Render
 
         #region Common utils
 
@@ -180,7 +180,7 @@
             Template.Match.away_firstGoal_lastGoal = null;
         }
 
-        #endregion
+        #endregion Common utils
 
         #region Render Line Excel
 
@@ -225,7 +225,7 @@
             Template.betTeam = Template.betTeam.Replace("</span>", string.Empty);
         }
 
-        #endregion
+        #endregion Render Line Excel
 
         #region Build Html Block
 
@@ -239,7 +239,7 @@
         {
             // The first build match information get home team, away team name, label (F)(L)(1F)(1L)
             BuildMatch(ticket, ticketHelper);
-            
+
             // Optional ordering these function
             BuildBetTeam(ticket, ticketHelper, ticketData);
 
@@ -406,7 +406,7 @@
             }
         }
 
-        #endregion
+        #endregion Build Html Block
 
         #region Private function
 
@@ -666,20 +666,22 @@
 
             switch (statusPart[1])
             {
-                case "1":
+                case BetTeamValue.NumberOne:
                     homeFGLG += string.Join(null, new string[] { "<div class='", firstClassName, "'>&nbsp;</div>" });
                     break;
-                case "2":
+
+                case BetTeamValue.NumberTwo:
                     awayFGLG += string.Join(null, new string[] { "<div class='", firstClassName, "'>&nbsp;</div>" });
                     break;
             }
 
             switch (statusPart[2])
             {
-                case "1":
+                case BetTeamValue.NumberOne:
                     homeFGLG += string.Join(null, new string[] { "<div class='", lastClassName, "'>&nbsp;</div>" });
                     break;
-                case "2":
+
+                case BetTeamValue.NumberTwo:
                     awayFGLG += string.Join(null, new string[] { "<div class='", lastClassName, "'>&nbsp;</div>" });
                     break;
             }
@@ -719,6 +721,6 @@
             }
         }
 
-        #endregion
+        #endregion Private function
     }
 }

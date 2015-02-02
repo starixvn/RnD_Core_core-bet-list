@@ -4,6 +4,6 @@
     /// Bet Type: Home Team Odd/Even - 137.
     /// </summary>
     public class Choice137 : Choice136
-    {       
+    {
     }
 }

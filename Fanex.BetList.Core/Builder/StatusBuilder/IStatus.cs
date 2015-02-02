@@ -6,11 +6,11 @@
     using Templates;
 
     public interface IStatus
-    {        
+    {
         Status_Template Template { get; set; }
 
         Status_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP);
-        
+
         IRichTextString RenderRTF(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP, RTFHelper rtfHelper);
     }
 }

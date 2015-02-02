@@ -10,6 +10,12 @@
     /// </summary>
     public class Choice163 : Choice144
     {
+        /// <summary>
+        /// Builds the bet team.
+        /// </summary>
+        /// <param name="ticket">The ticket.</param>
+        /// <param name="ticketHelper">The ticket helper.</param>
+        /// <param name="ticketData">The ticket data.</param>
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             var betTeam = string.Empty;
@@ -19,18 +25,23 @@
                 case BetTeamValue.HU:
                     betTeam = string.Format("{0}/{1}", Template.Match.homeTeam, CoreBetList.under);
                     break;
+
                 case BetTeamValue.HO:
                     betTeam = string.Format("{0}/{1}", Template.Match.homeTeam, CoreBetList.over);
                     break;
+
                 case BetTeamValue.DU:
                     betTeam = string.Format("{0}/{1}", CoreBetList.draw, CoreBetList.under);
                     break;
+
                 case BetTeamValue.DO:
                     betTeam = string.Format("{0}/{1}", CoreBetList.draw, CoreBetList.over);
                     break;
+
                 case BetTeamValue.AU:
                     betTeam = string.Format("{0}/{1}", Template.Match.awayTeam, CoreBetList.under);
                     break;
+
                 case BetTeamValue.AO:
                     betTeam = string.Format("{0}/{1}", Template.Match.awayTeam, CoreBetList.over);
                     break;

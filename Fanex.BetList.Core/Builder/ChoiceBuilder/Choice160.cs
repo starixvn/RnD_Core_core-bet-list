@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using Fanex.BetList.Core.App_GlobalResources;
+    using Fanex.BetList.Core.Constants;
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
@@ -9,18 +10,26 @@
     /// </summary>
     public class Choice160 : Choice1
     {
+        /// <summary>
+        /// Builds the bet team.
+        /// </summary>
+        /// <param name="ticket">The ticket.</param>
+        /// <param name="ticketHelper">The ticket helper.</param>
+        /// <param name="ticketData">The ticket data.</param>
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             var betTeam = string.Empty;
 
             switch (ticket.BetTeam)
             {
-                case "1":
+                case BetTeamValue.NumberOne:
                     betTeam = Template.Match.homeTeam;
                     break;
-                case "2":
+
+                case BetTeamValue.NumberTwo:
                     betTeam = Template.Match.awayTeam;
                     break;
+
                 default:
                     betTeam = CoreBetList.none;
                     break;

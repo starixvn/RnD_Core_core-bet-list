@@ -4,6 +4,6 @@
     /// Bet Type: First Away Team Odd/Even - 138.
     /// </summary>
     public class Choice138 : Choice136
-    {     
+    {
     }
 }

@@ -109,6 +109,7 @@
                         case BetStatus.Reject:
                         case BetStatus.Refund:
                             break;
+
                         default:
                             Template.result = string.Join(null, new string[] { winStatusMarkup, "<br/>", placeStatusMarkup });
                             break;

@@ -13,7 +13,7 @@
             WinBetId = 1231;
             PlaceBetId = 1232;
         }
-        
+
         protected override List<ITicketData> GetReferenceData(ITicket ticket, List<ITicketData> ticketData)
         {
             return ticketData.FindAll(item => item.RefNo.Equals(ticket.RefNo));

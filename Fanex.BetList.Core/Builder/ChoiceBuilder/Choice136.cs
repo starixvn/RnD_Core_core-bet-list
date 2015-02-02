@@ -12,7 +12,7 @@
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            Template.betTeam = (ticket.BetTeam == BetTeamValue.O) ? CoreBetList.odd : CoreBetList.even;
+            Template.betTeam = (ticket.BetTeam.ToLowerInvariant() == BetTeamValue.O) ? CoreBetList.odd : CoreBetList.even;
         }
     }
 }

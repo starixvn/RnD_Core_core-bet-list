@@ -10,6 +10,12 @@
     /// </summary>
     public class Choice171 : Choice1
     {
+        /// <summary>
+        /// Builds the bet team.
+        /// </summary>
+        /// <param name="ticket">The ticket.</param>
+        /// <param name="ticketHelper">The ticket helper.</param>
+        /// <param name="ticketData">The ticket data.</param>
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             var betTeam = string.Empty;
@@ -19,21 +25,27 @@
                 case BetTeamValue.H1:
                     betTeam = string.Format("{0} {1}", Template.Match.homeTeam, CoreBetList.ToWinByOneGoal);
                     break;
+
                 case BetTeamValue.H2:
                     betTeam = string.Format("{0} {1}", Template.Match.homeTeam, CoreBetList.ToWinByTwoGoals);
                     break;
+
                 case BetTeamValue.H3:
                     betTeam = string.Format("{0} {1}", Template.Match.homeTeam, CoreBetList.ToWinByThreeUpGoals);
                     break;
+
                 case BetTeamValue.D:
                     betTeam = CoreBetList.draw;
                     break;
+
                 case BetTeamValue.A1:
                     betTeam = string.Format("{0} {1}", Template.Match.awayTeam, CoreBetList.ToWinByThreeUpGoals);
                     break;
+
                 case BetTeamValue.A2:
                     betTeam = string.Format("{0} {1}", Template.Match.awayTeam, CoreBetList.ToWinByThreeUpGoals);
                     break;
+
                 case BetTeamValue.A3:
                     betTeam = string.Format("{0} {1}", Template.Match.awayTeam, CoreBetList.ToWinByThreeUpGoals);
                     break;

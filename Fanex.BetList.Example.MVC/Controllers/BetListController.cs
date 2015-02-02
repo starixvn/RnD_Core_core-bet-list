@@ -52,6 +52,29 @@ namespace Fanex.BetList.Example.MVC.Controllers
             return BetListView(model);
         }
 
+        public ActionResult New60BetTypesBetRadar(BetListData model = null)
+        {
+            var betTypes = new List<BetType>();
+            betTypes.Add(new BetType
+            {
+                Id = 157,
+                Name = CacheRef.GetBettype(157)
+            });
+
+            for (int i = 159; i <= 217; i++)
+            {
+                betTypes.Add(new BetType
+                {
+                    Id = i,
+                    Name = CacheRef.GetBettype(i)
+                });
+            }
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, sourcePath: "~/App_Data/60NewBetTypeBetRadarData.xls");
+            return BetListView(model);
+        }
+
         public ActionResult SportingSolutionBetTypes(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(153, 154, 155, 156, 1301, 1302, 1303, 1305, 1306, 1311, 1312, 1316, 1317, 1318, 1324);

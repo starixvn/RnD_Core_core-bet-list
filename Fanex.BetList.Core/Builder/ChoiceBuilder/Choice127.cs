@@ -4,6 +4,6 @@
     /// 1H First Goal/Last Goal.
     /// </summary>
     public class Choice127 : Choice14
-    {       
+    {
     }
 }

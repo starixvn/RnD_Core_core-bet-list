@@ -12,7 +12,9 @@
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            Template.betTeam = ticket.BetTeam.ToLowerInvariant() == "12-over" ? CoreBetList.TwelveAndOverCorners : string.Format("{0} {1}", ticket.BetTeam, CoreBetList.Corners);
+            var isTewlveOver = ticket.BetTeam.ToLowerInvariant() == BetTeamValue.TewlveOver;
+
+            Template.betTeam = isTewlveOver ? CoreBetList.TwelveAndOverCorners : string.Format("{0} {1}", ticket.BetTeam, CoreBetList.Corners);
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)

@@ -10,18 +10,26 @@
     /// </summary>
     public class Choice167 : Choice1
     {
+        /// <summary>
+        /// Builds the bet team.
+        /// </summary>
+        /// <param name="ticket">The ticket.</param>
+        /// <param name="ticketHelper">The ticket helper.</param>
+        /// <param name="ticketData">The ticket data.</param>
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             var betTeam = string.Empty;
 
             switch (ticket.BetTeam.ToLowerInvariant())
             {
-                case "1":
+                case BetTeamValue.NumberOne:
                     betTeam = CoreBetList.ExtraTimeHTDotOne;
                     break;
-                case "2":
+
+                case BetTeamValue.NumberTwo:
                     betTeam = CoreBetList.ExtraTimeHTDotTwo;
                     break;
+
                 case BetTeamValue.X:
                     betTeam = CoreBetList.ExtraTimeHTDotX;
                     break;

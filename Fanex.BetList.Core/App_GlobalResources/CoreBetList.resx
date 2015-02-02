@@ -690,7 +690,7 @@
     <value>0 Goals</value>
   </data>
   <data name="SixAndOver" xml:space="preserve">
-    <value></value>
+    <value>6&amp;Over</value>
   </data>
   <data name="ThreeGoalsAndOver" xml:space="preserve">
     <value>3 Goals &amp;Over</value>
@@ -745,5 +745,11 @@
   </data>
   <data name="FourAndOverCorners" xml:space="preserve">
     <value>4&amp;Over Corners</value>
+  </data>
+  <data name="FourGoalsAndOver" xml:space="preserve">
+    <value>4 Goals &amp;Over</value>
+  </data>
+  <data name="TwoGoalsAndOver" xml:space="preserve">
+    <value>2 Goals &amp;Over</value>
   </data>
 </root>

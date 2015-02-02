@@ -529,6 +529,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 4 Goals &amp;Over.
+        /// </summary>
+        public static string FourGoalsAndOver {
+            get {
+                return ResourceManager.GetString("FourGoalsAndOver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to From.
         /// </summary>
         public static string from {
@@ -1510,7 +1519,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to 6&amp;Over.
         /// </summary>
         public static string SixAndOver {
             get {
@@ -1704,6 +1713,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string TwoGoals {
             get {
                 return ResourceManager.GetString("TwoGoals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2 Goals &amp;Over.
+        /// </summary>
+        public static string TwoGoalsAndOver {
+            get {
+                return ResourceManager.GetString("TwoGoalsAndOver", resourceCulture);
             }
         }
         
