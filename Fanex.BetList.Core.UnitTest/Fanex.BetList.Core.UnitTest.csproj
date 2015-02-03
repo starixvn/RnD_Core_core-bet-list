@@ -79,8 +79,73 @@
     <Compile Include="Builder\ChoiceBuilder\Choice154Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice155Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice156Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice159Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice160Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice161Test.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\ChoiceBuilder\Choice163Test.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\ChoiceBuilder\Choice165Test.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\ChoiceBuilder\Choice167Test.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\ChoiceBuilder\Choice169Test.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\ChoiceBuilder\Choice170Test.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\ChoiceBuilder\Choice171Test.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\ChoiceBuilder\Choice172Test.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\ChoiceBuilder\Choice175Test.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\ChoiceBuilder\Choice176Test.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\ChoiceBuilder\Choice177Test.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\ChoiceBuilder\Choice178Test.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\ChoiceBuilder\Choice179Test.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\ChoiceBuilder\Choice186Test.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\ChoiceBuilder\Choice187Test.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\ChoiceBuilder\Choice195Test.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\ChoiceBuilder\Choice199Test.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Builder\ChoiceBuilder\Choice1Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice200Test.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\ChoiceBuilder\Choice206Test.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Builder\ChoiceBuilder\Choice20Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice210Test.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builder\ChoiceBuilder\Choice216Test.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Builder\ChoiceBuilder\Choice3Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice81Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice85Test.cs" />

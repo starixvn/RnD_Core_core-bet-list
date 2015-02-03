@@ -39,11 +39,11 @@
                     break;
 
                 case BetTeamValue.A1:
-                    betTeam = string.Format("{0} {1}", Template.Match.awayTeam, CoreBetList.ToWinByThreeUpGoals);
+                    betTeam = string.Format("{0} {1}", Template.Match.awayTeam, CoreBetList.ToWinByOneGoal);
                     break;
 
                 case BetTeamValue.A2:
-                    betTeam = string.Format("{0} {1}", Template.Match.awayTeam, CoreBetList.ToWinByThreeUpGoals);
+                    betTeam = string.Format("{0} {1}", Template.Match.awayTeam, CoreBetList.ToWinByTwoGoals);
                     break;
 
                 case BetTeamValue.A3:

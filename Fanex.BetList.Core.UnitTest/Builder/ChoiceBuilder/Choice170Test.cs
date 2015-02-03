@@ -1,0 +1,73 @@
+﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
+{
+    using Fanex.BetList.Core.App_GlobalResources;
+    using Fanex.BetList.Core.Builder.ChoiceBuilder;
+    using Fanex.BetList.Core.Entities;
+    using NSubstitute;
+    using NUnit.Framework;
+
+    /// <summary>
+    ///  Unit test for Choice170.
+    /// </summary>
+    [TestFixture]
+    public class Choice170Test
+    {
+        private IChoice _choice;
+        private ITicket _ticket;
+        private ITicketHelper _ticketHelper;
+
+        [SetUp]
+        public void Setup()
+        {
+            _choice = new Choice170();
+            _ticket = Substitute.For<ITicket>();
+            _ticketHelper = Substitute.For<ITicketHelper>();
+        }
+
+        [TestCase("H", "Home team name")]
+        [TestCase("A", "Away team name")]
+        [TestCase("B", "Both")]
+        [TestCase("N", "None")]
+        [TestCase("h", "Home team name")]
+        [TestCase("a", "Away team name")]
+        [TestCase("b", "Both")]
+        [TestCase("n", "None")]
+        [TestCase("abc", "")]
+        public void BuildBetTeam_BetTeam_TemplateBetTeam(string betTeam, string expected)
+        {
+            // Arrange
+            _ticket.HomeId = 123;
+            _ticket.AwayId = 456;
+            _ticket.BetTeam = betTeam;
+            _ticketHelper.GetTeamNameById(_ticket.HomeId).Returns<string>("Home team name");
+            _ticketHelper.GetTeamNameById(_ticket.AwayId).Returns<string>("Away team name");
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            Assert.AreEqual(expected, _choice.Template.betTeam);
+        }
+
+        [Test]
+        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
+        {
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            Assert.IsNull(_choice.Template.Handicap.handicap);
+        }
+
+        [Test]
+        public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
+        {
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            const string CSS_CLASS_FAVORITE = "favorite";
+            Assert.AreEqual(CSS_CLASS_FAVORITE, _choice.Template.betTeamClassName);
+        }
+    }
+}

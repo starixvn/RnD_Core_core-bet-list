@@ -20,7 +20,7 @@
         {
             var betTeam = string.Empty;
 
-            switch (ticket.BetTeam)
+            switch (ticket.BetTeam.ToLowerInvariant())
             {
                 case BetTeamValue.NumberOne:
                     betTeam = Template.Match.homeTeam;
@@ -30,7 +30,7 @@
                     betTeam = Template.Match.awayTeam;
                     break;
 
-                default:
+                case BetTeamValue.None:
                     betTeam = CoreBetList.none;
                     break;
             }

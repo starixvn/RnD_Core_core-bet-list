@@ -39,7 +39,7 @@
                     break;
 
                 case BetTeamValue.G4:
-                    betTeam = CoreBetList.FourGoalsAndOver;
+                    betTeam = CoreBetList.FourAndOver;
                     break;
             }
 
