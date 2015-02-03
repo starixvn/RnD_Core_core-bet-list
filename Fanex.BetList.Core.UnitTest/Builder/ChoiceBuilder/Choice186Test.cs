@@ -24,6 +24,11 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
+        /// <summary>
+        /// Builds the bet team_ bet team_ template bet team.
+        /// </summary>
+        /// <param name="betTeam">The bet team.</param>
+        /// <param name="expected">The expected.</param>
         [TestCase("HD", "Home team name/Draw")]
         [TestCase("HA", "Home team name/Away team name")]
         [TestCase("DA", "Draw/Away team name")]

@@ -24,6 +24,9 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
+        /// <summary>
+        /// Builds the name of the bet team_ bet team is1_ template bet team is home team.
+        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIs1_TemplateBetTeamIsHomeTeamName()
         {
@@ -40,6 +43,9 @@
             Assert.AreEqual(HOME_TEAM_NAME, _choice.Template.betTeam);
         }
 
+        /// <summary>
+        /// Builds the name of the bet team_ bet team is2_ template bet team is away team.
+        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIs2_TemplateBetTeamIsAwayTeamName()
         {

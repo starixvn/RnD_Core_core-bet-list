@@ -24,6 +24,11 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
+        /// <summary>
+        /// Builds the bet team_ bet team_ template bet team.
+        /// </summary>
+        /// <param name="betTeam">The bet team.</param>
+        /// <param name="expected">The expected.</param>
         [TestCase("1", "Home team name")]
         [TestCase("2", "Away team name")]
         [TestCase("x", "None")]
@@ -36,7 +41,6 @@
             _ticket.BetTeam = betTeam;
             _ticketHelper.GetTeamNameById(_ticket.HomeId).Returns<string>("Home team name");
             _ticketHelper.GetTeamNameById(_ticket.AwayId).Returns<string>("Away team name");
-
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());

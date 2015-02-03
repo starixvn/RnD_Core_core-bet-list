@@ -26,7 +26,7 @@
         }
 
         /// <summary>
-        /// The value of Template.BetType.betTypeName is always the parrent bet type name.
+        /// The value of Template.BetType.betTypeName is always the parent bet type name.
         /// </summary>
         [Test]
         public void BuildBetType_Always_SetBetTypeNameIsParentBetTypeName()

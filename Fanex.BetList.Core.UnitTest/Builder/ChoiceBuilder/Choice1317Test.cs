@@ -26,7 +26,7 @@
         }
 
         /// <summary>
-        /// The value of Template.betTeam is Home To Win Any Other Score when BetTeam is haos.
+        /// The value of Template.betTeam is Home To Win Any Other Score when BetTeam is HAOS.
         /// </summary>
         [Test]
         public void BuildBetTeam_LengthBetTeamIsHAOS_BetTeamIsHomeToWinAnyOtherScore()
@@ -42,7 +42,7 @@
         }
 
         /// <summary>
-        /// The value of Template.betTeam is Away To Win Any Other Score when BetTeam is aaos.
+        /// The value of Template.betTeam is Away To Win Any Other Score when BetTeam is AAOS.
         /// </summary>
         [Test]
         public void BuildBetTeam_LengthBetTeamIsAAOS_BetTeamIsAwayToWinAnyOtherScore()
@@ -74,7 +74,7 @@
         }
 
         /// <summary>
-        /// The value of Template.betTeam is empty when BetTeam.Length != 2 and not haos or aaos.
+        /// The value of Template.betTeam is empty when BetTeam.Length != 2 and not HAOS or AAOS.
         /// </summary>
         [Test]
         public void BuildBetTeam_LengthBetTeamNotEqual2HAOSAAOS_BetTeamIsEmpty()

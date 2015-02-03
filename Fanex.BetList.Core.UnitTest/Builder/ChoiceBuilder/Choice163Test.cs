@@ -24,6 +24,10 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
+        /// <summary>
+        /// Builds the bet team_ bet team is h u_ template bet team is home team name slash under.
+        /// </summary>
+        /// <param name="betTeam">The bet team.</param>
         [TestCase("HU")]
         [TestCase("hu")]
         [TestCase("hU")]
@@ -43,6 +47,10 @@
             Assert.AreEqual(EXPECTED, _choice.Template.betTeam);
         }
 
+        /// <summary>
+        /// Builds the bet team_ bet team is h o_ template bet team is home team name slash over.
+        /// </summary>
+        /// <param name="betTeam">The bet team.</param>
         [TestCase("HO")]
         [TestCase("ho")]
         [TestCase("hO")]
@@ -62,6 +70,10 @@
             Assert.AreEqual(EXPECTED, _choice.Template.betTeam);
         }
 
+        /// <summary>
+        /// Builds the bet team_ bet team is d u_ template bet team is draw slash under.
+        /// </summary>
+        /// <param name="betTeam">The bet team.</param>
         [TestCase("DU")]
         [TestCase("du")]
         [TestCase("dU")]
@@ -78,6 +90,10 @@
             Assert.AreEqual(EXPECTED, _choice.Template.betTeam);
         }
 
+        /// <summary>
+        /// Builds the bet team_ bet team is d o_ template bet team is draw slash over.
+        /// </summary>
+        /// <param name="betTeam">The bet team.</param>
         [TestCase("DO")]
         [TestCase("do")]
         [TestCase("dO")]
@@ -94,6 +110,10 @@
             Assert.AreEqual(EXPECTED, _choice.Template.betTeam);
         }
 
+        /// <summary>
+        /// Builds the bet team_ bet team is a u_ template bet team is away team name slash under.
+        /// </summary>
+        /// <param name="betTeam">The bet team.</param>
         [TestCase("AU")]
         [TestCase("au")]
         [TestCase("aU")]
@@ -113,6 +133,10 @@
             Assert.AreEqual(EXPECTED, _choice.Template.betTeam);
         }
 
+        /// <summary>
+        /// Builds the bet team_ bet team is a o_ template bet team is away team name slash over.
+        /// </summary>
+        /// <param name="betTeam">The bet team.</param>
         [TestCase("AO")]
         [TestCase("ao")]
         [TestCase("aO")]

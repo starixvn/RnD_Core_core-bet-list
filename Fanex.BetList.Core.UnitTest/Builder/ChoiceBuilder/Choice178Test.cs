@@ -24,6 +24,11 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
+        /// <summary>
+        /// Builds the bet team_ bet team_ template bet team.
+        /// </summary>
+        /// <param name="betTeam">The bet team.</param>
+        /// <param name="expected">The expected.</param>
         [TestCase("O", "Over")]
         [TestCase("U", "Under")]
         [TestCase("o", "Over")]
@@ -41,6 +46,9 @@
             Assert.AreEqual(expected, _choice.Template.betTeam);
         }
 
+        /// <summary>
+        /// Builds the bet team class name and handicap_ bet team is o_ bet team class name is favorite.
+        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_BetTeamIsO_BetTeamClassNameIsFavorite()
         {
@@ -55,6 +63,9 @@
             Assert.AreEqual(CSS_BETTEAM_CLASS, _choice.Template.betTeamClassName);
         }
 
+        /// <summary>
+        /// Builds the bet team class name and handicap_ bet team is u_ bet team class name is underdog.
+        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_BetTeamIsU_BetTeamClassNameIsUnderdog()
         {
