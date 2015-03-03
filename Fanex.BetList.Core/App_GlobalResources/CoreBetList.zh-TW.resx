@@ -684,4 +684,70 @@
   <data name="HomeToWinAnyOtherScore" xml:space="preserve">
     <value>主贏其他比分</value>
   </data>
+  <data name="Corners" xml:space="preserve">
+    <value>角球</value>
+  </data>
+  <data name="ExtraTime" xml:space="preserve">
+    <value>加時賽</value>
+  </data>
+  <data name="ExtraTimeHTDotOne" xml:space="preserve">
+    <value>半場加時賽.1</value>
+  </data>
+  <data name="ExtraTimeHTDotTwo" xml:space="preserve">
+    <value>半場加時賽.2</value>
+  </data>
+  <data name="ExtraTimeHTDotX" xml:space="preserve">
+    <value>半場加時賽.X</value>
+  </data>
+  <data name="FourAndOverCorners" xml:space="preserve">
+    <value>4角球或以上</value>
+  </data>
+  <data name="FourGoalsAndOver" xml:space="preserve">
+    <value>4球或以上</value>
+  </data>
+  <data name="Min" xml:space="preserve">
+    <value>分鐘</value>
+  </data>
+  <data name="Penalty" xml:space="preserve">
+    <value>點球</value>
+  </data>
+  <data name="RegularTime" xml:space="preserve">
+    <value>正規時間</value>
+  </data>
+  <data name="SevenAndOverCorners" xml:space="preserve">
+    <value>7角球或以上</value>
+  </data>
+  <data name="SixAndOver" xml:space="preserve">
+    <value>6球或以上</value>
+  </data>
+  <data name="ThreeGoalsAndOver" xml:space="preserve">
+    <value>3球或以上</value>
+  </data>
+  <data name="ToWinByOneGoal" xml:space="preserve">
+    <value>贏1球</value>
+  </data>
+  <data name="ToWinByThreeUpGoals" xml:space="preserve">
+    <value>贏3球以上</value>
+  </data>
+  <data name="ToWinByTwoGoals" xml:space="preserve">
+    <value>贏2球</value>
+  </data>
+  <data name="TwelveAndOverCorners" xml:space="preserve">
+    <value>12角球或以上</value>
+  </data>
+  <data name="TwoGoalsAndOver" xml:space="preserve">
+    <value>2球或以上</value>
+  </data>
+  <data name="TwoHDotOne" xml:space="preserve">
+    <value>下半場.1</value>
+  </data>
+  <data name="TwoHDotTwo" xml:space="preserve">
+    <value>下半場.2</value>
+  </data>
+  <data name="TwoHDotX" xml:space="preserve">
+    <value>下半場.X</value>
+  </data>
+  <data name="ZeroGoals" xml:space="preserve">
+    <value>0球</value>
+  </data>
 </root>

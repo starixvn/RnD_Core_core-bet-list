@@ -30,7 +30,7 @@
                     betTeam = Template.Match.awayTeam;
                     break;
 
-                case BetTeamValue.None:
+                case BetTeamValue.X:
                     betTeam = CoreBetList.none;
                     break;
             }
