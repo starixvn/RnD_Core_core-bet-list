@@ -58,7 +58,7 @@
 
         public static string GetParentIdByBetTypeId(object betTypeId, object defaultParentId)
         {
-            return RefData.GetParentIdByBetTypeId(betTypeId.ToString(), defaultParentId.ToString());
+            return RefData.GetLeagueNameByProgramID(betTypeId.ToString(), defaultParentId.ToString());
         }
 
         public static string GetSportName(object sportId)

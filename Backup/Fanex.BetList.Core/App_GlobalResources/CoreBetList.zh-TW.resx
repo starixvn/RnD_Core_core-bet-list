@@ -1,0 +1,753 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="bingo" xml:space="preserve">
+    <value>Bingo</value>
+  </data>
+  <data name="casinoGame" xml:space="preserve">
+    <value>娛樂場遊戲</value>
+  </data>
+  <data name="choice" xml:space="preserve">
+    <value>選擇</value>
+  </data>
+  <data name="even" xml:space="preserve">
+    <value>雙</value>
+  </data>
+  <data name="ft" xml:space="preserve">
+    <value>全場</value>
+  </data>
+  <data name="high" xml:space="preserve">
+    <value>高</value>
+  </data>
+  <data name="ht" xml:space="preserve">
+    <value>半場</value>
+  </data>
+  <data name="lblBoth" xml:space="preserve">
+    <value>雙方</value>
+  </data>
+  <data name="lblDraw" xml:space="preserve">
+    <value>和</value>
+  </data>
+  <data name="lblOne" xml:space="preserve">
+    <value>一方</value>
+  </data>
+  <data name="lblOr" xml:space="preserve">
+    <value>或者</value>
+  </data>
+  <data name="lose" xml:space="preserve">
+    <value>輸</value>
+  </data>
+  <data name="low" xml:space="preserve">
+    <value>低</value>
+  </data>
+  <data name="member" xml:space="preserve">
+    <value>會員</value>
+  </data>
+  <data name="next" xml:space="preserve">
+    <value>下一頁</value>
+  </data>
+  <data name="nogoal" xml:space="preserve">
+    <value>兩者皆不</value>
+  </data>
+  <data name="numbergameno" xml:space="preserve">
+    <value>百練賽 no.</value>
+  </data>
+  <data name="odd" xml:space="preserve">
+    <value>單</value>
+  </data>
+  <data name="odds" xml:space="preserve">
+    <value>賠率</value>
+  </data>
+  <data name="over" xml:space="preserve">
+    <value>大</value>
+  </data>
+  <data name="pending" xml:space="preserve">
+    <value>Pending</value>
+  </data>
+  <data name="race" xml:space="preserve">
+    <value>賽事</value>
+  </data>
+  <data name="refno" xml:space="preserve">
+    <value>參照號碼</value>
+  </data>
+  <data name="stake" xml:space="preserve">
+    <value>投注額 </value>
+  </data>
+  <data name="status" xml:space="preserve">
+    <value>狀態</value>
+  </data>
+  <data name="transfer" xml:space="preserve">
+    <value>轉帳</value>
+  </data>
+  <data name="under" xml:space="preserve">
+    <value>小</value>
+  </data>
+  <data name="winloss" xml:space="preserve">
+    <value>輸贏</value>
+  </data>
+  <data name="won" xml:space="preserve">
+    <value>贏</value>
+  </data>
+  <data name="lblMixParlay" xml:space="preserve">
+    <value>混合過關</value>
+  </data>
+  <data name="total" xml:space="preserve">
+    <value>總和</value>
+  </data>
+  <data name="reject" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="running" xml:space="preserve">
+    <value>進行中</value>
+  </data>
+  <data name="draw" xml:space="preserve">
+    <value>和</value>
+  </data>
+  <data name="waiting" xml:space="preserve">
+    <value>等待中</value>
+  </data>
+  <data name="refund" xml:space="preserve">
+    <value>退款</value>
+  </data>
+  <data name="voided" xml:space="preserve">
+    <value>作廢</value>
+  </data>
+  <data name="place" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="win" xml:space="preserve">
+    <value>輸贏</value>
+  </data>
+  <data name="warrior2ndBall" xml:space="preserve">
+    <value>第二顆球贏</value>
+  </data>
+  <data name="warrior3rdBall" xml:space="preserve">
+    <value>第三顆球贏</value>
+  </data>
+  <data name="lblOverEven" xml:space="preserve">
+    <value>大/雙</value>
+  </data>
+  <data name="lblOverOdd" xml:space="preserve">
+    <value>大/單</value>
+  </data>
+  <data name="lblUnderEven" xml:space="preserve">
+    <value>小/雙</value>
+  </data>
+  <data name="lblUnderOdd" xml:space="preserve">
+    <value>小/單</value>
+  </data>
+  <data name="losingtickets" xml:space="preserve">
+    <value>輸的注單總計</value>
+  </data>
+  <data name="details" xml:space="preserve">
+    <value>詳細信息</value>
+  </data>
+  <data name="a" xml:space="preserve">
+    <value>A</value>
+  </data>
+  <data name="h" xml:space="preserve">
+    <value>H</value>
+  </data>
+  <data name="betweenXandY" xml:space="preserve">
+    <value>Between {0} and {1}</value>
+  </data>
+  <data name="points" xml:space="preserve">
+    <value>points</value>
+  </data>
+  <data name="upPoints" xml:space="preserve">
+    <value>UP points</value>
+  </data>
+  <data name="exactly" xml:space="preserve">
+    <value>Exactly</value>
+  </data>
+  <data name="set" xml:space="preserve">
+    <value>Set</value>
+  </data>
+  <data name="noTiebreak" xml:space="preserve">
+    <value>No Tiebreak</value>
+  </data>
+  <data name="casinoProgressiveBonus" xml:space="preserve">
+    <value>Casino Progressive Bonus</value>
+  </data>
+  <data name="playtechcasino" xml:space="preserve">
+    <value>PlayTech Casino</value>
+  </data>
+  <data name="ee" xml:space="preserve">
+    <value>雙/雙</value>
+  </data>
+  <data name="eo" xml:space="preserve">
+    <value>雙/單</value>
+  </data>
+  <data name="oe" xml:space="preserve">
+    <value>單/雙</value>
+  </data>
+  <data name="oo" xml:space="preserve">
+    <value>單/單</value>
+  </data>
+  <data name="FiveGoals" xml:space="preserve">
+    <value>五粒进球</value>
+  </data>
+  <data name="FourGoals" xml:space="preserve">
+    <value>四粒进球</value>
+  </data>
+  <data name="OneGoal" xml:space="preserve">
+    <value>一粒进球</value>
+  </data>
+  <data name="SevenAndOver" xml:space="preserve">
+    <value>7或以上</value>
+  </data>
+  <data name="SixGoals" xml:space="preserve">
+    <value>六粒进球</value>
+  </data>
+  <data name="ThreeGoals" xml:space="preserve">
+    <value>三粒进球</value>
+  </data>
+  <data name="TwoGoals" xml:space="preserve">
+    <value>二粒进球</value>
+  </data>
+  <data name="virtualtennis_scorebet_0_win" xml:space="preserve">
+    <value>0-Win</value>
+  </data>
+  <data name="virtualtennis_scorebet_30_win" xml:space="preserve">
+    <value>30-Win</value>
+  </data>
+  <data name="virtualtennis_scorebet_15_win" xml:space="preserve">
+    <value>15-Win</value>
+  </data>
+  <data name="virtualtennis_scorebet_40_win" xml:space="preserve">
+    <value>40-Win</value>
+  </data>
+  <data name="virtualtennis_scorebet_win_0" xml:space="preserve">
+    <value>Win-0</value>
+  </data>
+  <data name="virtualtennis_scorebet_win_15" xml:space="preserve">
+    <value>Win-15</value>
+  </data>
+  <data name="virtualtennis_scorebet_win_30" xml:space="preserve">
+    <value>Win-30</value>
+  </data>
+  <data name="virtualtennis_scorebet_win_40" xml:space="preserve">
+    <value>Win-40</value>
+  </data>
+  <data name="FourAndOver" xml:space="preserve">
+    <value>4或以上</value>
+  </data>
+  <data name="ad" xml:space="preserve">
+    <value>客和</value>
+  </data>
+  <data name="ah" xml:space="preserve">
+    <value>客主</value>
+  </data>
+  <data name="all" xml:space="preserve">
+    <value>全部</value>
+  </data>
+  <data name="AM" xml:space="preserve">
+    <value>上午</value>
+  </data>
+  <data name="amount" xml:space="preserve">
+    <value>金額</value>
+  </data>
+  <data name="and" xml:space="preserve">
+    <value>和</value>
+  </data>
+  <data name="at" xml:space="preserve">
+    <value>at</value>
+  </data>
+  <data name="away" xml:space="preserve">
+    <value>客</value>
+  </data>
+  <data name="bet" xml:space="preserve">
+    <value>投注</value>
+  </data>
+  <data name="BetList" xml:space="preserve">
+    <value>投注历史</value>
+  </data>
+  <data name="bettype" xml:space="preserve">
+    <value>投注類別</value>
+  </data>
+  <data name="casino" xml:space="preserve">
+    <value>娛樂城</value>
+  </data>
+  <data name="close" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="com" xml:space="preserve">
+    <value>佣金</value>
+  </data>
+  <data name="combination" xml:space="preserve">
+    <value>組合</value>
+  </data>
+  <data name="commission" xml:space="preserve">
+    <value>佣金</value>
+  </data>
+  <data name="content" xml:space="preserve">
+    <value>內容</value>
+  </data>
+  <data name="customer" xml:space="preserve">
+    <value>會員</value>
+  </data>
+  <data name="d" xml:space="preserve">
+    <value>D</value>
+  </data>
+  <data name="da" xml:space="preserve">
+    <value>和客</value>
+  </data>
+  <data name="date" xml:space="preserve">
+    <value>日期</value>
+  </data>
+  <data name="dd" xml:space="preserve">
+    <value>和和</value>
+  </data>
+  <data name="dec" xml:space="preserve">
+    <value>12月</value>
+  </data>
+  <data name="enable" xml:space="preserve">
+    <value>啟用</value>
+  </data>
+  <data name="events" xml:space="preserve">
+    <value>賽事</value>
+  </data>
+  <data name="FG" xml:space="preserve">
+    <value>FG</value>
+  </data>
+  <data name="fglg" xml:space="preserve">
+    <value>最先得分 / 最後得分</value>
+  </data>
+  <data name="first" xml:space="preserve">
+    <value>首頁</value>
+  </data>
+  <data name="FirstHalf" xml:space="preserve">
+    <value>上半場</value>
+  </data>
+  <data name="from" xml:space="preserve">
+    <value>從</value>
+  </data>
+  <data name="game" xml:space="preserve">
+    <value>游戲</value>
+  </data>
+  <data name="games" xml:space="preserve">
+    <value>普通游戲</value>
+  </data>
+  <data name="go" xml:space="preserve">
+    <value>轉</value>
+  </data>
+  <data name="goal" xml:space="preserve">
+    <value>Goal</value>
+  </data>
+  <data name="ha" xml:space="preserve">
+    <value>主客</value>
+  </data>
+  <data name="hd" xml:space="preserve">
+    <value>主和</value>
+  </data>
+  <data name="hdp" xml:space="preserve">
+    <value>讓球</value>
+  </data>
+  <data name="hh" xml:space="preserve">
+    <value>主主</value>
+  </data>
+  <data name="home" xml:space="preserve">
+    <value>主</value>
+  </data>
+  <data name="Horse" xml:space="preserve">
+    <value>賽馬賽事</value>
+  </data>
+  <data name="hr" xml:space="preserve">
+    <value>賽馬賽事</value>
+  </data>
+  <data name="Internal" xml:space="preserve">
+    <value>內部</value>
+  </data>
+  <data name="ip" xml:space="preserve">
+    <value>IP</value>
+  </data>
+  <data name="IsNeutral" xml:space="preserve">
+    <value> (N)</value>
+  </data>
+  <data name="last" xml:space="preserve">
+    <value>尾頁</value>
+  </data>
+  <data name="lblLose" xml:space="preserve">
+    <value>輸</value>
+  </data>
+  <data name="lblM" xml:space="preserve">
+    <value>M = 總代理</value>
+  </data>
+  <data name="lblNeither" xml:space="preserve">
+    <value>皆不</value>
+  </data>
+  <data name="lblNoDraw" xml:space="preserve">
+    <value>No Draw</value>
+  </data>
+  <data name="lblRunning" xml:space="preserve">
+    <value>進行中</value>
+  </data>
+  <data name="lblS" xml:space="preserve">
+    <value>S = 超級</value>
+  </data>
+  <data name="lblSystemParlay" xml:space="preserve">
+    <value>系統Parlay</value>
+  </data>
+  <data name="lblWaiting" xml:space="preserve">
+    <value>等待中</value>
+  </data>
+  <data name="lblWon" xml:space="preserve">
+    <value>贏</value>
+  </data>
+  <data name="league" xml:space="preserve">
+    <value>聯賽</value>
+  </data>
+  <data name="LG" xml:space="preserve">
+    <value>LG</value>
+  </data>
+  <data name="LiveCasino" xml:space="preserve">
+    <value>娛樂廳</value>
+  </data>
+  <data name="mar" xml:space="preserve">
+    <value>3月</value>
+  </data>
+  <data name="match" xml:space="preserve">
+    <value>賽事</value>
+  </data>
+  <data name="mon" xml:space="preserve">
+    <value>一</value>
+  </data>
+  <data name="name" xml:space="preserve">
+    <value>名</value>
+  </data>
+  <data name="no" xml:space="preserve">
+    <value>#</value>
+  </data>
+  <data name="no0" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="none" xml:space="preserve">
+    <value>沒有</value>
+  </data>
+  <data name="normal" xml:space="preserve">
+    <value>普通</value>
+  </data>
+  <data name="numbergame" xml:space="preserve">
+    <value>數字游戲</value>
+  </data>
+  <data name="numberGroup" xml:space="preserve">
+    <value>包牌</value>
+  </data>
+  <data name="of" xml:space="preserve">
+    <value>之第</value>
+  </data>
+  <data name="open" xml:space="preserve">
+    <value>開啟</value>
+  </data>
+  <data name="OT" xml:space="preserve">
+    <value>加時</value>
+  </data>
+  <data name="other" xml:space="preserve">
+    <value>其他</value>
+  </data>
+  <data name="outstanding" xml:space="preserve">
+    <value>未完成交易</value>
+  </data>
+  <data name="P2" xml:space="preserve">
+    <value>第二局</value>
+  </data>
+  <data name="P2P" xml:space="preserve">
+    <value>扑克</value>
+  </data>
+  <data name="p2pGame" xml:space="preserve">
+    <value>扑克</value>
+  </data>
+  <data name="parlay" xml:space="preserve">
+    <value>过关</value>
+  </data>
+  <data name="player" xml:space="preserve">
+    <value>玩家</value>
+  </data>
+  <data name="product" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="pt" xml:space="preserve">
+    <value>佔成數</value>
+  </data>
+  <data name="reset" xml:space="preserve">
+    <value>重填</value>
+  </data>
+  <data name="result" xml:space="preserve">
+    <value>賽果</value>
+  </data>
+  <data name="Roulette" xml:space="preserve">
+    <value>Roulette</value>
+  </data>
+  <data name="SB" xml:space="preserve">
+    <value>體育博採</value>
+  </data>
+  <data name="scr" xml:space="preserve">
+    <value>退出</value>
+  </data>
+  <data name="sec" xml:space="preserve">
+    <value> sec</value>
+  </data>
+  <data name="SecondHalf" xml:space="preserve">
+    <value>下半場</value>
+  </data>
+  <data name="setting" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="sport" xml:space="preserve">
+    <value>運動</value>
+  </data>
+  <data name="subTotal" xml:space="preserve">
+    <value>小計</value>
+  </data>
+  <data name="summary" xml:space="preserve">
+    <value>摘要</value>
+  </data>
+  <data name="table" xml:space="preserve">
+    <value>游戲桌</value>
+  </data>
+  <data name="Tennis" xml:space="preserve">
+    <value>網球</value>
+  </data>
+  <data name="tf" xml:space="preserve">
+    <value>大熱門</value>
+  </data>
+  <data name="Tie" xml:space="preserve">
+    <value>平局</value>
+  </data>
+  <data name="time" xml:space="preserve">
+    <value>時間</value>
+  </data>
+  <data name="to" xml:space="preserve">
+    <value>到</value>
+  </data>
+  <data name="type" xml:space="preserve">
+    <value>類別</value>
+  </data>
+  <data name="UpdateAll" xml:space="preserve">
+    <value>更新全部</value>
+  </data>
+  <data name="view" xml:space="preserve">
+    <value>瀏覽</value>
+  </data>
+  <data name="warrior" xml:space="preserve">
+    <value>鬥士</value>
+  </data>
+  <data name="wed" xml:space="preserve">
+    <value>三</value>
+  </data>
+  <data name="lblYes" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="lblNo" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="results" xml:space="preserve">
+    <value>賽果</value>
+  </data>
+  <data name="PartyBaccarat" xml:space="preserve">
+    <value>Party Baccarat</value>
+  </data>
+  <data name="PartyRoulette" xml:space="preserve">
+    <value>Party Roulette</value>
+  </data>
+  <data name="NoGoals" xml:space="preserve">
+    <value>無進球</value>
+  </data>
+  <data name="LiveBaccarat" xml:space="preserve">
+    <value>Live Baccarat</value>
+  </data>
+  <data name="LiveRoulette" xml:space="preserve">
+    <value>輪盤</value>
+  </data>
+  <data name="FiveAndOver" xml:space="preserve">
+    <value>5&amp;Over</value>
+  </data>
+  <data name="AwayToWinAnyOtherScore" xml:space="preserve">
+    <value>客贏其他比分</value>
+  </data>
+  <data name="HomeToWinAnyOtherScore" xml:space="preserve">
+    <value>主贏其他比分</value>
+  </data>
+  <data name="Corners" xml:space="preserve">
+    <value>角球</value>
+  </data>
+  <data name="ExtraTime" xml:space="preserve">
+    <value>加時賽</value>
+  </data>
+  <data name="ExtraTimeHTDotOne" xml:space="preserve">
+    <value>半場加時賽.1</value>
+  </data>
+  <data name="ExtraTimeHTDotTwo" xml:space="preserve">
+    <value>半場加時賽.2</value>
+  </data>
+  <data name="ExtraTimeHTDotX" xml:space="preserve">
+    <value>半場加時賽.X</value>
+  </data>
+  <data name="FourAndOverCorners" xml:space="preserve">
+    <value>4角球或以上</value>
+  </data>
+  <data name="FourGoalsAndOver" xml:space="preserve">
+    <value>4球或以上</value>
+  </data>
+  <data name="Min" xml:space="preserve">
+    <value>分鐘</value>
+  </data>
+  <data name="Penalty" xml:space="preserve">
+    <value>點球</value>
+  </data>
+  <data name="RegularTime" xml:space="preserve">
+    <value>正規時間</value>
+  </data>
+  <data name="SevenAndOverCorners" xml:space="preserve">
+    <value>7角球或以上</value>
+  </data>
+  <data name="SixAndOver" xml:space="preserve">
+    <value>6球或以上</value>
+  </data>
+  <data name="ThreeGoalsAndOver" xml:space="preserve">
+    <value>3球或以上</value>
+  </data>
+  <data name="ToWinByOneGoal" xml:space="preserve">
+    <value>贏1球</value>
+  </data>
+  <data name="ToWinByThreeUpGoals" xml:space="preserve">
+    <value>贏3球以上</value>
+  </data>
+  <data name="ToWinByTwoGoals" xml:space="preserve">
+    <value>贏2球</value>
+  </data>
+  <data name="TwelveAndOverCorners" xml:space="preserve">
+    <value>12角球或以上</value>
+  </data>
+  <data name="TwoGoalsAndOver" xml:space="preserve">
+    <value>2球或以上</value>
+  </data>
+  <data name="TwoHDotOne" xml:space="preserve">
+    <value>下半場.1</value>
+  </data>
+  <data name="TwoHDotTwo" xml:space="preserve">
+    <value>下半場.2</value>
+  </data>
+  <data name="TwoHDotX" xml:space="preserve">
+    <value>下半場.X</value>
+  </data>
+  <data name="ZeroGoals" xml:space="preserve">
+    <value>0球</value>
+  </data>
+</root>

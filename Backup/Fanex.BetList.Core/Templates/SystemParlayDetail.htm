@@ -1,0 +1,94 @@
+﻿<table cellspacing="0" cellpadding="0" border="0" class="system-parlay-detail" style="text-align: right;
+    white-space: nowrap; width: 100%; font-weight: bold">
+    <tr class="system-parlay-header">
+        <th width="100">
+            {static:App_GlobalResources.CoreBetList.date}
+        </th>
+        <th>
+            {static:App_GlobalResources.CoreBetList.events}
+        </th>
+        <th width="80">
+            {static:App_GlobalResources.CoreBetList.odds}
+        </th>
+        <th width="80">
+            {static:App_GlobalResources.CoreBetList.stake}
+        </th>
+        <th width="80">
+            {static:App_GlobalResources.CoreBetList.winloss}
+        </th>
+        <th width="80">
+            {static:App_GlobalResources.CoreBetList.status}
+        </th>
+    </tr>
+    <!--Contents-->
+    <tr>
+        <!--WinlossDate-->
+        <td style="text-align: center; font-weight: normal" rowspan="{RowSpan}">
+            {WinlossDate}
+        </td>
+        <!--/WinlossDate-->
+        <td style="text-align: left; font-weight: normal">
+            <!--Match-->
+            <div style="padding: 3px 0px">
+                {HomeTeam} - vs - {AwayTeam}</div>
+            <!--/Match-->
+        </td>
+        <td>
+            {Odds}
+        </td>
+        <td>
+            {Stake}
+        </td>
+        <td>
+            {Winloss}
+            <!--PlayerCommission-->
+            <div class="player-commission">
+                {PlayerCommission}
+            </div>
+            <!--/PlayerCommission-->
+        </td>
+        <td style="text-align: center;">
+            {Status}
+        </td>
+    </tr>
+    <!--/Contents-->
+    <!--SubTotalContents-->
+    <tr class="system-parlay-subtotal">
+        <td colspan="4">
+            {static:App_GlobalResources.CoreBetList.subTotal}:
+        </td>
+        <td style="border-left: none;">
+            {TotalWinloss}
+        </td>
+        <td style="border-left: none;">
+            &nbsp;
+        </td>
+    </tr>
+    <!--/SubTotalContents-->
+    <!--Outstanding-->
+    <tr class="system-parlay-outstanding">
+        <td colspan="4">
+            {static:App_GlobalResources.CoreBetList.outstanding}:
+        </td>
+        <td style="border-left: none;">
+            {Outstanding}
+        </td>
+        <td style="border-left: none;">
+            &nbsp;
+        </td>
+    </tr>
+    <!--/Outstanding-->
+    <!--TotalContents-->
+    <tr class="system-parlay-total">
+        <td colspan="4">
+            {static:App_GlobalResources.CoreBetList.total}:
+        </td>
+        <td>
+            {TotalWinloss}
+        </td>
+        <td>
+            &nbsp;
+        </td>
+    </tr>
+    <!--/TotalContents-->
+</table>

@@ -26,6 +26,10 @@ namespace Fanex.BetList.Example.MVC.Controllers
         public BetListController()
         {
             _dataService = new DataService();
+            var ticketHelper = new TicketHelper();
+            var test = ticketHelper.GetLeagueNameById(1073741825);
+            var test1 = ticketHelper.GetTeamNameById(1073741825);
+            var test2 = ticketHelper.GetTeamNameById(1073741826);
         }
 
         public ActionResult All(BetListData model = null)
