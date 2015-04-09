@@ -22,5 +22,12 @@
             Template.Handicap.handicap = null;
             Template.betTeamClassName = Favorite;
         }
+
+        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {
+            var parentBetTypeId = ticketHelper.GetParentIdByBetTypeId(ticket.BetTypeId);
+
+            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(parentBetTypeId);
+        }
     }
 }

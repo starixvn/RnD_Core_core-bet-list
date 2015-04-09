@@ -22,6 +22,13 @@
             Template.betTeamClassName = IsOver(ticket) ? Favorite : Underdog;
         }
 
+        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {
+            var parentBetTypeId = ticketHelper.GetParentIdByBetTypeId(ticket.BetTypeId);
+
+            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(parentBetTypeId);
+        }
+
         private bool IsOver(ITicket ticket)
         {
             return ticket.BetTeam.ToLowerInvariant() == BetTeamValue.O;
