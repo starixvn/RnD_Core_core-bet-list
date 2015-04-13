@@ -62,9 +62,9 @@
             Assert.AreEqual(AWAY_TEAM_NAME, _choice.Template.betTeam);
         }
 
-        [TestCase("none")]
-        [TestCase("None")]
-        public void BuildBetTeam_BetTeamIsNone_TemplateBetTeamIsNone(string betTeam)
+        [TestCase("x")]
+        [TestCase("X")]
+        public void BuildBetTeam_BetTeamIsX_TemplateBetTeamIsNone(string betTeam)
         {
             // Arrange
             _ticket.BetTeam = betTeam;
