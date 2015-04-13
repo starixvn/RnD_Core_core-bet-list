@@ -10,7 +10,7 @@ namespace Fanex.BetList.Core.UnitTest.Utils
         private const string FontOpenTag = "<font color='#B50000'>";
         private const string FontCloseTag = "</font>";
         private const string Minus = "<font color='#B50000'>{0}</font>";
-        private static List<int> oddsBettypes = new List<int>(new int[] { 1, 2, 3, 7, 12, 8, 20, 124, 125, 81, 82, 83, 84, 85, 86, 87, 88 });
+        private static List<int> oddsBettypes = new List<int>(new int[] { 1, 2, 3, 7, 12, 8, 20, 21, 124, 125, 81, 82, 83, 84, 85, 86, 87, 88 });
 
         [TestCase(1)]
         [TestCase(2)]
@@ -19,6 +19,7 @@ namespace Fanex.BetList.Core.UnitTest.Utils
         [TestCase(12)]
         [TestCase(8)]
         [TestCase(20)]
+        [TestCase(21)]
         [TestCase(124)]
         [TestCase(125)]
         [TestCase(81)]

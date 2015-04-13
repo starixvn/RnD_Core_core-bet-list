@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.Core", "Fanex.BetList.Core\Fanex.BetList.Core.csproj", "{B0838D04-2306-4362-AF22-9FCD0BE6F8E7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CodeAnalysis", "CodeAnalysis", "{806E6B7B-8CAA-49B4-B5AB-145030E6B66A}"
@@ -21,9 +23,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{486008E8-F444-4221-8AD0-E3C4DFAC5CB5}"
 EndProject
 Global
-	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = Fanex2.vsmdi
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -35,8 +34,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{B0838D04-2306-4362-AF22-9FCD0BE6F8E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B0838D04-2306-4362-AF22-9FCD0BE6F8E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B0838D04-2306-4362-AF22-9FCD0BE6F8E7}.Debug|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{B0838D04-2306-4362-AF22-9FCD0BE6F8E7}.Debug|Mixed Platforms.Build.0 = Release|Any CPU
+		{B0838D04-2306-4362-AF22-9FCD0BE6F8E7}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B0838D04-2306-4362-AF22-9FCD0BE6F8E7}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{B0838D04-2306-4362-AF22-9FCD0BE6F8E7}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{B0838D04-2306-4362-AF22-9FCD0BE6F8E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0838D04-2306-4362-AF22-9FCD0BE6F8E7}.Release|Any CPU.Build.0 = Release|Any CPU
@@ -91,5 +90,8 @@ Global
 		{CF75E712-CD28-42EF-A9F7-5DDE2B4E7BA8} = {24BA1707-BE2A-4391-8A57-747DE7EAA0D4}
 		{8ACF58AD-9149-4D94-B2EB-996FA0E3F2DA} = {24BA1707-BE2A-4391-8A57-747DE7EAA0D4}
 		{C170087E-7A8F-4CBC-A0F7-F869DFFE48FD} = {24BA1707-BE2A-4391-8A57-747DE7EAA0D4}
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = Fanex2.vsmdi
 	EndGlobalSection
 EndGlobal
