@@ -10,17 +10,15 @@ namespace Fanex.BetList.Core.UnitTest.Utils
         private const string FontOpenTag = "<font color='#B50000'>";
         private const string FontCloseTag = "</font>";
         private const string Minus = "<font color='#B50000'>{0}</font>";
-        private static List<int> oddsBettypes = new List<int>(new int[] { 1, 2, 3, 7, 12, 8, 20, 124, 125, 81, 82, 83, 84, 85, 86, 87, 88 });
 
         [TestCase(1)]
         [TestCase(2)]
         [TestCase(3)]
         [TestCase(7)]
-        [TestCase(12)]
         [TestCase(8)]
+        [TestCase(12)]
         [TestCase(20)]
-        [TestCase(124)]
-        [TestCase(125)]
+        [TestCase(21)]
         [TestCase(81)]
         [TestCase(82)]
         [TestCase(83)]
@@ -29,6 +27,32 @@ namespace Fanex.BetList.Core.UnitTest.Utils
         [TestCase(86)]
         [TestCase(87)]
         [TestCase(88)]
+        [TestCase(124)]
+        [TestCase(125)]
+        [TestCase(153)]
+        [TestCase(154)]
+        [TestCase(155)]
+        [TestCase(156)]
+        [TestCase(157)]
+        [TestCase(178)]
+        [TestCase(183)]
+        [TestCase(184)]
+        [TestCase(194)]
+        [TestCase(197)]
+        [TestCase(198)]
+        [TestCase(203)]
+        [TestCase(204)]
+        [TestCase(205)]
+        [TestCase(1301)]
+        [TestCase(1303)]
+        [TestCase(1305)]
+        [TestCase(1306)]
+        [TestCase(1308)]
+        [TestCase(1311)]
+        [TestCase(1312)]
+        [TestCase(1316)]
+        [TestCase(1318)]
+        [TestCase(1324)]
         public void ShowOddsByBettype_BetTypeIsOddsBetType_ReturnOddsType(int betType)
         {
             // Arrange
