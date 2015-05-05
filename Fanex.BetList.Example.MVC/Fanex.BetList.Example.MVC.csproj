@@ -17,6 +17,10 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>false</UseIISExpress>
     <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -274,6 +278,9 @@
     </Content>
     <Content Include="App_Data\BetTypes.xls" />
     <Content Include="App_Data\SportingSolutionBetTypesData.xls">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\GoldDeluxe.xls">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="fonts\glyphicons-halflings-regular.eot" />

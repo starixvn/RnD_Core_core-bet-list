@@ -89,6 +89,17 @@ namespace Fanex.BetList.Example.MVC.Controllers
             return BetListView(model);
         }
 
+
+        public ActionResult GoldDeluxe(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes(1701, 1702, 1703);
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, sourcePath: "~/App_Data/GoldDeluxe.xls");
+
+            return BetListView(model);
+        }
+
         private ViewResult BetListView(BetListData model)
         {
             return View("All", model);

@@ -105,5 +105,10 @@
         {
             return RefData.GetKenoBettype(kenoBettypeID, CurrentTWLanguage);
         }
+
+        public static string GetGoldDeluxeBetItem(object betStatusId)
+        {
+            return betStatusId.ToString();
+        }
     }
 }

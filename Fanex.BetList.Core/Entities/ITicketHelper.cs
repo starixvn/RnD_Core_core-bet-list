@@ -91,6 +91,8 @@
 
         string GetKenoBetTypeName(string kenoBettypeID);
 
+        string GetGoldDeluxeBetTeamNameById(object betteamId);
+
         #endregion METHODS TO RESOLVE NAMES FROM IDS
     }
 }

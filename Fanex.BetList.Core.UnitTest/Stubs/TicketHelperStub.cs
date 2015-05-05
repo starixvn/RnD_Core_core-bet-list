@@ -111,5 +111,10 @@ namespace Fanex.BetList.Core.UnitTest.Stubs
         {
             return this._betTypeName + kenoBettypeID;
         }
+
+        public string GetGoldDeluxeBetTeamNameById(object betteamId)
+        {
+            return betteamId.ToString();
+        }
     }
 }
