@@ -31,7 +31,7 @@
                     break;
 
                 case BetTeamValue.X:
-                    betTeam = CoreBetList.none;
+                    betTeam = CoreBetList.draw;
                     break;
             }
 
