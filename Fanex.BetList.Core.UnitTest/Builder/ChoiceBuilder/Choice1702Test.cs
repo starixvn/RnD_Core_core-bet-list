@@ -146,5 +146,26 @@
             // Assert
             Assert.AreEqual(ExpectedBetTeam, _choice.Template.betTeam);
         }
+
+        [Test]
+        public void BuildBetTeam_TicketDataWithOddsIsZero_ShowHyphen()
+        {
+            // Arrange
+            const string ExpectedBetTeam = "<div><span class='favorite'>Player Pair</span>&nbsp;<span class='stake'>1</span>&nbsp;@&nbsp;<span class='handicap custom'>-</span></div>";
+            const string DecimalOddsType = "4";
+            const string RefNo = "1234";
+            _ticket.RefNo = RefNo;
+            _ticket.OddsType = DecimalOddsType;
+
+            var ticketData = new List<ITicketData> { new TicketData { RefNo = RefNo, Odds = 0, Stake = 1, BetTeam = "2" } };
+            _ticketHelper.GetGoldDeluxeBetTeamNameById("2").Returns("Player Pair");
+
+            // Action
+            _choice.Render(_ticket, _ticketHelper, ticketData, false);
+
+            // Assert
+            Assert.AreEqual(ExpectedBetTeam, _choice.Template.betTeam);
+        }
+
     }
 }

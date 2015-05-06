@@ -1276,6 +1276,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Parlay Baccarat.
+        /// </summary>
+        public static string ParlayBaccarat {
+            get {
+                return ResourceManager.GetString("ParlayBaccarat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Party Baccarat.
         /// </summary>
         public static string PartyBaccarat {

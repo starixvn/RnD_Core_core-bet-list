@@ -55,6 +55,11 @@ namespace Fanex.BetList.Example.Data
         /// <summary>
         /// The bet team.
         /// </summary>
-        BetTeam = 8
+        BetTeam = 8,
+
+        /// <summary>
+        /// The bet check
+        /// </summary>
+        BetCheck = 9
     }
 }

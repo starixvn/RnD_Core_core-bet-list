@@ -102,7 +102,7 @@
             return ticketHelper.GetCasinoBetTeamNameById(betTeam);
         }
 
-        private List<ITicketData> GetTicketReference(ITicket ticket, List<ITicketData> ticketData)
+        protected List<ITicketData> GetTicketReference(ITicket ticket, List<ITicketData> ticketData)
         {
             var foundTicketData = new List<ITicketData>();
 

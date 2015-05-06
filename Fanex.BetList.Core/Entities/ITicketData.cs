@@ -20,6 +20,8 @@
 
         string BetTeam { get; set; }
 
+        string BetCheck { get; set; }
+
         decimal SuperPT { get; set; }
 
         decimal MasterPT { get; set; }
