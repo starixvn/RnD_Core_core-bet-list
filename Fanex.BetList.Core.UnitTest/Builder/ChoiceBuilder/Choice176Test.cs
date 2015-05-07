@@ -31,8 +31,8 @@
         /// <param name="expected">The expected.</param>
         [TestCase("1", "Home team name")]
         [TestCase("2", "Away team name")]
-        [TestCase("x", "None")]
-        [TestCase("X", "None")]
+        [TestCase("x", "Draw")]
+        [TestCase("X", "Draw")]
         public void BuildBetTeam_BetTeam_TemplateBetTeam(string betTeam, string expected)
         {
             // Arrange

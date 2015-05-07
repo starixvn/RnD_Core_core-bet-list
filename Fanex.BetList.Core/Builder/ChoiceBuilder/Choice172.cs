@@ -26,8 +26,8 @@
                     betTeam = string.Format("{0}/{1}", Template.Match.homeTeam, Template.Match.homeTeam);
                     break;
 
-                case BetTeamValue.HD:
-                    betTeam = string.Format("{0}/{1}", Template.Match.homeTeam, CoreBetList.draw);
+                case BetTeamValue.DH:
+                    betTeam = string.Format("{0}/{1}", CoreBetList.draw, Template.Match.homeTeam);
                     break;
 
                 case BetTeamValue.HA:
@@ -38,8 +38,8 @@
                     betTeam = string.Format("{0}/{1}", Template.Match.awayTeam, Template.Match.homeTeam);
                     break;
 
-                case BetTeamValue.AD:
-                    betTeam = string.Format("{0}/{1}", Template.Match.awayTeam, CoreBetList.draw);
+                case BetTeamValue.DA:
+                    betTeam = string.Format("{0}/{1}", CoreBetList.draw, Template.Match.awayTeam);
                     break;
 
                 case BetTeamValue.AA:

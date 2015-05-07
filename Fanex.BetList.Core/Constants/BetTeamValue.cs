@@ -209,6 +209,11 @@
         public const string HD = "hd";
 
         /// <summary>
+        /// Is DH = "dh".
+        /// </summary>
+        public const string DH = "dh";
+
+        /// <summary>
         /// Is HA = "ha".
         /// </summary>
         public const string HA = "ha";
@@ -221,7 +226,7 @@
         /// <summary>
         /// Is AD = "ad".
         /// </summary>
-        public const string AD = "ad";
+        public const string DA = "da";
 
         /// <summary>
         /// Is AA = "aa".
@@ -262,11 +267,6 @@
         /// Is AP = "ap".
         /// </summary>
         public const string AP = "ap";
-
-        /// <summary>
-        /// Is DA = "da".
-        /// </summary>
-        public const string DA = "da";
 
         /// <summary>
         /// Is U = "u".
