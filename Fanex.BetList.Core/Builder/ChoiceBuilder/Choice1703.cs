@@ -40,7 +40,7 @@
             var ticketDetails = GetTicketReference(ticket, ticketData);
             if (ticketDetails.Count > 0 && IsNotRunningTicket(ticket))
             {
-                var choiceDetails = string.Format("<div id='parlay_{0}'>", ticket.RefNo);
+                var choiceDetails = string.Format("<div id='parlay_{0}' style='display:none;'>", ticket.RefNo);
                 int count = 1;
                 foreach (var ticketDetail in ticketDetails)
                 {
