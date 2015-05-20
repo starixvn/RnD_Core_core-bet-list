@@ -96,6 +96,9 @@
     <Compile Include="Builder\ChoiceBuilder\Choice169Test.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Builder\ChoiceBuilder\Choice1701Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice1702Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice1703Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice170Test.cs">
       <SubType>Code</SubType>
     </Compile>
