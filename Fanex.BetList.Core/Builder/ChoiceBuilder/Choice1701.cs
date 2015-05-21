@@ -36,10 +36,5 @@
         {
             return ticketHelper.GetGoldDeluxeBetTeamNameById(betTeam);
         }
-
-        protected override string GetLeagueName()
-        {
-            return CoreBetList.Baccarat;
-        }
     }
 }

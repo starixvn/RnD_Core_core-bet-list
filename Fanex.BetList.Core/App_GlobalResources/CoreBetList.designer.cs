@@ -151,15 +151,6 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Baccarat.
-        /// </summary>
-        public static string Baccarat {
-            get {
-                return ResourceManager.GetString("Baccarat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to bets.
         /// </summary>
         public static string bet {

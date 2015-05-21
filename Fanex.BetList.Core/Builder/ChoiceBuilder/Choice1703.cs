@@ -1,5 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using System;
     using System.Collections.Generic;
     using App_GlobalResources;
     using Entities;
@@ -28,11 +29,6 @@
             Template.League.LeagueName.leagueName = league;
         }
 
-        protected override string GetLeagueName()
-        {
-            return CoreBetList.ParlayBaccarat;
-        }
-
         protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
@@ -45,7 +41,7 @@
                 foreach (var ticketDetail in ticketDetails)
                 {
                     var betTeam = string.Format(BetTeamFormat, ticketHelper.GetGoldDeluxeBetTeamNameById(ticketDetail.BetTeam));
-                    var league = string.Format(LeagueFormat, ticketHelper.GetSportNameById(ticket.SportTypeId), CoreBetList.ParlayBaccarat, ticketDetail.BetCheck);
+                    var league = string.Format(LeagueFormat, ticketHelper.GetSportNameById(ticket.SportTypeId), CoreBetList.ParlayBaccarat, GetBetChoice(ticketDetail.TransDesc));
 
                     choiceDetails += string.Format("<div class='ticketList'>{0}{1}</div>", betTeam, league);
                     if (count++ < ticketDetails.Count)
@@ -62,7 +58,32 @@
 
         private bool IsNotRunningTicket(ITicket ticket)
         {
-            return ticket.StatusId.ToString() != BetStatusId.Running;
+            return !string.Equals(ticket.Status, BetStatus.Running, StringComparison.InvariantCultureIgnoreCase);
         }
+
+        private List<ITicketData> GetTicketReference(ITicket ticket, List<ITicketData> ticketData)
+        {
+            var foundTicketData = new List<ITicketData>();
+
+            if (ticketData != null && ticketData.Count > 0)
+            {
+                foundTicketData = ticketData.FindAll(item => item.RefNo.Equals(ticket.TransId.ToString()));
+            }
+
+            return foundTicketData;
+        }
+
+        private string GetBetChoice(string transDesc)
+        {
+            if (string.IsNullOrWhiteSpace(transDesc))
+            {
+                return transDesc;
+            }
+
+            var array = transDesc.Split(';');
+
+            return array[0].Replace("Betchoice=", string.Empty);
+        }
+
     }
 }

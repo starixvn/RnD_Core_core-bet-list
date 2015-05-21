@@ -27,7 +27,7 @@
 
         public string BetTeam { get; set; }
 
-        public string BetCheck { get; set; }
+        public string TransDesc { get; set; }
 
         public decimal SuperPT { get; set; }
 

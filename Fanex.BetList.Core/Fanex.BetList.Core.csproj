@@ -435,6 +435,9 @@
     <Compile Include="Builder\TransBuilder\ITrans.cs" />
     <Compile Include="Builder\TransBuilder\Trans1.cs" />
     <Compile Include="Builder\TransBuilder\Trans1501.cs" />
+    <Compile Include="Builder\TransBuilder\Trans1702.cs" />
+    <Compile Include="Builder\TransBuilder\Trans1703.cs" />
+    <Compile Include="Builder\TransBuilder\Trans1701.cs" />
     <Compile Include="Builder\TransBuilder\Trans71.cs" />
     <Compile Include="Builder\TransBuilder\Trans73.cs" />
     <Compile Include="Constants\BetTeamValue.cs" />

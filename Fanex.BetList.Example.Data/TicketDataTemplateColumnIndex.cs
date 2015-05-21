@@ -60,6 +60,6 @@ namespace Fanex.BetList.Example.Data
         /// <summary>
         /// The bet check
         /// </summary>
-        BetCheck = 9
+        TransDesc = 9
     }
 }
