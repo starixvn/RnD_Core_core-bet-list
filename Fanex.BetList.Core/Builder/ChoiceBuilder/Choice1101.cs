@@ -38,7 +38,7 @@
                 var betTeam = new StringBuilder();
                 foreach (ITicketData refDataItem in foundTicketData)
                 {
-                    string betTeamName = GetBetTypeName(refDataItem.BetTeam, ticketHelper);
+                    string betTeamName = GetBetTeamName(refDataItem.BetTeam, ticketHelper);
                     string odds = ConvertByBetType.Odds(refDataItem.Odds, ticket.BetTypeId, ticket.OddsType);
 
                     betTeam.AppendFormat(BetTeamFormat, betTeamName, ConvertByBetType.Stake(refDataItem.Stake), odds);
@@ -56,14 +56,14 @@
         {
             List<ITicketData> foundTicketData = GetTicketReference(ticket, ticketData);
 
-            Template.BetType.betTypeName = foundTicketData.Count > 0 ? string.Empty : GetLeagueName();
+            Template.BetType.betTypeName = foundTicketData.Count > 0 ? string.Empty : GetBetTypeName(ticket.BetTypeId, ticketHelper);
         }
 
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
         {
-            var leagueName = GetLeagueName();
+            var betTypeName = GetBetTypeName(ticket.BetTypeId, ticketHelper);
 
-            Template.League.LeagueName.leagueName = string.Join(null, new string[] { leagueName, HtmlCharacters.NoneBreakingSpace, ticket.ShowTime });
+            Template.League.LeagueName.leagueName = string.Join(null, new string[] { betTypeName, HtmlCharacters.NoneBreakingSpace, ticket.ShowTime });
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
@@ -92,12 +92,12 @@
             }
         }
 
-        protected virtual string GetLeagueName()
+        protected virtual string GetBetTypeName(int betTypeId, ITicketHelper ticketHelper)
         {
-            return CoreBetList.PartyBaccarat;
+            return ticketHelper.GetBetTypeNameById(betTypeId);
         }
 
-        protected virtual string GetBetTypeName(string betTeam, ITicketHelper ticketHelper)
+        protected virtual string GetBetTeamName(string betTeam, ITicketHelper ticketHelper)
         {
             return ticketHelper.GetCasinoBetTeamNameById(betTeam);
         }

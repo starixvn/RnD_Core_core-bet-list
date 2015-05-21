@@ -18,20 +18,21 @@
 
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
         {
-            var league = GetLeagueName();
+            var betTypeName = GetBetTypeName(ticket.BetTypeId, ticketHelper);
 
             if (IsNotRunningTicket(ticket))
             {
-                league = string.Format("<a id='hidden0' href='javascript:showDetail(\"parlay_{0}\");'>{1}</a>", ticket.RefNo, league);
+                betTypeName = string.Format("<a id='hidden0' href='javascript:showDetail(\"parlay_{0}\");'>{1}</a>", ticket.RefNo, betTypeName);
             }
 
 
-            Template.League.LeagueName.leagueName = league;
+            Template.League.LeagueName.leagueName = betTypeName;
         }
 
         protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             base.BuildChoice(ticket, ticketHelper, ticketData);
+            var betTypeName = GetBetTypeName(ticket.BetTypeId, ticketHelper);
 
             var ticketDetails = GetTicketReference(ticket, ticketData);
             if (ticketDetails.Count > 0 && IsNotRunningTicket(ticket))
@@ -41,7 +42,7 @@
                 foreach (var ticketDetail in ticketDetails)
                 {
                     var betTeam = string.Format(BetTeamFormat, ticketHelper.GetGoldDeluxeBetTeamNameById(ticketDetail.BetTeam));
-                    var league = string.Format(LeagueFormat, ticketHelper.GetSportNameById(ticket.SportTypeId), CoreBetList.ParlayBaccarat, GetBetChoice(ticketDetail.TransDesc));
+                    var league = string.Format(LeagueFormat, ticketHelper.GetSportNameById(ticket.SportTypeId), betTypeName, GetBetChoice(ticketDetail.TransDesc));
 
                     choiceDetails += string.Format("<div class='ticketList'>{0}{1}</div>", betTeam, league);
                     if (count++ < ticketDetails.Count)

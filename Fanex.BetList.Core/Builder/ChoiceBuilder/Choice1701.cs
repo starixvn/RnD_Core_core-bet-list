@@ -22,9 +22,9 @@
 
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
         {
-            var leagueName = GetLeagueName();
+            var betTypeName = GetBetTypeName(ticket.BetTypeId, ticketHelper);
 
-            Template.League.LeagueName.leagueName = string.Join(null, new string[] { leagueName, HtmlCharacters.NoneBreakingSpace, ticket.BetCheck });
+            Template.League.LeagueName.leagueName = string.Join(null, new string[] { betTypeName, HtmlCharacters.NoneBreakingSpace, ticket.BetCheck });
         }
 
         protected override void BuildScore(ITicket ticket)
@@ -32,7 +32,7 @@
             Template.Score.Hide();
         }
 
-        protected override string GetBetTypeName(string betTeam, ITicketHelper ticketHelper)
+        protected override string GetBetTeamName(string betTeam, ITicketHelper ticketHelper)
         {
             return ticketHelper.GetGoldDeluxeBetTeamNameById(betTeam);
         }

@@ -8,12 +8,7 @@
     /// </summary>
     public class Choice1102 : Choice1101
     {
-        protected override string GetLeagueName()
-        {
-            return CoreBetList.PartyRoulette;
-        }
-
-        protected override string GetBetTypeName(string betTeam, ITicketHelper ticketHelper)
+        protected override string GetBetTeamName(string betTeam, ITicketHelper ticketHelper)
         {
             return ticketHelper.GetRouletteBetItemNameById(betTeam);
         }
