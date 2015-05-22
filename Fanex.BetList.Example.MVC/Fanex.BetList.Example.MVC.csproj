@@ -268,6 +268,10 @@
       <Project>{C170087E-7A8F-4CBC-A0F7-F869DFFE48FD}</Project>
       <Name>Fanex.BetList.Example.Extension</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.GoldDeluxe\Fanex.BetList.GoldDeluxe.csproj">
+      <Project>{9b786951-7d5c-42c4-a9df-ec558bc44593}</Project>
+      <Name>Fanex.BetList.GoldDeluxe</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\BetListDummyData.xls">

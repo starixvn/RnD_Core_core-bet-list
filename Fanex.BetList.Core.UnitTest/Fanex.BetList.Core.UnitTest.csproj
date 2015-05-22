@@ -285,6 +285,10 @@
       <Project>{B0838D04-2306-4362-AF22-9FCD0BE6F8E7}</Project>
       <Name>Fanex.BetList.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.GoldDeluxe\Fanex.BetList.GoldDeluxe.csproj">
+      <Project>{9b786951-7d5c-42c4-a9df-ec558bc44593}</Project>
+      <Name>Fanex.BetList.GoldDeluxe</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="CodeAnalysis\CodeAnalysisConfiguration.xml" />

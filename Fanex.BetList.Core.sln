@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.Example.Exten
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.Core.UnitTest", "Fanex.BetList.Core.UnitTest\Fanex.BetList.Core.UnitTest.csproj", "{879AB95E-FB73-4F65-BD8A-7E4F579BCFDB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.GoldDeluxe", "Fanex.BetList.GoldDeluxe\Fanex.BetList.GoldDeluxe.csproj", "{9B786951-7D5C-42C4-A9DF-EC558BC44593}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -82,6 +84,16 @@ Global
 		{879AB95E-FB73-4F65-BD8A-7E4F579BCFDB}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{879AB95E-FB73-4F65-BD8A-7E4F579BCFDB}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
 		{879AB95E-FB73-4F65-BD8A-7E4F579BCFDB}.Release|x86.ActiveCfg = Release|Any CPU
+		{9B786951-7D5C-42C4-A9DF-EC558BC44593}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B786951-7D5C-42C4-A9DF-EC558BC44593}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B786951-7D5C-42C4-A9DF-EC558BC44593}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9B786951-7D5C-42C4-A9DF-EC558BC44593}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9B786951-7D5C-42C4-A9DF-EC558BC44593}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9B786951-7D5C-42C4-A9DF-EC558BC44593}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B786951-7D5C-42C4-A9DF-EC558BC44593}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B786951-7D5C-42C4-A9DF-EC558BC44593}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{9B786951-7D5C-42C4-A9DF-EC558BC44593}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{9B786951-7D5C-42C4-A9DF-EC558BC44593}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

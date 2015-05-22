@@ -3,7 +3,7 @@
     /// <summary>
     /// The constants html character class.
     /// </summary>
-    internal static class HtmlCharacters
+    public static class HtmlCharacters
     {
         /// <summary>
         /// Represent a non-breaking space.

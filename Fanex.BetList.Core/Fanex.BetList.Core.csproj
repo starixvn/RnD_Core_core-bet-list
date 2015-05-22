@@ -260,9 +260,6 @@
     <Compile Include="Builder\ChoiceBuilder\Choice168.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice169.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice170.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1701.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1702.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1703.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice171.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice19.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice2.cs" />
@@ -435,9 +432,6 @@
     <Compile Include="Builder\TransBuilder\ITrans.cs" />
     <Compile Include="Builder\TransBuilder\Trans1.cs" />
     <Compile Include="Builder\TransBuilder\Trans1501.cs" />
-    <Compile Include="Builder\TransBuilder\Trans1702.cs" />
-    <Compile Include="Builder\TransBuilder\Trans1703.cs" />
-    <Compile Include="Builder\TransBuilder\Trans1701.cs" />
     <Compile Include="Builder\TransBuilder\Trans71.cs" />
     <Compile Include="Builder\TransBuilder\Trans73.cs" />
     <Compile Include="Constants\BetTeamValue.cs" />
