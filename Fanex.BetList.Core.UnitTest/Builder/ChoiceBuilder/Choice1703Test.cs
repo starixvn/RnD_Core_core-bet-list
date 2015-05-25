@@ -63,14 +63,15 @@
         [Test]
         public void BuildLeague_WhenCalled_SetLeagueNameIsParlayBaccarat()
         {
-            // Arrange            
+            // Arrange       
+            _ticket.Status = "RUNNING";
             _ticketHelper.GetBetTypeNameById(Arg.Any<object>()).Returns("Parlay Baccarat");
 
             // Action
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            const string ExpectedLeagueName = "Parlay Baccarat&nbsp;";
+            const string ExpectedLeagueName = "Parlay Baccarat";
             Assert.AreEqual(ExpectedLeagueName, _choice.Template.League.LeagueName.leagueName);
         }
 

@@ -56,7 +56,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Builder\BetListHTMLBuilderTest.cs" />
+    <Compile Include="Builder\BetListBaseBuilderTest.cs" />
     <Compile Include="Builder\ChoiceBuilder\3rd\Choice_22006Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice128Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1301Test.cs" />

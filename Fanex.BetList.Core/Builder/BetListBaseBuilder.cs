@@ -1,6 +1,8 @@
 namespace Fanex.BetList.Core.Builder
 {
     using System;
+    using System.Runtime.Caching;
+    using System.Linq;
     using ChoiceBuilder;
     using OddsBuilder;
     using StakeBuilder;
@@ -63,7 +65,7 @@ namespace Fanex.BetList.Core.Builder
 
             string typeName = string.Join(null, new string[] { CHOICEBUILDERNAMESPACE, choiceName, bettype.ToString().Replace('-', '_') });
 
-            Type type = Type.GetType(typeName);
+            Type type = GetBetListAssemblies(typeName);
 
             if (type == null)
             {
@@ -102,7 +104,7 @@ namespace Fanex.BetList.Core.Builder
 
             string typeName = string.Join(null, new string[] { ODDSBUILDERNAMESPACE, oddsName, bettype.ToString().Replace('-', '_') });
 
-            Type type = Type.GetType(typeName);
+            Type type = GetBetListAssemblies(typeName);
 
             if (type == null)
             {
@@ -131,7 +133,7 @@ namespace Fanex.BetList.Core.Builder
 
             string typeName = string.Join(null, new string[] { STAKEBUILDERNAMESPACE, stakeName, bettype.ToString().Replace('-', '_') });
 
-            Type type = Type.GetType(typeName);
+            Type type = GetBetListAssemblies(typeName);
 
             if (type == null)
             {
@@ -165,7 +167,7 @@ namespace Fanex.BetList.Core.Builder
 
             string typeName = string.Join(null, new string[] { STATUSBUILDERNAMESPACE, statusName, bettype.ToString().Replace('-', '_') });
 
-            Type type = Type.GetType(typeName);
+            Type type = GetBetListAssemblies(typeName);
 
             if (type == null)
             {
@@ -201,6 +203,7 @@ namespace Fanex.BetList.Core.Builder
 
             Type type = Type.GetType(typeName);
 
+
             if (type == null)
             {
                 return new Trans1();
@@ -209,6 +212,25 @@ namespace Fanex.BetList.Core.Builder
             {
                 return Activator.CreateInstance(type) as ITrans;
             }
+        }
+
+        private Type GetBetListAssemblies(string typeName)
+        {
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+
+            assemblies = assemblies.Where(x => x.FullName.StartsWith("Fanex.BetList.", StringComparison.InvariantCulture)).ToArray();
+
+            foreach (var assembly in assemblies)
+            {
+                Type type = Type.GetType(typeName + ", " + assembly);
+
+                if (type != null)
+                {
+                    return type;
+                }
+            }
+
+            return null;
         }
     }
 }

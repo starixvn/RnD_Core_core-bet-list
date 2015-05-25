@@ -1,0 +1,250 @@
+﻿namespace Fanex.BetList.Core.UnitTest.Builder
+{
+    using Fanex.BetList.Core.Builder;
+    using Fanex.BetList.Core.Builder.ChoiceBuilder;
+    using Fanex.BetList.Core.Builder.OddsBuilder;
+    using Fanex.BetList.Core.Builder.StakeBuilder;
+    using Fanex.BetList.Core.Builder.StatusBuilder;
+    using Fanex.BetList.Core.Builder.TransBuilder;
+    using NUnit.Framework;
+
+    public class BetListBaseBuilderTest
+    {
+        [TestCase(1, "Choice1")]
+        [TestCase(10, "Choice10")]
+        [TestCase(1000, "Choice1000")]
+        [TestCase(1001, "Choice1001")]
+        [TestCase(1002, "Choice1002")]
+        [TestCase(1101, "Choice1101")]
+        [TestCase(1102, "Choice1102")]
+        [TestCase(1103, "Choice1103")]
+        [TestCase(1104, "Choice1104")]
+        [TestCase(12, "Choice12")]
+        [TestCase(1201, "Choice1201")]
+        [TestCase(1203, "Choice1203")]
+        [TestCase(1204, "Choice1204")]
+        [TestCase(1205, "Choice1205")]
+        [TestCase(1206, "Choice1206")]
+        [TestCase(121, "Choice121")]
+        [TestCase(122, "Choice122")]
+        [TestCase(1220, "Choice1220")]
+        [TestCase(1224, "Choice1224")]
+        [TestCase(123, "Choice123")]
+        [TestCase(1231, "Choice1231")]
+        [TestCase(1232, "Choice1232")]
+        [TestCase(1233, "Choice1233")]
+        [TestCase(1235, "Choice1235")]
+        [TestCase(1236, "Choice1236")]
+        [TestCase(124, "Choice124")]
+        [TestCase(125, "Choice125")]
+        [TestCase(126, "Choice126")]
+        [TestCase(127, "Choice127")]
+        [TestCase(128, "Choice128")]
+        [TestCase(129, "Choice129")]
+        [TestCase(13, "Choice13")]
+        [TestCase(130, "Choice130")]
+        [TestCase(1301, "Choice1301")]
+        [TestCase(1302, "Choice1302")]
+        [TestCase(1303, "Choice1303")]
+        [TestCase(1304, "Choice1304")]
+        [TestCase(1305, "Choice1305")]
+        [TestCase(1306, "Choice1306")]
+        [TestCase(1307, "Choice1307")]
+        [TestCase(1308, "Choice1308")]
+        [TestCase(1309, "Choice1309")]
+        [TestCase(131, "Choice131")]
+        [TestCase(1310, "Choice1310")]
+        [TestCase(1311, "Choice1311")]
+        [TestCase(1312, "Choice1312")]
+        [TestCase(1313, "Choice1313")]
+        [TestCase(1314, "Choice1314")]
+        [TestCase(1315, "Choice1315")]
+        [TestCase(1316, "Choice1316")]
+        [TestCase(1317, "Choice1317")]
+        [TestCase(1318, "Choice1318")]
+        [TestCase(1319, "Choice1319")]
+        [TestCase(132, "Choice132")]
+        [TestCase(1320, "Choice1320")]
+        [TestCase(1321, "Choice1321")]
+        [TestCase(1322, "Choice1322")]
+        [TestCase(1323, "Choice1323")]
+        [TestCase(1324, "Choice1324")]
+        [TestCase(1325, "Choice1325")]
+        [TestCase(1326, "Choice1326")]
+        [TestCase(1327, "Choice1327")]
+        [TestCase(1328, "Choice1328")]
+        [TestCase(1329, "Choice1329")]
+        [TestCase(133, "Choice133")]
+        [TestCase(1330, "Choice1330")]
+        [TestCase(1331, "Choice1331")]
+        [TestCase(1332, "Choice1332")]
+        [TestCase(1333, "Choice1333")]
+        [TestCase(1334, "Choice1334")]
+        [TestCase(134, "Choice134")]
+        [TestCase(135, "Choice135")]
+        [TestCase(136, "Choice136")]
+        [TestCase(137, "Choice137")]
+        [TestCase(138, "Choice138")]
+        [TestCase(139, "Choice139")]
+        [TestCase(14, "Choice14")]
+        [TestCase(140, "Choice140")]
+        [TestCase(141, "Choice141")]
+        [TestCase(142, "Choice142")]
+        [TestCase(143, "Choice143")]
+        [TestCase(144, "Choice144")]
+        [TestCase(145, "Choice145")]
+        [TestCase(146, "Choice146")]
+        [TestCase(147, "Choice147")]
+        [TestCase(148, "Choice148")]
+        [TestCase(149, "Choice149")]
+        [TestCase(15, "Choice15")]
+        [TestCase(1501, "Choice1501")]
+        [TestCase(150, "Choice150")]
+        [TestCase(151, "Choice151")]
+        [TestCase(152, "Choice152")]
+        [TestCase(153, "Choice153")]
+        [TestCase(154, "Choice154")]
+        [TestCase(155, "Choice155")]
+        [TestCase(156, "Choice156")]
+        [TestCase(157, "Choice157")]
+        [TestCase(159, "Choice159")]
+        [TestCase(16, "Choice16")]
+        [TestCase(160, "Choice160")]
+        [TestCase(161, "Choice161")]
+        [TestCase(162, "Choice162")]
+        [TestCase(163, "Choice163")]
+        [TestCase(164, "Choice164")]
+        [TestCase(165, "Choice165")]
+        [TestCase(166, "Choice166")]
+        [TestCase(167, "Choice167")]
+        [TestCase(168, "Choice168")]
+        [TestCase(169, "Choice169")]
+        [TestCase(170, "Choice170")]
+        [TestCase(171, "Choice171")]
+        [TestCase(172, "Choice172")]
+        [TestCase(173, "Choice173")]
+        [TestCase(174, "Choice174")]
+        [TestCase(175, "Choice175")]
+        [TestCase(176, "Choice176")]
+        [TestCase(177, "Choice177")]
+        [TestCase(178, "Choice178")]
+        [TestCase(179, "Choice179")]
+        [TestCase(180, "Choice180")]
+        [TestCase(181, "Choice181")]
+        [TestCase(182, "Choice182")]
+        [TestCase(183, "Choice183")]
+        [TestCase(184, "Choice184")]
+        [TestCase(185, "Choice185")]
+        [TestCase(186, "Choice186")]
+        [TestCase(187, "Choice187")]
+        [TestCase(188, "Choice188")]
+        [TestCase(189, "Choice189")]
+        [TestCase(19, "Choice19")]
+        [TestCase(190, "Choice190")]
+        [TestCase(191, "Choice191")]
+        [TestCase(192, "Choice192")]
+        [TestCase(193, "Choice193")]
+        [TestCase(194, "Choice194")]
+        [TestCase(195, "Choice195")]
+        [TestCase(196, "Choice196")]
+        [TestCase(197, "Choice197")]
+        [TestCase(198, "Choice198")]
+        [TestCase(199, "Choice199")]
+        [TestCase(2, "Choice2")]
+        [TestCase(200, "Choice200")]
+        [TestCase(201, "Choice201")]
+        [TestCase(202, "Choice202")]
+        [TestCase(203, "Choice203")]
+        [TestCase(204, "Choice204")]
+        [TestCase(205, "Choice205")]
+        [TestCase(206, "Choice206")]
+        [TestCase(207, "Choice207")]
+        [TestCase(208, "Choice208")]
+        [TestCase(209, "Choice209")]
+        [TestCase(21, "Choice21")]
+        [TestCase(210, "Choice210")]
+        [TestCase(211, "Choice211")]
+        [TestCase(212, "Choice212")]
+        [TestCase(213, "Choice213")]
+        [TestCase(214, "Choice214")]
+        [TestCase(215, "Choice215")]
+        [TestCase(216, "Choice216")]
+        [TestCase(217, "Choice217")]
+        [TestCase(23001, "Choice23001")]
+        [TestCase(23002, "Choice23002")]
+        [TestCase(23101, "Choice23101")]
+        [TestCase(23201, "Choice23201")]
+        [TestCase(23202, "Choice23202")]
+        [TestCase(24, "Choice24")]
+        [TestCase(25, "Choice25")]
+        [TestCase(26, "Choice26")]
+        [TestCase(27, "Choice27")]
+        [TestCase(28, "Choice28")]
+        [TestCase(29, "Choice29")]
+        [TestCase(3, "Choice3")]
+        [TestCase(30, "Choice30")]
+        [TestCase(31, "Choice31")]
+        [TestCase(32, "Choice32")]
+        [TestCase(33, "Choice33")]
+        [TestCase(4, "Choice4")]
+        [TestCase(5, "Choice5")]
+        [TestCase(6, "Choice6")]
+        [TestCase(7, "Choice7")]
+        [TestCase(71, "Choice71")]
+        [TestCase(72, "Choice72")]
+        [TestCase(73, "Choice73")]
+        [TestCase(8, "Choice8")]
+        [TestCase(81, "Choice81")]
+        [TestCase(82, "Choice82")]
+        [TestCase(83, "Choice83")]
+        [TestCase(84, "Choice84")]
+        [TestCase(85, "Choice85")]
+        [TestCase(86, "Choice86")]
+        [TestCase(87, "Choice87")]
+        [TestCase(88, "Choice88")]
+        [TestCase(89, "Choice89")]
+        [TestCase(9, "Choice9")]
+        [TestCase(90, "Choice90")]
+        public void CreateChoiceBuilder_WhenCalled_ReturnChoice(int betType, string expectedChoice)
+        {
+            var buider = CreateChoiceBuilder();
+
+            var choice = (IChoice)buider.CreateChoiceBuilder(betType);
+
+            Assert.AreEqual(expectedChoice, choice.GetType().Name);
+        }
+
+        private BetListBaseBuilderUnderTest CreateChoiceBuilder()
+        {
+            return new BetListBaseBuilderUnderTest();
+        }
+    }
+
+    public class BetListBaseBuilderUnderTest : BetListBaseBuilder
+    {
+        public new IChoice CreateChoiceBuilder(int bettype)
+        {
+            return base.CreateChoiceBuilder(bettype);
+        }
+
+        public new IOdds CreateOddsBuilder(int bettype)
+        {
+            return base.CreateOddsBuilder(bettype);
+        }
+
+        public new IStake CreateStakeBuilder(int bettype)
+        {
+            return base.CreateStakeBuilder(bettype);
+        }
+
+        public new IStatus CreateStatusBuilder(int bettype)
+        {
+            return base.CreateStatusBuilder(bettype);
+        }
+
+        public new ITrans CreateTransBuilder(int bettype)
+        {
+            return base.CreateTransBuilder(bettype);
+        }
+    }
+}

@@ -30,16 +30,17 @@
         /// The value of Template.League.LeagueName.leagueName is always Live Roulette and Ticket.ShowTime.
         /// </summary>
         [Test]
-        public void BuildLeague_Always_SetLeagueNameAreLiveRouletteResourceAndShowTime()
+        public void BuildLeague_Always_SetLeagueNameAreLiveRouletteAndShowTime()
         {
             // Arrange
             _ticket.ShowTime = "show time";
+            _ticketHelper.GetBetTypeNameById(Arg.Any<int>()).Returns("Live Roulette");
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedLeagueName = string.Format("{0}&nbsp;{1}", CoreBetList.LiveRoulette, _ticket.ShowTime);
+            string expectedLeagueName = string.Format("{0}&nbsp;{1}", "Live Roulette", _ticket.ShowTime);
             Assert.AreEqual(expectedLeagueName, _choice.Template.League.LeagueName.leagueName);
         }
     }

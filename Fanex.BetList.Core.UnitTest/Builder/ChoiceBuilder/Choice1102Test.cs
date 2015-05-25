@@ -37,12 +37,13 @@
         {
             // Arrange
             _ticket.ShowTime = "show time";
+            _ticketHelper.GetBetTypeNameById(Arg.Any<int>()).Returns("Party Roulette");
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedLeagueName = string.Format("{0}&nbsp;{1}", CoreBetList.PartyRoulette, _ticket.ShowTime);
+            string expectedLeagueName = string.Format("{0}&nbsp;{1}", "Party Roulette", _ticket.ShowTime);
             Assert.AreEqual(expectedLeagueName, _choice.Template.League.LeagueName.leagueName);
         }
 
@@ -78,11 +79,13 @@
         [Test]
         public void BuildBetType_TicketDataIsNull_BetTypeNameIsPartyRouletteResource()
         {
+            _ticketHelper.GetBetTypeNameById(Arg.Any<int>()).Returns("Party Roulette");
+
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.AreEqual(CoreBetList.PartyRoulette, _choice.Template.BetType.betTypeName);
+            Assert.AreEqual("Party Roulette", _choice.Template.BetType.betTypeName);
         }
 
         /// <summary>
