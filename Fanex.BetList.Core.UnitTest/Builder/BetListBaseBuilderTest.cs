@@ -205,6 +205,7 @@
         [TestCase(89, "Choice89")]
         [TestCase(9, "Choice9")]
         [TestCase(90, "Choice90")]
+        [TestCase(-22006, "Choice_22006")]
         public void CreateChoiceBuilder_WhenCalled_ReturnChoice(int betType, string expectedChoice)
         {
             var buider = CreateChoiceBuilder();
@@ -212,6 +213,111 @@
             var choice = (IChoice)buider.CreateChoiceBuilder(betType);
 
             Assert.AreEqual(expectedChoice, choice.GetType().Name);
+        }
+
+        [TestCase(-22006, "Odds_22006")]
+        [TestCase(1, "Odds1")]
+        [TestCase(1000, "Odds1000")]
+        [TestCase(1101, "Odds1101")]
+        [TestCase(1231, "Odds1231")]
+        [TestCase(1232, "Odds1232")]
+        [TestCase(1233, "Odds1233")]
+        [TestCase(1501, "Odds1501")]
+        [TestCase(29, "Odds29")]
+        [TestCase(33, "Odds33")]
+        [TestCase(71, "Odds71")]
+        [TestCase(72, "Odds72")]
+        [TestCase(73, "Odds73")]
+        public void CreateOddsBuilder_WhenCalled_ReturnOdds(int betType, string expectedOdds)
+        {
+            var buider = CreateChoiceBuilder();
+
+            var choice = (IOdds)buider.CreateOddsBuilder(betType);
+
+            Assert.AreEqual(expectedOdds, choice.GetType().Name);
+        }
+
+        [TestCase(-22006, "Stake_22006")]
+        [TestCase(1, "Stake1")]
+        [TestCase(29, "Stake29")]
+        public void CreateStakeBuilder_WhenCalled_ReturnStake(int betType, string expectedStake)
+        {
+            var buider = CreateChoiceBuilder();
+
+            var choice = (IStake)buider.CreateStakeBuilder(betType);
+
+            Assert.AreEqual(expectedStake, choice.GetType().Name);
+        }
+
+        [TestCase(-22006, "Status_22006")]
+        [TestCase(1, "Status1")]
+        [TestCase(10, "Status10")]
+        [TestCase(1000, "Status1000")]
+        [TestCase(1001, "Status1001")]
+        [TestCase(1002, "Status1002")]
+        [TestCase(1231, "Status1231")]
+        [TestCase(1232, "Status1232")]
+        [TestCase(1233, "Status1233")]
+        [TestCase(1311, "Status1311")]
+        [TestCase(1312, "Status1312")]
+        [TestCase(1313, "Status1313")]
+        [TestCase(1314, "Status1314")]
+        [TestCase(1315, "Status1315")]
+        [TestCase(1316, "Status1316")]
+        [TestCase(1317, "Status1317")]
+        [TestCase(1318, "Status1318")]
+        [TestCase(1319, "Status1319")]
+        [TestCase(1320, "Status1320")]
+        [TestCase(1321, "Status1321")]
+        [TestCase(1322, "Status1322")]
+        [TestCase(1323, "Status1323")]
+        [TestCase(1324, "Status1324")]
+        [TestCase(1325, "Status1325")]
+        [TestCase(1326, "Status1326")]
+        [TestCase(1327, "Status1327")]
+        [TestCase(1328, "Status1328")]
+        [TestCase(1329, "Status1329")]
+        [TestCase(1330, "Status1330")]
+        [TestCase(1331, "Status1331")]
+        [TestCase(1332, "Status1332")]
+        [TestCase(1333, "Status1333")]
+        [TestCase(1334, "Status1334")]
+        [TestCase(1501, "Status1501")]
+        [TestCase(154, "Status154")]
+        [TestCase(155, "Status155")]
+        [TestCase(156, "Status156")]
+        [TestCase(23001, "Status23001")]
+        [TestCase(23002, "Status23002")]
+        [TestCase(23003, "Status23003")]
+        [TestCase(23101, "Status23101")]
+        [TestCase(29, "Status29")]
+        [TestCase(31, "Status31")]
+        [TestCase(32, "Status32")]
+        [TestCase(33, "Status33")]
+        [TestCase(71, "Status71")]
+        [TestCase(73, "Status73")]
+        [TestCase(9, "Status9")]
+        public void CreateStatusBuilder_WhenCalled_ReturnStatus(int betType, string expectedStatus)
+        {
+            var buider = CreateChoiceBuilder();
+
+            var choice = (IStatus)buider.CreateStatusBuilder(betType);
+
+            Assert.AreEqual(expectedStatus, choice.GetType().Name);
+        }
+
+        [TestCase(-22006, "Trans_22006")]
+        [TestCase(1, "Trans1")]
+        [TestCase(1501, "Trans1501")]
+        [TestCase(71, "Trans71")]
+        [TestCase(73, "Trans73")]
+        public void CreateTransBuilder_WhenCalled_ReturnTrans(int betType, string expectedTrans)
+        {
+            var buider = CreateChoiceBuilder();
+
+            var choice = (ITrans)buider.CreateTransBuilder(betType);
+
+            Assert.AreEqual(expectedTrans, choice.GetType().Name);
         }
 
         private BetListBaseBuilderUnderTest CreateChoiceBuilder()
