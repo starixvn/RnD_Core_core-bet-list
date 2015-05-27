@@ -4,5 +4,9 @@
 
     public class Choice1702 : Choice1701
     {
+        protected override string GetResourceId()
+        {
+            return "GD_Roulette";
+        }
     }
 }

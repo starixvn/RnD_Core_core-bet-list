@@ -38,7 +38,7 @@
                 var betTeam = new StringBuilder();
                 foreach (ITicketData refDataItem in foundTicketData)
                 {
-                    string betTeamName = GetBetTeamName(refDataItem.BetTeam, ticketHelper);
+                    string betTeamName = GetBetTeamName(refDataItem, ticketHelper);
                     string odds = ConvertByBetType.Odds(refDataItem.Odds, ticket.BetTypeId, ticket.OddsType);
 
                     betTeam.AppendFormat(BetTeamFormat, betTeamName, ConvertByBetType.Stake(refDataItem.Stake), odds);
@@ -97,12 +97,12 @@
             return ticketHelper.GetBetTypeNameById(betTypeId);
         }
 
-        protected virtual string GetBetTeamName(string betTeam, ITicketHelper ticketHelper)
+        protected virtual string GetBetTeamName(ITicketData ticketData, ITicketHelper ticketHelper)
         {
-            return ticketHelper.GetCasinoBetTeamNameById(betTeam);
+            return ticketHelper.GetCasinoBetTeamNameById(ticketData.BetTeam);
         }
 
-        private List<ITicketData> GetTicketReference(ITicket ticket, List<ITicketData> ticketData)
+        protected virtual List<ITicketData> GetTicketReference(ITicket ticket, List<ITicketData> ticketData)
         {
             var foundTicketData = new List<ITicketData>();
 

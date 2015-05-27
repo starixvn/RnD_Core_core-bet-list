@@ -32,9 +32,26 @@
             Template.Score.Hide();
         }
 
-        protected override string GetBetTeamName(string betTeam, ITicketHelper ticketHelper)
+        protected override string GetBetTeamName(ITicketData ticketData, ITicketHelper ticketHelper)
         {
-            return ticketHelper.GetGoldDeluxeBetTeamNameById(betTeam);
+            return ticketHelper.GetResourceData(GetResourceId(), ticketData.BetTeam);
+        }
+
+        protected override List<ITicketData> GetTicketReference(ITicket ticket, List<ITicketData> ticketData)
+        {
+            var foundTicketData = new List<ITicketData>();
+
+            if (ticketData != null && ticketData.Count > 0)
+            {
+                foundTicketData = ticketData.FindAll(item => item.RefNo.Equals(ticket.TransId.ToString()));
+            }
+
+            return foundTicketData;
+        }
+
+        protected virtual string GetResourceId()
+        {
+            return "GD_Baccarat";
         }
     }
 }

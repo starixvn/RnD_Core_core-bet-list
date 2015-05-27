@@ -146,9 +146,9 @@
             return CacheRef.GetKenoBetTypeName(kenoBettypeID);
         }
 
-        public string GetGoldDeluxeBetTeamNameById(object betteamId)
+        public string GetResourceData(string refId, string resourceId)
         {
-            return CacheRef.GetGoldDeluxeBetItem(betteamId);
+            return CacheRef.GetResourceData(refId, resourceId);
         }
     }
 }

@@ -11,7 +11,7 @@
         private const string BetTeamFormat = "<div><span class='favorite'>{0}</span></div>";
         private const string LeagueFormat = "<div class='league'><span class='sport'>{0}</span><span class='leagueName'>&nbsp;{1}&nbsp;{2}</span></div>";
 
-        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, System.Collections.Generic.List<ITicketData> ticketData)
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             Template.betTeam = string.Empty;
         }
@@ -22,7 +22,7 @@
 
             if (IsNotRunningTicket(ticket))
             {
-                betTypeName = string.Format("<a id='hidden0' href='javascript:showDetail(\"parlay_{0}\");'>{1}</a>", ticket.RefNo, betTypeName);
+                betTypeName = string.Format("<a id='hidden{0}' href='javascript:showDetail(\"parlay_{1}\");'>{2}</a>", ticket.BetTypeId, ticket.RefNo, betTypeName);
             }
 
 
@@ -35,13 +35,14 @@
             var betTypeName = GetBetTypeName(ticket.BetTypeId, ticketHelper);
 
             var ticketDetails = GetTicketReference(ticket, ticketData);
+            var choiceDetails = string.Format("<div id='parlay_{0}' style='display:none;'>", ticket.RefNo);
+
             if (ticketDetails.Count > 0 && IsNotRunningTicket(ticket))
             {
-                var choiceDetails = string.Format("<div id='parlay_{0}' style='display:none;'>", ticket.RefNo);
                 int count = 1;
                 foreach (var ticketDetail in ticketDetails)
                 {
-                    var betTeam = string.Format(BetTeamFormat, ticketHelper.GetGoldDeluxeBetTeamNameById(ticketDetail.BetTeam));
+                    var betTeam = string.Format(BetTeamFormat, ticketHelper.GetResourceData(GetResourceId(), ticketDetail.BetTeam));
                     var league = string.Format(LeagueFormat, ticketHelper.GetSportNameById(ticket.SportTypeId), betTypeName, GetBetChoice(ticketDetail.TransDesc));
 
                     choiceDetails += string.Format("<div class='ticketList'>{0}{1}</div>", betTeam, league);
@@ -50,28 +51,19 @@
                         choiceDetails += "<div class='line'></div>";
                     }
                 }
-
-                choiceDetails += "</div>";
-
-                Template.League.SetValue(Template.League.ToString() + choiceDetails);
             }
+            else
+            {
+                choiceDetails += string.Format("<div class='no-details'>{0}</div>", CoreBetList.ThereIsNoTicketDetailAvailable);
+            }
+
+            choiceDetails += "</div>";
+            Template.League.SetValue(Template.League.ToString() + choiceDetails);
         }
 
         private bool IsNotRunningTicket(ITicket ticket)
         {
             return !string.Equals(ticket.Status, BetStatus.Running, StringComparison.InvariantCultureIgnoreCase);
-        }
-
-        private List<ITicketData> GetTicketReference(ITicket ticket, List<ITicketData> ticketData)
-        {
-            var foundTicketData = new List<ITicketData>();
-
-            if (ticketData != null && ticketData.Count > 0)
-            {
-                foundTicketData = ticketData.FindAll(item => item.RefNo.Equals(ticket.TransId.ToString()));
-            }
-
-            return foundTicketData;
         }
 
         private string GetBetChoice(string transDesc)

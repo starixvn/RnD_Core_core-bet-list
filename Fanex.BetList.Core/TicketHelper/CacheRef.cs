@@ -58,7 +58,7 @@
 
         public static string GetParentIdByBetTypeId(object betTypeId, object defaultParentId)
         {
-            return RefData.GetParentIdByBetTypeId(betTypeId.ToString(), defaultParentId.ToString());                      
+            return RefData.GetParentIdByBetTypeId(betTypeId.ToString(), defaultParentId.ToString());
         }
 
         public static string GetSportName(object sportId)
@@ -106,9 +106,9 @@
             return RefData.GetKenoBettype(kenoBettypeID, CurrentTWLanguage);
         }
 
-        public static string GetGoldDeluxeBetItem(object betStatusId)
+        public static string GetResourceData(string refId, string resourceId)
         {
-            return betStatusId.ToString();
+            return RefData.GetResourceDataByRefIdAndResourceId(refId, resourceId, CurrentTWLanguage, string.Empty);
         }
     }
 }

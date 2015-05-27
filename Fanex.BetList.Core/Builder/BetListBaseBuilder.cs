@@ -201,8 +201,7 @@ namespace Fanex.BetList.Core.Builder
 
             string typeName = string.Join(null, new string[] { TRANSBUILDERNAMESPACE, transName, bettype.ToString().Replace('-', '_') });
 
-            Type type = Type.GetType(typeName);
-
+            Type type = GetBetListAssemblies(typeName);
 
             if (type == null)
             {

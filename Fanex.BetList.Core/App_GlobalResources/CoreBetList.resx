@@ -752,4 +752,7 @@
   <data name="TwoGoalsAndOver" xml:space="preserve">
     <value>2 Goals &amp;Over</value>
   </data>
+  <data name="ThereIsNoTicketDetailAvailable" xml:space="preserve">
+    <value>There is no ticket detail available.</value>
+  </data>
 </root>

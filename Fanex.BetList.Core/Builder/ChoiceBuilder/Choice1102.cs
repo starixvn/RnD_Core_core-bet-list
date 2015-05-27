@@ -8,9 +8,9 @@
     /// </summary>
     public class Choice1102 : Choice1101
     {
-        protected override string GetBetTeamName(string betTeam, ITicketHelper ticketHelper)
+        protected override string GetBetTeamName(ITicketData ticketData, ITicketHelper ticketHelper)
         {
-            return ticketHelper.GetRouletteBetItemNameById(betTeam);
+            return ticketHelper.GetRouletteBetItemNameById(ticketData.BetTeam);
         }
     }
 }

@@ -1609,6 +1609,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There is no ticket detail available..
+        /// </summary>
+        public static string ThereIsNoTicketDetailAvailable {
+            get {
+                return ResourceManager.GetString("ThereIsNoTicketDetailAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 3 Goals.
         /// </summary>
         public static string ThreeGoals {
