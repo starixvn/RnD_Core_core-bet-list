@@ -258,6 +258,11 @@ namespace Fanex.BetList.Example.Data
         /// <summary>
         /// The index of event date.
         /// </summary>
-        EventDate = 48
+        EventDate = 48,
+
+        /// <summary>
+        /// The transaction description.
+        /// </summary>
+        TransDesc = 49
     }
 }

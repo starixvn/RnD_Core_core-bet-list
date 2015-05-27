@@ -108,6 +108,8 @@
 
         public DateTime EventDate { get; set; }
 
+        public string TransDesc { get; set; }
+
         #endregion ITicket Members
     }
 }

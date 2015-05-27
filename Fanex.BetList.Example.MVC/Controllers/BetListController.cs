@@ -102,6 +102,16 @@ namespace Fanex.BetList.Example.MVC.Controllers
             return BetListView(model);
         }
 
+        public ActionResult MetricGamming(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes(801, 803, 804, 805, 806);
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, sourcePath: "~/App_Data/MetricGamming.xls");
+
+            return BetListView(model);
+        }
+
         private ViewResult BetListView(BetListData model)
         {
             return View("All", model);

@@ -272,6 +272,10 @@
       <Project>{9b786951-7d5c-42c4-a9df-ec558bc44593}</Project>
       <Name>Fanex.BetList.GoldDeluxe</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.MetricGaming\Fanex.BetList.MetricGaming.csproj">
+      <Project>{054031e6-3e06-47d9-b3d1-b8a8e164e504}</Project>
+      <Name>Fanex.BetList.MetricGaming</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\BetListDummyData.xls">
@@ -285,6 +289,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="App_Data\GoldDeluxe.xls">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\MetricGamming.xls">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="fonts\glyphicons-halflings-regular.eot" />

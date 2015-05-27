@@ -206,6 +206,7 @@ namespace Fanex.BetList.Example.Data
                 ticket.UserName = this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.UserName));
                 ticket.Winlost = Convert.ToDecimal(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.Winlost)));
                 ticket.WinlostDate = Convert.ToDateTime(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.WinlostDate)));
+                ticket.TransDesc = this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.TransDesc));
 
                 return ticket;
             }

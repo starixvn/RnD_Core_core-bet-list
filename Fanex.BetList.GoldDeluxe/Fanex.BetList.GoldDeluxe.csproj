@@ -7,7 +7,7 @@
     <ProjectGuid>{9B786951-7D5C-42C4-A9DF-EC558BC44593}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Fanex.BetList.GoldDeluxe</RootNamespace>
+    <RootNamespace>Fanex.BetList.Core</RootNamespace>
     <AssemblyName>Fanex.BetList.GoldDeluxe</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
