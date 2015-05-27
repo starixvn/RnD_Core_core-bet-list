@@ -114,7 +114,7 @@
             _ticket.OddsType = DecimalOddsType;
 
             var ticketData = new List<ITicketData> { new TicketData { RefNo = RefNo, Odds = 11, Stake = 1, BetTeam = "2" } };
-            _ticketHelper.GetResourceData("1234", "2").Returns("Player Pair");
+            _ticketHelper.GetResourceData("GD_Baccarat", "2").Returns("Player Pair");
 
             // Action
             _choice.Render(_ticket, _ticketHelper, ticketData, false);
@@ -140,8 +140,8 @@
                 new TicketData { RefNo = RefNo, Odds = 22, Stake = 2, BetTeam = "3" }
             };
 
-            _ticketHelper.GetResourceData("1234", "2").Returns("Player Pair");
-            _ticketHelper.GetResourceData("1234", "3").Returns("Big");
+            _ticketHelper.GetResourceData("GD_Baccarat", "2").Returns("Player Pair");
+            _ticketHelper.GetResourceData("GD_Baccarat", "3").Returns("Big");
 
             // Action
             _choice.Render(_ticket, _ticketHelper, ticketData, false);
@@ -161,7 +161,7 @@
             _ticket.OddsType = DecimalOddsType;
 
             var ticketData = new List<ITicketData> { new TicketData { RefNo = RefNo, Odds = 0, Stake = 1, BetTeam = "2" } };
-            _ticketHelper.GetResourceData("1234", "2").Returns("Player Pair");
+            _ticketHelper.GetResourceData("GD_Baccarat", "2").Returns("Player Pair");
 
             // Action
             _choice.Render(_ticket, _ticketHelper, ticketData, false);
