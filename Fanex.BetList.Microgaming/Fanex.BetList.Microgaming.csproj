@@ -63,10 +63,31 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builder\ChoiceBuilder\Choice2001.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2003.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2004.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2005.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2006.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2007.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2002.cs" />
+    <Compile Include="Builder\TransBuilder\Trans2003.cs" />
+    <Compile Include="Builder\TransBuilder\Trans2004.cs" />
+    <Compile Include="Builder\TransBuilder\Trans2005.cs" />
+    <Compile Include="Builder\TransBuilder\Trans2006.cs" />
+    <Compile Include="Builder\TransBuilder\Trans2007.cs" />
+    <Compile Include="Builder\TransBuilder\Trans2002.cs" />
+    <Compile Include="Builder\TransBuilder\Trans2001.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj">
+      <Project>{b0838d04-2306-4362-af22-9fcd0be6f8e7}</Project>
+      <Name>Fanex.BetList.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
