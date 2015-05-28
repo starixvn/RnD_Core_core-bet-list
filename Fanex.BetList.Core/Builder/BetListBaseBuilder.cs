@@ -1,7 +1,6 @@
 namespace Fanex.BetList.Core.Builder
 {
     using System;
-    using System.Runtime.Caching;
     using System.Linq;
     using ChoiceBuilder;
     using OddsBuilder;

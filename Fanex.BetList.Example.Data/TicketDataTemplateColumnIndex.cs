@@ -58,7 +58,7 @@ namespace Fanex.BetList.Example.Data
         BetTeam = 8,
 
         /// <summary>
-        /// The bet check
+        /// The bet check.
         /// </summary>
         TransDesc = 9
     }

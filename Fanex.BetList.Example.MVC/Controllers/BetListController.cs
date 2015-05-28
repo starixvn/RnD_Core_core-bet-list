@@ -97,6 +97,8 @@ namespace Fanex.BetList.Example.MVC.Controllers
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, sourcePath: "~/App_Data/GoldDeluxe.xls");
 
+
+
             return BetListView(model);
         }
 
@@ -144,7 +146,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
         /// <summary>
         /// Exports the excel.
         /// </summary>
-        public void ExportExcel()
+        public void ExportExcel(BetListData query)
         {
             GetCachePropertyById funcGetOddsTypeName = CacheRef.GetOddsTypeName;
             var factory = new BetListExcelFactory();
@@ -153,7 +155,12 @@ namespace Fanex.BetList.Example.MVC.Controllers
             const short excelColumns = 6;
             builder.BuildWorksheet("BetList", excelColumns);
             var index = 0;
-            _tickets = (List<ITicket>)Session["Tickets.Data"];
+
+            var model = GetDataSource(query, sourcePath: "~/App_Data/GoldDeluxe.xls");
+
+            _tickets = model.Tickets;
+            _ticketData = model.TicketData;
+
             if (_tickets != null)
             {
                 foreach (ITicket ticket in _tickets)

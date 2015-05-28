@@ -12,12 +12,12 @@
     {
         protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
         {
-            Template.Match.Hide();
+            Template.Match = null;
         }
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            Template.BetType.Hide();
+            Template.BetType = null;
         }
 
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)

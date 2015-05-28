@@ -1,12 +1,12 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
+    using System.Collections.Generic;
     using App_GlobalResources;
     using Common.Enums;
     using Core.Builder.ChoiceBuilder;
     using Entities;
     using NSubstitute;
     using NUnit.Framework;
-    using System.Collections.Generic;
 
     public class Choice1703Test
     {

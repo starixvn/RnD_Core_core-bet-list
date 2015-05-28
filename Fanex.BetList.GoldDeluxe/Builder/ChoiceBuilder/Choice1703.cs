@@ -5,11 +5,42 @@
     using App_GlobalResources;
     using Entities;
     using Fanex.BetList.Core.Constants;
+    using NPOI.SS.UserModel;
 
     public class Choice1703 : Choice1701
     {
         private const string BetTeamFormat = "<div><span class='favorite'>{0}</span></div>";
         private const string LeagueFormat = "<div class='league'><span class='sport'>{0}</span><span class='leagueName'>&nbsp;{1}&nbsp;{2}</span></div>";
+
+        public override List<IRichTextString> RenderRTF(
+            ITicket ticket,
+            ITicketHelper ticketHelper,
+            List<ITicketData> ticketData,
+            bool isShowScoreMap,
+            RTFHelper rtfHelper)
+        {
+            Render(ticket, ticketHelper, ticketData, isShowScoreMap);
+            RTFHelper tmpRtfHelper = rtfHelper.Clone();
+
+            var betTypeName = GetBetTypeName(ticket.BetTypeId, ticketHelper);
+            tmpRtfHelper.RTFRenderer.AddText(string.Format("{0} {1}", Template.League.sportTypeName, betTypeName));
+
+            var ticketDetails = GetTicketReference(ticket, ticketData);
+            foreach (var ticketDetail in ticketDetails)
+            {
+                var betTeam = ticketHelper.GetResourceData(GetResourceId(), ticketDetail.BetTeam);
+                var league = string.Format("{0} {1} {2}", ticketHelper.GetSportNameById(ticket.SportTypeId), betTypeName, GetBetChoice(ticketDetail.TransDesc));
+
+                tmpRtfHelper.RTFRenderer.AddText("\n");
+                tmpRtfHelper.RTFRenderer.AddText(betTeam, rtfHelper.PosFont);
+                tmpRtfHelper.RTFRenderer.AddText("\n");
+                tmpRtfHelper.RTFRenderer.AddText(league, rtfHelper.NormalFont);
+            }
+
+            var choice = tmpRtfHelper.RTFRenderer.Render();
+            tmpRtfHelper.RTFRenderer.Clear();
+            return new List<IRichTextString>() { choice };
+        }
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
@@ -24,7 +55,6 @@
             {
                 betTypeName = string.Format("<a id='hidden{0}' href='javascript:showDetail(\"parlay_{1}\");'>{2}</a>", ticket.BetTypeId, ticket.RefNo, betTypeName);
             }
-
 
             Template.League.LeagueName.leagueName = betTypeName;
         }
@@ -77,6 +107,5 @@
 
             return array[0].Replace("Betchoice=", string.Empty);
         }
-
     }
 }

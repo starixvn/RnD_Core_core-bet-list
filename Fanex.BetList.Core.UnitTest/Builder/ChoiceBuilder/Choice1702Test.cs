@@ -1,12 +1,12 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
+    using System.Collections.Generic;
     using App_GlobalResources;
     using Common.Enums;
     using Core.Builder.ChoiceBuilder;
     using Entities;
     using NSubstitute;
     using NUnit.Framework;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Choice1701 test class.
@@ -127,16 +127,19 @@
         public void BuildBetTeam_TicketData_SetBetTeam2()
         {
             // Arrange
-            string ExpectedBetTeam = "<div><span class='favorite'>Player Pair</span>&nbsp;<span class='stake'>1</span>&nbsp;@&nbsp;<span class='handicap custom'>11</span></div>";
-            ExpectedBetTeam += "<div><span class='favorite'>Big</span>&nbsp;<span class='stake'>2</span>&nbsp;@&nbsp;<span class='handicap custom'>22</span></div>";
+            string expectedBetTeam = "<div><span class='favorite'>Player Pair</span>&nbsp;<span class='stake'>1</span>&nbsp;@&nbsp;<span class='handicap custom'>11</span></div>";
+            expectedBetTeam += "<div><span class='favorite'>Big</span>&nbsp;<span class='stake'>2</span>&nbsp;@&nbsp;<span class='handicap custom'>22</span></div>";
 
             const string DecimalOddsType = "4";
             const string RefNo = "1234";
             _ticket.TransId = 1234;
             _ticket.OddsType = DecimalOddsType;
 
-            var ticketData = new List<ITicketData> { new TicketData { RefNo = RefNo, Odds = 11, Stake = 1, BetTeam = "2" },
-                                                     new TicketData { RefNo = RefNo, Odds = 22, Stake = 2, BetTeam = "3" }};
+            var ticketData = new List<ITicketData> 
+            { 
+                new TicketData { RefNo = RefNo, Odds = 11, Stake = 1, BetTeam = "2" },
+                new TicketData { RefNo = RefNo, Odds = 22, Stake = 2, BetTeam = "3" }
+            };
             _ticketHelper.GetResourceData("GD_Roulette", "2").Returns("Player Pair");
             _ticketHelper.GetResourceData("GD_Roulette", "3").Returns("Big");
 
@@ -144,7 +147,7 @@
             _choice.Render(_ticket, _ticketHelper, ticketData, false);
 
             // Assert
-            Assert.AreEqual(ExpectedBetTeam, _choice.Template.betTeam);
+            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
         [Test]
@@ -166,6 +169,5 @@
             // Assert
             Assert.AreEqual(ExpectedBetTeam, _choice.Template.betTeam);
         }
-
     }
 }
