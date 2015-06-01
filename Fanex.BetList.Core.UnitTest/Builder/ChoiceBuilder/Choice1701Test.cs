@@ -28,19 +28,19 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildMatch_WhenCalled_AlwaysHide()
+        public void BuildMatch_WhenCalled_AlwaysNull()
         {
             _choice.Render(_ticket, _ticketHelper, null, false);
 
-            Assert.False(_choice.Template.Match.Visible);
+            Assert.IsNull(_choice.Template.Match);
         }
 
         [Test]
-        public void BuildBetType_WhenCalled_AlwaysHide()
+        public void BuildBetType_WhenCalled_AlwaysNull()
         {
             _choice.Render(_ticket, _ticketHelper, null, false);
 
-            Assert.False(_choice.Template.BetType.Visible);
+            Assert.IsNull(_choice.Template.BetType);
         }
 
         [Test]
