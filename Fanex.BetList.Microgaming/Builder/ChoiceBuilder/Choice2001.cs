@@ -25,12 +25,9 @@
 
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
         {
-            var game = ticketHelper.GetResourceData(ResourceId, ticket.TransDesc);
             var betType = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
 
-            game = string.Format("<span class='underdog'>{0}</span>", game);
-
-            Template.League.LeagueName.leagueName = string.Join(null, new string[] { betType, HtmlCharacters.NoneBreakingSpace, game });
+            Template.League.LeagueName.leagueName = betType;
         }
     }
 }

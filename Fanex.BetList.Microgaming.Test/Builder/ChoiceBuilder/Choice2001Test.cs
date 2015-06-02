@@ -57,10 +57,9 @@
         public void BuildLeague_WhenCalled_ReturnBetTypeNameAndGameName()
         {
             _ticketHelper.GetBetTypeNameById(Arg.Any<int>()).Returns("Baccarat");
-            _ticketHelper.GetResourceData("MCG_LiveCasino", Arg.Any<string>()).Returns("MP Baccarat");
             _choice.Render(_ticket, _ticketHelper, null, false);
 
-            const string ExpectedLeague = "Baccarat&nbsp;<span class='underdog'>MP Baccarat</span>";
+            const string ExpectedLeague = "Baccarat";
             Assert.AreEqual(ExpectedLeague, _choice.Template.League.LeagueName.leagueName);
         }
     }
