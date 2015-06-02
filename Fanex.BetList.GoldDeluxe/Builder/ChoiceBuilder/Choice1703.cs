@@ -5,11 +5,12 @@
     using App_GlobalResources;
     using Entities;
     using Fanex.BetList.Core.Constants;
+    using Fanex.BetList.Core.Utils;
     using NPOI.SS.UserModel;
 
     public class Choice1703 : Choice1701
     {
-        private const string BetTeamFormat = "<div><span class='favorite'>{0}</span></div>";
+        private const string BetTeamFormat = "<div><span class='favorite'>{0}</span>&nbsp;@&nbsp;<span class='handicap custom'>{1}</span></div>";
         private const string LeagueFormat = "<div class='league'><span class='sport'>{0}</span><span class='leagueName'>&nbsp;{1}&nbsp;{2}</span></div>";
 
         public override List<IRichTextString> RenderRTF(
@@ -28,11 +29,12 @@
             var ticketDetails = GetTicketReference(ticket, ticketData);
             foreach (var ticketDetail in ticketDetails)
             {
+                var odds = ConvertByBetType.Odds(ticketDetail.Odds, ticket.BetTypeId, ticket.OddsType);
                 var betTeam = ticketHelper.GetResourceData(GetResourceId(), ticketDetail.BetTeam);
                 var league = string.Format("{0} {1} {2}", ticketHelper.GetSportNameById(ticket.SportTypeId), betTypeName, GetBetChoice(ticketDetail.TransDesc));
 
                 tmpRtfHelper.RTFRenderer.AddText("\n");
-                tmpRtfHelper.RTFRenderer.AddText(betTeam, rtfHelper.PosFont);
+                tmpRtfHelper.RTFRenderer.AddText(string.Format("{0} @ {1}", betTeam, odds), rtfHelper.PosFont);
                 tmpRtfHelper.RTFRenderer.AddText("\n");
                 tmpRtfHelper.RTFRenderer.AddText(league, rtfHelper.NormalFont);
             }
@@ -72,7 +74,8 @@
                 int count = 1;
                 foreach (var ticketDetail in ticketDetails)
                 {
-                    var betTeam = string.Format(BetTeamFormat, ticketHelper.GetResourceData(GetResourceId(), ticketDetail.BetTeam));
+                    var odds = ConvertByBetType.Odds(ticketDetail.Odds, ticket.BetTypeId, ticket.OddsType);
+                    var betTeam = string.Format(BetTeamFormat, ticketHelper.GetResourceData(GetResourceId(), ticketDetail.BetTeam), odds);
                     var league = string.Format(LeagueFormat, ticketHelper.GetSportNameById(ticket.SportTypeId), betTypeName, GetBetChoice(ticketDetail.TransDesc));
 
                     choiceDetails += string.Format("<div class='ticketList'>{0}{1}</div>", betTeam, league);
