@@ -47,7 +47,7 @@ namespace Fanex.BetList.Core.Builder
         /// </summary>
         /// <param name="bettype">The bet type.</param>
         /// <returns>IChoice: the Choice builder object.</returns>
-        protected IChoice CreateChoiceBuilder(int bettype)
+        public IChoice CreateChoiceBuilder(int bettype)
         {
             string choiceName = ".Choice";
 
@@ -81,7 +81,7 @@ namespace Fanex.BetList.Core.Builder
         /// </summary>
         /// <param name="bettype">The bet type.</param>
         /// <returns>IOdds: the Odds builder object.</returns>
-        protected IOdds CreateOddsBuilder(int bettype)
+        public IOdds CreateOddsBuilder(int bettype)
         {
             string oddsName = ".Odds";
 
@@ -120,7 +120,7 @@ namespace Fanex.BetList.Core.Builder
         /// </summary>
         /// <param name="bettype">The bet type.</param>
         /// <returns>IStake: the Stake builder object.</returns>
-        protected IStake CreateStakeBuilder(int bettype)
+        public IStake CreateStakeBuilder(int bettype)
         {
             string stakeName = ".Stake";
 
@@ -149,7 +149,7 @@ namespace Fanex.BetList.Core.Builder
         /// </summary>
         /// <param name="bettype">The bet type.</param>
         /// <returns>IStatus: the Status builder object.</returns>
-        protected IStatus CreateStatusBuilder(int bettype)
+        public IStatus CreateStatusBuilder(int bettype)
         {
             string statusName = ".Status";
 
@@ -183,7 +183,7 @@ namespace Fanex.BetList.Core.Builder
         /// </summary>
         /// <param name="bettype">The bet type.</param>
         /// <returns>ITrans: the Trans builder object.</returns>
-        protected ITrans CreateTransBuilder(int bettype)
+        public ITrans CreateTransBuilder(int bettype)
         {
             string transName = ".Trans";
 
