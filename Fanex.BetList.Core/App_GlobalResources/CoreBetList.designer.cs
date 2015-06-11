@@ -205,6 +205,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bought.
+        /// </summary>
+        public static string Bought {
+            get {
+                return ResourceManager.GetString("Bought", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Casino.
         /// </summary>
         public static string casino {
@@ -1524,6 +1533,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string SixGoals {
             get {
                 return ResourceManager.GetString("SixGoals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sold.
+        /// </summary>
+        public static string Sold {
+            get {
+                return ResourceManager.GetString("Sold", resourceCulture);
             }
         }
         

@@ -45,7 +45,8 @@
             Render(ticket, ticketHelper, ticketData, isShowVNIP);
 
             string status = Template.result;
-            rtfHelper.RTFRenderer.AddText(status, rtfHelper.PosFont);
+
+            BuildResultLRF(status, rtfHelper);
 
             if (Template.ShowIP != null && Template.ShowIP.Visible)
             {
@@ -169,6 +170,11 @@
                     Template.ShowIP.betIp = ticket.IP;
                 }
             }
+        }
+
+        protected virtual void BuildResultLRF(string status, RTFHelper rtfHelper)
+        {
+            rtfHelper.RTFRenderer.AddText(status, rtfHelper.PosFont);
         }
     }
 }

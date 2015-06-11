@@ -752,4 +752,10 @@
   <data name="ThereIsNoTicketDetailAvailable" xml:space="preserve">
     <value>There is no ticket detail available.</value>
   </data>
+  <data name="Bought" xml:space="preserve">
+    <value>Bought</value>
+  </data>
+  <data name="Sold" xml:space="preserve">
+    <value>Sold</value>
+  </data>
 </root>

@@ -1,10 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System;
     using System.Collections.Generic;
+    using Fanex.BetList.Core.Builder;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.Builder;
     using NPOI.SS.UserModel;
 
     public class Choice901 : IChoice
@@ -18,12 +17,16 @@
 
         public Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
         {
-            throw new NotImplementedException();
+            var choice = CreateChoice((int)ticket.BetId);
+
+            return choice.Render(ticket, ticketHelper, ticketData, isShowScoreMap);
         }
 
         public List<IRichTextString> RenderRTF(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap, RTFHelper rtfHelper)
         {
-            throw new NotImplementedException();
+            var choice = CreateChoice((int)ticket.BetId);
+
+            return choice.RenderRTF(ticket, ticketHelper, ticketData, isShowScoreMap, rtfHelper);
         }
 
         private IChoice CreateChoice(int betType)

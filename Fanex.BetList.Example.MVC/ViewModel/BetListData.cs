@@ -33,5 +33,7 @@ namespace Fanex.BetList.Example.MVC.ViewModel
         public int BetTypeId { get; set; }
 
         public string Language { get; set; }
+
+        public string Name { get; set; }
     }
 }

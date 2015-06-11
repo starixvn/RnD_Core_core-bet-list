@@ -112,6 +112,26 @@ namespace Fanex.BetList.Example.MVC.Controllers
             return BetListView(model);
         }
 
+        public ActionResult MicroGamming(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes(2001, 2002, 2003, 2004, 2005, 2006, 2007);
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, sourcePath: "~/App_Data/MicroGamming.xls");
+
+            return BetListView(model);
+        }
+
+        public ActionResult BetTrade(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes(901, 902);
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, sourcePath: "~/App_Data/BetTrade.xls");
+
+            return BetListView(model);
+        }
+
         private ViewResult BetListView(BetListData model)
         {
             return View("All", model);
@@ -166,7 +186,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
             builder.BuildWorksheet("BetList", excelColumns);
             var index = 0;
 
-            var model = GetDataSource(query, sourcePath: "~/App_Data/GoldDeluxe.xls");
+            var model = GetDataSource(query, sourcePath: string.Format("~/App_Data/{0}.xls", "MicroGamming"));
 
             _tickets = model.Tickets;
             _ticketData = model.TicketData;
@@ -184,6 +204,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
                            .AddChoice(ticket, ticketHelper, _ticketData)
                            .AddOdds(ticket, _ticketData, funcGetOddsTypeName)
                            .AddStake(ticket);
+
                 }
 
                 var ms = new MemoryStream();
