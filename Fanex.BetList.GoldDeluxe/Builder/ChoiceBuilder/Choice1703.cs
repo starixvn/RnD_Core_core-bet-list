@@ -108,7 +108,7 @@
 
             var array = transDesc.Split(';');
 
-            return array[0].Replace("Betchoice=", string.Empty);
+            return array[0].ToLowerInvariant().Replace("betchoice=", string.Empty).ToUpperInvariant();
         }
     }
 }
