@@ -24,7 +24,9 @@
 
         public List<IRichTextString> RenderRTF(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap, RTFHelper rtfHelper)
         {
-            var choice = CreateChoice((int)ticket.BetId);
+            ticket.BetTypeId = (int)ticket.BetId;
+
+            var choice = CreateChoice(ticket.BetTypeId);
 
             return choice.RenderRTF(ticket, ticketHelper, ticketData, isShowScoreMap, rtfHelper);
         }
