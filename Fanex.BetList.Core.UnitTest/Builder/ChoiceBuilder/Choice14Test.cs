@@ -15,11 +15,11 @@
     {
         private static readonly object[] ExpectedBetTeams =
         {
-            new object[] { "0:0", CoreBetList.no0 + "&nbsp;" + CoreBetList.goal },
-            new object[] { "1:1", CoreBetList.home + "&nbsp;" + CoreBetList.FG },
-            new object[] { "1:2", CoreBetList.home + "&nbsp;" + CoreBetList.LG },
-            new object[] { "2:1", CoreBetList.away + "&nbsp;" + CoreBetList.FG },
-            new object[] { "2:2", CoreBetList.away + "&nbsp;" + CoreBetList.LG }
+            new object[] { "0:0", CoreBetList.nogoal },
+            new object[] { "1:1", CoreBetList.HomeFG },
+            new object[] { "1:2", CoreBetList.HomeLG },
+            new object[] { "2:1", CoreBetList.AwayFG },
+            new object[] { "2:2", CoreBetList.AwayLG }
         };
 
         private IChoice _choice;

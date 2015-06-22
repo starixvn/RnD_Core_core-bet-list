@@ -376,9 +376,6 @@
     <value>at</value>
     <comment>Not found</comment>
   </data>
-  <data name="away" xml:space="preserve">
-    <value>Away</value>
-  </data>
   <data name="bet" xml:space="preserve">
     <value>Đặt cược</value>
   </data>
@@ -432,9 +429,6 @@
   <data name="events" xml:space="preserve">
     <value>Sự kiện</value>
   </data>
-  <data name="FG" xml:space="preserve">
-    <value>FG</value>
-  </data>
   <data name="fglg" xml:space="preserve">
     <value>Bàn thắng Đầu/Cuối</value>
   </data>
@@ -456,9 +450,6 @@
   <data name="go" xml:space="preserve">
     <value>Go</value>
   </data>
-  <data name="goal" xml:space="preserve">
-    <value>Tỷ số </value>
-  </data>
   <data name="ha" xml:space="preserve">
     <value>HA</value>
   </data>
@@ -470,9 +461,6 @@
   </data>
   <data name="hh" xml:space="preserve">
     <value>HH</value>
-  </data>
-  <data name="home" xml:space="preserve">
-    <value>Home</value>
   </data>
   <data name="Horse" xml:space="preserve">
     <value>Racing</value>
@@ -529,9 +517,6 @@
   <data name="league" xml:space="preserve">
     <value>Giải</value>
   </data>
-  <data name="LG" xml:space="preserve">
-    <value>LG</value>
-  </data>
   <data name="LiveCasino" xml:space="preserve">
     <value>Live Casino</value>
   </data>
@@ -549,9 +534,6 @@
   </data>
   <data name="no" xml:space="preserve">
     <value>#</value>
-  </data>
-  <data name="no0" xml:space="preserve">
-    <value>No</value>
   </data>
   <data name="none" xml:space="preserve">
     <value>None</value>
