@@ -133,11 +133,20 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Away.
+        ///   Looks up a localized string similar to Away FG.
         /// </summary>
-        public static string away {
+        public static string AwayFG {
             get {
-                return ResourceManager.GetString("away", resourceCulture);
+                return ResourceManager.GetString("AwayFG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Away LG.
+        /// </summary>
+        public static string AwayLG {
+            get {
+                return ResourceManager.GetString("AwayLG", resourceCulture);
             }
         }
         
@@ -448,15 +457,6 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to FG.
-        /// </summary>
-        public static string FG {
-            get {
-                return ResourceManager.GetString("FG", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to FG/LG.
         /// </summary>
         public static string fglg {
@@ -583,15 +583,6 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Goal.
-        /// </summary>
-        public static string goal {
-            get {
-                return ResourceManager.GetString("goal", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to H.
         /// </summary>
         public static string h {
@@ -646,11 +637,20 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Home.
+        ///   Looks up a localized string similar to Home FG.
         /// </summary>
-        public static string home {
+        public static string HomeFG {
             get {
-                return ResourceManager.GetString("home", resourceCulture);
+                return ResourceManager.GetString("HomeFG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home LG.
+        /// </summary>
+        public static string HomeLG {
+            get {
+                return ResourceManager.GetString("HomeLG", resourceCulture);
             }
         }
         
@@ -916,15 +916,6 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to LG.
-        /// </summary>
-        public static string LG {
-            get {
-                return ResourceManager.GetString("LG", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Live Baccarat.
         /// </summary>
         public static string LiveBaccarat {
@@ -1051,20 +1042,20 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No.
+        ///   Looks up a localized string similar to No Goal.
         /// </summary>
-        public static string no0 {
+        public static string nogoal {
             get {
-                return ResourceManager.GetString("no0", resourceCulture);
+                return ResourceManager.GetString("nogoal", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to No Goal.
         /// </summary>
-        public static string nogoal {
+        public static string NoGoalBetType14 {
             get {
-                return ResourceManager.GetString("nogoal", resourceCulture);
+                return ResourceManager.GetString("NoGoalBetType14", resourceCulture);
             }
         }
         
