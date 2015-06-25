@@ -68,6 +68,11 @@
     <Compile Include="Builder\ChoiceBuilder\Choice804.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice805.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice806.cs" />
+    <Compile Include="Builder\StatusBuilder\Status801.cs" />
+    <Compile Include="Builder\StatusBuilder\Status803.cs" />
+    <Compile Include="Builder\StatusBuilder\Status804.cs" />
+    <Compile Include="Builder\StatusBuilder\Status805.cs" />
+    <Compile Include="Builder\StatusBuilder\Status806.cs" />
     <Compile Include="Builder\TransBuilder\Trans801.cs" />
     <Compile Include="Builder\TransBuilder\Trans803.cs" />
     <Compile Include="Builder\TransBuilder\Trans804.cs" />
