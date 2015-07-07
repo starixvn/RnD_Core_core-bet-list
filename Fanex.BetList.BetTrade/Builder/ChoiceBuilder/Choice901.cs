@@ -17,7 +17,9 @@
 
         public Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
         {
-            var choice = CreateChoice((int)ticket.BetId);
+            ticket.BetTypeId = (int)ticket.BetId;
+
+            var choice = CreateChoice(ticket.BetTypeId);
 
             return choice.Render(ticket, ticketHelper, ticketData, isShowScoreMap);
         }

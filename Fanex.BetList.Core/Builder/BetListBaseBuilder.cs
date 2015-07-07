@@ -7,6 +7,8 @@ namespace Fanex.BetList.Core.Builder
     using StakeBuilder;
     using StatusBuilder;
     using TransBuilder;
+    using System.Runtime.Caching;
+    using System.Reflection;
 
     /// <summary>
     /// The bet list base builder.
@@ -37,6 +39,8 @@ namespace Fanex.BetList.Core.Builder
         /// The status builder namespace.
         /// </summary>
         private const string STATUSBUILDERNAMESPACE = "Fanex.BetList.Core.Builder.StatusBuilder";
+
+        private const string CACHEKEY = "Fanex.BetList.Core.CacheKey";
 
         public BetListBaseBuilder()
         {
@@ -214,7 +218,19 @@ namespace Fanex.BetList.Core.Builder
 
         private Type GetBetListAssemblies(string typeName)
         {
-            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+            ObjectCache cache = MemoryCache.Default;
+
+            var assemblies = (Assembly[])cache[CACHEKEY];
+
+            if (assemblies == null || !assemblies.Any())
+            {
+                assemblies = AppDomain.CurrentDomain.GetAssemblies();
+
+                CacheItemPolicy policy = new CacheItemPolicy();
+                policy.Priority = CacheItemPriority.NotRemovable;
+
+                cache.Set(CACHEKEY, assemblies, policy);
+            }
 
             assemblies = assemblies.Where(x => x.FullName.StartsWith("Fanex.BetList.", StringComparison.InvariantCulture)).ToArray();
 
