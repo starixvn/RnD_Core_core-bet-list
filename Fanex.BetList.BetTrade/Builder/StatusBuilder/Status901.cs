@@ -35,5 +35,10 @@
 
             rtfHelper.RTFRenderer.AddText(status, rtfHelper.PosFont);
         }
+
+        protected override void BuildStatusResult(ITicket ticket)
+        {
+            Template.StatusResult.Hide();
+        }
     }
 }
