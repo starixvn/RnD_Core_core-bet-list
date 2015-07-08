@@ -471,8 +471,8 @@
   <data name="ip" xml:space="preserve">
     <value>รหัสของเครื่องคอมพิวเตอร์ที่ใช้</value>
   </data>
-  <data name="IsNeutral" xml:space="preserve">
-    <value> (N)</value>
+  <data name="Neutral" xml:space="preserve">
+    <value>(แข่งสนามกลาง)</value>
   </data>
   <data name="last" xml:space="preserve">
     <value>หน้าสุดท้าย</value>
@@ -659,5 +659,8 @@
   </data>
   <data name="LiveRoulette" xml:space="preserve">
     <value>ถ่ายทอดสดรูเล็ท</value>
+  </data>
+  <data name="ThereIsNoTicketDetailAvailable" xml:space="preserve">
+    <value>There is no ticket detail available.</value>
   </data>
 </root>

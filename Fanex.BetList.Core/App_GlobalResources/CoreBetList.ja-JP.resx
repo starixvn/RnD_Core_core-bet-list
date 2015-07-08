@@ -473,8 +473,8 @@
   <data name="ip" xml:space="preserve">
     <value>IP</value>
   </data>
-  <data name="IsNeutral" xml:space="preserve">
-    <value> (N)</value>
+  <data name="Neutral" xml:space="preserve">
+    <value>(中)</value>
   </data>
   <data name="last" xml:space="preserve">
     <value>最後</value>
@@ -666,5 +666,8 @@
   </data>
   <data name="LiveRoulette" xml:space="preserve">
     <value>Live Roulette</value>
+  </data>
+  <data name="ThereIsNoTicketDetailAvailable" xml:space="preserve">
+    <value>There is no ticket detail available.</value>
   </data>
 </root>

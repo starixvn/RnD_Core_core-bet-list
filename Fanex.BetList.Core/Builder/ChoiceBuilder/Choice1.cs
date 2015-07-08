@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
+    using Core.App_GlobalResources;
     using Constants;
     using Entities;
     using NPOI.SS.UserModel;
@@ -27,7 +28,6 @@
         private const string VoidStatus = "void";
         private const string RejectStatus = "reject";
         private const string RefundStatus = "refund";
-        private const string Neutral = " (N) ";
         private const string FirstGoalCssClass = "firstGoal ";
         private const string LastGoalCssClass = "lastGoal";
         private const string FirstHalfFirstGoalCssClass = "fhFirstGoal";
@@ -88,7 +88,7 @@
         protected virtual string GetHomeTeamName(ITicket ticket, ITicketHelper ticketHelper)
         {
             string homeTeamName = ticketHelper.GetTeamNameById(ticket.HomeId);
-            homeTeamName = string.Join(null, new string[] { homeTeamName, ticket.IsNeutral ? Neutral : string.Empty });
+            homeTeamName = string.Join(null, new string[] { homeTeamName, " ", ticket.IsNeutral ? CoreBetList.Neutral : string.Empty, " " });
 
             return homeTeamName;
         }

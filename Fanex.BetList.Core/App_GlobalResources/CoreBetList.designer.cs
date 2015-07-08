@@ -709,15 +709,6 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  (N).
-        /// </summary>
-        public static string IsNeutral {
-            get {
-                return ResourceManager.GetString("IsNeutral", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Last.
         /// </summary>
         public static string last {
@@ -1020,6 +1011,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string name {
             get {
                 return ResourceManager.GetString("name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (N).
+        /// </summary>
+        public static string Neutral {
+            get {
+                return ResourceManager.GetString("Neutral", resourceCulture);
             }
         }
         

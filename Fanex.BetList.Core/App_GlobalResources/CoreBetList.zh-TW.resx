@@ -465,8 +465,8 @@
   <data name="ip" xml:space="preserve">
     <value>IP</value>
   </data>
-  <data name="IsNeutral" xml:space="preserve">
-    <value> (N)</value>
+  <data name="Neutral" xml:space="preserve">
+    <value>(中)</value>
   </data>
   <data name="last" xml:space="preserve">
     <value>尾頁</value>
@@ -746,5 +746,8 @@
   </data>
   <data name="NoGoalBetType14" xml:space="preserve">
     <value>無進球</value>
+  </data>
+  <data name="ThereIsNoTicketDetailAvailable" xml:space="preserve">
+    <value>無該註單資料</value>
   </data>
 </root>
