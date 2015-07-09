@@ -32,6 +32,11 @@
             return "SuperLive";
         }
 
+        protected override void BuildScore(ITicket ticket)
+        {
+            Template.Score = null;
+        }
+
         private string GetTransDescElementByName(ITicket ticket, string name)
         {
             if (!string.IsNullOrWhiteSpace(ticket.TransDesc))

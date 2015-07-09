@@ -7,19 +7,19 @@
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            var betChoice = GetBetChoice(ticket);
+            var bettypeTime = GetBetTypeTime(ticket);
 
-            if (string.IsNullOrWhiteSpace(betChoice))
+            if (string.IsNullOrWhiteSpace(bettypeTime))
             {
                 Template.betTeam = string.Empty;
 
                 return;
             }
 
-            var betChoices = betChoice.Split(',');
+            var betTeamName = ticketHelper.GetResourceData(GetResourceId(), GetBetChoice(ticket));
+            var bettypeTimes = bettypeTime.Split(' ');
 
-            var betTeamName = ticketHelper.GetResourceData(GetResourceId(), betChoices[1]);
-            Template.betTeam = string.Format("{0} {1} {2}", betChoices[0], betTeamName, betChoices[2]);
+            Template.betTeam = string.Format("{0} {1} {2}%", bettypeTimes[0], betTeamName, bettypeTimes[1]);
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
