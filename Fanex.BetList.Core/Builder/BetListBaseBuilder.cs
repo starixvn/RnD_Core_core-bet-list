@@ -9,6 +9,10 @@ namespace Fanex.BetList.Core.Builder
     using TransBuilder;
     using System.Runtime.Caching;
     using System.Reflection;
+    using System.Web.Compilation;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Web.Util;
 
     /// <summary>
     /// The bet list base builder.
@@ -220,11 +224,18 @@ namespace Fanex.BetList.Core.Builder
         {
             ObjectCache cache = MemoryCache.Default;
 
-            var assemblies = (Assembly[])cache[CACHEKEY];
+            var assemblies = (List<Assembly>)cache[CACHEKEY];
 
             if (assemblies == null || !assemblies.Any())
             {
-                assemblies = AppDomain.CurrentDomain.GetAssemblies();
+                try
+                {
+                    assemblies = BuildManager.GetReferencedAssemblies().Cast<Assembly>().ToList();
+                }
+                catch
+                {
+                    assemblies = AppDomain.CurrentDomain.GetAssemblies().ToList();
+                }
 
                 CacheItemPolicy policy = new CacheItemPolicy();
                 policy.Priority = CacheItemPriority.NotRemovable;
@@ -232,7 +243,7 @@ namespace Fanex.BetList.Core.Builder
                 cache.Set(CACHEKEY, assemblies, policy);
             }
 
-            assemblies = assemblies.Where(x => x.FullName.StartsWith("Fanex.BetList.", StringComparison.InvariantCulture)).ToArray();
+            assemblies = assemblies.Where(x => x.FullName.StartsWith("Fanex.BetList.", StringComparison.InvariantCulture)).ToList();
 
             foreach (var assembly in assemblies)
             {
