@@ -17,7 +17,7 @@
             }
 
             var betTeamName = ticketHelper.GetResourceData(GetResourceId(), GetBetChoice(ticket));
-            var bettypeTimes = bettypeTime.Split(' ');
+            var bettypeTimes = bettypeTime.Split(',');
 
             Template.betTeam = string.Format("{0} {1} {2}%", bettypeTimes[0], betTeamName, bettypeTimes[1]);
         }
