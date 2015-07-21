@@ -88,7 +88,8 @@
         protected virtual string GetHomeTeamName(ITicket ticket, ITicketHelper ticketHelper)
         {
             string homeTeamName = ticketHelper.GetTeamNameById(ticket.HomeId);
-            homeTeamName = string.Join(null, new string[] { homeTeamName, " ", ticket.IsNeutral ? CoreBetList.Neutral : string.Empty, " " });
+            string neutral = string.Format(" {0} ", CoreBetList.Neutral);
+            homeTeamName = string.Join(null, new string[] { homeTeamName, ticket.IsNeutral ? neutral : string.Empty });
 
             return homeTeamName;
         }

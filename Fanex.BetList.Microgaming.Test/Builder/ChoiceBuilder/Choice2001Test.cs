@@ -24,7 +24,7 @@
         {
             _choice.Render(_ticket, _ticketHelper, null, false);
 
-            Assert.IsFalse(_choice.Template.Match.Visible);
+            Assert.IsNull(_choice.Template.Match);
         }
 
         [Test]
@@ -40,7 +40,7 @@
         {
             _choice.Render(_ticket, _ticketHelper, null, false);
 
-            Assert.IsFalse(_choice.Template.BetType.Visible);
+            Assert.IsNull(_choice.Template.BetType);
         }
 
         [Test]

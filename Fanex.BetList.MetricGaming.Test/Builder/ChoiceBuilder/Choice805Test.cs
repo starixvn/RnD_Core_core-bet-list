@@ -39,7 +39,7 @@
         [Test]
         public void BuildBetTeam_WhenCalled_ReturnBetChoiceName()
         {
-            _ticket.TransDesc = "betchoice=9;BettypeTime=ASE 57;Time=xxx;SettledTime=xxx;GameResult=xxx;GameResultTimexxx";
+            _ticket.TransDesc = "betchoice=9;BettypeTime=ASE,57;Time=xxx;SettledTime=xxx;GameResult=xxx;GameResultTimexxx";
             _ticketHelper.GetResourceData("SuperLive", "9").Returns("Over");
 
             _choice.Render(_ticket, _ticketHelper, null, false);
