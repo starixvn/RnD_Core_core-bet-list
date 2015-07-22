@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.MetricGaming.Test.Builder.ChoiceBuilder
 {
-    using NUnit.Framework;
-    using NSubstitute;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Entities;
+    using NSubstitute;
+    using NUnit.Framework;
 
     public class Choice804Test
     {

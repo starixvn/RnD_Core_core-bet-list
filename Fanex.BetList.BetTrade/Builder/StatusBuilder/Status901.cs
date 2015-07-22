@@ -2,8 +2,8 @@
 {
     using System.Collections.Generic;
     using System.Globalization;
-    using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.App_GlobalResources;
+    using Fanex.BetList.Core.Entities;
 
     public class Status901 : Status1
     {

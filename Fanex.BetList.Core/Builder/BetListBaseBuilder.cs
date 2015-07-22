@@ -1,18 +1,16 @@
 namespace Fanex.BetList.Core.Builder
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
+    using System.Reflection;
+    using System.Runtime.Caching;
+    using System.Web.Compilation;
     using ChoiceBuilder;
     using OddsBuilder;
     using StakeBuilder;
     using StatusBuilder;
     using TransBuilder;
-    using System.Runtime.Caching;
-    using System.Reflection;
-    using System.Web.Compilation;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Web.Util;
 
     /// <summary>
     /// The bet list base builder.

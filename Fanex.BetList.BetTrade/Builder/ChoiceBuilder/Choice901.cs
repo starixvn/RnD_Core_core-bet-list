@@ -8,12 +8,12 @@
 
     public class Choice901 : IChoice
     {
-        public Choice_Template Template { get; set; }
-
         public Choice901()
         {
             Template = new Choice_Template();
         }
+
+        public Choice_Template Template { get; set; }
 
         public Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
         {
