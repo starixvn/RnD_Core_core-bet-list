@@ -70,6 +70,13 @@
     <Compile Include="Builder\ChoiceBuilder\Choice2006.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice2007.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice2002.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2001.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2002.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2003.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2004.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2005.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2006.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2007.cs" />
     <Compile Include="Builder\TransBuilder\Trans2003.cs" />
     <Compile Include="Builder\TransBuilder\Trans2004.cs" />
     <Compile Include="Builder\TransBuilder\Trans2005.cs" />
