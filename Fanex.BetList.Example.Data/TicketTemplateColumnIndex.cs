@@ -263,6 +263,8 @@ namespace Fanex.BetList.Example.Data
         /// <summary>
         /// The transaction description.
         /// </summary>
-        TransDesc = 49
+        TransDesc = 49,
+
+        OddsSpread = 50
     }
 }

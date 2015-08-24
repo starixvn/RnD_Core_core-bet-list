@@ -38,6 +38,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.BetTrade", "F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.BetTrade.Test", "Fanex.BetList.BetTrade.Test\Fanex.BetList.BetTrade.Test.csproj", "{325D1BA4-98B0-47EC-A42D-6375C940ADF9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.MyanmarOdds", "Fanex.BetList.MyanmarOdds\Fanex.BetList.MyanmarOdds.csproj", "{A757A8FC-9989-4945-8319-74A02A2E7D2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.MyanmarOdds.Test", "Fanex.BetList.MyanmarOdds.Test\Fanex.BetList.MyanmarOdds.Test.csproj", "{12850D10-2DA6-4275-8EE1-0AA4D6FB7AB7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -178,6 +182,26 @@ Global
 		{325D1BA4-98B0-47EC-A42D-6375C940ADF9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{325D1BA4-98B0-47EC-A42D-6375C940ADF9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{325D1BA4-98B0-47EC-A42D-6375C940ADF9}.Release|x86.ActiveCfg = Release|Any CPU
+		{A757A8FC-9989-4945-8319-74A02A2E7D2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A757A8FC-9989-4945-8319-74A02A2E7D2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A757A8FC-9989-4945-8319-74A02A2E7D2D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A757A8FC-9989-4945-8319-74A02A2E7D2D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A757A8FC-9989-4945-8319-74A02A2E7D2D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A757A8FC-9989-4945-8319-74A02A2E7D2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A757A8FC-9989-4945-8319-74A02A2E7D2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A757A8FC-9989-4945-8319-74A02A2E7D2D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A757A8FC-9989-4945-8319-74A02A2E7D2D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{A757A8FC-9989-4945-8319-74A02A2E7D2D}.Release|x86.ActiveCfg = Release|Any CPU
+		{12850D10-2DA6-4275-8EE1-0AA4D6FB7AB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12850D10-2DA6-4275-8EE1-0AA4D6FB7AB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12850D10-2DA6-4275-8EE1-0AA4D6FB7AB7}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{12850D10-2DA6-4275-8EE1-0AA4D6FB7AB7}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{12850D10-2DA6-4275-8EE1-0AA4D6FB7AB7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{12850D10-2DA6-4275-8EE1-0AA4D6FB7AB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12850D10-2DA6-4275-8EE1-0AA4D6FB7AB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12850D10-2DA6-4275-8EE1-0AA4D6FB7AB7}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{12850D10-2DA6-4275-8EE1-0AA4D6FB7AB7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{12850D10-2DA6-4275-8EE1-0AA4D6FB7AB7}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

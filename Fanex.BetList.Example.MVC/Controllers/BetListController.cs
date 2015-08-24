@@ -132,6 +132,16 @@ namespace Fanex.BetList.Example.MVC.Controllers
             return BetListView(model);
         }
 
+        public ActionResult MyanmarOdds(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes(301, 302, 303, 304);
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, sourcePath: "~/App_Data/MyanmarOdds.xls");
+
+            return BetListView(model);
+        }
+
         private ViewResult BetListView(BetListData model)
         {
             return View("All", model);
@@ -186,7 +196,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
             builder.BuildWorksheet("BetList", excelColumns);
             var index = 0;
 
-            var model = GetDataSource(query, sourcePath: string.Format("~/App_Data/{0}.xls", "MicroGamming"));
+            var model = GetDataSource(query, sourcePath: string.Format("~/App_Data/{0}.xls", "MyanmarOdds"));
 
             _tickets = model.Tickets;
             _ticketData = model.TicketData;

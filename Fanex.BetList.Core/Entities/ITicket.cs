@@ -106,5 +106,7 @@
         DateTime EventDate { get; set; }
 
         string TransDesc { get; set; }
+
+        decimal OddsSpread { get; set; }
     }
 }
