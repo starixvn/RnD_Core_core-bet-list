@@ -264,6 +264,10 @@
       <Project>{386bf8aa-7ee2-46bb-aecc-6cd829671881}</Project>
       <Name>Fanex.BetList.BetTrade</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.ColossusBets\Fanex.BetList.ColossusBets.csproj">
+      <Project>{89b48c7f-9ea2-40cf-879c-5509555d3b1d}</Project>
+      <Name>Fanex.BetList.ColossusBets</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj">
       <Project>{B0838D04-2306-4362-AF22-9FCD0BE6F8E7}</Project>
       <Name>Fanex.BetList.Core</Name>
@@ -317,6 +321,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="App_Data\MyanmarOdds.xls">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\ColossusBets.xls">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="fonts\glyphicons-halflings-regular.eot" />

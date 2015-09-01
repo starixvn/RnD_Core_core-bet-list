@@ -122,6 +122,16 @@ namespace Fanex.BetList.Example.MVC.Controllers
             return BetListView(model);
         }
 
+        public ActionResult ColossusBets(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes(18000, 18001, 18002, 18003, 18004, 18005);
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, sourcePath: "~/App_Data/ColossusBets.xls");
+
+            return BetListView(model);
+        }
+
         public ActionResult BetTrade(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(901, 902);
@@ -196,7 +206,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
             builder.BuildWorksheet("BetList", excelColumns);
             var index = 0;
 
-            var model = GetDataSource(query, sourcePath: string.Format("~/App_Data/{0}.xls", "MyanmarOdds"));
+            var model = GetDataSource(query, sourcePath: string.Format("~/App_Data/{0}.xls", "BetListDummyData"));
 
             _tickets = model.Tickets;
             _ticketData = model.TicketData;

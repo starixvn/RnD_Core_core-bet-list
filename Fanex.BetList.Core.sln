@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CodeAnalysis", "CodeAnalysis", "{806E6B7B-8CAA-49B4-B5AB-145030E6B66A}"
 	ProjectSection(SolutionItems) = preProject
@@ -41,6 +41,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.MyanmarOdds", "Fanex.BetList.MyanmarOdds\Fanex.BetList.MyanmarOdds.csproj", "{A757A8FC-9989-4945-8319-74A02A2E7D2D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.MyanmarOdds.Test", "Fanex.BetList.MyanmarOdds.Test\Fanex.BetList.MyanmarOdds.Test.csproj", "{12850D10-2DA6-4275-8EE1-0AA4D6FB7AB7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ColossusBets", "ColossusBets", "{80671B5A-8776-4847-A27A-E1CCA426944D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.ColossusBets", "Fanex.BetList.ColossusBets\Fanex.BetList.ColossusBets.csproj", "{89B48C7F-9EA2-40CF-879C-5509555D3B1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.ColossusBets.Tests", "Fanex.BetList.ColossusBets.Tests\Fanex.BetList.ColossusBets.Tests.csproj", "{BDBF564A-45AB-419D-800C-BFAAC949FDE3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -202,6 +208,26 @@ Global
 		{12850D10-2DA6-4275-8EE1-0AA4D6FB7AB7}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{12850D10-2DA6-4275-8EE1-0AA4D6FB7AB7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{12850D10-2DA6-4275-8EE1-0AA4D6FB7AB7}.Release|x86.ActiveCfg = Release|Any CPU
+		{89B48C7F-9EA2-40CF-879C-5509555D3B1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89B48C7F-9EA2-40CF-879C-5509555D3B1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89B48C7F-9EA2-40CF-879C-5509555D3B1D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{89B48C7F-9EA2-40CF-879C-5509555D3B1D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{89B48C7F-9EA2-40CF-879C-5509555D3B1D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{89B48C7F-9EA2-40CF-879C-5509555D3B1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89B48C7F-9EA2-40CF-879C-5509555D3B1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89B48C7F-9EA2-40CF-879C-5509555D3B1D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{89B48C7F-9EA2-40CF-879C-5509555D3B1D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{89B48C7F-9EA2-40CF-879C-5509555D3B1D}.Release|x86.ActiveCfg = Release|Any CPU
+		{BDBF564A-45AB-419D-800C-BFAAC949FDE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDBF564A-45AB-419D-800C-BFAAC949FDE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDBF564A-45AB-419D-800C-BFAAC949FDE3}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{BDBF564A-45AB-419D-800C-BFAAC949FDE3}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{BDBF564A-45AB-419D-800C-BFAAC949FDE3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BDBF564A-45AB-419D-800C-BFAAC949FDE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDBF564A-45AB-419D-800C-BFAAC949FDE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDBF564A-45AB-419D-800C-BFAAC949FDE3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{BDBF564A-45AB-419D-800C-BFAAC949FDE3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{BDBF564A-45AB-419D-800C-BFAAC949FDE3}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -210,6 +236,8 @@ Global
 		{CF75E712-CD28-42EF-A9F7-5DDE2B4E7BA8} = {24BA1707-BE2A-4391-8A57-747DE7EAA0D4}
 		{8ACF58AD-9149-4D94-B2EB-996FA0E3F2DA} = {24BA1707-BE2A-4391-8A57-747DE7EAA0D4}
 		{C170087E-7A8F-4CBC-A0F7-F869DFFE48FD} = {24BA1707-BE2A-4391-8A57-747DE7EAA0D4}
+		{89B48C7F-9EA2-40CF-879C-5509555D3B1D} = {80671B5A-8776-4847-A27A-E1CCA426944D}
+		{BDBF564A-45AB-419D-800C-BFAAC949FDE3} = {80671B5A-8776-4847-A27A-E1CCA426944D}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Fanex2.vsmdi

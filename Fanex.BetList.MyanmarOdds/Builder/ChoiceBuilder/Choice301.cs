@@ -5,7 +5,7 @@
 
     public class Choice301 : Choice1
     {
-        private readonly string PercentageFormat = " <span class='{0}'>({1})</span>";
+        private readonly string _percentageFormat = " <span class='{0}'>({1})</span>";
 
         protected override void BuildScore(ITicket ticket)
         {
@@ -17,7 +17,7 @@
             base.BuildBetTeamClassNameAndHandicap(ticket);
 
             Template.Handicap.Odds = null;
-            Template.Handicap.handicap += string.Format(PercentageFormat, ticket.OddsSpread > 0 ? Favorite : string.Empty, ticket.OddsSpread);
+            Template.Handicap.handicap += string.Format(_percentageFormat, ticket.OddsSpread > 0 ? Favorite : string.Empty, ticket.OddsSpread);
         }
 
         protected override void AdjustBetTeamToRTF()
