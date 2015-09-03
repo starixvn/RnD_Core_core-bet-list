@@ -1,13 +1,10 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Constants;
     using Fanex.BetList.Core.Entities;
 
     public class Choice2001 : Choice1101
     {
-        private const string ResourceId = "MCG_LiveCasino";
-
         protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
         {
             Template.Match = null;
