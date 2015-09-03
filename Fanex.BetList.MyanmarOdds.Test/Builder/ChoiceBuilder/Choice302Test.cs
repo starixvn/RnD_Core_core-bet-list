@@ -5,6 +5,7 @@
     using NSubstitute;
     using NUnit.Framework;
 
+    [TestFixture]
     public class Choice302Test
     {
         private IChoice _choice;

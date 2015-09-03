@@ -7,7 +7,7 @@
     <ProjectGuid>{89B48C7F-9EA2-40CF-879C-5509555D3B1D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Fanex.BetList.ColossusBets</RootNamespace>
+    <RootNamespace>Fanex.BetList.Core</RootNamespace>
     <AssemblyName>Fanex.BetList.ColossusBets</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
