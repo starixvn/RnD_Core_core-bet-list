@@ -2,7 +2,6 @@
 {
     using System.Collections.Generic;
     using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Entities;
 
     public class Choice18000 : Choice1
