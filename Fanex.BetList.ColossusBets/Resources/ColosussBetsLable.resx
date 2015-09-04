@@ -126,4 +126,7 @@
   <data name="YouSoldPercent" xml:space="preserve">
     <value>You have sold {0}% of this ticket for {1}</value>
   </data>
+  <data name="YouSoldZeroPercent" xml:space="preserve">
+    <value>You have sold 0% of this ticket</value>
+  </data>
 </root>

@@ -87,10 +87,18 @@
 
             var cashOwn = 100 - cashOutPercent;
             detailTemplate.cashOwn = string.Format(ColosussBetsLable.YouOwnPercent, cashOwn);
-            detailTemplate.cashSold = string.Format(
+
+            if (cashOutPercent == 0)
+            {
+                detailTemplate.cashSold = ColosussBetsLable.YouSoldZeroPercent;
+            }
+            else
+            {
+                detailTemplate.cashSold = string.Format(
                 ColosussBetsLable.YouSoldPercent,
                 cashOutPercent,
                 FormatWinLoss(cashOutAmount));
+            }
         }
 
         private static void BuildColossusBetDetailsTable(
@@ -108,10 +116,7 @@
                 totalWinloss += detailTicket.Winlost;
             }
 
-            if (detailTickets.Any())
-            {
-                BuildTotalRow(detailTemplate, totalWinloss);
-            }
+            BuildTotalRow(detailTemplate, detailTickets.Any(), totalWinloss);
         }
 
         private static void BuildBodyRow(
@@ -133,14 +138,23 @@
 
         private static void BuildTotalRow(
             ColossusBetsDetail_Template detailTemplate,
+            bool hasTicketDetails,
             decimal totalWinloss)
         {
-            ColossusBetsDetail_TotalContents_Block totalContent = new ColossusBetsDetail_TotalContents_Block();
-
-            totalContent.totalWinloss = FormatWinLoss(totalWinloss);
-
             detailTemplate.TotalContents.Clear();
-            detailTemplate.TotalContents.Append(totalContent);
+            detailTemplate.NoData.Clear();
+
+            if (hasTicketDetails)
+            {
+                ColossusBetsDetail_TotalContents_Block totalContent = new ColossusBetsDetail_TotalContents_Block();
+
+                totalContent.totalWinloss = FormatWinLoss(totalWinloss);
+                detailTemplate.TotalContents.Append(totalContent);
+            }
+            else
+            {
+                detailTemplate.NoData.Append(new ColossusBetsDetail_NoData_Block());
+            }
         }
 
         private static string FormatWinLoss(decimal winloss)
@@ -152,10 +166,8 @@
                     ? "0"
                     : "<span class='positive-win-loss'>" + winlossFormatted + "</span>";
             }
-            else
-            {
-                return "<span class='negative-win-loss'>" + winlossFormatted + "</span>";
-            }
+
+            return "<span class='negative-win-loss'>" + winlossFormatted + "</span>";
         }
     }
 }

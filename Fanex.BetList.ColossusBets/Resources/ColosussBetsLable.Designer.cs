@@ -86,5 +86,14 @@ namespace Fanex.BetList.Core.Resources {
                 return ResourceManager.GetString("YouSoldPercent", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have sold 0% of this ticket.
+        /// </summary>
+        internal static string YouSoldZeroPercent {
+            get {
+                return ResourceManager.GetString("YouSoldZeroPercent", resourceCulture);
+            }
+        }
     }
 }
