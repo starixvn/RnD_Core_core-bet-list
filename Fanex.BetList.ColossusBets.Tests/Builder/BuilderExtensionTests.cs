@@ -1,6 +1,7 @@
 ﻿namespace Fanex.BetList.ColossusBets.Tests.Builder
 {
     using System;
+    using System.Collections.Generic;
     using Fanex.BetList.ColossusBets.Builder;
     using Fanex.BetList.Core.Builder;
     using Fanex.BetList.Core.Entities;
@@ -13,6 +14,7 @@
         private ITicket _ticket;
         private ITicketHelper _ticketHelper;
         private BetListHTMLBuilder _htmlBuilder;
+        private IEnumerable<ITicket> _tickets;
 
         [SetUp]
         public void Setup()
@@ -20,6 +22,10 @@
             _ticket = Substitute.For<ITicket>();
             _ticketHelper = Substitute.For<ITicketHelper>();
             _htmlBuilder = new BetListHTMLBuilder();
+            _tickets = new List<ITicket>
+            {
+                _ticket
+            };
         }
 
         [Test]
@@ -31,25 +37,26 @@
             _ticketHelper.GetBetTypeNameById(Arg.Any<int>()).Returns(betTypeName);
 
             //// Act
-            var actualTransactionType = _htmlBuilder.BuildColossusBetsTransactionType(_ticket, _ticketHelper);
+            var betDetailsHtml = _htmlBuilder.BuildColossusBetDetails(_tickets, _ticketHelper);
 
             //// Assert
-            Assert.AreEqual(actualTransactionType, betTypeName);
+            Assert.IsTrue(betDetailsHtml.Contains(betTypeName));
         }
 
         [Test]
         public void BuildColossusBetsTransactionType_CashOutIsGreaterThanZero_ReturnBetTypeName()
         {
             //// Arrange
+            _ticket.BetTypeId = 18002;
             _ticket.Handicap1 = 10;
             var betTypeName = "Colossus Bets";
             _ticketHelper.GetBetTypeNameById(Arg.Any<int>()).Returns(betTypeName);
 
             //// Act
-            var actualTransactionType = _htmlBuilder.BuildColossusBetsTransactionType(_ticket, _ticketHelper);
+            var betDetailsHtml = _htmlBuilder.BuildColossusBetDetails(_tickets, _ticketHelper);
 
             //// Assert
-            Assert.AreEqual(actualTransactionType, betTypeName + " 10%");
+            Assert.IsTrue(betDetailsHtml.Contains(betTypeName + " 10%"));
         }
 
         [TestCase(BetStatus.Running, "Running")]
@@ -69,10 +76,10 @@
             _ticket.Status = rawStatus;
 
             //// Act
-            var actualStatus = _htmlBuilder.BuildColossusBetsDetailStatus(_ticket);
+            var betDetailsHtml = _htmlBuilder.BuildColossusBetDetails(_tickets, _ticketHelper);
 
             //// Assert
-            Assert.AreEqual(expectedStatus, actualStatus);
+            Assert.IsTrue(betDetailsHtml.Contains(expectedStatus));
         }
 
         [Test]
@@ -82,10 +89,10 @@
             _ticket.TransDate = new DateTime(2014, 01, 01, 12, 00, 00);
 
             //// Act
-            var actualTransDateHtml = _htmlBuilder.BuildColossusBetsDetailDate(_ticket);
+            var actualBetDetailsHtml = _htmlBuilder.BuildColossusBetDetails(_tickets, _ticketHelper);
 
             //// Assert
-            Assert.AreEqual("1/1/2014 12:00:00 PM", actualTransDateHtml);
+            Assert.IsTrue(actualBetDetailsHtml.Contains("1/1/2014 12:00:00 PM"));
         }
     }
 }

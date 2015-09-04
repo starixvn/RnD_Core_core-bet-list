@@ -158,6 +158,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ColossusBets.css" />
     <Content Include="Content\CoreBetList.css" />
     <Content Include="Content\images\1F.gif" />
     <Content Include="Content\images\1L.gif" />
@@ -332,6 +333,7 @@
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Scripts\jquery-1.9.0.min.map" />
     <Content Include="Views\BetList\All.cshtml" />
+    <Content Include="Views\BetList\ColosussBetsDetails.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

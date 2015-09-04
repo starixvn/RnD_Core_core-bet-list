@@ -132,6 +132,13 @@ namespace Fanex.BetList.Example.MVC.Controllers
             return BetListView(model);
         }
 
+        public ActionResult ColosussBetsDetails()
+        {
+            var betListData = GetDataSource(new BetListData(), sourcePath: "~/App_Data/ColossusBets.xls");
+
+            return View(betListData);
+        }
+
         public ActionResult BetTrade(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(901, 902);

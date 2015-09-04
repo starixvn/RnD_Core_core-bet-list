@@ -1,28 +1,36 @@
 ﻿namespace Fanex.BetList.ColossusBets.Builder
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Fanex.BetList.ColossusBets.Templates;
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Builder;
     using Fanex.BetList.Core.Entities;
+    using Fanex.BetList.Core.Resources;
+    using Fanex.BetList.Core.Utils;
 
     public static class BuilderExtension
     {
-        public static string BuildColossusBetsTransactionType(this BetListHTMLBuilder factory, ITicket ticket, ITicketHelper ticketHelper)
-        {
-            var betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
+        private const int CashOutBetTypeId = 18002;
 
-            if (ticket.Handicap1 > 0)
+        private static string BuildColossusBetsTransactionType(int betTypeId, decimal cashOutPercent, ITicketHelper ticketHelper)
+        {
+            var betTypeName = ticketHelper.GetBetTypeNameById(betTypeId);
+
+            if (betTypeId == CashOutBetTypeId
+                && cashOutPercent > 0)
             {
-                return string.Join(string.Empty, new string[] { betTypeName, " ", ticket.Handicap1.ToString(), "%" });
+                return string.Join(string.Empty, new string[] { betTypeName, " ", cashOutPercent.ToString(), "%" });
             }
 
             return betTypeName;
         }
 
-        public static string BuildColossusBetsDetailStatus(this BetListHTMLBuilder factory, ITicket ticket)
+        private static string BuildColossusBetsDetailStatus(string ticketStatus)
         {
-            if (!string.IsNullOrWhiteSpace(ticket.Status))
+            if (!string.IsNullOrWhiteSpace(ticketStatus))
             {
-                switch (ticket.Status.ToLower())
+                switch (ticketStatus.ToLower())
                 {
                     case BetStatus.Running:
                         return CoreBetList.running;
@@ -53,9 +61,101 @@
             return string.Empty;
         }
 
-        public static string BuildColossusBetsDetailDate(this BetListHTMLBuilder factory, ITicket ticket)
+        public static string BuildColossusBetDetails(this BetListHTMLBuilder factory, IEnumerable<ITicket> detailTickets, ITicketHelper ticketHelper)
         {
-            return ticket.TransDate.ToString();
+            ColossusBetsDetail_Template detailTemplate = new ColossusBetsDetail_Template();
+
+            BuildSummaryCashOut(detailTemplate, detailTickets);
+            BuildColossusBetDetailsTable(detailTemplate, detailTickets, ticketHelper);
+
+            return detailTemplate.ToString();
+        }
+
+        private static void BuildSummaryCashOut(ColossusBetsDetail_Template detailTemplate, IEnumerable<ITicket> detailTickets)
+        {
+            decimal cashOutPercent = 0;
+            decimal cashOutAmount = 0;
+
+            foreach (var detailTicket in detailTickets)
+            {
+                if (detailTicket.BetTypeId == CashOutBetTypeId)
+                {
+                    cashOutPercent += detailTicket.Handicap1;
+                    cashOutAmount += detailTicket.Winlost;
+                }
+            }
+
+            var cashOwn = 100 - cashOutPercent;
+            detailTemplate.cashOwn = string.Format(ColosussBetsLable.YouOwnPercent, cashOwn);
+            detailTemplate.cashSold = string.Format(
+                ColosussBetsLable.YouSoldPercent,
+                cashOutPercent,
+                FormatWinLoss(cashOutAmount));
+        }
+
+        private static void BuildColossusBetDetailsTable(
+            ColossusBetsDetail_Template detailTemplate,
+            IEnumerable<ITicket> detailTickets,
+            ITicketHelper ticketHelper)
+        {
+            decimal totalWinloss = 0;
+            detailTemplate.Contents.Clear();
+
+            foreach (var detailTicket in detailTickets)
+            {
+                BuildBodyRow(detailTemplate, detailTicket, ticketHelper);
+
+                totalWinloss += detailTicket.Winlost;
+            }
+
+            if (detailTickets.Any())
+            {
+                BuildTotalRow(detailTemplate, totalWinloss);
+            }
+        }
+
+        private static void BuildBodyRow(
+            ColossusBetsDetail_Template detailTemplate,
+            ITicket detailTicket,
+            ITicketHelper ticketHelper)
+        {
+            ColossusBetsDetail_Contents_Block detailContent = new ColossusBetsDetail_Contents_Block();
+            detailContent.date = detailTicket.TransDate.ToString();
+            detailContent.transactionType = BuildColossusBetsTransactionType(
+                detailTicket.BetTypeId,
+                detailTicket.Handicap1,
+                ticketHelper);
+            detailContent.winloss = FormatWinLoss(detailTicket.Winlost);
+            detailContent.status = BuildColossusBetsDetailStatus(detailTicket.Status);
+
+            detailTemplate.Contents.Append(detailContent);
+        }
+
+        private static void BuildTotalRow(
+            ColossusBetsDetail_Template detailTemplate,
+            decimal totalWinloss)
+        {
+            ColossusBetsDetail_TotalContents_Block totalContent = new ColossusBetsDetail_TotalContents_Block();
+
+            totalContent.totalWinloss = FormatWinLoss(totalWinloss);
+
+            detailTemplate.TotalContents.Clear();
+            detailTemplate.TotalContents.Append(totalContent);
+        }
+
+        private static string FormatWinLoss(decimal winloss)
+        {
+            string winlossFormatted = Formatter.DecFormat(winloss, 2);
+            if (winloss >= 0)
+            {
+                return winloss == 0
+                    ? "0"
+                    : "<span class='positive-win-loss'>" + winlossFormatted + "</span>";
+            }
+            else
+            {
+                return "<span class='negative-win-loss'>" + winlossFormatted + "</span>";
+            }
         }
     }
 }

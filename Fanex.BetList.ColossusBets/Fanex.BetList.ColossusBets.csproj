@@ -63,6 +63,12 @@
     <Compile Include="Builder\TransBuilder\Trans18002.cs" />
     <Compile Include="Builder\TransBuilder\Trans18001.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\ColosussBetsLable.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ColosussBetsLable.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\ColossusBetsDetail.htm.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj">
@@ -74,6 +80,24 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Content Include="Templates\ColossusBetsDetail.htm">
+      <Generator>TplBuilder</Generator>
+    </Content>
+    <Content Include="Templates\Content\ColossusBets.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ColosussBetsLable.ja-JP.resx" />
+    <EmbeddedResource Include="Resources\ColosussBetsLable.ko-KR.resx" />
+    <EmbeddedResource Include="Resources\ColosussBetsLable.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ColosussBetsLable.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ColosussBetsLable.th-TH.resx" />
+    <EmbeddedResource Include="Resources\ColosussBetsLable.vi-VN.resx" />
+    <EmbeddedResource Include="Resources\ColosussBetsLable.zh-CN.resx" />
+    <EmbeddedResource Include="Resources\ColosussBetsLable.zh-TW.resx" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
