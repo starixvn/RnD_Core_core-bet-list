@@ -2,10 +2,14 @@
 .bet-details-container table,
 .bet-details-container tr,
 .bet-details-container td,
-.bet-details-container th {
+.bet-details-container th,
+.bet-details-container thead,
+.bet-details-container tbody {
 	border-collapse: collapse;
     border-spacing: 0;
     cursor: default;
+    border-color: #7C98A4;
+    border-width: 1px;
 }
 
 .bet-details-container th {
@@ -15,10 +19,8 @@
     vertical-align: middle;
     font-weight: 700;
     color: #000;
-    border-color: #7C98A4;
     background-color: #CDDEF3;
     border-style: solid;
-    border-width: 1px;
     padding: 5px;
 }
 
@@ -28,13 +30,21 @@
     overflow: hidden;
     vertical-align: middle;
     white-space: normal;
-    border-color: #7C98A4;
     border-style: solid;
-    border-width: 1px;
     padding: 5px;
 }
 
 .bet-details-container .negative-win-loss {
     color: #ff0000;
+}
+
+.c {
+    text-align: center;
+}
+.r {
+    text-align: right;
+}
+.l {
+    text-align: left;
 }
 

@@ -27,9 +27,9 @@ namespace Fanex.BetList.ColossusBets
 			protected static string s9{get{return Fanex.BetList.Core.App_GlobalResources.CoreBetList.status;}}
 			protected static string s10 = "</th></tr></thead><tbody>";
 			public ColossusBetsDetail_Contents_Block Contents = new ColossusBetsDetail_Contents_Block();
+			public ColossusBetsDetail_NoData_Block NoData = new ColossusBetsDetail_NoData_Block();
 			protected static string s11 = "</tbody><tfoot>";
 			public ColossusBetsDetail_TotalContents_Block TotalContents = new ColossusBetsDetail_TotalContents_Block();
-			public ColossusBetsDetail_NoData_Block NoData = new ColossusBetsDetail_NoData_Block();
 			protected static string s12 = "</tfoot></table></div>";
 			public override void ToString(ref StringBuilder bd)
 			{
@@ -48,9 +48,9 @@ namespace Fanex.BetList.ColossusBets
 				bd.Append(s9);
 				bd.Append(s10);
 				if(null != Contents) Contents.ToString(ref bd);
+				if(null != NoData) NoData.ToString(ref bd);
 				bd.Append(s11);
 				if(null != TotalContents) TotalContents.ToString(ref bd);
-				if(null != NoData) NoData.ToString(ref bd);
 				bd.Append(s12);
 				bd.Append(Value);
 			}
@@ -93,13 +93,11 @@ namespace Fanex.BetList.ColossusBets
 			}
 		}
 
-		public class ColossusBetsDetail_TotalContents_Block: Block
+		public class ColossusBetsDetail_NoData_Block: Block
 		{
-			protected static string s18 = "<tr><td colspan=\"2\" class=\"r\">";
-			protected static string s19{get{return Fanex.BetList.Core.App_GlobalResources.CoreBetList.total;}}
-			protected static string s20 = "</td><td colspan=\"2\">";
-			public string totalWinloss = "{totalWinloss}";
-			protected static string s21 = "</td></tr>";
+			protected static string s18 = "<tr><td colspan=\"4\" class=\"c\">";
+			protected static string s19{get{return Fanex.BetList.Core.App_GlobalResources.CoreBetList.ThereIsNoTicketDetailAvailable;}}
+			protected static string s20 = "</td></tr>";
 			public override void ToString(ref StringBuilder bd)
 			{
 				if(!Visible) return;
@@ -108,25 +106,27 @@ namespace Fanex.BetList.ColossusBets
 					bd.Append(s18);
 					bd.Append(s19);
 					bd.Append(s20);
-					bd.Append(totalWinloss);
-					bd.Append(s21);
 				}
 				if(IsAssigned){bd.Append(Value);}
 			}
 		}
 
-		public class ColossusBetsDetail_NoData_Block: Block
+		public class ColossusBetsDetail_TotalContents_Block: Block
 		{
-			protected static string s22 = "<tr><td colspan=\"4\" class=\"c\">";
-			protected static string s23{get{return Fanex.BetList.Core.App_GlobalResources.CoreBetList.ThereIsNoTicketDetailAvailable;}}
+			protected static string s21 = "<tr><td colspan=\"2\" class=\"r\">";
+			protected static string s22{get{return Fanex.BetList.Core.App_GlobalResources.CoreBetList.total;}}
+			protected static string s23 = "</td><td colspan=\"2\">";
+			public string totalWinloss = "{totalWinloss}";
 			protected static string s24 = "</td></tr>";
 			public override void ToString(ref StringBuilder bd)
 			{
 				if(!Visible) return;
 				if(RenderChild)
 				{
+					bd.Append(s21);
 					bd.Append(s22);
 					bd.Append(s23);
+					bd.Append(totalWinloss);
 					bd.Append(s24);
 				}
 				if(IsAssigned){bd.Append(Value);}
