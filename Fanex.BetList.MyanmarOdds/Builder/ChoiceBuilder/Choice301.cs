@@ -1,7 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System.Collections.Generic;
     using Entities;
+    using Fanex.BetList.Core.Utils;
 
     public class Choice301 : Choice1
     {
@@ -17,7 +17,9 @@
             base.BuildBetTeamClassNameAndHandicap(ticket);
 
             Template.Handicap.Odds = null;
-            Template.Handicap.handicap += string.Format(_percentageFormat, ticket.OddsSpread > 0 ? Favorite : string.Empty, ticket.OddsSpread);
+            var percentageClass = ticket.OddsSpread > 0 ? Favorite : string.Empty;
+            var percentageValue = Formatter.DecFormat(ticket.OddsSpread, 0);
+            Template.Handicap.handicap += string.Format(_percentageFormat, percentageClass, percentageValue);
         }
 
         protected override void AdjustBetTeamToRTF()

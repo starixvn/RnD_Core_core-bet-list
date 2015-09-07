@@ -41,7 +41,7 @@
         {
             _ticket.Handicap1 = 0;
             _ticket.Handicap2 = 1;
-            _ticket.OddsSpread = 75;
+            _ticket.OddsSpread = 75.22m;
 
             _choice.Render(_ticket, _ticketHelper, null, false);
 
