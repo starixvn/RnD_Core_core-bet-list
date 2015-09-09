@@ -20,7 +20,7 @@
             if (betTypeId == CashOutBetTypeId
                 && cashOutPercent > 0)
             {
-                return string.Join(string.Empty, new string[] { betTypeName, " ", cashOutPercent.ToString(), "%" });
+                return string.Join(string.Empty, new string[] { betTypeName, " ", Formatter.DecFormat(cashOutPercent * 100, 0), "%" });
             }
 
             return betTypeName;
@@ -80,13 +80,13 @@
             {
                 if (detailTicket.BetTypeId == CashOutBetTypeId)
                 {
-                    cashOutPercent += detailTicket.Handicap1;
+                    cashOutPercent += detailTicket.Handicap1 * 100;
                     cashOutAmount += detailTicket.Winlost;
                 }
             }
 
             var cashOwn = 100 - cashOutPercent;
-            detailTemplate.cashOwn = string.Format(ColosussBetsLable.YouOwnPercent, cashOwn);
+            detailTemplate.cashOwn = string.Format(ColosussBetsLable.YouOwnPercent, Formatter.DecFormat(cashOwn, 0));
 
             if (cashOutPercent == 0)
             {
@@ -96,7 +96,7 @@
             {
                 detailTemplate.cashSold = string.Format(
                 ColosussBetsLable.YouSoldPercent,
-                cashOutPercent,
+                Formatter.DecFormat(cashOutPercent, 0),
                 FormatWinLoss(cashOutAmount));
             }
         }
