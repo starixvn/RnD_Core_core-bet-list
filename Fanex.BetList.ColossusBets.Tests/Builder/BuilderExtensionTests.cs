@@ -48,7 +48,7 @@
         {
             //// Arrange
             _ticket.BetTypeId = 18002;
-            _ticket.Handicap1 = 10;
+            _ticket.Handicap1 = 0.1m;
             var betTypeName = "Colossus Bets";
             _ticketHelper.GetBetTypeNameById(Arg.Any<int>()).Returns(betTypeName);
 
