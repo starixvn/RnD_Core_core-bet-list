@@ -47,7 +47,7 @@
 
             _choice.Render(_ticket, _ticketHelper, null, false);
 
-            const string ExpectedHandicap = "06:50-07:50";
+            const string ExpectedHandicap = "After 06:50-07:50";
             Assert.AreEqual(ExpectedHandicap, _choice.Template.Handicap.handicap);
         }
     }

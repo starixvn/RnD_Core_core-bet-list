@@ -5,7 +5,7 @@
 
     public class Choice301 : Choice1
     {
-        private readonly string PercentageFormat = " <span class='{0}'>({1})</span>";
+        private const string PercentageFormat = " <span class='{0}'>({1})</span>";
 
         protected override void BuildScore(ITicket ticket)
         {
