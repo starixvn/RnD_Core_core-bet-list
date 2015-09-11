@@ -3,9 +3,28 @@
     using System.Collections.Generic;
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
+    using NPOI.SS.UserModel;
 
     public class Choice18000 : Choice1
     {
+        public override List<IRichTextString> RenderRTF(
+            ITicket ticket, 
+            ITicketHelper ticketHelper, 
+            List<ITicketData> ticketData, 
+            bool isShowScoreMap, 
+            RTFHelper rtfHelper)
+        {
+            RTFHelper tmpRtfHelper = rtfHelper.Clone();
+
+            string betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
+            tmpRtfHelper.RTFRenderer.AddText(betTypeName, tmpRtfHelper.PosFont);
+
+            var choice = tmpRtfHelper.RTFRenderer.Render();
+            tmpRtfHelper.RTFRenderer.Clear();
+
+            return new List<IRichTextString>() { choice };
+        }
+
         protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             string betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);

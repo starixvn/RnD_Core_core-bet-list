@@ -69,7 +69,7 @@ namespace Fanex.BetList.ColossusBets
 			public string date = "{date}";
 			protected static string s14 = "</td><td class=\"transaction-type\">";
 			public string transactionType = "{transactionType}";
-			protected static string s15 = "</td><td class=\"win-loss\">";
+			protected static string s15 = "</td><td class=\"r win-loss\">";
 			public string winloss = "{winloss}";
 			protected static string s16 = "</td><td class=\"c status\">";
 			public string status = "{status}";
@@ -115,9 +115,9 @@ namespace Fanex.BetList.ColossusBets
 		{
 			protected static string s21 = "<tr><td colspan=\"2\" class=\"r\">";
 			protected static string s22{get{return Fanex.BetList.Core.App_GlobalResources.CoreBetList.total;}}
-			protected static string s23 = "</td><td colspan=\"2\">";
+			protected static string s23 = "</td><td class=\"r\">";
 			public string totalWinloss = "{totalWinloss}";
-			protected static string s24 = "</td></tr>";
+			protected static string s24 = "</td><td></td></tr>";
 			public override void ToString(ref StringBuilder bd)
 			{
 				if(!Visible) return;

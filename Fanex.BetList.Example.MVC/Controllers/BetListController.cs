@@ -213,7 +213,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
             builder.BuildWorksheet("BetList", excelColumns);
             var index = 0;
 
-            var model = GetDataSource(query, sourcePath: string.Format("~/App_Data/{0}.xls", "MyanmarOdds"));
+            var model = GetDataSource(query, sourcePath: string.Format("~/App_Data/{0}.xls", "ColossusBets"));
 
             _tickets = model.Tickets;
             _ticketData = model.TicketData;
