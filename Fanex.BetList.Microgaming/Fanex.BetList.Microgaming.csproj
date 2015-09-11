@@ -71,6 +71,7 @@
     <Compile Include="Builder\ChoiceBuilder\Choice2007.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice2002.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice2008.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2009.cs" />
     <Compile Include="Builder\StatusBuilder\Status2001.cs" />
     <Compile Include="Builder\StatusBuilder\Status2002.cs" />
     <Compile Include="Builder\StatusBuilder\Status2003.cs" />
@@ -85,6 +86,8 @@
     <Compile Include="Builder\TransBuilder\Trans2007.cs" />
     <Compile Include="Builder\TransBuilder\Trans2002.cs" />
     <Compile Include="Builder\TransBuilder\Trans2001.cs" />
+    <Compile Include="Builder\TransBuilder\Trans2009.cs" />
+    <Compile Include="Builder\TransBuilder\Trans2008.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
