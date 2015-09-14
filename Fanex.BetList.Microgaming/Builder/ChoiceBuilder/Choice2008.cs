@@ -1,6 +1,5 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System;
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
@@ -9,9 +8,7 @@
     {
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
         {
-            var betType = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
-
-            Template.League.LeagueName.leagueName = betType;
+            Template.League.LeagueName.leagueName = BuildBetTypeName(ticket.BetTypeId, ticketHelper);
 
             if (!string.IsNullOrWhiteSpace(ticket.TransDesc))
             {
@@ -21,6 +18,13 @@
             {
                 Template.League.Append(BuildShowMicroGamingRnGBetsDetails(ticket));
             }
+        }
+
+        private string BuildBetTypeName(int betTypeId, ITicketHelper ticketHelper)
+        {
+            var betTypeName = ticketHelper.GetBetTypeNameById(betTypeId);
+
+            return string.Format("<span class='micro-gaming-bet-type'>{0}</span>", betTypeName);
         }
 
         private Choice_League_Block BuildShowMicroGamingRnGBetsDetails(ITicket ticket)
@@ -63,7 +67,7 @@
         private string BuildGameName(ITicket ticket, ITicketHelper ticketHelper)
         {
             string gameName = ticketHelper.GetResourceData("MG_Casino", ticket.TransDesc);
-            string markups = string.Format(" <span class='game-name'>aaaa{0}</span>", gameName);
+            string markups = string.Format("&nbsp;<span class='micro-gaming-game-name'>{0}</span>", gameName);
 
             return markups;
         }
@@ -71,7 +75,8 @@
         protected override void AdjustBetTeamToRTF()
         {
             Template.League.LeagueName.leagueName = Template.League.LeagueName.leagueName
-                .Replace("<span class='game-name'>", string.Empty)
+                .Replace("<span class='micro-gaming-game-name'>", string.Empty)
+                .Replace("<span class='micro-gaming-bet-type'>", string.Empty)
                 .Replace("</span>", string.Empty);
         }
     }
