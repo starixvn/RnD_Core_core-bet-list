@@ -2,6 +2,8 @@
 {
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Entities;
+    using Fanex.BetList.Core.Utils;
+    using NPOI.HSSF.UserModel;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -60,8 +62,30 @@
             _ticketHelper.GetBetTypeNameById(Arg.Any<int>()).Returns("Baccarat");
             _choice.Render(_ticket, _ticketHelper, null, false);
 
-            const string ExpectedLeague = "Baccarat";
+            const string ExpectedLeague = "<span class='micro-gaming-bet-type'>Baccarat</span>";
             Assert.AreEqual(ExpectedLeague, _choice.Template.League.LeagueName.leagueName);
+        }
+
+        [Test]
+        public void RenderRTF_WhenCalled_RemoveHtmlTag()
+        {
+            var betTypeName = "Baccarat";
+            _ticketHelper.GetBetTypeNameById(Arg.Any<int>()).Returns(betTypeName);
+            var workbook = new HSSFWorkbook();
+            var rtfHelper = new RTFHelper()
+            {
+                NegFont = workbook.CreateFont(),
+                NormalFont = workbook.CreateFont(),
+                PosFont = workbook.CreateFont(),
+                NegFontCrossed = workbook.CreateFont(),
+                NormalFontCrossed = workbook.CreateFont(),
+                PosFontCrossed = workbook.CreateFont(),
+                RTFRenderer = new RtfTextRender()
+            };
+
+            _choice.RenderRTF(_ticket, _ticketHelper, null, false, rtfHelper);
+
+            Assert.AreEqual(_choice.Template.League.LeagueName.leagueName, betTypeName);
         }
     }
 }

@@ -25,7 +25,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;CODE_ANALYSIS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -79,6 +79,8 @@
     <Compile Include="Builder\StatusBuilder\Status2005.cs" />
     <Compile Include="Builder\StatusBuilder\Status2006.cs" />
     <Compile Include="Builder\StatusBuilder\Status2007.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2009.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2008.cs" />
     <Compile Include="Builder\TransBuilder\Trans2003.cs" />
     <Compile Include="Builder\TransBuilder\Trans2004.cs" />
     <Compile Include="Builder\TransBuilder\Trans2005.cs" />
@@ -88,6 +90,7 @@
     <Compile Include="Builder\TransBuilder\Trans2001.cs" />
     <Compile Include="Builder\TransBuilder\Trans2009.cs" />
     <Compile Include="Builder\TransBuilder\Trans2008.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -101,6 +104,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CodeAnalysis\CodeAnalysisConfiguration.xml" />
     <Content Include="Content\Microgaming.css" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
