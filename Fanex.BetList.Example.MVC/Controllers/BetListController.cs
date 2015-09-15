@@ -23,6 +23,12 @@ namespace Fanex.BetList.Example.MVC.Controllers
         private List<ITicketData> _ticketData = new List<ITicketData>();
         private readonly DataService _dataService;
 
+        private string DataSourcePath
+        {
+            get { return Session["DataSourcePath"].ToString(); }
+            set { Session["DataSourcePath"] = value; }
+        }
+
         public BetListController()
         {
             _dataService = new DataService();
@@ -36,7 +42,8 @@ namespace Fanex.BetList.Example.MVC.Controllers
         {
             var betTypes = _dataService.QueryBetTypes();
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            model = GetDataSource(model, sourcePath: "~/App_Data/BetListDummyData.xls");
+            DataSourcePath = "~/App_Data/BetListDummyData.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
             return View(model);
         }
 
@@ -44,7 +51,8 @@ namespace Fanex.BetList.Example.MVC.Controllers
         {
             var betTypes = _dataService.QueryBetTypes(133, 134, 135, 140, 141, 145, 146, 147, 148, 149, 150, 151, 152);
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            model = GetDataSource(model, sourcePath: "~/App_Data/BetListDummyData.xls");
+            DataSourcePath = "~/App_Data/BetListDummyData.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
             return BetListView(model);
         }
 
@@ -52,7 +60,8 @@ namespace Fanex.BetList.Example.MVC.Controllers
         {
             var betTypes = _dataService.QueryBetTypes(128, 129, 130, 131, 136, 137, 138, 139, 143, 144, 14, 127, 16, 6, 126);
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            model = GetDataSource(model, sourcePath: "~/App_Data/11NewBetTypeData.xls");
+            DataSourcePath = "~/App_Data/11NewBetTypeData.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
             return BetListView(model);
         }
 
@@ -75,7 +84,8 @@ namespace Fanex.BetList.Example.MVC.Controllers
             }
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            model = GetDataSource(model, sourcePath: "~/App_Data/60NewBetTypeBetRadarData.xls");
+            DataSourcePath = "~/App_Data/60NewBetTypeBetRadarData.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
             return BetListView(model);
         }
 
@@ -84,7 +94,8 @@ namespace Fanex.BetList.Example.MVC.Controllers
             var betTypes = _dataService.QueryBetTypes(153, 154, 155, 156, 1301, 1302, 1303, 1305, 1306, 1311, 1312, 1316, 1317, 1318, 1324);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            model = GetDataSource(model, sourcePath: "~/App_Data/SportingSolutionBetTypesData.xls");
+            DataSourcePath = "~/App_Data/SportingSolutionBetTypesData.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
 
             return BetListView(model);
         }
@@ -95,7 +106,8 @@ namespace Fanex.BetList.Example.MVC.Controllers
             var betTypes = _dataService.QueryBetTypes(1701, 1702, 1703);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            model = GetDataSource(model, sourcePath: "~/App_Data/GoldDeluxe.xls");
+            DataSourcePath = "~/App_Data/GoldDeluxe.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
 
 
 
@@ -107,7 +119,8 @@ namespace Fanex.BetList.Example.MVC.Controllers
             var betTypes = _dataService.QueryBetTypes(801, 803, 804, 805, 806);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            model = GetDataSource(model, sourcePath: "~/App_Data/MetricGamming.xls");
+            DataSourcePath = "~/App_Data/MetricGamming.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
 
             return BetListView(model);
         }
@@ -117,7 +130,8 @@ namespace Fanex.BetList.Example.MVC.Controllers
             var betTypes = _dataService.QueryBetTypes(2001, 2002, 2003, 2004, 2005, 2006, 2007);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            model = GetDataSource(model, sourcePath: "~/App_Data/MicroGamming.xls");
+            DataSourcePath = "~/App_Data/MicroGamming.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
 
             return BetListView(model);
         }
@@ -127,7 +141,8 @@ namespace Fanex.BetList.Example.MVC.Controllers
             var betTypes = _dataService.QueryBetTypes(18000, 18001, 18002, 18003, 18004, 18005);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            model = GetDataSource(model, sourcePath: "~/App_Data/ColossusBets.xls");
+            DataSourcePath = "~/App_Data/ColossusBets.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
 
             return BetListView(model);
         }
@@ -144,7 +159,8 @@ namespace Fanex.BetList.Example.MVC.Controllers
             var betTypes = _dataService.QueryBetTypes(901, 902);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            model = GetDataSource(model, sourcePath: "~/App_Data/BetTrade.xls");
+            DataSourcePath = "~/App_Data/BetTrade.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
 
             return BetListView(model);
         }
@@ -154,7 +170,8 @@ namespace Fanex.BetList.Example.MVC.Controllers
             var betTypes = _dataService.QueryBetTypes(301, 302, 303, 304);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            model = GetDataSource(model, sourcePath: "~/App_Data/MyanmarOdds.xls");
+            DataSourcePath = "~/App_Data/MyanmarOdds.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
 
             return BetListView(model);
         }
@@ -213,7 +230,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
             builder.BuildWorksheet("BetList", excelColumns);
             var index = 0;
 
-            var model = GetDataSource(query, sourcePath: string.Format("~/App_Data/{0}.xls", "ColossusBets"));
+            var model = GetDataSource(query, sourcePath: DataSourcePath);
 
             _tickets = model.Tickets;
             _ticketData = model.TicketData;
