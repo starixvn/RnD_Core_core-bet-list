@@ -23,13 +23,21 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        [Test]
-        public void BuildLeague_MainTicket_ReturnDetailtButtonHtml()
+        [TestCase("WON", "1")]
+        [TestCase("LOSE", "1")]
+        [TestCase("DRAW", "1")]
+        [TestCase("REFUND", "1")]
+        [TestCase("REJECT", "2")]
+        [TestCase("VOID", "2")]
+        [TestCase("RUNNING", "3")]
+        [TestCase("WAITING", "3")]
+        public void BuildLeague_MainTicketWinlostIsToday_ReturnDetailtButtonHtml(string ticketStatus, string transctionType)
         {
             //// Arrange
             _ticket.TransDesc = string.Empty;
             _ticket.TransId = 1;
-            _ticket.WinlostDate = new DateTime(2014, 01, 01, 12, 00, 00);
+            _ticket.WinlostDate = DateTime.Today;
+            _ticket.Status = ticketStatus;
             _ticket.CustId = 10000;
 
             //// Act
@@ -37,8 +45,29 @@
 
             //// Assert
             string expectedTemplate =
-                "<div class=\"detail\" onclick='showMicroGamingRnGBetsDetails(&quot;1&quot;,&quot;1/1/2014 12:00:00 PM&quot;,&quot;10000&quot;);'><a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">Details</a></div>";
+                string.Format(
+                "<div class=\"detail\" onclick='showMicroGamingRnGBetsDetails(&quot;1&quot;,&quot;{1}&quot;,&quot;10000&quot;,&quot;{0}&quot;);'><a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">Details</a></div>",
+                transctionType,
+                _ticket.WinlostDate);
             
+            Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedTemplate));
+        }
+
+        [Test]
+        public void BuildLeague_MainTicketWinlostIsYesterday_ReturnDetailtButtonHtml()
+        {
+            //// Arrange
+            _ticket.TransDesc = string.Empty;
+            _ticket.TransId = 1;
+            _ticket.WinlostDate = DateTime.Today.AddDays(-1);
+            _ticket.CustId = 10000;
+
+            //// Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            //// Assert
+            string expectedTemplate = string.Format("<div class=\"detail\" onclick='showMicroGamingRnGBetsDetails(&quot;1&quot;,&quot;{0}&quot;,&quot;10000&quot;,&quot;0&quot;);'><a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">Details</a></div>", _ticket.WinlostDate);
+
             Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedTemplate));
         }
 

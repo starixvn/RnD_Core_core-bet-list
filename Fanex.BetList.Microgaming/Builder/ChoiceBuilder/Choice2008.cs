@@ -1,5 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using System;
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
@@ -35,6 +36,9 @@
                                                 "&quot;",
                                                 ",&quot;",
                                                 ticket.CustId.ToString(),
+                                                 "&quot;",
+                                                ",&quot;",
+                                                GetTransactionType(ticket),
                                                 "&quot;);"
                                             };
 
@@ -75,6 +79,37 @@
             Template.League.LeagueName.leagueName = Template.League.LeagueName.leagueName
                 .Replace(OpenGameNameTag, string.Empty)
                 .Replace(CloseGameNameTag, string.Empty);
+        }
+
+        private string GetTransactionType(ITicket ticket)
+        {
+            ////@TransType
+            ////+ 0 : All (DRAW/WON/LOSE/Reject/Void/Refund/Running/Waiting)
+            ////+ 1 : DRAW/WON/LOSE/Refund
+            ////+ 2 : Reject/Void
+            ////+ 3 : Running/Waiting
+            //// Use this because web server vs db is same GMT
+            if (ticket.WinlostDate.Date >= DateTime.Today)
+            {
+                switch (ticket.Status.ToLower())
+                {
+                    case BetStatus.Won:
+                    case BetStatus.Lose:
+                    case BetStatus.Draw:
+                    case BetStatus.Refund:
+                        return "1";
+
+                    case BetStatus.Reject:
+                    case BetStatus.Void:
+                        return "2";
+
+                    case BetStatus.Running:
+                    case BetStatus.Waiting:
+                        return "3";
+                }
+            }
+
+            return "0"; ////Yesterday Ticket
         }
     }
 }
