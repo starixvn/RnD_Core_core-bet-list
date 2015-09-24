@@ -46,8 +46,9 @@
             //// Assert
             string expectedTemplate =
                 string.Format(
-                "<div class=\"detail\" onclick='showMicroGamingRnGBetsDetails(&quot;1&quot;,&quot;10000&quot;,&quot;{0}&quot;);'><a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">Details</a></div>",
-                transctionType);
+               "<div class=\"detail\" onclick='showMicroGamingRnGBetsDetails(&quot;1&quot;,&quot;{1}&quot;,&quot;10000&quot;,&quot;{0}&quot;);'><a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">Details</a></div>",
+                transctionType,
+                _ticket.WinlostDate);
             
             Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedTemplate));
         }
@@ -65,8 +66,8 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             //// Assert
-            string expectedTemplate = "<div class=\"detail\" onclick='showMicroGamingRnGBetsDetails(&quot;1&quot;,&quot;10000&quot;,&quot;0&quot;);'><a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">Details</a></div>";
-
+            string expectedTemplate = string.Format("<div class=\"detail\" onclick='showMicroGamingRnGBetsDetails(&quot;1&quot;,&quot;{0}&quot;,&quot;10000&quot;,&quot;0&quot;);'><a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">Details</a></div>", _ticket.WinlostDate);
+            
             Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedTemplate));
         }
 
