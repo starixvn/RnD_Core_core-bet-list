@@ -136,6 +136,16 @@ namespace Fanex.BetList.Example.MVC.Controllers
             return BetListView(model);
         }
 
+        public ActionResult AGCasino(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes(1801, 1802, 1803, 1804);
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, sourcePath: "~/App_Data/AGCasino.xls");
+
+            return BetListView(model);
+        }
+
         public ActionResult ColossusBets(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(18000, 18001, 18002, 18003, 18004, 18005);
