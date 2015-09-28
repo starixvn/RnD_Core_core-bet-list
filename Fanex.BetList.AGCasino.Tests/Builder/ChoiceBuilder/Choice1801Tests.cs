@@ -92,7 +92,6 @@
         public void BuildBetTeam_TransDecsDoesNotDataOfBetChoice_ReturnEmpty()
         {
             //// Arrange
-            var choiceName = "Choice Name";
             _ticket.BetTypeId = 1801;
             _ticket.TransDesc = "{\"round\":\"DSP\",\"tableCode\":\"va21\",\"game\":\"BAC\"}";
 
