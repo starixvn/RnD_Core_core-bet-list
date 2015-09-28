@@ -34,8 +34,14 @@
 
             if (!string.IsNullOrWhiteSpace(ticket.TransDesc))
             {
-                Template.Handicap.handicap = ticketHelper.GetResourceData(BetTypeRefIdNames[ticket.BetTypeId], ticket.TransDesc);
+                Template.betTeam = GetBetChoice(ticket, ticketHelper);
             }
+        }
+
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            Template.Handicap = null;
+            Template.betTeamClassName = Favorite;
         }
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
@@ -151,21 +157,34 @@
         private string GetRoomAndTable(ITicket ticket, ITicketHelper ticketHelper)
         {
             var serializer = new JavaScriptSerializer();
-            var transDecsParsed = serializer.Deserialize<Dictionary<string, string>>(ticket.TransDesc.ToLower());
+            var transDecsParsed = serializer.Deserialize<Dictionary<string, string>>(ticket.TransDesc.ToUpper());
 
             var roomAndName = string.Empty;
 
-            if (transDecsParsed.ContainsKey("round"))
+            if (transDecsParsed.ContainsKey("ROUND"))
             {
-                roomAndName += ticketHelper.GetResourceData("AG_Room", transDecsParsed["round"].ToUpper()) + " ";
+                roomAndName += ticketHelper.GetResourceData("AG_Room", transDecsParsed["ROUND"]) + " ";
             }
 
-            if (transDecsParsed.ContainsKey("tablecode"))
+            if (transDecsParsed.ContainsKey("TABLECODE"))
             {
-                roomAndName += transDecsParsed["tablecode"].ToUpper();
+                roomAndName += transDecsParsed["TABLECODE"];
             }
 
             return roomAndName;
+        }
+
+        private string GetBetChoice(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            var serializer = new JavaScriptSerializer();
+            var transDecsParsed = serializer.Deserialize<Dictionary<string, string>>(ticket.TransDesc.ToUpper());
+
+            if (transDecsParsed.ContainsKey("TYPE"))
+            {
+                return ticketHelper.GetResourceData(BetTypeRefIdNames[ticket.BetTypeId], transDecsParsed["TYPE"]);
+            }
+
+            return string.Empty;
         }
     }
 }
