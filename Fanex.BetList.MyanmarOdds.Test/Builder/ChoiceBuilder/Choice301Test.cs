@@ -36,17 +36,19 @@
             Assert.IsNull(_choice.Template.Handicap.Odds);
         }
 
-        [Test]
-        public void BuildBetTeamClassNameAndHandicap_WhenCalled_SetPercentageValue()
+        [TestCase(0, "")]
+        [TestCase(-1, "favorite")]
+        [TestCase(4, "")]
+        public void BuildBetTeamClassNameAndHandicap_WhenCalled_SetPercentageValue(decimal oddsSpread, string cssClass)
         {
             _ticket.Handicap1 = 0;
             _ticket.Handicap2 = 1;
-            _ticket.OddsSpread = 75.22m;
+            _ticket.OddsSpread = oddsSpread;
 
             _choice.Render(_ticket, _ticketHelper, null, false);
 
-            const string ExpectedHandicap = "-1 <span class='favorite'>(75)</span>";
-            Assert.AreEqual(ExpectedHandicap, _choice.Template.Handicap.handicap);
+            string expectedHandicap = string.Format("-1 <span class='{0}'>({1})</span>", cssClass, oddsSpread);
+            Assert.AreEqual(expectedHandicap, _choice.Template.Handicap.handicap);
         }
     }
 }

@@ -17,7 +17,7 @@
             base.BuildBetTeamClassNameAndHandicap(ticket);
 
             Template.Handicap.Odds = null;
-            var percentageClass = ticket.OddsSpread > 0 ? Favorite : string.Empty;
+            var percentageClass = ticket.OddsSpread < 0 ? Favorite : string.Empty;
             var percentageValue = Formatter.DecFormat(ticket.OddsSpread, 0);
             Template.Handicap.handicap += string.Format(_percentageFormat, percentageClass, percentageValue);
         }
