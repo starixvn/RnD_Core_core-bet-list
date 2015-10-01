@@ -30,5 +30,15 @@
 
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
+
+        [Test]
+        public void BuildBetTeamClassNameAndHandicap_SetHandicap()
+        {
+            _ticket.Handicap1 = 2;
+
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            Assert.IsTrue(_choice.Template.Handicap.handicap.StartsWith(_ticket.Handicap1.ToString(), System.StringComparison.OrdinalIgnoreCase));
+        }
     }
 }
