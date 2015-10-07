@@ -213,7 +213,9 @@ namespace Fanex.BetList.Example.Data
                     ticket.OddsSpread = Convert.ToDecimal(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.OddsSpread)));
                 }
                 catch
-                { }
+                {
+                }
+                
 
                 return ticket;
             }
