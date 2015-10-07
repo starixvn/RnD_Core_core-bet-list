@@ -140,8 +140,10 @@ namespace Fanex.BetList.Example.MVC.Controllers
         {
             var betTypes = _dataService.QueryBetTypes(1801, 1802, 1803, 1804);
 
+            DataSourcePath = "~/App_Data/AGCasino.xls";
+
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            model = GetDataSource(model, sourcePath: "~/App_Data/AGCasino.xls");
+            model = GetDataSource(model, sourcePath: DataSourcePath);
 
             return BetListView(model);
         }
