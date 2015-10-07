@@ -158,6 +158,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ColossusBets.css" />
     <Content Include="Content\CoreBetList.css" />
     <Content Include="Content\images\1F.gif" />
     <Content Include="Content\images\1L.gif" />
@@ -264,6 +265,10 @@
       <Project>{386bf8aa-7ee2-46bb-aecc-6cd829671881}</Project>
       <Name>Fanex.BetList.BetTrade</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.ColossusBets\Fanex.BetList.ColossusBets.csproj">
+      <Project>{89b48c7f-9ea2-40cf-879c-5509555d3b1d}</Project>
+      <Name>Fanex.BetList.ColossusBets</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj">
       <Project>{B0838D04-2306-4362-AF22-9FCD0BE6F8E7}</Project>
       <Name>Fanex.BetList.Core</Name>
@@ -287,6 +292,10 @@
     <ProjectReference Include="..\Fanex.BetList.Microgaming\Fanex.BetList.Microgaming.csproj">
       <Project>{fbfa63df-5a51-4fff-8535-ad0f5e723b64}</Project>
       <Name>Fanex.BetList.Microgaming</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.MyanmarOdds\Fanex.BetList.MyanmarOdds.csproj">
+      <Project>{a757a8fc-9989-4945-8319-74a02a2e7d2d}</Project>
+      <Name>Fanex.BetList.MyanmarOdds</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -312,12 +321,19 @@
     <Content Include="App_Data\MicroGamming.xls">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="App_Data\MyanmarOdds.xls">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\ColossusBets.xls">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
-    <None Include="Properties\PublishProfiles\Profile1.pubxml" />
+    <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Scripts\jquery-1.9.0.min.map" />
     <Content Include="Views\BetList\All.cshtml" />
+    <Content Include="Views\BetList\ColosussBetsDetails.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

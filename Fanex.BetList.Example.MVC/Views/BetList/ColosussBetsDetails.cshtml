@@ -1,0 +1,35 @@
+﻿@using Fanex.BetList.Core.Entities
+@using Fanex.BetList.Core.Factories
+@using Fanex.BetList.Core.Builder
+@using Fanex.BetList.Example.MVC.ViewModel
+@using Fanex.BetList.Core.TicketHelper
+@using Fanex.BetList.Example.Extension.BetListHTMLBuilderExt
+@using Fanex.BetList.ColossusBets.Builder;
+@model BetListData
+
+@{
+    Layout = null;
+    //IList<ITicket> tickets = (Model != null) ? Model.Tickets : (IList<ITicket>)new List<Ticket>();
+    IList<ITicket> tickets = new List<ITicket>();
+    List<ITicketData> ticketData = Model.TicketData;
+
+    var factory = new BetListHTMLFactory();
+    BetListHTMLBuilder builder = factory.CreateBuilder();
+
+    ITicketHelper ticketHelper = new TicketHelper();
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    @*<link href="../../Content/BetListExt.css" rel="stylesheet" type="text/css" />*@
+    <link href="../../Content/ColossusBets.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    @Html.Raw(builder.BuildColossusBetDetails(tickets, ticketHelper))
+</body>
+</html>

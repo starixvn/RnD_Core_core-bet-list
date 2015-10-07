@@ -411,7 +411,7 @@
 
         #region Private function
 
-        private bool IsBetHomeTeam(ITicket ticket)
+        protected bool IsBetHomeTeam(ITicket ticket)
         {
             bool betHomeTeam = ticket.BetTeam != null && ticket.BetTeam.Contains(BetTeamValue.H);
 

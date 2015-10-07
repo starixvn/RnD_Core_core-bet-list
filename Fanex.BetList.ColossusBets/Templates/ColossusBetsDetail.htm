@@ -1,0 +1,63 @@
+﻿<div class="bet-details-container">
+    <p class="cash-own">
+        {cashOwn}</p>
+    <p class="cash-sold">
+        {cashSold}</p>
+    <table class="bet-details-table">
+        <thead>
+            <tr>
+                <th class="c">
+                    {static:Fanex.BetList.Core.App_GlobalResources.CoreBetList.date}
+                </th>
+                <th class="c">
+                    {static:Fanex.BetList.Core.Resources.ColosussBetsLable.TransactionType}
+                </th>
+                <th class="c">
+                    {static:Fanex.BetList.Core.App_GlobalResources.CoreBetList.winloss}
+                </th>
+                <th class="c">
+                    {static:Fanex.BetList.Core.App_GlobalResources.CoreBetList.status}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--Contents-->
+            <tr>
+                <td class="c transaction-date">
+                    {date}
+                </td>
+                <td class="transaction-type">
+                    {transactionType}
+                </td>
+                <td class="r win-loss">
+                    {winloss}
+                </td>
+                <td class="c status">
+                    {status}
+                </td>
+            </tr>
+            <!--/Contents-->
+            <!--NoData-->
+            <tr>
+                <td colspan="4" class="c">
+                    {static:Fanex.BetList.Core.App_GlobalResources.CoreBetList.ThereIsNoTicketDetailAvailable}
+                </td>
+            </tr>
+            <!--/NoData-->
+        </tbody>
+        <tfoot>
+            <!--TotalContents-->
+            <tr>
+                <td colspan="2" class="r">
+                    {static:Fanex.BetList.Core.App_GlobalResources.CoreBetList.total}
+                </td>
+                <td class="r">
+                    {totalWinloss}
+                </td>
+                <td>
+                </td>
+            </tr>
+            <!--/TotalContents-->
+        </tfoot>
+    </table>
+</div>

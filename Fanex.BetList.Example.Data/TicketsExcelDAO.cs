@@ -208,6 +208,13 @@ namespace Fanex.BetList.Example.Data
                 ticket.WinlostDate = Convert.ToDateTime(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.WinlostDate)));
                 ticket.TransDesc = this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.TransDesc));
 
+                try
+                {
+                    ticket.OddsSpread = Convert.ToDecimal(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.OddsSpread)));
+                }
+                catch
+                { }
+
                 return ticket;
             }
             catch

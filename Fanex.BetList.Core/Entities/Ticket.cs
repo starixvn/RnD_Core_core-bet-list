@@ -110,6 +110,7 @@
 
         public string TransDesc { get; set; }
 
+        public decimal OddsSpread { get; set; }
         #endregion ITicket Members
     }
 }
