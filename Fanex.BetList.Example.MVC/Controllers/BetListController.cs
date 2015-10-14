@@ -208,8 +208,9 @@ namespace Fanex.BetList.Example.MVC.Controllers
             {
                 if (!string.IsNullOrWhiteSpace(model.Language) && model.Language != DefaultLanguage)
                 {
-                    Thread.CurrentThread.CurrentUICulture = new CultureInfo(model.Language);
-                    Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(model.Language);
+                    Thread.CurrentThread.CurrentCulture = new CultureInfo(model.Language);
+                    Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
+
                     Thread.CurrentThread.CurrentCulture.DateTimeFormat = DefaultCulture.DateTimeFormat;
                     Thread.CurrentThread.CurrentCulture.NumberFormat = DefaultCulture.NumberFormat;
                 }
