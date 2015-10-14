@@ -238,10 +238,10 @@ namespace Fanex.BetList.Core.Builder
                 CacheItemPolicy policy = new CacheItemPolicy();
                 policy.Priority = CacheItemPriority.NotRemovable;
 
+                assemblies = assemblies.Where(x => x.FullName.StartsWith("Fanex.BetList.", StringComparison.InvariantCulture)).ToList();
+
                 cache.Set(CACHEKEY, assemblies, policy);
             }
-
-            assemblies = assemblies.Where(x => x.FullName.StartsWith("Fanex.BetList.", StringComparison.InvariantCulture)).ToList();
 
             foreach (var assembly in assemblies)
             {

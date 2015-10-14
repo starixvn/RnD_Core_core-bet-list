@@ -2,8 +2,10 @@
 namespace Fanex.BetList.Example.MVC.Controllers
 {
     using System.Collections.Generic;
+    using System.Globalization;
     using System.IO;
     using System.Linq;
+    using System.Threading;
     using System.Web.Mvc;
     using Fanex.BetList.Core.Builder;
     using Fanex.BetList.Core.Entities;
@@ -22,6 +24,8 @@ namespace Fanex.BetList.Example.MVC.Controllers
         private IList<ITicket> _tickets;
         private List<ITicketData> _ticketData = new List<ITicketData>();
         private readonly DataService _dataService;
+        private const string DefaultLanguage = "en-US";
+        private static readonly CultureInfo DefaultCulture = CultureInfo.CreateSpecificCulture(DefaultLanguage);
 
         private string DataSourcePath
         {
@@ -200,6 +204,17 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
         private BetListData GetDataSource(BetListData model, string sourcePath)
         {
+            if(model != null)
+            {
+                if (!string.IsNullOrWhiteSpace(model.Language) && model.Language != DefaultLanguage)
+                {
+                    Thread.CurrentThread.CurrentUICulture = new CultureInfo(model.Language);
+                    Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(model.Language);
+                    Thread.CurrentThread.CurrentCulture.DateTimeFormat = DefaultCulture.DateTimeFormat;
+                    Thread.CurrentThread.CurrentCulture.NumberFormat = DefaultCulture.NumberFormat;
+                }
+            }
+
             BetListData betListData = _dataService.GetBetListData(sourcePath, model.BetTypeId);
 
             // check whether request filter by bet type id, and does not contain select all
