@@ -16,7 +16,7 @@
         {
             get
             {
-                switch (Thread.CurrentThread.CurrentCulture.Name)
+                switch (Thread.CurrentThread.CurrentUICulture.Name)
                 {
                     case "en-US": return "en";
                     case "zh-TW": return "ch"; // Traditional

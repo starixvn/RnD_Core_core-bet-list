@@ -113,6 +113,10 @@
       <LastGenOutput>CoreBetList.zh-CN.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\CoreBetList.zh-Hans.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CoreBetList.zh-Hans.designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_GlobalResources\CoreBetList.zh-TW.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>CoreBetList.zh-TW.designer.cs</LastGenOutput>
@@ -151,6 +155,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CoreBetList.zh-CN.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\CoreBetList.zh-Hans.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoreBetList.zh-Hans.resx</DependentUpon>
     </Compile>
     <Compile Include="App_GlobalResources\CoreBetList.zh-TW.designer.cs">
       <AutoGen>True</AutoGen>
