@@ -1,7 +1,9 @@
-a {
+a
+{
     text-decoration: none;
 }
-.line {
+.line
+{
     border-bottom: 1px solid #A0A0A0;
     margin-bottom: 5px;
     margin-top: 5px;
@@ -9,72 +11,101 @@ a {
     text-align: left;
     width: 100%;
 }
-.underdog {
+.underdog
+{
     color: #01122B;
     font-weight: bold !important;
 }
-.favorite {
+.favorite
+{
     color: #B50000;
     font-weight: bold !important;
 }
-.handicap .odds {
+.handicap .odds
+{
     color: #003399;
     font-size: 8pt;
 }
-div.match + div.league {
+div.match + div.league + div.no-details
+{
     color: #666666;
     line-height: 15px;
     margin-top: 1px;
 }
-div.match + div.league {
+div.match + div.league + div.no-details
+{
     background: none repeat scroll 0 0 transparent;
     font-weight: normal;
     text-align: right;
     text-transform: none;
 }
-.bettype {
+.bettype
+{
     color: #003399;
     font-weight: 600;
 }
-.firstGoal {
+.firstGoal
+{
     background: url("Images/firstGoal.gif") no-repeat scroll center center transparent;
     display: inline;
     height: 10px;
     padding: 0 4px;
     width: 14px;
 }
-.lastGoal {
+.lastGoal
+{
     background: url("Images/lastGoal.gif") no-repeat scroll center center transparent;
     display: inline;
     height: 10px;
     padding: 0 4px;
     width: 14px;
 }
-.fhFirstGoal{background: url(Images/1F.gif) no-repeat scroll center center transparent;display: inline;height: 10px;	padding: 0 4px;	width: 14px;}
-.fhLastGoal{background: url(Images/1L.gif) no-repeat scroll center center transparent;display: inline;	height: 10px;	padding: 0 4px;	width: 14px;}
-.match {
+.fhFirstGoal
+{
+    background: url(Images/1F.gif) no-repeat scroll center center transparent;
+    display: inline;
+    height: 10px;
+    padding: 0 4px;
+    width: 14px;
+}
+.fhLastGoal
+{
+    background: url(Images/1L.gif) no-repeat scroll center center transparent;
+    display: inline;
+    height: 10px;
+    padding: 0 4px;
+    width: 14px;
+}
+.match
+{
     color: #000000;
     font-weight: normal;
     line-height: 15px;
 }
-.oddstype {
+.oddstype
+{
     color: #586985;
 }
-.colorHandicap, .handicap {
+.colorHandicap, .handicap
+{
     color: #606060;
 }
-.handicap.custom {
+.handicap.custom
+{
     font-weight: bold;
 }
-.sport {
+.sport
+{
     color: #0066CC;
 }
-.iplink {
+.iplink
+{
     color: #1E1EEB;
     cursor: pointer;
     font-size: 11px;
 }
-.detail {
+.detail
+{
     background: url("Images/q_Icon2_1.png") no-repeat scroll center center transparent;
     color: #755200;
     display: inline;
@@ -84,7 +115,8 @@ div.match + div.league {
     padding: 0 1px 0 65px;
     width: 14px;
 }
-.detail:hover {
+.detail:hover
+{
     background: url("Images/q_Icon_2.png") no-repeat scroll center center transparent;
     color: #755200;
     cursor: pointer;
@@ -94,49 +126,64 @@ div.match + div.league {
     padding: 0 1px 0 65px;
     width: 14px;
 }
-.combinationLink {
+.combinationLink
+{
     line-height: 20px;
 }
-.scoremap {
+.scoremap
+{
     float: left;
 }
-.scoremapIcon {
+.scoremapIcon
+{
     background: url("Images/ScoreMapWL.png") no-repeat scroll 0 0 transparent;
     height: 18px;
     margin: 3px;
     width: 18px;
 }
 /* Trans */
-.iplink ,.betsliplink{
-	cursor: pointer;
-	color:#1E1EEB;
-	font-size: 11px;
+.iplink, .betsliplink
+{
+    cursor: pointer;
+    color: #1E1EEB;
+    font-size: 11px;
 }
-.time {
-	color: #434343;
-	font-size: 7pt;	
-	font-weight: normal;
-	text-align: center;
-	margin-top: 10px;
+.time
+{
+    color: #434343;
+    font-size: 7pt;
+    font-weight: normal;
+    text-align: center;
+    margin-top: 10px;
 }
 
 /* Status */
 
-.status {
-	color: #606060;
-	font-size: 11px;
-	font-weight: bold;
+.status
+{
+    color: #606060;
+    font-size: 11px;
+    font-weight: bold;
 }
-.result {
-	cursor: pointer;
-	color: rgb(27, 164, 237);
+.result
+{
+    cursor: pointer;
+    color: rgb(27, 164, 237);
 }
-.ip {
-	color: #434343;
-	font-size: 7pt;
-	font-weight: normal;
-	text-align: center;
+.ip
+{
+    color: #434343;
+    font-size: 7pt;
+    font-weight: normal;
+    text-align: center;
 }
-.blue {
-	color: #2673CE;
+.blue
+{
+    color: #2673CE;
 }
+
+.light-blue
+{
+    color:#0017CD;
+}
+
