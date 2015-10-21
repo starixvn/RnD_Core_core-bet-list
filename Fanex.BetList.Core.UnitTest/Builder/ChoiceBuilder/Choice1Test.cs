@@ -846,5 +846,33 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Assert
             Assert.IsNull(_choice.Template.ScoreMapIcon);
         }
+
+        [Test]
+        public void BuildBetTeamClassNameAndHandicap_SportIsMuayThaiAndBetTeamIsHome_BetTeamClassNameIsFavorite()
+        {
+            _ticket.SportTypeId = 44;
+            _ticket.BetTeam = "h";
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedBetTeamClassName = "favorite";
+            Assert.AreEqual(expectedBetTeamClassName, _choice.Template.betTeamClassName);
+        }
+
+        [Test]
+        public void BuildBetTeamClassNameAndHandicap_SportIsMuayThaiAndBetTeamIsAway_BetTeamClassNameIsLightBlue()
+        {
+            _ticket.SportTypeId = 44;
+            _ticket.BetTeam = "a";
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedBetTeamClassName = "favorite light-blue";
+            Assert.AreEqual(expectedBetTeamClassName, _choice.Template.betTeamClassName);
+        }
     }
 }

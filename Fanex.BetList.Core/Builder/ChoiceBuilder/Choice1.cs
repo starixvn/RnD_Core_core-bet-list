@@ -39,6 +39,7 @@
         private const string FirstHalfLastGoalTextName = "(1L)";
         private const string BetStatusFl = "fl";
         private const string BetStatus1Fl = "1fl";
+        private const int MuayThaiSportId = 44;
 
         #region Constructors
 
@@ -279,6 +280,7 @@
         protected virtual void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
             var isBetHomeTeam = IsBetHomeTeam(ticket);
+
             string betTeamClassName;
 
             if (isBetHomeTeam)
@@ -292,10 +294,25 @@
 
             Template.betTeamClassName = betTeamClassName;
 
+            ChangeClassNameWhenSportIsMauyThai(ticket.SportTypeId, isBetHomeTeam);
+
             decimal handicap = ticket.Handicap2 > ticket.Handicap1 ? ticket.Handicap2 : ticket.Handicap1;
             handicap = betTeamClassName == Favorite ? -handicap : handicap;
 
             Template.Handicap.handicap = ConvertByBetType.Hdp(handicap);
+        }
+
+        private void ChangeClassNameWhenSportIsMauyThai(int sportId, bool isBetHomeTeam)
+        {
+            if (sportId == MuayThaiSportId)
+            {
+                Template.betTeamClassName = Favorite;
+
+                if (!isBetHomeTeam)
+                {
+                    Template.betTeamClassName += " light-blue";
+                }
+            }
         }
 
         /// <summary>
