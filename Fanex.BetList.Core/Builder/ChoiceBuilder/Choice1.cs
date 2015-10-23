@@ -40,6 +40,7 @@
         private const string BetStatusFl = "fl";
         private const string BetStatus1Fl = "1fl";
         private const int MuayThaiSportId = 44;
+        private const int HandicapBetTypeId = 1;
 
         #region Constructors
 
@@ -294,7 +295,7 @@
 
             Template.betTeamClassName = betTeamClassName;
 
-            ChangeClassNameWhenSportIsMauyThai(ticket.SportTypeId, isBetHomeTeam);
+            ChangeClassNameWhenSportIsMauyThai(ticket.SportTypeId, ticket.BetTypeId, isBetHomeTeam);
 
             decimal handicap = ticket.Handicap2 > ticket.Handicap1 ? ticket.Handicap2 : ticket.Handicap1;
             handicap = betTeamClassName == Favorite ? -handicap : handicap;
@@ -302,9 +303,10 @@
             Template.Handicap.handicap = ConvertByBetType.Hdp(handicap);
         }
 
-        private void ChangeClassNameWhenSportIsMauyThai(int sportId, bool isBetHomeTeam)
+        private void ChangeClassNameWhenSportIsMauyThai(int sportId, int betTypeId, bool isBetHomeTeam)
         {
-            if (sportId == MuayThaiSportId)
+            if (sportId == MuayThaiSportId
+                && betTypeId == HandicapBetTypeId)
             {
                 Template.betTeamClassName = Favorite;
 
