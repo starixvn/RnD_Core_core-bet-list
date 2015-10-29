@@ -33,14 +33,15 @@
                 ticket.RefNo,
                 ticket.WinlostDate.ToString(),
                 ticket.TransId.ToString(),
-                custid);
+                custid,
+                ticket.BetCheck);
 
             string colosussBetsHtml = BuildColossusBetsHtml(betTypeName, showColosussBetsDetailsHtml);
 
             Template.SetValue(colosussBetsHtml);
         }
 
-        private string BuildShowColossusBetsDetails(string refNo, string winlossDate, string transId, string custId)
+        private string BuildShowColossusBetsDetails(string refNo, string winlossDate, string transId, string custId, string betCheck)
         {
             string[] detailsFunctionCompositions = new string[]
                                             {
@@ -55,6 +56,9 @@
                                                 "&quot;",
                                                 ",&quot;",
                                                 custId,
+                                                "&quot;",
+                                                ",&quot;",
+                                                betCheck,
                                                 "&quot;);"
                                             };
 

@@ -20,7 +20,7 @@ namespace Fanex.BetList.ColossusBets
 			protected static string s2 = "</p><table class=\"bet-details-table\"><thead><tr><th class=\"c\">";
 			protected static string s3{get{return Fanex.BetList.Core.App_GlobalResources.CoreBetList.date;}}
 			protected static string s4 = "</th><th class=\"c\">";
-			protected static string s5{get{return Fanex.BetList.Core.Resources.ColosussBetsLable.TransactionType;}}
+               protected static string s5 { get { return Fanex.BetList.Core.Resources.ColosussBetsLabel.TransactionType; } }
 			protected static string s6 = "</th><th class=\"c\">";
 			protected static string s7{get{return Fanex.BetList.Core.App_GlobalResources.CoreBetList.winloss;}}
 			protected static string s8 = "</th><th class=\"c\">";

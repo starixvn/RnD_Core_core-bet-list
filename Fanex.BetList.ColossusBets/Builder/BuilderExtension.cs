@@ -13,7 +13,7 @@
     {
         private const int CashOutBetTypeId = 18002;
 
-        private static string BuildColossusBetsTransactionType(int betTypeId, decimal cashOutPercent, ITicketHelper ticketHelper)
+        public static string BuildColossusBetsTransactionType(int betTypeId, decimal cashOutPercent, ITicketHelper ticketHelper)
         {
             var betTypeName = ticketHelper.GetBetTypeNameById(betTypeId);
 
@@ -26,7 +26,7 @@
             return betTypeName;
         }
 
-        private static string BuildColossusBetsDetailStatus(string ticketStatus)
+        public static string BuildColossusBetsDetailStatus(string ticketStatus)
         {
             if (!string.IsNullOrWhiteSpace(ticketStatus))
             {
@@ -86,18 +86,18 @@
             }
 
             var cashOwn = 100 - cashOutPercent;
-            detailTemplate.cashOwn = string.Format(ColosussBetsLable.YouOwnPercent, Formatter.DecFormat(cashOwn, 0));
+            detailTemplate.cashOwn = string.Format(ColosussBetsLabel.YouOwnPercent, Formatter.DecFormat(cashOwn, 0));
 
             if (cashOutPercent == 0)
             {
-                detailTemplate.cashSold = ColosussBetsLable.YouSoldZeroPercent;
+                detailTemplate.cashSold = ColosussBetsLabel.YouSoldZeroPercent;
             }
             else
             {
                 detailTemplate.cashSold = string.Format(
-                ColosussBetsLable.YouSoldPercent,
+                ColosussBetsLabel.YouSoldPercent,
                 Formatter.DecFormat(cashOutPercent, 0),
-                FormatWinLoss(cashOutAmount));
+                BuildColossusBetsWinLoss(cashOutAmount));
             }
         }
 
@@ -130,7 +130,7 @@
                 detailTicket.BetTypeId,
                 detailTicket.Handicap1,
                 ticketHelper);
-            detailContent.winloss = FormatWinLoss(detailTicket.Winlost);
+            detailContent.winloss = BuildColossusBetsWinLoss(detailTicket.Winlost);
             detailContent.status = BuildColossusBetsDetailStatus(detailTicket.Status);
 
             detailTemplate.Contents.Append(detailContent);
@@ -148,7 +148,7 @@
             {
                 ColossusBetsDetail_TotalContents_Block totalContent = new ColossusBetsDetail_TotalContents_Block();
 
-                totalContent.totalWinloss = FormatWinLoss(totalWinloss);
+                totalContent.totalWinloss = BuildColossusBetsWinLoss(totalWinloss);
                 detailTemplate.TotalContents.Append(totalContent);
             }
             else
@@ -157,7 +157,7 @@
             }
         }
 
-        private static string FormatWinLoss(decimal winloss)
+        public static string BuildColossusBetsWinLoss(decimal winloss)
         {
             string winlossFormatted = Formatter.DecFormat(winloss, 2);
             if (winloss >= 0)

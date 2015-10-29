@@ -30,6 +30,7 @@
             _ticket.WinlostDate = new DateTime(2014, 01, 01, 12, 00, 00);
             _ticket.CustId = 10000;
             _ticket.TransId = 200;
+            _ticket.BetCheck = "BetCheck";
 
             //// Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -39,7 +40,7 @@
                                     "<span class=\"main-ticket\">Colossus Bets</span>" +
                                 "</div>" +
                                 "<div class=\"detail\" " +
-                                "onclick=\'showColossusBetsDetails(&quot;300&quot;,&quot;1/1/2014 12:00:00 PM&quot;,&quot;200&quot;,&quot;10000&quot;);'>" +
+                                "onclick=\'showColossusBetsDetails(&quot;300&quot;,&quot;1/1/2014 12:00:00 PM&quot;,&quot;200&quot;,&quot;10000&quot;,&quot;BetCheck&quot;);'>" +
                                 "<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">Details</a></div>";
 
             Assert.AreEqual(expected, _choice.Template.ToString());

@@ -72,7 +72,7 @@
             var betDetailsHtml = _htmlBuilder.BuildColossusBetDetails(_tickets, _ticketHelper);
 
             //// Assert
-            Assert.IsTrue(betDetailsHtml.Contains(string.Format(ColosussBetsLable.YouOwnPercent, "90")));
+            Assert.IsTrue(betDetailsHtml.Contains(string.Format(ColosussBetsLabel.YouOwnPercent, "90")));
         }
 
         [Test]
@@ -87,7 +87,7 @@
             var betDetailsHtml = _htmlBuilder.BuildColossusBetDetails(_tickets, _ticketHelper);
 
             //// Assert
-            Assert.IsTrue(betDetailsHtml.Contains(string.Format(ColosussBetsLable.YouSoldPercent, "10", "<span class='positive-win-loss'>20.00</span>")));
+            Assert.IsTrue(betDetailsHtml.Contains(string.Format(ColosussBetsLabel.YouSoldPercent, "10", "<span class='positive-win-loss'>20.00</span>")));
         }
 
         [TestCase(BetStatus.Running, "Running")]
