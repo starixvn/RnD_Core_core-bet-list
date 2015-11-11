@@ -15,6 +15,10 @@
         private const string OpenGameNameTag = "<span class='ag-casino-game-name'>";
         private const string CloseGameNameTag = "</span>";
 
+        private const string RoundName = "ROUND";
+        private const string TableCodeName = "TABLECODE";
+        public const string BetChoiceJSONName = "TYPE";
+
         private static readonly IDictionary<int, string> BetTypeRefIdNames = new Dictionary<int, string>
         {
             { 1801, "AG_Baccarat" },
@@ -161,14 +165,14 @@
 
             var roomAndName = string.Empty;
 
-            if (transDecsParsed.ContainsKey("ROUND"))
+            if (transDecsParsed.ContainsKey(RoundName))
             {
-                roomAndName += ticketHelper.GetResourceData("AG_Room", transDecsParsed["ROUND"]) + " ";
+                roomAndName += ticketHelper.GetResourceData("AG_Room", transDecsParsed[RoundName]) + " ";
             }
 
-            if (transDecsParsed.ContainsKey("TABLECODE"))
+            if (transDecsParsed.ContainsKey(TableCodeName))
             {
-                roomAndName += transDecsParsed["TABLECODE"];
+                roomAndName += transDecsParsed[TableCodeName];
             }
 
             return roomAndName;
@@ -179,12 +183,17 @@
             var serializer = new JavaScriptSerializer();
             var transDecsParsed = serializer.Deserialize<Dictionary<string, string>>(ticket.TransDesc.ToUpper());
 
-            if (transDecsParsed.ContainsKey("TYPE"))
+            if (transDecsParsed.ContainsKey(BetChoiceJSONName))
             {
-                return ticketHelper.GetResourceData(BetTypeRefIdNames[ticket.BetTypeId], transDecsParsed["TYPE"]);
+                return GetBetChoiceName(ticketHelper, ticket.BetTypeId, transDecsParsed);
             }
 
             return string.Empty;
+        }
+
+        protected virtual string GetBetChoiceName(ITicketHelper ticketHelper, int betTypeId, Dictionary<string, string> transDecsParsed)
+        {
+            return ticketHelper.GetResourceData(BetTypeRefIdNames[betTypeId], transDecsParsed[BetChoiceJSONName]);
         }
     }
 }
