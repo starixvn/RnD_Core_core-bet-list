@@ -129,6 +129,7 @@
     <Compile Include="Builder\ChoiceBuilder\Choice187Test.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Builder\ChoiceBuilder\Choice191Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice195Test.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -150,6 +151,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Builder\ChoiceBuilder\Choice3Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice401Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice405Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice406Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice407Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice408Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice410Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice81Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice85Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice86Test.cs" />

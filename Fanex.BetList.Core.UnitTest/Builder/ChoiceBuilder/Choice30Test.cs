@@ -26,7 +26,7 @@
         }
 
         /// <summary>
-        /// The value of Template.betTeam is always bet team.
+        /// The value of Template.betTeam is 0:4 UP when the ticket.BetTeam is 0:4.
         /// </summary>
         [Test]
         public void BuildChoice_BetTeamIs04_BetTeamIsBetTeamAndUp()
@@ -43,7 +43,7 @@
         }
 
         /// <summary>
-        /// The value of Template.betTeam is always bet team.
+        /// The value of Template.betTeam is 4:0 UP when the ticket.BetTeam is 4:0.
         /// </summary>
         [Test]
         public void BuildChoice_BetTeamIs40_BetTeamIsBetTeamAndUp()
@@ -56,6 +56,24 @@
 
             // Assert
             string expectedBetTeam = string.Format("&nbsp;{0} UP", _ticket.BetTeam);
+            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
+        }
+
+        /// <summary>
+        /// The value of Template.betTeam is AOS when ticket.BetTeam is AOS or aos.
+        /// </summary>
+        [TestCase("AOS")]
+        [TestCase("aos")]
+        public void BuildBetTeam_BetTeamIsAOS_BetTeamIsAOS(string betTeam)
+        {
+            // Arrange
+            _ticket.BetTeam = betTeam;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedBetTeam = string.Format("&nbsp;AOS", _ticket.BetTeam);
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 

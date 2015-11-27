@@ -1,18 +1,27 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
+    using App_GlobalResources;
     using Constants;
     using Entities;
 
     /// <summary>
-    /// 1st Correct score.
+    /// 1H Correct score.
     /// </summary>
     public class Choice30 : Choice4
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             string choice = ticket.BetTeam;
-            choice = (choice == "0:4" || choice == "4:0") ? choice + " UP" : choice;
+
+            if (BetTeamValue.FourZero == choice || BetTeamValue.ZeroFour == choice)
+            {
+                choice += " " + CoreBetList.Up;
+            }
+            else if (BetTeamValue.AOS == choice.ToLowerInvariant())
+            {
+                choice = CoreBetList.AOS;
+            }
 
             // "&nbsp" because export format
             Template.betTeam = HtmlCharacters.NoneBreakingSpace + choice;

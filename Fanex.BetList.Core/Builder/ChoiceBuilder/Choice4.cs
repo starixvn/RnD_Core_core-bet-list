@@ -1,6 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
+    using App_GlobalResources;
     using Constants;
     using Entities;
 
@@ -11,10 +12,19 @@
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            string choice = (ticket.BetTeam == "0:5" || ticket.BetTeam == "5:0") ? ticket.BetTeam + " UP" : ticket.BetTeam;
+            string choice = ticket.BetTeam;
+
+            if (BetTeamValue.FiveZero == choice || BetTeamValue.ZeroFive == choice)
+            {
+                choice += " " + CoreBetList.Up;
+            }
+            else if (BetTeamValue.AOS == choice.ToLowerInvariant())
+            {
+                choice = CoreBetList.AOS;
+            }
 
             // "&nbsp" because export format
-            Template.betTeam = string.Join(null, new string[] { HtmlCharacters.NoneBreakingSpace, choice });
+            Template.betTeam = HtmlCharacters.NoneBreakingSpace + choice;
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)

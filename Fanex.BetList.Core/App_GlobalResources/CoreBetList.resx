@@ -758,4 +758,10 @@
   <data name="Sold" xml:space="preserve">
     <value>Sold</value>
   </data>
+  <data name="AOS" xml:space="preserve">
+    <value>AOS</value>
+  </data>
+  <data name="Up" xml:space="preserve">
+    <value>UP</value>
+  </data>
 </root>

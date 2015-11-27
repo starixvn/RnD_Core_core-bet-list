@@ -302,5 +302,30 @@
         /// The number two 2.
         /// </summary>
         public const string NumberTwo = "2";
+
+        /// <summary>
+        /// The bet team 4:0 of 1st Correct Score.
+        /// </summary>
+        public const string FourZero = "4:0";
+
+        /// <summary>
+        /// The bet team 0:4 of 1st Correct Score.
+        /// </summary>
+        public const string ZeroFour = "0:4";
+
+        /// <summary>
+        /// The bet team 5:0 of Correct Score.
+        /// </summary>
+        public const string FiveZero = "5:0";
+
+        /// <summary>
+        /// The bet team 0:5 of Correct Score.
+        /// </summary>
+        public const string ZeroFive = "0:5";
+
+        /// <summary>
+        /// The bet team Any Other Score of Correct Score and 1st Correct Score.
+        /// </summary>
+        public const string AOS = "aos";
     }
 }

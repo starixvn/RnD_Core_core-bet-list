@@ -6,7 +6,8 @@
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    /// Bet type name:  Winning Margin.
+    /// Bet Radar: Winning Margin.
+    /// Its parent bet type is Winning Margin - bet type ID 408 of Pool House All In One.
     /// </summary>
     public class Choice171 : Choice1
     {
@@ -58,6 +59,13 @@
         {
             Template.Handicap.handicap = null;
             Template.betTeamClassName = Favorite;
+        }
+
+        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {
+            var parentBetTypeId = ticketHelper.GetParentIdByBetTypeId(ticket.BetTypeId);
+
+            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(parentBetTypeId);
         }
     }
 }

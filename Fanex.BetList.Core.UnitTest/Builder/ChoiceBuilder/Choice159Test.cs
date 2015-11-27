@@ -1,6 +1,6 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.App_GlobalResources;
+    using Common.Enums;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Entities;
     using NSubstitute;
@@ -21,6 +21,7 @@
         {
             _choice = new Choice159();
             _ticket = Substitute.For<ITicket>();
+            _ticket.BetTypeId = BetTypes._3rdExactTotalGoals;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
@@ -71,6 +72,22 @@
             // Assert
             const string CSS_CLASS_FAVORITE = "favorite";
             Assert.AreEqual(CSS_CLASS_FAVORITE, _choice.Template.betTeamClassName);
+        }
+
+        [Test]
+        public void BuildBetType_Always_ShowParentBetTypeName()
+        {
+            // Arrange.
+            var parentBetTypeId = BetTypes.ExactTotalGoals.ToString();
+            var parentBetTypeName = "Parent Bet Type";
+            _ticketHelper.GetParentIdByBetTypeId(Arg.Any<object>()).Returns(parentBetTypeId);
+            _ticketHelper.GetBetTypeNameById(parentBetTypeId).Returns(parentBetTypeName);
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual(parentBetTypeName, _choice.Template.BetType.betTypeName);
         }
     }
 }

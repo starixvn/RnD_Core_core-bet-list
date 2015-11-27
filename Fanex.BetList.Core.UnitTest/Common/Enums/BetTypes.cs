@@ -821,11 +821,56 @@ namespace Fanex.BetList.Core.UnitTest.Common.Enums
         /// <summary>
         /// _1stHalfDoubleChance = 151.
         /// </summary>
-        public const int _1stHalfDoubleChance = 151;
+        public const int _1stHalfDoubleChance = 410;
+
+        /// <summary>
+        /// _1stHalfDoubleChance = 151.
+        /// </summary>
+        public const int _3rd1stHalfDoubleChance = 151;
 
         /// <summary>
         /// HalfTimeFullTimeCorrectScore = 152.
         /// </summary>
         public const int HalfTimeFullTimeCorrectScore = 152;
+
+        /// <summary>
+        /// ExactTotalGoals = 406.
+        /// </summary>
+        public const int ExactTotalGoals = 406;
+
+        /// <summary>
+        /// 3rd ExactTotalGoals = 159.
+        /// </summary>
+        public const int _3rdExactTotalGoals = 159;
+
+        /// <summary>
+        /// Exact Home Team Goals = 407.
+        /// </summary>
+        public const int ExactHomeTeamGoals = 407;
+
+        /// <summary>
+        /// 3rd Exact Home Team Goals = 161.
+        /// </summary>
+        public const int _3rdExactHomeTeamGoals = 161;
+
+        /// <summary>
+        /// Winning Margin = 408.
+        /// </summary>
+        public const int WinningMargin = 408;
+
+        /// <summary>
+        /// 3rd Winning Margin = 161.
+        /// </summary>
+        public const int _3rdWinningMargin = 171;
+
+        /// <summary>
+        /// 1H Draw No Bet = 411.
+        /// </summary>
+        public const int _1HDrawNoBet = 411;
+
+        /// <summary>
+        /// 3rd 1H Draw No Bet = 191.
+        /// </summary>
+        public const int _3rd1HDrawNoBet = 191;
     }
 }

@@ -26,20 +26,7 @@
         }
 
         /// <summary>
-        /// The value of Template.Handicap.handicap is always null.
-        /// </summary>
-        [Test]
-        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
-        {
-            // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-
-            // Assert
-            Assert.IsNull(_choice.Template.Handicap.handicap);
-        }
-
-        /// <summary>
-        /// The value of Template.betTeam is always bet team.
+        /// The value of Template.betTeam is 0:5 UP when ticket.BetTeam is 0:5.
         /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIs05_BetTeamIsBetTeamAndUp()
@@ -56,7 +43,7 @@
         }
 
         /// <summary>
-        /// The value of Template.betTeam is always bet team.
+        /// The value of Template.betTeam is 5:0 UP when ticket.BetTeam is 5:0.
         /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIs50_BetTeamIsBetTeamAndUp()
@@ -69,6 +56,24 @@
 
             // Assert
             string expectedBetTeam = string.Format("&nbsp;{0} UP", _ticket.BetTeam);
+            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
+        }
+
+        /// <summary>
+        /// The value of Template.betTeam is AOS when ticket.BetTeam is AOS or aos.
+        /// </summary>
+        [TestCase("AOS")]
+        [TestCase("aos")]
+        public void BuildBetTeam_BetTeamIsAOS_BetTeamIsAOS(string betTeam)
+        {
+            // Arrange
+            _ticket.BetTeam = betTeam;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedBetTeam = string.Format("&nbsp;AOS", _ticket.BetTeam);
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
@@ -87,6 +92,19 @@
             // Assert
             string expectedBetTeam = string.Format("&nbsp;{0}", _ticket.BetTeam);
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
+        }
+
+        /// <summary>
+        /// The value of Template.Handicap.handicap is always null.
+        /// </summary>
+        [Test]
+        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
+        {
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            Assert.IsNull(_choice.Template.Handicap.handicap);
         }
 
         /// <summary>

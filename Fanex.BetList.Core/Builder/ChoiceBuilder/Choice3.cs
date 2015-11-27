@@ -20,7 +20,7 @@
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            Template.betTeam = ticket.BetTeam == BetTeamValue.H ? CoreBetList.over : CoreBetList.under;
+            Template.betTeam = BetTeamValue.H == ticket.BetTeam.ToLowerInvariant() ? CoreBetList.over : CoreBetList.under;
         }
     }
 }
