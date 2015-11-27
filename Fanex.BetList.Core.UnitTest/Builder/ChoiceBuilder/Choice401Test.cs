@@ -55,5 +55,57 @@
             string expectedBetTeam = "Under";
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
+
+        /// <summary>
+        /// The value of Handicap is always the value of ticket.Handicap1.
+        /// </summary>
+        [Test]
+        public void BuildBetTeamClassNameAndHandicap_Always_HandicapIsHandicap1()
+        {
+            // Arrange
+            _ticket.Handicap1 = 1;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            Assert.AreEqual(_ticket.Handicap1.ToString(), _choice.Template.Handicap.handicap);
+        }
+
+        /// <summary>
+        /// The betTeamClassName is favorite when the bet team is 'o' or 'O'.
+        /// </summary>
+        [TestCase("o")]
+        [TestCase("O")]
+        public void BuildBetTeamClassNameAndHandicap_BetTeamisO_BetTeamClassNameIsFavorite(string betTeam)
+        {
+            // Arrange
+            _ticket.BetTeam = betTeam;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedClass = "favorite";
+            Assert.AreEqual(expectedClass, _choice.Template.betTeamClassName);
+        }
+
+        /// <summary>
+        /// The betTeamClassName is underdog when the bet team is 'u' or 'U'.
+        /// </summary>
+        [TestCase("u")]
+        [TestCase("U")]
+        public void BuildBetTeamClassNameAndHandicap_BetTeamisU_BetTeamClassNameIsUnderDog(string betTeam)
+        {
+            // Arrange
+            _ticket.BetTeam = betTeam;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedClass = "underdog";
+            Assert.AreEqual(expectedClass, _choice.Template.betTeamClassName);
+        }
     }
 }

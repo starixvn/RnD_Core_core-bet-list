@@ -104,7 +104,6 @@ namespace Fanex.BetList.Example.MVC.Controllers
             return BetListView(model);
         }
 
-
         public ActionResult GoldDeluxe(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(1701, 1702, 1703);
@@ -112,8 +111,6 @@ namespace Fanex.BetList.Example.MVC.Controllers
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             DataSourcePath = "~/App_Data/GoldDeluxe.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
-
-
 
             return BetListView(model);
         }
@@ -192,6 +189,17 @@ namespace Fanex.BetList.Example.MVC.Controllers
             return BetListView(model);
         }
 
+        public ActionResult PHAllInOne(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes(4, 30, 151, 159, 161, 162, 171, 191, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411);
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            DataSourcePath = "~/App_Data/PHAllInOne.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+
+            return BetListView(model);
+        }
+
         private ViewResult BetListView(BetListData model)
         {
             return View("All", model);
@@ -204,7 +212,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
         private BetListData GetDataSource(BetListData model, string sourcePath)
         {
-            if(model != null)
+            if (model != null)
             {
                 if (!string.IsNullOrWhiteSpace(model.Language) && model.Language != DefaultLanguage)
                 {
@@ -275,7 +283,6 @@ namespace Fanex.BetList.Example.MVC.Controllers
                            .AddChoice(ticket, ticketHelper, _ticketData)
                            .AddOdds(ticket, _ticketData, funcGetOddsTypeName)
                            .AddStake(ticket);
-
                 }
 
                 var ms = new MemoryStream();

@@ -340,6 +340,7 @@
     </Content>
     <Content Include="App_Data\60NewBetTypeBetRadarData.xls" />
     <Content Include="App_Data\AGCasino.xls" />
+    <Content Include="App_Data\PHAllInOne.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />

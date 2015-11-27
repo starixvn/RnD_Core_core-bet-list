@@ -116,7 +116,7 @@
 
 <script>
     $(function () {
-        $("#Laguage").val("'" + @Model.Language +"'");
+        $("#Laguage").val(@Html.Raw("'" + Model.Language +"'"));
     });
 
     function showDetail(id) {
