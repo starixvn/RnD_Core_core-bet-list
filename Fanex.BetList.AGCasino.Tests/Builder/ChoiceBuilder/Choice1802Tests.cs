@@ -29,7 +29,8 @@
             //// Arrange
             var choiceName = "Choice Name";
             _ticket.BetTypeId = 1802;
-            _ticket.TransDesc = "{\"round\":\"DSP\",\"val\":\"2,3,4,5\",\"tableCode\":\"va21\",\"game\":\"BAC\",\"type\":\"107\"}";
+
+            _ticket.TransDesc = "round=DSP*tableCode=va21*game=BAC*type=107*val=2,3,4,5";
 
             _ticketHelper.GetResourceData("AG_Roulette", "107").Returns(choiceName);
 
@@ -53,7 +54,8 @@
             //// Arrange
             var choiceName = "Choice Name";
             _ticket.BetTypeId = 1802;
-            _ticket.TransDesc = "{\"round\":\"DSP\",\"val\":\"2,3,4,5\",\"tableCode\":\"va21\",\"game\":\"BAC\",\"type\":\"" + type + "\"}";
+
+            _ticket.TransDesc = "round=DSP*tableCode=va21*game=BAC*type=" + type + "*val=2,3,4,5";
 
             _ticketHelper.GetResourceData("AG_Roulette", type.ToString()).Returns(choiceName);
 

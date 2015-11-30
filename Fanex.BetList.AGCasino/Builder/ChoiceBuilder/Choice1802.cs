@@ -16,7 +16,7 @@
         {
             var betChoiceName = base.GetBetChoiceName(ticketHelper, betTypeId, transDecsParsed);
             int type = 0;
-            int.TryParse(transDecsParsed[Choice1801.BetChoiceJSONName], out type);
+            int.TryParse(transDecsParsed[Choice1801.BetChoiceDataName], out type);
 
             if (SupportedTypes.Contains(type)
                 && transDecsParsed.ContainsKey(ValName))

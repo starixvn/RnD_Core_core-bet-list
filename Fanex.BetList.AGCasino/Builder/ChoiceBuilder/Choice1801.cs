@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Web.Script.Serialization;
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
@@ -17,7 +16,7 @@
 
         private const string RoundName = "ROUND";
         private const string TableCodeName = "TABLECODE";
-        public const string BetChoiceJSONName = "TYPE";
+        public const string BetChoiceDataName = "TYPE";
 
         private static readonly IDictionary<int, string> BetTypeRefIdNames = new Dictionary<int, string>
         {
@@ -160,8 +159,7 @@
 
         private string GetRoomAndTable(ITicket ticket, ITicketHelper ticketHelper)
         {
-            var serializer = new JavaScriptSerializer();
-            var transDecsParsed = serializer.Deserialize<Dictionary<string, string>>(ticket.TransDesc.ToUpper());
+            var transDecsParsed = DeserializeTransDesc(ticket.TransDesc.ToUpper());
 
             var roomAndName = string.Empty;
 
@@ -180,10 +178,9 @@
 
         private string GetBetChoice(ITicket ticket, ITicketHelper ticketHelper)
         {
-            var serializer = new JavaScriptSerializer();
-            var transDecsParsed = serializer.Deserialize<Dictionary<string, string>>(ticket.TransDesc.ToUpper());
+            var transDecsParsed = DeserializeTransDesc(ticket.TransDesc.ToUpper());
 
-            if (transDecsParsed.ContainsKey(BetChoiceJSONName))
+            if (transDecsParsed.ContainsKey(BetChoiceDataName))
             {
                 return GetBetChoiceName(ticketHelper, ticket.BetTypeId, transDecsParsed);
             }
@@ -193,7 +190,29 @@
 
         protected virtual string GetBetChoiceName(ITicketHelper ticketHelper, int betTypeId, Dictionary<string, string> transDecsParsed)
         {
-            return ticketHelper.GetResourceData(BetTypeRefIdNames[betTypeId], transDecsParsed[BetChoiceJSONName]);
+            return ticketHelper.GetResourceData(BetTypeRefIdNames[betTypeId], transDecsParsed[BetChoiceDataName]);
+        }
+
+        private Dictionary<string, string> DeserializeTransDesc(string transDesc)
+        {
+            Dictionary<string, string> transDescItems = new Dictionary<string, string>();
+
+            if (string.IsNullOrEmpty(transDesc))
+            {
+                return transDescItems;
+            }
+
+            var keyValuePairs = transDesc.Split(new char[] { '*' }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (var keyValuePair in keyValuePairs)
+            {
+                var keyValue = keyValuePair.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
+                if (keyValue.Length == 2)
+                {
+                    transDescItems.Add(keyValue[0], keyValue[1]);
+                }
+            }
+
+            return transDescItems;
         }
     }
 }

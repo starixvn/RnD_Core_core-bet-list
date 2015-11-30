@@ -77,7 +77,7 @@
             //// Arrange
             var choiceName = "Choice Name";
             _ticket.BetTypeId = 1801;
-            _ticket.TransDesc = "{\"round\":\"DSP\",\"tableCode\":\"va21\",\"game\":\"BAC\",\"type\":\"1\"}";
+            _ticket.TransDesc = "round=DSP*tableCode=va21*game=BAC*type=1*val=";
 
             _ticketHelper.GetResourceData("AG_Baccarat", "1").Returns(choiceName);
 
@@ -93,7 +93,7 @@
         {
             //// Arrange
             _ticket.BetTypeId = 1801;
-            _ticket.TransDesc = "{\"round\":\"DSP\",\"tableCode\":\"va21\",\"game\":\"BAC\"}";
+            _ticket.TransDesc = "round=DSP*tableCode=va21*game=BAC*type=1";
 
             //// Act
             _choice.Render(_ticket, _ticketHelper, null, false);
@@ -107,7 +107,7 @@
         {
             //// Arrange
             _ticket.BetTypeId = 1801;
-            _ticket.TransDesc = "{\"round\":\"DSP\",\"tableCode\":\"va21\",\"game\":\"BAC\",\"type\":\"1\"}";
+            _ticket.TransDesc = "round=DSP*tableCode=va21*game=BAC*type=1*val=";
 
             var workbook = new HSSFWorkbook();
             var rtfHelper = new RTFHelper()
