@@ -663,4 +663,7 @@
   <data name="ThereIsNoTicketDetailAvailable" xml:space="preserve">
     <value>There is no ticket detail available.</value>
   </data>
+  <data name="ThreeAndOver" xml:space="preserve">
+    <value>3 ประตู หรือมากกว่า</value>
+  </data>
 </root>

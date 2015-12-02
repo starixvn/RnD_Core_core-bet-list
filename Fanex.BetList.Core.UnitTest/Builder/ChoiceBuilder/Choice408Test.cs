@@ -37,6 +37,7 @@
         [TestCase("A1", "Away team name to Win by 1 Goal")]
         [TestCase("A2", "Away team name to Win by 2 Goals")]
         [TestCase("A3", "Away team name to Win by 3up Goals")]
+        [TestCase("NG", "No Goal")]
         [TestCase("h1", "Home team name to Win by 1 Goal")]
         [TestCase("h2", "Home team name to Win by 2 Goals")]
         [TestCase("h3", "Home team name to Win by 3up Goals")]
@@ -44,6 +45,7 @@
         [TestCase("a1", "Away team name to Win by 1 Goal")]
         [TestCase("a2", "Away team name to Win by 2 Goals")]
         [TestCase("a3", "Away team name to Win by 3up Goals")]
+        [TestCase("ng", "No Goal")]
         [TestCase("abc", "")]
         public void BuildBetTeam_BetTeam_TemplateBetTeam(string betTeam, string expected)
         {

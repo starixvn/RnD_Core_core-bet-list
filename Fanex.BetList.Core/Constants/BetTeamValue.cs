@@ -327,5 +327,10 @@
         /// The bet team Any Other Score of Correct Score and 1st Correct Score.
         /// </summary>
         public const string AOS = "aos";
+
+        /// <summary>
+        /// The bet team No Goal of Winning Margin.
+        /// </summary>
+        public const string NG = "ng";
     }
 }

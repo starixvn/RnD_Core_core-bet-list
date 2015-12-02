@@ -750,4 +750,7 @@
   <data name="ThereIsNoTicketDetailAvailable" xml:space="preserve">
     <value>無該註單資料</value>
   </data>
+  <data name="ThreeAndOver" xml:space="preserve">
+    <value>3或以上</value>
+  </data>
 </root>

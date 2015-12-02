@@ -750,4 +750,7 @@
   <data name="ZeroGoals" xml:space="preserve">
     <value>0球</value>
   </data>
+  <data name="ThreeAndOver" xml:space="preserve">
+    <value>3或以上</value>
+  </data>
 </root>

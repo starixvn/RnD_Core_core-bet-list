@@ -1636,6 +1636,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 3&amp;Over.
+        /// </summary>
+        public static string ThreeAndOver {
+            get {
+                return ResourceManager.GetString("ThreeAndOver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 3 Goals.
         /// </summary>
         public static string ThreeGoals {

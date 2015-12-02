@@ -157,6 +157,7 @@
     <Compile Include="Builder\ChoiceBuilder\Choice407Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice408Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice410Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice412Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice81Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice85Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice86Test.cs" />

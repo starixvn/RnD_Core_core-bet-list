@@ -764,4 +764,7 @@
   <data name="Up" xml:space="preserve">
     <value>UP</value>
   </data>
+  <data name="ThreeAndOver" xml:space="preserve">
+    <value>3&amp;Over</value>
+  </data>
 </root>
