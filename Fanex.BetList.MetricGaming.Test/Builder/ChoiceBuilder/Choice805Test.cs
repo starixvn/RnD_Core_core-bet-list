@@ -42,10 +42,11 @@
         {
             _ticket.TransDesc = "betchoice=9;BettypeTime=ASE,57;Time=xxx;SettledTime=xxx;GameResult=xxx;GameResultTimexxx";
             _ticketHelper.GetResourceData("SuperLive", "9").Returns("Over");
+            _ticketHelper.GetTeamNameById("ASE").Returns("BetTeam");
 
             _choice.Render(_ticket, _ticketHelper, null, false);
 
-            const string ExpectedBetTeam = "ASE Over 57%";
+            const string ExpectedBetTeam = "BetTeam Over 57%";
             Assert.AreEqual(ExpectedBetTeam, _choice.Template.betTeam);
         }
     }

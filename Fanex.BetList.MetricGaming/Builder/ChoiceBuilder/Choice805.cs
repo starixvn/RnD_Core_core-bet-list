@@ -18,8 +18,9 @@
 
             var betTeamName = ticketHelper.GetResourceData(GetResourceId(), GetBetChoice(ticket));
             var bettypeTimes = bettypeTime.Split(',');
+            var teamName = ticketHelper.GetTeamNameById(bettypeTimes[0]);
 
-            Template.betTeam = string.Format("{0} {1} {2}%", bettypeTimes[0], betTeamName, bettypeTimes[1]);
+            Template.betTeam = string.Format("{0} {1} {2}%", teamName, betTeamName, bettypeTimes[1]);
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
