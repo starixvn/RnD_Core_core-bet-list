@@ -680,4 +680,7 @@
   <data name="ThreeAndOver" xml:space="preserve">
     <value>3&amp;Over</value>
   </data>
+  <data name="SDraw" xml:space="preserve">
+    <value>S.Draw</value>
+  </data>
 </root>

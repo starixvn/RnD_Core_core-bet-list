@@ -753,4 +753,7 @@
   <data name="ThreeAndOver" xml:space="preserve">
     <value>3或以上</value>
   </data>
+  <data name="SDraw" xml:space="preserve">
+    <value>S.Draw</value>
+  </data>
 </root>

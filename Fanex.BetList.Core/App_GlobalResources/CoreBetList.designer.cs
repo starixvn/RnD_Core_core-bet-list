@@ -1474,6 +1474,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to S.Draw.
+        /// </summary>
+        public static string SDraw {
+            get {
+                return ResourceManager.GetString("SDraw", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to  sec.
         /// </summary>
         public static string sec {

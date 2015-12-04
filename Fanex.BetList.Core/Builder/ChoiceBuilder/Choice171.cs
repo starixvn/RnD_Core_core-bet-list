@@ -50,10 +50,6 @@
                 case BetTeamValue.A3:
                     betTeam = string.Format("{0} {1}", Template.Match.awayTeam, CoreBetList.ToWinByThreeUpGoals);
                     break;
-
-                case BetTeamValue.NG:
-                    betTeam = CoreBetList.nogoal;
-                    break;
             }
 
             Template.betTeam = betTeam;
