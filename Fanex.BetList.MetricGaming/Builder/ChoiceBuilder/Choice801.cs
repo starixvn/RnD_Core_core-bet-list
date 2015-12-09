@@ -24,7 +24,16 @@
 
         protected virtual string GetBetTypeTime(ITicket ticket)
         {
-            return GetTransDescElementByName(ticket, "bettypetime");
+            switch (ticket.Status.ToLower())
+            {
+                case BetStatus.Won:
+                case BetStatus.Lose:
+                case BetStatus.Draw:
+                    return GetTransDescElementByName(ticket, "bettypetime");
+
+                default:
+                    return string.Empty;
+            }
         }
 
         protected virtual string GetResourceId()
@@ -37,7 +46,7 @@
             Template.Score = null;
         }
 
-        private string GetTransDescElementByName(ITicket ticket, string name)
+        protected string GetTransDescElementByName(ITicket ticket, string name)
         {
             if (!string.IsNullOrWhiteSpace(ticket.TransDesc))
             {

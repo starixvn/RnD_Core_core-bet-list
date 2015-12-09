@@ -8,7 +8,7 @@
 
         protected override string GetBetTypeTime(ITicket ticket)
         {
-            var defaultBetTypeTime = base.GetBetTypeTime(ticket);
+            var defaultBetTypeTime = GetTransDescElementByName(ticket, "bettypetime");
 
             return string.Format("{0} {1}", AfterText, defaultBetTypeTime);
         }

@@ -42,15 +42,31 @@
             Assert.AreEqual(ExpectedBetTeamClassName, _choice.Template.betTeamClassName);
         }
 
-        [Test]
-        public void BuildBetTeamClassNameAndHandicap_WhenCalled_AlwaysSetHandicapIsBettypeTime()
+        [TestCase("won")]
+        [TestCase("lose")]
+        [TestCase("draw")]
+        public void BuildBetTeamClassNameAndHandicap_WonLoseDrawStatus_HandicapIsBettypeTime(string betStatus)
         {
             _ticket.TransDesc = "betchoice=xxx;BettypeTime=06:50-07:50;Time=xxx;SettledTime=xxx;GameResult=xxx;GameResultTimexxx";
+            _ticket.Status = betStatus;
 
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             const string ExpectedHandicap = "06:50-07:50";
             Assert.AreEqual(ExpectedHandicap, _choice.Template.Handicap.handicap);
+        }
+
+        [TestCase("running")]
+        [TestCase("aaaa")]
+        [TestCase("void")]
+        public void BuildBetTeamClassNameAndHandicap_OthersStatusExceptWonLoseDraw_HandicapIsEmpty(string betStatus)
+        {
+            _ticket.TransDesc = "betchoice=xxx;BettypeTime=06:50-07:50;Time=xxx;SettledTime=xxx;GameResult=xxx;GameResultTimexxx";
+            _ticket.Status = betStatus;
+
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            Assert.IsEmpty(_choice.Template.Handicap.handicap);
         }
     }
 }

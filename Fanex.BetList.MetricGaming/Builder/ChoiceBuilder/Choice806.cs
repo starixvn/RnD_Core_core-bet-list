@@ -3,7 +3,7 @@
     using System.Collections.Generic;
     using Fanex.BetList.Core.Entities;
 
-    public class Choice806 : Choice801
+    public class Choice806 : Choice804
     {
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
