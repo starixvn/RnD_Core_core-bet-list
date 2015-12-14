@@ -211,6 +211,16 @@ namespace Fanex.BetList.Example.MVC.Controllers
             return BetListView(model);
         }
 
+        public ActionResult RnGCasino(BetListData model = null)
+        {
+            DataSourcePath = "~/App_Data/RnGCasinoSingleWallet.xls";
+
+            ViewBag.BetTypes = new List<SelectListItem>();
+            model = GetDataSource(model, DataSourcePath);
+
+            return BetListView(model);
+        }
+
         private ViewResult BetListView(BetListData model)
         {
             return View("All", model);
@@ -272,7 +282,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
             var factory = new BetListExcelFactory();
             BetListExcelBuilder builder = factory.CreateBuilder();
             ITicketHelper ticketHelper = new TicketHelper();
-            const short excelColumns = 6;
+            const short excelColumns = 7;
             builder.BuildWorksheet("BetList", excelColumns);
             var index = 0;
 
@@ -293,6 +303,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
                            .AddUsername(ticket, ticketHelper)
                            .AddChoice(ticket, ticketHelper, _ticketData)
                            .AddOdds(ticket, _ticketData, funcGetOddsTypeName)
+                           .AddStatus(ticket, ticketHelper, _ticketData, true)
                            .AddStake(ticket);
                 }
 

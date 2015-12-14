@@ -313,6 +313,10 @@
       <Project>{a757a8fc-9989-4945-8319-74a02a2e7d2d}</Project>
       <Name>Fanex.BetList.MyanmarOdds</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.RnGCasino\Fanex.BetList.RnGCasino.csproj">
+      <Project>{9ea9fe4a-ac19-4ff5-908f-54a7831b41ee}</Project>
+      <Name>Fanex.BetList.RnGCasino</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\BetListDummyData.xls">
@@ -347,6 +351,7 @@
     <Content Include="App_Data\AGCasino.xls" />
     <Content Include="App_Data\PHAllInOne.xls" />
     <Content Include="App_Data\CockFighting.xls" />
+    <Content Include="App_Data\RnGCasinoSingleWallet.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />

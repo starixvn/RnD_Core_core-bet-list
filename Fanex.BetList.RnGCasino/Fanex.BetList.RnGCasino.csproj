@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9EA9FE4A-AC19-4FF5-908F-54A7831B41EE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Fanex.BetList.Core</RootNamespace>
+    <AssemblyName>Fanex.BetList.RnGCasino</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="TplCore, Version=1.0.4694.29951, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TplCore.1.0.4694.29951\lib\net40\TplCore.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Builder\ChoiceBuilder\Choice2101.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2102.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2103.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2104.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2105.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2106.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2107.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2108.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2109.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2110.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2111.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2112.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2113.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2114.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2115.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2116.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2117.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2118.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2119.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2120.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2121.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2122.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2123.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2124.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2125.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2126.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2127.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2128.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2129.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2130.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2131.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2132.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2133.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2134.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2135.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2136.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2137.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2138.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2139.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2140.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2141.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2142.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2143.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2144.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2145.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2146.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2147.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2148.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2149.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2150.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2151.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2152.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2153.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2154.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2155.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2156.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2157.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2158.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2159.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2160.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2161.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2162.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2163.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2164.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2165.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2166.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2167.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2168.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2169.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2170.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2171.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2172.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2173.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2174.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2175.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2176.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2177.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2201.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2202.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2203.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2204.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2205.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2206.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2301.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2302.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2303.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2304.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2305.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2306.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2102.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2103.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2104.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2105.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2106.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2107.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2108.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2109.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2110.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2111.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2112.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2113.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2114.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2115.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2116.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2117.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2118.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2119.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2120.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2202.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2206.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2121.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2122.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2123.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2124.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2125.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2126.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2127.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2128.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2129.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2130.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2131.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2132.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2133.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2134.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2135.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2136.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2137.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2138.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2139.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2140.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2141.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2142.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2143.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2144.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2145.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2146.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2147.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2148.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2149.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2150.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2151.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2152.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2153.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2154.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2155.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2156.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2157.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2158.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2159.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2160.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2161.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2162.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2163.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2164.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2165.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2166.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2167.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2168.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2169.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2170.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2171.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2172.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2173.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2174.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2175.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2176.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2177.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2201.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2204.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2101.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2205.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2203.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2301.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2302.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2303.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2304.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2305.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2306.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj">
+      <Project>{b0838d04-2306-4362-af22-9fcd0be6f8e7}</Project>
+      <Name>Fanex.BetList.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

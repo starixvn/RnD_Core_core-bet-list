@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_CodeAnalysis", "_CodeAnalysis", "{806E6B7B-8CAA-49B4-B5AB-145030E6B66A}"
 	ProjectSection(SolutionItems) = preProject
@@ -65,10 +65,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.AGCasino.Tests", "Fanex.BetList.AGCasino.Tests\Fanex.BetList.AGCasino.Tests.csproj", "{CCFDFB42-5C2C-4F2E-A417-C6A1E015275B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CockFighting", "CockFighting", "{BC87B3FF-A364-4EA9-9E89-29DA3B9D8D9C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RnGCasino", "RnGCasino", "{E76BB8BC-2D1D-4C2F-9C44-3898029F1D0E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.CockFighting", "Fanex.BetList.CockFighting\Fanex.BetList.CockFighting.csproj", "{5A3E7893-910A-48A7-9582-58A864068CA8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.RnGCasino", "Fanex.BetList.RnGCasino\Fanex.BetList.RnGCasino.csproj", "{9EA9FE4A-AC19-4FF5-908F-54A7831B41EE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.CockFighting.Tests", "Fanex.BetList.CockFighting.Tests\Fanex.BetList.CockFighting.Tests.csproj", "{EBA573AD-BD41-47A3-A3A9-171E88CDD564}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.RnGCasino.Tests", "Fanex.BetList.RnGCasino.Tests\Fanex.BetList.RnGCasino.Tests.csproj", "{876CB197-8526-46D7-8E91-3348BE81A404}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -290,6 +293,30 @@ Global
 		{EBA573AD-BD41-47A3-A3A9-171E88CDD564}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{EBA573AD-BD41-47A3-A3A9-171E88CDD564}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{EBA573AD-BD41-47A3-A3A9-171E88CDD564}.Release|x86.ActiveCfg = Release|Any CPU
+		{9EA9FE4A-AC19-4FF5-908F-54A7831B41EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EA9FE4A-AC19-4FF5-908F-54A7831B41EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EA9FE4A-AC19-4FF5-908F-54A7831B41EE}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9EA9FE4A-AC19-4FF5-908F-54A7831B41EE}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9EA9FE4A-AC19-4FF5-908F-54A7831B41EE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9EA9FE4A-AC19-4FF5-908F-54A7831B41EE}.Debug|x86.Build.0 = Debug|Any CPU
+		{9EA9FE4A-AC19-4FF5-908F-54A7831B41EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EA9FE4A-AC19-4FF5-908F-54A7831B41EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EA9FE4A-AC19-4FF5-908F-54A7831B41EE}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{9EA9FE4A-AC19-4FF5-908F-54A7831B41EE}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{9EA9FE4A-AC19-4FF5-908F-54A7831B41EE}.Release|x86.ActiveCfg = Release|Any CPU
+		{9EA9FE4A-AC19-4FF5-908F-54A7831B41EE}.Release|x86.Build.0 = Release|Any CPU
+		{876CB197-8526-46D7-8E91-3348BE81A404}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{876CB197-8526-46D7-8E91-3348BE81A404}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{876CB197-8526-46D7-8E91-3348BE81A404}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{876CB197-8526-46D7-8E91-3348BE81A404}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{876CB197-8526-46D7-8E91-3348BE81A404}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{876CB197-8526-46D7-8E91-3348BE81A404}.Debug|x86.Build.0 = Debug|Any CPU
+		{876CB197-8526-46D7-8E91-3348BE81A404}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{876CB197-8526-46D7-8E91-3348BE81A404}.Release|Any CPU.Build.0 = Release|Any CPU
+		{876CB197-8526-46D7-8E91-3348BE81A404}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{876CB197-8526-46D7-8E91-3348BE81A404}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{876CB197-8526-46D7-8E91-3348BE81A404}.Release|x86.ActiveCfg = Release|Any CPU
+		{876CB197-8526-46D7-8E91-3348BE81A404}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -313,6 +340,8 @@ Global
 		{CCFDFB42-5C2C-4F2E-A417-C6A1E015275B} = {43DCCF98-1905-4207-AC4D-D08335054A1A}
 		{5A3E7893-910A-48A7-9582-58A864068CA8} = {BC87B3FF-A364-4EA9-9E89-29DA3B9D8D9C}
 		{EBA573AD-BD41-47A3-A3A9-171E88CDD564} = {BC87B3FF-A364-4EA9-9E89-29DA3B9D8D9C}
+		{9EA9FE4A-AC19-4FF5-908F-54A7831B41EE} = {E76BB8BC-2D1D-4C2F-9C44-3898029F1D0E}
+		{876CB197-8526-46D7-8E91-3348BE81A404} = {E76BB8BC-2D1D-4C2F-9C44-3898029F1D0E}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Fanex2.vsmdi
