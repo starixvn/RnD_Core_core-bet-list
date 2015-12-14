@@ -151,7 +151,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
         public ActionResult CockFighting(BetListData model = null)
         {
-            var betTypes = _dataService.QueryBetTypes(1003);
+            var betTypes = _dataService.QueryBetTypes(1, 1003);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             DataSourcePath = "~/App_Data/CockFighting.xls";

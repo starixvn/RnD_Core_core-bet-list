@@ -78,7 +78,7 @@
             base.BuildLeague(ticket, ticketHelper);
 
             var arenaName = ticketHelper.GetLeagueNameById(ticket.BetCheck);
-            var fightNo = string.Format(CockFightingLang.FightNo, ticket.MatchCode);
+            var fightNo = string.Format(CockFightingLang.FightNo, ticket.MatchId);
 
             Template.League.LeagueName.leagueName = string.Format("{0} {1}", arenaName, fightNo);
         }

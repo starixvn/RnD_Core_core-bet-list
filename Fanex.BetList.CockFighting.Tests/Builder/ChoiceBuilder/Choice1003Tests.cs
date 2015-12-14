@@ -112,9 +112,9 @@
         }
 
         [Test]
-        public void BuildLeague_FromMatchCode_ReturnArenaNameWithFightNo()
+        public void BuildLeague_FromMatchId_ReturnArenaNameWithFightNo()
         {
-            _ticket.MatchCode = "12121";
+            _ticket.MatchId = 12121;
             _ticketHelper.GetLeagueNameById(Arg.Any<string>()).Returns("Arena1");
 
             var actualArenaNameAndFightNo = _choice.Render(_ticket, _ticketHelper, null, false).League.LeagueName.leagueName;
