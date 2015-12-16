@@ -432,7 +432,7 @@
 
         protected bool IsBetHomeTeam(ITicket ticket)
         {
-            bool betHomeTeam = ticket.BetTeam != null && ticket.BetTeam.Contains(BetTeamValue.H);
+            bool betHomeTeam = ticket.BetTeam != null && ticket.BetTeam.ToLowerInvariant().Contains(BetTeamValue.H);
 
             return betHomeTeam;
         }
