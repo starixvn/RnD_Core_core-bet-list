@@ -7,7 +7,7 @@
     <ProjectGuid>{5A3E7893-910A-48A7-9582-58A864068CA8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Fanex.BetList.CockFighting</RootNamespace>
+    <RootNamespace>Fanex.BetList.Core</RootNamespace>
     <AssemblyName>Fanex.BetList.CockFighting</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -47,6 +47,7 @@
     <Compile Include="Builder\ChoiceBuilder\Choice1003.cs" />
     <Compile Include="Builder\OddsBuilder\Odds1003.cs" />
     <Compile Include="Builder\StatusBuilder\Status1003.cs" />
+    <Compile Include="Builder\TransBuilder\Trans1003.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\CockFightingLang.Designer.cs">
@@ -80,6 +81,7 @@
   <ItemGroup>
     <Content Include="Content\CockFighting.css" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -2,7 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-    using Fanex.BetList.CockFighting.Resources;
+    using Fanex.BetList.Core.Resources;
     using Fanex.BetList.Core.Entities;
 
     public class Choice1003 : Choice1

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Fanex.BetList.CockFighting.Resources {
+namespace Fanex.BetList.Core.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Fanex.BetList.CockFighting.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Fanex.BetList.CockFighting.Resources.CockFightingLang", typeof(CockFightingLang).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Fanex.BetList.Core.Resources.CockFightingLang", typeof(CockFightingLang).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
