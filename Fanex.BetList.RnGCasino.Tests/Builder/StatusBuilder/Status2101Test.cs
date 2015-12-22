@@ -49,6 +49,20 @@
         }
 
         [Test]
+        public void BuildStatusResult_BetCheckIsNotEmpty_RefNoIsStringOfBetCheck()
+        {
+            // Arrange
+            _ticket.BetCheck = "Player History Number";
+
+            // Act
+            Status_Template statusTemplate = _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            var expectedRefNo = "'Player History Number'";
+            Assert.AreEqual(expectedRefNo, statusTemplate.StatusResult.refNo);
+        }
+
+        [Test]
         public void BuildResultLRF_Always_ContainStatusOnly()
         {
             // Act
@@ -100,8 +114,24 @@
             Status_Template statusTemplate = _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            var expectedMarkup = "<div class=\"result\" onclick=\"ViewResult(0, 0, 0, 0, 0, '', '12/21/2015 12:00:00 AM', 0, 0, 0, 0);\">Running</div>";
+            var expectedMarkup = "<div class=\"result\" onclick=\"ViewResult(0, 0, 0, 0, 'Player History Number', '', '12/21/2015 12:00:00 AM', 0, 0, 0, 0);\">Running</div>";
             Assert.AreEqual(expectedMarkup, statusTemplate.result);
+        }
+
+        [Test]
+        public void BuildResult_BetCheckIsNotEmptyAndResultIsRunning_ResultContainsBetCheck()
+        {
+            // Arrange
+            _ticket.BetCheck = "Player History Number";
+            _ticket.Status = "running";
+            _ticket.WinlostDate = new DateTime(2015, 12, 21);
+
+            // Act
+            Status_Template statusTemplate = _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            var containingBetCheck = statusTemplate.result.Contains("Player History Number");
+            Assert.IsTrue(containingBetCheck);
         }
 
         private RTFHelper CreateRTFHelperStub()

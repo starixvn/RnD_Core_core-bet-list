@@ -17,6 +17,8 @@
             else
             {
                 base.BuildStatusResult(ticket);
+                Template.StatusResult.refNo = "'" + ticket.BetCheck + "'";
+
             }
         }
 
@@ -63,7 +65,9 @@
                         ", ",
                         ticket.SportTypeId.ToString(CultureInfo.InvariantCulture),
                         ", ",
-                        ticket.TransId.ToString(CultureInfo.InvariantCulture),
+                        "'",
+                        ticket.BetCheck ?? string.Empty,
+                        "'",
                         ", ",
                         "'",
                         ticket.UserName ?? string.Empty,
@@ -75,10 +79,7 @@
                         ", ",
                         "0, ",
                         ticket.LeagueId.ToString(CultureInfo.InvariantCulture),
-                        ", ",
-                        "0, ",
-                        (ticket.BetId ?? 0).ToString(CultureInfo.InvariantCulture),
-                        ");\">",
+                        ", 0, 0);\">",
                         status,
                         "</div>"
                     };
