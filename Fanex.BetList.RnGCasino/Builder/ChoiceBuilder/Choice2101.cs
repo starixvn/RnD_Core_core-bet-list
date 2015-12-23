@@ -79,7 +79,7 @@
         {
             string[] detailsFunctionDivCompositions = new string[]
             {
-                "<div class=\"detail\" onclick='showRnGCasinoDetails(",
+                "<div class=\"detail rng-casino-detail\" onclick='showRnGCasinoDetails(",
                 ticket.TransId.ToString(CultureInfo.InvariantCulture),
                 ", ",
                 ticket.StatusId.HasValue ? ticket.StatusId.ToString() : "null",
