@@ -24,6 +24,7 @@
         public void Render_MemberChoiceIsFTD_OddsIs1_88()
         {
             _ticket.TransDesc = "Betchoice=4;CockOwne1r=ABC,b";
+            _ticket.Odds = 88;
 
             var oddTemplate = _odds.Render(_ticket, null, GetCachePropertyByIdStub);
 
@@ -34,6 +35,7 @@
         public void Render_MemberChoiceIsBDD_OddsIs1_8()
         {
             _ticket.TransDesc = "Betchoice=3;CockOwne1r=ABC,b";
+            _ticket.Odds = 8;
 
             var oddTemplate = _odds.Render(_ticket, null, GetCachePropertyByIdStub);
 
