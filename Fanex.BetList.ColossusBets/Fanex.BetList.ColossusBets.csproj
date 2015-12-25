@@ -59,13 +59,16 @@
     <Compile Include="Builder\ChoiceBuilder\Choice18003.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice18002.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice18001.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice18006.cs" />
     <Compile Include="Builder\StatusBuilder\Status18000.cs" />
+    <Compile Include="Builder\StatusBuilder\Status18006.cs" />
     <Compile Include="Builder\StatusBuilder\Status18005.cs" />
     <Compile Include="Builder\StatusBuilder\Status18004.cs" />
     <Compile Include="Builder\StatusBuilder\Status18003.cs" />
     <Compile Include="Builder\StatusBuilder\Status18002.cs" />
     <Compile Include="Builder\StatusBuilder\Status18001.cs" />
     <Compile Include="Builder\TransBuilder\Trans18000.cs" />
+    <Compile Include="Builder\TransBuilder\Trans18006.cs" />
     <Compile Include="Builder\TransBuilder\Trans18005.cs" />
     <Compile Include="Builder\TransBuilder\Trans18004.cs" />
     <Compile Include="Builder\TransBuilder\Trans18003.cs" />

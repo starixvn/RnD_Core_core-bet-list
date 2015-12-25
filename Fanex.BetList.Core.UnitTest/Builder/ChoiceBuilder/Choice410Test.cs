@@ -10,10 +10,10 @@
     [TestFixture]
     public class Choice410Test
     {
+        private const string BetTeamTemplate = " <span class=\"favorite\">{0}</span>&nbsp;{1} <span class=\"favorite\">&nbsp;{2}</span>";
         private ITicket _ticket;
         private IChoice _choice;
         private ITicketHelper _ticketHelper;
-        private const string BetTeamTemplate = " <span class=\"favorite\">{0}</span>&nbsp;{1} <span class=\"favorite\">&nbsp;{2}</span>";
 
         [SetUp]
         public void SetUp()
