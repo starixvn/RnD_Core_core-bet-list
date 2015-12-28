@@ -39,7 +39,7 @@
             string expected = "<div class=\"combinationLink\">" +
                                     "<span class=\"main-ticket\">Colossus Bets</span>" +
                                 "</div>" +
-                                "<div class=\"detail\" " +
+                                "<div class=\"detail colossus-bets-details\" " +
                                 "onclick=\'showColossusBetsDetails(&quot;300&quot;,&quot;1/1/2014 12:00:00 PM&quot;,&quot;200&quot;,&quot;10000&quot;,&quot;BetCheck&quot;);'>" +
                                 "<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">Details</a></div>";
 

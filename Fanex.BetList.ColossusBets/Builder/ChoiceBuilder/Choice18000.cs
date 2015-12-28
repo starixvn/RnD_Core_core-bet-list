@@ -66,7 +66,7 @@
 
             string[] detailsFunctionDivCompositions = new string[]
                                             {
-                                                "<div class=\"detail\" onclick='",
+                                                "<div class=\"detail colossus-bets-details\" onclick='",
                                                 detailsFunction,
                                                 "'>",
                                                 "<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">",
