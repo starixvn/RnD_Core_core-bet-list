@@ -1,5 +1,7 @@
 ﻿namespace Fanex.BetList.RnGCasino.Tests.Builder.ChoiceBuilder
 {
+    using System;
+    using System.Globalization;
     using Core.Builder.ChoiceBuilder;
     using Core.Entities;
     using Core.Templates;
@@ -220,15 +222,16 @@
         public void BuildLeague_BetCheckIsEmpty_DetailLinkContainsCustIdTransIdStatus()
         {
             // Arrange
-            _ticket.CustId = 123;
-            _ticket.TransId = 456;
-            _ticket.StatusId = 1;
+            var winLostDate = DateTime.Now;
+            _ticket.TransId = 123;
+            _ticket.CustId = 456;
+            _ticket.WinlostDate = winLostDate;
 
             // Act
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedJsFunction = "showRnGCasinoDetails(123, 456, 1);";
+            string expectedJsFunction = string.Format("showRnGCasinoDetails(123, '{0}', 456, 0);", winLostDate.ToString(CultureInfo.InvariantCulture));
             bool containingExpectedJsFunction = choiceTemplate.League.ToString().Contains(expectedJsFunction);
             Assert.IsTrue(containingExpectedJsFunction);
         }

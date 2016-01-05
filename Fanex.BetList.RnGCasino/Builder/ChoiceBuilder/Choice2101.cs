@@ -1,5 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using System;
     using System.Collections.Generic;
     using System.Globalization;
     using App_GlobalResources;
@@ -79,13 +80,17 @@
         {
             string[] detailsFunctionDivCompositions = new string[]
             {
-                "<div class=\"detail rng-casino-detail\" onclick='showRnGCasinoDetails(",
-                ticket.CustId.ToString(CultureInfo.InvariantCulture),
-                ", ",
+                "<div class=\"detail rng-casino-detail\" onclick=\"showRnGCasinoDetails(",
                 ticket.TransId.ToString(CultureInfo.InvariantCulture),
                 ", ",
-                ticket.StatusId.HasValue ? ticket.StatusId.ToString() : "null",
-                ");'>",
+                "'",
+                ticket.WinlostDate.ToString(CultureInfo.InvariantCulture),
+                "'",
+                ", ",
+                ticket.CustId.ToString(CultureInfo.InvariantCulture),
+                ", ",
+                GetTransactionType(ticket),
+                ");\">",
                 "<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void('');\">",
                 CoreBetList.details,
                 "</a>",
@@ -97,6 +102,37 @@
             detailtTemplateBlock.SetValue(detailLinkMarkup);
 
             return detailtTemplateBlock;
+        }
+
+        private string GetTransactionType(ITicket ticket)
+        {
+            // @TransType
+            // + 0 : All (DRAW/WON/LOSE/Reject/Void/Refund/Running/Waiting)
+            // + 1 : DRAW/WON/LOSE/Refund
+            // + 2 : Reject/Void
+            // + 3 : Running/Waiting
+            // Use this because web server and db are in the same timezone
+            if (ticket.WinlostDate.Date >= DateTime.Today)
+            {
+                switch (ticket.Status.ToLower())
+                {
+                    case BetStatus.Won:
+                    case BetStatus.Lose:
+                    case BetStatus.Draw:
+                    case BetStatus.Refund:
+                        return "1";
+
+                    case BetStatus.Reject:
+                    case BetStatus.Void:
+                        return "2";
+
+                    case BetStatus.Running:
+                    case BetStatus.Waiting:
+                        return "3";
+                }
+            }
+
+            return "0"; // Yesterday Ticket
         }
     }
 }
