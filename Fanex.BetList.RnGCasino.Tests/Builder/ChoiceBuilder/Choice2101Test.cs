@@ -195,9 +195,7 @@
         public void BuildLeague_BetCheckIsNotEmpty_NotContainDetailLink()
         {
             // Arrange
-            _ticket.TransDesc = "1";
             _ticket.BetCheck = "Player History Number";
-            _ticketHelper.GetResourceData("RNG_Casino_GG", "1").Returns("Baccarat");
 
             // Act
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -210,16 +208,29 @@
         [Test]
         public void BuildLeague_BetCheckIsEmpty_ContainDetailLink()
         {
-            // Arrange
-            _ticket.TransDesc = "1";
-            _ticketHelper.GetResourceData("RNG_Casino_GG", "1").Returns("Baccarat");
-
             // Act
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
             bool containingDetailsLink = choiceTemplate.League.ToString().Contains("Details");
             Assert.IsTrue(containingDetailsLink);
+        }
+
+        [Test]
+        public void BuildLeague_BetCheckIsEmpty_DetailLinkContainsCustIdTransIdStatus()
+        {
+            // Arrange
+            _ticket.CustId = 123;
+            _ticket.TransId = 456;
+            _ticket.StatusId = 1;
+
+            // Act
+            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            string expectedJsFunction = "showRnGCasinoDetails(123, 456, 1);";
+            bool containingExpectedJsFunction = choiceTemplate.League.ToString().Contains(expectedJsFunction);
+            Assert.IsTrue(containingExpectedJsFunction);
         }
 
         private RTFHelper CreateRTFHelperStub()

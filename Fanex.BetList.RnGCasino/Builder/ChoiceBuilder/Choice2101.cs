@@ -80,6 +80,8 @@
             string[] detailsFunctionDivCompositions = new string[]
             {
                 "<div class=\"detail rng-casino-detail\" onclick='showRnGCasinoDetails(",
+                ticket.CustId.ToString(CultureInfo.InvariantCulture),
+                ", ",
                 ticket.TransId.ToString(CultureInfo.InvariantCulture),
                 ", ",
                 ticket.StatusId.HasValue ? ticket.StatusId.ToString() : "null",
