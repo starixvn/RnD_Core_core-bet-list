@@ -309,6 +309,8 @@
     <Compile Include="Builder\ChoiceBuilder\Choice413.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice414.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice5.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice500.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice501.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice6.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice7.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice71.cs" />
@@ -403,6 +405,7 @@
     <Compile Include="Builder\StakeBuilder\IStake.cs" />
     <Compile Include="Builder\StakeBuilder\Stake1.cs" />
     <Compile Include="Builder\StakeBuilder\Stake29.cs" />
+    <Compile Include="Builder\StakeBuilder\Stake500.cs" />
     <Compile Include="Builder\StatusBuilder\3rd\Status_22006.cs" />
     <Compile Include="Builder\StatusBuilder\IStatus.cs" />
     <Compile Include="Builder\StatusBuilder\Status1.cs" />
@@ -449,6 +452,7 @@
     <Compile Include="Builder\StatusBuilder\Status31.cs" />
     <Compile Include="Builder\StatusBuilder\Status32.cs" />
     <Compile Include="Builder\StatusBuilder\Status33.cs" />
+    <Compile Include="Builder\StatusBuilder\Status500.cs" />
     <Compile Include="Builder\StatusBuilder\Status71.cs" />
     <Compile Include="Builder\StatusBuilder\Status73.cs" />
     <Compile Include="Builder\StatusBuilder\Status9.cs" />

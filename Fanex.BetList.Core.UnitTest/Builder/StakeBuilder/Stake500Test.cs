@@ -6,7 +6,7 @@
     using NSubstitute;
 
     [TestFixture]
-    public class Stake500Tests
+    public class Stake500Test
     {
         private Stake500 _stake;
         private ITicket _ticket;
@@ -19,15 +19,19 @@
             _ticket.Stake = 1000;
         }
 
-        [Test]
-        public void BuildStake_Always_StakeIsDashSymbol()
+        [TestCase(1000.0)]
+        [TestCase(0)]
+        public void BuildStake_Always_StakeIsDashSymbol(decimal stake)
         {
+            ////Arrange
+            _ticket.Stake = stake;
+
             ////Act
             var template = _stake.Render(_ticket);
 
             ////Assert
-            var stake = template.stake;
-            Assert.AreEqual("-", stake);
+            var actualStake = template.stake;
+            Assert.AreEqual("-", actualStake);
         }
     }
 }

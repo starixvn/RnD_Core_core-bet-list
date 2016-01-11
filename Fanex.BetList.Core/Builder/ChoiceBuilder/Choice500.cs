@@ -8,23 +8,6 @@
     /// </summary>
     public class Choice500 : Choice1
     {
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-        {
-            BuildBetTeam(ticket, ticketHelper, ticketData);
-
-            BuildBetTeamClassNameAndHandicap(ticket);
-
-            BuildScore(ticket);
-
-            BuildBetType(ticket, ticketHelper, ticketData);
-
-            BuildMatch(ticket, ticketHelper);
-
-            BuildSport(ticket, ticketHelper);
-
-            BuildLeague(ticket, ticketHelper);
-        }
-
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             Template.betTeam = string.Empty;
