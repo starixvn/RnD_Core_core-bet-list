@@ -149,17 +149,6 @@ namespace Fanex.BetList.Example.MVC.Controllers
             return BetListView(model);
         }
 
-        public ActionResult IndianCricket(BetListData model = null)
-        {
-            var betTypes = _dataService.QueryBetTypes(500, 501);
-
-            ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/IndianCricket.xls";
-            model = GetDataSource(model, sourcePath: DataSourcePath);
-
-            return BetListView(model);
-        }
-
         public ActionResult CockFighting(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(1, 1003);
