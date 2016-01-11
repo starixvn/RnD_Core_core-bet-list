@@ -1,7 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using Fanex.BetList.Core.Entities;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Match Winner.

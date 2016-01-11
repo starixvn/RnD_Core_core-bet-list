@@ -1,7 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System.Collections.Generic;
     using Fanex.BetList.Core.Entities;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Charge Commission.
