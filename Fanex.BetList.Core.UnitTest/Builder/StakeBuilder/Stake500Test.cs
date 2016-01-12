@@ -2,8 +2,8 @@
 {
     using Fanex.BetList.Core.Builder.StakeBuilder;
     using Fanex.BetList.Core.Entities;
-    using NUnit.Framework;
     using NSubstitute;
+    using NUnit.Framework;
 
     [TestFixture]
     public class Stake500Test

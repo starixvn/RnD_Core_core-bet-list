@@ -37,7 +37,7 @@
         }
 
         [Test]
-        public void Render_Always_OddsStyleIsEmpty()
+        public void Render_Always_OddsTypeIsEmpty()
         {
             ////Act
             var template = _odds.Render(_ticket, null, null);
