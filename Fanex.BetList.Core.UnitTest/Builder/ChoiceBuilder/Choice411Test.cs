@@ -10,7 +10,7 @@
     ///  Unit test for Choice161.
     /// </summary>
     [TestFixture]
-    public class Choice191Test
+    public class Choice411Test
     {
         private IChoice _choice;
         private ITicket _ticket;
@@ -19,9 +19,9 @@
         [SetUp]
         public void Setup()
         {
-            _choice = new Choice161();
+            _choice = new Choice411();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes._3rd1HDrawNoBet;
+            _ticket.BetTypeId = BetTypes._1HDrawNoBet;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
@@ -29,7 +29,7 @@
         public void BuildBetType_Always_ShowParentBetTypeName()
         {
             // Arrange.
-            var parentBetTypeId = BetTypes._1HDrawNoBet.ToString();
+            var parentBetTypeId = BetTypes._3rd1HDrawNoBet.ToString();
             var parentBetTypeName = "Parent Bet Type";
             _ticketHelper.GetParentIdByBetTypeId(Arg.Any<object>()).Returns(parentBetTypeId);
             _ticketHelper.GetBetTypeNameById(parentBetTypeId).Returns(parentBetTypeName);

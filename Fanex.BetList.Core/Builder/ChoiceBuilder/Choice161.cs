@@ -7,7 +7,6 @@
 
     /// <summary>
     /// Bet Radar: Exact Home Team Goals.
-    /// Its parent bet type is Exact Home Team Goals - bet type ID 407 of Pool House All In One.
     /// </summary>
     public class Choice161 : Choice1
     {
@@ -47,13 +46,6 @@
         {
             Template.Handicap.handicap = null;
             Template.betTeamClassName = Favorite;
-        }
-
-        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-        {
-            var parentBetTypeId = ticketHelper.GetParentIdByBetTypeId(ticket.BetTypeId);
-
-            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(parentBetTypeId);
         }
     }
 }

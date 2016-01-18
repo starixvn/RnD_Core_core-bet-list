@@ -74,21 +74,5 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             string expected = string.Format(BetTeamTemplate, homeTeamName, CoreBetList.lblOr, awayTeamName);
             Assert.AreEqual(expected, _choice.Template.betTeam);
         }
-
-        [Test]
-        public void BuildBetType_Always_ShowParentBetTypeName()
-        {
-            // Arrange.
-            var parentBetTypeId = BetTypes._1stHalfDoubleChance.ToString();
-            var parentBetTypeName = "Parent Bet Type";
-            _ticketHelper.GetParentIdByBetTypeId(Arg.Any<object>()).Returns(parentBetTypeId);
-            _ticketHelper.GetBetTypeNameById(parentBetTypeId).Returns(parentBetTypeName);
-
-            // Act
-            _choice.Render(_ticket, _ticketHelper, null, false);
-
-            // Assert
-            Assert.AreEqual(parentBetTypeName, _choice.Template.BetType.betTypeName);
-        }
     }
 }

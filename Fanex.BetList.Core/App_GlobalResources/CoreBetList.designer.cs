@@ -439,6 +439,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Excluding.
+        /// </summary>
+        public static string Excluding {
+            get {
+                return ResourceManager.GetString("Excluding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Extra Time.
         /// </summary>
         public static string ExtraTime {

@@ -81,21 +81,5 @@
             const string CSS_CLASS_FAVORITE = "favorite";
             Assert.AreEqual(CSS_CLASS_FAVORITE, _choice.Template.betTeamClassName);
         }
-
-        [Test]
-        public void BuildBetType_Always_ShowParentBetTypeName()
-        {
-            // Arrange.
-            var parentBetTypeId = BetTypes.ExactHomeTeamGoals.ToString();
-            var parentBetTypeName = "Parent Bet Type";
-            _ticketHelper.GetParentIdByBetTypeId(Arg.Any<object>()).Returns(parentBetTypeId);
-            _ticketHelper.GetBetTypeNameById(parentBetTypeId).Returns(parentBetTypeName);
-
-            // Act
-            _choice.Render(_ticket, _ticketHelper, null, false);
-
-            // Assert
-            Assert.AreEqual(parentBetTypeName, _choice.Template.BetType.betTypeName);
-        }
     }
 }

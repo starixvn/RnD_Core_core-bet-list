@@ -7,6 +7,7 @@
 
     /// <summary>
     /// Pool House All In One: Winning Margin.
+    /// Its parent bet type is Winning Margin - bet type ID 171 of Bet Radar.
     /// </summary>
     public class Choice408 : Choice1
     {
@@ -62,6 +63,13 @@
         {
             Template.Handicap.handicap = null;
             Template.betTeamClassName = Favorite;
+        }
+
+        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {
+            var parentBetTypeId = ticketHelper.GetParentIdByBetTypeId(ticket.BetTypeId);
+
+            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(parentBetTypeId);
         }
     }
 }

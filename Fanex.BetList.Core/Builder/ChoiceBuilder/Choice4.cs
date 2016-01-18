@@ -18,10 +18,6 @@
             {
                 choice += " " + CoreBetList.Up;
             }
-            else if (BetTeamValue.AOS == choice.ToLowerInvariant())
-            {
-                choice = CoreBetList.AOS;
-            }
 
             // "&nbsp" because export format
             Template.betTeam = HtmlCharacters.NoneBreakingSpace + choice;

@@ -5,9 +5,6 @@
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    /// Unit test for Choice30 class.
-    /// </summary>
     [TestFixture]
     public class Choice405Test
     {
@@ -18,7 +15,7 @@
         [SetUp]
         public void Setup()
         {
-            _choice = new Choice30();
+            _choice = new Choice405();
             _ticket = Substitute.For<ITicket>();
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
@@ -37,8 +34,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedBetTeam = string.Format("&nbsp;AOS", _ticket.BetTeam);
-            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
+            Assert.AreEqual("&nbsp;AOS", _choice.Template.betTeam);
         }
 
         /// <summary>

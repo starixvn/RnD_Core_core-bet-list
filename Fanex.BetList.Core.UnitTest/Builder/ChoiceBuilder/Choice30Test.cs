@@ -60,24 +60,6 @@
         }
 
         /// <summary>
-        /// The value of Template.betTeam is AOS when ticket.BetTeam is AOS or aos.
-        /// </summary>
-        [TestCase("AOS")]
-        [TestCase("aos")]
-        public void BuildBetTeam_BetTeamIsAOS_BetTeamIsAOS(string betTeam)
-        {
-            // Arrange
-            _ticket.BetTeam = betTeam;
-
-            // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-
-            // Assert
-            string expectedBetTeam = string.Format("&nbsp;AOS", _ticket.BetTeam);
-            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
-        }
-
-        /// <summary>
         /// The value of Template.betTeam is always bet team.
         /// </summary>
         [Test]
