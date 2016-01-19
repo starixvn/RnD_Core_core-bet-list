@@ -1,26 +1,21 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using App_GlobalResources;
-    using Constants;
     using Entities;
 
     /// <summary>
-    /// 1H Correct score.
+    /// 2H Correct score.
     /// </summary>
-    public class Choice405 : Choice4
+    public class Choice405 : Choice413
     {
-        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            string choice = ticket.BetTeam;
-
-            if (BetTeamValue.AOS == choice.ToLowerInvariant())
+            if (Template.BetType == null)
             {
-                choice = CoreBetList.AOS;
+                return;
             }
 
-            // "&nbsp" because export format
-            Template.betTeam = HtmlCharacters.NoneBreakingSpace + choice;
+            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
         }
     }
 }

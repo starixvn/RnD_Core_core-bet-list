@@ -872,5 +872,10 @@ namespace Fanex.BetList.Core.UnitTest.Common.Enums
         /// 3rd 1H Draw No Bet = 191.
         /// </summary>
         public const int _3rd1HDrawNoBet = 191;
+
+        /// <summary>
+        /// 2H Correct Score, Bet type ID = 405
+        /// </summary>
+        public const int _2HCorrectScore = 405;
     }
 }
