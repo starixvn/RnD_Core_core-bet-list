@@ -135,7 +135,7 @@
 
         private string BuildBetTypeName(ITicket ticket, ITicketHelper ticketHelper)
         {
-            var betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetId);
+            var betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
 
             return string.Format("{0}{1}{2}", OpenBetTypeNameTag, betTypeName, CloseBetTypeNameTag);
         }
