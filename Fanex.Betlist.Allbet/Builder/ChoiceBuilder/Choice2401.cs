@@ -3,9 +3,9 @@
     using System;
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
+    using System.Collections.Generic;
     using Fanex.BetList.Core.Templates;
     using System.Text;
-    using System.Collections.Generic;
 
     public class Choice2401 : Choice1101
     {
@@ -134,6 +134,5 @@
 
             return string.Format("{0}{1}{2}", OpenBetTypeNameTag, betTypeName, CloseBetTypeNameTag);
         }
-
     }
 }
