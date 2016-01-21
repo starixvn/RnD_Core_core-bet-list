@@ -3,7 +3,6 @@
     using System;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Utils;
     using NSubstitute;
     using NUnit.Framework;
 
