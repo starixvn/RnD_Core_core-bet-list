@@ -1,9 +1,8 @@
-﻿
-namespace Fanex.BetList.Core.Builder.StatusBuilder
+﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
     using Fanex.BetList.Core.Entities;
 
-    class Status2401 : Status1
+    public class Status2401 : Status1
     {
         protected override void BuildStatusResult(ITicket ticket)
         {
@@ -12,6 +11,12 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
             if (string.IsNullOrEmpty(ticket.TransDesc))
             {
                 Template.StatusResult.Hide();
+            }
+            else
+            {
+                var externalLink = string.Format("{0},'{1}',{2}", ticket.BetId ?? 0, ticket.BetCheck, ticket.CustId);
+
+                Template.StatusResult.betId = externalLink;
             }
         }
     }
