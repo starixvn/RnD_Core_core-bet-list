@@ -15,8 +15,8 @@
         private const string OpenBetIdTag = "<span class='allbet-bet-id'>";
         private const string CloseBetIdTag = "</span>";
 
-        private const string OpenGameIdTag = "<span class='allbet-game-id'>";
-        private const string CloseGameIdTag = "</span>";
+        private const string OpenBetTypeIdTag = "<span class='allbet-game-id'>";
+        private const string CloseBetTypeIdTag = "</span>";
 
         private const string AllBetRefId = "AllBet_BT";
         private const string BetChoiceDataKey = "CHOICE";
@@ -91,7 +91,7 @@
             }
             else
             {
-                Template.League.LeagueName.leagueName += string.Format("{0}{1}{2}", OpenGameIdTag, ticket.BetTypeId, CloseGameIdTag);
+                Template.League.LeagueName.leagueName += string.Format("{0}{1}{2}", OpenBetTypeIdTag, ticket.BetTypeId, CloseBetTypeIdTag);
             }
         }
 
