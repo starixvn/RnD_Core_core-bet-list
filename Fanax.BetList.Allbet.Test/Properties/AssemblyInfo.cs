@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Fanex.BetList.Allbet.Tests")]
+[assembly: AssemblyTitle("Fanax.BetList.Allbet.Test")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("Fanex.BetList.Allbet.Tests")]
+[assembly: AssemblyProduct("Fanax.BetList.Allbet.Test")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("ce516a7a-8629-4b64-a8a9-602d890f2486")]
+[assembly: Guid("77c46185-e216-4fe6-854c-e0a4ce10fff4")]
 
 // Version information for an assembly consists of the following four values:
 //

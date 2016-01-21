@@ -44,6 +44,29 @@
             Assert.IsEmpty(_choice.Template.betTeam);
         }
 
+        [Test]
+        public void BuildBetType_TransDecsIsEmpty_ReturnEmpty()
+        {
+            _ticket.TransDesc = string.Empty;
+
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            Assert.IsNullOrEmpty(_choice.Template.BetType.betTypeName);
+        }
+
+        [Test]
+        public void BuildBetType_TransDecsIsNotEmpty_ReturnBetId()
+        {
+            _ticket.TransDesc = "Transdesc";
+            _ticket.BetId = 123;
+
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            var betIdMarkup = string.Format("<span class='allbet-bet-id'>{0}</span>", "BetID: " + 123);
+
+            Assert.AreEqual(betIdMarkup, _choice.Template.BetType.betTypeName);
+        }
+
         [TestCase(0)]
         [TestCase(1)]
         public void BuildLeague_ForTodaySummaryTicket_ReturnDetailLinkHtml(int statusId)
