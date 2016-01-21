@@ -41,7 +41,7 @@
 
             _choice.Render(_ticket, _ticketHelper, null, false);
 
-            Assert.IsEmpty(_choice.Template.betTeam);
+            Assert.IsNullOrEmpty(_choice.Template.betTeam);
         }
 
         [Test]
@@ -107,6 +107,17 @@
                 ticket.TransId,
                 ticket.StatusId,
                 ticket.TransDate);
+        }
+
+        [Test]
+        public void BuildLeague_ForLeagueName_ReturnBetTypeName()
+        {
+            _ticket.BetTypeId = 2401;
+            _ticketHelper.GetBetTypeNameById(2401).Returns("Baccarat");
+
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            Assert.IsTrue(_choice.Template.League.LeagueName.leagueName.Contains("Baccarat"));
         }
     }
 }
