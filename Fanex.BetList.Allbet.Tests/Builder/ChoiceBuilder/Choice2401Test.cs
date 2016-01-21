@@ -7,7 +7,7 @@
     using NUnit.Framework;
 
     [TestFixture]
-    class Choice2401Test
+    public class Choice2401Test
     {
         private IChoice _choice;
         private ITicket _ticket;
@@ -73,7 +73,6 @@
 
             Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedTemplate));
         }
-
 
         private string BuildExpectedTemplateDetailLinkHtml(ITicket ticket)
         {
