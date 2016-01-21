@@ -12,8 +12,8 @@
         private const string OpenBetTypeNameTag = "<span class='allbet-bet-type-name'>";
         private const string CloseBetTypeNameTag = "</span>";
 
-        private const string OpenBetTypeIdTag = "<span class='allbet-bet-type-id'>";
-        private const string CloseBetTypeIdTag = "</span>";
+        private const string OpenBetIdTag = "<span class='allbet-bet-id'>";
+        private const string CloseBetIdTag = "</span>";
 
         private const string OpenGameIdTag = "<span class='allbet-game-id'>";
         private const string CloseGameIdTag = "</span>";
@@ -72,8 +72,13 @@
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            string betTypeId = "BetID: " + ticket.BetTypeId;
-            Template.BetType.betTypeName = string.Format("{0}{1}{2}", OpenBetTypeIdTag, betTypeId, CloseBetTypeIdTag);
+            Template.BetType.betTypeName = string.Empty;
+
+            if (!string.IsNullOrEmpty(ticket.TransDesc))
+            {
+                string betId = "BetID: " + ticket.BetId;
+                Template.BetType.betTypeName = string.Format("{0}{1}{2}", OpenBetIdTag, betId, CloseBetIdTag);
+            }
         }
 
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
