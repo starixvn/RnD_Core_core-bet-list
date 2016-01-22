@@ -1,12 +1,12 @@
 ﻿namespace Fanex.BetList.Allbet.Tests.Builder.ChoiceBuilder
 {
-    using System;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Entities;
-    using Core.Utils;
+    using Fanex.BetList.Core.Utils;
+    using NPOI.HSSF.UserModel;
     using NSubstitute;
     using NUnit.Framework;
-    using NPOI.HSSF.UserModel;
+    using System;
 
     [TestFixture]
     public class Choice2401Test
@@ -166,6 +166,5 @@
 
             Assert.IsFalse(_choice.Template.BetType.betTypeName.Contains("</span>"));
         }
-
     }
 }
