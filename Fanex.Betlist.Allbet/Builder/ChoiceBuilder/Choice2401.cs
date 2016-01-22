@@ -124,16 +124,44 @@
             StringBuilder detailFunctionBuilder = new StringBuilder();
 
             detailFunctionBuilder.Append("showTodayRunningBetsDetails(&quot;")
-                .Append(ticket.TransId)
+                .Append(ticket.TransId.ToString())
                 .Append("&quot;")
                 .Append(",&quot;")
-                .Append(ticket.StatusId)
+                .Append(ticket.WinlostDate.ToString())
                 .Append("&quot;")
                 .Append(",&quot;")
-                .Append(ticket.TransDate)
+                .Append(ticket.CustId.ToString())
+                .Append("&quot;")
+                .Append(",&quot;")
+                .Append(GetTransactionType(ticket))
                 .Append("&quot;);");
 
             return detailFunctionBuilder.ToString();
+        }
+
+        private string GetTransactionType(ITicket ticket)
+        {
+            if (ticket.WinlostDate.Date >= DateTime.Today)
+            {
+                switch (ticket.Status.ToLower())
+                {
+                    case BetStatus.Won:
+                    case BetStatus.Lose:
+                    case BetStatus.Draw:
+                    case BetStatus.Refund:
+                        return "1";
+
+                    case BetStatus.Reject:
+                    case BetStatus.Void:
+                        return "2";
+
+                    case BetStatus.Running:
+                    case BetStatus.Waiting:
+                        return "3";
+                }
+            }
+
+            return "0";
         }
 
         private string BuildBetTypeName(ITicket ticket, ITicketHelper ticketHelper)
