@@ -15,9 +15,6 @@
         private const string OpenBetIdTag = "<span class='allbet-bet-id'>";
         private const string CloseBetIdTag = "</span>";
 
-        private const string OpenBetTypeIdTag = "<span class='allbet-game-id'>";
-        private const string CloseBetTypeIdTag = "</span>";
-
         private const string AllBetRefId = "AllBet_BT";
         private const string BetChoiceDataKey = "CHOICE";
 
@@ -97,7 +94,7 @@
             }
             else
             {
-                Template.League.LeagueName.leagueName += string.Format("{0}{1}{2}", OpenBetTypeIdTag, ticket.BetTypeId, CloseBetTypeIdTag);
+                Template.League.LeagueName.leagueName += " " + ticket.BetTypeId;
             }
         }
 
@@ -144,6 +141,26 @@
             var betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
 
             return string.Format("{0}{1}{2}", OpenBetTypeNameTag, betTypeName, CloseBetTypeNameTag);
+        }
+
+        protected override void AdjustBetTeamToRTF()
+        {
+            RemoveHtmlTagFromLeagueName();
+            RemoveHtmlTagFromBetTypeName();
+        }
+
+        private void RemoveHtmlTagFromLeagueName()
+        {
+            Template.League.LeagueName.leagueName = Template.League.LeagueName.leagueName
+               .Replace(OpenBetTypeNameTag, string.Empty)
+               .Replace(CloseBetTypeNameTag, string.Empty);
+        }
+
+        private void RemoveHtmlTagFromBetTypeName()
+        {
+            Template.BetType.betTypeName = Template.BetType.betTypeName
+                .Replace(OpenBetIdTag, string.Empty)
+                .Replace(CloseBetIdTag, string.Empty);
         }
     }
 }
