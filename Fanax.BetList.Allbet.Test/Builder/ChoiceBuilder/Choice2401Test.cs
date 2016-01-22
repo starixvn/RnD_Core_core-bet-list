@@ -69,18 +69,25 @@
             Assert.AreEqual(betIdMarkup, _choice.Template.BetType.betTypeName);
         }
 
-        [TestCase(0)]
-        [TestCase(1)]
-        public void BuildLeague_ForTodaySummaryTicket_ReturnDetailLinkHtml(int statusId)
+        [TestCase("WON", "1")]
+        [TestCase("LOSE", "1")]
+        [TestCase("DRAW", "1")]
+        [TestCase("REFUND", "1")]
+        [TestCase("REJECT", "2")]
+        [TestCase("VOID", "2")]
+        [TestCase("RUNNING", "3")]
+        [TestCase("WAITING", "3")]
+        public void BuildLeague_ForTodaySummaryTicket_ReturnDetailLinkHtml(string ticketStatus, string transactionType)
         {
             _ticket.TransDesc = string.Empty;
             _ticket.TransId = 1;
-            _ticket.TransDate = DateTime.Today;
-            _ticket.StatusId = statusId;
+            _ticket.WinlostDate = DateTime.Today;
+            _ticket.Status = ticketStatus;
+            _ticket.CustId = 1000;
 
             _choice.Render(_ticket, _ticketHelper, null, false);
 
-            string expectedTemplate = BuildExpectedTemplateDetailLinkHtml(_ticket);
+            string expectedTemplate = BuildExpectedTemplateDetailLinkHtml(_ticket, transactionType);
 
             Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedTemplate));
         }
@@ -90,25 +97,27 @@
         {
             _ticket.TransDesc = string.Empty;
             _ticket.TransId = 1;
-            _ticket.TransDate = DateTime.Today.AddDays(-1);
+            _ticket.WinlostDate = DateTime.Today.AddDays(-1);
+            _ticket.CustId = 1000;
 
             _choice.Render(_ticket, _ticketHelper, null, false);
 
-            string expectedTemplate = BuildExpectedTemplateDetailLinkHtml(_ticket);
+            string expectedTemplate = BuildExpectedTemplateDetailLinkHtml(_ticket, "0");
 
             Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedTemplate));
         }
 
-        private string BuildExpectedTemplateDetailLinkHtml(ITicket ticket)
+        private string BuildExpectedTemplateDetailLinkHtml(ITicket ticket, string transactionType)
         {
             return string.Format(
                 "<div class=\"detail\"" +
-                " onclick='showTodayRunningBetsDetails(&quot;{0}&quot;,&quot;{1}&quot;,&quot;{2}&quot;);'>" +
+                " onclick='showTodayRunningBetsDetails(&quot;{0}&quot;,&quot;{1}&quot;,&quot;{2}&quot;,&quot;{3}&quot;);'>" +
                 "<a style=\"color:#755200;font-weight:bold\"" +
                 " href=\"javascript:void(&quot;&quot;);\">Details</a></div>",
-                ticket.TransId,
-                ticket.StatusId,
-                ticket.TransDate);
+                ticket.TransId.ToString(),
+                ticket.WinlostDate.ToString(),
+                ticket.CustId.ToString(),
+                transactionType);
         }
 
         [Test]
