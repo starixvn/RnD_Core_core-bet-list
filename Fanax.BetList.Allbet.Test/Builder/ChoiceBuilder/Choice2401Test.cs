@@ -3,8 +3,10 @@
     using System;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Entities;
+    using Core.Utils;
     using NSubstitute;
     using NUnit.Framework;
+    using NPOI.HSSF.UserModel;
 
     [TestFixture]
     public class Choice2401Test
@@ -119,5 +121,51 @@
 
             Assert.IsTrue(_choice.Template.League.LeagueName.leagueName.Contains("Baccarat"));
         }
+
+        [TestCase("")]
+        [TestCase("Trandesc")]
+        public void RenderRTF_ForLeagueName_RemoveHtmlTag(string trandesc)
+        {
+            _ticket.TransDesc = trandesc;
+
+            var workbook = new HSSFWorkbook();
+            var rtfHelper = new RTFHelper()
+            {
+                NegFont = workbook.CreateFont(),
+                NormalFont = workbook.CreateFont(),
+                PosFont = workbook.CreateFont(),
+                NegFontCrossed = workbook.CreateFont(),
+                NormalFontCrossed = workbook.CreateFont(),
+                PosFontCrossed = workbook.CreateFont(),
+                RTFRenderer = new RtfTextRender()
+            };
+
+            _choice.RenderRTF(_ticket, _ticketHelper, null, false, rtfHelper);
+
+            Assert.IsFalse(_choice.Template.League.LeagueName.leagueName.Contains("</span>"));
+        }
+
+        [Test]
+        public void RenderRTF_ForBetTypeNameOfDetailTicket_RemoveHtmlTag()
+        {
+            _ticket.TransDesc = "transdesc";
+
+            var workbook = new HSSFWorkbook();
+            var rtfHelper = new RTFHelper()
+            {
+                NegFont = workbook.CreateFont(),
+                NormalFont = workbook.CreateFont(),
+                PosFont = workbook.CreateFont(),
+                NegFontCrossed = workbook.CreateFont(),
+                NormalFontCrossed = workbook.CreateFont(),
+                PosFontCrossed = workbook.CreateFont(),
+                RTFRenderer = new RtfTextRender()
+            };
+
+            _choice.RenderRTF(_ticket, _ticketHelper, null, false, rtfHelper);
+
+            Assert.IsFalse(_choice.Template.BetType.betTypeName.Contains("</span>"));
+        }
+
     }
 }
