@@ -756,4 +756,7 @@
   <data name="SDraw" xml:space="preserve">
     <value>S.Draw</value>
   </data>
+  <data name="Excluding" xml:space="preserve">
+    <value>不包括</value>
+  </data>
 </root>
