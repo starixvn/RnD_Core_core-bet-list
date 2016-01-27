@@ -492,7 +492,7 @@
         /// <param name="ticket">The ticket.</param>
         /// <param name="rtfHelper">The RTF helper.</param>
         /// <param name="isMixParlay">If set to <c>true</c> [is mix parlay].</param>
-        private void BuildBetFigure(ITicket ticket, ref RTFHelper rtfHelper, bool isMixParlay)
+        protected virtual void BuildBetFigure(ITicket ticket, ref RTFHelper rtfHelper, bool isMixParlay)
         {
             string choice = Template.betTeam;
 
@@ -522,7 +522,7 @@
         /// Builds the name of the bet type.
         /// </summary>
         /// <param name="rtfHelper">The RTF helper.</param>
-        private void BuildBetTypeName(ref RTFHelper rtfHelper)
+        protected virtual void BuildBetTypeName(ref RTFHelper rtfHelper)
         {
             var choice = string.Empty;
 
@@ -539,7 +539,7 @@
         /// <param name="ticket">The ticket.</param>
         /// <param name="rtfHelper">The RTF helper.</param>
         [SuppressMessage("StyleCop.CSharp.Nexcel.NexcelCustomRules", "SP2101:MethodMustNotContainMoreLinesThan", Justification = "Reviewed. Suppression is OK here.")]
-        private void BuildBetTeamsInfo(ITicket ticket, ref RTFHelper rtfHelper)
+        protected virtual void BuildBetTeamsInfo(ITicket ticket, ref RTFHelper rtfHelper)
         {
             if (Template.Match != null)
             {
@@ -607,7 +607,7 @@
         /// Builds the match information.
         /// </summary>
         /// <param name="rtfHelper">The RTF helper.</param>
-        private void BuildMatchInfo(ref RTFHelper rtfHelper)
+        protected virtual void BuildMatchInfo(ref RTFHelper rtfHelper)
         {
             if (Template.League != null)
             {
