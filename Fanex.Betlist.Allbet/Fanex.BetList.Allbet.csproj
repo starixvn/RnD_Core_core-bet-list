@@ -51,8 +51,18 @@
     <Compile Include="Builder\ChoiceBuilder\Choice2405.cs" />
     <Compile Include="Builder\StatusBuilder\Status2401.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource\AllbetLang.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AllbetLang.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Resource\AllbetLang.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AllbetLang.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj">
       <Project>{b0838d04-2306-4362-af22-9fcd0be6f8e7}</Project>
