@@ -157,6 +157,7 @@
   <ItemGroup>
     <Content Include="CodeAnalysis\CodeAnalysisConfiguration.xml" />
     <Content Include="Content\AGCasino.css" />
+    <Content Include="Content\Allbet.css" />
     <Content Include="Content\BetListExt.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -250,7 +251,9 @@
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -272,6 +275,10 @@
     <ProjectReference Include="..\Fanex.BetList.AGCasino\Fanex.BetList.AGCasino.csproj">
       <Project>{c18e1369-66c3-4a87-82bf-10e13e6cc2a0}</Project>
       <Name>Fanex.BetList.AGCasino</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fanex.Betlist.Allbet\Fanex.BetList.Allbet.csproj">
+      <Project>{ebf46368-f937-49df-b24d-bac01ed3a947}</Project>
+      <Name>Fanex.BetList.Allbet</Name>
     </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.BetTrade\Fanex.BetList.BetTrade.csproj">
       <Project>{386bf8aa-7ee2-46bb-aecc-6cd829671881}</Project>
@@ -352,10 +359,12 @@
     <Content Include="App_Data\PHAllInOne.xls" />
     <Content Include="App_Data\CockFighting.xls" />
     <Content Include="App_Data\RnGCasinoSingleWallet.xls" />
+    <Content Include="App_Data\Allbet.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
+    <None Include="Properties\PublishProfiles\LocalHarisson.pubxml" />
     <None Include="Scripts\jquery-1.9.0.min.map" />
     <Content Include="Views\BetList\All.cshtml" />
     <Content Include="Views\BetList\ColosussBetsDetails.cshtml" />
