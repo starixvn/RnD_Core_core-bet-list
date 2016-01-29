@@ -7,7 +7,6 @@
     using NSubstitute;
     using NUnit.Framework;
 
-
     [TestFixture]
     public class Choice2401Test
     {
@@ -26,11 +25,12 @@
         [Test]
         public void BuildBetTeam_TransDecsHasDataOfBetChoice_ReturnBetChoiceName()
         {
+            ////Arrange
             var choiceName = "Player";
             _ticket.TransDesc = "choice=1001*comms=1*tableCode=B001*result=P;S6;H2:B;D10;D5 *results=B;8:P;5";
-
             _ticketHelper.GetResourceData("AllBet_BT", "1001").Returns(choiceName);
 
+            ////Act
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             Assert.AreEqual(choiceName, _choice.Template.betTeam);
@@ -39,33 +39,41 @@
         [Test]
         public void BuildBetTeam_TransDecsDoesNotHasDataOfBetChoice_ReturnEmpty()
         {
+            ////Arrange
             _ticket.TransDesc = "comms=1*tableCode=B001*result=P;S6;H2:B;D10;D5 *results=B;8:P;5";
 
+            ////Act
             _choice.Render(_ticket, _ticketHelper, null, false);
 
+            ////Assert
             Assert.IsNullOrEmpty(_choice.Template.betTeam);
         }
 
         [Test]
         public void BuildBetType_TransDecsIsEmpty_ReturnEmpty()
         {
+            ////Arrange
             _ticket.TransDesc = string.Empty;
 
+            ////Act
             _choice.Render(_ticket, _ticketHelper, null, false);
 
+            ////Assert
             Assert.IsNullOrEmpty(_choice.Template.BetType.betTypeName);
         }
 
         [Test]
         public void BuildBetType_TransDecsIsNotEmpty_ReturnBetId()
         {
+            ////Arrange
             _ticket.TransDesc = "Transdesc";
             _ticket.BetId = 123;
 
+            ////Act
             _choice.Render(_ticket, _ticketHelper, null, false);
 
+            ////Assert
             var betIdMarkup = string.Format("<span class='allbet-bet-id'>{0}</span>", "BetID: " + 123);
-
             Assert.AreEqual(betIdMarkup, _choice.Template.BetType.betTypeName);
         }
 
@@ -79,17 +87,17 @@
         [TestCase("WAITING", "3")]
         public void BuildLeague_ForTodaySummaryTicket_ReturnDetailLinkHtml(string ticketStatus, string transactionType)
         {
-            //Arrange
+            ////Arrange
             _ticket.TransDesc = string.Empty;
             _ticket.TransId = 1;
             _ticket.WinlostDate = DateTime.Today;
             _ticket.Status = ticketStatus;
             _ticket.CustId = 1000;
 
-            //Act
+            ////Act
             _choice.Render(_ticket, _ticketHelper, null, false);
 
-            //Assert
+            ////Assert
             string expectedTemplate = BuildExpectedTemplateDetailLinkHtml(_ticket, transactionType);
             Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedTemplate));
         }
@@ -97,16 +105,16 @@
         [Test]
         public void BuildLeague_ForYesterdaySummaryTicket_ReturnDetailLinkHtml()
         {
-            //Arrange
+            ////Arrange
             _ticket.TransDesc = string.Empty;
             _ticket.TransId = 1;
             _ticket.WinlostDate = DateTime.Today.AddDays(-1);
             _ticket.CustId = 1000;
 
-            //Act
+            ////Act
             _choice.Render(_ticket, _ticketHelper, null, false);
 
-            //Assert
+            ////Assert
             string expectedTemplate = BuildExpectedTemplateDetailLinkHtml(_ticket, "0");
             Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedTemplate));
         }
@@ -127,14 +135,14 @@
         [Test]
         public void BuildLeague_ForLeagueName_ReturnBetTypeName()
         {
-            //Arrange
+            ////Arrange
             _ticket.BetTypeId = 2401;
             _ticketHelper.GetBetTypeNameById(2401).Returns("Baccarat");
 
-            //Act
+            ////Act
             _choice.Render(_ticket, _ticketHelper, null, false);
 
-            //Assert
+            ////Assert
             Assert.IsTrue(_choice.Template.League.LeagueName.leagueName.Contains("Baccarat"));
         }
 
@@ -142,30 +150,30 @@
         [TestCase("Trandesc")]
         public void RenderRTF_ForLeagueName_RemoveHtmlTag(string trandesc)
         {
-            //Arrange
+            ////Arrange
             _ticket.TransDesc = trandesc;
             var workbook = new HSSFWorkbook();
             var rtfHelper = new RTFHelper().Clone();
 
-            //Act
+            ////Act
             _choice.RenderRTF(_ticket, _ticketHelper, null, false, rtfHelper);
 
-            //Assert
+            ////Assert
             Assert.IsFalse(_choice.Template.League.LeagueName.leagueName.Contains("</span>"));
         }
 
         [Test]
         public void RenderRTF_ForBetTypeNameOfDetailTicket_RemoveHtmlTag()
         {
-            //Arrange
+            ////Arrange
             _ticket.TransDesc = "transdesc";
             var workbook = new HSSFWorkbook();
             var rtfHelper = new RTFHelper().Clone();
 
-            //Act
+            ////Act
             _choice.RenderRTF(_ticket, _ticketHelper, null, false, rtfHelper);
 
-            //Assert
+            ////Assert
             Assert.IsFalse(_choice.Template.BetType.betTypeName.Contains("</span>"));
         }
     }
