@@ -75,7 +75,7 @@
 
             if (!string.IsNullOrEmpty(ticket.TransDesc))
             {
-                string betId = string.Format(AllbetLang.BetID, ticket.BetId);
+                string betId = AllbetLang.BetID + ": " + ticket.BetId;
                 Template.BetType.betTypeName = string.Format("{0}{1}{2}", OpenBetIdTag, betId, CloseBetIdTag);
             }
         }

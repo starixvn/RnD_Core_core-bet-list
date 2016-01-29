@@ -61,7 +61,7 @@ namespace Fanex.BetList.Core.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to BetID: {0}.
+        ///   Looks up a localized string similar to BetID.
         /// </summary>
         internal static string BetID {
             get {
