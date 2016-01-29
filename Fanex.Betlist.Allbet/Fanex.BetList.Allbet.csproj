@@ -50,6 +50,10 @@
     <Compile Include="Builder\ChoiceBuilder\Choice2404.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice2405.cs" />
     <Compile Include="Builder\StatusBuilder\Status2401.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2402.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2403.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2404.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2405.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource\AllbetLang.Designer.cs">
       <AutoGen>True</AutoGen>
