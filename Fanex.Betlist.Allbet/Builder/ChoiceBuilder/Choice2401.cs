@@ -1,11 +1,12 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System;
+    using System.Collections.Generic;
+    using System.Text;
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
-    using System.Collections.Generic;
     using Fanex.BetList.Core.Templates;
-    using System.Text;
+    using Resource;
 
     public class Choice2401 : Choice1101
     {
@@ -34,15 +35,10 @@
 
             if (transDecsParsed.ContainsKey(BetChoiceDataKey))
             {
-                return GetBetChoiceName(ticketHelper, ticket.BetTypeId, transDecsParsed);
+                return ticketHelper.GetResourceData(AllBetRefId, transDecsParsed[BetChoiceDataKey]);
             }
 
             return string.Empty;
-        }
-
-        protected virtual string GetBetChoiceName(ITicketHelper ticketHelper, int betTypeId, Dictionary<string, string> transDecsParsed)
-        {
-            return ticketHelper.GetResourceData(AllBetRefId, transDecsParsed[BetChoiceDataKey]);
         }
 
         private Dictionary<string, string> DeserializeTransDesc(string transDesc)
@@ -79,7 +75,7 @@
 
             if (!string.IsNullOrEmpty(ticket.TransDesc))
             {
-                string betId = "BetID: " + ticket.BetId;
+                string betId = String.Format(AllbetLang.BetID, ticket.BetId);
                 Template.BetType.betTypeName = string.Format("{0}{1}{2}", OpenBetIdTag, betId, CloseBetIdTag);
             }
         }
