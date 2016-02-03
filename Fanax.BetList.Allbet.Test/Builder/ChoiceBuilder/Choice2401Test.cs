@@ -67,13 +67,13 @@
         {
             ////Arrange
             _ticket.TransDesc = "Transdesc";
-            _ticket.BetId = 123;
+            _ticket.BetCheck = "123";
 
             ////Act
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            var betIdMarkup = string.Format("<span class='allbet-bet-id'>{0}</span>", "BetID: " + 123);
+            var betIdMarkup = string.Format("<span class='allbet-bet-id'>{0}</span>", "BetID: " + "123");
             Assert.AreEqual(betIdMarkup, _choice.Template.BetType.betTypeName);
         }
 

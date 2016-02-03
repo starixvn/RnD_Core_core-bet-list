@@ -75,7 +75,7 @@
 
             if (!string.IsNullOrEmpty(ticket.TransDesc))
             {
-                string betId = AllbetLang.BetID + ": " + ticket.BetId;
+                string betId = AllbetLang.BetID + ": " + ticket.BetCheck;
                 Template.BetType.betTypeName = string.Format("{0}{1}{2}", OpenBetIdTag, betId, CloseBetIdTag);
             }
         }
@@ -90,7 +90,7 @@
             }
             else
             {
-                Template.League.LeagueName.leagueName += " " + ticket.BetTypeId;
+                Template.League.LeagueName.leagueName += " " + ticket.MatchCode;
             }
         }
 
