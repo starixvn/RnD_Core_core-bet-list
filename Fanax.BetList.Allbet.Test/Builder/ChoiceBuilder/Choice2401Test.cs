@@ -102,13 +102,38 @@
             Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedTemplate));
         }
 
-        [Test]
-        public void BuildLeague_ForYesterdaySummaryTicket_ReturnDetailLinkHtml()
+        [TestCase("WON", "1")]
+        [TestCase("LOSE", "1")]
+        [TestCase("DRAW", "1")]
+        [TestCase("REFUND", "1")]
+        [TestCase("REJECT", "2")]
+        [TestCase("VOID", "2")]
+        [TestCase("RUNNING", "3")]
+        [TestCase("WAITING", "3")]
+        public void BuildLeague_ForYesterdaySummaryTicket_ReturnDetailLinkHtml(string ticketStatus, string transactionType)
         {
             ////Arrange
             _ticket.TransDesc = string.Empty;
             _ticket.TransId = 1;
             _ticket.WinlostDate = DateTime.Today.AddDays(-1);
+            _ticket.Status = ticketStatus;
+            _ticket.CustId = 1000;
+
+            ////Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            ////Assert
+            string expectedTemplate = BuildExpectedTemplateDetailLinkHtml(_ticket, transactionType);
+            Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedTemplate));
+        }
+
+        [Test]
+        public void BuildLeague_ForPreviousDaysSummaryTicket_ReturnDetailLinkHtml()
+        {
+            ////Arrange
+            _ticket.TransDesc = string.Empty;
+            _ticket.TransId = 1;
+            _ticket.WinlostDate = DateTime.Today.AddDays(-2);
             _ticket.CustId = 1000;
 
             ////Act
@@ -122,7 +147,7 @@
         private string BuildExpectedTemplateDetailLinkHtml(ITicket ticket, string transactionType)
         {
             return string.Format(
-                "<div class=\"detail\"" +
+                "<div class=\"detail allbet-casino-detail\"" +
                 " onclick='showTodayRunningBetsDetails(&quot;{0}&quot;,&quot;{1}&quot;,&quot;{2}&quot;,&quot;{3}&quot;);'>" +
                 "<a style=\"color:#755200;font-weight:bold\"" +
                 " href=\"javascript:void(&quot;&quot;);\">Details</a></div>",
