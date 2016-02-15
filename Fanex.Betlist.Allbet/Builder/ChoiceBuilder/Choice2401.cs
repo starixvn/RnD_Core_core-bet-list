@@ -137,7 +137,7 @@
 
         private string GetTransactionType(ITicket ticket)
         {
-            if (ticket.WinlostDate.Date >= DateTime.Today)
+            if (ticket.WinlostDate.Date >= DateTime.Today.AddDays(-1))
             {
                 switch (ticket.Status.ToLower())
                 {
