@@ -100,7 +100,7 @@
             string detailFunction = BuildDetailFunction(ticket);
 
             detailLinkMarkupBuilder
-                .Append("<div class=\"detail\" onclick='")
+                .Append("<div class=\"detail allbet-casino-detail\" onclick='")
                 .Append(detailFunction)
                 .Append("'>")
                 .Append("<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">")
