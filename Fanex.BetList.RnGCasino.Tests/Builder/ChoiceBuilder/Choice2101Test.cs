@@ -246,20 +246,21 @@
         [TestCase("WAITING", "3")]
         public void BuildLeague_MainTicketWinLostDateIsToDay_DetailLinkJsFunction(string ticketStatus, string transctionType)
         {
-            //Arrange
+            ////Arrange
             _ticket.BetCheck = string.Empty;
             _ticket.TransId = 123;
             _ticket.CustId = 456;
             _ticket.Status = ticketStatus;
             _ticket.WinlostDate = DateTime.Today;
 
-            //Act
+            ////Act
             _choice.Render(_ticket, _ticketHelper, null, false);
 
-            //Assert
-            string expectedJsFunction = string.Format("showRnGCasinoDetails(123, '{0}', 456, {1});"
-                , _ticket.WinlostDate.ToString(CultureInfo.InvariantCulture)
-                , transctionType);
+            ////Assert
+            string expectedJsFunction = string.Format(
+                "showRnGCasinoDetails(123, '{0}', 456, {1});",
+                _ticket.WinlostDate.ToString(CultureInfo.InvariantCulture),
+                transctionType);
             Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedJsFunction));
         }
 
@@ -273,39 +274,41 @@
         [TestCase("WAITING", "3")]
         public void BuildLeague_MainTicketWinLostDateIsYesterday_DetailLinkJsFunction(string ticketStatus, string transctionType)
         {
-            //Arrange
+            ////Arrange
             _ticket.BetCheck = string.Empty;
             _ticket.TransId = 123;
             _ticket.CustId = 456;
             _ticket.Status = ticketStatus;
             _ticket.WinlostDate = DateTime.Today.AddDays(-1);
 
-            //Act
+            ////Act
             _choice.Render(_ticket, _ticketHelper, null, false);
 
-            //Assert
-            string expectedJsFunction = string.Format("showRnGCasinoDetails(123, '{0}', 456, {1});"
-                , _ticket.WinlostDate.ToString(CultureInfo.InvariantCulture)
-                , transctionType);
+            ////Assert
+            string expectedJsFunction = string.Format(
+                "showRnGCasinoDetails(123, '{0}', 456, {1});",
+                _ticket.WinlostDate.ToString(CultureInfo.InvariantCulture),
+                transctionType);
             Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedJsFunction));
         }
 
         [Test]
         public void BuildLeague_MainTicketWinLostDateIsPreviousDays_DetailLinkJsFunction()
         {
-            //Arrange
+            ////Arrange
             _ticket.BetCheck = string.Empty;
             _ticket.TransId = 123;
             _ticket.CustId = 456;
             _ticket.Status = "RUNNING";
             _ticket.WinlostDate = DateTime.Today.AddDays(-2);
 
-            //Act
+            ////Act
             _choice.Render(_ticket, _ticketHelper, null, false);
 
-            //Assert
-            string expectedJsFunction = string.Format("showRnGCasinoDetails(123, '{0}', 456, 0);"
-                , _ticket.WinlostDate.ToString(CultureInfo.InvariantCulture));
+            ////Assert
+            string expectedJsFunction = string.Format(
+                "showRnGCasinoDetails(123, '{0}', 456, 0);",
+                _ticket.WinlostDate.ToString(CultureInfo.InvariantCulture));
             Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedJsFunction));
         }
 

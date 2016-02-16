@@ -18,7 +18,6 @@
             {
                 base.BuildStatusResult(ticket);
                 Template.StatusResult.refNo = "'" + ticket.BetCheck + "'";
-
             }
         }
 
