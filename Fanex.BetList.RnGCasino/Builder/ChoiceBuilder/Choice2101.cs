@@ -112,7 +112,7 @@
             // + 2 : Reject/Void
             // + 3 : Running/Waiting
             // Use this because web server and db are in the same timezone
-            if (ticket.WinlostDate.Date >= DateTime.Today)
+            if (ticket.WinlostDate.Date >= DateTime.Today.AddDays(-1))
             {
                 switch (ticket.Status.ToLower())
                 {
@@ -132,7 +132,7 @@
                 }
             }
 
-            return "0"; // Yesterday Ticket
+            return "0"; // Previous days Ticket
         }
     }
 }

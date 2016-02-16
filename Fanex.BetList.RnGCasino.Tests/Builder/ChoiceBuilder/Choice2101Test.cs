@@ -236,6 +236,79 @@
             Assert.IsTrue(containingExpectedJsFunction);
         }
 
+        [TestCase("WON", "1")]
+        [TestCase("LOSE", "1")]
+        [TestCase("DRAW", "1")]
+        [TestCase("REFUND", "1")]
+        [TestCase("REJECT", "2")]
+        [TestCase("VOID", "2")]
+        [TestCase("RUNNING", "3")]
+        [TestCase("WAITING", "3")]
+        public void BuildLeague_MainTicketWinLostDateIsToDay_DetailLinkJsFunction(string ticketStatus, string transctionType)
+        {
+            //Arrange
+            _ticket.BetCheck = string.Empty;
+            _ticket.TransId = 123;
+            _ticket.CustId = 456;
+            _ticket.Status = ticketStatus;
+            _ticket.WinlostDate = DateTime.Today;
+
+            //Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            //Assert
+            string expectedJsFunction = string.Format("showRnGCasinoDetails(123, '{0}', 456, {1});"
+                , _ticket.WinlostDate.ToString(CultureInfo.InvariantCulture)
+                , transctionType);
+            Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedJsFunction));
+        }
+
+        [TestCase("WON", "1")]
+        [TestCase("LOSE", "1")]
+        [TestCase("DRAW", "1")]
+        [TestCase("REFUND", "1")]
+        [TestCase("REJECT", "2")]
+        [TestCase("VOID", "2")]
+        [TestCase("RUNNING", "3")]
+        [TestCase("WAITING", "3")]
+        public void BuildLeague_MainTicketWinLostDateIsYesterday_DetailLinkJsFunction(string ticketStatus, string transctionType)
+        {
+            //Arrange
+            _ticket.BetCheck = string.Empty;
+            _ticket.TransId = 123;
+            _ticket.CustId = 456;
+            _ticket.Status = ticketStatus;
+            _ticket.WinlostDate = DateTime.Today.AddDays(-1);
+
+            //Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            //Assert
+            string expectedJsFunction = string.Format("showRnGCasinoDetails(123, '{0}', 456, {1});"
+                , _ticket.WinlostDate.ToString(CultureInfo.InvariantCulture)
+                , transctionType);
+            Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedJsFunction));
+        }
+
+        [Test]
+        public void BuildLeague_MainTicketWinLostDateIsPreviousDays_DetailLinkJsFunction()
+        {
+            //Arrange
+            _ticket.BetCheck = string.Empty;
+            _ticket.TransId = 123;
+            _ticket.CustId = 456;
+            _ticket.Status = "RUNNING";
+            _ticket.WinlostDate = DateTime.Today.AddDays(-2);
+
+            //Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            //Assert
+            string expectedJsFunction = string.Format("showRnGCasinoDetails(123, '{0}', 456, 0);"
+                , _ticket.WinlostDate.ToString(CultureInfo.InvariantCulture));
+            Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedJsFunction));
+        }
+
         private RTFHelper CreateRTFHelperStub()
         {
             var workbook = new HSSFWorkbook();
