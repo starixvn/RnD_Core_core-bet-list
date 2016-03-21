@@ -16,6 +16,9 @@
         private const string OpenBetIdTag = "<span class='allbet-bet-id'>";
         private const string CloseBetIdTag = "</span>";
 
+        private const string OpenGameIdTag = "<span class='allbet-game-id'>";
+        private const string CloseGameIdTag = "</span>";
+
         private const string AllBetRefId = "AllBet_BT";
         private const string BetChoiceDataKey = "CHOICE";
 
@@ -90,7 +93,7 @@
             }
             else
             {
-                Template.League.LeagueName.leagueName += " " + ticket.MatchCode;
+                Template.League.LeagueName.leagueName += " " + BuildGameId(ticket);
             }
         }
 
@@ -167,6 +170,12 @@
             return string.Format("{0}{1}{2}", OpenBetTypeNameTag, betTypeName, CloseBetTypeNameTag);
         }
 
+        private string BuildGameId(ITicket ticket) {
+            var gameId = ticket.MatchCode;
+
+            return string.Format("{0}{1}{2}", OpenGameIdTag, gameId, CloseGameIdTag);
+        }
+
         protected override void AdjustBetTeamToRTF()
         {
             RemoveHtmlTagFromLeagueName();
@@ -177,7 +186,9 @@
         {
             Template.League.LeagueName.leagueName = Template.League.LeagueName.leagueName
                .Replace(OpenBetTypeNameTag, string.Empty)
-               .Replace(CloseBetTypeNameTag, string.Empty);
+               .Replace(CloseBetTypeNameTag, string.Empty)
+               .Replace(OpenGameIdTag, string.Empty)
+               .Replace(CloseGameIdTag, string.Empty);
         }
 
         private void RemoveHtmlTagFromBetTypeName()
