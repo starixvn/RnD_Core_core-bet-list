@@ -24,8 +24,8 @@
         [TestCase("0", "No Goal")]
         [TestCase("1", "1 Goal")]
         [TestCase("2", "2 Goals")]
-        [TestCase("3&Over", "3&Over")]
-        [TestCase("3&over", "3&Over")]
+        [TestCase("3-Over", "3&Over")]
+        [TestCase("3-over", "3&Over")]
         [TestCase("abc", "")]
         [TestCase("", "")]
         public void BuildBetTeam_BetTeam_TemplateBetTeam(string betTeam, string expected)
