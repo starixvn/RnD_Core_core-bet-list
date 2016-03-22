@@ -24,7 +24,7 @@
                     betTeam = CoreBetList.TwoGoals;
                     break;
 
-                case "3&over":
+                case "3-over":
                     betTeam = CoreBetList.ThreeAndOver;
                     break;
             }
