@@ -231,6 +231,16 @@ namespace Fanex.BetList.Example.MVC.Controllers
             return BetListView(model);
         }
 
+        public ActionResult VoidBridge(BetListData model = null)
+        {
+            DataSourcePath = "~/App_Data/VoidBridge.xls";
+
+            ViewBag.BetTypes = new List<SelectListItem>();
+            model = GetDataSource(model, DataSourcePath);
+
+            return BetListView(model);
+        }
+
         private ViewResult BetListView(BetListData model)
         {
             return View("All", model);
