@@ -10,11 +10,11 @@
     {
         private const string CACHEKEY = "Fanex.BetList.Core.CacheKey";
 
-        private const string CHOICENAME = "Choice";
-        private const string STATUSNAME = "Status";
-        private const string STAKENAME = "Stake";
-        private const string ODDSNAME = "Odds";
-        private const string TRANSNAME = "Trans";
+        private const string CHOICE = "Choice";
+        private const string STATUS = "Status";
+        private const string STAKE = "Stake";
+        private const string ODDS = "Odds";
+        private const string TRANS = "Trans";
 
         private static IDictionary<int, int> _choiceMapperData = null;
         private static IDictionary<int, int> _statusMapperData = null;
@@ -32,17 +32,15 @@
 
         public static int GetTransBaseBetTypeOf(int betType) => _transMapperData.ContainsKey(betType) ? _transMapperData[betType] : betType;
 
-        public static void CollectMapperData()
+        public static void CollectAllMapperData(IList<Assembly> assemblies)
         {
             InitializeMapperData();
 
-            var assemblies = GetBetListAssemblies();
-
-            CollectMapperDataFromAsm(CHOICENAME, assemblies);
-            CollectMapperDataFromAsm(STATUSNAME, assemblies);
-            CollectMapperDataFromAsm(STAKENAME, assemblies);
-            CollectMapperDataFromAsm(ODDSNAME, assemblies);
-            CollectMapperDataFromAsm(TRANSNAME, assemblies);
+            CollectMapperDataOf(CHOICE, assemblies);
+            CollectMapperDataOf(STATUS, assemblies);
+            CollectMapperDataOf(STAKE, assemblies);
+            CollectMapperDataOf(ODDS, assemblies);
+            CollectMapperDataOf(TRANS, assemblies);
         }
 
         private static void InitializeMapperData()
@@ -54,9 +52,9 @@
             _transMapperData = new Dictionary<int, int>();
         }
 
-        private static void CollectMapperDataFromAsm(string componentName, IList<Assembly> assemblies)
+        private static void CollectMapperDataOf(string componentName, IList<Assembly> assemblies)
         {
-            string typeName = string.Join(null, new string[] { "Fanex.BetList.Core.Mapping.", componentName, "Mapping" });
+            string typeName = string.Join(null, new string[] { "Fanex.BetList.Core.Mapper.", componentName, "Mapper" });
 
             foreach (var assembly in assemblies)
             {
@@ -71,27 +69,27 @@
             }
         }
 
-        private static void AddDataFromMapperObj(IMapper mapper, string componentName)
+        public static void AddDataFromMapperObj(IMapper mapper, string componentName)
         {
             switch (componentName)
             {
-                case CHOICENAME:
+                case CHOICE:
                     AppendDataToSource(ref _choiceMapperData, mapper.MapperData);
                     break;
 
-                case STATUSNAME:
+                case STATUS:
                     AppendDataToSource(ref _statusMapperData, mapper.MapperData);
                     break;
 
-                case STAKENAME:
+                case STAKE:
                     AppendDataToSource(ref _stakeMapperData, mapper.MapperData);
                     break;
 
-                case ODDSNAME:
+                case ODDS:
                     AppendDataToSource(ref _oddsMapperData, mapper.MapperData);
                     break;
 
-                case TRANSNAME:
+                case TRANS:
                     AppendDataToSource(ref _transMapperData, mapper.MapperData);
                     break;
             }
@@ -100,34 +98,6 @@
         private static void AppendDataToSource(ref IDictionary<int, int> source, IDictionary<int, int> data)
         {
             source = source.Concat(data).ToDictionary(pair => pair.Key, pair => pair.Value);
-        }
-
-        private static List<Assembly> GetBetListAssemblies()
-        {
-            ObjectCache cache = MemoryCache.Default;
-
-            var assemblies = (List<Assembly>)cache[CACHEKEY];
-
-            if (assemblies == null || !assemblies.Any())
-            {
-                try
-                {
-                    assemblies = BuildManager.GetReferencedAssemblies().Cast<Assembly>().ToList();
-                }
-                catch
-                {
-                    assemblies = AppDomain.CurrentDomain.GetAssemblies().ToList();
-                }
-
-                CacheItemPolicy policy = new CacheItemPolicy();
-                policy.Priority = CacheItemPriority.NotRemovable;
-
-                assemblies = assemblies.Where(x => x.FullName.StartsWith("Fanex.BetList.", StringComparison.InvariantCulture)).ToList();
-
-                cache.Set(CACHEKEY, assemblies, policy);
-            }
-
-            return assemblies;
         }
     }
 }

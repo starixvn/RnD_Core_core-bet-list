@@ -46,7 +46,8 @@ namespace Fanex.BetList.Core.Builder
 
         public BetListBaseBuilder()
         {
-            MapperCollector.CollectMapperData();
+            var assemblies = this.GetBetListAssemblies();
+            MapperCollector.CollectAllMapperData(assemblies);
         }
 
         /// <summary>
@@ -265,6 +266,34 @@ namespace Fanex.BetList.Core.Builder
             }
 
             return null;
+        }
+
+        private List<Assembly> GetBetListAssemblies()
+        {
+            ObjectCache cache = MemoryCache.Default;
+
+            var assemblies = (List<Assembly>)cache[CACHEKEY];
+
+            if (assemblies == null || !assemblies.Any())
+            {
+                try
+                {
+                    assemblies = BuildManager.GetReferencedAssemblies().Cast<Assembly>().ToList();
+                }
+                catch
+                {
+                    assemblies = AppDomain.CurrentDomain.GetAssemblies().ToList();
+                }
+
+                CacheItemPolicy policy = new CacheItemPolicy();
+                policy.Priority = CacheItemPriority.NotRemovable;
+
+                assemblies = assemblies.Where(x => x.FullName.StartsWith("Fanex.BetList.", StringComparison.InvariantCulture)).ToList();
+
+                cache.Set(CACHEKEY, assemblies, policy);
+            }
+
+            return assemblies;
         }
     }
 }

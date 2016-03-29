@@ -7,7 +7,7 @@ namespace Fanex.BetList.Core.Mapper
     {
         public IDictionary<int, int> MapperData { get; set; } = new Dictionary<int, int>();
 
-        protected virtual void MapIdToBaseId(int id, int baseId) {
+        protected void MapIdToBaseId(int id, int baseId) {
             MapperData.Add(id, baseId);
         }
     }
