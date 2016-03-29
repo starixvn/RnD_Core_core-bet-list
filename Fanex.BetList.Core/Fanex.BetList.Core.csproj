@@ -484,6 +484,9 @@
     <Compile Include="Factories\BetListExcelFactory.cs" />
     <Compile Include="Factories\BetListHTMLFactory.cs" />
     <Compile Include="Factories\IBetListFactory.cs" />
+    <Compile Include="Mapper\BaseMapper.cs" />
+    <Compile Include="Mapper\IMapper.cs" />
+    <Compile Include="Mapper\MapperCollector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Templates\Choice.htm.cs" />
     <Compile Include="Templates\Odds.htm.cs" />

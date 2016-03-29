@@ -11,7 +11,7 @@ namespace Fanex.BetList.Core.Builder
     using StakeBuilder;
     using StatusBuilder;
     using TransBuilder;
-
+    using Mapper;
     /// <summary>
     /// The bet list base builder.
     /// </summary>
@@ -46,6 +46,7 @@ namespace Fanex.BetList.Core.Builder
 
         public BetListBaseBuilder()
         {
+            MapperCollector.CollectMapperData();
         }
 
         /// <summary>
@@ -67,6 +68,8 @@ namespace Fanex.BetList.Core.Builder
                 // Keno games.
                 bettype = 1501;
             }
+
+            bettype = MapperCollector.GetChoiceBaseBetTypeOf(bettype);
 
             string typeName = string.Join(null, new string[] { CHOICEBUILDERNAMESPACE, choiceName, bettype.ToString().Replace('-', '_') });
 
@@ -107,6 +110,8 @@ namespace Fanex.BetList.Core.Builder
                 bettype = 1501;
             }
 
+            bettype = MapperCollector.GetOddsBaseBetTypeOf(bettype);
+
             string typeName = string.Join(null, new string[] { ODDSBUILDERNAMESPACE, oddsName, bettype.ToString().Replace('-', '_') });
 
             Type type = GetBetListAssemblies(typeName);
@@ -135,6 +140,8 @@ namespace Fanex.BetList.Core.Builder
                 // Internal conventional bettype id of 3rd products
                 stakeName = "._3rd.Stake";
             }
+
+            bettype = MapperCollector.GetStakeBaseBetTypeOf(bettype);
 
             string typeName = string.Join(null, new string[] { STAKEBUILDERNAMESPACE, stakeName, bettype.ToString().Replace('-', '_') });
 
@@ -170,6 +177,8 @@ namespace Fanex.BetList.Core.Builder
                 bettype = 1501;
             }
 
+            bettype = MapperCollector.GetStatusBaseBetTypeOf(bettype);
+
             string typeName = string.Join(null, new string[] { STATUSBUILDERNAMESPACE, statusName, bettype.ToString().Replace('-', '_') });
 
             Type type = GetBetListAssemblies(typeName);
@@ -203,6 +212,8 @@ namespace Fanex.BetList.Core.Builder
                 // Keno games
                 bettype = 1501;
             }
+
+            bettype = MapperCollector.GetTransBaseBetTypeOf(bettype);
 
             string typeName = string.Join(null, new string[] { TRANSBUILDERNAMESPACE, transName, bettype.ToString().Replace('-', '_') });
 
