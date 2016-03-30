@@ -1,11 +1,11 @@
-﻿using Fanex.BetList.Core.Entities;
-using Fanex.BetList.Core.Utils;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text.RegularExpressions;
-
-namespace Fanex.BetList.Core.Builder.StatusBuilder
+﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
+    using Fanex.BetList.Core.Entities;
+    using Fanex.BetList.Core.Utils;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Text.RegularExpressions;
+
     public class Status4001 : Status1
     {
         protected override void BuildStatusResult(ITicket ticket)
