@@ -4,7 +4,7 @@
 
     public class BaseMapper : IMapper
     {
-        public IDictionary<int, int> MapperData { get; set; } = new Dictionary<int, int>();
+        public IDictionary<int, int> MapperData { get; } = new Dictionary<int, int>();
 
         protected void MapIdToBaseId(int id, int baseId)
         {
