@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Fanex.BetList.Core</RootNamespace>
-    <AssemblyName>Fanex.BetList.VoidBridge</AssemblyName>
+    <AssemblyName>Fanex.BetList.Voidbridge</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

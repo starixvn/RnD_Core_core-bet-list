@@ -7,8 +7,8 @@
     <ProjectGuid>{EBACB2EE-236C-4F4E-8522-B5EDED786BBC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Fanex.BetList.VoidBridge.Tests</RootNamespace>
-    <AssemblyName>Fanex.BetList.VoidBridge.Tests</AssemblyName>
+    <RootNamespace>Fanex.BetList.Voidbridge.Tests</RootNamespace>
+    <AssemblyName>Fanex.BetList.Voidbridge.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -73,9 +73,9 @@
       <Project>{b0838d04-2306-4362-af22-9fcd0be6f8e7}</Project>
       <Name>Fanex.BetList.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.VoidBridge\Fanex.BetList.VoidBridge.csproj">
+    <ProjectReference Include="..\Fanex.BetList.VoidBridge\Fanex.BetList.Voidbridge.csproj">
       <Project>{0f87bc2a-0625-42b3-b695-3e6384e588db}</Project>
-      <Name>Fanex.BetList.VoidBridge</Name>
+      <Name>Fanex.BetList.Voidbridge</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

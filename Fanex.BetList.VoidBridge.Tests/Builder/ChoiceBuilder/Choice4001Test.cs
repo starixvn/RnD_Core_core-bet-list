@@ -1,4 +1,4 @@
-﻿namespace Fanex.BetList.VoidBridge.Tests.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.Voidbridge.Tests.Builder.ChoiceBuilder
 {
     using Core.App_GlobalResources;
     using Core.Builder.ChoiceBuilder;

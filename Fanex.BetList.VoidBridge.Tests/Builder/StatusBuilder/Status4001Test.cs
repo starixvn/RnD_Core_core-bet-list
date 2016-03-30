@@ -1,4 +1,4 @@
-﻿namespace Fanex.BetList.VoidBridge.Tests.Builder.StatusBuilder
+﻿namespace Fanex.BetList.Voidbridge.Tests.Builder.StatusBuilder
 {
     using Core.Builder.StatusBuilder;
     using Core.Entities;
