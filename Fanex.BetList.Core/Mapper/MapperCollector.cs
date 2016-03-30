@@ -4,8 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
-    using System.Runtime.Caching;
-    using System.Web.Compilation;
+
     public class MapperCollector
     {
         private const string CACHEKEY = "Fanex.BetList.Core.CacheKey";

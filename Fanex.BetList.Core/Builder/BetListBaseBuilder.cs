@@ -7,11 +7,12 @@ namespace Fanex.BetList.Core.Builder
     using System.Runtime.Caching;
     using System.Web.Compilation;
     using ChoiceBuilder;
+    using Mapper;
     using OddsBuilder;
     using StakeBuilder;
     using StatusBuilder;
     using TransBuilder;
-    using Mapper;
+
     /// <summary>
     /// The bet list base builder.
     /// </summary>
