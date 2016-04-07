@@ -74,7 +74,6 @@
             Assert.AreEqual(expected, _choice.Template.betTeam);
         }
 
-
         [Test]
         public void BuildBetType_Always_ShowParentBetTypeName()
         {

@@ -2,8 +2,8 @@
 {
     using System;
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Resources;
     using Fanex.BetList.Core.Entities;
+    using Fanex.BetList.Core.Resources;
 
     public class Choice1003 : Choice1
     {

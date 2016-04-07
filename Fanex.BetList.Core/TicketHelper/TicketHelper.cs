@@ -136,6 +136,15 @@
             return combinationOfferName.ContainsKey(key) ? combinationOfferName[key] : string.Empty;
         }
 
+        public IList<string> GetCombinationMPOfferNameList(
+                decimal comboFlag,
+                decimal numberOfSelections,
+                string combinationBitmapDEC,
+                string reversedCombinationBitmapDEC)
+        {
+            return new List<string> { "Doubles (10bets)", "Trebles (4bets)" };
+        }
+
         public string GetKenoBetChoiceName(string kenoBetChoiceID, out string kenoBettypeID)
         {
             return CacheRef.GetKenoBetChoiceName(kenoBetChoiceID, out kenoBettypeID);

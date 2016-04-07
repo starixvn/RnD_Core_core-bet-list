@@ -87,6 +87,8 @@
 
         string GetCombinationMPOfferName(string key);
 
+        IList<string> GetCombinationMPOfferNameList(decimal comboFlag, decimal numberOfSelections, string combinationBitmap, string reversedCombinationBitmap);
+
         string GetKenoBetChoiceName(string kenoBetChoiceID, out string kenoBettypeID);
 
         string GetKenoBetTypeName(string kenoBettypeID);

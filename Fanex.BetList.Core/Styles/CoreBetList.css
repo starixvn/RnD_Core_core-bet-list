@@ -135,6 +135,25 @@ div.match + div.league + div.no-details {
     line-height: 20px;
 }
 
+.offer-name {
+    color: #3a3a3a;
+}
+
+.offer-name-list {
+    color: #3a3a3a;
+    font-weight: bold;
+}
+
+.detail-link {
+    color: #755200;
+    font-weight: bold;
+}
+
+.detail-link:hover,
+.detail-link:focus {
+    color: #755200;
+}
+
 .scoremap {
     float: left;
 }

@@ -2,6 +2,8 @@
 namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using System;
+    using System.Collections.Generic;
+    using App_GlobalResources;
     using Common.Enums;
     using Core.Builder.ChoiceBuilder;
     using Entities;
@@ -23,58 +25,210 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         {
             _choice = new Choice29();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes.Combine_Mix_Parlay;
             _ticketHelper = Substitute.For<ITicketHelper>();
+
+            _ticketHelper.Index = 1;
+            _ticketHelper.GetBetTypeNameById(BetTypes.Combine_Mix_Parlay).Returns("System Parlay");
+
+            _ticket.BetTypeId = BetTypes.Combine_Mix_Parlay;
+            _ticket.WinlostDate = new DateTime(2016, 03, 28, 12, 00, 00);
+            _ticket.CustId = 13369475;
+            _ticket.TransId = 5554525358;
+            _ticket.RefNo = "100411681798";
+            _ticket.BetTeam = "2";
+            _ticket.Handicap1 = 1;
+            _ticket.Handicap2 = 3;
+            _ticket.BetCheck = "1";
         }
 
-        /// <summary>
-        /// The value of Template.BetType.betTypeName is always bet type name.
-        /// </summary>
         [Test]
-        public void BuildChoice_ClientDetailSystemParlayFunctionIsEmptyAndClientSystemParlaySubbetsDetailFunctionIsEmptyAndShowSystemParlayDetailIsFalse_ReturnTemplate()
+        public void BuildShowSystemParlaySubbetsFunc_ClientSystemParlaySubbetsDetailFunctionIsNotEmpty_ReturnContainSystemParlaySubbetsDetailFunction()
         {
             // Arrange
-            _ticketHelper.Index = 1;
-            _ticketHelper.ClientDetailSystemParlayFunction = string.Empty;
+            _ticketHelper.ClientSystemParlaySubbetsDetailFunction = "javascript:ShowSystemParlaySubbets(200);";
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            var expectedShowSubbetsLink = "<a id=\"hidden0\" href=\"javascript:ShowSystemParlaySubbets(200);\">System Parlay</a>";
+            StringAssert.Contains(expectedShowSubbetsLink, _choice.Template.ToString());
+        }
+
+        [Test]
+        public void BuildShowSystemParlaySubbetsFunc_ClientSystemParlaySubbetsDetailFunctionIsEmptyAndOldSystemParlay_ReturnContainShowCombMP()
+        {
+            // Arrange
+            _ticket.Handicap1 = 3;
+            _ticket.Handicap2 = 4;
+            _ticket.BetCheck = string.Empty;
+            _ticket.BetTeam = "110";
             _ticketHelper.ClientSystemParlaySubbetsDetailFunction = string.Empty;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            var expectedShowSubbetsLink = "<a id=\"hidden0\" href=\"javascript:showCombMP('5554525358', '1', '100411681798');\">System Parlay</a>";
+            StringAssert.Contains(expectedShowSubbetsLink, _choice.Template.ToString());
+        }
+
+        [Test]
+        public void BuildShowSystemParlaySubbetsFunc_ClientSystemParlaySubbetsDetailFunctionIsEmptyAndIsNewSystemParlay_ReturnContainShowCombMP()
+        {
+            // Arrange
+            _ticketHelper.ClientSystemParlaySubbetsDetailFunction = string.Empty;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            var expectedShowSubbetsLink = "<a id=\"hidden0\" href=\"javascript:showNewCombMP('5554525358', '1', '100411681798', '1', '3', '1', '2');\">System Parlay</a>";
+            StringAssert.Contains(expectedShowSubbetsLink, _choice.Template.ToString());
+        }
+
+        [Test]
+        public void BuildSystemParlayDetailDiv_ShowSystemParlayDetailIsFalse_ReturnDoesNotContainDetailLink()
+        {
+            // Arrange
             _ticketHelper.ShowSystemParlayDetail = false;
-            _ticket.RefNo = "300";
-            _ticket.WinlostDate = new DateTime(2014, 01, 01, 12, 00, 00);
-            _ticket.BetId = 100;
-            _ticket.CustId = 10000;
-            _ticket.TransId = 200;
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expected = "<div class=\"combinationLink\"><a id=\"hidden0\" href=\"javascript:showCombMP(&quot;200&quot;,&quot;1&quot;,&quot;300&quot;);\"></a> - <span style=\"color:#3a3a3a\"></span></div><div id=\"divEvent_2001\" style=\"display: none\" ></div>";
-            Assert.AreEqual(expected, _choice.Template.ToString());
+            var expectedDetailLink = $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a>";
+            StringAssert.DoesNotContain(expectedDetailLink, _choice.Template.ToString());
         }
 
-        /// <summary>
-        /// The value of Template.BetType.betTypeName is always bet type name.
-        /// </summary>
         [Test]
-        public void BuildChoice_ClientDetailSystemParlayFunctionIsEmptyAndClientSystemParlaySubbetsDetailFunctionIsEmptyAndShowSystemParlayDetailIsTrue_ReturnTemplate()
+        public void BuildSystemParlayDetailDiv_ShowSystemParlayDetailIsTrue_ReturnContainsDetailLink()
         {
             // Arrange
-            _ticketHelper.Index = 1;
-            _ticketHelper.ClientDetailSystemParlayFunction = string.Empty;
-            _ticketHelper.ClientSystemParlaySubbetsDetailFunction = string.Empty;
             _ticketHelper.ShowSystemParlayDetail = true;
-            _ticket.RefNo = "300";
-            _ticket.WinlostDate = new DateTime(2014, 01, 01, 12, 00, 00);
-            _ticket.BetId = 100;
-            _ticket.CustId = 10000;
-            _ticket.TransId = 200;
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expected = "<div class=\"combinationLink\"><a id=\"hidden0\" href=\"javascript:showCombMP(&quot;200&quot;,&quot;1&quot;,&quot;300&quot;);\"></a> - <span style=\"color:#3a3a3a\"></span></div><div id=\"divEvent_2001\" style=\"display: none\" ></div><div class=\"detail\" onclick='showCombMPDetail(&quot;300&quot;,&quot;1/1/2014 12:00:00 PM&quot;,&quot;200&quot;,&quot;100&quot;,&quot;10000&quot;);'><a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">Details</a></div>";
-            Assert.AreEqual(expected, _choice.Template.ToString());
+            var expectedDetailLink = $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a>";
+            StringAssert.Contains(expectedDetailLink, _choice.Template.ToString());
+        }
+
+        [Test]
+        public void BuildSystemParlayDetailDiv_ShowSystemParlayDetailIsTrueAndClientDetailSystemParlayFunctionIsEmpty_ReturnContainsShowCombMPDetail()
+        {
+            // Arrange
+            _ticketHelper.ShowSystemParlayDetail = true;
+            _ticketHelper.ClientDetailSystemParlayFunction = string.Empty;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            var expectedDetailJsFunction = $"<div class=\"detail\" onclick=\"showCombMPDetail('100411681798', '3/28/2016 12:00:00 PM', '5554525358', '', '13369475');\"><a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a></div>";
+            StringAssert.Contains(expectedDetailJsFunction, _choice.Template.ToString());
+        }
+
+        [Test]
+        public void BuildSystemParlayDetailDiv_ShowSystemParlayDetailIsTrueAndClientDetailSystemParlayFunctionIsNotEmpty_ReturnContainsClientDetailSystemParlayFunc()
+        {
+            // Arrange
+            _ticketHelper.ShowSystemParlayDetail = true;
+            _ticketHelper.ClientDetailSystemParlayFunction = "showClientDetailSystemParlayFunc();";
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            var expectedDetailJsFunction = $"<div class=\"detail\" onclick=\"showClientDetailSystemParlayFunc();\"><a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a></div>";
+            StringAssert.Contains(expectedDetailJsFunction, _choice.Template.ToString());
+        }
+
+        [Test]
+        public void BuildCombinationOfferName_FromOldSystemParlayTicket_ReturnCombinationMPOfferName()
+        {
+            // Arrange
+            _ticket.Handicap1 = 3;
+            _ticket.Handicap2 = 4;
+            _ticket.BetCheck = string.Empty;
+            _ticket.BetTeam = "110";
+            _ticketHelper.GetCombinationMPOfferName(Arg.Any<string>()).Returns("Trixie");
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            var expectedCombinationOfferName = "<span class=\"offer-name\" id=\"combinationOfferName_55545253581\"> - Trixie</span>";
+            StringAssert.Contains(expectedCombinationOfferName, _choice.Template.ToString());
+        }
+
+        [Test]
+        public void BuildCombinationOfferName_FromNewSystemParlayTicket_ReturnCombinationMPOfferNameList()
+        {
+            // Arrange
+            _ticketHelper.GetCombinationMPOfferNameList(Arg.Any<decimal>(), Arg.Any<decimal>(), Arg.Any<string>(), Arg.Any<string>())
+                        .Returns(new List<string>() { "Doubles (3bets)", "Trebles (1bets)" });
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            var expectedCombinationOfferName = "<div class=\"offer-name-list\" id=\"combinationOfferName_55545253581\"><div>Doubles (3bets)</div><div>Trebles (1bets)</div></div>";
+            StringAssert.Contains(expectedCombinationOfferName, _choice.Template.ToString());
+        }
+
+        [Test]
+        public void RenderRTF_FromOldSystemParlayTicket_ReturnFirstLineIsSystemParlayAndOfferName()
+        {
+            // Arrange
+            var rtfHelper = new RTFHelper();
+            // Arrange
+            _ticket.Handicap1 = 3;
+            _ticket.Handicap2 = 4;
+            _ticket.BetCheck = string.Empty;
+            _ticket.BetTeam = "110";
+            _ticketHelper.GetCombinationMPOfferName(Arg.Any<string>()).Returns("Trixie");
+
+            // Act
+            var rtfChoice = _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), rtfHelper);
+
+            // Assert
+            var expectedFirstLine = "System Parlay - Trixie";
+            Assert.True(rtfChoice[0].ToString().Equals(expectedFirstLine));
+        }
+
+        [Test]
+        public void RenderRTF_FromNewSystemParlayTicket_ReturnFirstLineIsSystemParlay()
+        {
+            // Arrange
+            var rtfHelper = new RTFHelper();
+            _ticketHelper.GetCombinationMPOfferNameList(Arg.Any<decimal>(), Arg.Any<decimal>(), Arg.Any<string>(), Arg.Any<string>())
+                            .Returns(new List<string>() { "Doubles (3bets)", "Trebles (1bets)" });
+
+            // Act
+            var rtfChoice = _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), rtfHelper);
+            var splittedRTFChoice = rtfChoice[0].String.Split('\n');
+
+            // Assert
+            var expectedFirstLine = "System Parlay";
+            Assert.True(splittedRTFChoice[0].Equals(expectedFirstLine));
+        }
+
+        [Test]
+        public void RenderRTF_FromNewSystemParlayTicket_ReturnsSystemParlayAndOfferNames()
+        {
+            // Arrange
+            var rtfHelper = new RTFHelper();
+            _ticketHelper.GetCombinationMPOfferNameList(Arg.Any<decimal>(), Arg.Any<decimal>(), Arg.Any<string>(), Arg.Any<string>())
+                            .Returns(new List<string>() { "Doubles (3bets)", "Trebles (1bets)" });
+
+            // Act
+            var rtfChoice = _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), rtfHelper);
+
+            // Assert
+            var expectedOutput = "System Parlay\nDoubles (3bets)\nTrebles (1bets)";
+            Assert.True(rtfChoice[0].String.Equals(expectedOutput));
         }
     }
 }

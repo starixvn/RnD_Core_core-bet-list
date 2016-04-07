@@ -108,5 +108,7 @@
         string TransDesc { get; set; }
 
         decimal OddsSpread { get; set; }
+
+        string Currency { get; set; }
     }
 }

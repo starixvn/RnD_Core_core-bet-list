@@ -10,6 +10,8 @@
 
 namespace Fanex.BetList.Core.UnitTest.Stubs
 {
+    using System;
+    using System.Collections.Generic;
     using Fanex.BetList.Core.Entities;
 
     public class TicketHelperStub : ITicketHelper
@@ -98,6 +100,11 @@ namespace Fanex.BetList.Core.UnitTest.Stubs
         public string GetCombinationMPOfferName(string key)
         {
             return this._betTeamName + key;
+        }
+
+        public IList<string> GetCombinationMPOfferNameList(decimal comboFlag, decimal numberOfSelections, string combinationBitmap, string reversedCombinationBitmap)
+        {
+            throw new NotImplementedException();
         }
 
         public string GetKenoBetChoiceName(string kenoBetChoiceID, out string kenoBettypeID)

@@ -5,6 +5,7 @@
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
     using Utils;
+
     public class Odds1003 : Odds1
     {
         private const string ExceptionOddsValueFormat = "1:{0}";

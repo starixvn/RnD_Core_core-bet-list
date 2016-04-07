@@ -1,6 +1,5 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Web;
@@ -15,6 +14,171 @@
     public class Choice29 : Choice1
     {
         private const string CHOICEBUILDERNAMESPACE = "Fanex.BetList.Core.Builder.ChoiceBuilder";
+
+        #region Build Choice
+
+        /// <summary>
+        /// Builds the choice.
+        /// </summary>
+        /// <param name="ticket">The ticket.</param>
+        /// <param name="ticketHelper">The ticket helper.</param>
+        /// <param name="ticketData">The ticket data.</param>
+        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {
+            var betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
+
+            var showSystemParlaySubbetsFunc = BuildShowSystemParlaySubbetsFunc(ticket, ticketHelper);
+
+            var detailSystemParlayDiv = BuildSystemParlayDetailDiv(ticket, ticketHelper);
+
+            var combinationOfferName = BuildCombinationOfferName(ticket, ticketHelper);
+
+            var mixParlayMarkups = BuildMixParlayMarkups(
+                                        showSystemParlaySubbetsFunc,
+                                        betTypeName,
+                                        combinationOfferName,
+                                        ticket.TransId.ToString(CultureInfo.InvariantCulture),
+                                        ticketHelper.Index.ToString(CultureInfo.InvariantCulture),
+                                        detailSystemParlayDiv);
+
+            Template.SetValue(mixParlayMarkups);
+        }
+
+        private string GetCustId(ITicket ticket)
+        {
+            if (HttpContext.Current != null && HttpContext.Current.Request != null && HttpContext.Current.Request["custid"] != null)
+            {
+                return HttpContext.Current.Request["custid"];
+            }
+            else
+            {
+                return ticket.CustId.ToString(CultureInfo.InvariantCulture);
+            }
+        }
+
+        private string BuildShowSystemParlaySubbetsFunc(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            return string.IsNullOrWhiteSpace(ticketHelper.ClientSystemParlaySubbetsDetailFunction)
+                        ? JoinSystemParlaySubbetsFunc(ticket, ticketHelper)
+                        : ticketHelper.ClientSystemParlaySubbetsDetailFunction;
+        }
+
+        private string BuildSystemParlayDetailDiv(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            return ticketHelper.ShowSystemParlayDetail
+                            ? JoinDetailSystemParlayDiv(ticket, ticketHelper)
+                            : string.Empty;
+        }
+
+        private string JoinDetailSystemParlayDiv(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            var systemParlayDetailJsFunction = BuildSystemParlayDetailJsFunction(ticket, ticketHelper);
+
+            var detailLink = $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a>";
+
+            return $"<div class=\"detail\" onclick=\"{systemParlayDetailJsFunction}\">{detailLink}</div>";
+        }
+
+        private string BuildSystemParlayDetailJsFunction(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            string custid = GetCustId(ticket);
+
+            return string.IsNullOrWhiteSpace(ticketHelper.ClientDetailSystemParlayFunction)
+                        ? JoinSystemParlayDetailJsFunc(
+                                                            ticket.RefNo,
+                                                            ticket.WinlostDate.ToString(),
+                                                            ticket.TransId.ToString(CultureInfo.InvariantCulture),
+                                                            ticket.BetId.ToString(),
+                                                            custid)
+                        : ticketHelper.ClientDetailSystemParlayFunction;
+        }
+
+        /// <summary>
+        /// Joins the system parlay detail JavaScripts function.
+        /// </summary>
+        /// <param name="refNo">The reference no.</param>
+        /// <param name="winlossDate">The win loss date.</param>
+        /// <param name="transId">The trans identifier.</param>
+        /// <param name="betId">The bet identifier.</param>
+        /// <param name="custId">The customer identifier.</param>
+        /// <returns>System.String: the markups.</returns>
+        private string JoinSystemParlayDetailJsFunc(string refNo, string winlossDate, string transId, string betId, string custId)
+        {
+            return $"showCombMPDetail('{refNo}', '{winlossDate}', '{transId}', '{betId}', '{custId}');";
+        }
+
+        private string JoinSystemParlaySubbetsFunc(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            var transId = ticket.TransId.ToString(CultureInfo.InvariantCulture);
+            var transIndex = ticketHelper.Index.ToString(CultureInfo.InvariantCulture);
+            var refNo = ticket.RefNo;
+
+            if (IsOldSystemParlay(ticket.BetCheck))
+            {
+                return $"javascript:showCombMP('{transId}', '{transIndex}', '{refNo}');";
+            }
+            else
+            {
+                return $"javascript:showNewCombMP('{transId}', '{transIndex}', '{refNo}', '{ticket.Handicap1}', '{ticket.Handicap2}', '{ticket.BetCheck}', '{ticket.BetTeam}');";
+            }
+        }
+
+        private string BuildCombinationOfferName(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            return IsOldSystemParlay(ticket.BetCheck)
+                ? BuildCombinationOfferNameForOldSystemParlay(ticket, ticketHelper)
+                : BuildCombinationOfferNameForNewSystemParlay(ticket, ticketHelper);
+        }
+
+        private bool IsOldSystemParlay(string betCheck)
+        {
+            return string.IsNullOrEmpty(betCheck);
+        }
+
+        private string BuildCombinationOfferNameForOldSystemParlay(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            return $"<span class=\"offer-name\" id=\"combinationOfferName_{ticket.TransId}{ticketHelper.Index}\"> - {ticketHelper.GetCombinationMPOfferName(ticket.BetTeam)}</span>";
+        }
+
+        private string BuildCombinationOfferNameForNewSystemParlay(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            var combinationMPOfferNames = ticketHelper.GetCombinationMPOfferNameList(ticket.Handicap1, ticket.Handicap2, ticket.BetCheck, ticket.BetTeam);
+            var offerNameList = string.Empty;
+
+            foreach (var name in combinationMPOfferNames)
+            {
+                offerNameList += $"<div>{name}</div>";
+            }
+
+            return $"<div class=\"offer-name-list\" id=\"combinationOfferName_{ticket.TransId}{ticketHelper.Index}\">{offerNameList}</div>";
+        }
+
+        /// <summary>
+        /// Joins the mix parlay markups.
+        /// </summary>
+        /// <param name="showSystemParlaySubbetsFunction">The show system parlay sub bets function.</param>
+        /// <param name="betTypeName">Name of the bet type.</param>
+        /// <param name="combinationMPOfferName">Offer name of combination mix parlay.</param>
+        /// <param name="transId">The trans identifier.</param>
+        /// <param name="transIndex">Index of the trans.</param>
+        /// <param name="systemParlayDetailDiv">The detail system parlay div.</param>
+        /// <returns>System.String: mix parlay markups.</returns>
+        private string BuildMixParlayMarkups(
+                        string showSystemParlaySubbetsFunction,
+                        string betTypeName,
+                        string combinationOfferName,
+                        string transId,
+                        string transIndex,
+                        string systemParlayDetailDiv)
+        {
+            var combinationLink = $"<a id=\"hidden0\" href=\"{showSystemParlaySubbetsFunction}\">{betTypeName}</a>";
+
+            return $"<div class=\"combinationLink\">{combinationLink}{combinationOfferName}</div><div id=\"divEvent_{transId}{transIndex}\" style=\"display: none\" ></div>{systemParlayDetailDiv}";
+        }
+
+        #endregion Build Choice
+
+        #region Build RTF Choice
 
         /// <summary>
         /// Renders the RTF.
@@ -34,19 +198,24 @@
         {
             List<IRichTextString> lstRTFChoices = new List<IRichTextString>();
             RTFHelper tmpRtfHelper = rtfHelper.Clone();
-            tmpRtfHelper.RTFRenderer.AddText(CoreBetList.lblSystemParlay, tmpRtfHelper.PosFont);
-            tmpRtfHelper.RTFRenderer.AddText(" - " + ticketHelper.GetCombinationMPOfferName(ticket.BetTeam), tmpRtfHelper.NormalFont);
 
+            tmpRtfHelper.RTFRenderer.AddText(CoreBetList.lblSystemParlay, tmpRtfHelper.PosFont);
+
+            BuildRTFCombinationMPOfferNames(tmpRtfHelper, ticket, ticketHelper);
+
+            /***************************Export excel for subtickets*****************************
             if (ticketHelper.GetParlayDetailById != null)
             {
                 IList<ITicket> parlayData = ticketHelper.GetParlayDetailById(ticket.TransId);
+
                 bool showOdds = ticketHelper.IsShowOddsWithChoice;
                 ticketHelper.IsShowOddsWithChoice = true;
                 IFont pos, normal;
+                var betListBaseBuilder = new BetListBaseBuilder();
 
                 foreach (ITicket tkt in parlayData)
                 {
-                    IChoice choiceBuilder = CreateChoiceBuilder(tkt.BetTypeId);
+                    IChoice choiceBuilder = betListBaseBuilder.CreateChoiceBuilder(tkt.BetTypeId);
                     Template = choiceBuilder.Render(tkt, ticketHelper, null, isShowScoreMap);
                     var choiceData = BuildRTFChoice(tkt, rtfHelper, ticketHelper);
                     List<IRichTextString> tmpRtfChoice;
@@ -60,7 +229,7 @@
                         tmpRtfChoice = new List<IRichTextString>() { (IRichTextString)choiceData };
                     }
 
-                    if ((tkt.StatusId != null && tkt.StatusId.ToString().Trim() == BetStatusId.Void) || (tkt.Status != null && tkt.Status.Trim().ToLower() == BetStatus.Void))
+                    if ((tkt.StatusId?.ToString().Trim() == BetStatusId.Void) || (tkt.Status?.Trim().ToLower() == BetStatus.Void))
                     {
                         pos = tmpRtfHelper.PosFontCrossed;
                         normal = tmpRtfHelper.NormalFontCrossed;
@@ -76,130 +245,38 @@
 
                 ticketHelper.IsShowOddsWithChoice = showOdds;
             }
+            *******************************************************************************/
 
             var choice = tmpRtfHelper.RTFRenderer.Render();
             tmpRtfHelper.RTFRenderer.Clear();
+
             return new List<IRichTextString>() { choice };
         }
 
-        /// <summary>
-        /// Builds the choice.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        private void BuildRTFCombinationMPOfferNames(RTFHelper tmpRtfHelper, ITicket ticket, ITicketHelper ticketHelper)
         {
-            string betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
-            string mixParlay = string.Empty, custid = string.Empty;
-            if (HttpContext.Current != null && HttpContext.Current.Request != null && HttpContext.Current.Request["custid"] != null)
+            if (IsOldSystemParlay(ticket.BetCheck))
             {
-                custid = HttpContext.Current.Request["custid"];
+                BuildRTFCombinationMPOfferNamesForOldSystemParlay(tmpRtfHelper, ticket, ticketHelper);
             }
             else
             {
-                custid = ticket.CustId.ToString(CultureInfo.InvariantCulture);
+                BuildRTFCombinationMPOfferNamesForNewSystemParlay(tmpRtfHelper, ticket, ticketHelper);
             }
-
-            // Get user-customized js for winloss summary. The default is used if no customization is available
-            string showSystemParlayDetailJsFunction = ticketHelper.ClientDetailSystemParlayFunction;
-            if (string.IsNullOrWhiteSpace(showSystemParlayDetailJsFunction))
-            {
-                showSystemParlayDetailJsFunction = JoinSystemParlayDetailJsFunction(
-                                                            ticket.RefNo,
-                                                            ticket.WinlostDate.ToString(),
-                                                            ticket.TransId.ToString(CultureInfo.InvariantCulture),
-                                                            ticket.BetId.ToString(),
-                                                            custid);
-            }
-
-            // Get user-customized js for sub-bets view. The default is used if no customization is available
-            string showSystemParlaySubbetsFunction = ticketHelper.ClientSystemParlaySubbetsDetailFunction;
-            if (string.IsNullOrWhiteSpace(showSystemParlaySubbetsFunction))
-            {
-                showSystemParlaySubbetsFunction =
-                    JoinSystemParlaySubbetsFunction(ticket.TransId.ToString(CultureInfo.InvariantCulture), ticketHelper.Index.ToString(CultureInfo.InvariantCulture), ticket.RefNo);
-            }
-
-            string detailSystemParlayDiv = string.Empty;
-            if (ticketHelper.ShowSystemParlayDetail)
-            {
-                detailSystemParlayDiv = JoinDetailSystemParlayDiv(showSystemParlayDetailJsFunction);
-            }
-
-            string combinationMPOfferName = ticketHelper.GetCombinationMPOfferName(ticket.BetTeam);
-
-            mixParlay = JoinMixParlayMarkups(
-                                        showSystemParlaySubbetsFunction,
-                                        betTypeName,
-                                        combinationMPOfferName,
-                                        ticket.TransId.ToString(CultureInfo.InvariantCulture),
-                                        ticketHelper.Index.ToString(CultureInfo.InvariantCulture),
-                                        detailSystemParlayDiv);
-
-            Template.SetValue(mixParlay);
         }
 
-        /// <summary>
-        /// Joins the system parlay detail JavaScripts function.
-        /// </summary>
-        /// <param name="refNo">The reference no.</param>
-        /// <param name="winlossDate">The win loss date.</param>
-        /// <param name="transId">The trans identifier.</param>
-        /// <param name="betId">The bet identifier.</param>
-        /// <param name="custId">The customer identifier.</param>
-        /// <returns>System.String: the markups.</returns>
-        private static string JoinSystemParlayDetailJsFunction(string refNo, string winlossDate, string transId, string betId, string custId)
+        private void BuildRTFCombinationMPOfferNamesForOldSystemParlay(RTFHelper tmpRtfHelper, ITicket ticket, ITicketHelper ticketHelper)
         {
-            string[] markupCompositions = new string[]
-                                            {
-                                                "showCombMPDetail(&quot;",
-                                                refNo,
-                                                "&quot;",
-                                                ",&quot;",
-                                                winlossDate,
-                                                "&quot;",
-                                                ",&quot;",
-                                                transId,
-                                                "&quot;",
-                                                ",&quot;",
-                                                betId,
-                                                "&quot;",
-                                                ",&quot;",
-                                                custId,
-                                                "&quot;);"
-                                            };
-
-            string markups = string.Join(null, markupCompositions);
-
-            return markups;
+            tmpRtfHelper.RTFRenderer.AddText($" - {ticketHelper.GetCombinationMPOfferName(ticket.BetTeam)}");
         }
 
-        private static string JoinSystemParlaySubbetsFunction(string transId, string transIndex, string refNo)
+        private void BuildRTFCombinationMPOfferNamesForNewSystemParlay(RTFHelper tmpRtfHelper, ITicket ticket, ITicketHelper ticketHelper)
         {
-            string markups = string.Join(null, new string[] { "javascript:showCombMP(&quot;", transId, "&quot;,&quot;", transIndex, "&quot;,&quot;", refNo, "&quot;);" });
+            var combinationMPOfferNames = ticketHelper.GetCombinationMPOfferNameList(ticket.Handicap1, ticket.Handicap2, ticket.BetCheck, ticket.BetTeam);
 
-            return markups;
-        }
-
-        /// <summary>
-        /// Creates the choice builder.
-        /// </summary>
-        /// <param name="bettype">The bet type.</param>
-        /// <returns>IChoice: concrete Choice builder basing on input bet type id.</returns>
-        private IChoice CreateChoiceBuilder(int bettype)
-        {
-            string typeName = string.Join(null, new string[] { CHOICEBUILDERNAMESPACE, ".Choice", bettype.ToString() });
-
-            Type type = Type.GetType(typeName);
-
-            if (type == null)
+            foreach (var offerName in combinationMPOfferNames)
             {
-                return new Choice1();
-            }
-            else
-            {
-                return Activator.CreateInstance(type) as IChoice;
+                tmpRtfHelper.RTFRenderer.AddText($"\n{offerName}", tmpRtfHelper.NormalFont);
             }
         }
 
@@ -220,85 +297,17 @@
                     rtfString.String.Remove(0, 1);
                 }
 
-                try
-                {
-                    int lineBreakIndex = rtfString.String.IndexOf("\n");
-                    string eventName = rtfString.String.Substring(0, lineBreakIndex);
-                    string theRest = rtfString.String.Remove(0, eventName.Length);
+                int lineBreakIndex = rtfString.String.IndexOf("\n");
+                string eventName = lineBreakIndex >= 0
+                                    ? rtfString.String.Substring(0, lineBreakIndex)
+                                    : string.Empty;
+                string theRest = rtfString.String.Remove(0, eventName.Length);
 
-                    rtfHelper.RTFRenderer.AddText("\n" + eventName, posFont);
-                    rtfHelper.RTFRenderer.AddText(theRest, normalFont);
-                }
-                catch
-                {
-                    throw;
-                }
+                rtfHelper.RTFRenderer.AddText("\n" + eventName, posFont);
+                rtfHelper.RTFRenderer.AddText(theRest, normalFont);
             }
         }
 
-        /// <summary>
-        /// Joins the mix parlay markups.
-        /// </summary>
-        /// <param name="showSystemParlaySubbetsFunction">The show system parlay sub bets function.</param>
-        /// <param name="betTypeName">Name of the bet type.</param>
-        /// <param name="combinationMPOfferName">Offer name of combination mix parlay.</param>
-        /// <param name="transId">The trans identifier.</param>
-        /// <param name="transIndex">Index of the trans.</param>
-        /// <param name="detailSystemParlayDiv">The detail system parlay div.</param>
-        /// <returns>System.String: mix parlay markups.</returns>
-        private string JoinMixParlayMarkups(
-                        string showSystemParlaySubbetsFunction,
-                        string betTypeName,
-                        string combinationMPOfferName,
-                        string transId,
-                        string transIndex,
-                        string detailSystemParlayDiv)
-        {
-            string combinationOpenDiv = "<div class=\"combinationLink\"><a id=\"hidden0\" href=\"";
-            string[] mixParlayCompositions = new string[]
-                                                {
-                                                    combinationOpenDiv, showSystemParlaySubbetsFunction,
-                                                    "\">",
-                                                    betTypeName,
-                                                    "</a>",
-                                                    " - ",
-                                                    "<span style=\"color:#3a3a3a\">",
-                                                    combinationMPOfferName,
-                                                    "</span>",
-                                                    "</div>",
-                                                    "<div id=\"divEvent_",
-                                                    transId,
-                                                    transIndex,
-                                                    "\" style=\"display: none\" ></div>",
-                                                    detailSystemParlayDiv
-                                                };
-
-            string mixParlay = string.Join(null, mixParlayCompositions);
-
-            return mixParlay;
-        }
-
-        /// <summary>
-        /// Joins the detail system parlay div tag.
-        /// </summary>
-        /// <param name="systemParlayDetailJsFunction">The system parlay detail JavaScripts function.</param>
-        /// <returns>System.String: the markups.</returns>
-        private string JoinDetailSystemParlayDiv(string systemParlayDetailJsFunction)
-        {
-            string[] markupCompositions = new string[]
-                                            {
-                                                "<div class=\"detail\" onclick='",
-                                                systemParlayDetailJsFunction,
-                                                "'>",
-                                                "<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">",
-                                                CoreBetList.details,
-                                                "</a>",
-                                                "</div>"
-                                            };
-
-            string markups = string.Join(null, markupCompositions);
-
-            return markups;
-        }
+        #endregion Build RTF Choice
     }
 }

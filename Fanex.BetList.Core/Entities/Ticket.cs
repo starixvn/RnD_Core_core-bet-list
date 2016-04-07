@@ -111,6 +111,9 @@
         public string TransDesc { get; set; }
 
         public decimal OddsSpread { get; set; }
+
+        public string Currency { get; set; }
+
         #endregion ITicket Members
     }
 }
