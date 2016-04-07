@@ -240,7 +240,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder
 
         [TestCase(-22006, "Stake_22006")]
         [TestCase(1, "Stake1")]
-        [TestCase(29, "Stake29")]
+        [TestCase(500, "Stake500")]
         public void CreateStakeBuilder_WhenCalled_ReturnStake(int betType, string expectedStake)
         {
             var buider = CreateChoiceBuilder();
