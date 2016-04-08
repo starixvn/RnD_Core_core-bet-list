@@ -102,7 +102,7 @@ namespace Fanex.BetList.Core.UnitTest.Stubs
             return this._betTeamName + key;
         }
 
-        public IList<string> GetCombinationMPOfferNameList(decimal comboFlag, decimal numberOfSelections, string combinationBitmap, string reversedCombinationBitmap)
+        public IList<string> GetCombinationMPOfferNameList(string betTeam, string betCheck, decimal handicap1, decimal handicap2)
         {
             throw new NotImplementedException();
         }

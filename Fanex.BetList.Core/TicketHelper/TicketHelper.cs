@@ -1,7 +1,9 @@
 ﻿namespace Fanex.BetList.Core.TicketHelper
 {
+    using System;
     using System.Collections.Generic;
     using Entities;
+    using RemotingRef;
     using Sunplus.Core.Common.IPs;
 
     /// <summary>
@@ -9,6 +11,8 @@
     /// </summary>
     public class TicketHelper : ITicketHelper
     {
+        private static string DefaultLanguage = "en";
+
         public TicketHelper()
         {
             ShowBetType = true;
@@ -137,12 +141,14 @@
         }
 
         public IList<string> GetCombinationMPOfferNameList(
-                decimal comboFlag,
-                decimal numberOfSelections,
-                string combinationBitmapDEC,
-                string reversedCombinationBitmapDEC)
+                string betTeam,
+                string betCheck,
+                decimal handicap1,
+                decimal handicap2)
         {
-            return new List<string> { "Doubles (10bets)", "Trebles (4bets)" };
+            var language = string.IsNullOrEmpty(CurrentLanguage) ? DefaultLanguage : CurrentLanguage;
+
+            return RefData.GetCombinationTypeCombo(betTeam, betCheck, Convert.ToInt32(handicap1), Convert.ToInt32(handicap2), language);
         }
 
         public string GetKenoBetChoiceName(string kenoBetChoiceID, out string kenoBettypeID)

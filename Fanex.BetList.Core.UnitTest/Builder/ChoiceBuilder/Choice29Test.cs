@@ -167,7 +167,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         public void BuildCombinationOfferName_FromNewSystemParlayTicket_ReturnCombinationMPOfferNameList()
         {
             // Arrange
-            _ticketHelper.GetCombinationMPOfferNameList(Arg.Any<decimal>(), Arg.Any<decimal>(), Arg.Any<string>(), Arg.Any<string>())
+            _ticketHelper.GetCombinationMPOfferNameList(Arg.Any<string>(), Arg.Any<string>(), Arg.Any<decimal>(), Arg.Any<decimal>())
                         .Returns(new List<string>() { "Doubles (3bets)", "Trebles (1bets)" });
 
             // Act
@@ -203,7 +203,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         {
             // Arrange
             var rtfHelper = new RTFHelper();
-            _ticketHelper.GetCombinationMPOfferNameList(Arg.Any<decimal>(), Arg.Any<decimal>(), Arg.Any<string>(), Arg.Any<string>())
+            _ticketHelper.GetCombinationMPOfferNameList(Arg.Any<string>(), Arg.Any<string>(), Arg.Any<decimal>(), Arg.Any<decimal>())
                             .Returns(new List<string>() { "Doubles (3bets)", "Trebles (1bets)" });
 
             // Act
@@ -220,7 +220,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         {
             // Arrange
             var rtfHelper = new RTFHelper();
-            _ticketHelper.GetCombinationMPOfferNameList(Arg.Any<decimal>(), Arg.Any<decimal>(), Arg.Any<string>(), Arg.Any<string>())
+            _ticketHelper.GetCombinationMPOfferNameList(Arg.Any<string>(), Arg.Any<string>(), Arg.Any<decimal>(), Arg.Any<decimal>())
                             .Returns(new List<string>() { "Doubles (3bets)", "Trebles (1bets)" });
 
             // Act

@@ -142,12 +142,15 @@
 
         private string BuildCombinationOfferNameForNewSystemParlay(ITicket ticket, ITicketHelper ticketHelper)
         {
-            var combinationMPOfferNames = ticketHelper.GetCombinationMPOfferNameList(ticket.Handicap1, ticket.Handicap2, ticket.BetCheck, ticket.BetTeam);
+            var combinationMPOfferNames = ticketHelper.GetCombinationMPOfferNameList(ticket.BetTeam, ticket.BetCheck, ticket.Handicap1, ticket.Handicap2);
             var offerNameList = string.Empty;
 
-            foreach (var name in combinationMPOfferNames)
+            if (combinationMPOfferNames != null)
             {
-                offerNameList += $"<div>{name}</div>";
+                foreach (var name in combinationMPOfferNames)
+                {
+                    offerNameList += $"<div>{name}</div>";
+                }
             }
 
             return $"<div class=\"offer-name-list\" id=\"combinationOfferName_{ticket.TransId}{ticketHelper.Index}\">{offerNameList}</div>";
@@ -272,11 +275,14 @@
 
         private void BuildRTFCombinationMPOfferNamesForNewSystemParlay(RTFHelper tmpRtfHelper, ITicket ticket, ITicketHelper ticketHelper)
         {
-            var combinationMPOfferNames = ticketHelper.GetCombinationMPOfferNameList(ticket.Handicap1, ticket.Handicap2, ticket.BetCheck, ticket.BetTeam);
+            var combinationMPOfferNames = ticketHelper.GetCombinationMPOfferNameList(ticket.BetTeam, ticket.BetCheck, ticket.Handicap1, ticket.Handicap2);
 
-            foreach (var offerName in combinationMPOfferNames)
+            if (combinationMPOfferNames != null)
             {
-                tmpRtfHelper.RTFRenderer.AddText($"\n{offerName}", tmpRtfHelper.NormalFont);
+                foreach (var offerName in combinationMPOfferNames)
+                {
+                    tmpRtfHelper.RTFRenderer.AddText($"\n{offerName}", tmpRtfHelper.NormalFont);
+                }
             }
         }
 

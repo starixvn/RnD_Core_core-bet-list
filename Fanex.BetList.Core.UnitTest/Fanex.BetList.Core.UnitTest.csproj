@@ -222,6 +222,7 @@
     <Compile Include="Builder\ChoiceBuilder\Choice129Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice130Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice136Test.cs" />
+    <Compile Include="Builder\OddsBuilder\Odds29Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds500Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds71Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds33Test.cs" />
