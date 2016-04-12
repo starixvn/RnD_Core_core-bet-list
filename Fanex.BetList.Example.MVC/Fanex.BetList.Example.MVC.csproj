@@ -365,6 +365,7 @@
     <Content Include="App_Data\CockFighting.xls" />
     <Content Include="App_Data\RnGCasinoSingleWallet.xls" />
     <Content Include="App_Data\Allbet.xls" />
+    <Content Include="App_Data\VoidBridge.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
