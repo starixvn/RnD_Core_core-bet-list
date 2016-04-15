@@ -49,7 +49,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            var expectedGameTypeNameBlock = string.Format("<span class='voidbridge-gametypename'>{0}</span>", "Bushido Code");
+            var expectedGameTypeNameBlock = string.Format("<span class='voidbridge-gametypename colorHandicap'>{0}</span>", "Bushido Code");
             Assert.AreEqual(_choice.Template.betTeam, expectedGameTypeNameBlock);
         }
 
