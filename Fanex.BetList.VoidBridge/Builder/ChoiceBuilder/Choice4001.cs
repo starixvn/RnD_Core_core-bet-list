@@ -16,7 +16,7 @@
         private const string CloseSportTypeNameTag = "</span>";
         private const string OpenGameGroupNameTag = "<span class='voidbridge-gamegroupname'>";
         private const string CloseGameGroupNameTag = "</span>";
-        private const string OpenGameTypeNameTag = "<span class='voidbridge-gametypename'>";
+        private const string OpenGameTypeNameTag = "<span class='voidbridge-gametypename colorHandicap'>";
         private const string CloseGameTypeNameTag = "</span>";
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
@@ -40,8 +40,8 @@
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
-            Template.Handicap = null;
-            Template.betTeamClassName = null;
+            Template.Handicap.handicap = null;
+            Template.betTeamClassName = Underdog;
         }
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
