@@ -148,6 +148,7 @@
         {
             var language = string.IsNullOrEmpty(CurrentLanguage) ? DefaultLanguage : CurrentLanguage;
 
+            
             return RefData.GetCombinationTypeCombo(betTeam, betCheck, Convert.ToInt32(handicap1), Convert.ToInt32(handicap2), language);
         }
 

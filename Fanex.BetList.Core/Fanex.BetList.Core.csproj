@@ -60,7 +60,7 @@
     </Reference>
     <Reference Include="RemotingRef, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\henry.tran\AppData\Roaming\Skype\My Skype Received Files\RemotingRef.dll\RemotingRef.dll</HintPath>
+      <HintPath>C:\Users\harrison.nguyen\Downloads\RemotingRef.dll</HintPath>
     </Reference>
     <Reference Include="Sunplus.Core.Common">
       <HintPath>..\packages\Sunplus.Core.Common.1.1.4505.19054\lib\net40\Sunplus.Core.Common.dll</HintPath>
