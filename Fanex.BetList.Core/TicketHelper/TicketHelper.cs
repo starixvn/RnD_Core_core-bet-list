@@ -146,10 +146,7 @@
                 decimal handicap1,
                 decimal handicap2)
         {
-            var language = string.IsNullOrEmpty(CurrentLanguage) ? DefaultLanguage : CurrentLanguage;
-
-            
-            return RefData.GetCombinationTypeCombo(betTeam, betCheck, Convert.ToInt32(handicap1), Convert.ToInt32(handicap2), language);
+            return CacheRef.GetCombinationTypeCombo(betTeam, betCheck, Convert.ToInt32(handicap1), Convert.ToInt32(handicap2));
         }
 
         public string GetKenoBetChoiceName(string kenoBetChoiceID, out string kenoBettypeID)

@@ -2,10 +2,10 @@
 {
     using System.Threading;
     using RemotingRef;
-
-    /// <summary>
-    /// Class CacheRef.
-    /// </summary>
+    using System;
+    using System.Collections.Generic;    /// <summary>
+                                         /// Class CacheRef.
+                                         /// </summary>
     public class CacheRef
     {
         private CacheRef()
@@ -110,6 +110,14 @@
         public static string GetResourceData(string refId, string resourceId)
         {
             return RefData.GetResourceDataByRefIdAndResourceId(refId, resourceId, CurrentTWLanguage, string.Empty);
+        }
+
+        public static IList<string> GetCombinationTypeCombo(string betTeam,
+                string betCheck,
+                int handicap1,
+                int handicap2)
+        {
+            return RefData.GetCombinationTypeCombo(betTeam, betCheck, handicap1, handicap2, CurrentTWLanguage);
         }
     }
 }
