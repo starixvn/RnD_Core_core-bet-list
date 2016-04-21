@@ -83,6 +83,7 @@
             _ticket.Status = BetStatus.Running;
             _ticket.SportTypeId = 1;
             _ticket.WinlostDate = DateTime.Today;
+            _ticket.CustId = 54321;
 
             ////Act
             _status.Render(_ticket, _ticketHelper, null, false);
@@ -145,7 +146,11 @@
                         ", ",
                         "0, ",
                         ticket.LeagueId.ToString(CultureInfo.InvariantCulture),
-                        ", 0, 0);\">",
+                        ", 0, 0, '",
+                        ticket.BetCheck ?? string.Empty,
+                        "','",
+                        ticket.CustId.ToString(),
+                        "');\">",
                         status,
                         "</div>"
                     };

@@ -1,10 +1,10 @@
 ﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
-    using Entities;
-    using Utils;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Text.RegularExpressions;
+    using Entities;
+    using Utils;
 
     public class Status4001 : Status1
     {
@@ -17,7 +17,10 @@
             else
             {
                 base.BuildStatusResult(ticket);
+                var externalLink = $"'{ticket.BetId}', '{ticket.BetCheck}', '{ticket.CustId}'";
+
                 Template.StatusResult.refNo = "'" + ticket.BetCheck + "'";
+                Template.StatusResult.betId = externalLink;
             }
         }
 
@@ -68,7 +71,11 @@
                         ", ",
                         "0, ",
                         ticket.LeagueId.ToString(CultureInfo.InvariantCulture),
-                        ", 0, 0);\">",
+                        ", 0, 0, '",
+                        ticket.BetCheck ?? string.Empty,
+                        "','",
+                        ticket.CustId.ToString(),
+                        "');\">",
                         status,
                         "</div>"
                     };
