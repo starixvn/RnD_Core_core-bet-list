@@ -179,6 +179,23 @@
         }
 
         [Test]
+        public void BuildMatchInfo_Always_ReturnContainsBetTypeAndGameGroup()
+        {
+            // Arrange
+            _ticket.TransDesc = "1";
+            _ticket.BetCheck = "Player History Number";
+            _ticketHelper.GetResourceData("RNG_Casino_GG", "1").Returns("Card Games");
+            _ticketHelper.GetSportNameById(_ticket.SportTypeId).Returns("RNG - RNG Game");
+
+            // Act
+            _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), CreateRTFHelperStub());
+
+            // Assert
+            var expectedLine = "RNG - RNG Game Card Games";
+            Assert.AreEqual(expectedLine, _choice.Template.League.ToString());
+        }
+
+        [Test]
         public void BuildLeague_Always_ReturnFromRemotingRef()
         {
             // Arrange
@@ -189,8 +206,8 @@
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            bool containingGameGroup = choiceTemplate.League.LeagueName.leagueName.Contains("Baccarat");
-            Assert.IsTrue(containingGameGroup);
+            var expectedGameGroup = "<span class='gamegroupname'> Baccarat</span>";
+            Assert.True(choiceTemplate.League.LeagueName.ToString().Equals(expectedGameGroup));
         }
 
         [Test]

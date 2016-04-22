@@ -3,7 +3,9 @@
     using System;
     using System.Collections.Generic;
     using System.Globalization;
+    using System.Text.RegularExpressions;
     using App_GlobalResources;
+    using Constants;
     using Fanex.BetList.Core.Entities;
     using Templates;
 
@@ -13,6 +15,8 @@
         private const string BetTypeCloseTag = "</span> ";
         private const string GameTypeRefId = "RNG_Casino_GT";
         private const string GameGroupRefId = "RNG_Casino_GG";
+
+        private const string GameGroupNameArea = "<span class='gamegroupname'> {0}</span>";
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
@@ -59,7 +63,8 @@
                 return;
             }
 
-            Template.League.LeagueName.leagueName = ticketHelper.GetResourceData(GameGroupRefId, ticket.TransDesc);
+            var gameGroupName = ticketHelper.GetResourceData(GameGroupRefId, ticket.TransDesc);
+            Template.League.LeagueName.SetValue(string.Format(GameGroupNameArea, gameGroupName));
 
             if (string.IsNullOrEmpty(ticket.BetCheck))
             {
@@ -133,6 +138,26 @@
             }
 
             return "0"; // Previous days Ticket
+        }
+
+        protected override void BuildMatchInfo(ref RTFHelper rtfHelper)
+        {
+            if (Template.League != null)
+            {
+                var htmlTagMatching = new Regex("</?[^<>]*>");
+                string choice = Template.League.sportTypeName;
+
+                choice += Template.League.LeagueName.ToString();
+                choice = htmlTagMatching.Replace(choice, string.Empty);
+
+                Template.League.SetValue(choice);
+
+                if (!string.IsNullOrEmpty(choice))
+                {
+                    choice = choice.Replace(HtmlCharacters.NoneBreakingSpace, string.Empty);
+                    rtfHelper.RTFRenderer.AddText("\n" + choice);
+                }
+            }
         }
     }
 }
