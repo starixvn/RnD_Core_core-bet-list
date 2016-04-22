@@ -1,11 +1,12 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using App_GlobalResources;
-    using Entities;
-    using Templates;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
+    using System.Text.RegularExpressions;
+    using App_GlobalResources;
+    using Entities;
+    using Templates;
 
     public class Choice4001 : Choice1
     {
@@ -14,9 +15,8 @@
 
         private const string OpenSportTypeNameTag = "<span class='voidbridge-sporttypename'>";
         private const string CloseSportTypeNameTag = "</span>";
-        private const string OpenGameGroupNameTag = "<span class='voidbridge-gamegroupname'>";
-        private const string CloseGameGroupNameTag = "</span>";
-        private const string OpenGameTypeNameTag = "<span class='voidbridge-gametypename colorHandicap'>";
+        private const string GameGroupNameArea = "<span class='gamegroupname'>{0}</span>";
+        private const string OpenGameTypeNameTag = "<span class='colorHandicap'>";
         private const string CloseGameTypeNameTag = "</span>";
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
@@ -81,10 +81,8 @@
             }
 
             Template.League.LeagueName.leagueName = string.Format(
-                "{0}{1}{2}",
-                OpenGameGroupNameTag,
-                ticketHelper.GetResourceData(GameGroupRefId, ticket.TransDesc),
-                CloseGameGroupNameTag);
+                GameGroupNameArea,
+                ticketHelper.GetResourceData(GameGroupRefId, ticket.TransDesc));
 
             if (string.IsNullOrEmpty(ticket.BetCheck))
             {
@@ -153,13 +151,13 @@
 
         protected override void AdjustBetTeamToRTF()
         {
+            var htmlTagMatching = new Regex("</?[^<>]*>");
+
             Template.League.sportTypeName = Template.League.sportTypeName
                 .Replace(OpenSportTypeNameTag, string.Empty)
                 .Replace(CloseSportTypeNameTag, string.Empty);
 
-            Template.League.LeagueName.leagueName = Template.League.LeagueName.leagueName
-                .Replace(OpenGameGroupNameTag, string.Empty)
-                .Replace(CloseSportTypeNameTag, string.Empty);
+            Template.League.LeagueName.leagueName = htmlTagMatching.Replace(Template.League.LeagueName.leagueName, string.Empty);
 
             Template.betTeam = Template.betTeam
                 .Replace(OpenGameTypeNameTag, string.Empty)

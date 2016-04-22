@@ -49,8 +49,8 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            var expectedGameTypeNameBlock = string.Format("<span class='voidbridge-gametypename colorHandicap'>{0}</span>", "Bushido Code");
-            Assert.AreEqual(_choice.Template.betTeam, expectedGameTypeNameBlock);
+            var expectedGameTypeNameBlock = string.Format("<span class='colorHandicap'>{0}</span>", "Bushido Code");
+            Assert.AreEqual(expectedGameTypeNameBlock, _choice.Template.betTeam);
         }
 
         [Test]
@@ -78,8 +78,8 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            var expectedGameGroupNameBlock = string.Format("<span class='voidbridge-gamegroupname'>{0}</span>", "Table Game");
-            Assert.AreEqual(_choice.Template.League.LeagueName.leagueName, expectedGameGroupNameBlock);
+            var expectedGameGroupNameBlock = string.Format("<span class='gamegroupname'>{0}</span>", "Table Game");
+            Assert.AreEqual(expectedGameGroupNameBlock, _choice.Template.League.LeagueName.leagueName);
         }
 
         [TestCase("WON", "1")]
@@ -213,7 +213,7 @@
             _choice.RenderRTF(_ticket, _ticketHelper, null, false, new RTFHelper().Clone());
 
             ////Assert
-            Assert.AreEqual(_choice.Template.League.LeagueName.leagueName, "video slot");
+            Assert.AreEqual("video slot", _choice.Template.League.LeagueName.leagueName);
         }
 
         [Test]
