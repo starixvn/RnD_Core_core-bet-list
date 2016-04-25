@@ -24,33 +24,41 @@
         [Test]
         public void BuildBetTeam_WhenCalled_ShowSituationText()
         {
-            ////
+            ////Arrange
             _ticket.Handicap2 = 2;
             _ticket.BetTeam = "2";
             _ticketHelper.GetFastMarketSituation(_ticket.Handicap2, _ticket.BetTeam).Returns("Goal");
 
+            ////Act
             _choice.Render(_ticket, _ticketHelper, null, false);
 
+            ////Assert
             Assert.IsTrue(_choice.Template.betTeam.Contains("Goal"));
         }
 
         [Test]
         public void BuildBetTeam_Handicape1IsLessThan10_ShowCorrectTime()
         {
+            ////Arrange
             _ticket.Handicap1 = 9;
 
+            ////Act
             _choice.Render(_ticket, _ticketHelper, null, false);
 
+            ////Assert
             Assert.IsTrue(_choice.Template.betTeam.Contains("(09:00-09:59)"));
         }
 
         [Test]
         public void BuildBetTeam_Handicape1IsGreaterThan10_ShowCorrectTime()
         {
+            ////Arrange
             _ticket.Handicap1 = 60;
 
+            ////Act
             _choice.Render(_ticket, _ticketHelper, null, false);
 
+            ////Assert
             Assert.IsTrue(_choice.Template.betTeam.Contains("(60:00-60:59)"));
         }
     }
