@@ -99,6 +99,8 @@
 
         string GetResourceData(string refId, string resourceId);
 
+        string GetFastMarketSituation(decimal handicap2, string betTeam);
+
         #endregion METHODS TO RESOLVE NAMES FROM IDS
     }
 }

@@ -181,5 +181,10 @@
         {
             return CacheRef.GetResourceData(refId, resourceId);
         }
+
+        public string GetFastMarketSituation(decimal handicap2, string betTeam)
+        {
+            return "Goal";
+        }
     }
 }
