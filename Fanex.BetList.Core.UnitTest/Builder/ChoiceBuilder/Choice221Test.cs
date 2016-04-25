@@ -37,7 +37,7 @@
         }
 
         [Test]
-        public void BuildBetTeam_Handicape1IsLessThan10_ShowCorrectTime()
+        public void BuildBetTeam_Handicap1IsLessThan10_ShowCorrectTime()
         {
             ////Arrange
             _ticket.Handicap1 = 9;
@@ -50,7 +50,7 @@
         }
 
         [Test]
-        public void BuildBetTeam_Handicape1IsGreaterThan10_ShowCorrectTime()
+        public void BuildBetTeam_Handicap1IsGreaterThan10_ShowCorrectTime()
         {
             ////Arrange
             _ticket.Handicap1 = 60;
