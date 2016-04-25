@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using Fanex.BetList.Core.Entities;
-
-namespace Fanex.BetList.Core.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    public class Choice221: Choice4
+    using Entities;
+    using System.Collections.Generic;
+
+    public class Choice221 : Choice4
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {

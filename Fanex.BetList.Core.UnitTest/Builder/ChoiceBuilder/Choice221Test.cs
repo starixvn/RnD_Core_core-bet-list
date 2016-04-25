@@ -53,6 +53,5 @@
 
             Assert.IsTrue(_choice.Template.betTeam.Contains("(60:00-60:59)"));
         }
-
     }
 }

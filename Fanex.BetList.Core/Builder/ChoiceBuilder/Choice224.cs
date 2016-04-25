@@ -1,6 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    public class Choice224: Choice222
+    public class Choice224 : Choice222
     {
     }
 }
