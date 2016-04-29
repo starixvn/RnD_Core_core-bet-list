@@ -155,5 +155,10 @@
         {
             return RefData.GetCombinationTypeCombo(betTeam, betCheck, handicap1, handicap2, CurrentTWLanguage);
         }
+
+        public static string GetFastMarketChoice(string betType, string betTeam, int handicap1, int handicap2)
+        {
+            return RefData.GetFastMarketsChoise(betType, betTeam, handicap1, handicap2, CurrentTWLanguage);
+        }
     }
 }

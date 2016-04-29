@@ -5,7 +5,7 @@
     using Entities;
     using RemotingRef;
     using Sunplus.Core.Common.IPs;
-
+    using System;
     /// <summary>
     /// Utilities for resolving Names from IDs.
     /// </summary>
@@ -182,9 +182,9 @@
             return CacheRef.GetResourceData(refId, resourceId);
         }
 
-        public string GetFastMarketSituation(decimal handicap2, string betTeam)
+        public string GetFastMarketSituation(string betType, string betTeam ,decimal handicap1, decimal handicap2)
         {
-            return "Goal";
+            return CacheRef.GetFastMarketChoice(betType, betTeam, Convert.ToInt32(handicap1), Convert.ToInt32(handicap2));
         }
     }
 }

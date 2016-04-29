@@ -125,7 +125,7 @@ namespace Fanex.BetList.Core.UnitTest.Stubs
             return refNo + resourceId;
         }
 
-        public string GetFastMarketSituation(decimal handicap2, string betTeam)
+        public string GetFastMarketSituation(string betType, string betTeam, decimal handicap1, decimal handicap2)
         {
             return this._betTeamName + handicap2 + betTeam;
         }
