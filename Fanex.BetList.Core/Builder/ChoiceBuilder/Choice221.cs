@@ -8,10 +8,10 @@
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             var situationName = ticketHelper.GetFastMarketSituation(
-                ticket.BetTypeId.ToString()
-                ,ticket.BetTeam
-                ,ticket.Handicap1
-                ,ticket.Handicap2);
+                ticket.BetTypeId.ToString(),
+                ticket.BetTeam,
+                ticket.Handicap1,
+                ticket.Handicap2);
 
             Template.betTeam = situationName;
         }

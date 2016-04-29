@@ -35,7 +35,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            Assert.AreEqual("Goal (09:00-09:59)",_choice.Template.betTeam);
+            Assert.AreEqual("Goal (09:00-09:59)", _choice.Template.betTeam);
         }
     }
 }
