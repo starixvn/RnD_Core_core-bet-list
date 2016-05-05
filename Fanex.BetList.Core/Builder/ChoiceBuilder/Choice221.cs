@@ -15,10 +15,5 @@
 
             Template.betTeam = situationName;
         }
-
-        protected override void BuildScore(ITicket ticket)
-        {
-            Template.Score = null;
-        }
     }
 }
