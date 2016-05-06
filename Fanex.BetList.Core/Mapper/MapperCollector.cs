@@ -68,35 +68,35 @@
             }
         }
 
-        public static void AddDataFromMapperObj(IMapper mapper, string componentName)
+        private static void AddDataFromMapperObj(IMapper mapper, string componentName)
         {
             switch (componentName)
             {
                 case CHOICE:
-                    AppendDataToSource(ref _choiceMapperData, mapper.MapperData);
+                    _choiceMapperData = AppendDataToSource(_choiceMapperData, mapper.MapperData);
                     break;
 
                 case STATUS:
-                    AppendDataToSource(ref _statusMapperData, mapper.MapperData);
+                    _statusMapperData = AppendDataToSource(_statusMapperData, mapper.MapperData);
                     break;
 
                 case STAKE:
-                    AppendDataToSource(ref _stakeMapperData, mapper.MapperData);
+                    _stakeMapperData = AppendDataToSource(_stakeMapperData, mapper.MapperData);
                     break;
 
                 case ODDS:
-                    AppendDataToSource(ref _oddsMapperData, mapper.MapperData);
+                    _oddsMapperData = AppendDataToSource(_oddsMapperData, mapper.MapperData);
                     break;
 
                 case TRANS:
-                    AppendDataToSource(ref _transMapperData, mapper.MapperData);
+                    _transMapperData = AppendDataToSource(_transMapperData, mapper.MapperData);
                     break;
             }
         }
 
-        private static void AppendDataToSource(ref IDictionary<int, int> source, IDictionary<int, int> data)
+        private static IDictionary<int, int> AppendDataToSource(IDictionary<int, int> source, IDictionary<int, int> data)
         {
-            source = source.Concat(data).ToDictionary(pair => pair.Key, pair => pair.Value);
+            return source.Concat(data.Where(item => !source.Keys.Contains(item.Key))).ToDictionary(pair => pair.Key, pair => pair.Value);
         }
     }
 }
