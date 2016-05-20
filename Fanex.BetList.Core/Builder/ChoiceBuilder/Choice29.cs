@@ -25,7 +25,7 @@
         /// <param name="ticketData">The ticket data.</param>
         protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            var betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
+            var betTypeName = GetBetTypeName(ticket, ticketHelper);
 
             var showSystemParlaySubbetsFunc = BuildShowSystemParlaySubbetsFunc(ticket, ticketHelper);
 
@@ -42,6 +42,16 @@
                                         detailSystemParlayDiv);
 
             Template.SetValue(mixParlayMarkups);
+        }
+
+        private string GetBetTypeName(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            if (ticket.BetTeam == "1")
+            {
+                return ticketHelper.GetBetTypeNameById(9);
+            }
+
+            return ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
         }
 
         private string GetCustId(ITicket ticket)
