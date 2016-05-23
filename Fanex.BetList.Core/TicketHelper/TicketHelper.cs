@@ -11,8 +11,6 @@
     /// </summary>
     public class TicketHelper : ITicketHelper
     {
-        private static string DefaultLanguage = "en";
-
         public TicketHelper()
         {
             ShowBetType = true;
