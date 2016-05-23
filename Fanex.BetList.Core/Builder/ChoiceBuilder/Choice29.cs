@@ -212,7 +212,8 @@
             List<IRichTextString> lstRTFChoices = new List<IRichTextString>();
             RTFHelper tmpRtfHelper = rtfHelper.Clone();
 
-            tmpRtfHelper.RTFRenderer.AddText(CoreBetList.lblSystemParlay, tmpRtfHelper.PosFont);
+       
+            tmpRtfHelper.RTFRenderer.AddText(GetBetTypeName(ticket, ticketHelper), tmpRtfHelper.PosFont);
 
             BuildRTFCombinationMPOfferNames(tmpRtfHelper, ticket, ticketHelper);
 
