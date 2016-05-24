@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Fanex.BetList.Core.UnitTest</RootNamespace>
-    <AssemblyName>Fanex.BetList.Core.UnitTest</AssemblyName>
+    <AssemblyName>Fanex.BetList.Core.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Fanex.BetList.Microgaming.Test</RootNamespace>
-    <AssemblyName>Fanex.BetList.Microgaming.Test</AssemblyName>
+    <AssemblyName>Fanex.BetList.Microgaming.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
