@@ -86,7 +86,7 @@
             transHtml = block.ToString();
 
             // Assert
-            Assert.IsNullOrEmpty(transHtml);
+            Assert.IsTrue(string.IsNullOrEmpty(transHtml));
         }
 
         /// <summary>

@@ -30,7 +30,7 @@
             _status.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            Assert.IsNullOrEmpty(_status.Template.StatusResult.ToString());
+            Assert.IsTrue(string.IsNullOrEmpty(_status.Template.StatusResult.ToString()));
         }
 
         [Test]

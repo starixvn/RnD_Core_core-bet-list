@@ -65,7 +65,7 @@
             block.ToString(ref transTimeHtml);
 
             // Assert
-            Assert.IsNullOrEmpty(transTimeHtml.ToString());
+            Assert.IsTrue(string.IsNullOrEmpty(transTimeHtml.ToString()));
         }
 
         /// <summary>

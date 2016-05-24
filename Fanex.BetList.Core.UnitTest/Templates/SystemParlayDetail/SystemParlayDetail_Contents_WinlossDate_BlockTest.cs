@@ -67,7 +67,7 @@
             block.ToString(ref contentsWinlossDateHtml);
 
             // Assert
-            Assert.IsNullOrEmpty(contentsWinlossDateHtml.ToString());
+            Assert.IsTrue(string.IsNullOrEmpty(contentsWinlossDateHtml.ToString()));
         }
 
         /// <summary>

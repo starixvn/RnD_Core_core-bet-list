@@ -65,7 +65,7 @@
             block.ToString(ref totalContentsHtml);
 
             // Assert
-            Assert.IsNullOrEmpty(totalContentsHtml.ToString());
+            Assert.IsTrue(string.IsNullOrEmpty(totalContentsHtml.ToString()));
         }
 
         /// <summary>

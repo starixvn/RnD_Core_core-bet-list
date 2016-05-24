@@ -66,7 +66,7 @@
             block.ToString(ref outstandingHtml);
 
             // Assert
-            Assert.IsNullOrEmpty(outstandingHtml.ToString());
+            Assert.IsTrue(string.IsNullOrEmpty(outstandingHtml.ToString()));
         }
 
         /// <summary>

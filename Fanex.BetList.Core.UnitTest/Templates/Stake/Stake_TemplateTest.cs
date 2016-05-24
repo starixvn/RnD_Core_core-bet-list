@@ -65,7 +65,7 @@
             stakeHtml = block.ToString();
 
             // Assert
-            Assert.IsNullOrEmpty(stakeHtml);
+            Assert.IsTrue(string.IsNullOrEmpty(stakeHtml));
         }
 
         /// <summary>

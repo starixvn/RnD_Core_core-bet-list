@@ -88,7 +88,7 @@
             block.ToString(ref handicapHtml);
 
             // Assert
-            Assert.IsNullOrEmpty(handicapHtml.ToString());
+            Assert.IsTrue(string.IsNullOrEmpty(handicapHtml.ToString()));
         }
 
         /// <summary>

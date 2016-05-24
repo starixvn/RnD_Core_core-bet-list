@@ -67,7 +67,7 @@
             block.ToString(ref contentsMatchHtml);
 
             // Assert
-            Assert.IsNullOrEmpty(contentsMatchHtml.ToString());
+            Assert.IsTrue(string.IsNullOrEmpty(contentsMatchHtml.ToString()));
         }
 
         /// <summary>

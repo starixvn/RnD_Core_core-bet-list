@@ -67,7 +67,7 @@
             block.ToString(ref scoreHtml);
 
             // Assert
-            Assert.IsNullOrEmpty(scoreHtml.ToString());
+            Assert.IsTrue(string.IsNullOrEmpty(scoreHtml.ToString()));
         }
 
         /// <summary>

@@ -90,7 +90,7 @@
             block.ToString(ref statusHtml);
 
             // Assert
-            Assert.IsNullOrEmpty(statusHtml.ToString());
+            Assert.IsTrue(string.IsNullOrEmpty(statusHtml.ToString()));
         }
 
         /// <summary>

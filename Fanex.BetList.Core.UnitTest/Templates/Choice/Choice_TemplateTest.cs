@@ -80,7 +80,7 @@
             choiceHtml = block.ToString();
 
             // Assert
-            Assert.IsNullOrEmpty(choiceHtml.ToString());
+            Assert.IsTrue(string.IsNullOrEmpty(choiceHtml.ToString()));
         }
 
         /// <summary>

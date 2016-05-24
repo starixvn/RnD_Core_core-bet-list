@@ -86,7 +86,7 @@
             block.ToString(ref leagueHtml);
 
             // Assert
-            Assert.IsNullOrEmpty(leagueHtml.ToString());
+            Assert.IsTrue(string.IsNullOrEmpty(leagueHtml.ToString()));
         }
 
         /// <summary>

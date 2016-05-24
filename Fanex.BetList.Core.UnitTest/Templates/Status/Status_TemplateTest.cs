@@ -65,7 +65,7 @@
             statusHtml = block.ToString();
 
             // Assert
-            Assert.IsNullOrEmpty(statusHtml);
+            Assert.IsTrue(string.IsNullOrEmpty(statusHtml));
         }
 
         /// <summary>

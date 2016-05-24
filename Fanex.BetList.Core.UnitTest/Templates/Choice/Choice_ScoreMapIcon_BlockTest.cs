@@ -70,7 +70,7 @@
             block.ToString(ref scoreMapIconHtml);
 
             // Assert
-            Assert.IsNullOrEmpty(scoreMapIconHtml.ToString());
+            Assert.IsTrue(string.IsNullOrEmpty(scoreMapIconHtml.ToString()));
         }
 
         /// <summary>

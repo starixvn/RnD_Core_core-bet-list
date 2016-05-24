@@ -86,7 +86,7 @@
             systemParlayDetailsHtml = block.ToString();
 
             // Assert
-            Assert.IsNullOrEmpty(systemParlayDetailsHtml);
+            Assert.IsTrue(string.IsNullOrEmpty(systemParlayDetailsHtml));
         }
 
         /// <summary>

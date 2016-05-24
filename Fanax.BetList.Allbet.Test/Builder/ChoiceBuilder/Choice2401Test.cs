@@ -46,7 +46,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            Assert.IsNullOrEmpty(_choice.Template.betTeam);
+            Assert.IsTrue(string.IsNullOrEmpty(_choice.Template.betTeam));
         }
 
         [Test]
@@ -59,7 +59,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            Assert.IsNullOrEmpty(_choice.Template.BetType.betTypeName);
+            Assert.IsTrue(string.IsNullOrEmpty(_choice.Template.BetType.betTypeName));
         }
 
         [Test]

@@ -65,7 +65,7 @@
             block.ToString(ref betTypeHtml);
 
             // Assert
-            Assert.IsNullOrEmpty(betTypeHtml.ToString());
+            Assert.IsTrue(string.IsNullOrEmpty(betTypeHtml.ToString()));
         }
 
         /// <summary>

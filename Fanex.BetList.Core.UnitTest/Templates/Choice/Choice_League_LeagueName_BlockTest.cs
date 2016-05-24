@@ -65,7 +65,7 @@
             block.ToString(ref leagueNameHtml);
 
             // Assert
-            Assert.IsNullOrEmpty(leagueNameHtml.ToString());
+            Assert.IsTrue(string.IsNullOrEmpty(leagueNameHtml.ToString()));
         }
 
         /// <summary>

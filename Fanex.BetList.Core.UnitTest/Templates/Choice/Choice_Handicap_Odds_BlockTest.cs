@@ -65,7 +65,7 @@
             block.ToString(ref oddsHtml);
 
             // Assert
-            Assert.IsNullOrEmpty(oddsHtml.ToString());
+            Assert.IsTrue(string.IsNullOrEmpty(oddsHtml.ToString()));
         }
 
         /// <summary>

@@ -101,7 +101,7 @@
             block.ToString(ref contentsHtml);
 
             // Assert
-            Assert.IsNullOrEmpty(contentsHtml.ToString());
+            Assert.IsTrue(string.IsNullOrEmpty(contentsHtml.ToString()));
         }
 
         /// <summary>

@@ -65,7 +65,7 @@
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.IsNullOrEmpty(choiceTemplate.Handicap.handicap);
+            Assert.IsTrue(string.IsNullOrEmpty(choiceTemplate.Handicap.handicap));
         }
 
         [Test]

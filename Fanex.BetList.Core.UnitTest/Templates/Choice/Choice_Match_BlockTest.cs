@@ -98,7 +98,7 @@
             block.ToString(ref matchHtml);
 
             // Assert
-            Assert.IsNullOrEmpty(matchHtml.ToString());
+            Assert.IsTrue(string.IsNullOrEmpty(matchHtml.ToString()));
         }
 
         /// <summary>

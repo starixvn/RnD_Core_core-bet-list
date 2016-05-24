@@ -65,7 +65,7 @@
             block.ToString(ref contentsPlayerCommission);
 
             // Assert
-            Assert.IsNullOrEmpty(contentsPlayerCommission.ToString());
+            Assert.IsTrue(string.IsNullOrEmpty(contentsPlayerCommission.ToString()));
         }
 
         /// <summary>
