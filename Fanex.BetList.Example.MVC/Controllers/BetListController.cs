@@ -44,7 +44,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
         public ActionResult All(BetListData model = null)
         {
-            var betTypes = _dataService.QueryBetTypes();
+           var betTypes = _dataService.QueryBetTypes();
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             DataSourcePath = "~/App_Data/BetListDummyData.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
@@ -75,7 +75,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
             betTypes.Add(new BetType
             {
                 Id = 157,
-                Name = CacheRef.GetBettype(157)
+                Name = CacheRef.GetBettype(157, null)
             });
 
             for (int i = 159; i <= 217; i++)
@@ -83,7 +83,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
                 betTypes.Add(new BetType
                 {
                     Id = i,
-                    Name = CacheRef.GetBettype(i)
+                    Name = CacheRef.GetBettype(i, null)
                 });
             }
 
