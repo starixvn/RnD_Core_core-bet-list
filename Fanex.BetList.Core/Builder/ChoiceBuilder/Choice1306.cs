@@ -12,7 +12,7 @@
         {
             string parentBettypeId = ticketHelper.GetParentIdByBetTypeId(ticket.BetTypeId);
 
-            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(parentBettypeId);
+            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(parentBettypeId, ticket.RefNo);
         }
     }
 }

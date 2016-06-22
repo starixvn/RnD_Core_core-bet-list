@@ -54,7 +54,7 @@
         {
             var parentBetTypeId = ticketHelper.GetParentIdByBetTypeId(ticket.BetTypeId);
 
-            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(parentBetTypeId);
+            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(parentBetTypeId, ticket.RefNo);
         }
     }
 }

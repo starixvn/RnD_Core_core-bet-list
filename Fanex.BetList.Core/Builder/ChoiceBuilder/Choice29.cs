@@ -14,6 +14,8 @@
     public class Choice29 : Choice1
     {
         private const string CHOICEBUILDERNAMESPACE = "Fanex.BetList.Core.Builder.ChoiceBuilder";
+        private const string RefId = "ComboParlay";
+        private const string ResourceId = "LuckyBet";
 
         #region Build Choice
 
@@ -51,7 +53,14 @@
                 return ticketHelper.GetBetTypeNameById(9);
             }
 
-            return ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
+            var bettypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
+
+            if (ticket.BetCheck == ticket.BetTeam && ticket.Handicap1 == 0)
+            {
+                bettypeName += " " + ticketHelper.GetResourceData(RefId, ResourceId);
+            }
+
+            return bettypeName;
         }
 
         private string GetCustId(ITicket ticket)

@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
     using Entities;
-
+    using System;
     /// <summary>
     /// Match Winner.
     /// </summary>
@@ -12,7 +12,7 @@
         {
             string parentBettypeId = ticketHelper.GetParentIdByBetTypeId(ticket.BetTypeId);
 
-            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(parentBettypeId);
+            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(parentBettypeId, ticket.RefNo);
         }
     }
 }

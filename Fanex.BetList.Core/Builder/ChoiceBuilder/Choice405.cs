@@ -15,7 +15,7 @@
                 return;
             }
 
-            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
+            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.RefNo);
         }
     }
 }
