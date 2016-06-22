@@ -71,9 +71,9 @@
 
         string GetTeamNameById(object teamId);
 
-        string GetBetTypeNameById(object bettypeId);
+        string GetBetTypeNameById(object bettypeId, object refNo = null);
 
-        string GetBetTypeNameById(object bettypeId, object betId, object betCheck = null);
+        string GetBetTypeNameById(object bettypeId, object betId, object betCheck = null, object refNo = null);
 
         string GetParentIdByBetTypeId(object betTypeId, object defaultParentId = null);
 

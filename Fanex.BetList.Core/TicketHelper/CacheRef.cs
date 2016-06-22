@@ -31,9 +31,9 @@
             }
         }
 
-        public static string GetBettype(object bettypeId)
+        public static string GetBettype(object bettypeId, object refNo)
         {
-            return GetBettype(bettypeId, null, null);
+            return GetBettype(bettypeId, null, null, refNo);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@
         /// <param name="betId">In the case of single ticket, the resource ID is the bet ID.</param>
         /// <param name="betCheck">In the case of sub-ticket of a parlay ticket, the resource ID is the BetCheck.</param>
         /// <returns>The bet name of the passed bet type ID with associate resource.</returns>
-        public static string GetBettype(object bettypeId, object betId, object betCheck)
+        public static string GetBettype(object bettypeId, object betId, object betCheck, object refNo)
         {
             string resourceId = string.Empty;
             object resource = betId ?? betCheck;
@@ -54,7 +54,12 @@
                 resourceId = resource.ToString().Substring(1);
             }
 
-            return RefData.GetBetTypeName(bettypeId.ToString(), CurrentTWLanguage, string.Empty, resourceId);
+            if (refNo == null)
+            {
+                refNo = 0;
+            }
+
+            return RefData.GetBetTypeName(bettypeId.ToString(), CurrentTWLanguage, string.Empty, resourceId, Convert.ToInt64(refNo));
         }
 
         public static string GetParentIdByBetTypeId(object betTypeId, object defaultParentId)

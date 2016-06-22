@@ -48,9 +48,9 @@
         /// <value>Function to get parlay detail by Id.</value>
         public GetParlayTicketsById GetParlayDetailById { get; set; }
 
-        public string GetBetTypeNameById(object bettypeId)
+        public string GetBetTypeNameById(object bettypeId, object refNo = null)
         {
-            return CacheRef.GetBettype(bettypeId);
+            return CacheRef.GetBettype(bettypeId, refNo);
         }
 
         public string GetCasinoBetTeamNameById(object betteamId)
@@ -78,9 +78,9 @@
             return CacheRef.GetHorseTeamName(homeId);
         }
 
-        public string GetBetTypeNameById(object bettypeId, object betId, object betCheck = null)
+        public string GetBetTypeNameById(object bettypeId, object betId, object betCheck = null, object refNo = null)
         {
-            return CacheRef.GetBettype(bettypeId, betId, betCheck);
+            return CacheRef.GetBettype(bettypeId, betId, betCheck, refNo);
         }
 
         public string GetParentIdByBetTypeId(object betTypeId, object defaultParentId = null)
