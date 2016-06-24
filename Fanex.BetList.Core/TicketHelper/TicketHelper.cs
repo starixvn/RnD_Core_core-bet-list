@@ -88,7 +88,7 @@
             return CacheRef.GetBettype(bettypeId, betId, betCheck);
         }
 
-        public string GetBetTypeNameById(object bettypeId, object betId, object betCheck = null, object refNo = null)
+        public string GetBetTypeNameById(object bettypeId, object refNo,object betId, object betCheck = null)
         {
             return CacheRef.GetBettype(bettypeId, betId, betCheck, refNo);
         }
