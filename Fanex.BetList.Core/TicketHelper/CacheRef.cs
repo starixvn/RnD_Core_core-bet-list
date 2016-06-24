@@ -1,11 +1,14 @@
 ﻿namespace Fanex.BetList.Core.TicketHelper
 {
-    using System.Threading;
     using RemotingRef;
     using System;
-    using System.Collections.Generic;    /// <summary>
-                                         /// Class CacheRef.
-                                         /// </summary>
+    using System.Collections.Generic;
+    using System.Threading;
+
+    /// <summary>
+    /// Class CacheRef.
+    /// </summary>
+    /// 
     public class CacheRef
     {
         private CacheRef()
@@ -31,7 +34,12 @@
             }
         }
 
-        public static string GetBettype(object bettypeId, object refNo = null)
+        public static string GetBettype(object bettypeId)
+        {
+            return GetBettype(bettypeId, null, null);
+        }
+
+        public static string GetBettype(object bettypeId, object refNo)
         {
             return GetBettype(bettypeId, null, null, refNo);
         }
@@ -43,7 +51,28 @@
         /// <param name="betId">In the case of single ticket, the resource ID is the bet ID.</param>
         /// <param name="betCheck">In the case of sub-ticket of a parlay ticket, the resource ID is the BetCheck.</param>
         /// <returns>The bet name of the passed bet type ID with associate resource.</returns>
-        public static string GetBettype(object bettypeId, object betId, object betCheck, object refNo = null)
+        public static string GetBettype(object bettypeId, object betId, object betCheck)
+        {
+            string resourceId = string.Empty;
+            object resource = betId ?? betCheck;
+
+            // Remove first character of the resource.
+            if (resource != null && resource.ToString().Length > 1)
+            {
+                resourceId = resource.ToString().Substring(1);
+            }
+
+            return RefData.GetBetTypeName(bettypeId.ToString(), CurrentTWLanguage, string.Empty, resourceId, 0);
+        }
+
+        /// <summary>
+        /// Gets bet type name.
+        /// </summary>
+        /// <param name="bettypeId">The ID of the bet type which needs to get the name.</param>
+        /// <param name="betId">In the case of single ticket, the resource ID is the bet ID.</param>
+        /// <param name="betCheck">In the case of sub-ticket of a parlay ticket, the resource ID is the BetCheck.</param>
+        /// <returns>The bet name of the passed bet type ID with associate resource.</returns>
+        public static string GetBettype(object bettypeId, object betId, object betCheck, object refNo)
         {
             string resourceId = string.Empty;
             object resource = betId ?? betCheck;
@@ -117,7 +146,8 @@
             return RefData.GetResourceDataByRefIdAndResourceId(refId, resourceId, CurrentTWLanguage, string.Empty);
         }
 
-        public static IList<string> GetCombinationTypeCombo(string betTeam,
+        public static IList<string> GetCombinationTypeCombo(
+                string betTeam,
                 string betCheck,
                 int handicap1,
                 int handicap2)

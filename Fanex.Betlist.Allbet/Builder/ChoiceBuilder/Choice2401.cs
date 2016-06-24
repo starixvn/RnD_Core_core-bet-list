@@ -170,7 +170,8 @@
             return string.Format("{0}{1}{2}", OpenBetTypeNameTag, betTypeName, CloseBetTypeNameTag);
         }
 
-        private string BuildGameId(ITicket ticket) {
+        private string BuildGameId(ITicket ticket)
+        {
             var gameId = ticket.MatchCode;
 
             return string.Format("{0}{1}{2}", OpenGameIdTag, gameId, CloseGameIdTag);

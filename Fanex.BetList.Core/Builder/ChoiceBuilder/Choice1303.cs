@@ -1,8 +1,8 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using Entities;
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Entities;
-    using System;
+
     /// <summary>
     /// Set Handicap.
     /// </summary>

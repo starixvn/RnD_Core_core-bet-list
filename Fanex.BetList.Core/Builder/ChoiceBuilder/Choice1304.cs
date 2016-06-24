@@ -1,11 +1,12 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System.Collections.Generic;
     using Entities;
-    using System;
+    using System.Collections.Generic;
+
     /// <summary>
     /// Total Sets.
     /// </summary>
+    /// 
     public class Choice1304 : Choice3
     {
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
@@ -17,7 +18,7 @@
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId, null, ticket.RefNo);
+            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.RefNo, ticket.BetId);
         }
     }
 }
