@@ -66,15 +66,16 @@
         public void BuildBetType_Always_SetBetTypeNameIsBetTypeName()
         {
             // Arrange
+            const string BET_TYPE_NAME = "Bet type name";
             _ticket.BetId = 801;
-            _ticketHelper.GetBetTypeNameById(Arg.Any<int>(), Arg.Any<object>(), Arg.Any<object>()).Returns("Bet type name");
+            _ticket.RefNo = "1000";
+            _ticketHelper.GetBetTypeNameById(Arg.Any<int>(), Arg.Any<object>(), Arg.Any<object>(), Arg.Any<object>()).Returns(BET_TYPE_NAME);
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedBetTypeName = _ticketHelper.GetBetTypeNameById(_ticket.BetTypeId, _ticket.BetId, _ticket.BetCheck);
-            Assert.AreEqual(expectedBetTypeName, _choice.Template.BetType.betTypeName);
+            Assert.AreEqual(BET_TYPE_NAME, _choice.Template.BetType.betTypeName);
         }
     }
 }

@@ -137,23 +137,6 @@
         }
 
         /// <summary>
-        /// The value of Template.BetType.betTypeName is always bet type name get by identifier.
-        /// </summary>
-        [Test]
-        public void BuildBetType_Always_SetBetTypeIsBetTypeName()
-        {
-            // Arrange
-            const string BET_TYPE_NAME = "Bet type name";
-            _ticketHelper.GetBetTypeNameById(Arg.Any<int>()).Returns<string>(BET_TYPE_NAME);
-
-            // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-
-            // Assert
-            Assert.AreEqual(BET_TYPE_NAME, _choice.Template.BetType.betTypeName);
-        }
-
-        /// <summary>
         /// The value of Template.Match.homeTeam is always [HomeTeamName (N)] if the ticket is neutral.
         /// </summary>
         [Test]

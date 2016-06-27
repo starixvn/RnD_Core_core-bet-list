@@ -72,7 +72,7 @@
         {
             // Arrange
             var betTypeName = "A Bettype Name";
-            _ticketHelper.GetBetTypeNameById(Arg.Any<int>()).Returns(betTypeName);
+            _ticketHelper.GetBetTypeNameById(Arg.Any<int>(), Arg.Any<object>()).Returns(betTypeName);
             _ticket.IsLive = false;
 
             // Act
@@ -91,7 +91,7 @@
         {
             // Arrange
             var betTypeName = "A Bettype Name";
-            _ticketHelper.GetBetTypeNameById(Arg.Any<int>()).Returns(betTypeName);
+            _ticketHelper.GetBetTypeNameById(Arg.Any<int>(), Arg.Any<object>()).Returns(betTypeName);
             _ticket.IsLive = true;
 
             // Act

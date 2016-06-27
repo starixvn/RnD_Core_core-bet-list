@@ -139,14 +139,14 @@
         public void BuildBetType_Always_ShowBetTypeNameFromRemotingRef()
         {
             // Arrange.
-            _ticketHelper.GetBetTypeNameById(405).Returns("Bet Type Name");
+            const string BET_TYPE_NAME = "Bet type name";
+            _ticketHelper.GetBetTypeNameById(405, Arg.Any<object>()).Returns(BET_TYPE_NAME);
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            string expectedBetTypeName = "Bet Type Name";
-            Assert.AreEqual(expectedBetTypeName, _choice.Template.BetType.betTypeName);
+            Assert.AreEqual(BET_TYPE_NAME, _choice.Template.BetType.betTypeName);
         }
     }
 }

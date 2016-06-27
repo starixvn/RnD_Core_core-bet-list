@@ -100,7 +100,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         {
             // Arrange
             const string BET_TYPE_NAME = "Bet type name";
-            _ticketHelper.GetBetTypeNameById(Arg.Any<int>()).Returns<string>(BET_TYPE_NAME);
+            _ticketHelper.GetBetTypeNameById(Arg.Any<int>(), Arg.Any<object>()).Returns<string>(BET_TYPE_NAME);
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());

@@ -81,7 +81,7 @@
             var parentBetTypeId = BetTypes._3rd1stHalfDoubleChance.ToString();
             var parentBetTypeName = "Parent Bet Type";
             _ticketHelper.GetParentIdByBetTypeId(Arg.Any<object>()).Returns(parentBetTypeId);
-            _ticketHelper.GetBetTypeNameById(parentBetTypeId).Returns(parentBetTypeName);
+            _ticketHelper.GetBetTypeNameById(parentBetTypeId, Arg.Any<object>()).Returns(parentBetTypeName);
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, false);
