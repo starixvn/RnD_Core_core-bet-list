@@ -1,5 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using System;
     using System.Collections.Generic;
     using Fanex.BetList.Core.Builder;
     using Fanex.BetList.Core.Entities;
@@ -14,6 +15,18 @@
         }
 
         public Choice_Template Template { get; set; }
+
+        public string GetBetTypeName(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            var bettypeId = ticket.BetTypeId;
+            ticket.BetTypeId = (int)ticket.BetId;
+
+            var choice = CreateChoice(ticket.BetTypeId);
+
+            ticket.BetTypeId = bettypeId;
+
+            return choice.GetBetTypeName(ticket, ticketHelper);
+        }
 
         public Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
         {

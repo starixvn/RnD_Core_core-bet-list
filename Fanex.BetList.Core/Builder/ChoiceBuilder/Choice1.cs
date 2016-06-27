@@ -428,6 +428,11 @@
 
         #endregion Build Html Block
 
+        public virtual string GetBetTypeName(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            return ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.RefNo);
+        }
+
         #region Private function
 
         protected bool IsBetHomeTeam(ITicket ticket)
