@@ -55,6 +55,11 @@
 
         public string GetBetTypeNameById(object bettypeId, object refNo)
         {
+            if (IsShowOddsWithChoice)
+            {
+                return CacheRef.GetBettype(bettypeId);
+            }
+
             return CacheRef.GetBettype(bettypeId, refNo);
         }
 
@@ -90,6 +95,11 @@
 
         public string GetBetTypeNameById(object bettypeId, object refNo, object betId, object betCheck = null)
         {
+            if (IsShowOddsWithChoice)
+            {
+                return CacheRef.GetBettype(bettypeId, betId, betCheck);
+            }
+
             return CacheRef.GetBettype(bettypeId, betId, betCheck, refNo);
         }
 
