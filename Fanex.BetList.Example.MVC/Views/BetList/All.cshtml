@@ -98,6 +98,14 @@
                     @Html.Raw(builder.BuildUsername(ticket))
                 </td>
                 <td class="text-right">
+                    @if(ticket.BetTypeId == 1)
+                    {
+                        ticketHelper.IsShowOddsWithChoice = true;
+                    }
+                    else
+                    {
+                        ticketHelper.IsShowOddsWithChoice = false;
+                    }
                     @Html.Raw(builder.BuildChoice(ticket, ticketHelper, ticketData, isShowScoreMap))
                 </td>
                 <td class="text-center">
