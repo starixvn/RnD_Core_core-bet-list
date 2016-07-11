@@ -50,10 +50,6 @@
       <HintPath>..\packages\Fanex.BetList.Allbet.1.0.0.2\lib\net40\Fanex.BetList.Allbet.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fanex.BetList.BetTrade, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.BetList.Core.2.13.0.14-beta\lib\net40\Fanex.BetList.BetTrade.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Fanex.BetList.ColossusBets, Version=1.0.1.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.BetList.ColossusBets.1.0.1.4\lib\net40\Fanex.BetList.ColossusBets.dll</HintPath>
       <Private>True</Private>
@@ -298,6 +294,10 @@
     <ProjectReference Include="..\Fanex.BetList.AGCasino\Fanex.BetList.AGCasino.csproj">
       <Project>{c18e1369-66c3-4a87-82bf-10e13e6cc2a0}</Project>
       <Name>Fanex.BetList.AGCasino</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.BetTrade\Fanex.BetList.BetTrade.csproj">
+      <Project>{386bf8aa-7ee2-46bb-aecc-6cd829671881}</Project>
+      <Name>Fanex.BetList.BetTrade</Name>
     </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.CockFighting\Fanex.BetList.CockFighting.csproj">
       <Project>{5a3e7893-910a-48a7-9582-58a864068ca8}</Project>

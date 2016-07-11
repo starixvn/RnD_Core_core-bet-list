@@ -1,10 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System;
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Builder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Templates;
+    using Builder;
+    using Entities;
+    using Templates;
     using NPOI.SS.UserModel;
 
     public class Choice901 : IChoice
@@ -22,10 +21,11 @@
             ticket.BetTypeId = (int)ticket.BetId;
 
             var choice = CreateChoice(ticket.BetTypeId);
+            var betTypeName = choice.GetBetTypeName(ticket, ticketHelper, ticketData);
 
             ticket.BetTypeId = bettypeId;
 
-            return choice.GetBetTypeName(ticket, ticketHelper, ticketData);
+            return betTypeName;
         }
 
         public Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
