@@ -46,7 +46,7 @@
             Template.SetValue(mixParlayMarkups);
         }
 
-        public override string GetBetTypeName(ITicket ticket, ITicketHelper ticketHelper)
+        public override string GetBetTypeName(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData = null)
         {
             if (ticket.BetTeam == "1")
             {

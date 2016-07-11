@@ -16,7 +16,7 @@
 
         public Choice_Template Template { get; set; }
 
-        public string GetBetTypeName(ITicket ticket, ITicketHelper ticketHelper)
+        public string GetBetTypeName(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData = null)
         {
             var bettypeId = ticket.BetTypeId;
             ticket.BetTypeId = (int)ticket.BetId;
@@ -25,7 +25,7 @@
 
             ticket.BetTypeId = bettypeId;
 
-            return choice.GetBetTypeName(ticket, ticketHelper);
+            return choice.GetBetTypeName(ticket, ticketHelper, ticketData);
         }
 
         public Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)

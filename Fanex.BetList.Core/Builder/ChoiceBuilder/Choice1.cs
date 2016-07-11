@@ -428,9 +428,18 @@
 
         #endregion Build Html Block
 
-        public virtual string GetBetTypeName(ITicket ticket, ITicketHelper ticketHelper)
+        public virtual string GetBetTypeName(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData = null)
         {
-            return ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.RefNo);
+            BuildBetType(ticket, ticketHelper, ticketData);
+
+            var betTypeName = Template.BetType?.betTypeName;
+
+            if (string.IsNullOrEmpty(betTypeName))
+            {
+                betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.RefNo);
+            }
+
+            return betTypeName;
         }
 
         #region Private function
@@ -543,7 +552,7 @@
         /// </summary>
         /// <param name="ticket">The ticket.</param>
         /// <param name="rtfHelper">The RTF helper.</param>
-        [SuppressMessage("StyleCop.CSharp.Nexcel.NexcelCustomRules", "SP2101:MethodMustNotContainMoreLinesThan", Justification = "Reviewed. Suppression is OK here.")]
+        [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2101:MethodMustNotContainMoreLinesThan", Justification = "Reviewed. Suppression is OK here.")]
         protected virtual void BuildBetTeamsInfo(ITicket ticket, ref RTFHelper rtfHelper)
         {
             if (Template.Match != null)
