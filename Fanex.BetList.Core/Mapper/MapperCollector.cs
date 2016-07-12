@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
     using System.Reflection;
     using System.Runtime.Caching;
@@ -9,86 +10,77 @@
     public class MapperCollector
     {
         #region Constants
-        private const string CACHECHOICEKEY = "Fanex.BetList.Core.Mapper.Choice";
-        private const string CACHESTATUSKEY = "Fanex.BetList.Core.Mapper.Status";
-        private const string CACHESTAKEKEY = "Fanex.BetList.Core.Mapper.Stake";
-        private const string CACHEODDSKEY = "Fanex.BetList.Core.Mapper.Odds";
-        private const string CACHETRANSKEY = "Fanex.BetList.Core.Mapper.Trans";
+        private const string BetListMapperNamespace = "Fanex.BetList.Core.Mapper.{0}Mapper";
 
-        private const string CHOICECOMPONENT = "Choice";
-        private const string STATUSCOMPONENT = "Status";
-        private const string STAKECOMPONENT = "Stake";
-        private const string ODDSCOMPONENT = "Odds";
-        private const string TRANSCOMPONENT = "Trans";
+        private const string CacheKey = "Fanex.BetList.Core.Mapper.{0}";
+        private const string Choice = "Choice";
+        private const string Status = "Status";
+        private const string Stake = "Stake";
+        private const string Odds = "Odds";
+        private const string Trans = "Trans";
+        private const string ParentChild = "ParentChild";
         #endregion
 
         #region Global variables
 
         private static ObjectCache _cache = MemoryCache.Default;
-
-        #endregion
-
-        #region Temporary global varibles
-
-        private static IDictionary<int, int> _choiceMapperData = null;
-        private static IDictionary<int, int> _statusMapperData = null;
-        private static IDictionary<int, int> _stakeMapperData = null;
-        private static IDictionary<int, int> _oddsMapperData = null;
-        private static IDictionary<int, int> _transMapperData = null;
+        private static object _locker = new object();
 
         #endregion
 
         #region Public method
 
-        public static int GetChoiceBaseBetTypeOf(int betType)
-        {
-            var choiceMapper = (IDictionary<int, int>)_cache[CACHECHOICEKEY];
-
-            return (choiceMapper != null && choiceMapper.ContainsKey(betType)) ? choiceMapper[betType] : betType;
-        }
-
-        public static int GetStatusBaseBetTypeOf(int betType)
-        {
-            var statusMapper = (IDictionary<int, int>)_cache[CACHESTATUSKEY];
-
-            return (statusMapper != null && statusMapper.ContainsKey(betType)) ? statusMapper[betType] : betType;
-        }
-
-        public static int GetStakeBaseBetTypeOf(int betType)
-        {
-            var stakeMapper = (IDictionary<int, int>)_cache[CACHESTAKEKEY];
-
-            return (stakeMapper != null && stakeMapper.ContainsKey(betType)) ? stakeMapper[betType] : betType;
-        }
-
-        public static int GetOddsBaseBetTypeOf(int betType)
-        {
-            var oddsMapper = (IDictionary<int, int>)_cache[CACHEODDSKEY];
-
-            return (oddsMapper != null && oddsMapper.ContainsKey(betType)) ? oddsMapper[betType] : betType;
-        }
-
-        public static int GetTransBaseBetTypeOf(int betType)
-        {
-            var transMapper = (IDictionary<int, int>)_cache[CACHETRANSKEY];
-
-            return (transMapper != null && transMapper.ContainsKey(betType)) ? transMapper[betType] : betType;
-        }
-
         public static void CollectAllMapperData(IList<Assembly> assemblies)
         {
-            if (!CacheHasMapperData())
+            lock (_locker)
             {
-                InitializeMapperData();
-
-                CollectMapperDataOf(CHOICECOMPONENT, assemblies);
-                CollectMapperDataOf(STATUSCOMPONENT, assemblies);
-                CollectMapperDataOf(STAKECOMPONENT, assemblies);
-                CollectMapperDataOf(ODDSCOMPONENT, assemblies);
-                CollectMapperDataOf(TRANSCOMPONENT, assemblies);
-
-                AddMapperDataToCache();
+                if (!CacheHasMapperData())
+                {
+                    CollectAndCacheMapperData(assemblies);
+                }
             }
+        }
+
+        public static int GetChoiceBaseBetTypeOf(int betTypeId)
+        {
+            var choiceMapper = (IDictionary<int, int>)_cache[string.Format(CacheKey, Choice)];
+
+            return (choiceMapper != null && choiceMapper.ContainsKey(betTypeId)) ? choiceMapper[betTypeId] : betTypeId;
+        }
+
+        public static int GetStatusBaseBetTypeOf(int betTypeId)
+        {
+            var statusMapper = (IDictionary<int, int>)_cache[string.Format(CacheKey, Status)];
+
+            return (statusMapper != null && statusMapper.ContainsKey(betTypeId)) ? statusMapper[betTypeId] : betTypeId;
+        }
+
+        public static int GetStakeBaseBetTypeOf(int betTypeId)
+        {
+            var stakeMapper = (IDictionary<int, int>)_cache[string.Format(CacheKey, Stake)];
+
+            return (stakeMapper != null && stakeMapper.ContainsKey(betTypeId)) ? stakeMapper[betTypeId] : betTypeId;
+        }
+
+        public static int GetOddsBaseBetTypeOf(int betTypeId)
+        {
+            var oddsMapper = (IDictionary<int, int>)_cache[string.Format(CacheKey, Odds)];
+
+            return (oddsMapper != null && oddsMapper.ContainsKey(betTypeId)) ? oddsMapper[betTypeId] : betTypeId;
+        }
+
+        public static int GetTransBaseBetTypeOf(int betTypeId)
+        {
+            var transMapper = (IDictionary<int, int>)_cache[string.Format(CacheKey, Trans)];
+
+            return (transMapper != null && transMapper.ContainsKey(betTypeId)) ? transMapper[betTypeId] : betTypeId;
+        }
+
+        public static bool BetTypeHasParent(int betTypeId)
+        {
+            var parentChildMapper = (IDictionary<int, int>)_cache[string.Format(CacheKey, ParentChild)];
+
+            return parentChildMapper != null && parentChildMapper.ContainsKey(betTypeId);
         }
 
         #endregion
@@ -97,39 +89,39 @@
 
         private static bool CacheHasMapperData()
         {
-            return (IDictionary<int, int>)_cache[CACHECHOICEKEY] != null
-                || (IDictionary<int, int>)_cache[CACHESTATUSKEY] != null
-                || (IDictionary<int, int>)_cache[CACHESTAKEKEY] != null
-                || (IDictionary<int, int>)_cache[CACHEODDSKEY] != null
-                || (IDictionary<int, int>)_cache[CACHETRANSKEY] != null;
+            return (IDictionary<int, int>)_cache[string.Format(CacheKey, Choice)] != null
+                || (IDictionary<int, int>)_cache[string.Format(CacheKey, Status)] != null
+                || (IDictionary<int, int>)_cache[string.Format(CacheKey, Stake)] != null
+                || (IDictionary<int, int>)_cache[string.Format(CacheKey, Odds)] != null
+                || (IDictionary<int, int>)_cache[string.Format(CacheKey, Trans)] != null
+                || (IDictionary<int, int>)_cache[string.Format(CacheKey, ParentChild)] != null;
         }
 
-        private static void InitializeMapperData()
+        private static void CollectAndCacheMapperData(IList<Assembly> assemblies)
         {
-            _choiceMapperData = new Dictionary<int, int>();
-            _statusMapperData = new Dictionary<int, int>();
-            _stakeMapperData = new Dictionary<int, int>();
-            _oddsMapperData = new Dictionary<int, int>();
-            _transMapperData = new Dictionary<int, int>();
-        }
-
-        private static void AddMapperDataToCache()
-        {
-            ObjectCache cache = MemoryCache.Default;
+            var choiceMapperData = CollectMapperDataOf(Choice, assemblies);
+            var statusMapperData = CollectMapperDataOf(Status, assemblies);
+            var stakeMapperData = CollectMapperDataOf(Stake, assemblies);
+            var oddsMapperData = CollectMapperDataOf(Odds, assemblies);
+            var transMapperData = CollectMapperDataOf(Trans, assemblies);
+            var parentChildMapperData = CollectMapperDataOf(ParentChild, assemblies);
 
             CacheItemPolicy policy = new CacheItemPolicy();
             policy.Priority = CacheItemPriority.NotRemovable;
 
-            cache.Set(CACHECHOICEKEY, _choiceMapperData, policy);
-            cache.Set(CACHESTATUSKEY, _statusMapperData, policy);
-            cache.Set(CACHESTAKEKEY, _stakeMapperData, policy);
-            cache.Set(CACHEODDSKEY, _oddsMapperData, policy);
-            cache.Set(CACHETRANSKEY, _transMapperData, policy);
+            _cache.Set(string.Format(CacheKey, Choice), choiceMapperData, policy);
+            _cache.Set(string.Format(CacheKey, Status), statusMapperData, policy);
+            _cache.Set(string.Format(CacheKey, Stake), stakeMapperData, policy);
+            _cache.Set(string.Format(CacheKey, Odds), oddsMapperData, policy);
+            _cache.Set(string.Format(CacheKey, Trans), transMapperData, policy);
+            _cache.Set(string.Format(CacheKey, ParentChild), parentChildMapperData, policy);
         }
 
-        private static void CollectMapperDataOf(string componentName, IList<Assembly> assemblies)
+        private static IDictionary<int, int> CollectMapperDataOf(string componentName, IList<Assembly> assemblies)
         {
-            string typeName = string.Join(null, new string[] { "Fanex.BetList.Core.Mapper.", componentName, "Mapper" });
+            string typeName = string.Join(null, new string[] { string.Format(BetListMapperNamespace, componentName) });
+
+            IDictionary<int, int> mapperData = new Dictionary<int, int>();
 
             foreach (var assembly in assemblies)
             {
@@ -139,42 +131,20 @@
                 {
                     IMapper mapper = Activator.CreateInstance(type) as IMapper;
 
-                    AddDataFromMapperObj(mapper, componentName);
+                    mapperData = AddDataFromMapperObj(mapper, mapperData);
                 }
             }
+
+            return mapperData;
         }
 
-        private static void AddDataFromMapperObj(IMapper mapper, string componentName)
+        [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2100:CodeLineMustNotBeLongerThan", Justification = "Reviewed.")]
+        private static IDictionary<int, int> AddDataFromMapperObj(IMapper mapper, IDictionary<int, int> mapperData)
         {
-            switch (componentName)
-            {
-                case CHOICECOMPONENT:
-                    _choiceMapperData = AppendDataToSource(_choiceMapperData, mapper.MapperData);
-                    break;
+            var combineMapperData = mapperData.Concat(mapper.MapperData.Where(item => !mapperData.Keys.Contains(item.Key))).ToDictionary(pair => pair.Key, pair => pair.Value);
 
-                case STATUSCOMPONENT:
-                    _statusMapperData = AppendDataToSource(_statusMapperData, mapper.MapperData);
-                    break;
-
-                case STAKECOMPONENT:
-                    _stakeMapperData = AppendDataToSource(_stakeMapperData, mapper.MapperData);
-                    break;
-
-                case ODDSCOMPONENT:
-                    _oddsMapperData = AppendDataToSource(_oddsMapperData, mapper.MapperData);
-                    break;
-
-                case TRANSCOMPONENT:
-                    _transMapperData = AppendDataToSource(_transMapperData, mapper.MapperData);
-                    break;
-            }
+            return combineMapperData;
         }
-
-        private static IDictionary<int, int> AppendDataToSource(IDictionary<int, int> source, IDictionary<int, int> data)
-        {
-            return source.Concat(data.Where(item => !source.Keys.Contains(item.Key))).ToDictionary(pair => pair.Key, pair => pair.Value);
-        }
-
         #endregion
     }
 }

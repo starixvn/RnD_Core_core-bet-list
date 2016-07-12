@@ -1,14 +1,14 @@
 ﻿namespace Fanex.BetList.Core.TicketHelper
 {
+    using Mapper;
     using RemotingRef;
     using System;
-    using System.Collections.Generic;
     using System.Threading;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Class CacheRef.
     /// </summary>
-    /// 
     public class CacheRef
     {
         private CacheRef()
@@ -60,6 +60,11 @@
             if (resource != null && resource.ToString().Length > 1)
             {
                 resourceId = resource.ToString().Substring(1);
+            }
+
+            if (MapperCollector.BetTypeHasParent(Convert.ToInt32(bettypeId)))
+            {
+                bettypeId = GetParentIdByBetTypeId(bettypeId, string.Empty);
             }
 
             return RefData.GetBetTypeName(bettypeId.ToString(), CurrentTWLanguage, string.Empty, resourceId, 0);
