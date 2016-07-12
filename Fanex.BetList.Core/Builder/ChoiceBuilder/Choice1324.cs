@@ -1,7 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System.Collections.Generic;
     using Entities;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Set x Game y Winner.
