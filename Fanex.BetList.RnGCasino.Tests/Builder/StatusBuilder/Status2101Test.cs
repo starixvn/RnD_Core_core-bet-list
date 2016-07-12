@@ -1,6 +1,7 @@
 ﻿namespace Fanex.BetList.RnGCasino.Tests.Builder.StatusBuilder
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using System.Text.RegularExpressions;
     using Core.Builder.StatusBuilder;
     using Core.Entities;
@@ -103,6 +104,7 @@
         }
 
         [Test]
+        [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2100:CodeLineMustNotBeLongerThan", Justification = "Reviewed.")]
         public void BuildResult_BetCheckIsNotEmptyAndResultIsRunning_ResultIsALink()
         {
             // Arrange
