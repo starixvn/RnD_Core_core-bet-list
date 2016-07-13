@@ -221,6 +221,15 @@ namespace Fanex.BetList.Example.MVC.Controllers
             return BetListView(model);
         }
 
+        public ActionResult PHAllInOneP2(BetListData model = null)
+        {
+            ViewBag.BetTypes = new List<SelectListItem>();
+            DataSourcePath = "~/App_Data/PHAllInOneP2.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+
+            return BetListView(model);
+        }
+
         public ActionResult RnGCasino(BetListData model = null)
         {
             DataSourcePath = "~/App_Data/RnGCasinoSingleWallet.xls";
