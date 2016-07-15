@@ -83,7 +83,7 @@
                 resourceId = resource.ToString().Substring(1);
             }
 
-            if (refNo == null)
+            if (string.IsNullOrEmpty(refNo?.ToString()))
             {
                 refNo = 0;
             }
