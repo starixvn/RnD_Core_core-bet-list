@@ -132,7 +132,7 @@
             // Arrange
             _ticket.BetTypeId = 1;
             _ticket.BetId = 1;
-            _ticketHelper.GetBetTypeNameById(Arg.Any<int>(), Arg.Any<long>()).Returns("Bet type name");
+            _ticketHelper.GetBetTypeNameById(Arg.Any<int>(), Arg.Any<object>(), Arg.Any<long>(), Arg.Any<object>()).Returns("Bet type name");
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
