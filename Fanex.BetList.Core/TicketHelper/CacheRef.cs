@@ -53,21 +53,7 @@
         /// <returns>The bet name of the passed bet type ID with associate resource.</returns>
         public static string GetBettype(object bettypeId, object betId, object betCheck)
         {
-            string resourceId = string.Empty;
-            object resource = betId ?? betCheck;
-
-            // Remove first character of the resource.
-            if (resource != null && resource.ToString().Length > 1)
-            {
-                resourceId = resource.ToString().Substring(1);
-            }
-
-            if (MapperCollector.BetTypeHasParent(Convert.ToInt32(bettypeId)))
-            {
-                bettypeId = GetParentIdByBetTypeId(bettypeId, string.Empty);
-            }
-
-            return RefData.GetBetTypeName(bettypeId.ToString(), CurrentTWLanguage, string.Empty, resourceId, 0);
+            return GetBettype(bettypeId, betId, betCheck, 0);
         }
 
         /// <summary>
@@ -91,6 +77,11 @@
             if (string.IsNullOrEmpty(refNo?.ToString()))
             {
                 refNo = 0;
+            }
+
+            if (MapperCollector.BetTypeHasParent(Convert.ToInt32(bettypeId)))
+            {
+                bettypeId = GetParentIdByBetTypeId(bettypeId, string.Empty);
             }
 
             return RefData.GetBetTypeName(bettypeId.ToString(), CurrentTWLanguage, string.Empty, resourceId, Convert.ToInt64(refNo));
