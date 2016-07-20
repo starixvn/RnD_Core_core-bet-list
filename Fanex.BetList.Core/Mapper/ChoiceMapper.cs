@@ -71,18 +71,28 @@
 
             ////2ND Over/Under (3rd).
             MapIdToBaseId(178, 18);
+            ////Bet type name: Home Team Which Half First Goal (420)
+            MapIdToBaseId(420, 419);
 
             ////Home Team Total Corners Over/Under.
             MapIdToBaseId(197, 18);
+            ////Bet type name: Away Team Which Half First Goal (421)
+            MapIdToBaseId(421, 419);
 
             ////Away Team Total Corners Over/Under.
             MapIdToBaseId(198, 18);
+            ////Bet type name: First Team 3 Goals (423)
+            MapIdToBaseId(423, 422);
 
             ////1H Home Corner Over/Under.
             MapIdToBaseId(204, 18);
+            ////Bet type name: Home 1H to Score/ 2H To Score (446)
+            MapIdToBaseId(446, 445);
 
             ////1H Away Corner Over/Under.
             MapIdToBaseId(205, 18);
+            ////Bet type name: Away 1H to Score/ 2H To Score (447)
+            MapIdToBaseId(447, 445);
 
             ////2ND Handicap (3rd).
             MapIdToBaseId(183, 1);

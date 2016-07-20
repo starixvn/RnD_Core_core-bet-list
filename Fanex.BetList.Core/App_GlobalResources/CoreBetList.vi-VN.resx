@@ -436,7 +436,7 @@
     <value>Đầu tiên</value>
   </data>
   <data name="FirstHalf" xml:space="preserve">
-    <value>First Halft</value>
+    <value>First Half (vi)</value>
   </data>
   <data name="from" xml:space="preserve">
     <value>Từ</value>
@@ -489,7 +489,7 @@
     <value>M = Master</value>
   </data>
   <data name="lblNeither" xml:space="preserve">
-    <value>Neither</value>
+    <value>Neither (vi)</value>
     <comment>Not found</comment>
   </data>
   <data name="lblNoDraw" xml:space="preserve">
@@ -603,7 +603,7 @@
     <value> giây</value>
   </data>
   <data name="SecondHalf" xml:space="preserve">
-    <value>Second Half</value>
+    <value>Second Half (vi)</value>
   </data>
   <data name="setting" xml:space="preserve">
     <value>Thiết lập</value>
@@ -677,13 +677,64 @@
   <data name="ThereIsNoTicketDetailAvailable" xml:space="preserve">
     <value>There is no ticket detail available.</value>
   </data>
-  <data name="ThreeAndOver" xml:space="preserve">
-    <value>3&amp;Over</value>
+  <data name="ThreeOver" xml:space="preserve">
+    <value>3-Over (vi)</value>
   </data>
   <data name="SDraw" xml:space="preserve">
     <value>S.Draw</value>
   </data>
   <data name="Excluding" xml:space="preserve">
     <value>Ngoại trừ</value>
+  </data>
+  <data name="Away" xml:space="preserve">
+    <value>Away (vi)</value>
+  </data>
+  <data name="FreeKick" xml:space="preserve">
+    <value>Đá phạt</value>
+  </data>
+  <data name="Header" xml:space="preserve">
+    <value>Header (vi)</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home (vi)</value>
+  </data>
+  <data name="NoAndOver" xml:space="preserve">
+    <value>No &amp; Over (vi)</value>
+  </data>
+  <data name="NoAndUnder" xml:space="preserve">
+    <value>No &amp; Under (vi)</value>
+  </data>
+  <data name="OwnGoal" xml:space="preserve">
+    <value>Own Goal (vi)</value>
+  </data>
+  <data name="Penalty" xml:space="preserve">
+    <value>Phạt đền</value>
+  </data>
+  <data name="ScoreDraw" xml:space="preserve">
+    <value>Hòa</value>
+  </data>
+  <data name="Shot" xml:space="preserve">
+    <value>Shot (vi)</value>
+  </data>
+  <data name="YesAndOver" xml:space="preserve">
+    <value>Yes &amp; Over (vi)</value>
+  </data>
+  <data name="YesAndUnder" xml:space="preserve">
+    <value>Yes &amp; Under (vi)</value>
+  </data>
+  <data name="ToWinByOneGoal" xml:space="preserve">
+    <value>to Win By 1 Goal (vi)</value>
+  </data>
+  <data name="ToWinByTwoUpGoals" xml:space="preserve">
+    <value>to Win by 2up Goals (vi)</value>
+  </data>
+  <data name="FirstHalfShort" xml:space="preserve">
+    <value>1st Half (vi)</value>
+  </data>
+  <data name="SecondHalfShort" xml:space="preserve">
+    <value>2nd Half (vi)</value>
+  </data>
+  <data name="ThreeAndOver" xml:space="preserve">
+    <value>3&amp;Over</value>
   </data>
 </root>

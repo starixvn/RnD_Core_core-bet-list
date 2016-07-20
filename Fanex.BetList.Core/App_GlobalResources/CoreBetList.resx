@@ -764,13 +764,58 @@
   <data name="Up" xml:space="preserve">
     <value>UP</value>
   </data>
-  <data name="ThreeAndOver" xml:space="preserve">
-    <value>3&amp;Over</value>
+  <data name="ThreeOver" xml:space="preserve">
+    <value>3-Over</value>
   </data>
   <data name="SDraw" xml:space="preserve">
     <value>S.Draw</value>
   </data>
   <data name="Excluding" xml:space="preserve">
     <value>Excluding</value>
+  </data>
+  <data name="Away" xml:space="preserve">
+    <value>Away</value>
+  </data>
+  <data name="FreeKick" xml:space="preserve">
+    <value>Free Kick</value>
+  </data>
+  <data name="Header" xml:space="preserve">
+    <value>Header</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="NoAndOver" xml:space="preserve">
+    <value>No &amp; Over</value>
+  </data>
+  <data name="NoAndUnder" xml:space="preserve">
+    <value>No &amp; Under</value>
+  </data>
+  <data name="OwnGoal" xml:space="preserve">
+    <value>Own Goal</value>
+  </data>
+  <data name="ScoreDraw" xml:space="preserve">
+    <value>Score Draw</value>
+  </data>
+  <data name="Shot" xml:space="preserve">
+    <value>Shot</value>
+  </data>
+  <data name="YesAndOver" xml:space="preserve">
+    <value>Yes &amp; Over</value>
+  </data>
+  <data name="YesAndUnder" xml:space="preserve">
+    <value>Yes &amp; Under</value>
+  </data>
+  <data name="ToWinByTwoUpGoals" xml:space="preserve">
+    <value>to Win by 2up Goals</value>
+  </data>
+  <data name="FirstHalfShort" xml:space="preserve">
+    <value>1st Half</value>
+  </data>
+  <data name="SecondHalfShort" xml:space="preserve">
+    <value>2nd Half</value>
+  </data>
+  <data name="ThreeAndOver" xml:space="preserve">
+    <value>3&amp;Over</value>
   </data>
 </root>

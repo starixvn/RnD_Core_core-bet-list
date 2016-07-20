@@ -750,7 +750,7 @@
   <data name="ThereIsNoTicketDetailAvailable" xml:space="preserve">
     <value>无该注单资料</value>
   </data>
-  <data name="ThreeAndOver" xml:space="preserve">
+  <data name="ThreeOver" xml:space="preserve">
     <value>3或以上</value>
   </data>
   <data name="SDraw" xml:space="preserve">
@@ -758,5 +758,56 @@
   </data>
   <data name="Excluding" xml:space="preserve">
     <value>不包括</value>
+  </data>
+  <data name="Away" xml:space="preserve">
+    <value>Away (zh-CN)</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home (zh-CN)</value>
+  </data>
+  <data name="NoAndOver" xml:space="preserve">
+    <value>No &amp; Over (zh-CN)</value>
+  </data>
+  <data name="NoAndUnder" xml:space="preserve">
+    <value>No &amp; Under (zh-CN)</value>
+  </data>
+  <data name="FreeKick" xml:space="preserve">
+    <value>任意球</value>
+  </data>
+  <data name="Header" xml:space="preserve">
+    <value>Header  (zh-CN)</value>
+  </data>
+  <data name="NoAndOver1" xml:space="preserve">
+    <value>No &amp; Over (zh-CN)</value>
+  </data>
+  <data name="NoAndUnder1" xml:space="preserve">
+    <value>No &amp; Under (zh-CN)</value>
+  </data>
+  <data name="OwnGoal" xml:space="preserve">
+    <value>Own Goal (zh-CN)</value>
+  </data>
+  <data name="ScoreDraw" xml:space="preserve">
+    <value>和</value>
+  </data>
+  <data name="Shot" xml:space="preserve">
+    <value>Shot  (zh-CN)</value>
+  </data>
+  <data name="YesAndOver" xml:space="preserve">
+    <value>Yes &amp; Over (zh-CN)</value>
+  </data>
+  <data name="YesAndUnder" xml:space="preserve">
+    <value>Yes &amp; Under (zh-CN)</value>
+  </data>
+  <data name="ToWinByTwoUpGoals" xml:space="preserve">
+    <value>赢2球以上</value>
+  </data>
+  <data name="FirstHalfShort" xml:space="preserve">
+    <value>1st Half (zh-CN)</value>
+  </data>
+  <data name="SecondHalfShort" xml:space="preserve">
+    <value>2nd Half (zh-CN)</value>
+  </data>
+  <data name="ThreeAndOver" xml:space="preserve">
+    <value>3或以上</value>
   </data>
 </root>

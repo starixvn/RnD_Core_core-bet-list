@@ -306,6 +306,15 @@
     <Compile Include="Builder\ChoiceBuilder\Choice412.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice413.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice414.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice445.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice429.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice426.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice425.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice424.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice422.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice419.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice418.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice417.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice5.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice500.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice501.cs" />

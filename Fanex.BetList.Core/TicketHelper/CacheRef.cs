@@ -74,6 +74,11 @@
                 resourceId = resource.ToString().Substring(1);
             }
 
+            if (MapperCollector.BetTypeHasParent(Convert.ToInt32(bettypeId)))
+            {
+                bettypeId = GetParentIdByBetTypeId(bettypeId, string.Empty);
+            }
+
             if (string.IsNullOrEmpty(refNo?.ToString()))
             {
                 refNo = 0;

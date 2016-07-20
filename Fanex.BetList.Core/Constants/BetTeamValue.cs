@@ -279,6 +279,11 @@
         public const string E = "e";
 
         /// <summary>
+        /// Is ThreeOver = "3-over".
+        /// </summary>
+        public const string ThreeOver = "3-over";
+
+        /// <summary>
         /// Is FourOver = "4-over".
         /// </summary>
         public const string FourOver = "4-over";
@@ -292,6 +297,11 @@
         /// Is TewlveOver = "12-over".
         /// </summary>
         public const string TewlveOver = "12-over";
+
+        /// <summary>
+        /// The number zero 0.
+        /// </summary>
+        public const string NumberZero = "0";
 
         /// <summary>
         /// The number one 1.
@@ -332,5 +342,100 @@
         /// The bet team No Goal of Winning Margin.
         /// </summary>
         public const string NG = "ng";
+
+        /// <summary>
+        /// Is YH = "yh".
+        /// </summary>
+        public const string YH = "yh";
+
+        /// <summary>
+        /// Is YD = "yd".
+        /// </summary>
+        public const string YD = "yd";
+
+        /// <summary>
+        /// Is YA = "ya".
+        /// </summary>
+        public const string YA = "ya";
+
+        /// <summary>
+        /// Is NH = "nh".
+        /// </summary>
+        public const string NH = "nh";
+
+        /// <summary>
+        /// Is ND = "nd".
+        /// </summary>
+        public const string ND = "nd";
+
+        /// <summary>
+        /// Is NA = "na".
+        /// </summary>
+        public const string NA = "na";
+
+        /// <summary>
+        /// Is YO = "yo".
+        /// </summary>
+        public const string YO = "yo";
+
+        /// <summary>
+        /// Is YU = "yu".
+        /// </summary>
+        public const string YU = "yu";
+
+        /// <summary>
+        /// Is NU = "nu".
+        /// </summary>
+        public const string NU = "nu";
+
+        /// <summary>
+        /// Is S = "s".
+        /// </summary>
+        public const string S = "s";
+
+        /// <summary>
+        /// Is P = "p".
+        /// </summary>
+        public const string P = "p";
+
+        /// <summary>
+        /// Is FK = "fk".
+        /// </summary>
+        public const string FK = "fk";
+
+        /// <summary>
+        /// Is OG = "og".
+        /// </summary>
+        public const string OG = "og";
+
+        /// <summary>
+        /// Is H2Plus = "h2+".
+        /// </summary>
+        public const string H2Plus = "h2+";
+
+        /// <summary>
+        /// Is A2Plus = "a2+".
+        /// </summary>
+        public const string A2Plus = "a2+";
+
+        /// <summary>
+        /// Is YY = "yy".
+        /// </summary>
+        public const string YY = "yy";
+
+        /// <summary>
+        /// Is YY = "yy".
+        /// </summary>
+        public const string YN = "yn";
+
+        /// <summary>
+        /// Is YY = "yy".
+        /// </summary>
+        public const string NY = "ny";
+
+        /// <summary>
+        /// Is YY = "yy".
+        /// </summary>
+        public const string NN = "nn";
     }
 }

@@ -663,7 +663,7 @@
   <data name="ThereIsNoTicketDetailAvailable" xml:space="preserve">
     <value>There is no ticket detail available.</value>
   </data>
-  <data name="ThreeAndOver" xml:space="preserve">
+  <data name="ThreeOver" xml:space="preserve">
     <value>3 ประตู หรือมากกว่า</value>
   </data>
   <data name="SDraw" xml:space="preserve">
@@ -671,5 +671,56 @@
   </data>
   <data name="Excluding" xml:space="preserve">
     <value>ไม่รวม</value>
+  </data>
+  <data name="Away" xml:space="preserve">
+    <value>Away (th)</value>
+  </data>
+  <data name="FreeKick" xml:space="preserve">
+    <value>ลูกฟรีคิก</value>
+  </data>
+  <data name="Header" xml:space="preserve">
+    <value>Header (th)</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home (th)</value>
+  </data>
+  <data name="NoAndOver" xml:space="preserve">
+    <value>No &amp; Over (th)</value>
+  </data>
+  <data name="NoAndUnder" xml:space="preserve">
+    <value>No &amp; Under (th)</value>
+  </data>
+  <data name="OwnGoal" xml:space="preserve">
+    <value>Own Goal (th)</value>
+  </data>
+  <data name="Penalty" xml:space="preserve">
+    <value>ลูกโทษ</value>
+  </data>
+  <data name="ScoreDraw" xml:space="preserve">
+    <value>เสมอ</value>
+  </data>
+  <data name="Shot" xml:space="preserve">
+    <value>Shot (th)</value>
+  </data>
+  <data name="YesAndOver" xml:space="preserve">
+    <value>Yes &amp; Over (th)</value>
+  </data>
+  <data name="YesAndUnder" xml:space="preserve">
+    <value>Yes &amp; Under (th)</value>
+  </data>
+  <data name="ToWinByOneGoal" xml:space="preserve">
+    <value>to Win By 1 Goal (th)</value>
+  </data>
+  <data name="ToWinByTwoUpGoals" xml:space="preserve">
+    <value>to Win by 2up Goals (th)</value>
+  </data>
+  <data name="FirstHalfShort" xml:space="preserve">
+    <value>1st Half (th)</value>
+  </data>
+  <data name="SecondHalfShort" xml:space="preserve">
+    <value>2nd Half (th)</value>
+  </data>
+  <data name="ThreeAndOver" xml:space="preserve">
+    <value>3 ประตู หรือมากกว่า</value>
   </data>
 </root>
