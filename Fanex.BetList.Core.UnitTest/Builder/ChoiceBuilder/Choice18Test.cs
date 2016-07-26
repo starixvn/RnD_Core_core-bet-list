@@ -1,16 +1,15 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Entities;
     using NSubstitute;
     using NUnit.Framework;
 
     /// <summary>
-    ///  Unit test for Choice178.
+    ///  Unit test for Choice18.
     /// </summary>
     [TestFixture]
-    public class Choice178Test
+    public class Choice18Test
     {
         private IChoice _choice;
         private ITicket _ticket;
@@ -19,7 +18,7 @@
         [SetUp]
         public void Setup()
         {
-            _choice = new Choice178();
+            _choice = new Choice18();
             _ticket = Substitute.For<ITicket>();
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
