@@ -49,6 +49,7 @@
         {
             var bettypeId = ticket.BetTypeId;
             ticket.BetTypeId = (int)ticket.BetId;
+            ticket.RefNo = RefNoDefault;
 
             var choice = CreateChoice(ticket.BetTypeId);
             var template = choice.RenderRTF(ticket, ticketHelper, ticketData, isShowScoreMap, rtfHelper);
