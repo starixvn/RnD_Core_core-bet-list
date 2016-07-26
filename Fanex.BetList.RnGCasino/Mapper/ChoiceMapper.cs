@@ -29,7 +29,7 @@
 
         private void MappingForMobileGame()
         {
-            for (var betType = 2301; betType <= 2306; betType++)
+            for (var betType = 2301; betType <= 2308; betType++)
             {
                 MapIdToBaseId(betType, 2101);
             }
