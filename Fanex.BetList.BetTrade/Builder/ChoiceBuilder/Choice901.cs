@@ -8,6 +8,8 @@
 
     public class Choice901 : IChoice
     {
+        private readonly string RefNoDefault = "100000000000";
+
         public Choice901()
         {
             Template = new Choice_Template();
@@ -19,6 +21,7 @@
         {
             var bettypeId = ticket.BetTypeId;
             ticket.BetTypeId = (int)ticket.BetId;
+            ticket.RefNo = RefNoDefault;
 
             var choice = CreateChoice(ticket.BetTypeId);
             var betTypeName = choice.GetBetTypeName(ticket, ticketHelper, ticketData);
@@ -32,6 +35,7 @@
         {
             var bettypeId = ticket.BetTypeId;
             ticket.BetTypeId = (int)ticket.BetId;
+            ticket.RefNo = RefNoDefault;
 
             var choice = CreateChoice(ticket.BetTypeId);
             var template = choice.Render(ticket, ticketHelper, ticketData, isShowScoreMap);
