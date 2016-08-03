@@ -1,11 +1,10 @@
 ﻿namespace Fanex.BetList.Core.TicketHelper
 {
-    using System;
-    using System.Collections.Generic;
     using Entities;
-    using RemotingRef;
     using Sunplus.Core.Common.IPs;
     using System;
+    using System.Collections.Generic;
+
     /// <summary>
     /// Utilities for resolving Names from IDs.
     /// </summary>
@@ -182,7 +181,7 @@
             return CacheRef.GetResourceData(refId, resourceId);
         }
 
-        public string GetFastMarketSituation(string betType, string betTeam ,decimal handicap1, decimal handicap2)
+        public string GetFastMarketSituation(string betType, string betTeam, decimal handicap1, decimal handicap2)
         {
             return CacheRef.GetFastMarketChoice(betType, betTeam, Convert.ToInt32(handicap1), Convert.ToInt32(handicap2));
         }

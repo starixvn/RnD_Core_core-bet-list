@@ -2,7 +2,7 @@
 {
     using Entities;
 
-    public class Status221: Status1
+    public class Status221 : Status1
     {
         protected override void BuildStatusResult(ITicket ticket)
         {

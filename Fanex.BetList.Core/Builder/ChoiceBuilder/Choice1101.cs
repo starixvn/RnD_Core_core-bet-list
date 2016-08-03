@@ -1,10 +1,10 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using Constants;
+    using Entities;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Text;
-    using Constants;
-    using Entities;
     using Utils;
 
     /// <summary>
