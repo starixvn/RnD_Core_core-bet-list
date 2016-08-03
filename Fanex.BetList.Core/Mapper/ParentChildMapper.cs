@@ -1,5 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Mapper
 {
+    using System.Diagnostics.CodeAnalysis;
+
     public class ParentChildMapper : BaseMapper
     {
         public ParentChildMapper()
@@ -7,6 +9,7 @@
             Initialize();
         }
 
+        [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2101:MethodMustNotContainMoreLinesThan", Justification = "Reviewed. Suppression is OK here.")]
         private void Initialize()
         {
             ////Result And First Team To Score (own)

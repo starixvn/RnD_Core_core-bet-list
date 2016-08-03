@@ -1,12 +1,12 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.Web;
     using App_GlobalResources;
     using Entities;
     using NPOI.HSSF.UserModel;
     using NPOI.SS.UserModel;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Web;
 
     /// <summary>
     /// Combination Mix Parlay.
@@ -221,7 +221,6 @@
             List<IRichTextString> lstRTFChoices = new List<IRichTextString>();
             RTFHelper tmpRtfHelper = rtfHelper.Clone();
 
-       
             tmpRtfHelper.RTFRenderer.AddText(GetBetTypeName(ticket, ticketHelper), tmpRtfHelper.PosFont);
 
             BuildRTFCombinationMPOfferNames(tmpRtfHelper, ticket, ticketHelper);
