@@ -225,10 +225,32 @@ namespace Fanex.BetList.Example.MVC.Controllers
         {
             DataSourcePath = "~/App_Data/RnGCasinoSingleWallet.xls";
 
-            ViewBag.BetTypes = new List<SelectListItem>();
+            ViewBag.BetTypes = CreateRNGDropDown();
             model = GetDataSource(model, DataSourcePath);
 
             return BetListView(model);
+        }
+
+        private IEnumerable<SelectListItem> CreateRNGDropDown()
+        {
+            var betTypes = new List<BetType>();
+
+            for (var betType = 2101; betType <= 2177; betType++)
+            {
+                betTypes.AddRange(_dataService.QueryBetTypes(betType));
+            }
+
+            for (var betType = 2201; betType <= 2206; betType++)
+            {
+                betTypes.AddRange(_dataService.QueryBetTypes(betType));
+            }
+
+            for (var betType = 2301; betType <= 2308; betType++)
+            {
+                betTypes.AddRange(_dataService.QueryBetTypes(betType));
+            }
+
+            return CreateSelectListItem(betTypes);
         }
 
         public ActionResult Voidbridge(BetListData model = null)
