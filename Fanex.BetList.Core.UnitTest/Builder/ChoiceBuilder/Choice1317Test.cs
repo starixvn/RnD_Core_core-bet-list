@@ -97,9 +97,7 @@
         {
             // Arrange
             const string BET_TYPE_NAME = "Bet type name";
-            _ticket.BetId = 801;
-            _ticket.RefNo = "1000";
-            _ticketHelper.GetBetTypeNameById(Arg.Any<int>(), Arg.Any<object>(), Arg.Any<object>(), Arg.Any<object>()).Returns(BET_TYPE_NAME);
+            _ticketHelper.GetBetTypeNameById(Arg.Any<object>(), Arg.Any<object>(), Arg.Any<object>(), Arg.Any<object>()).Returns(BET_TYPE_NAME);
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());

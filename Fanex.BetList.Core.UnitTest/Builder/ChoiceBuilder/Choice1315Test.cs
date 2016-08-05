@@ -93,19 +93,16 @@
         /// The value of Template.BetType.betTypeName is always bet type name.
         /// </summary>
         [Test]
-        public void BuildBetTeam_Always_SetBetTypeNameIsBetTypeName()
+        public void BuildBetType_Always_SetBetTypeNameIsBetTypeName()
         {
             // Arrange
-            _ticket.BetTypeId = 1;
-            _ticket.BetId = 1;
-            _ticketHelper.GetBetTypeNameById(Arg.Any<int>(), Arg.Any<long>()).Returns("Bet type name");
+            _ticketHelper.GetBetTypeNameById(Arg.Any<object>(), Arg.Any<object>(), Arg.Any<object>(), Arg.Any<object>()).Returns("Bet type name");
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedBetTypeName = _ticketHelper.GetBetTypeNameById(_ticket.BetTypeId, _ticket.BetId);
-            Assert.AreEqual(expectedBetTypeName, _choice.Template.BetType.betTypeName);
+            Assert.AreEqual("Bet type name", _choice.Template.BetType.betTypeName);
         }
     }
 }
