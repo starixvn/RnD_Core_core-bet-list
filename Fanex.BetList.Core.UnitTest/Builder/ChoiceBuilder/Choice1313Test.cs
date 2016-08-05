@@ -91,7 +91,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedBetTypeName = _ticketHelper.GetBetTypeNameById(_ticket.BetTypeId,_ticket.RefNo, _ticket.BetId);
+            string expectedBetTypeName = _ticketHelper.GetBetTypeNameById(_ticket.BetTypeId, _ticket.RefNo, _ticket.BetId);
             Assert.AreEqual(expectedBetTypeName, _choice.Template.BetType.betTypeName);
         }
 

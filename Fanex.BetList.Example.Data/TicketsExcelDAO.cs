@@ -151,7 +151,7 @@ namespace Fanex.BetList.Example.Data
         /// </summary>
         /// <param name="row">The IRow object.</param>
         /// <returns>ITicket object.</returns>
-        [SuppressMessage("StyleCop.CSharp.Nexcel.NexcelCustomRules", "SP2101:MethodMustNotContainMoreLinesThan", Justification = "Reviewed. Suppression is OK here.")]
+        [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2101:MethodMustNotContainMoreLinesThan", Justification = "Reviewed. Suppression is OK here.")]
         private ITicket MapRowToTicketObject(IRow row)
         {
             try

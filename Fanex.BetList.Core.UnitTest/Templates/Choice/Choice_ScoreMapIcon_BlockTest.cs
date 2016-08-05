@@ -26,7 +26,7 @@
     /// The Unit testing for class Choice_ScoreMapIcon_Block.
     /// </summary>
     [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleClass", Justification = "Reviewed.")]
-    [SuppressMessage("StyleCop.CSharp.Nexcel.NexcelCustomRules", "SP2100:CodeLineMustNotBeLongerThan", Justification = "Reviewed.")]
+    [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2100:CodeLineMustNotBeLongerThan", Justification = "Reviewed.")]
     public class Choice_ScoreMapIcon_BlockTest
     {
         private const string ScoreMapIconTemplate = "<span class='scoremap'><a href=\"javascript:OpenScoreMap({0},{1},{2});\"title=\"Score Map\"><div class='scoremapIcon'></div></a></span>";

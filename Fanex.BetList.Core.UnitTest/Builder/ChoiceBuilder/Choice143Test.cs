@@ -1,6 +1,5 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using System.Diagnostics.CodeAnalysis;
     using Core.Builder.ChoiceBuilder;
     using Entities;
     using Fanex.BetList.Core.App_GlobalResources;
@@ -11,7 +10,6 @@
     /// <summary>
     /// Unit test for bet type 1H Home Team Odd/Even - 136.
     /// </summary>
-    [SuppressMessage("StyleCop.CSharp.Nexcel.NexcelCustomRules", "EX1003:MethodMustBeDocumented", Justification = "Reviewed.")]
     [TestFixture]
     public class Choice143Test
     {

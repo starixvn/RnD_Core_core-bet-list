@@ -64,7 +64,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StatusBuilder
         [TestCase("won")]
         [TestCase("lose")]
         [TestCase("draw")]
-        [SuppressMessage("StyleCop.CSharp.Nexcel.NexcelRules", "EX1003:MethodMustBeDocumented", Justification = "Reviewed.")]
         public void BuildStatusResult_Status_MatchIdIsMatchId(string status)
         {
             // Arrange
@@ -169,7 +168,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StatusBuilder
         [TestCase("won")]
         [TestCase("lose")]
         [TestCase("draw")]
-        [SuppressMessage("StyleCop.CSharp.Nexcel.NexcelRules", "EX1003:MethodMustBeDocumented", Justification = "Reviewed.")]
         public void BuildStatusResult_Status_LeagueIsLeagueId(string status)
         {
             // Arrange

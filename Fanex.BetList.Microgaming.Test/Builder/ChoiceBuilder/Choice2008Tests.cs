@@ -1,6 +1,7 @@
 ﻿namespace Fanex.BetList.Microgaming.Test.Builder.ChoiceBuilder
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Utils;
@@ -31,6 +32,7 @@
         [TestCase("VOID", "2")]
         [TestCase("RUNNING", "3")]
         [TestCase("WAITING", "3")]
+        [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2100:CodeLineMustNotBeLongerThan", Justification = "Reviewed.")]
         public void BuildLeague_MainTicketWinlostIsToday_ReturnDetailtButtonHtml(string ticketStatus, string transctionType)
         {
             //// Arrange
@@ -61,6 +63,7 @@
         [TestCase("VOID", "2")]
         [TestCase("RUNNING", "3")]
         [TestCase("WAITING", "3")]
+        [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2100:CodeLineMustNotBeLongerThan", Justification = "Reviewed.")]
         public void BuildLeague_MainTicketWinlostIsYesterday_ReturnDetailtButtonHtml(string ticketStatus, string transactionType)
         {
             //// Arrange
@@ -83,6 +86,7 @@
         }
 
         [Test]
+        [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2100:CodeLineMustNotBeLongerThan", Justification = "Reviewed.")]
         public void BuildLeague_MainTicketWinlostIsPreviousDays_ReturnDetailtButtonHtml()
         {
             //// Arrange

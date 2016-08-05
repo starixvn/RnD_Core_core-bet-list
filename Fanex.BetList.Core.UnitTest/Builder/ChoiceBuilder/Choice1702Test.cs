@@ -1,8 +1,7 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using App_GlobalResources;
-    using Common.Enums;
+    using System.Diagnostics.CodeAnalysis;
     using Core.Builder.ChoiceBuilder;
     using Entities;
     using NSubstitute;
@@ -104,6 +103,7 @@
         }
 
         [Test]
+        [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2100:CodeLineMustNotBeLongerThan", Justification = "Reviewed.")]
         public void BuildBetTeam_TicketData_SetBetTeam1()
         {
             // Arrange
@@ -124,6 +124,7 @@
         }
 
         [Test]
+        [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2100:CodeLineMustNotBeLongerThan", Justification = "Reviewed.")]
         public void BuildBetTeam_TicketData_SetBetTeam2()
         {
             // Arrange
@@ -135,8 +136,8 @@
             _ticket.TransId = 1234;
             _ticket.OddsType = DecimalOddsType;
 
-            var ticketData = new List<ITicketData> 
-            { 
+            var ticketData = new List<ITicketData>
+            {
                 new TicketData { RefNo = RefNo, Odds = 11, Stake = 1, BetTeam = "2" },
                 new TicketData { RefNo = RefNo, Odds = 22, Stake = 2, BetTeam = "3" }
             };
@@ -151,6 +152,7 @@
         }
 
         [Test]
+        [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2100:CodeLineMustNotBeLongerThan", Justification = "Reviewed.")]
         public void BuildBetTeam_TicketDataWithOddsIsZero_ShowHyphen()
         {
             // Arrange

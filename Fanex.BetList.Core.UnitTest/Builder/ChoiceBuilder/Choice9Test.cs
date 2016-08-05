@@ -11,7 +11,7 @@
     /// Unit test for Choice9 class.
     /// </summary>
     [TestFixture]
-    [SuppressMessage("StyleCop.CSharp.Nexcel.NexcelCustomRules", "SP2100:CodeLineMustNotBeLongerThan", Justification = "Reviewed.")]
+    [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2100:CodeLineMustNotBeLongerThan", Justification = "Reviewed.")]
     public class Choice9Test
     {
         private IChoice _choice;

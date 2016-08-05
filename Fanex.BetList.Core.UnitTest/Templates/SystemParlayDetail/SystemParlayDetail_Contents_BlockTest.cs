@@ -26,7 +26,7 @@
     /// The Unit testing for class SystemParlayDetail_Contents_Block.
     /// </summary>
     [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleClass", Justification = "Reviewed.")]
-    [SuppressMessage("StyleCop.CSharp.Nexcel.NexcelCustomRules", "SP2100:CodeLineMustNotBeLongerThan", Justification = "Reviewed.")]
+    [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2100:CodeLineMustNotBeLongerThan", Justification = "Reviewed.")]
     public class SystemParlayDetail_Contents_BlockTest
     {
         private const string ContentsTemplate = "<tr>{0}<td style=\"text-align: left; font-weight: normal\">{1}</td><td>{2}</td><td>{3}</td><td>{4}{5}</td><td style=\"text-align: center;\">{6}</td></tr>";
