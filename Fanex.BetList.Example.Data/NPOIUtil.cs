@@ -1,20 +1,7 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="NPOIUtil.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2014.02.12">Create</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Example.Data
+﻿namespace Fanex.BetList.Example.Data
 {
     using NPOI.SS.UserModel;
 
-    /// <summary>
-    /// Class NPOI Utilities.
-    /// </summary>
     internal static class NPOIUtil
     {
         /// <summary>

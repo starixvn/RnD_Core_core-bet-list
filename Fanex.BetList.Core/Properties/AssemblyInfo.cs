@@ -7,9 +7,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Fanex.BetList.Core")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Nexcel")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Fanex.BetList.Core")]
-[assembly: AssemblyCopyright("Copyright © Nexcel 2012")]
+[assembly: AssemblyCopyright("Copyright © 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

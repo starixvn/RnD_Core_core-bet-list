@@ -1,21 +1,8 @@
-﻿// ---------------------------------------------------------------------------------
-// <copyright file="BetListHTMLBuilderExt.cs" company="Nexcel Solutions Vietnam">
-//     Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// ---------------------------------------------------------------------------------
-// <history>
-//     <change who="Marc.Bui" date="2014.04.29">Create</change>
-// </history>
-// ---------------------------------------------------------------------------------
-
-namespace Fanex.BetList.Example.Extension.BetListHTMLBuilderExt
+﻿namespace Fanex.BetList.Example.Extension.BetListHTMLBuilderExt
 {
-    using Fanex.BetList.Core.Builder;
-    using Fanex.BetList.Core.Entities;
+    using Core.Builder;
+    using Core.Entities;
 
-    /// <summary>
-    /// Class BetListHTMLBuilderExt.
-    /// </summary>
     public static class BetListHTMLBuilderExt
     {
         /// <summary>

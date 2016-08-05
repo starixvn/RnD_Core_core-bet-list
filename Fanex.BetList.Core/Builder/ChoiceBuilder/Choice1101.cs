@@ -3,7 +3,6 @@
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Text;
-    using App_GlobalResources;
     using Constants;
     using Entities;
     using Utils;
