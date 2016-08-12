@@ -73,7 +73,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            var betIdMarkup = string.Format("<span class='allbet-bet-id'>{0}</span>", "BetID: " + "123");
+            var betIdMarkup = string.Format("<span class='allbet-bet-id'>{0}</span>", "Bet ID: " + "123");
             Assert.AreEqual(betIdMarkup, _choice.Template.BetType.betTypeName);
         }
 
