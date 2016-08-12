@@ -46,10 +46,6 @@
     <Reference Include="Antlr3.Runtime">
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.BetList.Allbet, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.BetList.Allbet.1.0.0.2\lib\net40\Fanex.BetList.Allbet.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Fanex.BetList.ColossusBets, Version=1.0.1.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.BetList.ColossusBets.1.0.1.4\lib\net40\Fanex.BetList.ColossusBets.dll</HintPath>
       <Private>True</Private>
@@ -171,7 +167,6 @@
     <Compile Include="ViewModel\BetListData.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Allbet.css" />
     <Content Include="CodeAnalysis\CodeAnalysisConfiguration.xml" />
     <Content Include="Content\AGCasino.css" />
     <Content Include="Content\Allbet.css" />
@@ -294,6 +289,10 @@
     <ProjectReference Include="..\Fanex.BetList.AGCasino\Fanex.BetList.AGCasino.csproj">
       <Project>{c18e1369-66c3-4a87-82bf-10e13e6cc2a0}</Project>
       <Name>Fanex.BetList.AGCasino</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fanex.Betlist.Allbet\Fanex.BetList.Allbet.csproj">
+      <Project>{ebf46368-f937-49df-b24d-bac01ed3a947}</Project>
+      <Name>Fanex.BetList.Allbet</Name>
     </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.BetTrade\Fanex.BetList.BetTrade.csproj">
       <Project>{386bf8aa-7ee2-46bb-aecc-6cd829671881}</Project>
