@@ -38,15 +38,15 @@
         {
             ////Arrange
             _ticket.BetId = 1;
-            _ticket.BetCheck = "BetCheck";
             _ticket.CustId = 123;
-            _ticket.TransDesc = "TranDesc";
+            _ticket.TransDesc = "TransDesc";
+            _ticket.MatchCode = "MatchCode";
 
             ////Act
             _status.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            Assert.AreEqual("1,'BetCheck',123", _status.Template.StatusResult.betId);
+            Assert.AreEqual("1, 'MatchCode', 123, 'TransDesc'", _status.Template.StatusResult.betId);
         }
     }
 }
