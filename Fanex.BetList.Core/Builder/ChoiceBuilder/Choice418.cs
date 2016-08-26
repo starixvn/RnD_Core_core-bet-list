@@ -4,7 +4,7 @@
     using Constants;
     using Entities;
     using System.Collections.Generic;
-
+    using Utils;
     /// <summary>
     /// Bet type name: Both Teams to Score/ Total Goal
     /// </summary>
@@ -17,19 +17,19 @@
             switch (ticket.BetTeam.ToLowerInvariant())
             {
                 case BetTeamValue.YO:
-                    betTeam = string.Format("{0} {1}", CoreBetList.YesAndOver, ticket.Handicap1);
+                    betTeam = CoreBetList.YesAndOver;
                     break;
 
                 case BetTeamValue.YU:
-                    betTeam = string.Format("{0} {1}", CoreBetList.YesAndUnder, ticket.Handicap1);
+                    betTeam = CoreBetList.YesAndUnder;
                     break;
 
                 case BetTeamValue.NO:
-                    betTeam = string.Format("{0} {1}", CoreBetList.NoAndOver, ticket.Handicap1);
+                    betTeam = CoreBetList.NoAndOver;
                     break;
 
                 case BetTeamValue.NU:
-                    betTeam = string.Format("{0} {1}", CoreBetList.NoAndUnder, ticket.Handicap1);
+                    betTeam = CoreBetList.NoAndUnder;
                     break;
             }
 
@@ -38,7 +38,7 @@
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
-            Template.Handicap.handicap = null;
+            Template.Handicap.handicap = ConvertByBetType.Hdp(ticket.Handicap1);
             Template.betTeamClassName = Favorite;
         }
     }

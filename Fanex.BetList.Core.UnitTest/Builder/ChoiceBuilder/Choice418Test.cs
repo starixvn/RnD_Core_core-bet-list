@@ -20,14 +20,13 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        [TestCase("YO", "Yes & Over 2")]
-        [TestCase("YU", "Yes & Under 2")]
-        [TestCase("NO", "No & Over 2")]
-        [TestCase("NU", "No & Under 2")]
+        [TestCase("YO", "Yes & Over")]
+        [TestCase("YU", "Yes & Under")]
+        [TestCase("NO", "No & Over")]
+        [TestCase("NU", "No & Under")]
         public void BuildBetTeam_BetTeam_TemplateBetTeam(string betTeam, string expected)
         {
             //Arrange
-            _ticket.Handicap1 = 2;
             _ticket.BetTeam = betTeam;
 
             //Act
@@ -38,13 +37,16 @@
         }
 
         [Test]
-        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
+        public void BuildBetTeamClassNameAndHandicap_Handicap_ShowTotalGoals()
         {
+            //Arrange
+            _ticket.Handicap1 = 2;
+
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.IsNull(_choice.Template.Handicap.handicap);
+            Assert.AreEqual(_choice.Template.Handicap.handicap, "2");
         }
 
         [Test]
