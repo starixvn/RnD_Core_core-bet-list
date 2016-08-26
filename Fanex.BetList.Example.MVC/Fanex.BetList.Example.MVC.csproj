@@ -371,6 +371,8 @@
     <Content Include="App_Data\RnGCasinoSingleWallet.xls" />
     <Content Include="App_Data\Allbet.xls" />
     <Content Include="App_Data\VoidBridge.xls" />
+    <Content Include="App_Data\PHAllInOneP2.xls" />
+    <Content Include="App_Data\PHAllInOneP2b.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
