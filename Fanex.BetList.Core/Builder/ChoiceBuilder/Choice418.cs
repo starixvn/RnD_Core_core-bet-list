@@ -5,6 +5,7 @@
     using Entities;
     using System.Collections.Generic;
     using Utils;
+
     /// <summary>
     /// Bet type name: Both Teams to Score/ Total Goal
     /// </summary>

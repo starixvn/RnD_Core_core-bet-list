@@ -84,9 +84,11 @@
 
         private string BuildSystemParlayDetailDiv(ITicket ticket, ITicketHelper ticketHelper)
         {
-            return ticketHelper.ShowSystemParlayDetail
-                            ? JoinDetailSystemParlayDiv(ticket, ticketHelper)
-                            : string.Empty;
+            return ticketHelper.ShowSystemParlayDetail 
+                        && ticket.BetTeam != "1" 
+                        && ticket.Status.ToLowerInvariant() != BetStatus.Void
+                    ? JoinDetailSystemParlayDiv(ticket, ticketHelper)
+                    : string.Empty;
         }
 
         private string JoinDetailSystemParlayDiv(ITicket ticket, ITicketHelper ticketHelper)
