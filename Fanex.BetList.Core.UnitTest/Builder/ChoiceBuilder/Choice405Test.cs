@@ -47,13 +47,13 @@
         public void BuildChoice_BetTeamIsNotAOS_BetTeamAreSpaceAndBetTeam()
         {
             // Arrange
-            _ticket.BetTeam = "bet team";
+            _ticket.BetTeam = "4:4";
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedBetTeam = string.Format("&nbsp;{0}", _ticket.BetTeam);
+            string expectedBetTeam = "&nbsp;4-4";
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
@@ -82,7 +82,6 @@
             // Assert.
             StringAssert.DoesNotContain(CoreBetList.Excluding, choiceHtml);
         }
-
         [TestCase("AOS")]
         [TestCase("aos")]
         public void BuildBetTeam_BetTeamIsAOSAndTransDescIsNotNull_ShowExcludingChoices(string betTeam)
@@ -95,22 +94,7 @@
             var choiceHtml = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>()).ToString();
 
             // Assert.
-            StringAssert.Contains(CoreBetList.Excluding, choiceHtml);
-        }
-
-        [TestCase("AOS")]
-        [TestCase("aos")]
-        public void BuildBetTeam_BetTeamIsAOSAndTransDescIsNotNull_ExcludingContainsTransDesc(string betTeam)
-        {
-            // Arrange.
-            _ticket.BetTeam = betTeam;
-            _ticket.TransDesc = "1:1,1:2,2:1";
-
-            // Act.
-            var choiceHtml = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>()).ToString();
-
-            // Assert.
-            string expectedChoiceList = "1:1, 1:2, 2:1";
+            string expectedChoiceList = $"{CoreBetList.Excluding}: 1-1, 1-2, 2-1";
             StringAssert.Contains(expectedChoiceList, choiceHtml);
         }
 
