@@ -133,6 +133,24 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to AOS FT Excluding.
+        /// </summary>
+        public static string AOSFTExcluding {
+            get {
+                return ResourceManager.GetString("AOSFTExcluding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AOS HT Excluding.
+        /// </summary>
+        public static string AOSHTExcluding {
+            get {
+                return ResourceManager.GetString("AOSHTExcluding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to at.
         /// </summary>
         public static string at {

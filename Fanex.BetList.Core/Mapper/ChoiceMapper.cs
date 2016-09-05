@@ -36,9 +36,6 @@
             ////Result And First Team To Score (own) (415)
             MapIdToBaseId(415, 172);
 
-            ////Half Time/ Full Time Correct Score(own) (416)
-            MapIdToBaseId(416, 152);
-
             ////Home Team Which Half First Goal (420)
             MapIdToBaseId(420, 419);
 

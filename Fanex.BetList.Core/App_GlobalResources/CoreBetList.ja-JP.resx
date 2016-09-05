@@ -679,4 +679,10 @@
   <data name="Excluding" xml:space="preserve">
     <value>除外</value>
   </data>
+  <data name="AOSFTExcluding" xml:space="preserve">
+    <value>AOS FT Excluding</value>
+  </data>
+  <data name="AOSHTExcluding" xml:space="preserve">
+    <value>AOS HT Excluding</value>
+  </data>
 </root>

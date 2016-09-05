@@ -19,6 +19,10 @@
             {
                 choice = CoreBetList.AOS;
             }
+            else
+            {
+                choice = choice.Replace(":", "-");
+            }
 
             // "&nbsp" because export format
             Template.betTeam = HtmlCharacters.NoneBreakingSpace + choice;
@@ -95,7 +99,7 @@
 
         private string FormatTransDesc(string transDesc)
         {
-            return Regex.Replace(transDesc, ",\\s*", ", ");
+            return Regex.Replace(transDesc, ",\\s*", ", ").Replace(":", "-");
         }
 
         private string BuildExcludingBlock(string transDesc)
