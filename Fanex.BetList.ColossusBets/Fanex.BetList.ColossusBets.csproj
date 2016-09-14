@@ -23,9 +23,9 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
@@ -102,16 +102,26 @@
     <Content Include="Templates\Content\ColossusBets.css" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\ColosussBetsLabel.ja-JP.resx" />
+    <EmbeddedResource Include="Resources\ColosussBetsLabel.ja-JP.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\ColosussBetsLabel.ko-KR.resx" />
     <EmbeddedResource Include="Resources\ColosussBetsLabel.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ColosussBetsLabel.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\ColosussBetsLabel.th-TH.resx" />
-    <EmbeddedResource Include="Resources\ColosussBetsLabel.vi-VN.resx" />
-    <EmbeddedResource Include="Resources\ColosussBetsLabel.zh-CN.resx" />
-    <EmbeddedResource Include="Resources\ColosussBetsLabel.zh-TW.resx" />
+    <EmbeddedResource Include="Resources\ColosussBetsLabel.th-TH.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ColosussBetsLabel.vi-VN.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ColosussBetsLabel.zh-CN.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ColosussBetsLabel.zh-TW.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

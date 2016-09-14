@@ -21,8 +21,9 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        [Test]
-        public void BuildChoice_ReturnTemplate()
+        [TestCase("BetCheck")]
+        [TestCase("12352")]
+        public void BuildChoice_FromBetCheck_ReturnTemplate(string betCheck)
         {
             //// Arrange
             _ticketHelper.GetBetTypeNameById(Arg.Any<int>()).Returns("Colossus Bets");
@@ -30,18 +31,18 @@
             _ticket.WinlostDate = new DateTime(2014, 01, 01, 12, 00, 00);
             _ticket.CustId = 10000;
             _ticket.TransId = 200;
-            _ticket.BetCheck = "BetCheck";
+            _ticket.BetCheck = betCheck;
 
             //// Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             //// Assert
             string expected = "<div class=\"combinationLink\">" +
-                                    "<span class=\"main-ticket\">Colossus Bets</span>" +
+                                    "<span class=\"sport\">Colossus Bets</span> - <span class=\"underdog\">" + betCheck + "</span>" +
                                 "</div>" +
                                 "<div class=\"detail colossus-bets-details\" " +
-                                "onclick=\'showColossusBetsDetails(&quot;300&quot;,&quot;1/1/2014 12:00:00 PM&quot;,&quot;200&quot;,&quot;10000&quot;,&quot;BetCheck&quot;);'>" +
-                                "<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">Details</a></div>";
+                                "onclick=\"showColossusBetsDetails('300', '1/1/2014 12:00:00 PM', '200', '10000', '" + betCheck + "');\">" +
+                                "<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void('');\">Details</a></div>";
 
             Assert.AreEqual(expected, _choice.Template.ToString());
         }
