@@ -10,7 +10,7 @@
 @{
     Layout = null;
     //IList<ITicket> tickets = (Model != null) ? Model.Tickets : (IList<ITicket>)new List<Ticket>();
-    IList<ITicket> tickets = new List<ITicket>();
+    IList<ITicket> tickets = Model.Tickets;
     List<ITicketData> ticketData = Model.TicketData;
 
     var factory = new BetListHTMLFactory();

@@ -46,10 +46,6 @@
     <Reference Include="Antlr3.Runtime">
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.BetList.ColossusBets, Version=1.0.1.4, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.BetList.ColossusBets.1.0.1.4\lib\net40\Fanex.BetList.ColossusBets.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Fanex.BetList.GoldDeluxe, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.BetList.Core.2.13.0.14-beta\lib\net40\Fanex.BetList.GoldDeluxe.dll</HintPath>
       <Private>True</Private>
@@ -301,6 +297,10 @@
     <ProjectReference Include="..\Fanex.BetList.CockFighting\Fanex.BetList.CockFighting.csproj">
       <Project>{5a3e7893-910a-48a7-9582-58a864068ca8}</Project>
       <Name>Fanex.BetList.CockFighting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.ColossusBets\Fanex.BetList.ColossusBets.csproj">
+      <Project>{89b48c7f-9ea2-40cf-879c-5509555d3b1d}</Project>
+      <Name>Fanex.BetList.ColossusBets</Name>
     </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj">
       <Project>{b0838d04-2306-4362-af22-9fcd0be6f8e7}</Project>

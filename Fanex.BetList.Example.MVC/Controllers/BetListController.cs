@@ -183,7 +183,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
         public ActionResult ColosussBetsDetails()
         {
-            var betListData = GetDataSource(new BetListData(), sourcePath: "~/App_Data/ColossusBets.xls");
+            var betListData = GetDataSource(new BetListData(), sourcePath: "~/App_Data/ColossusBetsDetails.xls");
 
             return View(betListData);
         }
