@@ -82,6 +82,7 @@
             // Assert.
             StringAssert.DoesNotContain(CoreBetList.Excluding, choiceHtml);
         }
+
         [TestCase("AOS")]
         [TestCase("aos")]
         public void BuildBetTeam_BetTeamIsAOSAndTransDescIsNotNull_ShowExcludingChoices(string betTeam)

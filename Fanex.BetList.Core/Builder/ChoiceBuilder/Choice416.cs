@@ -1,10 +1,10 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System.Collections.Generic;
-    using System.Text.RegularExpressions;
     using App_GlobalResources;
     using Constants;
     using Entities;
+    using System.Collections.Generic;
+    using System.Text.RegularExpressions;
     using Utils;
 
     public class Choice416 : Choice413
@@ -20,15 +20,15 @@
         {
             if (string.IsNullOrEmpty(betTeam))
             {
-                return "";
+                return string.Empty;
             }
 
             var betChoice = betTeam.ToLowerInvariant().Replace(BetTeamValue.AOS, CoreBetList.AOS).Replace(":", "-");
 
-            var HTChoice = betChoice.Substring(0, betChoice.IndexOf("/")).Trim();
-            var FTChoice = betChoice.Remove(0, betChoice.IndexOf("/") + 1).Trim();
+            var halfTimeChoice = betChoice.Substring(0, betChoice.IndexOf("/")).Trim();
+            var fullTimeChoice = betChoice.Remove(0, betChoice.IndexOf("/") + 1).Trim();
 
-            betChoice = $"{CoreBetList.HalfTime} {HTChoice} / {CoreBetList.FullTime} {FTChoice}";
+            betChoice = $"{CoreBetList.HalfTime} {halfTimeChoice} / {CoreBetList.FullTime} {fullTimeChoice}";
 
             return betChoice;
         }
@@ -51,7 +51,6 @@
                 Template.Score.Visible = true;
                 Template.Score.SetValue(BuildExcludingBlock(ticket.BetTeam, ticket.TransDesc));
             }
-
         }
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
