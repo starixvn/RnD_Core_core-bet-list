@@ -23,7 +23,7 @@
         [TestCase("0", "No Goal")]
         [TestCase("1", "1 Goal")]
         [TestCase("2", "2 Goals")]
-        [TestCase("3-Over", "3-Over")]
+        [TestCase("3-Over", "3+")]
         public void BuildBetTeam_BetTeam_TemplateBetTeam(string betTeam, string expected)
         {
             //Arrange

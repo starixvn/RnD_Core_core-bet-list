@@ -21,10 +21,10 @@
         }
 
         [TestCase("H1", "HomeTeam to Win by 1 Goal")]
-        [TestCase("H2+", "HomeTeam to Win by 2up Goals")]
+        [TestCase("H2+", "HomeTeam to Win by 2+ Goals")]
         [TestCase("D", "Score Draw")]
         [TestCase("A1", "AwayTeam to Win by 1 Goal")]
-        [TestCase("A2+", "AwayTeam to Win by 2up Goals")]
+        [TestCase("A2+", "AwayTeam to Win by 2+ Goals")]
         [TestCase("NG", "No Goal")]
         public void BuildBetTeam_BetTeam_TemplateBetTeam(string betTeam, string expected)
         {

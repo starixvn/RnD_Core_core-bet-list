@@ -26,23 +26,23 @@
         public void BuildBetTeam_HomeIdNotZero_BetTeamAreSpaceAndBetTeam()
         {
             // Arrange.
-            _ticket.BetTeam = "4:4";
+            _ticket.BetTeam = "4:4/4:4";
 
             // Act.
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            string expectedBetTeam = "&nbsp;4-4";
+            string expectedBetTeam = "&nbsp;Half Time 4-4 / Full Time 4-4";
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
-        [TestCase("AOS/0:0")]
-        [TestCase("aos/0:0")]
-        [TestCase("0:0/AOS")]
-        [TestCase("0:0/aos")]
-        [TestCase("AOS/AOS")]
-        [TestCase("aos/aos")]
-        public void BuildBetTeam_BetTeamIsAOS_BetTeamIsAOS(string betTeam)
+        [TestCase("AOS/0:0", "Half Time AOS / Full Time 0-0")]
+        [TestCase("aos/0:0", "Half Time AOS / Full Time 0-0")]
+        [TestCase("0:0/AOS", "Half Time 0-0 / Full Time AOS")]
+        [TestCase("0:0/aos", "Half Time 0-0 / Full Time AOS")]
+        [TestCase("AOS/AOS", "Half Time AOS / Full Time AOS")]
+        [TestCase("aos/aos", "Half Time AOS / Full Time AOS")]
+        public void BuildBetTeam_BetTeamIsAOS_BetTeamIsAOS(string betTeam, string expected)
         {
             // Arrange.
             _ticket.BetTeam = betTeam;
@@ -51,7 +51,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            string expectedBetTeam = $"&nbsp;{betTeam.ToUpperInvariant().Replace(":", "-")}";
+            string expectedBetTeam = $"&nbsp;{expected}";
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
@@ -59,7 +59,7 @@
         public void BuildBetTeam_BetTeamIsNotAOS_NotShowFTExcludingChoices()
         {
             // Arrange.
-            _ticket.BetTeam = "4:4";
+            _ticket.BetTeam = "4:4/4:4";
 
             // Act.
             var choiceHtml = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>()).ToString();
