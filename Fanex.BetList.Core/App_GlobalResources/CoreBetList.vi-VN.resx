@@ -301,7 +301,7 @@
     <value>Odd/Odd</value>
   </data>
   <data name="FiveAndOver" xml:space="preserve">
-    <value>5或以上</value>
+    <value>5+</value>
   </data>
   <data name="FiveGoals" xml:space="preserve">
     <value>5 Goals</value>
@@ -316,7 +316,7 @@
     <value>1 Goal</value>
   </data>
   <data name="SevenAndOver" xml:space="preserve">
-    <value>7&amp;Over</value>
+    <value>7+</value>
   </data>
   <data name="SixGoals" xml:space="preserve">
     <value>6 Goals</value>
@@ -352,7 +352,7 @@
     <value>Win-40</value>
   </data>
   <data name="FourAndOver" xml:space="preserve">
-    <value>4&amp;Over</value>
+    <value>4+</value>
   </data>
   <data name="ad" xml:space="preserve">
     <value>AD</value>
@@ -678,7 +678,7 @@
     <value>There is no ticket detail available.</value>
   </data>
   <data name="ThreeOver" xml:space="preserve">
-    <value>3-Over (vi)</value>
+    <value>3+ (vi)</value>
   </data>
   <data name="SDraw" xml:space="preserve">
     <value>S.Draw</value>
@@ -726,7 +726,7 @@
     <value>to Win By 1 Goal (vi)</value>
   </data>
   <data name="ToWinByTwoUpGoals" xml:space="preserve">
-    <value>to Win by 2up Goals (vi)</value>
+    <value>to Win by 2+ Goals (vi)</value>
   </data>
   <data name="FirstHalfShort" xml:space="preserve">
     <value>1st Half (vi)</value>
@@ -735,7 +735,7 @@
     <value>2nd Half (vi)</value>
   </data>
   <data name="ThreeAndOver" xml:space="preserve">
-    <value>3&amp;Over</value>
+    <value>3+</value>
   </data>
   <data name="AOSFTExcluding" xml:space="preserve">
     <value>AOS FT Excluding</value>

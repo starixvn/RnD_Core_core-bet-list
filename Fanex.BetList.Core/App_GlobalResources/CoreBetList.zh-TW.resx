@@ -658,7 +658,7 @@
     <value>輪盤</value>
   </data>
   <data name="FiveAndOver" xml:space="preserve">
-    <value>5&amp;Over</value>
+    <value>5或以上</value>
   </data>
   <data name="AwayToWinAnyOtherScore" xml:space="preserve">
     <value>客贏其他比分</value>

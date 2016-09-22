@@ -301,7 +301,7 @@
     <value>Odd/Odd</value>
   </data>
   <data name="FiveAndOver" xml:space="preserve">
-    <value>5&amp;Over</value>
+    <value>5+</value>
   </data>
   <data name="FiveGoals" xml:space="preserve">
     <value>5 Goals</value>
@@ -316,7 +316,7 @@
     <value>1 Goal</value>
   </data>
   <data name="SevenAndOver" xml:space="preserve">
-    <value>7&amp;Over</value>
+    <value>7+</value>
   </data>
   <data name="SixGoals" xml:space="preserve">
     <value>6 Goals</value>
@@ -352,7 +352,7 @@
     <value>Win-40</value>
   </data>
   <data name="FourAndOver" xml:space="preserve">
-    <value>4&amp;Over</value>
+    <value>4+</value>
   </data>
   <data name="ad" xml:space="preserve">
     <value>원무</value>
@@ -664,7 +664,7 @@
     <value>There is no ticket detail available.</value>
   </data>
   <data name="ThreeAndOver" xml:space="preserve">
-    <value>3&amp;Over</value>
+    <value>3+</value>
   </data>
   <data name="SDraw" xml:space="preserve">
     <value>S.Draw</value>

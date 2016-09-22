@@ -712,7 +712,7 @@
     <value>to Win By 1 Goal (th)</value>
   </data>
   <data name="ToWinByTwoUpGoals" xml:space="preserve">
-    <value>to Win by 2up Goals (th)</value>
+    <value>to Win by 2+ Goals (th)</value>
   </data>
   <data name="FirstHalfShort" xml:space="preserve">
     <value>1st Half (th)</value>

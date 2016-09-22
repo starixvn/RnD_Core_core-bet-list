@@ -547,7 +547,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 5&amp;Over.
+        ///   Looks up a localized string similar to 5+.
         /// </summary>
         public static string FiveAndOver {
             get {
@@ -565,7 +565,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 4&amp;Over.
+        ///   Looks up a localized string similar to 4+.
         /// </summary>
         public static string FourAndOver {
             get {
@@ -628,6 +628,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Full Time.
+        /// </summary>
+        public static string FullTime {
+            get {
+                return ResourceManager.GetString("FullTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Game.
         /// </summary>
         public static string game {
@@ -669,6 +678,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string ha {
             get {
                 return ResourceManager.GetString("ha", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Half Time.
+        /// </summary>
+        public static string HalfTime {
+            get {
+                return ResourceManager.GetString("HalfTime", resourceCulture);
             }
         }
         
@@ -1636,7 +1654,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 7&amp;Over.
+        ///   Looks up a localized string similar to 7+.
         /// </summary>
         public static string SevenAndOver {
             get {
@@ -1663,7 +1681,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 6&amp;Over.
+        ///   Looks up a localized string similar to 6+.
         /// </summary>
         public static string SixAndOver {
             get {
@@ -1771,7 +1789,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 3&amp;Over.
+        ///   Looks up a localized string similar to 3+.
         /// </summary>
         public static string ThreeAndOver {
             get {
@@ -1789,7 +1807,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 3 Goals &amp;Over.
+        ///   Looks up a localized string similar to 3+.
         /// </summary>
         public static string ThreeGoalsAndOver {
             get {
@@ -1798,7 +1816,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 3-Over.
+        ///   Looks up a localized string similar to 3+.
         /// </summary>
         public static string ThreeOver {
             get {
@@ -1852,7 +1870,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to to Win by 3up Goals.
+        ///   Looks up a localized string similar to to Win by 3+ Goals.
         /// </summary>
         public static string ToWinByThreeUpGoals {
             get {
@@ -1870,7 +1888,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to to Win by 2up Goals.
+        ///   Looks up a localized string similar to to Win by 2+ Goals.
         /// </summary>
         public static string ToWinByTwoUpGoals {
             get {
