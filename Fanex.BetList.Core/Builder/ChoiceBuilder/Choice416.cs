@@ -13,11 +13,24 @@
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            string choice = ticket.BetTeam;
-            choice = choice.ToLowerInvariant().Replace(BetTeamValue.AOS, CoreBetList.AOS).Replace(":", "-");
+            Template.betTeam = HtmlCharacters.NoneBreakingSpace + BuildBetChoiceString(ticket.BetTeam);
+        }
 
-            // "&nbsp" because export format
-            Template.betTeam = HtmlCharacters.NoneBreakingSpace + choice;
+        private string BuildBetChoiceString(string betTeam)
+        {
+            if (string.IsNullOrEmpty(betTeam))
+            {
+                return "";
+            }
+
+            var betChoice = betTeam.ToLowerInvariant().Replace(BetTeamValue.AOS, CoreBetList.AOS).Replace(":", "-");
+
+            var HTChoice = betChoice.Substring(0, betChoice.IndexOf("/")).Trim();
+            var FTChoice = betChoice.Remove(0, betChoice.IndexOf("/") + 1).Trim();
+
+            betChoice = $"{CoreBetList.HalfTime} {HTChoice} / {CoreBetList.FullTime} {FTChoice}";
+
+            return betChoice;
         }
 
         protected override void BuildScore(ITicket ticket)
