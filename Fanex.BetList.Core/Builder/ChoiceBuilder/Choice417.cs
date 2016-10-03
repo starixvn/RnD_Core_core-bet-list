@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using System.Collections.Generic;
     using App_GlobalResources;
     using Constants;
     using Entities;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Bet type name: Both Team Score/ Result
@@ -17,7 +17,7 @@
             switch (ticket.BetTeam.ToLowerInvariant())
             {
                 case BetTeamValue.YH:
-                    betTeam = string.Format("{0}/{1}", CoreBetList.lblYes, Template.Match.homeTeam);
+                    betTeam = string.Format("{0}/{1}", CoreBetList.lblYes, CoreBetList.Home);
                     break;
 
                 case BetTeamValue.YD:
@@ -25,11 +25,11 @@
                     break;
 
                 case BetTeamValue.YA:
-                    betTeam = string.Format("{0}/{1}", CoreBetList.lblYes, Template.Match.awayTeam);
+                    betTeam = string.Format("{0}/{1}", CoreBetList.lblYes, CoreBetList.Away);
                     break;
 
                 case BetTeamValue.NH:
-                    betTeam = string.Format("{0}/{1}", CoreBetList.lblNo, Template.Match.homeTeam);
+                    betTeam = string.Format("{0}/{1}", CoreBetList.lblNo, CoreBetList.Home);
                     break;
 
                 case BetTeamValue.ND:
@@ -37,7 +37,7 @@
                     break;
 
                 case BetTeamValue.NA:
-                    betTeam = string.Format("{0}/{1}", CoreBetList.lblNo, Template.Match.awayTeam);
+                    betTeam = string.Format("{0}/{1}", CoreBetList.lblNo, CoreBetList.Away);
                     break;
             }
 

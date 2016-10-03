@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using System.Collections.Generic;
     using App_GlobalResources;
     using Constants;
     using Entities;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Bet type name: Which Half First Goal
@@ -17,11 +17,11 @@
             switch (ticket.BetTeam.ToLowerInvariant())
             {
                 case BetTeamValue.OneH:
-                    betTeam = CoreBetList.FirstHalfShort;
+                    betTeam = CoreBetList.FirstHalf;
                     break;
 
                 case BetTeamValue.TwoH:
-                    betTeam = CoreBetList.SecondHalfShort;
+                    betTeam = CoreBetList.SecondHalf;
                     break;
 
                 case BetTeamValue.N:
