@@ -15,8 +15,14 @@
             ////2ND Over/Under (3rd) (178)
             MapIdToBaseId(178, 18);
 
+            ////Exact 1H Goals (3rd) (179)
+            MapIdToBaseId(179, 412);
+
             ////2ND Handicap (3rd) (183)
             MapIdToBaseId(183, 17);
+
+            ////Exact 2H Goals (3rd)
+            MapIdToBaseId(187, 429);
 
             ////Result And First Team To Score (own) (415)
             MapIdToBaseId(415, 172);
