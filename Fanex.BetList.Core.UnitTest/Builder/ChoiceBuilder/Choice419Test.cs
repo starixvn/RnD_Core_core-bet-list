@@ -20,8 +20,8 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        [TestCase("1H", "1st Half")]
-        [TestCase("2H", "2nd Half")]
+        [TestCase("1H", "First Half")]
+        [TestCase("2H", "Second Half")]
         [TestCase("N", "Neither")]
         public void BuildBetTeam_BetTeam_TemplateBetTeam(string betTeam, string expected)
         {

@@ -20,20 +20,18 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        [TestCase("YH", "Yes/HomeTeam")]
+        [TestCase("YH", "Yes/Home")]
         [TestCase("YD", "Yes/Draw")]
-        [TestCase("YA", "Yes/AwayTeam")]
-        [TestCase("NH", "No/HomeTeam")]
+        [TestCase("YA", "Yes/Away")]
+        [TestCase("NH", "No/Home")]
         [TestCase("ND", "No/Draw")]
-        [TestCase("NA", "No/AwayTeam")]
+        [TestCase("NA", "No/Away")]
         public void BuildBetTeam_BetTeam_TemplateBetTeam(string betTeam, string expected)
         {
             ////Arrange
             _ticket.HomeId = 123;
             _ticket.AwayId = 456;
             _ticket.BetTeam = betTeam;
-            _ticketHelper.GetTeamNameById(_ticket.HomeId).Returns<string>("HomeTeam");
-            _ticketHelper.GetTeamNameById(_ticket.AwayId).Returns<string>("AwayTeam");
 
             ////Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());

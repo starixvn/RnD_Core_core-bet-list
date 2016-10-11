@@ -1,9 +1,10 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Constants;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Constants;
+    using Entities;
+    using Mapper;
 
     /// <summary>
     /// Bet type name: Exact 2ND Half Goals.
@@ -42,6 +43,20 @@
         {
             Template.Handicap.handicap = null;
             Template.betTeamClassName = Favorite;
+        }
+
+        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {
+            var betTypeName = GetParentBetTypeName(ticket, ticketHelper);
+
+            Template.BetType.betTypeName = betTypeName;
+        }
+
+        private string GetParentBetTypeName(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            var parentBetTypeId = MapperCollector.GetParentBetTypeOf(ticket.BetTypeId);
+
+            return ticketHelper.GetBetTypeNameById(parentBetTypeId, ticket.RefNo);
         }
     }
 }

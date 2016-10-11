@@ -10,6 +10,7 @@
     public class MapperCollector
     {
         #region Constants
+
         private const string BetListMapperNamespace = "Fanex.BetList.Core.Mapper.{0}Mapper";
 
         private const string CacheKey = "Fanex.BetList.Core.Mapper.{0}";
@@ -19,14 +20,15 @@
         private const string Odds = "Odds";
         private const string Trans = "Trans";
         private const string ParentChild = "ParentChild";
-        #endregion
+
+        #endregion Constants
 
         #region Global variables
 
         private static ObjectCache _cache = MemoryCache.Default;
         private static object _locker = new object();
 
-        #endregion
+        #endregion Global variables
 
         #region Public method
 
@@ -83,7 +85,14 @@
             return parentChildMapper != null && parentChildMapper.ContainsKey(betTypeId);
         }
 
-        #endregion
+        public static int GetParentBetTypeOf(int betTypeId)
+        {
+            var parentChildMapper = (IDictionary<int, int>)_cache[string.Format(CacheKey, ParentChild)];
+
+            return (parentChildMapper != null && parentChildMapper.ContainsKey(betTypeId)) ? parentChildMapper[betTypeId] : betTypeId;
+        }
+
+        #endregion Public method
 
         #region Private Method
 
@@ -145,6 +154,7 @@
 
             return combineMapperData;
         }
-        #endregion
+
+        #endregion Private Method
     }
 }
