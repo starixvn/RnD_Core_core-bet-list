@@ -188,6 +188,16 @@ namespace Fanex.BetList.Example.MVC.Controllers
             return View(betListData);
         }
 
+        public ActionResult GlobalGaming(BetListData model = null)
+        {
+            ViewBag.BetTypes = new List<SelectListItem>();
+
+            DataSourcePath = "~/App_Data/GlobalGaming.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+
+            return BetListView(model);
+        }
+
         public ActionResult BetTrade(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(901, 902);
