@@ -11,6 +11,9 @@
     [TestFixture]
     public class Choice1011Tests
     {
+        private const string GameTypeRefId = "GG_Game_GT";
+        private const string GameGroupRefId = "GG_Game_GG";
+
         private ITicketHelper _ticketHelper;
         private ITicket _ticket;
         private IChoice _choice;
@@ -29,7 +32,7 @@
             // Arrange
             var gameType = "GG Game Type";
             _ticket.BetCheck = null;
-            _ticketHelper.GetResourceData("Fishing_World_GT", Arg.Any<string>()).Returns(gameType);
+            _ticketHelper.GetResourceData(GameTypeRefId, Arg.Any<string>()).Returns(gameType);
 
             // Act
             var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -46,7 +49,7 @@
             var gameType = "GG Game Type";
             var gamePlayId = "123";
             _ticket.BetCheck = gamePlayId;
-            _ticketHelper.GetResourceData("Fishing_World_GT", Arg.Any<string>()).Returns(gameType);
+            _ticketHelper.GetResourceData(GameTypeRefId, Arg.Any<string>()).Returns(gameType);
 
             // Act
             var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -91,7 +94,7 @@
         {
             // Arrange
             var gameGroupName = "GG Game Group Name";
-            _ticketHelper.GetResourceData("Fishing_World_GG", Arg.Any<string>()).Returns(gameGroupName);
+            _ticketHelper.GetResourceData(GameGroupRefId, Arg.Any<string>()).Returns(gameGroupName);
 
             // Act
             var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -180,12 +183,26 @@
         }
 
         [Test]
+        public void GetBetTypeName_Always_ReturnsGameType()
+        {
+            // Arrange
+            var gameType = "GG Game Type";
+            _ticketHelper.GetResourceData(GameTypeRefId, Arg.Any<string>()).Returns(gameType);
+
+            // Act
+            var betType = _choice.GetBetTypeName(_ticket, _ticketHelper, null);
+
+            // Assert
+            Assert.AreEqual(gameType, betType);
+        }
+
+        [Test]
         public void BuildRTFChoice_FromBetCheckHasNoData_FirstLineIsGameType()
         {
             // Arrange
             var gameType = "GG Game Type";
             _ticket.BetCheck = null;
-            _ticketHelper.GetResourceData("Fishing_World_GT", Arg.Any<string>()).Returns(gameType);
+            _ticketHelper.GetResourceData(GameTypeRefId, Arg.Any<string>()).Returns(gameType);
 
             // Act
             var rtf = _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), new RTFHelper().Clone());
@@ -203,7 +220,7 @@
             var playId = "123";
             var gameType = "GG Game Type";
             _ticket.BetCheck = playId;
-            _ticketHelper.GetResourceData("Fishing_World_GT", Arg.Any<string>()).Returns(gameType);
+            _ticketHelper.GetResourceData(GameTypeRefId, Arg.Any<string>()).Returns(gameType);
 
             // Act
             var rtf = _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), new RTFHelper().Clone());
@@ -219,7 +236,7 @@
         {
             // Arrange
             var gameGroup = "GG Game Group";
-            _ticketHelper.GetResourceData("Fishing_World_GG", Arg.Any<string>()).Returns(gameGroup);
+            _ticketHelper.GetResourceData(GameGroupRefId, Arg.Any<string>()).Returns(gameGroup);
 
             // Act
             var rtf = _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), new RTFHelper().Clone());

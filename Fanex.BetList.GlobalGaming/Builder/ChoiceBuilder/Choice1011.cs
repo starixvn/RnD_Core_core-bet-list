@@ -10,12 +10,12 @@
 
     public class Choice1011 : Choice1
     {
-        private const string GameGroupRefId = "Fishing_World_GG";
-        private const string GameTypeRefId = "Fishing_World_GT";
+        protected const string GameGroupRefId = "GG_Game_GG";
+        protected const string GameTypeRefId = "GG_Game_GT";
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            var gameType = ticketHelper.GetResourceData(GameTypeRefId, ticket.TransDesc);
+            var gameType = GetBetTypeName(ticket, ticketHelper, ticketData);
             Template.betTeam = $"<span class='colorHandicap'>{gameType}</span>";
 
             if (!string.IsNullOrEmpty(ticket.BetCheck))
@@ -94,6 +94,11 @@
             }
 
             return "0"; // Previous days Ticket
+        }
+
+        public override string GetBetTypeName(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData = null)
+        {
+            return ticketHelper.GetResourceData(GameTypeRefId, ticket.TransDesc);
         }
 
         protected override IRichTextString BuildRTFChoice(ITicket ticket, RTFHelper rtfHelper, ITicketHelper ticketHelper)
