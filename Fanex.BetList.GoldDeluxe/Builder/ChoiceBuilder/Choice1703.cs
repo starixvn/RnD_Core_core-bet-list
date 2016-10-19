@@ -4,9 +4,8 @@
     using System.Collections.Generic;
     using App_GlobalResources;
     using Entities;
-    using Fanex.BetList.Core.Constants;
-    using Fanex.BetList.Core.Utils;
     using NPOI.SS.UserModel;
+    using Utils;
 
     public class Choice1703 : Choice1701
     {
