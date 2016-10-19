@@ -1,7 +1,6 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using App_GlobalResources;
     using Common.Enums;
     using Core.Builder.ChoiceBuilder;
     using Entities;
@@ -118,7 +117,7 @@
         /// The value of Template.betTeam depend on ticket data founded.
         /// </summary>
         [Test]
-        public void BuildBetTeam_TicketDataHasRefNoEqualRefNoOfTicket_BetTeamIsBetTeamFormat()
+        public void BuildBetTeam_TicketDataHasSameRefNoAndBetTypeIdOfTicket_BetTeamIsBetTeamFormat()
         {
             // Arrange
             var refNo = "1";
@@ -127,6 +126,7 @@
             var ticketData = Substitute.For<TicketData>();
             ticketData.RefNo = refNo;
             ticketData.Odds = 1;
+            ticketData.BetTypeId = 1101;
             ticketData.BetTeam = string.Empty;
             ticketData.Stake = 1;
             _ticketDatas.Add(ticketData);

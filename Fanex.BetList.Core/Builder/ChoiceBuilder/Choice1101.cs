@@ -107,7 +107,7 @@
 
             if (ticketData != null && ticketData.Count > 0)
             {
-                foundTicketData = ticketData.FindAll(item => item.RefNo.Equals(ticket.RefNo));
+                foundTicketData = ticketData.FindAll(item => item.RefNo.Equals(ticket.RefNo) && item.BetTypeId == ticket.BetTypeId);
             }
 
             return foundTicketData;

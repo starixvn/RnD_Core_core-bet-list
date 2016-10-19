@@ -46,10 +46,6 @@
     <Reference Include="Antlr3.Runtime">
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.BetList.GoldDeluxe, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.BetList.Core.2.13.0.14-beta\lib\net40\Fanex.BetList.GoldDeluxe.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Fanex.Common, Version=1.0.404.97, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Common.1.0.404.97\lib\net40\Fanex.Common.dll</HintPath>
       <Private>True</Private>
@@ -314,6 +310,10 @@
       <Project>{C170087E-7A8F-4CBC-A0F7-F869DFFE48FD}</Project>
       <Name>Fanex.BetList.Example.Extension</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.GoldDeluxe\Fanex.BetList.GoldDeluxe.csproj">
+      <Project>{9b786951-7d5c-42c4-a9df-ec558bc44593}</Project>
+      <Name>Fanex.BetList.GoldDeluxe</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.MetricGaming\Fanex.BetList.MetricGaming.csproj">
       <Project>{054031e6-3e06-47d9-b3d1-b8a8e164e504}</Project>
       <Name>Fanex.BetList.MetricGaming</Name>
@@ -376,6 +376,7 @@
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Properties\PublishProfiles\henry.pubxml" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Properties\PublishProfiles\LocalHarisson.pubxml" />
     <None Include="Scripts\jquery-1.9.0.min.map" />

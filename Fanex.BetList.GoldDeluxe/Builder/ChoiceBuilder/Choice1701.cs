@@ -1,12 +1,8 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Text;
-    using App_GlobalResources;
     using Constants;
     using Entities;
-    using Utils;
 
     public class Choice1701 : Choice1101
     {
@@ -43,7 +39,7 @@
 
             if (ticketData != null && ticketData.Count > 0)
             {
-                foundTicketData = ticketData.FindAll(item => item.RefNo.Equals(ticket.TransId.ToString()));
+                foundTicketData = ticketData.FindAll(item => item.RefNo.Equals(ticket.TransId.ToString()) && item.BetTypeId == ticket.BetTypeId);
             }
 
             return foundTicketData;

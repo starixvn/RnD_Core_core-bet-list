@@ -303,7 +303,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj">
-      <Project>{B0838D04-2306-4362-AF22-9FCD0BE6F8E7}</Project>
+      <Project>{b0838d04-2306-4362-af22-9fcd0be6f8e7}</Project>
       <Name>Fanex.BetList.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.GoldDeluxe\Fanex.BetList.GoldDeluxe.csproj">
