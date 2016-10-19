@@ -140,6 +140,28 @@
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
+        [Test]
+        public void BuildBetTeam_FromTwoTicketDatasHaveSameRefNoButDifferentBetTypeId_BetTeamContainsLiveCasinoTicket()
+        {
+            // Arrange
+            var refNo = "1";
+            _ticket.RefNo = refNo;
+            _ticket.OddsType = "1";
+            var liveCasinoTicketData = new TicketData { RefNo = refNo, Odds = 1, BetTypeId = 1101, BetTeam = string.Empty, Stake = 1 };
+            var goldDeluxeTicketData = new TicketData { RefNo = refNo, Odds = 1, BetTypeId = 1701, BetTeam = string.Empty, Stake = 1 };
+
+            _ticketDatas.Add(liveCasinoTicketData);
+            _ticketDatas.Add(goldDeluxeTicketData);
+            var betTeamFormat = "<div><span class='favorite'>{0}</span>&nbsp;<span class='stake'>{1}</span>&nbsp;@&nbsp;<span class='handicap custom'>{2}</span></div>";
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, _ticketDatas, Arg.Any<bool>());
+
+            // Assert
+            var expectedBetTeam = string.Format(betTeamFormat, string.Empty, liveCasinoTicketData.Stake, liveCasinoTicketData.Odds);
+            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
+        }
+
         /// <summary>
         /// The value Template.BetType.betTypeName of is empty when ticket data is not null.
         /// </summary>

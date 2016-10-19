@@ -25,6 +25,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choice = new Choice1701();
             _ticket = Substitute.For<ITicket>();
             _ticketHelper = Substitute.For<ITicketHelper>();
+            _ticket.BetTypeId = 1701;
         }
 
         [Test]
@@ -114,7 +115,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.TransId = 1234;
             _ticket.OddsType = DecimalOddsType;
 
-            var ticketData = new List<ITicketData> { new TicketData { RefNo = RefNo, Odds = 11, Stake = 1, BetTeam = "2" } };
+            var ticketData = new List<ITicketData> { new TicketData { RefNo = RefNo, Odds = 11, Stake = 1, BetTeam = "2", BetTypeId = 1701 } };
             _ticketHelper.GetResourceData("GD_Baccarat", "2").Returns("Player Pair");
 
             // Action
@@ -137,9 +138,34 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.OddsType = DecimalOddsType;
 
             var ticketData = new List<ITicketData> { 
-                new TicketData { RefNo = RefNo, Odds = 11, Stake = 1, BetTeam = "2" },
-                new TicketData { RefNo = RefNo, Odds = 22, Stake = 2, BetTeam = "3" }
+                new TicketData { RefNo = RefNo, Odds = 11, Stake = 1, BetTeam = "2", BetTypeId = 1701 },
+                new TicketData { RefNo = RefNo, Odds = 22, Stake = 2, BetTeam = "3", BetTypeId = 1701 }
             };
+
+            _ticketHelper.GetResourceData("GD_Baccarat", "2").Returns("Player Pair");
+            _ticketHelper.GetResourceData("GD_Baccarat", "3").Returns("Big");
+
+            // Action
+            _choice.Render(_ticket, _ticketHelper, ticketData, false);
+
+            // Assert
+            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
+        }
+
+        [Test]
+        public void BuildBetTeam_TwoTicketDatasHaveSameRefNoButDifferentBetType_BetTeamContainsGoldDeluxe()
+        {
+            // Arrange
+            string expectedBetTeam = "<div><span class='favorite'>Player Pair</span>&nbsp;<span class='stake'>1</span>&nbsp;@&nbsp;<span class='handicap custom'>11</span></div>";
+
+            const string DecimalOddsType = "4";
+            const string RefNo = "1234";
+            _ticket.TransId = 1234;
+            _ticket.OddsType = DecimalOddsType;
+
+            var goldDeluxeTicketData = new TicketData { RefNo = RefNo, Odds = 11, Stake = 1, BetTeam = "2", BetTypeId = 1701 };
+            var otherTicketData = new TicketData { RefNo = RefNo, Odds = 22, Stake = 2, BetTeam = "3", BetTypeId = 1101 };
+            var ticketData = new List<ITicketData> {goldDeluxeTicketData, otherTicketData};
 
             _ticketHelper.GetResourceData("GD_Baccarat", "2").Returns("Player Pair");
             _ticketHelper.GetResourceData("GD_Baccarat", "3").Returns("Big");
@@ -161,7 +187,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.TransId = 1234;
             _ticket.OddsType = DecimalOddsType;
 
-            var ticketData = new List<ITicketData> { new TicketData { RefNo = RefNo, Odds = 0, Stake = 1, BetTeam = "2" } };
+            var ticketData = new List<ITicketData> { new TicketData { RefNo = RefNo, Odds = 0, Stake = 1, BetTeam = "2", BetTypeId = 1701 } };
             _ticketHelper.GetResourceData("GD_Baccarat", "2").Returns("Player Pair");
 
             // Action
