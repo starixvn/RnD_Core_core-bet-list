@@ -17,7 +17,7 @@
         {
             _choice = new Choice221();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes.Correct_Score;
+            _ticket.BetTypeId = 221;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
@@ -25,7 +25,6 @@
         public void BuildBetTeam_ForOneMinute_ShowBetChoice()
         {
             ////Arrange
-            _ticket.BetTypeId = 221;
             _ticket.BetTeam = "2";
             _ticket.Handicap1 = 9;
             _ticket.Handicap2 = 2;
