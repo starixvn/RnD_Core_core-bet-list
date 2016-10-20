@@ -167,7 +167,6 @@
     <Compile Include="Builder\BetListBaseBuilder.cs" />
     <Compile Include="Builder\BetListExcelBuilder.cs" />
     <Compile Include="Builder\BetListHTMLBuilder.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice223.cs" />
     <Compile Include="Builder\ChoiceBuilder\3rd\Choice_22006.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1.cs">
       <SubType>Code</SubType>
@@ -277,8 +276,6 @@
     <Compile Include="Builder\ChoiceBuilder\Choice20.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice21.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice221.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice222.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice224.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice225.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice23001.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice23002.cs" />
@@ -454,10 +451,6 @@
     <Compile Include="Builder\StatusBuilder\Status155.cs" />
     <Compile Include="Builder\StatusBuilder\Status156.cs" />
     <Compile Include="Builder\StatusBuilder\Status221.cs" />
-    <Compile Include="Builder\StatusBuilder\Status222.cs" />
-    <Compile Include="Builder\StatusBuilder\Status223.cs" />
-    <Compile Include="Builder\StatusBuilder\Status224.cs" />
-    <Compile Include="Builder\StatusBuilder\Status225.cs" />
     <Compile Include="Builder\StatusBuilder\Status23001.cs" />
     <Compile Include="Builder\StatusBuilder\Status23002.cs" />
     <Compile Include="Builder\StatusBuilder\Status23003.cs" />
@@ -505,6 +498,7 @@
     <Compile Include="Mapper\IMapper.cs" />
     <Compile Include="Mapper\MapperCollector.cs" />
     <Compile Include="Mapper\ParentChildMapper.cs" />
+    <Compile Include="Mapper\StatusMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Templates\Choice.htm.cs" />
     <Compile Include="Templates\Odds.htm.cs" />

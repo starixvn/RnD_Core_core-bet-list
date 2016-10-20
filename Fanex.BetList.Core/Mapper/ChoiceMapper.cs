@@ -101,6 +101,16 @@
 
             ////Away 1H to Score/ 2H To Score (447)
             MapIdToBaseId(447, 445);
+
+            MapForFastMarkets();
+        }
+
+        private void MapForFastMarkets()
+        {
+            for (var betType = 222; betType <= 224; betType++)
+            {
+                MapIdToBaseId(betType, 221);
+            }
         }
     }
 }
