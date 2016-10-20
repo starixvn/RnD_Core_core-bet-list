@@ -36,10 +36,6 @@ namespace Fanex.BetList.Example.MVC.Controllers
         public BetListController()
         {
             _dataService = new DataService();
-            var ticketHelper = new TicketHelper();
-            var test = ticketHelper.GetLeagueNameById(1073741825);
-            var test1 = ticketHelper.GetTeamNameById(1073741825);
-            var test2 = ticketHelper.GetTeamNameById(1073741826);
         }
 
         public ActionResult All(BetListData model = null)
@@ -285,6 +281,17 @@ namespace Fanex.BetList.Example.MVC.Controllers
             }
 
             return CreateSelectListItem(betTypes);
+        }
+
+
+        public ActionResult FastMarkets(BetListData model = null)
+        {
+            DataSourcePath = "~/App_Data/FastMarkets.xls";
+
+            ViewBag.BetTypes = CreateSelectListItem(_dataService.QueryBetTypes(221, 222, 223, 224, 225));
+            model = GetDataSource(model, DataSourcePath);
+
+            return BetListView(model);
         }
 
         public ActionResult Voidbridge(BetListData model = null)
