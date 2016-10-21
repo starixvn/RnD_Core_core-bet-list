@@ -4,21 +4,21 @@
     using App_GlobalResources;
     using Entities;
 
-    public class Choice225 : Choice221
+    public class Choice225 : Choice4
     {
-        private const string Next1SetPieceNo = "1";
-        private const string Next1SetPieceYes = "156";
+        private const string Next1MinuteSetPieceNo = "1";
+        private const string Next1MinuteSetPieceYes = "156";
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             string betTeam = string.Empty;
             switch (ticket.BetTeam)
             {
-                case Next1SetPieceNo:
+                case Next1MinuteSetPieceNo:
                     betTeam = CoreBetList.lblNo;
                     break;
 
-                case Next1SetPieceYes:
+                case Next1MinuteSetPieceYes:
                     betTeam = CoreBetList.lblYes;
                     break;
             }
@@ -26,10 +26,10 @@
             Template.betTeam = betTeam + GetFastMarketsTimeRange(ticket);
         }
 
-        protected string GetFastMarketsTimeRange(ITicket ticket, int interval = 1)
+        protected string GetFastMarketsTimeRange(ITicket ticket, int minutesTimeSpan = 1)
         {
             var start = ticket.Handicap1;
-            var end = ticket.Handicap1 + (interval - 1);
+            var end = ticket.Handicap1 + (minutesTimeSpan - 1);
 
             return $" ({start.ToString("00")}:00-{end.ToString("00")}:59)";
         }
