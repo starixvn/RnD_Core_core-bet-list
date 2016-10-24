@@ -2,11 +2,13 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Templates;
+    using System.Text.RegularExpressions;
+    using App_GlobalResources;
+    using Entities;
     using Resource;
+    using Templates;
 
     public class Choice2401 : Choice1101
     {
@@ -18,6 +20,8 @@
 
         private const string OpenGameIdTag = "<span class='allbet-game-id'>";
         private const string CloseGameIdTag = "</span>";
+
+        private const string TableGameIdFormat = "<span class=\"gamegroupname\">{0}</span>";
 
         private const string AllBetRefId = "AllBet_BT";
         private const string BetChoiceDataKey = "CHOICE";
@@ -93,7 +97,7 @@
             }
             else
             {
-                Template.League.LeagueName.leagueName += " " + BuildGameId(ticket);
+                Template.League.LeagueName.leagueName += " " + BuildTableGameId(ticket.TransDesc) + " " + BuildGameId(ticket);
             }
         }
 
@@ -170,6 +174,16 @@
             return string.Format("{0}{1}{2}", OpenBetTypeNameTag, betTypeName, CloseBetTypeNameTag);
         }
 
+        private string BuildTableGameId(string transDesc)
+        {
+            const string TableCode = "tableCode";
+
+            var tableCode = transDesc.Split('*').Where(x => x.IndexOf(TableCode) == 0).FirstOrDefault();
+            return string.IsNullOrEmpty(tableCode)
+                ? string.Empty
+                : string.Format(TableGameIdFormat, tableCode.Remove(0, TableCode.Length + 1));
+        }
+
         private string BuildGameId(ITicket ticket)
         {
             var gameId = ticket.MatchCode;
@@ -185,11 +199,8 @@
 
         private void RemoveHtmlTagFromLeagueName()
         {
-            Template.League.LeagueName.leagueName = Template.League.LeagueName.leagueName
-               .Replace(OpenBetTypeNameTag, string.Empty)
-               .Replace(CloseBetTypeNameTag, string.Empty)
-               .Replace(OpenGameIdTag, string.Empty)
-               .Replace(CloseGameIdTag, string.Empty);
+            var htmlTagMatching = new Regex("</?[^<>]*>");
+            Template.League.LeagueName.leagueName = htmlTagMatching.Replace(Template.League.LeagueName.leagueName, string.Empty);
         }
 
         private void RemoveHtmlTagFromBetTypeName()
