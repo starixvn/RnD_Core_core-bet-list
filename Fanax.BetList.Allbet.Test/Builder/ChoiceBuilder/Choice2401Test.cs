@@ -146,15 +146,15 @@
         }
 
         [Test]
-        public void BuildLeague_FromSettledTicket_LeagueNameIsBetTypeNameAndTableGameIdAndGameId()
+        public void BuildLeague_FromSettledTicket_LeagueNameIsBetTypeNameAndGameTableIdAndGameId()
         {
             // Arrange
             var gameId = "12345";
-            var tableGameId = "R001 ";
+            var gameTableId = "R001 ";
             var betType = 123;
             var betTypeName = "Bet Type Name";
             _ticket.BetTypeId = betType;
-            _ticket.TransDesc = $"choice=1001*comms=100*site=BEST-ODDS*tableCode={tableGameId}*state=0*result=B;S6;H2:P;D10;D5*results=B;8:P;5*winResult=1001;1004";
+            _ticket.TransDesc = $"choice=1001*comms=100*site=BEST-ODDS*TableCode={gameTableId}*state=0*result=B;S6;H2:P;D10;D5*results=B;8:P;5*winResult=1001;1004";
             _ticket.MatchCode = gameId;
             _ticketHelper.GetBetTypeNameById(betType).Returns(betTypeName);
 
@@ -165,7 +165,7 @@
             var expectedLeagueName = string.Format(
                 "<span class='allbet-bet-type-name'>{0}</span> <span class=\"gamegroupname\">{1}</span> <span class='allbet-game-id'>{2}</span>",
                 betTypeName,
-                tableGameId,
+                gameTableId,
                 gameId);
             Assert.AreEqual(expectedLeagueName, _choice.Template.League.LeagueName.leagueName);
         }
@@ -229,11 +229,11 @@
         }
 
         [Test]
-        public void RemoveHtmlTagFromLeagueName_FromSettledTicket_LeagueNameIsBetTypeNameAndTableGameIdAndGameId()
+        public void RemoveHtmlTagFromLeagueName_FromSettledTicket_LeagueNameIsBetTypeNameAndGameTableIdAndGameId()
         {
             // Arrange
             var gameId = "12345";
-            var tableGameId = "R001 ";
+            var gameTableId = "R001 ";
             var betType = 123;
             var betTypeName = "Bet Type Name";
             var rtfHelper = new RTFHelper()
@@ -241,7 +241,7 @@
                 RTFRenderer = new RtfTextRender()
             };
             _ticket.BetTypeId = betType;
-            _ticket.TransDesc = $"choice=1001*comms=100*site=BEST-ODDS*tableCode={tableGameId}*state=0*result=B;S6;H2:P;D10;D5*results=B;8:P;5*winResult=1001;1004";
+            _ticket.TransDesc = $"choice=1001*comms=100*site=BEST-ODDS*tableCode={gameTableId}*state=0*result=B;S6;H2:P;D10;D5*results=B;8:P;5*winResult=1001;1004";
             _ticket.MatchCode = gameId;
             _ticketHelper.GetBetTypeNameById(betType).Returns(betTypeName);
 
@@ -249,7 +249,7 @@
             _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), rtfHelper);
 
             // Assert
-            var expectedLeagueName = string.Format("{0} {1} {2}", betTypeName, tableGameId, gameId);
+            var expectedLeagueName = string.Format("{0} {1} {2}", betTypeName, gameTableId, gameId);
             Assert.AreEqual(expectedLeagueName, _choice.Template.League.LeagueName.leagueName);
         }
     }

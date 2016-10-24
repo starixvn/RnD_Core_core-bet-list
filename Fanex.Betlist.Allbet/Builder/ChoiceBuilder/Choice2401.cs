@@ -21,10 +21,11 @@
         private const string OpenGameIdTag = "<span class='allbet-game-id'>";
         private const string CloseGameIdTag = "</span>";
 
-        private const string TableGameIdFormat = "<span class=\"gamegroupname\">{0}</span>";
+        private const string GameTableIdFormat = "<span class=\"gamegroupname\">{0}</span>";
 
         private const string AllBetRefId = "AllBet_BT";
         private const string BetChoiceDataKey = "CHOICE";
+        private const string TableCodeKey = "TableCode";
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
@@ -97,7 +98,7 @@
             }
             else
             {
-                Template.League.LeagueName.leagueName += " " + BuildTableGameId(ticket.TransDesc) + " " + BuildGameId(ticket);
+                Template.League.LeagueName.leagueName += " " + BuildGameTableId(ticket.TransDesc) + " " + BuildGameId(ticket);
             }
         }
 
@@ -174,14 +175,12 @@
             return string.Format("{0}{1}{2}", OpenBetTypeNameTag, betTypeName, CloseBetTypeNameTag);
         }
 
-        private string BuildTableGameId(string transDesc)
+        private string BuildGameTableId(string transDesc)
         {
-            const string TableCode = "tableCode";
-
-            var tableCode = transDesc.Split('*').Where(x => x.IndexOf(TableCode) == 0).FirstOrDefault();
+            var tableCode = transDesc.Split('*').Where(x => x.IndexOf(TableCodeKey + "=", StringComparison.OrdinalIgnoreCase) == 0).FirstOrDefault();
             return string.IsNullOrEmpty(tableCode)
                 ? string.Empty
-                : string.Format(TableGameIdFormat, tableCode.Remove(0, TableCode.Length + 1));
+                : string.Format(GameTableIdFormat, tableCode.Split('=')[1]);
         }
 
         private string BuildGameId(ITicket ticket)
