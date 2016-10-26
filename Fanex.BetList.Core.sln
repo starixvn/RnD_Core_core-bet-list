@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_CodeAnalysis", "_CodeAnalysis", "{806E6B7B-8CAA-49B4-B5AB-145030E6B66A}"
 	ProjectSection(SolutionItems) = preProject
@@ -87,6 +87,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.VoidBridge", "Fanex.BetList.Voidbridge\Fanex.BetList.VoidBridge.csproj", "{0F87BC2A-0625-42B3-B695-3E6384E588DB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.VoidBridge.Tests", "Fanex.BetList.Voidbridge.Tests\Fanex.BetList.VoidBridge.Tests.csproj", "{EBACB2EE-236C-4F4E-8522-B5EDED786BBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.GoldDeluxe.Tests", "Fanex.BetList.GoldDeluxe.Tests\Fanex.BetList.GoldDeluxe.Tests.csproj", "{42464830-74D4-4504-A8CF-1A309197080A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -380,6 +382,18 @@ Global
 		{EBACB2EE-236C-4F4E-8522-B5EDED786BBC}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{EBACB2EE-236C-4F4E-8522-B5EDED786BBC}.Release|x86.ActiveCfg = Release|Any CPU
 		{EBACB2EE-236C-4F4E-8522-B5EDED786BBC}.Release|x86.Build.0 = Release|Any CPU
+		{42464830-74D4-4504-A8CF-1A309197080A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42464830-74D4-4504-A8CF-1A309197080A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42464830-74D4-4504-A8CF-1A309197080A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{42464830-74D4-4504-A8CF-1A309197080A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{42464830-74D4-4504-A8CF-1A309197080A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{42464830-74D4-4504-A8CF-1A309197080A}.Debug|x86.Build.0 = Debug|Any CPU
+		{42464830-74D4-4504-A8CF-1A309197080A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42464830-74D4-4504-A8CF-1A309197080A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42464830-74D4-4504-A8CF-1A309197080A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{42464830-74D4-4504-A8CF-1A309197080A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{42464830-74D4-4504-A8CF-1A309197080A}.Release|x86.ActiveCfg = Release|Any CPU
+		{42464830-74D4-4504-A8CF-1A309197080A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -409,6 +423,7 @@ Global
 		{EBF46368-F937-49DF-B24D-BAC01ED3A947} = {519A9FC6-FA56-471B-AD9A-BD2D0EB621D9}
 		{0F87BC2A-0625-42B3-B695-3E6384E588DB} = {7064C215-7F9F-4C84-8106-D44BB99E4E4C}
 		{EBACB2EE-236C-4F4E-8522-B5EDED786BBC} = {7064C215-7F9F-4C84-8106-D44BB99E4E4C}
+		{42464830-74D4-4504-A8CF-1A309197080A} = {6C4B2D97-C73E-4AF4-83EB-848DF0BBDC51}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Fanex2.vsmdi

@@ -1,17 +1,13 @@
-﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.GoldDeluxe.Tests.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
     using Core.Builder.ChoiceBuilder;
-    using Entities;
+    using Core.Entities;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    /// Choice1701 test class.
-    /// </summary>
     [TestFixture]
-    public class Choice1702Test
+    public class Choice1701Tests
     {
         private IChoice _choice;
         private ITicket _ticket;
@@ -20,9 +16,10 @@
         [SetUp]
         public void Setup()
         {
-            _choice = new Choice1702();
+            _choice = new Choice1701();
             _ticket = Substitute.For<ITicket>();
             _ticketHelper = Substitute.For<ITicketHelper>();
+            _ticket.BetTypeId = 1701;
         }
 
         [Test]
@@ -68,13 +65,13 @@
         {
             // Arrange
             _ticket.BetCheck = "B71305030130";
-            _ticketHelper.GetBetTypeNameById(Arg.Any<object>()).Returns("Roulette");
+            _ticketHelper.GetBetTypeNameById(Arg.Any<object>()).Returns("Baccarat");
 
             // Action
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            const string ExpectedLeagueName = "Roulette&nbsp;B71305030130";
+            const string ExpectedLeagueName = "Baccarat&nbsp;B71305030130";
             Assert.AreEqual(ExpectedLeagueName, _choice.Template.League.LeagueName.leagueName);
         }
 
@@ -103,7 +100,6 @@
         }
 
         [Test]
-        [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2100:CodeLineMustNotBeLongerThan", Justification = "Reviewed.")]
         public void BuildBetTeam_TicketData_SetBetTeam1()
         {
             // Arrange
@@ -113,8 +109,8 @@
             _ticket.TransId = 1234;
             _ticket.OddsType = DecimalOddsType;
 
-            var ticketData = new List<ITicketData> { new TicketData { RefNo = RefNo, Odds = 11, Stake = 1, BetTeam = "2" } };
-            _ticketHelper.GetResourceData("GD_Roulette", "2").Returns("Player Pair");
+            var ticketData = new List<ITicketData> { new TicketData { RefNo = RefNo, Odds = 11, Stake = 1, BetTeam = "2", BetTypeId = 1701 } };
+            _ticketHelper.GetResourceData("GD_Baccarat", "2").Returns("Player Pair");
 
             // Action
             _choice.Render(_ticket, _ticketHelper, ticketData, false);
@@ -124,7 +120,6 @@
         }
 
         [Test]
-        [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2100:CodeLineMustNotBeLongerThan", Justification = "Reviewed.")]
         public void BuildBetTeam_TicketData_SetBetTeam2()
         {
             // Arrange
@@ -136,13 +131,13 @@
             _ticket.TransId = 1234;
             _ticket.OddsType = DecimalOddsType;
 
-            var ticketData = new List<ITicketData>
-            {
-                new TicketData { RefNo = RefNo, Odds = 11, Stake = 1, BetTeam = "2" },
-                new TicketData { RefNo = RefNo, Odds = 22, Stake = 2, BetTeam = "3" }
+            var ticketData = new List<ITicketData> {
+                new TicketData { RefNo = RefNo, Odds = 11, Stake = 1, BetTeam = "2", BetTypeId = 1701 },
+                new TicketData { RefNo = RefNo, Odds = 22, Stake = 2, BetTeam = "3", BetTypeId = 1701 }
             };
-            _ticketHelper.GetResourceData("GD_Roulette", "2").Returns("Player Pair");
-            _ticketHelper.GetResourceData("GD_Roulette", "3").Returns("Big");
+
+            _ticketHelper.GetResourceData("GD_Baccarat", "2").Returns("Player Pair");
+            _ticketHelper.GetResourceData("GD_Baccarat", "3").Returns("Big");
 
             // Action
             _choice.Render(_ticket, _ticketHelper, ticketData, false);
@@ -152,7 +147,31 @@
         }
 
         [Test]
-        [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2100:CodeLineMustNotBeLongerThan", Justification = "Reviewed.")]
+        public void BuildBetTeam_TwoTicketDatasHaveSameRefNoButDifferentBetType_BetTeamContainsGoldDeluxe()
+        {
+            // Arrange
+            string expectedBetTeam = "<div><span class='favorite'>Player Pair</span>&nbsp;<span class='stake'>1</span>&nbsp;@&nbsp;<span class='handicap custom'>11</span></div>";
+
+            const string DecimalOddsType = "4";
+            const string RefNo = "1234";
+            _ticket.TransId = 1234;
+            _ticket.OddsType = DecimalOddsType;
+
+            var goldDeluxeTicketData = new TicketData { RefNo = RefNo, Odds = 11, Stake = 1, BetTeam = "2", BetTypeId = 1701 };
+            var otherTicketData = new TicketData { RefNo = RefNo, Odds = 22, Stake = 2, BetTeam = "3", BetTypeId = 1101 };
+            var ticketData = new List<ITicketData> { goldDeluxeTicketData, otherTicketData };
+
+            _ticketHelper.GetResourceData("GD_Baccarat", "2").Returns("Player Pair");
+            _ticketHelper.GetResourceData("GD_Baccarat", "3").Returns("Big");
+
+            // Action
+            _choice.Render(_ticket, _ticketHelper, ticketData, false);
+
+            // Assert
+            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
+        }
+
+        [Test]
         public void BuildBetTeam_TicketDataWithOddsIsZero_ShowHyphen()
         {
             // Arrange
@@ -162,8 +181,8 @@
             _ticket.TransId = 1234;
             _ticket.OddsType = DecimalOddsType;
 
-            var ticketData = new List<ITicketData> { new TicketData { RefNo = RefNo, Odds = 0, Stake = 1, BetTeam = "2" } };
-            _ticketHelper.GetResourceData("GD_Roulette", "2").Returns("Player Pair");
+            var ticketData = new List<ITicketData> { new TicketData { RefNo = RefNo, Odds = 0, Stake = 1, BetTeam = "2", BetTypeId = 1701 } };
+            _ticketHelper.GetResourceData("GD_Baccarat", "2").Returns("Player Pair");
 
             // Action
             _choice.Render(_ticket, _ticketHelper, ticketData, false);

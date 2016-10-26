@@ -1,14 +1,12 @@
-﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.GoldDeluxe.Tests.Builder.ChoiceBuilder
 {
-    using System.Collections.Generic;
-    using App_GlobalResources;
-    using Common.Enums;
     using Core.Builder.ChoiceBuilder;
-    using Entities;
+    using Core.Entities;
     using NSubstitute;
     using NUnit.Framework;
 
-    public class Choice1703Test
+    [TestFixture]
+    public class Choice1703Tests
     {
         private IChoice _choice;
         private ITicket _ticket;
@@ -63,7 +61,7 @@
         [Test]
         public void BuildLeague_WhenCalled_SetLeagueNameIsParlayBaccarat()
         {
-            // Arrange       
+            // Arrange
             _ticket.Status = "RUNNING";
             _ticketHelper.GetBetTypeNameById(Arg.Any<object>()).Returns("Parlay Baccarat");
 
