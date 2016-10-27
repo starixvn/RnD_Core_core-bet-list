@@ -21,13 +21,49 @@
         }
 
         [Test]
-        public void BuildStatusResult_Always_StatusResultIsNull()
+        public void BuildStatusResult_FromSummaryTicket_StatusResultIsNull()
         {
+            // Arrange
+            _ticket.BetCheck = null;
+
             // Act
             var template = _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
             Assert.IsNull(template.StatusResult);
+        }
+
+        [TestCase("won")]
+        [TestCase("LosE")]
+        [TestCase("DRAW")]
+        public void BuildStatusResult_FromDetailTicketHasWonLostStatus_StatusResultIsVisible(string status)
+        {
+            // Arrange
+            _ticket.BetCheck = "123";
+            _ticket.Status = status;
+
+            // Act
+            var template = _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            Assert.IsTrue(template.StatusResult.Visible);
+        }
+
+        [TestCase("running")]
+        [TestCase("Reject")]
+        [TestCase("Void")]
+        [TestCase("refund")]
+        public void BuildStatusResult_FromDetailTicketHasNoWonLostStatus_StatusResultIsInvisible(string status)
+        {
+            // Arrange
+            _ticket.BetCheck = "123";
+            _ticket.Status = status;
+
+            // Act
+            var template = _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            Assert.IsFalse(template.StatusResult.Visible);
         }
     }
 }

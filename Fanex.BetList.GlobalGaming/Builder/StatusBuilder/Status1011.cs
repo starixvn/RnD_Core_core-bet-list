@@ -6,7 +6,14 @@
     {
         protected override void BuildStatusResult(ITicket ticket)
         {
-            Template.StatusResult = null;
+            if (string.IsNullOrEmpty(ticket.BetCheck))
+            {
+                Template.StatusResult = null;
+            }
+            else
+            {
+                base.BuildStatusResult(ticket);
+            }
         }
     }
 }

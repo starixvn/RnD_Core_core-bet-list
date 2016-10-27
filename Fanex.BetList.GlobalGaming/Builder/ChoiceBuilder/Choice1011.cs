@@ -5,7 +5,7 @@
     using System.Globalization;
     using System.Text.RegularExpressions;
     using App_GlobalResources;
-    using Core.Entities;
+    using Entities;
     using NPOI.SS.UserModel;
 
     public class Choice1011 : Choice1
