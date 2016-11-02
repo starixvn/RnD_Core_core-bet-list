@@ -56,7 +56,7 @@
             var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            var expectedCoinsInBlock = $"<div><span class=\"gg-currency-amount\">{GlobalGamingResources.CoinsIn}</span>: UUS 0.1</div>";
+            var expectedCoinsInBlock = $"<div><span class=\"dark-orange\">{GlobalGamingResources.CoinsIn}</span>: UUS 0.1</div>";
             Assert.AreEqual(expectedCoinsInBlock, template.betTeam);
         }
 
@@ -73,7 +73,7 @@
             var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            var expectedRemainingBlock = $"<div><span class=\"gg-currency-amount\">{GlobalGamingResources.Remaining}</span>: UUS 0.1</div>";
+            var expectedRemainingBlock = $"<div><span class=\"dark-orange\">{GlobalGamingResources.Remaining}</span>: UUS 0.1</div>";
             Assert.AreEqual(expectedRemainingBlock, template.betTeam);
         }
 
@@ -106,8 +106,8 @@
             var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            var expectedBetTeamBlock = $"<div><span class=\"gg-currency-amount\">{GlobalGamingResources.CoinsIn}</span>: UUS 1.01</div>";
-            expectedBetTeamBlock += $"<div><span class=\"gg-currency-amount\">{GlobalGamingResources.Remaining}</span>: UUS 1</div>";
+            var expectedBetTeamBlock = $"<div><span class=\"dark-orange\">{GlobalGamingResources.CoinsIn}</span>: UUS 1.01</div>";
+            expectedBetTeamBlock += $"<div><span class=\"dark-orange\">{GlobalGamingResources.Remaining}</span>: UUS 1</div>";
             Assert.AreEqual(expectedBetTeamBlock, template.betTeam);
         }
 
@@ -124,7 +124,7 @@
             var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            var expectedBetTeamBlock = $"<div><span class=\"gg-currency-amount\">{GlobalGamingResources.CoinsIn}</span>: UUS 1.01</div>";
+            var expectedBetTeamBlock = $"<div><span class=\"dark-orange\">{GlobalGamingResources.CoinsIn}</span>: UUS 1.01</div>";
             Assert.AreEqual(expectedBetTeamBlock, template.betTeam);
         }
 

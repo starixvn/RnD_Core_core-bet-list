@@ -18,7 +18,7 @@
         private const string RemainingAmountKey = "RemainingAmount=";
         private const string BuyAmountKey = "BuyAmount=";
         private const string CurrencyAmountBlock = "<div><span class=\"{0}\">{1}</span>: {2} {3}</div>";
-        private const string CurrencyAmountClass = "gg-currency-amount";
+        private const string CurrencyAmountClass = "dark-orange";
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {

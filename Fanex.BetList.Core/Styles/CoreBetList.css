@@ -211,3 +211,7 @@ div.match + div.league + div.no-details {
 .light-blue {
     color: #0017CD;
 }
+
+.dark-orange {
+    color: #AF5319;
+}
