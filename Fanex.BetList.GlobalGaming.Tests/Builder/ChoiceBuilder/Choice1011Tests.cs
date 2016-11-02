@@ -5,6 +5,7 @@
     using Core.App_GlobalResources;
     using Core.Builder.ChoiceBuilder;
     using Core.Entities;
+    using Core.Resources;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -16,7 +17,7 @@
 
         private ITicketHelper _ticketHelper;
         private ITicket _ticket;
-        private IChoice _choice;
+        private Choice1011 _choice;
 
         [SetUp]
         public void SetUp()
@@ -26,37 +27,105 @@
             _choice = new Choice1011();
         }
 
-        [Test]
-        public void BuildBetTeam_FromBetCheckHasNoData_BetTeamIsGameTypeBlock()
+        [TestCase("", "won")]
+        [TestCase("", "running")]
+        [TestCase("123", "won")]
+        public void BuildBetTeam_FromBetCheckHasNoDataOrStatusIsNotRunning_BetTeamIsEmpty(string betCheck, string status)
         {
             // Arrange
-            var gameType = "GG Game Type";
-            _ticket.BetCheck = null;
-            _ticketHelper.GetResourceData(GameTypeRefId, Arg.Any<string>()).Returns(gameType);
+            _ticket.BetCheck = betCheck;
+            _ticket.Status = status;
 
             // Act
             var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            var expectedGameTypeBlock = $"<span class='colorHandicap'>{gameType}</span>";
-            Assert.AreEqual(expectedGameTypeBlock, template.betTeam);
+            Assert.IsEmpty(template.betTeam);
         }
 
         [Test]
-        public void BuildBetTeam_FromBetCheckHasData_BetTeamIsGameTypeBlockAndGamePlayId()
+        public void BuildBetTeam_FromBetCheckHasDataAndStatusIsRunningAndMatchCodeContainsBuyAmount_BetTeamIsCoinsInBlock()
         {
             // Arrange
-            var gameType = "GG Game Type";
-            var gamePlayId = "123";
-            _ticket.BetCheck = gamePlayId;
-            _ticketHelper.GetResourceData(GameTypeRefId, Arg.Any<string>()).Returns(gameType);
+            _ticket.Status = "running";
+            _ticket.BetCheck = "123";
+            _ticket.MatchCode = "BuyAmount=0.1";
+            _ticket.Currency = "UUS";
 
             // Act
             var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            var expectedGameTypeBlock = $"<span class='colorHandicap'>{gameType}</span> {gamePlayId}";
-            Assert.AreEqual(expectedGameTypeBlock, template.betTeam);
+            var expectedCoinsInBlock = $"<div><span class=\"gg-currency-amount\">{GlobalGamingResources.CoinsIn}</span>: UUS 0.1</div>";
+            Assert.AreEqual(expectedCoinsInBlock, template.betTeam);
+        }
+
+        [Test]
+        public void BuildBetTeam_FromBetCheckHasDataAndStatusIsRunningAndMatchCodeContainsRemainingAmountIsNotZero_BetTeamIsRemainingBlock()
+        {
+            // Arrange
+            _ticket.Status = "running";
+            _ticket.BetCheck = "123";
+            _ticket.MatchCode = "RemainingAmount=0.1";
+            _ticket.Currency = "UUS";
+
+            // Act
+            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            var expectedRemainingBlock = $"<div><span class=\"gg-currency-amount\">{GlobalGamingResources.Remaining}</span>: UUS 0.1</div>";
+            Assert.AreEqual(expectedRemainingBlock, template.betTeam);
+        }
+
+        [Test]
+        public void BuildBetTeam_FromBetCheckHasDataAndStatusIsRunningAndMatchCodeContainsRemainingAmountIsZero_BetTeamIsEmpty()
+        {
+            // Arrange
+            _ticket.Status = "running";
+            _ticket.BetCheck = "123";
+            _ticket.MatchCode = "RemainingAmount=0";
+            _ticket.Currency = "UUS";
+
+            // Act
+            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            Assert.IsEmpty(template.betTeam);
+        }
+
+        [Test]
+        public void BuildBetTeam_FromBetCheckHasDataAndStatusIsRunningAndMatchCodeContainsRemainingAmountIsNotZeroAndBuyAmount_BetTeamContainsCoinsInAndRemaining()
+        {
+            // Arrange
+            _ticket.Status = "running";
+            _ticket.BetCheck = "123";
+            _ticket.MatchCode = "RemainingAmount=1*buyAmount=1.01";
+            _ticket.Currency = "UUS";
+
+            // Act
+            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            var expectedBetTeamBlock = $"<div><span class=\"gg-currency-amount\">{GlobalGamingResources.CoinsIn}</span>: UUS 1.01</div>";
+            expectedBetTeamBlock += $"<div><span class=\"gg-currency-amount\">{GlobalGamingResources.Remaining}</span>: UUS 1</div>";
+            Assert.AreEqual(expectedBetTeamBlock, template.betTeam);
+        }
+
+        [Test]
+        public void BuildBetTeam_FromBetCheckHasDataAndStatusIsRunningAndMatchCodeContainsRemainingAmountIsZeroAndBuyAmount_BetTeamContainsCoinsIn()
+        {
+            // Arrange
+            _ticket.Status = "running";
+            _ticket.BetCheck = "123";
+            _ticket.MatchCode = "RemainingAmount=0.0*buyAmount=1.01";
+            _ticket.Currency = "UUS";
+
+            // Act
+            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            var expectedBetTeamBlock = $"<div><span class=\"gg-currency-amount\">{GlobalGamingResources.CoinsIn}</span>: UUS 1.01</div>";
+            Assert.AreEqual(expectedBetTeamBlock, template.betTeam);
         }
 
         [Test]
@@ -80,13 +149,36 @@
         }
 
         [Test]
-        public void BuildBetType_Always_BetTypeIsNull()
+        public void BuildBetType_FromBetCheckHasNoData_BetTypeIsGameTypeBlock()
         {
+            // Arrange
+            var gameType = "GG Game Type";
+            _ticket.BetCheck = null;
+            _ticketHelper.GetResourceData(GameTypeRefId, Arg.Any<string>()).Returns(gameType);
+
             // Act
             var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.IsNull(template.BetType);
+            var expectedGameTypeBlock = $"<div class=\"underdog\"><span class=\"colorHandicap\">{gameType}</span></div>";
+            Assert.AreEqual(expectedGameTypeBlock, template.BetType.ToString());
+        }
+
+        [Test]
+        public void BuildBetType_FromBetCheckHasData_BetTypeIsGameTypeBlockAndGamePlayId()
+        {
+            // Arrange
+            var gameType = "GG Game Type";
+            var gamePlayId = "123";
+            _ticket.BetCheck = gamePlayId;
+            _ticketHelper.GetResourceData(GameTypeRefId, Arg.Any<string>()).Returns(gameType);
+
+            // Act
+            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            var expectedGameTypeBlock = $"<div class=\"underdog\"><span class=\"colorHandicap\">{gameType}</span> {gamePlayId}</div>";
+            Assert.AreEqual(expectedGameTypeBlock, template.BetType.ToString());
         }
 
         [Test]
@@ -100,7 +192,7 @@
             var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            var expectedGameGroupBlock = $"<div class='gamegroupname'>{gameGroupName}</div>";
+            var expectedGameGroupBlock = $"<div class=\"gamegroupname\">{gameGroupName}</div>";
             Assert.AreEqual(expectedGameGroupBlock, template.Match.ToString());
         }
 
@@ -196,8 +288,109 @@
             Assert.AreEqual(gameType, betType);
         }
 
+        [TestCase("", "won")]
+        [TestCase("", "running")]
+        [TestCase("123", "won")]
+        public void BuildRTFChoice_FromBetCheckHasNoDataOrStatusIsNotRunning_BetTeamIsEmpty(string betCheck, string status)
+        {
+            // Arrange
+            _ticket.BetCheck = betCheck;
+            _ticket.Status = status;
+
+            // Act
+            _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), new RTFHelper().Clone());
+
+            // Assert
+            Assert.IsEmpty(_choice.Template.betTeam);
+        }
+
         [Test]
-        public void BuildRTFChoice_FromBetCheckHasNoData_FirstLineIsGameType()
+        public void BuildRTFChoice_FromBetCheckHasDataAndStatusIsRunningAndMatchCodeContainsBuyAmount_BetTeamIsCoinsIn()
+        {
+            // Arrange
+            _ticket.Status = "running";
+            _ticket.BetCheck = "123";
+            _ticket.MatchCode = "BuyAmount=0.1";
+            _ticket.Currency = "UUS";
+
+            // Act
+            _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), new RTFHelper().Clone());
+
+            // Assert
+            var expectedCoinsIn = $"{GlobalGamingResources.CoinsIn}: UUS 0.1";
+            Assert.AreEqual(expectedCoinsIn, _choice.Template.betTeam);
+        }
+
+        [Test]
+        public void BuildRTFChoice_FromBetCheckHasDataAndStatusIsRunningAndMatchCodeContainsRemainingAmountIsNotZero_BetTeamIsRemaining()
+        {
+            // Arrange
+            _ticket.Status = "running";
+            _ticket.BetCheck = "123";
+            _ticket.MatchCode = "RemainingAmount=0.1";
+            _ticket.Currency = "UUS";
+
+            // Act
+            _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), new RTFHelper().Clone());
+
+            // Assert
+            var expectedRemaining = $"\n{GlobalGamingResources.Remaining}: UUS 0.1";
+            Assert.AreEqual(expectedRemaining, _choice.Template.betTeam);
+        }
+
+        [Test]
+        public void BuildRTFChoice_FromBetCheckHasDataAndStatusIsRunningAndMatchCodeContainsRemainingAmountIsZero_BetTeamIsEmpty()
+        {
+            // Arrange
+            _ticket.Status = "running";
+            _ticket.BetCheck = "123";
+            _ticket.MatchCode = "RemainingAmount=0";
+            _ticket.Currency = "UUS";
+
+            // Act
+            _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), new RTFHelper().Clone());
+
+            // Assert
+            Assert.IsEmpty(_choice.Template.betTeam);
+        }
+
+        [Test]
+        public void BuildRTFChoice_FromBetCheckHasDataAndStatusIsRunningAndMatchCodeContainsRemainingAmountIsNotZeroAndBuyAmount_BetTeamContainsCoinsInAndRemaining()
+        {
+            // Arrange
+            _ticket.Status = "running";
+            _ticket.BetCheck = "123";
+            _ticket.MatchCode = "RemainingAmount=1*buyAmount=1.01";
+            _ticket.Currency = "UUS";
+
+            // Act
+            _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), new RTFHelper().Clone());
+
+            // Assert
+            var expectedBetTeam = $"{GlobalGamingResources.CoinsIn}: UUS 1.01";
+            expectedBetTeam += $"\n{GlobalGamingResources.Remaining}: UUS 1";
+            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
+        }
+
+        [Test]
+        public void BuildRTFChoice_FromBetCheckHasDataAndStatusIsRunningAndMatchCodeContainsRemainingAmountIsZeroAndBuyAmount_BetTeamIsCoinsIn()
+        {
+            // Arrange
+            _ticket.Status = "running";
+            _ticket.BetCheck = "123";
+            _ticket.MatchCode = "RemainingAmount=0.0*buyAmount=1.01";
+            _ticket.Currency = "UUS";
+
+            // Act
+            _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), new RTFHelper().Clone());
+
+            // Assert
+            var expectedBetTeam = $"{GlobalGamingResources.CoinsIn}: UUS 1.01";
+            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
+        }
+
+        [Test]
+        public void BuildRTFChoice_FromBetCheckHasNoData_BetTypeIsGameType()
         {
             // Arrange
             var gameType = "GG Game Type";
@@ -205,46 +398,41 @@
             _ticketHelper.GetResourceData(GameTypeRefId, Arg.Any<string>()).Returns(gameType);
 
             // Act
-            var rtf = _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), new RTFHelper().Clone());
+            _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), new RTFHelper().Clone());
 
             // Assert
-            var lines = rtf[0].ToString().Split('\n');
-            var expectedFirstLine = gameType;
-            Assert.AreEqual(expectedFirstLine, lines[0]);
+            Assert.AreEqual(gameType, _choice.Template.BetType.ToString());
         }
 
         [Test]
-        public void BuildRTFChoice_FromBetCheckHasData_FirstLineIsGameTypeAndPlayId()
+        public void BuildRTFChoice_FromBetCheckHasData_BetTypeIsGameTypeAndGamePlayId()
         {
             // Arrange
-            var playId = "123";
             var gameType = "GG Game Type";
-            _ticket.BetCheck = playId;
+            var gamePlayId = "123";
+            _ticket.BetCheck = gamePlayId;
             _ticketHelper.GetResourceData(GameTypeRefId, Arg.Any<string>()).Returns(gameType);
 
             // Act
-            var rtf = _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), new RTFHelper().Clone());
+            _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), new RTFHelper().Clone());
 
             // Assert
-            var lines = rtf[0].ToString().Split('\n');
-            var expectedFirstLine = gameType + " " + playId;
-            Assert.AreEqual(expectedFirstLine, lines[0]);
+            var expectedBetType = $"{gameType} {gamePlayId}";
+            Assert.AreEqual(expectedBetType, _choice.Template.BetType.ToString());
         }
 
         [Test]
-        public void BuildRTFChoice_Always_SecondLineIsGameGroup()
+        public void BuildRTFChoice_Always_MatchIsGameGroup()
         {
             // Arrange
-            var gameGroup = "GG Game Group";
-            _ticketHelper.GetResourceData(GameGroupRefId, Arg.Any<string>()).Returns(gameGroup);
+            var gameGroupName = "GG Game Group Name";
+            _ticketHelper.GetResourceData(GameGroupRefId, Arg.Any<string>()).Returns(gameGroupName);
 
             // Act
-            var rtf = _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), new RTFHelper().Clone());
+            _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), new RTFHelper().Clone());
 
             // Assert
-            var lines = rtf[0].ToString().Split('\n');
-            var expectedSecondLine = gameGroup;
-            Assert.AreEqual(expectedSecondLine, lines[1]);
+            Assert.AreEqual(gameGroupName, _choice.Template.Match.ToString());
         }
     }
 }
