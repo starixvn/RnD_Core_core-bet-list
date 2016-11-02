@@ -156,6 +156,7 @@
                 ticket.Comm = Convert.ToDecimal(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.Comm)));
                 ticket.CommStatus = this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.CommStatus));
                 ticket.CustId = Convert.ToInt64(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.CustId)));
+                ticket.Currency = this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.Currency));
                 ticket.EventDate = Convert.ToDateTime(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.EventDate)));
                 ticket.EventStatus = this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.EventStatus));
                 ticket.Handicap1 = Convert.ToDecimal(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.Handicap1)));

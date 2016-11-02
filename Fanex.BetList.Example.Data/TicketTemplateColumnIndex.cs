@@ -255,6 +255,8 @@
         /// </summary>
         TransDesc = 49,
 
-        OddsSpread = 50
+        OddsSpread = 50,
+        
+        Currency = 51
     }
 }

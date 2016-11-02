@@ -377,6 +377,12 @@
     <Content Include="App_Data\VoidBridge.xls" />
     <Content Include="App_Data\PHAllInOneP2.xls" />
     <Content Include="App_Data\PHAllInOneP2b.xls" />
+    <Content Include="App_Data\GlobalGaming.xls">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\ColossusBetsDetails.xls">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
