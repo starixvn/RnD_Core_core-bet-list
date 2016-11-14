@@ -8,13 +8,16 @@
     using App_GlobalResources;
     using Entities;
     using NPOI.SS.UserModel;
-    using Resources;
     using Utils;
 
     public class Choice1011 : Choice1
     {
         protected const string GameGroupRefId = "GG_Game_GG";
         protected const string GameTypeRefId = "GG_Game_GT";
+        protected const string GameRefId = "GG_Game";
+        protected const string BuyAmountResourceId = "BuyAmount";
+        protected const string RemainingAmountResourceId = "RemainingAmount";
+
         private const string RemainingAmountKey = "RemainingAmount=";
         private const string BuyAmountKey = "BuyAmount=";
         private const string CurrencyAmountBlock = "<div><span class=\"{0}\">{1}</span>: {2} {3}</div>";
@@ -24,8 +27,8 @@
         {
             if (!IsSummaryTicket(ticket.BetCheck) && ticket.Status.Equals(BetStatus.Running, StringComparison.OrdinalIgnoreCase))
             {
-                Template.betTeam = BuildCoinsInAmount(ticket.MatchCode, ticket.Currency);
-                Template.betTeam += BuildRemainingAmount(ticket.MatchCode, ticket.Currency);
+                Template.betTeam = BuildCoinsInAmount(ticket.MatchCode, ticket.Currency, ticketHelper);
+                Template.betTeam += BuildRemainingAmount(ticket.MatchCode, ticket.Currency, ticketHelper);
             }
             else
             {
@@ -33,7 +36,7 @@
             }
         }
 
-        private string BuildRemainingAmount(string additional, string currency)
+        private string BuildRemainingAmount(string additional, string currency, ITicketHelper ticketHelper)
         {
             string remainingAmount;
             var remainingBlock = additional.Split('*')
@@ -52,12 +55,12 @@
                 : string.Format(
                     CurrencyAmountBlock,
                     CurrencyAmountClass,
-                    GlobalGamingResources.Remaining,
+                    ticketHelper.GetResourceData(GameRefId, RemainingAmountResourceId),
                     currency,
                     remainingAmount);
         }
 
-        private string BuildCoinsInAmount(string additional, string currency)
+        private string BuildCoinsInAmount(string additional, string currency, ITicketHelper ticketHelper)
         {
             string buyAmount;
             var buyBlock = additional.Split('*')
@@ -73,7 +76,7 @@
 
             return string.Format(CurrencyAmountBlock,
                 CurrencyAmountClass,
-                GlobalGamingResources.CoinsIn,
+                ticketHelper.GetResourceData(GameRefId, BuyAmountResourceId),
                 currency,
                 buyAmount);
         }
@@ -172,8 +175,9 @@
         {
             var htmlTagMatching = new Regex("</?[^<>]*>");
 
+            var remainingAmount = ticketHelper.GetResourceData(GameRefId, RemainingAmountResourceId);
             var currencyAmount = htmlTagMatching.Replace(Template.betTeam, string.Empty);
-            currencyAmount = currencyAmount.Replace(GlobalGamingResources.Remaining, "\n" + GlobalGamingResources.Remaining);
+            currencyAmount = currencyAmount.Replace(remainingAmount, "\n" + remainingAmount);
             Template.betTeam = currencyAmount;
             var gameTypeAndPlayId = htmlTagMatching.Replace(Template.BetType.ToString(), string.Empty);
             Template.BetType.SetValue(gameTypeAndPlayId);

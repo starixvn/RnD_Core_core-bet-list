@@ -5,7 +5,6 @@
     using Core.App_GlobalResources;
     using Core.Builder.ChoiceBuilder;
     using Core.Entities;
-    using Core.Resources;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -14,6 +13,12 @@
     {
         private const string GameTypeRefId = "GG_Game_GT";
         private const string GameGroupRefId = "GG_Game_GG";
+        private const string GameRefId = "GG_Game";
+        private const string BuyAmountResourceId = "BuyAmount";
+        private const string RemainingAmountResourceId = "RemainingAmount";
+
+        private const string BuyAmount = "Coins-in";
+        private const string RemainingAmount = "Remaining";
 
         private ITicketHelper _ticketHelper;
         private ITicket _ticket;
@@ -23,8 +28,11 @@
         public void SetUp()
         {
             _ticket = Substitute.For<ITicket>();
-            _ticketHelper = Substitute.For<ITicketHelper>();
             _choice = new Choice1011();
+
+            _ticketHelper = Substitute.For<ITicketHelper>();
+            _ticketHelper.GetResourceData(GameRefId, BuyAmountResourceId).Returns(BuyAmount);
+            _ticketHelper.GetResourceData(GameRefId, RemainingAmountResourceId).Returns(RemainingAmount);
         }
 
         [TestCase("", "won")]
@@ -56,7 +64,7 @@
             var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            var expectedCoinsInBlock = $"<div><span class=\"dark-orange\">{GlobalGamingResources.CoinsIn}</span>: UUS 0.1</div>";
+            var expectedCoinsInBlock = $"<div><span class=\"dark-orange\">{BuyAmount}</span>: UUS 0.1</div>";
             Assert.AreEqual(expectedCoinsInBlock, template.betTeam);
         }
 
@@ -73,7 +81,7 @@
             var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            var expectedRemainingBlock = $"<div><span class=\"dark-orange\">{GlobalGamingResources.Remaining}</span>: UUS 0.1</div>";
+            var expectedRemainingBlock = $"<div><span class=\"dark-orange\">{RemainingAmount}</span>: UUS 0.1</div>";
             Assert.AreEqual(expectedRemainingBlock, template.betTeam);
         }
 
@@ -106,8 +114,8 @@
             var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            var expectedBetTeamBlock = $"<div><span class=\"dark-orange\">{GlobalGamingResources.CoinsIn}</span>: UUS 1.01</div>";
-            expectedBetTeamBlock += $"<div><span class=\"dark-orange\">{GlobalGamingResources.Remaining}</span>: UUS 1</div>";
+            var expectedBetTeamBlock = $"<div><span class=\"dark-orange\">{BuyAmount}</span>: UUS 1.01</div>";
+            expectedBetTeamBlock += $"<div><span class=\"dark-orange\">{RemainingAmount}</span>: UUS 1</div>";
             Assert.AreEqual(expectedBetTeamBlock, template.betTeam);
         }
 
@@ -124,7 +132,7 @@
             var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            var expectedBetTeamBlock = $"<div><span class=\"dark-orange\">{GlobalGamingResources.CoinsIn}</span>: UUS 1.01</div>";
+            var expectedBetTeamBlock = $"<div><span class=\"dark-orange\">{BuyAmount}</span>: UUS 1.01</div>";
             Assert.AreEqual(expectedBetTeamBlock, template.betTeam);
         }
 
@@ -317,7 +325,7 @@
             _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), new RTFHelper().Clone());
 
             // Assert
-            var expectedCoinsIn = $"{GlobalGamingResources.CoinsIn}: UUS 0.1";
+            var expectedCoinsIn = $"{BuyAmount}: UUS 0.1";
             Assert.AreEqual(expectedCoinsIn, _choice.Template.betTeam);
         }
 
@@ -334,7 +342,7 @@
             _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), new RTFHelper().Clone());
 
             // Assert
-            var expectedRemaining = $"\n{GlobalGamingResources.Remaining}: UUS 0.1";
+            var expectedRemaining = $"\n{RemainingAmount}: UUS 0.1";
             Assert.AreEqual(expectedRemaining, _choice.Template.betTeam);
         }
 
@@ -367,8 +375,8 @@
             _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), new RTFHelper().Clone());
 
             // Assert
-            var expectedBetTeam = $"{GlobalGamingResources.CoinsIn}: UUS 1.01";
-            expectedBetTeam += $"\n{GlobalGamingResources.Remaining}: UUS 1";
+            var expectedBetTeam = $"{BuyAmount}: UUS 1.01";
+            expectedBetTeam += $"\n{RemainingAmount}: UUS 1";
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
@@ -385,7 +393,7 @@
             _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), new RTFHelper().Clone());
 
             // Assert
-            var expectedBetTeam = $"{GlobalGamingResources.CoinsIn}: UUS 1.01";
+            var expectedBetTeam = $"{BuyAmount}: UUS 1.01";
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
