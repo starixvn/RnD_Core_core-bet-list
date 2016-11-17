@@ -269,6 +269,31 @@
             Assert.AreEqual(expectedDetailsLink, template.League.ToString());
         }
 
+        [TestCase("Won", "1")]
+        [TestCase("Lose", "1")]
+        [TestCase("Draw", "1")]
+        [TestCase("Refund", "1")]
+        [TestCase("REJECT", "2")]
+        [TestCase("VOID", "2")]
+        [TestCase("running", "3")]
+        [TestCase("waiting", "3")]
+        public void BuildLeague_FromBetCheckHasNoDataAndTicketIsYesterdayAndStatus_LeagueIsDetailsLinkWithTransType(string status, string transType)
+        {
+            // Arrange
+            _ticket.BetCheck = null;
+            _ticket.WinlostDate = DateTime.Now.AddDays(-1);
+            _ticket.TransId = 123456;
+            _ticket.CustId = 123;
+            _ticket.Status = status;
+
+            // Act
+            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            var expectedDetailsLink = CreateGlobalGamingDetailsLink(_ticket, transType);
+            Assert.AreEqual(expectedDetailsLink, template.League.ToString());
+        }
+
         private string CreateGlobalGamingDetailsLink(ITicket ticket, string transType)
         {
             var link = string.Format("<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void('');\">{0}</a>", CoreBetList.details);
