@@ -49,11 +49,33 @@
             Assert.IsTrue(template.StatusResult.Visible);
         }
 
+        [TestCase("won")]
+        [TestCase("LosE")]
+        [TestCase("DRAW")]
+        public void BuildStatusResult_FromDetailTicketHasWonLostStatus_BetIdIncludeBetCheckAndCustId(string status)
+        {
+            // Arrange
+            const string BetCheck = "123";
+            const long CustId = 100;
+            const long BetId = 100;
+            _ticket.BetCheck = BetCheck;
+            _ticket.CustId = CustId;
+            _ticket.Status = status;
+            _ticket.BetId = BetId;
+
+            // Act
+            var template = _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            var expectedBetId = $"{BetId}, '{BetCheck}', {CustId}";
+            Assert.AreEqual(expectedBetId, template.StatusResult.betId);
+        }
+
         [TestCase("running")]
         [TestCase("Reject")]
         [TestCase("Void")]
         [TestCase("refund")]
-        public void BuildStatusResult_FromDetailTicketHasNoWonLostStatus_StatusResultIsInvisible(string status)
+        public void BuildStatusResult_FromDetailTicketHasNoWonLostStatus_StatusResultIsNull(string status)
         {
             // Arrange
             _ticket.BetCheck = "123";
@@ -63,7 +85,7 @@
             var template = _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.IsFalse(template.StatusResult.Visible);
+            Assert.IsNull(template.StatusResult);
         }
     }
 }
