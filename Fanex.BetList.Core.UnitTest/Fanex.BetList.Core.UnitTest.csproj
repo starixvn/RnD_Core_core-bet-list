@@ -124,7 +124,6 @@
     <Compile Include="Builder\ChoiceBuilder\Choice187Test.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Builder\ChoiceBuilder\Choice225Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice221Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice411Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice195Test.cs">
