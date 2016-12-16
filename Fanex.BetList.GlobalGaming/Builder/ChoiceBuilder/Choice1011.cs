@@ -39,9 +39,9 @@
         private string BuildRemainingAmount(string additional, string currency, ITicketHelper ticketHelper)
         {
             string remainingAmount;
-            var remainingBlock = additional.Split('*')
-                .Where(x => x.IndexOf(RemainingAmountKey, StringComparison.OrdinalIgnoreCase) == 0)
-                .FirstOrDefault();
+            var remainingBlock = additional
+                .Split('*')
+                .FirstOrDefault(x => x.IndexOf(RemainingAmountKey, StringComparison.OrdinalIgnoreCase) == 0);
 
             if (remainingBlock == null)
             {
@@ -63,9 +63,9 @@
         private string BuildCoinsInAmount(string additional, string currency, ITicketHelper ticketHelper)
         {
             string buyAmount;
-            var buyBlock = additional.Split('*')
-                .Where(x => x.IndexOf(BuyAmountKey, StringComparison.OrdinalIgnoreCase) == 0)
-                .FirstOrDefault();
+            var buyBlock = additional
+                .Split('*')
+                .FirstOrDefault(x => x.IndexOf(BuyAmountKey, StringComparison.OrdinalIgnoreCase) == 0);
 
             if (buyBlock == null)
             {
@@ -74,7 +74,8 @@
 
             buyAmount = ConvertByBetType.Stake(buyBlock.Remove(0, BuyAmountKey.Length));
 
-            return string.Format(CurrencyAmountBlock,
+            return string.Format(
+                CurrencyAmountBlock,
                 CurrencyAmountClass,
                 ticketHelper.GetResourceData(GameRefId, BuyAmountResourceId),
                 currency,
@@ -94,7 +95,7 @@
 
             if (!IsSummaryTicket(ticket.BetCheck))
             {
-                gameTypeBlock += " " + ticket.BetCheck;
+                gameTypeBlock += "<br />" + ticket.BetCheck;
             }
 
             Template.BetType.SetValue($"<div class=\"{Underdog}\">{gameTypeBlock}</div>");
@@ -179,7 +180,8 @@
             var currencyAmount = htmlTagMatching.Replace(Template.betTeam, string.Empty);
             currencyAmount = currencyAmount.Replace(remainingAmount, "\n" + remainingAmount);
             Template.betTeam = currencyAmount;
-            var gameTypeAndPlayId = htmlTagMatching.Replace(Template.BetType.ToString(), string.Empty);
+            var gameTypeAndPlayId = Template.BetType.ToString().Replace("<br />", "\n");
+            gameTypeAndPlayId = htmlTagMatching.Replace(gameTypeAndPlayId, string.Empty);
             Template.BetType.SetValue(gameTypeAndPlayId);
             var gameGroup = htmlTagMatching.Replace(Template.Match.ToString(), string.Empty);
             Template.Match.SetValue(gameGroup);
