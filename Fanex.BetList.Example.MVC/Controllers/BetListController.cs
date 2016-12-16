@@ -233,7 +233,13 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
         public ActionResult PHAllInOneP2(BetListData model = null)
         {
-            ViewBag.BetTypes = new List<SelectListItem>();
+            var betTypes = new List<BetType>();
+            for (var betTypeId = 415; betTypeId <= 447; betTypeId++)
+            {
+                betTypes.AddRange(_dataService.QueryBetTypes(betTypeId));
+            }
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
             DataSourcePath = "~/App_Data/PHAllInOneP2.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
 

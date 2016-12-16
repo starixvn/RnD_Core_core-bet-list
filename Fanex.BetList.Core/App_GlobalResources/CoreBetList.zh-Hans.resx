@@ -753,9 +753,6 @@
   <data name="ThreeOver" xml:space="preserve">
     <value>3或以上</value>
   </data>
-  <data name="SDraw" xml:space="preserve">
-    <value>S.Draw</value>
-  </data>
   <data name="Excluding" xml:space="preserve">
     <value>不包括</value>
   </data>
@@ -781,7 +778,7 @@
     <value>Own Goal (zh-Hans)</value>
   </data>
   <data name="ScoreDraw" xml:space="preserve">
-    <value>和</value>
+    <value>任何平局的比数(不包含 0-0)</value>
   </data>
   <data name="Shot" xml:space="preserve">
     <value>Shot (zh-Hans)</value>

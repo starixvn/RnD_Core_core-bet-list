@@ -1582,7 +1582,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Score Draw.
+        ///   Looks up a localized string similar to Any Score Draw (Exclude 0-0).
         /// </summary>
         public static string ScoreDraw {
             get {
@@ -1596,15 +1596,6 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string scr {
             get {
                 return ResourceManager.GetString("scr", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to S.Draw.
-        /// </summary>
-        public static string SDraw {
-            get {
-                return ResourceManager.GetString("SDraw", resourceCulture);
             }
         }
         

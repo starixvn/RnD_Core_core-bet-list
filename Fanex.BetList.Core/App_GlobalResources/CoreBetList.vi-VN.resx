@@ -680,9 +680,6 @@
   <data name="ThreeOver" xml:space="preserve">
     <value>3+ (vi)</value>
   </data>
-  <data name="SDraw" xml:space="preserve">
-    <value>S.Draw</value>
-  </data>
   <data name="Excluding" xml:space="preserve">
     <value>Ngoại trừ</value>
   </data>
@@ -711,7 +708,7 @@
     <value>Phạt đền</value>
   </data>
   <data name="ScoreDraw" xml:space="preserve">
-    <value>Hòa</value>
+    <value>Hòa Có Bàn Thắng</value>
   </data>
   <data name="Shot" xml:space="preserve">
     <value>Shot (vi)</value>

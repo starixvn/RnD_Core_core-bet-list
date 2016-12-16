@@ -673,9 +673,6 @@
   <data name="ThreeAndOver" xml:space="preserve">
     <value>3+</value>
   </data>
-  <data name="SDraw" xml:space="preserve">
-    <value>S.Draw</value>
-  </data>
   <data name="Excluding" xml:space="preserve">
     <value>除外</value>
   </data>
@@ -684,5 +681,8 @@
   </data>
   <data name="AOSHTExcluding" xml:space="preserve">
     <value>AOS HT Excluding</value>
+  </data>
+  <data name="ScoreDraw" xml:space="preserve">
+    <value>Any Score Draw (Exclude 0-0)</value>
   </data>
 </root>

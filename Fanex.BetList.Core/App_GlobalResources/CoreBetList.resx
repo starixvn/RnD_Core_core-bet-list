@@ -767,9 +767,6 @@
   <data name="ThreeOver" xml:space="preserve">
     <value>3+</value>
   </data>
-  <data name="SDraw" xml:space="preserve">
-    <value>S.Draw</value>
-  </data>
   <data name="Excluding" xml:space="preserve">
     <value>Excluding</value>
   </data>
@@ -795,7 +792,7 @@
     <value>Own Goal</value>
   </data>
   <data name="ScoreDraw" xml:space="preserve">
-    <value>Score Draw</value>
+    <value>Any Score Draw (Exclude 0-0)</value>
   </data>
   <data name="Shot" xml:space="preserve">
     <value>Shot</value>

@@ -36,7 +36,7 @@
                     break;
 
                 case BetTeamValue.D:
-                    betTeam = CoreBetList.SDraw;
+                    betTeam = CoreBetList.ScoreDraw;
                     break;
 
                 case BetTeamValue.A1:
