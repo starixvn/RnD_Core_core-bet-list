@@ -304,6 +304,17 @@ namespace Fanex.BetList.Example.MVC.Controllers
             return BetListView(model);
         }
 
+        public ActionResult NumberGame(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes(81, 82, 83, 84, 85, 86, 87, 88, 89, 90);
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            DataSourcePath = "~/App_Data/NumberGame.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+
+            return BetListView(model);
+        }
+
         private ViewResult BetListView(BetListData model)
         {
             return View("All", model);
