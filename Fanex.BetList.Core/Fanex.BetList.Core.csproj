@@ -285,7 +285,9 @@
     <Compile Include="Builder\ChoiceBuilder\Choice25.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice26.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice27.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice28.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice28.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="Builder\ChoiceBuilder\Choice29.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>

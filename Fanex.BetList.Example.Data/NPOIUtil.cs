@@ -15,7 +15,7 @@
         {
             string ret = string.Empty;
 
-            if (null == cell)
+            if (cell == null)
             {
                 return ret;
             }
