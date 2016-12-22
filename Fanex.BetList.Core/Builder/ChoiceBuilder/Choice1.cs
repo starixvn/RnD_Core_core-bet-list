@@ -1,12 +1,14 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Linq;
+    using System.Text.RegularExpressions;
     using Constants;
     using Core.App_GlobalResources;
     using Entities;
     using NPOI.SS.UserModel;
-    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
     using Templates;
     using Utils;
 
@@ -41,6 +43,8 @@
         private const string BetStatus1Fl = "1fl";
         private const int MuayThaiSportId = 44;
         private const int HandicapBetTypeId = 1;
+
+        private readonly int[] _liveScoreSports = { 1, 3, 4, 8, 26, 28 };
 
         #region Constructors
 
@@ -319,6 +323,7 @@
 
         /// <summary>
         /// Builds the score.
+        /// Bettype 210, 413, 416 only support soccer
         /// </summary>
         /// <param name="ticket">The ticket.</param>
         protected virtual void BuildScore(ITicket ticket)
@@ -328,10 +333,24 @@
                 return;
             }
 
-            Template.Score.homeScore = ticket.LiveHomeScore.ToString();
-            Template.Score.awayScore = ticket.LiveAwayScore.ToString();
+            if (IsShowLiveText(ticket.SportTypeId))
+            {
+                Template.Score.SetValue(string.Format("<span class=\"{0}\"> [{1}]</span>", Favorite, CoreBetList.Live));
+            }
+            else
+            {
+                Template.Score.homeScore = ticket.LiveHomeScore.ToString();
+                Template.Score.awayScore = ticket.LiveAwayScore.ToString();
+            }
+
             Template.Score.Visible = ticket.IsLive;
-            Template.Score.scoreClassName = Favorite;
+        }
+
+        private bool IsShowLiveText(int sportTypeId)
+        {
+            const int MaxSportsbookSportTypeId = 99;
+
+            return sportTypeId > 0 && sportTypeId <= MaxSportsbookSportTypeId && !_liveScoreSports.Contains(sportTypeId);
         }
 
         /// <summary>
@@ -509,6 +528,7 @@
         protected virtual void BuildBetFigure(ITicket ticket, ref RTFHelper rtfHelper, bool isMixParlay)
         {
             string choice = Template.betTeam;
+            var htmlTagMatching = new Regex("</?[^<>]*>");
 
             if (Template.Handicap != null && Template.Handicap.Visible && Template.Handicap.handicap != null)
             {
@@ -517,7 +537,7 @@
 
             if (Template.Score != null && Template.Score.Visible)
             {
-                choice += string.Join(null, new string[] { " [", Template.Score.homeScore, "-", Template.Score.awayScore, "]" });
+                choice += htmlTagMatching.Replace(Template.Score.ToString(), string.Empty);
             }
 
             if (isMixParlay)

@@ -740,4 +740,7 @@
   <data name="AOSHTExcluding" xml:space="preserve">
     <value>AOS HT Excluding</value>
   </data>
+  <data name="Live" xml:space="preserve">
+    <value>Live</value>
+  </data>
 </root>

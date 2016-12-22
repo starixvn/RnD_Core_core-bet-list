@@ -685,4 +685,7 @@
   <data name="ScoreDraw" xml:space="preserve">
     <value>Any Score Draw (Exclude 0-0)</value>
   </data>
+  <data name="Live" xml:space="preserve">
+    <value>Live</value>
+  </data>
 </root>

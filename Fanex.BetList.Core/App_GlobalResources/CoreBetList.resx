@@ -827,4 +827,7 @@
   <data name="HalfTime" xml:space="preserve">
     <value>Half Time</value>
   </data>
+  <data name="Live" xml:space="preserve">
+    <value>Live</value>
+  </data>
 </root>
