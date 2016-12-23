@@ -222,7 +222,9 @@
     <Compile Include="Builder\ChoiceBuilder\Choice31Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice28Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1309Test.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice29Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice29Test.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="Builder\ChoiceBuilder\Choice9Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice129Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice130Test.cs" />

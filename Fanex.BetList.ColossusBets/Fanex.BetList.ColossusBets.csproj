@@ -53,7 +53,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builder\BuilderExtension.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice18000.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice18000.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="Builder\ChoiceBuilder\Choice18005.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice18004.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice18003.cs" />
