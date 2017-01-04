@@ -28,7 +28,7 @@
             _ticket.Handicap1 = handicap1;
 
             // Act
-            _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(handicap1.ToString(), _status.Template.StatusResult.betId);
