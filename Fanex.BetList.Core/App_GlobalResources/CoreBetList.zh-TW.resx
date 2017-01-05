@@ -766,6 +766,6 @@
     <value>任何平局的比數(不包含 0-0)</value>
   </data>
   <data name="Live" xml:space="preserve">
-    <value>Live</value>
+    <value>滾球</value>
   </data>
 </root>
