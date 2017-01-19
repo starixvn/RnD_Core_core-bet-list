@@ -58,8 +58,8 @@
     <Reference Include="NPOI">
       <HintPath>..\packages\NPOI.2.0.6\lib\net40\NPOI.dll</HintPath>
     </Reference>
-    <Reference Include="RemotingRef, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RemotingRef.1.0.0.14\lib\net40\RemotingRef.dll</HintPath>
+    <Reference Include="RemotingRef, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RemotingRef.1.0.0.15\lib\net40\RemotingRef.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Sunplus.Core.Common">
@@ -451,7 +451,6 @@
     <Compile Include="Builder\StatusBuilder\Status154.cs" />
     <Compile Include="Builder\StatusBuilder\Status155.cs" />
     <Compile Include="Builder\StatusBuilder\Status156.cs" />
-    <Compile Include="Builder\StatusBuilder\Status225.cs" />
     <Compile Include="Builder\StatusBuilder\Status221.cs" />
     <Compile Include="Builder\StatusBuilder\Status23001.cs" />
     <Compile Include="Builder\StatusBuilder\Status23002.cs" />
