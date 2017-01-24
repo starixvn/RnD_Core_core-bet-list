@@ -185,7 +185,7 @@
             var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            var expectedGameTypeBlock = $"<div class=\"underdog\"><span class=\"colorHandicap\">{gameType}</span> {gamePlayId}</div>";
+            var expectedGameTypeBlock = $"<div class=\"underdog\"><span class=\"colorHandicap\">{gameType}</span><br />{gamePlayId}</div>";
             Assert.AreEqual(expectedGameTypeBlock, template.BetType.ToString());
         }
 
@@ -450,7 +450,7 @@
             _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), new RTFHelper().Clone());
 
             // Assert
-            var expectedBetType = $"{gameType} {gamePlayId}";
+            var expectedBetType = $"{gameType}\n{gamePlayId}";
             Assert.AreEqual(expectedBetType, _choice.Template.BetType.ToString());
         }
 
