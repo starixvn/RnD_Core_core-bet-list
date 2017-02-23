@@ -381,7 +381,9 @@
     <Compile Include="Builder\ChoiceBuilder\Choice216.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice217.cs" />
     <Compile Include="Builder\ChoiceBuilder\IChoice.cs" />
-    <Compile Include="Builder\IBetListBuilder.cs" />
+    <Compile Include="Builder\IBetListBaseBuilder.cs" />
+    <Compile Include="Builder\IBetListExcelBuilder.cs" />
+    <Compile Include="Builder\IBetListHTMLBuilder.cs" />
     <Compile Include="Builder\OddsBuilder\3rd\Odds_22006.cs" />
     <Compile Include="Builder\OddsBuilder\IOdds.cs" />
     <Compile Include="Builder\OddsBuilder\Odds1.cs" />

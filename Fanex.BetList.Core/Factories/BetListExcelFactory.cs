@@ -5,7 +5,7 @@
     /// <summary>
     /// Class BetListExcelFactory.
     /// </summary>
-    public class BetListExcelFactory : IBetListFactory
+    public class BetListExcelFactory : IBetListFactory<BetListExcelBuilder>
     {
         public BetListExcelBuilder CreateBuilder()
         {

@@ -19,7 +19,7 @@ namespace Fanex.BetList.Core.Builder
     /// <summary>
     /// CoreBetList Excel Builder.
     /// </summary>
-    public class BetListExcelBuilder : BetListBaseBuilder, IBetListBuilder, IDisposable
+    public class BetListExcelBuilder : BetListBaseBuilder, IBetListExcelBuilder, IDisposable
     {
         #region Attributes
 

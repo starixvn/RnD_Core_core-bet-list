@@ -5,7 +5,7 @@
     /// <summary>
     /// Class BetListHTMLFactory.
     /// </summary>
-    public class BetListHTMLFactory : IBetListFactory
+    public class BetListHTMLFactory : IBetListFactory<BetListHTMLBuilder>
     {
         public BetListHTMLBuilder CreateBuilder()
         {

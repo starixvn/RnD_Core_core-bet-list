@@ -14,7 +14,7 @@
     /// <summary>
     /// This class generates the HTML markup of the Core Bet List.
     /// </summary>
-    public class BetListHTMLBuilder : BetListBaseBuilder, IBetListBuilder
+    public class BetListHTMLBuilder : BetListBaseBuilder, IBetListHTMLBuilder
     {
         #region Attributes
 

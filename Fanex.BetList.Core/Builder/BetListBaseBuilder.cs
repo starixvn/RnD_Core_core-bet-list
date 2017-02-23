@@ -16,7 +16,7 @@ namespace Fanex.BetList.Core.Builder
     /// <summary>
     /// The bet list base builder.
     /// </summary>
-    public class BetListBaseBuilder
+    public class BetListBaseBuilder : IBetListBaseBuilder
     {
         /// <summary>
         /// The choice builder namespace.
