@@ -9,7 +9,7 @@
     public class Choice1224 : Choice24
     {
         private const string DateTimeFormat = "M/d/yyyy hh:mm tt";
-        private const string KickOffTimeFormat = "<div>{0}</div>";
+        private const string KickOffTimeFormat = "<div class=\"match\">{0}</div>";
 
         protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
         {
