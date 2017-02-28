@@ -4,9 +4,10 @@
     using Entities;
     using NPOI.HSSF.UserModel;
     using NPOI.SS.UserModel;
-    using System.Collections.Generic;
     using Templates;
     using Utils;
+    using System;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Virtual Horse Racing - Win/Place.
@@ -82,7 +83,7 @@
                 return new HSSFRichTextString("-");
             }
 
-            int breakPos = Template.odds.IndexOf("<br>");
+            int breakPos = Template.odds.IndexOf("<br>", StringComparison.CurrentCulture);
 
             string oddsWinString = Template.odds.Substring(0, breakPos);
             string oddsPlaceString = Template.odds.Replace(oddsWinString, string.Empty);
@@ -110,8 +111,8 @@
             string startTag = string.Join(null, new string[] { "<", tag, ">" });
             string endTag = string.Join(null, new string[] { "</", tag, ">" });
 
-            int startIndex = source.IndexOf(startTag) + startTag.Length;
-            int endIndex = source.IndexOf(endTag, startIndex);
+            int startIndex = source.IndexOf(startTag, StringComparison.CurrentCulture) + startTag.Length;
+            int endIndex = source.IndexOf(endTag, startIndex, StringComparison.CurrentCulture);
             return source.Substring(startIndex, endIndex - startIndex);
         }
     }

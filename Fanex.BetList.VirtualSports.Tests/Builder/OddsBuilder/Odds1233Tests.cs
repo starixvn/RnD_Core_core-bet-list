@@ -8,7 +8,6 @@
     using NSubstitute;
     using NUnit.Framework;
     using System.Collections.Generic;
-    using NPOI.HSSF.UserModel;
     using Core.App_GlobalResources;
     using Core.Utils;
 
@@ -19,14 +18,12 @@
 
         private Odds1233 _odds;
         private ITicket _ticket;
-        private ITicketHelper _ticketHelper;
 
         [SetUp]
         public void Setup()
         {
             _odds = new Odds1233();
             _ticket = TestData.CreateTicket(BetTypes.VHR_WinPlace);
-            _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
         [Test]

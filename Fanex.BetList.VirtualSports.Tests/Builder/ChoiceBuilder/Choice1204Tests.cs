@@ -30,7 +30,7 @@
         public void BuildMatch_ShowTimeIsValidFormat_AddShowTimeBeFormatted()
         {
             // Arrange
-            _ticket.ShowTime = "01/01/2014 15:25";
+            _ticket.ShowTime = "Apr 15 2010 12:00AM";
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, false);
@@ -59,7 +59,7 @@
         public void BuildBetTeamsInfo_Always_RenderKickOffTime()
         {
             // Arrange
-            _ticket.ShowTime = "01/01/2014 15:25";
+            _ticket.ShowTime = "Apr 15 2010 12:00AM";
 
             // Act
             var actual = _choice.RenderRTF(_ticket, _ticketHelper, null, false, new RTFHelper().Clone());

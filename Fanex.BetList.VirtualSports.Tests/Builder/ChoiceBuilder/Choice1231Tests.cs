@@ -85,7 +85,7 @@
         public void BuildMatch_ShowTimeIsValidFormat_HomeTeamIsShowTimeBeFormatted()
         {
             // Arrange
-            _ticket.ShowTime = "01/01/2014 15:25";
+            _ticket.ShowTime = "Apr 15 2010 12:00AM";
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, false);

@@ -62,7 +62,7 @@
             block.ToString(ref versusHtml);
 
             // Assert
-            Assert.IsTrue(string.IsNullOrEmpty((versusHtml.ToString())));
+            Assert.IsTrue(string.IsNullOrEmpty(versusHtml.ToString()));
         }
 
         /// <summary>

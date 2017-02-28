@@ -84,8 +84,8 @@
 
         private string BuildSystemParlayDetailDiv(ITicket ticket, ITicketHelper ticketHelper)
         {
-            return ticketHelper.ShowSystemParlayDetail 
-                        && ticket.BetTeam != "1" 
+            return ticketHelper.ShowSystemParlayDetail
+                        && ticket.BetTeam != "1"
                         && ticket.Status.ToLowerInvariant() != BetStatus.Void
                     ? JoinDetailSystemParlayDiv(ticket, ticketHelper)
                     : string.Empty;
@@ -140,7 +140,15 @@
             }
             else
             {
-                return $"javascript:showNewCombMP('{transId}', '{transIndex}', '{refNo}', '{ticket.Handicap1}', '{ticket.Handicap2}', '{ticket.BetCheck}', '{ticket.BetTeam}');";
+                return string.Format(
+                    "javascript:showNewCombMP('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}');",
+                    transId,
+                    transIndex,
+                    refNo,
+                    ticket.Handicap1,
+                    ticket.Handicap2,
+                    ticket.BetCheck,
+                    ticket.BetTeam);
             }
         }
 
@@ -158,7 +166,11 @@
 
         private string BuildCombinationOfferNameForOldSystemParlay(ITicket ticket, ITicketHelper ticketHelper)
         {
-            return $"<span class=\"offer-name\" id=\"combinationOfferName_{ticket.TransId}{ticketHelper.Index}\"> - {ticketHelper.GetCombinationMPOfferName(ticket.BetTeam)}</span>";
+            return string.Format(
+                "<span class=\"offer-name\" id=\"combinationOfferName_{0}{1}\"> - {2}</span>",
+                ticket.TransId,
+                ticketHelper.Index,
+                ticketHelper.GetCombinationMPOfferName(ticket.BetTeam));
         }
 
         private string BuildCombinationOfferNameForNewSystemParlay(ITicket ticket, ITicketHelper ticketHelper)
@@ -174,7 +186,11 @@
                 }
             }
 
-            return $"<div class=\"offer-name-list\" id=\"combinationOfferName_{ticket.TransId}{ticketHelper.Index}\">{offerNameList}</div>";
+            return string.Format(
+                "<div class=\"offer-name-list\" id=\"combinationOfferName_{0}{1}\">{2}</div>",
+                ticket.TransId,
+                ticketHelper.Index,
+                offerNameList);
         }
 
         /// <summary>
@@ -197,7 +213,13 @@
         {
             var combinationLink = $"<a id=\"hidden0\" href=\"{showSystemParlaySubbetsFunction}\">{betTypeName}</a>";
 
-            return $"<div class=\"combinationLink\">{combinationLink}{combinationOfferName}</div><div id=\"divEvent_{transId}{transIndex}\" style=\"display: none\" ></div>{systemParlayDetailDiv}";
+            return string.Format(
+                "<div class=\"combinationLink\">{0}{1}</div><div id=\"divEvent_{2}{3}\" style=\"display: none\" ></div>{4}",
+                combinationLink,
+                combinationOfferName,
+                transId,
+                transIndex,
+                systemParlayDetailDiv);
         }
 
         #endregion Build Choice
@@ -226,50 +248,6 @@
             tmpRtfHelper.RTFRenderer.AddText(GetBetTypeName(ticket, ticketHelper), tmpRtfHelper.PosFont);
 
             BuildRTFCombinationMPOfferNames(tmpRtfHelper, ticket, ticketHelper);
-
-            /***************************Export excel for subtickets*****************************
-            if (ticketHelper.GetParlayDetailById != null)
-            {
-                IList<ITicket> parlayData = ticketHelper.GetParlayDetailById(ticket.TransId);
-
-                bool showOdds = ticketHelper.IsShowOddsWithChoice;
-                ticketHelper.IsShowOddsWithChoice = true;
-                IFont pos, normal;
-                var betListBaseBuilder = new BetListBaseBuilder();
-
-                foreach (ITicket tkt in parlayData)
-                {
-                    IChoice choiceBuilder = betListBaseBuilder.CreateChoiceBuilder(tkt.BetTypeId);
-                    Template = choiceBuilder.Render(tkt, ticketHelper, null, isShowScoreMap);
-                    var choiceData = BuildRTFChoice(tkt, rtfHelper, ticketHelper);
-                    List<IRichTextString> tmpRtfChoice;
-
-                    if (choiceData is List<IRichTextString>)
-                    {
-                        tmpRtfChoice = (List<IRichTextString>)choiceData;
-                    }
-                    else
-                    {
-                        tmpRtfChoice = new List<IRichTextString>() { (IRichTextString)choiceData };
-                    }
-
-                    if ((tkt.StatusId?.ToString().Trim() == BetStatusId.Void) || (tkt.Status?.Trim().ToLower() == BetStatus.Void))
-                    {
-                        pos = tmpRtfHelper.PosFontCrossed;
-                        normal = tmpRtfHelper.NormalFontCrossed;
-                    }
-                    else
-                    {
-                        pos = tmpRtfHelper.PosFont;
-                        normal = tmpRtfHelper.NormalFont;
-                    }
-
-                    CollectRTFSubChoice(tmpRtfChoice, ref tmpRtfHelper, pos, normal);
-                }
-
-                ticketHelper.IsShowOddsWithChoice = showOdds;
-            }
-            *******************************************************************************/
 
             var choice = tmpRtfHelper.RTFRenderer.Render();
             tmpRtfHelper.RTFRenderer.Clear();
@@ -334,6 +312,50 @@
                 rtfHelper.RTFRenderer.AddText(theRest, normalFont);
             }
         }
+
+        /***************************Export excel for subtickets*****************************
+           if (ticketHelper.GetParlayDetailById != null)
+           {
+               IList<ITicket> parlayData = ticketHelper.GetParlayDetailById(ticket.TransId);
+
+               bool showOdds = ticketHelper.IsShowOddsWithChoice;
+               ticketHelper.IsShowOddsWithChoice = true;
+               IFont pos, normal;
+               var betListBaseBuilder = new BetListBaseBuilder();
+
+               foreach (ITicket tkt in parlayData)
+               {
+                   IChoice choiceBuilder = betListBaseBuilder.CreateChoiceBuilder(tkt.BetTypeId);
+                   Template = choiceBuilder.Render(tkt, ticketHelper, null, isShowScoreMap);
+                   var choiceData = BuildRTFChoice(tkt, rtfHelper, ticketHelper);
+                   List<IRichTextString> tmpRtfChoice;
+
+                   if (choiceData is List<IRichTextString>)
+                   {
+                       tmpRtfChoice = (List<IRichTextString>)choiceData;
+                   }
+                   else
+                   {
+                       tmpRtfChoice = new List<IRichTextString>() { (IRichTextString)choiceData };
+                   }
+
+                   if ((tkt.StatusId?.ToString().Trim() == BetStatusId.Void) || (tkt.Status?.Trim().ToLower() == BetStatus.Void))
+                   {
+                       pos = tmpRtfHelper.PosFontCrossed;
+                       normal = tmpRtfHelper.NormalFontCrossed;
+                   }
+                   else
+                   {
+                       pos = tmpRtfHelper.PosFont;
+                       normal = tmpRtfHelper.NormalFont;
+                   }
+
+                   CollectRTFSubChoice(tmpRtfChoice, ref tmpRtfHelper, pos, normal);
+               }
+
+               ticketHelper.IsShowOddsWithChoice = showOdds;
+           }
+           *******************************************************************************/
 
         #endregion Build RTF Choice
     }
