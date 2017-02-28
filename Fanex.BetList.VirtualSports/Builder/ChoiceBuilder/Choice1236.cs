@@ -1,8 +1,8 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System.Collections.Generic;
     using App_GlobalResources;
     using Entities;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Virtual Tennis - Total Points.

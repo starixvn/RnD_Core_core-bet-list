@@ -9,7 +9,7 @@
     /// </summary>
     public class Choice1231 : Choice1
     {
-        private const string DateTimeFormat = "M/d/yyyy hh:mm";
+        private const string DateTimeFormat = "M/d/yyyy hh:mm tt";
 
         /// <summary>
         /// Builds the match.

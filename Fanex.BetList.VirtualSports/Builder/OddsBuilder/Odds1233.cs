@@ -1,15 +1,17 @@
 ﻿namespace Fanex.BetList.Core.Builder.OddsBuilder
 {
-    using System.Collections.Generic;
     using App_GlobalResources;
     using Entities;
+    using NPOI.HSSF.UserModel;
+    using NPOI.SS.UserModel;
+    using System.Collections.Generic;
     using Templates;
     using Utils;
 
     /// <summary>
     /// Virtual Horse Racing - Win/Place.
     /// </summary>
-    public class Odds1233 : Odds33
+    public class Odds1233 : Odds1
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Odds1233" /> class.
@@ -19,6 +21,10 @@
             WinBetId = 1231;
             PlaceBetId = 1232;
         }
+
+        protected int WinBetId { get; set; }
+
+        protected int PlaceBetId { get; set; }
 
         /// <summary>
         /// Renders the specified ticket.
@@ -64,9 +70,49 @@
             return Template;
         }
 
-        protected override List<ITicketData> GetReferenceData(ITicket ticket, List<ITicketData> ticketData)
+        protected List<ITicketData> GetReferenceData(ITicket ticket, List<ITicketData> ticketData)
         {
             return ticketData.FindAll(item => item.RefNo.Equals(ticket.RefNo));
+        }
+
+        protected override IRichTextString BuildRTFOdds(RTFHelper rtfHelper)
+        {
+            if (Template.odds == "-")
+            {
+                return new HSSFRichTextString("-");
+            }
+
+            int breakPos = Template.odds.IndexOf("<br>");
+
+            string oddsWinString = Template.odds.Substring(0, breakPos);
+            string oddsPlaceString = Template.odds.Replace(oddsWinString, string.Empty);
+
+            string oddsWinVal = ExtractStringBetweenTag("b", oddsWinString);
+            string oddsPlaceVal = ExtractStringBetweenTag("b", oddsPlaceString);
+
+            var rtfNumberRenderer = new RTFNumber(rtfHelper.RTFRenderer, rtfHelper.PosFont, rtfHelper.NegFont);
+
+            // Add Win
+            rtfHelper.RTFRenderer.AddText(string.Join(null, new string[] { CoreBetList.win, ": " }), rtfHelper.PosFont);
+            rtfNumberRenderer.Render(oddsWinVal);
+
+            // Add Place
+            rtfHelper.RTFRenderer.AddText(string.Join(null, new string[] { "\n", CoreBetList.place, ": " }), rtfHelper.PosFont);
+            rtfNumberRenderer.Render(oddsPlaceVal);
+
+            var rtfOdds = rtfHelper.RTFRenderer.Render();
+            rtfHelper.RTFRenderer.Clear();
+            return rtfOdds;
+        }
+
+        private string ExtractStringBetweenTag(string tag, string source)
+        {
+            string startTag = string.Join(null, new string[] { "<", tag, ">" });
+            string endTag = string.Join(null, new string[] { "</", tag, ">" });
+
+            int startIndex = source.IndexOf(startTag) + startTag.Length;
+            int endIndex = source.IndexOf(endTag, startIndex);
+            return source.Substring(startIndex, endIndex - startIndex);
         }
     }
 }

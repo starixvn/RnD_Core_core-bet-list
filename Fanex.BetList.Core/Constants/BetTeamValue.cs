@@ -7,7 +7,7 @@
     /// <summary>
     /// The bet team character value constants class.
     /// </summary>
-    internal static class BetTeamValue
+    public static class BetTeamValue
     {
         /// <summary>
         /// Is H = "h".

@@ -326,6 +326,19 @@ namespace Fanex.BetList.Example.MVC.Controllers
             return BetListView(model);
         }
 
+        public ActionResult VirtualSports(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes(1201, 1203, 1204, 1205, 1206, 1220, 1224, 1231, 1232, 1233, 1235, 1236);
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            DataSourcePath = "~/App_Data/VirtualSports.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+
+            return BetListView(model);
+        }
+
+
+
         private ViewResult BetListView(BetListData model)
         {
             return View("All", model);
