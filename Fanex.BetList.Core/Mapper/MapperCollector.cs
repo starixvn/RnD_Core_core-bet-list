@@ -7,7 +7,7 @@
     using System.Reflection;
     using System.Runtime.Caching;
 
-    public class MapperCollector
+    public static class MapperCollector
     {
         #region Constants
 

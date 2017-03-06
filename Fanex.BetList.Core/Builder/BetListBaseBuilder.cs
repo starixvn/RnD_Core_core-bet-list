@@ -18,36 +18,35 @@ namespace Fanex.BetList.Core.Builder
     /// </summary>
     public class BetListBaseBuilder : IBetListBaseBuilder
     {
-        /// <summary>
-        /// The choice builder namespace.
-        /// </summary>
-        private const string CHOICEBUILDERNAMESPACE = "Fanex.BetList.Core.Builder.ChoiceBuilder";
+        private const string ChoiceBuilderNamespace = "Fanex.BetList.Core.Builder.ChoiceBuilder";
+        private const string OddsBuilderNamespace = "Fanex.BetList.Core.Builder.OddsBuilder";
+        private const string StakeBuilderNamespace = "Fanex.BetList.Core.Builder.StakeBuilder";
+        private const string TransBuilderNamespace = "Fanex.BetList.Core.Builder.TransBuilder";
+        private const string StatusBuilderNamespace = "Fanex.BetList.Core.Builder.StatusBuilder";
 
-        /// <summary>
-        /// The odds builder namespace.
-        /// </summary>
-        private const string ODDSBUILDERNAMESPACE = "Fanex.BetList.Core.Builder.OddsBuilder";
+        private const string CacheKey = "Fanex.BetList.Core.CacheKey";
 
-        /// <summary>
-        /// The stake builder namespace.
-        /// </summary>
-        private const string STAKEBUILDERNAMESPACE = "Fanex.BetList.Core.Builder.StakeBuilder";
+        private const string ChoiceName = ".Choice";
+        private const string Choice3rdName = "._3rd.Choice";
+        private const string OddsName = ".Odds";
+        private const string Odds3rdName = "._3rd.Odds";
+        private const string StatusName = ".Status";
+        private const string Status3rdName = "._3rd.Status";
+        private const string StakeName = ".Stake";
+        private const string Stake3rdName = "._3rd.Stake";
+        private const string TransName = ".Trans";
+        private const string Trans3rdName = "._3rd.Trans";
 
-        /// <summary>
-        /// The trans builder namespace.
-        /// </summary>
-        private const string TRANSBUILDERNAMESPACE = "Fanex.BetList.Core.Builder.TransBuilder";
-
-        /// <summary>
-        /// The status builder namespace.
-        /// </summary>
-        private const string STATUSBUILDERNAMESPACE = "Fanex.BetList.Core.Builder.StatusBuilder";
-
-        private const string CACHEKEY = "Fanex.BetList.Core.CacheKey";
+        private readonly ObjectCache _cache;
+        private readonly CacheItemPolicy _cachePolicy;
 
         public BetListBaseBuilder()
         {
-            var assemblies = this.GetBetListAssemblies();
+            _cache = MemoryCache.Default;
+            _cachePolicy = new CacheItemPolicy();
+            _cachePolicy.Priority = CacheItemPriority.NotRemovable;
+
+            var assemblies = GetBetListAssemblies();
             MapperCollector.CollectAllMapperData(assemblies);
         }
 
@@ -58,12 +57,12 @@ namespace Fanex.BetList.Core.Builder
         /// <returns>IChoice: the Choice builder object.</returns>
         public IChoice CreateChoiceBuilder(int bettype)
         {
-            string choiceName = ".Choice";
+            string choiceName = ChoiceName;
 
             if (bettype < 0)
             {
                 // Internal conventional bettype id of 3rd products
-                choiceName = "._3rd.Choice";
+                choiceName = Choice3rdName;
             }
             else if (bettype <= 1599 && bettype >= 1501)
             {
@@ -73,18 +72,9 @@ namespace Fanex.BetList.Core.Builder
 
             bettype = MapperCollector.GetChoiceBaseBetTypeOf(bettype);
 
-            string typeName = string.Join(null, new string[] { CHOICEBUILDERNAMESPACE, choiceName, bettype.ToString().Replace('-', '_') });
+            string typeName = string.Join(null, new string[] { ChoiceBuilderNamespace, choiceName, bettype.ToString().Replace('-', '_') });
 
-            Type type = GetBetListAssemblies(typeName);
-
-            if (type == null)
-            {
-                return new Choice1();
-            }
-            else
-            {
-                return Activator.CreateInstance(type) as IChoice;
-            }
+            return CreateInstance<IChoice, Choice1>(typeName);
         }
 
         /// <summary>
@@ -94,12 +84,12 @@ namespace Fanex.BetList.Core.Builder
         /// <returns>IOdds: the Odds builder object.</returns>
         public IOdds CreateOddsBuilder(int bettype)
         {
-            string oddsName = ".Odds";
+            string oddsName = OddsName;
 
             if (bettype < 0)
             {
                 // Internal conventional bettype id of 3rd products
-                oddsName = "._3rd.Odds";
+                oddsName = Odds3rdName;
             }
             else if (bettype <= 1199 && bettype >= 1101)
             {
@@ -114,18 +104,9 @@ namespace Fanex.BetList.Core.Builder
 
             bettype = MapperCollector.GetOddsBaseBetTypeOf(bettype);
 
-            string typeName = string.Join(null, new string[] { ODDSBUILDERNAMESPACE, oddsName, bettype.ToString().Replace('-', '_') });
+            string typeName = string.Join(null, new string[] { OddsBuilderNamespace, oddsName, bettype.ToString().Replace('-', '_') });
 
-            Type type = GetBetListAssemblies(typeName);
-
-            if (type == null)
-            {
-                return new Odds1();
-            }
-            else
-            {
-                return Activator.CreateInstance(type) as IOdds;
-            }
+            return CreateInstance<IOdds, Odds1>(typeName);
         }
 
         /// <summary>
@@ -135,28 +116,19 @@ namespace Fanex.BetList.Core.Builder
         /// <returns>IStake: the Stake builder object.</returns>
         public IStake CreateStakeBuilder(int bettype)
         {
-            string stakeName = ".Stake";
+            string stakeName = StakeName;
 
             if (bettype < 0)
             {
                 // Internal conventional bettype id of 3rd products
-                stakeName = "._3rd.Stake";
+                stakeName = Stake3rdName;
             }
 
             bettype = MapperCollector.GetStakeBaseBetTypeOf(bettype);
 
-            string typeName = string.Join(null, new string[] { STAKEBUILDERNAMESPACE, stakeName, bettype.ToString().Replace('-', '_') });
+            string typeName = string.Join(null, new string[] { StakeBuilderNamespace, stakeName, bettype.ToString().Replace('-', '_') });
 
-            Type type = GetBetListAssemblies(typeName);
-
-            if (type == null)
-            {
-                return new Stake1();
-            }
-            else
-            {
-                return Activator.CreateInstance(type) as IStake;
-            }
+            return CreateInstance<IStake, Stake1>(typeName);
         }
 
         /// <summary>
@@ -166,12 +138,12 @@ namespace Fanex.BetList.Core.Builder
         /// <returns>IStatus: the Status builder object.</returns>
         public IStatus CreateStatusBuilder(int bettype)
         {
-            string statusName = ".Status";
+            string statusName = StatusName;
 
             if (bettype < 0)
             {
                 // Internal conventional bettype id of 3rd products
-                statusName = "._3rd.Status";
+                statusName = Status3rdName;
             }
             else if (bettype <= 1599 && bettype >= 1501)
             {
@@ -181,18 +153,9 @@ namespace Fanex.BetList.Core.Builder
 
             bettype = MapperCollector.GetStatusBaseBetTypeOf(bettype);
 
-            string typeName = string.Join(null, new string[] { STATUSBUILDERNAMESPACE, statusName, bettype.ToString().Replace('-', '_') });
+            string typeName = string.Join(null, new string[] { StatusBuilderNamespace, statusName, bettype.ToString().Replace('-', '_') });
 
-            Type type = GetBetListAssemblies(typeName);
-
-            if (type == null)
-            {
-                return new Status1();
-            }
-            else
-            {
-                return Activator.CreateInstance(type) as IStatus;
-            }
+            return CreateInstance<IStatus, Status1>(typeName);
         }
 
         /// <summary>
@@ -202,12 +165,12 @@ namespace Fanex.BetList.Core.Builder
         /// <returns>ITrans: the Trans builder object.</returns>
         public ITrans CreateTransBuilder(int bettype)
         {
-            string transName = ".Trans";
+            string transName = TransName;
 
             if (bettype < 0)
             {
                 // Internal conventional bettype id of 3rd products
-                transName = "._3rd.Trans";
+                transName = Trans3rdName;
             }
             else if (bettype <= 1599 && bettype >= 1501)
             {
@@ -217,25 +180,33 @@ namespace Fanex.BetList.Core.Builder
 
             bettype = MapperCollector.GetTransBaseBetTypeOf(bettype);
 
-            string typeName = string.Join(null, new string[] { TRANSBUILDERNAMESPACE, transName, bettype.ToString().Replace('-', '_') });
+            string typeName = string.Join(null, new string[] { TransBuilderNamespace, transName, bettype.ToString().Replace('-', '_') });
 
+            return CreateInstance<ITrans, Trans1>(typeName);
+        }
+
+        private T CreateInstance<T, TDefault>(string typeName) where TDefault : T, new()
+        {
+            T instance;
             Type type = GetBetListAssemblies(typeName);
 
             if (type == null)
             {
-                return new Trans1();
+                instance = new TDefault();
             }
             else
             {
-                return Activator.CreateInstance(type) as ITrans;
+                instance = (T)Activator.CreateInstance(type);
             }
+
+            _cache.Set(typeName, instance.GetType(), _cachePolicy);
+
+            return instance;
         }
 
         private Type GetBetListAssemblies(string typeName)
         {
-            ObjectCache cache = MemoryCache.Default;
-
-            var assemblies = (List<Assembly>)cache[CACHEKEY];
+            var assemblies = (List<Assembly>)_cache[CacheKey];
 
             if (assemblies == null || !assemblies.Any())
             {
@@ -248,32 +219,17 @@ namespace Fanex.BetList.Core.Builder
                     assemblies = AppDomain.CurrentDomain.GetAssemblies().ToList();
                 }
 
-                CacheItemPolicy policy = new CacheItemPolicy();
-                policy.Priority = CacheItemPriority.NotRemovable;
-
                 assemblies = assemblies.Where(x => x.FullName.StartsWith("Fanex.BetList.", StringComparison.InvariantCulture)).ToList();
 
-                cache.Set(CACHEKEY, assemblies, policy);
+                _cache.Set(CacheKey, assemblies, _cachePolicy);
             }
 
-            foreach (var assembly in assemblies)
-            {
-                Type type = Type.GetType(typeName + ", " + assembly);
-
-                if (type != null)
-                {
-                    return type;
-                }
-            }
-
-            return null;
+            return GetType(typeName, assemblies);
         }
 
         private List<Assembly> GetBetListAssemblies()
         {
-            ObjectCache cache = MemoryCache.Default;
-
-            var assemblies = (List<Assembly>)cache[CACHEKEY];
+            var assemblies = (List<Assembly>)_cache[CacheKey];
 
             if (assemblies == null || !assemblies.Any())
             {
@@ -286,15 +242,32 @@ namespace Fanex.BetList.Core.Builder
                     assemblies = AppDomain.CurrentDomain.GetAssemblies().ToList();
                 }
 
-                CacheItemPolicy policy = new CacheItemPolicy();
-                policy.Priority = CacheItemPriority.NotRemovable;
-
                 assemblies = assemblies.Where(x => x.FullName.StartsWith("Fanex.BetList.", StringComparison.InvariantCulture)).ToList();
 
-                cache.Set(CACHEKEY, assemblies, policy);
+                _cache.Set(CacheKey, assemblies, _cachePolicy);
             }
 
             return assemblies;
+        }
+
+        private Type GetType(string typeName, List<Assembly> assemblies)
+        {
+            var type = (Type)_cache[typeName];
+
+            if (type == null)
+            {
+                foreach (var assembly in assemblies)
+                {
+                    type = Type.GetType(typeName + ", " + assembly);
+
+                    if (type != null)
+                    {
+                        return type;
+                    }
+                }
+            }
+
+            return type;
         }
     }
 }
