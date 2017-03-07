@@ -64,9 +64,9 @@
       <Project>{b0838d04-2306-4362-af22-9fcd0be6f8e7}</Project>
       <Name>Fanex.BetList.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.VoidBridge\Fanex.BetList.Voidbridge.csproj">
+    <ProjectReference Include="..\Fanex.BetList.Voidbridge\Fanex.BetList.VoidBridge.csproj">
       <Project>{0f87bc2a-0625-42b3-b695-3e6384e588db}</Project>
-      <Name>Fanex.BetList.Voidbridge</Name>
+      <Name>Fanex.BetList.VoidBridge</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
