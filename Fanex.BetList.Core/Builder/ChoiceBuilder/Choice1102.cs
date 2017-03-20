@@ -1,6 +1,5 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using App_GlobalResources;
     using Entities;
 
     /// <summary>

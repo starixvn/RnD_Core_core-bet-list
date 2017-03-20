@@ -103,6 +103,8 @@
             MapIdToBaseId(447, 445);
 
             MapForFastMarkets();
+
+            MapForBasketallAIO();
         }
 
         private void MapForFastMarkets()
@@ -111,6 +113,30 @@
             {
                 MapIdToBaseId(betType, 221);
             }
+        }
+
+        private void MapForBasketallAIO()
+        {
+            // FT Which team to score the first basket (604)
+            MapIdToBaseId(604, 603);
+
+            // FT Which team to score the last basket (605)
+            MapIdToBaseId(605, 603);
+
+            // 2H Race to X (607)
+            MapIdToBaseId(607, 606);
+
+            // Quarter X Race to YY (613)
+            MapIdToBaseId(613, 606);
+
+            // Quarter X Home Team Over Under (615)
+            MapIdToBaseId(615, 610);
+
+            // Quarter X Away Team Over Under (616)
+            MapIdToBaseId(616, 610);
+
+            // Quarter X Which team to score the last basket (617)
+            MapIdToBaseId(617, 606);
         }
     }
 }

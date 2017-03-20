@@ -437,5 +437,95 @@
         /// Is YY = "yy".
         /// </summary>
         public const string NN = "nn";
+
+        /// <summary>
+        /// Home team to Win by 1 to 2 points
+        /// </summary>
+        public const string H1to2 = "h1-2";
+
+        /// <summary>
+        /// Home team to Win by 3 to 6 points
+        /// </summary>
+        public const string H3to6 = "h3-6";
+
+        /// <summary>
+        /// Home team to Win by 7 to 9 points
+        /// </summary>
+        public const string H7to9 = "h7-9";
+
+        /// <summary>
+        /// Home team to Win by 10 to 13 points
+        /// </summary>
+        public const string H10to13 = "h10-13";
+
+        /// <summary>
+        /// Home team to Win by 14 to 16 points
+        /// </summary>
+        public const string H14to16 = "h14-16";
+
+        /// <summary>
+        /// Home team to Win by 17 to 20 points
+        /// </summary>
+        public const string H17to20 = "h17-20";
+
+        /// <summary>
+        /// Home team to Win by 21+ points
+        /// </summary>
+        public const string H21Over = "h21+";
+
+        /// <summary>
+        /// Away team to Win by 1 to 2 points
+        /// </summary>
+        public const string A1to2 = "a1-2";
+
+        /// <summary>
+        /// Away team to Win by 3 to 6 points
+        /// </summary>
+        public const string A3to6 = "a3-6";
+
+        /// <summary>
+        /// Away team to Win by 7 to 9 points
+        /// </summary>
+        public const string A7to9 = "a7-9";
+
+        /// <summary>
+        /// Away team to Win by 10 to 13 points
+        /// </summary>
+        public const string A10to13 = "a10-13";
+
+        /// <summary>
+        /// Away team to Win by 14 to 16 points
+        /// </summary>
+        public const string A14to16 = "a14-16";
+
+        /// <summary>
+        /// Away team to Win by 17 to 20 points
+        /// </summary>
+        public const string A17to20 = "a17-20";
+
+        /// <summary>
+        /// Away team to Win by 21+ points
+        /// </summary>
+        public const string A21Over = "a21+";
+
+        public const string H1to5 = "h1-5";
+        public const string H6to10 = "h6-10";
+        public const string H11to15 = "h11-15";
+        public const string H16to20 = "h16-20";
+        public const string H21to25 = "h21-25";
+        public const string H26Over = "h26+";
+        public const string A1to5 = "a1-5";
+        public const string A6to10 = "a6-10";
+        public const string A11to15 = "a11-15";
+        public const string A16to20 = "a16-20";
+        public const string A21to25 = "a21-25";
+        public const string A26Over = "a26+";
+
+        public const string H1to4 = "h1-4";
+        public const string H5to8 = "h5-8";
+        public const string H9Over = "h9+";
+        public const string A1to4 = "a1-4";
+        public const string A5to8 = "a5-8";
+        public const string A9Over = "a9+";
     }
 }

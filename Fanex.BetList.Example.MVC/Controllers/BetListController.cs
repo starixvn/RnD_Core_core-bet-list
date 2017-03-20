@@ -337,6 +337,17 @@ namespace Fanex.BetList.Example.MVC.Controllers
             return BetListView(model);
         }
 
+        public ActionResult BasketballAIO(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes(601, 602, 603, 604, 605, 606, 607, 608, 609, 610, 611, 612, 613, 614, 615, 616, 617);
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            DataSourcePath = "~/App_Data/BasketballAIO.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+
+            return BetListView(model);
+        }
+
 
 
         private ViewResult BetListView(BetListData model)

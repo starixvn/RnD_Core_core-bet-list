@@ -167,6 +167,16 @@
     <Compile Include="Builder\ChoiceBuilder\Choice417Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice500Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice414Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice614Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice612Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice611Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice610Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice609Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice608Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice606Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice603Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice602Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice601Tests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice81Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice85Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice86Test.cs" />
