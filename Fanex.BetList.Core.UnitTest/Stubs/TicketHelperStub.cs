@@ -38,6 +38,8 @@ namespace Fanex.BetList.Core.UnitTest.Stubs
 
         public GetParlayTicketsById GetParlayDetailById { get; set; }
 
+        public bool HideStatusCashOutHistory { get; set; }
+
         public bool IsVnIp(string ip)
         {
             return ip == "vn-ip";

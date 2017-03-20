@@ -7,7 +7,7 @@
     /// <summary>
     /// Formatting utilities.
     /// </summary>
-    public class Formatter
+    public static class Formatter
     {
         #region FORMAT STRINGS CONST
 
@@ -52,13 +52,6 @@
         private static CultureInfo cult = new CultureInfo("en-US");
 
         #endregion CULTURE CONST
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Formatter"/> class.
-        /// </summary>
-        public Formatter()
-        {
-        }
 
         public static CultureInfo EngCult
         {

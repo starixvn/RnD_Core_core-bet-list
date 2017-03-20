@@ -833,7 +833,19 @@
   <data name="aa" xml:space="preserve">
     <value>AA</value>
   </data>
+  <data name="history" xml:space="preserve">
+    <value>History</value>
+  </data>
   <data name="dh" xml:space="preserve">
     <value>DH</value>
+  </data>
+  <data name="BoughtLabel" xml:space="preserve">
+    <value>Bought from No.:</value>
+  </data>
+  <data name="CashOut" xml:space="preserve">
+    <value>Cash out</value>
+  </data>
+  <data name="CashOutLabel" xml:space="preserve">
+    <value>Cash out from No.:</value>
   </data>
 </root>

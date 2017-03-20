@@ -259,6 +259,33 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bought from No.:.
+        /// </summary>
+        public static string BoughtLabel {
+            get {
+                return ResourceManager.GetString("BoughtLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cash out.
+        /// </summary>
+        public static string CashOut {
+            get {
+                return ResourceManager.GetString("CashOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cash out from No.:.
+        /// </summary>
+        public static string CashOutLabel {
+            get {
+                return ResourceManager.GetString("CashOutLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Casino.
         /// </summary>
         public static string casino {
@@ -750,6 +777,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string high {
             get {
                 return ResourceManager.GetString("high", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to History.
+        /// </summary>
+        public static string history {
+            get {
+                return ResourceManager.GetString("history", resourceCulture);
             }
         }
         

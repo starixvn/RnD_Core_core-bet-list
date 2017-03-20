@@ -13,14 +13,16 @@ namespace Fanex.BetList.Core
 	{
 		public class Stake_Template : Template
 		{
-			protected static string s0 = "<span class=\"stake\">";
+			public Stake_OriginalStake_Block OriginalStake = new Stake_OriginalStake_Block();
+			protected static string s0 = "<div class=\"stake\">";
 			public string stake = "{stake}";
-			protected static string s1 = "</span>";
+			protected static string s1 = "</div>";
 			public override void ToString(ref StringBuilder bd)
 			{
 				if(!Visible) return;
 				if(RenderChild)
 				{
+					if(null != OriginalStake) OriginalStake.ToString(ref bd);
 					bd.Append(s0);
 					bd.Append(stake);
 					bd.Append(s1);
@@ -34,6 +36,24 @@ namespace Fanex.BetList.Core
 				return bd.ToString();
 			}
 
+		}
+
+		public class Stake_OriginalStake_Block: Block
+		{
+			protected static string s2 = "<strike class=\"originalStake\">";
+			public string stake = "{stake}";
+			protected static string s3 = "</strike>";
+			public override void ToString(ref StringBuilder bd)
+			{
+				if(!Visible) return;
+				if(RenderChild)
+				{
+					bd.Append(s2);
+					bd.Append(stake);
+					bd.Append(s3);
+				}
+				if(IsAssigned){bd.Append(Value);}
+			}
 		}
 
 	}

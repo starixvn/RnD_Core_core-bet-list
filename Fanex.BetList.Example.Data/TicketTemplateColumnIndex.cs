@@ -256,7 +256,15 @@
         TransDesc = 49,
 
         OddsSpread = 50,
-        
-        Currency = 51
+
+        Currency = 51,
+
+        OriginalBetType = 52,
+
+        BetdaqId = 53,
+
+        ExtraInfo = 54,
+
+        OriginalStake = 55
     }
 }

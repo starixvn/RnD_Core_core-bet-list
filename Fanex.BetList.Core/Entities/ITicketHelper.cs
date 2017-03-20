@@ -59,6 +59,11 @@
         GetParlayTicketsById GetParlayDetailById { get; set; }
 
         /// <summary>
+        /// Show Cash Out History in Status Column
+        /// </summary>
+        bool HideStatusCashOutHistory { get; set; }
+
+        /// <summary>
         /// Check if the input IP string is from Vietnam.
         /// </summary>
         /// <param name="ip">The IP to check.</param>

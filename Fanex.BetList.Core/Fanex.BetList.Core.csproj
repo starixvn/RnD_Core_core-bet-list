@@ -70,6 +70,8 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="TplCore">
       <HintPath>..\packages\TplCore.1.0.4694.29951\lib\net40\TplCore.dll</HintPath>
     </Reference>
@@ -509,6 +511,7 @@
     <Compile Include="Utils\Formatter.cs" />
     <Compile Include="Utils\NPOIExt\ICellExtension.cs" />
     <Compile Include="Utils\NPOIExt\IRowExtension.cs" />
+    <Compile Include="Entities\RTFFormattingRun.cs" />
     <Compile Include="Utils\RTFNumber.cs" />
     <Compile Include="Utils\RtfTextRender.cs" />
     <Compile Include="Utils\StringExt\StringExtension.cs" />

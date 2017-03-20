@@ -42,7 +42,7 @@
                 foreach (IRow row in betTicketSheet)
                 {
                     ITicket ticket = this.MapRowToTicketObject(row);
-                    if (ticket != null)
+                    if (ticket != null && ticket.BetTypeId > 0)
                     {
                         tickets.Add(ticket);
                     }
@@ -139,10 +139,10 @@
         [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2101:MethodMustNotContainMoreLinesThan", Justification = "Reviewed. Suppression is OK here.")]
         private ITicket MapRowToTicketObject(IRow row)
         {
+            ITicket ticket = new Ticket();
+
             try
             {
-                ITicket ticket = new Ticket();
-
                 ticket.ActualStake = Convert.ToDecimal(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.ActualStake)));
                 ticket.AgentComm = Convert.ToDecimal(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.AgentComm)));
                 ticket.AgentDiscount = Convert.ToDecimal(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.AgentDiscount)));
@@ -193,22 +193,25 @@
                 ticket.Winlost = Convert.ToDecimal(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.Winlost)));
                 ticket.WinlostDate = Convert.ToDateTime(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.WinlostDate)));
                 ticket.TransDesc = this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.TransDesc));
-
+                ticket.OriginalBetType = Convert.ToInt32(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.OriginalBetType)));
+                ticket.BetdaqId = Convert.ToInt64(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.BetdaqId)));
+                ticket.ExtraInfo = this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.ExtraInfo));
+                ticket.OriginalStake = Convert.ToDecimal(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.OriginalStake)));
                 try
                 {
                     ticket.OddsSpread = Convert.ToDecimal(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.OddsSpread)));
                 }
                 catch
                 {
+                    return ticket;
                 }
 
                 return ticket;
             }
             catch
             {
+                return ticket;
             }
-
-            return null;
         }
 
         /// <summary>

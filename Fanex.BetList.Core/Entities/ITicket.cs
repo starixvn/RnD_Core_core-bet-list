@@ -110,5 +110,13 @@
         decimal OddsSpread { get; set; }
 
         string Currency { get; set; }
+
+        decimal OriginalStake { get; set; }
+
+        int OriginalBetType { get; set; }
+
+        long BetdaqId { get; set; }
+
+        string ExtraInfo { get; set; }
     }
 }

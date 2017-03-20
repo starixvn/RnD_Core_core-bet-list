@@ -28,7 +28,7 @@
     [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleClass", Justification = "Reviewed.")]
     public class Stake_TemplateTest
     {
-        private const string StakeTemplate = "<span class=\"stake\">{0}</span>";
+        private const string StakeTemplate = "{0}<div class=\"stake\">{1}</div>";
 
         /// <summary>
         /// Visible the property is true return HTML string.
@@ -38,15 +38,14 @@
         {
             // Arrange
             var stake = "10";
-            var stakeHtml = string.Empty;
             var block = new Stake_Template();
             block.stake = stake;
 
             // Act
-            stakeHtml = block.ToString();
+            var stakeHtml = block.ToString();
 
             // Assert
-            var expectedHtml = string.Format(StakeTemplate, stake);
+            var expectedHtml = string.Format(StakeTemplate, block.OriginalStake, stake);
             Assert.AreEqual(expectedHtml, stakeHtml);
         }
 
@@ -57,12 +56,11 @@
         public void ToString_BlockIsVisible_ReturnEmptyString()
         {
             // Arrange
-            var stakeHtml = string.Empty;
             var block = new Stake_Template();
             block.Visible = false;
 
             // Act
-            stakeHtml = block.ToString();
+            var stakeHtml = block.ToString();
 
             // Assert
             Assert.IsTrue(string.IsNullOrEmpty(stakeHtml));
@@ -76,7 +74,6 @@
         {
             // Arrange
             var stake = "10";
-            var stakeHtml = string.Empty;
             var value = "Tennis";
             var block = new WrapperStake_Template();
             block.stake = stake;
@@ -84,10 +81,10 @@
             block.SetAssigned(true);
 
             // Act
-            stakeHtml = block.ToString();
+            var stakeHtml = block.ToString();
 
             // Assert
-            var expectedHtml = string.Format(StakeTemplate, stake) + value;
+            var expectedHtml = string.Format(StakeTemplate, block.OriginalStake, stake) + value;
             Assert.AreEqual(expectedHtml, stakeHtml);
         }
     }

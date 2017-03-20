@@ -47,6 +47,11 @@
         /// <value>Function to get parlay detail by Id.</value>
         public GetParlayTicketsById GetParlayDetailById { get; set; }
 
+        /// <summary>
+        /// Show Cash Out History in Status Column
+        /// </summary>
+        public bool HideStatusCashOutHistory { get; set; }
+
         public string GetBetTypeNameById(object bettypeId)
         {
             return CacheRef.GetBettype(bettypeId);

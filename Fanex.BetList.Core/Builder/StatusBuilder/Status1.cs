@@ -13,6 +13,8 @@
     /// </summary>
     public class Status1 : IStatus
     {
+        private const string CashOutXmlTag = "p25";
+
         public Status1()
         {
             Template = new Status_Template();
@@ -27,6 +29,8 @@
             BuildStatusResult(ticket);
 
             BuildIP(ticket, ticketHelper, isShowVNIP);
+
+            BuildCashOutHistory(ticket, ticketHelper);
 
             return Template;
         }
@@ -69,7 +73,7 @@
         {
             string result = string.Empty;
 
-            switch (ticketStatus.ToLower())
+            switch (ticketStatus.ToLower(CultureInfo.InvariantCulture))
             {
                 case BetStatus.Running:
                     result = CoreBetList.running;
@@ -115,6 +119,11 @@
             if (!string.IsNullOrEmpty(result))
             {
                 Template.result = result;
+            }
+
+            if (IsCashOutOriginalTicket(ticket) && ticket.Stake == 0)
+            {
+                Template.result = CoreBetList.CashOut;
             }
         }
 
@@ -176,5 +185,31 @@
         {
             rtfHelper.RTFRenderer.AddText(status, rtfHelper.PosFont);
         }
+
+        protected virtual void BuildCashOutHistory(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            if (ticketHelper.HideStatusCashOutHistory || !IsCashOutTicket(ticket))
+            {
+                Template.CashOutHistory.Hide();
+                return;
+            }
+
+            Template.CashOutHistory.transId = ticket.TransId.ToString();
+            Template.CashOutHistory.refNo = ticket.RefNo;
+            Template.CashOutHistory.betType = ticket.BetTypeId.ToString();
+            Template.CashOutHistory.betdaqId = ticket.BetdaqId.ToString();
+        }
+
+        private bool IsCashOutTicket(ITicket ticket)
+            => (ticket.BetdaqId == 1 && !IsBetTradeTicket(ticket.BetTypeId)) || HasCashOutExtraInfo(ticket.ExtraInfo);
+
+        private bool IsCashOutOriginalTicket(ITicket ticket)
+            => ticket.BetdaqId == 0 && HasCashOutExtraInfo(ticket.ExtraInfo);
+
+        private bool HasCashOutExtraInfo(string extraInfo)
+            => !string.IsNullOrEmpty(extraInfo) && extraInfo.Contains(CashOutXmlTag);
+
+        private bool IsBetTradeTicket(int betTypeId)
+            => betTypeId == 901 || betTypeId == 902;
     }
 }

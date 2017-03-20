@@ -28,7 +28,7 @@
     [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleClass", Justification = "Reviewed.")]
     public class Status_TemplateTest
     {
-        private const string StatusTemplate = "<div class=\"status\">{0}</div>{1}{2}";
+        private const string StatusTemplate = "<div class=\"status\">{0}</div>{1}{2}{3}";
 
         /// <summary>
         /// Visible the property is true return HTML string.
@@ -38,15 +38,14 @@
         {
             // Arrange
             var result = "void";
-            var statusHtml = string.Empty;
             var block = new Status_Template();
             block.result = result;
 
             // Act
-            statusHtml = block.ToString();
+            var statusHtml = block.ToString();
 
             // Assert
-            var expectedHtml = string.Format(StatusTemplate, result, block.StatusResult.ToString(), block.ShowIP.ToString());
+            var expectedHtml = string.Format(StatusTemplate, result, block.CashOutHistory, block.StatusResult.ToString(), block.ShowIP.ToString());
             Assert.AreEqual(expectedHtml, statusHtml);
         }
 
@@ -57,12 +56,11 @@
         public void ToString_BlockIsVisible_ReturnEmptyString()
         {
             // Arrange
-            var statusHtml = string.Empty;
             var block = new Status_Template();
             block.Visible = false;
 
             // Act
-            statusHtml = block.ToString();
+            var statusHtml = block.ToString();
 
             // Assert
             Assert.IsTrue(string.IsNullOrEmpty(statusHtml));
@@ -77,17 +75,16 @@
             // Arrange
             var result = "void";
             var value = "Tennis";
-            var statusHtml = string.Empty;
             var block = new WrapperStatus_Template();
             block.result = result;
             block.SetValueExtend(new StringBuilder(value));
             block.SetAssigned(true);
 
             // Act
-            statusHtml = block.ToString();
+            var statusHtml = block.ToString();
 
             // Assert
-            var expectedHtml = string.Format(StatusTemplate, result, block.StatusResult.ToString(), block.ShowIP.ToString()) + value;
+            var expectedHtml = string.Format(StatusTemplate, result, block.CashOutHistory, block.StatusResult.ToString(), block.ShowIP.ToString()) + value;
             Assert.AreEqual(expectedHtml, statusHtml);
         }
     }

@@ -114,6 +114,14 @@
 
         public string Currency { get; set; }
 
+        public decimal OriginalStake { get; set; }
+
+        public int OriginalBetType { get; set; }
+
+        public long BetdaqId { get; set; } = -1;
+
+        public string ExtraInfo { get; set; }
+
         #endregion ITicket Members
     }
 }

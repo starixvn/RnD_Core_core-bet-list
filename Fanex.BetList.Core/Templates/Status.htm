@@ -1,13 +1,19 @@
-﻿<div class="status">
-    {result}</div>
+﻿<div class="status">{result}</div>
+<!--CashOutHistory-->
+<div class="result cashout-history" onclick="ViewCashOutHistory({transId}, {refNo}, {betType}, {betdaqId})">
+    {static:App_GlobalResources.CoreBetList.history}
+</div>
+<!--/CashOutHistory-->
 <!--StatusResult-->
 <div class="result" onclick="ViewResult({matchId}, {race:0}, {betType}, {sportType}, {refNo}, '{userName}', '{winlostDate}', {refNo_MixParlay:0}, {league}, {isoutright:0}, {betId:0});">
-    {static:App_GlobalResources.CoreBetList.results}</div>
+    {static:App_GlobalResources.CoreBetList.results}
+</div>
 <!--/StatusResult-->
 <!--ShowIP-->
 <div class="ip">
     <br />
     <div class="{divIP:iplink}" onclick="{openIpFunc:OpenIPInfo}('{betIp}');">
-        {betIp}</div>
+        {betIp}
+    </div>
 </div>
 <!--/ShowIP-->

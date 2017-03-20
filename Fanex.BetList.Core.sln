@@ -104,6 +104,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.VirtualSports
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.Example.MVC.Tests", "Fanex.BetList.Example.Controller.Tests\Fanex.BetList.Example.MVC.Tests.csproj", "{CD2143D0-1838-485F-9796-EDCC0EC6A03C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CashOut", "CashOut", "{34E249C7-BD46-4B6B-9509-E96C1370372A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.CashOut", "Fanex.BetList.CashOut\Fanex.BetList.CashOut.csproj", "{EEB53CDF-8346-4F95-9997-B7BC052D1F18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.CashOut.Tests", "Fanex.BetList.CashOut.Tests\Fanex.BetList.CashOut.Tests.csproj", "{18D759F4-244F-40AD-979D-C51BEFD55E2D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -112,6 +118,7 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|Mixed Platforms = Release|Mixed Platforms
 		Release|x86 = Release|x86
+		Description = EnableTplcore
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{B0838D04-2306-4362-AF22-9FCD0BE6F8E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -468,6 +475,30 @@ Global
 		{CD2143D0-1838-485F-9796-EDCC0EC6A03C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{CD2143D0-1838-485F-9796-EDCC0EC6A03C}.Release|x86.ActiveCfg = Release|Any CPU
 		{CD2143D0-1838-485F-9796-EDCC0EC6A03C}.Release|x86.Build.0 = Release|Any CPU
+		{EEB53CDF-8346-4F95-9997-B7BC052D1F18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEB53CDF-8346-4F95-9997-B7BC052D1F18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEB53CDF-8346-4F95-9997-B7BC052D1F18}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{EEB53CDF-8346-4F95-9997-B7BC052D1F18}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{EEB53CDF-8346-4F95-9997-B7BC052D1F18}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EEB53CDF-8346-4F95-9997-B7BC052D1F18}.Debug|x86.Build.0 = Debug|Any CPU
+		{EEB53CDF-8346-4F95-9997-B7BC052D1F18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEB53CDF-8346-4F95-9997-B7BC052D1F18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEB53CDF-8346-4F95-9997-B7BC052D1F18}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{EEB53CDF-8346-4F95-9997-B7BC052D1F18}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{EEB53CDF-8346-4F95-9997-B7BC052D1F18}.Release|x86.ActiveCfg = Release|Any CPU
+		{EEB53CDF-8346-4F95-9997-B7BC052D1F18}.Release|x86.Build.0 = Release|Any CPU
+		{18D759F4-244F-40AD-979D-C51BEFD55E2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18D759F4-244F-40AD-979D-C51BEFD55E2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18D759F4-244F-40AD-979D-C51BEFD55E2D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{18D759F4-244F-40AD-979D-C51BEFD55E2D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{18D759F4-244F-40AD-979D-C51BEFD55E2D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{18D759F4-244F-40AD-979D-C51BEFD55E2D}.Debug|x86.Build.0 = Debug|Any CPU
+		{18D759F4-244F-40AD-979D-C51BEFD55E2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18D759F4-244F-40AD-979D-C51BEFD55E2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18D759F4-244F-40AD-979D-C51BEFD55E2D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{18D759F4-244F-40AD-979D-C51BEFD55E2D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{18D759F4-244F-40AD-979D-C51BEFD55E2D}.Release|x86.ActiveCfg = Release|Any CPU
+		{18D759F4-244F-40AD-979D-C51BEFD55E2D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -503,6 +534,8 @@ Global
 		{F3DC05FD-883B-47F6-9F13-5506BF084CAE} = {ED3F9680-7D39-40A2-B688-34B19F310A60}
 		{CFE70A90-C890-4686-9516-7BCF6EDA8434} = {ED3F9680-7D39-40A2-B688-34B19F310A60}
 		{CD2143D0-1838-485F-9796-EDCC0EC6A03C} = {24BA1707-BE2A-4391-8A57-747DE7EAA0D4}
+		{EEB53CDF-8346-4F95-9997-B7BC052D1F18} = {34E249C7-BD46-4B6B-9509-E96C1370372A}
+		{18D759F4-244F-40AD-979D-C51BEFD55E2D} = {34E249C7-BD46-4B6B-9509-E96C1370372A}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Fanex2.vsmdi
