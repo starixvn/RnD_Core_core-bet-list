@@ -59,7 +59,9 @@ namespace Fanex.BetList.Core.UnitTest.Common
                     TransId = 5386789330,
                     UserName = "MHOSD06006",
                     Winlost = -2.11M,
-                    WinlostDate = new DateTime(2014, 01, 20, 12, 00, 00)
+                    WinlostDate = new DateTime(2014, 01, 20, 12, 00, 00),
+                    BetdaqId = -1,
+                    ExtraInfo = "<p />"
                 };
 
                 return ticket;

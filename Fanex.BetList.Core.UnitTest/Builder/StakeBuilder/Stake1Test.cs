@@ -48,10 +48,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             Assert.IsTrue(template.OriginalStake.Visible);
         }
 
-        [TestCase(-1, "<p25 s=\"1000\" a=\"1000\"/>")]
         [TestCase(-1, "")]
         [TestCase(0, "")]
-        public void BuildOriginalStake_IsNotCashOut_ShowOriginalStake(long betDaqId, string extraInfo)
+        public void BuildOriginalStake_IsNotCashOut_HideOriginalStake(long betDaqId, string extraInfo)
         {
             // Arrange
             ArrangeCashOutTicket(betDaqId, extraInfo, 1000);
@@ -63,11 +62,12 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             Assert.IsFalse(template.OriginalStake.Visible);
         }
 
-        [Test]
-        public void BuildOriginalStake_IsCashOut_OriginalStakeIsGreaterThanZero_ShowStakeFromOriginalStake()
+        [TestCase(0)]
+        [TestCase(-1)]
+        public void BuildOriginalStake_IsCashOut_OriginalStakeIsGreaterThanZero_ShowStakeFromOriginalStake(int betdaqId)
         {
             // Arrange
-            ArrangeCashOutTicket(0, "<p25 s=\"1000\" a=\"1000\"/>", 1000);
+            ArrangeCashOutTicket(betdaqId, "<p25 s=\"1000\" a=\"1000\"/>", 1000);
 
             // Act
             var template = _stake.Render(_ticket);
@@ -90,7 +90,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             Assert.AreEqual(ConvertByBetType.Stake(expectedStake), template.OriginalStake.stake);
         }
 
-        [TestCase(-1, "<p25 s=\"1000\" a=\"1000\"/>")]
         [TestCase(-1, "")]
         [TestCase(0, "")]
         public void RenderRTF_IsNotCashOut_RenderStakeOnly(long betDaqId, string extraInfo)
@@ -106,11 +105,12 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             Assert.AreEqual(expectedTemplate, template.String);
         }
 
-        [Test]
-        public void RenderRTF_IstCashOut_RenderOriginalStake()
+        [TestCase(0)]
+        [TestCase(-1)]
+        public void RenderRTF_IstCashOut_RenderOriginalStake(int betdaqId)
         {
             // Arrange
-            ArrangeCashOutTicket(0, "<p25 s=\"1000\" a=\"1000\"/>", 1000);
+            ArrangeCashOutTicket(betdaqId, "<p25 s=\"1000\" a=\"1000\"/>", 1000);
 
             // Act
             var template = _stake.RenderRTF(_ticket, new RTFHelper().Clone());

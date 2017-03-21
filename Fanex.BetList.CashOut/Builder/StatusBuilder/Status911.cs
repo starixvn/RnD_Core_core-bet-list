@@ -25,6 +25,20 @@
             }
         }
 
+        protected override void BuildCashOutHistory(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            if (ticketHelper.HideStatusCashOutHistory)
+            {
+                Template.CashOutHistory.Hide();
+                return;
+            }
+
+            Template.CashOutHistory.transId = ticket.TransId.ToString();
+            Template.CashOutHistory.refNo = ticket.RefNo;
+            Template.CashOutHistory.betType = ticket.BetTypeId.ToString();
+            Template.CashOutHistory.betdaqId = ticket.BetdaqId.ToString();
+        }
+
         protected virtual string GetStatus()
         {
             return CoreBetList.CashOut;

@@ -2,6 +2,8 @@
 {
     using System.Collections.Generic;
     using System.Globalization;
+    using System.IO;
+    using System.Xml.Linq;
     using App_GlobalResources;
     using Entities;
     using NPOI.SS.UserModel;
@@ -207,7 +209,16 @@
             => ticket.BetdaqId == 0 && HasCashOutExtraInfo(ticket.ExtraInfo);
 
         private bool HasCashOutExtraInfo(string extraInfo)
-            => !string.IsNullOrEmpty(extraInfo) && extraInfo.Contains(CashOutXmlTag);
+        {
+            if (!string.IsNullOrEmpty(extraInfo))
+            {
+                var xmlDoc = XDocument.Parse(extraInfo);
+
+                return xmlDoc.Element(CashOutXmlTag) != null;
+            }
+
+            return false;
+        }
 
         private bool IsBetTradeTicket(int betTypeId)
             => betTypeId == 901 || betTypeId == 902;

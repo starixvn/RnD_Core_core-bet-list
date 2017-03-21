@@ -77,22 +77,34 @@
             }
             else
             {
-                using (var reader = new StringReader(ticket.ExtraInfo))
+                if (!string.IsNullOrEmpty(ticket.ExtraInfo))
                 {
-                    var xmlDoc = XDocument.Load(reader);
+                    var xmlDoc = XDocument.Parse(ticket.ExtraInfo);
                     var originalStake = xmlDoc.Element(CashOutXmlTag)?.Attribute("s")?.Value;
 
                     if (!string.IsNullOrEmpty(originalStake))
                     {
                         return Convert.ToDecimal(originalStake);
                     }
-
-                    return 0;
                 }
+
+                return 0;
             }
         }
 
         private bool IsCashOutTicket(ITicket ticket)
-                => ticket.BetdaqId == 0 && ticket.ExtraInfo.Contains(CashOutXmlTag);
+                => (ticket.BetdaqId == 0 || ticket.BetdaqId == -1) && HasCashOutExtraInfo(ticket.ExtraInfo);
+
+        private bool HasCashOutExtraInfo(string extraInfo)
+        {
+            if (!string.IsNullOrEmpty(extraInfo))
+            {
+                var xmlDoc = XDocument.Parse(extraInfo);
+
+                return xmlDoc.Element(CashOutXmlTag) != null;
+            }
+
+            return false;
+        }
     }
 }

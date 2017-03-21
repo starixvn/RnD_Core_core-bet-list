@@ -50,7 +50,7 @@
         /// <summary>
         /// Show Cash Out History in Status Column
         /// </summary>
-        public bool HideStatusCashOutHistory { get; set; }
+        public bool HideStatusCashOutHistory { get; set; } = false;
 
         public string GetBetTypeNameById(object bettypeId)
         {

@@ -72,6 +72,88 @@
             Assert.IsFalse(template.StatusResult.Visible);
         }
 
+        [Test]
+        public void BuildCashOutHistory_WhenHideHistory_HideCashOutHistory()
+        {
+            // Arrange
+            _ticketHelper.HideStatusCashOutHistory.Returns(true);
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.IsFalse(_status.Template.CashOutHistory.Visible);
+        }
+
+        [Test]
+        public void BuildCashOutHistory_WhenShowHistory_ShowCashOutHistory()
+        {
+            // Arrange
+            _ticketHelper.HideStatusCashOutHistory.Returns(false);
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.IsTrue(_status.Template.CashOutHistory.Visible);
+        }
+
+        [Test]
+        public void BuildCashOutHistory_WhenShowHistory_TransIdIsTransId()
+        {
+            // Arrange
+            _ticketHelper.HideStatusCashOutHistory.Returns(false);
+            _ticket.TransId = 100;
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual(_ticket.TransId.ToString(), _status.Template.CashOutHistory.transId);
+        }
+
+        [Test]
+        public void BuildCashOutHistory_WhenShowHistory_RefNoIsRefNo()
+        {
+            // Arrange
+            _ticketHelper.HideStatusCashOutHistory.Returns(false);
+            _ticket.RefNo = "100";
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual(_ticket.RefNo, _status.Template.CashOutHistory.refNo);
+        }
+
+        [Test]
+        public void BuildCashOutHistory_WhenShowHistory_BetTypeIsBetType()
+        {
+            // Arrange
+            _ticketHelper.HideStatusCashOutHistory.Returns(false);
+            _ticket.BetTypeId = 1;
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual(_ticket.BetTypeId.ToString(), _status.Template.CashOutHistory.betType);
+        }
+
+        [Test]
+        public void BuildCashOutHistory_WhenShowHistory_BetdaqIdIsBetdaqId()
+        {
+            // Arrange
+            _ticketHelper.HideStatusCashOutHistory.Returns(false);
+            _ticket.BetdaqId = 1;
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual(_ticket.BetdaqId.ToString(), _status.Template.CashOutHistory.betdaqId);
+        }
+
         [TestCase("Void")]
         [TestCase("Refund")]
         public void BuildResultLRF_StatusIsVoidOrRefund_RemoveHtmlTag(string status)

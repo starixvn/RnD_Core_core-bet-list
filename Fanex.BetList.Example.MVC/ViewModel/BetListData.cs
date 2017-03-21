@@ -22,5 +22,7 @@
         public string Language { get; set; }
 
         public string Name { get; set; }
+
+        public string DataFilePath { get; set; }
     }
 }

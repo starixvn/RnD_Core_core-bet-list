@@ -44,6 +44,8 @@ namespace Fanex.BetList.Example.MVC.Controllers
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             DataSourcePath = "~/App_Data/BetListDummyData.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
             return View(model);
         }
 
@@ -53,6 +55,8 @@ namespace Fanex.BetList.Example.MVC.Controllers
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             DataSourcePath = "~/App_Data/BetListDummyData.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
             return BetListView(model);
         }
 
@@ -62,6 +66,8 @@ namespace Fanex.BetList.Example.MVC.Controllers
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             DataSourcePath = "~/App_Data/11NewBetTypeData.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
             return BetListView(model);
         }
 
@@ -86,6 +92,8 @@ namespace Fanex.BetList.Example.MVC.Controllers
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             DataSourcePath = "~/App_Data/60NewBetTypeBetRadarData.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
             return BetListView(model);
         }
 
@@ -96,6 +104,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             DataSourcePath = "~/App_Data/SportingSolutionBetTypesData.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
 
             return BetListView(model);
         }
@@ -118,6 +127,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             DataSourcePath = "~/App_Data/MetricGamming.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
 
             return BetListView(model);
         }
@@ -129,6 +139,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             DataSourcePath = "~/App_Data/MicroGamming.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
 
             return BetListView(model);
         }
@@ -140,6 +151,8 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
             return BetListView(model);
         }
 
@@ -151,6 +164,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
 
             return BetListView(model);
         }
@@ -162,6 +176,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             DataSourcePath = "~/App_Data/CockFighting.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
 
             return BetListView(model);
         }
@@ -173,6 +188,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             DataSourcePath = "~/App_Data/ColossusBets.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
 
             return BetListView(model);
         }
@@ -190,6 +206,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
             DataSourcePath = "~/App_Data/GlobalGaming.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
 
             return BetListView(model);
         }
@@ -201,6 +218,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             DataSourcePath = "~/App_Data/BetTrade.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
 
             return BetListView(model);
         }
@@ -212,6 +230,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             DataSourcePath = "~/App_Data/MyanmarOdds.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
 
             return BetListView(model);
         }
@@ -223,6 +242,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             DataSourcePath = "~/App_Data/PHAllInOne.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
 
             return BetListView(model);
         }
@@ -238,6 +258,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             DataSourcePath = "~/App_Data/PHAllInOneP2.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
 
             return BetListView(model);
         }
@@ -247,6 +268,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
             ViewBag.BetTypes = new List<SelectListItem>();
             DataSourcePath = "~/App_Data/PHAllInOneP2b.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
 
             return BetListView(model);
         }
@@ -257,6 +279,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
             ViewBag.BetTypes = CreateRNGDropDown();
             model = GetDataSource(model, DataSourcePath);
+            model.DataFilePath = DataSourcePath;
 
             return BetListView(model);
         }
@@ -290,6 +313,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
             ViewBag.BetTypes = CreateSelectListItem(_dataService.QueryBetTypes(221, 222, 223, 224, 225));
             model = GetDataSource(model, DataSourcePath);
+            model.DataFilePath = DataSourcePath;
 
             return BetListView(model);
         }
@@ -300,6 +324,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
             ViewBag.BetTypes = new List<SelectListItem>();
             model = GetDataSource(model, DataSourcePath);
+            model.DataFilePath = DataSourcePath;
 
             return BetListView(model);
         }
@@ -322,6 +347,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             DataSourcePath = "~/App_Data/LiveSports.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
 
             return BetListView(model);
         }
@@ -333,6 +359,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             DataSourcePath = "~/App_Data/VirtualSports.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
 
             return BetListView(model);
         }
@@ -355,6 +382,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             DataSourcePath = "~/App_Data/CashOut.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
 
             return BetListView(model);
         }
@@ -459,6 +487,24 @@ namespace Fanex.BetList.Example.MVC.Controllers
             Response.Clear();
             Response.BinaryWrite(excelStream.GetBuffer());
             Response.End();
+        }
+
+        public void DownloadExcelFile(string dataFilePath)
+        {
+            FileInfo file = new FileInfo(Server.MapPath(dataFilePath));
+
+            if (file.Exists)
+            {
+                Response.Clear();
+                Response.ClearHeaders();
+                Response.ClearContent();
+                Response.AddHeader("content-disposition", "attachment; filename=" + file.Name);
+                Response.AddHeader("Content-Type", "application/Excel");
+                Response.ContentType = "application/vnd.xls";
+                Response.AddHeader("Content-Length", file.Length.ToString());
+                Response.WriteFile(file.FullName);
+                Response.End();
+            }
         }
     }
 }

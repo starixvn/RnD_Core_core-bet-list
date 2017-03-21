@@ -352,6 +352,21 @@
             Assert.AreEqual(_ticket.BetTypeId.ToString(), _status.Template.CashOutHistory.betType);
         }
 
+        [Test]
+        public void BuildCashOutHistory_WhenShowHistory_BetdaqIdIsBetdaqId()
+        {
+            // Arrange
+            ArrangeCashOutTicket(0, "<p25 s=\"1000\" a=\"1000\"/>");
+            _ticketHelper.HideStatusCashOutHistory.Returns(false);
+            _ticket.BetdaqId = 1;
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual(_ticket.BetdaqId.ToString(), _status.Template.CashOutHistory.betdaqId);
+        }
+
         private void ArrangeCashOutTicket(long betdaqId, string extraInfo, decimal originalStake = 0)
         {
             _ticket.BetdaqId = betdaqId;
