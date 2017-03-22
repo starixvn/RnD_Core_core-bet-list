@@ -4,7 +4,7 @@
     using Entities;
 
     /// <summary>
-    /// BAIO - 1H Race to X
+    /// BAIO - 1H Race to X Points
     /// </summary>
     public class Choice606 : Choice603
     {

@@ -20,59 +20,59 @@
             switch (ticket.BetTeam.ToLowerInvariant())
             {
                 case BetTeamValue.H1to2:
-                    betTeam = Template.Match.homeTeam + ticketHelper.GetResourceData(BasketballRefId, "1-2");
+                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "1-2"), Template.Match.homeTeam);
                     break;
 
                 case BetTeamValue.H3to6:
-                    betTeam = Template.Match.homeTeam + ticketHelper.GetResourceData(BasketballRefId, "3-6");
+                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "3-6"), Template.Match.homeTeam);
                     break;
 
                 case BetTeamValue.H7to9:
-                    betTeam = Template.Match.homeTeam + ticketHelper.GetResourceData(BasketballRefId, "7-9");
+                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "7-9"), Template.Match.homeTeam);
                     break;
 
                 case BetTeamValue.H10to13:
-                    betTeam = Template.Match.homeTeam + ticketHelper.GetResourceData(BasketballRefId, "10-13");
+                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "10-13"), Template.Match.homeTeam);
                     break;
 
                 case BetTeamValue.H14to16:
-                    betTeam = Template.Match.homeTeam + ticketHelper.GetResourceData(BasketballRefId, "14-16");
+                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "14-16"), Template.Match.homeTeam);
                     break;
 
                 case BetTeamValue.H17to20:
-                    betTeam = Template.Match.homeTeam + ticketHelper.GetResourceData(BasketballRefId, "17-20");
+                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "17-20"), Template.Match.homeTeam);
                     break;
 
                 case BetTeamValue.H21Over:
-                    betTeam = Template.Match.homeTeam + ticketHelper.GetResourceData(BasketballRefId, "21+");
+                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "21+"), Template.Match.homeTeam);
                     break;
 
                 case BetTeamValue.A1to2:
-                    betTeam = Template.Match.awayTeam + ticketHelper.GetResourceData(BasketballRefId, "1-2");
+                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "1-2"), Template.Match.awayTeam);
                     break;
 
                 case BetTeamValue.A3to6:
-                    betTeam = Template.Match.awayTeam + ticketHelper.GetResourceData(BasketballRefId, "3-6");
+                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "3-6"), Template.Match.awayTeam);
                     break;
 
                 case BetTeamValue.A7to9:
-                    betTeam = Template.Match.awayTeam + ticketHelper.GetResourceData(BasketballRefId, "7-9");
+                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "7-9"), Template.Match.awayTeam);
                     break;
 
                 case BetTeamValue.A10to13:
-                    betTeam = Template.Match.awayTeam + ticketHelper.GetResourceData(BasketballRefId, "10-13");
+                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "10-13"), Template.Match.awayTeam);
                     break;
 
                 case BetTeamValue.A14to16:
-                    betTeam = Template.Match.awayTeam + ticketHelper.GetResourceData(BasketballRefId, "14-16");
+                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "14-16"), Template.Match.awayTeam);
                     break;
 
                 case BetTeamValue.A17to20:
-                    betTeam = Template.Match.awayTeam + ticketHelper.GetResourceData(BasketballRefId, "17-20");
+                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "17-20"), Template.Match.awayTeam);
                     break;
 
                 case BetTeamValue.A21Over:
-                    betTeam = Template.Match.awayTeam + ticketHelper.GetResourceData(BasketballRefId, "21+");
+                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "21+"), Template.Match.awayTeam);
                     break;
             }
 

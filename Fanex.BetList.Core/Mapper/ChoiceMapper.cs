@@ -104,7 +104,7 @@
 
             MapForFastMarkets();
 
-            MapForBasketallAIO();
+            MapForBasketBallAIO();
         }
 
         private void MapForFastMarkets()
@@ -115,7 +115,7 @@
             }
         }
 
-        private void MapForBasketallAIO()
+        private void MapForBasketBallAIO()
         {
             // FT Which team to score the first basket (604)
             MapIdToBaseId(604, 603);
@@ -123,10 +123,10 @@
             // FT Which team to score the last basket (605)
             MapIdToBaseId(605, 603);
 
-            // 2H Race to X (607)
+            // 2H Race to X Points (607)
             MapIdToBaseId(607, 606);
 
-            // Quarter X Race to YY (613)
+            // Quarter X Race to YY  Points (613)
             MapIdToBaseId(613, 606);
 
             // Quarter X Home Team Over Under (615)
