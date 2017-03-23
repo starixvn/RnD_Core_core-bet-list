@@ -43,7 +43,8 @@
             var template = GetResult(render, ticket);
 
             var cashOutLabelHtml = string.Format(CashOutLabelHtmlFormat, BuildCashOutLabel(ticket.RefNo));
-            template.SetValue(cashOutLabelHtml + template);
+
+            template.betTeam = cashOutLabelHtml + template.betTeam;
 
             return template;
         }

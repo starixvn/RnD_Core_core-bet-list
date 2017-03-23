@@ -193,25 +193,23 @@
                 ticket.Winlost = Convert.ToDecimal(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.Winlost)));
                 ticket.WinlostDate = Convert.ToDateTime(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.WinlostDate)));
                 ticket.TransDesc = this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.TransDesc));
-                ticket.OriginalBetType = Convert.ToInt32(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.OriginalBetType)));
-                ticket.BetdaqId = Convert.ToInt64(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.BetdaqId)));
-                ticket.ExtraInfo = this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.ExtraInfo));
-                ticket.OriginalStake = Convert.ToDecimal(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.OriginalStake)));
                 try
                 {
                     ticket.OddsSpread = Convert.ToDecimal(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.OddsSpread)));
                 }
                 catch
                 {
-                    return ticket;
+                    ticket.OriginalBetType = Convert.ToInt32(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.OriginalBetType)));
+                    ticket.BetdaqId = Convert.ToInt64(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.BetdaqId)));
+                    ticket.ExtraInfo = this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.ExtraInfo));
+                    ticket.OriginalStake = Convert.ToDecimal(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.OriginalStake)));
                 }
-
-                return ticket;
             }
             catch
             {
-                return ticket;
             }
+
+            return ticket;
         }
 
         /// <summary>

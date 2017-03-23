@@ -41,9 +41,9 @@
             var cashOutLabelHtml = "<div class=\"underdog\">Cash out from No.: 10000</div>";
             var choice = new Choice6();
             var originalBetTypeTemplate = choice.Render(_ticket, _ticketHelper, null, false);
-            var expectedTemplate = cashOutLabelHtml + originalBetTypeTemplate;
+            originalBetTypeTemplate.betTeam = cashOutLabelHtml + originalBetTypeTemplate.betTeam;
 
-            Assert.AreEqual(expectedTemplate, template.ToString());
+            Assert.AreEqual(originalBetTypeTemplate.ToString(), template.ToString());
         }
 
         [Test]
