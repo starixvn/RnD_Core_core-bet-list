@@ -42,7 +42,7 @@
 
             var template = GetResult(render, ticket);
 
-            var cashOutLabelHtml = string.Format(CashOutLabelHtmlFormat, BuildCashOutLabel(ticket.RefNo));
+            var cashOutLabelHtml = string.Format(CashOutLabelHtmlFormat, BuildCashOutLabel(ticket));
 
             template.betTeam = cashOutLabelHtml + template.betTeam;
 
@@ -58,11 +58,11 @@
 
             var template = GetResult(renderRTF, ticket);
 
-            return new List<IRichTextString> { AddCashOutLabel(template[0], ticket.RefNo, rtfHelper) };
+            return new List<IRichTextString> { AddCashOutLabel(template[0], ticket, rtfHelper) };
         }
 
-        protected virtual string BuildCashOutLabel(string originalTicketRefNo)
-            => CoreBetList.CashOutLabel + " " + originalTicketRefNo;
+        protected virtual string BuildCashOutLabel(ITicket ticket)
+            => CoreBetList.CashOutLabel + " " + ticket.RefNo;
 
         private T GetResult<T>(Func<IChoice, T> render, ITicket ticket)
         {
@@ -87,9 +87,9 @@
             return builder.CreateChoiceBuilder(betType);
         }
 
-        private IRichTextString AddCashOutLabel(IRichTextString originalTicketChoice, string originalTicketRefNo, RTFHelper rtfHelper)
+        private IRichTextString AddCashOutLabel(IRichTextString originalTicketChoice, ITicket ticket, RTFHelper rtfHelper)
         {
-            var cashOutLabel = $"{BuildCashOutLabel(originalTicketRefNo)}\n";
+            var cashOutLabel = $"{BuildCashOutLabel(ticket)}\n";
             var formattingRuns = rtfHelper.GetFormattingRuns(originalTicketChoice);
             var text = new HSSFRichTextString(cashOutLabel + originalTicketChoice.String);
 

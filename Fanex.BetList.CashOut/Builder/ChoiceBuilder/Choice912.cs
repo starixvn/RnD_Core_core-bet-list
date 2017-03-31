@@ -1,10 +1,11 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using App_GlobalResources;
+    using Entities;
 
     public class Choice912 : Choice911
     {
-        protected override string BuildCashOutLabel(string originalTicketRefNo)
-            => CoreBetList.BoughtLabel + " " + originalTicketRefNo;
+        protected override string BuildCashOutLabel(ITicket ticket)
+            => CoreBetList.BoughtLabel + " " + ticket.BetdaqId;
     }
 }
