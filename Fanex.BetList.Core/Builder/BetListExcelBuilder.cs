@@ -485,7 +485,7 @@ namespace Fanex.BetList.Core.Builder
 
             RTFHelper.NormalFontCrossed.IsStrikeout = RTFHelper.PosFontCrossed.IsStrikeout = RTFHelper.NegFontCrossed.IsStrikeout = true;
 
-            RTFHelper.NegFont.Color = RTFHelper.NegFontCrossed.Color = IndexedColors.Red.Index;
+            RTFHelper.NegFont.Color = RTFHelper.NegFontCrossed.Color = (short)FontColor.Red;
         }
 
         /// <summary>
