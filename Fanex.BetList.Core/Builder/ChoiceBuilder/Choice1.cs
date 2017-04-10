@@ -366,7 +366,14 @@
                 return;
             }
 
-            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.RefNo);
+            var refNo = ticket.RefNo;
+
+            if (IsCashOutBetTicket(ticket) && !IsOutRight(ticket.BetTypeId))
+            {
+                refNo = CommonValue.RefNoDefault;
+            }
+
+            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, refNo);
         }
 
         /// <summary>
@@ -774,6 +781,12 @@
                 awayFGLG += lastTextName;
             }
         }
+
+        private bool IsCashOutBetTicket(ITicket ticket) => ticket.BetdaqId == 1 && !IsBetTrade(ticket.BetTypeId);
+
+        private bool IsOutRight(int betTypeId) => betTypeId == 10;
+
+        private bool IsBetTrade(int betTypeId) => betTypeId == 901 || betTypeId == 902;
 
         #endregion Private function
     }

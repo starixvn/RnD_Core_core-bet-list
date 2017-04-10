@@ -200,8 +200,7 @@
             var htmlDoc = new HtmlDocument();
             htmlDoc.LoadHtml(pageContent);
 
-            var tableBodyNode = htmlDoc.DocumentNode?.Descendants("table")?.FirstOrDefault()
-                .Descendants("tbody")?.FirstOrDefault();
+            var tableBodyNode = htmlDoc.DocumentNode?.Descendants("table")?.FirstOrDefault().Descendants("tbody")?.FirstOrDefault();
 
             var rows = tableBodyNode?.Descendants("tr");
 

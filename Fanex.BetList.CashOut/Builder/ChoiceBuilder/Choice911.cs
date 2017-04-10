@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using App_GlobalResources;
     using Builder;
+    using Constants;
     using Entities;
     using NPOI.HSSF.UserModel;
     using NPOI.SS.UserModel;
@@ -11,7 +12,6 @@
 
     public class Choice911 : IChoice
     {
-        private const string RefNoDefault = "100000000000";
         private const string CashOutLabelHtmlFormat = "<div class=\"underdog\">{0}</div>";
 
         public Choice911()
@@ -69,7 +69,7 @@
             var bettypeId = ticket.BetTypeId;
             ticket.BetTypeId = ticket.OriginalBetType;
             var refNo = ticket.RefNo;
-            ticket.RefNo = RefNoDefault;
+            ticket.RefNo = CommonValue.RefNoDefault;
 
             var choice = CreateChoice(ticket.BetTypeId);
             var result = render(choice);

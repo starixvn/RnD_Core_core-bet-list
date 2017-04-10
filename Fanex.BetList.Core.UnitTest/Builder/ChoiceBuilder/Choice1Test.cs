@@ -960,11 +960,47 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.BetTeam = "a";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             string expectedBetTeamClassName = "favorite light-blue";
             Assert.AreEqual(expectedBetTeamClassName, _choice.Template.betTeamClassName);
+        }
+
+        [Test]
+        public void BuildBetType_RefNoIsNotDefault_IsCashOutBetTicket_NotShowViaLucky()
+        {
+            // Arrange
+            _ticket.RefNo = "132434324234";
+            _ticket.BetdaqId = 1;
+            _ticketHelper.GetBetTypeNameById(
+                Arg.Any<object>(),
+                Arg.Is<object>(refNo => refNo.ToString() != "100000000000")).Returns("Via Lucky");
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreNotEqual("Via Lucky", _choice.Template.BetType.betTypeName);
+        }
+
+        [TestCase(10)]
+        [TestCase(901)]
+        [TestCase(902)]
+        public void BuildBetType_IsOutRightOrBetTrade_CallGetBetTypeWithTicketRefNo(int betTypeId)
+        {
+            // Arrange
+            _ticket.RefNo = "132434324234";
+            _ticket.BetdaqId = 1;
+            _ticket.BetTypeId = betTypeId;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            _ticketHelper.Received().GetBetTypeNameById(
+                Arg.Is<object>(betType => (int)betType == _ticket.BetTypeId),
+                Arg.Is<object>(refNo => refNo.ToString() == _ticket.RefNo));
         }
     }
 }
