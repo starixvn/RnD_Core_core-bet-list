@@ -268,7 +268,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cash out.
+        ///   Looks up a localized string similar to Cash Out.
         /// </summary>
         public static string CashOut {
             get {
@@ -277,7 +277,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cash out from No.:.
+        ///   Looks up a localized string similar to Cash Out from No.:.
         /// </summary>
         public static string CashOutLabel {
             get {

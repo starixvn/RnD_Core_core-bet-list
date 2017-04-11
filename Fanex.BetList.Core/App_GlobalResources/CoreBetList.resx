@@ -843,9 +843,9 @@
     <value>Bought from No.:</value>
   </data>
   <data name="CashOut" xml:space="preserve">
-    <value>Cash out</value>
+    <value>Cash Out</value>
   </data>
   <data name="CashOutLabel" xml:space="preserve">
-    <value>Cash out from No.:</value>
+    <value>Cash Out from No.:</value>
   </data>
 </root>

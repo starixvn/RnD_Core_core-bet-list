@@ -53,7 +53,7 @@ namespace Fanex.BetList.Core
 			protected static string s5 = ", ";
 			public string betdaqId = "{betdaqId}";
 			protected static string s6 = ")\">";
-			protected static string s7{get{return App_GlobalResources.CoreBetList.history;}}
+			protected static string s7{get{return App_GlobalResources.CoreBetList.details;}}
 			protected static string s8 = "</div>";
 			public override void ToString(ref StringBuilder bd)
 			{
