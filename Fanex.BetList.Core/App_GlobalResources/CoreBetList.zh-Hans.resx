@@ -121,10 +121,10 @@
     <value>客</value>
   </data>
   <data name="ad" xml:space="preserve">
-    <value>客和</value>
+    <value>客/和局</value>
   </data>
   <data name="ah" xml:space="preserve">
-    <value>客主</value>
+    <value>客/主</value>
   </data>
   <data name="all" xml:space="preserve">
     <value>全部</value>
@@ -202,13 +202,13 @@
     <value>和</value>
   </data>
   <data name="da" xml:space="preserve">
-    <value>和客</value>
+    <value>和局/客</value>
   </data>
   <data name="date" xml:space="preserve">
     <value>日期</value>
   </data>
   <data name="dd" xml:space="preserve">
-    <value>和和</value>
+    <value>和局/和局</value>
   </data>
   <data name="dec" xml:space="preserve">
     <value>12月</value>
@@ -295,16 +295,16 @@
     <value>主</value>
   </data>
   <data name="ha" xml:space="preserve">
-    <value>主客</value>
+    <value>主/客</value>
   </data>
   <data name="hd" xml:space="preserve">
-    <value>主和</value>
+    <value>主/和局</value>
   </data>
   <data name="hdp" xml:space="preserve">
     <value>让球</value>
   </data>
   <data name="hh" xml:space="preserve">
-    <value>主主</value>
+    <value>主/主</value>
   </data>
   <data name="high" xml:space="preserve">
     <value>高</value>
@@ -809,5 +809,11 @@
   </data>
   <data name="Live" xml:space="preserve">
     <value>滚球</value>
+  </data>
+  <data name="aa" xml:space="preserve">
+    <value>客/客</value>
+  </data>
+  <data name="dh" xml:space="preserve">
+    <value>和局/主</value>
   </data>
 </root>

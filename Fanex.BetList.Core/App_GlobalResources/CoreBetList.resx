@@ -830,4 +830,10 @@
   <data name="Live" xml:space="preserve">
     <value>Live</value>
   </data>
+  <data name="aa" xml:space="preserve">
+    <value>AA</value>
+  </data>
+  <data name="dh" xml:space="preserve">
+    <value>DH</value>
+  </data>
 </root>

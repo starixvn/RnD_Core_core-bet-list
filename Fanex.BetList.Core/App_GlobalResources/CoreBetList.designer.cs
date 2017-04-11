@@ -70,6 +70,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to AA.
+        /// </summary>
+        public static string aa {
+            get {
+                return ResourceManager.GetString("aa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to AD.
         /// </summary>
         public static string ad {
@@ -399,6 +408,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string details {
             get {
                 return ResourceManager.GetString("details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DH.
+        /// </summary>
+        public static string dh {
+            get {
+                return ResourceManager.GetString("dh", resourceCulture);
             }
         }
         
