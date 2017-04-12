@@ -1,5 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Entities
 {
+    using System;
     using System.Collections.Generic;
 
     public delegate string GetCachePropertyById(object id);
@@ -68,7 +69,7 @@
         /// </summary>
         /// <param name="ip">The IP to check.</param>
         /// <returns><c>true</c> if [IP is from VN]; otherwise, <c>false</c>.</returns>
-        bool IsVnIp(string ip);
+        Func<string, bool> IsVnIp { get; set; }
 
         #region METHODS TO RESOLVE NAMES FROM IDS
 

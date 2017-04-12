@@ -1,7 +1,6 @@
 ﻿namespace Fanex.BetList.Core.TicketHelper
 {
     using Entities;
-    using Sunplus.Core.Common.IPs;
     using System;
     using System.Collections.Generic;
 
@@ -40,6 +39,8 @@
         public bool ShowSystemParlayDetail { get; set; }
 
         public bool ShowSystemParlayPlayerComm { get; set; }
+
+        public Func<string, bool> IsVnIp { get; set; }
 
         /// <summary>
         /// Gets or sets Method to get *Parlay details.
@@ -117,11 +118,6 @@
         public string GetRouletteBetItemNameById(object itemId)
         {
             return CacheRef.GetRouletteBetItem(itemId);
-        }
-
-        public bool IsVnIp(string ip)
-        {
-            return IpUtils.IsVnIp(ip);
         }
 
         /// <summary>

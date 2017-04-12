@@ -167,21 +167,16 @@
         /// <param name="isShowVNIP">If set to <c>true</c> [is show VNIP].</param>
         protected virtual void BuildIP(ITicket ticket, ITicketHelper ticketHelper, bool isShowVNIP)
         {
-            if (isShowVNIP)
+            if (!isShowVNIP)
             {
-                Template.ShowIP.betIp = ticket.IP;
-            }
-            else
-            {
-                if (ticketHelper.IsVnIp(ticket.IP))
+                if (ticketHelper.IsVnIp != null && ticketHelper.IsVnIp(ticket.IP))
                 {
                     Template.ShowIP.Hide();
-                }
-                else
-                {
-                    Template.ShowIP.betIp = ticket.IP;
+                    return;
                 }
             }
+
+            Template.ShowIP.betIp = ticket.IP;
         }
 
         protected virtual void BuildResultLRF(string status, RTFHelper rtfHelper)

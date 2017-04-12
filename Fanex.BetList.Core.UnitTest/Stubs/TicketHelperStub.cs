@@ -40,10 +40,6 @@ namespace Fanex.BetList.Core.UnitTest.Stubs
 
         public bool HideStatusCashOutHistory { get; set; }
 
-        public bool IsVnIp(string ip)
-        {
-            return ip == "vn-ip";
-        }
 
         public string GetLeagueNameById(object leagueId)
         {
