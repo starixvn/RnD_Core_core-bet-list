@@ -9,7 +9,7 @@
     /// </summary>
     public class Choice16 : Choice1
     {
-        private readonly Dictionary<string, string> BetTeamPatterns
+        private readonly Dictionary<string, string> betTeamPatterns
                 = new Dictionary<string, string>
                 {
                     { "0:0", CoreBetList.dd },
@@ -26,8 +26,8 @@
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             Template.betTeam =
-                (!string.IsNullOrWhiteSpace(ticket.BetTeam) && BetTeamPatterns.ContainsKey(ticket.BetTeam))
-                ? BetTeamPatterns[ticket.BetTeam]
+                (!string.IsNullOrWhiteSpace(ticket.BetTeam) && betTeamPatterns.ContainsKey(ticket.BetTeam))
+                ? betTeamPatterns[ticket.BetTeam]
                 : string.Empty;
         }
 

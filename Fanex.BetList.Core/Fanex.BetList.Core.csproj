@@ -455,6 +455,7 @@
     <Compile Include="Builder\StatusBuilder\Status32.cs" />
     <Compile Include="Builder\StatusBuilder\Status33.cs" />
     <Compile Include="Builder\StatusBuilder\Status500.cs" />
+    <Compile Include="Builder\StatusBuilder\Status606.cs" />
     <Compile Include="Builder\StatusBuilder\Status71.cs" />
     <Compile Include="Builder\StatusBuilder\Status73.cs" />
     <Compile Include="Builder\StatusBuilder\Status9.cs" />

@@ -393,6 +393,7 @@
     <Content Include="App_Data\NumberGame.xls" />
     <Content Include="App_Data\LiveSports.xls" />
     <Content Include="App_Data\VirtualSports.xls" />
+    <Content Include="App_Data\BasketballAIO.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
