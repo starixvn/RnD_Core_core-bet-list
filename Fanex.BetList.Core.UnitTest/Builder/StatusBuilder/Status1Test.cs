@@ -42,6 +42,30 @@
             Assert.AreEqual(expectedResult, _status.Template.result);
         }
 
+        [TestCase("", "Cash Out")]
+        [TestCase("running", "Cash Out")]
+        [TestCase("reject", "Cash Out")]
+        [TestCase("won", "Cash Out")]
+        [TestCase("lose", "Cash Out")]
+        [TestCase("draw", "Cash Out")]
+        [TestCase("waiting", "Cash Out")]
+        [TestCase("void", "Void")]
+        [TestCase("refund", "Refund")]
+        public void BuildResult_IsCashOutAllTicket_Result(string status, string expectedResult)
+        {
+            // Arrange
+            _ticket.Status = status;
+            _ticket.Stake = 0;
+            _ticket.BetdaqId = 0;
+            _ticket.ExtraInfo = "<p25 />";
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            Assert.AreEqual(expectedResult, _status.Template.result);
+        }
+
         [TestCase("running")]
         [TestCase("waiting")]
         [TestCase("void")]

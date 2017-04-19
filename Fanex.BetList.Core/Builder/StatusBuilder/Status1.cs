@@ -114,15 +114,17 @@
 
         protected virtual void BuildResult(ITicket ticket, List<ITicketData> ticketData)
         {
-            Template.result = ticket.Status.ToLower(CultureInfo.InvariantCulture);
-            string result = GetResultString(ticket.Status);
+            var result = ticket.Status.ToLower(CultureInfo.InvariantCulture);
+            var resultText = GetResultString(ticket.Status);
+
+            Template.result = result;
 
             if (!string.IsNullOrEmpty(result))
             {
-                Template.result = result;
+                Template.result = resultText;
             }
 
-            if (IsCashOutOriginalTicket(ticket) && ticket.Stake == 0)
+            if (IsCashOutOriginalTicket(ticket) && ticket.Stake == 0 && IsStatusNotVoidAndRefund(result))
             {
                 Template.result = CoreBetList.CashOut;
             }
@@ -221,5 +223,7 @@
 
         private bool IsBetTradeTicket(int betTypeId)
             => betTypeId == 901 || betTypeId == 902;
+
+        private bool IsStatusNotVoidAndRefund(string status) => !status.Equals(BetStatus.Void) && !status.Equals(BetStatus.Refund);
     }
 }

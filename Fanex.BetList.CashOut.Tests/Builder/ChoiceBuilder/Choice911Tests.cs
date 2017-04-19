@@ -38,7 +38,7 @@
 
             // Assert
             _ticket.BetTypeId = 6;
-            var cashOutLabelHtml = "<div class=\"underdog\">Cash out from No.: 10000</div>";
+            var cashOutLabelHtml = "<div class=\"underdog\">Cash Out from No.: 10000</div>";
             var choice = new Choice6();
             var originalBetTypeTemplate = choice.Render(_ticket, _ticketHelper, null, false);
             originalBetTypeTemplate.betTeam = cashOutLabelHtml + originalBetTypeTemplate.betTeam;
@@ -73,7 +73,7 @@
 
             // Assert
             var choice = new Choice1();
-            var cashOutLabel = "Cash out from No.: 10000";
+            var cashOutLabel = "Cash Out from No.: 10000";
             var originalBetTypeTemplate = choice.RenderRTF(_ticket, _ticketHelper, null, false, _rtfHelper);
             var expectedTemplate = cashOutLabel + "\n" + originalBetTypeTemplate[0].String;
             Assert.AreEqual(expectedTemplate, template[0].String);
