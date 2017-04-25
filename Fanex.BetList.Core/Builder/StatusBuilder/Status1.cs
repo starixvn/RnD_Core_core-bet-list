@@ -124,7 +124,7 @@
                 Template.result = resultText;
             }
 
-            if (IsCashOutOriginalTicket(ticket) && ticket.Stake == 0 && IsStatusNotVoidAndRefund(result))
+            if (IsCashOutOriginalTicket(ticket) && IsCashOutAll(ticket) && IsStatusNotVoidAndRefund(result))
             {
                 Template.result = CoreBetList.CashOut;
             }
@@ -225,5 +225,9 @@
             => betTypeId == 901 || betTypeId == 902;
 
         private bool IsStatusNotVoidAndRefund(string status) => !status.Equals(BetStatus.Void) && !status.Equals(BetStatus.Refund);
+
+        private bool IsCashOutAll(ITicket ticket) => ticket.Stake == 0 && StakeIsZeroBeforeConvertCurrency(ticket);
+
+        private bool StakeIsZeroBeforeConvertCurrency(ITicket ticket) => ticket.OriginalBetType != -1;
     }
 }

@@ -114,7 +114,7 @@
 
         public string Currency { get; set; }
 
-        public decimal OriginalStake { get; set; }
+        public decimal OriginalStake { get; set; } = -1;
 
         public int OriginalBetType { get; set; }
 

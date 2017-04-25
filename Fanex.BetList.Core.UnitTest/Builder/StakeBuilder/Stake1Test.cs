@@ -81,7 +81,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
         public void BuildOriginalStake_IsCashOut_OriginalStakeIsSmallerThanZero_ShowStakeFromExtraInfo(string extraInfo, decimal expectedStake)
         {
             // Arrange
-            ArrangeCashOutTicket(0, extraInfo, 0);
+            ArrangeCashOutTicket(0, extraInfo, -1);
 
             // Act
             var template = _stake.Render(_ticket);
@@ -120,7 +120,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             Assert.AreEqual(expectedTemplate, template.String);
         }
 
-        private void ArrangeCashOutTicket(long betdaqId, string extraInfo, decimal originalStake = 0)
+        private void ArrangeCashOutTicket(long betdaqId, string extraInfo, decimal originalStake = -1)
         {
             _ticket.BetdaqId = betdaqId;
             _ticket.ExtraInfo = extraInfo;

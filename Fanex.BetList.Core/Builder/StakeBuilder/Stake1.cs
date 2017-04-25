@@ -71,7 +71,7 @@
 
         private decimal GetOriginalStake(ITicket ticket)
         {
-            if (ticket.OriginalStake > 0)
+            if (ticket.OriginalStake >= 0)
             {
                 return ticket.OriginalStake;
             }
