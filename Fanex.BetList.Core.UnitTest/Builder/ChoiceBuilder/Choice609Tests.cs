@@ -54,5 +54,20 @@
             var expectedHandicap = ConvertByBetType.Hdp(1 - 2);
             Assert.AreEqual(expectedHandicap, _choice.Template.Handicap.handicap);
         }
+
+        [Test]
+        public void BuildBetTeamClassNameAndHandicap_HandicapeIsZero_ShowUnderdogColorBetTeam()
+        {
+            // Arrange
+            _ticket.BetTeam = BetTeamValue.H;
+            _ticket.Handicap2 = 2;
+            _ticket.Handicap1 = 2;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual("underdog", _choice.Template.betTeamClassName);
+        }
     }
 }

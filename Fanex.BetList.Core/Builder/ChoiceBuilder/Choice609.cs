@@ -16,6 +16,7 @@
                 ticket.Handicap2 - ticket.Handicap1 :
                 ticket.Handicap1 - ticket.Handicap2;
 
+            Template.betTeamClassName = handicap == 0 ? Underdog : Template.betTeamClassName;
             Template.Handicap.handicap = ConvertByBetType.Hdp(handicap);
         }
     }
