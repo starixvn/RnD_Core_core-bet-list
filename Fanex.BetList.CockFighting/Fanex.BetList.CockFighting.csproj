@@ -66,9 +66,6 @@
   <ItemGroup>
     <None Include="Fanex.BetList.CockFighting.Debug.ruleset" />
     <None Include="Fanex.BetList.CockFighting.ruleset" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Resources\CockFightingLang.ja-JP.resx" />
     <EmbeddedResource Include="Resources\CockFightingLang.ko-KR.resx" />
     <EmbeddedResource Include="Resources\CockFightingLang.resx">
@@ -83,6 +80,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\CockFighting.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.3.0.2862\analyzers\Google.Protobuf.dll" />

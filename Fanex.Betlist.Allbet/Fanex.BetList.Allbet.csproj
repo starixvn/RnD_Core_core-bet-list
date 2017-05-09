@@ -129,11 +129,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Allbet.css" />
     <None Include="Fanex.BetList.Allbet.ruleset" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Allbet.css" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.3.0.2862\analyzers\Google.Protobuf.dll" />
