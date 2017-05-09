@@ -363,7 +363,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
             return BetListView(model);
         }
-
+        
         public ActionResult BasketballAIO(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(601, 602, 603, 604, 605, 606, 607, 608, 609, 610, 611, 612, 613, 614, 615, 616, 617);
@@ -383,6 +383,18 @@ namespace Fanex.BetList.Example.MVC.Controllers
             DataSourcePath = "~/App_Data/CashOut.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+        
+        public ActionResult Lucky3(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes(1600);
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            DataSourcePath = "~/App_Data/Lucky3.xls";
+
+            model = GetDataSource(model, DataSourcePath);
 
             return BetListView(model);
         }

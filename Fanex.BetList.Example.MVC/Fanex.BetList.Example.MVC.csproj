@@ -184,6 +184,7 @@
     <Content Include="Content\images\q_Icon2_1.png" />
     <Content Include="Content\images\q_Icon_2.png" />
     <Content Include="Content\images\ScoreMapWL.png" />
+    <Content Include="Content\lucky3.css" />
     <Content Include="Content\Microgaming.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -418,6 +419,7 @@
     <Content Include="App_Data\BasketballAIO.xls" />
     <Content Include="App_Data\CashOut.xls" />
     <Content Include="App_Data\BetRadarVirtualSports.xls" />
+    <Content Include="App_Data\Lucky3.xls" />
     <Content Include="Fanex.BetList.Example.MVC.ruleset" />
     <Content Include="App_Data\KenoLottery.xls" />
     <Content Include="App_Data\Keno.xls" />
