@@ -110,6 +110,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.CashOut", "Fa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.CashOut.Tests", "Fanex.BetList.CashOut.Tests\Fanex.BetList.CashOut.Tests.csproj", "{18D759F4-244F-40AD-979D-C51BEFD55E2D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SonarQube", "SonarQube", "{DC1380AA-426D-4386-AF09-20F3B7B988B4}"
+	ProjectSection(SolutionItems) = preProject
+		SonarQube\BetListCoreCSharp.ruleset = SonarQube\BetListCoreCSharp.ruleset
+		SonarQube\SolutionBinding.sqconfig = SonarQube\SolutionBinding.sqconfig
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
