@@ -188,17 +188,11 @@
                 ticket.Winlost = Convert.ToDecimal(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.Winlost)));
                 ticket.WinlostDate = Convert.ToDateTime(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.WinlostDate)));
                 ticket.TransDesc = this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.TransDesc));
-                try
-                {
-                    ticket.OddsSpread = Convert.ToDecimal(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.OddsSpread)));
-                }
-                catch (Exception)
-                {
+                ticket.OddsSpread = Convert.ToDecimal(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.OddsSpread), "0"));
                     ticket.OriginalBetType = Convert.ToInt32(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.OriginalBetType)));
                     ticket.BetdaqId = Convert.ToInt64(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.BetdaqId)));
                     ticket.ExtraInfo = this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.ExtraInfo));
                     ticket.OriginalStake = Convert.ToDecimal(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.OriginalStake)));
-                }
             }
             catch (Exception)
             {
@@ -225,6 +219,13 @@
         private string GetCellValue(ICell cell)
         {
             return NPOIUtil.GetValue(cell, _dataFormatter, _formulaEvaluator);
+        }
+
+        private string GetCellValue(ICell cell, string defaultValue)
+        {
+            var cellValue = NPOIUtil.GetValue(cell, _dataFormatter, _formulaEvaluator);
+
+            return string.IsNullOrEmpty(cellValue) ? defaultValue : cellValue;
         }
     }
 }
