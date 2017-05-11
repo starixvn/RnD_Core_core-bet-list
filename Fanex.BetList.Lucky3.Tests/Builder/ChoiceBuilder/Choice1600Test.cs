@@ -54,7 +54,7 @@
             var actualResult = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            string expectHtml = BuildExpectedDetailsLink(_ticket.MatchId, _ticket.TransId, _ticket.CustId, _ticket.BetTypeId);
+            string expectHtml = BuildExpectedDetailsLink(_ticket.TransId, _ticket.CustId);
 
             Assert.True(actualResult.League.ToString().EndsWith(expectHtml, StringComparison.OrdinalIgnoreCase));
         }
@@ -71,7 +71,7 @@
             var actualResult = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            string expectHtml = BuildExpectedDetailsLink(_ticket.MatchId, _ticket.TransId, _ticket.CustId, _ticket.BetTypeId);
+            string expectHtml = BuildExpectedDetailsLink(_ticket.TransId, _ticket.CustId);
 
             Assert.True(actualResult.League.ToString().EndsWith(expectHtml, StringComparison.OrdinalIgnoreCase));
         }
@@ -88,7 +88,7 @@
             var actualResult = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            string expectHtml = BuildExpectedDetailsLink(_ticket.MatchId, _ticket.TransId, _ticket.CustId, _ticket.BetTypeId);
+            string expectHtml = BuildExpectedDetailsLink(_ticket.TransId, _ticket.CustId);
 
             Assert.True(actualResult.League.ToString().EndsWith(expectHtml, StringComparison.OrdinalIgnoreCase));
         }
@@ -105,7 +105,7 @@
             var actualResult = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            string expectHtml = BuildExpectedDetailsLink(_ticket.MatchId, _ticket.TransId, _ticket.CustId, _ticket.BetTypeId);
+            string expectHtml = BuildExpectedDetailsLink(_ticket.TransId, _ticket.CustId);
 
             Assert.True(actualResult.League.ToString().EndsWith(expectHtml, StringComparison.OrdinalIgnoreCase));
         }
@@ -122,7 +122,7 @@
             var actualResult = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            string expectHtml = BuildExpectedDetailsLink(_ticket.MatchId, _ticket.TransId, _ticket.CustId, _ticket.BetTypeId);
+            string expectHtml = BuildExpectedDetailsLink(_ticket.TransId, _ticket.CustId);
 
             Assert.True(actualResult.League.ToString().EndsWith(expectHtml, StringComparison.OrdinalIgnoreCase));
         }
@@ -139,7 +139,7 @@
             var actualResult = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            string expectHtml = BuildExpectedDetailsLink(_ticket.MatchId, _ticket.TransId, _ticket.CustId, _ticket.BetTypeId);
+            string expectHtml = BuildExpectedDetailsLink(_ticket.TransId, _ticket.CustId);
 
             Assert.True(actualResult.League.ToString().EndsWith(expectHtml, StringComparison.OrdinalIgnoreCase));
         }
@@ -158,7 +158,7 @@
             var actualResult = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            string expectHtml = BuildExpectedDetailsLink(_ticket.MatchId, _ticket.TransId, _ticket.CustId, _ticket.BetTypeId);
+            string expectHtml = BuildExpectedDetailsLink(_ticket.TransId, _ticket.CustId);
 
             Assert.False(actualResult.League.ToString().EndsWith(expectHtml, StringComparison.OrdinalIgnoreCase));
         }
@@ -177,16 +177,16 @@
             var actualResult = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            string expectHtml = BuildExpectedDetailsLink(_ticket.MatchId, _ticket.TransId, _ticket.CustId, _ticket.BetTypeId);
+            string expectHtml = BuildExpectedDetailsLink(_ticket.TransId, _ticket.CustId);
 
             Assert.False(actualResult.League.ToString().EndsWith(expectHtml, StringComparison.OrdinalIgnoreCase));
         }
 
-        private string BuildExpectedDetailsLink(int matchId, long transId, long custId, int betTypeId)
+        private string BuildExpectedDetailsLink(long transId, long custId)
         {
             string[] detailsFunctionDivCompositions =
                 {
-                    $"<div class=\"detail lucky3-detail\" onclick=\"showLucky3Details({matchId},{transId},{custId},{betTypeId});\">",
+                    $"<div class=\"detail lucky3-detail\" onclick=\"showLucky3Details({transId},{custId});\">",
                     $"<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void('');\">{CoreBetList.details}</a>",
                     "</div>"
                 };

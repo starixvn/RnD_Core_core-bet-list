@@ -93,7 +93,7 @@
             {
                 string[] detailsFunctionDivCompositions =
                 {
-                    $"<div class=\"detail lucky3-detail\" onclick=\"showLucky3Details({ticket.MatchId},{ticket.TransId},{ticket.CustId},{ticket.BetTypeId});\">",
+                    $"<div class=\"detail lucky3-detail\" onclick=\"showLucky3Details({ticket.TransId},{ticket.CustId});\">",
                     $"<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void('');\">{CoreBetList.details}</a>",
                     "</div>"
                 };
