@@ -68,13 +68,19 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <EmbeddedResource Include="Resources\Lucky3Labels.ja-JP.resx" />
+    <EmbeddedResource Include="Resources\Lucky3Labels.ko-KR.resx" />
     <EmbeddedResource Include="Resources\Lucky3Labels.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Lucky3Labels.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Lucky3Labels.th-TH.resx" />
+    <EmbeddedResource Include="Resources\Lucky3Labels.vi-VN.resx" />
+    <EmbeddedResource Include="Resources\Lucky3Labels.zh-CN.resx" />
+    <EmbeddedResource Include="Resources\Lucky3Labels.zh-TW.resx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Content\lucky3.css" />
+    <Content Include="Content\lucky3.css" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
