@@ -61,7 +61,7 @@ namespace Fanex.BetList.Lucky3.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bet.
+        ///   Looks up a localized string similar to {0} Bet.
         /// </summary>
         internal static string Bet {
             get {
@@ -70,7 +70,7 @@ namespace Fanex.BetList.Lucky3.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bets.
+        ///   Looks up a localized string similar to {0} Bets.
         /// </summary>
         internal static string Bets {
             get {
@@ -79,7 +79,7 @@ namespace Fanex.BetList.Lucky3.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to combination.
+        ///   Looks up a localized string similar to {0} combination.
         /// </summary>
         internal static string Combination {
             get {
@@ -88,7 +88,7 @@ namespace Fanex.BetList.Lucky3.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to combinations.
+        ///   Looks up a localized string similar to {0} combinations.
         /// </summary>
         internal static string Combinations {
             get {
@@ -97,7 +97,7 @@ namespace Fanex.BetList.Lucky3.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No.
+        ///   Looks up a localized string similar to No {0}.
         /// </summary>
         internal static string Number {
             get {

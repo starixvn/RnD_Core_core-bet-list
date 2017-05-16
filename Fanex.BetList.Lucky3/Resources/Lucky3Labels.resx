@@ -118,18 +118,18 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Bet" xml:space="preserve">
-    <value>Bet</value>
+    <value>{0} Bet</value>
   </data>
   <data name="Bets" xml:space="preserve">
-    <value>Bets</value>
+    <value>{0} Bets</value>
   </data>
   <data name="Combination" xml:space="preserve">
-    <value>combination</value>
+    <value>{0} combination</value>
   </data>
   <data name="Combinations" xml:space="preserve">
-    <value>combinations</value>
+    <value>{0} combinations</value>
   </data>
   <data name="Number" xml:space="preserve">
-    <value>No</value>
+    <value>No {0}</value>
   </data>
 </root>

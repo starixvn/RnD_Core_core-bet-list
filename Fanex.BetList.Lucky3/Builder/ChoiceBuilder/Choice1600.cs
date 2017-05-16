@@ -32,7 +32,7 @@
 
         protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
         {
-            Template.Match.SetValue($"{Lucky3Labels.Number} {ticket.MatchCode}");
+            Template.Match.SetValue(string.Format(Lucky3Labels.Number, ticket.MatchCode));
         }
 
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
@@ -68,14 +68,14 @@
 
         protected string BuildCombinations(ITicket ticket)
         {
-            string combinations = $"{ticket.BetId} {(ticket.BetId > 1 ? Lucky3Labels.Combinations : Lucky3Labels.Combination)}";
+            string combinations = string.Format(ticket.BetId > 1 ? Lucky3Labels.Combinations : Lucky3Labels.Combination, ticket.BetId);
 
             return $"{combinations} x {ticket.Currency ?? string.Empty} {ticket.Handicap1}";
         }
 
         protected string BuildBets(ITicket ticket)
         {
-            var bets = $"{ticket.Odds} {(ticket.Odds > 1 ? Lucky3Labels.Bets : Lucky3Labels.Bet)}";
+            var bets = string.Format(ticket.Odds > 1 ? Lucky3Labels.Bets : Lucky3Labels.Bet, ticket.Odds);
 
             return $"<div class=\"num-of-bets\">{bets}</div>";
         }

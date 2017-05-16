@@ -77,6 +77,7 @@
     <EmbeddedResource Include="Resources\Lucky3Labels.th-TH.resx" />
     <EmbeddedResource Include="Resources\Lucky3Labels.vi-VN.resx" />
     <EmbeddedResource Include="Resources\Lucky3Labels.zh-CN.resx" />
+    <EmbeddedResource Include="Resources\Lucky3Labels.zh-Hans.resx" />
     <EmbeddedResource Include="Resources\Lucky3Labels.zh-TW.resx" />
   </ItemGroup>
   <ItemGroup>

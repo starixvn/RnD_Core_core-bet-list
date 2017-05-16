@@ -236,7 +236,7 @@
             var actualResult = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            var expectedMatch = $"{Lucky3Labels.Number} {matchCode}";
+            var expectedMatch = string.Format(Lucky3Labels.Number, matchCode);
 
             Assert.AreEqual(expectedMatch, actualResult.Match.ToString());
         }
@@ -410,7 +410,7 @@
             var actualResult = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            var expectedBettingCombinations = $"{_ticket.BetId} {Lucky3Labels.Combination} x {_ticket.Currency ?? string.Empty} {_ticket.Handicap1}";
+            var expectedBettingCombinations = $"{string.Format(Lucky3Labels.Combination, _ticket.BetId)} x {_ticket.Currency ?? string.Empty} {_ticket.Handicap1}";
 
             Assert.AreEqual(expectedBettingCombinations, actualResult.Handicap.handicap);
         }
@@ -425,7 +425,7 @@
             var actualResult = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            var expectedBettingCombinations = $"{_ticket.BetId} {Lucky3Labels.Combinations} x {_ticket.Currency ?? string.Empty} {_ticket.Handicap1}";
+            var expectedBettingCombinations = $"{string.Format(Lucky3Labels.Combinations, _ticket.BetId)} x {_ticket.Currency ?? string.Empty} {_ticket.Handicap1}";
 
             Assert.AreEqual(expectedBettingCombinations, actualResult.Handicap.handicap);
         }
@@ -440,7 +440,7 @@
             var actualResult = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            var expectedHtml = $"<div class=\"num-of-bets\">{_ticket.Odds} {Lucky3Labels.Bet}</div>";
+            var expectedHtml = $"<div class=\"num-of-bets\">{string.Format(Lucky3Labels.Bet, _ticket.Odds)}</div>";
 
             Assert.AreEqual(expectedHtml, actualResult.Handicap.Odds.ToString());
         }
@@ -455,7 +455,7 @@
             var actualResult = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            var expectedHtml = $"<div class=\"num-of-bets\">{_ticket.Odds} {Lucky3Labels.Bets}</div>";
+            var expectedHtml = $"<div class=\"num-of-bets\">{string.Format(Lucky3Labels.Bets, _ticket.Odds)}</div>";
 
             Assert.AreEqual(expectedHtml, actualResult.Handicap.Odds.ToString());
         }
