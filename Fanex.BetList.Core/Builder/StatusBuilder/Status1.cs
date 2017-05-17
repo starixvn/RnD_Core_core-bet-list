@@ -2,12 +2,12 @@
 {
     using System.Collections.Generic;
     using System.Globalization;
-    using System.Xml.Linq;
     using App_GlobalResources;
     using Entities;
     using NPOI.SS.UserModel;
     using Templates;
     using Utils;
+    using Utils.StringExt;
 
     /// <summary>
     /// Build Status cell.
@@ -204,22 +204,10 @@
         }
 
         private bool IsCashOutTicket(ITicket ticket)
-            => (ticket.BetdaqId == 1 && !IsBetTradeTicket(ticket.BetTypeId)) || HasCashOutExtraInfo(ticket.ExtraInfo);
+            => (ticket.BetdaqId == 1 && !IsBetTradeTicket(ticket.BetTypeId)) || ticket.ExtraInfo.HasXmlTag(CashOutXmlTag);
 
         private bool IsCashOutOriginalTicket(ITicket ticket)
-            => ticket.BetdaqId == 0 && HasCashOutExtraInfo(ticket.ExtraInfo);
-
-        private bool HasCashOutExtraInfo(string extraInfo)
-        {
-            if (!string.IsNullOrEmpty(extraInfo))
-            {
-                var xmlDoc = XDocument.Parse(extraInfo);
-
-                return xmlDoc.Element(CashOutXmlTag) != null;
-            }
-
-            return false;
-        }
+            => ticket.BetdaqId == 0 && ticket.ExtraInfo.HasXmlTag(CashOutXmlTag);
 
         private bool IsBetTradeTicket(int betTypeId)
             => betTypeId == 901 || betTypeId == 902;

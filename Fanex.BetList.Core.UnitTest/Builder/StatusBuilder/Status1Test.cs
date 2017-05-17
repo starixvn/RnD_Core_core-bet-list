@@ -58,7 +58,7 @@
             _ticket.Status = status;
             _ticket.Stake = 0;
             _ticket.BetdaqId = 0;
-            _ticket.ExtraInfo = "<p25 />";
+            _ticket.ExtraInfo = "<p25 s=\"999\" a=\"1000\"/>";
 
             // Act
             _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -83,7 +83,7 @@
             _ticket.Status = status;
             _ticket.Stake = 0;
             _ticket.BetdaqId = 0;
-            _ticket.ExtraInfo = "<p25 />";
+            _ticket.ExtraInfo = "<p25 s=\"999\" a=\"1000\"/>";
 
             // Act
             _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -340,7 +340,7 @@
             Assert.IsFalse(_status.Template.CashOutHistory.Visible);
         }
 
-        [TestCase(-1, "<p25 s=\"1000\" a=\"1000\"/>")]
+        [TestCase(-1, "<p25 s=\"1000\" a=\"1000\"/><p25 s=\"1000\" a=\"1000\"/>")]
         [TestCase(0, "<p25 s=\"1000\" a=\"1000\"/>")]
         [TestCase(1, "<p25 s=\"1000\" a=\"1000\"/>")]
         [TestCase(1, "")]

@@ -76,7 +76,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             Assert.AreEqual(ConvertByBetType.Stake(_ticket.OriginalStake), template.OriginalStake.stake);
         }
 
-        [TestCase("<p25 s=\"1000\" a=\"1000\"/>", 1000)]
+        [TestCase("<p25 s=\"1000\" a=\"1000\"/><p25 s=\"999\" a=\"1000\"/>", 1000)]
         [TestCase("<p25 aaa=\"1000\" a=\"1000\"/>", 0)]
         public void BuildOriginalStake_IsCashOut_OriginalStakeIsSmallerThanZero_ShowStakeFromExtraInfo(string extraInfo, decimal expectedStake)
         {
