@@ -52,7 +52,7 @@
         [TestCase("won")]
         [TestCase("LosE")]
         [TestCase("DRAW")]
-        public void BuildStatusResult_FromDetailTicketHasWonLostStatus_BetIdIncludeBetCheckAndCustId(string status)
+        public void BuildStatusResult_FromDetailTicketHasWinLostStatus_BetIdIncludeBetCheckAndCustId(string status)
         {
             // Arrange
             const string BetCheck = "123";
@@ -68,6 +68,25 @@
 
             // Assert
             var expectedBetId = $"{BetId}, '{BetCheck}', {CustId}";
+            Assert.AreEqual(expectedBetId, template.StatusResult.betId);
+        }
+
+        [Test]
+        public void BuildStatusResult_BetIdIsNull_BetIdReturnDefaultValue()
+        {
+            // Arrange
+            const string BetCheck = "123";
+            const long CustId = 100;
+            _ticket.BetCheck = BetCheck;
+            _ticket.CustId = CustId;
+            _ticket.Status = "DRAW";
+            _ticket.BetId = null;
+
+            // Act
+            var template = _status.Render(_ticket, _ticketHelper, null, true);
+
+            // Assert
+            var expectedBetId = $"{0}, '{BetCheck}', {CustId}";
             Assert.AreEqual(expectedBetId, template.StatusResult.betId);
         }
 

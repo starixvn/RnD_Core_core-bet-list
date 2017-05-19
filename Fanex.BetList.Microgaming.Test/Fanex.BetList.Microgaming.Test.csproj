@@ -61,6 +61,8 @@
   <ItemGroup>
     <Compile Include="Builder\ChoiceBuilder\Choice2001Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice2008Tests.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2001Tests.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2008Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -76,9 +78,7 @@
       <Name>Fanex.BetList.Microgaming</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Builder\TransBuilder\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
