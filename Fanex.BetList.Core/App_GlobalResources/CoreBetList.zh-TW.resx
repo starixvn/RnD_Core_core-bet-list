@@ -259,28 +259,28 @@
     <value>詳細信息</value>
   </data>
   <data name="a" xml:space="preserve">
-    <value>A</value>
+    <value>客</value>
   </data>
   <data name="h" xml:space="preserve">
-    <value>H</value>
+    <value>主</value>
   </data>
   <data name="betweenXandY" xml:space="preserve">
     <value>Between {0} and {1}</value>
   </data>
   <data name="points" xml:space="preserve">
-    <value>points</value>
+    <value>分</value>
   </data>
   <data name="upPoints" xml:space="preserve">
     <value>UP points</value>
   </data>
   <data name="exactly" xml:space="preserve">
-    <value>Exactly</value>
+    <value>準確的</value>
   </data>
   <data name="set" xml:space="preserve">
     <value>Set</value>
   </data>
   <data name="noTiebreak" xml:space="preserve">
-    <value>No Tiebreak</value>
+    <value>無搶七</value>
   </data>
   <data name="casinoProgressiveBonus" xml:space="preserve">
     <value>Casino Progressive Bonus</value>
@@ -322,28 +322,28 @@
     <value>二粒进球</value>
   </data>
   <data name="virtualtennis_scorebet_0_win" xml:space="preserve">
-    <value>0-Win</value>
+    <value>0-局</value>
   </data>
   <data name="virtualtennis_scorebet_30_win" xml:space="preserve">
-    <value>30-Win</value>
+    <value>30-局</value>
   </data>
   <data name="virtualtennis_scorebet_15_win" xml:space="preserve">
-    <value>15-Win</value>
+    <value>15-局</value>
   </data>
   <data name="virtualtennis_scorebet_40_win" xml:space="preserve">
-    <value>40-Win</value>
+    <value>40-局</value>
   </data>
   <data name="virtualtennis_scorebet_win_0" xml:space="preserve">
-    <value>Win-0</value>
+    <value>局-0</value>
   </data>
   <data name="virtualtennis_scorebet_win_15" xml:space="preserve">
-    <value>Win-15</value>
+    <value>局-15</value>
   </data>
   <data name="virtualtennis_scorebet_win_30" xml:space="preserve">
-    <value>Win-30</value>
+    <value>局-30</value>
   </data>
   <data name="virtualtennis_scorebet_win_40" xml:space="preserve">
-    <value>Win-40</value>
+    <value>局-40</value>
   </data>
   <data name="FourAndOver" xml:space="preserve">
     <value>4或以上</value>
@@ -481,7 +481,7 @@
     <value>皆不</value>
   </data>
   <data name="lblNoDraw" xml:space="preserve">
-    <value>No Draw</value>
+    <value>不是和局</value>
   </data>
   <data name="lblRunning" xml:space="preserve">
     <value>進行中</value>
@@ -757,10 +757,10 @@
     <value>不包括</value>
   </data>
   <data name="AOSFTExcluding" xml:space="preserve">
-    <value>AOS FT Excluding</value>
+    <value>AOS 全場 不包括</value>
   </data>
   <data name="AOSHTExcluding" xml:space="preserve">
-    <value>AOS HT Excluding</value>
+    <value>AOS 半場 不包括</value>
   </data>
   <data name="ScoreDraw" xml:space="preserve">
     <value>任何平局的比數(不包含 0-0)</value>
@@ -773,5 +773,44 @@
   </data>
   <data name="dh" xml:space="preserve">
     <value>和局/主</value>
+  </data>
+  <data name="FullTime" xml:space="preserve">
+    <value>全場</value>
+  </data>
+  <data name="HalfTime" xml:space="preserve">
+    <value>半場</value>
+  </data>
+  <data name="Away" xml:space="preserve">
+    <value>客</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>主</value>
+  </data>
+  <data name="NoAndOver" xml:space="preserve">
+    <value>否 &amp; 大</value>
+  </data>
+  <data name="NoAndUnder" xml:space="preserve">
+    <value>否 &amp; 小</value>
+  </data>
+  <data name="YesAndOver" xml:space="preserve">
+    <value>是 &amp; 大</value>
+  </data>
+  <data name="YesAndUnder" xml:space="preserve">
+    <value>是 &amp; 小</value>
+  </data>
+  <data name="Header" xml:space="preserve">
+    <value>頭球</value>
+  </data>
+  <data name="OwnGoal" xml:space="preserve">
+    <value>烏龍球</value>
+  </data>
+  <data name="Shot" xml:space="preserve">
+    <value>射門</value>
+  </data>
+  <data name="FreeKick" xml:space="preserve">
+    <value>任意球</value>
+  </data>
+  <data name="ToWinByTwoUpGoals" xml:space="preserve">
+    <value>贏2球以上</value>
   </data>
 </root>
