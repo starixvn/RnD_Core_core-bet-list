@@ -120,16 +120,16 @@ div.match + div.league + div.no-details {
     width: 14px;
 }
 
-    .detail:hover {
-        background: url("Images/q_Icon_2.png") no-repeat scroll center center transparent;
-        color: #755200;
-        cursor: pointer;
-        display: inline;
-        font-weight: bold;
-        height: 10px;
-        padding: 0 1px 0 65px;
-        width: 14px;
-    }
+.detail:hover {
+    background: url("Images/q_Icon_2.png") no-repeat scroll center center transparent;
+    color: #755200;
+    cursor: pointer;
+    display: inline;
+    font-weight: bold;
+    height: 10px;
+    padding: 0 1px 0 65px;
+    width: 14px;
+}
 
 .combinationLink {
     line-height: 20px;
@@ -214,4 +214,21 @@ div.match + div.league + div.no-details {
 
 .dark-orange {
     color: #AF5319;
+}
+
+/* Stake */
+.stake {
+    display: inline-block;
+    width: 100%;
+}
+
+.bonus-icon {
+    background: url(Images/bonus.png) no-repeat scroll center center transparent;
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+}
+
+.bonus-icon:hover {
+    cursor: pointer
 }

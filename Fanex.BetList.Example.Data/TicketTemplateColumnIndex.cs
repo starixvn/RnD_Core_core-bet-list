@@ -265,6 +265,10 @@
 
         ExtraInfo = 54,
 
-        OriginalStake = 55
+        OriginalStake = 55,
+
+        RefCode = 56,
+
+        WalletType = 57
     }
 }

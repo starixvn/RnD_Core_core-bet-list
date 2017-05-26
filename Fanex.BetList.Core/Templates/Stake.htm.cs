@@ -17,6 +17,7 @@ namespace Fanex.BetList.Core
 			protected static string s0 = "<div class=\"stake\">";
 			public string stake = "{stake}";
 			protected static string s1 = "</div>";
+			public Stake_Bonus_Block Bonus = new Stake_Bonus_Block();
 			public override void ToString(ref StringBuilder bd)
 			{
 				if(!Visible) return;
@@ -26,6 +27,7 @@ namespace Fanex.BetList.Core
 					bd.Append(s0);
 					bd.Append(stake);
 					bd.Append(s1);
+					if(null != Bonus) Bonus.ToString(ref bd);
 				}
 				if(IsAssigned){bd.Append(Value);}
 			}
@@ -51,6 +53,66 @@ namespace Fanex.BetList.Core
 					bd.Append(s2);
 					bd.Append(stake);
 					bd.Append(s3);
+				}
+				if(IsAssigned){bd.Append(Value);}
+			}
+		}
+
+		public class Stake_Bonus_Block: Block
+		{
+			public Stake_Bonus_BonusIcon_Block BonusIcon = new Stake_Bonus_BonusIcon_Block();
+			public Stake_Bonus_Wallet_Block Wallet = new Stake_Bonus_Wallet_Block();
+			public override void ToString(ref StringBuilder bd)
+			{
+				if(!Visible) return;
+				if(RenderChild)
+				{
+					if(null != BonusIcon) BonusIcon.ToString(ref bd);
+					if(null != Wallet) Wallet.ToString(ref bd);
+				}
+				if(IsAssigned){bd.Append(Value);}
+			}
+		}
+
+		public class Stake_Bonus_BonusIcon_Block: Block
+		{
+			protected static string s4 = "<span class=\"bonus-icon\" onclick=\"javascript:ShowBonusDetails(";
+			public string refCode = "{refCode}";
+			protected static string s5 = ",";
+			public string transId = "{transId}";
+			protected static string s6 = ");\" title=\"";
+			public string bonusIconTitle = "{bonusIconTitle}";
+			protected static string s7 = "\"></span>";
+			public override void ToString(ref StringBuilder bd)
+			{
+				if(!Visible) return;
+				if(RenderChild)
+				{
+					bd.Append(s4);
+					bd.Append(refCode);
+					bd.Append(s5);
+					bd.Append(transId);
+					bd.Append(s6);
+					bd.Append(bonusIconTitle);
+					bd.Append(s7);
+				}
+				if(IsAssigned){bd.Append(Value);}
+			}
+		}
+
+		public class Stake_Bonus_Wallet_Block: Block
+		{
+			protected static string s8 = "<span class=\"light-blue\">";
+			public string type = "{type}";
+			protected static string s9 = "</span>";
+			public override void ToString(ref StringBuilder bd)
+			{
+				if(!Visible) return;
+				if(RenderChild)
+				{
+					bd.Append(s8);
+					bd.Append(type);
+					bd.Append(s9);
 				}
 				if(IsAssigned){bd.Append(Value);}
 			}

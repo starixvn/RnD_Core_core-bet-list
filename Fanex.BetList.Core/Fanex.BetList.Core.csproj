@@ -84,6 +84,7 @@
     <Content Include="Styles\CoreBetList.css" />
     <Content Include="Styles\Images\1F.gif" />
     <Content Include="Styles\Images\1L.gif" />
+    <Content Include="Styles\Images\bonus.png" />
     <Content Include="Styles\Images\firstGoal.gif" />
     <Content Include="Styles\Images\lastGoal.gif" />
     <Content Include="Templates\SystemParlayDetail.htm" />

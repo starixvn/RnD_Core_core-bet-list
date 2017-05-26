@@ -4,10 +4,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
     using Core.Utils;
     using Core.Builder.StakeBuilder;
     using Entities;
-    using Core.Templates;
     using Common;
     using Common.Enums;
     using NUnit.Framework;
+    using App_GlobalResources;
 
     public class Stake1Test
     {
@@ -22,13 +22,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
         }
 
         [Test]
-        public void Ticket_ReturnStakeIsTicketStake()
+        public void Render_Always_ReturnStakeIsTicketStake()
         {
-            // Arrange
-            var template = new Stake_Template();
-
             // Act
-            template = _stake.Render(_ticket);
+            var template = _stake.Render(_ticket);
 
             // Assert
             string expectedStake = _ticket.Stake.ToString();
@@ -127,6 +124,256 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             _ticket.BetdaqId = betdaqId;
             _ticket.ExtraInfo = extraInfo;
             _ticket.OriginalStake = originalStake;
+        }
+
+        [Test]
+        public void Render_WalletTypeAndRefCodeAreZero_HideBonusPart()
+        {
+            // Arrange
+            _ticket.WalletType = 0;
+            _ticket.RefCode = 0;
+
+            // Act
+            var template = _stake.Render(_ticket);
+
+            // Assert
+            Assert.IsFalse(template.Bonus.Visible);
+        }
+
+        [Test]
+        public void Render_WalletTypeIsNotOneOrTwoOrNegativeOfOneAndRefCodeIsNotZero_HideBonusPart()
+        {
+            // Arrange
+            _ticket.WalletType = 0;
+            _ticket.RefCode = 1000;
+
+            // Act
+            var template = _stake.Render(_ticket);
+
+            // Assert
+            Assert.IsFalse(template.Bonus.Visible);
+        }
+
+        [Test]
+        public void Render_WalletTypeIsOneAndRefCodeIsZero_HideBonusIcon()
+        {
+            // Arrange
+            _ticket.WalletType = 1;
+            _ticket.RefCode = 0;
+
+            // Act
+            var template = _stake.Render(_ticket);
+
+            // Assert
+            Assert.IsFalse(template.Bonus.BonusIcon.Visible);
+        }
+
+        [Test]
+        public void Render_WalletTypeIsOneAndRefCodeIsZero_ShowTextIndicatingWallet()
+        {
+            // Arrange
+            _ticket.WalletType = 1;
+            _ticket.RefCode = 0;
+
+            // Act
+            var template = _stake.Render(_ticket);
+
+            // Assert
+            Assert.IsTrue(template.Bonus.Wallet.Visible);
+        }
+
+        [Test]
+        public void Render_WalletTypeIsOneAndRefCodeIsZero_ShowTextOfBonus()
+        {
+            // Arrange
+            _ticket.WalletType = 1;
+            _ticket.RefCode = 0;
+
+            // Act
+            var template = _stake.Render(_ticket);
+
+            // Assert
+            var expectedText = $"({CoreBetList.Bonus})";
+
+            Assert.AreEqual(expectedText, template.Bonus.Wallet.type);
+        }
+
+        [Test]
+        public void Render_WalletTypeIsOneAndRefCodeIsNotZero_ShowBonusIcon()
+        {
+            // Arrange
+            _ticket.WalletType = 1;
+            _ticket.RefCode = 100;
+
+            // Act
+            var template = _stake.Render(_ticket);
+
+            // Assert
+            Assert.IsTrue(template.Bonus.BonusIcon.Visible);
+        }
+
+        [Test]
+        public void Render_WalletTypeIsOneAndRefCodeIsNotZero_ShowBonusIconTitle()
+        {
+            // Arrange
+            _ticket.WalletType = 1;
+            _ticket.RefCode = 100;
+
+            // Act
+            var template = _stake.Render(_ticket);
+
+            // Assert
+            var expectedText = CoreBetList.ShowTransactionDetails;
+
+            Assert.AreEqual(expectedText, template.Bonus.BonusIcon.bonusIconTitle);
+        }
+
+        [Test]
+        public void Render_WalletTypeIsOneAndRefCodeIsNotZero_DoNotShowTextIndicatingWallet()
+        {
+            // Arrange
+            _ticket.WalletType = 1;
+            _ticket.RefCode = 100;
+
+            // Act
+            var template = _stake.Render(_ticket);
+
+            // Assert
+            Assert.IsFalse(template.Bonus.Wallet.Visible);
+        }
+
+        [Test]
+        public void Render_WalletTypeIsTwoAndRefCodeIsZero_HideBonusIcon()
+        {
+            // Arrange
+            _ticket.WalletType = 2;
+            _ticket.RefCode = 0;
+
+            // Act
+            var template = _stake.Render(_ticket);
+
+            // Assert
+            Assert.IsFalse(template.Bonus.BonusIcon.Visible);
+        }
+
+
+        [Test]
+        public void Render_WalletTypeIsTwoAndRefCodeIsZero_ShowTextIndicatingWallet()
+        {
+            // Arrange
+            _ticket.WalletType = 2;
+            _ticket.RefCode = 0;
+
+            // Act
+            var template = _stake.Render(_ticket);
+
+            // Assert
+            Assert.IsTrue(template.Bonus.Wallet.Visible);
+        }
+
+
+        [Test]
+        public void Render_WalletTypeIsTwoAndRefCodeIsZero_ShowTextOfCash()
+        {
+            // Arrange
+            _ticket.WalletType = 2;
+            _ticket.RefCode = 0;
+
+            // Act
+            var template = _stake.Render(_ticket);
+
+            // Assert
+            var expectedText = $"({CoreBetList.Cash})";
+
+            Assert.AreEqual(expectedText, template.Bonus.Wallet.type);
+        }
+
+        [Test]
+        public void Render_WalletTypeIsTwoAndRefCodeIsNotZero_ShowBonusIcon()
+        {
+            // Arrange
+            _ticket.WalletType = 2;
+            _ticket.RefCode = 100;
+
+            // Act
+            var template = _stake.Render(_ticket);
+
+            // Assert
+            Assert.IsTrue(template.Bonus.BonusIcon.Visible);
+        }
+
+        [Test]
+        public void Render_WalletTypeIsTwoAndRefCodeIsNotZero_ShowBonusIconTitle()
+        {
+            // Arrange
+            _ticket.WalletType = 2;
+            _ticket.RefCode = 100;
+
+            // Act
+            var template = _stake.Render(_ticket);
+
+            // Assert
+            var expectedText = CoreBetList.ShowTransactionDetails;
+
+            Assert.AreEqual(expectedText, template.Bonus.BonusIcon.bonusIconTitle);
+        }
+
+        [Test]
+        public void Render_WalletTypeIsTwoAndRefCodeIsNotZero_DoNotShowTextIndicatingWallet()
+        {
+            // Arrange
+            _ticket.WalletType = 2;
+            _ticket.RefCode = 100;
+
+            // Act
+            var template = _stake.Render(_ticket);
+
+            // Assert
+            Assert.IsFalse(template.Bonus.Wallet.Visible);
+        }
+
+        [Test]
+        public void Render_WalletTypeIsNegativeOfOneAndRefCodeIsNotZero_ShowBonusIcon()
+        {
+            // Arrange
+            _ticket.WalletType = -1;
+            _ticket.RefCode = 100;
+
+            // Act
+            var template = _stake.Render(_ticket);
+
+            // Assert
+            Assert.IsTrue(template.Bonus.BonusIcon.Visible);
+        }
+
+        [Test]
+        public void Render_WalletTypeIsNegativeOfOneAndRefCodeIsNotZero_ShowBonusIconTitle()
+        {
+            // Arrange
+            _ticket.WalletType = -1;
+            _ticket.RefCode = 100;
+
+            // Act
+            var template = _stake.Render(_ticket);
+
+            // Assert
+            var expectedText = CoreBetList.ShowTransactionDetails;
+
+            Assert.AreEqual(expectedText, template.Bonus.BonusIcon.bonusIconTitle);
+        }
+
+        [Test]
+        public void Render_WalletTypeIsNegativeOfOneAndRefCodeIsNotZero_DoNotShowTextIndicatingWallet()
+        {
+            // Arrange
+            _ticket.WalletType = -1;
+            _ticket.RefCode = 100;
+
+            // Act
+            var template = _stake.Render(_ticket);
+
+            // Assert
+            Assert.IsFalse(template.Bonus.Wallet.Visible);
         }
 
     }

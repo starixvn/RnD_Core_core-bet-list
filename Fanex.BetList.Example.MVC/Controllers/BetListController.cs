@@ -465,6 +465,17 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
             return BetListView(model);
         }
+        
+        public ActionResult BonusSystem(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes();
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            DataSourcePath = "~/App_Data/BonusSystem.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+
+            return BetListView(model);
+        }
 
         public ActionResult ChangingToHomeAway(BetListData model = null)
         {

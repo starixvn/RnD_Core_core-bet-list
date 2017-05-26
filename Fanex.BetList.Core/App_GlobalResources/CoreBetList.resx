@@ -838,4 +838,13 @@
   <data name="Away171" xml:space="preserve">
     <value>Away</value>
   </data>
+  <data name="Bonus" xml:space="preserve">
+    <value>Bonus</value>
+  </data>
+  <data name="Cash" xml:space="preserve">
+    <value>Cash</value>
+  </data>
+  <data name="ShowTransactionDetails" xml:space="preserve">
+    <value>Show Transaction Details</value>
+  </data>
 </root>

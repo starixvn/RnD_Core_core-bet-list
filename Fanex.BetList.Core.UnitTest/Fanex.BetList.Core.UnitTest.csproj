@@ -278,6 +278,9 @@
     <Compile Include="Templates\Choice\Choice_OddMixParlay_BlockTest.cs" />
     <Compile Include="Templates\Choice\Choice_TemplateTest.cs" />
     <Compile Include="Templates\Odds\Odds_TemplateTest.cs" />
+    <Compile Include="Templates\Stake\Stake_Bonus_BlockTest.cs" />
+    <Compile Include="Templates\Stake\Stake_Bonus_BonusIcon_BlockTest.cs" />
+    <Compile Include="Templates\Stake\Stake_Bonus_Wallet_BlockTest.cs" />
     <Compile Include="Templates\Stake\Stake_OriginalStake_BlockTest.cs" />
     <Compile Include="Templates\Stake\Stake_TemplateTest.cs" />
     <Compile Include="Templates\Status\Status_CashOutHistory_BlockTest.cs" />

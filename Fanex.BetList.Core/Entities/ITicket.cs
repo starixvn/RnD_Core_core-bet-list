@@ -39,6 +39,10 @@
 
         string RefNo { get; set; }
 
+        long RefCode { get; set; }
+
+        sbyte WalletType { get; set; }
+
         DateTime TransDate { get; set; }
 
         DateTime WinlostDate { get; set; }

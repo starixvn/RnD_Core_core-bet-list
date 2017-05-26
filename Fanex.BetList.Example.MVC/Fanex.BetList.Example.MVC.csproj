@@ -179,6 +179,7 @@
     <Content Include="Content\CoreBetList.css" />
     <Content Include="Content\images\1F.gif" />
     <Content Include="Content\images\1L.gif" />
+    <Content Include="Content\images\bonus.png" />
     <Content Include="Content\images\excel.gif" />
     <Content Include="Content\images\firstGoal.gif" />
     <Content Include="Content\images\lastGoal.gif" />
@@ -429,6 +430,7 @@
     <Content Include="App_Data\CashOut.xls" />
     <Content Include="App_Data\BetRadarVirtualSports.xls" />
     <Content Include="App_Data\Lucky3.xls" />
+    <Content Include="App_Data\BonusSystem.xls" />
     <Content Include="Fanex.BetList.Example.MVC.ruleset" />
     <Content Include="App_Data\KenoLottery.xls" />
     <Content Include="App_Data\Keno.xls" />

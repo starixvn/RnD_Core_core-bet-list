@@ -259,6 +259,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bonus.
+        /// </summary>
+        public static string Bonus {
+            get {
+                return ResourceManager.GetString("Bonus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bought.
         /// </summary>
         public static string Bought {
@@ -273,6 +282,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string BoughtLabel {
             get {
                 return ResourceManager.GetString("BoughtLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cash.
+        /// </summary>
+        public static string Cash {
+            get {
+                return ResourceManager.GetString("Cash", resourceCulture);
             }
         }
         
@@ -1722,6 +1740,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string Shot {
             get {
                 return ResourceManager.GetString("Shot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show Transaction Details.
+        /// </summary>
+        public static string ShowTransactionDetails {
+            get {
+                return ResourceManager.GetString("ShowTransactionDetails", resourceCulture);
             }
         }
         
