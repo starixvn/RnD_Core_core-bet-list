@@ -729,4 +729,16 @@
   <data name="Live" xml:space="preserve">
     <value>การแข่งขันสด</value>
   </data>
+  <data name="CashOutLabel" xml:space="preserve">
+    <value>เงินสดออกจาก เลขที่</value>
+  </data>
+  <data name="CashOut" xml:space="preserve">
+    <value>เงินสด</value>
+  </data>
+  <data name="BoughtLabel" xml:space="preserve">
+    <value>ซื้อมาจาก เลขที่</value>
+  </data>
+  <data name="Bought" xml:space="preserve">
+    <value>ซื้อ</value>
+  </data>
 </root>

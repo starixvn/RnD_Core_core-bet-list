@@ -822,4 +822,16 @@
   <data name="HalfTime" xml:space="preserve">
     <value>半场</value>
   </data>
+  <data name="CashOutLabel" xml:space="preserve">
+    <value>现金编号从：</value>
+  </data>
+  <data name="CashOut" xml:space="preserve">
+    <value>现金</value>
+  </data>
+  <data name="BoughtLabel" xml:space="preserve">
+    <value>买编号从：</value>
+  </data>
+  <data name="Bought" xml:space="preserve">
+    <value>买</value>
+  </data>
 </root>

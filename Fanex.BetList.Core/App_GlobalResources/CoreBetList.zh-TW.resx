@@ -813,4 +813,16 @@
   <data name="ToWinByTwoUpGoals" xml:space="preserve">
     <value>贏2球以上</value>
   </data>
+  <data name="CashOutLabel" xml:space="preserve">
+    <value>現金編號從：</value>
+  </data>
+  <data name="CashOut" xml:space="preserve">
+    <value>現金</value>
+  </data>
+  <data name="BoughtLabel" xml:space="preserve">
+    <value>買編號從：</value>
+  </data>
+  <data name="Bought" xml:space="preserve">
+    <value>買</value>
+  </data>
 </root>
