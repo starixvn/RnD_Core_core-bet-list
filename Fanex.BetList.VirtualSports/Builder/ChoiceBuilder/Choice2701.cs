@@ -1,0 +1,24 @@
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
+{
+    using Entities;
+
+    /// <summary>
+    /// BetRadar Virtual Sports - FT.1X2.
+    /// </summary>
+    public class Choice2701 : Choice5
+    {
+        protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            base.BuildMatch(ticket, ticketHelper);
+
+            Template.AppendKickOffTime(ticket);
+        }
+
+        protected override void BuildBetTeamsInfo(ITicket ticket, ref RTFHelper rtfHelper)
+        {
+            base.BuildBetTeamsInfo(ticket, ref rtfHelper);
+
+            rtfHelper.RTFRenderer.AddText($"\n{ChoiceUtils.ParseKickOffTime(ticket)}");
+        }
+    }
+}

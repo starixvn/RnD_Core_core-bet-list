@@ -409,6 +409,7 @@
     <Content Include="App_Data\VirtualSports.xls" />
     <Content Include="App_Data\BasketballAIO.xls" />
     <Content Include="App_Data\CashOut.xls" />
+    <Content Include="App_Data\BetRadarVirtualSports.xls" />
     <Content Include="Fanex.BetList.Example.MVC.ruleset" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />

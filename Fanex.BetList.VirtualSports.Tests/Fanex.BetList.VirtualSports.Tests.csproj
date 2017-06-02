@@ -63,8 +63,14 @@
     <Compile Include="Builder\ChoiceBuilder\Choice1231Tests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1235Tests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1236Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2701Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2702Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2703Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2705Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2707Tests.cs" />
     <Compile Include="Builder\OddsBuilder\Odds1231Tests.cs" />
     <Compile Include="Builder\OddsBuilder\Odds1233Tests.cs" />
+    <Compile Include="Builder\OddsBuilder\Odds2799Tests.cs" />
     <Compile Include="Builder\StatusBuilder\Status1231Tests.cs" />
     <Compile Include="Builder\StatusBuilder\Status1233Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

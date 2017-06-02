@@ -14,6 +14,15 @@
 
             // Win/Place
             MapIdToBaseId(1233, 1231);
+
+            // 1H O/U
+            MapIdToBaseId(2704, 2703);
+
+            // 1H HDP
+            MapIdToBaseId(2706, 2705);
+
+            // 1H HDP
+            MapIdToBaseId(2799, 9);
         }
     }
 }

@@ -43,8 +43,15 @@
     <Compile Include="Builder\ChoiceBuilder\Choice1231.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1235.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1236.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2701.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2702.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2703.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2705.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2707.cs" />
+    <Compile Include="Builder\ChoiceBuilder\ChoiceUtils.cs" />
     <Compile Include="Builder\OddsBuilder\Odds1231.cs" />
     <Compile Include="Builder\OddsBuilder\Odds1233.cs" />
+    <Compile Include="Builder\OddsBuilder\Odds2799.cs" />
     <Compile Include="Builder\StatusBuilder\Status1231.cs" />
     <Compile Include="Builder\StatusBuilder\Status1233.cs" />
     <Compile Include="Mapper\ChoiceMapper.cs" />
