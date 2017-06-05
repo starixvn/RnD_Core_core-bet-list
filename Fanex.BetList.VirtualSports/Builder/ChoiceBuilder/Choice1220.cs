@@ -24,7 +24,7 @@
         {
             base.BuildBetTeamsInfo(ticket, ref rtfHelper);
 
-            rtfHelper.RTFRenderer.AddText($"\n{ChoiceUtils.ParseKickOffTime(ticket)}");
+            rtfHelper.RTFRenderer.AddText($"\n{VirtualSportsChoiceUtils.ParseKickOffTime(ticket)}");
         }
     }
 }

@@ -4,7 +4,7 @@
     using Entities;
     using Templates;
 
-    internal static class ChoiceUtils
+    internal static class VirtualSportsChoiceUtils
     {
         public static void AppendKickOffTime(this Choice_Template template, ITicket ticket)
             => template.Match.Append($"<div class=\"match\">{ParseKickOffTime(ticket)}</div>");
