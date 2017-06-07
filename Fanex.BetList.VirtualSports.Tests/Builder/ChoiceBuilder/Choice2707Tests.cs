@@ -52,9 +52,9 @@
             Assert.AreEqual(expectedText, builtChoice.betTeam);
         }
 
-        [TestCase("o")]
-        [TestCase("O")]
-        public void BuildBetTeam_BetOptionIsO_BetChoiceIsOther(string betOption)
+        [TestCase("aos")]
+        [TestCase("AOS")]
+        public void BuildBetTeam_BetOptionIsAOS_BetChoiceIsAOS(string betOption)
         {
             // Arrange.
             _ticket.BetTeam = betOption;
@@ -63,7 +63,7 @@
             var builtChoice = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            var expectedText = HtmlCharacters.NoneBreakingSpace + CoreBetList.other;
+            var expectedText = HtmlCharacters.NoneBreakingSpace + CoreBetList.AOS;
 
             Assert.AreEqual(expectedText, builtChoice.betTeam);
         }

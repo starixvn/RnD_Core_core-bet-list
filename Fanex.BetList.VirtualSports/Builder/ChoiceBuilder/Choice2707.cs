@@ -14,9 +14,9 @@
         {
             string choice = ticket.BetTeam;
 
-            if (BetTeamValue.O == choice.ToLowerInvariant())
+            if (BetTeamValue.AOS == choice.ToLowerInvariant())
             {
-                choice = CoreBetList.other;
+                choice = CoreBetList.AOS;
             }
 
             // "&nbsp" because export format
