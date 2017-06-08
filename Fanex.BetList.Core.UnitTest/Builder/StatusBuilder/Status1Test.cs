@@ -86,7 +86,32 @@
             _ticket.ExtraInfo = "<p25 s=\"999\" a=\"1000\"/>";
 
             // Act
-            _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _status.Render(_ticket, _ticketHelper, null, true);
+
+            // Assert
+            Assert.AreEqual(expectedResult, _status.Template.result);
+        }
+
+        [TestCase("", "")]
+        [TestCase("running", "Running")]
+        [TestCase("reject", "Reject")]
+        [TestCase("won", "Won")]
+        [TestCase("lose", "Lose")]
+        [TestCase("draw", "Draw")]
+        [TestCase("waiting", "Waiting")]
+        [TestCase("void", "Void")]
+        [TestCase("refund", "Refund")]
+        public void BuildResult_IsNotCashOutTicket_Result(string status, string expectedResult)
+        {
+            // Arrange
+            _ticket.OriginalBetType = 1;
+            _ticket.Status = status;
+            _ticket.Stake = 0;
+            _ticket.BetdaqId = 0;
+            _ticket.ExtraInfo = "<p25 sss=\"999\" a=\"1000\"/>";
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, true);
 
             // Assert
             Assert.AreEqual(expectedResult, _status.Template.result);
@@ -103,7 +128,7 @@
             _ticket.Status = status;
 
             // Act
-            _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _status.Render(_ticket, _ticketHelper, null, true);
 
             // Assert
             Assert.IsFalse(_status.Template.StatusResult.Visible);
@@ -120,7 +145,7 @@
             _ticket.MatchId = 100;
 
             // Act
-            _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _status.Render(_ticket, _ticketHelper, null, true);
 
             // Assert
             Assert.AreEqual(_ticket.MatchId.ToString(), _status.Template.StatusResult.matchId);
@@ -137,7 +162,7 @@
             _ticket.BetTypeId = 1;
 
             // Act
-            _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _status.Render(_ticket, _ticketHelper, null, true);
 
             // Assert
             Assert.AreEqual(_ticket.BetTypeId.ToString(), _status.Template.StatusResult.betType);
@@ -154,7 +179,7 @@
             _ticket.Race = string.Empty;
 
             // Act
-            _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _status.Render(_ticket, _ticketHelper, null, true);
 
             // Assert
             const string RACE = "0";
@@ -173,7 +198,7 @@
             _ticket.Race = RACE;
 
             // Act
-            _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _status.Render(_ticket, _ticketHelper, null, true);
 
             // Assert
             Assert.AreEqual(RACE, _status.Template.StatusResult.race);
@@ -190,7 +215,7 @@
             _ticket.TransId = 100;
 
             // Act
-            _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _status.Render(_ticket, _ticketHelper, null, true);
 
             // Assert
             Assert.AreEqual(_ticket.TransId.ToString(), _status.Template.StatusResult.refNo);
@@ -207,7 +232,7 @@
             _ticket.SportTypeId = 1;
 
             // Act
-            _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _status.Render(_ticket, _ticketHelper, null, true);
 
             // Assert
             Assert.AreEqual(_ticket.SportTypeId.ToString(), _status.Template.StatusResult.sportType);
@@ -224,7 +249,7 @@
             _ticket.LeagueId = 1;
 
             // Act
-            _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _status.Render(_ticket, _ticketHelper, null, true);
 
             // Assert
             Assert.AreEqual(_ticket.LeagueId.ToString(), _status.Template.StatusResult.league);
@@ -241,7 +266,7 @@
             _ticket.UserName = "username";
 
             // Act
-            _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _status.Render(_ticket, _ticketHelper, null, true);
 
             // Assert
             Assert.AreEqual(_ticket.UserName, _status.Template.StatusResult.userName);
@@ -258,7 +283,7 @@
             _ticket.WinlostDate = new DateTime(2012, 12, 24, 12, 12, 12);
 
             // Act
-            _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _status.Render(_ticket, _ticketHelper, null, true);
 
             // Assert
             const string WINLOST_DATE = "12/24/2012 12:12:12 PM";
@@ -273,7 +298,7 @@
             _ticketHelper.IsVnIp("vn-ip").Returns(true);
 
             // Act
-            _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsFalse(_status.Template.ShowIP.Visible);
@@ -286,7 +311,7 @@
             _ticket.IP = "not vn ip";
 
             // Act
-            _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _status.Render(_ticket, _ticketHelper, null, true);
 
             // Assert
             Assert.AreEqual(_ticket.IP, _status.Template.ShowIP.betIp);
@@ -311,6 +336,8 @@
         [TestCase(0, "<p25 s=\"1000\" a=\"1000\"/>", true)]
         [TestCase(-1, "", false)]
         [TestCase(0, "", false)]
+        [TestCase(-1, "<p25 sss=\"1000\" a=\"1000\"/>", false)]
+        [TestCase(0, "<p25 sss=\"1000\" a=\"1000\"/>", false)]
         public void BuildCashOutHistory_WhenHaveNotEnoughCondition_HideCashOutHistory(long betdaqId, string extraInfo, bool hideHistory)
         {
             // Arrange

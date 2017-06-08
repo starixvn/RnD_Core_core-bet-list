@@ -200,10 +200,11 @@
         }
 
         private static bool IsCashOutTicket(ITicket ticket)
-            => (ticket.BetdaqId == 1 && !IsBetTradeTicket(ticket.BetTypeId)) || ticket.ExtraInfo.HasXmlTag(CashOutXmlTag);
+            => (ticket.BetdaqId == 1 && !IsBetTradeTicket(ticket.BetTypeId)) ||
+            ticket.ExtraInfo.HasAttributeInXmlTag(CashOutXmlTag, "s");
 
         private static bool IsCashOutOriginalTicket(ITicket ticket)
-            => ticket.BetdaqId == 0 && ticket.ExtraInfo.HasXmlTag(CashOutXmlTag);
+            => ticket.BetdaqId == 0 && ticket.ExtraInfo.HasAttributeInXmlTag(CashOutXmlTag, "s");
 
         private static bool IsBetTradeTicket(int betTypeId)
             => betTypeId == 901 || betTypeId == 902;

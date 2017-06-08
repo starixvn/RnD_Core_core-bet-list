@@ -50,6 +50,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
 
         [TestCase(-1, "")]
         [TestCase(0, "")]
+        [TestCase(0, "<p25 sss=\"1000\" a=\"1000\"/>")]
         public void BuildOriginalStake_IsNotCashOut_HideOriginalStake(long betDaqId, string extraInfo)
         {
             // Arrange
@@ -77,7 +78,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
         }
 
         [TestCase("<p25 s=\"1000\" a=\"1000\"/><p25 s=\"999\" a=\"1000\"/>", 1000)]
-        [TestCase("<p25 aaa=\"1000\" a=\"1000\"/>", 0)]
+        [TestCase("<p25 s=\"1000\" a=\"1000\"/>", 1000)]
         public void BuildOriginalStake_IsCashOut_OriginalStakeIsSmallerThanZero_ShowStakeFromExtraInfo(string extraInfo, decimal expectedStake)
         {
             // Arrange
@@ -92,6 +93,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
 
         [TestCase(-1, "")]
         [TestCase(0, "")]
+        [TestCase(0, "<p25 sss=\"1000\" a=\"1000\"/>")]
         public void RenderRTF_IsNotCashOut_RenderStakeOnly(long betDaqId, string extraInfo)
         {
             // Arrange
@@ -107,7 +109,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
 
         [TestCase(0)]
         [TestCase(-1)]
-        public void RenderRTF_IstCashOut_RenderOriginalStake(int betdaqId)
+        public void RenderRTF_IsCashOut_RenderOriginalStake(int betdaqId)
         {
             // Arrange
             ArrangeCashOutTicket(betdaqId, "<p25 s=\"1000\" a=\"1000\"/>", 1000);

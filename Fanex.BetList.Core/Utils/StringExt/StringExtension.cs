@@ -59,6 +59,18 @@
             return false;
         }
 
+        public static bool HasAttributeInXmlTag(this string value, string xmlTag, string attributeName)
+        {
+            if (value.HasXmlTag(xmlTag))
+            {
+                var xmlDoc = value.ParseXml();
+
+                return xmlDoc.Descendants(xmlTag).FirstOrDefault().Attribute(attributeName) != null;
+            }
+
+            return false;
+        }
+
         public static string GetXmlTagAttributeValue(this string value, string xmlTag, string attributeName)
         {
             if (value.HasXmlTag(xmlTag))

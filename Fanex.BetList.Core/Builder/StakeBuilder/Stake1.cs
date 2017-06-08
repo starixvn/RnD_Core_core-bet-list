@@ -80,6 +80,7 @@
         }
 
         private static bool IsCashOutTicket(ITicket ticket)
-                => (ticket.BetdaqId == 0 || ticket.BetdaqId == -1) && ticket.ExtraInfo.HasXmlTag(CashOutXmlTag);
+            => (ticket.BetdaqId == 0 || ticket.BetdaqId == -1) &&
+                ticket.ExtraInfo.HasAttributeInXmlTag(CashOutXmlTag, "s");
     }
 }
