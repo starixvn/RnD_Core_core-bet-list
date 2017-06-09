@@ -1,7 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Entities;
+    using Entities;
 
     public class Choice2001 : Choice1101
     {
@@ -9,19 +9,13 @@
         private const string CloseBetTypeNameTag = "</span>";
 
         protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
-        {
-            Template.Match = null;
-        }
+            => Template.Match = null;
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-        {
-            Template.betTeam = string.Empty;
-        }
+            => Template.betTeam = string.Empty;
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-        {
-            Template.BetType = null;
-        }
+            => Template.BetType = null;
 
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
         {
@@ -30,7 +24,7 @@
             Template.League.LeagueName.leagueName = betType;
         }
 
-        private string BuildBetTypeName(int betTypeId, ITicketHelper ticketHelper)
+        private static string BuildBetTypeName(int betTypeId, ITicketHelper ticketHelper)
         {
             var betTypeName = ticketHelper.GetBetTypeNameById(betTypeId);
 

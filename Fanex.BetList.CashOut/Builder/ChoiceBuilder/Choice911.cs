@@ -21,9 +21,9 @@
 
         public Choice_Template Template { get; set; }
 
-        public string GetBetTypeName(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        public string GetBetTypeName(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData = null)
         {
-            var getBetTypeName = new Func<IChoice, string>((IChoice choice) =>
+            var getBetTypeName = new Func<IChoice, string>((choice) =>
             {
                 return choice.GetBetTypeName(ticket, ticketHelper, ticketData);
             });
@@ -35,7 +35,7 @@
 
         public Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
         {
-            var render = new Func<IChoice, Choice_Template>((IChoice choice) =>
+            var render = new Func<IChoice, Choice_Template>((choice) =>
             {
                 return choice.Render(ticket, ticketHelper, ticketData, isShowScoreMap);
             });
@@ -51,7 +51,7 @@
 
         public List<IRichTextString> RenderRTF(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap, RTFHelper rtfHelper)
         {
-            var renderRTF = new Func<IChoice, List<IRichTextString>>((IChoice choice) =>
+            var renderRTF = new Func<IChoice, List<IRichTextString>>((choice) =>
             {
                 return choice.RenderRTF(ticket, ticketHelper, ticketData, isShowScoreMap, rtfHelper);
             });
@@ -64,7 +64,7 @@
         protected virtual string BuildCashOutLabel(ITicket ticket)
             => CoreBetList.CashOutLabel + " " + ticket.RefNo;
 
-        private T GetResult<T>(Func<IChoice, T> render, ITicket ticket)
+        private static T GetResult<T>(Func<IChoice, T> render, ITicket ticket)
         {
             var bettypeId = ticket.BetTypeId;
             ticket.BetTypeId = ticket.OriginalBetType;
@@ -80,7 +80,7 @@
             return result;
         }
 
-        private IChoice CreateChoice(int betType)
+        private static IChoice CreateChoice(int betType)
         {
             var builder = new BetListBaseBuilder();
 

@@ -2,6 +2,7 @@
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
+    using System.Globalization;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Utils;
@@ -50,7 +51,7 @@
                 string.Format(
                "<div class=\"detail\" onclick='showAGCasinoDetails(&quot;1&quot;,&quot;{1}&quot;,&quot;10000&quot;,&quot;{0}&quot;);'><a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">Details</a></div>",
                 transctionType,
-                _ticket.WinlostDate);
+                _ticket.WinlostDate.ToString(CultureInfo.InvariantCulture));
 
             Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedTemplate));
         }
@@ -77,7 +78,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             //// Assert
-            string expectedTemplate = string.Format("<div class=\"detail\" onclick='showAGCasinoDetails(&quot;1&quot;,&quot;{0}&quot;,&quot;10000&quot;,&quot;{1}&quot;);'><a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">Details</a></div>", _ticket.WinlostDate, transctionType);
+            string expectedTemplate = string.Format("<div class=\"detail\" onclick='showAGCasinoDetails(&quot;1&quot;,&quot;{0}&quot;,&quot;10000&quot;,&quot;{1}&quot;);'><a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">Details</a></div>", _ticket.WinlostDate.ToString(CultureInfo.InvariantCulture), transctionType);
 
             Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedTemplate));
         }
@@ -96,7 +97,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            string expectedTemplate = string.Format("<div class=\"detail\" onclick='showAGCasinoDetails(&quot;1&quot;,&quot;{0}&quot;,&quot;10000&quot;,&quot;{1}&quot;);'><a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">Details</a></div>", _ticket.WinlostDate, "0");
+            string expectedTemplate = string.Format("<div class=\"detail\" onclick='showAGCasinoDetails(&quot;1&quot;,&quot;{0}&quot;,&quot;10000&quot;,&quot;{1}&quot;);'><a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">Details</a></div>", _ticket.WinlostDate.ToString(CultureInfo.InvariantCulture), "0");
             Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedTemplate));
         }
 

@@ -1,6 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System;
+    using System.Globalization;
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
@@ -24,36 +25,36 @@
             }
         }
 
-        private Choice_League_Block BuildShowMicroGamingRnGBetsDetails(ITicket ticket)
+        private static Choice_League_Block BuildShowMicroGamingRnGBetsDetails(ITicket ticket)
         {
-            string[] detailsFunctionCompositions = new string[]
-                                            {
-                                                "showMicroGamingRnGBetsDetails(&quot;",
-                                                ticket.TransId.ToString(),
-                                                "&quot;",
-                                                ",&quot;",
-                                                 ticket.WinlostDate.ToString(),
-                                                "&quot;",
-                                                ",&quot;",
-                                                ticket.CustId.ToString(),
-                                                 "&quot;",
-                                                ",&quot;",
-                                                GetTransactionType(ticket),
-                                                "&quot;);"
-                                            };
+            string[] detailsFunctionCompositions =
+                {
+                    "showMicroGamingRnGBetsDetails(&quot;",
+                    ticket.TransId.ToString(),
+                    "&quot;",
+                    ",&quot;",
+                        ticket.WinlostDate.ToString(CultureInfo.InvariantCulture),
+                    "&quot;",
+                    ",&quot;",
+                    ticket.CustId.ToString(),
+                        "&quot;",
+                    ",&quot;",
+                    GetTransactionType(ticket),
+                    "&quot;);"
+                };
 
             string detailsFunction = string.Join(null, detailsFunctionCompositions);
 
-            string[] detailsFunctionDivCompositions = new string[]
-                                            {
-                                                "<div class=\"detail\" onclick='",
-                                                detailsFunction,
-                                                "'>",
-                                                "<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">",
-                                                CoreBetList.details,
-                                                "</a>",
-                                                "</div>"
-                                            };
+            string[] detailsFunctionDivCompositions =
+                {
+                    "<div class=\"detail\" onclick='",
+                    detailsFunction,
+                    "'>",
+                    "<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">",
+                    CoreBetList.details,
+                    "</a>",
+                    "</div>"
+                };
 
             string markups = string.Join(null, detailsFunctionDivCompositions);
 
@@ -64,7 +65,7 @@
             return detailtTemplateBlock;
         }
 
-        private string BuildGameName(ITicket ticket, ITicketHelper ticketHelper)
+        private static string BuildGameName(ITicket ticket, ITicketHelper ticketHelper)
         {
             string gameName = ticketHelper.GetResourceData("MG_Casino", ticket.TransDesc);
             string markups = string.Format("{0} {1}{2}", OpenGameNameTag, gameName, CloseGameNameTag);
@@ -81,7 +82,7 @@
                 .Replace(CloseGameNameTag, string.Empty);
         }
 
-        private string GetTransactionType(ITicket ticket)
+        private static string GetTransactionType(ITicket ticket)
         {
             ////@TransType
             ////+ 0 : All (DRAW/WON/LOSE/Reject/Void/Refund/Running/Waiting)
@@ -91,7 +92,7 @@
             //// Use this because web server vs db is same GMT
             if (ticket.WinlostDate.Date >= DateTime.Today.AddDays(-1))
             {
-                switch (ticket.Status.ToLower())
+                switch (ticket.Status.ToLowerInvariant())
                 {
                     case BetStatus.Won:
                     case BetStatus.Lose:
@@ -106,6 +107,9 @@
                     case BetStatus.Running:
                     case BetStatus.Waiting:
                         return "3";
+
+                    default:
+                        return "0";
                 }
             }
 

@@ -165,7 +165,7 @@
 
         private string BuildVoidBridgeDetailsLink(string transactionType)
         {
-            string[] detailsFunctionDivCompositions = new string[]
+            string[] detailsFunctionDivCompositions = new[]
             {
                 "<div class=\"detail voidbridge-detail\" onclick=\"showVoidBridgeDetails(",
                 _ticket.TransId.ToString(CultureInfo.InvariantCulture),

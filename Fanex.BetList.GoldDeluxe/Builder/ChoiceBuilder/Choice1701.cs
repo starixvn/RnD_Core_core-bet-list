@@ -20,7 +20,7 @@
         {
             var betTypeName = GetBetTypeName(ticket.BetTypeId, ticketHelper);
 
-            Template.League.LeagueName.leagueName = string.Join(null, new string[] { betTypeName, HtmlCharacters.NoneBreakingSpace, ticket.BetCheck });
+            Template.League.LeagueName.leagueName = $"{betTypeName}{HtmlCharacters.NoneBreakingSpace}{ticket.BetCheck}";
         }
 
         protected override void BuildScore(ITicket ticket)

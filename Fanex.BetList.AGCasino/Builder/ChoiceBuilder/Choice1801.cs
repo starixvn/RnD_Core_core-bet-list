@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
@@ -68,7 +69,7 @@
             }
         }
 
-        private string BuildBetTypeName(int betTypeId, ITicketHelper ticketHelper)
+        private static string BuildBetTypeName(int betTypeId, ITicketHelper ticketHelper)
         {
             var betTypeName = ticketHelper.GetBetTypeNameById(betTypeId);
 
@@ -86,36 +87,36 @@
                 .Replace(CloseGameNameTag, string.Empty);
         }
 
-        private Choice_League_Block BuildShowMicroGamingRnGBetsDetails(ITicket ticket)
+        private static Choice_League_Block BuildShowMicroGamingRnGBetsDetails(ITicket ticket)
         {
-            string[] detailsFunctionCompositions = new string[]
-                                            {
-                                                "showAGCasinoDetails(&quot;",
-                                                ticket.TransId.ToString(),
-                                                "&quot;",
-                                                ",&quot;",
-                                                 ticket.WinlostDate.ToString(),
-                                                "&quot;",
-                                                ",&quot;",
-                                                ticket.CustId.ToString(),
-                                                 "&quot;",
-                                                ",&quot;",
-                                                GetTransactionType(ticket),
-                                                "&quot;);"
-                                            };
+            string[] detailsFunctionCompositions =
+                {
+                    "showAGCasinoDetails(&quot;",
+                    ticket.TransId.ToString(),
+                    "&quot;",
+                    ",&quot;",
+                        ticket.WinlostDate.ToString(CultureInfo.InvariantCulture),
+                    "&quot;",
+                    ",&quot;",
+                    ticket.CustId.ToString(),
+                        "&quot;",
+                    ",&quot;",
+                    GetTransactionType(ticket),
+                    "&quot;);"
+                };
 
             string detailsFunction = string.Join(null, detailsFunctionCompositions);
 
-            string[] detailsFunctionDivCompositions = new string[]
-                                            {
-                                                "<div class=\"detail\" onclick='",
-                                                detailsFunction,
-                                                "'>",
-                                                "<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">",
-                                                CoreBetList.details,
-                                                "</a>",
-                                                "</div>"
-                                            };
+            string[] detailsFunctionDivCompositions =
+                {
+                    "<div class=\"detail\" onclick='",
+                    detailsFunction,
+                    "'>",
+                    "<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">",
+                    CoreBetList.details,
+                    "</a>",
+                    "</div>"
+                };
 
             string markups = string.Join(null, detailsFunctionDivCompositions);
 
@@ -126,7 +127,7 @@
             return detailtTemplateBlock;
         }
 
-        private string GetTransactionType(ITicket ticket)
+        private static string GetTransactionType(ITicket ticket)
         {
             ////@TransType
             ////+ 0 : All (DRAW/WON/LOSE/Reject/Void/Refund/Running/Waiting)
@@ -136,7 +137,7 @@
             //// Use this because web server vs db is same GMT
             if (ticket.WinlostDate.Date >= DateTime.Today.AddDays(-1))
             {
-                switch (ticket.Status.ToLower())
+                switch (ticket.Status.ToLowerInvariant())
                 {
                     case BetStatus.Won:
                     case BetStatus.Lose:
@@ -151,15 +152,18 @@
                     case BetStatus.Running:
                     case BetStatus.Waiting:
                         return "3";
+
+                    default:
+                        return "0";
                 }
             }
 
             return "0"; ////Yesterday Ticket
         }
 
-        private string GetRoomAndTable(ITicket ticket, ITicketHelper ticketHelper)
+        private static string GetRoomAndTable(ITicket ticket, ITicketHelper ticketHelper)
         {
-            var transDecsParsed = DeserializeTransDesc(ticket.TransDesc.ToUpper());
+            var transDecsParsed = DeserializeTransDesc(ticket.TransDesc.ToUpperInvariant());
 
             var roomAndName = string.Empty;
 
@@ -178,7 +182,7 @@
 
         private string GetBetChoice(ITicket ticket, ITicketHelper ticketHelper)
         {
-            var transDecsParsed = DeserializeTransDesc(ticket.TransDesc.ToUpper());
+            var transDecsParsed = DeserializeTransDesc(ticket.TransDesc.ToUpperInvariant());
 
             if (transDecsParsed.ContainsKey(BetChoiceDataName))
             {
@@ -193,7 +197,7 @@
             return ticketHelper.GetResourceData(BetTypeRefIdNames[betTypeId], transDecsParsed[BetChoiceDataName]);
         }
 
-        private Dictionary<string, string> DeserializeTransDesc(string transDesc)
+        private static Dictionary<string, string> DeserializeTransDesc(string transDesc)
         {
             Dictionary<string, string> transDescItems = new Dictionary<string, string>();
 
@@ -202,10 +206,10 @@
                 return transDescItems;
             }
 
-            var keyValuePairs = transDesc.Split(new char[] { '*' }, StringSplitOptions.RemoveEmptyEntries);
+            var keyValuePairs = transDesc.Split(new[] { '*' }, StringSplitOptions.RemoveEmptyEntries);
             foreach (var keyValuePair in keyValuePairs)
             {
-                var keyValue = keyValuePair.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
+                var keyValue = keyValuePair.Split(new[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
                 if (keyValue.Length == 2)
                 {
                     transDescItems.Add(keyValue[0], keyValue[1]);

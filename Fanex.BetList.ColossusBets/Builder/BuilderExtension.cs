@@ -1,6 +1,7 @@
 ﻿namespace Fanex.BetList.ColossusBets.Builder
 {
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
     using Fanex.BetList.ColossusBets.Templates;
     using Fanex.BetList.Core.App_GlobalResources;
@@ -20,7 +21,7 @@
             if (betTypeId == CashOutBetTypeId
                 && cashOutPercent > 0)
             {
-                return string.Join(string.Empty, new string[] { betTypeName, " ", Formatter.DecFormat(cashOutPercent * 100, 0), "%" });
+                return string.Join(string.Empty, new[] { betTypeName, " ", Formatter.DecFormat(cashOutPercent * 100, 0), "%" });
             }
 
             return betTypeName;
@@ -30,7 +31,7 @@
         {
             if (!string.IsNullOrWhiteSpace(ticketStatus))
             {
-                switch (ticketStatus.ToLower())
+                switch (ticketStatus.ToLowerInvariant())
                 {
                     case BetStatus.Running:
                         return CoreBetList.running;
@@ -55,6 +56,9 @@
 
                     case BetStatus.Refund:
                         return CoreBetList.refund;
+
+                    default:
+                        return string.Empty;
                 }
             }
 
@@ -88,17 +92,12 @@
             var cashOwn = 100 - cashOutPercent;
             detailTemplate.cashOwn = string.Format(ColosussBetsLabel.YouOwnPercent, Formatter.DecFormat(cashOwn, 0));
 
-            if (cashOutPercent == 0)
-            {
-                detailTemplate.cashSold = ColosussBetsLabel.YouSoldZeroPercent;
-            }
-            else
-            {
-                detailTemplate.cashSold = string.Format(
-                ColosussBetsLabel.YouSoldPercent,
-                Formatter.DecFormat(cashOutPercent, 0),
-                BuildColossusBetsWinLoss(cashOutAmount));
-            }
+            detailTemplate.cashSold = cashOutPercent == 0
+                ? ColosussBetsLabel.YouSoldZeroPercent
+                : string.Format(
+                    ColosussBetsLabel.YouSoldPercent,
+                    Formatter.DecFormat(cashOutPercent, 0),
+                    BuildColossusBetsWinLoss(cashOutAmount));
         }
 
         private static void BuildColossusBetDetailsTable(
@@ -125,7 +124,7 @@
             ITicketHelper ticketHelper)
         {
             ColossusBetsDetail_Contents_Block detailContent = new ColossusBetsDetail_Contents_Block();
-            detailContent.date = detailTicket.TransDate.ToString();
+            detailContent.date = detailTicket.TransDate.ToString(CultureInfo.InvariantCulture);
             detailContent.transactionType = BuildColossusBetsTransactionType(
                 detailTicket.BetTypeId,
                 detailTicket.Handicap1,

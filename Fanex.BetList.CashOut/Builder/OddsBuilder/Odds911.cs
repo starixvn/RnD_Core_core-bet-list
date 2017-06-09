@@ -33,7 +33,7 @@
             return template;
         }
 
-        private IOdds CreateOdds(int betTypeId)
+        private static IOdds CreateOdds(int betTypeId)
         {
             var betListHtmlBuilder = new BetListHTMLBuilder();
 

@@ -18,17 +18,12 @@
             }
         }
 
-        private bool IsShowStatusResult(ITicket ticket)
-        {
-            return !IsSummaryTicket(ticket.BetCheck) &&
+        private static bool IsShowStatusResult(ITicket ticket)
+            => !IsSummaryTicket(ticket.BetCheck) &&
                  (ticket.Status.Equals(BetStatus.Won, StringComparison.OrdinalIgnoreCase)
                 || ticket.Status.Equals(BetStatus.Draw, StringComparison.OrdinalIgnoreCase)
                 || ticket.Status.Equals(BetStatus.Lose, StringComparison.OrdinalIgnoreCase));
-        }
 
-        private bool IsSummaryTicket(string betCheck)
-        {
-            return string.IsNullOrEmpty(betCheck);
-        }
+        private static bool IsSummaryTicket(string betCheck) => string.IsNullOrEmpty(betCheck);
     }
 }

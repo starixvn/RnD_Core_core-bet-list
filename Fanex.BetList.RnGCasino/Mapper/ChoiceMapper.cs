@@ -4,14 +4,14 @@
     {
         public ChoiceMapper()
         {
-            MappingForRNGGame();
+            MappingForRnGGame();
 
             MappingForMiniGame();
 
             MappingForMobileGame();
         }
 
-        private void MappingForRNGGame()
+        private void MappingForRnGGame()
         {
             for (var betType = 2102; betType <= 2187; betType++)
             {

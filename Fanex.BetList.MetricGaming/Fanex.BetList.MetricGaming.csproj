@@ -80,6 +80,7 @@
     <Compile Include="Builder\TransBuilder\Trans804.cs" />
     <Compile Include="Builder\TransBuilder\Trans805.cs" />
     <Compile Include="Builder\TransBuilder\Trans806.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

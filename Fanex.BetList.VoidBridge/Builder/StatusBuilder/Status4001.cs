@@ -44,9 +44,9 @@
             Template.result = status;
         }
 
-        private string BuildRunningLink(ITicket ticket, string status)
+        private static string BuildRunningLink(ITicket ticket, string status)
         {
-            var viewRunningTicketResultTag = new string[]
+            var viewRunningTicketResultTag = new[]
                     {
                         "<div class=\"result\" onclick=\"ViewResult(",
                         ticket.MatchId.ToString(CultureInfo.InvariantCulture),

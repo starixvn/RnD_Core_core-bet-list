@@ -1,6 +1,7 @@
 ﻿namespace Fanex.BetList.Allbet.Tests.Builder.ChoiceBuilder
 {
     using System;
+    using System.Globalization;
     using Core.Builder.ChoiceBuilder;
     using Core.Entities;
     using Core.Utils;
@@ -178,7 +179,7 @@
                 "<a style=\"color:#755200;font-weight:bold\"" +
                 " href=\"javascript:void(&quot;&quot;);\">Details</a></div>",
                 ticket.TransId.ToString(),
-                ticket.WinlostDate.ToString(),
+                ticket.WinlostDate.ToString(CultureInfo.InvariantCulture),
                 ticket.CustId.ToString(),
                 transactionType);
         }

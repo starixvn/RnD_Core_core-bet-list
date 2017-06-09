@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using Fanex.BetList.ColossusBets.Builder;
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Builder;
@@ -123,7 +124,7 @@
             var actualBetDetailsHtml = _htmlBuilder.BuildColossusBetDetails(_tickets, _ticketHelper);
 
             //// Assert
-            Assert.IsTrue(actualBetDetailsHtml.Contains("1/1/2014 12:00:00 PM"));
+            Assert.IsTrue(actualBetDetailsHtml.Contains(_ticket.TransDate.ToString(CultureInfo.InvariantCulture)));
         }
 
         [Test]

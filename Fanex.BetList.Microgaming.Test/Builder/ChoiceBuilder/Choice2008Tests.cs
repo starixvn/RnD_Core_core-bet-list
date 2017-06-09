@@ -2,9 +2,10 @@
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Utils;
+    using System.Globalization;
+    using Core.Builder.ChoiceBuilder;
+    using Core.Entities;
+    using Core.Utils;
     using NPOI.HSSF.UserModel;
     using NSubstitute;
     using NUnit.Framework;
@@ -50,8 +51,8 @@
                 string.Format(
                "<div class=\"detail\" onclick='showMicroGamingRnGBetsDetails(&quot;1&quot;,&quot;{1}&quot;,&quot;10000&quot;,&quot;{0}&quot;);'><a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">Details</a></div>",
                 transctionType,
-                _ticket.WinlostDate);
-            
+                _ticket.WinlostDate.ToString(CultureInfo.InvariantCulture));
+
             Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedTemplate));
         }
 
@@ -79,9 +80,9 @@
             //// Assert
             string expectedTemplate = string.Format(
                 "<div class=\"detail\" onclick='showMicroGamingRnGBetsDetails(&quot;1&quot;,&quot;{0}&quot;,&quot;10000&quot;,&quot;{1}&quot;);'><a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">Details</a></div>",
-                _ticket.WinlostDate,
+                _ticket.WinlostDate.ToString(CultureInfo.InvariantCulture),
                 transactionType);
-            
+
             Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedTemplate));
         }
 
@@ -102,7 +103,7 @@
             //// Assert
             string expectedTemplate = string.Format(
                 "<div class=\"detail\" onclick='showMicroGamingRnGBetsDetails(&quot;1&quot;,&quot;{0}&quot;,&quot;10000&quot;,&quot;{1}&quot;);'><a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">Details</a></div>",
-                _ticket.WinlostDate,
+                _ticket.WinlostDate.ToString(CultureInfo.InvariantCulture),
                 "0");
 
             Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedTemplate));

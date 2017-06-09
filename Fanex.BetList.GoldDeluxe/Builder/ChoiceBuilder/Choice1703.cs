@@ -40,7 +40,7 @@
 
             var choice = tmpRtfHelper.RTFRenderer.Render();
             tmpRtfHelper.RTFRenderer.Clear();
-            return new List<IRichTextString>() { choice };
+            return new List<IRichTextString> { choice };
         }
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
@@ -78,6 +78,7 @@
                     var league = string.Format(LeagueFormat, ticketHelper.GetSportNameById(ticket.SportTypeId), betTypeName, GetBetChoice(ticketDetail.TransDesc));
 
                     choiceDetails += string.Format("<div class='ticketList'>{0}{1}</div>", betTeam, league);
+
                     if (count++ < ticketDetails.Count)
                     {
                         choiceDetails += "<div class='line'></div>";
@@ -90,15 +91,13 @@
             }
 
             choiceDetails += "</div>";
-            Template.League.SetValue(Template.League.ToString() + choiceDetails);
+            Template.League.SetValue(Template.League + choiceDetails);
         }
 
-        private bool IsNotRunningTicket(ITicket ticket)
-        {
-            return !string.Equals(ticket.Status, BetStatus.Running, StringComparison.InvariantCultureIgnoreCase);
-        }
+        private static bool IsNotRunningTicket(ITicket ticket)
+            => !string.Equals(ticket.Status, BetStatus.Running, StringComparison.InvariantCultureIgnoreCase);
 
-        private string GetBetChoice(string transDesc)
+        private static string GetBetChoice(string transDesc)
         {
             if (string.IsNullOrWhiteSpace(transDesc))
             {

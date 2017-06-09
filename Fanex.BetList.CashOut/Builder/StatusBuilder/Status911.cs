@@ -46,10 +46,11 @@
 
         protected override void BuildResultLRF(string status, RTFHelper rtfHelper)
         {
-            status = status.Replace("<br/><div style='font-weight: normal;'>", "\n");
-            status = status.Replace("</div>", string.Empty);
+            var statusText = status
+                .Replace("<br/><div style='font-weight: normal;'>", "\n")
+                .Replace("</div>", string.Empty);
 
-            rtfHelper.RTFRenderer.AddText(status, rtfHelper.PosFont);
+            rtfHelper.RTFRenderer.AddText(statusText, rtfHelper.PosFont);
         }
 
         protected override void BuildStatusResult(ITicket ticket)

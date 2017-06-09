@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
     using System.Text;
     using System.Text.RegularExpressions;
@@ -37,9 +38,9 @@
             }
         }
 
-        private string GetBetChoice(ITicket ticket, ITicketHelper ticketHelper)
+        private static string GetBetChoice(ITicket ticket, ITicketHelper ticketHelper)
         {
-            var transDecsParsed = DeserializeTransDesc(ticket.TransDesc.ToUpper());
+            var transDecsParsed = DeserializeTransDesc(ticket.TransDesc.ToUpperInvariant());
 
             if (transDecsParsed.ContainsKey(BetChoiceDataKey))
             {
@@ -49,7 +50,7 @@
             return string.Empty;
         }
 
-        private Dictionary<string, string> DeserializeTransDesc(string transDesc)
+        private static Dictionary<string, string> DeserializeTransDesc(string transDesc)
         {
             Dictionary<string, string> transDescItems = new Dictionary<string, string>();
 
@@ -58,10 +59,10 @@
                 return transDescItems;
             }
 
-            var keyValuePairs = transDesc.Split(new char[] { '*' }, StringSplitOptions.RemoveEmptyEntries);
+            var keyValuePairs = transDesc.Split(new[] { '*' }, StringSplitOptions.RemoveEmptyEntries);
             foreach (var keyValuePair in keyValuePairs)
             {
-                var keyValue = keyValuePair.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
+                var keyValue = keyValuePair.Split(new[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
                 if (keyValue.Length == 2)
                 {
                     transDescItems.Add(keyValue[0], keyValue[1]);
@@ -102,7 +103,7 @@
             }
         }
 
-        private Choice_League_Block BuildDetailLink(ITicket ticket)
+        private static Choice_League_Block BuildDetailLink(ITicket ticket)
         {
             StringBuilder detailLinkMarkupBuilder = new StringBuilder();
             string detailFunction = BuildDetailFunction(ticket);
@@ -123,7 +124,7 @@
             return detailTemplateBlock;
         }
 
-        private string BuildDetailFunction(ITicket ticket)
+        private static string BuildDetailFunction(ITicket ticket)
         {
             StringBuilder detailFunctionBuilder = new StringBuilder();
 
@@ -131,7 +132,7 @@
                 .Append(ticket.TransId.ToString())
                 .Append("&quot;")
                 .Append(",&quot;")
-                .Append(ticket.WinlostDate.ToString())
+                .Append(ticket.WinlostDate.ToString(CultureInfo.InvariantCulture))
                 .Append("&quot;")
                 .Append(",&quot;")
                 .Append(ticket.CustId.ToString())
@@ -143,11 +144,11 @@
             return detailFunctionBuilder.ToString();
         }
 
-        private string GetTransactionType(ITicket ticket)
+        private static string GetTransactionType(ITicket ticket)
         {
             if (ticket.WinlostDate.Date >= DateTime.Today.AddDays(-1))
             {
-                switch (ticket.Status.ToLower())
+                switch (ticket.Status.ToLowerInvariant())
                 {
                     case BetStatus.Won:
                     case BetStatus.Lose:
@@ -162,28 +163,34 @@
                     case BetStatus.Running:
                     case BetStatus.Waiting:
                         return "3";
+
+                    default:
+                        return "0";
                 }
             }
 
             return "0";
         }
 
-        private string BuildBetTypeName(ITicket ticket, ITicketHelper ticketHelper)
+        private static string BuildBetTypeName(ITicket ticket, ITicketHelper ticketHelper)
         {
             var betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
 
             return string.Format("{0}{1}{2}", OpenBetTypeNameTag, betTypeName, CloseBetTypeNameTag);
         }
 
-        private string BuildGameTableId(string transDesc)
+        private static string BuildGameTableId(string transDesc)
         {
-            var tableCode = transDesc.Split('*').Where(x => x.IndexOf(TableCodeKey + "=", StringComparison.OrdinalIgnoreCase) == 0).FirstOrDefault();
+            var tableCode = transDesc
+                .Split('*')
+                .FirstOrDefault(x => x.IndexOf(TableCodeKey + "=", StringComparison.OrdinalIgnoreCase) == 0);
+
             return string.IsNullOrEmpty(tableCode)
                 ? string.Empty
                 : string.Format(GameTableIdFormat, tableCode.Split('=')[1]);
         }
 
-        private string BuildGameId(ITicket ticket)
+        private static string BuildGameId(ITicket ticket)
         {
             var gameId = ticket.MatchCode;
 

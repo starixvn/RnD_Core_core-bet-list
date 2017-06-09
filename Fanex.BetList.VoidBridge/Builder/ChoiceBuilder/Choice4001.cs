@@ -90,9 +90,9 @@
             }
         }
 
-        private Choice_League_Block BuildVoidBridgeDetailsLink(ITicket ticket)
+        private static Choice_League_Block BuildVoidBridgeDetailsLink(ITicket ticket)
         {
-            string[] detailsFunctionDivCompositions = new string[]
+            string[] detailsFunctionDivCompositions =
             {
                 "<div class=\"detail voidbridge-detail\" onclick=\"showVoidBridgeDetails(",
                 ticket.TransId.ToString(CultureInfo.InvariantCulture),
@@ -118,7 +118,7 @@
             return detailtTemplateBlock;
         }
 
-        private string GetTransactionType(ITicket ticket)
+        private static string GetTransactionType(ITicket ticket)
         {
             // @TransType
             // + 0 : All (DRAW/WON/LOSE/Reject/Void/Refund/Running/Waiting)
@@ -128,7 +128,7 @@
             // Use this because web server and db are in the same timezone
             if (ticket.WinlostDate.Date >= DateTime.Today.AddDays(-1))
             {
-                switch (ticket.Status.ToLower())
+                switch (ticket.Status.ToLowerInvariant())
                 {
                     case BetStatus.Won:
                     case BetStatus.Lose:
@@ -143,6 +143,9 @@
                     case BetStatus.Running:
                     case BetStatus.Waiting:
                         return "3";
+
+                    default:
+                        return "0";
                 }
             }
 

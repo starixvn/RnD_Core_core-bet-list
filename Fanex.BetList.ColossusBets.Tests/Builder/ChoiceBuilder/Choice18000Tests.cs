@@ -1,6 +1,7 @@
 ﻿namespace Fanex.BetList.ColossusBets.Tests.Builder.ChoiceBuilder
 {
     using System;
+    using System.Globalization;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Entities;
     using NSubstitute;
@@ -41,7 +42,7 @@
                                     "<span class=\"sport\">Colossus Bets</span> - <span class=\"underdog\">" + betCheck + "</span>" +
                                 "</div>" +
                                 "<div class=\"detail colossus-bets-details\" " +
-                                "onclick=\"showColossusBetsDetails('300', '1/1/2014 12:00:00 PM', '200', '10000', '" + betCheck + "');\">" +
+                                "onclick=\"showColossusBetsDetails('300', '" + _ticket.WinlostDate.ToString(CultureInfo.InvariantCulture) + "', '200', '10000', '" + betCheck + "');\">" +
                                 "<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void('');\">Details</a></div>";
 
             Assert.AreEqual(expected, _choice.Template.ToString());

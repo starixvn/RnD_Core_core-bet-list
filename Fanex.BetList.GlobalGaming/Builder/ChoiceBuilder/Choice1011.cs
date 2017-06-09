@@ -36,7 +36,7 @@
             }
         }
 
-        private string BuildRemainingAmount(string additional, string currency, ITicketHelper ticketHelper)
+        private static string BuildRemainingAmount(string additional, string currency, ITicketHelper ticketHelper)
         {
             string remainingAmount;
             var remainingBlock = additional
@@ -60,7 +60,7 @@
                     remainingAmount);
         }
 
-        private string BuildCoinsInAmount(string additional, string currency, ITicketHelper ticketHelper)
+        private static string BuildCoinsInAmount(string additional, string currency, ITicketHelper ticketHelper)
         {
             string buyAmount;
             var buyBlock = additional
@@ -124,7 +124,7 @@
             }
         }
 
-        private string BuildGlobalGamingDetailsLink(ITicket ticket)
+        private static string BuildGlobalGamingDetailsLink(ITicket ticket)
         {
             var link = string.Format("<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void('');\">{0}</a>", CoreBetList.details);
 
@@ -137,11 +137,11 @@
                 link);
         }
 
-        private string GetTransactionType(ITicket ticket)
+        private static string GetTransactionType(ITicket ticket)
         {
             if (ticket.WinlostDate.Date >= DateTime.Today.AddDays(-1))
             {
-                switch (ticket.Status.ToLower())
+                switch (ticket.Status.ToLowerInvariant())
                 {
                     case BetStatus.Won:
                     case BetStatus.Lose:
@@ -156,6 +156,9 @@
                     case BetStatus.Running:
                     case BetStatus.Waiting:
                         return "3";
+
+                    default:
+                        return "0";
                 }
             }
 
@@ -167,10 +170,7 @@
             return ticketHelper.GetResourceData(GameTypeRefId, ticket.TransDesc);
         }
 
-        private bool IsSummaryTicket(string betCheck)
-        {
-            return string.IsNullOrEmpty(betCheck);
-        }
+        private static bool IsSummaryTicket(string betCheck) => string.IsNullOrEmpty(betCheck);
 
         protected override IRichTextString BuildRTFChoice(ITicket ticket, RTFHelper rtfHelper, ITicketHelper ticketHelper)
         {

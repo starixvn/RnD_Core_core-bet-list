@@ -17,7 +17,7 @@
             else
             {
                 base.BuildStatusResult(ticket);
-                Template.StatusResult.refNo = "'" + ticket.BetCheck + "'";
+                Template.StatusResult.refNo = $"'{ticket.BetCheck}'";
             }
         }
 
@@ -26,21 +26,11 @@
             string status = ticket.Status.ToLowerInvariant();
             string result = GetResultString(ticket.Status);
 
-            if (!string.IsNullOrEmpty(result))
-            {
-                if (!string.IsNullOrEmpty(ticket.BetCheck) && BetStatus.Running == status)
-                {
-                    Template.result = BuildRunningLink(ticket, result);
-                }
-                else
-                {
-                    Template.result = result;
-                }
-            }
-            else
-            {
-                Template.result = status;
-            }
+            Template.result = !string.IsNullOrEmpty(result)
+                ? (!string.IsNullOrEmpty(ticket.BetCheck) && BetStatus.Running == status
+                    ? BuildRunningLink(ticket, result)
+                    : result)
+                : status;
         }
 
         protected override void BuildResultLRF(string status, RTFHelper rtfHelper)
@@ -51,9 +41,9 @@
             base.BuildResultLRF(originalStatus, rtfHelper);
         }
 
-        private string BuildRunningLink(ITicket ticket, string status)
+        private static string BuildRunningLink(ITicket ticket, string status)
         {
-            var viewRunningTicketResultTag = new string[]
+            var viewRunningTicketResultTag = new[]
                     {
                         "<div class=\"result\" onclick=\"ViewResult(",
                         ticket.MatchId.ToString(CultureInfo.InvariantCulture),

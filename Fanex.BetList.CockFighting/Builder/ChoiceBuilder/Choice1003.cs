@@ -99,11 +99,6 @@
             }
         }
 
-        protected override void BuildSport(ITicket ticket, ITicketHelper ticketHelper)
-        {
-            base.BuildSport(ticket, ticketHelper);
-        }
-
         internal static Dictionary<string, string> ParseTransDesc(string transDesc)
         {
             Dictionary<string, string> transDescItems = new Dictionary<string, string>();
@@ -113,13 +108,13 @@
                 return transDescItems;
             }
 
-            var keyValuePairs = transDesc.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+            var keyValuePairs = transDesc.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
             foreach (var keyValuePair in keyValuePairs)
             {
-                var keyValue = keyValuePair.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
+                var keyValue = keyValuePair.Split(new[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
                 if (keyValue.Length == 2)
                 {
-                    transDescItems.Add(keyValue[0].ToLower(), keyValue[1]);
+                    transDescItems.Add(keyValue[0].ToLowerInvariant(), keyValue[1]);
                 }
             }
 

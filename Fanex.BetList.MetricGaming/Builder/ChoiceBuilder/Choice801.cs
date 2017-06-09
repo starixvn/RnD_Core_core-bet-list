@@ -24,7 +24,7 @@
 
         protected virtual string GetBetTypeTime(ITicket ticket)
         {
-            switch (ticket.Status.ToLower())
+            switch (ticket.Status.ToLowerInvariant())
             {
                 case BetStatus.Won:
                 case BetStatus.Lose:
