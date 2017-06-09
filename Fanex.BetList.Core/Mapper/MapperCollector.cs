@@ -128,7 +128,7 @@
 
         private static IDictionary<int, int> CollectMapperDataOf(string componentName, IList<Assembly> assemblies)
         {
-            string typeName = string.Join(null, new string[] { string.Format(BetListMapperNamespace, componentName) });
+            string typeName = string.Join(null, new[] { string.Format(BetListMapperNamespace, componentName) });
 
             IDictionary<int, int> mapperData = new Dictionary<int, int>();
 

@@ -7,10 +7,6 @@
     /// </summary>
     public class BetListHTMLFactory : IBetListFactory<BetListHTMLBuilder>
     {
-        public BetListHTMLBuilder CreateBuilder()
-        {
-            var builder = new BetListHTMLBuilder();
-            return builder;
-        }
+        public BetListHTMLBuilder CreateBuilder() => new BetListHTMLBuilder();
     }
 }

@@ -21,26 +21,35 @@
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             string betId = ticket.BetId.ToString();
+
             if (betId == "0")
             {
                 betId = string.Empty;
             }
 
-            string liveScore = (!ticket.IsLive || string.IsNullOrEmpty(betId)) ? " [0]" : string.Join(null, new string[] { " [", betId, "]" });
+            var liveScore = (!ticket.IsLive || string.IsNullOrEmpty(betId)) ? " [0]" : string.Join(null, new[] { " [", betId, "]" });
+            var betTeam = string.Empty;
 
-            string betTeam = string.Empty;
             switch (ticket.BetTeam)
             {
-                case "1:1": betTeam = CoreBetList.lblOverOdd;
+                case "1:1":
+                    betTeam = CoreBetList.lblOverOdd;
                     break;
 
-                case "1:2": betTeam = CoreBetList.lblOverEven;
+                case "1:2":
+                    betTeam = CoreBetList.lblOverEven;
                     break;
 
-                case "2:1": betTeam = CoreBetList.lblUnderOdd;
+                case "2:1":
+                    betTeam = CoreBetList.lblUnderOdd;
                     break;
 
-                case "2:2": betTeam = CoreBetList.lblUnderEven;
+                case "2:2":
+                    betTeam = CoreBetList.lblUnderEven;
+                    break;
+
+                default:
+                    betTeam = string.Empty;
                     break;
             }
 
@@ -65,7 +74,7 @@
             base.BuildMatch(ticket, ticketHelper);
 
             Template.Match.VS = null;
-            Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
+            Template.Match.homeTeam = string.Join(null, new[] { CoreBetList.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
         }
     }
 }

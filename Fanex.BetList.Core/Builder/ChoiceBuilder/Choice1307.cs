@@ -32,26 +32,17 @@
             bool betOver = IsBetOver(ticket);
             bool betUnder = IsBetUnder(ticket);
 
-            if (betOver)
-            {
-                Template.betTeam = CoreBetList.over;
-            }
-            else
-            {
-                if (betUnder)
-                {
-                    Template.betTeam = CoreBetList.under;
-                }
-                else
-                {
-                    Template.betTeam = string.Format(CoreBetList.betweenXandY, ConvertByBetType.Hdp(ticket.Handicap2), ConvertByBetType.Hdp(ticket.Handicap1));
-                }
-            }
+            Template.betTeam = betOver ? CoreBetList.over :
+                betUnder ? CoreBetList.under
+                    : string.Format(
+                        CoreBetList.betweenXandY,
+                        ConvertByBetType.Hdp(ticket.Handicap2),
+                        ConvertByBetType.Hdp(ticket.Handicap1));
         }
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.RefNo, ticket.BetId, null);
+            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.RefNo, betId: ticket.BetId);
         }
 
         private static bool IsBetOver(ITicket ticket)

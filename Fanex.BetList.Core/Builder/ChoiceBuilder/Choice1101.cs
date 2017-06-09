@@ -6,6 +6,7 @@
     using System.Diagnostics.CodeAnalysis;
     using System.Text;
     using Utils;
+    using System;
 
     /// <summary>
     /// Bet Type: Baccarat.
@@ -62,7 +63,7 @@
         {
             var betTypeName = GetBetTypeName(ticket.BetTypeId, ticketHelper);
 
-            Template.League.LeagueName.leagueName = string.Join(null, new string[] { betTypeName, HtmlCharacters.NoneBreakingSpace, ticket.ShowTime });
+            Template.League.LeagueName.leagueName = string.Join(null, new[] { betTypeName, HtmlCharacters.NoneBreakingSpace, ticket.ShowTime });
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
@@ -84,7 +85,8 @@
                                     .Replace("<span class='stake'>", string.Empty);
 
             // Remove the last line-break
-            int lastBreak = Template.betTeam.LastIndexOf("\n");
+            int lastBreak = Template.betTeam.LastIndexOf("\n", StringComparison.InvariantCulture);
+
             if (lastBreak >= 0)
             {
                 Template.betTeam = Template.betTeam.Remove(lastBreak, 1);

@@ -42,6 +42,10 @@
                 case BetTeamValue.A9Over:
                     betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "9+"), Template.Match.awayTeam);
                     break;
+
+                default:
+                    betTeam = string.Empty;
+                    break;
             }
 
             Template.betTeam = betTeam;

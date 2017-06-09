@@ -494,6 +494,7 @@
     <Compile Include="Factories\BetListExcelFactory.cs" />
     <Compile Include="Factories\BetListHTMLFactory.cs" />
     <Compile Include="Factories\IBetListFactory.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Mapper\BaseMapper.cs" />
     <Compile Include="Mapper\ChoiceMapper.cs" />
     <Compile Include="Mapper\IMapper.cs" />
@@ -520,11 +521,6 @@
     <Compile Include="Utils\StringExt\StringExtension.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.5.9.0.1001\analyzers\Google.Protobuf.dll" />
-    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.5.9.0.1001\analyzers\SonarAnalyzer.CSharp.dll" />
-    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.5.9.0.1001\analyzers\SonarAnalyzer.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="App_GlobalResources\CoreBetList.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>CoreBetList.designer.cs</LastGenOutput>
@@ -535,6 +531,11 @@
     <None Include="CoreBetList.cd" />
     <Content Include="packages.config" />
     <Content Include="Fanex.BetList.Core.ruleset" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.5.10.1.1411\analyzers\Google.Protobuf.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.5.10.1.1411\analyzers\SonarAnalyzer.CSharp.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.5.10.1.1411\analyzers\SonarAnalyzer.dll" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

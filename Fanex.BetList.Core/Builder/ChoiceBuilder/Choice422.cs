@@ -27,6 +27,10 @@
                 case BetTeamValue.N:
                     betTeam = CoreBetList.lblNeither;
                     break;
+
+                default:
+                    betTeam = string.Empty;
+                    break;
             }
 
             Template.betTeam = betTeam;

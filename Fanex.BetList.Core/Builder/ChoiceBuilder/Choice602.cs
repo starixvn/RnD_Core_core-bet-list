@@ -10,7 +10,6 @@
     /// </summary>
     public class Choice602 : Choice601
     {
-        [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2101:MethodMustNotContainMoreLinesThan", Justification = "Reviewed. Suppression is OK here.")]
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             var betTeam = string.Empty;
@@ -63,6 +62,10 @@
 
                 case BetTeamValue.A26Over:
                     betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "26+"), Template.Match.awayTeam);
+                    break;
+
+                default:
+                    betTeam = string.Empty;
                     break;
             }
 

@@ -3,7 +3,7 @@
     /// <summary>
     /// Indexes of Ticket Template Column.
     /// </summary>
-    public enum TicketTemplateColumnIndex : int
+    public enum TicketTemplateColumnIndex
     {
         /// <summary>
         /// The index of bet type identifier.

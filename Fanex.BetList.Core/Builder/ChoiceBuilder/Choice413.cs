@@ -15,14 +15,7 @@
         {
             string choice = ticket.BetTeam;
 
-            if (BetTeamValue.AOS == choice.ToLowerInvariant())
-            {
-                choice = CoreBetList.AOS;
-            }
-            else
-            {
-                choice = choice.Replace(":", "-");
-            }
+            choice = BetTeamValue.AOS == choice.ToLowerInvariant() ? CoreBetList.AOS : choice.Replace(":", "-");
 
             // "&nbsp" because export format
             Template.betTeam = HtmlCharacters.NoneBreakingSpace + choice;
@@ -64,22 +57,22 @@
 
             if (Template.Handicap != null && Template.Handicap.Visible && Template.Handicap.handicap != null)
             {
-                choice += string.Join(null, new string[] { Space, Template.Handicap.handicap });
+                choice += string.Join(null, new[] { Space, Template.Handicap.handicap });
             }
 
             if (Template.Score != null && Template.Score.Visible && ticket.IsLive)
             {
-                choice += string.Join(null, new string[] { " [", Template.Score.homeScore, "-", Template.Score.awayScore, "]" });
+                choice += string.Join(null, new[] { " [", Template.Score.homeScore, "-", Template.Score.awayScore, "]" });
             }
 
             if (isMixParlay)
             {
-                choice += string.Join(null, new string[] { " @ ", Formatter.FormatNumber3(ticket.Odds, null) });
+                choice += string.Join(null, new[] { " @ ", Formatter.FormatNumber3(ticket.Odds, null) });
             }
 
             if (BetTeamValue.AOS == ticket.BetTeam.ToLowerInvariant() && !string.IsNullOrEmpty(ticket.TransDesc))
             {
-                string[] excluding = new string[]
+                string[] excluding =
                 {
                     "\n",
                     CoreBetList.Excluding,
@@ -97,14 +90,12 @@
             }
         }
 
-        private string FormatTransDesc(string transDesc)
-        {
-            return Regex.Replace(transDesc, ",\\s*", ", ").Replace(":", "-");
-        }
+        private static string FormatTransDesc(string transDesc)
+            => Regex.Replace(transDesc, ",\\s*", ", ").Replace(":", "-");
 
-        private string BuildExcludingBlock(string transDesc)
+        private static string BuildExcludingBlock(string transDesc)
         {
-            string[] excludingTag = new string[]
+            string[] excludingTag =
             {
                 "<div class=\"excluding-choices\">",
                 CoreBetList.Excluding,

@@ -22,9 +22,6 @@
             Template.betTeamClassName = IsOver(ticket) ? Favorite : Underdog;
         }
 
-        private bool IsOver(ITicket ticket)
-        {
-            return ticket.BetTeam.ToLowerInvariant() == BetTeamValue.O;
-        }
+        private static bool IsOver(ITicket ticket) => ticket.BetTeam.ToLowerInvariant() == BetTeamValue.O;
     }
 }

@@ -43,7 +43,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.AreEqual(string.Join(null, new string[] { "&nbsp;", expectedResult }), _choice.Template.betTeam, expectedMessage);
+            Assert.AreEqual(string.Join(null, new[] { "&nbsp;", expectedResult }), _choice.Template.betTeam, expectedMessage);
         }
     }
 }

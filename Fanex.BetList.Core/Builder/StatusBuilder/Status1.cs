@@ -55,7 +55,7 @@
 
             if (Template.ShowIP != null && Template.ShowIP.Visible)
             {
-                status = string.Join(null, new string[] { "\n", Template.ShowIP.betIp });
+                status = string.Join(null, new[] { "\n", Template.ShowIP.betIp });
                 rtfHelper.RTFRenderer.AddText(status);
             }
 
@@ -74,7 +74,7 @@
         {
             string result = string.Empty;
 
-            switch (ticketStatus.ToLower(CultureInfo.InvariantCulture))
+            switch (ticketStatus.ToLowerInvariant())
             {
                 case BetStatus.Running:
                     result = CoreBetList.running;
@@ -106,6 +106,10 @@
 
                 case BetStatus.Refund:
                     result = CoreBetList.refund;
+                    break;
+
+                default:
+                    result = string.Empty;
                     break;
             }
 
@@ -167,13 +171,10 @@
         /// <param name="isShowVNIP">If set to <c>true</c> [is show VNIP].</param>
         protected virtual void BuildIP(ITicket ticket, ITicketHelper ticketHelper, bool isShowVNIP)
         {
-            if (!isShowVNIP)
+            if (!isShowVNIP && (ticketHelper.IsVnIp != null && ticketHelper.IsVnIp(ticket.IP)))
             {
-                if (ticketHelper.IsVnIp != null && ticketHelper.IsVnIp(ticket.IP))
-                {
-                    Template.ShowIP.Hide();
-                    return;
-                }
+                Template.ShowIP.Hide();
+                return;
             }
 
             Template.ShowIP.betIp = ticket.IP;
@@ -198,19 +199,19 @@
             Template.CashOutHistory.betdaqId = ticket.BetdaqId.ToString();
         }
 
-        private bool IsCashOutTicket(ITicket ticket)
+        private static bool IsCashOutTicket(ITicket ticket)
             => (ticket.BetdaqId == 1 && !IsBetTradeTicket(ticket.BetTypeId)) || ticket.ExtraInfo.HasXmlTag(CashOutXmlTag);
 
-        private bool IsCashOutOriginalTicket(ITicket ticket)
+        private static bool IsCashOutOriginalTicket(ITicket ticket)
             => ticket.BetdaqId == 0 && ticket.ExtraInfo.HasXmlTag(CashOutXmlTag);
 
-        private bool IsBetTradeTicket(int betTypeId)
+        private static bool IsBetTradeTicket(int betTypeId)
             => betTypeId == 901 || betTypeId == 902;
 
-        private bool IsStatusNotVoidAndRefund(string status) => !status.Equals(BetStatus.Void) && !status.Equals(BetStatus.Refund);
+        private static bool IsStatusNotVoidAndRefund(string status) => !status.Equals(BetStatus.Void) && !status.Equals(BetStatus.Refund);
 
-        private bool IsCashOutAll(ITicket ticket) => ticket.Stake == 0 && StakeIsZeroBeforeConvertCurrency(ticket);
+        private static bool IsCashOutAll(ITicket ticket) => ticket.Stake == 0 && StakeIsZeroBeforeConvertCurrency(ticket);
 
-        private bool StakeIsZeroBeforeConvertCurrency(ITicket ticket) => ticket.OriginalBetType != -1;
+        private static bool StakeIsZeroBeforeConvertCurrency(ITicket ticket) => ticket.OriginalBetType != -1;
     }
 }

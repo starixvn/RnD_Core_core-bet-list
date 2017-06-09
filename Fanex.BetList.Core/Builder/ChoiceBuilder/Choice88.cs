@@ -26,7 +26,7 @@
             base.BuildMatch(ticket, ticketHelper);
 
             Template.Match.VS = null;
-            Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
+            Template.Match.homeTeam = string.Join(null, new[] { CoreBetList.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
         }
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)

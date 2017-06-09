@@ -6,6 +6,7 @@
     using System.Collections.Generic;
     using System.Text.RegularExpressions;
     using Utils;
+    using System;
 
     public class Choice416 : Choice413
     {
@@ -16,7 +17,7 @@
             Template.betTeam = HtmlCharacters.NoneBreakingSpace + BuildBetChoiceString(ticket.BetTeam);
         }
 
-        private string BuildBetChoiceString(string betTeam)
+        private static string BuildBetChoiceString(string betTeam)
         {
             if (string.IsNullOrEmpty(betTeam))
             {
@@ -25,8 +26,8 @@
 
             var betChoice = betTeam.ToLowerInvariant().Replace(BetTeamValue.AOS, CoreBetList.AOS).Replace(":", "-");
 
-            var halfTimeChoice = betChoice.Substring(0, betChoice.IndexOf("/")).Trim();
-            var fullTimeChoice = betChoice.Remove(0, betChoice.IndexOf("/") + 1).Trim();
+            var halfTimeChoice = betChoice.Substring(0, betChoice.IndexOf("/", StringComparison.InvariantCulture)).Trim();
+            var fullTimeChoice = betChoice.Remove(0, betChoice.IndexOf("/", StringComparison.InvariantCulture) + 1).Trim();
 
             betChoice = $"{CoreBetList.HalfTime} {halfTimeChoice} / {CoreBetList.FullTime} {fullTimeChoice}";
 
@@ -66,35 +67,40 @@
 
             if (Template.Handicap != null && Template.Handicap.Visible && Template.Handicap.handicap != null)
             {
-                choice += string.Join(null, new string[] { Space, Template.Handicap.handicap });
+                choice += string.Join(null, new[] { Space, Template.Handicap.handicap });
             }
 
             if (Template.Score != null && Template.Score.Visible && ticket.IsLive)
             {
-                choice += string.Join(null, new string[] { " [", Template.Score.homeScore, "-", Template.Score.awayScore, "]" });
+                choice += string.Join(null, new[] { " [", Template.Score.homeScore, "-", Template.Score.awayScore, "]" });
             }
 
             if (isMixParlay)
             {
-                choice += string.Join(null, new string[] { " @ ", Formatter.FormatNumber3(ticket.Odds, null) });
+                choice += string.Join(null, new[] { " @ ", Formatter.FormatNumber3(ticket.Odds, null) });
             }
 
             if (!string.IsNullOrEmpty(ticket.TransDesc))
             {
                 string betTeam = ticket.BetTeam.ToLowerInvariant();
 
-                if (betTeam.StartsWith(BetTeamValue.AOS) && betTeam.EndsWith(BetTeamValue.AOS))
+                if (betTeam.StartsWith(BetTeamValue.AOS, StringComparison.InvariantCulture)
+                    && betTeam.EndsWith(BetTeamValue.AOS, StringComparison.InvariantCulture))
                 {
-                    choice += BuildHTExcludingString(ticket.TransDesc);
-                    choice += BuildFTExcludingString(ticket.TransDesc);
+                    choice += BuildHtExcludingString(ticket.TransDesc);
+                    choice += BuildFtExcludingString(ticket.TransDesc);
                 }
-                else if (betTeam.StartsWith(BetTeamValue.AOS) && !betTeam.EndsWith(BetTeamValue.AOS))
+
+                if (betTeam.StartsWith(BetTeamValue.AOS, StringComparison.InvariantCulture)
+                    && !betTeam.EndsWith(BetTeamValue.AOS, StringComparison.InvariantCulture))
                 {
-                    choice += BuildHTExcludingString(ticket.TransDesc);
+                    choice += BuildHtExcludingString(ticket.TransDesc);
                 }
-                else if (!betTeam.StartsWith(BetTeamValue.AOS) && betTeam.EndsWith(BetTeamValue.AOS))
+
+                if (!betTeam.StartsWith(BetTeamValue.AOS, StringComparison.InvariantCulture)
+                    && betTeam.EndsWith(BetTeamValue.AOS, StringComparison.InvariantCulture))
                 {
-                    choice += BuildFTExcludingString(ticket.TransDesc);
+                    choice += BuildFtExcludingString(ticket.TransDesc);
                 }
             }
 
@@ -105,51 +111,51 @@
             }
         }
 
-        private string FormatTransDesc(string transDesc, bool isFullTime)
+        private static string FormatTransDesc(string transDesc, bool isFullTime)
         {
-            string result = Regex.Replace(transDesc, ",\\s*", ", ").Replace(":", "-");
-            int indexOfSlash = result.IndexOf("/");
+            var result = Regex.Replace(transDesc, ",\\s*", ", ").Replace(":", "-");
+            var indexOfSlash = result.IndexOf("/", StringComparison.InvariantCulture);
 
-            if (isFullTime)
-            {
-                result = result.Substring(indexOfSlash + 1, result.Length - (indexOfSlash + 1));
-            }
-            else
-            {
-                result = result.Substring(0, indexOfSlash);
-            }
+            result = isFullTime
+                ? result.Substring(indexOfSlash + 1, result.Length - (indexOfSlash + 1))
+                : result.Substring(0, indexOfSlash);
 
             return result;
         }
 
-        private string BuildExcludingBlock(string betTeam, string transDesc)
+        private static string BuildExcludingBlock(string betTeam, string transDesc)
         {
             if (string.IsNullOrEmpty(transDesc))
             {
                 return string.Empty;
             }
 
-            betTeam = betTeam.ToLowerInvariant();
+            var betTeamValue = betTeam.ToLowerInvariant();
 
-            if (betTeam.StartsWith(BetTeamValue.AOS) && betTeam.EndsWith(BetTeamValue.AOS))
+            if (betTeamValue.StartsWith(BetTeamValue.AOS, StringComparison.InvariantCulture)
+                && betTeamValue.EndsWith(BetTeamValue.AOS, StringComparison.InvariantCulture))
             {
-                return BuildHTExcludingBlock(transDesc) + BuildFTExcludingBlock(transDesc);
+                return BuildHtExcludingBlock(transDesc) + BuildFtExcludingBlock(transDesc);
             }
-            else if (betTeam.StartsWith(BetTeamValue.AOS) && !betTeam.EndsWith(BetTeamValue.AOS))
+
+            if (betTeamValue.StartsWith(BetTeamValue.AOS, StringComparison.InvariantCulture)
+                && !betTeamValue.EndsWith(BetTeamValue.AOS, StringComparison.InvariantCulture))
             {
-                return BuildHTExcludingBlock(transDesc);
+                return BuildHtExcludingBlock(transDesc);
             }
-            else if (!betTeam.StartsWith(BetTeamValue.AOS) && betTeam.EndsWith(BetTeamValue.AOS))
+
+            if (!betTeamValue.StartsWith(BetTeamValue.AOS, StringComparison.InvariantCulture)
+                && betTeamValue.EndsWith(BetTeamValue.AOS, StringComparison.InvariantCulture))
             {
-                return BuildFTExcludingBlock(transDesc);
+                return BuildFtExcludingBlock(transDesc);
             }
 
             return string.Empty;
         }
 
-        private string BuildHTExcludingBlock(string transDesc)
+        private static string BuildHtExcludingBlock(string transDesc)
         {
-            string[] excludingTag = new string[]
+            string[] excludingTag =
             {
                 "<div class=\"excluding-choices\">",
                 CoreBetList.AOSHTExcluding,
@@ -161,9 +167,9 @@
             return string.Join(null, excludingTag);
         }
 
-        private string BuildFTExcludingBlock(string transDesc)
+        private static string BuildFtExcludingBlock(string transDesc)
         {
-            string[] excludingTag = new string[]
+            string[] excludingTag =
            {
                 "<div class=\"excluding-choices\">",
                 CoreBetList.AOSFTExcluding,
@@ -175,9 +181,9 @@
             return string.Join(null, excludingTag);
         }
 
-        private string BuildHTExcludingString(string transDesc)
+        private static string BuildHtExcludingString(string transDesc)
         {
-            string[] excluding = new string[]
+            string[] excluding =
                 {
                     "\n",
                     CoreBetList.AOSHTExcluding,
@@ -188,9 +194,9 @@
             return string.Join(null, excluding);
         }
 
-        private string BuildFTExcludingString(string transDesc)
+        private static string BuildFtExcludingString(string transDesc)
         {
-            string[] excluding = new string[]
+            string[] excluding =
                 {
                     "\n",
                     CoreBetList.AOSFTExcluding,

@@ -26,7 +26,7 @@
 
         protected override void BuildSport(ITicket ticket, ITicketHelper ticketHelper)
         {
-            string kenoLeagueInfo = string.Join(null, new string[] { ticketHelper.GetBetTypeNameById(ticket.BetTypeId), " [", ticket.MatchId.ToString(), "]" });
+            string kenoLeagueInfo = string.Join(null, new[] { ticketHelper.GetBetTypeNameById(ticket.BetTypeId), " [", ticket.MatchId.ToString(), "]" });
 
             Template.League.LeagueName.leagueName = kenoLeagueInfo;
         }

@@ -31,6 +31,10 @@
                 case BetTeamValue.NN:
                     betTeam = string.Format("{0}/{1}", CoreBetList.lblNo, CoreBetList.lblNo);
                     break;
+
+                default:
+                    betTeam = string.Empty;
+                    break;
             }
 
             Template.betTeam = betTeam;

@@ -58,6 +58,10 @@
                 case "7&over":
                     Template.betTeam = CoreBetList.SevenAndOver;
                     break;
+
+                default:
+                    Template.betTeam = string.Empty;
+                    break;
             }
         }
     }

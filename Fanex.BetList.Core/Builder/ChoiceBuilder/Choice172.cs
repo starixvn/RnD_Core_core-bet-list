@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Constants;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Constants;
+    using Entities;
 
     /// <summary>
     /// Bet type name: 1X2 and First Team To Score.
@@ -48,6 +48,10 @@
 
                 case BetTeamValue.NO:
                     betTeam = CoreBetList.none;
+                    break;
+
+                default:
+                    betTeam = string.Empty;
                     break;
             }
 

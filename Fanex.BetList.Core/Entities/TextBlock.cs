@@ -7,9 +7,9 @@
     /// </summary>
     public class TextBlock
     {
-        private string _text;
+        private readonly string _text;
 
-        private IFont _font;
+        private readonly IFont _font;
 
         public TextBlock(string text)
         {

@@ -20,6 +20,7 @@
         {
             string choice = ticket.BetTeam;
             var betTeam = string.Empty;
+
             switch (choice)
             {
                 case "01":
@@ -37,6 +38,10 @@
                 case "04":
                     betTeam = "7 " + CoreBetList.upPoints;
                     break;
+
+                default:
+                    betTeam = string.Empty;
+                    break;
             }
 
             // "&nbsp" because export format
@@ -52,7 +57,7 @@
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.RefNo, ticket.BetId, null);
+            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.RefNo, betId: ticket.BetId);
         }
     }
 }

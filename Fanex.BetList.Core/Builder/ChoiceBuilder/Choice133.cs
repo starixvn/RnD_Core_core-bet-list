@@ -31,7 +31,7 @@
         {
             var betTeam = string.Empty;
 
-            switch (ticket.BetTeam.ToLower())
+            switch (ticket.BetTeam.ToLowerInvariant())
             {
                 case BetTeamValue.Y:
                     betTeam = CoreBetList.lblYes;
@@ -39,6 +39,10 @@
 
                 case BetTeamValue.N:
                     betTeam = CoreBetList.lblNo;
+                    break;
+
+                default:
+                    betTeam = string.Empty;
                     break;
             }
 

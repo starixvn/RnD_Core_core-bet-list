@@ -68,11 +68,7 @@
             return template;
         }
 
-        private IChoice CreateChoice(int betType)
-        {
-            var builder = new BetListBaseBuilder();
-
-            return builder.CreateChoiceBuilder(betType);
-        }
+        private static IChoice CreateChoice(int betType)
+            => new BetListBaseBuilder().CreateChoiceBuilder(betType);
     }
 }

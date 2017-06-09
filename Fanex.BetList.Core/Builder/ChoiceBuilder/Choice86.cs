@@ -33,7 +33,7 @@
 
                 liveScore = (!ticket.IsLive || string.IsNullOrEmpty(betId))
                     ? " [0]"
-                    : string.Join(null, new string[] { " [", betId, "]" });
+                    : string.Join(null, new[] { " [", betId, "]" });
             }
 
             Template.betTeam = betTeam + liveScore;
@@ -50,14 +50,10 @@
             base.BuildBetType(ticket, ticketHelper, ticketData);
 
             string bettypeName = Template.BetType.betTypeName;
-            if (!ticket.IsLive)
-            {
-                bettypeName = string.Join(null, new string[] { CoreBetList.ft, ". ", bettypeName });
-            }
-            else
-            {
-                bettypeName = CoreBetList.next + HtmlCharacters.NoneBreakingSpace + bettypeName;
-            }
+
+            bettypeName = !ticket.IsLive
+                ? string.Join(null, new[] { CoreBetList.ft, ". ", bettypeName })
+                : CoreBetList.next + HtmlCharacters.NoneBreakingSpace + bettypeName;
 
             Template.BetType.betTypeName = bettypeName;
         }
@@ -72,7 +68,7 @@
             base.BuildMatch(ticket, ticketHelper);
 
             Template.Match.VS = null;
-            Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
+            Template.Match.homeTeam = string.Join(null, new[] { CoreBetList.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)

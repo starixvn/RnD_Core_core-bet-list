@@ -31,6 +31,10 @@
                 case BetTeamValue.ThreeOver:
                     betTeam = CoreBetList.ThreeOver;
                     break;
+
+                default:
+                    betTeam = string.Empty;
+                    break;
             }
 
             Template.betTeam = betTeam;

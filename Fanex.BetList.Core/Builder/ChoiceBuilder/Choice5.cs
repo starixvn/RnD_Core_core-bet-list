@@ -11,7 +11,7 @@
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            Template.betTeam = string.Join(null, new string[] { CoreBetList.ft, ".", ticket.BetTeam.ToUpper() });
+            Template.betTeam = string.Join(null, new[] { CoreBetList.ft, ".", ticket.BetTeam.ToUpperInvariant() });
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)

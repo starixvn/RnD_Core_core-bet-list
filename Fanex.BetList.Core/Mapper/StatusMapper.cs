@@ -5,7 +5,7 @@
         public StatusMapper()
         {
             MapForFastMarkets();
-            MapForBasketBallAIO();
+            MapForBasketBall();
         }
 
         private void MapForFastMarkets()
@@ -16,7 +16,7 @@
             }
         }
 
-        private void MapForBasketBallAIO()
+        private void MapForBasketBall()
         {
             // [607] 2H Race to X Points
             MapIdToBaseId(607, 606);

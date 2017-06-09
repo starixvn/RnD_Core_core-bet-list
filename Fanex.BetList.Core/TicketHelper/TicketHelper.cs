@@ -51,7 +51,7 @@
         /// <summary>
         /// Show Cash Out History in Status Column
         /// </summary>
-        public bool HideStatusCashOutHistory { get; set; } = false;
+        public bool HideStatusCashOutHistory { get; set; }
 
         public string GetBetTypeNameById(object bettypeId)
         {
@@ -110,9 +110,9 @@
 
         public string GetParentIdByBetTypeId(object betTypeId, object defaultParentId = null)
         {
-            defaultParentId = defaultParentId ?? string.Empty;
+            var parentId = defaultParentId ?? string.Empty;
 
-            return CacheRef.GetParentIdByBetTypeId(betTypeId, defaultParentId);
+            return CacheRef.GetParentIdByBetTypeId(betTypeId, parentId);
         }
 
         public string GetRouletteBetItemNameById(object itemId)

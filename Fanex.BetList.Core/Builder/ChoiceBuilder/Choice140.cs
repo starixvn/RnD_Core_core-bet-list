@@ -20,7 +20,7 @@
         {
             var betTeam = string.Empty;
 
-            switch (ticket.BetTeam.ToLower())
+            switch (ticket.BetTeam.ToLowerInvariant())
             {
                 case BetTeamValue.TwoH:
                     betTeam = CoreBetList.SecondHalf;
@@ -32,6 +32,10 @@
 
                 case BetTeamValue.Tie:
                     betTeam = CoreBetList.Tie;
+                    break;
+
+                default:
+                    betTeam = string.Empty;
                     break;
             }
 

@@ -38,7 +38,7 @@
             Template.Match.awayTeam = awayName;
             Template.Match.away_firstGoal_lastGoal = string.Empty;
 
-            BuildFGLGLabel(ticket.EventStatus, ref Template.Match.home_firstGoal_lastGoal, ref Template.Match.away_firstGoal_lastGoal);
+            BuildFG_LGLabel(ticket.EventStatus, ref Template.Match.home_firstGoal_lastGoal, ref Template.Match.away_firstGoal_lastGoal);
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)

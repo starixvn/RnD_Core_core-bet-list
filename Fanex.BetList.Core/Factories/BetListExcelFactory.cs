@@ -7,10 +7,6 @@
     /// </summary>
     public class BetListExcelFactory : IBetListFactory<BetListExcelBuilder>
     {
-        public BetListExcelBuilder CreateBuilder()
-        {
-            var builder = new BetListExcelBuilder();
-            return builder;
-        }
+        public BetListExcelBuilder CreateBuilder() => new BetListExcelBuilder();
     }
 }

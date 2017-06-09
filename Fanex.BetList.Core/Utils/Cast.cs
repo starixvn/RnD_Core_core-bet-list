@@ -6,7 +6,7 @@
     /// <summary>
     /// Casting utilities.
     /// </summary>
-    public static partial class Cast
+    public static class Cast
     {
         /// <summary>
         /// Convert input value object to decimal.
@@ -56,14 +56,9 @@
 
             decimal retval;
 
-            if (provider == null)
-            {
-                provider = CultureInfo.CurrentCulture;
-            }
-
             try
             {
-                retval = Convert.ToDecimal(value, provider);
+                retval = Convert.ToDecimal(value, provider ?? CultureInfo.CurrentCulture);
             }
             catch (InvalidCastException)
             {

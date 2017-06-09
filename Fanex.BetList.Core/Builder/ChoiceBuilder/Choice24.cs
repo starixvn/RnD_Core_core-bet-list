@@ -1,5 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using System;
     using System.Collections.Generic;
     using App_GlobalResources;
     using Constants;
@@ -19,24 +20,24 @@
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             string team = ticket.BetTeam.Contains("1") ? Template.Match.homeTeam : Template.Match.awayTeam;
-            string drawAway = ticket.BetTeam.EndsWith(BetTeamValue.X) ? CoreBetList.lblDraw : Template.Match.awayTeam;
+            string drawAway = ticket.BetTeam.EndsWith(BetTeamValue.X, StringComparison.InvariantCulture) ? CoreBetList.lblDraw : Template.Match.awayTeam;
 
-            string[] betteam = new string[]
-                                {
-                                    " <span class=\"",
-                                    Favorite,
-                                    "\">",
-                                    team,
-                                    "</span>",
-                                    HtmlCharacters.NoneBreakingSpace,
-                                    CoreBetList.lblOr.ToLower(),
-                                    " <span class=\"",
-                                    Favorite,
-                                    "\">",
-                                    HtmlCharacters.NoneBreakingSpace,
-                                    drawAway,
-                                    "</span>"
-                                };
+            string[] betteam =
+                {
+                    " <span class=\"",
+                    Favorite,
+                    "\">",
+                    team,
+                    "</span>",
+                    HtmlCharacters.NoneBreakingSpace,
+                    CoreBetList.lblOr.ToLowerInvariant(),
+                    " <span class=\"",
+                    Favorite,
+                    "\">",
+                    HtmlCharacters.NoneBreakingSpace,
+                    drawAway,
+                    "</span>"
+                };
 
             Template.betTeam = string.Join(null, betteam);
         }

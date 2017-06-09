@@ -31,7 +31,7 @@
 
             if (string.IsNullOrWhiteSpace(ticketHelper.ClientMixParlaySubbetsDetailFunction))
             {
-                components = new string[] { "javascript:showMP(&quot;", ticket.TransId.ToString(), "&quot;,&quot;", ticket.RefNo, "&quot;);" };
+                components = new[] { "javascript:showMP(&quot;", ticket.TransId.ToString(), "&quot;,&quot;", ticket.RefNo, "&quot;);" };
                 clientMixParlayDetailFunction = string.Join(null, components);
             }
             else
@@ -39,18 +39,18 @@
                 clientMixParlayDetailFunction = ticketHelper.ClientMixParlaySubbetsDetailFunction;
             }
 
-            components = new string[]
-                            {
-                                "<a id=\"hidden0\" href=\"",
-                                clientMixParlayDetailFunction,
-                                "\">",
-                                betTypeName,
-                                "</a>",
-                                "<br/><br/>",
-                                "<div id=\"divEvent_",
-                                ticket.TransId.ToString(),
-                                "\" style=\"display: none\" ></div>"
-                            };
+            components = new[]
+                {
+                    "<a id=\"hidden0\" href=\"",
+                    clientMixParlayDetailFunction,
+                    "\">",
+                    betTypeName,
+                    "</a>",
+                    "<br/><br/>",
+                    "<div id=\"divEvent_",
+                    ticket.TransId.ToString(),
+                    "\" style=\"display: none\" ></div>"
+                };
 
             string mixParlay = string.Join(null, components);
 
@@ -77,7 +77,6 @@
                                                 bool isShowScoreMap,
                                                 RTFHelper rtfHelper)
         {
-            List<IRichTextString> lstRTFChoices = new List<IRichTextString>();
             RTFHelper tmpRtfHelper = rtfHelper.Clone();
 
             tmpRtfHelper.RTFRenderer.AddText(CoreBetList.lblMixParlay, tmpRtfHelper.PosFont);
@@ -87,7 +86,8 @@
                 IList<ITicket> parlayData = ticketHelper.GetParlayDetailById(ticket.TransId);
                 bool showOdds = ticketHelper.IsShowOddsWithChoice;
                 ticketHelper.IsShowOddsWithChoice = true;
-                IFont pos, normal;
+                IFont pos;
+                IFont normal;
 
                 foreach (ITicket tkt in parlayData)
                 {
@@ -95,16 +95,13 @@
                     Template = choiceBuilder.Render(tkt, ticketHelper, null, isShowScoreMap);
                     var choiceData = BuildRTFChoice(tkt, rtfHelper, ticketHelper);
                     List<IRichTextString> tmpRtfChoice;
-                    if (choiceData is List<IRichTextString>)
-                    {
-                        tmpRtfChoice = (List<IRichTextString>)choiceData;
-                    }
-                    else
-                    {
-                        tmpRtfChoice = new List<IRichTextString>() { (IRichTextString)choiceData };
-                    }
 
-                    if ((tkt.StatusId != null && tkt.StatusId.ToString().Trim() == BetStatusId.Void) || (tkt.Status != null && tkt.Status.Trim().ToLower() == BetStatus.Void))
+                    tmpRtfChoice = choiceData is List<IRichTextString>
+                        ? (List<IRichTextString>)choiceData
+                        : new List<IRichTextString> { choiceData };
+
+                    if ((tkt.StatusId != null && tkt.StatusId.ToString().Trim() == BetStatusId.Void)
+                        || (tkt.Status != null && tkt.Status.Trim().ToLowerInvariant() == BetStatus.Void))
                     {
                         pos = tmpRtfHelper.PosFontCrossed;
                         normal = tmpRtfHelper.NormalFontCrossed;
@@ -123,7 +120,8 @@
 
             var choice = tmpRtfHelper.RTFRenderer.Render();
             tmpRtfHelper.RTFRenderer.Clear();
-            return new List<IRichTextString>() { choice };
+
+            return new List<IRichTextString> { choice };
         }
 
         /// <summary>
@@ -135,7 +133,7 @@
         /// <param name="normalFont">The normal font.</param>
         private static void CombineSubRichTextString(List<IRichTextString> tmpRtfChoice, ref RTFHelper tmpRtfHelper, IFont posFont, IFont normalFont)
         {
-            foreach (HSSFRichTextString rtfString in tmpRtfChoice)
+            foreach (var rtfString in tmpRtfChoice)
             {
                 // Remove extra line-breaks
                 while (rtfString.String.StartsWith("\n", StringComparison.OrdinalIgnoreCase))
@@ -143,18 +141,11 @@
                     rtfString.String.Remove(0, 1);
                 }
 
-                try
-                {
-                    int lineBreakIndex = rtfString.String.IndexOf("\n");
-                    string eventName = rtfString.String.Substring(0, lineBreakIndex);
-                    string theRest = rtfString.String.Remove(0, eventName.Length);
-                    tmpRtfHelper.RTFRenderer.AddText("\n" + eventName, posFont);
-                    tmpRtfHelper.RTFRenderer.AddText(theRest, normalFont);
-                }
-                catch
-                {
-                    throw;
-                }
+                int lineBreakIndex = rtfString.String.IndexOf("\n", StringComparison.InvariantCulture);
+                string eventName = rtfString.String.Substring(0, lineBreakIndex);
+                string theRest = rtfString.String.Remove(0, eventName.Length);
+                tmpRtfHelper.RTFRenderer.AddText("\n" + eventName, posFont);
+                tmpRtfHelper.RTFRenderer.AddText(theRest, normalFont);
             }
         }
 
@@ -163,9 +154,9 @@
         /// </summary>
         /// <param name="bettype">The bet type.</param>
         /// <returns>IChoice object.</returns>
-        private IChoice CreateChoiceBuilder(int bettype)
+        private static IChoice CreateChoiceBuilder(int bettype)
         {
-            string typeName = string.Join(null, new string[] { CHOICEBUILDERNAMESPACE, ".Choice", bettype.ToString() });
+            string typeName = string.Join(null, new[] { CHOICEBUILDERNAMESPACE, ".Choice", bettype.ToString() });
             Type type = Type.GetType(typeName);
 
             if (type == null)

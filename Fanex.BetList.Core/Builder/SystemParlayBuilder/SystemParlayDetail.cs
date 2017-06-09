@@ -205,23 +205,31 @@
             {
                 case 112:
                     return CoreBetList.lblWon;
+
                 case 113:
                     return CoreBetList.lblLose;
+
                 case 111:
                     return CoreBetList.lblDraw;
+
                 case 0:
                     return CoreBetList.lblRunning;
+
                 case 1:
                     return CoreBetList.lblWaiting;
+
                 case 101:
                     return CoreBetList.reject;
+
                 case 102:
                     return CoreBetList.voided;
+
                 case 103:
                     return CoreBetList.refund;
-            }
 
-            return string.Empty;
+                default:
+                    return string.Empty;
+            }
         }
 
         #endregion Utlity

@@ -1,5 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Builder.OddsBuilder
 {
+    using System;
     using System.Collections.Generic;
     using System.Data;
     using App_GlobalResources;
@@ -46,15 +47,15 @@
                     string oddsWin = GetOddsWin(winTicket);
                     string oddsPlace = GetOddsPlace(placeTicket);
 
-                    var oddsWinMarkup = string.Join(null, new string[] { CoreBetList.win, ": ", "<b>", oddsWin, "</b>" });
-                    var oddsPlaceMarkup = string.Join(null, new string[] { CoreBetList.place, ": ", "<b>", oddsPlace, "</b>" });
+                    var oddsWinMarkup = string.Join(null, new[] { CoreBetList.win, ": ", "<b>", oddsWin, "</b>" });
+                    var oddsPlaceMarkup = string.Join(null, new[] { CoreBetList.place, ": ", "<b>", oddsPlace, "</b>" });
 
-                    string status = ticket.Status.ToLower();
+                    string status = ticket.Status.ToLowerInvariant();
                     if (status.Equals(BetStatus.Won) || status.Equals(BetStatus.Lose))
                     {
-                        var oddsWinContent = string.Join(null, new string[] { "<span class='blue' style='font-weight:normal;'>", oddsWinMarkup, "</span>" });
-                        var oddsPlaceContent = string.Join(null, new string[] { "<span class='' style='font-weight:normal;'>", oddsPlaceMarkup, "</span>" });
-                        Template.odds = string.Join(null, new string[] { oddsWinContent, "<br>", oddsPlaceContent });
+                        var oddsWinContent = string.Join(null, new[] { "<span class='blue' style='font-weight:normal;'>", oddsWinMarkup, "</span>" });
+                        var oddsPlaceContent = string.Join(null, new[] { "<span class='' style='font-weight:normal;'>", oddsPlaceMarkup, "</span>" });
+                        Template.odds = string.Join(null, new[] { oddsWinContent, "<br>", oddsPlaceContent });
                     }
                     else
                     {
@@ -92,7 +93,7 @@
                 return new HSSFRichTextString("-");
             }
 
-            int breakPos = Template.odds.IndexOf("<br>");
+            int breakPos = Template.odds.IndexOf("<br>", StringComparison.InvariantCulture);
 
             string oddsWinString = Template.odds.Substring(0, breakPos);
             string oddsPlaceString = Template.odds.Replace(oddsWinString, string.Empty);
@@ -103,11 +104,11 @@
             var rtfNumberRenderer = new RTFNumber(rtfHelper.RTFRenderer, rtfHelper.PosFont, rtfHelper.NegFont);
 
             // Add Win
-            rtfHelper.RTFRenderer.AddText(string.Join(null, new string[] { CoreBetList.win, ": " }), rtfHelper.PosFont);
+            rtfHelper.RTFRenderer.AddText(string.Join(null, new[] { CoreBetList.win, ": " }), rtfHelper.PosFont);
             rtfNumberRenderer.Render(oddsWinVal);
 
             // Add Place
-            rtfHelper.RTFRenderer.AddText(string.Join(null, new string[] { "\n", CoreBetList.place, ": " }), rtfHelper.PosFont);
+            rtfHelper.RTFRenderer.AddText(string.Join(null, new[] { "\n", CoreBetList.place, ": " }), rtfHelper.PosFont);
             rtfNumberRenderer.Render(oddsPlaceVal);
 
             var rtfOdds = rtfHelper.RTFRenderer.Render();
@@ -116,99 +117,18 @@
         }
 
         /// <summary>
-        /// Gets the place.
-        /// </summary>
-        /// <param name="odds_place">The odds_place.</param>
-        /// <param name="status_place">The status_place.</param>
-        /// <param name="foundRows">The found rows.</param>
-        /// <param name="i">The index.</param>
-        private static void GetPlace(ref string odds_place, ref string status_place, DataRow[] foundRows, int i)
-        {
-            switch (foundRows[i]["status"].ToString().ToLower())
-            {
-                case BetStatus.Won:
-                    {
-                        odds_place += string.Join(null, new string[] { CoreBetList.place, ": ", "<b>", Formatter.FormatNumber20(foundRows[i]["odds"], null), "</b>" });
-
-                        status_place += string.Join(null, new string[] { CoreBetList.place, ": ", "<b>", CoreBetList.won, "</b>" });
-                        break;
-                    }
-
-                default:
-                    {
-                        odds_place += string.Join(null, new string[] { CoreBetList.place, ": ", "<b>", "0.00", "</b>" });
-
-                        status_place += string.Join(null, new string[] { CoreBetList.place, ": ", "<b>", CoreBetList.lose, "</b>" });
-                        break;
-                    }
-            }
-        }
-
-        /// <summary>
-        /// Gets the win.
-        /// </summary>
-        /// <param name="odds_win">The odds_win.</param>
-        /// <param name="status_win">The status_win.</param>
-        /// <param name="foundRows">The found rows.</param>
-        /// <param name="i">The index.</param>
-        private static void GetWin(ref string odds_win, ref string status_win, DataRow[] foundRows, int i)
-        {
-            switch (foundRows[i]["status"].ToString().ToLower())
-            {
-                case BetStatus.Won:
-                    {
-                        odds_win += string.Join(null, new string[] { CoreBetList.win, ": ", "<b>", Formatter.FormatNumber20(foundRows[i]["odds"], null), "</b>" });
-
-                        status_win += string.Join(null, new string[] { CoreBetList.win, ": ", "<b>", CoreBetList.won, "</b>" });
-
-                        break;
-                    }
-
-                default:
-                    {
-                        odds_win += string.Join(null, new string[] { CoreBetList.win, ": ", "<b>", "0.00", "</b>" });
-
-                        status_win += string.Join(null, new string[] { CoreBetList.win, ": ", "<b>", CoreBetList.lose, "</b>" });
-
-                        break;
-                    }
-            }
-        }
-
-        /// <summary>
-        /// Sets the odds.
-        /// </summary>
-        /// <param name="row">The row object.</param>
-        /// <param name="odds_win">The odds_win.</param>
-        /// <param name="odds_place">The odds_place.</param>
-        private void SetOdds(ITicket row, ref string odds_win, ref string odds_place)
-        {
-            string status = row.Status.ToString().ToLower();
-            if (status.Equals(BetStatus.Won) || status.Equals(BetStatus.Lose))
-            {
-                odds_win = "<span class='blue' style='font-weight:normal;'>" + odds_win + "</span>";
-                odds_place = "<span class='' style='font-weight:normal;'>" + odds_place + "</span>";
-                Template.odds = odds_win + "<br>" + odds_place;
-            }
-            else
-            {
-                Template.odds = "-";
-            }
-        }
-
-        /// <summary>
         /// Extract string value between tags from a source string.
         /// </summary>
         /// <param name="tag">Name of the tags.</param>
         /// <param name="source">Source string.</param>
         /// <returns>Value string.</returns>
-        private string ExtractStringBetweenTag(string tag, string source)
+        private static string ExtractStringBetweenTag(string tag, string source)
         {
-            string startTag = string.Join(null, new string[] { "<", tag, ">" });
-            string endTag = string.Join(null, new string[] { "</", tag, ">" });
+            string startTag = string.Join(null, new[] { "<", tag, ">" });
+            string endTag = string.Join(null, new[] { "</", tag, ">" });
 
-            int startIndex = source.IndexOf(startTag) + startTag.Length;
-            int endIndex = source.IndexOf(endTag, startIndex);
+            int startIndex = source.IndexOf(startTag, StringComparison.InvariantCulture) + startTag.Length;
+            int endIndex = source.IndexOf(endTag, startIndex, StringComparison.InvariantCulture);
             return source.Substring(startIndex, endIndex - startIndex);
         }
 
@@ -217,20 +137,14 @@
         /// </summary>
         /// <param name="winTicket">The win ticket.</param>
         /// <returns>Odds of win.</returns>
-        private string GetOddsWin(ITicketData winTicket)
+        private static string GetOddsWin(ITicketData winTicket)
         {
-            string winStatus = winTicket.Status.ToLower();
+            string winStatus = winTicket.Status.ToLowerInvariant();
             string oddsWin;
 
-            if (!winStatus.Equals(BetStatus.Won)
-                && !winStatus.Equals(BetStatus.Lose))
-            {
-                oddsWin = "-";
-            }
-            else
-            {
-                oddsWin = Formatter.FormatNumber3(winTicket.Odds);
-            }
+            oddsWin = !winStatus.Equals(BetStatus.Won) && !winStatus.Equals(BetStatus.Lose)
+                ? "-"
+                : Formatter.FormatNumber3(winTicket.Odds);
 
             return oddsWin;
         }
@@ -240,21 +154,15 @@
         /// </summary>
         /// <param name="placeTicket">The place ticket.</param>
         /// <returns>Odds of place.</returns>
-        private string GetOddsPlace(ITicketData placeTicket)
+        private static string GetOddsPlace(ITicketData placeTicket)
         {
-            string placeStatus = placeTicket.Status.ToLower();
+            string placeStatus = placeTicket.Status.ToLowerInvariant();
 
             string oddsPlace;
 
-            if (!placeStatus.Equals(BetStatus.Won)
-                && !placeStatus.Equals(BetStatus.Lose))
-            {
-                oddsPlace = "-";
-            }
-            else
-            {
-                oddsPlace = Formatter.FormatNumber3(placeTicket.Odds);
-            }
+            oddsPlace = !placeStatus.Equals(BetStatus.Won) && !placeStatus.Equals(BetStatus.Lose)
+                ? "-"
+                : Formatter.FormatNumber3(placeTicket.Odds);
 
             return oddsPlace;
         }

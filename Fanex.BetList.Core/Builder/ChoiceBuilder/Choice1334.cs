@@ -21,21 +21,11 @@
             bool betHome = ticket.BetTeam == "1";
             bool betAway = ticket.BetTeam == "2";
 
-            if (betHome)
-            {
-                Template.betTeam = string.Join(null, new string[] { "<span class=\"underdog\">", CoreBetList.under, "</span>" });
-            }
-            else
-            {
-                if (betAway)
-                {
-                    Template.betTeam = string.Join(null, new string[] { "<span class=\"favorite\">", CoreBetList.over, "</span>" });
-                }
-                else
-                {
-                    Template.betTeam = string.Join(null, new string[] { "<span class=\"underdog\">", CoreBetList.exactly, "</span>" });
-                }
-            }
+            Template.betTeam = betHome
+                ? string.Join(null, new[] { "<span class=\"underdog\">", CoreBetList.under, "</span>" })
+                : betAway
+                    ? string.Join(null, new[] { "<span class=\"favorite\">", CoreBetList.over, "</span>" })
+                    : string.Join(null, new[] { "<span class=\"underdog\">", CoreBetList.exactly, "</span>" });
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
@@ -47,7 +37,7 @@
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.RefNo, ticket.BetId, null);
+            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.RefNo, betId: ticket.BetId);
         }
     }
 }

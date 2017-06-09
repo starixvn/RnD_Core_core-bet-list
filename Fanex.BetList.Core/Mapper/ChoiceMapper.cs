@@ -12,6 +12,9 @@
         [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2101:MethodMustNotContainMoreLinesThan", Justification = "Reviewed. Suppression is OK here.")]
         private void Initialize()
         {
+            MapForFastMarkets();
+            MapForBasketBall();
+
             ////2ND Handicap (17)
             MapIdToBaseId(17, 1);
 
@@ -101,21 +104,9 @@
 
             ////Away 1H to Score/ 2H To Score (447)
             MapIdToBaseId(447, 445);
-
-            MapForFastMarkets();
-
-            MapForBasketBallAIO();
         }
 
-        private void MapForFastMarkets()
-        {
-            for (var betType = 222; betType <= 225; betType++)
-            {
-                MapIdToBaseId(betType, 221);
-            }
-        }
-
-        private void MapForBasketBallAIO()
+        private void MapForBasketBall()
         {
             // FT Which team to score the first basket (604)
             MapIdToBaseId(604, 603);
@@ -137,6 +128,14 @@
 
             // Quarter X Which team to score the last basket (617)
             MapIdToBaseId(617, 606);
+        }
+
+        private void MapForFastMarkets()
+        {
+            for (var betType = 222; betType <= 225; betType++)
+            {
+                MapIdToBaseId(betType, 221);
+            }
         }
     }
 }

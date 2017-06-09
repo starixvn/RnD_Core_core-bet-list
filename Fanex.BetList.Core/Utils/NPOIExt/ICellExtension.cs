@@ -23,7 +23,6 @@
             {
                 if (value is string)
                 {
-                    // cell.SetCellValue(value);
                     cell.SetCellValue((string)value);
                 }
                 else if (value is int)
@@ -53,8 +52,6 @@
                 else if (value is IRichTextString)
                 {
                     cell.SetCellValue((IRichTextString)value);
-
-                    // cell.SetCellValue(value);
                 }
                 else
                 {

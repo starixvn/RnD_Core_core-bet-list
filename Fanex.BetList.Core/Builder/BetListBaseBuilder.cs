@@ -57,22 +57,24 @@ namespace Fanex.BetList.Core.Builder
         /// <returns>IChoice: the Choice builder object.</returns>
         public IChoice CreateChoiceBuilder(int bettype)
         {
-            string choiceName = ChoiceName;
+            var choiceName = ChoiceName;
+            var betTypeId = bettype;
 
-            if (bettype < 0)
+            if (betTypeId < 0)
             {
                 // Internal conventional bettype id of 3rd products
                 choiceName = Choice3rdName;
             }
-            else if (bettype <= 1599 && bettype >= 1501)
+
+            if (betTypeId <= 1599 && betTypeId >= 1501)
             {
                 // Keno games.
-                bettype = 1501;
+                betTypeId = 1501;
             }
 
-            bettype = MapperCollector.GetChoiceBaseBetTypeOf(bettype);
+            betTypeId = MapperCollector.GetChoiceBaseBetTypeOf(betTypeId);
 
-            string typeName = string.Join(null, new string[] { ChoiceBuilderNamespace, choiceName, bettype.ToString().Replace('-', '_') });
+            string typeName = string.Join(null, new[] { ChoiceBuilderNamespace, choiceName, betTypeId.ToString().Replace('-', '_') });
 
             return CreateInstance<IChoice, Choice1>(typeName);
         }
@@ -84,27 +86,30 @@ namespace Fanex.BetList.Core.Builder
         /// <returns>IOdds: the Odds builder object.</returns>
         public IOdds CreateOddsBuilder(int bettype)
         {
-            string oddsName = OddsName;
+            var oddsName = OddsName;
+            var betTypeId = bettype;
 
-            if (bettype < 0)
+            if (betTypeId < 0)
             {
                 // Internal conventional bettype id of 3rd products
                 oddsName = Odds3rdName;
             }
-            else if (bettype <= 1199 && bettype >= 1101)
+
+            if (betTypeId <= 1199 && betTypeId >= 1101)
             {
                 // Odds of Live Casino bet types
-                bettype = 1101;
+                betTypeId = 1101;
             }
-            else if (bettype <= 1599 && bettype >= 1501)
+
+            if (betTypeId <= 1599 && betTypeId >= 1501)
             {
                 // Odds of Keno games
-                bettype = 1501;
+                betTypeId = 1501;
             }
 
-            bettype = MapperCollector.GetOddsBaseBetTypeOf(bettype);
+            betTypeId = MapperCollector.GetOddsBaseBetTypeOf(betTypeId);
 
-            string typeName = string.Join(null, new string[] { OddsBuilderNamespace, oddsName, bettype.ToString().Replace('-', '_') });
+            string typeName = string.Join(null, new[] { OddsBuilderNamespace, oddsName, betTypeId.ToString().Replace('-', '_') });
 
             return CreateInstance<IOdds, Odds1>(typeName);
         }
@@ -116,7 +121,8 @@ namespace Fanex.BetList.Core.Builder
         /// <returns>IStake: the Stake builder object.</returns>
         public IStake CreateStakeBuilder(int bettype)
         {
-            string stakeName = StakeName;
+            var stakeName = StakeName;
+            var betTypeId = bettype;
 
             if (bettype < 0)
             {
@@ -124,9 +130,9 @@ namespace Fanex.BetList.Core.Builder
                 stakeName = Stake3rdName;
             }
 
-            bettype = MapperCollector.GetStakeBaseBetTypeOf(bettype);
+            betTypeId = MapperCollector.GetStakeBaseBetTypeOf(betTypeId);
 
-            string typeName = string.Join(null, new string[] { StakeBuilderNamespace, stakeName, bettype.ToString().Replace('-', '_') });
+            string typeName = string.Join(null, new[] { StakeBuilderNamespace, stakeName, betTypeId.ToString().Replace('-', '_') });
 
             return CreateInstance<IStake, Stake1>(typeName);
         }
@@ -138,22 +144,24 @@ namespace Fanex.BetList.Core.Builder
         /// <returns>IStatus: the Status builder object.</returns>
         public IStatus CreateStatusBuilder(int bettype)
         {
-            string statusName = StatusName;
+            var statusName = StatusName;
+            var betTypeId = bettype;
 
-            if (bettype < 0)
+            if (betTypeId < 0)
             {
                 // Internal conventional bettype id of 3rd products
                 statusName = Status3rdName;
             }
-            else if (bettype <= 1599 && bettype >= 1501)
+
+            if (betTypeId <= 1599 && betTypeId >= 1501)
             {
                 // Keno games
-                bettype = 1501;
+                betTypeId = 1501;
             }
 
-            bettype = MapperCollector.GetStatusBaseBetTypeOf(bettype);
+            betTypeId = MapperCollector.GetStatusBaseBetTypeOf(betTypeId);
 
-            string typeName = string.Join(null, new string[] { StatusBuilderNamespace, statusName, bettype.ToString().Replace('-', '_') });
+            string typeName = string.Join(null, new[] { StatusBuilderNamespace, statusName, betTypeId.ToString().Replace('-', '_') });
 
             return CreateInstance<IStatus, Status1>(typeName);
         }
@@ -165,22 +173,24 @@ namespace Fanex.BetList.Core.Builder
         /// <returns>ITrans: the Trans builder object.</returns>
         public ITrans CreateTransBuilder(int bettype)
         {
-            string transName = TransName;
+            var transName = TransName;
+            var betTypeId = bettype;
 
-            if (bettype < 0)
+            if (betTypeId < 0)
             {
                 // Internal conventional bettype id of 3rd products
                 transName = Trans3rdName;
             }
-            else if (bettype <= 1599 && bettype >= 1501)
+
+            if (betTypeId <= 1599 && betTypeId >= 1501)
             {
                 // Keno games
-                bettype = 1501;
+                betTypeId = 1501;
             }
 
-            bettype = MapperCollector.GetTransBaseBetTypeOf(bettype);
+            betTypeId = MapperCollector.GetTransBaseBetTypeOf(betTypeId);
 
-            string typeName = string.Join(null, new string[] { TransBuilderNamespace, transName, bettype.ToString().Replace('-', '_') });
+            string typeName = string.Join(null, new[] { TransBuilderNamespace, transName, betTypeId.ToString().Replace('-', '_') });
 
             return CreateInstance<ITrans, Trans1>(typeName);
         }
@@ -206,23 +216,7 @@ namespace Fanex.BetList.Core.Builder
 
         private Type GetBetListAssemblies(string typeName)
         {
-            var assemblies = (List<Assembly>)_cache[CacheKey];
-
-            if (assemblies == null || !assemblies.Any())
-            {
-                try
-                {
-                    assemblies = BuildManager.GetReferencedAssemblies().Cast<Assembly>().ToList();
-                }
-                catch
-                {
-                    assemblies = AppDomain.CurrentDomain.GetAssemblies().ToList();
-                }
-
-                assemblies = assemblies.Where(x => x.FullName.StartsWith("Fanex.BetList.", StringComparison.InvariantCulture)).ToList();
-
-                _cache.Set(CacheKey, assemblies, _cachePolicy);
-            }
+            var assemblies = GetBetListAssemblies();
 
             return GetType(typeName, assemblies);
         }

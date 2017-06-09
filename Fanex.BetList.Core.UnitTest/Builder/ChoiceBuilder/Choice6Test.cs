@@ -53,7 +53,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedBetTeam = string.Format("&nbsp;{0}", _ticket.BetTeam);
+            string expectedBetTeam = string.Format("&nbsp;{0}", string.Empty);
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
@@ -81,7 +81,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.AreEqual(string.Join(null, new string[] { "&nbsp;", CoreBetList.FourAndOver }), _choice.Template.betTeam);
+            Assert.AreEqual(string.Join(null, new[] { "&nbsp;", CoreBetList.FourAndOver }), _choice.Template.betTeam);
         }
 
         [Test]
@@ -94,7 +94,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.AreEqual(string.Join(null, new string[] { "&nbsp;", CoreBetList.SevenAndOver }), _choice.Template.betTeam);
+            Assert.AreEqual(string.Join(null, new[] { "&nbsp;", CoreBetList.SevenAndOver }), _choice.Template.betTeam);
         }
     }
 }

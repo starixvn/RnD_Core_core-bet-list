@@ -33,6 +33,7 @@
         [TestCase("/BetList/FastMarkets")]
         [TestCase("/BetList/NumberGame")]
         [TestCase("/BetList/LiveSports")]
+        [TestCase("/BetList/CashOut")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Choice(string productUrl)
         {
             // Arrange
@@ -69,6 +70,7 @@
         [TestCase("/BetList/FastMarkets")]
         [TestCase("/BetList/NumberGame")]
         [TestCase("/BetList/LiveSports")]
+        [TestCase("/BetList/CashOut")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Trans(string productUrl)
         {
             // Arrange
@@ -105,6 +107,7 @@
         [TestCase("/BetList/FastMarkets")]
         [TestCase("/BetList/NumberGame")]
         [TestCase("/BetList/LiveSports")]
+        [TestCase("/BetList/CashOut")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Odds(string productUrl)
         {
             // Arrange
@@ -141,6 +144,7 @@
         [TestCase("/BetList/FastMarkets")]
         [TestCase("/BetList/NumberGame")]
         [TestCase("/BetList/LiveSports")]
+        [TestCase("/BetList/CashOut")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Stake(string productUrl)
         {
             // Arrange
@@ -177,6 +181,7 @@
         [TestCase("/BetList/FastMarkets")]
         [TestCase("/BetList/NumberGame")]
         [TestCase("/BetList/LiveSports")]
+        [TestCase("/BetList/CashOut")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Status(string productUrl)
         {
             // Arrange

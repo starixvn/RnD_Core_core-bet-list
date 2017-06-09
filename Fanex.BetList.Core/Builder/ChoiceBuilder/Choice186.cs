@@ -33,6 +33,10 @@
                 case BetTeamValue.DA:
                     betTeam = string.Format("{0}/{1}", CoreBetList.draw, Template.Match.awayTeam);
                     break;
+
+                default:
+                    betTeam = string.Empty;
+                    break;
             }
 
             Template.betTeam = betTeam;

@@ -32,6 +32,10 @@
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>Fanex.BetList.Example.Data.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup>
+    <!-- Exclude the project from analysis -->
+    <SonarQubeExclude>true</SonarQubeExclude>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\packages\NPOI.2.0.6\lib\net40\ICSharpCode.SharpZipLib.dll</HintPath>
@@ -51,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="TicketDataTemplateColumnIndex.cs" />
     <Compile Include="ITicketsDAO.cs" />
     <Compile Include="NPOIUtil.cs" />

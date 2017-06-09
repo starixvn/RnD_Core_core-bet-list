@@ -58,20 +58,15 @@
             }
             else
             {
-                if (ticket.Handicap2 > ticket.Handicap1)
-                {
-                    Template.betTeam = string.Join(null, new string[] { CoreBetList.lblDraw, "&nbsp;(", CoreBetList.h, "+", ConvertByBetType.Hdp(ticket.Handicap2) + ")" });
-                }
-                else
-                {
-                    Template.betTeam = string.Join(null, new string[] { CoreBetList.lblDraw, "&nbsp;(", CoreBetList.a, "+", ConvertByBetType.Hdp(ticket.Handicap1), ")" });
-                }
+                Template.betTeam = ticket.Handicap2 > ticket.Handicap1
+                    ? string.Join(null, new[] { CoreBetList.lblDraw, "&nbsp;(", CoreBetList.h, "+", ConvertByBetType.Hdp(ticket.Handicap2) + ")" })
+                    : string.Join(null, new[] { CoreBetList.lblDraw, "&nbsp;(", CoreBetList.a, "+", ConvertByBetType.Hdp(ticket.Handicap1), ")" });
             }
         }
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.RefNo, ticket.BetId, null);
+            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.RefNo, betId: ticket.BetId);
         }
 
         private static bool IsBetHome(ITicket ticket)

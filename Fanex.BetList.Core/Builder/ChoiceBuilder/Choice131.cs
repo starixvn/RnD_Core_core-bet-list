@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Constants;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Constants;
+    using Entities;
 
     /// <summary>
     ///  Choice for bet type 131 Home Team Total Goal.
@@ -20,7 +20,7 @@
         {
             var betTeam = ticket.BetTeam.Equals("4&over", System.StringComparison.OrdinalIgnoreCase) ? CoreBetList.FourAndOver : ticket.BetTeam;
 
-            Template.betTeam = string.Join(null, new string[] { HtmlCharacters.NoneBreakingSpace, betTeam });
+            Template.betTeam = string.Join(null, new[] { HtmlCharacters.NoneBreakingSpace, betTeam });
         }
     }
 }

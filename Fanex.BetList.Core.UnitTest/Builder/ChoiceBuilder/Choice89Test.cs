@@ -100,7 +100,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             var actualHomeTeam = choiceTemplate.Match.homeTeam;
 
             // Assert
-            var expectedHomeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, "&nbsp;", _ticket.MatchCode });
+            var expectedHomeTeam = string.Join(null,new[] { CoreBetList.numbergameno, "&nbsp;", _ticket.MatchCode });
             Assert.AreEqual(expectedHomeTeam, actualHomeTeam);
         }
 

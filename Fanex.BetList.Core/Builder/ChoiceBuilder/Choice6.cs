@@ -3,7 +3,7 @@
     using System.Collections.Generic;
     using Constants;
     using Entities;
-    using Fanex.BetList.Core.App_GlobalResources;
+    using App_GlobalResources;
 
     /// <summary>
     /// Total Goal.
@@ -32,9 +32,13 @@
                 case "7&over":
                     betTeam = CoreBetList.SevenAndOver;
                     break;
+
+                default:
+                    betTeam = string.Empty;
+                    break;
             }
 
-            Template.betTeam = string.Join(null, new string[] { HtmlCharacters.NoneBreakingSpace, betTeam });
+            Template.betTeam = string.Join(null, new[] { HtmlCharacters.NoneBreakingSpace, betTeam });
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)

@@ -28,7 +28,7 @@
             }
 
             string liveScore = string.Empty;
-            liveScore = (!ticket.IsLive || string.IsNullOrEmpty(betId)) ? " [0]" : string.Join(null, new string[] { " [", betId, "]" });
+            liveScore = (!ticket.IsLive || string.IsNullOrEmpty(betId)) ? " [0]" : string.Join(null, new[] { " [", betId, "]" });
 
             string betTeam = Template.betTeam;
             betTeam += " <span style='color:#555555'>37.5</span> ";
@@ -47,14 +47,10 @@
             base.BuildBetType(ticket, ticketHelper, ticketData);
 
             string bettypeName = Template.BetType.betTypeName;
-            if (!ticket.IsLive)
-            {
-                bettypeName = string.Join(null, new string[] { CoreBetList.ft, ". ", bettypeName });
-            }
-            else
-            {
-                bettypeName = string.Join(null, new string[] { CoreBetList.next, HtmlCharacters.NoneBreakingSpace, bettypeName });
-            }
+
+            bettypeName = !ticket.IsLive
+                ? string.Join(null, new[] { CoreBetList.ft, ". ", bettypeName })
+                : string.Join(null, new[] { CoreBetList.next, HtmlCharacters.NoneBreakingSpace, bettypeName });
 
             Template.BetType.betTypeName = bettypeName;
         }
@@ -75,7 +71,7 @@
             base.BuildMatch(ticket, ticketHelper);
 
             Template.Match.VS = null;
-            Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
+            Template.Match.homeTeam = string.Join(null, new[] { CoreBetList.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
         }
     }
 }

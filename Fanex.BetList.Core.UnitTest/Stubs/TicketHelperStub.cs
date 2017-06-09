@@ -3,7 +3,7 @@ namespace Fanex.BetList.Core.UnitTest.Stubs
 {
     using System;
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Entities;
+    using Entities;
 
     public class TicketHelperStub : ITicketHelper
     {
@@ -40,6 +40,7 @@ namespace Fanex.BetList.Core.UnitTest.Stubs
 
         public bool HideStatusCashOutHistory { get; set; }
 
+        public Func<string, bool> IsVnIp { get; set; }
 
         public string GetLeagueNameById(object leagueId)
         {

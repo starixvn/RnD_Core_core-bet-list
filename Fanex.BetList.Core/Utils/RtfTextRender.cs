@@ -10,8 +10,8 @@
     /// </summary>
     public class RtfTextRender
     {
-        private IFont _font;
-        private List<TextBlock> _blocks = new List<TextBlock>();
+        private readonly IFont _font;
+        private readonly List<TextBlock> _blocks = new List<TextBlock>();
 
         public RtfTextRender()
         {
@@ -22,7 +22,6 @@
         /// </summary>
         /// <param name="font">The font to use when rendering.</param>
         public RtfTextRender(IFont font)
-            : base()
         {
             _font = font;
         }
@@ -42,6 +41,7 @@
         public IRichTextString Render()
         {
             string s = string.Empty;
+
             foreach (var block in _blocks)
             {
                 s += block.Text;

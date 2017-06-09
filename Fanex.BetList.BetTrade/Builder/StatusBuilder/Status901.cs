@@ -2,8 +2,8 @@
 {
     using System.Collections.Generic;
     using System.Globalization;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Entities;
 
     public class Status901 : Status1
     {
@@ -11,34 +11,22 @@
         {
             base.BuildResult(ticket, ticketData);
 
-            var status = ticket.Status.ToLower(CultureInfo.InvariantCulture);
+            var status = ticket.Status.ToLowerInvariant();
 
-            if (status.Equals(BetStatus.Void) || status.Equals(BetStatus.Refund))
-            {
-                Template.result = string.Format("{0}<br/><div style='font-weight: normal;'>({1})</div>", Template.result, GetStatus());
-            }
-            else
-            {
-                Template.result = GetStatus();
-            }
+            Template.result = status.Equals(BetStatus.Void) || status.Equals(BetStatus.Refund)
+                ? string.Format("{0}<br/><div style='font-weight: normal;'>({1})</div>", Template.result, GetStatus())
+                : GetStatus();
         }
 
         protected virtual string GetStatus()
-        {
-            return CoreBetList.Sold;
-        }
+            => CoreBetList.Sold;
 
         protected override void BuildResultLRF(string status, RTFHelper rtfHelper)
-        {
-            status = status.Replace("<br/><div style='font-weight: normal;'>", "\n");
-            status = status.Replace("</div>", string.Empty);
-
-            rtfHelper.RTFRenderer.AddText(status, rtfHelper.PosFont);
-        }
+            => rtfHelper.RTFRenderer.AddText(
+                status.Replace("<br/><div style='font-weight: normal;'>", "\n").Replace("</div>", string.Empty),
+                rtfHelper.PosFont);
 
         protected override void BuildStatusResult(ITicket ticket)
-        {
-            Template.StatusResult.Hide();
-        }
+            => Template.StatusResult.Hide();
     }
 }

@@ -32,6 +32,10 @@
                 case BetTeamValue.NU:
                     betTeam = CoreBetList.NoAndUnder;
                     break;
+
+                default:
+                    betTeam = string.Empty;
+                    break;
             }
 
             Template.betTeam = betTeam;

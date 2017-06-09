@@ -1,5 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
+    using System;
     using System.Collections.Generic;
     using System.Globalization;
     using App_GlobalResources;
@@ -46,20 +47,20 @@
             }
             else
             {
-                int breakPos = Template.result.IndexOf("<br/>");
+                int breakPos = Template.result.IndexOf("<br/>", StringComparison.InvariantCulture);
 
                 string status_WinString = Template.result.Substring(0, breakPos);
                 string status_PlaceString = Template.result.Replace(status_WinString, string.Empty);
 
                 string status_Win = ExtractStringBetweenTag("b", status_WinString);
                 string status_Place = ExtractStringBetweenTag("b", status_PlaceString);
-                string[] status = new string[] { CoreBetList.win, ": ", status_Win, "\n", CoreBetList.place, ": ", status_Place };
+                string[] status = { CoreBetList.win, ": ", status_Win, "\n", CoreBetList.place, ": ", status_Place };
                 rtfHelper.RTFRenderer.AddText(string.Join(null, status), rtfHelper.PosFont);
             }
 
             if (Template.ShowIP.Visible)
             {
-                string status = string.Join(null, new string[] { "\n", Template.ShowIP.betIp });
+                string status = string.Join(null, new[] { "\n", Template.ShowIP.betIp });
                 rtfHelper.RTFRenderer.AddText(status);
             }
 
@@ -85,17 +86,17 @@
 
                 if (foundTicketData != null && foundTicketData.Count > 1)
                 {
-                    string winStatus = foundTicketData.Find(item => item.BetTypeId == WinBetId).Status.ToLower();
-                    string placeStatus = foundTicketData.Find(item => item.BetTypeId == PlaceBetId).Status.ToLower();
+                    string winStatus = foundTicketData.Find(item => item.BetTypeId == WinBetId).Status.ToLowerInvariant();
+                    string placeStatus = foundTicketData.Find(item => item.BetTypeId == PlaceBetId).Status.ToLowerInvariant();
 
                     string contextWinStatus = GetResultString(winStatus);
                     string contextPlaceStatus = GetResultString(placeStatus);
 
-                    string[] tmpWinStatus = new string[] { "<span class='blue' style='font-weight:normal;'>", CoreBetList.win, ": ", "<b>", contextWinStatus, "</b>", "</span>" };
+                    string[] tmpWinStatus = { "<span class='blue' style='font-weight:normal;'>", CoreBetList.win, ": ", "<b>", contextWinStatus, "</b>", "</span>" };
 
                     string winStatusMarkup = string.Join(null, tmpWinStatus);
 
-                    string[] tmpPlaceStatus = new string[] { "<span class='' style='font-weight:normal;'>", CoreBetList.place, ": ", "<b>", contextPlaceStatus, "</b>", "</span>" };
+                    string[] tmpPlaceStatus = { "<span class='' style='font-weight:normal;'>", CoreBetList.place, ": ", "<b>", contextPlaceStatus, "</b>", "</span>" };
 
                     string placeStatusMarkup = string.Join(null, tmpPlaceStatus);
 
@@ -111,7 +112,7 @@
                             break;
 
                         default:
-                            Template.result = string.Join(null, new string[] { winStatusMarkup, "<br/>", placeStatusMarkup });
+                            Template.result = string.Join(null, new[] { winStatusMarkup, "<br/>", placeStatusMarkup });
                             break;
                     }
                 }
@@ -135,13 +136,13 @@
         /// <param name="tag">Name of the tag.</param>
         /// <param name="source">Source string.</param>
         /// <returns>Value string.</returns>
-        private string ExtractStringBetweenTag(string tag, string source)
+        private static string ExtractStringBetweenTag(string tag, string source)
         {
-            string startTag = string.Join(null, new string[] { "<", tag, ">" });
-            string endTag = string.Join(null, new string[] { "</", tag, ">" });
+            string startTag = string.Join(null, new[] { "<", tag, ">" });
+            string endTag = string.Join(null, new[] { "</", tag, ">" });
 
-            int startIndex = source.IndexOf(startTag) + startTag.Length;
-            int endIndex = source.IndexOf(endTag, startIndex);
+            int startIndex = source.IndexOf(startTag, StringComparison.InvariantCulture) + startTag.Length;
+            int endIndex = source.IndexOf(endTag, startIndex, StringComparison.InvariantCulture);
             return source.Substring(startIndex, endIndex - startIndex);
         }
     }

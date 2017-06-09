@@ -27,6 +27,10 @@
                 case "3-over":
                     betTeam = CoreBetList.ThreeAndOver;
                     break;
+
+                default:
+                    betTeam = string.Empty;
+                    break;
             }
 
             Template.betTeam = betTeam;

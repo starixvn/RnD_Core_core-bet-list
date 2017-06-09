@@ -14,10 +14,10 @@
             var betTeam = string.Empty;
             if (ticket.BetTeam.Length == 2)
             {
-                betTeam = string.Join(null, new string[] { ticket.BetTeam.Substring(0, 1), ":", ticket.BetTeam.Substring(1, 1) });
+                betTeam = string.Join(null, new[] { ticket.BetTeam.Substring(0, 1), ":", ticket.BetTeam.Substring(1, 1) });
             }
 
-            Template.betTeam = string.Join(null, new string[] { HtmlCharacters.NoneBreakingSpace, betTeam });
+            Template.betTeam = string.Join(null, new[] { HtmlCharacters.NoneBreakingSpace, betTeam });
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)

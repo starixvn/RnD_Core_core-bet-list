@@ -67,7 +67,7 @@
             }
         }
 
-        private decimal GetOriginalStake(ITicket ticket)
+        private static decimal GetOriginalStake(ITicket ticket)
         {
             if (ticket.OriginalStake >= 0)
             {
@@ -79,7 +79,7 @@
             return string.IsNullOrEmpty(originalStake) ? 0 : Convert.ToDecimal(originalStake);
         }
 
-        private bool IsCashOutTicket(ITicket ticket)
+        private static bool IsCashOutTicket(ITicket ticket)
                 => (ticket.BetdaqId == 0 || ticket.BetdaqId == -1) && ticket.ExtraInfo.HasXmlTag(CashOutXmlTag);
     }
 }

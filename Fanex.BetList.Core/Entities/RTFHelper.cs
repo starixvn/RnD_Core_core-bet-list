@@ -64,12 +64,12 @@
             }
         }
 
-        private RTFFormattingRun GetFormatingRun(IRichTextString text, int formatIndex)
+        private static RTFFormattingRun GetFormatingRun(IRichTextString text, int formatIndex)
         {
             var beginIndex = text.GetIndexOfFormattingRun(formatIndex);
             short fontIndex = text.GetFontAtIndex(formatIndex);
-
             var length = 0;
+
             for (var i = beginIndex; i < text.Length; i++)
             {
                 var currentFontIndex = text.GetFontAtIndex(i);

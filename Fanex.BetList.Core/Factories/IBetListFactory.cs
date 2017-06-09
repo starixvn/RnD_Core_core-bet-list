@@ -3,7 +3,7 @@
     /// <summary>
     /// Interface IBetListFactory.
     /// </summary>
-    public interface IBetListFactory<T>
+    public interface IBetListFactory<out T>
     {
         T CreateBuilder();
     }

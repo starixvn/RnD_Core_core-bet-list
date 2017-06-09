@@ -49,6 +49,10 @@
                 case BetTeamValue.G6:
                     betTeam = CoreBetList.SixAndOver;
                     break;
+
+                default:
+                    betTeam = string.Empty;
+                    break;
             }
 
             Template.betTeam = betTeam;

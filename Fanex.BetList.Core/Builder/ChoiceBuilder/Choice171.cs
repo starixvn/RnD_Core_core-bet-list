@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Constants;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Constants;
+    using Entities;
 
     /// <summary>
     /// Bet Radar: Winning Margin.
@@ -48,6 +48,10 @@
 
                 case BetTeamValue.A3:
                     betTeam = string.Format("{0} {1}", Template.Match.awayTeam, CoreBetList.ToWinByThreeUpGoals);
+                    break;
+
+                default:
+                    betTeam = string.Empty;
                     break;
             }
 

@@ -45,6 +45,10 @@
                 case BetTeamValue.AO:
                     betTeam = string.Format("{0}/{1}", Template.Match.awayTeam, CoreBetList.over);
                     break;
+
+                default:
+                    betTeam = string.Empty;
+                    break;
             }
 
             Template.betTeam = betTeam;

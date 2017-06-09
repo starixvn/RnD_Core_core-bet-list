@@ -1,6 +1,6 @@
 ﻿namespace Fanex.BetList.Example.Data
 {
-    public enum TicketDataTemplateColumnIndex : int
+    public enum TicketDataTemplateColumnIndex
     {
         /// <summary>
         /// The reference no.

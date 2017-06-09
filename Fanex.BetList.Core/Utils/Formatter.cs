@@ -47,27 +47,12 @@
 
         #region CULTURE CONST
 
-        private static CultureInfo englishCult = CultureInfo.CreateSpecificCulture("en-US");
-        private static CultureInfo vietnameseCult = CultureInfo.CreateSpecificCulture("vi-VN");
         private static CultureInfo cult = new CultureInfo("en-US");
 
         #endregion CULTURE CONST
 
-        public static CultureInfo EngCult
-        {
-            get
-            {
-                return englishCult;
-            }
-        }
 
-        public static CultureInfo VICult
-        {
-            get
-            {
-                return vietnameseCult;
-            }
-        }
+        public static CultureInfo VICult { get; } = CultureInfo.CreateSpecificCulture("vi-VN");
 
         #region Decimal
 
@@ -755,11 +740,12 @@
         {
             if (value.Length > maxLength)
             {
-                value = string.Format("<span title='{0}'>{1}...</span>", value.Replace("'", "&#39;"), HttpUtility.HtmlEncode(value.Substring(0, maxLength - 3)));
+                return string.Format("<span title='{0}'>{1}...</span>", value.Replace("'", "&#39;"), HttpUtility.HtmlEncode(value.Substring(0, maxLength - 3)));
             }
-            else if (hasSpanReturn)
+
+            if (hasSpanReturn)
             {
-                value = string.Format("<span>{0}</span>", HttpUtility.HtmlEncode(value));
+                return string.Format("<span>{0}</span>", HttpUtility.HtmlEncode(value));
             }
 
             return value;
@@ -784,11 +770,13 @@
         public static string HighlightNegativeNumber(object amount)
         {
             decimal value = 0;
-            if (amount.GetType() == typeof(double))
+
+            if ((amount != null) && (amount is double))
             {
                 value = (decimal)((double)amount);
             }
-            else if (amount.GetType() == typeof(decimal))
+
+            if ((amount != null) && (amount is decimal))
             {
                 value = (decimal)amount;
             }

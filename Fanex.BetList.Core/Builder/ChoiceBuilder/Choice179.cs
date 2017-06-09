@@ -42,6 +42,10 @@
                 case BetTeamValue.G4:
                     betTeam = CoreBetList.FourAndOver;
                     break;
+
+                default:
+                    betTeam = string.Empty;
+                    break;
             }
 
             Template.betTeam = betTeam;
@@ -60,7 +64,7 @@
             Template.BetType.betTypeName = betTypeName;
         }
 
-        private string GetParentBetTypeName(ITicket ticket, ITicketHelper ticketHelper)
+        private static string GetParentBetTypeName(ITicket ticket, ITicketHelper ticketHelper)
         {
             var parentBetTypeId = MapperCollector.GetParentBetTypeOf(ticket.BetTypeId);
 

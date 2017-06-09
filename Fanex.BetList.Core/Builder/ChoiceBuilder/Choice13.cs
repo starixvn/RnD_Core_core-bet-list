@@ -22,7 +22,7 @@
             string team = ticket.BetTeam != null && ticket.BetTeam.Contains(BetTeamValue.H) ? Template.Match.homeTeam : Template.Match.awayTeam;
             string yesNo = ticket.BetTeam != null && ticket.BetTeam.Contains(BetTeamValue.Y) ? CoreBetList.lblYes : CoreBetList.lblNo;
 
-            Template.betTeam = string.Join(null, new string[] { team, " <span class=\"", Favorite, "\">", yesNo.ToUpper(), "</span>" });
+            Template.betTeam = string.Join(null, new[] { team, " <span class=\"", Favorite, "\">", yesNo.ToUpperInvariant(), "</span>" });
         }
     }
 }

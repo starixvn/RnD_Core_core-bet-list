@@ -95,7 +95,7 @@
         {
             string homeTeamName = ticketHelper.GetTeamNameById(ticket.HomeId);
             string neutral = string.Format(" {0} ", CoreBetList.Neutral);
-            homeTeamName = string.Join(null, new string[] { homeTeamName, ticket.IsNeutral ? neutral : string.Empty });
+            homeTeamName = string.Join(null, new[] { homeTeamName, ticket.IsNeutral ? neutral : string.Empty });
 
             return homeTeamName;
         }
@@ -114,29 +114,29 @@
         /// </param>
         /// <param name="homeFGLG">The home FGLG.</param>
         /// <param name="awayFGLG">The away FGLG.</param>
-        protected virtual void BuildFGLGLabel(string betStatus, ref string homeFGLG, ref string awayFGLG)
+        protected virtual void BuildFG_LGLabel(string betStatus, ref string homeFGLG, ref string awayFGLG)
         {
             if (string.IsNullOrWhiteSpace(betStatus))
             {
                 return;
             }
 
-            string[] betStatusParts = betStatus.ToLower().Split(';');
+            string[] betStatusParts = betStatus.ToLowerInvariant().Split(';');
 
             string[] fglg = GetBetStatusPart(betStatusParts, BetStatusFl);
-            CalculateFGLGLabel(FirstGoalCssClass, LastGoalCssClass, fglg, ref homeFGLG, ref awayFGLG);
+            CalculateFG_LGLabel(FirstGoalCssClass, LastGoalCssClass, fglg, ref homeFGLG, ref awayFGLG);
 
             string[] fhfglg = GetBetStatusPart(betStatusParts, BetStatus1Fl);
-            CalculateFGLGLabel(FirstHalfFirstGoalCssClass, FirstHalfLastGoalCssClass, fhfglg, ref homeFGLG, ref awayFGLG);
+            CalculateFG_LGLabel(FirstHalfFirstGoalCssClass, FirstHalfLastGoalCssClass, fhfglg, ref homeFGLG, ref awayFGLG);
 
             if (!string.IsNullOrEmpty(homeFGLG))
             {
-                homeFGLG = string.Join(null, new string[] { HtmlCharacters.NoneBreakingSpace, homeFGLG });
+                homeFGLG = string.Join(null, new[] { HtmlCharacters.NoneBreakingSpace, homeFGLG });
             }
 
             if (!string.IsNullOrEmpty(awayFGLG))
             {
-                awayFGLG = string.Join(null, new string[] { HtmlCharacters.NoneBreakingSpace, awayFGLG });
+                awayFGLG = string.Join(null, new[] { HtmlCharacters.NoneBreakingSpace, awayFGLG });
             }
         }
 
@@ -161,7 +161,7 @@
                 return;
             }
 
-            string[] betStatusParts = betStatus.ToLower().Split(';');
+            string[] betStatusParts = betStatus.ToLowerInvariant().Split(';');
 
             string[] fglg = GetBetStatusPart(betStatusParts, BetStatusFl);
             UpdateFG_LG_Excel(FirstGoalTextName, LastGoalTextName, fglg, ref homeFGLG, ref awayFGLG);
@@ -393,7 +393,7 @@
 
             Template.Match.home_firstGoal_lastGoal = string.Empty;
             Template.Match.away_firstGoal_lastGoal = string.Empty;
-            BuildFGLGLabel(ticket.EventStatus, ref Template.Match.home_firstGoal_lastGoal, ref Template.Match.away_firstGoal_lastGoal);
+            BuildFG_LGLabel(ticket.EventStatus, ref Template.Match.home_firstGoal_lastGoal, ref Template.Match.away_firstGoal_lastGoal);
         }
 
         /// <summary>
@@ -436,17 +436,19 @@
             string statusId = ticket.StatusId != null ? ticket.StatusId.ToString() : string.Empty;
             string status = ticket.Status ?? string.Empty;
 
-            status = status.Trim().ToLower();
+            status = status.Trim().ToLowerInvariant();
 
             if (statusId == BetStatusId.Void || status == BetStatus.Void)
             {
                 Template.ticketStatus = VoidStatus;
             }
-            else if (statusId == BetStatusId.Reject || status == BetStatus.Reject)
+
+            if (statusId == BetStatusId.Reject || status == BetStatus.Reject)
             {
                 Template.ticketStatus = RejectStatus;
             }
-            else if (statusId == BetStatusId.Refund || status == BetStatus.Refund)
+
+            if (statusId == BetStatusId.Refund || status == BetStatus.Refund)
             {
                 Template.ticketStatus = RefundStatus;
             }
@@ -539,7 +541,7 @@
 
             if (Template.Handicap != null && Template.Handicap.Visible && Template.Handicap.handicap != null)
             {
-                choice += string.Join(null, new string[] { Space, Template.Handicap.handicap });
+                choice += string.Join(null, new[] { Space, Template.Handicap.handicap });
             }
 
             if (Template.Score != null && Template.Score.Visible)
@@ -549,7 +551,7 @@
 
             if (isMixParlay)
             {
-                choice += string.Join(null, new string[] { " @ ", Formatter.FormatNumber3(ticket.Odds, null) });
+                choice += string.Join(null, new[] { " @ ", Formatter.FormatNumber3(ticket.Odds, null) });
             }
 
             if (!string.IsNullOrEmpty(choice))
@@ -579,57 +581,19 @@
         /// </summary>
         /// <param name="ticket">The ticket.</param>
         /// <param name="rtfHelper">The RTF helper.</param>
-        [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2101:MethodMustNotContainMoreLinesThan", Justification = "Reviewed. Suppression is OK here.")]
         protected virtual void BuildBetTeamsInfo(ITicket ticket, ref RTFHelper rtfHelper)
         {
             if (Template.Match != null)
             {
-                bool isAddNewLine = false;
-                string choice = string.Empty;
-                if (!string.IsNullOrEmpty(Template.Match.homeTeam))
-                {
-                    choice = Template.Match.homeTeam.Replace(HtmlCharacters.NoneBreakingSpace, Space);
-                }
+                var choice = string.Empty;
 
-                if (!string.IsNullOrEmpty(choice))
-                {
-                    isAddNewLine = true;
-                    rtfHelper.RTFRenderer.AddText("\n" + choice);
-                    choice = string.Empty;
-                }
+                var isAddNewLine = BuildHomeTeam(rtfHelper);
 
                 BuildTicketFG_LG(ticket);
 
-                if (!string.IsNullOrEmpty(Template.Match.home_firstGoal_lastGoal))
-                {
-                    choice = string.Join(null, new string[] { Space, Template.Match.home_firstGoal_lastGoal });
-                }
+                isAddNewLine = BuildHomeTeamFG_LG(rtfHelper);
 
-                if (!string.IsNullOrEmpty(choice))
-                {
-                    isAddNewLine = true;
-                    choice = choice.Replace(HtmlCharacters.NoneBreakingSpace, Space);
-                    rtfHelper.RTFRenderer.AddText(choice, rtfHelper.PosFont);
-                    choice = string.Empty;
-                }
-
-                if (Template.Match.VS != null && Template.Match.VS.Visible)
-                {
-                    choice = "- vs -";
-                }
-
-                if (!string.IsNullOrEmpty(Template.Match.awayTeam))
-                {
-                    choice += string.Join(null, new string[] { Space, Template.Match.awayTeam });
-                }
-
-                if (!string.IsNullOrEmpty(choice))
-                {
-                    isAddNewLine = true;
-                    choice = choice.Replace(HtmlCharacters.NoneBreakingSpace, Space);
-                    rtfHelper.RTFRenderer.AddText(choice);
-                    choice = string.Empty;
-                }
+                isAddNewLine = BuildAwayTeam(rtfHelper);
 
                 if (!string.IsNullOrEmpty(Template.Match.away_firstGoal_lastGoal))
                 {
@@ -677,6 +641,25 @@
             }
         }
 
+        private bool BuildHomeTeam(RTFHelper rtfHelper)
+        {
+            var choice = string.Empty;
+
+            if (!string.IsNullOrEmpty(Template.Match.homeTeam))
+            {
+                choice = Template.Match.homeTeam.Replace(HtmlCharacters.NoneBreakingSpace, Space);
+            }
+
+            if (!string.IsNullOrEmpty(choice))
+            {
+                rtfHelper.RTFRenderer.AddText("\n" + choice);
+
+                return true;
+            }
+
+            return false;
+        }
+
         private void BuildTicketFG_LG(ITicket ticket)
         {
             if (ticket.EventStatus != null && Template.Match != null)
@@ -687,26 +670,62 @@
             }
         }
 
+        private bool BuildHomeTeamFG_LG(RTFHelper rtfHelper)
+        {
+            var choice = string.Empty;
+
+            if (!string.IsNullOrEmpty(Template.Match.home_firstGoal_lastGoal))
+            {
+                choice = string.Join(null, new[] { Space, Template.Match.home_firstGoal_lastGoal });
+            }
+
+            if (!string.IsNullOrEmpty(choice))
+            {
+                choice = choice.Replace(HtmlCharacters.NoneBreakingSpace, Space);
+                rtfHelper.RTFRenderer.AddText(choice, rtfHelper.PosFont);
+
+                return true;
+            }
+
+            return false;
+        }
+
+        private bool BuildAwayTeam(RTFHelper rtfHelper)
+        {
+            var choice = string.Empty;
+
+            if (Template.Match.VS != null && Template.Match.VS.Visible)
+            {
+                choice = "- vs -";
+            }
+
+            if (!string.IsNullOrEmpty(Template.Match.awayTeam))
+            {
+                choice += string.Join(null, new[] { Space, Template.Match.awayTeam });
+            }
+
+            if (!string.IsNullOrEmpty(choice))
+            {
+                choice = choice.Replace(HtmlCharacters.NoneBreakingSpace, Space);
+                rtfHelper.RTFRenderer.AddText(choice);
+
+                return true;
+            }
+
+            return false;
+        }
+
         /// <summary>
         /// Gets the bet status part.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="partName">Name of the part.</param>
         /// <returns>Return the bet status array.</returns>
-        private string[] GetBetStatusPart(string[] source, string partName)
+        private static string[] GetBetStatusPart(string[] source, string partName)
         {
-            var part = string.Empty;
+            var part = source?.FirstOrDefault(item => item.StartsWith(partName, StringComparison.InvariantCulture)) ?? string.Empty;
+            var partValue = part.Split(new[] { ':', '-' });
 
-            foreach (string item in source)
-            {
-                if (item.StartsWith(partName))
-                {
-                    part = item;
-                    break;
-                }
-            }
-
-            string[] partValue = part.Split(new[] { ':', '-' });
             return partValue;
         }
 
@@ -718,33 +737,31 @@
         /// <param name="statusPart">The status part.</param>
         /// <param name="homeFGLG">The home FGLG.</param>
         /// <param name="awayFGLG">The away FGLG.</param>
-        private void CalculateFGLGLabel(string firstClassName, string lastClassName, string[] statusPart, ref string homeFGLG, ref string awayFGLG)
+        private static void CalculateFG_LGLabel(string firstClassName, string lastClassName, string[] statusPart, ref string homeFGLG, ref string awayFGLG)
         {
             if (statusPart.Length != 3)
             {
                 return;
             }
 
-            switch (statusPart[1])
+            if (statusPart[1] == BetTeamValue.NumberOne)
             {
-                case BetTeamValue.NumberOne:
-                    homeFGLG += string.Join(null, new string[] { "<div class='", firstClassName, "'>&nbsp;</div>" });
-                    break;
-
-                case BetTeamValue.NumberTwo:
-                    awayFGLG += string.Join(null, new string[] { "<div class='", firstClassName, "'>&nbsp;</div>" });
-                    break;
+                homeFGLG += string.Join(null, new[] { "<div class='", firstClassName, "'>&nbsp;</div>" });
             }
 
-            switch (statusPart[2])
+            if (statusPart[1] == BetTeamValue.NumberTwo)
             {
-                case BetTeamValue.NumberOne:
-                    homeFGLG += string.Join(null, new string[] { "<div class='", lastClassName, "'>&nbsp;</div>" });
-                    break;
+                awayFGLG += string.Join(null, new[] { "<div class='", firstClassName, "'>&nbsp;</div>" });
+            }
 
-                case BetTeamValue.NumberTwo:
-                    awayFGLG += string.Join(null, new string[] { "<div class='", lastClassName, "'>&nbsp;</div>" });
-                    break;
+            if (statusPart[2] == BetTeamValue.NumberOne)
+            {
+                homeFGLG += string.Join(null, new[] { "<div class='", lastClassName, "'>&nbsp;</div>" });
+            }
+
+            if (statusPart[2] == BetTeamValue.NumberTwo)
+            {
+                awayFGLG += string.Join(null, new[] { "<div class='", lastClassName, "'>&nbsp;</div>" });
             }
         }
 
@@ -756,7 +773,7 @@
         /// <param name="statusPart">The status part.</param>
         /// <param name="homeFGLG">The home FGLG.</param>
         /// <param name="awayFGLG">The away FGLG.</param>
-        private void UpdateFG_LG_Excel(string firstTextName, string lastTextName, string[] statusPart, ref string homeFGLG, ref string awayFGLG)
+        private static void UpdateFG_LG_Excel(string firstTextName, string lastTextName, string[] statusPart, ref string homeFGLG, ref string awayFGLG)
         {
             if (statusPart.Length != 3)
             {
@@ -767,7 +784,8 @@
             {
                 homeFGLG += firstTextName;
             }
-            else if (statusPart[1] == "2")
+
+            if (statusPart[1] == "2")
             {
                 awayFGLG += firstTextName;
             }
@@ -776,17 +794,18 @@
             {
                 homeFGLG += lastTextName;
             }
-            else if (statusPart[2] == "2")
+
+            if (statusPart[2] == "2")
             {
                 awayFGLG += lastTextName;
             }
         }
 
-        private bool IsCashOutBetTicket(ITicket ticket) => ticket.BetdaqId == 1 && !IsBetTrade(ticket.BetTypeId);
+        private static bool IsCashOutBetTicket(ITicket ticket) => ticket.BetdaqId == 1 && !IsBetTrade(ticket.BetTypeId);
 
-        private bool IsOutRight(int betTypeId) => betTypeId == 10;
+        private static bool IsOutRight(int betTypeId) => betTypeId == 10;
 
-        private bool IsBetTrade(int betTypeId) => betTypeId == 901 || betTypeId == 902;
+        private static bool IsBetTrade(int betTypeId) => betTypeId == 901 || betTypeId == 902;
 
         #endregion Private function
     }

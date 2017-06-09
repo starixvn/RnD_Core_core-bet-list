@@ -67,7 +67,6 @@
         /// <summary>
         /// Check if the input IP string is from Vietnam.
         /// </summary>
-        /// <param name="ip">The IP to check.</param>
         /// <returns><c>true</c> if [IP is from VN]; otherwise, <c>false</c>.</returns>
         Func<string, bool> IsVnIp { get; set; }
 

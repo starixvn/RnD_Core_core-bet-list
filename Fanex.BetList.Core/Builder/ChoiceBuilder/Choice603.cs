@@ -22,6 +22,10 @@
                 case BetTeamValue.A:
                     betTeam = Template.Match.awayTeam;
                     break;
+
+                default:
+                    betTeam = string.Empty;
+                    break;
             }
 
             Template.betTeam = betTeam;

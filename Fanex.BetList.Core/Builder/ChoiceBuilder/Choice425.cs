@@ -23,6 +23,10 @@
                 case BetTeamValue.A:
                     betTeam = CoreBetList.Away;
                     break;
+
+                default:
+                    betTeam = string.Empty;
+                    break;
             }
 
             Template.betTeam = betTeam;

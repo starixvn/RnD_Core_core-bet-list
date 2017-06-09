@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Constants;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Constants;
+    using Entities;
 
     /// <summary>
     /// Bet type name: 2ND Half 1x2.
@@ -32,6 +32,10 @@
 
                 case BetTeamValue.X:
                     betTeam = CoreBetList.TwoHDotX;
+                    break;
+
+                default:
+                    betTeam = string.Empty;
                     break;
             }
 

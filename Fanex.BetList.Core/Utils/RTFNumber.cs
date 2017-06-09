@@ -7,9 +7,9 @@
     /// </summary>
     public class RTFNumber
     {
-        private IFont _posFontText;
-        private IFont _negFontText;
-        private RtfTextRender _renderContent;
+        private readonly IFont _posFontText;
+        private readonly IFont _negFontText;
+        private readonly RtfTextRender _renderContent;
 
         public RTFNumber(RtfTextRender render, IFont posFont, IFont negFont)
         {
@@ -24,15 +24,9 @@
         /// <param name="text">The text value.</param>
         public void Render(string text)
         {
-            string removeText = text.Replace(ConvertByBetType.FontOpenTag, string.Empty).Replace(ConvertByBetType.FontCloseTag, string.Empty);
-            if (text.Length == removeText.Length)
-            {
-                _renderContent.AddText(removeText, _posFontText);
-            }
-            else
-            {
-                _renderContent.AddText(removeText, _negFontText);
-            }
+            var removeText = text.Replace(ConvertByBetType.FontOpenTag, string.Empty).Replace(ConvertByBetType.FontCloseTag, string.Empty);
+
+            _renderContent.AddText(removeText, text.Length == removeText.Length ? _posFontText : _negFontText);
         }
     }
 }

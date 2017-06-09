@@ -33,6 +33,10 @@
                 case BetTeamValue.X:
                     betTeam = CoreBetList.ExtraTimeHTDotX;
                     break;
+
+                default:
+                    betTeam = string.Empty;
+                    break;
             }
 
             Template.betTeam = betTeam;

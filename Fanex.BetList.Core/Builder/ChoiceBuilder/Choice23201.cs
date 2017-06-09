@@ -11,7 +11,7 @@
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            Template.betTeam = string.Join(null, new string[] { CoreBetList.bingo, " - ", CoreBetList.transfer });
+            Template.betTeam = string.Join(null, new[] { CoreBetList.bingo, " - ", CoreBetList.transfer });
         }
     }
 }

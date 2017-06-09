@@ -13,7 +13,7 @@
     {
         public override Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
         {
-            var content = string.Join(null, new string[] { "<div><span class='", Favorite, "'>", CoreBetList.p2pGame, "</span></div>" });
+            var content = string.Join(null, new[] { "<div><span class='", Favorite, "'>", CoreBetList.p2pGame, "</span></div>" });
             Template.SetValue(content);
 
             return Template;

@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
     using Entities;
-    using Fanex.BetList.Core.App_GlobalResources;
+    using App_GlobalResources;
 
     /// <summary>
     /// First Goal/Last Goal.
@@ -18,17 +18,25 @@
                 case "0:0":
                     betTeam = CoreBetList.NoGoalBetType14;
                     break;
+
                 case "1:1":
                     betTeam = CoreBetList.HomeFG;
                     break;
+
                 case "1:2":
                     betTeam = CoreBetList.HomeLG;
                     break;
+
                 case "2:1":
                     betTeam = CoreBetList.AwayFG;
                     break;
+
                 case "2:2":
                     betTeam = CoreBetList.AwayLG;
+                    break;
+
+                default:
+                    betTeam = string.Empty;
                     break;
             }
 

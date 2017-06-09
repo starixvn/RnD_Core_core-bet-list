@@ -65,8 +65,10 @@
         /// <returns>The bet name of the passed bet type ID with associate resource.</returns>
         public static string GetBettype(object bettypeId, object betId, object betCheck, object refNo)
         {
-            string resourceId = string.Empty;
-            object resource = betId ?? betCheck;
+            var resourceId = string.Empty;
+            var resource = betId ?? betCheck;
+            var betTypeId = bettypeId;
+            var refNoValue = refNo;
 
             // Remove first character of the resource.
             if (resource != null && resource.ToString().Length > 1)
@@ -74,22 +76,22 @@
                 resourceId = resource.ToString().Substring(1);
             }
 
-            if (MapperCollector.BetTypeHasParent(Convert.ToInt32(bettypeId)))
+            if (MapperCollector.BetTypeHasParent(Convert.ToInt32(betTypeId)))
             {
-                bettypeId = GetParentIdByBetTypeId(bettypeId, string.Empty);
+                betTypeId = GetParentIdByBetTypeId(betTypeId, string.Empty);
             }
 
-            if (string.IsNullOrEmpty(refNo?.ToString()))
+            if (string.IsNullOrEmpty(refNoValue?.ToString()))
             {
-                refNo = 0;
+                refNoValue = 0;
             }
 
-            if (MapperCollector.BetTypeHasParent(Convert.ToInt32(bettypeId)))
+            if (MapperCollector.BetTypeHasParent(Convert.ToInt32(betTypeId)))
             {
-                bettypeId = GetParentIdByBetTypeId(bettypeId, string.Empty);
+                betTypeId = GetParentIdByBetTypeId(betTypeId, string.Empty);
             }
 
-            return RefData.GetBetTypeName(bettypeId.ToString(), CurrentTWLanguage, string.Empty, resourceId, Convert.ToInt64(refNo));
+            return RefData.GetBetTypeName(betTypeId.ToString(), CurrentTWLanguage, string.Empty, resourceId, Convert.ToInt64(refNo));
         }
 
         public static string GetParentIdByBetTypeId(object betTypeId, object defaultParentId)

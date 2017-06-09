@@ -65,7 +65,7 @@ namespace Fanex.BetList.Core.Builder
 
             _nextCellIndex = -1;
 
-            RTFHelper = new RTFHelper()
+            RTFHelper = new RTFHelper
             {
                 NegFont = _workbook.CreateFont(),
                 NormalFont = _workbook.CreateFont(),
@@ -135,15 +135,8 @@ namespace Fanex.BetList.Core.Builder
         /// </summary>
         public void Dispose()
         {
-            try
-            {
-                Dispose(true);
-                GC.SuppressFinalize(this);
-            }
-            catch
-            {
-                throw;
-            }
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
         #endregion IDisposable's Implementation
@@ -222,14 +215,9 @@ namespace Fanex.BetList.Core.Builder
 
             ICell lastCell;
 
-            if (lastRow.RowNum % 2 == 0)
-            {
-                lastCell = lastRow.CreateCell(_nextCellIndex, EvenCellStyle);
-            }
-            else
-            {
-                lastCell = lastRow.CreateCell(_nextCellIndex, OddCellStyle);
-            }
+            lastCell = lastRow.RowNum % 2 == 0
+                ? lastRow.CreateCell(_nextCellIndex, EvenCellStyle)
+                : lastRow.CreateCell(_nextCellIndex, OddCellStyle);
 
             lastCell.SetCellValue(rtfString);
 
@@ -438,17 +426,6 @@ namespace Fanex.BetList.Core.Builder
         }
 
         /// <summary>
-        /// Adapts the width of the row.
-        /// </summary>
-        private void AdaptRowWidth()
-        {
-            for (short i = 0; i < _reportColumnsNum; i++)
-            {
-                _worksheet.AutoSizeColumn(i);
-            }
-        }
-
-        /// <summary>
         /// Adapts the height of the row.
         /// </summary>
         private void AdaptRowHeight()
@@ -473,19 +450,35 @@ namespace Fanex.BetList.Core.Builder
         /// </summary>
         private void InitDefaultRTFHelper()
         {
-            RTFHelper.PosFont.Boldweight = RTFHelper.PosFontCrossed.Boldweight = (short)FontBoldWeight.Bold;
-            RTFHelper.NegFont.Boldweight = RTFHelper.NegFontCrossed.Boldweight = (short)FontBoldWeight.Bold;
-            RTFHelper.NormalFont.Boldweight = RTFHelper.NormalFontCrossed.Boldweight = (short)FontBoldWeight.Normal;
+            RTFHelper.PosFont.Boldweight = (short)FontBoldWeight.Bold;
+            RTFHelper.PosFontCrossed.Boldweight = (short)FontBoldWeight.Bold;
 
-            RTFHelper.NegFont.FontName = RTFHelper.NegFontCrossed.FontName = RTFHelper.NormalFont.FontName = "Tahoma";
-            RTFHelper.NormalFontCrossed.FontName = RTFHelper.PosFont.FontName = RTFHelper.PosFontCrossed.FontName = "Tahoma";
+            RTFHelper.NegFont.Boldweight = (short)FontBoldWeight.Bold;
+            RTFHelper.NegFontCrossed.Boldweight = (short)FontBoldWeight.Bold;
 
-            RTFHelper.NegFont.FontHeightInPoints = RTFHelper.NegFontCrossed.FontHeightInPoints = RTFHelper.NormalFont.FontHeightInPoints = 9;
-            RTFHelper.NormalFontCrossed.FontHeightInPoints = RTFHelper.PosFont.FontHeightInPoints = RTFHelper.PosFontCrossed.FontHeightInPoints = 9;
+            RTFHelper.NormalFont.Boldweight = (short)FontBoldWeight.Normal;
+            RTFHelper.NormalFontCrossed.Boldweight = (short)FontBoldWeight.Normal;
 
-            RTFHelper.NormalFontCrossed.IsStrikeout = RTFHelper.PosFontCrossed.IsStrikeout = RTFHelper.NegFontCrossed.IsStrikeout = true;
+            RTFHelper.NegFont.FontName = "Tahoma";
+            RTFHelper.NegFontCrossed.FontName = "Tahoma";
+            RTFHelper.NormalFont.FontName = "Tahoma";
+            RTFHelper.NormalFontCrossed.FontName = "Tahoma";
+            RTFHelper.PosFont.FontName = "Tahoma";
+            RTFHelper.PosFontCrossed.FontName = "Tahoma";
 
-            RTFHelper.NegFont.Color = RTFHelper.NegFontCrossed.Color = (short)FontColor.Red;
+            RTFHelper.NegFont.FontHeightInPoints = 9;
+            RTFHelper.NegFontCrossed.FontHeightInPoints = 9;
+            RTFHelper.NormalFont.FontHeightInPoints = 9;
+            RTFHelper.NormalFontCrossed.FontHeightInPoints = 9;
+            RTFHelper.PosFont.FontHeightInPoints = 9;
+            RTFHelper.PosFontCrossed.FontHeightInPoints = 9;
+
+            RTFHelper.NormalFontCrossed.IsStrikeout = true;
+            RTFHelper.PosFontCrossed.IsStrikeout = true;
+            RTFHelper.NegFontCrossed.IsStrikeout = true;
+
+            RTFHelper.NegFont.Color = (short)FontColor.Red;
+            RTFHelper.NegFontCrossed.Color = (short)FontColor.Red;
         }
 
         /// <summary>
@@ -493,19 +486,35 @@ namespace Fanex.BetList.Core.Builder
         /// </summary>
         private void InitDefaultCellStyles()
         {
-            OddCellStyle.Alignment = EvenCellStyle.Alignment = HorizontalAlignment.Right;
+            OddCellStyle.Alignment = HorizontalAlignment.Right;
+            EvenCellStyle.Alignment = HorizontalAlignment.Right;
 
             // There's probably a bug in the VerticalAlignment enum of NPOI 2.0.6.0,
             // where VerticalAlignment.Top is actually resulting in middle alignment,
             // and VerticalAlignment.Bottom is in fact top alignment.
-            OddCellStyle.VerticalAlignment = EvenCellStyle.VerticalAlignment = VerticalAlignment.Bottom;
-            OddCellStyle.FillPattern = EvenCellStyle.FillPattern = FillPattern.SolidForeground;
+            OddCellStyle.VerticalAlignment = VerticalAlignment.Bottom;
+            EvenCellStyle.VerticalAlignment = VerticalAlignment.Bottom;
+            OddCellStyle.FillPattern = FillPattern.SolidForeground;
+            EvenCellStyle.FillPattern = FillPattern.SolidForeground;
 
-            OddCellStyle.BorderTop = OddCellStyle.BorderRight = OddCellStyle.BorderBottom = OddCellStyle.BorderLeft = BorderStyle.Thin;
-            EvenCellStyle.BorderTop = EvenCellStyle.BorderRight = EvenCellStyle.BorderBottom = EvenCellStyle.BorderLeft = BorderStyle.Thin;
+            OddCellStyle.BorderTop = BorderStyle.Thin;
+            OddCellStyle.BorderRight = BorderStyle.Thin;
+            OddCellStyle.BorderBottom = BorderStyle.Thin;
+            OddCellStyle.BorderLeft = BorderStyle.Thin;
 
-            OddCellStyle.TopBorderColor = OddCellStyle.RightBorderColor = OddCellStyle.BottomBorderColor = OddCellStyle.LeftBorderColor = 54;
-            EvenCellStyle.TopBorderColor = EvenCellStyle.RightBorderColor = EvenCellStyle.BottomBorderColor = EvenCellStyle.LeftBorderColor = 54;
+            EvenCellStyle.BorderTop = BorderStyle.Thin;
+            EvenCellStyle.BorderRight = BorderStyle.Thin;
+            EvenCellStyle.BorderBottom = BorderStyle.Thin;
+            EvenCellStyle.BorderLeft = BorderStyle.Thin;
+
+            OddCellStyle.TopBorderColor = 54;
+            OddCellStyle.RightBorderColor = 54;
+            OddCellStyle.BottomBorderColor = 54;
+            OddCellStyle.LeftBorderColor = 54;
+            EvenCellStyle.TopBorderColor = 54;
+            EvenCellStyle.RightBorderColor = 54;
+            EvenCellStyle.BottomBorderColor = 54;
+            EvenCellStyle.LeftBorderColor = 54;
 
             OddCellStyle.FillForegroundColor = 26;
             OddCellStyle.FillBackgroundColor = 43;
@@ -537,20 +546,22 @@ namespace Fanex.BetList.Core.Builder
         /// Releases unmanaged and - optionally - managed resources.
         /// </summary>
         /// <param name="disposing"><c>True</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
-        private void Dispose(bool disposing)
+        protected virtual void Dispose(bool disposing)
         {
             if (!_isDisposed)
             {
-                if (!disposing)
+                if (!disposing && _workbook != null)
                 {
-                    if (_workbook != null)
-                    {
-                        _workbook = null;
-                    }
+                    _workbook = null;
                 }
 
                 _isDisposed = true;
             }
+        }
+
+        ~BetListExcelBuilder()
+        {
+            Dispose(false);
         }
 
         #endregion IDisposable's Implementation

@@ -39,6 +39,10 @@
                 case BetTeamValue.NG:
                     betTeam = CoreBetList.nogoal;
                     break;
+
+                default:
+                    betTeam = string.Empty;
+                    break;
             }
 
             Template.betTeam = betTeam;

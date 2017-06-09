@@ -54,7 +54,7 @@
                 handicap += Formatter.FormatSignNumber((int)Math.Abs(hdp2 - hdp1));
             }
 
-            Template.betTeam = string.Join(null, new string[] { teamName, "&nbsp;<span class=\"underdog\">(", handicap.ToString(), ")</span>" });
+            Template.betTeam = string.Join(null, new[] { teamName, "&nbsp;<span class=\"underdog\">(", handicap, ")</span>" });
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)

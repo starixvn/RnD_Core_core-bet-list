@@ -12,7 +12,6 @@
     {
         protected const string BasketballRefId = "WMBasketball";
 
-        [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2101:MethodMustNotContainMoreLinesThan", Justification = "Reviewed. Suppression is OK here.")]
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             var betTeam = string.Empty;
@@ -73,6 +72,10 @@
 
                 case BetTeamValue.A21Over:
                     betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "21+"), Template.Match.awayTeam);
+                    break;
+
+                default:
+                    betTeam = string.Empty;
                     break;
             }
 

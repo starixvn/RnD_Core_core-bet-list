@@ -4,7 +4,7 @@
     using System.Text;
     using ChoiceBuilder;
     using Entities;
-    using Fanex.BetList.Core.Builder.SystemParlayBuilder;
+    using SystemParlayBuilder;
     using OddsBuilder;
     using StakeBuilder;
     using StatusBuilder;
@@ -19,34 +19,9 @@
         #region Attributes
 
         /// <summary>
-        /// The choice builder namespace.
-        /// </summary>
-        private const string CHOICEBUILDERNAMESPACE = "Fanex.BetList.Core.Builder.ChoiceBuilder";
-
-        /// <summary>
-        /// The odds builder namespace.
-        /// </summary>
-        private const string ODDSBUILDERNAMESPACE = "Fanex.BetList.Core.Builder.OddsBuilder";
-
-        /// <summary>
-        /// The stake builder namespace.
-        /// </summary>
-        private const string STAKEBUILDERNAMESPACE = "Fanex.BetList.Core.Builder.StakeBuilder";
-
-        /// <summary>
-        /// The trans builder namespace.
-        /// </summary>
-        private const string TRANSBUILDERNAMESPACE = "Fanex.BetList.Core.Builder.TransBuilder";
-
-        /// <summary>
-        /// The status builder namespace.
-        /// </summary>
-        private const string STATUSBUILDERNAMESPACE = "Fanex.BetList.Core.Builder.StatusBuilder";
-
-        /// <summary>
         /// The _content.
         /// </summary>
-        private StringBuilder _content;
+        private readonly StringBuilder _content;
 
         #endregion Attributes
 
@@ -101,7 +76,7 @@
                         bool isShowScoreMap)
         {
             string choice = BuildChoice(ticket, ticketHelper, ticketData, isShowScoreMap);
-            _content.Append(string.Join(null, new string[] { openTag, choice, closeTag }));
+            _content.Append(string.Join(null, new[] { openTag, choice, closeTag }));
             return this;
         }
 
@@ -164,7 +139,7 @@
         public BetListHTMLBuilder AddOdds(ITicket ticket, List<ITicketData> ticketData, string openTag, string closeTag, GetCachePropertyById funcGetOddsTypeName)
         {
             string odds = BuildOdds(ticket, ticketData, funcGetOddsTypeName);
-            _content.Append(string.Join(null, new string[] { openTag, odds, closeTag }));
+            _content.Append(string.Join(null, new[] { openTag, odds, closeTag }));
             return this;
         }
 
@@ -194,7 +169,7 @@
         {
             string stake = BuildStake(ticket);
 
-            _content.Append(string.Join(null, new string[] { openTag, stake, closeTag }));
+            _content.Append(string.Join(null, new[] { openTag, stake, closeTag }));
             return this;
         }
 
@@ -221,7 +196,7 @@
         public BetListHTMLBuilder AddTrans(ITicket ticket, string openTag, string closeTag)
         {
             string trans = BuildTrans(ticket);
-            _content.Append(string.Join(null, new string[] { openTag, trans, closeTag }));
+            _content.Append(string.Join(null, new[] { openTag, trans, closeTag }));
             return this;
         }
 
@@ -250,7 +225,7 @@
         public BetListHTMLBuilder AddStatus(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, string openTag, string closeTag, bool isShowVNIP)
         {
             string status = BuildStatus(ticket, ticketHelper, ticketData, isShowVNIP);
-            _content.Append(string.Join(null, new string[] { openTag, status, closeTag }));
+            _content.Append(string.Join(null, new[] { openTag, status, closeTag }));
             return this;
         }
 

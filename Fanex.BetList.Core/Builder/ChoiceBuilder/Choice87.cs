@@ -20,7 +20,7 @@
             base.BuildMatch(ticket, ticketHelper);
 
             Template.Match.VS = null;
-            Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
+            Template.Match.homeTeam = string.Join(null, new[] { CoreBetList.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
@@ -45,10 +45,10 @@
                 betId = string.Empty;
             }
 
-            string liveScore = (!ticket.IsLive || string.IsNullOrEmpty(betId)) ? " [0]" : string.Join(null, new string[] { " [", betId, "]" });
+            string liveScore = (!ticket.IsLive || string.IsNullOrEmpty(betId)) ? " [0]" : string.Join(null, new[] { " [", betId, "]" });
             string betTeam = ticket.BetTeam == BetTeamValue.H ? CoreBetList.high : CoreBetList.low;
 
-            Template.betTeam = string.Join(null, new string[] { betTeam, liveScore });
+            Template.betTeam = string.Join(null, new[] { betTeam, liveScore });
         }
     }
 }

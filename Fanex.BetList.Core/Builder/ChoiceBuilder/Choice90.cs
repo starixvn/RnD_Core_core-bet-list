@@ -135,7 +135,6 @@
         {
             string betId = ticket.BetId.ToString();
             string liveScore = (!ticket.IsLive || betId == string.Empty) ? string.Empty : " [" + betId + "]";
-            decimal hdp1 = ticket.Handicap1;
             int betteam;
 
             int.TryParse(ticket.BetTeam, out betteam);
@@ -143,7 +142,7 @@
             var betTeamKey = string.Format(CultureInfo.InvariantCulture, "{0}-{1}", (int)ticket.Handicap1, betteam);
             var betTeamName = betTeamMap.ContainsKey(betTeamKey) ? betTeamMap[betTeamKey] : string.Empty;
 
-            Template.betTeam = string.Join(null, new string[] { betTeamName, liveScore });
+            Template.betTeam = string.Join(null, new[] { betTeamName, liveScore });
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
@@ -162,7 +161,7 @@
             base.BuildMatch(ticket, ticketHelper);
 
             Template.Match.VS = null;
-            Template.Match.homeTeam = string.Join(null, new string[] { CoreBetList.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
+            Template.Match.homeTeam = string.Join(null, new[] { CoreBetList.numbergameno, HtmlCharacters.NoneBreakingSpace, ticket.MatchCode });
         }
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)

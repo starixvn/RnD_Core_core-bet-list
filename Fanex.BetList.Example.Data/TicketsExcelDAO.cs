@@ -12,7 +12,7 @@
 
     public class TicketsExcelDAO : ITicketsDAO
     {
-        private string _dashboardFile;
+        private readonly string _dashboardFile;
         private IWorkbook _workbook;
         private IFormulaEvaluator _formulaEvaluator;
         private DataFormatter _dataFormatter;
@@ -106,7 +106,7 @@
 
                 return data;
             }
-            catch
+            catch (Exception)
             {
             }
 
@@ -118,16 +118,11 @@
         /// </summary>
         private void LazyLoadWorkbook()
         {
-            // Check to lazily initialize workbook object
-            if (_workbook == null)
+            if (_workbook == null && !string.IsNullOrWhiteSpace(_dashboardFile))
             {
-                // Check if file path is valid
-                if (!string.IsNullOrWhiteSpace(_dashboardFile))
-                {
-                    _workbook = this.LoadWorkbook(_dashboardFile);
-                    _formulaEvaluator = new HSSFFormulaEvaluator(_workbook);
-                    _dataFormatter = new HSSFDataFormatter(new CultureInfo("en-US"));
-                }
+                _workbook = LoadWorkbook(_dashboardFile);
+                _formulaEvaluator = new HSSFFormulaEvaluator(_workbook);
+                _dataFormatter = new HSSFDataFormatter(new CultureInfo("en-US"));
             }
         }
 
@@ -197,7 +192,7 @@
                 {
                     ticket.OddsSpread = Convert.ToDecimal(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.OddsSpread)));
                 }
-                catch
+                catch (Exception)
                 {
                     ticket.OriginalBetType = Convert.ToInt32(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.OriginalBetType)));
                     ticket.BetdaqId = Convert.ToInt64(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.BetdaqId)));
@@ -205,7 +200,7 @@
                     ticket.OriginalStake = Convert.ToDecimal(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.OriginalStake)));
                 }
             }
-            catch
+            catch (Exception)
             {
             }
 
@@ -217,20 +212,13 @@
         /// </summary>
         /// <param name="filePath">The file path.</param>
         /// <returns>IWorkbook object.</returns>
-        private IWorkbook LoadWorkbook(string filePath)
+        private static IWorkbook LoadWorkbook(string filePath)
         {
-            try
+            using (StreamReader input = new StreamReader(filePath))
             {
-                using (StreamReader input = new StreamReader(filePath))
-                {
-                    IWorkbook workbook = new HSSFWorkbook(new POIFSFileSystem(input.BaseStream));
+                IWorkbook workbook = new HSSFWorkbook(new POIFSFileSystem(input.BaseStream));
 
-                    return workbook;
-                }
-            }
-            catch
-            {
-                throw;
+                return workbook;
             }
         }
 

@@ -1,0 +1,12 @@
+﻿// This file is used by Code Analysis to maintain SuppressMessage
+// attributes that are applied to this project.
+// Project-level suppressions either have no target or are given
+// a specific target and scoped to a namespace, type, member, etc.
+
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Sonar Bug", "S2486:Generic exceptions should not be ignored", Justification = "<Pending>", Scope = "member", Target = "~M:Fanex.BetList.Example.Data.TicketsExcelDAO.MapRowToTicketDataObject(NPOI.SS.UserModel.IRow)~Fanex.BetList.Core.Entities.ITicketData")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Sonar Code Smell", "S103:Lines should not be too long", Justification = "<Pending>")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Potential Code Quality Issues", "RECS0022:A catch clause that catches System.Exception and has an empty body", Justification = "<Pending>", Scope = "member", Target = "~M:Fanex.BetList.Example.Data.TicketsExcelDAO.MapRowToTicketDataObject(NPOI.SS.UserModel.IRow)~Fanex.BetList.Core.Entities.ITicketData")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Potential Code Quality Issues", "RECS0022:A catch clause that catches System.Exception and has an empty body", Justification = "<Pending>", Scope = "member", Target = "~M:Fanex.BetList.Example.Data.TicketsExcelDAO.MapRowToTicketObject(NPOI.SS.UserModel.IRow)~Fanex.BetList.Core.Entities.ITicket")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Sonar Code Smell", "S108:Nested blocks of code should not be left empty", Justification = "<Pending>", Scope = "member", Target = "~M:Fanex.BetList.Example.Data.TicketsExcelDAO.MapRowToTicketDataObject(NPOI.SS.UserModel.IRow)~Fanex.BetList.Core.Entities.ITicketData")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Sonar Bug", "S2486:Generic exceptions should not be ignored", Justification = "<Pending>", Scope = "member", Target = "~M:Fanex.BetList.Example.Data.TicketsExcelDAO.MapRowToTicketObject(NPOI.SS.UserModel.IRow)~Fanex.BetList.Core.Entities.ITicket")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Sonar Code Smell", "S108:Nested blocks of code should not be left empty", Justification = "<Pending>", Scope = "member", Target = "~M:Fanex.BetList.Example.Data.TicketsExcelDAO.MapRowToTicketObject(NPOI.SS.UserModel.IRow)~Fanex.BetList.Core.Entities.ITicket")]

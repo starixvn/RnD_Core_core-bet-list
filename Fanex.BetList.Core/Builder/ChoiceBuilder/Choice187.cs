@@ -9,7 +9,7 @@
     /// <summary>
     /// Bet type name: Exact 2ND Half Goals.
     /// </summary>
-    public class Choice187 : Choice1
+    public class Choice187 : Choice179
     {
         /// <summary>
         /// Builds the bet team.
@@ -34,29 +34,13 @@
                 case BetTeamValue.G2:
                     betTeam = CoreBetList.TwoGoalsAndOver;
                     break;
+
+                default:
+                    betTeam = string.Empty;
+                    break;
             }
 
             Template.betTeam = betTeam;
-        }
-
-        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
-        {
-            Template.Handicap.handicap = null;
-            Template.betTeamClassName = Favorite;
-        }
-
-        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-        {
-            var betTypeName = GetParentBetTypeName(ticket, ticketHelper);
-
-            Template.BetType.betTypeName = betTypeName;
-        }
-
-        private string GetParentBetTypeName(ITicket ticket, ITicketHelper ticketHelper)
-        {
-            var parentBetTypeId = MapperCollector.GetParentBetTypeOf(ticket.BetTypeId);
-
-            return ticketHelper.GetBetTypeNameById(parentBetTypeId, ticket.RefNo);
         }
     }
 }
