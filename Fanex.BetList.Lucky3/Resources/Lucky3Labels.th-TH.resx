@@ -130,6 +130,6 @@
     <value>{0}รวมกัน</value>
   </data>
   <data name="Number" xml:space="preserve">
-    <value>{0}ไม่</value>
+    <value>{0} ลำดับที่</value>
   </data>
 </root>

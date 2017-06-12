@@ -130,6 +130,6 @@
     <value>{0} 組合</value>
   </data>
   <data name="Number" xml:space="preserve">
-    <value>無 {0}</value>
+    <value>編號 {0}</value>
   </data>
 </root>
