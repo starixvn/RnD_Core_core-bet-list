@@ -374,7 +374,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
             return BetListView(model);
         }
-
+        
         public ActionResult CashOut(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(911);
@@ -387,19 +387,17 @@ namespace Fanex.BetList.Example.MVC.Controllers
             return BetListView(model);
         }
 
-
-        public ActionResult BetRadarVirtualSports(BetListData model = null)
+        public ActionResult KenoLottery(BetListData model = null)
         {
-            var betTypes = _dataService.QueryBetTypes(2701, 2702, 2703, 2704, 2705, 2706, 2707, 2799);
+            var betTypes = _dataService.QueryBetTypes(1031, 1032, 1033, 1034, 1035, 1036, 1037, 1038);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/BetRadarVirtualSports.xls";
+            DataSourcePath = "~/App_Data/KenoLottery.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
             return BetListView(model);
         }
-
 
         private ViewResult BetListView(BetListData model)
         {

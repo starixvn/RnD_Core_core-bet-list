@@ -110,6 +110,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.CashOut", "Fa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.CashOut.Tests", "Fanex.BetList.CashOut.Tests\Fanex.BetList.CashOut.Tests.csproj", "{18D759F4-244F-40AD-979D-C51BEFD55E2D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KenoLottery", "KenoLottery", "{9E8B87E5-2BCB-423D-BB28-BE229E3015C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.KenoLottery", "Fanex.BetList.KenoLottery\Fanex.BetList.KenoLottery.csproj", "{AE7D0FF9-C449-4FA4-A399-267426354B7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.KenoLottery.Tests", "Fanex.BetList.KenoLottery.Tests\Fanex.BetList.KenoLottery.Tests.csproj", "{43BBEB8D-68FE-4B3C-9035-A434BC1D4F0B}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SonarQube", "SonarQube", "{DC1380AA-426D-4386-AF09-20F3B7B988B4}"
 	ProjectSection(SolutionItems) = preProject
 		SonarQube\BetListCoreCSharp.ruleset = SonarQube\BetListCoreCSharp.ruleset
@@ -535,6 +541,30 @@ Global
 		{BAFCDBFF-52EF-422F-81B0-384DE08CD8F6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{BAFCDBFF-52EF-422F-81B0-384DE08CD8F6}.Release|x86.ActiveCfg = Release|Any CPU
 		{BAFCDBFF-52EF-422F-81B0-384DE08CD8F6}.Release|x86.Build.0 = Release|Any CPU
+		{AE7D0FF9-C449-4FA4-A399-267426354B7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE7D0FF9-C449-4FA4-A399-267426354B7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE7D0FF9-C449-4FA4-A399-267426354B7F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{AE7D0FF9-C449-4FA4-A399-267426354B7F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{AE7D0FF9-C449-4FA4-A399-267426354B7F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AE7D0FF9-C449-4FA4-A399-267426354B7F}.Debug|x86.Build.0 = Debug|Any CPU
+		{AE7D0FF9-C449-4FA4-A399-267426354B7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE7D0FF9-C449-4FA4-A399-267426354B7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE7D0FF9-C449-4FA4-A399-267426354B7F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{AE7D0FF9-C449-4FA4-A399-267426354B7F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{AE7D0FF9-C449-4FA4-A399-267426354B7F}.Release|x86.ActiveCfg = Release|Any CPU
+		{AE7D0FF9-C449-4FA4-A399-267426354B7F}.Release|x86.Build.0 = Release|Any CPU
+		{43BBEB8D-68FE-4B3C-9035-A434BC1D4F0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43BBEB8D-68FE-4B3C-9035-A434BC1D4F0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43BBEB8D-68FE-4B3C-9035-A434BC1D4F0B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{43BBEB8D-68FE-4B3C-9035-A434BC1D4F0B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{43BBEB8D-68FE-4B3C-9035-A434BC1D4F0B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{43BBEB8D-68FE-4B3C-9035-A434BC1D4F0B}.Debug|x86.Build.0 = Debug|Any CPU
+		{43BBEB8D-68FE-4B3C-9035-A434BC1D4F0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43BBEB8D-68FE-4B3C-9035-A434BC1D4F0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43BBEB8D-68FE-4B3C-9035-A434BC1D4F0B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{43BBEB8D-68FE-4B3C-9035-A434BC1D4F0B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{43BBEB8D-68FE-4B3C-9035-A434BC1D4F0B}.Release|x86.ActiveCfg = Release|Any CPU
+		{43BBEB8D-68FE-4B3C-9035-A434BC1D4F0B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -574,6 +604,8 @@ Global
 		{18D759F4-244F-40AD-979D-C51BEFD55E2D} = {34E249C7-BD46-4B6B-9509-E96C1370372A}
 		{B26BA5C4-A25C-4E28-B3FB-A585245D5E52} = {F0F7EA02-82D6-4EB9-9FD7-F7B94CA36132}
 		{BAFCDBFF-52EF-422F-81B0-384DE08CD8F6} = {F0F7EA02-82D6-4EB9-9FD7-F7B94CA36132}
+		{AE7D0FF9-C449-4FA4-A399-267426354B7F} = {9E8B87E5-2BCB-423D-BB28-BE229E3015C2}
+		{43BBEB8D-68FE-4B3C-9035-A434BC1D4F0B} = {9E8B87E5-2BCB-423D-BB28-BE229E3015C2}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Fanex2.vsmdi

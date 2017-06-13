@@ -7,7 +7,7 @@
 @using Fanex.BetList.ColossusBets.Builder;
 @model BetListData
 @{
-    ViewBag.Title = "11 New Bet Types";
+    ViewBag.Title = "Bet List Demo";
 
     IList<ITicket> tickets = (Model != null) ? Model.Tickets : (IList<ITicket>)new List<Ticket>();
     List<ITicketData> ticketData = Model.TicketData;

@@ -106,6 +106,10 @@
 
         string GetFastMarketSituation(string betType, string betTeam, decimal handicap1, decimal handicap2);
 
+        string GetLotteryBetChoiceName(string lotteryBetChoiceId, out string lotteryBettypeId);
+
+        string GetLotteryBetTypeName(string lotteryBettypeId);
+
         #endregion METHODS TO RESOLVE NAMES FROM IDS
     }
 }

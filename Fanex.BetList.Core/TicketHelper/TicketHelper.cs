@@ -186,5 +186,17 @@
         {
             return CacheRef.GetFastMarketChoice(betType, betTeam, Convert.ToInt32(handicap1), Convert.ToInt32(handicap2));
         }
+
+        public string GetLotteryBetChoiceName(string lotteryBetChoiceId, out string lotteryBettypeId)
+        {
+            // @@TODO: use correct methods for Lottery.
+            return CacheRef.GetKenoBetChoiceName(lotteryBetChoiceId, out lotteryBettypeId);
+        }
+
+        public string GetLotteryBetTypeName(string lotteryBettypeId)
+        {
+            // @@TODO: use correct methods for Lottery.
+            return CacheRef.GetKenoBetTypeName(lotteryBettypeId);
+        }
     }
 }

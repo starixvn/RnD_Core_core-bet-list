@@ -328,6 +328,10 @@
       <Project>{2b8a67cf-d4c8-47fd-a7f1-db3b9525e567}</Project>
       <Name>Fanex.BetList.GlobalGaming</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.KenoLottery\Fanex.BetList.KenoLottery.csproj">
+      <Project>{ae7d0ff9-c449-4fa4-a399-267426354b7f}</Project>
+      <Name>Fanex.BetList.KenoLottery</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.MetricGaming\Fanex.BetList.MetricGaming.csproj">
       <Project>{054031e6-3e06-47d9-b3d1-b8a8e164e504}</Project>
       <Name>Fanex.BetList.MetricGaming</Name>
@@ -411,6 +415,7 @@
     <Content Include="App_Data\CashOut.xls" />
     <Content Include="App_Data\BetRadarVirtualSports.xls" />
     <Content Include="Fanex.BetList.Example.MVC.ruleset" />
+    <Content Include="App_Data\KenoLottery.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />

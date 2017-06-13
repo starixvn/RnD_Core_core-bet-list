@@ -44,22 +44,22 @@ namespace Fanex.BetList.Core.UnitTest.Stubs
 
         public string GetLeagueNameById(object leagueId)
         {
-            return this._leagueName + leagueId.ToString();
+            return _leagueName + leagueId.ToString();
         }
 
         public string GetTeamNameById(object teamId)
         {
-            return this._teamName + teamId.ToString();
+            return _teamName + teamId.ToString();
         }
 
         public string GetBetTypeNameById(object bettypeId)
         {
-            return this._betTypeName + bettypeId.ToString();
+            return _betTypeName + bettypeId.ToString();
         }
 
         public string GetBetTypeNameById(object bettypeId, object refNo)
         {
-            return this._betTypeName + bettypeId.ToString();
+            return _betTypeName + bettypeId.ToString();
         }
 
         public string GetParentIdByBetTypeId(object betTypeId, object defaultParentId = null)
@@ -69,37 +69,37 @@ namespace Fanex.BetList.Core.UnitTest.Stubs
 
         public string GetBetTypeNameById(object bettypeId, object betId, object betCheck = null)
         {
-            return this._betTypeName + bettypeId.ToString() + betId.ToString() + betCheck.ToString();
+            return _betTypeName + bettypeId.ToString() + betId.ToString() + betCheck.ToString();
         }
 
         public string GetBetTypeNameById(object bettypeId, object refNo, object betId, object betCheck = null)
         {
-            return this._betTypeName + bettypeId.ToString() + betId.ToString() + betCheck.ToString();
+            return _betTypeName + bettypeId.ToString() + betId.ToString() + betCheck.ToString();
         }
 
         public string GetSportNameById(object sportId)
         {
-            return this._sportName + sportId.ToString();
+            return _sportName + sportId.ToString();
         }
 
         public string GetCasinoBetTeamNameById(object betteamId)
         {
-            return this._betTeamName + betteamId.ToString();
+            return _betTeamName + betteamId.ToString();
         }
 
         public string GetHorseTeamNameById(object homeId, object awayId)
         {
-            return this._teamName + homeId.ToString() + awayId.ToString();
+            return _teamName + homeId.ToString() + awayId.ToString();
         }
 
         public string GetRouletteBetItemNameById(object itemId)
         {
-            return this._betTypeName + itemId.ToString();
+            return _betTypeName + itemId.ToString();
         }
 
         public string GetCombinationMPOfferName(string key)
         {
-            return this._betTeamName + key;
+            return _betTeamName + key;
         }
 
         public IList<string> GetCombinationMPOfferNameList(string betTeam, string betCheck, decimal handicap1, decimal handicap2)
@@ -109,14 +109,14 @@ namespace Fanex.BetList.Core.UnitTest.Stubs
 
         public string GetKenoBetChoiceName(string kenoBetChoiceID, out string kenoBettypeID)
         {
-            kenoBettypeID = this._gameName + kenoBetChoiceID;
+            kenoBettypeID = _gameName + kenoBetChoiceID;
 
-            return this._gameName + kenoBetChoiceID;
+            return _gameName + kenoBetChoiceID;
         }
 
         public string GetKenoBetTypeName(string kenoBettypeID)
         {
-            return this._betTypeName + kenoBettypeID;
+            return _betTypeName + kenoBettypeID;
         }
 
         public string GetResourceData(string refNo, string resourceId)
@@ -126,7 +126,19 @@ namespace Fanex.BetList.Core.UnitTest.Stubs
 
         public string GetFastMarketSituation(string betType, string betTeam, decimal handicap1, decimal handicap2)
         {
-            return this._betTeamName + handicap2 + betTeam;
+            return _betTeamName + handicap2 + betTeam;
+        }
+
+        public string GetLotteryBetChoiceName(string lotteryBetChoiceId, out string lotteryBettypeId)
+        {
+            lotteryBettypeId = _gameName + lotteryBetChoiceId;
+
+            return _gameName + lotteryBettypeId;
+        }
+
+        public string GetLotteryBetTypeName(string lotteryBettypeId)
+        {
+            return _betTypeName + lotteryBettypeId;
         }
     }
 }
