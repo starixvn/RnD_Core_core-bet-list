@@ -100,14 +100,9 @@
                 return;
             }
 
-            if (Template.Bonus.BonusIcon.Visible)
-            {
-                rtfHelper.RTFRenderer.AddText($"\n({CoreBetList.Bonus})", rtfHelper.PosFont);
-            }
-            else
-            {
-                rtfHelper.RTFRenderer.AddText("\n" + Template.Bonus.Wallet.type, rtfHelper.PosFont);
-            }
+            string bonusText = Template.Bonus.BonusIcon.Visible ? $"\n({CoreBetList.Bonus})" : "\n" + Template.Bonus.Wallet.type;
+
+            rtfHelper.RTFRenderer.AddText(bonusText, rtfHelper.PosFont);
         }
 
         protected void HideBonusPart()
