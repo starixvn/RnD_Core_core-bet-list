@@ -41,7 +41,7 @@
 
         long RefCode { get; set; }
 
-        sbyte WalletType { get; set; }
+        byte WalletType { get; set; }
 
         DateTime TransDate { get; set; }
 

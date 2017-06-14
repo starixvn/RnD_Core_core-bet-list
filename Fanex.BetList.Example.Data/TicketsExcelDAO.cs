@@ -190,7 +190,7 @@
                 ticket.TransDesc = this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.TransDesc));
                 ticket.OddsSpread = Convert.ToDecimal(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.OddsSpread), "0"));
                 ticket.RefCode = Convert.ToInt64(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.RefCode), "0"));
-                ticket.WalletType = Convert.ToSByte(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.WalletType), "0"));
+                ticket.WalletType = Convert.ToByte(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.WalletType), "0"));
                 ticket.OriginalBetType = Convert.ToInt32(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.OriginalBetType)));
                 ticket.BetdaqId = Convert.ToInt64(this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.BetdaqId)));
                 ticket.ExtraInfo = this.GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.ExtraInfo));

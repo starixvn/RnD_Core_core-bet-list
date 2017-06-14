@@ -141,10 +141,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
         }
 
         [Test]
-        public void Render_WalletTypeIsNotOneOrTwoOrNegativeOfOneAndRefCodeIsNotZero_HideBonusPart()
+        public void Render_WalletTypeIsNotZeroOrOneOrTwoAndRefCodeIsNotZero_HideBonusPart()
         {
             // Arrange
-            _ticket.WalletType = 0;
+            _ticket.WalletType = 3;
             _ticket.RefCode = 1000;
 
             // Act
@@ -333,10 +333,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
         }
 
         [Test]
-        public void Render_WalletTypeIsNegativeOfOneAndRefCodeIsNotZero_ShowBonusIcon()
+        public void Render_WalletTypeIsZeroAndRefCodeIsNotZero_ShowBonusIcon()
         {
             // Arrange
-            _ticket.WalletType = -1;
+            _ticket.WalletType = 0;
             _ticket.RefCode = 100;
 
             // Act
@@ -347,10 +347,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
         }
 
         [Test]
-        public void Render_WalletTypeIsNegativeOfOneAndRefCodeIsNotZero_ShowBonusIconTitle()
+        public void Render_WalletTypeIsZeroAndRefCodeIsNotZero_ShowBonusIconTitle()
         {
             // Arrange
-            _ticket.WalletType = -1;
+            _ticket.WalletType = 0;
             _ticket.RefCode = 100;
 
             // Act
@@ -363,10 +363,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
         }
 
         [Test]
-        public void Render_WalletTypeIsNegativeOfOneAndRefCodeIsNotZero_DoNotShowTextIndicatingWallet()
+        public void Render_WalletTypeIsZeroAndRefCodeIsNotZero_DoNotShowTextIndicatingWallet()
         {
             // Arrange
-            _ticket.WalletType = -1;
+            _ticket.WalletType = 0;
             _ticket.RefCode = 100;
 
             // Act

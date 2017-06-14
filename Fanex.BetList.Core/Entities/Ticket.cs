@@ -44,7 +44,7 @@
 
         public long RefCode { get; set; }
 
-        public sbyte WalletType { get; set; }
+        public byte WalletType { get; set; }
         public DateTime TransDate { get; set; }
 
         public DateTime WinlostDate { get; set; }

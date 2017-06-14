@@ -14,9 +14,6 @@
     public class Stake1 : IStake
     {
         private const string CashOutXmlTag = "p25";
-        protected const sbyte CombinedWalletType = -1;
-        protected const sbyte BonusWalletType = 1;
-        protected const sbyte CashWalletType = 2;
 
         public Stake1()
         {
@@ -54,7 +51,11 @@
 
         protected virtual void BuildBonus(ITicket ticket)
         {
-            if (ticket.WalletType == BonusWalletType)
+            const byte MixWallet = 0;
+            const byte BonusWallet = 1;
+            const byte CashWallet = 2;
+
+            if (ticket.WalletType == BonusWallet)
             {
                 if (ticket.RefCode == 0)
                 {
@@ -65,7 +66,7 @@
                     ShowBonusIcon(ticket);
                 }
             }
-            else if (ticket.WalletType == CashWalletType)
+            else if (ticket.WalletType == CashWallet)
             {
                 if (ticket.RefCode == 0)
                 {
@@ -76,7 +77,7 @@
                     ShowBonusIcon(ticket);
                 }
             }
-            else if (ticket.WalletType == CombinedWalletType && ticket.RefCode != 0)
+            else if (ticket.WalletType == MixWallet && ticket.RefCode != 0)
             {
                 ShowBonusIcon(ticket);
             }
