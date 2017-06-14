@@ -1,8 +1,8 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using System.Collections.Generic;
     using App_GlobalResources;
     using Entities;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Virtual Tennis - ScoreBet.
@@ -17,7 +17,7 @@
         /// <param name="ticketData">The ticket data.</param>
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            var betTeam = string.Empty;
+            string betTeam;
 
             switch (ticket.BetTeam.Trim())
             {
@@ -51,6 +51,10 @@
 
                 case "8":
                     betTeam = CoreBetList.virtualtennis_scorebet_40_win;
+                    break;
+
+                default:
+                    betTeam = string.Empty;
                     break;
             }
 

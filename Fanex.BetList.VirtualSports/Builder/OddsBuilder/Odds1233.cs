@@ -48,13 +48,13 @@
                     string oddsWin = Formatter.FormatNumber3(winTicket.Odds);
                     string oddsPlace = Formatter.FormatNumber3(placeTicket.Odds);
 
-                    var oddsWinMarkup = string.Join(null, new string[] { CoreBetList.win, ": ", "<b>", oddsWin, "</b>" });
-                    var oddsPlaceMarkup = string.Join(null, new string[] { CoreBetList.place, ": ", "<b>", oddsPlace, "</b>" });
+                    var oddsWinMarkup = string.Join(null, new[] { CoreBetList.win, ": ", "<b>", oddsWin, "</b>" });
+                    var oddsPlaceMarkup = string.Join(null, new[] { CoreBetList.place, ": ", "<b>", oddsPlace, "</b>" });
 
-                    var oddsWinContent = string.Join(null, new string[] { "<span class='blue' style='font-weight:normal;'>", oddsWinMarkup, "</span>" });
-                    var oddsPlaceContent = string.Join(null, new string[] { "<span class='' style='font-weight:normal;'>", oddsPlaceMarkup, "</span>" });
+                    var oddsWinContent = string.Join(null, new[] { "<span class='blue' style='font-weight:normal;'>", oddsWinMarkup, "</span>" });
+                    var oddsPlaceContent = string.Join(null, new[] { "<span class='' style='font-weight:normal;'>", oddsPlaceMarkup, "</span>" });
 
-                    Template.odds = string.Join(null, new string[] { oddsWinContent, "<br>", oddsPlaceContent });
+                    Template.odds = string.Join(null, new[] { oddsWinContent, "<br>", oddsPlaceContent });
                 }
                 else
                 {
@@ -71,7 +71,7 @@
             return Template;
         }
 
-        protected List<ITicketData> GetReferenceData(ITicket ticket, List<ITicketData> ticketData)
+        protected static List<ITicketData> GetReferenceData(ITicket ticket, List<ITicketData> ticketData)
         {
             return ticketData.FindAll(item => item.RefNo.Equals(ticket.RefNo));
         }
@@ -94,11 +94,11 @@
             var rtfNumberRenderer = new RTFNumber(rtfHelper.RTFRenderer, rtfHelper.PosFont, rtfHelper.NegFont);
 
             // Add Win
-            rtfHelper.RTFRenderer.AddText(string.Join(null, new string[] { CoreBetList.win, ": " }), rtfHelper.PosFont);
+            rtfHelper.RTFRenderer.AddText(string.Join(null, new[] { CoreBetList.win, ": " }), rtfHelper.PosFont);
             rtfNumberRenderer.Render(oddsWinVal);
 
             // Add Place
-            rtfHelper.RTFRenderer.AddText(string.Join(null, new string[] { "\n", CoreBetList.place, ": " }), rtfHelper.PosFont);
+            rtfHelper.RTFRenderer.AddText(string.Join(null, new[] { "\n", CoreBetList.place, ": " }), rtfHelper.PosFont);
             rtfNumberRenderer.Render(oddsPlaceVal);
 
             var rtfOdds = rtfHelper.RTFRenderer.Render();
@@ -106,10 +106,10 @@
             return rtfOdds;
         }
 
-        private string ExtractStringBetweenTag(string tag, string source)
+        private static string ExtractStringBetweenTag(string tag, string source)
         {
-            string startTag = string.Join(null, new string[] { "<", tag, ">" });
-            string endTag = string.Join(null, new string[] { "</", tag, ">" });
+            string startTag = string.Join(null, new[] { "<", tag, ">" });
+            string endTag = string.Join(null, new[] { "</", tag, ">" });
 
             int startIndex = source.IndexOf(startTag, StringComparison.CurrentCulture) + startTag.Length;
             int endIndex = source.IndexOf(endTag, startIndex, StringComparison.CurrentCulture);

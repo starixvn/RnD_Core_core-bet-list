@@ -51,13 +51,13 @@
 
                 var status_Win = ExtractStringBetweenTag("b", status_WinString);
                 var status_Place = ExtractStringBetweenTag("b", status_PlaceString);
-                var status = new string[] { CoreBetList.win, ": ", status_Win, "\n", CoreBetList.place, ": ", status_Place };
+                var status = new[] { CoreBetList.win, ": ", status_Win, "\n", CoreBetList.place, ": ", status_Place };
                 rtfHelper.RTFRenderer.AddText(string.Join(null, status), rtfHelper.PosFont);
             }
 
             if (Template.ShowIP.Visible)
             {
-                string status = string.Join(null, new string[] { "\n", Template.ShowIP.betIp });
+                string status = string.Join(null, new[] { "\n", Template.ShowIP.betIp });
                 rtfHelper.RTFRenderer.AddText(status);
             }
 
@@ -89,11 +89,11 @@
                     var contextWinStatus = GetResultString(winStatus);
                     var contextPlaceStatus = GetResultString(placeStatus);
 
-                    var tmpWinStatus = new string[] { "<span class='blue' style='font-weight:normal;'>", CoreBetList.win, ": ", "<b>", contextWinStatus, "</b>", "</span>" };
+                    var tmpWinStatus = new[] { "<span class='blue' style='font-weight:normal;'>", CoreBetList.win, ": ", "<b>", contextWinStatus, "</b>", "</span>" };
 
                     var winStatusMarkup = string.Join(null, tmpWinStatus);
 
-                    var tmpPlaceStatus = new string[] { "<span class='' style='font-weight:normal;'>", CoreBetList.place, ": ", "<b>", contextPlaceStatus, "</b>", "</span>" };
+                    var tmpPlaceStatus = new[] { "<span class='' style='font-weight:normal;'>", CoreBetList.place, ": ", "<b>", contextPlaceStatus, "</b>", "</span>" };
 
                     var placeStatusMarkup = string.Join(null, tmpPlaceStatus);
 
@@ -109,22 +109,22 @@
                             break;
 
                         default:
-                            Template.result = string.Join(null, new string[] { winStatusMarkup, "<br/>", placeStatusMarkup });
+                            Template.result = string.Join(null, new[] { winStatusMarkup, "<br/>", placeStatusMarkup });
                             break;
                     }
                 }
             }
         }
 
-        protected List<ITicketData> GetReferenceData(ITicket ticket, List<ITicketData> ticketData)
+        protected static List<ITicketData> GetReferenceData(ITicket ticket, List<ITicketData> ticketData)
         {
             return ticketData.FindAll(item => item.RefNo.Equals(ticket.RefNo));
         }
 
-        private string ExtractStringBetweenTag(string tag, string source)
+        private static string ExtractStringBetweenTag(string tag, string source)
         {
-            string startTag = string.Join(null, new string[] { "<", tag, ">" });
-            string endTag = string.Join(null, new string[] { "</", tag, ">" });
+            string startTag = string.Join(null, new[] { "<", tag, ">" });
+            string endTag = string.Join(null, new[] { "</", tag, ">" });
 
             int startIndex = source.IndexOf(startTag, StringComparison.CurrentCulture) + startTag.Length;
             int endIndex = source.IndexOf(endTag, startIndex, StringComparison.CurrentCulture);
