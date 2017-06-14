@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Fanex.BetList.Lucky3.Resources {
+namespace Fanex.BetList.Core.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Fanex.BetList.Lucky3.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Fanex.BetList.Lucky3.Resources.Lucky3Labels", typeof(Lucky3Labels).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Fanex.BetList.Core.Resources.Lucky3Labels", typeof(Lucky3Labels).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -79,7 +79,7 @@ namespace Fanex.BetList.Lucky3.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} combination.
+        ///   Looks up a localized string similar to {0} Combination.
         /// </summary>
         internal static string Combination {
             get {
@@ -88,7 +88,7 @@ namespace Fanex.BetList.Lucky3.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} combinations.
+        ///   Looks up a localized string similar to {0} Combinations.
         /// </summary>
         internal static string Combinations {
             get {

@@ -4,7 +4,7 @@
     using System.Text.RegularExpressions;
     using App_GlobalResources;
     using Entities;
-    using Lucky3.Resources;
+    using Resources;
     using Templates;
 
     public class Choice1600 : Choice1
@@ -66,30 +66,23 @@
             }
         }
 
-        protected string BuildCombinations(ITicket ticket)
+        protected static string BuildCombinations(ITicket ticket)
         {
             string combinations = string.Format(ticket.BetId > 1 ? Lucky3Labels.Combinations : Lucky3Labels.Combination, ticket.BetId);
 
             return $"{combinations} x {ticket.Currency ?? string.Empty} {ticket.Handicap1}";
         }
 
-        protected string BuildBets(ITicket ticket)
+        protected static string BuildBets(ITicket ticket)
         {
             var bets = string.Format(ticket.Odds > 1 ? Lucky3Labels.Bets : Lucky3Labels.Bet, ticket.Odds);
 
             return $"<div class=\"num-of-bets\">{bets}</div>";
         }
 
-        protected string BuildDetailsLink(ITicket ticket)
+        protected static string BuildDetailsLink(ITicket ticket)
         {
-            string statusId = ticket.StatusId != null ? ticket.StatusId.ToString() : string.Empty;
-            string status = ticket.Status ?? string.Empty;
-
-            status = status.Trim().ToLower();
-
-            if (statusId == BetStatusId.Draw || status == BetStatus.Draw
-                || statusId == BetStatusId.Won || status == BetStatus.Won
-                || statusId == BetStatusId.Lost || status == BetStatus.Lose)
+            if (IsSettledTicket(ticket))
             {
                 string[] detailsFunctionDivCompositions =
                 {
@@ -102,6 +95,20 @@
             }
 
             return string.Empty;
+        }
+
+        private static bool IsSettledTicket(ITicket ticket)
+        {
+            string statusId = ticket.StatusId != null ? ticket.StatusId.ToString() : string.Empty;
+            string status = ticket.Status ?? string.Empty;
+
+            status = status.Trim().ToLowerInvariant();
+
+            bool isWin = statusId == BetStatusId.Won || status == BetStatus.Won;
+            bool isLoss = statusId == BetStatusId.Lost || status == BetStatus.Lose;
+            bool isDraw = statusId == BetStatusId.Draw || status == BetStatus.Draw;
+
+            return isDraw || isWin || isLoss;
         }
     }
 }

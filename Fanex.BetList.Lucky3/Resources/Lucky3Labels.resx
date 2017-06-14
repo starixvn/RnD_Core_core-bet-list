@@ -124,10 +124,10 @@
     <value>{0} Bets</value>
   </data>
   <data name="Combination" xml:space="preserve">
-    <value>{0} combination</value>
+    <value>{0} Combination</value>
   </data>
   <data name="Combinations" xml:space="preserve">
-    <value>{0} combinations</value>
+    <value>{0} Combinations</value>
   </data>
   <data name="Number" xml:space="preserve">
     <value>No {0}</value>

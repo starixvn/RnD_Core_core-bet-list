@@ -4,9 +4,9 @@
     using Core.App_GlobalResources;
     using Core.Builder.ChoiceBuilder;
     using Core.Entities;
+    using Core.Resources;
     using NSubstitute;
     using NUnit.Framework;
-    using Resources;
 
     public class Choice1600Test
     {
