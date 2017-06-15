@@ -1,31 +1,21 @@
-﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using App_GlobalResources;
-    using Common.Enums;
-    using Core.Builder.ChoiceBuilder;
-    using Core.Templates;
+    using Constants;
     using Entities;
-    using NSubstitute;
-    using NUnit.Framework;
 
     /// <summary>
-    ///  Unit testing class for choice bet type 90.
+    /// Number Wheel.
     /// </summary>
-    public class Choice90Test
+    public class Choice90 : Choice87
     {
-        private static readonly object[] LiveScores =
-        {
-            // ticket.Live, betId, liveScore
-            new object[] { true, null, string.Empty },
-            new object[] { true, (long?)1, " [1]" },
-            new object[] { false, null, string.Empty },
-            new object[] { false,  (long?)2, string.Empty }
-        };
+        #region BETTEAM MAP
 
-        #region betTeamMap
-
+        /// <summary>
+        /// The bet team map.
+        /// </summary>
         private static IDictionary<string, string> betTeamMap = new Dictionary<string, string>
                                                                 {
                                                                     { "1-1", "1~5" },
@@ -133,118 +123,31 @@
                                                                     { "5-75", "75" }
                                                                 };
 
-        #endregion betTeamMap
-
-        private Choice90 _choice;
-        private ITicket _ticket;
-        private ITicketHelper _ticketHelper;
-
-        [SetUp]
-        public void Setup()
-        {
-            _choice = new Choice90();
-            _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes.NumberWheel;
-            _ticketHelper = Substitute.For<ITicketHelper>();
-        }
-
-        [Test]
-        public void BuildScore_Always_SetScoreBlockIsNull()
-        {
-            // Act
-            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-
-            // Assert
-            Assert.IsNull(choiceTemplate.Score);
-        }
-
-        [Test]
-        public void BuildMatch_Always_SetMatchVSBlockIsNull()
-        {
-            // Act
-            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-
-            // Assert
-            Assert.IsNull(choiceTemplate.Match.VS);
-        }
-
-        [Test]
-        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsEmpty()
-        {
-            // Act
-            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-
-            // Assert
-            Assert.IsTrue(string.IsNullOrEmpty(choiceTemplate.Handicap.handicap));
-        }
-
-        [Test]
-        public void BuildBetType_Always_SetBetTypeNameIsNumberGroupResource()
-        {
-            // Act
-            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-            var actualBetTypeName = choiceTemplate.BetType.betTypeName;
-
-            // Assert
-            var expectedBetTypeName = CoreBetList.numberGroup;
-            Assert.AreEqual(expectedBetTypeName, actualBetTypeName);
-        }
+        #endregion BETTEAM MAP
 
         /// <summary>
-        ///  Build choice function always set bet team by combined number game no and match code.
+        /// Builds the bet team.
         /// </summary>
-        [Test]
-        public void BuildMatch_Always_SetHomeTeamIsJoinedByNumberGameNoResourceAndMatchCode()
+        /// <param name="ticket">The ticket.</param>
+        /// <param name="ticketHelper">The ticket helper.</param>
+        /// <param name="ticketData">The ticket data.</param>
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            // Arrange
-            _ticket.MatchCode = "6969";
+            var betId = ticket.BetId.ToString();
+            var liveScore = (!ticket.IsLive || string.IsNullOrEmpty(betId)) ? string.Empty : $" [{betId}]";
+            int betTeam;
 
-            // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            int.TryParse(ticket.BetTeam, out betTeam);
 
-            // Assert
-            var expectedHomeTeam = string.Join(null, CoreBetList.numbergameno, "&nbsp;", _ticket.MatchCode);
-            Assert.AreEqual(expectedHomeTeam, _choice.Template.Match.homeTeam);
+            var betTeamKey = string.Format(CultureInfo.InvariantCulture, "{0}-{1}", (int)ticket.Handicap1, betTeam);
+            var betTeamName = betTeamMap.ContainsKey(betTeamKey) ? betTeamMap[betTeamKey] : string.Empty;
+
+            Template.betTeam = betTeamName + liveScore;
         }
 
-        [Test]
-        public void BuildBetTeam_Always_SetBetTeamCssClassNameIsFavorite()
+        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            // Act
-            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-            var actualBetTeamCssClass = choiceTemplate.betTeamClassName;
-
-            // Assert
-            Assert.AreEqual("favorite", actualBetTeamCssClass);
-        }
-
-        /// <summary>
-        ///  This function uses test cases resource "live scores" and loop all bet team map to check returned results.
-        /// </summary>
-        /// <param name="isLive"> Is live ticket.</param>
-        /// <param name="betId"> Bet id of ticket.</param>
-        /// <param name="liveScore"> Live score status of ticket.</param>
-        [Test, TestCaseSource("LiveScores")]
-        public void BuildBetTeam_WhenCalled_SetValidNameForBetTeam(bool isLive, long? betId, string liveScore)
-        {
-            foreach (string key in betTeamMap.Keys)
-            {
-                // Arrange
-                string[] keyValue = key.Split('-');
-                _ticket.Handicap1 = Convert.ToDecimal(keyValue[0]);
-                _ticket.BetId = betId;
-                _ticket.IsLive = isLive;
-                _ticket.BetTeam = keyValue[1];
-
-                // Act
-                _choice.Render(_ticket, _ticketHelper, null, false);
-
-                // Assert
-                Assert.AreEqual(string.Join(null, betTeamMap[key], liveScore), _choice.Template.betTeam);
-
-                // re-setup
-                Setup();
-            }
+            Template.BetType.betTypeName = CoreBetList.numberGroup;
         }
     }
 }

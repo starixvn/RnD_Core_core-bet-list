@@ -1,9 +1,9 @@
-﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.NumberGame.Tests.Builder.ChoiceBuilder
 {
-    using App_GlobalResources;
-    using Common.Enums;
+    using Core.App_GlobalResources;
     using Core.Builder.ChoiceBuilder;
-    using Entities;
+    using Core.Entities;
+    using Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -29,7 +29,7 @@
         public void BuildScore_Always_SetScoreBlockIsNull()
         {
             // Act
-            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsNull(choiceTemplate.Score);
@@ -39,56 +39,10 @@
         public void BuildMatch_Always_SetMatchVSBlockIsNull()
         {
             // Act
-            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsNull(choiceTemplate.Match.VS);
-        }
-
-        [Test]
-        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsEmpty()
-        {
-            // Act
-            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-
-            // Assert
-            Assert.IsTrue(string.IsNullOrEmpty(choiceTemplate.Handicap.handicap));
-        }
-
-        [Test]
-        public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
-        {
-            // Act
-            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-
-            // Assert
-            Assert.AreEqual("favorite", choiceTemplate.betTeamClassName);
-        }
-
-        [Test]
-        public void BuildBetTeam_BetTeamIsh_SetBetTeamIsWarrior2ndBallResource()
-        {
-            // Arrange
-            _ticket.BetTeam = "h";
-
-            // Act
-            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-
-            // Assert
-            Assert.AreEqual(CoreBetList.warrior2ndBall, choiceTemplate.betTeam);
-        }
-
-        [Test]
-        public void BuildBetTeam_BetTeamIsNoth_SetBetTeamIsWarrior3rdBallResource()
-        {
-            // Arrange
-            _ticket.BetTeam = "h87898";
-
-            // Act
-            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-
-            // Assert
-            Assert.AreEqual(CoreBetList.warrior3rdBall, choiceTemplate.betTeam);
         }
 
         /// <summary>
@@ -101,11 +55,57 @@
             _ticket.MatchCode = "6969";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            var expectedHomeTeam = string.Join(null, CoreBetList.numbergameno, "&nbsp;", _ticket.MatchCode);
+            var expectedHomeTeam = $"{CoreBetList.numbergameno}&nbsp;{_ticket.MatchCode}";
             Assert.AreEqual(expectedHomeTeam, _choice.Template.Match.homeTeam);
+        }
+
+        [Test]
+        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsEmpty()
+        {
+            // Act
+            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.IsNull(choiceTemplate.Handicap.handicap);
+        }
+
+        [Test]
+        public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
+        {
+            // Act
+            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual("favorite", choiceTemplate.betTeamClassName);
+        }
+
+        [Test]
+        public void BuildBetTeam_BetTeamIsh_SetBetTeamIsWarrior2ndBallResource()
+        {
+            // Arrange
+            _ticket.BetTeam = "h";
+
+            // Act
+            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual(CoreBetList.warrior2ndBall, choiceTemplate.betTeam);
+        }
+
+        [Test]
+        public void BuildBetTeam_BetTeamIsNoth_SetBetTeamIsWarrior3rdBallResource()
+        {
+            // Arrange
+            _ticket.BetTeam = "h87898";
+
+            // Act
+            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual(CoreBetList.warrior3rdBall, choiceTemplate.betTeam);
         }
     }
 }

@@ -1,15 +1,12 @@
-﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.NumberGame.Tests.Builder.ChoiceBuilder
 {
-    using App_GlobalResources;
-    using Common.Enums;
+    using Core.App_GlobalResources;
     using Core.Builder.ChoiceBuilder;
-    using Entities;
+    using Core.Entities;
+    using Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    /// TODO: Update summary.
-    /// </summary>
     public class Choice86Test
     {
         private static object[] liveScores =
@@ -38,17 +35,35 @@
         public void BuildMatch_Always_SetMatchVSBlockIsNull()
         {
             // Act
-            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsNull(choiceTemplate.Match.VS);
+        }
+
+        /// <summary>
+        ///  Check build choice function set home team block is number game resource and match code.
+        /// </summary>
+        [Test]
+        public void BuildMatch_Always_SetHomeTeamIsJoinedByNumberGameNoResourceAndMatchCode()
+        {
+            // Arrange
+            _ticket.MatchCode = "6969";
+
+            // Act
+            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
+            var actualHomeTeam = choiceTemplate.Match.homeTeam;
+
+            // Assert
+            var expectedHomeTeam = $"{CoreBetList.numbergameno}&nbsp;{_ticket.MatchCode}";
+            Assert.AreEqual(expectedHomeTeam, actualHomeTeam);
         }
 
         [Test]
         public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsEmpty()
         {
             // Act
-            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsTrue(string.IsNullOrEmpty(choiceTemplate.Handicap.handicap));
@@ -58,7 +73,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
         {
             // Act
-            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual("favorite", choiceTemplate.betTeamClassName);
@@ -76,10 +91,10 @@
             _ticket.IsLive = false;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            var extected = string.Join(null, CoreBetList.ft, ". ", betTypeName);
+            var extected = $"{CoreBetList.ft}. {betTypeName}";
             Assert.AreEqual(extected, _choice.Template.BetType.betTypeName);
         }
 
@@ -95,10 +110,10 @@
             _ticket.IsLive = true;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            var exptected = string.Join(null, CoreBetList.next, "&nbsp;", betTypeName);
+            var exptected = $"{CoreBetList.next}&nbsp;{betTypeName}";
             Assert.AreEqual(exptected, _choice.Template.BetType.betTypeName);
         }
 
@@ -116,29 +131,11 @@
             _ticket.BetId = betId;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             var expectedBetTeam = CoreBetList.even + liveScore;
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
-        }
-
-        /// <summary>
-        ///  Check build choice function set home team block is number game resource and match code.
-        /// </summary>
-        [Test]
-        public void BuildMatch_Always_SetHomeTeamIsJoinedByNumberGameNoResourceAndMatchCode()
-        {
-            // Arrange
-            _ticket.MatchCode = "6969";
-
-            // Act
-            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-            var actualHomeTeam = choiceTemplate.Match.homeTeam;
-
-            // Assert
-            var expectedHomeTeam = string.Join(null, CoreBetList.numbergameno, "&nbsp;", _ticket.MatchCode);
-            Assert.AreEqual(expectedHomeTeam, actualHomeTeam);
         }
     }
 }

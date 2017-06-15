@@ -340,6 +340,10 @@
       <Project>{a757a8fc-9989-4945-8319-74a02a2e7d2d}</Project>
       <Name>Fanex.BetList.MyanmarOdds</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.NumberGame\Fanex.BetList.NumberGame.csproj">
+      <Project>{b26ba5c4-a25c-4e28-b3fb-a585245d5e52}</Project>
+      <Name>Fanex.BetList.NumberGame</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.RnGCasino\Fanex.BetList.RnGCasino.csproj">
       <Project>{9ea9fe4a-ac19-4ff5-908f-54a7831b41ee}</Project>
       <Name>Fanex.BetList.RnGCasino</Name>

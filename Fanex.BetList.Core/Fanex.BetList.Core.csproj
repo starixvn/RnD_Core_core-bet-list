@@ -332,15 +332,6 @@
     <Compile Include="Builder\ChoiceBuilder\Choice72.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice73.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice8.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice81.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice82.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice83.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice84.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice85.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice86.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice87.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice88.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice89.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice126.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice127.cs" />
@@ -352,7 +343,6 @@
     <Compile Include="Builder\ChoiceBuilder\Choice149.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice150.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice129.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice90.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice137.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice172.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice173.cs" />
@@ -533,9 +523,9 @@
     <Content Include="Fanex.BetList.Core.ruleset" />
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.5.10.1.1411\analyzers\Google.Protobuf.dll" />
-    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.5.10.1.1411\analyzers\SonarAnalyzer.CSharp.dll" />
-    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.5.10.1.1411\analyzers\SonarAnalyzer.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.5.11.0.1761\analyzers\Google.Protobuf.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.5.11.0.1761\analyzers\SonarAnalyzer.CSharp.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.5.11.0.1761\analyzers\SonarAnalyzer.dll" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
