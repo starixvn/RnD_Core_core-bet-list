@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
+    using App_GlobalResources;
     using Constants;
     using Entities;
-    using App_GlobalResources;
 
     /// <summary>
     /// Total Goal.
@@ -19,9 +19,9 @@
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             // &nbsp; because export format
-            var betTeam = ticket.BetTeam.ToLowerInvariant();
+            var betTeam = string.Empty;
 
-            switch (betTeam)
+            switch (ticket.BetTeam.ToLowerInvariant())
             {
                 case "4-over":
                 case "4&over":
@@ -34,7 +34,7 @@
                     break;
 
                 default:
-                    betTeam = string.Empty;
+                    betTeam = ticket.BetTeam.ToLowerInvariant();
                     break;
             }
 

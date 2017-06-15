@@ -53,7 +53,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedBetTeam = string.Format("&nbsp;{0}", string.Empty);
+            string expectedBetTeam = string.Format("&nbsp;{0}", "bet team");
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
