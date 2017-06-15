@@ -46,7 +46,7 @@
                     "\">",
                     betTypeName,
                     "</a>",
-                    "<br/><br/>",
+                    "<br/>",
                     "<div id=\"divEvent_",
                     ticket.TransId.ToString(),
                     "\" style=\"display: none\" ></div>"
