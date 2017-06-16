@@ -162,5 +162,15 @@
         {
             return RefData.GetFastMarketsChoise(betType, betTeam, handicap1, handicap2, CurrentTWLanguage);
         }
+
+        public static string GetLotteryBetChoiceName(string kenoBetChoiceID, out string kenoBettypeID)
+        {
+            return RefData.GetLotteryBetChoice(kenoBetChoiceID, CurrentTWLanguage, out kenoBettypeID);
+        }
+
+        public static string GetLotteryBetTypeName(string kenoBettypeID)
+        {
+            return RefData.GetLotteryBettype(kenoBettypeID, CurrentTWLanguage);
+        }
     }
 }

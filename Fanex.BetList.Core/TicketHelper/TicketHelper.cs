@@ -189,14 +189,12 @@
 
         public string GetLotteryBetChoiceName(string lotteryBetChoiceId, out string lotteryBettypeId)
         {
-            // @@TODO: use correct methods for Lottery.
-            return CacheRef.GetKenoBetChoiceName(lotteryBetChoiceId, out lotteryBettypeId);
+            return CacheRef.GetLotteryBetChoiceName(lotteryBetChoiceId, out lotteryBettypeId);
         }
 
         public string GetLotteryBetTypeName(string lotteryBettypeId)
         {
-            // @@TODO: use correct methods for Lottery.
-            return CacheRef.GetKenoBetTypeName(lotteryBettypeId);
+            return CacheRef.GetLotteryBetTypeName(lotteryBettypeId);
         }
     }
 }
