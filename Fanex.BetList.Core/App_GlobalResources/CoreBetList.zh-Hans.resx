@@ -466,7 +466,7 @@
     <value>数字游戏</value>
   </data>
   <data name="numbergameno" xml:space="preserve">
-    <value>百练赛 no.</value>
+    <value>百练赛编号</value>
   </data>
   <data name="numberGroup" xml:space="preserve">
     <value>包牌</value>
