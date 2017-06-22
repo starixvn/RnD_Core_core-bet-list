@@ -7,10 +7,8 @@
         protected override void BuildStatusResult(ITicket ticket)
         {
             base.BuildStatusResult(ticket);
-
-            var betId = ticket.BetId ?? 0;
-
-            Template.StatusResult.betId = betId.ToString();
+            Template.StatusResult.refNo = ticket.RefNo;
+            Template.StatusResult.betId = $"{ticket.BetId ?? 0}, {ticket.CustId}";
         }
     }
 }

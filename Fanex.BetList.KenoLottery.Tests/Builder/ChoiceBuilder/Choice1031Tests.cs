@@ -64,20 +64,42 @@
             Assert.IsNull(template.Score);
         }
 
-        [Test]
-        public void BuildBetTeam_Always_GetBetChoiceAssociateWithChoiceIdFromRemotingRef()
+        [TestCase("betChoice=1705152116,3;referID=", "3")]
+        [TestCase("BetChoice=1705152116,3;referID=", "3")]
+        [TestCase("betchoice=1705152116,3;referID=", "3")]
+        [TestCase("betChoice=1705152116,3;", "3")]
+        [TestCase("betChoice=1705152116,3", "3")]
+        public void BuildBetTeam_TransDescIsCorrect_ParseAndSendCorrectChoiceIdToRemotingRef(string transDesc, string choiceId)
         {
             // Arrange.
-            const string BetChoice = "Bet Choice";
-            string anyBetTypeId;
-
-            _ticketHelper.GetLotteryBetChoiceName(Arg.Any<string>(), out anyBetTypeId).Returns(BetChoice);
+            _ticket.TransDesc = transDesc;
 
             // Act.
             var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            Assert.AreEqual(BetChoice, template.betTeam);
+            string anyBetTypeId;
+
+            _ticketHelper.Received().GetLotteryBetChoiceName(Arg.Is(choiceId), out anyBetTypeId);
+        }
+
+        [TestCase("betChoice=1705152116,;referID=")]
+        [TestCase("BetChoice=1705152116;referID=")]
+        [TestCase(";referID=")]
+        [TestCase("referID=")]
+        [TestCase("")]
+        public void BuildBetTeam_TransDescIsIncorrect_BetTeamIsNull(string transDesc)
+        {
+            // Arrange.
+            _ticket.TransDesc = transDesc;
+
+            // Act.
+            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert.
+            const string BetTeamDefaultStringInTemplate = "{betTeam}";
+
+            Assert.AreEqual(BetTeamDefaultStringInTemplate, template.betTeam);
         }
 
         [Test]
@@ -93,6 +115,43 @@
 
             // Assert
             Assert.AreEqual(BetTypeName, template.BetType.betTypeName);
+        }
+
+        [TestCase("betChoice=1705152116,3;referID=", "1705152116")]
+        [TestCase("BetChoice=1705152116,3;referID=", "1705152116")]
+        [TestCase("betchoice=1705152116,3;referID=", "1705152116")]
+        [TestCase("betChoice=1705152116,3;", "1705152116")]
+        [TestCase("betChoice=1705152116,3", "1705152116")]
+        public void BuildLeague_TransDescIsCorrect_GameIdIsInLeagueName(string transDesc, string expectedGameId)
+        {
+            // Arrange.
+            _ticket.TransDesc = transDesc;
+
+            // Act.
+            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert.
+            Assert.True(template.League.LeagueName.leagueName.Contains($"[{expectedGameId}]"));
+        }
+
+        [TestCase("bet=1705152116,3;referID=")]
+        [TestCase("=1705152116,3;referID=")]
+        [TestCase("1705152116,3;referID=")]
+        [TestCase("3;")]
+        [TestCase(",3")]
+        [TestCase(";referID=")]
+        [TestCase("referID=")]
+        [TestCase("")]
+        public void BuildLeague_TransDescIsIncorrect_GameIdInLeagueNameIsEmpty(string transDesc)
+        {
+            // Arrange.
+            _ticket.TransDesc = transDesc;
+
+            // Act.
+            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert.
+            Assert.True(template.League.LeagueName.leagueName.Contains("[]"));
         }
     }
 }

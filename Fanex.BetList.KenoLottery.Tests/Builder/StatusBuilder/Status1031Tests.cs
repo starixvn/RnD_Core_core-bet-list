@@ -20,29 +20,45 @@
         }
 
         [Test]
-        public void BuildStatusLink_BetIdIsNull_ParamBetIdInTheLinkIsZero()
+        public void BuildStatusResult_Always_RefNoInTheLinkIsTicketRefNo()
         {
             // Arrange.
-            _ticket.BetId = null;
+            _ticket.TransId = 12345;
+            _ticket.RefNo = "34567";
 
             // Act.
             _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            Assert.AreEqual("0", _status.Template.StatusResult.betId);
+            Assert.AreEqual("34567", _status.Template.StatusResult.refNo);
         }
 
         [Test]
-        public void BuildStatusResult_BetIdIsAnyNotNullValue_ParamBetIdInTheLinkIsBetId()
+        public void BuildStatusResult_Always_BetIdInTheLinkIsTheCombinationOfBetIdAndCustId()
         {
             // Arrange.
             _ticket.BetId = 12345;
+            _ticket.CustId = 34567;
 
             // Act.
             _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            Assert.AreEqual("12345", _status.Template.StatusResult.betId);
+            Assert.AreEqual("12345, 34567", _status.Template.StatusResult.betId);
+        }
+
+        [Test]
+        public void BuildStatusLink_TicketBetIdIsNull_BetIdInTheLinkContainsZeroAsBetId()
+        {
+            // Arrange.
+            _ticket.BetId = null;
+            _ticket.CustId = 34567;
+
+            // Act.
+            _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert.
+            Assert.AreEqual("0, 34567", _status.Template.StatusResult.betId);
         }
     }
 }
