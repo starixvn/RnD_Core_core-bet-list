@@ -768,4 +768,13 @@
   <data name="Away171" xml:space="preserve">
     <value>客</value>
   </data>
+  <data name="Cash" xml:space="preserve">
+    <value>现金</value>
+  </data>
+  <data name="Bonus" xml:space="preserve">
+    <value>奖金</value>
+  </data>
+  <data name="ShowTransactionDetails" xml:space="preserve">
+    <value>显示交易详情</value>
+  </data>
 </root>

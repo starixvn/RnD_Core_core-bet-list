@@ -459,4 +459,13 @@
   <data name="Away171" xml:space="preserve">
     <value>Đội khách</value>
   </data>
+  <data name="Cash" xml:space="preserve">
+    <value>Tiền mặt</value>
+  </data>
+  <data name="Bonus" xml:space="preserve">
+    <value>Tiền thưởng</value>
+  </data>
+  <data name="ShowTransactionDetails" xml:space="preserve">
+    <value>Xem chi tiết giao dịch</value>
+  </data>
 </root>
