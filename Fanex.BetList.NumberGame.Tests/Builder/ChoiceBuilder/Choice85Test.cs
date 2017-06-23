@@ -12,6 +12,8 @@
     /// </summary>
     public class Choice85Test
     {
+        private static string spanClassWith37point5 = " <span style='color:#555555'>37.5</span> ";
+
         // ticket.Live, betId, expectedValue
         private static object[] liveScores =
         {
@@ -130,7 +132,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.AreEqual(CoreBetList.under + liveScore, _choice.Template.betTeam);
+            Assert.AreEqual(CoreBetList.under + spanClassWith37point5 + liveScore, _choice.Template.betTeam);
         }
     }
 }

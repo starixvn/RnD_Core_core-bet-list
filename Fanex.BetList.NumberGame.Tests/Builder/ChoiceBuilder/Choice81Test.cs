@@ -9,6 +9,7 @@
 
     public class Choice81Test
     {
+        private static string spanClassWith37point5 = " <span style='color:#555555'>37.5</span> ";
         private Choice81 _choice;
         private ITicket _ticket;
         private ITicketHelper _ticketHelper;
@@ -55,7 +56,7 @@
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.AreEqual(CoreBetList.over, choiceTemplate.betTeam);
+            Assert.AreEqual(CoreBetList.over + spanClassWith37point5, choiceTemplate.betTeam);
         }
 
         [Test]
@@ -68,7 +69,7 @@
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.AreEqual(CoreBetList.under, choiceTemplate.betTeam);
+            Assert.AreEqual(CoreBetList.under + spanClassWith37point5, choiceTemplate.betTeam);
         }
 
         [Test]

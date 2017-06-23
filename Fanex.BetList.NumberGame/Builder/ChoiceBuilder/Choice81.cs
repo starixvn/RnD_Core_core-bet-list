@@ -10,9 +10,12 @@
     /// </summary>
     public class Choice81 : Choice1
     {
+        protected const string NumberGameValue = " <span style='color:#555555'>37.5</span> ";
+
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             Template.betTeam = ticket.BetTeam.ToLowerInvariant() == BetTeamValue.H ? CoreBetList.over : CoreBetList.under;
+            Template.betTeam += NumberGameValue;
         }
 
         protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
