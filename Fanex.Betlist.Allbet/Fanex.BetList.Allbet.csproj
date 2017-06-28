@@ -130,9 +130,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Allbet.css" />
-    <None Include="Fanex.BetList.Allbet.ruleset" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Fanex.BetList.Allbet.ruleset" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

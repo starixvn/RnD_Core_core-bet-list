@@ -64,8 +64,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Fanex.BetList.CockFighting.Debug.ruleset" />
-    <None Include="Fanex.BetList.CockFighting.ruleset" />
     <EmbeddedResource Include="Resources\CockFightingLang.ja-JP.resx" />
     <EmbeddedResource Include="Resources\CockFightingLang.ko-KR.resx" />
     <EmbeddedResource Include="Resources\CockFightingLang.resx">
@@ -82,6 +80,8 @@
     <Content Include="Content\CockFighting.css" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Fanex.BetList.CockFighting.Debug.ruleset" />
+    <None Include="Fanex.BetList.CockFighting.ruleset" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
