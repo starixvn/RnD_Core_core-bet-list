@@ -51,7 +51,6 @@
 
         #endregion CULTURE CONST
 
-
         public static CultureInfo VICult { get; } = CultureInfo.CreateSpecificCulture("vi-VN");
 
         #region Decimal
@@ -784,6 +783,20 @@
             return value < 0
                        ? "<font color='#ff0000'>" + DecFormat(amount, 2) + "</font>"
                        : value == 0 ? "0" : DecFormat(amount, 2);
+        }
+
+        /// <summary>
+        /// Highlight the negative number by red color and convert with 4 decimal digits.
+        /// </summary>
+        /// <param name="amount">The amount.</param>
+        /// <returns>Converted value string.</returns>
+        public static string HighlightNegativeNumber40(object amount)
+        {
+            var value = Convert.ToDecimal(amount);
+
+            return value < 0
+                       ? "<font color='#ff0000'>" + FormatNumber40(amount, CULTNAMEENG) + "</font>"
+                       : value == 0 ? "0" : FormatNumber40(amount, CULTNAMEENG);
         }
 
         #endregion String

@@ -125,7 +125,7 @@
             rowBlock.WinlossDate.Visible = eventOrderInDay == 0;
             rowBlock.Status = GetBetListStatusName(dataInRow.StatusId);
             rowBlock.Winloss = Formatter.HighlightNegativeNumber(dataInRow.WinLost);
-            rowBlock.Odds = dataInRow.MOdds == 0 ? "-" : Formatter.HighlightNegativeNumber(dataInRow.MOdds);
+            rowBlock.Odds = dataInRow.MOdds == 0 ? "-" : Formatter.HighlightNegativeNumber40(dataInRow.MOdds);
             rowBlock.Stake = Formatter.DecFormat(dataInRow.Stake, 2);
             rowBlock.PlayerCommission.Visible = _ticketHelper.ShowSystemParlayPlayerComm;
             rowBlock.PlayerCommission.PlayerCommission = Formatter.DecFormat(dataInRow.PlayerComm, 2);
