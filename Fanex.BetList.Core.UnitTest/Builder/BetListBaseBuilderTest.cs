@@ -203,17 +203,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder
         [TestCase(72, "Choice72")]
         [TestCase(73, "Choice73")]
         [TestCase(8, "Choice8")]
-        [TestCase(81, "Choice81")]
-        [TestCase(82, "Choice82")]
-        [TestCase(83, "Choice83")]
-        [TestCase(84, "Choice84")]
-        [TestCase(85, "Choice85")]
-        [TestCase(86, "Choice86")]
-        [TestCase(87, "Choice87")]
-        [TestCase(88, "Choice88")]
-        [TestCase(89, "Choice89")]
         [TestCase(9, "Choice9")]
-        [TestCase(90, "Choice90")]
         [TestCase(-22006, "Choice_22006")]
         public void CreateChoiceBuilder_WhenCalled_ReturnChoice(int betType, string expectedChoice)
         {
