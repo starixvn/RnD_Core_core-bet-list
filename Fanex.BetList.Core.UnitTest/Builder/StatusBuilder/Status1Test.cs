@@ -367,13 +367,30 @@
             Assert.IsFalse(_status.Template.CashOutHistory.Visible);
         }
 
-        [TestCase(-1, "<p25 s=\"1000\" a=\"1000\"/><p25 s=\"1000\" a=\"1000\"/>")]
-        [TestCase(0, "<p25 s=\"1000\" a=\"1000\"/>")]
-        [TestCase(1, "<p25 s=\"1000\" a=\"1000\"/>")]
-        [TestCase(1, "")]
-        public void BuildCashOutHistory_WhenHaveEnoughCondition_ShowCashOutHistory(long betdaqId, string extraInfo)
+        [TestCase(100)]
+        [TestCase(200)]
+        public void BuildCashOutHistory_SportTypeIsNotSportsbook_HideCashOutHistory(int sportTypeId)
         {
             // Arrange
+            _ticket.SportTypeId = sportTypeId;
+            _ticketHelper.HideStatusCashOutHistory.Returns(false);
+            ArrangeCashOutTicket(1, string.Empty);
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.IsFalse(_status.Template.CashOutHistory.Visible);
+        }
+
+        [TestCase(-1, "<p25 s=\"1000\" a=\"1000\"/><p25 s=\"1000\" a=\"1000\"/>", 99)]
+        [TestCase(0, "<p25 s=\"1000\" a=\"1000\"/>", 154)]
+        [TestCase(1, "<p25 s=\"1000\" a=\"1000\"/>", 100)]
+        [TestCase(1, "", 1)]
+        public void BuildCashOutHistory_WhenHaveEnoughCondition_ShowCashOutHistory(long betdaqId, string extraInfo, int sportTypeId)
+        {
+            // Arrange
+            _ticket.SportTypeId = sportTypeId;
             ArrangeCashOutTicket(betdaqId, extraInfo);
             _ticketHelper.HideStatusCashOutHistory.Returns(false);
 

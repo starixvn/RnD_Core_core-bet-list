@@ -200,7 +200,7 @@
         }
 
         private static bool IsCashOutTicket(ITicket ticket)
-            => (ticket.BetdaqId == 1 && !IsBetTradeTicket(ticket.BetTypeId)) ||
+            => (ticket.BetdaqId == 1 && !IsBetTradeTicket(ticket.BetTypeId) && IsSportsbook(ticket.SportTypeId)) ||
             ticket.ExtraInfo.HasAttributeInXmlTag(CashOutXmlTag, "s");
 
         private static bool IsCashOutOriginalTicket(ITicket ticket)
@@ -214,5 +214,7 @@
         private static bool IsCashOutAll(ITicket ticket) => ticket.Stake == 0 && StakeIsZeroBeforeConvertCurrency(ticket);
 
         private static bool StakeIsZeroBeforeConvertCurrency(ITicket ticket) => ticket.OriginalBetType != -1;
+
+        private static bool IsSportsbook(int sportTypeId) => sportTypeId <= 99 || sportTypeId == 154;
     }
 }
