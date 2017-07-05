@@ -2,9 +2,9 @@
 {
     using System;
     using System.Collections.Generic;
-    using Core.App_GlobalResources;
     using Core.Builder.ChoiceBuilder;
     using Core.Entities;
+    using Core.Resources;
     using Core.Templates;
     using Core.UnitTest.Common.Enums;
     using NSubstitute;
@@ -181,7 +181,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            var expectedHomeTeam = $"{CoreBetList.numbergameno}&nbsp;{_ticket.MatchCode}";
+            var expectedHomeTeam = $"{NumberGameLang.numbergameno}&nbsp;{_ticket.MatchCode}";
             Assert.AreEqual(expectedHomeTeam, _choice.Template.Match.homeTeam);
         }
 
@@ -193,7 +193,7 @@
             var actualBetTypeName = choiceTemplate.BetType.betTypeName;
 
             // Assert
-            var expectedBetTypeName = CoreBetList.numberGroup;
+            var expectedBetTypeName = NumberGameLang.numberGroup;
             Assert.AreEqual(expectedBetTypeName, actualBetTypeName);
         }
 

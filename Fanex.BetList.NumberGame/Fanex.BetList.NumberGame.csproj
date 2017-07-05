@@ -53,6 +53,11 @@
     <Compile Include="Builder\ChoiceBuilder\Choice90.cs" />
     <Compile Include="Mapper\ChoiceMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\NumberGameLang.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NumberGameLang.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Fanex.BetList.NumberGame.ruleset" />
@@ -68,6 +73,19 @@
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.5.11.0.1761\analyzers\Google.Protobuf.dll" />
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.5.11.0.1761\analyzers\SonarAnalyzer.CSharp.dll" />
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.5.11.0.1761\analyzers\SonarAnalyzer.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\NumberGameLang.ja-JP.resx" />
+    <EmbeddedResource Include="Resources\NumberGameLang.ko-KR.resx" />
+    <EmbeddedResource Include="Resources\NumberGameLang.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>NumberGameLang.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\NumberGameLang.th-TH.resx" />
+    <EmbeddedResource Include="Resources\NumberGameLang.vi-VN.resx" />
+    <EmbeddedResource Include="Resources\NumberGameLang.zh-CN.resx" />
+    <EmbeddedResource Include="Resources\NumberGameLang.zh-Hans.resx" />
+    <EmbeddedResource Include="Resources\NumberGameLang.zh-TW.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

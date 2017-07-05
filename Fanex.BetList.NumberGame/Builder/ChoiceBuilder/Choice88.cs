@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using App_GlobalResources;
     using Constants;
     using Entities;
+    using Resources;
 
     /// <summary>
     /// Type: Warrior.
@@ -12,7 +12,7 @@
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            Template.betTeam = ticket.BetTeam == BetTeamValue.H ? CoreBetList.warrior2ndBall : CoreBetList.warrior3rdBall;
+            Template.betTeam = ticket.BetTeam == BetTeamValue.H ? NumberGameLang.warrior2ndBall : NumberGameLang.warrior3rdBall;
         }
     }
 }

@@ -3,6 +3,7 @@
     using Core.App_GlobalResources;
     using Core.Builder.ChoiceBuilder;
     using Core.Entities;
+    using Core.Resources;
     using Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
@@ -15,14 +16,14 @@
         // ticket.Live, betId, ticket.BetTeam, expectedValue
         private static object[] betTeamNames =
         {
-            new object[] { true, 0, "h", string.Join(null, CoreBetList.high, " [0]") },
-            new object[] { false, 0, "h", string.Join(null, CoreBetList.high, " [0]") },
-            new object[] { true, 1, "h", string.Join(null, CoreBetList.high, " [1]") },
-            new object[] { false, 1, "h", string.Join(null, CoreBetList.high, " [0]") },
-            new object[] { true, 0, "is not h", string.Join(null, CoreBetList.low, " [0]") },
-            new object[] { false, 0, "is not h", string.Join(null, CoreBetList.low, " [0]") },
-            new object[] { true, 1, "is not h", string.Join(null, CoreBetList.low, " [1]") },
-            new object[] { false, 1, "is not h", string.Join(null, CoreBetList.low, " [0]") },
+            new object[] { true, 0, "h", string.Join(null, NumberGameLang.high, " [0]") },
+            new object[] { false, 0, "h", string.Join(null, NumberGameLang.high, " [0]") },
+            new object[] { true, 1, "h", string.Join(null, NumberGameLang.high, " [1]") },
+            new object[] { false, 1, "h", string.Join(null, NumberGameLang.high, " [0]") },
+            new object[] { true, 0, "is not h", string.Join(null, NumberGameLang.low, " [0]") },
+            new object[] { false, 0, "is not h", string.Join(null, NumberGameLang.low, " [0]") },
+            new object[] { true, 1, "is not h", string.Join(null, NumberGameLang.low, " [1]") },
+            new object[] { false, 1, "is not h", string.Join(null, NumberGameLang.low, " [0]") },
         };
 
         private Choice87 _choice;
@@ -68,7 +69,7 @@
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.AreEqual($"{CoreBetList.numbergameno}&nbsp;{_ticket.MatchCode}", choiceTemplate.Match.homeTeam);
+            Assert.AreEqual($"{NumberGameLang.numbergameno}&nbsp;{_ticket.MatchCode}", choiceTemplate.Match.homeTeam);
         }
 
         [Test]

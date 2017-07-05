@@ -3,6 +3,7 @@
     using Core.App_GlobalResources;
     using Core.Builder.ChoiceBuilder;
     using Core.Entities;
+    using Core.Resources;
     using Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
@@ -45,7 +46,7 @@
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.AreEqual(string.Join(null, new[] { CoreBetList.numbergameno, "&nbsp;", _ticket.MatchCode }), choiceTemplate.Match.homeTeam);
+            Assert.AreEqual(string.Join(null, new[] { NumberGameLang.numbergameno, "&nbsp;", _ticket.MatchCode }), choiceTemplate.Match.homeTeam);
         }
 
         [Test]

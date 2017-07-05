@@ -1,8 +1,8 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using App_GlobalResources;
     using Entities;
+    using Resources;
 
     /// <summary>
     /// Next Combo
@@ -25,19 +25,19 @@
             switch (ticket.BetTeam)
             {
                 case "1:1":
-                    betTeam = CoreBetList.lblOverOdd;
+                    betTeam = NumberGameLang.lblOverOdd;
                     break;
 
                 case "1:2":
-                    betTeam = CoreBetList.lblOverEven;
+                    betTeam = NumberGameLang.lblOverEven;
                     break;
 
                 case "2:1":
-                    betTeam = CoreBetList.lblUnderOdd;
+                    betTeam = NumberGameLang.lblUnderOdd;
                     break;
 
                 case "2:2":
-                    betTeam = CoreBetList.lblUnderEven;
+                    betTeam = NumberGameLang.lblUnderEven;
                     break;
 
                 default:

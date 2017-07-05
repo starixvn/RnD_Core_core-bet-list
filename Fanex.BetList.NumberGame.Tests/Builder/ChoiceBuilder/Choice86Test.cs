@@ -3,6 +3,7 @@
     using Core.App_GlobalResources;
     using Core.Builder.ChoiceBuilder;
     using Core.Entities;
+    using Core.Resources;
     using Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
@@ -55,7 +56,7 @@
             var actualHomeTeam = choiceTemplate.Match.homeTeam;
 
             // Assert
-            var expectedHomeTeam = $"{CoreBetList.numbergameno}&nbsp;{_ticket.MatchCode}";
+            var expectedHomeTeam = $"{NumberGameLang.numbergameno}&nbsp;{_ticket.MatchCode}";
             Assert.AreEqual(expectedHomeTeam, actualHomeTeam);
         }
 
@@ -113,7 +114,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            var exptected = $"{CoreBetList.next}&nbsp;{betTypeName}";
+            var exptected = $"{NumberGameLang.next}&nbsp;{betTypeName}";
             Assert.AreEqual(exptected, _choice.Template.BetType.betTypeName);
         }
 

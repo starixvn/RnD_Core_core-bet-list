@@ -2,9 +2,8 @@
 {
     using System.Collections.Generic;
     using System.Globalization;
-    using App_GlobalResources;
-    using Constants;
     using Entities;
+    using Resources;
 
     /// <summary>
     /// Number Wheel.
@@ -147,7 +146,7 @@
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            Template.BetType.betTypeName = CoreBetList.numberGroup;
+            Template.BetType.betTypeName = NumberGameLang.numberGroup;
         }
     }
 }

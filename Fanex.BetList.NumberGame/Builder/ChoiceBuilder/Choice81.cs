@@ -4,6 +4,7 @@
     using App_GlobalResources;
     using Constants;
     using Entities;
+    using Resources;
 
     /// <summary>
     /// 1st ball O/U.
@@ -23,7 +24,7 @@
             base.BuildMatch(ticket, ticketHelper);
 
             Template.Match.VS = null;
-            Template.Match.homeTeam = $"{CoreBetList.numbergameno}{HtmlCharacters.NoneBreakingSpace}{ticket.MatchCode}";
+            Template.Match.homeTeam = $"{NumberGameLang.numbergameno}{HtmlCharacters.NoneBreakingSpace}{ticket.MatchCode}";
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)

@@ -3,6 +3,7 @@
     using Core.App_GlobalResources;
     using Core.Builder.ChoiceBuilder;
     using Core.Entities;
+    using Core.Resources;
     using Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
@@ -56,7 +57,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.AreEqual(string.Join(null, CoreBetList.numbergameno, "&nbsp;", _ticket.MatchCode), _choice.Template.Match.homeTeam);
+            Assert.AreEqual(string.Join(null, NumberGameLang.numbergameno, "&nbsp;", _ticket.MatchCode), _choice.Template.Match.homeTeam);
         }
 
         [Test]
@@ -112,7 +113,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.AreEqual($"{CoreBetList.next}&nbsp;{betTypeName}", _choice.Template.BetType.betTypeName);
+            Assert.AreEqual($"{NumberGameLang.next}&nbsp;{betTypeName}", _choice.Template.BetType.betTypeName);
         }
 
         /// <summary>

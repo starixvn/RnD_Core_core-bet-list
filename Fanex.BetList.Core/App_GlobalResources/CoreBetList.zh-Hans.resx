@@ -306,9 +306,6 @@
   <data name="hh" xml:space="preserve">
     <value>主/主</value>
   </data>
-  <data name="high" xml:space="preserve">
-    <value>高</value>
-  </data>
   <data name="HomeFG" xml:space="preserve">
     <value>主队先进球</value>
   </data>
@@ -366,12 +363,6 @@
   <data name="lblOr" xml:space="preserve">
     <value>或者</value>
   </data>
-  <data name="lblOverEven" xml:space="preserve">
-    <value>大/双</value>
-  </data>
-  <data name="lblOverOdd" xml:space="preserve">
-    <value>大/单</value>
-  </data>
   <data name="lblRunning" xml:space="preserve">
     <value>进行中</value>
   </data>
@@ -380,12 +371,6 @@
   </data>
   <data name="lblSystemParlay" xml:space="preserve">
     <value>系统Parlay</value>
-  </data>
-  <data name="lblUnderEven" xml:space="preserve">
-    <value>小/双</value>
-  </data>
-  <data name="lblUnderOdd" xml:space="preserve">
-    <value>小/单</value>
   </data>
   <data name="lblWaiting" xml:space="preserve">
     <value>等待中</value>
@@ -414,9 +399,6 @@
   <data name="losingtickets" xml:space="preserve">
     <value>输的注单总计</value>
   </data>
-  <data name="low" xml:space="preserve">
-    <value>低</value>
-  </data>
   <data name="mar" xml:space="preserve">
     <value>3月</value>
   </data>
@@ -437,9 +419,6 @@
   </data>
   <data name="Neutral" xml:space="preserve">
     <value>(中)</value>
-  </data>
-  <data name="next" xml:space="preserve">
-    <value>下一个</value>
   </data>
   <data name="no" xml:space="preserve">
     <value>#</value>
@@ -464,12 +443,6 @@
   </data>
   <data name="numbergame" xml:space="preserve">
     <value>数字游戏</value>
-  </data>
-  <data name="numbergameno" xml:space="preserve">
-    <value>百练赛编号</value>
-  </data>
-  <data name="numberGroup" xml:space="preserve">
-    <value>包牌</value>
   </data>
   <data name="odd" xml:space="preserve">
     <value>单</value>
@@ -728,12 +701,6 @@
   </data>
   <data name="warrior" xml:space="preserve">
     <value>斗士</value>
-  </data>
-  <data name="warrior2ndBall" xml:space="preserve">
-    <value>第二颗球赢</value>
-  </data>
-  <data name="warrior3rdBall" xml:space="preserve">
-    <value>第三颗球赢</value>
   </data>
   <data name="wed" xml:space="preserve">
     <value>三</value>

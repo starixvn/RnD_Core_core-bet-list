@@ -1,8 +1,8 @@
 ﻿namespace Fanex.BetList.NumberGame.Tests.Builder.ChoiceBuilder
 {
-    using Core.App_GlobalResources;
     using Core.Builder.ChoiceBuilder;
     using Core.Entities;
+    using Core.Resources;
     using Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
@@ -58,7 +58,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            var expectedHomeTeam = $"{CoreBetList.numbergameno}&nbsp;{_ticket.MatchCode}";
+            var expectedHomeTeam = $"{NumberGameLang.numbergameno}&nbsp;{_ticket.MatchCode}";
             Assert.AreEqual(expectedHomeTeam, _choice.Template.Match.homeTeam);
         }
 
@@ -92,7 +92,7 @@
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.AreEqual(CoreBetList.warrior2ndBall, choiceTemplate.betTeam);
+            Assert.AreEqual(NumberGameLang.warrior2ndBall, choiceTemplate.betTeam);
         }
 
         [Test]
@@ -105,7 +105,7 @@
             var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.AreEqual(CoreBetList.warrior3rdBall, choiceTemplate.betTeam);
+            Assert.AreEqual(NumberGameLang.warrior3rdBall, choiceTemplate.betTeam);
         }
     }
 }

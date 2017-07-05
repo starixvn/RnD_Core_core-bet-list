@@ -132,9 +132,6 @@
   <data name="ft" xml:space="preserve">
     <value>FT</value>
   </data>
-  <data name="high" xml:space="preserve">
-    <value>High</value>
-  </data>
   <data name="ht" xml:space="preserve">
     <value>HT</value>
   </data>
@@ -153,20 +150,11 @@
   <data name="lose" xml:space="preserve">
     <value>マイナス</value>
   </data>
-  <data name="low" xml:space="preserve">
-    <value>Low</value>
-  </data>
   <data name="member" xml:space="preserve">
     <value>メンバー</value>
   </data>
-  <data name="next" xml:space="preserve">
-    <value>次へ</value>
-  </data>
   <data name="nogoal" xml:space="preserve">
     <value>No Goal</value>
-  </data>
-  <data name="numbergameno" xml:space="preserve">
-    <value>Number Game No</value>
   </data>
   <data name="odd" xml:space="preserve">
     <value>オッド</value>
@@ -235,24 +223,6 @@
   </data>
   <data name="win" xml:space="preserve">
     <value>Win</value>
-  </data>
-  <data name="warrior2ndBall" xml:space="preserve">
-    <value>2nd ball to win</value>
-  </data>
-  <data name="warrior3rdBall" xml:space="preserve">
-    <value>3rd ball to win</value>
-  </data>
-  <data name="lblOverEven" xml:space="preserve">
-    <value>Over/Even</value>
-  </data>
-  <data name="lblOverOdd" xml:space="preserve">
-    <value>Over/Odd</value>
-  </data>
-  <data name="lblUnderEven" xml:space="preserve">
-    <value>Under/Even</value>
-  </data>
-  <data name="lblUnderOdd" xml:space="preserve">
-    <value>Under/Odd</value>
   </data>
   <data name="losingtickets" xml:space="preserve">
     <value>Total of losing tickets</value>
@@ -535,9 +505,6 @@
   </data>
   <data name="numbergame" xml:space="preserve">
     <value>Number Game</value>
-  </data>
-  <data name="numberGroup" xml:space="preserve">
-    <value>Number Wheel</value>
   </data>
   <data name="of" xml:space="preserve">
     <value>/</value>

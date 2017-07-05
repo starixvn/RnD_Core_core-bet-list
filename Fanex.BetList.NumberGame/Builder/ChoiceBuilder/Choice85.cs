@@ -4,6 +4,7 @@
     using App_GlobalResources;
     using Constants;
     using Entities;
+    using Resources;
 
     /// <summary>
     /// Next Over/Under
@@ -39,7 +40,7 @@
 
             var bettypeName = !ticket.IsLive
                 ? $"{CoreBetList.ft}. {Template.BetType.betTypeName}"
-                : $"{CoreBetList.next}{HtmlCharacters.NoneBreakingSpace}{Template.BetType.betTypeName}";
+                : $"{NumberGameLang.next}{HtmlCharacters.NoneBreakingSpace}{Template.BetType.betTypeName}";
 
             Template.BetType.betTypeName = bettypeName;
         }

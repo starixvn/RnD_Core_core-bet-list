@@ -132,9 +132,6 @@
   <data name="ft" xml:space="preserve">
     <value>เต็มเวลา</value>
   </data>
-  <data name="high" xml:space="preserve">
-    <value>สูง</value>
-  </data>
   <data name="ht" xml:space="preserve">
     <value>ครึ่งเวลาแรก</value>
   </data>
@@ -153,20 +150,11 @@
   <data name="lose" xml:space="preserve">
     <value>แพ้</value>
   </data>
-  <data name="low" xml:space="preserve">
-    <value>ต่ำ</value>
-  </data>
   <data name="member" xml:space="preserve">
     <value>สมาชิก</value>
   </data>
-  <data name="next" xml:space="preserve">
-    <value>ต่อไป</value>
-  </data>
   <data name="nogoal" xml:space="preserve">
     <value>ไม่มีการทำประตู</value>
-  </data>
-  <data name="numbergameno" xml:space="preserve">
-    <value>เกมหมายเลข ลำดับที่</value>
   </data>
   <data name="odd" xml:space="preserve">
     <value>คี่</value>
@@ -233,24 +221,6 @@
   </data>
   <data name="win" xml:space="preserve">
     <value>ชนะ</value>
-  </data>
-  <data name="warrior2ndBall" xml:space="preserve">
-    <value>บอลลูกที่สอง ชนะ</value>
-  </data>
-  <data name="warrior3rdBall" xml:space="preserve">
-    <value>บอลลูกที่สาม ชนะ</value>
-  </data>
-  <data name="lblOverEven" xml:space="preserve">
-    <value>สูง คู่</value>
-  </data>
-  <data name="lblOverOdd" xml:space="preserve">
-    <value>สูง คี่</value>
-  </data>
-  <data name="lblUnderEven" xml:space="preserve">
-    <value>ต่ำ คู่</value>
-  </data>
-  <data name="lblUnderOdd" xml:space="preserve">
-    <value>ต่ำ คี่</value>
   </data>
   <data name="losingtickets" xml:space="preserve">
     <value>ตั๋วทั้งหมดที่เสีย</value>
@@ -533,9 +503,6 @@
   </data>
   <data name="numbergame" xml:space="preserve">
     <value>เกมหมายเลข</value>
-  </data>
-  <data name="numberGroup" xml:space="preserve">
-    <value>กลุ่มหมายเลข</value>
   </data>
   <data name="of" xml:space="preserve">
     <value>ของ</value>
