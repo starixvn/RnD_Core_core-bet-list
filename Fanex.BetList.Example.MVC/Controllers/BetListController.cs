@@ -387,6 +387,18 @@ namespace Fanex.BetList.Example.MVC.Controllers
             return BetListView(model);
         }
 
+        public ActionResult BetRadarVirtualSports(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes(2701, 2702, 2703, 2704, 2705, 2706, 2707, 2799);
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            DataSourcePath = "~/App_Data/BetRadarVirtualSports.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
         public ActionResult KenoLottery(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(1031, 1032, 1033, 1034, 1035, 1036, 1037, 1038);
