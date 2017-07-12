@@ -79,40 +79,26 @@
         }
 
         [Test]
-        public void BuildMatch_ShowTimeIsInValidFormat_AppendShowTimeInCorrectFormatRightAfterMatch()
+        public void BuildMatch_Always_AppendMatchDayOrRoundInfoRightAfterMatch()
         {
             // Arrange.
-            _ticket.ShowTime = "June 2 2017 12:00AM";
+            _ticket.TransDesc = "Round 16-1, Nation Cup 6666";
 
             // Act.
             var builtChoice = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            string expectedHtmlOfKickOffTime = "<div class=\"match\">6/2/2017 12:00 AM</div>";
-            Assert.IsTrue(builtChoice.Match.ToString().EndsWith(expectedHtmlOfKickOffTime, StringComparison.InvariantCulture));
+            string expectedHtmlOfRoundInfo = "<div class=\"match\">Round 16-1, Nation Cup 6666</div>";
+            Assert.IsTrue(builtChoice.Match.ToString().EndsWith(expectedHtmlOfRoundInfo, StringComparison.InvariantCulture));
         }
 
         [Test]
-        public void BuildMatch_ShowTimeIsInInvalidFormat_AppendShowTimeAsWhatItHasRightAfterMatch()
-        {
-            // Arrange.
-            _ticket.ShowTime = "Ju 2 17 12:00AM";
-
-            // Act.
-            var builtChoice = _choice.Render(_ticket, _ticketHelper, null, false);
-
-            // Assert.
-            string expectedHtmlOfKickOffTime = "<div class=\"match\">Ju 2 17 12:00AM</div>";
-            Assert.IsTrue(builtChoice.Match.ToString().EndsWith(expectedHtmlOfKickOffTime, StringComparison.InvariantCulture));
-        }
-
-        [Test]
-        public void BuildBetTeamsInfo_ShowTimeIsInValidFormat_KickOffTimeInCorrectIsAtTheThirdRow()
+        public void BuildBetTeamsInfo_Always_MatchDayOrRoundInfoIsAtTheThirdRow()
         {
             // Arrange.
             var rtfHelper = new RTFHelper().Clone();
 
-            _ticket.ShowTime = "June 2 2017 12:00AM";
+            _ticket.TransDesc = "Round 16-1, Nation Cup 6666";
             _ticketHelper.GetBetTypeNameById(Arg.Is(2703), Arg.Any<object>()).Returns("FT O/U");
 
             // Act
@@ -120,28 +106,9 @@
             var linesInActualText = actualText[0].String.Split('\n');
 
             // Assert
-            var expectedShowTime = "6/2/2017 12:00 AM";
+            var expectedRoundInfo = "Round 16-1, Nation Cup 6666";
 
-            Assert.AreEqual(linesInActualText[2], expectedShowTime);
-        }
-
-        [Test]
-        public void BuildBetTeamsInfo_ShowTimeIsInInValidFormat_KickOffTimeIsAtTheThirdRowAsWhatItHas()
-        {
-            // Arrange.
-            var rtfHelper = new RTFHelper().Clone();
-
-            _ticket.ShowTime = "Ju 2 17 12:00AM";
-            _ticketHelper.GetBetTypeNameById(Arg.Is(2703), Arg.Any<object>()).Returns("FT O/U");
-
-            // Act
-            var actualText = _choice.RenderRTF(_ticket, _ticketHelper, null, false, rtfHelper);
-            var linesInActualText = actualText[0].String.Split('\n');
-
-            // Assert
-            var expectedShowTime = "Ju 2 17 12:00AM";
-
-            Assert.AreEqual(linesInActualText[2], expectedShowTime);
+            Assert.AreEqual(linesInActualText[2], expectedRoundInfo);
         }
     }
 }

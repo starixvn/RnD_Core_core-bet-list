@@ -24,14 +24,14 @@
         {
             base.BuildMatch(ticket, ticketHelper);
 
-            Template.AppendKickOffTime(ticket);
+            Template.AppendMatchOrRoundInfo(ticket);
         }
 
         protected override void BuildBetTeamsInfo(ITicket ticket, ref RTFHelper rtfHelper)
         {
             base.BuildBetTeamsInfo(ticket, ref rtfHelper);
 
-            rtfHelper.RTFRenderer.AddText($"\n{VirtualSportsChoiceUtils.ParseKickOffTime(ticket)}");
+            rtfHelper.RTFRenderer.AddText($"\n{ticket.TransDesc}");
         }
     }
 }
