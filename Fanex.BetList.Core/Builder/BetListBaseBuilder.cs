@@ -66,12 +66,6 @@ namespace Fanex.BetList.Core.Builder
                 choiceName = Choice3rdName;
             }
 
-            if (betTypeId <= 1599 && betTypeId >= 1501)
-            {
-                // Keno games.
-                betTypeId = 1501;
-            }
-
             betTypeId = MapperCollector.GetChoiceBaseBetTypeOf(betTypeId);
 
             string typeName = string.Join(null, new[] { ChoiceBuilderNamespace, choiceName, betTypeId.ToString().Replace('-', '_') });
@@ -99,12 +93,6 @@ namespace Fanex.BetList.Core.Builder
             {
                 // Odds of Live Casino bet types
                 betTypeId = 1101;
-            }
-
-            if (betTypeId <= 1599 && betTypeId >= 1501)
-            {
-                // Odds of Keno games
-                betTypeId = 1501;
             }
 
             betTypeId = MapperCollector.GetOddsBaseBetTypeOf(betTypeId);
@@ -153,12 +141,6 @@ namespace Fanex.BetList.Core.Builder
                 statusName = Status3rdName;
             }
 
-            if (betTypeId <= 1599 && betTypeId >= 1501)
-            {
-                // Keno games
-                betTypeId = 1501;
-            }
-
             betTypeId = MapperCollector.GetStatusBaseBetTypeOf(betTypeId);
 
             string typeName = string.Join(null, new[] { StatusBuilderNamespace, statusName, betTypeId.ToString().Replace('-', '_') });
@@ -180,12 +162,6 @@ namespace Fanex.BetList.Core.Builder
             {
                 // Internal conventional bettype id of 3rd products
                 transName = Trans3rdName;
-            }
-
-            if (betTypeId <= 1599 && betTypeId >= 1501)
-            {
-                // Keno games
-                betTypeId = 1501;
             }
 
             betTypeId = MapperCollector.GetTransBaseBetTypeOf(betTypeId);

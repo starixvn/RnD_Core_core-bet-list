@@ -241,7 +241,6 @@
     <Compile Include="Builder\ChoiceBuilder\Choice143.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice144.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice15.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1501.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice151.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice152.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice153.cs" />
@@ -394,7 +393,6 @@
     <Compile Include="Builder\OddsBuilder\Odds1.cs" />
     <Compile Include="Builder\OddsBuilder\Odds1000.cs" />
     <Compile Include="Builder\OddsBuilder\Odds1101.cs" />
-    <Compile Include="Builder\OddsBuilder\Odds1501.cs" />
     <Compile Include="Builder\OddsBuilder\Odds29.cs" />
     <Compile Include="Builder\OddsBuilder\Odds33.cs" />
     <Compile Include="Builder\OddsBuilder\Odds500.cs" />
@@ -436,7 +434,6 @@
     <Compile Include="Builder\StatusBuilder\Status1332.cs" />
     <Compile Include="Builder\StatusBuilder\Status1333.cs" />
     <Compile Include="Builder\StatusBuilder\Status1334.cs" />
-    <Compile Include="Builder\StatusBuilder\Status1501.cs" />
     <Compile Include="Builder\StatusBuilder\Status154.cs" />
     <Compile Include="Builder\StatusBuilder\Status155.cs" />
     <Compile Include="Builder\StatusBuilder\Status156.cs" />
@@ -459,7 +456,6 @@
     <Compile Include="Builder\TransBuilder\3rd\Trans_22006.cs" />
     <Compile Include="Builder\TransBuilder\ITrans.cs" />
     <Compile Include="Builder\TransBuilder\Trans1.cs" />
-    <Compile Include="Builder\TransBuilder\Trans1501.cs" />
     <Compile Include="Builder\TransBuilder\Trans71.cs" />
     <Compile Include="Builder\TransBuilder\Trans73.cs" />
     <Compile Include="Constants\BetTeamValue.cs" />

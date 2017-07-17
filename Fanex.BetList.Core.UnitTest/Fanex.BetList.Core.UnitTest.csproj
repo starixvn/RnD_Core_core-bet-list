@@ -204,7 +204,6 @@
     <Compile Include="Builder\ChoiceBuilder\Choice1328Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1333Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1334Test.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1501Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice23001Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice23002Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice23101Test.cs" />
@@ -235,7 +234,6 @@
     <Compile Include="Builder\OddsBuilder\Odds500Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds71Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds33Test.cs" />
-    <Compile Include="Builder\OddsBuilder\Odds1501Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds1Test.cs" />
     <Compile Include="Builder\StakeBuilder\Stake1Test.cs" />
     <Compile Include="Builder\StakeBuilder\Stake500Test.cs" />
@@ -247,7 +245,6 @@
     <Compile Include="Builder\StatusBuilder\Status71Test.cs" />
     <Compile Include="Builder\StatusBuilder\Status33Test.cs" />
     <Compile Include="Builder\StatusBuilder\Status31Test.cs" />
-    <Compile Include="Builder\StatusBuilder\Status1501Test.cs" />
     <Compile Include="Builder\StatusBuilder\Status154Test.cs" />
     <Compile Include="Builder\StatusBuilder\Status1000Test.cs" />
     <Compile Include="Builder\StatusBuilder\Status10Test.cs" />

@@ -10,7 +10,7 @@
   <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice1" Collapsed="true">
     <Position X="168" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QBQoiCAAUUARAgAAQwQQQAAEBBAAIDMCAJChAABAAuA=</HashCode>
+      <HashCode>QBQoiHBAUUAxCgAgQwQQAAAMIBAAIDsCAJChAADCA+A=</HashCode>
       <FileName>Builder\ChoiceBuilder\Choice1.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -46,28 +46,28 @@
   <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice1101" Collapsed="true">
     <Position X="136.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAgMSAAAgAADAAEA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAMSAAAgAADAAEA=</HashCode>
       <FileName>Builder\ChoiceBuilder\Choice1101.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice1102" Collapsed="true">
     <Position X="135.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAACAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>Builder\ChoiceBuilder\Choice1102.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice1103" Collapsed="true">
     <Position X="137.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Builder\ChoiceBuilder\Choice1103.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice1104" Collapsed="true">
     <Position X="135.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Builder\ChoiceBuilder\Choice1104.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -76,41 +76,6 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Builder\ChoiceBuilder\Choice12.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice1201" Collapsed="true">
-    <Position X="266" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Builder\ChoiceBuilder\Choice1201.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice1203" Collapsed="true">
-    <Position X="227.75" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Builder\ChoiceBuilder\Choice1203.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice1204" Collapsed="true">
-    <Position X="302" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Builder\ChoiceBuilder\Choice1204.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice1205" Collapsed="true">
-    <Position X="311" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Builder\ChoiceBuilder\Choice1205.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice1206" Collapsed="true">
-    <Position X="333.5" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Builder\ChoiceBuilder\Choice1206.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice121" Collapsed="true">
@@ -127,18 +92,11 @@
       <FileName>Builder\ChoiceBuilder\Choice122.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice1220" Collapsed="true">
+  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice425" Collapsed="true">
     <Position X="39.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
-      <FileName>Builder\ChoiceBuilder\Choice1220.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice1224" Collapsed="true">
-    <Position X="27.5" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Builder\ChoiceBuilder\Choice1224.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAA=</HashCode>
+      <FileName>Builder\ChoiceBuilder\Choice425.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice123" Collapsed="true">
@@ -148,39 +106,18 @@
       <FileName>Builder\ChoiceBuilder\Choice123.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice1231" Collapsed="true">
-    <Position X="141" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAGA=</HashCode>
-      <FileName>Builder\ChoiceBuilder\Choice1231.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice1232" Collapsed="true">
-    <Position X="140" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Builder\ChoiceBuilder\Choice1232.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice1233" Collapsed="true">
-    <Position X="142.25" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Builder\ChoiceBuilder\Choice1233.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice1235" Collapsed="true">
+  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice601" Collapsed="true">
     <Position X="38.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
-      <FileName>Builder\ChoiceBuilder\Choice1235.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAgAAAAAAAA=</HashCode>
+      <FileName>Builder\ChoiceBuilder\Choice601.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice1236" Collapsed="true">
+  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice602" Collapsed="true">
     <Position X="41" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
-      <FileName>Builder\ChoiceBuilder\Choice1236.cs</FileName>
+      <FileName>Builder\ChoiceBuilder\Choice602.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice124" Collapsed="true">
@@ -543,7 +480,7 @@
   <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice14" Collapsed="true">
     <Position X="20.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAMAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAA=</HashCode>
       <FileName>Builder\ChoiceBuilder\Choice14.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -631,13 +568,6 @@
       <FileName>Builder\ChoiceBuilder\Choice150.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice1501" Collapsed="true">
-    <Position X="322.25" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>ABAAAAAAAAAAAAAAAAQAAAAAAAAAAAMCAAAgAAAAAEA=</HashCode>
-      <FileName>Builder\ChoiceBuilder\Choice1501.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice151" Collapsed="true">
     <Position X="25.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
@@ -697,7 +627,7 @@
   <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice16" Collapsed="true">
     <Position X="243.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAMAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAIAAAAAA=</HashCode>
       <FileName>Builder\ChoiceBuilder\Choice16.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -827,17 +757,17 @@
       <FileName>Builder\ChoiceBuilder\Choice177.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice178" Collapsed="true">
+  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice18" Collapsed="true">
     <Position X="233.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMCAAAAAAAAAAA=</HashCode>
-      <FileName>Builder\ChoiceBuilder\Choice178.cs</FileName>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAA=</HashCode>
+      <FileName>Builder\ChoiceBuilder\Choice18.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice179" Collapsed="true">
     <Position X="306.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAAAAAAAAAAMCAAAAAAAAAAA=</HashCode>
       <FileName>Builder\ChoiceBuilder\Choice179.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -862,11 +792,11 @@
       <FileName>Builder\ChoiceBuilder\Choice182.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice183" Collapsed="true">
+  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice405" Collapsed="true">
     <Position X="47.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
-      <FileName>Builder\ChoiceBuilder\Choice183.cs</FileName>
+      <FileName>Builder\ChoiceBuilder\Choice405.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice184" Collapsed="true">
@@ -893,7 +823,7 @@
   <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice187" Collapsed="true">
     <Position X="187.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
       <FileName>Builder\ChoiceBuilder\Choice187.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -967,20 +897,6 @@
       <FileName>Builder\ChoiceBuilder\Choice196.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice197" Collapsed="true">
-    <Position X="230" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Builder\ChoiceBuilder\Choice197.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice198" Collapsed="true">
-    <Position X="232.25" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Builder\ChoiceBuilder\Choice198.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice199" Collapsed="true">
     <Position X="131" Y="1.75" Width="1.5" />
     <TypeIdentifier>
@@ -1028,20 +944,6 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Builder\ChoiceBuilder\Choice203.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice204" Collapsed="true">
-    <Position X="234.5" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Builder\ChoiceBuilder\Choice204.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice205" Collapsed="true">
-    <Position X="236.75" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Builder\ChoiceBuilder\Choice205.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice206" Collapsed="true">
@@ -1208,7 +1110,7 @@
   <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice29" Collapsed="true">
     <Position X="207.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAQAAgAAIAAAAAAAAAQAAQAAAAAAAQAABAQAA=</HashCode>
+      <HashCode>AEQEAAgCQAQIgAAAAIEAAABAAAASQQAAAAAAAAGAQIA=</HashCode>
       <FileName>Builder\ChoiceBuilder\Choice29.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -1303,67 +1205,18 @@
       <FileName>Builder\ChoiceBuilder\Choice8.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice81" Collapsed="true">
-    <Position X="182.75" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAMAAAAAAAAAAEA=</HashCode>
-      <FileName>Builder\ChoiceBuilder\Choice81.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice82" Collapsed="true">
-    <Position X="182.75" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Builder\ChoiceBuilder\Choice82.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice83" Collapsed="true">
+  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice401" Collapsed="true">
     <Position X="239" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAEA=</HashCode>
-      <FileName>Builder\ChoiceBuilder\Choice83.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAA=</HashCode>
+      <FileName>Builder\ChoiceBuilder\Choice401.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice84" Collapsed="true">
-    <Position X="239" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Builder\ChoiceBuilder\Choice84.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice85" Collapsed="true">
-    <Position X="225.5" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAMCAAAAAAAAAEA=</HashCode>
-      <FileName>Builder\ChoiceBuilder\Choice85.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice86" Collapsed="true">
-    <Position X="164.75" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAMCAAAAAAAAAEA=</HashCode>
-      <FileName>Builder\ChoiceBuilder\Choice86.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice87" Collapsed="true">
+  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice500" Collapsed="true">
     <Position X="295.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAEA=</HashCode>
-      <FileName>Builder\ChoiceBuilder\Choice87.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice88" Collapsed="true">
-    <Position X="304.25" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAEA=</HashCode>
-      <FileName>Builder\ChoiceBuilder\Choice88.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice89" Collapsed="true">
-    <Position X="320" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAEA=</HashCode>
-      <FileName>Builder\ChoiceBuilder\Choice89.cs</FileName>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAA=</HashCode>
+      <FileName>Builder\ChoiceBuilder\Choice500.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice9" Collapsed="true">
@@ -1373,17 +1226,10 @@
       <FileName>Builder\ChoiceBuilder\Choice9.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Fanex.BetList.Core.Builder.ChoiceBuilder.Choice90" Collapsed="true">
-    <Position X="14" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAEMCAAAAAAAAAEA=</HashCode>
-      <FileName>Builder\ChoiceBuilder\Choice90.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Interface Name="Fanex.BetList.Core.Builder.ChoiceBuilder.IChoice" Collapsed="true">
     <Position X="338.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAEAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAAAEAAAAAAAAAAAAAAAAAAAAAAABAAAACAAAA=</HashCode>
       <FileName>Builder\ChoiceBuilder\IChoice.cs</FileName>
     </TypeIdentifier>
   </Interface>

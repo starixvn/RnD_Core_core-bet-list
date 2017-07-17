@@ -88,7 +88,8 @@
         [TestCase(";referID=")]
         [TestCase("referID=")]
         [TestCase("")]
-        public void BuildBetTeam_TransDescIsIncorrect_BetTeamIsNull(string transDesc)
+        [TestCase(null)]
+        public void BuildBetTeam_TransDescIsIncorrect_BetTeamIsEmpty(string transDesc)
         {
             // Arrange.
             _ticket.TransDesc = transDesc;
@@ -97,9 +98,7 @@
             var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            const string BetTeamDefaultStringInTemplate = "{betTeam}";
-
-            Assert.AreEqual(BetTeamDefaultStringInTemplate, template.betTeam);
+            Assert.AreEqual(string.Empty, template.betTeam);
         }
 
         [Test]
@@ -142,6 +141,7 @@
         [TestCase(";referID=")]
         [TestCase("referID=")]
         [TestCase("")]
+        [TestCase(null)]
         public void BuildLeague_TransDescIsIncorrect_GameIdInLeagueNameIsEmpty(string transDesc)
         {
             // Arrange.

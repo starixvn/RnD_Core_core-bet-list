@@ -22,11 +22,6 @@
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            if (string.IsNullOrEmpty(_choiceId))
-            {
-                return;
-            }
-
             string lotteryBetTypeId;
 
             Template.betTeam = ticketHelper.GetLotteryBetChoiceName(_choiceId, out lotteryBetTypeId);

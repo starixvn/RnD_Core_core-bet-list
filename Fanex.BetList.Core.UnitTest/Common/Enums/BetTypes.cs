@@ -715,11 +715,6 @@ namespace Fanex.BetList.Core.UnitTest.Common.Enums
         public const int FirstCorrectScore = 30;
 
         /// <summary>
-        /// BetType = 1501.
-        /// </summary>
-        public const int KenoGames = 1501;
-
-        /// <summary>
         /// BetType = 23001.
         /// </summary>
         public const int CasinoTransfer = 23001;
