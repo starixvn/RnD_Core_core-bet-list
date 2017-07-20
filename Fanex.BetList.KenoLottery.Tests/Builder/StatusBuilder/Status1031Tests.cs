@@ -7,58 +7,19 @@
 
     public class Status1031Tests
     {
-        private IStatus _status;
-        private ITicket _ticket;
-        private ITicketHelper _ticketHelper;
-
-        [SetUp]
-        public void Setup()
-        {
-            _status = new Status1031();
-            _ticket = Substitute.For<ITicket>();
-            _ticketHelper = Substitute.For<ITicketHelper>();
-        }
-
         [Test]
-        public void BuildStatusResult_Always_RefNoInTheLinkIsTicketRefNo()
+        public void BuildStatusResult_Always_HideResultLink()
         {
             // Arrange.
-            _ticket.TransId = 12345;
-            _ticket.RefNo = "34567";
+            IStatus status = new Status1031();
+            ITicket ticket = Substitute.For<ITicket>();
+            ITicketHelper ticketHelper = Substitute.For<ITicketHelper>();
 
             // Act.
-            _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            status.Render(ticket, ticketHelper, null, false);
 
             // Assert.
-            Assert.AreEqual("34567", _status.Template.StatusResult.refNo);
-        }
-
-        [Test]
-        public void BuildStatusResult_Always_BetIdInTheLinkIsTheCombinationOfBetIdAndCustId()
-        {
-            // Arrange.
-            _ticket.BetId = 12345;
-            _ticket.CustId = 34567;
-
-            // Act.
-            _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-
-            // Assert.
-            Assert.AreEqual("12345, 34567", _status.Template.StatusResult.betId);
-        }
-
-        [Test]
-        public void BuildStatusLink_TicketBetIdIsNull_BetIdInTheLinkContainsZeroAsBetId()
-        {
-            // Arrange.
-            _ticket.BetId = null;
-            _ticket.CustId = 34567;
-
-            // Act.
-            _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-
-            // Assert.
-            Assert.AreEqual("0, 34567", _status.Template.StatusResult.betId);
+            Assert.IsFalse(status.Template.StatusResult.Visible);
         }
     }
 }

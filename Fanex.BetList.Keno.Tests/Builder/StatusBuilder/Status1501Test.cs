@@ -8,10 +8,10 @@
     public class Status1501Test
     {
         [Test]
-        public void BuildStatusResult_Always_SetStatusResultVisible()
+        public void BuildStatusResult_Always_HideStatusLink()
         {
             // Arrange.
-            Status1501 status = new Status1501();
+            IStatus status = new Status1501();
             ITicket ticket = Substitute.For<ITicket>();
             ITicketHelper ticketHelper = Substitute.For<ITicketHelper>();
 
