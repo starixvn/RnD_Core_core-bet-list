@@ -6,6 +6,7 @@
     using Entities;
     using Resources;
     using Templates;
+    using Utils;
 
     public class Choice1600 : Choice1
     {
@@ -70,12 +71,12 @@
         {
             string combinations = string.Format(ticket.BetId > 1 ? Lucky3Labels.Combinations : Lucky3Labels.Combination, ticket.BetId);
 
-            return $"{combinations} x {ticket.Currency ?? string.Empty} {ticket.Handicap1}";
+            return $"{combinations} x {ticket.Currency ?? string.Empty} {Formatter.FormatNumber4(ticket.Handicap1)}";
         }
 
         protected static string BuildBets(ITicket ticket)
         {
-            var bets = string.Format(ticket.Odds > 1 ? Lucky3Labels.Bets : Lucky3Labels.Bet, ticket.Odds);
+            var bets = string.Format(ticket.Odds > 1 ? Lucky3Labels.Bets : Lucky3Labels.Bet, Formatter.FormatNumber4(ticket.Odds));
 
             return $"<div class=\"num-of-bets\">{bets}</div>";
         }

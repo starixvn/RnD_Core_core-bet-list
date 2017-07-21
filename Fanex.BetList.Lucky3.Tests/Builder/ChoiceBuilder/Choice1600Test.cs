@@ -410,7 +410,7 @@
             var actualResult = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            var expectedBettingCombinations = $"{string.Format(Lucky3Labels.Combination, _ticket.BetId)} x {_ticket.Currency ?? string.Empty} {_ticket.Handicap1}";
+            var expectedBettingCombinations = $"1 Combination x {_ticket.Currency ?? string.Empty} {_ticket.Handicap1}";
 
             Assert.AreEqual(expectedBettingCombinations, actualResult.Handicap.handicap);
         }
@@ -425,7 +425,24 @@
             var actualResult = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            var expectedBettingCombinations = $"{string.Format(Lucky3Labels.Combinations, _ticket.BetId)} x {_ticket.Currency ?? string.Empty} {_ticket.Handicap1}";
+            var expectedBettingCombinations = $"2 Combinations x {_ticket.Currency ?? string.Empty} {_ticket.Handicap1}";
+
+            Assert.AreEqual(expectedBettingCombinations, actualResult.Handicap.handicap);
+        }
+
+        [Test]
+        public void BuildBetTeamClassNameAndHandicap_Always_TruncateTrailingZerosInDecimalPartOfHandicap1()
+        {
+            // Arrange.
+            _ticket.BetId = 2;
+            _ticket.Currency = "AUD";
+            _ticket.Handicap1 = 1.5000M;
+
+            // Act.
+            var actualResult = _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert.
+            var expectedBettingCombinations = $"2 Combinations x AUD 1.5";
 
             Assert.AreEqual(expectedBettingCombinations, actualResult.Handicap.handicap);
         }
@@ -440,7 +457,7 @@
             var actualResult = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            var expectedHtml = $"<div class=\"num-of-bets\">{string.Format(Lucky3Labels.Bet, _ticket.Odds)}</div>";
+            var expectedHtml = $"<div class=\"num-of-bets\">1 Bet</div>";
 
             Assert.AreEqual(expectedHtml, actualResult.Handicap.Odds.ToString());
         }
@@ -455,7 +472,22 @@
             var actualResult = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            var expectedHtml = $"<div class=\"num-of-bets\">{string.Format(Lucky3Labels.Bets, _ticket.Odds)}</div>";
+            var expectedHtml = $"<div class=\"num-of-bets\">2 Bets</div>";
+
+            Assert.AreEqual(expectedHtml, actualResult.Handicap.Odds.ToString());
+        }
+
+        [Test]
+        public void BuildBetTeamClassNameAndHandicap_Always_TruncateTrailingZerosInTheDecimalPartOfOdds()
+        {
+            // Arrange.
+            _ticket.Odds = 2.0000M;
+
+            // Act.
+            var actualResult = _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert.
+            var expectedHtml = $"<div class=\"num-of-bets\">2 Bets</div>";
 
             Assert.AreEqual(expectedHtml, actualResult.Handicap.Odds.ToString());
         }
