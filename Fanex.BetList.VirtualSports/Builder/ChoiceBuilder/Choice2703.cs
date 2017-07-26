@@ -4,6 +4,7 @@
     using App_GlobalResources;
     using Constants;
     using Entities;
+    using Templates;
     using Utils;
 
     /// <summary>
@@ -11,6 +12,15 @@
     /// </summary>
     public class Choice2703 : Choice3
     {
+        private string _matchRoundInfo;
+
+        public override Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
+        {
+            _matchRoundInfo = VirtualSportsChoiceUtils.ParseMatchInfo(ticket.TransDesc);
+
+            return base.Render(ticket, ticketHelper, ticketData, isShowScoreMap);
+        }
+
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
             => Template.betTeam = BetTeamValue.O == ticket.BetTeam.ToLowerInvariant() ? CoreBetList.over : CoreBetList.under;
 
@@ -24,14 +34,14 @@
         {
             base.BuildMatch(ticket, ticketHelper);
 
-            Template.AppendMatchOrRoundInfo(ticket);
+            Template.AppendMatchOrRoundInfo(_matchRoundInfo);
         }
 
         protected override void BuildBetTeamsInfo(ITicket ticket, ref RTFHelper rtfHelper)
         {
             base.BuildBetTeamsInfo(ticket, ref rtfHelper);
 
-            rtfHelper.RTFRenderer.AddText($"\n{ticket.TransDesc}");
+            rtfHelper.RTFRenderer.AddText($"\n{_matchRoundInfo}");
         }
     }
 }

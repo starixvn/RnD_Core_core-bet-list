@@ -17,24 +17,104 @@
             _ticket = Substitute.For<ITicket>();
         }
 
-        [Test]
-        public void Render_Always_OddsIsHyphen()
+        [TestCase(0)]
+        [TestCase(1)]
+        [TestCase(101)]
+        [TestCase(102)]
+        [TestCase(103)]
+        [TestCase(113)]
+        public void Render_StatusIdIsNotWonOrDraw_OddsIsHyphen(int statusId)
         {
-            // Act
+            // Arrange.
+            _ticket.StatusId = statusId;
+
+            // Act.
             var builtOdds = _odds.Render(_ticket, null, Substitute.For<GetCachePropertyById>());
 
-            // Assert
+            // Assert.
             Assert.AreEqual("-", builtOdds.odds);
         }
 
-        [Test]
-        public void Render_Always_OddsTypeIsEmpty()
+        [TestCase(0)]
+        [TestCase(1)]
+        [TestCase(101)]
+        [TestCase(102)]
+        [TestCase(103)]
+        [TestCase(113)]
+        public void Render_StatusIdIsNotWonOrDraw_OddsTypeIsEmpty(int statusId)
         {
-            // Act
+            // Arrange.
+            _ticket.StatusId = statusId;
+
+            // Act.
             var builtOdds = _odds.Render(_ticket, null, Substitute.For<GetCachePropertyById>());
 
-            // Assert
+            // Assert.
             Assert.AreEqual(string.Empty, builtOdds.oddsType);
+        }
+
+        [TestCase("running")]
+        [TestCase("waiting")]
+        [TestCase("reject")]
+        [TestCase("void")]
+        [TestCase("refund")]
+        [TestCase("lose")]
+        public void Render_StatusIsNotWonOrDraw_OddsIsHyphen(string status)
+        {
+            // Arrange.
+            _ticket.Status = status;
+
+            // Act.
+            var builtOdds = _odds.Render(_ticket, null, Substitute.For<GetCachePropertyById>());
+
+            // Assert.
+            Assert.AreEqual("-", builtOdds.odds);
+        }
+
+        [TestCase("running")]
+        [TestCase("waiting")]
+        [TestCase("reject")]
+        [TestCase("void")]
+        [TestCase("refund")]
+        [TestCase("lose")]
+        public void Render_StatusIsNotWonOrDraw_OddsTypeIsEmpty(string status)
+        {
+            // Arrange.
+            _ticket.Status = status;
+
+            // Act.
+            var builtOdds = _odds.Render(_ticket, null, Substitute.For<GetCachePropertyById>());
+
+            // Assert.
+            Assert.AreEqual(string.Empty, builtOdds.oddsType);
+        }
+
+        [Test]
+        public void Render_StatusIdIsWon_OddsIsShownWithFourDecimalDigits()
+        {
+            // Arrange.
+            _ticket.StatusId = 112;
+            _ticket.MasterOdds = 1;
+
+            // Act.
+            var builtOdds = _odds.Render(_ticket, null, Substitute.For<GetCachePropertyById>());
+
+            // Assert.
+            Assert.AreEqual("1.0000", builtOdds.odds);
+        }
+
+        [Test]
+        public void Render_StatusIsWonOrDraw_OddsIsShownWithFourDecimalDigits()
+        {
+            // Arrange.
+            _ticket.Status = "won";
+            _ticket.MasterOdds = 1;
+
+            // Act.
+            var builtOdds = _odds.Render(_ticket, null, Substitute.For<GetCachePropertyById>());
+
+            // Assert.
+            Assert.AreEqual("1.0000", builtOdds.odds);
         }
     }
 }

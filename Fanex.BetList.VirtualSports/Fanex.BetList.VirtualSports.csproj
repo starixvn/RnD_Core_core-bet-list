@@ -48,6 +48,7 @@
     <Compile Include="Builder\ChoiceBuilder\Choice2703.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice2705.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice2707.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2799.cs" />
     <Compile Include="Builder\ChoiceBuilder\ChoiceUtils.cs" />
     <Compile Include="Builder\OddsBuilder\Odds1231.cs" />
     <Compile Include="Builder\OddsBuilder\Odds1233.cs" />

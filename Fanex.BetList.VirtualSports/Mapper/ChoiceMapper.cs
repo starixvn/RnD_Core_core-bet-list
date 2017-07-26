@@ -20,9 +20,6 @@
 
             // 1H HDP
             MapIdToBaseId(2706, 2705);
-
-            // 1H HDP
-            MapIdToBaseId(2799, 9);
         }
     }
 }

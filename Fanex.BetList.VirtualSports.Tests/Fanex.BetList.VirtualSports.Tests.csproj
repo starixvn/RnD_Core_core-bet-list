@@ -47,6 +47,7 @@
       <HintPath>..\packages\NUnit.3.0.0\lib\net40\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System" />
     <Reference Include="TplCore, Version=1.0.4854.17253, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\TplCore.1.0.4854.17254\lib\net40\TplCore.dll</HintPath>
       <Private>True</Private>
@@ -68,6 +69,7 @@
     <Compile Include="Builder\ChoiceBuilder\Choice2703Tests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice2705Tests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice2707Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2799Tests.cs" />
     <Compile Include="Builder\OddsBuilder\Odds1231Tests.cs" />
     <Compile Include="Builder\OddsBuilder\Odds1233Tests.cs" />
     <Compile Include="Builder\OddsBuilder\Odds2799Tests.cs" />
