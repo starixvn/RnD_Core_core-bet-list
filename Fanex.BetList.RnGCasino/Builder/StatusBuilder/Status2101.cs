@@ -44,34 +44,34 @@
         private static string BuildRunningLink(ITicket ticket, string status)
         {
             var viewRunningTicketResultTag = new[]
-                    {
-                        "<div class=\"result\" onclick=\"ViewResult(",
-                        ticket.MatchId.ToString(CultureInfo.InvariantCulture),
-                        ", ",
-                        string.IsNullOrEmpty(ticket.Race) ? "0" : ticket.Race,
-                        ", ",
-                        ticket.BetTypeId.ToString(CultureInfo.InvariantCulture),
-                        ", ",
-                        ticket.SportTypeId.ToString(CultureInfo.InvariantCulture),
-                        ", ",
-                        "'",
-                        ticket.BetCheck ?? string.Empty,
-                        "'",
-                        ", ",
-                        "'",
-                        ticket.UserName ?? string.Empty,
-                        "'",
-                        ", ",
-                        "'",
-                        Formatter.FullDateFormat(ticket.WinlostDate),
-                        "'",
-                        ", ",
-                        "0, ",
-                        ticket.LeagueId.ToString(CultureInfo.InvariantCulture),
-                        ", 0, 0);\">",
-                        status,
-                        "</div>"
-                    };
+                {
+                    "<div class=\"result\" onclick=\"ViewResult(",
+                    ticket.MatchId.ToString(CultureInfo.InvariantCulture),
+                    ", ",
+                    string.IsNullOrEmpty(ticket.Race) ? "0" : ticket.Race,
+                    ", ",
+                    ticket.BetTypeId.ToString(CultureInfo.InvariantCulture),
+                    ", ",
+                    ticket.SportTypeId.ToString(CultureInfo.InvariantCulture),
+                    ", ",
+                    "'",
+                    ticket.BetCheck ?? string.Empty,
+                    "'",
+                    ", ",
+                    "'",
+                    ticket.UserName ?? string.Empty,
+                    "'",
+                    ", ",
+                    "'",
+                    Formatter.FullDateFormat(ticket.WinlostDate),
+                    "'",
+                    ", ",
+                    "0, ",
+                    ticket.LeagueId.ToString(CultureInfo.InvariantCulture),
+                    ", 0, 0);\">",
+                    status,
+                    "</div>"
+                };
 
             return string.Join(null, viewRunningTicketResultTag);
         }

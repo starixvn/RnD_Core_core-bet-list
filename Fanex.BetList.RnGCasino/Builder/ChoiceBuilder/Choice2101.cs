@@ -6,7 +6,7 @@
     using System.Text.RegularExpressions;
     using App_GlobalResources;
     using Constants;
-    using Fanex.BetList.Core.Entities;
+    using Entities;
     using Templates;
 
     public class Choice2101 : Choice1
@@ -15,7 +15,6 @@
         private const string BetTypeCloseTag = "</span> ";
         private const string GameTypeRefId = "RNG_Casino_GT";
         private const string GameGroupRefId = "RNG_Casino_GG";
-
         private const string GameGroupNameArea = "<span class='gamegroupname'> {0}</span>";
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
