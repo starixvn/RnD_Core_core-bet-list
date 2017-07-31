@@ -29,7 +29,7 @@ namespace Fanex.BetList.Core.Resources {
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        public NumberGameLang() {
+        internal NumberGameLang() {
         }
         
         /// <summary>
@@ -59,7 +59,7 @@ namespace Fanex.BetList.Core.Resources {
                 resourceCulture = value;
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to High.
         /// </summary>
@@ -68,43 +68,43 @@ namespace Fanex.BetList.Core.Resources {
                 return ResourceManager.GetString("high", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Over/Even.
+        ///   Looks up a localized string similar to Over 37.5/Even.
         /// </summary>
         public static string lblOverEven {
             get {
                 return ResourceManager.GetString("lblOverEven", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Over/Odd.
+        ///   Looks up a localized string similar to Over 37.5/Odd.
         /// </summary>
         public static string lblOverOdd {
             get {
                 return ResourceManager.GetString("lblOverOdd", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Under/Even.
+        ///   Looks up a localized string similar to Under 37.5/Even.
         /// </summary>
         public static string lblUnderEven {
             get {
                 return ResourceManager.GetString("lblUnderEven", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Under/Odd.
+        ///   Looks up a localized string similar to Under 37.5/Odd.
         /// </summary>
         public static string lblUnderOdd {
             get {
                 return ResourceManager.GetString("lblUnderOdd", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Low.
         /// </summary>
@@ -113,7 +113,7 @@ namespace Fanex.BetList.Core.Resources {
                 return ResourceManager.GetString("low", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Next.
         /// </summary>
@@ -122,7 +122,7 @@ namespace Fanex.BetList.Core.Resources {
                 return ResourceManager.GetString("next", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Number Game No.
         /// </summary>
@@ -131,7 +131,7 @@ namespace Fanex.BetList.Core.Resources {
                 return ResourceManager.GetString("numbergameno", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Number Wheel.
         /// </summary>
@@ -140,7 +140,7 @@ namespace Fanex.BetList.Core.Resources {
                 return ResourceManager.GetString("numberGroup", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to 2nd ball win.
         /// </summary>
@@ -149,7 +149,7 @@ namespace Fanex.BetList.Core.Resources {
                 return ResourceManager.GetString("warrior2ndBall", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to 3rd ball win.
         /// </summary>

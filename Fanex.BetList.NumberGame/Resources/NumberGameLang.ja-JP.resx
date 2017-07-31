@@ -136,16 +136,16 @@
     <value>3rd ball to win</value>
   </data>
   <data name="lblOverOdd" xml:space="preserve">
-    <value>Over/Odd</value>
+    <value>オ－バ－ 37.5/オッド</value>
   </data>
   <data name="lblOverEven" xml:space="preserve">
-    <value>Over/Even</value>
+    <value>オ－バ－ 37.5/イーブン</value>
   </data>
   <data name="lblUnderOdd" xml:space="preserve">
-    <value>Under/Odd</value>
+    <value>アンダー 37.5/オッド</value>
   </data>
   <data name="lblUnderEven" xml:space="preserve">
-    <value>Under/Even</value>
+    <value>アンダー 37.5/イーブン</value>
   </data>
   <data name="numberGroup" xml:space="preserve">
     <value>Number Wheel</value>

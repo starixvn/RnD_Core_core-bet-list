@@ -116,16 +116,16 @@
     <value>3rd ball win</value>
   </data>
   <data name="lblUnderEven" xml:space="preserve">
-    <value>Under/Even</value>
+    <value>Under 37.5/Even</value>
   </data>
   <data name="lblUnderOdd" xml:space="preserve">
-    <value>Under/Odd</value>
+    <value>Under 37.5/Odd</value>
   </data>
   <data name="lblOverEven" xml:space="preserve">
-    <value>Over/Even</value>
+    <value>Over 37.5/Even</value>
   </data>
   <data name="lblOverOdd" xml:space="preserve">
-    <value>Over/Odd</value>
+    <value>Over 37.5/Odd</value>
   </data>
   <data name="numberGroup" xml:space="preserve">
     <value>Number Wheel</value>

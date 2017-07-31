@@ -136,16 +136,16 @@
     <value>3rd ball win</value>
   </data>
   <data name="lblOverOdd" xml:space="preserve">
-    <value>Lẻ/Chẵn</value>
+    <value>Tài 37.5/Lẻ</value>
   </data>
   <data name="lblOverEven" xml:space="preserve">
-    <value>Over/Even</value>
+    <value>Tài 37.5/Chẵn</value>
   </data>
   <data name="lblUnderOdd" xml:space="preserve">
-    <value>Under/Odd</value>
+    <value>Xỉu 37.5/Lẻ</value>
   </data>
   <data name="lblUnderEven" xml:space="preserve">
-    <value>Under/Even</value>
+    <value>Xỉu 37.5/Chẵn</value>
   </data>
   <data name="numberGroup" xml:space="preserve">
     <value>Number Wheel</value>

@@ -78,7 +78,7 @@
     <EmbeddedResource Include="Resources\NumberGameLang.ja-JP.resx" />
     <EmbeddedResource Include="Resources\NumberGameLang.ko-KR.resx" />
     <EmbeddedResource Include="Resources\NumberGameLang.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>NumberGameLang.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\NumberGameLang.th-TH.resx" />

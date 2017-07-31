@@ -136,16 +136,16 @@
     <value>第三颗球赢</value>
   </data>
   <data name="lblOverOdd" xml:space="preserve">
-    <value>大/单</value>
+    <value>大 37.5/单</value>
   </data>
   <data name="lblOverEven" xml:space="preserve">
-    <value>大/双</value>
+    <value>大 37.5/双</value>
   </data>
   <data name="lblUnderOdd" xml:space="preserve">
-    <value>小/单</value>
+    <value>小 37.5/单</value>
   </data>
   <data name="lblUnderEven" xml:space="preserve">
-    <value>小/双</value>
+    <value>小 37.5/双</value>
   </data>
   <data name="numberGroup" xml:space="preserve">
     <value>包牌</value>

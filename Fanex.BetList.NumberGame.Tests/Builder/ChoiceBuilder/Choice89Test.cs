@@ -9,30 +9,28 @@
 
     public class Choice89Test
     {
-        private static string spanClassWith37point5 = " <span style='color:#555555'>37.5</span> ";
-
         private static object[] betTeamNames =
         {
             // ticket.Live, betId, ticket.BetTeam, expectedValue
-            new object[] { true, 0, "1:1", string.Join(null, NumberGameLang.lblOverOdd, spanClassWith37point5 + " [0]") },
-            new object[] { true, 0, "1:2", string.Join(null, NumberGameLang.lblOverEven, spanClassWith37point5 + " [0]") },
-            new object[] { true, 0, "2:1", string.Join(null, NumberGameLang.lblUnderOdd, spanClassWith37point5 + " [0]") },
-            new object[] { true, 0, "2:2", string.Join(null, NumberGameLang.lblUnderEven, spanClassWith37point5 + " [0]") },
+            new object[] { true, 0, "1:1", string.Join(null, NumberGameLang.lblOverOdd,  " [0]") },
+            new object[] { true, 0, "1:2", string.Join(null, NumberGameLang.lblOverEven,  " [0]") },
+            new object[] { true, 0, "2:1", string.Join(null, NumberGameLang.lblUnderOdd,  " [0]") },
+            new object[] { true, 0, "2:2", string.Join(null, NumberGameLang.lblUnderEven,  " [0]") },
 
-            new object[] { false, 0, "1:1", string.Join(null, NumberGameLang.lblOverOdd, spanClassWith37point5 + " [0]") },
-            new object[] { false, 0, "1:2", string.Join(null, NumberGameLang.lblOverEven, spanClassWith37point5 + " [0]") },
-            new object[] { false, 0, "2:1", string.Join(null, NumberGameLang.lblUnderOdd, spanClassWith37point5 + " [0]") },
-            new object[] { false, 0, "2:2", string.Join(null, NumberGameLang.lblUnderEven, spanClassWith37point5 + " [0]") },
+            new object[] { false, 0, "1:1", string.Join(null, NumberGameLang.lblOverOdd,  " [0]") },
+            new object[] { false, 0, "1:2", string.Join(null, NumberGameLang.lblOverEven,  " [0]") },
+            new object[] { false, 0, "2:1", string.Join(null, NumberGameLang.lblUnderOdd,  " [0]") },
+            new object[] { false, 0, "2:2", string.Join(null, NumberGameLang.lblUnderEven,  " [0]") },
 
-            new object[] { true, 1, "1:1", string.Join(null, NumberGameLang.lblOverOdd, spanClassWith37point5 + " [1]") },
-            new object[] { true, 1, "1:2", string.Join(null, NumberGameLang.lblOverEven, spanClassWith37point5 + " [1]") },
-            new object[] { true, 1, "2:1", string.Join(null, NumberGameLang.lblUnderOdd, spanClassWith37point5 + " [1]") },
-            new object[] { true, 1, "2:2", string.Join(null, NumberGameLang.lblUnderEven, spanClassWith37point5 + " [1]") },
+            new object[] { true, 1, "1:1", string.Join(null, NumberGameLang.lblOverOdd, " [1]") },
+            new object[] { true, 1, "1:2", string.Join(null, NumberGameLang.lblOverEven,  " [1]") },
+            new object[] { true, 1, "2:1", string.Join(null, NumberGameLang.lblUnderOdd,  " [1]") },
+            new object[] { true, 1, "2:2", string.Join(null, NumberGameLang.lblUnderEven,  " [1]") },
 
-            new object[] { false, 1, "1:1", string.Join(null, NumberGameLang.lblOverOdd, spanClassWith37point5 + " [0]") },
-            new object[] { false, 1, "1:2", string.Join(null, NumberGameLang.lblOverEven, spanClassWith37point5 + " [0]") },
-            new object[] { false, 1, "2:1", string.Join(null, NumberGameLang.lblUnderOdd, spanClassWith37point5 + " [0]") },
-            new object[] { false, 1, "2:2", string.Join(null, NumberGameLang.lblUnderEven, spanClassWith37point5 + " [0]") }
+            new object[] { false, 1, "1:1", string.Join(null, NumberGameLang.lblOverOdd,  " [0]") },
+            new object[] { false, 1, "1:2", string.Join(null, NumberGameLang.lblOverEven,  " [0]") },
+            new object[] { false, 1, "2:1", string.Join(null, NumberGameLang.lblUnderOdd,  " [0]") },
+            new object[] { false, 1, "2:2", string.Join(null, NumberGameLang.lblUnderEven, " [0]") }
         };
 
         private Choice89 _choice;

@@ -136,16 +136,16 @@
     <value>บอลลูกที่สาม ชนะ</value>
   </data>
   <data name="lblOverOdd" xml:space="preserve">
-    <value>สูง คี่</value>
+    <value>สูง 37.5/คี่</value>
   </data>
   <data name="lblOverEven" xml:space="preserve">
-    <value>สูง คู่</value>
+    <value>สูง 37.5/คู่</value>
   </data>
   <data name="lblUnderOdd" xml:space="preserve">
-    <value>ต่ำ คี่</value>
+    <value>ต่ำ 37.5/คี่</value>
   </data>
   <data name="lblUnderEven" xml:space="preserve">
-    <value>ต่ำ คู่</value>
+    <value>ต่ำ 37.5/คู่</value>
   </data>
   <data name="numberGroup" xml:space="preserve">
     <value>กลุ่มหมายเลข</value>

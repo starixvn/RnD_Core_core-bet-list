@@ -136,16 +136,16 @@
     <value>세번째 공 승리</value>
   </data>
   <data name="lblOverOdd" xml:space="preserve">
-    <value>오버/짝수</value>
+    <value>오버 37.5/홀수</value>
   </data>
   <data name="lblOverEven" xml:space="preserve">
-    <value>오버/홀수</value>
+    <value>오버 37.5/짝수</value>
   </data>
   <data name="lblUnderOdd" xml:space="preserve">
-    <value>언더/짝수</value>
+    <value>언더 37.5/홀수</value>
   </data>
   <data name="lblUnderEven" xml:space="preserve">
-    <value>언더/홀수</value>
+    <value>언더 37.5/짝수</value>
   </data>
   <data name="numberGroup" xml:space="preserve">
     <value>라이브빙고게임 그룹</value>

@@ -45,7 +45,7 @@
                     break;
             }
 
-            Template.betTeam = betTeam + NumberGameValue + liveScore;
+            Template.betTeam = betTeam + liveScore;
         }
     }
 }
