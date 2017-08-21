@@ -71,6 +71,7 @@
             if (ticketDetails.Count > 0 && IsNotRunningTicket(ticket))
             {
                 int count = 1;
+
                 foreach (var ticketDetail in ticketDetails)
                 {
                     var odds = ConvertByBetType.Odds(ticketDetail.Odds, ticket.BetTypeId, ticket.OddsType);
