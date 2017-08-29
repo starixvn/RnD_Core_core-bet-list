@@ -26,7 +26,7 @@
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
             Template.betTeamClassName = "lucky3";
-            Template.betTeam = ticket.TransDesc;
+            Template.betTeam = ticket.TransDesc ?? string.Empty;
             Template.Handicap.handicap = BuildCombinations(ticket);
             Template.Handicap.Odds.SetValue(BuildBets(ticket));
         }
