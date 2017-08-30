@@ -651,7 +651,7 @@
 
             if (!string.IsNullOrEmpty(choice))
             {
-                rtfHelper.RTFRenderer.AddText("\n" + choice);
+                rtfHelper.RTFRenderer.AddText("\n" + choice + Space);
 
                 return true;
             }

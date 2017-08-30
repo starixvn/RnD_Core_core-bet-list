@@ -172,6 +172,7 @@
     <Compile Include="Builder\BetListBaseBuilder.cs" />
     <Compile Include="Builder\BetListExcelBuilder.cs" />
     <Compile Include="Builder\BetListHTMLBuilder.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice22.cs" />
     <Compile Include="Builder\ChoiceBuilder\3rd\Choice_22006.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1.cs">
       <SubType>Code</SubType>
@@ -308,6 +309,10 @@
     <Compile Include="Builder\ChoiceBuilder\Choice419.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice418.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice417.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice449.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice450.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice451.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice452.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice461.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice5.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice500.cs" />

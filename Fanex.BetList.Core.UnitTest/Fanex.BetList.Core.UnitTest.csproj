@@ -128,6 +128,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Builder\ChoiceBuilder\Choice221Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice22Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice411Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice195Test.cs">
       <SubType>Code</SubType>
@@ -168,6 +169,11 @@
     <Compile Include="Builder\ChoiceBuilder\Choice419Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice418Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice417Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice448Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice449Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice450Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice451Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice452Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice461Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice500Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice614Tests.cs" />
