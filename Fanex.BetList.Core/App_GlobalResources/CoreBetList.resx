@@ -815,4 +815,10 @@
   <data name="CashOutLabel" xml:space="preserve">
     <value>Cash Out from No.:</value>
   </data>
+  <data name="FtAsian" xml:space="preserve">
+    <value>FT Asian</value>
+  </data>
+  <data name="HtAsian" xml:space="preserve">
+    <value />
+  </data>
 </root>

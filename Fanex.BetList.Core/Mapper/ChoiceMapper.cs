@@ -164,6 +164,15 @@
 
             // Map '1H Away Team Over/Under (dec)' to 'Home Team Over / Under(dec)'.
             MapIdToBaseId(464, 461);
+            
+            // Map '1H 3-Way Handicap' to '3-Way Handicap'.
+            MapIdToBaseId(453, 28);
+
+            // Map '1H Both Teams To Score / Result' to 'Both Teams To Score / Result'.
+            MapIdToBaseId(456, 417);
+
+            // Map '1H Both Teams To Score / Total Goals' to 'Both Teams To Score / Total Goals'.
+            MapIdToBaseId(457, 418);
         }
     }
 }

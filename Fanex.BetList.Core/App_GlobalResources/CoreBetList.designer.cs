@@ -673,6 +673,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to FT Asian.
+        /// </summary>
+        public static string FtAsian {
+            get {
+                return ResourceManager.GetString("FtAsian", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Full Time.
         /// </summary>
         public static string FullTime {
@@ -840,6 +849,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string ht {
             get {
                 return ResourceManager.GetString("ht", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string HtAsian {
+            get {
+                return ResourceManager.GetString("HtAsian", resourceCulture);
             }
         }
         
