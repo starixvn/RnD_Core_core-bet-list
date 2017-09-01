@@ -853,7 +853,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to HT Asian.
         /// </summary>
         public static string HtAsian {
             get {

@@ -11,11 +11,13 @@
     /// </summary>
     public class Choice449 : Choice1
     {
+        private const int ExpectedBetTeamLength = 3;
+
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             string betTeam = ticket.BetTeam?.ToLowerInvariant() ?? string.Empty;
 
-            if (betTeam.Length == 3)
+            if (betTeam.Length == ExpectedBetTeamLength)
             {
                 string firstChanceChoice = MapDoubleChanceChoice(betTeam[0]);
                 string secondChanceChoice = MapDoubleChanceChoice(betTeam[1]);

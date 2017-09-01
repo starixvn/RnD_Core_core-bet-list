@@ -76,6 +76,7 @@
 
         [TestCase("abc")]
         [TestCase("")]
+        [TestCase(null)]
         public void BuildBetTeam_TicketBetTeamIsNotHOrAOrNG_BetTeamIsEmpty(string betTeam)
         {
             // Arrange.
