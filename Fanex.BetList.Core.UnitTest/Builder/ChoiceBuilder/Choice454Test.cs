@@ -25,7 +25,7 @@
         [TestCase("1xH")]
         [TestCase("1Xh")]
         [TestCase("1xh")]
-        public void BuildBetTeam_BetTeamIs1XH_BetTeamIsHomeDrawAndHome(string betTeam)
+        public void BuildBetTeam_TicketBetTeamIs1XH_BetTeamIsHomeDrawAndHome(string betTeam)
         {
             // Arrange.
             _ticket.BetTeam = betTeam;
@@ -34,14 +34,14 @@
             Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            const string ExpectedBetOption = "Home/Draw <span class=\"underdog\">&</span> Home";
+            string expectedBetOption = $"{CoreBetList.Home}/{CoreBetList.draw} <span class=\"underdog\">&</span> {CoreBetList.Home}";
 
-            Assert.AreEqual(ExpectedBetOption, template.betTeam);
+            Assert.AreEqual(expectedBetOption, template.betTeam);
         }
 
         [TestCase("12H")]
         [TestCase("12h")]
-        public void BuildBetTeam_BetTeamIs12H_BetTeamIsHomeAwayAndHome(string betTeam)
+        public void BuildBetTeam_TicketBetTeamIs12H_BetTeamIsHomeAwayAndHome(string betTeam)
         {
             // Arrange.
             _ticket.BetTeam = betTeam;
@@ -50,16 +50,16 @@
             Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            const string ExpectedBetOption = "Home/Away <span class=\"underdog\">&</span> Home";
+            string expectedBetOption = $"{CoreBetList.Home}/{CoreBetList.Away} <span class=\"underdog\">&</span> {CoreBetList.Home}";
 
-            Assert.AreEqual(ExpectedBetOption, template.betTeam);
+            Assert.AreEqual(expectedBetOption, template.betTeam);
         }
 
         [TestCase("2XH")]
         [TestCase("2xH")]
         [TestCase("2Xh")]
         [TestCase("2xh")]
-        public void BuildBetTeam_BetTeamIs2XH_BetTeamIsAwayDrawAndHome(string betTeam)
+        public void BuildBetTeam_TicketBetTeamIs2XH_BetTeamIsAwayDrawAndHome(string betTeam)
         {
             // Arrange.
             _ticket.BetTeam = betTeam;
@@ -68,16 +68,16 @@
             Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            const string ExpectedBetOption = "Away/Draw <span class=\"underdog\">&</span> Home";
+            string expectedBetOption = $"{CoreBetList.Away}/{CoreBetList.draw} <span class=\"underdog\">&</span> {CoreBetList.Home}";
 
-            Assert.AreEqual(ExpectedBetOption, template.betTeam);
+            Assert.AreEqual(expectedBetOption, template.betTeam);
         }
 
         [TestCase("1XA")]
         [TestCase("1xA")]
         [TestCase("1Xa")]
         [TestCase("1xa")]
-        public void BuildBetTeam_BetTeamIs1XA_BetTeamIsHomeDrawAndAway(string betTeam)
+        public void BuildBetTeam_TicketBetTeamIs1XA_BetTeamIsHomeDrawAndAway(string betTeam)
         {
             // Arrange.
             _ticket.BetTeam = betTeam;
@@ -86,14 +86,14 @@
             Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            const string ExpectedBetOption = "Home/Draw <span class=\"underdog\">&</span> Away";
+            string expectedBetOption = $"{CoreBetList.Home}/{CoreBetList.draw} <span class=\"underdog\">&</span> {CoreBetList.Away}";
 
-            Assert.AreEqual(ExpectedBetOption, template.betTeam);
+            Assert.AreEqual(expectedBetOption, template.betTeam);
         }
 
         [TestCase("12A")]
         [TestCase("12a")]
-        public void BuildBetTeam_BetTeamIs12A_BetTeamIsHomeAwayAndAway(string betTeam)
+        public void BuildBetTeam_TicketBetTeamIs12A_BetTeamIsHomeAwayAndAway(string betTeam)
         {
             // Arrange.
             _ticket.BetTeam = betTeam;
@@ -102,16 +102,16 @@
             Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            const string ExpectedBetOption = "Home/Away <span class=\"underdog\">&</span> Away";
+            string expectedBetOption = $"{CoreBetList.Home}/{CoreBetList.Away} <span class=\"underdog\">&</span> {CoreBetList.Away}";
 
-            Assert.AreEqual(ExpectedBetOption, template.betTeam);
+            Assert.AreEqual(expectedBetOption, template.betTeam);
         }
 
         [TestCase("2XA")]
         [TestCase("2xA")]
         [TestCase("2Xa")]
         [TestCase("2xa")]
-        public void BuildBetTeam_BetTeamIs2XA_BetTeamIsAwayDrawAndAway(string betTeam)
+        public void BuildBetTeam_TicketBetTeamIs2XA_BetTeamIsAwayDrawAndAway(string betTeam)
         {
             // Arrange.
             _ticket.BetTeam = betTeam;
@@ -120,16 +120,16 @@
             Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            const string ExpectedBetOption = "Away/Draw <span class=\"underdog\">&</span> Away";
+            string expectedBetOption = $"{CoreBetList.Away}/{CoreBetList.draw} <span class=\"underdog\">&</span> {CoreBetList.Away}";
 
-            Assert.AreEqual(ExpectedBetOption, template.betTeam);
+            Assert.AreEqual(expectedBetOption, template.betTeam);
         }
 
         [TestCase("NG")]
         [TestCase("nG")]
         [TestCase("Ng")]
         [TestCase("ng")]
-        public void BuildBetTeam_BetTeamIsNG_BetTeamIsNoGoal(string betTeam)
+        public void BuildBetTeam_TicketBetTeamIsNG_BetTeamIsNoGoal(string betTeam)
         {
             // Arrange.
             _ticket.BetTeam = betTeam;
@@ -148,7 +148,7 @@
         [TestCase("NGabc")]
         [TestCase("")]
         [TestCase(null)]
-        public void BuildBetTeam_BetTeamIsNotInExpectedValueList_BetTeamIsEmpty(string betTeam)
+        public void BuildBetTeam_TicketBetTeamIsNotInExpectedValueList_BetTeamIsEmpty(string betTeam)
         {
             // Arrange.
             _ticket.BetTeam = betTeam;

@@ -21,7 +21,7 @@
                 return;
             }
 
-            if (betTeam?.Length == 3)
+            if (betTeam.Length == 3)
             {
                 string firstChanceChoice = MapDoubleChanceChoice(betTeam[0]);
                 string secondChanceChoice = MapDoubleChanceChoice(betTeam[1]);

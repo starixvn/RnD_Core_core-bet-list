@@ -1,5 +1,6 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
+    using App_GlobalResources;
     using Core.Builder.ChoiceBuilder;
     using Core.Templates;
     using Entities;
@@ -24,7 +25,7 @@
         [TestCase("Oo")]
         [TestCase("oO")]
         [TestCase("oo")]
-        public void BuildBetTeam_BetTeamIsOO_BetTeamIsOddAndOver(string betTeam)
+        public void BuildBetTeam_TicketBetTeamIsOO_BetTeamIsOddAndOver(string betTeam)
         {
             // Arrange.
             _ticket.BetTeam = betTeam;
@@ -33,16 +34,16 @@
             Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            const string ExpectedBetOption = "Odd <span class=\"underdog\">&</span> Over";
+            string expectedBetOption = $"{CoreBetList.odd} <span class=\"underdog\">&</span> {CoreBetList.over}";
 
-            Assert.AreEqual(ExpectedBetOption, template.betTeam);
+            Assert.AreEqual(expectedBetOption, template.betTeam);
         }
 
         [TestCase("OU")]
         [TestCase("Ou")]
         [TestCase("oU")]
         [TestCase("ou")]
-        public void BuildBetTeam_BetTeamIsOU_BetTeamIsOddAndUnder(string betTeam)
+        public void BuildBetTeam_TicketBetTeamIsOU_BetTeamIsOddAndUnder(string betTeam)
         {
             // Arrange.
             _ticket.BetTeam = betTeam;
@@ -51,16 +52,16 @@
             Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            const string ExpectedBetOption = "Odd <span class=\"underdog\">&</span> Under";
+            string expectedBetOption = $"{CoreBetList.odd} <span class=\"underdog\">&</span> {CoreBetList.under}";
 
-            Assert.AreEqual(ExpectedBetOption, template.betTeam);
+            Assert.AreEqual(expectedBetOption, template.betTeam);
         }
 
         [TestCase("EO")]
         [TestCase("Eo")]
         [TestCase("eO")]
         [TestCase("eo")]
-        public void BuildBetTeam_BetTeamIsEO_BetTeamIsEvenAndOver(string betTeam)
+        public void BuildBetTeam_TicketBetTeamIsEO_BetTeamIsEvenAndOver(string betTeam)
         {
             // Arrange.
             _ticket.BetTeam = betTeam;
@@ -69,16 +70,16 @@
             Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            const string ExpectedBetOption = "Even <span class=\"underdog\">&</span> Over";
+            string expectedBetOption = $"{CoreBetList.even} <span class=\"underdog\">&</span> {CoreBetList.over}";
 
-            Assert.AreEqual(ExpectedBetOption, template.betTeam);
+            Assert.AreEqual(expectedBetOption, template.betTeam);
         }
 
         [TestCase("EU")]
         [TestCase("Eu")]
         [TestCase("eU")]
         [TestCase("eu")]
-        public void BuildBetTeam_BetTeamIsEU_BetTeamIsEvenAndUnder(string betTeam)
+        public void BuildBetTeam_TicketBetTeamIsEU_BetTeamIsEvenAndUnder(string betTeam)
         {
             // Arrange.
             _ticket.BetTeam = betTeam;
@@ -87,9 +88,9 @@
             Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            const string ExpectedBetOption = "Even <span class=\"underdog\">&</span> Under";
+            string expectedBetOption = $"{CoreBetList.even} <span class=\"underdog\">&</span> {CoreBetList.under}";
 
-            Assert.AreEqual(ExpectedBetOption, template.betTeam);
+            Assert.AreEqual(expectedBetOption, template.betTeam);
         }
 
         [TestCase("abc")]
@@ -102,7 +103,7 @@
         [TestCase("ExU")]
         [TestCase("")]
         [TestCase(null)]
-        public void BuildBetTeam_BetTeamIsNotInExpectedValueList_BetTeamIsEmpty(string betTeam)
+        public void BuildBetTeam_TicketBetTeamIsNotInExpectedValueList_BetTeamIsEmpty(string betTeam)
         {
             // Arrange.
             _ticket.BetTeam = betTeam;

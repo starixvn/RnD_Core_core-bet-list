@@ -14,7 +14,7 @@
         {
             string betTeam;
 
-            switch (ticket.BetTeam.ToLowerInvariant())
+            switch (ticket.BetTeam?.ToLowerInvariant())
             {
                 case BetTeamValue.NumberOne:
                     betTeam = Template.Match.homeTeam;

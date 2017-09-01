@@ -14,7 +14,7 @@
         {
             string betTeam = ticket.BetTeam?.ToLowerInvariant() ?? string.Empty;
 
-            if (betTeam?.Length == 3)
+            if (betTeam.Length == 3)
             {
                 string yesNoChoice = MapYesNoChoice(betTeam[0]);
                 string firstChanceChoice = MapDoubleChanceChoice(betTeam[1]);

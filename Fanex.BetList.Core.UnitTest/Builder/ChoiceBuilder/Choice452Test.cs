@@ -23,7 +23,7 @@
 
         [TestCase("1H")]
         [TestCase("1h")]
-        public void BuildBetTeam_BetTeamIs1H_BetTeamIsFirstHalf(string betTeam)
+        public void BuildBetTeam_TicketBetTeamIs1H_BetTeamIsFirstHalf(string betTeam)
         {
             // Arrange.
             _ticket.BetTeam = betTeam;
@@ -37,7 +37,7 @@
 
         [TestCase("2H")]
         [TestCase("2h")]
-        public void BuildBetTeam_BetTeamIs2H_BetTeamIsSecondHalf(string betTeam)
+        public void BuildBetTeam_TicketBetTeamIs2H_BetTeamIsSecondHalf(string betTeam)
         {
             // Arrange.
             _ticket.BetTeam = betTeam;
@@ -52,7 +52,7 @@
         [TestCase("abc")]
         [TestCase("")]
         [TestCase(null)]
-        public void BuildBetTeam_BetTeamIsNotInExpectedValueList_BetTeamIsEmpty(string betTeam)
+        public void BuildBetTeam_TicketBetTeamIsNotInExpectedValueList_BetTeamIsEmpty(string betTeam)
         {
             // Arrange.
             _ticket.BetTeam = betTeam;

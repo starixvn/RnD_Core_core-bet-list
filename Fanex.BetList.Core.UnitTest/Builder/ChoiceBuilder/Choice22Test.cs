@@ -31,7 +31,7 @@
         }
 
         [Test]
-        public void BuildBetTeam_BetTeamIs1_BetTeamIsHomeTeamName()
+        public void BuildBetTeam_TicketBetTeamIs1_BetTeamIsHomeTeamName()
         {
             // Arrange.
             _ticket.BetTeam = "1";
@@ -44,7 +44,7 @@
         }
 
         [Test]
-        public void BuildBetTeam_BetTeamIs2_BetTeamIsAwayTeamName()
+        public void BuildBetTeam_TicketBetTeamIs2_BetTeamIsAwayTeamName()
         {
             // Arrange.
             _ticket.BetTeam = "2";
@@ -58,7 +58,7 @@
 
         [TestCase("x")]
         [TestCase("X")]
-        public void BuildBetTeam_BetTeamIsX_BetTeamIsNone(string betTeam)
+        public void BuildBetTeam_TicketBetTeamIsX_BetTeamIsNone(string betTeam)
         {
             // Arrange
             _ticket.BetTeam = betTeam;
@@ -72,7 +72,7 @@
 
         [TestCase("abc")]
         [TestCase("")]
-        public void BuildBetTeam_BetTeamIsNot1OrXOr2_BetTeamIsEmpty(string betTeam)
+        public void BuildBetTeam_TicketBetTeamIsNot1OrXOr2_BetTeamIsEmpty(string betTeam)
         {
             // Arrange.
             _ticket.BetTeam = betTeam;
