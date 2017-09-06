@@ -40,11 +40,11 @@
                 teamName = CoreBetList.lblDraw;
                 if (hdp1 - hdp2 > 0)
                 {
-                    handicap = CoreBetList.a + HtmlCharacters.NoneBreakingSpace;
+                    handicap = CoreBetList.a;
                 }
                 else if (hdp1 - hdp2 < 0)
                 {
-                    handicap = CoreBetList.h + HtmlCharacters.NoneBreakingSpace;
+                    handicap = CoreBetList.h;
                 }
                 else
                 {
