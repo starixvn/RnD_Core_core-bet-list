@@ -14,6 +14,7 @@
         {
             MapForFastMarkets();
             MapForBasketBall();
+            MapForPoolHouseAllInOne();
 
             ////2ND Handicap (17)
             MapIdToBaseId(17, 1);
@@ -136,6 +137,24 @@
             {
                 MapIdToBaseId(betType, 221);
             }
+        }
+
+        private void MapForPoolHouseAllInOne()
+        {
+            // Map 'Away Team Over / Under' to 'Home Team Over / Under'.
+            MapIdToBaseId(402, 401);
+
+            // Map '1H Home Team Over/Under' to 'Home Team Over / Under'.
+            MapIdToBaseId(403, 401);
+
+            // Map '1H Away Team Over/Under' to 'Home Team Over / Under'.
+            MapIdToBaseId(404, 401);
+
+            // Map 'Exact Away Team Goals' to 'Exact Home Team Goals'.
+            MapIdToBaseId(409, 407);
+
+            // Map '1H Correct Score (aos)' to 'Correct Score (aos)'.
+            MapIdToBaseId(414, 413);
         }
     }
 }
