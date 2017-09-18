@@ -155,6 +155,15 @@
 
             // Map '1H Correct Score (aos)' to 'Correct Score (aos)'.
             MapIdToBaseId(414, 413);
+
+            // Map 'Away Team Over / Under(dec)' to 'Home Team Over / Under(dec)'.
+            MapIdToBaseId(462, 461);
+
+            // Map '1H Home Team Over/Under (dec)' to 'Home Team Over / Under(dec)'.
+            MapIdToBaseId(463, 461);
+
+            // Map '1H Away Team Over/Under (dec)' to 'Home Team Over / Under(dec)'.
+            MapIdToBaseId(464, 461);
         }
     }
 }
