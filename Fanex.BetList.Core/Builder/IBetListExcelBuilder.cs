@@ -17,6 +17,8 @@
 
         RTFHelper RTFHelper { get; set; }
 
+        int LastContentRow { get; }
+
         ICellStyle CreateCellStyle();
 
         IFont CreateFont();
