@@ -39,7 +39,7 @@
 
         string RefNo { get; set; }
 
-        long RefCode { get; set; }
+        int RefCode { get; set; }
 
         byte WalletType { get; set; }
 

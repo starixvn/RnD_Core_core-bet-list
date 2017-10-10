@@ -42,7 +42,7 @@
 
         public string RefNo { get; set; }
 
-        public long RefCode { get; set; }
+        public int RefCode { get; set; }
 
         public byte WalletType { get; set; }
         public DateTime TransDate { get; set; }
