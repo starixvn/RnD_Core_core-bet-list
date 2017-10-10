@@ -27,7 +27,7 @@
         {
             var betTeam = ticket.BetTeam?.Trim()?.ToLowerInvariant();
 
-            if (betTeam == BetTeamValue.None)
+            if (betTeam == BetTeamValue.NG)
             {
                 Template.betTeam = CoreBetList.nogoal;
             }

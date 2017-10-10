@@ -21,12 +21,10 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        [TestCase("None")]
-        [TestCase("none")]
-        [TestCase("nOne")]
-        [TestCase("noNe")]
-        [TestCase("nonE")]
-        [TestCase("NONE")]
+        [TestCase("NG")]
+        [TestCase("ng")]
+        [TestCase("Ng")]
+        [TestCase("nG")]
         public void BuildBetTeam_TicketBetTeamIsNone_BetTeamIsNoGoal(string betTeam)
         {
             // Arrange.
