@@ -164,7 +164,7 @@
 
             // Map '1H Away Team Over/Under (dec)' to 'Home Team Over / Under(dec)'.
             MapIdToBaseId(464, 461);
-            
+
             // Map '1H 3-Way Handicap' to '3-Way Handicap'.
             MapIdToBaseId(453, 28);
 
