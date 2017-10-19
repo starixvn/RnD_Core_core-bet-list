@@ -195,7 +195,7 @@
         }
 
         [Test]
-        public void BuildLeague_Always_SetLeagueNameIsLeagueName()
+        public void BuildLeague_Always_CallGetLeagueNameByIdToGetLeagueName()
         {
             // Arrange.
             string leagueName = "League name";
@@ -210,7 +210,7 @@
         }
 
         [Test]
-        public void BuildSport_Always_SetSportNameIsSportName()
+        public void BuildSport_Always_CallGetSportNameByIdToGetSportName()
         {
             // Arrange.
             string sportName = "Sport name";
@@ -242,7 +242,7 @@
         }
 
         [Test]
-        public void BuildBetType_Always_SetBetTypeIsBetTypeName()
+        public void BuildBetType_Always_CallGetBetTypeNameByIdToGetBetTypeName()
         {
             // Arrange.
             string betTypeName = "Bet type name";
