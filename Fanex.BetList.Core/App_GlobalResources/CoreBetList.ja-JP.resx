@@ -181,8 +181,7 @@
     <value>状態</value>
   </data>
   <data name="transfer" xml:space="preserve">
-    <value>送金
-</value>
+    <value>送金</value>
   </data>
   <data name="under" xml:space="preserve">
     <value>アンダー</value>
@@ -404,7 +403,7 @@
     <value>先頭</value>
   </data>
   <data name="FirstHalf" xml:space="preserve">
-    <value>First Halft</value>
+    <value>前半戦</value>
   </data>
   <data name="from" xml:space="preserve">
     <value>送金元</value>
@@ -560,7 +559,7 @@
     <value> sec</value>
   </data>
   <data name="SecondHalf" xml:space="preserve">
-    <value>Second Half</value>
+    <value>セカンドハーフ</value>
   </data>
   <data name="setting" xml:space="preserve">
     <value>Setting</value>
@@ -587,36 +586,31 @@
     <value>Tie</value>
   </data>
   <data name="time" xml:space="preserve">
-    <value>時間
-</value>
+    <value>時間</value>
   </data>
   <data name="to" xml:space="preserve">
-    <value>から
-</value>
+    <value>から</value>
   </data>
   <data name="type" xml:space="preserve">
-    <value>種類
-</value>
+    <value>種類</value>
   </data>
   <data name="UpdateAll" xml:space="preserve">
     <value>Update All</value>
   </data>
   <data name="view" xml:space="preserve">
-    <value>表示
-</value>
+    <value>表示</value>
   </data>
   <data name="warrior" xml:space="preserve">
     <value>Warrior</value>
   </data>
   <data name="wed" xml:space="preserve">
-    <value>Wed
-</value>
+    <value>Wed</value>
   </data>
   <data name="lblYes" xml:space="preserve">
-    <value>Yes</value>
+    <value>はい</value>
   </data>
   <data name="lblNo" xml:space="preserve">
-    <value>No</value>
+    <value>いいえ</value>
   </data>
   <data name="results" xml:space="preserve">
     <value>結果</value>
@@ -653,5 +647,11 @@
   </data>
   <data name="Live" xml:space="preserve">
     <value>ライブ</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>ホーム</value>
+  </data>
+  <data name="Away" xml:space="preserve">
+    <value>アウェイ</value>
   </data>
 </root>

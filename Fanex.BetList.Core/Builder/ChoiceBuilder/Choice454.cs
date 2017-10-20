@@ -18,7 +18,7 @@
 
             if (betTeam == BetTeamValue.NG)
             {
-                Template.betTeam = CoreBetList.nogoal;
+                Template.betTeam = CoreBetList.NoGoalBetType14;
 
                 return;
             }

@@ -181,7 +181,7 @@
     <value>Tỷ lệ</value>
   </data>
   <data name="over" xml:space="preserve">
-    <value>Over</value>
+    <value>Tài</value>
   </data>
   <data name="pending" xml:space="preserve">
     <value>Chưa xử lý</value>
@@ -217,7 +217,7 @@
     <value>Chuyển khoản</value>
   </data>
   <data name="under" xml:space="preserve">
-    <value>Under</value>
+    <value>Xỉu</value>
   </data>
   <data name="voided" xml:space="preserve">
     <value>Hủy bỏ</value>
@@ -406,7 +406,7 @@
     <value>Đầu tiên</value>
   </data>
   <data name="FirstHalf" xml:space="preserve">
-    <value>First Half (vi)</value>
+    <value>Hiệp 1</value>
   </data>
   <data name="from" xml:space="preserve">
     <value>Từ</value>
@@ -570,7 +570,7 @@
     <value> giây</value>
   </data>
   <data name="SecondHalf" xml:space="preserve">
-    <value>Second Half (vi)</value>
+    <value>Hiệp 2</value>
   </data>
   <data name="setting" xml:space="preserve">
     <value>Thiết lập</value>
@@ -621,10 +621,10 @@
     <value>Thứ 4</value>
   </data>
   <data name="lblYes" xml:space="preserve">
-    <value>Yes</value>
+    <value>Có</value>
   </data>
   <data name="lblNo" xml:space="preserve">
-    <value>No</value>
+    <value>Không</value>
   </data>
   <data name="results" xml:space="preserve">
     <value>Kết quả</value>
@@ -651,7 +651,7 @@
     <value>Ngoại trừ</value>
   </data>
   <data name="Away" xml:space="preserve">
-    <value>Away (vi)</value>
+    <value>Đội khách</value>
   </data>
   <data name="FreeKick" xml:space="preserve">
     <value>Đá phạt</value>
@@ -660,7 +660,7 @@
     <value>Header (vi)</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>Home (vi)</value>
+    <value>Đội nhà</value>
   </data>
   <data name="NoAndOver" xml:space="preserve">
     <value>No &amp; Over (vi)</value>
@@ -709,5 +709,8 @@
   </data>
   <data name="Live" xml:space="preserve">
     <value>Trực tiếp</value>
+  </data>
+  <data name="NoGoalBetType14" xml:space="preserve">
+    <value>Không Có Bàn Thắng</value>
   </data>
 </root>

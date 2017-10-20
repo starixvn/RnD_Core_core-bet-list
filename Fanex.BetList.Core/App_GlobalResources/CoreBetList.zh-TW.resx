@@ -139,7 +139,7 @@
     <value>雙方</value>
   </data>
   <data name="lblDraw" xml:space="preserve">
-    <value>和</value>
+    <value>和局</value>
   </data>
   <data name="lblOne" xml:space="preserve">
     <value>一方</value>
@@ -205,7 +205,7 @@
     <value>進行中</value>
   </data>
   <data name="draw" xml:space="preserve">
-    <value>和</value>
+    <value>和局</value>
   </data>
   <data name="waiting" xml:space="preserve">
     <value>等待中</value>

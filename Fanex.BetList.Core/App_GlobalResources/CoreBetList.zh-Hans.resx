@@ -217,7 +217,7 @@
     <value>详细信息</value>
   </data>
   <data name="draw" xml:space="preserve">
-    <value>和</value>
+    <value>和局</value>
   </data>
   <data name="ee" xml:space="preserve">
     <value>双/双</value>
@@ -337,7 +337,7 @@
     <value>双方</value>
   </data>
   <data name="lblDraw" xml:space="preserve">
-    <value>和</value>
+    <value>和局</value>
   </data>
   <data name="lblLose" xml:space="preserve">
     <value>输</value>

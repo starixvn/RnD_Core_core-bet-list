@@ -47,7 +47,7 @@
         [TestCase("51-60", "50:01-60:00")]
         [TestCase("61-70", "60:01-70:00")]
         [TestCase("71-80", "70:01-80:00")]
-        [TestCase("81-90", "80:01-FT")]
+        [TestCase("81-90", "80:01-90:00")]
         public void BuildBetTeam_TicketBetTeamIsOneOfAcceptedIntervalsOf10Minutes_BetTeamIsAssociateIntervalOfTimeInSeconds(string betTeam, string displayingInterval)
         {
             // Arrange.

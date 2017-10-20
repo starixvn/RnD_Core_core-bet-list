@@ -607,10 +607,10 @@
     <value>วันพุธ</value>
   </data>
   <data name="lblYes" xml:space="preserve">
-    <value>ตกลง</value>
+    <value>มี</value>
   </data>
   <data name="lblNo" xml:space="preserve">
-    <value>ไม่ </value>
+    <value>ไม่มี</value>
   </data>
   <data name="results" xml:space="preserve">
     <value>ผลการแข่งขัน</value>
@@ -637,7 +637,7 @@
     <value>ไม่รวม</value>
   </data>
   <data name="Away" xml:space="preserve">
-    <value>Away (th)</value>
+    <value>ทีมเยือน</value>
   </data>
   <data name="FreeKick" xml:space="preserve">
     <value>ลูกฟรีคิก</value>
@@ -646,7 +646,7 @@
     <value>Header (th)</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>Home (th)</value>
+    <value>ทีมเหย้า</value>
   </data>
   <data name="NoAndOver" xml:space="preserve">
     <value>No &amp; Over (th)</value>
@@ -707,5 +707,8 @@
   </data>
   <data name="Bought" xml:space="preserve">
     <value>ซื้อ</value>
+  </data>
+  <data name="NoGoalBetType14" xml:space="preserve">
+    <value>ไม่มีการทำประตู</value>
   </data>
 </root>
