@@ -24,14 +24,13 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StatusBuilder
         }
 
         [Test]
-        public void Ticket_RefNoOfStatusResultTemplateIsTicketRefNo()
+        public void Ticket_Always_HideResultLink()
         {
             // Act
             Status_Template template = _status.Render(_ticket, _ticketHelperStub, null, false);
 
             // Assert
-            string expectedValue = _ticket.RefNo;
-            Assert.AreEqual(expectedValue, template.StatusResult.refNo);
+            Assert.IsFalse(template.StatusResult.Visible);
         }
     }
 }

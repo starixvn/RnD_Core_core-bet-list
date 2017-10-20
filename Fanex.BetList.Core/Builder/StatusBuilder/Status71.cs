@@ -11,7 +11,7 @@
         {
             base.BuildStatusResult(ticket);
 
-            Template.StatusResult.refNo = ticket.RefNo;
+            Template.StatusResult.Hide();
         }
     }
 }
