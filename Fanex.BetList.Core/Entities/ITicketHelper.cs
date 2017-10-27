@@ -110,6 +110,10 @@
 
         string GetLotteryBetTypeName(string lotteryBettypeId);
 
+        string GetTeamName3rd(string team3rdId);
+
+        string GetLeagueName3rd(string league3rdId);
+
         #endregion METHODS TO RESOLVE NAMES FROM IDS
     }
 }

@@ -338,14 +338,14 @@
         }
 
         [Test]
-        public void BuildMatch_Always_CallGetLeagueNameByIdToGetArenaName()
+        public void BuildMatch_Always_CallGetLeagueName3rdToGetArenaName()
         {
             // Arrange.
             const int LeagueId = 1;
             const string LeagueName = "League Name";
 
             _ticket.LeagueId = LeagueId;
-            _ticketHelper.GetLeagueNameById(Arg.Is(LeagueId)).Returns(LeagueName);
+            _ticketHelper.GetLeagueName3rd(Arg.Is(LeagueId.ToString())).Returns(LeagueName);
 
             // Act.
             var actualResult = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -468,7 +468,7 @@
             var rtfHelper = new RTFHelper().Clone();
 
             _ticket.LeagueId = LeagueId;
-            _ticketHelper.GetLeagueNameById(Arg.Is(LeagueId)).Returns(LeagueName);
+            _ticketHelper.GetLeagueName3rd(Arg.Is(LeagueId.ToString())).Returns(LeagueName);
 
             // Act.
             var actualText = _choice.RenderRTF(_ticket, _ticketHelper, null, false, rtfHelper);

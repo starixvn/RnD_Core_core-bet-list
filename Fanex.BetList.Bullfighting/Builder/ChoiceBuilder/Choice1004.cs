@@ -38,7 +38,7 @@
                 _arenaCode = parsedTransDesc[ArenaCodeIndicator];
             }
 
-            _arenaName = ticketHelper.GetLeagueNameById(ticket.LeagueId);
+            _arenaName = ticketHelper.GetLeagueName3rd(ticket.LeagueId.ToString());
 
             return base.Render(ticket, ticketHelper, ticketData, isShowScoreMap);
         }

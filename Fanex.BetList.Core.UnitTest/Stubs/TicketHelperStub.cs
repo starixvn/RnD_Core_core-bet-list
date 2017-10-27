@@ -140,5 +140,15 @@ namespace Fanex.BetList.Core.UnitTest.Stubs
         {
             return _betTypeName + lotteryBettypeId;
         }
+
+        public string GetTeamName3rd(string team3rdId)
+        {
+            return _teamName + team3rdId;
+        }
+
+        public string GetLeagueName3rd(string league3rdId)
+        {
+            return _leagueName + league3rdId;
+        }
     }
 }

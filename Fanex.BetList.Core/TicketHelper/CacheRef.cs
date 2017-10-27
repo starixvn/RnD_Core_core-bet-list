@@ -1,10 +1,10 @@
 ﻿namespace Fanex.BetList.Core.TicketHelper
 {
-    using Mapper;
-    using RemotingRef;
     using System;
     using System.Collections.Generic;
     using System.Threading;
+    using Mapper;
+    using RemotingRef;
 
     /// <summary>
     /// Class CacheRef.
@@ -171,6 +171,16 @@
         public static string GetLotteryBetTypeName(string kenoBettypeID)
         {
             return RefData.GetLotteryBettype(kenoBettypeID, CurrentTWLanguage);
+        }
+
+        public static string GetTeamName3rd(string team3rdId)
+        {
+            return RefData.GetTeamName3rd(team3rdId, CurrentTWLanguage);
+        }
+
+        public static string GetLeagueName3rd(string league3rdId)
+        {
+            return RefData.GetLeagueName3rd(league3rdId, CurrentTWLanguage);
         }
     }
 }

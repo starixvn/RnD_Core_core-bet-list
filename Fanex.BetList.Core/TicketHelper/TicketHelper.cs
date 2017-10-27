@@ -1,8 +1,8 @@
 ﻿namespace Fanex.BetList.Core.TicketHelper
 {
-    using Entities;
     using System;
     using System.Collections.Generic;
+    using Entities;
 
     /// <summary>
     /// Utilities for resolving Names from IDs.
@@ -195,6 +195,16 @@
         public string GetLotteryBetTypeName(string lotteryBettypeId)
         {
             return CacheRef.GetLotteryBetTypeName(lotteryBettypeId);
+        }
+
+        public string GetTeamName3rd(string team3rdId)
+        {
+            return CacheRef.GetTeamName3rd(team3rdId);
+        }
+
+        public string GetLeagueName3rd(string league3rdId)
+        {
+            return CacheRef.GetLeagueName3rd(league3rdId);
         }
     }
 }
