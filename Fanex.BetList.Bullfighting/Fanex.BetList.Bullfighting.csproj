@@ -77,6 +77,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>BullfightingLabels.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\BullfightingLabels.vi-VN.resx" />
+    <EmbeddedResource Include="Resources\BullfightingLabels.zh-CN.resx" />
+    <EmbeddedResource Include="Resources\BullfightingLabels.zh-Hans.resx" />
+    <EmbeddedResource Include="Resources\BullfightingLabels.zh-TW.resx" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.3.0.2862\analyzers\Google.Protobuf.dll" />
