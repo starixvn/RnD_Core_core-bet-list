@@ -29,7 +29,7 @@
 
             if (betTeam == BetTeamValue.NG)
             {
-                Template.betTeam = CoreBetList.nogoal;
+                Template.betTeam = CoreBetList.NoGoalBetType14;
             }
             else if (!string.IsNullOrEmpty(betTeam) && BetTeamMaps.ContainsKey(betTeam))
             {

@@ -801,4 +801,10 @@
   <data name="Bought" xml:space="preserve">
     <value>买</value>
   </data>
+  <data name="FtAsian" xml:space="preserve">
+    <value>全场亚洲</value>
+  </data>
+  <data name="HtAsian" xml:space="preserve">
+    <value>半场亚洲</value>
+  </data>
 </root>

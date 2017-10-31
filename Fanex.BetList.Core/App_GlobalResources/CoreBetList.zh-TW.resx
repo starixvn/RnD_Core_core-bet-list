@@ -792,4 +792,10 @@
   <data name="Bought" xml:space="preserve">
     <value>買</value>
   </data>
+  <data name="FtAsian" xml:space="preserve">
+    <value>全場亞洲 </value>
+  </data>
+  <data name="HtAsian" xml:space="preserve">
+    <value>半場亞洲</value>
+  </data>
 </root>
