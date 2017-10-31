@@ -25,12 +25,12 @@
             decimal hdp1 = ticket.Handicap1;
             decimal hdp2 = ticket.Handicap2;
 
-            if (ticket.BetTeam == "1")
+            if (ticket.BetTeam == BetTeamValue.NumberOne)
             {
                 teamName = Template.Match.homeTeam;
                 handicap = Formatter.FormatSignNumber((int)(hdp2 - hdp1));
             }
-            else if (ticket.BetTeam == "2")
+            else if (ticket.BetTeam == BetTeamValue.NumberTwo)
             {
                 teamName = Template.Match.awayTeam;
                 handicap = Formatter.FormatSignNumber((int)(hdp1 - hdp2));
