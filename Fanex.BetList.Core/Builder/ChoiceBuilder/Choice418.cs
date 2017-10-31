@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using System.Collections.Generic;
     using App_GlobalResources;
     using Constants;
     using Entities;
-    using System.Collections.Generic;
     using Utils;
 
     /// <summary>
@@ -13,32 +13,30 @@
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            var betTeam = string.Empty;
+            var betTeamPattern = $"{{0}} <span class=\"{Underdog}\">&</span> {{1}}";
 
             switch (ticket.BetTeam.ToLowerInvariant())
             {
                 case BetTeamValue.YO:
-                    betTeam = CoreBetList.YesAndOver;
+                    Template.betTeam = string.Format(betTeamPattern, CoreBetList.lblYes, CoreBetList.over);
                     break;
 
                 case BetTeamValue.YU:
-                    betTeam = CoreBetList.YesAndUnder;
+                    Template.betTeam = string.Format(betTeamPattern, CoreBetList.lblYes, CoreBetList.under);
                     break;
 
                 case BetTeamValue.NO:
-                    betTeam = CoreBetList.NoAndOver;
+                    Template.betTeam = string.Format(betTeamPattern, CoreBetList.lblNo, CoreBetList.over);
                     break;
 
                 case BetTeamValue.NU:
-                    betTeam = CoreBetList.NoAndUnder;
+                    Template.betTeam = string.Format(betTeamPattern, CoreBetList.lblNo, CoreBetList.under);
                     break;
 
                 default:
-                    betTeam = string.Empty;
+                    Template.betTeam = string.Empty;
                     break;
             }
-
-            Template.betTeam = betTeam;
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
