@@ -435,7 +435,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
             return BetListView(model);
         }
 
-        public ActionResult PHAOIP3(BetListData model = null)
+        public ActionResult PHAIO3(BetListData model = null)
         {
             var betTypeIds = new List<int> { 22 };
 
