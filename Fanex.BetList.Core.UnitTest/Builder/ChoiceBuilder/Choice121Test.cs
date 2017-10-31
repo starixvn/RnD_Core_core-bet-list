@@ -124,7 +124,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            const string HOME_TEAM_NAME = "Home team name (N) ";
+            const string HOME_TEAM_NAME = "Home team name (N)";
             Assert.AreEqual(HOME_TEAM_NAME, _choice.Template.Match.homeTeam);
         }
 
