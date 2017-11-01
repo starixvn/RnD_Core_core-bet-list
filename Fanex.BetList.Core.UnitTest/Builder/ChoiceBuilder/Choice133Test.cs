@@ -75,15 +75,5 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Assert
             Assert.IsNull(_choice.Template.Handicap.handicap);
         }
-
-        [Test]
-        public void BuildScore_Always_SetVisibleScore()
-        {
-            // Act
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
-
-            // Assert
-            Assert.IsNull(_choice.Template.Score);
-        }
     }
 }

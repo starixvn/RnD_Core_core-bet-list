@@ -16,11 +16,6 @@
             Template.Handicap.handicap = null;
         }
 
-        protected override void BuildScore(ITicket ticket)
-        {
-            Template.Score = null;
-        }
-
         /// <summary>
         /// Builds the bet team.
         /// </summary>
