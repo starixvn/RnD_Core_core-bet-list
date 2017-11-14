@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using Core.Builder.ChoiceBuilder;
+    using Core.Templates;
     using Entities;
     using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Utils;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -13,7 +13,9 @@
     [TestFixture]
     public class Choice143Test
     {
-        private const string TeamName = "Chelsea";
+        private const string HomeTeamName = "Chelsea";
+        private const string AwayTeamName = "Arsenal";
+
         private IChoice _choice;
         private ITicket _ticket;
         private ITicketHelper _ticketHelper;
@@ -24,131 +26,162 @@
             _choice = new Choice143();
             _ticket = Substitute.For<ITicket>();
             _ticketHelper = Substitute.For<ITicketHelper>();
+
+            _ticket.HomeId = 1;
+            _ticket.AwayId = 2;
+
+            _ticketHelper.GetTeamNameById(Arg.Is(_ticket.HomeId)).Returns(HomeTeamName);
+            _ticketHelper.GetTeamNameById(Arg.Is(_ticket.AwayId)).Returns(AwayTeamName);
         }
 
-        [Test]
-        public void BuildBetTeam_BetTeamIsHO_SetBetTeamIsHomeTeamNameAndOver()
+        [TestCase("HO")]
+        [TestCase("ho")]
+        [TestCase("Ho")]
+        [TestCase("hO")]
+        public void BuildBetTeam_TicketBetTeamIsHO_TemplateBetTeamIsHomeTeamNameAndOver(string betTeam)
         {
             // Arrange
-            _ticket.BetTeam = "ho"; // <<Home>> & Over
-            _ticketHelper.GetTeamNameById(Arg.Any<int>()).ReturnsForAnyArgs(TeamName);
+            _ticket.BetTeam = betTeam;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, false);
+            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.AreEqual(string.Format("{0} & {1}", TeamName, CoreBetList.over), _choice.Template.betTeam);
+            string expectedBetOption = $"{HomeTeamName} <span class=\"underdog\">&</span> {CoreBetList.over}";
+
+            Assert.AreEqual(expectedBetOption, template.betTeam);
         }
 
-        [Test]
-        public void BuildBetTeam_BetTeamIsHU_SetBetTeamIsHomeTeamNameAndUnder()
+        [TestCase("HU")]
+        [TestCase("hu")]
+        [TestCase("Hu")]
+        [TestCase("hU")]
+        public void BuildBetTeam_TicketBetTeamIsHU_TemplateBetTeamIsHomeTeamNameAndUnder(string betTeam)
         {
             // Arrange
-            _ticket.BetTeam = "hu"; // <<Home>> & Over
-            _ticketHelper.GetTeamNameById(Arg.Any<int>()).ReturnsForAnyArgs(TeamName);
+            _ticket.BetTeam = betTeam;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, false);
+            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.AreEqual(string.Format("{0} & {1}", TeamName, CoreBetList.under), _choice.Template.betTeam);
+            string expectedBetOption = $"{HomeTeamName} <span class=\"underdog\">&</span> {CoreBetList.under}";
+
+            Assert.AreEqual(expectedBetOption, template.betTeam);
         }
 
-        [Test]
-        public void BuildBetTeam_BetTeamIsAO_SetBetTeamIsHomeTeamNameAndOver()
+        [TestCase("AO")]
+        [TestCase("ao")]
+        [TestCase("Ao")]
+        [TestCase("aO")]
+        public void BuildBetTeam_TicketBetTeamIsAO_TemplateBetTeamIsAwayTeamNameAndOver(string betTeam)
         {
             // Arrange
-            _ticket.BetTeam = "ao"; // <<Home>> & Over
-            _ticketHelper.GetTeamNameById(Arg.Any<int>()).ReturnsForAnyArgs(TeamName);
+            _ticket.BetTeam = betTeam;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, false);
+            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.AreEqual(string.Format("{0} & {1}", TeamName, CoreBetList.over), _choice.Template.betTeam);
+            string expectedBetOption = $"{AwayTeamName} <span class=\"underdog\">&</span> {CoreBetList.over}";
+
+            Assert.AreEqual(expectedBetOption, template.betTeam);
         }
 
-        [Test]
-        public void BuildBetTeam_BetTeamIsAU_SetBetTeamIsHomeTeamNameAndUnder()
+        [TestCase("AU")]
+        [TestCase("au")]
+        [TestCase("Au")]
+        [TestCase("aU")]
+        public void BuildBetTeam_TicketBetTeamIsAU_TemplateBetTeamIsAwayTeamNameAndUnder(string betTeam)
         {
             // Arrange
-            _ticket.BetTeam = "au"; // <<Home>> & Over
-            _ticketHelper.GetTeamNameById(Arg.Any<int>()).ReturnsForAnyArgs(TeamName);
+            _ticket.BetTeam = betTeam;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, false);
+            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.AreEqual(string.Format("{0} & {1}", TeamName, CoreBetList.under), _choice.Template.betTeam);
+            string expectedBetOption = $"{AwayTeamName} <span class=\"underdog\">&</span> {CoreBetList.under}";
+
+            Assert.AreEqual(expectedBetOption, template.betTeam);
         }
 
-        [Test]
-        public void BuildBetTeam_BetTeamIsDO_SetBetTeamIsDrawAndOver()
+        [TestCase("DO")]
+        [TestCase("do")]
+        [TestCase("Do")]
+        [TestCase("dO")]
+        public void BuildBetTeam_TicketBetTeamIsDO_TemplateBetTeamIsDrawAndOver(string betTeam)
         {
             // Arrange
-            _ticket.BetTeam = "do"; // Draw & Over
-            _ticketHelper.GetTeamNameById(Arg.Any<int>()).ReturnsForAnyArgs(TeamName);
+            _ticket.BetTeam = betTeam;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, false);
+            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.AreEqual(string.Format("{0} & {1}", CoreBetList.draw, CoreBetList.over), _choice.Template.betTeam);
+            string expectedBetOption = $"{CoreBetList.draw} <span class=\"underdog\">&</span> {CoreBetList.over}";
+
+            Assert.AreEqual(expectedBetOption, template.betTeam);
         }
 
-        [Test]
-        public void BuildBetTeam_BetTeamIsDU_SetBetTeamIsDrawAndUnder()
+        [TestCase("DU")]
+        [TestCase("du")]
+        [TestCase("Du")]
+        [TestCase("dU")]
+        public void BuildBetTeam_TicketBetTeamIsDU_TemplateBetTeamIsDrawAndUnder(string betTeam)
         {
             // Arrange
-            _ticket.BetTeam = "du"; // Draw & Under
-            _ticketHelper.GetTeamNameById(Arg.Any<int>()).ReturnsForAnyArgs(TeamName);
+            _ticket.BetTeam = betTeam;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, false);
+            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.AreEqual(string.Format("{0} & {1}", CoreBetList.draw, CoreBetList.under), _choice.Template.betTeam);
+            string expectedBetOption = $"{CoreBetList.draw} <span class=\"underdog\">&</span> {CoreBetList.under}";
+
+            Assert.AreEqual(expectedBetOption, template.betTeam);
         }
 
         [Test]
         public void BuildBetTeam_BetTeamLengthIsNot2_BetTeamIsNotSet()
         {
-            // Arrange
-            _ticket.BetTeam = "a bet team"; // set bet team name by a string with length > 2
-            var betTeam = _choice.Template.betTeam;
+            // Arrange.
+            var defaultBetTeamValue = _choice.Template.betTeam;
 
-            // Act
-            _choice.Render(_ticket, _ticketHelper, null, false);
+            _ticket.BetTeam = "a bet team";
 
-            // Assert
-            Assert.AreEqual(betTeam, _choice.Template.betTeam);
+            // Act.
+            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert.
+            Assert.AreEqual(defaultBetTeamValue, template.betTeam);
         }
 
         [Test]
-        public void BuildBetTeam_Always_SetBetTeamClassNameIsFavorite()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapToHandicap1()
         {
-            // Arrange
-            _ticket.BetTeam = "a bet team"; // set bet team name by a string with length > 2
-            var betTeam = _choice.Template.betTeam;
+            // Arrange.
+            const decimal ObservedHandicap1 = 1.5M;
 
-            // Act
-            _choice.Render(_ticket, _ticketHelper, null, false);
+            _ticket.Handicap1 = ObservedHandicap1;
 
-            // Assert
-            Assert.AreEqual("favorite", _choice.Template.betTeamClassName);
+            // Act.
+            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert.
+            Assert.AreEqual(ObservedHandicap1.ToString(), template.Handicap.handicap);
         }
 
         [Test]
-        public void BuildBetTeam_Always_SetHandicapValueIsHandicap1()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameToFavorite()
         {
-            // Arrange
-            _ticket.Handicap1 = 12;
+            // Act.
+            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Act
-            _choice.Render(_ticket, _ticketHelper, null, false);
+            // Assert.
+            const string Favorite = "favorite";
 
-            // Assert
-            Assert.AreEqual(ConvertByBetType.Hdp(_ticket.Handicap1), _choice.Template.Handicap.handicap);
+            Assert.AreEqual(Favorite, template.betTeamClassName);
         }
     }
 }

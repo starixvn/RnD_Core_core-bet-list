@@ -8,7 +8,7 @@
     /// <summary>
     /// Bet type name:  Result/Total Goals (3rd).
     /// </summary>
-    public class Choice163 : Choice144
+    public class Choice163 : Choice143
     {
         /// <summary>
         /// Builds the bet team.

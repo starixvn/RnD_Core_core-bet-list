@@ -1,14 +1,13 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using System.Globalization;
     using App_GlobalResources;
     using Constants;
     using Entities;
     using Utils;
 
     /// <summary>
-    /// Bet Type: First Half Total Goal - 143.
+    /// Bet Type: First Half Result/Total Goal - 143.
     /// </summary>
     public class Choice143 : Choice1
     {
@@ -23,12 +22,15 @@
         /// <param name="ticketData"> Not need this.</param>
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            var teamName = string.Empty;
+            var betTeam = ticket.BetTeam.ToLowerInvariant();
 
             // Bet team pattern length is always 2
-            if (ticket.BetTeam.Length == 2)
+            if (betTeam.Length == 2)
             {
-                switch (ticket.BetTeam[0])
+                var totalGoal = betTeam[1].ToString() == BetTeamValue.O ? CoreBetList.over : CoreBetList.under;
+                var teamName = string.Empty;
+
+                switch (betTeam[0])
                 {
                     case 'h':
                         teamName = ticketHelper.GetTeamNameById(ticket.HomeId);
@@ -47,11 +49,7 @@
                         break;
                 }
 
-                var resultOverUnder = (ticket.BetTeam[1].ToString(CultureInfo.InvariantCulture) == BetTeamValue.O)
-                    ? CoreBetList.over
-                    : CoreBetList.under;
-
-                Template.betTeam = string.Join(" & ", new[] { teamName, resultOverUnder });
+                Template.betTeam = $"{teamName} <span class=\"{Underdog}\">&</span> {totalGoal}";
             }
         }
 

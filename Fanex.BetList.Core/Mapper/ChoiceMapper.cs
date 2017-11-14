@@ -19,6 +19,9 @@
             ////2ND Handicap (17)
             MapIdToBaseId(17, 1);
 
+            // Map 'Result/Total Goals' to '1H Result/Total Goals'
+            MapIdToBaseId(144, 143);
+
             ////2ND Over/Under (3rd) (178)
             MapIdToBaseId(178, 18);
 
