@@ -80,7 +80,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder
         [TestCase(141, "Choice141")]
         [TestCase(142, "Choice142")]
         [TestCase(143, "Choice143")]
-        [TestCase(144, "Choice144")]
         [TestCase(145, "Choice145")]
         [TestCase(146, "Choice146")]
         [TestCase(147, "Choice147")]

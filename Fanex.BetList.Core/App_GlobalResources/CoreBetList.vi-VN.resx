@@ -172,7 +172,7 @@
     <value>Thành viên</value>
   </data>
   <data name="nogoal" xml:space="preserve">
-    <value>Không có bàn thắng</value>
+    <value>Không Có Bàn Thắng</value>
   </data>
   <data name="odd" xml:space="preserve">
     <value>Lẻ</value>
@@ -711,6 +711,6 @@
     <value>Trực tiếp</value>
   </data>
   <data name="NoGoalBetType14" xml:space="preserve">
-    <value>Không có bàn thắng</value>
+    <value>Không Có Bàn Thắng</value>
   </data>
 </root>
