@@ -20,7 +20,7 @@
             ["51-60"] = "50:01-60:00",
             ["61-70"] = "60:01-70:00",
             ["71-80"] = "70:01-80:00",
-            ["81-90"] = $"80:01-{CoreBetList.ft}"
+            ["81-90"] = $"80:01-{CoreBetList.FT455}"
         };
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)

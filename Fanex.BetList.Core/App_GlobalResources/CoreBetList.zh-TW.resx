@@ -798,4 +798,7 @@
   <data name="HtAsian" xml:space="preserve">
     <value>半場亞洲</value>
   </data>
+  <data name="FT455" xml:space="preserve">
+    <value>全場</value>
+  </data>
 </root>

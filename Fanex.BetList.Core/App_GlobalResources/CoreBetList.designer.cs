@@ -673,6 +673,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to FT.
+        /// </summary>
+        public static string FT455 {
+            get {
+                return ResourceManager.GetString("FT455", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to FT Asian.
         /// </summary>
         public static string FtAsian {
