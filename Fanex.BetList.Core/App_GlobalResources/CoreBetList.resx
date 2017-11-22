@@ -236,7 +236,6 @@
   </data>
   <data name="betweenXandY" xml:space="preserve">
     <value>Between {0} and {1}</value>
-    <comment>o</comment>
   </data>
   <data name="points" xml:space="preserve">
     <value>Points</value>

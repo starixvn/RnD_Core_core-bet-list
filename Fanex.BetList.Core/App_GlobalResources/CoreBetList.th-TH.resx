@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="bingo" xml:space="preserve">
-    <value>Bingo</value>
-  </data>
   <data name="casinoGame" xml:space="preserve">
     <value>คาสิโนเกม</value>
   </data>
@@ -164,9 +161,6 @@
   </data>
   <data name="over" xml:space="preserve">
     <value>มากกว่า</value>
-  </data>
-  <data name="pending" xml:space="preserve">
-    <value>Pending</value>
   </data>
   <data name="race" xml:space="preserve">
     <value>แข่งขัน</value>
@@ -228,35 +222,8 @@
   <data name="details" xml:space="preserve">
     <value>รายละเอียด</value>
   </data>
-  <data name="a" xml:space="preserve">
-    <value>A</value>
-  </data>
-  <data name="h" xml:space="preserve">
-    <value>H</value>
-  </data>
-  <data name="betweenXandY" xml:space="preserve">
-    <value>Between {0} and {1}</value>
-  </data>
   <data name="points" xml:space="preserve">
     <value>points</value>
-  </data>
-  <data name="upPoints" xml:space="preserve">
-    <value>UP points</value>
-  </data>
-  <data name="exactly" xml:space="preserve">
-    <value>Exactly</value>
-  </data>
-  <data name="set" xml:space="preserve">
-    <value>Set</value>
-  </data>
-  <data name="noTiebreak" xml:space="preserve">
-    <value>No Tiebreak</value>
-  </data>
-  <data name="casinoProgressiveBonus" xml:space="preserve">
-    <value>Casino Progressive Bonus</value>
-  </data>
-  <data name="playtechcasino" xml:space="preserve">
-    <value>PlayTech Casino</value>
   </data>
   <data name="ee" xml:space="preserve">
     <value>คู่/คู่</value>
@@ -297,30 +264,6 @@
   <data name="TwoGoals" xml:space="preserve">
     <value>2 ประตู</value>
   </data>
-  <data name="virtualtennis_scorebet_0_win" xml:space="preserve">
-    <value>0-Win</value>
-  </data>
-  <data name="virtualtennis_scorebet_15_win" xml:space="preserve">
-    <value>15-Win</value>
-  </data>
-  <data name="virtualtennis_scorebet_30_win" xml:space="preserve">
-    <value>30-Win</value>
-  </data>
-  <data name="virtualtennis_scorebet_40_win" xml:space="preserve">
-    <value>40-Win</value>
-  </data>
-  <data name="virtualtennis_scorebet_win_0" xml:space="preserve">
-    <value>Win-0</value>
-  </data>
-  <data name="virtualtennis_scorebet_win_15" xml:space="preserve">
-    <value>Win-15</value>
-  </data>
-  <data name="virtualtennis_scorebet_win_30" xml:space="preserve">
-    <value>Win-30</value>
-  </data>
-  <data name="virtualtennis_scorebet_win_40" xml:space="preserve">
-    <value>Win-40</value>
-  </data>
   <data name="FourAndOver" xml:space="preserve">
     <value>4 ประตู หรือมากกว่า</value>
   </data>
@@ -341,9 +284,6 @@
   </data>
   <data name="and" xml:space="preserve">
     <value>และ</value>
-  </data>
-  <data name="at" xml:space="preserve">
-    <value>at</value>
   </data>
   <data name="bet" xml:space="preserve">
     <value>วางเดิมพัน</value>
@@ -374,9 +314,6 @@
   </data>
   <data name="customer" xml:space="preserve">
     <value>ลูกค้า</value>
-  </data>
-  <data name="d" xml:space="preserve">
-    <value>D</value>
   </data>
   <data name="da" xml:space="preserve">
     <value>ครึ่งแรกเสมอ ครึ่งหลังทีมเยือนนำ</value>
@@ -410,9 +347,6 @@
   </data>
   <data name="game" xml:space="preserve">
     <value>เกม</value>
-  </data>
-  <data name="games" xml:space="preserve">
-    <value>Games</value>
   </data>
   <data name="go" xml:space="preserve">
     <value>ไป</value>
@@ -456,9 +390,6 @@
   <data name="lblNeither" xml:space="preserve">
     <value>ทั้งสอง</value>
   </data>
-  <data name="lblNoDraw" xml:space="preserve">
-    <value>No Draw</value>
-  </data>
   <data name="lblRunning" xml:space="preserve">
     <value>รายการที่แข่งขันอยู่</value>
   </data>
@@ -491,9 +422,6 @@
   </data>
   <data name="name" xml:space="preserve">
     <value>ชื่อ</value>
-  </data>
-  <data name="no" xml:space="preserve">
-    <value>#</value>
   </data>
   <data name="none" xml:space="preserve">
     <value>ไม่ใช่ </value>
@@ -534,9 +462,6 @@
   <data name="player" xml:space="preserve">
     <value>ผู้เล่น</value>
   </data>
-  <data name="product" xml:space="preserve">
-    <value>Product</value>
-  </data>
   <data name="pt" xml:space="preserve">
     <value>แบ่งสู้</value>
   </data>
@@ -546,17 +471,11 @@
   <data name="result" xml:space="preserve">
     <value>ผลการแข่งขัน</value>
   </data>
-  <data name="Roulette" xml:space="preserve">
-    <value>Roulette</value>
-  </data>
   <data name="SB" xml:space="preserve">
     <value>สปอตร์</value>
   </data>
   <data name="scr" xml:space="preserve">
     <value>ไม่เข้ารอบ</value>
-  </data>
-  <data name="sec" xml:space="preserve">
-    <value> sec</value>
   </data>
   <data name="SecondHalf" xml:space="preserve">
     <value>ครึ่งหลัง</value>
@@ -615,20 +534,8 @@
   <data name="results" xml:space="preserve">
     <value>ผลการแข่งขัน</value>
   </data>
-  <data name="PartyBaccarat" xml:space="preserve">
-    <value>Party Baccarat</value>
-  </data>
-  <data name="PartyRoulette" xml:space="preserve">
-    <value>Party Roulette</value>
-  </data>
-  <data name="LiveBaccarat" xml:space="preserve">
-    <value>Live Baccarat</value>
-  </data>
   <data name="LiveRoulette" xml:space="preserve">
     <value>ถ่ายทอดสดรูเล็ท</value>
-  </data>
-  <data name="ThereIsNoTicketDetailAvailable" xml:space="preserve">
-    <value>There is no ticket detail available.</value>
   </data>
   <data name="ThreeOver" xml:space="preserve">
     <value>3 ประตู หรือมากกว่า</value>
@@ -642,20 +549,8 @@
   <data name="FreeKick" xml:space="preserve">
     <value>ลูกฟรีคิก</value>
   </data>
-  <data name="Header" xml:space="preserve">
-    <value>Header (th)</value>
-  </data>
   <data name="Home" xml:space="preserve">
     <value>ทีมเหย้า</value>
-  </data>
-  <data name="NoAndOver" xml:space="preserve">
-    <value>No &amp; Over (th)</value>
-  </data>
-  <data name="NoAndUnder" xml:space="preserve">
-    <value>No &amp; Under (th)</value>
-  </data>
-  <data name="OwnGoal" xml:space="preserve">
-    <value>Own Goal (th)</value>
   </data>
   <data name="Penalty" xml:space="preserve">
     <value>ลูกโทษ</value>
@@ -663,35 +558,8 @@
   <data name="ScoreDraw" xml:space="preserve">
     <value>เสมอ</value>
   </data>
-  <data name="Shot" xml:space="preserve">
-    <value>Shot (th)</value>
-  </data>
-  <data name="YesAndOver" xml:space="preserve">
-    <value>Yes &amp; Over (th)</value>
-  </data>
-  <data name="YesAndUnder" xml:space="preserve">
-    <value>Yes &amp; Under (th)</value>
-  </data>
-  <data name="ToWinByOneGoal" xml:space="preserve">
-    <value>to Win By 1 Goal (th)</value>
-  </data>
-  <data name="ToWinByTwoUpGoals" xml:space="preserve">
-    <value>to Win by 2+ Goals (th)</value>
-  </data>
-  <data name="FirstHalfShort" xml:space="preserve">
-    <value>1st Half (th)</value>
-  </data>
-  <data name="SecondHalfShort" xml:space="preserve">
-    <value>2nd Half (th)</value>
-  </data>
   <data name="ThreeAndOver" xml:space="preserve">
     <value>3 ประตู หรือมากกว่า</value>
-  </data>
-  <data name="AOSFTExcluding" xml:space="preserve">
-    <value>AOS FT Excluding</value>
-  </data>
-  <data name="AOSHTExcluding" xml:space="preserve">
-    <value>AOS HT Excluding</value>
   </data>
   <data name="Live" xml:space="preserve">
     <value>การแข่งขันสด</value>

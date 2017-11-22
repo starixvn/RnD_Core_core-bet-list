@@ -117,12 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="bingo" xml:space="preserve">
-    <value>빙고게임</value>
-  </data>
-  <data name="casinoGame" xml:space="preserve">
-    <value>Casino Games</value>
-  </data>
   <data name="choice" xml:space="preserve">
     <value>선택</value>
   </data>
@@ -234,95 +228,8 @@
   <data name="h" xml:space="preserve">
     <value>홈팀</value>
   </data>
-  <data name="betweenXandY" xml:space="preserve">
-    <value>Between {0} and {1}</value>
-  </data>
   <data name="points" xml:space="preserve">
     <value>points</value>
-  </data>
-  <data name="upPoints" xml:space="preserve">
-    <value>UP points</value>
-  </data>
-  <data name="exactly" xml:space="preserve">
-    <value>Exactly</value>
-  </data>
-  <data name="set" xml:space="preserve">
-    <value>Set</value>
-  </data>
-  <data name="noTiebreak" xml:space="preserve">
-    <value>No Tiebreak</value>
-  </data>
-  <data name="casinoProgressiveBonus" xml:space="preserve">
-    <value>Casino Progressive Bonus</value>
-  </data>
-  <data name="playtechcasino" xml:space="preserve">
-    <value>PlayTech Casino</value>
-  </data>
-  <data name="ee" xml:space="preserve">
-    <value>Even/Even</value>
-  </data>
-  <data name="eo" xml:space="preserve">
-    <value>Even/Odd</value>
-  </data>
-  <data name="oe" xml:space="preserve">
-    <value>Odd/Even</value>
-  </data>
-  <data name="oo" xml:space="preserve">
-    <value>Odd/Odd</value>
-  </data>
-  <data name="FiveAndOver" xml:space="preserve">
-    <value>5+</value>
-  </data>
-  <data name="FiveGoals" xml:space="preserve">
-    <value>5 Goals</value>
-  </data>
-  <data name="FourGoals" xml:space="preserve">
-    <value>4 Goals</value>
-  </data>
-  <data name="NoGoals" xml:space="preserve">
-    <value>No Goals</value>
-  </data>
-  <data name="OneGoal" xml:space="preserve">
-    <value>1 Goal</value>
-  </data>
-  <data name="SevenAndOver" xml:space="preserve">
-    <value>7+</value>
-  </data>
-  <data name="SixGoals" xml:space="preserve">
-    <value>6 Goals</value>
-  </data>
-  <data name="ThreeGoals" xml:space="preserve">
-    <value>3 Goals</value>
-  </data>
-  <data name="TwoGoals" xml:space="preserve">
-    <value>2 Goals</value>
-  </data>
-  <data name="virtualtennis_scorebet_0_win" xml:space="preserve">
-    <value>0-Win</value>
-  </data>
-  <data name="virtualtennis_scorebet_15_win" xml:space="preserve">
-    <value>15-Win</value>
-  </data>
-  <data name="virtualtennis_scorebet_30_win" xml:space="preserve">
-    <value>30-Win</value>
-  </data>
-  <data name="virtualtennis_scorebet_40_win" xml:space="preserve">
-    <value>40-Win</value>
-  </data>
-  <data name="virtualtennis_scorebet_win_0" xml:space="preserve">
-    <value>Win-0</value>
-  </data>
-  <data name="virtualtennis_scorebet_win_15" xml:space="preserve">
-    <value>Win-15</value>
-  </data>
-  <data name="virtualtennis_scorebet_win_30" xml:space="preserve">
-    <value>Win-30</value>
-  </data>
-  <data name="virtualtennis_scorebet_win_40" xml:space="preserve">
-    <value>Win-40</value>
-  </data>
-  <data name="FourAndOver" xml:space="preserve">
-    <value>4+</value>
   </data>
   <data name="ad" xml:space="preserve">
     <value>원무</value>
@@ -333,17 +240,8 @@
   <data name="all" xml:space="preserve">
     <value>모든</value>
   </data>
-  <data name="AM" xml:space="preserve">
-    <value>AM</value>
-  </data>
   <data name="amount" xml:space="preserve">
     <value>총액</value>
-  </data>
-  <data name="and" xml:space="preserve">
-    <value>and</value>
-  </data>
-  <data name="at" xml:space="preserve">
-    <value>at</value>
   </data>
   <data name="bet" xml:space="preserve">
     <value>배팅</value>
@@ -374,9 +272,6 @@
   </data>
   <data name="customer" xml:space="preserve">
     <value>고객</value>
-  </data>
-  <data name="d" xml:space="preserve">
-    <value>D</value>
   </data>
   <data name="da" xml:space="preserve">
     <value>무원</value>
@@ -453,14 +348,8 @@
   <data name="lblNeither" xml:space="preserve">
     <value>어느 쪽도 포함되지 않습니다.</value>
   </data>
-  <data name="lblNoDraw" xml:space="preserve">
-    <value>No Draw</value>
-  </data>
   <data name="lblRunning" xml:space="preserve">
     <value>진행중</value>
-  </data>
-  <data name="lblS" xml:space="preserve">
-    <value>S = Super</value>
   </data>
   <data name="lblSystemParlay" xml:space="preserve">
     <value>시스템 팔레이</value>
@@ -488,9 +377,6 @@
   </data>
   <data name="name" xml:space="preserve">
     <value>이름</value>
-  </data>
-  <data name="no" xml:space="preserve">
-    <value>#</value>
   </data>
   <data name="none" xml:space="preserve">
     <value>없음</value>
@@ -531,9 +417,6 @@
   <data name="player" xml:space="preserve">
     <value>플레이어</value>
   </data>
-  <data name="product" xml:space="preserve">
-    <value>Product</value>
-  </data>
   <data name="pt" xml:space="preserve">
     <value>거래조건</value>
   </data>
@@ -543,20 +426,8 @@
   <data name="result" xml:space="preserve">
     <value>결과 확인</value>
   </data>
-  <data name="Roulette" xml:space="preserve">
-    <value>Roulette</value>
-  </data>
-  <data name="SB" xml:space="preserve">
-    <value>SB</value>
-  </data>
   <data name="scr" xml:space="preserve">
     <value>미출전</value>
-  </data>
-  <data name="sec" xml:space="preserve">
-    <value> sec</value>
-  </data>
-  <data name="SecondHalf" xml:space="preserve">
-    <value>Second Half</value>
   </data>
   <data name="setting" xml:space="preserve">
     <value>설정</value>
@@ -578,9 +449,6 @@
   </data>
   <data name="tf" xml:space="preserve">
     <value>최고변동</value>
-  </data>
-  <data name="Tie" xml:space="preserve">
-    <value>Tie</value>
   </data>
   <data name="time" xml:space="preserve">
     <value>시간</value>
@@ -612,35 +480,11 @@
   <data name="results" xml:space="preserve">
     <value>결과 확인</value>
   </data>
-  <data name="PartyBaccarat" xml:space="preserve">
-    <value>Party Baccarat</value>
-  </data>
-  <data name="PartyRoulette" xml:space="preserve">
-    <value>Party Roulette</value>
-  </data>
-  <data name="LiveBaccarat" xml:space="preserve">
-    <value>Live Baccarat</value>
-  </data>
   <data name="LiveRoulette" xml:space="preserve">
     <value>라이브 룰렛</value>
   </data>
-  <data name="ThereIsNoTicketDetailAvailable" xml:space="preserve">
-    <value>There is no ticket detail available.</value>
-  </data>
-  <data name="ThreeAndOver" xml:space="preserve">
-    <value>3+</value>
-  </data>
   <data name="Excluding" xml:space="preserve">
     <value>제외</value>
-  </data>
-  <data name="AOSFTExcluding" xml:space="preserve">
-    <value>AOS FT Excluding</value>
-  </data>
-  <data name="AOSHTExcluding" xml:space="preserve">
-    <value>AOS HT Excluding</value>
-  </data>
-  <data name="ScoreDraw" xml:space="preserve">
-    <value>Any Score Draw (Exclude 0-0)</value>
   </data>
   <data name="Live" xml:space="preserve">
     <value>라이브</value>
@@ -650,5 +494,8 @@
   </data>
   <data name="Away" xml:space="preserve">
     <value>원정</value>
+  </data>
+  <data name="bingo" xml:space="preserve">
+    <value>빙고게임</value>
   </data>
 </root>

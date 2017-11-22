@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="bingo" xml:space="preserve">
-    <value>Bingo</value>
-  </data>
   <data name="casinoGame" xml:space="preserve">
     <value>娱乐场游戏</value>
   </data>
@@ -164,9 +161,6 @@
   </data>
   <data name="over" xml:space="preserve">
     <value>大</value>
-  </data>
-  <data name="pending" xml:space="preserve">
-    <value>Pending</value>
   </data>
   <data name="race" xml:space="preserve">
     <value>赛事</value>
@@ -234,29 +228,14 @@
   <data name="h" xml:space="preserve">
     <value>主</value>
   </data>
-  <data name="betweenXandY" xml:space="preserve">
-    <value>Between {0} and {1}</value>
-  </data>
   <data name="points" xml:space="preserve">
     <value>分</value>
-  </data>
-  <data name="upPoints" xml:space="preserve">
-    <value>UP points</value>
   </data>
   <data name="exactly" xml:space="preserve">
     <value>准确的</value>
   </data>
-  <data name="set" xml:space="preserve">
-    <value>Set</value>
-  </data>
   <data name="noTiebreak" xml:space="preserve">
     <value>无抢七</value>
-  </data>
-  <data name="casinoProgressiveBonus" xml:space="preserve">
-    <value>Casino Progressive Bonus</value>
-  </data>
-  <data name="playtechcasino" xml:space="preserve">
-    <value>PlayTech Casino</value>
   </data>
   <data name="ee" xml:space="preserve">
     <value>双/双</value>
@@ -341,9 +320,6 @@
   </data>
   <data name="and" xml:space="preserve">
     <value>和</value>
-  </data>
-  <data name="at" xml:space="preserve">
-    <value>at</value>
   </data>
   <data name="bet" xml:space="preserve">
     <value>投注</value>
@@ -438,9 +414,6 @@
   <data name="Internal" xml:space="preserve">
     <value>内部</value>
   </data>
-  <data name="ip" xml:space="preserve">
-    <value>IP</value>
-  </data>
   <data name="Neutral" xml:space="preserve">
     <value>(中)</value>
   </data>
@@ -492,9 +465,6 @@
   <data name="name" xml:space="preserve">
     <value>名</value>
   </data>
-  <data name="no" xml:space="preserve">
-    <value>#</value>
-  </data>
   <data name="none" xml:space="preserve">
     <value>没有</value>
   </data>
@@ -534,9 +504,6 @@
   <data name="player" xml:space="preserve">
     <value>玩家</value>
   </data>
-  <data name="product" xml:space="preserve">
-    <value>Product</value>
-  </data>
   <data name="pt" xml:space="preserve">
     <value>占成数</value>
   </data>
@@ -546,17 +513,11 @@
   <data name="result" xml:space="preserve">
     <value>赛果</value>
   </data>
-  <data name="Roulette" xml:space="preserve">
-    <value>Roulette</value>
-  </data>
   <data name="SB" xml:space="preserve">
     <value>体育博采</value>
   </data>
   <data name="scr" xml:space="preserve">
     <value>退出</value>
-  </data>
-  <data name="sec" xml:space="preserve">
-    <value> sec</value>
   </data>
   <data name="SecondHalf" xml:space="preserve">
     <value>下半场</value>
@@ -614,15 +575,6 @@
   </data>
   <data name="results" xml:space="preserve">
     <value>赛果</value>
-  </data>
-  <data name="PartyBaccarat" xml:space="preserve">
-    <value>Party Baccarat</value>
-  </data>
-  <data name="PartyRoulette" xml:space="preserve">
-    <value>Party Roulette</value>
-  </data>
-  <data name="LiveBaccarat" xml:space="preserve">
-    <value>Live Baccarat</value>
   </data>
   <data name="LiveRoulette" xml:space="preserve">
     <value>轮盘</value>
@@ -741,12 +693,6 @@
   <data name="Header" xml:space="preserve">
     <value>头球</value>
   </data>
-  <data name="NoAndOver1" xml:space="preserve">
-    <value>No &amp; Over (zh-CN)</value>
-  </data>
-  <data name="NoAndUnder1" xml:space="preserve">
-    <value>No &amp; Under (zh-CN)</value>
-  </data>
   <data name="OwnGoal" xml:space="preserve">
     <value>乌龙球</value>
   </data>
@@ -764,12 +710,6 @@
   </data>
   <data name="ToWinByTwoUpGoals" xml:space="preserve">
     <value>赢2球以上</value>
-  </data>
-  <data name="FirstHalfShort" xml:space="preserve">
-    <value>1st Half (zh-CN)</value>
-  </data>
-  <data name="SecondHalfShort" xml:space="preserve">
-    <value>2nd Half (zh-CN)</value>
   </data>
   <data name="ThreeAndOver" xml:space="preserve">
     <value>3或以上</value>
