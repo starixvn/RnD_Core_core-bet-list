@@ -387,4 +387,13 @@
   <data name="NoGoalBetType14" xml:space="preserve">
     <value>Không Có Bàn Thắng</value>
   </data>
+  <data name="FtAsian" xml:space="preserve">
+    <value>Châu Á</value>
+  </data>
+  <data name="HtAsian" xml:space="preserve">
+    <value>Hiệp 1 Châu Á</value>
+  </data>
+  <data name="Seperator1X2" xml:space="preserve">
+    <value> </value>
+  </data>
 </root>

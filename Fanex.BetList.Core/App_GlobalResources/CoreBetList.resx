@@ -823,4 +823,7 @@
   <data name="FT455" xml:space="preserve">
     <value>FT</value>
   </data>
+  <data name="Seperator1X2" xml:space="preserve">
+    <value>.</value>
+  </data>
 </root>

@@ -11,7 +11,7 @@
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            Template.betTeam = $"{CoreBetList.HtAsian}.{ticket.BetTeam?.ToUpperInvariant()}";
+            Template.betTeam = $"{CoreBetList.HtAsian}{CoreBetList.Seperator1X2}{ticket.BetTeam?.ToUpperInvariant()}";
         }
     }
 }

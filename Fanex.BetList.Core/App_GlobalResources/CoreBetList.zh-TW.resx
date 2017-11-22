@@ -742,12 +742,15 @@
     <value>買</value>
   </data>
   <data name="FtAsian" xml:space="preserve">
-    <value>全場亞洲 </value>
+    <value>亞洲</value>
   </data>
   <data name="HtAsian" xml:space="preserve">
-    <value>半場亞洲</value>
+    <value>上半場亞洲</value>
   </data>
   <data name="FT455" xml:space="preserve">
     <value>全場</value>
+  </data>
+  <data name="Seperator1X2" xml:space="preserve">
+    <value> </value>
   </data>
 </root>

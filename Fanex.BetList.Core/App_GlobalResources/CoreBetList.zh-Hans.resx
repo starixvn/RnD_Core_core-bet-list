@@ -745,12 +745,15 @@
     <value>买</value>
   </data>
   <data name="FtAsian" xml:space="preserve">
-    <value>全场亚洲</value>
+    <value>亚洲</value>
   </data>
   <data name="HtAsian" xml:space="preserve">
-    <value>半场亚洲</value>
+    <value>上半场亚洲</value>
   </data>
   <data name="FT455" xml:space="preserve">
     <value>全场</value>
+  </data>
+  <data name="Seperator1X2" xml:space="preserve">
+    <value> </value>
   </data>
 </root>
