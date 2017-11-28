@@ -71,7 +71,7 @@
         {
             string combinations = string.Format(ticket.BetId > 1 ? Lucky3Labels.Combinations : Lucky3Labels.Combination, ticket.BetId);
 
-            return $"{combinations} x {ticket.Currency ?? string.Empty} {Formatter.FormatNumber4(ticket.Handicap1)}";
+            return $"{combinations} x {ticket.Currency ?? string.Empty} {string.Format(Formatter.DECIMALFORMAT20, ticket.Handicap1)}";
         }
 
         protected static string BuildBets(ITicket ticket)

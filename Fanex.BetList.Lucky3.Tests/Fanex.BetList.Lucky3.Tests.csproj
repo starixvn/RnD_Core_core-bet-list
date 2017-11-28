@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Builder\ChoiceBuilder\Choice1600Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds1600Test.cs" />
+    <Compile Include="Builder\StakeBuilder\Stake1600Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

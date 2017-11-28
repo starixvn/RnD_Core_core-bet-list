@@ -405,12 +405,14 @@
         {
             // Arrange.
             _ticket.BetId = 1;
+            _ticket.Currency = "AUD";
+            _ticket.Handicap1 = 1.5M;
 
             // Act.
             var actualResult = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            var expectedBettingCombinations = $"1 Combination x {_ticket.Currency ?? string.Empty} {_ticket.Handicap1}";
+            var expectedBettingCombinations = "1 Combination x AUD 1.50";
 
             Assert.AreEqual(expectedBettingCombinations, actualResult.Handicap.handicap);
         }
@@ -420,29 +422,31 @@
         {
             // Arrange.
             _ticket.BetId = 2;
+            _ticket.Currency = "USD";
+            _ticket.Handicap1 = 1M;
 
             // Act.
             var actualResult = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            var expectedBettingCombinations = $"2 Combinations x {_ticket.Currency ?? string.Empty} {_ticket.Handicap1}";
+            var expectedBettingCombinations = "2 Combinations x USD 1.00";
 
             Assert.AreEqual(expectedBettingCombinations, actualResult.Handicap.handicap);
         }
 
         [Test]
-        public void BuildBetTeamClassNameAndHandicap_Always_TruncateTrailingZerosInDecimalPartOfHandicap1()
+        public void BuildBetTeamClassNameAndHandicap_Always_FixHandicap1ToTwoDecimalPlaces()
         {
             // Arrange.
             _ticket.BetId = 2;
             _ticket.Currency = "AUD";
-            _ticket.Handicap1 = 1.5000M;
+            _ticket.Handicap1 = 1.5123M;
 
             // Act.
             var actualResult = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            var expectedBettingCombinations = $"2 Combinations x AUD 1.5";
+            var expectedBettingCombinations = $"2 Combinations x AUD 1.51";
 
             Assert.AreEqual(expectedBettingCombinations, actualResult.Handicap.handicap);
         }
