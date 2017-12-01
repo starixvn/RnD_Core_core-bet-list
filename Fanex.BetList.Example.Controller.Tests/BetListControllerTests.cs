@@ -8,6 +8,7 @@
     using NUnit.Framework;
 
     [TestFixture]
+    [Ignore("Used for testing when changing old bet type")]
     public class BetListControllerTests
     {
         private const string ActiveUrl = "http://10.18.200.202:7240/";
