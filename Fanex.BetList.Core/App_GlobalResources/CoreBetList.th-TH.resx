@@ -576,7 +576,7 @@
   <data name="Bought" xml:space="preserve">
     <value>ซื้อ</value>
   </data>
-  <data name="NoGoalBetType14" xml:space="preserve">
+  <data name="NoGoal14" xml:space="preserve">
     <value>ไม่มีการทำประตู</value>
   </data>
   <data name="FtAsian" xml:space="preserve">
@@ -587,5 +587,8 @@
   </data>
   <data name="Seperator1X2" xml:space="preserve">
     <value> </value>
+  </data>
+  <data name="None22" xml:space="preserve">
+    <value>ไม่ใช</value>
   </data>
 </root>

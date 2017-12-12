@@ -35,3 +35,4 @@ Fanex.BetList.Core.suo
 .vs/config/applicationhost.config
 packages/
 *.ncrunchsolution
+.vs/

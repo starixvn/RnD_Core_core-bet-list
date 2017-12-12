@@ -67,7 +67,7 @@
             Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.AreEqual(CoreBetList.none, template.betTeam);
+            Assert.AreEqual(CoreBetList.None22, template.betTeam);
         }
 
         [TestCase("abc")]

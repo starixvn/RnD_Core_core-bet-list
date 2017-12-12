@@ -402,7 +402,7 @@
   <data name="nogoal" xml:space="preserve">
     <value>两者皆不</value>
   </data>
-  <data name="NoGoalBetType14" xml:space="preserve">
+  <data name="NoGoal14" xml:space="preserve">
     <value>无进球</value>
   </data>
   <data name="NoGoals" xml:space="preserve">
@@ -755,5 +755,8 @@
   </data>
   <data name="Seperator1X2" xml:space="preserve">
     <value> </value>
+  </data>
+  <data name="None22" xml:space="preserve">
+    <value>无进球</value>
   </data>
 </root>

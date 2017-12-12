@@ -16,7 +16,7 @@
             switch (ticket.BetTeam)
             {
                 case "0:0":
-                    betTeam = CoreBetList.NoGoalBetType14;
+                    betTeam = CoreBetList.NoGoal14;
                     break;
 
                 case "1:1":

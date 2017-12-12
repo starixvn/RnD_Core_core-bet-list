@@ -327,4 +327,10 @@
   <data name="Seperator1X2" xml:space="preserve">
     <value />
   </data>
+  <data name="None22" xml:space="preserve">
+    <value>なし</value>
+  </data>
+  <data name="NoGoal14" xml:space="preserve">
+    <value>ゴールなし</value>
+  </data>
 </root>

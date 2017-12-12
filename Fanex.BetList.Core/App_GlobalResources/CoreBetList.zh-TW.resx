@@ -660,7 +660,7 @@
   <data name="AwayLG" xml:space="preserve">
     <value>客隊後進球</value>
   </data>
-  <data name="NoGoalBetType14" xml:space="preserve">
+  <data name="NoGoal14" xml:space="preserve">
     <value>無進球</value>
   </data>
   <data name="ThereIsNoTicketDetailAvailable" xml:space="preserve">
@@ -752,5 +752,8 @@
   </data>
   <data name="Seperator1X2" xml:space="preserve">
     <value> </value>
+  </data>
+  <data name="None22" xml:space="preserve">
+    <value>無進球</value>
   </data>
 </root>

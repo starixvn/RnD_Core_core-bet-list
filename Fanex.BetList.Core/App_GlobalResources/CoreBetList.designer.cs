@@ -19,7 +19,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class CoreBetList {
@@ -1206,9 +1206,9 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         /// <summary>
         ///   Looks up a localized string similar to No Goal.
         /// </summary>
-        public static string NoGoalBetType14 {
+        public static string NoGoal14 {
             get {
-                return ResourceManager.GetString("NoGoalBetType14", resourceCulture);
+                return ResourceManager.GetString("NoGoal14", resourceCulture);
             }
         }
         
@@ -1227,6 +1227,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string none {
             get {
                 return ResourceManager.GetString("none", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to None.
+        /// </summary>
+        public static string None22 {
+            get {
+                return ResourceManager.GetString("None22", resourceCulture);
             }
         }
         

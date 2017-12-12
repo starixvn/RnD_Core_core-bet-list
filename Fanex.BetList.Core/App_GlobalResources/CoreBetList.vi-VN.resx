@@ -384,7 +384,7 @@
   <data name="Live" xml:space="preserve">
     <value>Trực tiếp</value>
   </data>
-  <data name="NoGoalBetType14" xml:space="preserve">
+  <data name="NoGoal14" xml:space="preserve">
     <value>Không Có Bàn Thắng</value>
   </data>
   <data name="FtAsian" xml:space="preserve">
@@ -395,5 +395,8 @@
   </data>
   <data name="Seperator1X2" xml:space="preserve">
     <value> </value>
+  </data>
+  <data name="None22" xml:space="preserve">
+    <value>Không Có</value>
   </data>
 </root>
