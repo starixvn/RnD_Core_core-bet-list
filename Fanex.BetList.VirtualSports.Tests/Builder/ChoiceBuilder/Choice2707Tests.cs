@@ -32,7 +32,6 @@
         [TestCase("2:1")]
         [TestCase("1:2")]
         [TestCase("3:1")]
-        [TestCase("3:1")]
         [TestCase("2:2")]
         [TestCase("3:2")]
         [TestCase("2:3")]
