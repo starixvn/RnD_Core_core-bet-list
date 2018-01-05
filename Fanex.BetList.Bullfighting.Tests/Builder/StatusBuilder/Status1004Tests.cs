@@ -8,18 +8,20 @@
     public class Status1004Tests
     {
         [Test]
-        public void BuildStatusResult_Always_HideResultLink()
+        public void BuildStatusResult_Always_RefNoPassedToViewResultIsTicketRefNo()
         {
             // Arrange.
             IStatus status = new Status1004();
             ITicket ticket = Substitute.For<ITicket>();
             ITicketHelper ticketHelper = Substitute.For<ITicketHelper>();
 
+            ticket.RefNo = "123";
+
             // Act.
-            status.Render(ticket, ticketHelper, null, false);
+            var template = status.Render(ticket, ticketHelper, null, false);
 
             // Assert.
-            Assert.IsFalse(status.Template.StatusResult.Visible);
+            Assert.AreEqual(ticket.RefNo, template.StatusResult.refNo);
         }
     }
 }
