@@ -1,14 +1,12 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
+    using App_GlobalResources;
     using Common.Enums;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
+    using Core.Builder.ChoiceBuilder;
+    using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    ///  Unit test for Choice171.
-    /// </summary>
     [TestFixture]
     public class Choice408Test
     {
@@ -25,63 +23,107 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        /// <summary>
-        /// Builds the bet team_ bet team_ template bet team.
-        /// </summary>
-        /// <param name="betTeam">The bet team.</param>
-        /// <param name="expected">The expected.</param>
-        [TestCase("H1", "Home team name to Win by 1 Goal")]
-        [TestCase("H2", "Home team name to Win by 2 Goals")]
-        [TestCase("H3", "Home team name to Win by 3+ Goals")]
-        [TestCase("D", "Any Score Draw (Exclude 0-0)")]
-        [TestCase("A1", "Away team name to Win by 1 Goal")]
-        [TestCase("A2", "Away team name to Win by 2 Goals")]
-        [TestCase("A3", "Away team name to Win by 3+ Goals")]
-        [TestCase("NG", "No Goal")]
-        [TestCase("h1", "Home team name to Win by 1 Goal")]
-        [TestCase("h2", "Home team name to Win by 2 Goals")]
-        [TestCase("h3", "Home team name to Win by 3+ Goals")]
-        [TestCase("d", "Any Score Draw (Exclude 0-0)")]
-        [TestCase("a1", "Away team name to Win by 1 Goal")]
-        [TestCase("a2", "Away team name to Win by 2 Goals")]
-        [TestCase("a3", "Away team name to Win by 3+ Goals")]
-        [TestCase("ng", "No Goal")]
-        [TestCase("abc", "")]
-        public void BuildBetTeam_BetTeam_TemplateBetTeam(string betTeam, string expected)
+        [Test]
+        public void BuildBetTeam_BetTeamIsInvalid_BetChoiceIsEmpty()
         {
-            // Arrange
-            _ticket.HomeId = 123;
-            _ticket.AwayId = 456;
-            _ticket.BetTeam = betTeam;
-            _ticketHelper.GetTeamNameById(_ticket.HomeId).Returns<string>("Home team name");
-            _ticketHelper.GetTeamNameById(_ticket.AwayId).Returns<string>("Away team name");
+            // Arrange.
+            _ticket.BetTeam = "abc";
 
-            // Act
+            // Act.
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert
+            // Assert.
+            Assert.IsEmpty(_choice.Template.betTeam);
+        }
+
+        [TestCase("H1", "Home to Win by 1 Goal")]
+        [TestCase("H2", "Home to Win by 2 Goals")]
+        [TestCase("H3", "Home to Win by 3+ Goals")]
+        [TestCase("h1", "Home to Win by 1 Goal")]
+        [TestCase("h2", "Home to Win by 2 Goals")]
+        [TestCase("h3", "Home to Win by 3+ Goals")]
+        public void BuildBetTeam_BetTeamStartsWithH_BetChoiceStartsWithHome(string betTeam, string expected)
+        {
+            // Arrange.
+            _ticket.BetTeam = betTeam;
+
+            // Act.
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert.
             Assert.AreEqual(expected, _choice.Template.betTeam);
         }
 
-        [Test]
-        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
+        [TestCase("A1", "Away to Win by 1 Goal")]
+        [TestCase("A2", "Away to Win by 2 Goals")]
+        [TestCase("A3", "Away to Win by 3+ Goals")]
+        [TestCase("a1", "Away to Win by 1 Goal")]
+        [TestCase("a2", "Away to Win by 2 Goals")]
+        [TestCase("a3", "Away to Win by 3+ Goals")]
+        public void BuildBetTeam_BetTeamStartsWithA_BetChoiceStartsWithAway(string betTeam, string expected)
         {
-            // Act
+            // Arrange.
+            _ticket.BetTeam = betTeam;
+
+            // Act.
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert
+            // Assert.
+            Assert.AreEqual(expected, _choice.Template.betTeam);
+        }
+
+        [TestCase("D")]
+        [TestCase("d")]
+        public void BuildBetTeam_BetTeamStartsWithD_BetChoiceIsAnyScoreDraw(string betTeam)
+        {
+            // Arrange.
+            _ticket.BetTeam = betTeam;
+
+            // Act.
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert.
+            const string expectation = "Any Score Draw (Exclude 0-0)";
+
+            Assert.AreEqual(expectation, _choice.Template.betTeam);
+        }
+
+        [TestCase("NG")]
+        [TestCase("ng")]
+        [TestCase("nG")]
+        [TestCase("Ng")]
+        public void BuildBetTeam_BetTeamStartsWithNG_BetChoiceIsNoGoal(string betTeam)
+        {
+            // Arrange.
+            _ticket.BetTeam = betTeam;
+
+            // Act.
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert.
+            Assert.AreEqual(CoreBetList.nogoal, _choice.Template.betTeam);
+        }
+
+        [Test]
+        public void BuildBetTeamClassNameAndHandicap_Always_HandicapIsNull()
+        {
+            // Act.
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert.
             Assert.IsNull(_choice.Template.Handicap.handicap);
         }
 
         [Test]
-        public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
+        public void BuildBetTeamClassNameAndHandicap_Always_BetTeamClassNameIsFavorite()
         {
-            // Act
+            // Act.
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert
-            const string CSS_CLASS_FAVORITE = "favorite";
-            Assert.AreEqual(CSS_CLASS_FAVORITE, _choice.Template.betTeamClassName);
+            // Assert.
+            const string favorite = "favorite";
+
+            Assert.AreEqual(favorite, _choice.Template.betTeamClassName);
         }
 
         [Test]
@@ -90,13 +132,14 @@
             // Arrange.
             var parentBetTypeId = BetTypes._3rdExactHomeTeamGoals.ToString();
             var parentBetTypeName = "Parent Bet Type";
+
             _ticketHelper.GetParentIdByBetTypeId(Arg.Any<object>()).Returns(parentBetTypeId);
             _ticketHelper.GetBetTypeNameById(parentBetTypeId, Arg.Any<object>()).Returns(parentBetTypeName);
 
-            // Act
+            // Act.
             _choice.Render(_ticket, _ticketHelper, null, false);
 
-            // Assert
+            // Assert.
             Assert.AreEqual(parentBetTypeName, _choice.Template.BetType.betTypeName);
         }
     }

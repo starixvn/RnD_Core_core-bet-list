@@ -24,14 +24,14 @@
         [Test]
         public void BuildBetTeam_BetTeamIsDraw_ShowBetTeamIsDraw()
         {
-            // Arrange
+            // Arrange.
             _ticket.BetTeam = "d";
             _ticketHelper.GetResourceData("WMBasketball", "D").Returns("Draw");
 
-            // Act
+            // Act.
             _choice.Render(_ticket, _ticketHelper, null, false);
 
-            // Assert
+            // Assert.
             Assert.AreEqual("Draw", _choice.Template.betTeam);
         }
     }

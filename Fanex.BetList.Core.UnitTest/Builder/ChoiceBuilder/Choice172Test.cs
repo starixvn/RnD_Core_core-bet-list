@@ -1,14 +1,10 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
+    using Core.Builder.ChoiceBuilder;
+    using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    ///  Unit test for Choice172.
-    /// </summary>
     [TestFixture]
     public class Choice172Test
     {
@@ -24,61 +20,161 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        /// <summary>
-        /// Builds the bet team_ bet team_ template bet team.
-        /// </summary>
-        /// <param name="betTeam">The bet team.</param>
-        /// <param name="expected">The expected.</param>
-        [TestCase("HH", "Home team name/Home team name")]
-        [TestCase("DH", "Draw/Home team name")]
-        [TestCase("HA", "Home team name/Away team name")]
-        [TestCase("AH", "Away team name/Home team name")]
-        [TestCase("DA", "Draw/Away team name")]
-        [TestCase("AA", "Away team name/Away team name")]
-        [TestCase("NO", "None")]
-        [TestCase("hh", "Home team name/Home team name")]
-        [TestCase("dh", "Draw/Home team name")]
-        [TestCase("ha", "Home team name/Away team name")]
-        [TestCase("ah", "Away team name/Home team name")]
-        [TestCase("da", "Draw/Away team name")]
-        [TestCase("aa", "Away team name/Away team name")]
-        [TestCase("no", "None")]
-        [TestCase("abc", "")]
-        public void BuildBetTeam_BetTeam_TemplateBetTeam(string betTeam, string expected)
+        [Test]
+        public void BuildBetTeam_BetTeamIsInvalid_BetChoiceIsEmpty()
         {
-            // Arrange
-            _ticket.HomeId = 123;
-            _ticket.AwayId = 456;
-            _ticket.BetTeam = betTeam;
-            _ticketHelper.GetTeamNameById(_ticket.HomeId).Returns<string>("Home team name");
-            _ticketHelper.GetTeamNameById(_ticket.AwayId).Returns<string>("Away team name");
+            // Arrange.
+            _ticket.BetTeam = "abc";
 
-            // Act
+            // Act.
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert
+            // Assert.
+            Assert.IsEmpty(_choice.Template.betTeam);
+        }
+
+        [TestCase("HH")]
+        [TestCase("hh")]
+        public void BuildBetTeam_BetTeamIsHH_BetChoiceIsHomeSlashHome(string betTeam)
+        {
+            // Arrange.
+            _ticket.BetTeam = betTeam;
+
+            // Act.
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert.
+            const string expected = "Home/Home";
+
+            Assert.AreEqual(expected, _choice.Template.betTeam);
+        }
+
+        [TestCase("HA")]
+        [TestCase("ha")]
+        [TestCase("Ha")]
+        [TestCase("hA")]
+        public void BuildBetTeam_BetTeamIsHA_BetChoiceIsHomeSlashAway(string betTeam)
+        {
+            // Arrange.
+            _ticket.BetTeam = betTeam;
+
+            // Act.
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert.
+            const string expected = "Home/Away";
+
+            Assert.AreEqual(expected, _choice.Template.betTeam);
+        }
+
+        [TestCase("DH")]
+        [TestCase("dh")]
+        [TestCase("dH")]
+        [TestCase("Dh")]
+        public void BuildBetTeam_BetTeamIsDH_BetChoiceIsDrawSlashHome(string betTeam)
+        {
+            // Arrange.
+            _ticket.BetTeam = betTeam;
+
+            // Act.
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert.
+            const string expected = "Draw/Home";
+
+            Assert.AreEqual(expected, _choice.Template.betTeam);
+        }
+
+        [TestCase("AA")]
+        [TestCase("aa")]
+        public void BuildBetTeam_BetTeamIsAA_BetChoiceIsAwaySlashAway(string betTeam)
+        {
+            // Arrange.
+            _ticket.BetTeam = betTeam;
+
+            // Act.
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert.
+            const string expected = "Away/Away";
+
+            Assert.AreEqual(expected, _choice.Template.betTeam);
+        }
+
+        [TestCase("AH")]
+        [TestCase("ah")]
+        [TestCase("aH")]
+        [TestCase("Ah")]
+        public void BuildBetTeam_BetTeamIsAH_BetChoiceIsAwaySlashHome(string betTeam)
+        {
+            // Arrange.
+            _ticket.BetTeam = betTeam;
+
+            // Act.
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert.
+            const string expected = "Away/Home";
+
+            Assert.AreEqual(expected, _choice.Template.betTeam);
+        }
+
+        [TestCase("DA")]
+        [TestCase("da")]
+        [TestCase("dA")]
+        [TestCase("Da")]
+        public void BuildBetTeam_BetTeamIsDA_BetChoiceIsDrawSlashAway(string betTeam)
+        {
+            // Arrange.
+            _ticket.BetTeam = betTeam;
+
+            // Act.
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert.
+            const string expected = "Draw/Away";
+
+            Assert.AreEqual(expected, _choice.Template.betTeam);
+        }
+
+        [TestCase("NO")]
+        [TestCase("no")]
+        [TestCase("nO")]
+        [TestCase("No")]
+        public void BuildBetTeam_BetTeamIsNO_BetChoiceIsNone(string betTeam)
+        {
+            // Arrange.
+            _ticket.BetTeam = betTeam;
+
+            // Act.
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert.
+            const string expected = "None";
+
             Assert.AreEqual(expected, _choice.Template.betTeam);
         }
 
         [Test]
-        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
+        public void BuildBetTeamClassNameAndHandicap_Always_HandicapIsNull()
         {
-            // Act
+            // Act.
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert
+            // Assert.
             Assert.IsNull(_choice.Template.Handicap.handicap);
         }
 
         [Test]
-        public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
+        public void BuildBetTeamClassNameAndHandicap_Always_BetTeamClassNameIsFavorite()
         {
-            // Act
+            // Act.
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert
-            const string CSS_CLASS_FAVORITE = "favorite";
-            Assert.AreEqual(CSS_CLASS_FAVORITE, _choice.Template.betTeamClassName);
+            // Assert.
+            const string favorite = "favorite";
+
+            Assert.AreEqual(favorite, _choice.Template.betTeamClassName);
         }
     }
 }

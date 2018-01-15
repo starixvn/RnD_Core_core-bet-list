@@ -10,7 +10,8 @@
     [TestFixture]
     public class Choice410Test
     {
-        private const string BetTeamTemplate = " <span class=\"favorite\">{0}</span>&nbsp;{1} <span class=\"favorite\">&nbsp;{2}</span>";
+        private const string BetTeamTemplate = "{0}<span class=\"underdog\"> {1} </span>{2}";
+
         private ITicket _ticket;
         private IChoice _choice;
         private ITicketHelper _ticketHelper;
@@ -24,54 +25,78 @@
             _choice = new Choice410();
         }
 
-        [Test]
-        public void BuildBetTeam_BetTeamIs1x_ShowBetTeamIsHomeTeamNameOrDraw()
+        [TestCase(null)]
+        [TestCase("")]
+        public void BuildBetTeam_BetTeamIsNullOrEmpty_BetChoiceIsEmptyString(string betTeam)
         {
-            // Arrange
-            var homeTeamName = "Home team name";
-            _ticket.BetTeam = "1x";
-            _ticketHelper.GetTeamNameById(Arg.Any<long>()).Returns(homeTeamName);
+            // Arrange.
+            _ticket.BetTeam = betTeam;
 
-            // Act
-            _choice.Render(_ticket, _ticketHelper, null, false);
+            // Act.
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert
-            string expected = string.Format(BetTeamTemplate, _ticketHelper.GetTeamNameById(_ticket.HomeId), CoreBetList.lblOr, CoreBetList.lblDraw);
-            Assert.AreEqual(expected, _choice.Template.betTeam);
+            // Assert.
+            Assert.IsEmpty(_choice.Template.betTeam);
         }
 
         [Test]
-        public void BuildBetTeam_BetTeamIs2x_ShowBetTeamIsAwayTeamNameOrDraw()
+        public void BuildBetTeam_BetTeamHasMoreThanTwoCharacters_BetChoiceIsEmptyString()
         {
-            // Arrange
-            var awayTeamName = "Away team name";
-            _ticket.BetTeam = "2x";
-            _ticketHelper.GetTeamNameById(Arg.Any<long>()).Returns(awayTeamName);
+            // Arrange.
+            _ticket.BetTeam = "1XA";
 
-            // Act
-            _choice.Render(_ticket, _ticketHelper, null, false);
+            // Act.
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert
-            string expected = string.Format(BetTeamTemplate, _ticketHelper.GetTeamNameById(_ticket.AwayId), CoreBetList.lblOr, CoreBetList.lblDraw);
-            Assert.AreEqual(expected, _choice.Template.betTeam);
+            // Assert.
+            Assert.IsEmpty(_choice.Template.betTeam);
+        }
+
+        [TestCase("1x")]
+        [TestCase("1X")]
+        public void BuildBetTeam_BetTeamIs1x_BetChoiceIsHomeOrDraw(string betTeam)
+        {
+            // Arrange.
+            _ticket.BetTeam = betTeam;
+
+            // Act.
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert.
+            string expectedBetTeam = string.Format(BetTeamTemplate, CoreBetList.Home, CoreBetList.lblOr, CoreBetList.lblDraw);
+
+            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
+        }
+
+        [TestCase("2x")]
+        [TestCase("2X")]
+        public void BuildBetTeam_BetTeamIs2x_BetChoiceIsAwayOrDraw(string betTeam)
+        {
+            // Arrange.
+            _ticket.BetTeam = betTeam;
+
+            // Act.
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert.
+            string expectedBetTeam = string.Format(BetTeamTemplate, CoreBetList.Away, CoreBetList.lblOr, CoreBetList.lblDraw);
+
+            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
         [Test]
-        public void BuildBetTeam_BetTeamIs12_ShowBetTeamIsHomeTeamNameOrAwayTeamName()
+        public void BuildBetTeam_BetTeamIs12_BetChoiceIsHomeOrAway()
         {
-            // Arrange
-            var teamName = "Team name";
+            // Arrange.
             _ticket.BetTeam = "12";
-            _ticketHelper.GetTeamNameById(Arg.Any<long>()).Returns(teamName);
 
-            // Act
-            _choice.Render(_ticket, _ticketHelper, null, false);
+            // Act.
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert
-            string homeTeamName = _ticketHelper.GetTeamNameById(_ticket.HomeId);
-            string awayTeamName = _ticketHelper.GetTeamNameById(_ticket.AwayId);
-            string expected = string.Format(BetTeamTemplate, homeTeamName, CoreBetList.lblOr, awayTeamName);
-            Assert.AreEqual(expected, _choice.Template.betTeam);
+            // Assert.
+            string expectedBetTeam = string.Format(BetTeamTemplate, CoreBetList.Home, CoreBetList.lblOr, CoreBetList.Away);
+
+            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
         [Test]

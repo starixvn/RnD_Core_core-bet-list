@@ -191,7 +191,6 @@
     <Compile Include="Builder\ChoiceBuilder\Choice602Tests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice601Tests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice10Test.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice151Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1000Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice2Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1102Test.cs" />

@@ -1,6 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
+    using App_GlobalResources;
     using Constants;
     using Entities;
 
@@ -16,15 +17,15 @@
             switch (ticket.BetTeam.ToLowerInvariant())
             {
                 case BetTeamValue.H1to4:
-                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "1-4"), Template.Match.homeTeam);
+                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "1-4"), CoreBetList.Home);
                     break;
 
                 case BetTeamValue.H5to8:
-                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "5-8"), Template.Match.homeTeam);
+                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "5-8"), CoreBetList.Home);
                     break;
 
                 case BetTeamValue.H9Over:
-                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "9+"), Template.Match.homeTeam);
+                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "9+"), CoreBetList.Home);
                     break;
 
                 case BetTeamValue.D:
@@ -32,15 +33,15 @@
                     break;
 
                 case BetTeamValue.A1to4:
-                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "1-4"), Template.Match.awayTeam);
+                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "1-4"), CoreBetList.Away);
                     break;
 
                 case BetTeamValue.A5to8:
-                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "5-8"), Template.Match.awayTeam);
+                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "5-8"), CoreBetList.Away);
                     break;
 
                 case BetTeamValue.A9Over:
-                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "9+"), Template.Match.awayTeam);
+                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "9+"), CoreBetList.Away);
                     break;
 
                 default:

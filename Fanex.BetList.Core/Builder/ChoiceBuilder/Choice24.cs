@@ -11,40 +11,30 @@
     /// </summary>
     public class Choice24 : Choice1
     {
-        /// <summary>
-        /// Builds the bet team.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            string team = ticket.BetTeam.Contains("1") ? Template.Match.homeTeam : Template.Match.awayTeam;
-            string drawAway = ticket.BetTeam.EndsWith(BetTeamValue.X, StringComparison.InvariantCulture) ? CoreBetList.lblDraw : Template.Match.awayTeam;
+            string betTeam = ticket.BetTeam;
 
-            string[] betteam =
-                {
-                    " <span class=\"",
-                    Favorite,
-                    "\">",
-                    team,
-                    "</span>",
-                    HtmlCharacters.NoneBreakingSpace,
-                    CoreBetList.lblOr.ToLowerInvariant(),
-                    " <span class=\"",
-                    Favorite,
-                    "\">",
-                    HtmlCharacters.NoneBreakingSpace,
-                    drawAway,
-                    "</span>"
-                };
+            if (!string.IsNullOrEmpty(betTeam) && betTeam.Length == 2)
+            {
+                var firstChance = string.Equals(BetTeamValue.NumberOne, betTeam[0].ToString(), StringComparison.InvariantCultureIgnoreCase)
+                        ? CoreBetList.Home
+                        : CoreBetList.Away;
+                var secondChance = string.Equals(BetTeamValue.X, betTeam[1].ToString(), StringComparison.InvariantCultureIgnoreCase)
+                        ? CoreBetList.lblDraw
+                        : CoreBetList.Away;
 
-            Template.betTeam = string.Join(null, betteam);
+                Template.betTeam = $"{firstChance}<span class=\"{Underdog}\"> {CoreBetList.lblOr} </span>{secondChance}";
+            }
+            else
+            {
+                Template.betTeam = string.Empty;
+            }
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
-            base.BuildBetTeamClassNameAndHandicap(ticket);
+            Template.betTeamClassName = Favorite;
 
             Template.Handicap.handicap = null;
         }

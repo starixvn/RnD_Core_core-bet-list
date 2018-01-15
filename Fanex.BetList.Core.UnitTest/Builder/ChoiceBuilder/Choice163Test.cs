@@ -1,14 +1,10 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
+    using Core.Builder.ChoiceBuilder;
+    using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    ///  Unit test for Choice163.
-    /// </summary>
     [TestFixture]
     public class Choice163Test
     {
@@ -24,136 +20,106 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        /// <summary>
-        /// Builds the bet team_ bet team is h u_ template bet team is home team name slash under.
-        /// </summary>
-        /// <param name="betTeam">The bet team.</param>
         [TestCase("HU")]
         [TestCase("hu")]
         [TestCase("hU")]
-        public void BuildBetTeam_BetTeamIsHU_TemplateBetTeamIsHomeTeamNameSlashUnder(string betTeam)
+        public void BuildBetTeam_BetTeamIsHU_BetChoiceIsHomeSlashUnder(string betTeam)
         {
-            // Arrange
-            const string HOME_TEAM_NAME = "Home team name";
-            _ticket.HomeId = 1365;
+            // Arrange.
             _ticket.BetTeam = betTeam;
-            _ticketHelper.GetTeamNameById(_ticket.HomeId).Returns<string>(HOME_TEAM_NAME);
 
-            // Act
+            // Act.
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert
-            const string EXPECTED = "Home team name/Under";
-            Assert.AreEqual(EXPECTED, _choice.Template.betTeam);
+            // Assert.
+            const string expectation = "Home/Under";
+
+            Assert.AreEqual(expectation, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// Builds the bet team_ bet team is h o_ template bet team is home team name slash over.
-        /// </summary>
-        /// <param name="betTeam">The bet team.</param>
         [TestCase("HO")]
         [TestCase("ho")]
         [TestCase("hO")]
-        public void BuildBetTeam_BetTeamIsHO_TemplateBetTeamIsHomeTeamNameSlashOver(string betTeam)
+        public void BuildBetTeam_BetTeamIsHO_BetChoiceIsHomeSlashOver(string betTeam)
         {
-            // Arrange
-            const string HOME_TEAM_NAME = "Home team name";
-            _ticket.HomeId = 1365;
+            // Arrange.
             _ticket.BetTeam = betTeam;
-            _ticketHelper.GetTeamNameById(_ticket.HomeId).Returns<string>(HOME_TEAM_NAME);
 
-            // Act
+            // Act.
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert
-            const string EXPECTED = "Home team name/Over";
-            Assert.AreEqual(EXPECTED, _choice.Template.betTeam);
+            // Assert.
+            const string expectation = "Home/Over";
+
+            Assert.AreEqual(expectation, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// Builds the bet team_ bet team is d u_ template bet team is draw slash under.
-        /// </summary>
-        /// <param name="betTeam">The bet team.</param>
         [TestCase("DU")]
         [TestCase("du")]
         [TestCase("dU")]
-        public void BuildBetTeam_BetTeamIsDU_TemplateBetTeamIsDrawSlashUnder(string betTeam)
+        public void BuildBetTeam_BetTeamIsDU_BetChoiceIsDrawSlashUnder(string betTeam)
         {
-            // Arrange
+            // Arrange.
             _ticket.BetTeam = betTeam;
 
-            // Act
+            // Act.
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert
-            const string EXPECTED = "Draw/Under";
-            Assert.AreEqual(EXPECTED, _choice.Template.betTeam);
+            // Assert.
+            const string expectation = "Draw/Under";
+
+            Assert.AreEqual(expectation, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// Builds the bet team_ bet team is d o_ template bet team is draw slash over.
-        /// </summary>
-        /// <param name="betTeam">The bet team.</param>
         [TestCase("DO")]
         [TestCase("do")]
         [TestCase("dO")]
-        public void BuildBetTeam_BetTeamIsDO_TemplateBetTeamIsDrawSlashOver(string betTeam)
+        public void BuildBetTeam_BetTeamIsDO_BetChoiceIsDrawSlashOver(string betTeam)
         {
-            // Arrange
+            // Arrange.
             _ticket.BetTeam = betTeam;
 
-            // Act
+            // Act.
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert
-            const string EXPECTED = "Draw/Over";
-            Assert.AreEqual(EXPECTED, _choice.Template.betTeam);
+            // Assert.
+            const string expectation = "Draw/Over";
+
+            Assert.AreEqual(expectation, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// Builds the bet team_ bet team is a u_ template bet team is away team name slash under.
-        /// </summary>
-        /// <param name="betTeam">The bet team.</param>
         [TestCase("AU")]
         [TestCase("au")]
         [TestCase("aU")]
-        public void BuildBetTeam_BetTeamIsAU_TemplateBetTeamIsAwayTeamNameSlashUnder(string betTeam)
+        public void BuildBetTeam_BetTeamIsAU_BetChoiceIsAwaySlashUnder(string betTeam)
         {
-            // Arrange
-            const string HOME_TEAM_NAME = "Away team name";
-            _ticket.AwayId = 1365;
+            // Arrange.
             _ticket.BetTeam = betTeam;
-            _ticketHelper.GetTeamNameById(_ticket.AwayId).Returns<string>(HOME_TEAM_NAME);
 
-            // Act
+            // Act.
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert
-            const string EXPECTED = "Away team name/Under";
-            Assert.AreEqual(EXPECTED, _choice.Template.betTeam);
+            // Assert.
+            const string expectation = "Away/Under";
+
+            Assert.AreEqual(expectation, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// Builds the bet team_ bet team is a o_ template bet team is away team name slash over.
-        /// </summary>
-        /// <param name="betTeam">The bet team.</param>
         [TestCase("AO")]
         [TestCase("ao")]
         [TestCase("aO")]
-        public void BuildBetTeam_BetTeamIsAO_TemplateBetTeamIsAwayTeamNameSlashOver(string betTeam)
+        public void BuildBetTeam_BetTeamIsAO_BetChoiceIsAwaySlashOver(string betTeam)
         {
-            // Arrange
-            const string HOME_TEAM_NAME = "Away team name";
-            _ticket.AwayId = 1365;
+            // Arrange.
             _ticket.BetTeam = betTeam;
-            _ticketHelper.GetTeamNameById(_ticket.AwayId).Returns<string>(HOME_TEAM_NAME);
 
-            // Act
+            // Act.
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert
-            const string EXPECTED = "Away team name/Over";
-            Assert.AreEqual(EXPECTED, _choice.Template.betTeam);
+            // Assert.
+            const string expectation = "Away/Over";
+
+            Assert.AreEqual(expectation, _choice.Template.betTeam);
         }
     }
 }

@@ -19,6 +19,9 @@
             ////2ND Handicap (17)
             MapIdToBaseId(17, 1);
 
+            // Map '1H Double Chance' of BetRadar to 'Double Chance'
+            MapIdToBaseId(151, 24);
+
             // Map 'Result/Total Goals' to '1H Result/Total Goals'
             MapIdToBaseId(144, 143);
 

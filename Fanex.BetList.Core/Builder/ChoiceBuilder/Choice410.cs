@@ -1,7 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Entities;
+    using Entities;
 
     /// <summary>
     /// Pool House All In One: 1st Double Chance, bet type ID is 410.

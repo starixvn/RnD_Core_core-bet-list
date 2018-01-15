@@ -11,15 +11,6 @@
     /// </summary>
     public class Choice143 : Choice1
     {
-        /// <summary>
-        /// Set bet team to template by ticket bet team pattern with following rules:
-        /// <para>ho: Home and Over, hu: Home and Under</para>
-        /// <para>ao: Away and Over, au: Away and Under</para>
-        /// <para>do: Draw and Over, du: Draw and Over</para>
-        /// </summary>
-        /// <param name="ticket"> Ticket with bet type id is 143.</param>
-        /// <param name="ticketHelper"> Not null ticket helper.</param>
-        /// <param name="ticketData"> Not need this.</param>
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             var betTeam = ticket.BetTeam.ToLowerInvariant();
@@ -33,11 +24,11 @@
                 switch (betTeam[0])
                 {
                     case 'h':
-                        teamName = ticketHelper.GetTeamNameById(ticket.HomeId);
+                        teamName = CoreBetList.Home;
                         break;
 
                     case 'a':
-                        teamName = ticketHelper.GetTeamNameById(ticket.AwayId);
+                        teamName = CoreBetList.Away;
                         break;
 
                     case 'd':
@@ -49,7 +40,7 @@
                         break;
                 }
 
-                Template.betTeam = $"{teamName} <span class=\"{Underdog}\">&</span> {totalGoal}";
+                Template.betTeam = $"{teamName}/{totalGoal}";
             }
         }
 
