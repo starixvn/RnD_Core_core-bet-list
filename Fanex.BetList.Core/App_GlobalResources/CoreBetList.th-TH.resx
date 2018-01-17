@@ -615,4 +615,16 @@
   <data name="h" xml:space="preserve">
     <value>เจ้าบ้าน</value>
   </data>
+  <data name="FullTime" xml:space="preserve">
+    <value>เต็มเวลา</value>
+  </data>
+  <data name="HalfTime" xml:space="preserve">
+    <value>ครึ่งแรก</value>
+  </data>
+  <data name="AOSFTExcluding" xml:space="preserve">
+    <value>AOS เต็มเวลา ไม่รวม</value>
+  </data>
+  <data name="AOSHTExcluding" xml:space="preserve">
+    <value>AOS ครึ่งแรก ไม่รวม</value>
+  </data>
 </root>

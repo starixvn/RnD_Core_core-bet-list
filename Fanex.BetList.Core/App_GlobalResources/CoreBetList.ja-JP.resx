@@ -372,4 +372,16 @@
   <data name="hh" xml:space="preserve">
     <value>ホーム/ホーム</value>
   </data>
+  <data name="FullTime" xml:space="preserve">
+    <value>フルタイム</value>
+  </data>
+  <data name="HalfTime" xml:space="preserve">
+    <value>前半戦</value>
+  </data>
+  <data name="AOSFTExcluding" xml:space="preserve">
+    <value>AOS FT 除外</value>
+  </data>
+  <data name="AOSHTExcluding" xml:space="preserve">
+    <value>AOS HT 除外</value>
+  </data>
 </root>

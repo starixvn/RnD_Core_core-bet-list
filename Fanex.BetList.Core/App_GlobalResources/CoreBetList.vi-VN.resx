@@ -441,4 +441,16 @@
   <data name="a" xml:space="preserve">
     <value>Khách</value>
   </data>
+  <data name="FullTime" xml:space="preserve">
+    <value>Toàn Thời Gian</value>
+  </data>
+  <data name="HalfTime" xml:space="preserve">
+    <value>Hiệp 1</value>
+  </data>
+  <data name="AOSFTExcluding" xml:space="preserve">
+    <value>AOS FT Ngoại trừ</value>
+  </data>
+  <data name="AOSHTExcluding" xml:space="preserve">
+    <value>AOS HT Ngoại trừ</value>
+  </data>
 </root>

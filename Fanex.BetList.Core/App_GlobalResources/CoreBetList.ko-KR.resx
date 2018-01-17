@@ -528,4 +528,16 @@
   <data name="NoGoal408" xml:space="preserve">
     <value>노골</value>
   </data>
+  <data name="FullTime" xml:space="preserve">
+    <value>전후반경기</value>
+  </data>
+  <data name="HalfTime" xml:space="preserve">
+    <value>전반전 경기</value>
+  </data>
+  <data name="AOSFTExcluding" xml:space="preserve">
+    <value>AOS FT 제외</value>
+  </data>
+  <data name="AOSHTExcluding" xml:space="preserve">
+    <value>AOS HT 제외</value>
+  </data>
 </root>
