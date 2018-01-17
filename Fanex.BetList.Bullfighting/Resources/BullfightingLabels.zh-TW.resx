@@ -120,4 +120,7 @@
   <data name="Arena" xml:space="preserve">
     <value>競技場</value>
   </data>
+  <data name="MatchNo" xml:space="preserve">
+    <value>比賽的號碼</value>
+  </data>
 </root>

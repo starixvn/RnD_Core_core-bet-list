@@ -277,6 +277,21 @@
             StringAssert.Contains(expectedDisplayingHtml, actualResult.Match);
         }
 
+        [Test]
+        public void BuildMatch_Always_ShowMatchNoInCorrectHtml()
+        {
+            // Arrange.
+            _ticket.Handicap1 = 123;
+
+            // Act.
+            var actualResult = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert.
+            var expectedDisplayingHtml = $"<span class=\"match-no\">{BullfightingLabels.MatchNo}:</span> 123";
+
+            StringAssert.Contains(expectedDisplayingHtml, actualResult.Match);
+        }
+
         [TestCase("Banker=LangKaoJomPiChit(AiJamPen);Player=WanMeChai(PaTong);ArenaCode=GYN12")]
         [TestCase("Player=WanMeChai(PaTong);;arenaCode=GYN12")]
         [TestCase("Player=WanMeChai(PaTong);arenacode=GYN12")]
@@ -438,11 +453,33 @@
             Assert.AreEqual(expectedMatchName, linesInActualText[1]);
         }
 
+        [Test]
+        public void BuildBetTeamsInfo_Always_AppendAMatchNoAtTheThirdRow()
+        {
+            // Arrange.
+            const int LeagueId = 1;
+            const string LeagueName = "League Name";
+            var rtfHelper = new RTFHelper().Clone();
+
+            _ticket.LeagueId = LeagueId;
+            _ticket.Handicap1 = 123;
+            _ticketHelper.GetLeagueName3rd(Arg.Is(LeagueId.ToString())).Returns(LeagueName);
+
+            // Act.
+            var actualText = _choice.RenderRTF(_ticket, _ticketHelper, null, false, rtfHelper);
+            var linesInActualText = actualText[0].String.Split('\n');
+
+            // Assert.
+            var expectedArenaNameText = $"{BullfightingLabels.MatchNo}: {_ticket.Handicap1}";
+
+            StringAssert.Contains(expectedArenaNameText, linesInActualText[2]);
+        }
+
         [TestCase("abcBanker=LangKaoJomPiChit(AiJamPen);Player=WanMeChai(PaTong);ArenaCode=GYN12")]
         [TestCase("Player=WanMeChai(PaTong);arenaCode=GYN12")]
         [TestCase(";Player=WanMeChai(PaTong);arenacode=GYN12")]
         [TestCase(";Player=WanMeChai(PaTong);ARENACODE=GYN12")]
-        public void BuildBetTeamsInfo_TransDescContainsCorrectArenaCode_ShowArenaCodeAtTheThirdRow(string transDesc)
+        public void BuildBetTeamsInfo_TransDescContainsCorrectArenaCode_ShowArenaCodeAtTheForthRow(string transDesc)
         {
             // Arrange.
             var rtfHelper = new RTFHelper().Clone();
@@ -456,11 +493,11 @@
             // Assert
             var expectedArenaInfo = $"{BullfightingLabels.Arena}: GYN12";
 
-            StringAssert.Contains(expectedArenaInfo, linesInActualText[2]);
+            StringAssert.Contains(expectedArenaInfo, linesInActualText[3]);
         }
 
         [Test]
-        public void BuildBetTeamsInfo_Always_AppendArenaNameAtTheEndOfThirdRow()
+        public void BuildBetTeamsInfo_Always_AppendArenaNameAtTheEndOfForthRow()
         {
             // Arrange.
             const int LeagueId = 1;
@@ -477,7 +514,7 @@
             // Assert.
             var expectedArenaNameText = $"- {LeagueName}";
 
-            StringAssert.Contains(expectedArenaNameText, linesInActualText[2]);
+            StringAssert.Contains(expectedArenaNameText, linesInActualText[3]);
         }
     }
 }

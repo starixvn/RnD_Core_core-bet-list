@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using App_GlobalResources;
     using Entities;
+    using Fanex.BetList.Core.Utils;
     using Resources;
     using Templates;
 
@@ -71,8 +72,12 @@
         protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
         {
             Template.Match.SetValue(BuildMatch());
+            Template.Match.Append(BuildMatchNo(ticket));
             Template.Match.Append(BuildArena());
         }
+
+        private static string BuildMatchNo(ITicket ticket)
+            => $"<div class=\"bullfighting-arena\"><span class=\"match-no\">{BullfightingLabels.MatchNo}:</span> {Formatter.DecFormat(ticket.Handicap1, 0)}</div>";
 
         private string BuildMatch()
             => $"<div class=\"bullfighting-match\"><span class=\"banker\">{_bankerName}</span> - vs - <span class=\"player\">{_playerName}</span></div>";
@@ -96,6 +101,9 @@
                 rtfHelper.RTFRenderer.AddText(_playerName);
             }
 
+            rtfHelper.RTFRenderer.AddText("\n");
+            rtfHelper.RTFRenderer.AddText($"{BullfightingLabels.MatchNo}: ", rtfHelper.PosFont);
+            rtfHelper.RTFRenderer.AddText(Formatter.DecFormat(ticket.Handicap1, 0));
             rtfHelper.RTFRenderer.AddText("\n");
 
             if (!string.IsNullOrEmpty(_arenaCode))

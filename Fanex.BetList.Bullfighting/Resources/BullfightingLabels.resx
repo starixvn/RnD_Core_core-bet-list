@@ -120,4 +120,7 @@
   <data name="Arena" xml:space="preserve">
     <value>Arena</value>
   </data>
+  <data name="MatchNo" xml:space="preserve">
+    <value>Match No.</value>
+  </data>
 </root>
