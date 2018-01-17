@@ -333,4 +333,16 @@
   <data name="NoGoal14" xml:space="preserve">
     <value>ゴールなし</value>
   </data>
+  <data name="ToWinByOneGoal" xml:space="preserve">
+    <value>1ゴールで勝つ</value>
+  </data>
+  <data name="ToWinByTwoGoals" xml:space="preserve">
+    <value>2ゴールで勝つ</value>
+  </data>
+  <data name="ToWinByThreeUpGoals" xml:space="preserve">
+    <value>3ゴール以上で勝つ</value>
+  </data>
+  <data name="ToWinByTwoUpGoals" xml:space="preserve">
+    <value>2ゴール以上で勝つ</value>
+  </data>
 </root>

@@ -679,7 +679,7 @@
     <value>AOS 半場 不包括</value>
   </data>
   <data name="ScoreDraw" xml:space="preserve">
-    <value>任何平局的比數(不包含 0-0)</value>
+    <value>任何比數的平局(不包含 0-0)</value>
   </data>
   <data name="Live" xml:space="preserve">
     <value>滾球</value>
@@ -754,6 +754,9 @@
     <value> </value>
   </data>
   <data name="None22" xml:space="preserve">
+    <value>無進球</value>
+  </data>
+  <data name="NoGoal408" xml:space="preserve">
     <value>無進球</value>
   </data>
 </root>

@@ -127,7 +127,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            Assert.AreEqual(CoreBetList.nogoal, _choice.Template.betTeam);
+            Assert.AreEqual(CoreBetList.NoGoal408, _choice.Template.betTeam);
         }
 
         [Test]

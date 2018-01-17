@@ -1213,6 +1213,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No Goal.
+        /// </summary>
+        public static string NoGoal408 {
+            get {
+                return ResourceManager.GetString("NoGoal408", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No Goals.
         /// </summary>
         public static string NoGoals {

@@ -378,9 +378,6 @@
   <data name="Penalty" xml:space="preserve">
     <value>Phạt đền</value>
   </data>
-  <data name="ScoreDraw" xml:space="preserve">
-    <value>Hòa Có Bàn Thắng</value>
-  </data>
   <data name="Live" xml:space="preserve">
     <value>Trực tiếp</value>
   </data>
@@ -398,5 +395,20 @@
   </data>
   <data name="None22" xml:space="preserve">
     <value>Không Có</value>
+  </data>
+  <data name="ToWinByOneGoal" xml:space="preserve">
+    <value>Chiến thắng với 1 bàn</value>
+  </data>
+  <data name="ToWinByTwoGoals" xml:space="preserve">
+    <value>Chiến thắng với 2 bàn</value>
+  </data>
+  <data name="ToWinByThreeUpGoals" xml:space="preserve">
+    <value>Chiến thắng với 3 bàn trở lên</value>
+  </data>
+  <data name="ToWinByTwoUpGoals" xml:space="preserve">
+    <value>Chiến thắng với 2 bàn trở lên</value>
+  </data>
+  <data name="NoGoal408" xml:space="preserve">
+    <value>Không Có Bàn Thắng</value>
   </data>
 </root>

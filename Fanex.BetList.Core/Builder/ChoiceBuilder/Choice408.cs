@@ -46,7 +46,7 @@
                     break;
 
                 case BetTeamValue.NG:
-                    betTeam = CoreBetList.nogoal;
+                    betTeam = CoreBetList.NoGoal408;
                     break;
 
                 default:

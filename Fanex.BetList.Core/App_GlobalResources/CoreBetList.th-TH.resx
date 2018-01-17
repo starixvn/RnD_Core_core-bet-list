@@ -555,9 +555,6 @@
   <data name="Penalty" xml:space="preserve">
     <value>ลูกโทษ</value>
   </data>
-  <data name="ScoreDraw" xml:space="preserve">
-    <value>เสมอ</value>
-  </data>
   <data name="ThreeAndOver" xml:space="preserve">
     <value>3 ประตู หรือมากกว่า</value>
   </data>
@@ -590,5 +587,20 @@
   </data>
   <data name="None22" xml:space="preserve">
     <value>ไม่ใช</value>
+  </data>
+  <data name="ToWinByOneGoal" xml:space="preserve">
+    <value>เพื่อชนะที่ 1 ประตู</value>
+  </data>
+  <data name="ToWinByTwoGoals" xml:space="preserve">
+    <value>เพื่อชนะที่ 2 ประตู</value>
+  </data>
+  <data name="ToWinByThreeUpGoals" xml:space="preserve">
+    <value>เพื่อชนะที่ 3 ประตูขึ้นไป</value>
+  </data>
+  <data name="ToWinByTwoUpGoals" xml:space="preserve">
+    <value>เพื่อชนะที่ 2 ประตูขึ้นไป</value>
+  </data>
+  <data name="NoGoal408" xml:space="preserve">
+    <value>ไม่มีประตู</value>
   </data>
 </root>

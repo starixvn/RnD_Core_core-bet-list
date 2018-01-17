@@ -513,4 +513,19 @@
   <data name="NoGoal14" xml:space="preserve">
     <value>무득점</value>
   </data>
+  <data name="ToWinByOneGoal" xml:space="preserve">
+    <value>1득점으로 승리</value>
+  </data>
+  <data name="ToWinByTwoGoals" xml:space="preserve">
+    <value>2득점으로 승리</value>
+  </data>
+  <data name="ToWinByThreeUpGoals" xml:space="preserve">
+    <value>3득점 이상으로 승리</value>
+  </data>
+  <data name="ToWinByTwoUpGoals" xml:space="preserve">
+    <value>2득점 이상으로 승리</value>
+  </data>
+  <data name="NoGoal408" xml:space="preserve">
+    <value>노골</value>
+  </data>
 </root>
