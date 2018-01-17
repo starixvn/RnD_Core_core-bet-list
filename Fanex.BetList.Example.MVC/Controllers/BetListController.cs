@@ -466,6 +466,19 @@ namespace Fanex.BetList.Example.MVC.Controllers
             return BetListView(model);
         }
 
+        public ActionResult ChangingToHomeAway(BetListData model = null)
+        {
+
+            var betTypes = _dataService.QueryBetTypes(24, 410, 1224, 151, 143, 163, 144, 171, 172, 415, 186, 431, 408, 426, 601, 602, 608, 614);
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            DataSourcePath = "~/App_Data/ChangingToHomeAway.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
         private ViewResult BetListView(BetListData model)
         {
             return View("All", model);

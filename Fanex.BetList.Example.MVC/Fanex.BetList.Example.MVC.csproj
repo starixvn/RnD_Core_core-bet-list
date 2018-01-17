@@ -433,6 +433,7 @@
     <Content Include="App_Data\KenoLottery.xls" />
     <Content Include="App_Data\Keno.xls" />
     <Content Include="App_Data\PHAllInOneP3.xls" />
+    <Content Include="App_Data\ChangingToHomeAway.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
