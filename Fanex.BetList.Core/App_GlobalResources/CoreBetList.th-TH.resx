@@ -609,4 +609,10 @@
   <data name="NoGoal408" xml:space="preserve">
     <value>ไม่มีประตู</value>
   </data>
+  <data name="a" xml:space="preserve">
+    <value>ทีมเยือน</value>
+  </data>
+  <data name="h" xml:space="preserve">
+    <value>เจ้าบ้าน</value>
+  </data>
 </root>

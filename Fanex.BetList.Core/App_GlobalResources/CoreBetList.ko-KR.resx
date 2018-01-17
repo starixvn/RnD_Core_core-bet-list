@@ -222,12 +222,6 @@
   <data name="details" xml:space="preserve">
     <value>세부사항</value>
   </data>
-  <data name="a" xml:space="preserve">
-    <value>원정팀</value>
-  </data>
-  <data name="h" xml:space="preserve">
-    <value>홈팀</value>
-  </data>
   <data name="points" xml:space="preserve">
     <value>points</value>
   </data>

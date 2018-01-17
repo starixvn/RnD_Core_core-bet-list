@@ -438,4 +438,7 @@
   <data name="hh" xml:space="preserve">
     <value>Đội nhà/Đội nhà</value>
   </data>
+  <data name="a" xml:space="preserve">
+    <value>Khách</value>
+  </data>
 </root>
