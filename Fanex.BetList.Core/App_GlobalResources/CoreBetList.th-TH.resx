@@ -627,4 +627,13 @@
   <data name="AOSHTExcluding" xml:space="preserve">
     <value>AOS ครึ่งแรก ไม่รวม</value>
   </data>
+  <data name="TwoHDotOne" xml:space="preserve">
+    <value>ครึ่งหลัง.1</value>
+  </data>
+  <data name="TwoHDotTwo" xml:space="preserve">
+    <value>ครึ่งหลัง.2</value>
+  </data>
+  <data name="TwoHDotX" xml:space="preserve">
+    <value>ครึ่งหลัง.X</value>
+  </data>
 </root>
