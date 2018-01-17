@@ -345,4 +345,31 @@
   <data name="ToWinByTwoUpGoals" xml:space="preserve">
     <value>2ゴール以上で勝つ</value>
   </data>
+  <data name="aa" xml:space="preserve">
+    <value>アウェイ/アウェイ</value>
+  </data>
+  <data name="ad" xml:space="preserve">
+    <value>アウェイ/ドロー</value>
+  </data>
+  <data name="ah" xml:space="preserve">
+    <value>アウェイ/ホーム</value>
+  </data>
+  <data name="da" xml:space="preserve">
+    <value>ドロー/アウェイ</value>
+  </data>
+  <data name="dd" xml:space="preserve">
+    <value>ドロー/ドロー</value>
+  </data>
+  <data name="dh" xml:space="preserve">
+    <value>ドロー/ホーム</value>
+  </data>
+  <data name="ha" xml:space="preserve">
+    <value>ホーム/アウェイ</value>
+  </data>
+  <data name="hd" xml:space="preserve">
+    <value>ホーム/ドロー</value>
+  </data>
+  <data name="hh" xml:space="preserve">
+    <value>ホーム/ホーム</value>
+  </data>
 </root>

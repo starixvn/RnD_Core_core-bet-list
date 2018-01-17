@@ -232,10 +232,10 @@
     <value>points</value>
   </data>
   <data name="ad" xml:space="preserve">
-    <value>원무</value>
+    <value>원정팀/무승부</value>
   </data>
   <data name="ah" xml:space="preserve">
-    <value>원홈</value>
+    <value>원정팀/홈 팀</value>
   </data>
   <data name="all" xml:space="preserve">
     <value>모든</value>
@@ -274,13 +274,13 @@
     <value>고객</value>
   </data>
   <data name="da" xml:space="preserve">
-    <value>무원</value>
+    <value>무승부/원정팀</value>
   </data>
   <data name="date" xml:space="preserve">
     <value>날짜</value>
   </data>
   <data name="dd" xml:space="preserve">
-    <value>무무</value>
+    <value>무승부/무승부</value>
   </data>
   <data name="dec" xml:space="preserve">
     <value>12월</value>
@@ -310,16 +310,16 @@
     <value>이동</value>
   </data>
   <data name="ha" xml:space="preserve">
-    <value>홈원</value>
+    <value>홈 팀/원정팀</value>
   </data>
   <data name="hd" xml:space="preserve">
-    <value>홈/무</value>
+    <value>홈 팀/무승부</value>
   </data>
   <data name="hdp" xml:space="preserve">
     <value>핸디캡</value>
   </data>
   <data name="hh" xml:space="preserve">
-    <value>홈/홈</value>
+    <value>홈 팀/홈 팀</value>
   </data>
   <data name="Horse" xml:space="preserve">
     <value>경마</value>
@@ -524,6 +524,12 @@
   </data>
   <data name="ToWinByTwoUpGoals" xml:space="preserve">
     <value>2득점 이상으로 승리</value>
+  </data>
+  <data name="aa" xml:space="preserve">
+    <value>원정팀/원정팀</value>
+  </data>
+  <data name="dh" xml:space="preserve">
+    <value>무승부/홈 팀</value>
   </data>
   <data name="NoGoal408" xml:space="preserve">
     <value>노골</value>

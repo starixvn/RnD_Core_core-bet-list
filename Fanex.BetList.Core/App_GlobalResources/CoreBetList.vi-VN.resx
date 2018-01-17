@@ -411,4 +411,31 @@
   <data name="NoGoal408" xml:space="preserve">
     <value>Không Có Bàn Thắng</value>
   </data>
+  <data name="aa" xml:space="preserve">
+    <value>Đội khách/Đội khách</value>
+  </data>
+  <data name="ad" xml:space="preserve">
+    <value>Đội khách/Hòa</value>
+  </data>
+  <data name="ah" xml:space="preserve">
+    <value>Đội khách/Đội nhà</value>
+  </data>
+  <data name="da" xml:space="preserve">
+    <value>Hòa/Đội khách</value>
+  </data>
+  <data name="dd" xml:space="preserve">
+    <value>Hòa/Hòa</value>
+  </data>
+  <data name="dh" xml:space="preserve">
+    <value>Hòa/Đội nhà</value>
+  </data>
+  <data name="ha" xml:space="preserve">
+    <value>Đội nhà/Đội khách</value>
+  </data>
+  <data name="hd" xml:space="preserve">
+    <value>Đội nhà/Hòa</value>
+  </data>
+  <data name="hh" xml:space="preserve">
+    <value>Đội nhà/Đội nhà</value>
+  </data>
 </root>
