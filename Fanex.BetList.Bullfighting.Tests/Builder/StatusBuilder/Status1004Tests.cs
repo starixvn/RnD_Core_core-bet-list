@@ -23,5 +23,25 @@
             // Assert.
             Assert.AreEqual(ticket.RefNo, template.StatusResult.refNo);
         }
+
+        [Test]
+        public void BuildStatusResult_Always_BetIdInViewResultIsCombinedFromBetIdAndCustId()
+        {
+            // Arrange.
+            IStatus status = new Status1004();
+            ITicket ticket = Substitute.For<ITicket>();
+            ITicketHelper ticketHelper = Substitute.For<ITicketHelper>();
+
+            ticket.BetId = 123;
+            ticket.CustId = 456;
+
+            // Act.
+            var template = status.Render(ticket, ticketHelper, null, false);
+
+            // Assert.
+            var expectation = $"123, 456";
+
+            Assert.AreEqual(expectation, template.StatusResult.betId);
+        }
     }
 }
