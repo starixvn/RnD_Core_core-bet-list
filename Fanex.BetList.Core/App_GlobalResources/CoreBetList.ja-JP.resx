@@ -384,4 +384,10 @@
   <data name="AOSHTExcluding" xml:space="preserve">
     <value>AOS HT 除外</value>
   </data>
+  <data name="Home171" xml:space="preserve">
+    <value>ホーム</value>
+  </data>
+  <data name="Away171" xml:space="preserve">
+    <value>アウェイ</value>
+  </data>
 </root>

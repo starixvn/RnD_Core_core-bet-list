@@ -17,11 +17,11 @@
             switch (ticket.BetTeam.ToLowerInvariant())
             {
                 case BetTeamValue.H1:
-                    betTeam = string.Format("{0} {1}", CoreBetList.Home, CoreBetList.ToWinByOneGoal);
+                    betTeam = string.Format("{0} {1}", CoreBetList.Home171, CoreBetList.ToWinByOneGoal);
                     break;
 
                 case BetTeamValue.H2Plus:
-                    betTeam = string.Format("{0} {1}", CoreBetList.Home, CoreBetList.ToWinByTwoUpGoals);
+                    betTeam = string.Format("{0} {1}", CoreBetList.Home171, CoreBetList.ToWinByTwoUpGoals);
                     break;
 
                 case BetTeamValue.D:
@@ -29,11 +29,11 @@
                     break;
 
                 case BetTeamValue.A1:
-                    betTeam = string.Format("{0} {1}", CoreBetList.Away, CoreBetList.ToWinByOneGoal);
+                    betTeam = string.Format("{0} {1}", CoreBetList.Away171, CoreBetList.ToWinByOneGoal);
                     break;
 
                 case BetTeamValue.A2Plus:
-                    betTeam = string.Format("{0} {1}", CoreBetList.Away, CoreBetList.ToWinByTwoUpGoals);
+                    betTeam = string.Format("{0} {1}", CoreBetList.Away171, CoreBetList.ToWinByTwoUpGoals);
                     break;
 
                 case BetTeamValue.NG:

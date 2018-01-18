@@ -17,15 +17,15 @@
             switch (ticket.BetTeam.ToLowerInvariant())
             {
                 case BetTeamValue.H1:
-                    betTeam = string.Format("{0} {1}", CoreBetList.Home, CoreBetList.ToWinByOneGoal);
+                    betTeam = string.Format("{0} {1}", CoreBetList.Home171, CoreBetList.ToWinByOneGoal);
                     break;
 
                 case BetTeamValue.H2:
-                    betTeam = string.Format("{0} {1}", CoreBetList.Home, CoreBetList.ToWinByTwoGoals);
+                    betTeam = string.Format("{0} {1}", CoreBetList.Home171, CoreBetList.ToWinByTwoGoals);
                     break;
 
                 case BetTeamValue.H3:
-                    betTeam = string.Format("{0} {1}", CoreBetList.Home, CoreBetList.ToWinByThreeUpGoals);
+                    betTeam = string.Format("{0} {1}", CoreBetList.Home171, CoreBetList.ToWinByThreeUpGoals);
                     break;
 
                 case BetTeamValue.D:
@@ -33,15 +33,15 @@
                     break;
 
                 case BetTeamValue.A1:
-                    betTeam = string.Format("{0} {1}", CoreBetList.Away, CoreBetList.ToWinByOneGoal);
+                    betTeam = string.Format("{0} {1}", CoreBetList.Away171, CoreBetList.ToWinByOneGoal);
                     break;
 
                 case BetTeamValue.A2:
-                    betTeam = string.Format("{0} {1}", CoreBetList.Away, CoreBetList.ToWinByTwoGoals);
+                    betTeam = string.Format("{0} {1}", CoreBetList.Away171, CoreBetList.ToWinByTwoGoals);
                     break;
 
                 case BetTeamValue.A3:
-                    betTeam = string.Format("{0} {1}", CoreBetList.Away, CoreBetList.ToWinByThreeUpGoals);
+                    betTeam = string.Format("{0} {1}", CoreBetList.Away171, CoreBetList.ToWinByThreeUpGoals);
                     break;
 
                 default:

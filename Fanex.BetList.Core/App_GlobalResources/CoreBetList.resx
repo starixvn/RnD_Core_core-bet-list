@@ -832,4 +832,10 @@
   <data name="NoGoal408" xml:space="preserve">
     <value>No Goal</value>
   </data>
+  <data name="Home171" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Away171" xml:space="preserve">
+    <value>Away</value>
+  </data>
 </root>

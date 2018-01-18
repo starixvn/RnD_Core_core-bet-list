@@ -178,6 +178,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Away.
+        /// </summary>
+        public static string Away171 {
+            get {
+                return ResourceManager.GetString("Away171", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Away FG.
         /// </summary>
         public static string AwayFG {
@@ -804,6 +813,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string Home {
             get {
                 return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string Home171 {
+            get {
+                return ResourceManager.GetString("Home171", resourceCulture);
             }
         }
         

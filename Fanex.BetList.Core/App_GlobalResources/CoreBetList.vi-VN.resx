@@ -453,4 +453,10 @@
   <data name="AOSHTExcluding" xml:space="preserve">
     <value>AOS HT Ngoại trừ</value>
   </data>
+  <data name="Home171" xml:space="preserve">
+    <value>Đội nhà</value>
+  </data>
+  <data name="Away171" xml:space="preserve">
+    <value>Đội khách</value>
+  </data>
 </root>

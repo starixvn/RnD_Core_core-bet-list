@@ -540,4 +540,10 @@
   <data name="AOSHTExcluding" xml:space="preserve">
     <value>AOS HT 제외</value>
   </data>
+  <data name="Home171" xml:space="preserve">
+    <value>홈 팀</value>
+  </data>
+  <data name="Away171" xml:space="preserve">
+    <value>원정팀</value>
+  </data>
 </root>

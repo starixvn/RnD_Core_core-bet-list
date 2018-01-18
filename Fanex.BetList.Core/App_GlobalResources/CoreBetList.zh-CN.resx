@@ -765,4 +765,10 @@
   <data name="NoGoal408" xml:space="preserve">
     <value>无进球</value>
   </data>
+  <data name="Home171" xml:space="preserve">
+    <value>主</value>
+  </data>
+  <data name="Away171" xml:space="preserve">
+    <value>客</value>
+  </data>
 </root>
