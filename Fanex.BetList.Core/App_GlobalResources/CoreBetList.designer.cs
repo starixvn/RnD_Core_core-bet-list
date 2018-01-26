@@ -637,6 +637,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to For Ref No.
+        /// </summary>
+        public static string forRefNo {
+            get {
+                return ResourceManager.GetString("forRefNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 4+.
         /// </summary>
         public static string FourAndOver {
@@ -1537,6 +1546,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Progressive Jackpot Won Details.
+        /// </summary>
+        public static string ProgressiveJackpotWonDetails {
+            get {
+                return ResourceManager.GetString("ProgressiveJackpotWonDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to PT.
         /// </summary>
         public static string pt {
@@ -1551,6 +1569,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string race {
             get {
                 return ResourceManager.GetString("race", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rate.
+        /// </summary>
+        public static string rate {
+            get {
+                return ResourceManager.GetString("rate", resourceCulture);
             }
         }
         

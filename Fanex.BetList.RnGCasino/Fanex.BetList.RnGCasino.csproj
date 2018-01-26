@@ -40,7 +40,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builder\ChoiceBuilder\Choice2101.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2179.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2199.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2198.cs" />
     <Compile Include="Builder\StatusBuilder\Status2101.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2199.cs" />
     <Compile Include="Mapper\StatusMapper.cs" />
     <Compile Include="Mapper\ChoiceMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

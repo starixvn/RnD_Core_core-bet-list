@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_CodeAnalysis", "_CodeAnalysis", "{806E6B7B-8CAA-49B4-B5AB-145030E6B66A}"
 	ProjectSection(SolutionItems) = preProject
@@ -702,6 +702,9 @@ Global
 		{70F04EED-737C-4588-AB6E-9DD0378F49CB} = {C462FEA2-8C7B-47A2-8DD5-2D269883C7E6}
 		{95198F80-E7F6-4B7B-B0B7-F2C11A5886AF} = {D246ADCA-2A7C-4B8D-97F4-87645F96D583}
 		{8363A4EA-17D0-4875-B53D-71406638701A} = {D246ADCA-2A7C-4B8D-97F4-87645F96D583}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3219AC1F-4B00-4169-9672-3F2C10FA4D62}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Fanex2.vsmdi

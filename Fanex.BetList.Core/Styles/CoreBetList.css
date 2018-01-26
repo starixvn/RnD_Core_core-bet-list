@@ -110,24 +110,24 @@ div.match + div.league + div.no-details {
 }
 
 .detail {
-    background: url("Images/q_Icon2_1.png") no-repeat scroll center center transparent;
+    background: url("Images/q_Icon2_1.png") no-repeat scroll left center transparent;
     color: #755200;
     display: inline;
     font-weight: bold;
     height: 10px;
     line-height: 20px;
-    padding: 0 1px 0 65px;
+    padding: 0 1px 0 18px;
     width: 14px;
 }
 
 .detail:hover {
-    background: url("Images/q_Icon_2.png") no-repeat scroll center center transparent;
+        background: url("Images/q_Icon_2.png") no-repeat scroll left center transparent;
     color: #755200;
     cursor: pointer;
     display: inline;
     font-weight: bold;
     height: 10px;
-    padding: 0 1px 0 65px;
+        padding: 0 1px 0 18px;
     width: 14px;
 }
 
@@ -149,10 +149,10 @@ div.match + div.league + div.no-details {
     font-weight: bold;
 }
 
-.detail-link:hover,
-.detail-link:focus {
-    color: #755200;
-}
+    .detail-link:hover,
+    .detail-link:focus {
+        color: #755200;
+    }
 
 .scoremap {
     float: left;

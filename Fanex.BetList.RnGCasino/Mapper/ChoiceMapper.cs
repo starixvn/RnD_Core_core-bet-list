@@ -8,6 +8,10 @@
             MappingForMiniGames();
             MappingForMobileGames();
             MappingForTabletGames();
+
+            MappingForJackpotContribution();
+            MappingForProgressiveJackpot();
+            MappingForJackpotGame();
         }
 
         private void MappingForRNGGames()
@@ -40,6 +44,33 @@
             {
                 MapIdToBaseId(betType, 2101);
             }
+        }
+
+        private void MappingForJackpotContribution()
+        {
+            MapperData.Remove(2198);
+            MapperData.Remove(2398);
+            MapperData.Remove(2998);
+            MapIdToBaseId(2398, 2198);
+            MapIdToBaseId(2998, 2198);
+        }
+
+        private void MappingForProgressiveJackpot()
+        {
+            MapperData.Remove(2199);
+            MapperData.Remove(2399);
+            MapperData.Remove(2999);
+            MapIdToBaseId(2399, 2199);
+            MapIdToBaseId(2999, 2199);
+        }
+
+        private void MappingForJackpotGame()
+        {
+            MapperData.Remove(2179);
+            MapperData.Remove(2320);
+            MapperData.Remove(2920);
+            MapIdToBaseId(2320, 2179);
+            MapIdToBaseId(2920, 2179);
         }
     }
 }

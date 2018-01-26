@@ -499,6 +499,19 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
             return BetListView(model);
         }
+        
+        public ActionResult OneRnGCasino(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes(2178, 2319, 2919);
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            DataSourcePath = "~/App_Data/OneRnGCasino.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
 
         public ActionResult FastMarkets2(BetListData model = null)
         {

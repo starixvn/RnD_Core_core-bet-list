@@ -832,11 +832,20 @@
   <data name="NoGoal408" xml:space="preserve">
     <value>No Goal</value>
   </data>
+  <data name="rate" xml:space="preserve">
+    <value>Rate</value>
+  </data>
   <data name="Home171" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="forRefNo" xml:space="preserve">
+    <value>For Ref No</value>
+  </data>
   <data name="Away171" xml:space="preserve">
     <value>Away</value>
+  </data>
+  <data name="ProgressiveJackpotWonDetails" xml:space="preserve">
+    <value>Progressive Jackpot Won Details</value>
   </data>
   <data name="Bonus" xml:space="preserve">
     <value>Bonus</value>
