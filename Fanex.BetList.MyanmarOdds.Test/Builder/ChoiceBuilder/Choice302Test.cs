@@ -1,5 +1,6 @@
 ﻿namespace Fanex.BetList.MyanmarOdds.Test.Builder.ChoiceBuilder
 {
+    using System.Globalization;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Entities;
     using NSubstitute;
@@ -38,7 +39,7 @@
 
             _choice.Render(_ticket, _ticketHelper, null, false);
 
-            Assert.IsTrue(_choice.Template.Handicap.handicap.StartsWith(_ticket.Handicap1.ToString(), System.StringComparison.OrdinalIgnoreCase));
+            Assert.IsTrue(_choice.Template.Handicap.handicap.StartsWith(_ticket.Handicap1.ToString(CultureInfo.InvariantCulture), System.StringComparison.OrdinalIgnoreCase));
         }
     }
 }

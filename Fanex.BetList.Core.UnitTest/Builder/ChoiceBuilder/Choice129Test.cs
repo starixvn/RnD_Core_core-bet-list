@@ -13,6 +13,8 @@
     [TestFixture]
     public class Choice129Test
     {
+#pragma warning disable S1144 // Unused private types or members should be removed
+
         private static readonly object[] ExpectedBetTeams =
         {
             new object[] { "0", CoreBetList.NoGoals, "Betting on the total number of goals in Half Time will be no goals." },
@@ -23,6 +25,8 @@
             new object[] { "4&over", CoreBetList.FourAndOver, "Betting on that at least 4 goals will be scored in Half Time." },
             new object[] { "5&over", CoreBetList.FiveAndOver, "Betting on that at least 5 goals will be scored in Half Time." }
         };
+
+#pragma warning restore S1144 // Unused private types or members should be removed
 
         private IChoice _choice;
         private ITicket _ticket;

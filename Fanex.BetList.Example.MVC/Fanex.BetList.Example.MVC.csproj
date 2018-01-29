@@ -429,6 +429,7 @@
     <Content Include="App_Data\CorrectTranslations.xls" />
     <Content Include="App_Data\Bullfighting.xls" />
     <Content Include="App_Data\FastMarkets2.xls" />
+    <Content Include="App_Data\OneRnGCasino.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />

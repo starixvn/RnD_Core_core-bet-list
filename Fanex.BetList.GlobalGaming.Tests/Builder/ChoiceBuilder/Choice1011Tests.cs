@@ -294,7 +294,7 @@
             Assert.AreEqual(expectedDetailsLink, template.League.ToString());
         }
 
-        private string CreateGlobalGamingDetailsLink(ITicket ticket, string transType)
+        private static string CreateGlobalGamingDetailsLink(ITicket ticket, string transType)
         {
             var link = string.Format("<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void('');\">{0}</a>", CoreBetList.details);
 
@@ -315,7 +315,7 @@
             _ticketHelper.GetResourceData(GameTypeRefId, Arg.Any<string>()).Returns(gameType);
 
             // Act
-            var betType = _choice.GetBetTypeName(_ticket, _ticketHelper, null);
+            var betType = _choice.GetBetTypeName(_ticket, _ticketHelper);
 
             // Assert
             Assert.AreEqual(gameType, betType);

@@ -72,7 +72,7 @@
             var betTypeName = "Baccarat";
             _ticketHelper.GetBetTypeNameById(Arg.Any<int>()).Returns(betTypeName);
             var workbook = new HSSFWorkbook();
-            var rtfHelper = new RTFHelper()
+            var rtfHelper = new RTFHelper
             {
                 NegFont = workbook.CreateFont(),
                 NormalFont = workbook.CreateFont(),

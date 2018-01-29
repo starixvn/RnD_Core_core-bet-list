@@ -13,11 +13,15 @@
     [TestFixture]
     public class Choice136Test
     {
+#pragma warning disable S1144 // Unused private types or members should be removed
+
         private static object[] expectedBetTeams =
         {
             new object[] { "o", CoreBetList.odd, "Betting on that total number of goals scored by Home Team in First Half will be odd." },
             new object[] { "e",  CoreBetList.even, "Betting on that total number of goals scored by Home Team in First Half will be even." }
         };
+
+#pragma warning restore S1144 // Unused private types or members should be removed
 
         private IChoice _choice;
         private ITicket _ticket;

@@ -34,8 +34,8 @@
         {
             // Arrange
             var ticketData = new List<ITicketData>();
-            ticketData.Add(TestData.CreateTicketData(WinBetId, _ticket.RefNo.ToString(), "draw"));
-            ticketData.Add(TestData.CreateTicketData(PlaceBetId, _ticket.RefNo.ToString(), "draw"));
+            ticketData.Add(TestData.CreateTicketData(WinBetId, _ticket.RefNo, "draw"));
+            ticketData.Add(TestData.CreateTicketData(PlaceBetId, _ticket.RefNo, "draw"));
             _ticket.Status = status;
 
             // Act

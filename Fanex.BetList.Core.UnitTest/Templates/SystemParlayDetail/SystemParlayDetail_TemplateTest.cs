@@ -13,12 +13,12 @@
     {
         public void SetAssigned(bool isAssigned)
         {
-            this.IsAssigned = isAssigned;
+            IsAssigned = isAssigned;
         }
 
         public void SetValueExtend(StringBuilder value)
         {
-            this.Value = value;
+            Value = value;
         }
     }
 
@@ -29,7 +29,10 @@
     [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2100:CodeLineMustNotBeLongerThan", Justification = "Reviewed.")]
     public class SystemParlayDetail_TemplateTest
     {
-        private const string SystemParlayDetailTemplate = "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" class=\"system-parlay-detail\" style=\"text-align: right;white-space: nowrap; width: 100%; font-weight: bold\"><tr class=\"system-parlay-header\"><th width=\"100\">Date</th><th>Event</th><th width=\"80\">Odds</th><th width=\"80\">Stake</th><th width=\"80\">Win Loss</th><th width=\"80\">Status</th></tr>{0}{1}{2}{3}</table>";
+        private const string SystemParlayDetailTemplate =
+            "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" class=\"system-parlay-detail\" style=\"text-align: right;white-space: nowrap; width: 100%; font-weight: bold\">" +
+            "<tr class=\"system-parlay-header\"><th width=\"100\">Date</th><th>Event</th><th width=\"80\">Odds</th><th width=\"80\">Stake</th>" +
+            "<th width=\"80\">Win Loss</th><th width=\"80\">Status</th></tr>{0}{1}{2}{3}</table>";
 
         /// <summary>
         /// Visible the property is true return HTML string.
@@ -45,7 +48,7 @@
             systemParlayDetailsHtml = block.ToString();
 
             // Assert
-            var expectedHtml = string.Format(SystemParlayDetailTemplate, block.Contents.ToString(), block.SubTotalContents.ToString(), block.Outstanding.ToString(), block.TotalContents.ToString());
+            var expectedHtml = string.Format(SystemParlayDetailTemplate, block.Contents, block.SubTotalContents, block.Outstanding, block.TotalContents);
             Assert.AreEqual(expectedHtml, systemParlayDetailsHtml);
         }
 
@@ -57,11 +60,13 @@
         {
             // Arrange
             var systemParlayDetailsHtml = string.Empty;
-            var block = new SystemParlayDetail_Template();
-            block.Contents = null;
-            block.SubTotalContents = null;
-            block.Outstanding = null;
-            block.TotalContents = null;
+            var block = new SystemParlayDetail_Template
+            {
+                Contents = null,
+                SubTotalContents = null,
+                Outstanding = null,
+                TotalContents = null
+            };
 
             // Act
             systemParlayDetailsHtml = block.ToString();
@@ -79,8 +84,10 @@
         {
             // Arrange
             var systemParlayDetailsHtml = string.Empty;
-            var block = new SystemParlayDetail_Template();
-            block.Visible = false;
+            var block = new SystemParlayDetail_Template
+            {
+                Visible = false
+            };
 
             // Act
             systemParlayDetailsHtml = block.ToString();
@@ -106,7 +113,7 @@
             systemParlayDetailsHtml = block.ToString();
 
             // Assert
-            var expectedHtml = string.Format(SystemParlayDetailTemplate, block.Contents.ToString(), block.SubTotalContents.ToString(), block.Outstanding.ToString(), block.TotalContents.ToString()) + value;
+            var expectedHtml = string.Format(SystemParlayDetailTemplate, block.Contents, block.SubTotalContents, block.Outstanding, block.TotalContents) + value;
             Assert.AreEqual(expectedHtml, systemParlayDetailsHtml);
         }
     }

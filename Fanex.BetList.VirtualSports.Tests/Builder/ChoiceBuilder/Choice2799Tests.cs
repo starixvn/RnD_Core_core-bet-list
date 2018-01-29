@@ -107,7 +107,7 @@
 
             _ticketHelper
                 .GetCombinationMPOfferNameList(Arg.Any<string>(), Arg.Any<string>(), Arg.Any<decimal>(), Arg.Any<decimal>())
-                .Returns(new List<string>() { TestingCombination });
+                .Returns(new List<string> { TestingCombination });
 
             // Act.
             var template = _choice.Render(_ticket, _ticketHelper, null, false);

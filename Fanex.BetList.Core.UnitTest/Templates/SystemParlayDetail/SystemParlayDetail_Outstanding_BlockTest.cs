@@ -13,12 +13,12 @@
     {
         public void SetAssigned(bool isAssigned)
         {
-            this.IsAssigned = isAssigned;
+            IsAssigned = isAssigned;
         }
 
         public void SetValueExtend(StringBuilder value)
         {
-            this.Value = value;
+            Value = value;
         }
     }
 
@@ -29,7 +29,8 @@
     [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2100:CodeLineMustNotBeLongerThan", Justification = "Reviewed.")]
     public class SystemParlayDetail_Outstanding_BlockTest
     {
-        private const string OutstandingTemplate = "<tr class=\"system-parlay-outstanding\"><td colspan=\"4\">Outstanding:</td><td style=\"border-left: none;\">{0}</td><td style=\"border-left: none;\">&nbsp;</td></tr>";
+        private const string OutstandingTemplate = "<tr class=\"system-parlay-outstanding\">" +
+            "<td colspan=\"4\">Outstanding:</td><td style=\"border-left: none;\">{0}</td><td style=\"border-left: none;\">&nbsp;</td></tr>";
 
         /// <summary>
         /// Visible the property is true return HTML string.
@@ -40,8 +41,10 @@
             // Arrange
             var outstanding = "2";
             var outstandingHtml = new StringBuilder();
-            var block = new SystemParlayDetail_Outstanding_Block();
-            block.Outstanding = outstanding;
+            var block = new SystemParlayDetail_Outstanding_Block
+            {
+                Outstanding = outstanding
+            };
 
             // Act
             block.ToString(ref outstandingHtml);
@@ -59,8 +62,10 @@
         {
             // Arrange
             var outstandingHtml = new StringBuilder();
-            var block = new SystemParlayDetail_Outstanding_Block();
-            block.Visible = false;
+            var block = new SystemParlayDetail_Outstanding_Block
+            {
+                Visible = false
+            };
 
             // Act
             block.ToString(ref outstandingHtml);
@@ -79,8 +84,10 @@
             var outstanding = "2";
             var outstandingHtml = new StringBuilder();
             var value = "Tennis";
-            var block = new WrapperSystemParlayDetail_Outstanding_Block();
-            block.Outstanding = outstanding;
+            var block = new WrapperSystemParlayDetail_Outstanding_Block
+            {
+                Outstanding = outstanding
+            };
             block.SetValueExtend(new StringBuilder(value));
             block.SetAssigned(true);
 

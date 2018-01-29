@@ -83,7 +83,7 @@
 
             // Assert
             var htmlTagMatching = new Regex("</?div[^<>]*[^<>]*>");
-            var containingHtmlMarkups = htmlTagMatching.IsMatch(statusTemplate.result.ToString());
+            var containingHtmlMarkups = htmlTagMatching.IsMatch(statusTemplate.result);
             Assert.IsFalse(containingHtmlMarkups);
         }
 
@@ -99,7 +99,7 @@
 
             // Assert
             var htmlTagMatching = new Regex("</?div[^<>]*[^<>]*>");
-            var containingHtmlMarkups = htmlTagMatching.IsMatch(statusTemplate.result.ToString());
+            var containingHtmlMarkups = htmlTagMatching.IsMatch(statusTemplate.result);
             Assert.IsFalse(containingHtmlMarkups);
         }
 
@@ -139,7 +139,7 @@
         private RTFHelper CreateRTFHelperStub()
         {
             var workbook = new HSSFWorkbook();
-            var rtfHelper = new RTFHelper()
+            var rtfHelper = new RTFHelper
             {
                 NegFont = workbook.CreateFont(),
                 NormalFont = workbook.CreateFont(),

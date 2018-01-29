@@ -13,12 +13,12 @@
     {
         public void SetAssigned(bool isAssigned)
         {
-            this.IsAssigned = isAssigned;
+            IsAssigned = isAssigned;
         }
 
         public void SetValueExtend(StringBuilder value)
         {
-            this.Value = value;
+            Value = value;
         }
     }
 
@@ -39,14 +39,16 @@
             // Arrange
             var sportName = "Tennis";
             var leagueHtml = new StringBuilder();
-            var block = new Choice_League_Block();
-            block.sportTypeName = sportName;
+            var block = new Choice_League_Block
+            {
+                sportTypeName = sportName
+            };
 
             // Act
             block.ToString(ref leagueHtml);
 
             // Assert
-            var expectedHtml = string.Format(LeagueTemplate, sportName, block.LeagueName.ToString());
+            var expectedHtml = string.Format(LeagueTemplate, sportName, block.LeagueName);
             Assert.AreEqual(expectedHtml, leagueHtml.ToString());
         }
 
@@ -59,9 +61,11 @@
             // Arrange
             var sportName = "Tennis";
             var leagueHtml = new StringBuilder();
-            var block = new Choice_League_Block();
-            block.sportTypeName = sportName;
-            block.LeagueName = null;
+            var block = new Choice_League_Block
+            {
+                sportTypeName = sportName,
+                LeagueName = null
+            };
 
             // Act
             block.ToString(ref leagueHtml);
@@ -79,8 +83,10 @@
         {
             // Arrange
             var leagueHtml = new StringBuilder();
-            var block = new Choice_League_Block();
-            block.Visible = false;
+            var block = new Choice_League_Block
+            {
+                Visible = false
+            };
 
             // Act
             block.ToString(ref leagueHtml);
@@ -99,8 +105,10 @@
             var sportName = "Tennis";
             var value = "Tennis";
             var leagueHtml = new StringBuilder();
-            var block = new WrapperChoice_League_Block();
-            block.sportTypeName = sportName;
+            var block = new WrapperChoice_League_Block
+            {
+                sportTypeName = sportName
+            };
             block.SetValueExtend(new StringBuilder(value));
             block.SetAssigned(true);
 
@@ -108,7 +116,7 @@
             block.ToString(ref leagueHtml);
 
             // Assert
-            var expectedHtml = string.Format(LeagueTemplate, sportName, block.LeagueName.ToString()) + value;
+            var expectedHtml = string.Format(LeagueTemplate, sportName, block.LeagueName) + value;
             Assert.AreEqual(expectedHtml, leagueHtml.ToString());
         }
     }

@@ -10,14 +10,12 @@
     {
         private Odds1003 _odds;
         private ITicket _ticket;
-        private ITicketHelper _ticketHelper;
 
         [SetUp]
         public void Setup()
         {
             _odds = new Odds1003();
             _ticket = Substitute.For<ITicket>();
-            _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
         [Test]
@@ -55,7 +53,7 @@
             Assert.AreEqual(expectedOddsValue.ToString(), oddTemplate.odds);
         }
 
-        private string GetCachePropertyByIdStub(object id)
+        private static string GetCachePropertyByIdStub(object id)
         {
             return id.ToString();
         }

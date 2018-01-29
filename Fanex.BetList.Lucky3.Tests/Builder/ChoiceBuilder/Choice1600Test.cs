@@ -182,7 +182,7 @@
             Assert.False(actualResult.League.ToString().EndsWith(expectHtml, StringComparison.OrdinalIgnoreCase));
         }
 
-        private string BuildExpectedDetailsLink(long transId, long custId)
+        private static string BuildExpectedDetailsLink(long transId, long custId)
         {
             string[] detailsFunctionDivCompositions =
                 {

@@ -9,6 +9,8 @@
 
     public class Choice89Test
     {
+#pragma warning disable S1144 // Unused private types or members should be removed
+
         private static object[] betTeamNames =
         {
             // ticket.Live, betId, ticket.BetTeam, expectedValue
@@ -32,6 +34,8 @@
             new object[] { false, 1, "2:1", string.Join(null, NumberGameLang.lblUnderOdd,  " [0]") },
             new object[] { false, 1, "2:2", string.Join(null, NumberGameLang.lblUnderEven, " [0]") }
         };
+
+#pragma warning restore S1144 // Unused private types or members should be removed
 
         private Choice89 _choice;
         private ITicket _ticket;

@@ -1,5 +1,6 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
+    using System.Globalization;
     using App_GlobalResources;
     using Common.Enums;
     using Core.Builder.ChoiceBuilder;
@@ -39,7 +40,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.AreEqual(_ticket.Handicap1.ToString(), _choice.Template.Handicap.handicap);
+            Assert.AreEqual(_ticket.Handicap1.ToString(CultureInfo.InvariantCulture), _choice.Template.Handicap.handicap);
         }
 
         /// <summary>

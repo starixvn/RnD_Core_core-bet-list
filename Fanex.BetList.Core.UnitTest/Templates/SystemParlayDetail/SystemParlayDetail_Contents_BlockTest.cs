@@ -29,7 +29,8 @@
     [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2100:CodeLineMustNotBeLongerThan", Justification = "Reviewed.")]
     public class SystemParlayDetail_Contents_BlockTest
     {
-        private const string ContentsTemplate = "<tr>{0}<td style=\"text-align: left; font-weight: normal\">{1}</td><td>{2}</td><td>{3}</td><td>{4}{5}</td><td style=\"text-align: center;\">{6}</td></tr>";
+        private const string ContentsTemplate = "<tr>{0}<td style=\"text-align: left; font-weight: normal\">{1}</td>" +
+            "<td>{2}</td><td>{3}</td><td>{4}{5}</td><td style=\"text-align: center;\">{6}</td></tr>";
 
         /// <summary>
         /// Visible the property is true return HTML string.
@@ -43,17 +44,19 @@
             var winloss = "1000";
             var status = "Lose";
             var contentsHtml = new StringBuilder();
-            var block = new SystemParlayDetail_Contents_Block();
-            block.Odds = odds;
-            block.Stake = stake;
-            block.Winloss = winloss;
-            block.Status = status;
+            var block = new SystemParlayDetail_Contents_Block
+            {
+                Odds = odds,
+                Stake = stake,
+                Winloss = winloss,
+                Status = status
+            };
 
             // Act
             block.ToString(ref contentsHtml);
 
             // Assert
-            var expectedHtml = string.Format(ContentsTemplate, block.WinlossDate.ToString(), block.Match.ToString(), odds, stake, winloss, block.PlayerCommission.ToString(), status);
+            var expectedHtml = string.Format(ContentsTemplate, block.WinlossDate, block.Match, odds, stake, winloss, block.PlayerCommission, status);
             Assert.AreEqual(expectedHtml, contentsHtml.ToString());
         }
 
@@ -69,14 +72,16 @@
             var winloss = "1000";
             var status = "Lose";
             var contentsHtml = new StringBuilder();
-            var block = new SystemParlayDetail_Contents_Block();
-            block.WinlossDate = null;
-            block.Match = null;
-            block.Odds = odds;
-            block.Stake = stake;
-            block.Winloss = winloss;
-            block.PlayerCommission = null;
-            block.Status = status;
+            var block = new SystemParlayDetail_Contents_Block
+            {
+                WinlossDate = null,
+                Match = null,
+                Odds = odds,
+                Stake = stake,
+                Winloss = winloss,
+                PlayerCommission = null,
+                Status = status
+            };
 
             // Act
             block.ToString(ref contentsHtml);
@@ -94,8 +99,10 @@
         {
             // Arrange
             var contentsHtml = new StringBuilder();
-            var block = new SystemParlayDetail_Contents_Block();
-            block.Visible = false;
+            var block = new SystemParlayDetail_Contents_Block
+            {
+                Visible = false
+            };
 
             // Act
             block.ToString(ref contentsHtml);
@@ -117,11 +124,13 @@
             var status = "Lose";
             var contentsHtml = new StringBuilder();
             var value = "Tennis";
-            var block = new WrapperSystemParlayDetail_Contents_Block();
-            block.Odds = odds;
-            block.Stake = stake;
-            block.Winloss = winloss;
-            block.Status = status;
+            var block = new WrapperSystemParlayDetail_Contents_Block
+            {
+                Odds = odds,
+                Stake = stake,
+                Winloss = winloss,
+                Status = status
+            };
             block.SetValueExtend(new StringBuilder(value));
             block.SetAssigned(true);
 
@@ -129,7 +138,7 @@
             block.ToString(ref contentsHtml);
 
             // Assert
-            var expectedHtml = string.Format(ContentsTemplate, block.WinlossDate.ToString(), block.Match.ToString(), odds, stake, winloss, block.PlayerCommission.ToString(), status) + value;
+            var expectedHtml = string.Format(ContentsTemplate, block.WinlossDate, block.Match, odds, stake, winloss, block.PlayerCommission, status) + value;
             Assert.AreEqual(expectedHtml, contentsHtml.ToString());
         }
     }

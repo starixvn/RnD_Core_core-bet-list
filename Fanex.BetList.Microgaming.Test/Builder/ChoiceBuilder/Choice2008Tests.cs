@@ -47,9 +47,10 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             //// Assert
-            string expectedTemplate =
+            var expectedTemplate =
                 string.Format(
-               "<div class=\"detail\" onclick='showMicroGamingRnGBetsDetails(&quot;1&quot;,&quot;{1}&quot;,&quot;10000&quot;,&quot;{0}&quot;);'><a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">Details</a></div>",
+               "<div class=\"detail\" onclick='showMicroGamingRnGBetsDetails(&quot;1&quot;,&quot;{1}&quot;,&quot;10000&quot;,&quot;{0}&quot;);'>" +
+               "<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">Details</a></div>",
                 transctionType,
                 _ticket.WinlostDate.ToString(CultureInfo.InvariantCulture));
 
@@ -79,7 +80,8 @@
 
             //// Assert
             string expectedTemplate = string.Format(
-                "<div class=\"detail\" onclick='showMicroGamingRnGBetsDetails(&quot;1&quot;,&quot;{0}&quot;,&quot;10000&quot;,&quot;{1}&quot;);'><a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">Details</a></div>",
+                "<div class=\"detail\" onclick='showMicroGamingRnGBetsDetails(&quot;1&quot;,&quot;{0}&quot;,&quot;10000&quot;,&quot;{1}&quot;);'>" +
+                "<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">Details</a></div>",
                 _ticket.WinlostDate.ToString(CultureInfo.InvariantCulture),
                 transactionType);
 
@@ -101,8 +103,9 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             //// Assert
-            string expectedTemplate = string.Format(
-                "<div class=\"detail\" onclick='showMicroGamingRnGBetsDetails(&quot;1&quot;,&quot;{0}&quot;,&quot;10000&quot;,&quot;{1}&quot;);'><a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">Details</a></div>",
+            var expectedTemplate = string.Format(
+                "<div class=\"detail\" onclick='showMicroGamingRnGBetsDetails(&quot;1&quot;,&quot;{0}&quot;,&quot;10000&quot;,&quot;{1}&quot;);'>" +
+                "<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">Details</a></div>",
                 _ticket.WinlostDate.ToString(CultureInfo.InvariantCulture),
                 "0");
 
@@ -136,7 +139,7 @@
             var betTypeName = "Baccarat";
             _ticketHelper.GetBetTypeNameById(Arg.Any<int>()).Returns(betTypeName);
             var workbook = new HSSFWorkbook();
-            var rtfHelper = new RTFHelper()
+            var rtfHelper = new RTFHelper
             {
                 NegFont = workbook.CreateFont(),
                 NormalFont = workbook.CreateFont(),
@@ -163,7 +166,7 @@
             var betTypeName = "Baccarat";
             _ticketHelper.GetBetTypeNameById(Arg.Any<int>()).Returns(betTypeName);
             var workbook = new HSSFWorkbook();
-            var rtfHelper = new RTFHelper()
+            var rtfHelper = new RTFHelper
             {
                 NegFont = workbook.CreateFont(),
                 NormalFont = workbook.CreateFont(),

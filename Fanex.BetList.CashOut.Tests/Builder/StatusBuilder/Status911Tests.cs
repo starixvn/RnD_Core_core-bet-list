@@ -202,7 +202,7 @@
         {
             var workbook = new HSSFWorkbook();
 
-            return new RTFHelper()
+            return new RTFHelper
             {
                 NegFont = workbook.CreateFont(),
                 NormalFont = workbook.CreateFont(),

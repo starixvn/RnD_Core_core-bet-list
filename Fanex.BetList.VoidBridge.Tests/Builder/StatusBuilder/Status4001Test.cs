@@ -71,7 +71,7 @@
 
             ////Assert
             var htmlTagMatching = new Regex("</?div[^<>]*[^<>]*>");
-            var containingHtmlMarkups = htmlTagMatching.IsMatch(_status.Template.result.ToString());
+            var containingHtmlMarkups = htmlTagMatching.IsMatch(_status.Template.result);
             Assert.IsFalse(containingHtmlMarkups);
         }
 
@@ -119,7 +119,7 @@
             Assert.AreEqual(_status.Template.result, "status");
         }
 
-        private string BuildRunningLink(ITicket ticket, string status)
+        private static string BuildRunningLink(ITicket ticket, string status)
         {
             var viewRunningTicketResultTag = new[]
                     {
@@ -166,7 +166,7 @@
 
             ////Assert
             var htmlTagMatching = new Regex("</?div[^<>]*[^<>]*>");
-            var containingHtmlMarkups = htmlTagMatching.IsMatch(_status.Template.result.ToString());
+            var containingHtmlMarkups = htmlTagMatching.IsMatch(_status.Template.result);
             Assert.IsFalse(containingHtmlMarkups);
         }
     }

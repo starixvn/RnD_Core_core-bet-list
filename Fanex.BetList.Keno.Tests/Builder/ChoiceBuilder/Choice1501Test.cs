@@ -75,12 +75,10 @@
             _ticket.TransDesc = transDesc;
 
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            string anyBetTypeId;
-
-            _ticketHelper.Received().GetKenoBetChoiceName(Arg.Is(choiceId), out anyBetTypeId);
+            _ticketHelper.Received().GetKenoBetChoiceName(Arg.Is(choiceId), out string anyBetTypeId);
         }
 
         [TestCase("betChoice=1705152116,;referID=")]

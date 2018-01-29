@@ -13,12 +13,12 @@
     {
         public void SetAssigned(bool isAssigned)
         {
-            this.IsAssigned = isAssigned;
+            IsAssigned = isAssigned;
         }
 
         public void SetValueExtend(StringBuilder value)
         {
-            this.Value = value;
+            Value = value;
         }
     }
 
@@ -38,14 +38,16 @@
         {
             // Arrange
             var result = "void";
-            var block = new Status_Template();
-            block.result = result;
+            var block = new Status_Template
+            {
+                result = result
+            };
 
             // Act
             var statusHtml = block.ToString();
 
             // Assert
-            var expectedHtml = string.Format(StatusTemplate, result, block.CashOutHistory, block.StatusResult.ToString(), block.ShowIP.ToString());
+            var expectedHtml = string.Format(StatusTemplate, result, block.CashOutHistory, block.StatusResult, block.ShowIP);
             Assert.AreEqual(expectedHtml, statusHtml);
         }
 
@@ -56,8 +58,10 @@
         public void ToString_BlockIsVisible_ReturnEmptyString()
         {
             // Arrange
-            var block = new Status_Template();
-            block.Visible = false;
+            var block = new Status_Template
+            {
+                Visible = false
+            };
 
             // Act
             var statusHtml = block.ToString();
@@ -75,8 +79,10 @@
             // Arrange
             var result = "void";
             var value = "Tennis";
-            var block = new WrapperStatus_Template();
-            block.result = result;
+            var block = new WrapperStatus_Template
+            {
+                result = result
+            };
             block.SetValueExtend(new StringBuilder(value));
             block.SetAssigned(true);
 
@@ -84,7 +90,7 @@
             var statusHtml = block.ToString();
 
             // Assert
-            var expectedHtml = string.Format(StatusTemplate, result, block.CashOutHistory, block.StatusResult.ToString(), block.ShowIP.ToString()) + value;
+            var expectedHtml = string.Format(StatusTemplate, result, block.CashOutHistory, block.StatusResult, block.ShowIP) + value;
             Assert.AreEqual(expectedHtml, statusHtml);
         }
     }

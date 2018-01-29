@@ -13,12 +13,12 @@
     {
         public void SetAssigned(bool isAssigned)
         {
-            this.IsAssigned = isAssigned;
+            IsAssigned = isAssigned;
         }
 
         public void SetValueExtend(StringBuilder value)
         {
-            this.Value = value;
+            Value = value;
         }
     }
 
@@ -53,16 +53,16 @@
             var expectedHtml = string.Format(
                                                 ChoiceTemplate,
                                                 ticketStatus,
-                                                block.ScoreMapIcon.ToString(),
+                                                block.ScoreMapIcon,
                                                 betTeamClass,
                                                 betTeam,
-                                                block.Handicap.ToString(),
-                                                block.OddMixParlay.ToString(),
-                                                block.Score.ToString(),
-                                                block.BetType.ToString(),
-                                                block.Match.ToString(),
-                                                block.League.ToString());
-            Assert.AreEqual(expectedHtml, choiceHtml.ToString());
+                                                block.Handicap,
+                                                block.OddMixParlay,
+                                                block.Score,
+                                                block.BetType,
+                                                block.Match,
+                                                block.League);
+            Assert.AreEqual(expectedHtml, choiceHtml);
         }
 
         /// <summary>
@@ -73,14 +73,16 @@
         {
             // Arrange
             var choiceHtml = string.Empty;
-            var block = new Choice_Template();
-            block.Visible = false;
+            var block = new Choice_Template
+            {
+                Visible = false
+            };
 
             // Act
             choiceHtml = block.ToString();
 
             // Assert
-            Assert.IsTrue(string.IsNullOrEmpty(choiceHtml.ToString()));
+            Assert.IsTrue(string.IsNullOrEmpty(choiceHtml));
         }
 
         /// <summary>
@@ -94,17 +96,19 @@
             var betTeamClass = "favorite";
             var betTeam = "Milan Reds";
             var choiceHtml = string.Empty;
-            var block = new Choice_Template();
-            block.ScoreMapIcon = null;
-            block.Handicap = null;
-            block.OddMixParlay = null;
-            block.Score = null;
-            block.BetType = null;
-            block.Match = null;
-            block.League = null;
-            block.ticketStatus = ticketStatus;
-            block.betTeamClassName = betTeamClass;
-            block.betTeam = betTeam;
+            var block = new Choice_Template
+            {
+                ScoreMapIcon = null,
+                Handicap = null,
+                OddMixParlay = null,
+                Score = null,
+                BetType = null,
+                Match = null,
+                League = null,
+                ticketStatus = ticketStatus,
+                betTeamClassName = betTeamClass,
+                betTeam = betTeam
+            };
 
             // Act
             choiceHtml = block.ToString();
@@ -122,7 +126,7 @@
                                                 string.Empty,
                                                 string.Empty,
                                                 string.Empty);
-            Assert.AreEqual(expectedHtml, choiceHtml.ToString());
+            Assert.AreEqual(expectedHtml, choiceHtml);
         }
 
         /// <summary>
@@ -137,10 +141,12 @@
             var betTeam = "Milan Reds";
             var value = "Tennis";
             var choiceHtml = string.Empty;
-            var block = new WrapperChoice_Template();
-            block.ticketStatus = ticketStatus;
-            block.betTeamClassName = betTeamClass;
-            block.betTeam = betTeam;
+            var block = new WrapperChoice_Template
+            {
+                ticketStatus = ticketStatus,
+                betTeamClassName = betTeamClass,
+                betTeam = betTeam
+            };
             block.SetValueExtend(new StringBuilder(value));
             block.SetAssigned(true);
 
@@ -151,16 +157,16 @@
             var expectedHtml = string.Format(
                                                 ChoiceTemplate,
                                                 ticketStatus,
-                                                block.ScoreMapIcon.ToString(),
+                                                block.ScoreMapIcon,
                                                 betTeamClass,
                                                 betTeam,
-                                                block.Handicap.ToString(),
-                                                block.OddMixParlay.ToString(),
-                                                block.Score.ToString(),
-                                                block.BetType.ToString(),
-                                                block.Match.ToString(),
-                                                block.League.ToString()) + value;
-            Assert.AreEqual(expectedHtml, choiceHtml.ToString());
+                                                block.Handicap,
+                                                block.OddMixParlay,
+                                                block.Score,
+                                                block.BetType,
+                                                block.Match,
+                                                block.League) + value;
+            Assert.AreEqual(expectedHtml, choiceHtml);
         }
     }
 }

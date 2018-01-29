@@ -13,7 +13,9 @@
     [TestFixture]
     public class Choice14Test
     {
-        private static readonly object[] ExpectedBetTeams =
+#pragma warning disable S1144 // Unused private types or members should be removed
+
+        private static readonly object[] expectedBetTeams =
         {
             new object[] { "0:0", CoreBetList.nogoal },
             new object[] { "1:1", CoreBetList.HomeFG },
@@ -21,6 +23,8 @@
             new object[] { "2:1", CoreBetList.AwayFG },
             new object[] { "2:2", CoreBetList.AwayLG }
         };
+
+#pragma warning restore S1144 // Unused private types or members should be removed
 
         private IChoice _choice;
         private ITicket _ticket;
@@ -78,7 +82,7 @@
             Assert.AreEqual(CSS_CLASS_FAVORITE, _choice.Template.betTeamClassName);
         }
 
-        [Test, TestCaseSource("ExpectedBetTeams")]
+        [Test, TestCaseSource("expectedBetTeams")]
         public void BuildBetTeam_Always_SetRightBetTeam(string betTeam, string expectedResult)
         {
             // Arrange

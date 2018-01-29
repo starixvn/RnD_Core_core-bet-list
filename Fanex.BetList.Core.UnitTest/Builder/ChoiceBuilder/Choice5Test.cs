@@ -13,7 +13,6 @@
     [TestFixture]
     public class Choice5Test
     {
-        private const string BetTeamTemplate = " <span class=\"favorite\">{0}</span>&nbsp;{1} <span class=\"favorite\">&nbsp;{2}</span>";
         private IChoice _choice;
         private ITicket _ticket;
         private ITicketHelper _ticketHelper;
@@ -53,7 +52,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedBetTeam = string.Format("{0}.{1}", CoreBetList.ft, _ticket.BetTeam.ToUpper());
+            string expectedBetTeam = string.Format("{0}.{1}", CoreBetList.ft, _ticket.BetTeam.ToUpperInvariant());
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 

@@ -1,5 +1,6 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
+    using System.Globalization;
     using App_GlobalResources;
     using Core.Builder.ChoiceBuilder;
     using Core.Templates;
@@ -155,7 +156,7 @@
             Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            Assert.AreEqual(ObservedHandicap1.ToString(), template.Handicap.handicap);
+            Assert.AreEqual(ObservedHandicap1.ToString(CultureInfo.InvariantCulture), template.Handicap.handicap);
         }
 
         [Test]

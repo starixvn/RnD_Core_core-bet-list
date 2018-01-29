@@ -13,12 +13,12 @@
     {
         public void SetAssigned(bool isAssigned)
         {
-            this.IsAssigned = isAssigned;
+            IsAssigned = isAssigned;
         }
 
         public void SetValueExtend(StringBuilder value)
         {
-            this.Value = value;
+            Value = value;
         }
     }
 
@@ -29,7 +29,8 @@
     [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2100:CodeLineMustNotBeLongerThan", Justification = "Reviewed.")]
     public class SystemParlayDetail_SubTotalContents_BlockTest
     {
-        private const string SubTotalContentsTemplate = "<tr class=\"system-parlay-subtotal\"><td colspan=\"4\">Sub Total:</td><td style=\"border-left: none;\">{0}</td><td style=\"border-left: none;\">&nbsp;</td></tr>";
+        private const string SubTotalContentsTemplate = "<tr class=\"system-parlay-subtotal\">" +
+            "<td colspan=\"4\">Sub Total:</td><td style=\"border-left: none;\">{0}</td><td style=\"border-left: none;\">&nbsp;</td></tr>";
 
         /// <summary>
         /// Visible the property is true return HTML string.
@@ -40,8 +41,10 @@
             // Arrange
             var totalWinloss = "20000";
             var subTotalContentsHtml = new StringBuilder();
-            var block = new SystemParlayDetail_SubTotalContents_Block();
-            block.TotalWinloss = totalWinloss;
+            var block = new SystemParlayDetail_SubTotalContents_Block
+            {
+                TotalWinloss = totalWinloss
+            };
 
             // Act
             block.ToString(ref subTotalContentsHtml);
@@ -59,8 +62,10 @@
         {
             // Arrange
             var subTotalContentsHtml = new StringBuilder();
-            var block = new SystemParlayDetail_SubTotalContents_Block();
-            block.Visible = false;
+            var block = new SystemParlayDetail_SubTotalContents_Block
+            {
+                Visible = false
+            };
 
             // Act
             block.ToString(ref subTotalContentsHtml);
@@ -79,8 +84,10 @@
             var totalWinloss = "20000";
             var subTotalContentsHtml = new StringBuilder();
             var value = "Tennis";
-            var block = new WrapperSystemParlayDetail_SubTotalContents_Block();
-            block.TotalWinloss = totalWinloss;
+            var block = new WrapperSystemParlayDetail_SubTotalContents_Block
+            {
+                TotalWinloss = totalWinloss
+            };
             block.SetValueExtend(new StringBuilder(value));
             block.SetAssigned(true);
 

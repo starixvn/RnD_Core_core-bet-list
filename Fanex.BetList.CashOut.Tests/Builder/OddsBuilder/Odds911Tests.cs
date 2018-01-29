@@ -10,7 +10,6 @@
     public class Odds911Tests
     {
         private ITicket _ticket;
-        private ITicketHelper _ticketHelper;
         private IOdds _odds;
 
         [SetUp]
@@ -18,7 +17,6 @@
         {
             _ticket = TestData.CreateTicket(911);
             _ticket.BetTypeId = 911;
-            _ticketHelper = Substitute.For<ITicketHelper>();
             _odds = new Odds911();
         }
 
@@ -58,7 +56,7 @@
             Assert.AreEqual(expectedTempate.String, template.String);
         }
 
-        private string GetCachePropertyByIdStub(object id)
+        private static string GetCachePropertyByIdStub(object id)
         {
             return id.ToString();
         }

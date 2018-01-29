@@ -55,7 +55,7 @@
             _ticketHelper.GetBetTypeNameById(1, Arg.Any<object>()).Returns(expectedBetTypeName);
 
             // Act
-            var betTypeName = _choice.GetBetTypeName(_ticket, _ticketHelper, null);
+            var betTypeName = _choice.GetBetTypeName(_ticket, _ticketHelper);
 
             // Assert
             Assert.AreEqual(expectedBetTypeName, betTypeName);
@@ -113,7 +113,7 @@
         {
             var workbook = new HSSFWorkbook();
 
-            return new RTFHelper()
+            return new RTFHelper
             {
                 NegFont = workbook.CreateFont(),
                 NormalFont = workbook.CreateFont(),

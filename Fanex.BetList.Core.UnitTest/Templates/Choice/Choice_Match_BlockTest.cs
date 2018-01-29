@@ -13,12 +13,12 @@
     {
         public void SetAssigned(bool isAssigned)
         {
-            this.IsAssigned = isAssigned;
+            IsAssigned = isAssigned;
         }
 
         public void SetValueExtend(StringBuilder value)
         {
-            this.Value = value;
+            Value = value;
         }
     }
 
@@ -42,17 +42,19 @@
             var firstGoal = "first-goal";
             var lastGoal = "last-goal";
             var matchHtml = new StringBuilder();
-            var block = new Choice_Match_Block();
-            block.homeTeam = homeTeamName;
-            block.home_firstGoal_lastGoal = firstGoal;
-            block.awayTeam = awayTeamName;
-            block.away_firstGoal_lastGoal = lastGoal;
+            var block = new Choice_Match_Block
+            {
+                homeTeam = homeTeamName,
+                home_firstGoal_lastGoal = firstGoal,
+                awayTeam = awayTeamName,
+                away_firstGoal_lastGoal = lastGoal
+            };
 
             // Act
             block.ToString(ref matchHtml);
 
             // Assert
-            var expectedHtml = string.Format(MatchTemplate, homeTeamName, firstGoal, block.VS.ToString(), awayTeamName, lastGoal);
+            var expectedHtml = string.Format(MatchTemplate, homeTeamName, firstGoal, block.VS, awayTeamName, lastGoal);
             Assert.AreEqual(expectedHtml, matchHtml.ToString());
         }
 
@@ -68,12 +70,14 @@
             var firstGoal = "first-goal";
             var lastGoal = "last-goal";
             var matchHtml = new StringBuilder();
-            var block = new Choice_Match_Block();
-            block.homeTeam = homeTeamName;
-            block.home_firstGoal_lastGoal = firstGoal;
-            block.awayTeam = awayTeamName;
-            block.away_firstGoal_lastGoal = lastGoal;
-            block.VS = null;
+            var block = new Choice_Match_Block
+            {
+                homeTeam = homeTeamName,
+                home_firstGoal_lastGoal = firstGoal,
+                awayTeam = awayTeamName,
+                away_firstGoal_lastGoal = lastGoal,
+                VS = null
+            };
 
             // Act
             block.ToString(ref matchHtml);
@@ -91,8 +95,10 @@
         {
             // Arrange
             var matchHtml = new StringBuilder();
-            var block = new Choice_Match_Block();
-            block.Visible = false;
+            var block = new Choice_Match_Block
+            {
+                Visible = false
+            };
 
             // Act
             block.ToString(ref matchHtml);
@@ -126,7 +132,7 @@
             block.ToString(ref matchHtml);
 
             // Assert
-            var expectedHtml = string.Format(MatchTemplate, homeTeamName, firstGoal, block.VS.ToString(), awayTeamName, lastGoal) + value;
+            var expectedHtml = string.Format(MatchTemplate, homeTeamName, firstGoal, block.VS, awayTeamName, lastGoal) + value;
             Assert.AreEqual(expectedHtml, matchHtml.ToString());
         }
     }

@@ -13,12 +13,12 @@
     {
         public void SetAssigned(bool isAssigned)
         {
-            this.IsAssigned = isAssigned;
+            IsAssigned = isAssigned;
         }
 
         public void SetValueExtend(StringBuilder value)
         {
-            this.Value = value;
+            Value = value;
         }
     }
 
@@ -39,14 +39,16 @@
             // Arrange
             var transTime = "11/20/2013 6:54:00 AM";
             var transHtml = string.Empty;
-            var block = new Trans_Template();
-            block.transTime = transTime;
+            var block = new Trans_Template
+            {
+                transTime = transTime
+            };
 
             // Act
             transHtml = block.ToString();
 
             // Assert
-            var expectedHtml = string.Format(TransTemplate, block.TransTime.ToString(), transTime);
+            var expectedHtml = string.Format(TransTemplate, block.TransTime, transTime);
             Assert.AreEqual(expectedHtml, transHtml);
         }
 
@@ -59,9 +61,11 @@
             // Arrange
             var transTime = "11/20/2013 6:54:00 AM";
             var transHtml = string.Empty;
-            var block = new Trans_Template();
-            block.transTime = transTime;
-            block.TransTime = null;
+            var block = new Trans_Template
+            {
+                transTime = transTime,
+                TransTime = null
+            };
 
             // Act
             transHtml = block.ToString();
@@ -79,8 +83,10 @@
         {
             // Arrange
             var transHtml = string.Empty;
-            var block = new Trans_Template();
-            block.Visible = false;
+            var block = new Trans_Template
+            {
+                Visible = false
+            };
 
             // Act
             transHtml = block.ToString();
@@ -99,8 +105,10 @@
             var transTime = "11/20/2013 6:54:00 AM";
             var transHtml = string.Empty;
             var value = "Tennis";
-            var block = new WrapperTrans_Template();
-            block.transTime = transTime;
+            var block = new WrapperTrans_Template
+            {
+                transTime = transTime
+            };
             block.SetValueExtend(new StringBuilder(value));
             block.SetAssigned(true);
 
@@ -108,7 +116,7 @@
             transHtml = block.ToString();
 
             // Assert
-            var expectedHtml = string.Format(TransTemplate, block.TransTime.ToString(), transTime) + value;
+            var expectedHtml = string.Format(TransTemplate, block.TransTime, transTime) + value;
             Assert.AreEqual(expectedHtml, transHtml);
         }
     }

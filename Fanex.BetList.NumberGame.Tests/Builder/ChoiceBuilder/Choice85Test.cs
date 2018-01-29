@@ -16,6 +16,8 @@
         private static string spanClassWith37point5 = " <span style='color:#555555'>37.5</span> ";
 
         // ticket.Live, betId, expectedValue
+#pragma warning disable S1144 // Unused private types or members should be removed
+
         private static object[] liveScores =
         {
             new object[] { true, 0, " [0]" },
@@ -23,6 +25,8 @@
             new object[] { false, 0, " [0]" },
             new object[] { false, 1,  " [0]" }
         };
+
+#pragma warning restore S1144 // Unused private types or members should be removed
 
         private Choice85 _choice;
         private ITicket _ticket;

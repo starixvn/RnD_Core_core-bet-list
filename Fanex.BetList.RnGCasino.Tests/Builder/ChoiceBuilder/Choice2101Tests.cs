@@ -332,7 +332,7 @@
         private RTFHelper CreateRTFHelperStub()
         {
             var workbook = new HSSFWorkbook();
-            var rtfHelper = new RTFHelper()
+            var rtfHelper = new RTFHelper
             {
                 NegFont = workbook.CreateFont(),
                 NormalFont = workbook.CreateFont(),

@@ -12,6 +12,8 @@
     [TestFixture]
     public class Choice16Test
     {
+#pragma warning disable S1144 // Unused private types or members should be removed
+
         private static object[] expectedBetTeams =
         {
             new object[] { "0:0", "DD" },
@@ -24,6 +26,8 @@
             new object[] { "2:1", "AH" },
             new object[] { "2:2", "AA" }
         };
+
+#pragma warning restore S1144 // Unused private types or members should be removed
 
         private IChoice _choice;
         private ITicket _ticket;

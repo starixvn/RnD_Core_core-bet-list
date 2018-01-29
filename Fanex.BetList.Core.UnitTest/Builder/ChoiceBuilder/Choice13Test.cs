@@ -41,7 +41,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedBetTeam = string.Format(BetTeamTemplate, _choice.Template.Match.homeTeam, CoreBetList.lblNo.ToUpper());
+            string expectedBetTeam = string.Format(BetTeamTemplate, _choice.Template.Match.homeTeam, CoreBetList.lblNo.ToUpperInvariant());
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
@@ -59,7 +59,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedBetTeam = string.Format(BetTeamTemplate, _ticketHelper.GetTeamNameById(_ticket.AwayId), CoreBetList.lblNo.ToUpper());
+            string expectedBetTeam = string.Format(BetTeamTemplate, _ticketHelper.GetTeamNameById(_ticket.AwayId), CoreBetList.lblNo.ToUpperInvariant());
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
@@ -77,7 +77,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedBetTeam = string.Format(BetTeamTemplate, _choice.Template.Match.homeTeam, CoreBetList.lblYes.ToUpper());
+            string expectedBetTeam = string.Format(BetTeamTemplate, _choice.Template.Match.homeTeam, CoreBetList.lblYes.ToUpperInvariant());
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
@@ -95,7 +95,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedBetTeam = string.Format(BetTeamTemplate, _ticketHelper.GetTeamNameById(_ticket.AwayId), CoreBetList.lblYes.ToUpper());
+            string expectedBetTeam = string.Format(BetTeamTemplate, _ticketHelper.GetTeamNameById(_ticket.AwayId), CoreBetList.lblYes.ToUpperInvariant());
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 

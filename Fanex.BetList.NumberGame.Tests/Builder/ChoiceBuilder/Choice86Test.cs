@@ -10,6 +10,8 @@
 
     public class Choice86Test
     {
+#pragma warning disable S1144 // Unused private types or members should be removed
+
         private static object[] liveScores =
         {
             // ticket.Live, betId, expectedValue
@@ -18,6 +20,8 @@
             new object[] { false, 0, string.Empty },
             new object[] { false, 1,  string.Empty }
         };
+
+#pragma warning restore S1144 // Unused private types or members should be removed
 
         private Choice86 _choice;
         private ITicket _ticket;

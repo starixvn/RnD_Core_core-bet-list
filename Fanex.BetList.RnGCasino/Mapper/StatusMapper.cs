@@ -2,15 +2,13 @@
 {
     public class StatusMapper : BaseMapper
     {
-        private readonly int[] jackPotBetTypes = new[] { 2178, 2319, 2919, 2179, 2320, 2920, 2198, 2398, 2998, 2199, 2399, 2999 };
-
         public StatusMapper()
         {
             MappingForRNGGames();
             MappingForMiniGames();
             MappingForMobileGames();
             MappingForTabletGames();
-            MappingForJackpot();
+            MappingForProgressiveJackpot();
         }
 
         private void MappingForRNGGames()
@@ -43,17 +41,6 @@
             {
                 MapIdToBaseId(betType, 2101);
             }
-        }
-
-        private void MappingForJackpot()
-        {
-            foreach (var betType in jackPotBetTypes)
-            {
-                MapperData.Remove(betType);
-                MapIdToBaseId(betType, 1);
-            }
-
-            MappingForProgressiveJackpot();
         }
 
         private void MappingForProgressiveJackpot()

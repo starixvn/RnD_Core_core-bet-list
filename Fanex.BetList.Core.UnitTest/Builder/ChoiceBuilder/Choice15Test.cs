@@ -52,7 +52,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedBetTeam = string.Format("{0}.{1}", CoreBetList.ht, _ticket.BetTeam.ToUpper());
+            string expectedBetTeam = string.Format("{0}.{1}", CoreBetList.ht, _ticket.BetTeam.ToUpperInvariant());
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 

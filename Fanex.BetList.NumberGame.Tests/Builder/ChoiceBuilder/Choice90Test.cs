@@ -15,7 +15,9 @@
     /// </summary>
     public class Choice90Test
     {
-        private static readonly object[] LiveScores =
+#pragma warning disable S1144 // Unused private types or members should be removed
+
+        private static readonly object[] liveScores =
         {
             // ticket.Live, betId, liveScore
             new object[] { true, null, string.Empty },
@@ -23,6 +25,8 @@
             new object[] { false, null, string.Empty },
             new object[] { false,  (long?)2, string.Empty }
         };
+
+#pragma warning restore S1144 // Unused private types or members should be removed
 
         #region betTeamMap
 
@@ -224,7 +228,7 @@
         /// <param name="isLive"> Is live ticket.</param>
         /// <param name="betId"> Bet id of ticket.</param>
         /// <param name="liveScore"> Live score status of ticket.</param>
-        [Test, TestCaseSource("LiveScores")]
+        [Test, TestCaseSource("liveScores")]
         public void BuildBetTeam_WhenCalled_SetValidNameForBetTeam(bool isLive, long? betId, string liveScore)
         {
             foreach (string key in betTeamMap.Keys)

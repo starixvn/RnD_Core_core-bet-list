@@ -14,14 +14,12 @@
     {
         private Odds1231 _odds;
         private ITicket _ticket;
-        private ITicketHelper _ticketHelper;
 
         [SetUp]
         public void Setup()
         {
             _odds = new Odds1231();
             _ticket = TestData.CreateTicket(BetTypes.VHR_Win);
-            _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
         [Test]
@@ -63,7 +61,7 @@
             Assert.AreEqual("1", _odds.Template.oddsType);
         }
 
-        private string GetCachePropertyByIdStub(object id)
+        private static string GetCachePropertyByIdStub(object id)
         {
             return id.ToString();
         }

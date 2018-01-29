@@ -9,14 +9,12 @@
     {
         private Odds29 _odds;
         private ITicket _ticket;
-        private ITicketHelper _ticketHelper;
 
         [SetUp]
         public void Setup()
         {
             _odds = new Odds29();
             _ticket = Substitute.For<ITicket>();
-            _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
         [TestCase(3.2)]

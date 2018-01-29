@@ -1,6 +1,5 @@
 ﻿namespace Fanex.BetList.NumberGame.Tests.Builder.ChoiceBuilder
 {
-    using Core.App_GlobalResources;
     using Core.Builder.ChoiceBuilder;
     using Core.Entities;
     using Core.Resources;
@@ -13,6 +12,8 @@
     /// </summary>
     public class Choice87Test
     {
+#pragma warning disable S1144 // Unused private types or members should be removed
+
         // ticket.Live, betId, ticket.BetTeam, expectedValue
         private static object[] betTeamNames =
         {
@@ -25,6 +26,8 @@
             new object[] { true, 1, "is not h", string.Join(null, NumberGameLang.low, " [1]") },
             new object[] { false, 1, "is not h", string.Join(null, NumberGameLang.low, " [0]") },
         };
+
+#pragma warning restore S1144 // Unused private types or members should be removed
 
         private Choice87 _choice;
         private ITicket _ticket;

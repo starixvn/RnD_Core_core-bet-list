@@ -13,12 +13,12 @@
     {
         public void SetAssigned(bool isAssigned)
         {
-            this.IsAssigned = isAssigned;
+            IsAssigned = isAssigned;
         }
 
         public void SetValueExtend(StringBuilder value)
         {
-            this.Value = value;
+            Value = value;
         }
     }
 
@@ -40,15 +40,17 @@
             var handicap = "1-2";
             var odds = "1";
             var handicapHtml = new StringBuilder();
-            var block = new Choice_Handicap_Block();
-            block.handicap = handicap;
+            var block = new Choice_Handicap_Block
+            {
+                handicap = handicap
+            };
             block.Odds.odds = odds;
 
             // Act
             block.ToString(ref handicapHtml);
 
             // Assert
-            var expectedHtml = string.Format(HandicapTemplate, handicap, block.Odds.ToString());
+            var expectedHtml = string.Format(HandicapTemplate, handicap, block.Odds);
             Assert.AreEqual(expectedHtml, handicapHtml.ToString());
         }
 
@@ -61,9 +63,11 @@
             // Arrange
             var handicap = "1-2";
             var handicapHtml = new StringBuilder();
-            var block = new Choice_Handicap_Block();
-            block.handicap = handicap;
-            block.Odds = null;
+            var block = new Choice_Handicap_Block
+            {
+                handicap = handicap,
+                Odds = null
+            };
 
             // Act
             block.ToString(ref handicapHtml);
@@ -81,8 +85,10 @@
         {
             // Arrange
             var handicapHtml = new StringBuilder();
-            var block = new Choice_Handicap_Block();
-            block.Visible = false;
+            var block = new Choice_Handicap_Block
+            {
+                Visible = false
+            };
 
             // Act
             block.ToString(ref handicapHtml);
@@ -102,8 +108,10 @@
             var odds = "1";
             var value = "Tennis";
             var handicapHtml = new StringBuilder();
-            var block = new WrapperChoice_Handicap_Block();
-            block.handicap = handicap;
+            var block = new WrapperChoice_Handicap_Block
+            {
+                handicap = handicap
+            };
             block.Odds.odds = odds;
             block.SetValueExtend(new StringBuilder(value));
             block.SetAssigned(true);
@@ -112,7 +120,7 @@
             block.ToString(ref handicapHtml);
 
             // Assert
-            var expectedHtml = string.Format(HandicapTemplate, handicap, block.Odds.ToString()) + value;
+            var expectedHtml = string.Format(HandicapTemplate, handicap, block.Odds) + value;
             Assert.AreEqual(expectedHtml, handicapHtml.ToString());
         }
     }

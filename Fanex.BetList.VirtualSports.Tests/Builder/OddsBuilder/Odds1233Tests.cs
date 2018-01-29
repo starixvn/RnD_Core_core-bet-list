@@ -74,7 +74,7 @@
             Assert.AreEqual(expected, template.odds);
         }
 
-        private string GetCachePropertyByIdStub(object id)
+        private static string GetCachePropertyByIdStub(object id)
         {
             return id.ToString();
         }
