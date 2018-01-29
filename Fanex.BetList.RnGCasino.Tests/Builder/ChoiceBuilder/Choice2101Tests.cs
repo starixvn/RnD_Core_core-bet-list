@@ -10,7 +10,7 @@
     using NSubstitute;
     using NUnit.Framework;
 
-    public class Choice2101Test
+    public class Choice2101Tests
     {
         private IChoice _choice;
         private ITicket _ticket;

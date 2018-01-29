@@ -1,7 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System;
-    using System.Globalization;
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
@@ -27,11 +26,11 @@
         }
 
         private static bool TicketHasJackpotInfo(ITicket ticket)
-            => !string.IsNullOrEmpty(ticket.ExtraInfo) && ticket.ExtraInfo.Contains(JackpotInfo);
+            => !string.IsNullOrEmpty(ticket.ExtraInfo) && ticket.ExtraInfo.ToLowerInvariant().Contains(JackpotInfo);
 
         private static Choice_League_Block BuildShowProgressiveJackpotWonDetails(ITicket ticket)
         {
-            var indexOfJackpotTransId = ticket.ExtraInfo.LastIndexOf(JackpotTransIdInfo, StringComparison.InvariantCulture) + 4;
+            var indexOfJackpotTransId = ticket.ExtraInfo.LastIndexOf(JackpotTransIdInfo, StringComparison.InvariantCultureIgnoreCase) + 4;
             var transId = ticket.ExtraInfo.Substring(indexOfJackpotTransId, ticket.ExtraInfo.Length - indexOfJackpotTransId);
             var detailLinkMarkup = $"<div class=\"detail rng-casino-detail\" onclick=\"showProgressiveJackpotWonDetails('{transId}');\">" +
                 $"<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void('');\">{CoreBetList.ProgressiveJackpotWonDetails}</a></div>";
