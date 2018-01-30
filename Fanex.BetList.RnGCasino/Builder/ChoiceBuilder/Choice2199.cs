@@ -9,14 +9,27 @@
     /// </summary>
     public class Choice2199 : Choice2101
     {
+        private const string OpenTagJackpotRefNo = "<div class=\"jackpotRefNo\">";
+        private const string CloseTagJackpotRefNo = "</div>";
+        private const string NewLine = "\n";
+
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             base.BuildBetTeam(ticket, ticketHelper, ticketData);
 
             if (!string.IsNullOrEmpty(ticket.BetCheck))
             {
-                Template.betTeam += $"<div>{CoreBetList.forRefNo}: {ticket.BetdaqId}</div>";
+                Template.betTeam += $"{OpenTagJackpotRefNo}{CoreBetList.forRefNo}: {ticket.BetdaqId}{CloseTagJackpotRefNo}";
             }
+        }
+
+        protected override void AdjustBetTeamToRTF()
+        {
+            base.AdjustBetTeamToRTF();
+
+            Template.betTeam = Template.betTeam
+                .Replace(OpenTagJackpotRefNo, NewLine)
+                .Replace(CloseTagJackpotRefNo, string.Empty);
         }
     }
 }

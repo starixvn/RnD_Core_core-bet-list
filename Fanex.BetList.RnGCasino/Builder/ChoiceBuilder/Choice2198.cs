@@ -10,13 +10,26 @@
     /// </summary>
     public class Choice2198 : Choice2199
     {
+        private const string OpenTagJackpotContributionInfo = "<div class=\"favorite\">";
+        private const string CloseTagJackpotContribution = "</div>";
+        private const string NewLine = "\n";
+
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             base.BuildBetTeam(ticket, ticketHelper, ticketData);
 
             var rate = $"{ConvertByBetType.CommValue(ticket.Odds)}%";
             Template.betTeam +=
-                $"<div class=\"favorite\">{CoreBetList.stake}: {ticket.OddsSpread} {ticket.Currency} @ {CoreBetList.rate} {rate}</div>";
+                $"{OpenTagJackpotContributionInfo}{CoreBetList.stake}: {ticket.OddsSpread} {ticket.Currency} @ {CoreBetList.rate} {rate}{CloseTagJackpotContribution}";
+        }
+
+        protected override void AdjustBetTeamToRTF()
+        {
+            base.AdjustBetTeamToRTF();
+
+            Template.betTeam = Template.betTeam
+                .Replace(OpenTagJackpotContributionInfo, NewLine)
+                .Replace(CloseTagJackpotContribution, string.Empty);
         }
     }
 }

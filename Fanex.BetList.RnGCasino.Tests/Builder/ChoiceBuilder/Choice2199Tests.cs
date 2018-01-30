@@ -34,7 +34,7 @@
             var choice = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            var expectedValue = "423424234<div>For Ref No: 1234</div>";
+            var expectedValue = "423424234<div class=\"jackpotRefNo\">For Ref No: 1234</div>";
             Assert.AreEqual(expectedValue, choice.betTeam);
         }
     }

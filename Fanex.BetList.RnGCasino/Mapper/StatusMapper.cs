@@ -9,6 +9,7 @@
             MappingForMobileGames();
             MappingForTabletGames();
             MappingForProgressiveJackpot();
+            MappingForJackpotContribution();
         }
 
         private void MappingForRNGGames()
@@ -43,13 +44,24 @@
             }
         }
 
+        private void MappingForJackpotContribution()
+        {
+            foreach (var betType in BetTypeData.JackpotContributionBetTypes)
+            {
+                MapperData.Remove(betType);
+
+                MapIdToBaseId(betType, 2198);
+            }
+        }
+
         private void MappingForProgressiveJackpot()
         {
-            MapperData.Remove(2199);
-            MapperData.Remove(2399);
-            MapperData.Remove(2999);
-            MapIdToBaseId(2399, 2199);
-            MapIdToBaseId(2999, 2199);
+            foreach (var betType in BetTypeData.ProgressiveJackpotBetTypes)
+            {
+                MapperData.Remove(betType);
+
+                MapIdToBaseId(betType, 2199);
+            }
         }
     }
 }
