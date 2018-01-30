@@ -120,4 +120,7 @@
   <data name="Arena" xml:space="preserve">
     <value>Đấu trường</value>
   </data>
+  <data name="MatchNo" xml:space="preserve">
+    <value>Trận đấu số</value>
+  </data>
 </root>

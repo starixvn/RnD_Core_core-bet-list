@@ -120,4 +120,7 @@
   <data name="Arena" xml:space="preserve">
     <value>สนามกีฬา</value>
   </data>
+  <data name="MatchNo" xml:space="preserve">
+    <value>หมายเลขการแข่งขัน</value>
+  </data>
 </root>
