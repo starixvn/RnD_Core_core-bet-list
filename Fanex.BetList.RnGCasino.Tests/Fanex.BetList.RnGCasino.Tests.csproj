@@ -58,6 +58,8 @@
     <Compile Include="Builder\ChoiceBuilder\Choice2198Tests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice2179Tests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice2101Tests.cs" />
+    <Compile Include="Builder\OddsBuilder\Odds2179Tests.cs" />
+    <Compile Include="Builder\StakeBuilder\Stake2198Tests.cs" />
     <Compile Include="Builder\StatusBuilder\Status2199Tests.cs" />
     <Compile Include="Builder\StatusBuilder\Status2198Tests.cs" />
     <Compile Include="Builder\StatusBuilder\Status2101Test.cs" />
@@ -85,10 +87,7 @@
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.7.1.4347\analyzers\SonarAnalyzer.CSharp.dll" />
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.7.1.4347\analyzers\SonarAnalyzer.dll" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Builder\OddsBuilder\" />
-    <Folder Include="Builder\StakeBuilder\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -6,7 +6,7 @@
     using NUnit.Framework;
 
     [TestFixture]
-    public class Odds2178Tests
+    public class Odds2179Tests
     {
         private IOdds _odds;
         private ITicket _ticket;
@@ -14,7 +14,7 @@
         [SetUp]
         public void Setup()
         {
-            _odds = new Odds2178();
+            _odds = new Odds2179();
             _ticket = Substitute.For<ITicket>();
         }
 

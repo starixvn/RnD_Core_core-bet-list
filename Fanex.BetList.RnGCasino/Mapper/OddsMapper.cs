@@ -6,12 +6,11 @@
     {
         public OddsMapper()
         {
-            foreach (var betType in BetTypeData.BacarratGameBetTypes
-                .Union(BetTypeData.JackpotGameBetTypes)
+            foreach (var betType in BetTypeData.JackpotGameBetTypes
                 .Union(BetTypeData.JackpotContributionBetTypes)
                 .Union(BetTypeData.ProgressiveJackpotBetTypes))
             {
-                MapIdToBaseId(betType, 2178);
+                MapIdToBaseId(betType, 2179);
             }
         }
     }

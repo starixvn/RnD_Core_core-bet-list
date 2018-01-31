@@ -4,7 +4,7 @@
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
 
-    public class Odds2178 : Odds1
+    public class Odds2179 : Odds1
     {
         private const string Hyphen = "-";
 
