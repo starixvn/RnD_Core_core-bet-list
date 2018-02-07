@@ -1,12 +1,12 @@
 ﻿namespace Fanex.BetList.VirtualSports.Tests.Builder.StatusBuilder
 {
+    using System.Collections.Generic;
+    using Core.App_GlobalResources;
     using Core.Builder.StatusBuilder;
     using Core.Entities;
     using Core.UnitTest.Common;
     using NSubstitute;
     using NUnit.Framework;
-    using System.Collections.Generic;
-    using Core.App_GlobalResources;
 
     [TestFixture]
     public class Status1233Tests

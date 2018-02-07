@@ -8,6 +8,7 @@ namespace Fanex.BetList.Core.UnitTest.Stubs
     public class TicketHelperStub : ITicketHelper
     {
         private string _leagueName = "League";
+        private string _matchName = "Match";
         private string _teamName = "Team";
         private string _sportName = "Sport";
         private string _betTypeName = "Bet";
@@ -149,6 +150,11 @@ namespace Fanex.BetList.Core.UnitTest.Stubs
         public string GetLeagueName3rd(string league3rdId)
         {
             return _leagueName + league3rdId;
+        }
+
+        public string GetBetRadarMatchCodeFormat(string matchCode)
+        {
+            return _matchName + matchCode;
         }
     }
 }

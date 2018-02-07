@@ -1,11 +1,11 @@
 ﻿namespace Fanex.BetList.VirtualSports.Tests.Builder.ChoiceBuilder
 {
+    using System;
     using Core.Builder.ChoiceBuilder;
     using Core.Entities;
     using Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
-    using System;
 
     /// <summary>
     /// Unit test for Choice1231 class.

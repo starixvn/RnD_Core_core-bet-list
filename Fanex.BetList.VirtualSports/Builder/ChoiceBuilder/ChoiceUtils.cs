@@ -24,8 +24,12 @@
         public static void AppendMatchOrRoundInfo(this Choice_Template template, string matchRoundInfo)
             => template.Match.Append($"<div class=\"match\">{matchRoundInfo}</div>");
 
-        public static string ParseMatchInfo(string transDesc)
-            => ParseNeccessaryInfoFromTransDesc(transDesc, MatchInfoPattern);
+        public static string ParseMatchInfo(string transDesc, ITicketHelper ticketHelper)
+        {
+            string matchCode = ParseNeccessaryInfoFromTransDesc(transDesc, MatchInfoPattern);
+
+            return ticketHelper.GetBetRadarMatchCodeFormat(matchCode);
+        }
 
         public static string ParseExcludingScoresInfo(string transDesc)
             => ParseNeccessaryInfoFromTransDesc(transDesc, ExcludingScoresPattern);
@@ -34,7 +38,7 @@
         {
             if (!string.IsNullOrEmpty(transDesc))
             {
-                Match match = Regex.Match(transDesc, pattern);
+                Match match = Regex.Match(transDesc, pattern, RegexOptions.IgnoreCase);
 
                 if (match?.Groups.Count >= 2)
                 {

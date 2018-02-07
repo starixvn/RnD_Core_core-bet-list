@@ -17,7 +17,7 @@
 
         public override Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
         {
-            _matchRoundInfo = VirtualSportsChoiceUtils.ParseMatchInfo(ticket.TransDesc);
+            _matchRoundInfo = VirtualSportsChoiceUtils.ParseMatchInfo(ticket.TransDesc, ticketHelper);
             _excludingScores = VirtualSportsChoiceUtils.ParseExcludingScoresInfo(ticket.TransDesc);
 
             return base.Render(ticket, ticketHelper, ticketData, isShowScoreMap);

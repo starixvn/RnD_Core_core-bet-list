@@ -206,5 +206,10 @@
         {
             return CacheRef.GetLeagueName3rd(league3rdId);
         }
+
+        public string GetBetRadarMatchCodeFormat(string matchCode)
+        {
+            return CacheRef.GetBetRadarMatchCodeFormat(matchCode);
+        }
     }
 }

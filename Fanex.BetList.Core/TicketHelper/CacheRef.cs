@@ -182,5 +182,11 @@
         {
             return RefData.GetLeagueName3rd(league3rdId, CurrentTWLanguage);
         }
+
+        public static string GetBetRadarMatchCodeFormat(string matchCode)
+        {
+            ////return RefData.GetBetRadarMatchCodeFormat(matchCode, CurrentTWLanguage);
+            return matchCode;
+        }
     }
 }

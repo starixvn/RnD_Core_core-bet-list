@@ -69,6 +69,12 @@
     <Compile Include="Builder\ChoiceBuilder\Choice2705Tests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice2707Tests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice2799Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2801Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2802Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2807Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2808Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2809Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\MatchCodeTests.cs" />
     <Compile Include="Builder\OddsBuilder\Odds1231Tests.cs" />
     <Compile Include="Builder\OddsBuilder\Odds1233Tests.cs" />
     <Compile Include="Builder\OddsBuilder\Odds2799Tests.cs" />

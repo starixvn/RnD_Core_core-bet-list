@@ -1,15 +1,14 @@
 ﻿namespace Fanex.BetList.VirtualSports.Tests.Builder.OddsBuilder
 {
+    using System.Collections.Generic;
+    using Core.App_GlobalResources;
     using Core.Builder.OddsBuilder;
     using Core.Entities;
     using Core.Templates;
     using Core.UnitTest.Common;
     using Core.UnitTest.Common.Enums;
-    using NSubstitute;
-    using NUnit.Framework;
-    using System.Collections.Generic;
-    using Core.App_GlobalResources;
     using Core.Utils;
+    using NUnit.Framework;
 
     public class Odds1233Tests
     {

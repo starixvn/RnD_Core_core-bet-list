@@ -114,6 +114,8 @@
 
         string GetLeagueName3rd(string league3rdId);
 
+        string GetBetRadarMatchCodeFormat(string matchCode);
+
         #endregion METHODS TO RESOLVE NAMES FROM IDS
     }
 }
