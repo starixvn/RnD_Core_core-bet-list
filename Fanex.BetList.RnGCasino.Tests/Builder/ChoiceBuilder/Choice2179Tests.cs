@@ -27,12 +27,14 @@
             // Arrange
             _ticket.BetCheck = "234234234";
             _ticket.ExtraInfo = jackpotInfo;
+            _ticket.CustId = 1;
+            _ticket.BetTypeId = 2198;
 
             // Act
             var choice = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            var expectedDetailLink = $"<div class=\"detail rng-casino-detail\" onclick=\"showProgressiveJackpotWonDetails('1233213123');\">" +
+            var expectedDetailLink = $"<div class=\"detail rng-casino-detail\" onclick=\"showProgressiveJackpotWonDetails('1233213123', '1', '2198');\">" +
                  $"<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void('');\">Progressive Jackpot Won Details</a></div>";
             Assert.True(choice.League.ToString().Contains(expectedDetailLink));
         }
@@ -42,12 +44,14 @@
         {
             // Arrange
             _ticket.ExtraInfo = "jp=1,jpw=1233213123";
+            _ticket.CustId = 1;
+            _ticket.BetTypeId = 2198;
 
             // Act
             var choice = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            var expectedDetailLink = $"<div class=\"detail rng-casino-detail\" onclick=\"showProgressiveJackpotWonDetails('1233213123');\">" +
+            var expectedDetailLink = $"<div class=\"detail rng-casino-detail\" onclick=\"showProgressiveJackpotWonDetails('1233213123', '1', '2198');\">" +
                  $"<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void('');\">Progressive Jackpot Won Details</a></div>";
             Assert.False(choice.League.ToString().Contains(expectedDetailLink));
         }
@@ -59,12 +63,14 @@
             // Arrange
             _ticket.BetCheck = "234234234";
             _ticket.ExtraInfo = jackpotInfo;
+            _ticket.CustId = 1;
+            _ticket.BetTypeId = 2198;
 
             // Act
             var choice = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            var expectedDetailLink = $"<div class=\"detail rng-casino-detail\" onclick=\"showProgressiveJackpotWonDetails('1233213123');\">" +
+            var expectedDetailLink = $"<div class=\"detail rng-casino-detail\" onclick=\"showProgressiveJackpotWonDetails('1233213123', '1', '2198');\">" +
                  $"<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void('');\">Progressive Jackpot Won Details</a></div>";
             Assert.False(choice.League.ToString().Contains(expectedDetailLink));
         }
