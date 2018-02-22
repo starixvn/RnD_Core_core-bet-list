@@ -19,8 +19,10 @@
             base.BuildBetTeam(ticket, ticketHelper, ticketData);
 
             var rate = $"{ConvertByBetType.CommValue(ticket.Odds)}%";
+            var stake = ConvertByBetType.Odds(ticket.OddsSpread);
+
             Template.betTeam +=
-                $"{OpenTagJackpotContributionInfo}{CoreBetList.stake}: {ticket.OddsSpread} {ticket.Currency} @ {CoreBetList.rate} {rate}{CloseTagJackpotContribution}";
+                $"{OpenTagJackpotContributionInfo}{CoreBetList.stake}: {stake} {ticket.Currency} @ {CoreBetList.rate} {rate}{CloseTagJackpotContribution}";
         }
 
         protected override void AdjustBetTeamToRTF()
