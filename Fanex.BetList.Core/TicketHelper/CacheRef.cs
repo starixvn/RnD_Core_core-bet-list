@@ -185,8 +185,7 @@
 
         public static string GetBetRadarMatchCodeFormat(string matchCode)
         {
-            ////return RefData.GetBetRadarMatchCodeFormat(matchCode, CurrentTWLanguage);
-            return matchCode;
+            return RefData.GetBetRadarMatchCodeFormat(matchCode, CurrentTWLanguage);
         }
     }
 }
