@@ -95,9 +95,9 @@ div.match + div.league + div.no-details {
     color: #606060;
 }
 
-.handicap.custom {
-    font-weight: bold;
-}
+    .handicap.custom {
+        font-weight: bold;
+    }
 
 .sport {
     color: #0066CC;
@@ -120,16 +120,16 @@ div.match + div.league + div.no-details {
     width: 14px;
 }
 
-.detail:hover {
+    .detail:hover {
         background: url("Images/q_Icon_2.png") no-repeat scroll left center transparent;
-    color: #755200;
-    cursor: pointer;
-    display: inline;
-    font-weight: bold;
-    height: 10px;
+        color: #755200;
+        cursor: pointer;
+        display: inline;
+        font-weight: bold;
+        height: 10px;
         padding: 0 1px 0 18px;
-    width: 14px;
-}
+        width: 14px;
+    }
 
 .combinationLink {
     line-height: 20px;
@@ -229,6 +229,6 @@ div.match + div.league + div.no-details {
     width: 18px;
 }
 
-.bonus-icon:hover {
-    cursor: pointer
-}
+    .bonus-icon:hover {
+        cursor: pointer
+    }

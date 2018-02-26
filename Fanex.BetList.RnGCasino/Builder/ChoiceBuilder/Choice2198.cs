@@ -18,7 +18,7 @@
         {
             base.BuildBetTeam(ticket, ticketHelper, ticketData);
 
-            var rate = $"{ConvertByBetType.CommValue(ticket.Odds)}%";
+            var rate = $"{ConvertByBetType.CommValue(ticket.Odds * 100)}%";
             var stake = ConvertByBetType.Odds(ticket.OddsSpread);
 
             Template.betTeam +=

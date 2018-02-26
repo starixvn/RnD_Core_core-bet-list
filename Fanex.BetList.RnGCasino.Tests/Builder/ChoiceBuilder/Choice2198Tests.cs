@@ -24,7 +24,7 @@
         public void BuildBetTeam_Always_ShowJackpotContributionInfoInBetTeam()
         {
             // Arrange
-            _ticket.Odds = 12;
+            _ticket.Odds = 0.12m;
             _ticket.OddsSpread = 100;
             _ticket.Currency = "UUS";
 
@@ -42,7 +42,7 @@
             // Arrange
             _ticket.BetCheck = "423424234";
             _ticket.BetdaqId = 1234;
-            _ticket.Odds = 12;
+            _ticket.Odds = 0.12m;
             _ticket.OddsSpread = 100;
             _ticket.Currency = "UUS";
 
