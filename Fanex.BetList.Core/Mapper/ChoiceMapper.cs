@@ -139,10 +139,20 @@
 
         private void MapForFastMarkets()
         {
-            for (var betType = 222; betType <= 225; betType++)
-            {
-                MapIdToBaseId(betType, 221);
-            }
+            // Map 'Next 5 Munites' to 'Next 1 Minute'
+            MapIdToBaseId(222, 221);
+
+            // Map 'What will happen first in next 5 minutes' to 'What will happen first in next 1 minute'
+            MapIdToBaseId(224, 223);
+
+            // Map 'Next 1 Minute Set Piece' to 'What will happen first in next 1 minute'
+            MapIdToBaseId(225, 223);
+
+            // Map 'Which combination will happen first in next 1 min' to 'What will happen first in next 1 minute'
+            MapIdToBaseId(226, 223);
+
+            // Map 'Which combination will happen first in next 5 mins' to 'What will happen first in next 1 minute'
+            MapIdToBaseId(227, 223);
         }
 
         private void MapForPoolHouseAllInOne()

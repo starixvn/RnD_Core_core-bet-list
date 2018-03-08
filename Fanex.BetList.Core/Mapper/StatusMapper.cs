@@ -10,7 +10,7 @@
 
         private void MapForFastMarkets()
         {
-            for (var betType = 222; betType <= 225; betType++)
+            for (var betType = 222; betType <= 227; betType++)
             {
                 MapIdToBaseId(betType, 221);
             }
