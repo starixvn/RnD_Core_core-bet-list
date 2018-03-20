@@ -4,6 +4,9 @@
     using Entities;
     using Utils;
 
+    /// <summary>
+    /// Fast Markets: Next 1 minute.
+    /// </summary>
     public class Choice221 : Choice223
     {
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)

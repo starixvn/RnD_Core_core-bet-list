@@ -4,7 +4,7 @@
     using Entities;
 
     /// <summary>
-    /// Fast Market: What will happen first in next 1 minute
+    /// Fast Markets: What will happen first in next 1 minute
     /// </summary>
     public class Choice223 : Choice1
     {

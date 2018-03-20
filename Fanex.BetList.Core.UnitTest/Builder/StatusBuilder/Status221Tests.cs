@@ -5,7 +5,6 @@
     using NSubstitute;
     using NUnit.Framework;
 
-    [TestFixture]
     public class Status221Tests
     {
         private ITicket _ticket;
@@ -21,17 +20,19 @@
         }
 
         [Test]
-        public void BuildStatusResult_FromHandicap1_BetIdIsHandicap1()
+        public void BuildStatusResult_Always_AppendBetIdWithHandicap1AndHandicap2()
         {
-            // Arrange
-            var handicap1 = 10;
-            _ticket.Handicap1 = handicap1;
+            // Arrange.
+            _ticket.Handicap1 = 128;
+            _ticket.Handicap2 = 10;
 
-            // Act
+            // Act.
             _status.Render(_ticket, _ticketHelper, null, false);
 
-            // Assert
-            Assert.AreEqual(handicap1.ToString(), _status.Template.StatusResult.betId);
+            // Assert.
+            string expectedBetId = $"{_ticket.Handicap1}, {_ticket.Handicap2}";
+
+            Assert.AreEqual(expectedBetId, _status.Template.StatusResult.betId);
         }
     }
 }
