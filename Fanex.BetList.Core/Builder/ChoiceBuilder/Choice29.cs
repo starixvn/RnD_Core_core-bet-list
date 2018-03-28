@@ -63,11 +63,10 @@
 
         private static string GetCustId(ITicket ticket)
         {
-            return (HttpContext.Current != null
-                && HttpContext.Current.Request != null
-                && HttpContext.Current.Request["custid"] != null)
-                    ? HttpContext.Current.Request["custid"]
-                    : ticket.CustId.ToString(CultureInfo.InvariantCulture);
+            string custIdInTicket = ticket.CustId.ToString(CultureInfo.InvariantCulture);
+            string custIdInRequest = HttpContext.Current?.Request?["custid"] ?? custIdInTicket;
+
+            return ticket.CustId > 0 ? custIdInTicket : custIdInRequest;
         }
 
         private static string BuildShowSystemParlaySubbetsFunc(ITicket ticket, ITicketHelper ticketHelper)
