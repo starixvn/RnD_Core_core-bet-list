@@ -352,6 +352,10 @@
       <Project>{b26ba5c4-a25c-4e28-b3fb-a585245d5e52}</Project>
       <Name>Fanex.BetList.NumberGame</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.PP\Fanex.BetList.PP.csproj">
+      <Project>{502c6122-7b87-4a3c-9be2-782b411675cd}</Project>
+      <Name>Fanex.BetList.PP</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.RnGCasino\Fanex.BetList.RnGCasino.csproj">
       <Project>{9ea9fe4a-ac19-4ff5-908f-54a7831b41ee}</Project>
       <Name>Fanex.BetList.RnGCasino</Name>
@@ -431,6 +435,7 @@
     <Content Include="App_Data\FastMarkets2.xls" />
     <Content Include="App_Data\OneRnGCasino.xls" />
     <Content Include="App_Data\Asian1X2HDP.xls" />
+    <Content Include="App_Data\PP.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
