@@ -780,4 +780,13 @@
   <data name="ShowTransactionDetails" xml:space="preserve">
     <value>显示交易详情</value>
   </data>
+  <data name="forRefNo" xml:space="preserve">
+    <value>参照号码</value>
+  </data>
+  <data name="rate" xml:space="preserve">
+    <value>比率</value>
+  </data>
+  <data name="ProgressiveJackpotWonDetails" xml:space="preserve">
+    <value>累积积宝奖金赢细节</value>
+  </data>
 </root>

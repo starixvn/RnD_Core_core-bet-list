@@ -651,4 +651,13 @@
   <data name="ShowTransactionDetails" xml:space="preserve">
     <value>แสดงรายละเอียดการทำธุรกรรม</value>
   </data>
+  <data name="forRefNo" xml:space="preserve">
+    <value>สำหรับหมายเลขอ้างอิง</value>
+  </data>
+  <data name="rate" xml:space="preserve">
+    <value>อัตรา</value>
+  </data>
+  <data name="ProgressiveJackpotWonDetails" xml:space="preserve">
+    <value>รายละเอียดที่ชนะเกมส์แจ๊คพอต</value>
+  </data>
 </root>

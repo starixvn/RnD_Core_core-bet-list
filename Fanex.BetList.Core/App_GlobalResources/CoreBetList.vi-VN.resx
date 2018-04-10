@@ -468,4 +468,13 @@
   <data name="ShowTransactionDetails" xml:space="preserve">
     <value>Xem chi tiết giao dịch</value>
   </data>
+  <data name="forRefNo" xml:space="preserve">
+    <value>Mã tham chiếu</value>
+  </data>
+  <data name="rate" xml:space="preserve">
+    <value>Tỷ lệ cược</value>
+  </data>
+  <data name="ProgressiveJackpotWonDetails" xml:space="preserve">
+    <value>Chi tiết cược thắng Jackpot Lũy Tiến</value>
+  </data>
 </root>
