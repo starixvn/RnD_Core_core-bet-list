@@ -13,7 +13,7 @@
             else
             {
                 base.BuildStatusResult(ticket);
-                Template.StatusResult.betId = $"{ticket.BetId}, '{ticket.BetCheck}', {ticket.CustId}";
+                Template.StatusResult.betId = $"{ticket.BetId ?? 0}, '{ticket.BetCheck}', {ticket.CustId}";
             }
         }
     }

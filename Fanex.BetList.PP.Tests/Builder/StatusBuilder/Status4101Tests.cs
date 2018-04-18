@@ -63,5 +63,22 @@
 
             Assert.AreEqual(expectedParameters, template.StatusResult.betId);
         }
+
+        [Test]
+        public void Render_TicketBetIdIsNullAndTicketBetCheckIsNotNullOrEmpty_SetZeroAsBetIdInParameterListOfResultLink()
+        {
+            // Arrange.
+            _ticket.BetId = null;
+            _ticket.BetCheck = "BetCheck";
+            _ticket.CustId = 456;
+
+            // Act.
+            Status_Template template = _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert.
+            var expectedParameters = $"0, 'BetCheck', 456";
+
+            Assert.AreEqual(expectedParameters, template.StatusResult.betId);
+        }
     }
 }
