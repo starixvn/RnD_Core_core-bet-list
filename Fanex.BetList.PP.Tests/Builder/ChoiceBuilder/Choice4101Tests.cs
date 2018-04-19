@@ -33,7 +33,7 @@
         public void BuildBetTeam_Always_CallGetResourceDataOfTicketHelperToGetExpectedBetOption()
         {
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             _ticketHelper.Received().GetResourceData(Arg.Is(Choice4101.GameTypeRefId), Arg.Is(_ticket.TransDesc));
@@ -86,7 +86,7 @@
         public void BuildLeague_Always_CallGetResourceDataOfTicketHelperToGetGameGroup()
         {
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             _ticketHelper.Received().GetResourceData(Arg.Is(Choice4101.GameGroupRefId), Arg.Is(_ticket.TransDesc));
