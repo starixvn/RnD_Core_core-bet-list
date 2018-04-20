@@ -189,6 +189,12 @@
 
             // Map '1H Both Teams To Score / Total Goals' to 'Both Teams To Score / Total Goals'.
             MapIdToBaseId(457, 418);
+
+            // Map 'Asian 1X2 HDP' to 'Handicap'.
+            MapIdToBaseId(465, 1);
+
+            // Map '1H Asian 1X2 HDP' to 'Handicap'.
+            MapIdToBaseId(466, 1);
         }
     }
 }

@@ -512,12 +512,22 @@ namespace Fanex.BetList.Example.MVC.Controllers
             return BetListView(model);
         }
 
-
         public ActionResult FastMarkets2(BetListData model = null)
         {
             DataSourcePath = "~/App_Data/FastMarkets2.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(_dataService.QueryBetTypes(221, 222, 223, 224, 225, 226, 227));
+            model = GetDataSource(model, DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
+        public ActionResult Asian1x2HDP(BetListData model = null)
+        {
+            DataSourcePath = "~/App_Data/Asian1x2HDP.xls";
+
+            ViewBag.BetTypes = CreateSelectListItem(_dataService.QueryBetTypes(465, 466));
             model = GetDataSource(model, DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
