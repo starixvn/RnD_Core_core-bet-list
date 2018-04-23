@@ -139,5 +139,27 @@
 
             Assert.AreEqual(expectBetTeam, builtChoice.betTeam);
         }
+
+        [Test]
+        public void BuildBetTeamClassNameAndHandicap_Always_HandicapIsNull()
+        {
+            // Act
+            var builtChoice = Choice.Render(Ticket, TicketHelper, null, false);
+
+            // Arrange
+            Assert.IsNull(builtChoice.Handicap.handicap);
+        }
+
+        [Test]
+        public void BuildBetTeamClassNameAndHandicap_Always_BetTeamClassNameIsFavorite()
+        {
+            // Act
+            var builtChoice = Choice.Render(Ticket, TicketHelper, null, false);
+
+            // Arrange
+            const string favorite = "favorite";
+
+            Assert.AreEqual(favorite, builtChoice.betTeamClassName);
+        }
     }
 }

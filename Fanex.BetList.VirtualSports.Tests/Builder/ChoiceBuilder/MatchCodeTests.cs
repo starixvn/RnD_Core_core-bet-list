@@ -5,6 +5,8 @@
     using NSubstitute;
     using NUnit.Framework;
 
+#pragma warning disable S1694 // An abstract class should have both abstract and concrete methods
+
     public abstract class MatchCodeTests
     {
         protected const long HomeTeamId = 1;

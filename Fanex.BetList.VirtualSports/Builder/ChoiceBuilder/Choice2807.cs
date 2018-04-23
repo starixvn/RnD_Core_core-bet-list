@@ -10,7 +10,7 @@
     /// <summary>
     /// BetRadar Virtual Basketball - Winning Margin 6 Way.
     /// </summary>
-    public class Choice2807 : Choice4
+    public class Choice2807 : Choice1
     {
         public const string BasketballRefId = "WMBasketball";
 
@@ -44,6 +44,12 @@
             }
 
             Template.betTeam = string.Empty;
+        }
+
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            Template.Handicap.handicap = null;
+            Template.betTeamClassName = Favorite;
         }
 
         protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
