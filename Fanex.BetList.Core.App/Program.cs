@@ -9,7 +9,6 @@ namespace Fanex.BetList.Core.App
     using Fanex.BetList.Core.Builder.StakeBuilder;
     using Fanex.BetList.Core.Builder.StatusBuilder;
     using Fanex.BetList.Core.Builder.TransBuilder;
-    using RemotingRef;
 
     public class BetListBaseBuilderUnderTest : BetListBaseBuilder
     {
@@ -60,8 +59,6 @@ namespace Fanex.BetList.Core.App
 
             sw.Stop();
             Console.WriteLine(sw.ElapsedMilliseconds);
-
-            var temp = RefData.GetResourceDataByRefIdAndResourceId("GD_Baccarat", "1", "en", string.Empty);
 
 
 
