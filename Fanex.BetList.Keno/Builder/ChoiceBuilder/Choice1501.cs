@@ -4,9 +4,18 @@
     using System.Collections.Generic;
     using Entities;
     using Templates;
+    using Utils;
+
+    public delegate string MemberChoiceMappingHandler(ITicket ticket, ITicketHelper ticketHelper);
 
     public class Choice1501 : Choice1
     {
+        private static Dictionary<string, MemberChoiceMappingHandler> memberChoiceMapper = new Dictionary<string, MemberChoiceMappingHandler>
+        {
+            ["33"] = (ticket, ticketHelper) => BuildIndexBigSmallBetTeam("35", ticket, ticketHelper),
+            ["34"] = (ticket, ticketHelper) => BuildIndexBigSmallBetTeam("36", ticket, ticketHelper)
+        };
+
         private string _choiceId;
         private string _gameId;
 
@@ -22,9 +31,20 @@
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            string kenoBetTypeId;
+            string memberChoice;
 
-            Template.betTeam = ticketHelper.GetKenoBetChoiceName(_choiceId, out kenoBetTypeId);
+            if (!string.IsNullOrEmpty(_choiceId) && memberChoiceMapper.ContainsKey(_choiceId))
+            {
+                memberChoice = memberChoiceMapper[_choiceId](ticket, ticketHelper);
+            }
+            else
+            {
+                string kenoBetTypeId;
+
+                memberChoice = ticketHelper.GetKenoBetChoiceName(_choiceId, out kenoBetTypeId);
+            }
+
+            Template.betTeam = memberChoice;
         }
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
@@ -58,6 +78,21 @@
 
         protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
             => Template.Match = null;
+
+        private static string BuildIndexBigSmallBetTeam(string mappedChoiceId, ITicket ticket, ITicketHelper ticketHelper)
+        {
+            string kenoBetTypeId;
+            string memberChoicePattern = ticketHelper.GetKenoBetChoiceName(mappedChoiceId, out kenoBetTypeId);
+            decimal bets = 0;
+            int range = 0;
+
+            if (!string.IsNullOrEmpty(ticket.BetCheck) && int.TryParse(ticket.BetCheck, out range) && range != 0)
+            {
+                bets = ticket.Stake / range;
+            }
+
+            return string.Format(memberChoicePattern, ConvertByBetType.Stake(bets), range);
+        }
 
         private void ParseTransDesc(string transDesc)
         {

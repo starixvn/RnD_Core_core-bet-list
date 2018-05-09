@@ -21,7 +21,7 @@
         }
 
         [Test]
-        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapBlockIsNull()
+        public void BuildBetTeamClassNameAndHandicap_Always_HandicapBlockIsNull()
         {
             // Act.
             var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -31,7 +31,7 @@
         }
 
         [Test]
-        public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
+        public void BuildBetTeamClassNameAndHandicap_Always_BetTeamClassNameIsFavorite()
         {
             // Act.
             var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -41,7 +41,7 @@
         }
 
         [Test]
-        public void BuildMatch_Always_SetMatchToNull()
+        public void BuildMatch_Always_MatchBlockIsNull()
         {
             // Act.
             var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -69,7 +69,7 @@
         [TestCase("betchoice=1705152116,3;referID=", "3")]
         [TestCase("betChoice=1705152116,3;", "3")]
         [TestCase("betChoice=1705152116,3", "3")]
-        public void BuildBetTeam_TransDescIsCorrect_ParseAndSendCorrectChoiceIdToRemotingRef(string transDesc, string choiceId)
+        public void BuildBetTeam_TransDescIsCorrectAndDoesNotContainSpecialMap_ParseAndSendCorrectChoiceIdToRemotingRef(string transDesc, string choiceId)
         {
             // Arrange.
             _ticket.TransDesc = transDesc;
@@ -79,6 +79,25 @@
 
             // Assert.
             _ticketHelper.Received().GetKenoBetChoiceName(Arg.Is(choiceId), out string anyBetTypeId);
+        }
+
+        [TestCase("betChoice=1705152116,33;referID=", "35", "Index Big Bets: {0} Range: {1}")]
+        [TestCase("betChoice=1705152116,34;referID=", "36", "Index Small Bets: {0} Range: {1}")]
+        public void BuildBetTeam_ChoiceIdIs33Or34_AppendBetsAndRangeToMemberChoice(string transDesc, string choiceId, string betChoice)
+        {
+            // Arrange.
+            _ticket.Stake = 150;
+            _ticket.BetCheck = "100";
+            _ticket.TransDesc = transDesc;
+            _ticketHelper.GetKenoBetChoiceName(Arg.Is(choiceId), out string anyBetTypeId).Returns(betChoice);
+
+            // Act.
+            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert.
+            string expectedBetTeam = string.Format(betChoice, 1.5, 100);
+
+            Assert.AreEqual(expectedBetTeam, template.betTeam);
         }
 
         [TestCase("betChoice=1705152116,;referID=")]
