@@ -298,7 +298,7 @@
 
             Template.betTeamClassName = betTeamClassName;
 
-            ChangeClassNameWhenSportIsMauyThai(ticket.SportTypeId, ticket.BetTypeId, isBetHomeTeam);
+            ChangeClassNameWhenSportIsMuayThai(ticket.SportTypeId, ticket.BetTypeId, isBetHomeTeam);
 
             decimal handicap = ticket.Handicap2 > ticket.Handicap1 ? ticket.Handicap2 : ticket.Handicap1;
             handicap = betTeamClassName == Favorite ? -handicap : handicap;
@@ -306,7 +306,7 @@
             Template.Handicap.handicap = ConvertByBetType.Hdp(handicap);
         }
 
-        private void ChangeClassNameWhenSportIsMauyThai(int sportId, int betTypeId, bool isBetHomeTeam)
+        private void ChangeClassNameWhenSportIsMuayThai(int sportId, int betTypeId, bool isBetHomeTeam)
         {
             if (sportId == MuayThaiSportId && betTypeId == HandicapBetTypeId)
             {
