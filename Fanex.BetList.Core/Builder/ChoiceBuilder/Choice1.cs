@@ -42,8 +42,8 @@
         private const string BetStatus1Fl = "1fl";
         private const int MuayThaiSportId = 44;
         private const int HandicapBetTypeId = 1;
-
-        private readonly int[] _liveScoreSports = { 1, 3, 4, 8, 26, 28 };
+        private const string LightBlue = " light-blue";
+        private readonly int[] _liveScoreSports = { 1, 3, 4, 8, 26, 28, 49, 51 };
 
         #region Constructors
 
@@ -308,14 +308,13 @@
 
         private void ChangeClassNameWhenSportIsMauyThai(int sportId, int betTypeId, bool isBetHomeTeam)
         {
-            if (sportId == MuayThaiSportId
-                && betTypeId == HandicapBetTypeId)
+            if (sportId == MuayThaiSportId && betTypeId == HandicapBetTypeId)
             {
                 Template.betTeamClassName = Favorite;
 
                 if (!isBetHomeTeam)
                 {
-                    Template.betTeamClassName += " light-blue";
+                    Template.betTeamClassName += LightBlue;
                 }
             }
         }
@@ -334,7 +333,7 @@
 
             if (IsShowLiveText(ticket.SportTypeId))
             {
-                Template.Score.SetValue(string.Format("<span class=\"{0}\"> [{1}]</span>", Favorite, CoreBetList.Live));
+                Template.Score.SetValue($"<span class=\"{Favorite}\"> [{CoreBetList.Live}]</span>");
             }
             else
             {
@@ -349,7 +348,9 @@
         {
             const int MaxSportsbookSportTypeId = 99;
 
-            return sportTypeId > 0 && sportTypeId <= MaxSportsbookSportTypeId && !_liveScoreSports.Contains(sportTypeId);
+            return sportTypeId > 0 &&
+                sportTypeId <= MaxSportsbookSportTypeId &&
+                !_liveScoreSports.Contains(sportTypeId);
         }
 
         /// <summary>

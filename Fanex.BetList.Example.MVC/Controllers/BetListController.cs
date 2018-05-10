@@ -535,6 +535,18 @@ namespace Fanex.BetList.Example.MVC.Controllers
             return BetListView(model);
         }
 
+
+        public ActionResult UpcomingSports(BetListData model = null)
+        {
+            DataSourcePath = "~/App_Data/UpcomingSports.xls";
+
+            ViewBag.BetTypes = CreateSelectListItem(_dataService.QueryBetTypes(1, 2, 3, 10, 20, 29));
+            model = GetDataSource(model, DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+        
         public ActionResult PP(BetListData model = null)
         {
 
@@ -546,6 +558,8 @@ namespace Fanex.BetList.Example.MVC.Controllers
             }
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
+ 
+
 
             DataSourcePath = "~/App_Data/PP.xls";
 

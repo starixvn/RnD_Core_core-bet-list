@@ -34,6 +34,8 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         [TestCase(8)]
         [TestCase(26)]
         [TestCase(28)]
+        [TestCase(49)]
+        [TestCase(51)]
         public void BuildScore_FromLiveScoreSportType_SetHomeScoreIsLiveHomeScore(int sportType)
         {
             // Arrange
@@ -45,7 +47,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 
             // Assert
             Assert.AreEqual(_ticket.LiveHomeScore.ToString(), _choice.Template.Score.homeScore);
+            Assert.AreEqual(_ticket.LiveAwayScore.ToString(), _choice.Template.Score.awayScore);
         }
+
 
         [TestCase(181)]
         [TestCase(208)]
