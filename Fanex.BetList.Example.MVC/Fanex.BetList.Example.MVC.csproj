@@ -436,6 +436,7 @@
     <Content Include="App_Data\OneRnGCasino.xls" />
     <Content Include="App_Data\Asian1X2HDP.xls" />
     <Content Include="App_Data\PP.xls" />
+    <Content Include="App_Data\Parlay.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />

@@ -554,6 +554,17 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
             return BetListView(model);
         }
+        
+        public ActionResult Parlay(BetListData model = null)
+        {
+            DataSourcePath = "~/App_Data/Parlay.xls";
+
+            ViewBag.BetTypes = CreateSelectListItem(_dataService.QueryBetTypes(29));
+            model = GetDataSource(model, DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
 
         private ViewResult BetListView(BetListData model)
         {

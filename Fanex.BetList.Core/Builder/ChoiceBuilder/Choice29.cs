@@ -1,11 +1,11 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using App_GlobalResources;
-    using Entities;
-    using NPOI.SS.UserModel;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Web;
+    using App_GlobalResources;
+    using Entities;
+    using NPOI.SS.UserModel;
 
     /// <summary>
     /// Combination Mix Parlay.
@@ -17,12 +17,6 @@
 
         #region Build Choice
 
-        /// <summary>
-        /// Builds the choice.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
         protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             var betTypeName = GetBetTypeName(ticket, ticketHelper);
@@ -78,9 +72,7 @@
 
         private static string BuildSystemParlayDetailDiv(ITicket ticket, ITicketHelper ticketHelper)
         {
-            return ticketHelper.ShowSystemParlayDetail
-                        && ticket.BetTeam != "1"
-                        && ticket.Status.ToLowerInvariant() != BetStatus.Void
+            return ticketHelper.ShowSystemParlayDetail && ticket.Status.ToLowerInvariant() != BetStatus.Void
                     ? JoinDetailSystemParlayDiv(ticket, ticketHelper)
                     : string.Empty;
         }
@@ -108,15 +100,6 @@
                         : ticketHelper.ClientDetailSystemParlayFunction;
         }
 
-        /// <summary>
-        /// Joins the system parlay detail JavaScripts function.
-        /// </summary>
-        /// <param name="refNo">The reference no.</param>
-        /// <param name="winlossDate">The win loss date.</param>
-        /// <param name="transId">The trans identifier.</param>
-        /// <param name="betId">The bet identifier.</param>
-        /// <param name="custId">The customer identifier.</param>
-        /// <returns>System.String: the markups.</returns>
         private static string JoinSystemParlayDetailJsFunc(string refNo, string winlossDate, string transId, string betId, string custId)
             => $"showCombMPDetail('{refNo}', '{winlossDate}', '{transId}', '{betId}', '{custId}');";
 
@@ -173,16 +156,6 @@
                 offerNameList);
         }
 
-        /// <summary>
-        /// Joins the mix parlay markups.
-        /// </summary>
-        /// <param name="showSystemParlaySubbetsFunction">The show system parlay sub bets function.</param>
-        /// <param name="betTypeName">Name of the bet type.</param>
-        /// <param name="combinationOfferName">Offer name of combination mix parlay.</param>
-        /// <param name="transId">The trans identifier.</param>
-        /// <param name="transIndex">Index of the trans.</param>
-        /// <param name="systemParlayDetailDiv">The detail system parlay div.</param>
-        /// <returns>System.String: mix parlay markups.</returns>
         private static string BuildMixParlayMarkups(
                         string showSystemParlaySubbetsFunction,
                         string betTypeName,
@@ -206,15 +179,6 @@
 
         #region Build RTF Choice
 
-        /// <summary>
-        /// Renders the RTF.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        /// <param name="isShowScoreMap">If set to <c>true</c> [is show score map].</param>
-        /// <param name="rtfHelper">The RTF helper.</param>
-        /// <returns>List of IRichTextString for input data.</returns>
         public override List<IRichTextString> RenderRTF(
                                 ITicket ticket,
                                 ITicketHelper ticketHelper,
@@ -263,50 +227,6 @@
                 }
             }
         }
-
-        /***************************Export excel for subtickets*****************************
-           if (ticketHelper.GetParlayDetailById != null)
-           {
-               IList<ITicket> parlayData = ticketHelper.GetParlayDetailById(ticket.TransId);
-
-               bool showOdds = ticketHelper.IsShowOddsWithChoice;
-               ticketHelper.IsShowOddsWithChoice = true;
-               IFont pos, normal;
-               var betListBaseBuilder = new BetListBaseBuilder();
-
-               foreach (ITicket tkt in parlayData)
-               {
-                   IChoice choiceBuilder = betListBaseBuilder.CreateChoiceBuilder(tkt.BetTypeId);
-                   Template = choiceBuilder.Render(tkt, ticketHelper, null, isShowScoreMap);
-                   var choiceData = BuildRTFChoice(tkt, rtfHelper, ticketHelper);
-                   List<IRichTextString> tmpRtfChoice;
-
-                   if (choiceData is List<IRichTextString>)
-                   {
-                       tmpRtfChoice = (List<IRichTextString>)choiceData;
-                   }
-                   else
-                   {
-                       tmpRtfChoice = new List<IRichTextString>() { (IRichTextString)choiceData };
-                   }
-
-                   if ((tkt.StatusId?.ToString().Trim() == BetStatusId.Void) || (tkt.Status?.Trim().ToLower() == BetStatus.Void))
-                   {
-                       pos = tmpRtfHelper.PosFontCrossed;
-                       normal = tmpRtfHelper.NormalFontCrossed;
-                   }
-                   else
-                   {
-                       pos = tmpRtfHelper.PosFont;
-                       normal = tmpRtfHelper.NormalFont;
-                   }
-
-                   CollectRTFSubChoice(tmpRtfChoice, ref tmpRtfHelper, pos, normal);
-               }
-
-               ticketHelper.IsShowOddsWithChoice = showOdds;
-           }
-           *******************************************************************************/
 
         #endregion Build RTF Choice
     }
