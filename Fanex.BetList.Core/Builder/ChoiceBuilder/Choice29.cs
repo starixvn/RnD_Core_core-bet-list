@@ -96,12 +96,13 @@
                             ticket.WinlostDate.ToString(CultureInfo.InvariantCulture),
                             ticket.TransId.ToString(CultureInfo.InvariantCulture),
                             ticket.BetId.ToString(),
-                            custid)
+                            custid,
+                            ticket.BetTeam)
                         : ticketHelper.ClientDetailSystemParlayFunction;
         }
 
-        private static string JoinSystemParlayDetailJsFunc(string refNo, string winlossDate, string transId, string betId, string custId)
-            => $"showCombMPDetail('{refNo}', '{winlossDate}', '{transId}', '{betId}', '{custId}');";
+        private static string JoinSystemParlayDetailJsFunc(string refNo, string winlossDate, string transId, string betId, string custId, string betTeam)
+            => $"showCombMPDetail('{refNo}', '{winlossDate}', '{transId}', '{betId}', '{custId}', '{betTeam}');";
 
         private static string JoinSystemParlaySubbetsFunc(ITicket ticket, ITicketHelper ticketHelper)
         {
