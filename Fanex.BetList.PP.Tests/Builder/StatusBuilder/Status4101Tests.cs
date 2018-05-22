@@ -1,8 +1,10 @@
 ﻿namespace Fanex.BetList.PP.Tests.Builder.StatusBuilder
 {
+    using Core.App_GlobalResources;
     using Core.Builder.StatusBuilder;
     using Core.Entities;
     using Core.Templates;
+    using Core.Utils;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -22,7 +24,7 @@
 
         [TestCase(null)]
         [TestCase("")]
-        public void Render_TicketBetCheckIsNullOrEmpty_HideResultLink(string betCheck)
+        public void BuildStatusResult_TicketBetCheckIsNullOrEmpty_HideResultLink(string betCheck)
         {
             // Arrange.
             _ticket.BetCheck = betCheck;
@@ -35,7 +37,7 @@
         }
 
         [Test]
-        public void Render_TicketBetCheckIsNotNullOrEmpty_ShowResultLink()
+        public void BuildStatusResult_TicketBetCheckIsNotNullOrEmpty_ShowResultLink()
         {
             // Arrange.
             _ticket.BetCheck = "BetCheck";
@@ -48,7 +50,7 @@
         }
 
         [Test]
-        public void Render_TicketBetCheckIsNotNullOrEmpty_AppendBetCheckAndCustIdAfterBetIdInParameterListOfResultLink()
+        public void BuildStatusResult_TicketBetCheckIsNotNullOrEmpty_AppendBetCheckAndCustIdAfterBetIdInParameterListOfResultLink()
         {
             // Arrange.
             _ticket.BetId = 123;
@@ -65,7 +67,7 @@
         }
 
         [Test]
-        public void Render_TicketBetIdIsNullAndTicketBetCheckIsNotNullOrEmpty_SetZeroAsBetIdInParameterListOfResultLink()
+        public void BuildStatusResult_TicketBetIdIsNullAndTicketBetCheckIsNotNullOrEmpty_SetZeroAsBetIdInParameterListOfResultLink()
         {
             // Arrange.
             _ticket.BetId = null;
@@ -79,6 +81,38 @@
             var expectedParameters = $"0, 'BetCheck', 456";
 
             Assert.AreEqual(expectedParameters, template.StatusResult.betId);
+        }
+
+        [Test]
+        public void BuildResult_TicketIsRunningAndBetCheckIsNotNullOrEmpty_ResultIsDisplayedAsLink()
+        {
+            // Arrange.
+            _ticket.Status = "running";
+            _ticket.BetCheck = "BetCheck";
+
+            // Act.
+            Status_Template template = _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert.
+            var parameterList = new object[]
+            {
+                _ticket.MatchId,
+                string.IsNullOrEmpty(_ticket.Race) ? "0" : _ticket.Race,
+                _ticket.BetTypeId,
+                _ticket.SportTypeId,
+                _ticket.TransId,
+                $"'{_ticket.UserName}'",
+                $"'{Formatter.FullDateFormat(_ticket.WinlostDate)}'",
+                "0",
+                _ticket.LeagueId,
+                "0",
+                _ticket.BetId ?? 0,
+                $"'{_ticket.BetCheck}'",
+                _ticket.CustId
+            };
+            var expectedHtml = $"<div class=\"result\" onclick=\"ViewResult({string.Join(", ", parameterList)});\">{CoreBetList.running}</div>";
+
+            Assert.AreEqual(expectedHtml, template.result);
         }
     }
 }
