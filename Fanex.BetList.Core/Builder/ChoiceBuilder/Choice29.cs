@@ -72,9 +72,19 @@
 
         private static string BuildSystemParlayDetailDiv(ITicket ticket, ITicketHelper ticketHelper)
         {
-            return ticketHelper.ShowSystemParlayDetail && ticket.Status.ToLowerInvariant() != BetStatus.Void
+            return ticketHelper.ShowSystemParlayDetail && IsAcceptedTicket(ticket)
                     ? JoinDetailSystemParlayDiv(ticket, ticketHelper)
                     : string.Empty;
+        }
+
+        private static bool IsAcceptedTicket(ITicket ticket)
+        {
+            string status = ticket.Status.ToLowerInvariant();
+
+            return status == BetStatus.Running
+                || status == BetStatus.Won
+                || status == BetStatus.Lose
+                || status == BetStatus.Draw;
         }
 
         private static string JoinDetailSystemParlayDiv(ITicket ticket, ITicketHelper ticketHelper)

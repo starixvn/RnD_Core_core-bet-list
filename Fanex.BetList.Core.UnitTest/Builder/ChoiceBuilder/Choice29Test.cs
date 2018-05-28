@@ -10,9 +10,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    /// Unit test for Choice29 class.
-    /// </summary>
     [TestFixture]
     public class Choice29Test
     {
@@ -42,7 +39,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildShowSystemParlaySubbetsFunc_ClientSystemParlaySubbetsDetailFunctionIsNotEmpty_ReturnContainSystemParlaySubbetsDetailFunction()
+        public void BuildChoice_ClientSystemParlaySubbetsDetailFunctionIsNotEmpty_BetChoiceLinkContainsSystemParlaySubbetsDetailFunction()
         {
             // Arrange
             _ticketHelper.ClientSystemParlaySubbetsDetailFunction = "javascript:ShowSystemParlaySubbets(200);";
@@ -56,7 +53,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildShowSystemParlaySubbetsFunc_ClientSystemParlaySubbetsDetailFunctionIsEmptyAndOldSystemParlay_ReturnContainShowCombMP()
+        public void BuildChoiceOfOldSystemParlay_ClientSystemParlaySubbetsDetailFunctionIsEmpty_BetChoiceLinkContainsShowCombMP()
         {
             // Arrange
             _ticket.Handicap1 = 3;
@@ -74,7 +71,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildShowSystemParlaySubbetsFunc_ClientSystemParlaySubbetsDetailFunctionIsEmptyAndIsNewSystemParlay_ReturnContainShowCombMP()
+        public void BuildChoiceOfSystemParlay_ClientSystemParlaySubbetsDetailFunctionIsEmpty_BetChoiceLinkContainsShowCombMP()
         {
             // Arrange
             _ticketHelper.ClientSystemParlaySubbetsDetailFunction = string.Empty;
@@ -88,7 +85,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildSystemParlayDetailDiv_ShowSystemParlayDetailIsFalse_ReturnDoesNotContainDetailLink()
+        public void BuildDetailsLink_ShowSystemParlayDetailIsFalse_DoNotShowDetailsLink()
         {
             // Arrange
             _ticketHelper.ShowSystemParlayDetail = false;
@@ -101,10 +98,14 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             StringAssert.DoesNotContain(expectedDetailLink, _choice.Template.ToString());
         }
 
-        [Test]
-        public void BuildSystemParlayDetailDiv_ShowSystemParlayDetailIsTrue_ReturnContainsDetailLink()
+        [TestCase("running")]
+        [TestCase("won")]
+        [TestCase("lose")]
+        [TestCase("draw")]
+        public void BuildDetailsLink_ShowSystemParlayDetailIsTrueAndStatusIsOneOfAcceptedStatuses_ShowDetailsLink(string status)
         {
             // Arrange
+            _ticket.Status = status;
             _ticketHelper.ShowSystemParlayDetail = true;
 
             // Act
@@ -115,10 +116,29 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             StringAssert.Contains(expectedDetailLink, _choice.Template.ToString());
         }
 
-        [Test]
-        public void BuildSystemParlayDetailDiv_ShowSystemParlayDetailIsTrueAndClientDetailSystemParlayFunctionIsEmpty_ReturnContainsShowCombMPDetail()
+        [TestCase("void")]
+        [TestCase("reject")]
+        [TestCase("refund")]
+        [TestCase("waiting")]
+        public void BuildDetailsLink_StatusIsOneOfRejectededStatuses_DoNotShowDetailsLink(string status)
         {
             // Arrange
+            _ticket.Status = status;
+            _ticketHelper.ShowSystemParlayDetail = true;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert
+            var expectedDetailLink = $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a>";
+            StringAssert.DoesNotContain(expectedDetailLink, _choice.Template.ToString());
+        }
+
+        [Test]
+        public void BuildDetailsLink_ShowSystemParlayDetailIsTrueAndClientDetailSystemParlayFunctionIsEmpty_DetailsLinkCallsCombMPDetailOnceClicked()
+        {
+            // Arrange
+            _ticket.Status = "won";
             _ticketHelper.ShowSystemParlayDetail = true;
             _ticketHelper.ClientDetailSystemParlayFunction = string.Empty;
 
@@ -131,9 +151,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildSystemParlayDetailDiv_ShowSystemParlayDetailIsTrueAndClientDetailSystemParlayFunctionIsNotEmpty_ReturnContainsClientDetailSystemParlayFunc()
+        public void BuildDetailsLink_ShowSystemParlayDetailIsTrueAndClientDetailSystemParlayFunctionIsNotEmpty_DetailsLinkCallsClientDetailSystemParlayFuncOnceClickedReturn()
         {
             // Arrange
+            _ticket.Status = "won";
             _ticketHelper.ShowSystemParlayDetail = true;
             _ticketHelper.ClientDetailSystemParlayFunction = "showClientDetailSystemParlayFunc();";
 
