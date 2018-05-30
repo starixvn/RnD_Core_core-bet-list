@@ -18,8 +18,8 @@
         {
             base.BuildBetTeam(ticket, ticketHelper, ticketData);
 
-            var rate = $"{ConvertByBetType.CommValue(ticket.Odds * 100)}%";
-            var stake = ConvertByBetType.Odds(ticket.OddsSpread);
+            var rate = $"{FormatDecimal(ticket.Odds * 100)}%";
+            var stake = FormatDecimal(ticket.OddsSpread);
 
             Template.betTeam +=
                 $"{OpenTagJackpotContributionInfo}{CoreBetList.stake}: {stake} {ticket.Currency} @ {CoreBetList.rate} {rate}{CloseTagJackpotContribution}";
@@ -33,5 +33,8 @@
                 .Replace(OpenTagJackpotContributionInfo, NewLine)
                 .Replace(CloseTagJackpotContribution, string.Empty);
         }
+
+        private static string FormatDecimal(decimal number)
+            => string.Format(Formatter.DECIMALFORMAT40, number);
     }
 }
