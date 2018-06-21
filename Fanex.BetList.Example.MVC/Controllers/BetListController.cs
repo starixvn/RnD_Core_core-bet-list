@@ -74,10 +74,11 @@ namespace Fanex.BetList.Example.MVC.Controllers
         public ActionResult New60BetTypesBetRadar(BetListData model = null)
         {
             var betTypes = new List<BetType>();
+            var ticketHelper = new TicketHelper();
             betTypes.Add(new BetType
             {
                 Id = 157,
-                Name = CacheRef.GetBettype(157, null)
+                Name = ticketHelper.GetBetTypeNameById(157)
             });
 
             for (int i = 159; i <= 217; i++)
@@ -85,7 +86,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
                 betTypes.Add(new BetType
                 {
                     Id = i,
-                    Name = CacheRef.GetBettype(i, null)
+                    Name = ticketHelper.GetBetTypeNameById(i)
                 });
             }
 
@@ -623,10 +624,10 @@ namespace Fanex.BetList.Example.MVC.Controllers
         /// </summary>
         public void ExportExcel(BetListData query)
         {
-            GetCachePropertyById funcGetOddsTypeName = CacheRef.GetOddsTypeName;
             var factory = new BetListExcelFactory();
             BetListExcelBuilder builder = factory.CreateBuilder();
             ITicketHelper ticketHelper = new TicketHelper();
+            GetCachePropertyById funcGetOddsTypeName = ticketHelper.GetOddsTypeNameById;
             const short excelColumns = 7;
             builder.BuildWorksheet("BetList", excelColumns);
             var index = 0;

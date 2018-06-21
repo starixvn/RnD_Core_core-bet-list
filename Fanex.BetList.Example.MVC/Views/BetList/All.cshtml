@@ -17,7 +17,7 @@
 
     ITicketHelper ticketHelper = new TicketHelper();
 
-    GetCachePropertyById funcGetOddsTypeName = CacheRef.GetOddsTypeName;
+    GetCachePropertyById funcGetOddsTypeName = ticketHelper.GetOddsTypeNameById;
 
     var isShowScoreMap = Model.BetTypeId == 145 || Model.BetTypeId == 146 || Model.BetTypeId == 151;
 
