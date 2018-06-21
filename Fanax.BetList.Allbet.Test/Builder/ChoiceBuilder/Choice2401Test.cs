@@ -204,7 +204,6 @@
         {
             ////Arrange
             _ticket.TransDesc = trandesc;
-            var workbook = new HSSFWorkbook();
             var rtfHelper = new RTFHelper().Clone();
 
             ////Act
@@ -219,7 +218,6 @@
         {
             ////Arrange
             _ticket.TransDesc = "transdesc";
-            var workbook = new HSSFWorkbook();
             var rtfHelper = new RTFHelper().Clone();
 
             ////Act
