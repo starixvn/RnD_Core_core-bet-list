@@ -14,10 +14,9 @@ namespace Fanex.BetList.Core.UnitTest.Stubs
         private string _betTypeName = "Bet";
         private string _betTeamName = "BetTeam";
         private string _gameName = "Game";
+        private string _oddsName = "Odds";
 
         public int Index { get; set; }
-
-        public string CurrentLanguage { get; set; }
 
         public bool IsShowOddsWithChoice { get; set; }
 
@@ -155,6 +154,11 @@ namespace Fanex.BetList.Core.UnitTest.Stubs
         public string GetBetRadarMatchCodeFormat(string matchCode)
         {
             return _matchName + matchCode;
+        }
+
+        public string GetOddsTypeNameById(object oddsTypeId)
+        {
+            return _oddsName + oddsTypeId;
         }
     }
 }

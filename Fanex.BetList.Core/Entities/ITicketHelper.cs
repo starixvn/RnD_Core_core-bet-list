@@ -14,8 +14,6 @@
     {
         int Index { get; set; }
 
-        string CurrentLanguage { get; set; }
-
         /// <summary>
         /// Gets or sets a value indicating whether the current render show Odds values for each ticket (Ex: in MixParlay sub-tickets).
         /// </summary>
@@ -93,6 +91,8 @@
         string GetHorseTeamNameById(object homeId, object awayId);
 
         string GetRouletteBetItemNameById(object itemId);
+
+        string GetOddsTypeNameById(object oddsTypeId);
 
         string GetCombinationMPOfferName(string key);
 

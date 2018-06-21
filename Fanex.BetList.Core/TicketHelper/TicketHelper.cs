@@ -3,14 +3,16 @@
     using System;
     using System.Collections.Generic;
     using Entities;
+    using Mapper;
 
-    /// <summary>
-    /// Utilities for resolving Names from Ids.
-    /// </summary>
     public class TicketHelper : ITicketHelper
     {
-        public TicketHelper()
+        private readonly ICacheRef _cacheRef;
+
+        public TicketHelper(ICacheRef cacheRef = null)
         {
+            _cacheRef = cacheRef ?? BetListManager.RegisteredCacheRef;
+
             ShowBetType = true;
             ShowMatch = true;
             ShowLeague = true;
@@ -19,8 +21,6 @@
         }
 
         public int Index { get; set; }
-
-        public string CurrentLanguage { get; set; }
 
         public bool IsShowOddsWithChoice { get; set; }
 
@@ -53,78 +53,66 @@
         /// </summary>
         public bool HideStatusCashOutHistory { get; set; }
 
+#pragma warning disable S3254 // Default parameter values should not be passed as arguments
+
         public string GetBetTypeNameById(object betTypeId)
-        {
-            return CacheRef.GetBettype(betTypeId);
-        }
+            => GetBetTypeNameById(betTypeId, null, null, null);
 
         public string GetBetTypeNameById(object betTypeId, object refNo)
-        {
-            if (IsShowOddsWithChoice)
-            {
-                return CacheRef.GetBettype(betTypeId);
-            }
+            => GetBetTypeNameById(betTypeId, refNo, null, null);
 
-            return CacheRef.GetBettype(betTypeId, refNo);
-        }
-
-        public string GetCasinoBetTeamNameById(object betTeamId)
-        {
-            return CacheRef.GetCasinoBetItem(betTeamId);
-        }
-
-        public string GetLeagueNameById(object leagueId)
-        {
-            return CacheRef.GetLeagueName(leagueId);
-        }
-
-        public string GetSportNameById(object sportId)
-        {
-            return CacheRef.GetSportName(sportId);
-        }
-
-        public string GetTeamNameById(object teamId)
-        {
-            return CacheRef.GetTeamName(teamId);
-        }
-
-        public virtual string GetHorseTeamNameById(object homeId, object awayId)
-        {
-            return CacheRef.GetHorseTeamName(homeId);
-        }
+#pragma warning restore S3254 // Default parameter values should not be passed as arguments
 
         public string GetBetTypeNameById(object betTypeId, object betId, object betCheck = null)
-        {
-            return CacheRef.GetBettype(betTypeId, betId, betCheck);
-        }
+            => GetBetTypeNameById(betTypeId, 0, betId, betCheck);
 
         public string GetBetTypeNameById(object betTypeId, object refNo, object betId, object betCheck = null)
         {
-            if (IsShowOddsWithChoice)
+            string resource = (betId ?? betCheck)?.ToString();
+            string resourceId = string.Empty;
+            long actualRefNo = 0;
+            string actualBetTypeId = MapperCollector.BetTypeHasParent(Convert.ToInt32(betTypeId))
+                ? GetParentIdByBetTypeId(betTypeId, betTypeId)
+                : betTypeId.ToString();
+
+            if (!IsShowOddsWithChoice)
             {
-                return CacheRef.GetBettype(betTypeId, betId, betCheck);
+                long.TryParse(refNo?.ToString(), out actualRefNo);
             }
 
-            return CacheRef.GetBettype(betTypeId, betId, betCheck, refNo);
+            // Remove first character of the resource.
+            if (resource != null && resource.Length > 1)
+            {
+                resourceId = resource.Substring(1);
+            }
+
+            return _cacheRef.GetBetType(actualBetTypeId, resourceId, actualRefNo);
         }
+
+        public string GetCasinoBetTeamNameById(object betTeamId)
+            => _cacheRef.GetCasinoBetItem(betTeamId.ToString());
+
+        public string GetLeagueNameById(object leagueId)
+            => _cacheRef.GetLeagueName(leagueId.ToString());
+
+        public string GetSportNameById(object sportId)
+            => _cacheRef.GetSportName(sportId.ToString());
+
+        public string GetTeamNameById(object teamId)
+            => _cacheRef.GetTeamName(teamId.ToString());
+
+        public virtual string GetHorseTeamNameById(object homeId, object awayId)
+            => _cacheRef.GetHorseTeamName(homeId.ToString());
 
         public string GetParentIdByBetTypeId(object betTypeId, object defaultParentId = null)
-        {
-            var parentId = defaultParentId ?? string.Empty;
-
-            return CacheRef.GetParentIdByBetTypeId(betTypeId, parentId);
-        }
+            => _cacheRef.GetParentBetTypeIdByBetTypeId(betTypeId.ToString(), (defaultParentId ?? betTypeId).ToString());
 
         public string GetRouletteBetItemNameById(object itemId)
-        {
-            return CacheRef.GetRouletteBetItem(itemId);
-        }
+            => _cacheRef.GetRouletteBetItem(itemId.ToString());
 
-        /// <summary>
-        /// Gets the name of the offered combination mix-parlay.
-        /// </summary>
-        /// <param name="key">The key of MP Combination.</param>
-        /// <returns>MP combination offered name.</returns>
+        public string GetOddsTypeNameById(object oddsTypeId)
+            => _cacheRef.GetOddsTypeName(oddsTypeId.ToString());
+
         public string GetCombinationMPOfferName(string key)
         {
             Dictionary<string, string> combinationOfferName = new Dictionary<string, string>
@@ -163,53 +151,33 @@
                 string betCheck,
                 decimal handicap1,
                 decimal handicap2)
-        {
-            return CacheRef.GetCombinationTypeCombo(betTeam, betCheck, Convert.ToInt32(handicap1), Convert.ToInt32(handicap2));
-        }
+            => _cacheRef.GetCombinationTypeCombo(betTeam, betCheck, Convert.ToInt32(handicap1), Convert.ToInt32(handicap2));
 
         public string GetKenoBetChoiceName(string kenoBetChoiceId, out string kenoBetTypeId)
-        {
-            return CacheRef.GetKenoBetChoiceName(kenoBetChoiceId, out kenoBetTypeId);
-        }
+            => _cacheRef.GetKenoBetChoiceName(kenoBetChoiceId, out kenoBetTypeId);
 
         public string GetKenoBetTypeName(string kenoBetTypeId)
-        {
-            return CacheRef.GetKenoBetTypeName(kenoBetTypeId);
-        }
+            => _cacheRef.GetKenoBetTypeName(kenoBetTypeId);
 
         public string GetResourceData(string refId, string resourceId)
-        {
-            return CacheRef.GetResourceData(refId, resourceId);
-        }
+            => _cacheRef.GetResourceData(refId, resourceId);
 
         public string GetFastMarketSituation(string betType, string betTeam, decimal handicap1, decimal handicap2)
-        {
-            return CacheRef.GetFastMarketChoice(betType, betTeam, Convert.ToInt32(handicap1), Convert.ToInt32(handicap2));
-        }
+            => _cacheRef.GetFastMarketChoice(betType, betTeam, Convert.ToInt32(handicap1), Convert.ToInt32(handicap2));
 
         public string GetLotteryBetChoiceName(string lotteryBetChoiceId, out string lotteryBetTypeId)
-        {
-            return CacheRef.GetLotteryBetChoiceName(lotteryBetChoiceId, out lotteryBetTypeId);
-        }
+            => _cacheRef.GetLotteryBetChoiceName(lotteryBetChoiceId, out lotteryBetTypeId);
 
         public string GetLotteryBetTypeName(string lotteryBetTypeId)
-        {
-            return CacheRef.GetLotteryBetTypeName(lotteryBetTypeId);
-        }
+            => _cacheRef.GetLotteryBetTypeName(lotteryBetTypeId);
 
         public string GetTeamName3rd(string team3rdId)
-        {
-            return CacheRef.GetTeamName3rd(team3rdId);
-        }
+            => _cacheRef.GetTeamName3rd(team3rdId);
 
         public string GetLeagueName3rd(string league3rdId)
-        {
-            return CacheRef.GetLeagueName3rd(league3rdId);
-        }
+            => _cacheRef.GetLeagueName3rd(league3rdId);
 
         public string GetBetRadarMatchCodeFormat(string matchCode)
-        {
-            return CacheRef.GetBetRadarMatchCodeFormat(matchCode);
-        }
+            => _cacheRef.GetBetRadarMatchCodeFormat(matchCode);
     }
 }
