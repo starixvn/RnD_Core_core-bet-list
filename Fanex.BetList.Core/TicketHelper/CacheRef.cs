@@ -9,11 +9,30 @@
     /// <summary>
     /// Class CacheRef.
     /// </summary>
-    public static class CacheRef
+    public class CacheRef
     {
-        private static readonly IRemotingRefService _remotingRefService = new RemotingRefService();
-        private static readonly string CurrentLanguage = Thread.CurrentThread.CurrentUICulture.Name;
-        private const string DefaultValue = "";
+        private CacheRef()
+        {
+        }
+
+        public static string CurrentTWLanguage
+        {
+            get
+            {
+                switch (Thread.CurrentThread.CurrentUICulture.Name)
+                {
+                    case "en-US": return "en";
+                    case "zh-TW": return "ch"; // Traditional
+                    case "zh-CN": return "cs"; // Simplified
+                    case "ja-JP": return "jp";
+                    case "th-TH": return "th"; // Thai
+                    case "ko-KR": return "ko"; // Korean
+                    case "vi-VN": return "vn"; // Vietnamese
+                    case "zh-Hans": return "zhcn"; // New Simplified Chinese
+                    default: return "en";
+                }
+            }
+        }
 
         public static string GetBettype(object bettypeId)
         {
@@ -72,73 +91,62 @@
                 betTypeId = GetParentIdByBetTypeId(betTypeId, string.Empty);
             }
 
-            return _remotingRefService.GetBetTypeName(betTypeId.ToString(), CurrentLanguage, DefaultValue, resourceId, Convert.ToInt64(refNoValue));
+            return RefData.GetBetTypeName(betTypeId.ToString(), CurrentTWLanguage, string.Empty, resourceId, Convert.ToInt64(refNoValue));
         }
 
         public static string GetParentIdByBetTypeId(object betTypeId, object defaultParentId)
         {
-            return _remotingRefService.GetParentIdByBetTypeId(betTypeId.ToString(), defaultParentId.ToString());
+            return RefData.GetParentIdByBetTypeId(betTypeId.ToString(), defaultParentId.ToString());
         }
 
         public static string GetSportName(object sportId)
         {
-            return _remotingRefService.GetSportName(sportId.ToString(), CurrentLanguage, DefaultValue);
+            return RefData.GetSportName(sportId.ToString(), CurrentTWLanguage, string.Empty);
         }
 
         public static string GetTeamName(object teamId)
         {
-            return _remotingRefService.GetTeamName(teamId.ToString(), CurrentLanguage, DefaultValue);
+            return RefData.GetTeamName(teamId.ToString(), CurrentTWLanguage, string.Empty);
         }
 
         public static string GetRouletteBetItem(object itemId)
         {
-            return _remotingRefService.GetRouletteBetItem(itemId.ToString(), CurrentLanguage, DefaultValue);
+            return RefData.GetRouletteBetItem(itemId.ToString(), CurrentTWLanguage, string.Empty);
         }
 
         public static string GetCasinoBetItem(object betStatusId)
         {
-            return _remotingRefService.GetCasinoBetItem(betStatusId.ToString(), CurrentLanguage, DefaultValue);
+            return RefData.GetCasinoBetItem(betStatusId.ToString(), CurrentTWLanguage, string.Empty);
         }
 
         public static string GetLeagueName(object leagueId)
         {
-            return _remotingRefService.GetLeagueName(leagueId.ToString(), CurrentLanguage, DefaultValue);
+            return RefData.GetLeagueName(leagueId.ToString(), CurrentTWLanguage, string.Empty);
         }
 
         public static string GetHorseTeamName(object codeId)
         {
-            var horseTeamName = string.Empty;
-
-            try
-            {
-                horseTeamName = _remotingRefService.GetHorseTeamName(codeId.ToString(), CurrentLanguage, DefaultValue);
-            }
-            catch
-            {
-                return horseTeamName;
-            }
-
-            return horseTeamName;
+            return RefData.GetHorseTeamName(codeId.ToString(), CurrentTWLanguage);
         }
 
         public static string GetOddsTypeName(object oddsTypeId)
         {
-            return _remotingRefService.GetOddsTypeName(oddsTypeId.ToString(), CurrentLanguage);
+            return RefData.GetOddsTypeName(oddsTypeId.ToString(), CurrentTWLanguage);
         }
 
         public static string GetKenoBetChoiceName(string kenoBetChoiceID, out string kenoBettypeID)
         {
-            return _remotingRefService.GetKenoBetChoice(kenoBetChoiceID, CurrentLanguage, DefaultValue, out kenoBettypeID);
+            return RefData.GetKenoBetChoice(kenoBetChoiceID, CurrentTWLanguage, out kenoBettypeID);
         }
 
         public static string GetKenoBetTypeName(string kenoBettypeID)
         {
-            return _remotingRefService.GetKenoBetType(kenoBettypeID, CurrentLanguage, DefaultValue);
+            return RefData.GetKenoBettype(kenoBettypeID, CurrentTWLanguage);
         }
 
         public static string GetResourceData(string refId, string resourceId)
         {
-            return _remotingRefService.GetResourceDataByRefIdAndResourceId(refId, resourceId, CurrentLanguage, DefaultValue);
+            return RefData.GetResourceDataByRefIdAndResourceId(refId, resourceId, CurrentTWLanguage, string.Empty);
         }
 
         public static IList<string> GetCombinationTypeCombo(
@@ -147,37 +155,37 @@
                 int handicap1,
                 int handicap2)
         {
-            return _remotingRefService.GetCombinationTypeCombo(betTeam, betCheck, handicap1, handicap2, CurrentLanguage);
+            return RefData.GetCombinationTypeCombo(betTeam, betCheck, handicap1, handicap2, CurrentTWLanguage);
         }
 
         public static string GetFastMarketChoice(string betType, string betTeam, int handicap1, int handicap2)
         {
-            return _remotingRefService.GetFastMarketsChoice(betType, betTeam, handicap1, handicap2, CurrentLanguage);
+            return RefData.GetFastMarketsChoise(betType, betTeam, handicap1, handicap2, CurrentTWLanguage);
         }
 
         public static string GetLotteryBetChoiceName(string kenoBetChoiceID, out string kenoBettypeID)
         {
-            return _remotingRefService.GetLotteryBetChoice(kenoBetChoiceID, CurrentLanguage, DefaultValue, out kenoBettypeID);
+            return RefData.GetLotteryBetChoice(kenoBetChoiceID, CurrentTWLanguage, out kenoBettypeID);
         }
 
         public static string GetLotteryBetTypeName(string kenoBettypeID)
         {
-            return _remotingRefService.GetLotteryBetType(kenoBettypeID, CurrentLanguage, DefaultValue);
+            return RefData.GetLotteryBettype(kenoBettypeID, CurrentTWLanguage);
         }
 
         public static string GetTeamName3rd(string team3rdId)
         {
-            return _remotingRefService.GetTeamName3rd(team3rdId, CurrentLanguage, DefaultValue);
+            return RefData.GetTeamName3rd(team3rdId, CurrentTWLanguage);
         }
 
         public static string GetLeagueName3rd(string league3rdId)
         {
-            return _remotingRefService.GetLeagueName3rd(league3rdId, CurrentLanguage, DefaultValue);
+            return RefData.GetLeagueName3rd(league3rdId, CurrentTWLanguage);
         }
 
         public static string GetBetRadarMatchCodeFormat(string matchCode)
         {
-            return string.Empty;
+            return RefData.GetBetRadarMatchCodeFormat(matchCode, CurrentTWLanguage);
         }
     }
 }
