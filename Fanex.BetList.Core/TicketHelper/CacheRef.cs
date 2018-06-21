@@ -86,11 +86,6 @@
                 refNoValue = 0;
             }
 
-            if (MapperCollector.BetTypeHasParent(Convert.ToInt32(betTypeId)))
-            {
-                betTypeId = GetParentIdByBetTypeId(betTypeId, string.Empty);
-            }
-
             return RefData.GetBetTypeName(betTypeId.ToString(), CurrentTWLanguage, string.Empty, resourceId, Convert.ToInt64(refNoValue));
         }
 
