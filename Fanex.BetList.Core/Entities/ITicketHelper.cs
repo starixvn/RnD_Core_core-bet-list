@@ -76,19 +76,19 @@
 
         string GetTeamNameById(object teamId);
 
-        string GetBetTypeNameById(object bettypeId);
+        string GetBetTypeNameById(object betTypeId);
 
-        string GetBetTypeNameById(object bettypeId, object refNo);
+        string GetBetTypeNameById(object betTypeId, object refNo);
 
-        string GetBetTypeNameById(object bettypeId, object betId, object betCheck = null);
+        string GetBetTypeNameById(object betTypeId, object betId, object betCheck = null);
 
-        string GetBetTypeNameById(object bettypeId, object refNo, object betId, object betCheck = null);
+        string GetBetTypeNameById(object betTypeId, object refNo, object betId, object betCheck = null);
 
         string GetParentIdByBetTypeId(object betTypeId, object defaultParentId = null);
 
         string GetSportNameById(object sportId);
 
-        string GetCasinoBetTeamNameById(object betteamId);
+        string GetCasinoBetTeamNameById(object betTeamId);
 
         string GetHorseTeamNameById(object homeId, object awayId);
 
@@ -98,17 +98,17 @@
 
         IList<string> GetCombinationMPOfferNameList(string betTeam, string betCheck, decimal handicap1, decimal handicap2);
 
-        string GetKenoBetChoiceName(string kenoBetChoiceID, out string kenoBettypeID);
+        string GetKenoBetChoiceName(string kenoBetChoiceId, out string kenoBetTypeId);
 
-        string GetKenoBetTypeName(string kenoBettypeID);
+        string GetKenoBetTypeName(string kenoBetTypeId);
 
         string GetResourceData(string refId, string resourceId);
 
         string GetFastMarketSituation(string betType, string betTeam, decimal handicap1, decimal handicap2);
 
-        string GetLotteryBetChoiceName(string lotteryBetChoiceId, out string lotteryBettypeId);
+        string GetLotteryBetChoiceName(string lotteryBetChoiceId, out string lotteryBetTypeId);
 
-        string GetLotteryBetTypeName(string lotteryBettypeId);
+        string GetLotteryBetTypeName(string lotteryBetTypeId);
 
         string GetTeamName3rd(string team3rdId);
 
