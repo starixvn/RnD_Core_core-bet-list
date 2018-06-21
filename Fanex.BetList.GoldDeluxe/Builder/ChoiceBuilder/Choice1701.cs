@@ -6,6 +6,8 @@
 
     public class Choice1701 : Choice1101
     {
+        protected virtual string ResourceId => "GD_Baccarat";
+
         protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
         {
             Template.Match = null;
@@ -30,7 +32,7 @@
 
         protected override string GetBetTeamName(ITicketData ticketData, ITicketHelper ticketHelper)
         {
-            return ticketHelper.GetResourceData(GetResourceId(), ticketData.BetTeam);
+            return ticketHelper.GetResourceData(ResourceId, ticketData.BetTeam);
         }
 
         protected override List<ITicketData> GetTicketReference(ITicket ticket, List<ITicketData> ticketData)
@@ -43,11 +45,6 @@
             }
 
             return foundTicketData;
-        }
-
-        protected virtual string GetResourceId()
-        {
-            return "GD_Baccarat";
         }
     }
 }

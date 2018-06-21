@@ -599,7 +599,7 @@
                     choice = Space + Template.Match.away_firstGoal_lastGoal;
                 }
 
-                if (!string.IsNullOrEmpty(choice) || isAddNewLine)
+                if (string.Empty != choice || isAddNewLine)
                 {
                     choice = choice.Replace(HtmlCharacters.NoneBreakingSpace, Space);
                     rtfHelper.RTFRenderer.AddText(choice, rtfHelper.PosFont);

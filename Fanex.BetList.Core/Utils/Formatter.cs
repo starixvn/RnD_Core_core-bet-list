@@ -47,7 +47,7 @@
 
         #region CULTURE CONST
 
-        private static CultureInfo cult = new CultureInfo("en-US");
+        private static readonly CultureInfo cult = new CultureInfo("en-US");
 
         #endregion CULTURE CONST
 
@@ -780,9 +780,17 @@
                 value = (decimal)amount;
             }
 
-            return value < 0
-                       ? "<font color='#ff0000'>" + DecFormat(amount, 2) + "</font>"
-                       : value == 0 ? "0" : DecFormat(amount, 2);
+            if (value < 0)
+            {
+                return $"<font color='#ff0000'>{DecFormat(amount, 2)}</font>";
+            }
+
+            if (value > 0)
+            {
+                return DecFormat(amount, 2);
+            }
+
+            return "0";
         }
 
         /// <summary>
@@ -794,9 +802,17 @@
         {
             var value = Convert.ToDecimal(amount);
 
-            return value < 0
-                       ? "<font color='#ff0000'>" + FormatNumber40(amount, CULTNAMEENG) + "</font>"
-                       : value == 0 ? "0" : FormatNumber40(amount, CULTNAMEENG);
+            if (value < 0)
+            {
+                return $"<font color='#ff0000'>{FormatNumber40(amount, CULTNAMEENG)}</font>";
+            }
+
+            if (value > 0)
+            {
+                return FormatNumber40(amount, CULTNAMEENG);
+            }
+
+            return "0";
         }
 
         #endregion String

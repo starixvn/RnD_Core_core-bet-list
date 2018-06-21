@@ -15,10 +15,21 @@
             bool betOver = IsBetOver(ticket);
             bool betUnder = IsBetUnder(ticket);
 
-            Template.Handicap.handicap = betOver ? ConvertByBetType.Hdp(ticket.Handicap1) : betUnder ? ConvertByBetType.Hdp(ticket.Handicap2) : null;
-
             // Update betTeamClassName
             Template.betTeamClassName = betOver ? Favorite : Underdog;
+
+            if (betOver)
+            {
+                Template.Handicap.handicap = ConvertByBetType.Hdp(ticket.Handicap1);
+            }
+            else if (betUnder)
+            {
+                Template.Handicap.handicap = ConvertByBetType.Hdp(ticket.Handicap2);
+            }
+            else
+            {
+                Template.Handicap.handicap = null;
+            }
         }
 
         /// <summary>
@@ -29,15 +40,18 @@
         /// <param name="ticketData">The ticket data.</param>
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            bool betOver = IsBetOver(ticket);
-            bool betUnder = IsBetUnder(ticket);
-
-            Template.betTeam = betOver ? CoreBetList.over :
-                betUnder ? CoreBetList.under
-                    : string.Format(
-                        CoreBetList.betweenXandY,
-                        ConvertByBetType.Hdp(ticket.Handicap2),
-                        ConvertByBetType.Hdp(ticket.Handicap1));
+            if (IsBetOver(ticket))
+            {
+                Template.betTeam = CoreBetList.over;
+            }
+            else if (IsBetUnder(ticket))
+            {
+                Template.betTeam = CoreBetList.under;
+            }
+            else
+            {
+                Template.betTeam = string.Format(CoreBetList.betweenXandY, ConvertByBetType.Hdp(ticket.Handicap2), ConvertByBetType.Hdp(ticket.Handicap1));
+            }
         }
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)

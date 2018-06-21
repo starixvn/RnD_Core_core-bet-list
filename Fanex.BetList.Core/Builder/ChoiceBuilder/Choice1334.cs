@@ -18,14 +18,21 @@
         /// <param name="ticketData">The ticket data.</param>
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            bool betHome = ticket.BetTeam == "1";
-            bool betAway = ticket.BetTeam == "2";
+            bool betOnUnder = ticket.BetTeam == "1";
+            bool betOnOver = ticket.BetTeam == "2";
 
-            Template.betTeam = betHome
-                ? string.Join(null, new[] { "<span class=\"underdog\">", CoreBetList.under, "</span>" })
-                : betAway
-                    ? string.Join(null, new[] { "<span class=\"favorite\">", CoreBetList.over, "</span>" })
-                    : string.Join(null, new[] { "<span class=\"underdog\">", CoreBetList.exactly, "</span>" });
+            if (betOnUnder)
+            {
+                Template.betTeam = $"<span class=\"underdog\">{CoreBetList.under}</span>";
+            }
+            else if (betOnOver)
+            {
+                Template.betTeam = $"<span class=\"favorite\">{CoreBetList.over}</span>";
+            }
+            else
+            {
+                Template.betTeam = $"<span class=\"underdog\">{CoreBetList.exactly}</span>";
+            }
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)

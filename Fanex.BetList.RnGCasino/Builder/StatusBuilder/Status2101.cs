@@ -26,11 +26,9 @@
             string status = ticket.Status.ToLowerInvariant();
             string result = GetResultString(ticket.Status);
 
-            Template.result = !string.IsNullOrEmpty(result)
-                ? (!string.IsNullOrEmpty(ticket.BetCheck) && BetStatus.Running == status
-                    ? BuildRunningLink(ticket, result)
-                    : result)
-                : status;
+            Template.result = BetStatus.Running == status && !string.IsNullOrEmpty(ticket.BetCheck)
+                ? BuildRunningLink(ticket, result)
+                : result;
         }
 
         protected override void BuildResultLRF(string status, RTFHelper rtfHelper)

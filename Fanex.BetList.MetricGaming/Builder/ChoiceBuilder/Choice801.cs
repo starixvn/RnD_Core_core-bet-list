@@ -6,9 +6,11 @@
 
     public class Choice801 : Choice1
     {
+        protected const string MetricGamingResourceId = "SuperLive";
+
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            Template.betTeam = ticketHelper.GetResourceData(GetResourceId(), GetBetChoice(ticket));
+            Template.betTeam = ticketHelper.GetResourceData(MetricGamingResourceId, GetBetChoice(ticket));
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
@@ -34,11 +36,6 @@
                 default:
                     return string.Empty;
             }
-        }
-
-        protected virtual string GetResourceId()
-        {
-            return "SuperLive";
         }
 
         protected override void BuildScore(ITicket ticket)

@@ -14,7 +14,18 @@
             bool betHome = ticket.BetTeam == "1";
             bool betAway = ticket.BetTeam == "2";
 
-            Template.betTeam = betHome ? Template.Match.homeTeam : betAway ? Template.Match.awayTeam : CoreBetList.noTiebreak;
+            if (betHome)
+            {
+                Template.betTeam = Template.Match.homeTeam;
+            }
+            else if (betAway)
+            {
+                Template.betTeam = Template.Match.awayTeam;
+            }
+            else
+            {
+                Template.betTeam = CoreBetList.noTiebreak;
+            }
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)

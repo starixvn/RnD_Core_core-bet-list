@@ -16,7 +16,7 @@
                 return;
             }
 
-            var betTeamName = ticketHelper.GetResourceData(GetResourceId(), GetBetChoice(ticket));
+            var betTeamName = ticketHelper.GetResourceData(MetricGamingResourceId, GetBetChoice(ticket));
             var bettypeTimes = bettypeTime.Split(',');
             var teamName = ticketHelper.GetTeamNameById(bettypeTimes[0]);
 
