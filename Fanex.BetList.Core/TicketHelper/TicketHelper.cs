@@ -163,7 +163,7 @@
             => _cacheRef.GetResourceData(refId, resourceId);
 
         public string GetFastMarketSituation(string betType, string betTeam, decimal handicap1, decimal handicap2)
-            => _cacheRef.GetFastMarketChoice(betType, betTeam, Convert.ToInt32(handicap1), Convert.ToInt32(handicap2));
+            => _cacheRef.GetFastMarketsChoice(betType, betTeam, Convert.ToInt32(handicap1), Convert.ToInt32(handicap2));
 
         public string GetLotteryBetChoiceName(string lotteryBetChoiceId, out string lotteryBetTypeId)
             => _cacheRef.GetLotteryBetChoiceName(lotteryBetChoiceId, out lotteryBetTypeId);

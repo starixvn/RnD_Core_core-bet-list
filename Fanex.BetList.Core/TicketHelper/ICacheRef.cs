@@ -38,7 +38,7 @@
 
         IList<string> GetCombinationTypeCombo(string betTeam, string betCheck, int handicap1, int handicap2);
 
-        string GetFastMarketChoice(string betTypeId, string betTeam, int handicap1, int handicap2);
+        string GetFastMarketsChoice(string betTypeId, string betTeam, int handicap1, int handicap2);
 
 #pragma warning disable S3874 // "out" and "ref" parameters should not be used
 

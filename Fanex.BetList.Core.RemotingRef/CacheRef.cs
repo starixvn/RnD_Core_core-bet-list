@@ -8,7 +8,7 @@
 
     public sealed class CacheRef : ICacheRef, IDisposable
     {
-        private static readonly string DefaultValue = string.Empty;
+        public static readonly string DefaultValue = string.Empty;
 
         private readonly IRemotingRefService _remotingRefService;
 
@@ -66,7 +66,7 @@
         public IList<string> GetCombinationTypeCombo(string betTeam, string betCheck, int handicap1, int handicap2)
             => _remotingRefService.GetCombinationTypeCombo(betTeam, betCheck, handicap1, handicap2, CurrentLanguage);
 
-        public string GetFastMarketChoice(string betTypeId, string betTeam, int handicap1, int handicap2)
+        public string GetFastMarketsChoice(string betTypeId, string betTeam, int handicap1, int handicap2)
             => _remotingRefService.GetFastMarketsChoice(betTypeId, betTeam, handicap1, handicap2, CurrentLanguage);
 
 #pragma warning disable S3874 // "out" and "ref" parameters should not be used
