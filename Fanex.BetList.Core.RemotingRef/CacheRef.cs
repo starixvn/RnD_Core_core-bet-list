@@ -1,12 +1,11 @@
 ﻿namespace Fanex.BetList.Core.RemotingRef
 {
-    using System;
     using System.Collections.Generic;
     using System.Threading;
     using Core.TicketHelper;
     using Fanex.RemotingRef;
 
-    public sealed class CacheRef : ICacheRef, IDisposable
+    public sealed class CacheRef : ICacheRef
     {
         public static readonly string DefaultValue = string.Empty;
 
@@ -81,8 +80,5 @@
 
         public string GetBetRadarMatchCodeFormat(string matchCode)
             => _remotingRefService.GetBetRadarMatchCodeFormat(matchCode, CurrentLanguage);
-
-        public void Dispose()
-            => (_remotingRefService as RemotingRefService).Dispose();
     }
 }

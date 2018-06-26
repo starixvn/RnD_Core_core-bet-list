@@ -675,7 +675,7 @@
 
             if (!string.IsNullOrEmpty(Template.Match.home_firstGoal_lastGoal))
             {
-                choice = string.Join(null, new[] { Space, Template.Match.home_firstGoal_lastGoal });
+                choice = string.Join(null, new[] { Template.Match.home_firstGoal_lastGoal, Space });
             }
 
             if (!string.IsNullOrEmpty(choice))
