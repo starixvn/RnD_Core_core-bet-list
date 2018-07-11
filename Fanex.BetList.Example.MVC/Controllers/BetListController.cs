@@ -555,12 +555,33 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
             return BetListView(model);
         }
-        
+
         public ActionResult Parlay(BetListData model = null)
         {
             DataSourcePath = "~/App_Data/Parlay.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(_dataService.QueryBetTypes(29));
+            model = GetDataSource(model, DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
+        public ActionResult PokerGames(BetListData model = null)
+        {
+
+            var betTypeIds = new List<int>();
+
+            for (var betTypeId = 1401; betTypeId <= 1499; betTypeId++)
+            {
+                betTypeIds.Add(betTypeId);
+            }
+
+            var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
+
+            DataSourcePath = "~/App_Data/PokerGames.xls";
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
