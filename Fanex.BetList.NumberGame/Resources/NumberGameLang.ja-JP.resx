@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -146,8 +146,5 @@
   </data>
   <data name="lblUnderEven" xml:space="preserve">
     <value>アンダー 37.5/イーブン</value>
-  </data>
-  <data name="numberGroup" xml:space="preserve">
-    <value>Number Wheel</value>
   </data>
 </root>

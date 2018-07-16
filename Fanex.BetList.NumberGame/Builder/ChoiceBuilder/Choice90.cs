@@ -15,7 +15,7 @@
         /// <summary>
         /// The bet team map.
         /// </summary>
-        private static IDictionary<string, string> betTeamMap = new Dictionary<string, string>
+        private static readonly IDictionary<string, string> betTeamMap = new Dictionary<string, string>
                                                                 {
                                                                     { "1-1", "1~5" },
                                                                     { "1-2", "6~10" },
@@ -142,11 +142,6 @@
             var betTeamName = betTeamMap.ContainsKey(betTeamKey) ? betTeamMap[betTeamKey] : string.Empty;
 
             Template.betTeam = betTeamName + liveScore;
-        }
-
-        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-        {
-            Template.BetType.betTypeName = NumberGameLang.numberGroup;
         }
     }
 }

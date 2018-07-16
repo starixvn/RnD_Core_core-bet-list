@@ -190,18 +190,6 @@
         }
 
         [Test]
-        public void BuildBetType_Always_SetBetTypeNameIsNumberGroupResource()
-        {
-            // Act
-            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
-            var actualBetTypeName = choiceTemplate.BetType.betTypeName;
-
-            // Assert
-            var expectedBetTypeName = NumberGameLang.numberGroup;
-            Assert.AreEqual(expectedBetTypeName, actualBetTypeName);
-        }
-
-        [Test]
         public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsEmpty()
         {
             // Act

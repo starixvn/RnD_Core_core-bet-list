@@ -127,7 +127,4 @@
   <data name="lblOverOdd" xml:space="preserve">
     <value>Over 37.5/Odd</value>
   </data>
-  <data name="numberGroup" xml:space="preserve">
-    <value>Number Wheel</value>
-  </data>
 </root>
