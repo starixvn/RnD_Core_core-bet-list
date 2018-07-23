@@ -11,8 +11,8 @@
     [Ignore("Used for testing when changing old bet type")]
     public class BetListControllerTests
     {
-        private const string ActiveUrl = "http://10.18.200.202:7240/";
-        private const string MasterURL = "http://10.18.200.209:7240/";
+        private const string ActiveUrl = "http://ha.nexdev.net:7240/V1";
+        private const string MasterURL = "http://ha.nexdev.net:7240/Main";
 
         [TestCase("/")]
         [TestCase("/BetList/BetRadar")]
