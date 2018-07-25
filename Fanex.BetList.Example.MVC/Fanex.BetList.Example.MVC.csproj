@@ -324,6 +324,10 @@
       <Project>{2b8a67cf-d4c8-47fd-a7f1-db3b9525e567}</Project>
       <Name>Fanex.BetList.GlobalGaming</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.GoldDeluxe\Fanex.BetList.GoldDeluxe.csproj">
+      <Project>{9b786951-7d5c-42c4-a9df-ec558bc44593}</Project>
+      <Name>Fanex.BetList.GoldDeluxe</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.KenoLottery\Fanex.BetList.KenoLottery.csproj">
       <Project>{ae7d0ff9-c449-4fa4-a399-267426354b7f}</Project>
       <Name>Fanex.BetList.KenoLottery</Name>

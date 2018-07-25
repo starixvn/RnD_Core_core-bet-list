@@ -9,6 +9,8 @@
     [TestFixture]
     public class Choice1701Tests
     {
+        private const string BetTeamFormat = "<div><span class='favorite'>{0}</span>&nbsp;{1}&nbsp;@&nbsp;<span class='handicap custom'>{2}</span></div>";
+
         private IChoice _choice;
         private ITicket _ticket;
         private ITicketHelper _ticketHelper;
@@ -103,10 +105,9 @@
         public void BuildBetTeam_TicketData_SetBetTeam1()
         {
             // Arrange
-            const string ExpectedBetTeam =
-                "<div><span class='favorite'>Player Pair</span>&nbsp;<span class='stake'>1</span>&nbsp;@&nbsp;<span class='handicap custom'>11</span></div>";
             const string DecimalOddsType = "4";
             const string RefNo = "1234";
+            string expectedBetTeam = string.Format(BetTeamFormat, "Player Pair", 1, 11);
             _ticket.TransId = 1234;
             _ticket.OddsType = DecimalOddsType;
 
@@ -117,7 +118,7 @@
             _choice.Render(_ticket, _ticketHelper, ticketData, false);
 
             // Assert
-            Assert.AreEqual(ExpectedBetTeam, _choice.Template.betTeam);
+            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
         [Test]
@@ -125,8 +126,8 @@
         {
             // Arrange
             string expectedBetTeam =
-                "<div><span class='favorite'>Player Pair</span>&nbsp;<span class='stake'>1</span>&nbsp;@&nbsp;<span class='handicap custom'>11</span></div>" +
-                "<div><span class='favorite'>Big</span>&nbsp;<span class='stake'>2</span>&nbsp;@&nbsp;<span class='handicap custom'>22</span></div>";
+                string.Format(BetTeamFormat, "Player Pair", 1, 11) +
+                string.Format(BetTeamFormat, "Big", 2, 22);
 
             const string DecimalOddsType = "4";
             const string RefNo = "1234";
@@ -153,11 +154,9 @@
         public void BuildBetTeam_TwoTicketDatasHaveSameRefNoButDifferentBetType_BetTeamContainsGoldDeluxe()
         {
             // Arrange
-            string expectedBetTeam =
-                "<div><span class='favorite'>Player Pair</span>&nbsp;<span class='stake'>1</span>&nbsp;@&nbsp;<span class='handicap custom'>11</span></div>";
-
             const string DecimalOddsType = "4";
             const string RefNo = "1234";
+            string expectedBetTeam = string.Format(BetTeamFormat, "Player Pair", 1, 11);
             _ticket.TransId = 1234;
             _ticket.OddsType = DecimalOddsType;
 
@@ -179,10 +178,9 @@
         public void BuildBetTeam_TicketDataWithOddsIsZero_ShowHyphen()
         {
             // Arrange
-            const string ExpectedBetTeam =
-                "<div><span class='favorite'>Player Pair</span>&nbsp;<span class='stake'>1</span>&nbsp;@&nbsp;<span class='handicap custom'>-</span></div>";
             const string DecimalOddsType = "4";
             const string RefNo = "1234";
+            string expectedBetTeam = string.Format(BetTeamFormat, "Player Pair", 1, "-");
             _ticket.TransId = 1234;
             _ticket.OddsType = DecimalOddsType;
 
@@ -193,7 +191,7 @@
             _choice.Render(_ticket, _ticketHelper, ticketData, false);
 
             // Assert
-            Assert.AreEqual(ExpectedBetTeam, _choice.Template.betTeam);
+            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
     }
 }

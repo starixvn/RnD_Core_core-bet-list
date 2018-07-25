@@ -1,7 +1,6 @@
 ﻿namespace Fanex.BetList.GoldDeluxe.Tests.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
     using Core.Builder.ChoiceBuilder;
     using Core.Entities;
     using NSubstitute;
@@ -10,6 +9,8 @@
     [TestFixture]
     public class Choice1702Tests
     {
+        private const string BetTeamFormat = "<div><span class='favorite'>{0}</span>&nbsp;{1}&nbsp;@&nbsp;<span class='handicap custom'>{2}</span></div>";
+
         private IChoice _choice;
         private ITicket _ticket;
         private ITicketHelper _ticketHelper;
@@ -100,13 +101,12 @@
         }
 
         [Test]
-        [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2100:CodeLineMustNotBeLongerThan", Justification = "Reviewed.")]
         public void BuildBetTeam_TicketData_SetBetTeam1()
         {
             // Arrange
-            const string ExpectedBetTeam = "<div><span class='favorite'>Player Pair</span>&nbsp;<span class='stake'>1</span>&nbsp;@&nbsp;<span class='handicap custom'>11</span></div>";
             const string DecimalOddsType = "4";
             const string RefNo = "1234";
+            var expectedBetTeam = string.Format(BetTeamFormat, "Player Pair", 1, 11);
             _ticket.TransId = 1234;
             _ticket.OddsType = DecimalOddsType;
 
@@ -117,16 +117,15 @@
             _choice.Render(_ticket, _ticketHelper, ticketData, false);
 
             // Assert
-            Assert.AreEqual(ExpectedBetTeam, _choice.Template.betTeam);
+            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
         [Test]
-        [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2100:CodeLineMustNotBeLongerThan", Justification = "Reviewed.")]
         public void BuildBetTeam_TicketData_SetBetTeam2()
         {
             // Arrange
-            string expectedBetTeam = "<div><span class='favorite'>Player Pair</span>&nbsp;<span class='stake'>1</span>&nbsp;@&nbsp;<span class='handicap custom'>11</span></div>";
-            expectedBetTeam += "<div><span class='favorite'>Big</span>&nbsp;<span class='stake'>2</span>&nbsp;@&nbsp;<span class='handicap custom'>22</span></div>";
+            string expectedBetTeam = string.Format(BetTeamFormat, "Player Pair", 1, 11);
+            expectedBetTeam += string.Format(BetTeamFormat, "Big", 2, 22);
 
             const string DecimalOddsType = "4";
             const string RefNo = "1234";
@@ -149,13 +148,12 @@
         }
 
         [Test]
-        [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2100:CodeLineMustNotBeLongerThan", Justification = "Reviewed.")]
         public void BuildBetTeam_TicketDataWithOddsIsZero_ShowHyphen()
         {
             // Arrange
-            const string ExpectedBetTeam = "<div><span class='favorite'>Player Pair</span>&nbsp;<span class='stake'>1</span>&nbsp;@&nbsp;<span class='handicap custom'>-</span></div>";
             const string DecimalOddsType = "4";
             const string RefNo = "1234";
+            string expectedBetTeam = string.Format(BetTeamFormat, "Player Pair", 1, "-");
             _ticket.TransId = 1234;
             _ticket.OddsType = DecimalOddsType;
 
@@ -166,7 +164,7 @@
             _choice.Render(_ticket, _ticketHelper, ticketData, false);
 
             // Assert
-            Assert.AreEqual(ExpectedBetTeam, _choice.Template.betTeam);
+            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
     }
 }

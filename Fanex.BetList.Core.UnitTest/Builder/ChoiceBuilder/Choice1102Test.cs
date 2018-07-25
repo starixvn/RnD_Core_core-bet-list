@@ -1,7 +1,6 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using App_GlobalResources;
     using Common.Enums;
     using Core.Builder.ChoiceBuilder;
     using Entities;
@@ -14,6 +13,8 @@
     [TestFixture]
     public class Choice1102Test
     {
+        private const string BetTeamFormat = "<div><span class='favorite'>{0}</span>&nbsp;{1}&nbsp;@&nbsp;<span class='handicap custom'>{2}</span></div>";
+
         private IChoice _choice;
         private ITicket _ticket;
         private ITicketHelper _ticketHelper;
@@ -131,13 +132,12 @@
             ticketData.BetTeam = string.Empty;
             ticketData.Stake = 1;
             _ticketDatas.Add(ticketData);
-            var betTeamFormat = "<div><span class='favorite'>{0}</span>&nbsp;<span class='stake'>{1}</span>&nbsp;@&nbsp;<span class='handicap custom'>{2}</span></div>";
 
             // Act
             _choice.Render(_ticket, _ticketHelper, _ticketDatas, Arg.Any<bool>());
 
             // Assert
-            var expectedBetTeam = string.Format(betTeamFormat, string.Empty, ticketData.Stake, ticketData.Odds);
+            var expectedBetTeam = string.Format(BetTeamFormat, string.Empty, ticketData.Stake, ticketData.Odds);
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 

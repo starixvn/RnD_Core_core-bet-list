@@ -13,6 +13,8 @@
     [TestFixture]
     public class Choice1101Test
     {
+        private const string BetTeamFormat = "<div><span class='favorite'>{0}</span>&nbsp;{1}&nbsp;@&nbsp;<span class='handicap custom'>{2}</span></div>";
+
         private IChoice _choice;
         private ITicket _ticket;
         private ITicketHelper _ticketHelper;
@@ -130,13 +132,12 @@
             ticketData.BetTeam = string.Empty;
             ticketData.Stake = 1;
             _ticketDatas.Add(ticketData);
-            var betTeamFormat = "<div><span class='favorite'>{0}</span>&nbsp;<span class='stake'>{1}</span>&nbsp;@&nbsp;<span class='handicap custom'>{2}</span></div>";
 
             // Act
             _choice.Render(_ticket, _ticketHelper, _ticketDatas, Arg.Any<bool>());
 
             // Assert
-            var expectedBetTeam = string.Format(betTeamFormat, string.Empty, ticketData.Stake, ticketData.Odds);
+            var expectedBetTeam = string.Format(BetTeamFormat, string.Empty, ticketData.Stake, ticketData.Odds);
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
@@ -152,13 +153,12 @@
 
             _ticketDatas.Add(liveCasinoTicketData);
             _ticketDatas.Add(goldDeluxeTicketData);
-            var betTeamFormat = "<div><span class='favorite'>{0}</span>&nbsp;<span class='stake'>{1}</span>&nbsp;@&nbsp;<span class='handicap custom'>{2}</span></div>";
 
             // Act
             _choice.Render(_ticket, _ticketHelper, _ticketDatas, Arg.Any<bool>());
 
             // Assert
-            var expectedBetTeam = string.Format(betTeamFormat, string.Empty, liveCasinoTicketData.Stake, liveCasinoTicketData.Odds);
+            var expectedBetTeam = string.Format(BetTeamFormat, string.Empty, liveCasinoTicketData.Stake, liveCasinoTicketData.Odds);
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
