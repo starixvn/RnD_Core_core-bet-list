@@ -42,7 +42,7 @@
             _ticket.ExtraInfo = $"<p33 to=\"320\" tx=\"0\" is=\"0\" ra=\"{RemaningAmount}\" tn=\"{TableNumber}\" fc=\"0\" rc=\"0\"/>";
             _ticket.Stake = 2000;
             _ticket.LiveHomeScore = 111;
-            _ticket.LiveAwayScore = 112;
+            _ticket.Handicap1 = 1123.5M;
             _ticket.CommStatus = "Mode1";
             _ticket.CustId = 1000;
             _ticket.Currency = "THB";
@@ -261,14 +261,15 @@
         }
 
         [Test]
-        public void BuildMatch_Always_PointStoredInLiveAwayScore()
+        public void BuildMatch_Always_PointStoredInHandicap1()
         {
             // Act.
             var template = _choice.Render(_ticket, _ticketHelper, null, false);
             var gameInfo = template.Match.ToString();
 
             // Assert.
-            var expectedResult = string.Format(PerPointResourceIdPattern, _ticket.LiveAwayScore);
+            var formattedPoints = string.Format(Formatter.DECIMALFORMAT1, _ticket.Handicap1);
+            var expectedResult = string.Format(PerPointResourceIdPattern, formattedPoints);
 
             StringAssert.Contains(expectedResult, gameInfo);
         }
@@ -327,7 +328,8 @@
             // Assert.
             var expectedSeat = string.Format(SeatResourceIdPattern, _ticket.LiveHomeScore);
             var expectedTable = string.Format(TableResourceIdPattern, TableNumber);
-            var expectedPerPoint = string.Format(PerPointResourceIdPattern, _ticket.LiveAwayScore);
+            var formattedPoints = string.Format(Formatter.DECIMALFORMAT1, _ticket.Handicap1);
+            var expectedPerPoint = string.Format(PerPointResourceIdPattern, formattedPoints);
             var expectedPlayer = string.Format(PlayerIdPattern, $"CP{_ticket.CustId}");
             var expectedResult = $"<div>{expectedSeat}, {expectedTable} {expectedPerPoint}</div><div>{TableMode}</div><div>{expectedPlayer}</div>";
 
@@ -382,7 +384,7 @@
             // Assert.
             var expectedSeat = string.Format(SeatResourceIdPattern, _ticket.LiveHomeScore);
             var expectedTable = string.Format(TableResourceIdPattern, TableNumber);
-            var expectedPerPoint = string.Format(PerPointResourceIdPattern, _ticket.LiveAwayScore);
+            var expectedPerPoint = string.Format(PerPointResourceIdPattern, string.Format(Formatter.DECIMALFORMAT1, _ticket.Handicap1));
             var expectedText = $"{expectedSeat}, {expectedTable} {expectedPerPoint}";
 
             Assert.AreEqual(expectedText, linesInActualText[3]);
@@ -433,7 +435,7 @@
             // Assert.
             var expectedSeat = string.Format(SeatResourceIdPattern, _ticket.LiveHomeScore);
             var expectedTable = string.Format(TableResourceIdPattern, TableNumber);
-            var expectedPerPoint = string.Format(PerPointResourceIdPattern, _ticket.LiveAwayScore);
+            var expectedPerPoint = string.Format(PerPointResourceIdPattern, string.Format(Formatter.DECIMALFORMAT1, _ticket.Handicap1));
             var expectedText = $"{expectedSeat}, {expectedTable} {expectedPerPoint}";
 
             Assert.AreEqual(expectedText, linesInActualText[2]);

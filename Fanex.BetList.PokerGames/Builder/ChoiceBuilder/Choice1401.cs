@@ -133,7 +133,7 @@
             var tablePattern = ticketHelper.GetResourceData(GameInfoRefId, tableResourceId);
             var tableInfo = string.Format(tablePattern, _tableNumber);
             var perPointPattern = ticketHelper.GetResourceData(GameInfoRefId, perPointResourceId);
-            var perPointInfo = string.Format(perPointPattern, ticket.LiveAwayScore);
+            var perPointInfo = string.Format(perPointPattern, string.Format(Formatter.DECIMALFORMAT1, ticket.Handicap1));
 
             return $"{seatInfo}, {tableInfo} {perPointInfo}";
         }
