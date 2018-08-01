@@ -101,8 +101,8 @@
         public string GetTeamNameById(object teamId)
             => _cacheRef.GetTeamName(teamId.ToString());
 
-        public virtual string GetHorseTeamNameById(object homeId, object awayId)
-            => _cacheRef.GetHorseTeamName(homeId.ToString());
+        public string GetHorseTeamNameById(object teamId)
+            => _cacheRef.GetHorseTeamName(teamId.ToString());
 
         public string GetParentIdByBetTypeId(object betTypeId, object defaultParentId = null)
             => _cacheRef.GetParentBetTypeIdByBetTypeId(betTypeId.ToString(), (defaultParentId ?? betTypeId).ToString());

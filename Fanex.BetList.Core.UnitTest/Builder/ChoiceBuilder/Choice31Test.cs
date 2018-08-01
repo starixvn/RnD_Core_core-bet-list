@@ -101,13 +101,13 @@
             _ticket.MatchCode = "100";
             _ticket.HomeId = 1;
             _ticket.AwayId = 2;
-            _ticketHelper.GetHorseTeamNameById(Arg.Any<long>(), Arg.Any<long>()).Returns("Horse team name");
+            _ticketHelper.GetHorseTeamNameById(Arg.Any<long>()).Returns("Horse team name");
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedBetTeam = string.Format("{0} - {1}", _ticket.MatchCode, _ticketHelper.GetHorseTeamNameById(_ticket.HomeId, _ticket.AwayId));
+            string expectedBetTeam = string.Format("{0} - {1}", _ticket.MatchCode, _ticketHelper.GetHorseTeamNameById(_ticket.HomeId));
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 

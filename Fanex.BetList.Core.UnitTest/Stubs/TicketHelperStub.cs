@@ -87,9 +87,9 @@ namespace Fanex.BetList.Core.UnitTest.Stubs
             return _betTeamName + betteamId.ToString();
         }
 
-        public string GetHorseTeamNameById(object homeId, object awayId)
+        public string GetHorseTeamNameById(object teamId)
         {
-            return _teamName + homeId.ToString() + awayId.ToString();
+            return _teamName + teamId.ToString();
         }
 
         public string GetRouletteBetItemNameById(object itemId)

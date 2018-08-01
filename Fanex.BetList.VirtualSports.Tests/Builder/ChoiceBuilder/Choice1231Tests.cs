@@ -122,7 +122,7 @@
             _ticket.HomeId = 1;
             _ticket.AwayId = 2;
             _ticket.MatchCode = "100";
-            _ticketHelper.GetHorseTeamNameById(Arg.Any<object>(), Arg.Any<object>()).Returns(horseTeamName);
+            _ticketHelper.GetHorseTeamNameById(Arg.Any<object>()).Returns(horseTeamName);
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, false);

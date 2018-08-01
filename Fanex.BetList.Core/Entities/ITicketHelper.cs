@@ -88,7 +88,7 @@
 
         string GetCasinoBetTeamNameById(object betTeamId);
 
-        string GetHorseTeamNameById(object homeId, object awayId);
+        string GetHorseTeamNameById(object teamId);
 
         string GetRouletteBetItemNameById(object itemId);
 
