@@ -10,9 +10,6 @@
         private decimal _gemsBought;
         private decimal _totalGems;
 
-        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-            => Template.betTeam = string.Empty;
-
         protected override void ParseExtraInfo(XDocument extraInfoXml)
         {
             const string gemsBoughtAttributeName = "gb";
@@ -57,8 +54,5 @@
 
             return string.Format(gemsAfterBuyingPattern, ConvertByBetType.Stake(_totalGems));
         }
-
-        protected override void BuildBetTypeName(ref RTFHelper rtfHelper)
-            => rtfHelper.RTFRenderer.AddText(Template.BetType.betTypeName);
     }
 }

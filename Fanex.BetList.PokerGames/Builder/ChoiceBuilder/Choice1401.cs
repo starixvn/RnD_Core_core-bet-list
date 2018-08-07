@@ -14,11 +14,9 @@
         public const string GameTypeRefId = "PG_GT";
         public const string GameModeRefId = "PG_Mode";
         public const string GameInfoRefId = "PG_GameInfo";
-        protected const string ExtraInfoBlockPattern = "<div class=\"dark-orange\">{0}</div>";
-        protected const string StakeBlockPattern = "<span class=\"{0}\">{1} {2}</span>";
 
-        private decimal _remainingAmount;
         private string _tableNumber;
+        private string _playerId;
 
         public override Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
         {
@@ -34,12 +32,11 @@
 
         protected virtual void ParseExtraInfo(XDocument extraInfoXml)
         {
-            const string remainingAmountAttributeName = "ra";
             const string tableNumberAttributeName = "tn";
-
-            decimal.TryParse(GetExtraInfo(extraInfoXml, remainingAmountAttributeName), out _remainingAmount);
+            const string playerIdAttributeName = "si";
 
             _tableNumber = GetExtraInfo(extraInfoXml, tableNumberAttributeName);
+            _playerId = GetExtraInfo(extraInfoXml, playerIdAttributeName);
         }
 
         protected static string GetExtraInfo(XDocument extraInfoXml, string attribute)
@@ -56,35 +53,7 @@
         }
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-        {
-            Template.betTeam = BuildBuyIn(ticket, ticketHelper);
-
-            if (_remainingAmount > 0)
-            {
-                Template.betTeam += BuildRemaining(ticket, ticketHelper);
-            }
-        }
-
-        protected string BuildBuyIn(ITicket ticket, ITicketHelper ticketHelper)
-        {
-            const string buyInResourceId = "BuyIn";
-            var buyInAmount = ticket.Stake - _remainingAmount;
-            var stakeBlock = string.Format(StakeBlockPattern, Underdog, ticket.Currency, ConvertByBetType.Stake(buyInAmount));
-            var buyInTextPattern = ticketHelper.GetResourceData(GameInfoRefId, buyInResourceId);
-            var buyInText = string.Format(buyInTextPattern, stakeBlock);
-
-            return string.Format(ExtraInfoBlockPattern, buyInText);
-        }
-
-        protected string BuildRemaining(ITicket ticket, ITicketHelper ticketHelper)
-        {
-            const string remainingResourceId = "Remaining";
-            var stakeBlock = string.Format(StakeBlockPattern, Underdog, ticket.Currency, ConvertByBetType.Stake(_remainingAmount));
-            var remainingTextPattern = ticketHelper.GetResourceData(GameInfoRefId, remainingResourceId);
-            var remainingText = string.Format(remainingTextPattern, stakeBlock);
-
-            return string.Format(ExtraInfoBlockPattern, remainingText);
-        }
+            => Template.betTeam = string.Empty;
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
@@ -96,9 +65,7 @@
             => Template.Score = null;
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-        {
-            Template.BetType.betTypeName = ticketHelper.GetResourceData(GameTypeRefId, ticket.BetTypeId.ToString());
-        }
+            => Template.BetType.betTypeName = ticketHelper.GetResourceData(GameTypeRefId, ticket.BetTypeId.ToString());
 
         protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
         {
@@ -119,7 +86,7 @@
             {
                 BuildSeatAndTableBlock(ticket, ticketHelper),
                 BuildModeInfoBlock(ticket, ticketHelper),
-                BuildPlayerBlock(ticket, ticketHelper)
+                BuildPlayerBlock(ticketHelper)
             };
 
         private string BuildSeatAndTableBlock(ITicket ticket, ITicketHelper ticketHelper)
@@ -141,37 +108,20 @@
         private static string BuildModeInfoBlock(ITicket ticket, ITicketHelper ticketHelper)
             => ticketHelper.GetResourceData(GameModeRefId, ticket.CommStatus);
 
-        private static string BuildPlayerBlock(ITicket ticket, ITicketHelper ticketHelper)
+        private string BuildPlayerBlock(ITicketHelper ticketHelper)
         {
             const string playerIdResourceId = "PlayerID";
-            const string playerIdPattern = "CP{0}";
 
             var playerPattern = ticketHelper.GetResourceData(GameInfoRefId, playerIdResourceId);
-            var playerId = string.Format(playerIdPattern, ticket.CustId);
 
-            return string.Format(playerPattern, playerId);
+            return string.Format(playerPattern, _playerId);
         }
 
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
             => Template.League.LeagueName.leagueName = ticket.BetCheck;
 
-        protected override void BuildBetFigure(ITicket ticket, ref RTFHelper rtfHelper, bool isMixParlay)
-        {
-            if (!string.IsNullOrEmpty(Template.betTeam))
-            {
-                var buyInInfoRows = SplitHtmlIntoRows(Template.betTeam);
-
-                for (var index = 0; index < buyInInfoRows.Length; index++)
-                {
-                    if (index > 0)
-                    {
-                        rtfHelper.RTFRenderer.AddText("\n");
-                    }
-
-                    rtfHelper.RTFRenderer.AddText(buyInInfoRows[index], rtfHelper.PosFont);
-                }
-            }
-        }
+        protected override void BuildBetTypeName(ref RTFHelper rtfHelper)
+            => rtfHelper.RTFRenderer.AddText(Template.BetType.betTypeName);
 
         protected override void BuildBetTeamsInfo(ITicket ticket, ref RTFHelper rtfHelper)
         {
