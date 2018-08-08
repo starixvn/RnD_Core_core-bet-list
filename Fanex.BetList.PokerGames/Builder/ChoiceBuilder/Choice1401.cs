@@ -89,26 +89,46 @@
                 BuildPlayerBlock(ticketHelper)
             };
 
-        private string BuildSeatAndTableBlock(ITicket ticket, ITicketHelper ticketHelper)
+        protected virtual string BuildSeatAndTableBlock(ITicket ticket, ITicketHelper ticketHelper)
         {
-            const string seatResourceId = "Seat";
-            const string tableResourceId = "Table";
-            const string perPointResourceId = "PerPoint";
-
-            var seatPattern = ticketHelper.GetResourceData(GameInfoRefId, seatResourceId);
-            var seatInfo = string.Format(seatPattern, ticket.LiveHomeScore);
-            var tablePattern = ticketHelper.GetResourceData(GameInfoRefId, tableResourceId);
-            var tableInfo = string.Format(tablePattern, _tableNumber);
-            var perPointPattern = ticketHelper.GetResourceData(GameInfoRefId, perPointResourceId);
-            var perPointInfo = string.Format(perPointPattern, string.Format(Formatter.DECIMALFORMAT1, ticket.Handicap1));
+            var seatInfo = BuildSeatInfo(ticket, ticketHelper);
+            var tableInfo = BuildTableInfo(ticketHelper);
+            var perPointInfo = BuildPerPointInfo(ticket, ticketHelper);
 
             return $"{seatInfo}, {tableInfo} {perPointInfo}";
         }
 
-        private static string BuildModeInfoBlock(ITicket ticket, ITicketHelper ticketHelper)
+        protected static string BuildSeatInfo(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            const string seatResourceId = "Seat";
+
+            var seatPattern = ticketHelper.GetResourceData(GameInfoRefId, seatResourceId);
+
+            return string.Format(seatPattern, ticket.LiveHomeScore);
+        }
+
+        protected string BuildTableInfo(ITicketHelper ticketHelper)
+        {
+            const string tableResourceId = "Table";
+
+            var tablePattern = ticketHelper.GetResourceData(GameInfoRefId, tableResourceId);
+
+            return string.Format(tablePattern, _tableNumber);
+        }
+
+        protected static string BuildPerPointInfo(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            const string perPointResourceId = "PerPoint";
+
+            var perPointPattern = ticketHelper.GetResourceData(GameInfoRefId, perPointResourceId);
+
+            return string.Format(perPointPattern, string.Format(Formatter.DECIMALFORMAT1, ticket.Handicap1));
+        }
+
+        protected static string BuildModeInfoBlock(ITicket ticket, ITicketHelper ticketHelper)
             => ticketHelper.GetResourceData(GameModeRefId, ticket.CommStatus);
 
-        private string BuildPlayerBlock(ITicketHelper ticketHelper)
+        protected string BuildPlayerBlock(ITicketHelper ticketHelper)
         {
             const string playerIdResourceId = "PlayerID";
 
