@@ -466,8 +466,6 @@
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
-    <None Include="Properties\PublishProfiles\Local.pubxml" />
-    <None Include="Properties\PublishProfiles\Local202.pubxml" />
     <None Include="Scripts\jquery-1.9.0.min.map" />
     <Content Include="Views\BetList\All.cshtml" />
     <Content Include="Views\BetList\ColosussBetsDetails.cshtml" />
