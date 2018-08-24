@@ -111,7 +111,16 @@
             => _cacheRef.GetRouletteBetItem(itemId.ToString());
 
         public string GetOddsTypeNameById(object oddsTypeId)
-            => _cacheRef.GetOddsTypeName(oddsTypeId.ToString());
+        {
+            int id = Convert.ToInt32(oddsTypeId);
+
+            if (id > 0)
+            {
+                return _cacheRef.GetOddsTypeName(oddsTypeId.ToString());
+            }
+
+            return string.Empty;
+        }
 
         public string GetCombinationMPOfferName(string key)
         {
