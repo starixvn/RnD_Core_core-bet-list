@@ -141,7 +141,7 @@
             => Template.League.LeagueName.leagueName = ticket.BetCheck;
 
         protected override void BuildBetTypeName(ref RTFHelper rtfHelper)
-            => rtfHelper.RTFRenderer.AddText(Template.BetType.betTypeName);
+            => rtfHelper.RTFRenderer.AddText(Template.BetType.betTypeName, rtfHelper.PosFont);
 
         protected override void BuildBetTeamsInfo(ITicket ticket, ref RTFHelper rtfHelper)
         {
