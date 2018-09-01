@@ -17,6 +17,8 @@
 
             // Map '3 Pic Switch (3 Pictures/Sakong)' to '8 Cards'.
             MapIdToBaseId(1404, 1401);
+
+            MapIdToBaseId(1405, 1401);
         }
     }
 }
