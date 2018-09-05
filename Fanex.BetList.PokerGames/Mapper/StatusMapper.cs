@@ -9,16 +9,14 @@
 
         private void Initialize()
         {
-            // Map '6 Cards (MASUK)' to '8 Cards'.
-            MapIdToBaseId(1402, 1401);
+            const int startFollowingBetTypeId = 1402;
+            const int endFollowingBetTypeId = 1498;
+            const int baseBetTypeId = 1401;
 
-            // Map '4 Treasures' to '8 Cards'.
-            MapIdToBaseId(1403, 1401);
-
-            // Map '3 Pic Switch (3 Pictures/Sakong)' to '8 Cards'.
-            MapIdToBaseId(1404, 1401);
-
-            MapIdToBaseId(1405, 1401);
+            for (int betTypeId = startFollowingBetTypeId; betTypeId <= endFollowingBetTypeId; betTypeId++)
+            {
+                MapIdToBaseId(betTypeId, baseBetTypeId);
+            }
         }
     }
 }
