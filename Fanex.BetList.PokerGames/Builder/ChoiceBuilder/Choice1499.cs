@@ -1,6 +1,5 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System.Collections.Generic;
     using System.Xml.Linq;
     using Entities;
     using Fanex.BetList.Core.Utils;
@@ -17,6 +16,8 @@
 
             decimal.TryParse(GetExtraInfo(extraInfoXml, gemsBoughtAttributeName), out _gemsBought);
             decimal.TryParse(GetExtraInfo(extraInfoXml, totalGemsAttributeName), out _totalGems);
+
+            base.ParseExtraInfo(extraInfoXml);
         }
 
         protected override string[] GetMatchInfo(ITicket ticket, ITicketHelper ticketHelper)
@@ -24,7 +25,8 @@
             {
                 BuildGemsBuyingBlock(ticketHelper),
                 BuildTotalGemsBeforeBuyingBlock(ticketHelper),
-                BuildTotalGemsAfterBuyingBlock(ticketHelper)
+                BuildTotalGemsAfterBuyingBlock(ticketHelper),
+                BuildPlayerBlock(ticketHelper)
             };
 
         private string BuildGemsBuyingBlock(ITicketHelper ticketHelper)

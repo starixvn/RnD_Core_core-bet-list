@@ -11,11 +11,14 @@
         private const string GemsResourceId = "Gems";
         private const string GemsBeforeBuyingResourceId = "BeforePurchase";
         private const string GemsAfterBuyingResourceId = "AfterPurchase";
+        private const string PlayerIdResourceId = "PlayerID";
 
         private const string GemsPattern = "{0} Gems";
         private const string GemsBeforeBuyingPattern = "Total Gems before purchase: {0}";
         private const string GemsAfterBuyingPattern = "Total Gems after purchase: {0}";
+        private const string PlayerIdPattern = "PlayerID {0}";
 
+        private const string PlayerId = "168168";
         private const decimal TotalGems = 1200;
         private const decimal GemsBought = 1000;
 
@@ -31,12 +34,13 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
 
             _ticket.BetTypeId = 1499;
-            _ticket.ExtraInfo = $"<p33 tg=\"{TotalGems}\" gb=\"{GemsBought}\" fc=\"0\" rc=\"0\"/>";
+            _ticket.ExtraInfo = $"<p33 tg=\"{TotalGems}\" gb=\"{GemsBought}\" si=\"{PlayerId}\" fc=\"0\" rc=\"0\"/>";
             _ticket.Stake = 2000;
 
-            _ticketHelper.GetResourceData(Arg.Is(Choice1401.GameInfoRefId), Arg.Is(GemsResourceId)).Returns(GemsPattern);
-            _ticketHelper.GetResourceData(Arg.Is(Choice1401.GameInfoRefId), Arg.Is(GemsBeforeBuyingResourceId)).Returns(GemsBeforeBuyingPattern);
-            _ticketHelper.GetResourceData(Arg.Is(Choice1401.GameInfoRefId), Arg.Is(GemsAfterBuyingResourceId)).Returns(GemsAfterBuyingPattern);
+            _ticketHelper.GetResourceData(Arg.Is(Choice1499.GameInfoRefId), Arg.Is(GemsResourceId)).Returns(GemsPattern);
+            _ticketHelper.GetResourceData(Arg.Is(Choice1499.GameInfoRefId), Arg.Is(GemsBeforeBuyingResourceId)).Returns(GemsBeforeBuyingPattern);
+            _ticketHelper.GetResourceData(Arg.Is(Choice1499.GameInfoRefId), Arg.Is(GemsAfterBuyingResourceId)).Returns(GemsAfterBuyingPattern);
+            _ticketHelper.GetResourceData(Arg.Is(Choice1499.GameInfoRefId), Arg.Is(PlayerIdResourceId)).Returns(PlayerIdPattern);
         }
 
         [Test]
@@ -56,7 +60,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            _ticketHelper.Received().GetResourceData(Arg.Is(Choice1401.GameInfoRefId), Arg.Is(GemsResourceId));
+            _ticketHelper.Received().GetResourceData(Arg.Is(Choice1499.GameInfoRefId), Arg.Is(GemsResourceId));
         }
 
         [Test]
@@ -79,7 +83,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            _ticketHelper.Received().GetResourceData(Arg.Is(Choice1401.GameInfoRefId), Arg.Is(GemsBeforeBuyingResourceId));
+            _ticketHelper.Received().GetResourceData(Arg.Is(Choice1499.GameInfoRefId), Arg.Is(GemsBeforeBuyingResourceId));
         }
 
         [Test]
@@ -103,7 +107,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            _ticketHelper.Received().GetResourceData(Arg.Is(Choice1401.GameInfoRefId), Arg.Is(GemsAfterBuyingResourceId));
+            _ticketHelper.Received().GetResourceData(Arg.Is(Choice1499.GameInfoRefId), Arg.Is(GemsAfterBuyingResourceId));
         }
 
         [Test]
@@ -133,6 +137,36 @@
             var expectedResult = $"<div>{expectedGemsBought}</div><div>{expectedGemsBeforePurchase}</div><div>{expectedGemsAfterPurchase}</div>";
 
             StringAssert.Contains(expectedResult, gemsPurchaseInfo);
+        }
+
+        [Test]
+        public void BuildMatch_Always_PlayerIdStoredInExtraInfo()
+        {
+            // Act.
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
+            var gameInfo = template.Match.ToString();
+
+            // Assert.
+            var expectedResult = string.Format(PlayerIdPattern, PlayerId);
+
+            StringAssert.Contains(expectedResult, gameInfo);
+        }
+
+        [Test]
+        public void BuildMatch_Always_GemsBoughtInfoAndPlayerIdAreInOrder()
+        {
+            // Act.
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
+            var gameInfo = template.Match.ToString();
+
+            // Assert.
+            var expectedGemsBought = string.Format(GemsPattern, ConvertByBetType.Stake(GemsBought));
+            var expectedGemsBeforePurchase = string.Format(GemsBeforeBuyingPattern, ConvertByBetType.Stake(TotalGems - GemsBought));
+            var expectedGemsAfterPurchase = string.Format(GemsAfterBuyingPattern, ConvertByBetType.Stake(TotalGems));
+            var expectedPlayer = string.Format(PlayerIdPattern, PlayerId);
+            var expectedResult = $"<div>{expectedGemsBought}</div><div>{expectedGemsBeforePurchase}</div><div>{expectedGemsAfterPurchase}</div><div>{expectedPlayer}</div>";
+
+            StringAssert.Contains(expectedResult, gameInfo);
         }
 
         [Test]
@@ -181,6 +215,22 @@
             var expectedText = string.Format(GemsAfterBuyingPattern, ConvertByBetType.Stake(TotalGems));
 
             Assert.AreEqual(expectedText, linesInActualText[3]);
+        }
+
+        [Test]
+        public void BuildBetTeamsInfo_Always_FifthLineIsPlayerInfo()
+        {
+            // Arrange.
+            var rtfHelper = new RTFHelper().Clone();
+
+            // Act.
+            var actualText = _choice.RenderRTF(_ticket, _ticketHelper, null, false, rtfHelper);
+            var linesInActualText = actualText[0].String.Split('\n');
+
+            // Assert.
+            var expectedPlayer = string.Format(PlayerIdPattern, PlayerId);
+
+            Assert.AreEqual(expectedPlayer, linesInActualText[4]);
         }
     }
 }
