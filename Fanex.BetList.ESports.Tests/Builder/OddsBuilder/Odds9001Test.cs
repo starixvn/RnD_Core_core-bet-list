@@ -1,7 +1,7 @@
-﻿namespace Fanex.BetList.Core.UnitTest.Builder.OddsBuilder
+﻿namespace Fanex.BetList.ESports.Tests.Builder.OddsBuilder
 {
     using Core.Builder.OddsBuilder;
-    using Entities;
+    using Core.Entities;
     using NSubstitute;
     using NUnit.Framework;
 

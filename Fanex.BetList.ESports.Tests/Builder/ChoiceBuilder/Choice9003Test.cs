@@ -1,8 +1,8 @@
-﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.ESports.Tests.Builder.ChoiceBuilder
 {
     using Core.Builder.ChoiceBuilder;
+    using Core.Entities;
     using Core.Utils;
-    using Entities;
     using NSubstitute;
     using NUnit.Framework;
 

@@ -383,11 +383,6 @@
     <Compile Include="Builder\ChoiceBuilder\Choice215.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice216.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice217.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice9001.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice9002.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice9003.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice9005.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice9073.cs" />
     <Compile Include="Builder\ChoiceBuilder\IChoice.cs" />
     <Compile Include="Builder\IBetListBaseBuilder.cs" />
     <Compile Include="Builder\IBetListExcelBuilder.cs" />
@@ -403,7 +398,6 @@
     <Compile Include="Builder\OddsBuilder\Odds71.cs" />
     <Compile Include="Builder\OddsBuilder\Odds72.cs" />
     <Compile Include="Builder\OddsBuilder\Odds73.cs" />
-    <Compile Include="Builder\OddsBuilder\Odds9001.cs" />
     <Compile Include="Builder\StakeBuilder\3rd\Stake_22006.cs" />
     <Compile Include="Builder\StakeBuilder\IStake.cs" />
     <Compile Include="Builder\StakeBuilder\Stake1.cs" />
@@ -492,7 +486,6 @@
     <Compile Include="Mapper\ChoiceMapper.cs" />
     <Compile Include="Mapper\IMapper.cs" />
     <Compile Include="Mapper\MapperCollector.cs" />
-    <Compile Include="Mapper\OddsMapper.cs" />
     <Compile Include="Mapper\ParentChildMapper.cs" />
     <Compile Include="Mapper\StatusMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

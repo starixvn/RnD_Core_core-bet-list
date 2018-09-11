@@ -1,27 +1,28 @@
-﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.ESports.Tests.Builder.ChoiceBuilder
 {
-    using Common;
     using Core.Builder.ChoiceBuilder;
-    using Entities;
+    using Core.Entities;
     using NSubstitute;
     using NUnit.Framework;
 
     [TestFixture]
-    public class Choice9002Test
+    public class Choice9001Test
     {
+        private IChoice _choice;
         private ITicket _ticket;
         private ITicketHelper _ticketHelper;
-        private IChoice _choice;
 
         [SetUp]
         public void Setup()
         {
             _ticketHelper = Substitute.For<ITicketHelper>();
-            _ticket = TestData.CreateTicket(9002);
-            _choice = new Choice9002();
+            _ticket = Substitute.For<ITicket>();
+            _choice = new Choice9001();
 
-            _ticket.BetCheck = "80102";
-            _ticket.BetId = 80102;
+            _ticket.BetTypeId = 9001;
+            _ticket.RefNo = "8888888";
+            _ticket.BetCheck = "80505";
+            _ticket.BetId = 80505;
         }
 
         [Test]

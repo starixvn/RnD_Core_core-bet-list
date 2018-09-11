@@ -241,11 +241,6 @@
     <Compile Include="Builder\ChoiceBuilder\Choice29Test.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
-    <Compile Include="Builder\ChoiceBuilder\Choice9001Test.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice9002Test.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice9003Test.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice9005Test.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice9073Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice129Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice130Test.cs" />
@@ -255,7 +250,6 @@
     <Compile Include="Builder\OddsBuilder\Odds71Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds33Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds1Test.cs" />
-    <Compile Include="Builder\OddsBuilder\Odds9001Test.cs" />
     <Compile Include="Builder\StakeBuilder\Stake1Test.cs" />
     <Compile Include="Builder\StakeBuilder\Stake500Test.cs" />
     <Compile Include="Builder\StatusBuilder\3rd\Status_22006Test.cs" />

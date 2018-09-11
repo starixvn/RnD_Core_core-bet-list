@@ -1,13 +1,12 @@
-﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.ESports.Tests.Builder.ChoiceBuilder
 {
-    using Core.App_GlobalResources;
     using Core.Builder.ChoiceBuilder;
-    using Entities;
+    using Core.Entities;
     using NSubstitute;
     using NUnit.Framework;
 
     [TestFixture]
-    public class Choice9073Test
+    public class Choice9005Test
     {
         private ITicket _ticket;
         private ITicketHelper _ticketHelper;
@@ -18,12 +17,12 @@
         {
             _ticketHelper = Substitute.For<ITicketHelper>();
             _ticket = Substitute.For<ITicket>();
-            _choice = new Choice9073();
+            _choice = new Choice9005();
         }
 
-        [TestCase("Y")]
-        [TestCase("y")]
-        public void BuildBetTeam_TicketBetTeamIsY_ShowYesAsBetTeam(string betTeam)
+        [TestCase("O")]
+        [TestCase("o")]
+        public void BuildBetTeam_TicketBetTeamIsO_ShowOddAsBetTeam(string betTeam)
         {
             // Arrange.
             _ticket.BetTeam = betTeam;
@@ -32,12 +31,14 @@
             var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            Assert.AreEqual(CoreBetList.lblYes, template.betTeam);
+            const string expectedBetTeam = "Odd";
+
+            Assert.AreEqual(expectedBetTeam, template.betTeam);
         }
 
-        [TestCase("N")]
-        [TestCase("n")]
-        public void BuildBetTeam_TicketBetTeamIsN_ShowNoAsBetTeam(string betTeam)
+        [TestCase("E")]
+        [TestCase("e")]
+        public void BuildBetTeam_TicketBetTeamIsE_ShowEvenAsBetTeam(string betTeam)
         {
             // Arrange.
             _ticket.BetTeam = betTeam;
@@ -46,30 +47,39 @@
             var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            Assert.AreEqual(CoreBetList.lblNo, template.betTeam);
+            const string expectedBetTeam = "Even";
+
+            Assert.AreEqual(expectedBetTeam, template.betTeam);
         }
 
-        [Test]
-        public void BuildBetTeam_TicketBetTeamIsNotYAndNotN_ShowEmptyStringAsBetTeam()
+        [TestCase("o")]
+        [TestCase("O")]
+        public void BuildBetTeamClassNameAndHandicap_TicketBetTeamIsO_BetTeamClassNameIsFavorite(string betTeam)
         {
             // Arrange.
-            _ticket.BetTeam = "any string";
+            _ticket.BetTeam = betTeam;
 
-            // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, false);
-
-            // Assert.
-            Assert.IsEmpty(template.betTeam);
-        }
-
-        [Test]
-        public void BuildBetTeamClassNameAndHandicap_Always_BetTeamClassNameIsFavorite()
-        {
             // Act.
             var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
             const string expectedClass = "favorite";
+
+            Assert.AreEqual(expectedClass, template.betTeamClassName);
+        }
+
+        [TestCase("E")]
+        [TestCase("e")]
+        public void BuildBetTeamClassNameAndHandicap_TicketBetTeamIsE_BetTeamClassNameIsUnderdog(string betTeam)
+        {
+            // Arrange.
+            _ticket.BetTeam = betTeam;
+
+            // Act.
+            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert.
+            const string expectedClass = "underdog";
 
             Assert.AreEqual(expectedClass, template.betTeamClassName);
         }
