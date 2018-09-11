@@ -328,6 +328,10 @@
       <Project>{b0838d04-2306-4362-af22-9fcd0be6f8e7}</Project>
       <Name>Fanex.BetList.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.ESports\Fanex.BetList.ESports.csproj">
+      <Project>{e888ddfc-d613-4b0f-bc95-1b0fe0e606d1}</Project>
+      <Name>Fanex.BetList.ESports</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.Example.Data\Fanex.BetList.Example.Data.csproj">
       <Project>{CF75E712-CD28-42EF-A9F7-5DDE2B4E7BA8}</Project>
       <Name>Fanex.BetList.Example.Data</Name>
@@ -464,6 +468,7 @@
     <Content Include="App_Data\PokerGames.xls" />
     <Content Include="App_Data\UpcomingSports.xls" />
     <Content Include="App_Data\SettlementStatus.xls" />
+    <Content Include="App_Data\ESports2.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
