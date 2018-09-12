@@ -9,7 +9,7 @@
 
         private void Initialize()
         {
-            for (int i = 4002; i <= 4030; i++)
+            for (int i = 4002; i <= 4099; i++)
             {
                 MapIdToBaseId(i, 4001);
             }
