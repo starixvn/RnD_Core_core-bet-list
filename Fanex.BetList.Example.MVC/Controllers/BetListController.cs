@@ -106,7 +106,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
         public ActionResult GoldDeluxe(BetListData model = null)
         {
-            var betTypes = _dataService.QueryBetTypes(1701, 1702, 1703);
+            var betTypes = _dataService.QueryBetTypes(1701, 1702, 1703, 1704, 1705);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             DataSourcePath = "~/App_Data/GoldDeluxe.xls";

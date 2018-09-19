@@ -53,13 +53,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builder\ChoiceBuilder\Choice1704.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1701.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1702.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1703.cs" />
     <Compile Include="Builder\TransBuilder\Trans1701.cs" />
-    <Compile Include="Builder\TransBuilder\Trans1702.cs" />
-    <Compile Include="Builder\TransBuilder\Trans1703.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Mapper\ChoiceMapper.cs" />
+    <Compile Include="Mapper\TransMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
