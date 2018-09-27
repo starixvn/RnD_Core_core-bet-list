@@ -546,4 +546,10 @@
   <data name="Away171" xml:space="preserve">
     <value>원정팀</value>
   </data>
+  <data name="ResultPending" xml:space="preserve">
+    <value>결과 보류</value>
+  </data>
+  <data name="UnderSettlement" xml:space="preserve">
+    <value>정산 중</value>
+  </data>
 </root>

@@ -660,4 +660,10 @@
   <data name="ProgressiveJackpotWonDetails" xml:space="preserve">
     <value>รายละเอียดที่ชนะเกมส์แจ๊คพอต</value>
   </data>
+  <data name="ResultPending" xml:space="preserve">
+    <value>กำลังรอผลการแข่งขัน</value>
+  </data>
+  <data name="UnderSettlement" xml:space="preserve">
+    <value>กําลังดําเนินการชำระเงิน</value>
+  </data>
 </root>

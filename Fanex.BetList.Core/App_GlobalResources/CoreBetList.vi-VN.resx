@@ -477,4 +477,10 @@
   <data name="ProgressiveJackpotWonDetails" xml:space="preserve">
     <value>Chi tiết cược thắng Jackpot Lũy Tiến</value>
   </data>
+  <data name="ResultPending" xml:space="preserve">
+    <value>Chờ kết quả</value>
+  </data>
+  <data name="UnderSettlement" xml:space="preserve">
+    <value>Đang xử lý</value>
+  </data>
 </root>

@@ -390,4 +390,10 @@
   <data name="Away171" xml:space="preserve">
     <value>アウェイ</value>
   </data>
+  <data name="ResultPending" xml:space="preserve">
+    <value>結果が保留中です</value>
+  </data>
+  <data name="UnderSettlement" xml:space="preserve">
+    <value>支払い中</value>
+  </data>
 </root>

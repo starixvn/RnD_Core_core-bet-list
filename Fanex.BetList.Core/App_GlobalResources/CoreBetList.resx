@@ -856,4 +856,10 @@
   <data name="ShowTransactionDetails" xml:space="preserve">
     <value>Show Transaction Details</value>
   </data>
+  <data name="ResultPending" xml:space="preserve">
+    <value>Result Pending</value>
+  </data>
+  <data name="UnderSettlement" xml:space="preserve">
+    <value>Under Settlement</value>
+  </data>
 </root>

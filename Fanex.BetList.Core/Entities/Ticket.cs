@@ -2,14 +2,9 @@
 {
     using System;
 
-    /// <summary>
-    /// Class Ticket.
-    /// </summary>
     [Serializable]
     public class Ticket : ITicket
     {
-        #region ITicket Members
-
         public int SportTypeId { get; set; }
 
         public string UserName { get; set; }
@@ -125,6 +120,6 @@
 
         public string ExtraInfo { get; set; }
 
-        #endregion ITicket Members
+        public byte SettlementStatus { get; set; }
     }
 }

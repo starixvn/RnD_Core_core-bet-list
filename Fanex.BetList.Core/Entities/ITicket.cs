@@ -122,5 +122,7 @@
         long BetdaqId { get; set; }
 
         string ExtraInfo { get; set; }
+
+        byte SettlementStatus { get; set; }
     }
 }

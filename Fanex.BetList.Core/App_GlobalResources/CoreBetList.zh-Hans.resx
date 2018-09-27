@@ -786,4 +786,10 @@
   <data name="ProgressiveJackpotWonDetails" xml:space="preserve">
     <value>累积积宝奖金赢细节</value>
   </data>
+  <data name="ResultPending" xml:space="preserve">
+    <value>赛果待定</value>
+  </data>
+  <data name="UnderSettlement" xml:space="preserve">
+    <value>结算中</value>
+  </data>
 </root>

@@ -10,7 +10,7 @@
     using Utils.StringExt;
 
     /// <summary>
-    /// Build Status cell.
+    /// Sportsbook: Handicap.
     /// </summary>
     public class Status1 : IStatus
     {
@@ -36,15 +36,6 @@
             return Template;
         }
 
-        /// <summary>
-        /// Renders the RTF.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        /// <param name="isShowVNIP">If set to <c>true</c> [VNIP is shown].</param>
-        /// <param name="rtfHelper">The RTF helper.</param>
-        /// <returns>IRichTextString represents the Status block.</returns>
         public virtual IRichTextString RenderRTF(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP, RTFHelper rtfHelper)
         {
             Render(ticket, ticketHelper, ticketData, isShowVNIP);
@@ -65,19 +56,17 @@
             return rtfStatus;
         }
 
-        /// <summary>
-        /// Gets the result string.
-        /// </summary>
-        /// <param name="ticketStatus">The ticket status.</param>
-        /// <returns>System.String: result.</returns>
         protected static string GetResultString(string ticketStatus)
+            => GetResultString(ticketStatus, 0);
+
+        protected static string GetResultString(string ticketStatus, byte settlementStatus)
         {
             string result = string.Empty;
 
             switch (ticketStatus.ToLowerInvariant())
             {
                 case BetStatus.Running:
-                    result = CoreBetList.running;
+                    result = DetectRealRunningStatus(settlementStatus);
                     break;
 
                 case BetStatus.Reject:
@@ -119,7 +108,7 @@
         protected virtual void BuildResult(ITicket ticket, List<ITicketData> ticketData)
         {
             var result = ticket.Status.ToLower(CultureInfo.InvariantCulture);
-            var resultText = GetResultString(ticket.Status);
+            var resultText = GetResultString(ticket.Status, ticket.SettlementStatus);
 
             Template.result = result;
 
@@ -134,10 +123,6 @@
             }
         }
 
-        /// <summary>
-        /// Builds the status result.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
         protected virtual void BuildStatusResult(ITicket ticket)
         {
             var result = ticket.Status.ToLower(CultureInfo.InvariantCulture);
@@ -163,12 +148,6 @@
             }
         }
 
-        /// <summary>
-        /// Builds the IP.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="isShowVNIP">If set to <c>true</c> [is show VNIP].</param>
         protected virtual void BuildIP(ITicket ticket, ITicketHelper ticketHelper, bool isShowVNIP)
         {
             if (!isShowVNIP && (ticketHelper.IsVnIp != null && ticketHelper.IsVnIp(ticket.IP)))
@@ -216,5 +195,25 @@
         private static bool StakeIsZeroBeforeConvertCurrency(ITicket ticket) => ticket.OriginalBetType != -1;
 
         private static bool IsSportsbook(int sportTypeId) => sportTypeId <= 99 || sportTypeId == 154;
+
+        private static string DetectRealRunningStatus(byte settlementStatus)
+        {
+            const byte pendingStatus = 1;
+            const byte undecidedStatus = 2;
+            const byte underSettlementStatus = 4;
+
+            if ((settlementStatus & pendingStatus) == pendingStatus)
+            {
+                return CoreBetList.ResultPending;
+            }
+
+            if ((settlementStatus & undecidedStatus) == undecidedStatus
+                || (settlementStatus & underSettlementStatus) == underSettlementStatus)
+            {
+                return CoreBetList.UnderSettlement;
+            }
+
+            return CoreBetList.running;
+        }
     }
 }

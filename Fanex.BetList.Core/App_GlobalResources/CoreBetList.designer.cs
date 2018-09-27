@@ -1636,6 +1636,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Result Pending.
+        /// </summary>
+        public static string ResultPending {
+            get {
+                return ResourceManager.GetString("ResultPending", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Results.
         /// </summary>
         public static string results {
@@ -2073,6 +2082,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string under {
             get {
                 return ResourceManager.GetString("under", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Under Settlement.
+        /// </summary>
+        public static string UnderSettlement {
+            get {
+                return ResourceManager.GetString("UnderSettlement", resourceCulture);
             }
         }
         
