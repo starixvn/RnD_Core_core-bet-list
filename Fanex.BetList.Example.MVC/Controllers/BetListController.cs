@@ -16,16 +16,10 @@ namespace Fanex.BetList.Example.MVC.Controllers
     using Fanex.BetList.Example.MVC.Services;
     using Fanex.BetList.Example.MVC.ViewModel;
 
-    /// <summary>
-    /// Class HomeController.
-    /// </summary>
     public class BetListController : Controller
     {
-        private IList<ITicket> _tickets;
-        private List<ITicketData> _ticketData = new List<ITicketData>();
         private readonly DataService _dataService;
         private const string DefaultLanguage = "en-US";
-        private static readonly CultureInfo DefaultCulture = CultureInfo.CreateSpecificCulture(DefaultLanguage);
 
         private string DataSourcePath
         {
@@ -363,7 +357,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
             return BetListView(model);
         }
-        
+
         public ActionResult BasketballAIO(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(601, 602, 603, 604, 605, 606, 607, 608, 609, 610, 611, 612, 613, 614, 615, 616, 617);
@@ -374,7 +368,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
             return BetListView(model);
         }
-        
+
         public ActionResult CashOut(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(911);
@@ -386,7 +380,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
             return BetListView(model);
         }
-        
+
         public ActionResult Lucky3(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(1600);
@@ -465,7 +459,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
             return BetListView(model);
         }
-        
+
         public ActionResult BonusSystem(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes();
@@ -488,7 +482,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
             return BetListView(model);
         }
-        
+
         public ActionResult CorrectTranslations(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(16, 28, 453, 408, 171, 426, 416, 430, 177);
@@ -500,7 +494,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
             return BetListView(model);
         }
-        
+
         public ActionResult OneRnGCasino(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(2178, 2319, 2919);
@@ -535,7 +529,6 @@ namespace Fanex.BetList.Example.MVC.Controllers
             return BetListView(model);
         }
 
-
         public ActionResult UpcomingSports(BetListData model = null)
         {
             DataSourcePath = "~/App_Data/UpcomingSports.xls";
@@ -546,7 +539,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
             return BetListView(model);
         }
-        
+
         public ActionResult PP(BetListData model = null)
         {
 
@@ -602,6 +595,17 @@ namespace Fanex.BetList.Example.MVC.Controllers
             return BetListView(model);
         }
 
+        public ActionResult SettlementStatus(BetListData model = null)
+        {
+            DataSourcePath = "~/App_Data/SettlementStatus.xls";
+
+            ViewBag.BetTypes = CreateSelectListItem(_dataService.QueryBetTypes(1, 2, 3));
+            model = GetDataSource(model, DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
         private ViewResult BetListView(BetListData model)
         {
             return View("All", model);
@@ -619,9 +623,6 @@ namespace Fanex.BetList.Example.MVC.Controllers
                 if (!string.IsNullOrWhiteSpace(model.Language) && model.Language != DefaultLanguage)
                 {
                     Thread.CurrentThread.CurrentUICulture = new CultureInfo(model.Language);
-
-                    //Thread.CurrentThread.CurrentCulture.DateTimeFormat = DefaultCulture.DateTimeFormat;
-                    //Thread.CurrentThread.CurrentCulture.NumberFormat = DefaultCulture.NumberFormat;
                 }
             }
 
@@ -654,9 +655,6 @@ namespace Fanex.BetList.Example.MVC.Controllers
             return model;
         }
 
-        /// <summary>
-        /// Exports the excel.
-        /// </summary>
         public void ExportExcel(BetListData query)
         {
             var factory = new BetListExcelFactory();
@@ -668,13 +666,12 @@ namespace Fanex.BetList.Example.MVC.Controllers
             var index = 0;
 
             var model = GetDataSource(query, sourcePath: DataSourcePath);
+            var tickets = model.Tickets;
+            var ticketData = model.TicketData;
 
-            _tickets = model.Tickets;
-            _ticketData = model.TicketData;
-
-            if (_tickets != null)
+            if (tickets != null)
             {
-                foreach (ITicket ticket in _tickets)
+                foreach (ITicket ticket in tickets)
                 {
                     index++;
                     ticketHelper.Index = index;
@@ -682,9 +679,9 @@ namespace Fanex.BetList.Example.MVC.Controllers
                     builder.AddNo(index)
                            .AddTrans(ticket, ticketHelper)
                            .AddUsername(ticket, ticketHelper)
-                           .AddChoice(ticket, ticketHelper, _ticketData)
-                           .AddOdds(ticket, _ticketData, funcGetOddsTypeName)
-                           .AddStatus(ticket, ticketHelper, _ticketData, true)
+                           .AddChoice(ticket, ticketHelper, ticketData)
+                           .AddOdds(ticket, ticketData, funcGetOddsTypeName)
+                           .AddStatus(ticket, ticketHelper, ticketData, true)
                            .AddStake(ticket);
                 }
 

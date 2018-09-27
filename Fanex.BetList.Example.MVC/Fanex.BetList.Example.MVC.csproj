@@ -463,6 +463,7 @@
     <Content Include="App_Data\Parlay.xls" />
     <Content Include="App_Data\PokerGames.xls" />
     <Content Include="App_Data\UpcomingSports.xls" />
+    <Content Include="App_Data\SettlementStatus.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />

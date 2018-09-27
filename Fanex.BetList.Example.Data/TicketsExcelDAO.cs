@@ -195,6 +195,7 @@
                 ticket.BetdaqId = Convert.ToInt64(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.BetdaqId)));
                 ticket.ExtraInfo = GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.ExtraInfo));
                 ticket.OriginalStake = Convert.ToDecimal(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.OriginalStake)));
+                ticket.SettlementStatus = Convert.ToByte(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.SettlementStatus)));
             }
             catch
             {
