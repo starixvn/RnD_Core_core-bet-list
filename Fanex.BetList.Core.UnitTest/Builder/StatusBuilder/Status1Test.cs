@@ -123,6 +123,7 @@
         [TestCase(5)]
         [TestCase(7)]
         [TestCase(13)]
+        [TestCase(15)]
         public void BuildResult_RunningTicketWithPendingSettlementStatus_ShowResultPending(byte settlementStatus)
         {
             // Arrange
@@ -136,24 +137,10 @@
             Assert.AreEqual(CoreBetList.ResultPending, _status.Template.result);
         }
 
-        [TestCase(2)]
-        [TestCase(6)]
-        [TestCase(10)]
-        public void BuildResult_RunningTicketWithUndecidedSettlementStatus_ShowUnderSettlement(byte settlementStatus)
-        {
-            // Arrange
-            _ticket.Status = BetStatus.Running;
-            _ticket.SettlementStatus = settlementStatus;
-
-            // Act
-            _status.Render(_ticket, _ticketHelper, null, true);
-
-            // Assert
-            Assert.AreEqual(CoreBetList.UnderSettlement, _status.Template.result);
-        }
-
         [TestCase(4)]
+        [TestCase(6)]
         [TestCase(12)]
+        [TestCase(20)]
         public void BuildResult_RunningTicketWithUnderSettlementStatus_ShowUnderSettlement(byte settlementStatus)
         {
             // Arrange
@@ -167,8 +154,39 @@
             Assert.AreEqual(CoreBetList.UnderSettlement, _status.Template.result);
         }
 
+        [TestCase(8)]
+        [TestCase(10)]
+        [TestCase(24)]
+        [TestCase(26)]
+        public void BuildResult_RunningTicketWithSystemSettlementStatus_ShowUnderSettlement(byte settlementStatus)
+        {
+            // Arrange
+            _ticket.Status = BetStatus.Running;
+            _ticket.SettlementStatus = settlementStatus;
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, true);
+
+            // Assert
+            Assert.AreEqual(CoreBetList.UnderSettlement, _status.Template.result);
+        }
+
         [Test]
-        public void BuildResult_RunningTicketWithZeroUnderSettlementStatus_ShowRunning()
+        public void BuildResult_RunningTicketWithUndecidedSettlementStatus_ShowRunning()
+        {
+            // Arrange
+            _ticket.Status = BetStatus.Running;
+            _ticket.SettlementStatus = 2;
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, true);
+
+            // Assert
+            Assert.AreEqual(CoreBetList.running, _status.Template.result);
+        }
+
+        [Test]
+        public void BuildResult_RunningTicketWithUnderSettlementStatusBeingZero_ShowRunning()
         {
             // Arrange
             _ticket.Status = BetStatus.Running;

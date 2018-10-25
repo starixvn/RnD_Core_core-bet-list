@@ -199,16 +199,16 @@
         private static string DetectRealRunningStatus(byte settlementStatus)
         {
             const byte pendingStatus = 1;
-            const byte undecidedStatus = 2;
             const byte underSettlementStatus = 4;
+            const byte systemSettlementStatus = 8;
 
             if ((settlementStatus & pendingStatus) == pendingStatus)
             {
                 return CoreBetList.ResultPending;
             }
 
-            if ((settlementStatus & undecidedStatus) == undecidedStatus
-                || (settlementStatus & underSettlementStatus) == underSettlementStatus)
+            if ((settlementStatus & underSettlementStatus) == underSettlementStatus
+                || (settlementStatus & systemSettlementStatus) == systemSettlementStatus)
             {
                 return CoreBetList.UnderSettlement;
             }
