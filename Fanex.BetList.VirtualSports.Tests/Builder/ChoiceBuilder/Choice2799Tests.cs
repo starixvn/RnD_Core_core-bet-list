@@ -71,29 +71,31 @@
         public void BuildChoice_ClientSystemParlaySubbetsDetailFunctionOfTicketHelperIsNull_BuildDefaultMixParlaySubBetsFuncWithAllNeededParameters()
         {
             // Arrange.
-            const long TestingTransId = 123;
-            const int TestingIndex = 1;
-            const string TestingRefNo = "123";
-            const decimal TestingHandicap1 = 1;
-            const decimal TestingHandicap2 = 4;
-            const string TestingBetCheck = "128";
-            const string TestingBetTeam = "1";
+            const long testingCustId = 123;
+            const long testingTransId = 123;
+            const int testingIndex = 1;
+            const string testingRefNo = "123";
+            const decimal testingHandicap1 = 1;
+            const decimal testingHandicap2 = 4;
+            const string testingBetCheck = "128";
+            const string testingBetTeam = "1";
 
-            _ticket.TransId = TestingTransId;
-            _ticket.RefNo = TestingRefNo;
-            _ticket.Handicap1 = TestingHandicap1;
-            _ticket.Handicap2 = TestingHandicap2;
-            _ticket.BetCheck = TestingBetCheck;
-            _ticket.BetTeam = TestingBetTeam;
+            _ticket.CustId = testingCustId;
+            _ticket.TransId = testingTransId;
+            _ticket.RefNo = testingRefNo;
+            _ticket.Handicap1 = testingHandicap1;
+            _ticket.Handicap2 = testingHandicap2;
+            _ticket.BetCheck = testingBetCheck;
+            _ticket.BetTeam = testingBetTeam;
 
-            _ticketHelper.Index = TestingIndex;
+            _ticketHelper.Index = testingIndex;
             _ticketHelper.ClientSystemParlaySubbetsDetailFunction = null;
 
             // Act.
             var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            var expectedParamterList = $"'{TestingTransId}','{TestingIndex}','{TestingRefNo}','{TestingHandicap1}','{TestingHandicap2}','{TestingBetCheck}','{TestingBetTeam}'";
+            var expectedParamterList = $"{testingTransId},{testingIndex},'{testingRefNo}',{testingHandicap1},{testingHandicap2},'{testingBetCheck}','{testingBetTeam}',{testingCustId}";
             var expectedHtml = $"<a id=\"hidden0\" href=\"javascript:showNewCombMP({expectedParamterList});\">";
 
             StringAssert.Contains(expectedHtml, template.ToString());

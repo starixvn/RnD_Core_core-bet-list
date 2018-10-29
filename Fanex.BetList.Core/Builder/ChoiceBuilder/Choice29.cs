@@ -116,21 +116,20 @@
 
         private static string JoinSystemParlaySubbetsFunc(ITicket ticket, ITicketHelper ticketHelper)
         {
-            var transId = ticket.TransId.ToString(CultureInfo.InvariantCulture);
-            var transIndex = ticketHelper.Index.ToString(CultureInfo.InvariantCulture);
-            var refNo = ticket.RefNo;
+            var custId = GetCustId(ticket);
 
             return IsOldSystemParlay(ticket.BetCheck)
-                ? $"javascript:showCombMP('{transId}', '{transIndex}', '{refNo}');"
+                ? $"javascript:showCombMP({ticket.TransId}, {ticketHelper.Index}, '{ticket.RefNo}', {custId});"
                 : string.Format(
-                    "javascript:showNewCombMP('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}');",
-                    transId,
-                    transIndex,
-                    refNo,
+                    "javascript:showNewCombMP({0}, {1}, '{2}', {3}, {4}, '{5}', '{6}', {7});",
+                    ticket.TransId,
+                    ticketHelper.Index,
+                    ticket.RefNo,
                     ticket.Handicap1,
                     ticket.Handicap2,
                     ticket.BetCheck,
-                    ticket.BetTeam);
+                    ticket.BetTeam,
+                    custId);
         }
 
         private static string BuildCombinationOfferName(ITicket ticket, ITicketHelper ticketHelper)

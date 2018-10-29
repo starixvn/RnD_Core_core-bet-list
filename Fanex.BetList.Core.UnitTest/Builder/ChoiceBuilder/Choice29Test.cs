@@ -66,7 +66,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            var expectedShowSubbetsLink = "<a id=\"hidden0\" href=\"javascript:showCombMP('5554525358', '1', '100411681798');\">System Parlay</a>";
+            var expectedShowSubbetsLink = "<a id=\"hidden0\" href=\"javascript:showCombMP(5554525358, 1, '100411681798', 13369475);\">System Parlay</a>";
             StringAssert.Contains(expectedShowSubbetsLink, _choice.Template.ToString());
         }
 
@@ -80,7 +80,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            var expectedShowSubbetsLink = "<a id=\"hidden0\" href=\"javascript:showNewCombMP('5554525358', '1', '100411681798', '1', '3', '1', '2');\">System Parlay</a>";
+            var expectedShowSubbetsLink = "<a id=\"hidden0\" href=\"javascript:showNewCombMP(5554525358, 1, '100411681798', 1, 3, '1', '2', 13369475);\">System Parlay</a>";
             StringAssert.Contains(expectedShowSubbetsLink, _choice.Template.ToString());
         }
 
