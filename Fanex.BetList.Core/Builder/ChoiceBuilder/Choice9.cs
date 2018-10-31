@@ -4,7 +4,6 @@
     using System.Collections.Generic;
     using App_GlobalResources;
     using Entities;
-    using NPOI.HSSF.UserModel;
     using NPOI.SS.UserModel;
     using Templates;
 
@@ -29,15 +28,9 @@
             string clientMixParlayDetailFunction;
             string[] components;
 
-            if (string.IsNullOrWhiteSpace(ticketHelper.ClientMixParlaySubbetsDetailFunction))
-            {
-                components = new[] { "javascript:showMP(&quot;", ticket.TransId.ToString(), "&quot;,&quot;", ticket.RefNo, "&quot;);" };
-                clientMixParlayDetailFunction = string.Join(null, components);
-            }
-            else
-            {
-                clientMixParlayDetailFunction = ticketHelper.ClientMixParlaySubbetsDetailFunction;
-            }
+            clientMixParlayDetailFunction = string.IsNullOrWhiteSpace(ticketHelper.ClientMixParlaySubbetsDetailFunction)
+                ? $"javascript:showMP({ticket.TransId}, '{ticket.RefNo}', {ticket.CustId});"
+                : ticketHelper.ClientMixParlaySubbetsDetailFunction;
 
             components = new[]
                 {

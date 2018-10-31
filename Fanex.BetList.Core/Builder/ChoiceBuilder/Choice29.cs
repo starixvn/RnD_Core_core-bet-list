@@ -112,7 +112,7 @@
         }
 
         private static string JoinSystemParlayDetailJsFunc(string refNo, string winlossDate, string transId, string betId, string custId, string betTeam)
-            => $"showCombMPDetail('{refNo}', '{winlossDate}', '{transId}', '{betId}', '{custId}', '{betTeam}');";
+            => $"showCombMPDetail('{refNo}', '{winlossDate}', {transId}, '{betId}', {custId}, '{betTeam}');";
 
         private static string JoinSystemParlaySubbetsFunc(ITicket ticket, ITicketHelper ticketHelper)
         {

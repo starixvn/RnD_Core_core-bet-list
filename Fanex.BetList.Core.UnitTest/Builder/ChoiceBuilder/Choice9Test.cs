@@ -36,6 +36,7 @@
             // Arrange
             _ticketHelper.ClientMixParlaySubbetsDetailFunction = string.Empty;
             _ticketHelper.GetBetTypeNameById(Arg.Any<int>()).Returns("Bet type name");
+            _ticket.CustId = 1;
             _ticket.TransId = 1000;
             _ticket.RefNo = "2000";
 
@@ -43,7 +44,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expected = "<a id=\"hidden0\" href=\"javascript:showMP(&quot;1000&quot;,&quot;2000&quot;);\">Bet type name</a><br/><div id=\"divEvent_1000\" style=\"display: none\" ></div>";
+            string expected = "<a id=\"hidden0\" href=\"javascript:showMP(1000, '2000', 1);\">Bet type name</a><br/><div id=\"divEvent_1000\" style=\"display: none\" ></div>";
             Assert.AreEqual(expected, _choice.Template.ToString());
         }
 
