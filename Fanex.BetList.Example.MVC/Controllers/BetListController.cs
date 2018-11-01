@@ -626,6 +626,27 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
             return BetListView(model);
         }
+        
+        public ActionResult Happy5(BetListData model = null)
+        {
+
+            var betTypeIds = new List<int>();
+
+            for (var betTypeId = 8101; betTypeId <= 8105; betTypeId++)
+            {
+                betTypeIds.Add(betTypeId);
+            }
+
+            var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
+
+            DataSourcePath = "~/App_Data/Happy5.xls";
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
 
         private ViewResult BetListView(BetListData model)
         {

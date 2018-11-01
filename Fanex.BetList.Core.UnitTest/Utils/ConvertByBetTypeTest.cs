@@ -17,6 +17,8 @@ namespace Fanex.BetList.Core.UnitTest.Utils
         [TestCase(7)]
         [TestCase(8)]
         [TestCase(12)]
+        [TestCase(17)]
+        [TestCase(18)]
         [TestCase(20)]
         [TestCase(21)]
         [TestCase(81)]
@@ -53,7 +55,6 @@ namespace Fanex.BetList.Core.UnitTest.Utils
         [TestCase(501)]
         [TestCase(603)]
         [TestCase(604)]
-        [TestCase(404)]
         [TestCase(605)]
         [TestCase(606)]
         [TestCase(607)]
@@ -102,6 +103,9 @@ namespace Fanex.BetList.Core.UnitTest.Utils
         [TestCase(2809)]
         [TestCase(2811)]
         [TestCase(2812)]
+        [TestCase(8101)]
+        [TestCase(8102)]
+        [TestCase(8104)]
         public void ShowOddsByBettype_BetTypeIsOddsBetType_ReturnOddsType(int betType)
         {
             // Arrange

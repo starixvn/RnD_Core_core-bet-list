@@ -147,4 +147,7 @@
   <data name="lblUnderEven" xml:space="preserve">
     <value>ต่ำ 37.5/คู่</value>
   </data>
+  <data name="Number" xml:space="preserve">
+    <value>{0} ลำดับที่</value>
+  </data>
 </root>

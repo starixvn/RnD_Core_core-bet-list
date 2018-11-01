@@ -11,7 +11,7 @@
     [Ignore("Used for testing when changing old bet type")]
     public class BetListControllerTests
     {
-        private const string ActiveUrl = "http://ha.nexdev.net:7240/V1/";
+        private const string ActiveUrl = "http://ha.nexdev.net:7240/V4/";
         private const string MasterURL = "http://ha.nexdev.net:7240/Main/";
 
         [TestCase("")]
@@ -52,6 +52,7 @@
         [TestCase("BetList/PP")]
         [TestCase("BetList/Parlay")]
         [TestCase("BetList/PokerGames")]
+        [TestCase("BetList/Happy5")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Choice(string productUrl)
         {
             // Arrange
@@ -107,6 +108,7 @@
         [TestCase("BetList/PP")]
         [TestCase("BetList/Parlay")]
         [TestCase("BetList/PokerGames")]
+        [TestCase("BetList/Happy5")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Trans(string productUrl)
         {
             // Arrange
@@ -162,6 +164,7 @@
         [TestCase("BetList/PP")]
         [TestCase("BetList/Parlay")]
         [TestCase("BetList/PokerGames")]
+        [TestCase("BetList/Happy5")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Odds(string productUrl)
         {
             // Arrange
@@ -217,6 +220,7 @@
         [TestCase("BetList/PP")]
         [TestCase("BetList/Parlay")]
         [TestCase("BetList/PokerGames")]
+        [TestCase("BetList/Happy5")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Stake(string productUrl)
         {
             // Arrange
@@ -272,6 +276,7 @@
         [TestCase("BetList/PP")]
         [TestCase("BetList/Parlay")]
         [TestCase("BetList/PokerGames")]
+        [TestCase("BetList/Happy5")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Status(string productUrl)
         {
             // Arrange

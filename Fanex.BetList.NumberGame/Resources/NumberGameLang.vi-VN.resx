@@ -147,4 +147,7 @@
   <data name="lblUnderEven" xml:space="preserve">
     <value>Xỉu 37.5/Chẵn</value>
   </data>
+  <data name="Number" xml:space="preserve">
+    <value>Số {0}</value>
+  </data>
 </root>

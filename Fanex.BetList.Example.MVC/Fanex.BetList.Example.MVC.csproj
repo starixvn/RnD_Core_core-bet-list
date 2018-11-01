@@ -469,6 +469,7 @@
     <Content Include="App_Data\UpcomingSports.xls" />
     <Content Include="App_Data\SettlementStatus.xls" />
     <Content Include="App_Data\ESports2.xls" />
+    <Content Include="App_Data\Happy5.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />

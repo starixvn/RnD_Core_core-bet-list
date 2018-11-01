@@ -147,4 +147,7 @@
   <data name="lblUnderEven" xml:space="preserve">
     <value>小 37.5/双</value>
   </data>
+  <data name="Number" xml:space="preserve">
+    <value>编号 {0}</value>
+  </data>
 </root>
