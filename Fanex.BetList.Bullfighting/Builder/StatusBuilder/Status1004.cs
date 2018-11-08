@@ -6,11 +6,7 @@
     {
         protected override void BuildStatusResult(ITicket ticket)
         {
-            base.BuildStatusResult(ticket);
-            var extraParameters = $"{ticket.BetId}, {ticket.CustId}";
-
-            Template.StatusResult.betId = extraParameters;
-            Template.StatusResult.refNo = ticket.RefNo;
+            Template.StatusResult.Hide();
         }
     }
 }

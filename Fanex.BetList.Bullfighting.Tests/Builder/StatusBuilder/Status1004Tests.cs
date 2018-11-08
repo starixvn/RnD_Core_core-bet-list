@@ -8,40 +8,18 @@
     public class Status1004Tests
     {
         [Test]
-        public void BuildStatusResult_Always_RefNoPassedToViewResultIsTicketRefNo()
+        public void BuildStatusResult_Always_HideResultLink()
         {
             // Arrange.
             IStatus status = new Status1004();
             ITicket ticket = Substitute.For<ITicket>();
             ITicketHelper ticketHelper = Substitute.For<ITicketHelper>();
 
-            ticket.RefNo = "123";
-
             // Act.
             var template = status.Render(ticket, ticketHelper, null, false);
 
             // Assert.
-            Assert.AreEqual(ticket.RefNo, template.StatusResult.refNo);
-        }
-
-        [Test]
-        public void BuildStatusResult_Always_BetIdInViewResultIsCombinedFromBetIdAndCustId()
-        {
-            // Arrange.
-            IStatus status = new Status1004();
-            ITicket ticket = Substitute.For<ITicket>();
-            ITicketHelper ticketHelper = Substitute.For<ITicketHelper>();
-
-            ticket.BetId = 123;
-            ticket.CustId = 456;
-
-            // Act.
-            var template = status.Render(ticket, ticketHelper, null, false);
-
-            // Assert.
-            var expectation = $"123, 456";
-
-            Assert.AreEqual(expectation, template.StatusResult.betId);
+            Assert.IsFalse(template.StatusResult.Visible);
         }
     }
 }

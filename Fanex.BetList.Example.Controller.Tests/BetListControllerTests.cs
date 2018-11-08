@@ -43,7 +43,6 @@
         [TestCase("BetList/Lucky3")]
         [TestCase("BetList/BetRadarVirtualSports")]
         [TestCase("BetList/KenoLottery")]
-        [TestCase("BetList/Bullfighting")]
         [TestCase("BetList/Keno")]
         [TestCase("BetList/PHAIO3")]
         [TestCase("BetList/BonusSystem")]
@@ -52,6 +51,7 @@
         [TestCase("BetList/Asian1x2HDP")]
         [TestCase("BetList/PP")]
         [TestCase("BetList/Parlay")]
+        [TestCase("BetList/PokerGames")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Choice(string productUrl)
         {
             // Arrange
@@ -98,7 +98,6 @@
         [TestCase("BetList/Lucky3")]
         [TestCase("BetList/BetRadarVirtualSports")]
         [TestCase("BetList/KenoLottery")]
-        [TestCase("BetList/Bullfighting")]
         [TestCase("BetList/Keno")]
         [TestCase("BetList/PHAIO3")]
         [TestCase("BetList/BonusSystem")]
@@ -107,6 +106,7 @@
         [TestCase("BetList/Asian1x2HDP")]
         [TestCase("BetList/PP")]
         [TestCase("BetList/Parlay")]
+        [TestCase("BetList/PokerGames")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Trans(string productUrl)
         {
             // Arrange
@@ -153,7 +153,6 @@
         [TestCase("BetList/Lucky3")]
         [TestCase("BetList/BetRadarVirtualSports")]
         [TestCase("BetList/KenoLottery")]
-        [TestCase("BetList/Bullfighting")]
         [TestCase("BetList/Keno")]
         [TestCase("BetList/PHAIO3")]
         [TestCase("BetList/BonusSystem")]
@@ -162,6 +161,7 @@
         [TestCase("BetList/Asian1x2HDP")]
         [TestCase("BetList/PP")]
         [TestCase("BetList/Parlay")]
+        [TestCase("BetList/PokerGames")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Odds(string productUrl)
         {
             // Arrange
@@ -208,7 +208,6 @@
         [TestCase("BetList/Lucky3")]
         [TestCase("BetList/BetRadarVirtualSports")]
         [TestCase("BetList/KenoLottery")]
-        [TestCase("BetList/Bullfighting")]
         [TestCase("BetList/Keno")]
         [TestCase("BetList/PHAIO3")]
         [TestCase("BetList/BonusSystem")]
@@ -217,6 +216,7 @@
         [TestCase("BetList/Asian1x2HDP")]
         [TestCase("BetList/PP")]
         [TestCase("BetList/Parlay")]
+        [TestCase("BetList/PokerGames")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Stake(string productUrl)
         {
             // Arrange
@@ -263,7 +263,6 @@
         [TestCase("BetList/Lucky3")]
         [TestCase("BetList/BetRadarVirtualSports")]
         [TestCase("BetList/KenoLottery")]
-        [TestCase("BetList/Bullfighting")]
         [TestCase("BetList/Keno")]
         [TestCase("BetList/PHAIO3")]
         [TestCase("BetList/BonusSystem")]
@@ -272,6 +271,7 @@
         [TestCase("BetList/Asian1x2HDP")]
         [TestCase("BetList/PP")]
         [TestCase("BetList/Parlay")]
+        [TestCase("BetList/PokerGames")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Status(string productUrl)
         {
             // Arrange
