@@ -626,7 +626,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
             return BetListView(model);
         }
-        
+
         public ActionResult Happy5(BetListData model = null)
         {
 
