@@ -12,5 +12,12 @@
         {
             Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.RefNo, ticket.BetId, ticket.BetCheck);
         }
+
+        protected override void BuildScore(ITicket ticket)
+        {
+            base.BuildScore(ticket);
+
+            Template.Score.SetValue($"<span class=\"{Favorite}\"> [{Choice9001.GetScoreText(ticket.ExtraInfo)}]</span>");
+        }
     }
 }
