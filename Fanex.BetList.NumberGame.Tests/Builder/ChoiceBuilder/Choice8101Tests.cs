@@ -105,6 +105,16 @@
         }
 
         [Test]
+        public void BuildScore_Always_HideScore()
+        {
+            // Act.
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert.
+            Assert.IsNull(template.Score);
+        }
+
+        [Test]
         public void BuildBetTeamsInfo_Always_ThirdRowIsMatch()
         {
             // Arrange.

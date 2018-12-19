@@ -38,6 +38,9 @@
             Template.Handicap = null;
         }
 
+        protected override void BuildScore(ITicket ticket)
+            => Template.Score = null;
+
         protected override void BuildBetTeamsInfo(ITicket ticket, ref RTFHelper rtfHelper)
         {
             var matchCode = string.Format(NumberGameLang.Number, ticket.MatchCode);
