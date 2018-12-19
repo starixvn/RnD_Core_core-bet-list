@@ -23,6 +23,7 @@
             _ticket.RefNo = "8888888";
             _ticket.BetCheck = "80505";
             _ticket.BetId = 80505;
+            _ticket.SportTypeId = 16;
         }
 
         [Test]

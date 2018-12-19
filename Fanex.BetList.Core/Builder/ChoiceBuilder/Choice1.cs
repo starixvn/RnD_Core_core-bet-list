@@ -7,6 +7,7 @@
     using App_GlobalResources;
     using Constants;
     using Entities;
+    using Fanex.BetList.Core.Utils.StringExt;
     using NPOI.SS.UserModel;
     using Templates;
     using Utils;
@@ -44,6 +45,8 @@
         private const int HandicapBetTypeId = 1;
         private const string LightBlue = " light-blue";
         private readonly int[] _liveScoreSports = { 1, 3, 4, 8, 26, 28, 49, 51 };
+        private const string ESportXmlTag = "p16";
+        private const string InPlayXmlAttribute = "in";
 
         #region Constructors
 
@@ -333,7 +336,7 @@
 
             if (IsShowLiveText(ticket.SportTypeId))
             {
-                Template.Score.SetValue($"<span class=\"{Favorite}\"> [{CoreBetList.Live}]</span>");
+                Template.Score.SetValue($"<span class=\"{Favorite}\"> [{GetScoreText(ticket.ExtraInfo)}]</span>");
             }
             else
             {
@@ -342,6 +345,23 @@
             }
 
             Template.Score.Visible = ticket.IsLive;
+        }
+
+        private static string GetScoreText(string extraInfo)
+        {
+            var scoreText = CoreBetList.Live;
+
+            if (extraInfo.HasAttributeInXmlTag(ESportXmlTag, InPlayXmlAttribute))
+            {
+                var isInPlay = extraInfo.GetXmlTagAttributeValue(ESportXmlTag, InPlayXmlAttribute) == "1";
+
+                if (isInPlay)
+                {
+                    scoreText = CoreBetList.InPlay;
+                }
+            }
+
+            return scoreText;
         }
 
         private bool IsShowLiveText(int sportTypeId)

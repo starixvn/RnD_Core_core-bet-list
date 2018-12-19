@@ -916,6 +916,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to IN-PLAY.
+        /// </summary>
+        public static string InPlay {
+            get {
+                return ResourceManager.GetString("InPlay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Internal.
         /// </summary>
         public static string Internal {

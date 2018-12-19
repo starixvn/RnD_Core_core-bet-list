@@ -862,4 +862,7 @@
   <data name="UnderSettlement" xml:space="preserve">
     <value>Under Settlement</value>
   </data>
+  <data name="InPlay" xml:space="preserve">
+    <value>IN-PLAY</value>
+  </data>
 </root>
