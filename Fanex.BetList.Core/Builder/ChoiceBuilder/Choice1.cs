@@ -45,8 +45,9 @@
         private const int HandicapBetTypeId = 1;
         private const string LightBlue = " light-blue";
         private readonly int[] _liveScoreSports = { 1, 3, 4, 8, 26, 28, 49, 51 };
-        private const string ESportXmlTag = "p16";
+        private const string ESportsXmlTag = "p16";
         private const string InPlayXmlAttribute = "in";
+        private const int ESportsSportType = 43;
 
         #region Constructors
 
@@ -336,7 +337,9 @@
 
             if (IsShowLiveText(ticket.SportTypeId))
             {
-                Template.Score.SetValue($"<span class=\"{Favorite}\"> [{GetScoreText(ticket.ExtraInfo)}]</span>");
+                var scoreText = ticket.SportTypeId == ESportsSportType ? GetScoreText(ticket.ExtraInfo) : CoreBetList.Live;
+
+                Template.Score.SetValue($"<span class=\"{Favorite}\"> [{scoreText}]</span>");
             }
             else
             {
@@ -349,19 +352,17 @@
 
         private static string GetScoreText(string extraInfo)
         {
-            var scoreText = CoreBetList.Live;
-
-            if (extraInfo.HasAttributeInXmlTag(ESportXmlTag, InPlayXmlAttribute))
+            if (extraInfo.HasAttributeInXmlTag(ESportsXmlTag, InPlayXmlAttribute))
             {
-                var isInPlay = extraInfo.GetXmlTagAttributeValue(ESportXmlTag, InPlayXmlAttribute) == "1";
+                var isInPlay = extraInfo.GetXmlTagAttributeValue(ESportsXmlTag, InPlayXmlAttribute) == "1";
 
                 if (isInPlay)
                 {
-                    scoreText = CoreBetList.InPlay;
+                    return CoreBetList.InPlay;
                 }
             }
 
-            return scoreText;
+            return CoreBetList.Live;
         }
 
         private bool IsShowLiveText(int sportTypeId)

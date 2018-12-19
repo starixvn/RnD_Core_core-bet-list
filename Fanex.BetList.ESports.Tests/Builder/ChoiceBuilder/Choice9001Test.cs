@@ -23,7 +23,7 @@
             _ticket.RefNo = "8888888";
             _ticket.BetCheck = "80505";
             _ticket.BetId = 80505;
-            _ticket.SportTypeId = 16;
+            _ticket.SportTypeId = 43;
         }
 
         [Test]
@@ -66,6 +66,8 @@
         [TestCase("<p16 in=\"0\" />")]
         [TestCase("<p25 m=\"0\" /><p16 in=\"0\" />")]
         [TestCase("<p25 m=\"0\" />")]
+        [TestCase(null)]
+        [TestCase("")]
         public void BuildScore_TicketIsLiveAndExtraInfoHasNotInPlayXMLAttribute_ShowScoreIsLive(string extraInfo)
         {
             // Arrange.

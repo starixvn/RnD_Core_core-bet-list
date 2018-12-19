@@ -21,7 +21,7 @@
 
             _ticket.BetCheck = "80102";
             _ticket.BetId = 80102;
-            _ticket.SportTypeId = 16;
+            _ticket.SportTypeId = 43;
         }
 
         [Test]
