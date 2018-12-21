@@ -337,9 +337,9 @@
 
             if (IsShowLiveText(ticket.SportTypeId))
             {
-                var scoreText = ticket.SportTypeId == ESportsSportType ? GetScoreText(ticket.ExtraInfo) : CoreBetList.Live;
+                var scoreStatus = ticket.SportTypeId == ESportsSportType ? GetScoreStatus(ticket) : CoreBetList.Live;
 
-                Template.Score.SetValue($"<span class=\"{Favorite}\"> [{scoreText}]</span>");
+                Template.Score.SetValue($"<span class=\"{Favorite}\"> [{scoreStatus}]</span>");
             }
             else
             {
@@ -350,11 +350,23 @@
             Template.Score.Visible = ticket.IsLive;
         }
 
-        private static string GetScoreText(string extraInfo)
+        private static string GetScoreStatus(ITicket ticket)
         {
-            if (extraInfo.HasAttributeInXmlTag(ESportsXmlTag, InPlayXmlAttribute))
+            var inPlayStatus = GetInPlayStatus(ticket.ExtraInfo);
+
+            if (string.IsNullOrEmpty(inPlayStatus))
             {
-                var isInPlay = extraInfo.GetXmlTagAttributeValue(ESportsXmlTag, InPlayXmlAttribute) == "1";
+                inPlayStatus = GetInPlayStatus(ticket.TransDesc);
+            }
+
+            return string.IsNullOrEmpty(inPlayStatus) ? CoreBetList.Live : inPlayStatus;
+        }
+
+        private static string GetInPlayStatus(string data)
+        {
+            if (data.HasAttributeInXmlTag(ESportsXmlTag, InPlayXmlAttribute))
+            {
+                var isInPlay = data.GetXmlTagAttributeValue(ESportsXmlTag, InPlayXmlAttribute) == "1";
 
                 if (isInPlay)
                 {
@@ -362,7 +374,7 @@
                 }
             }
 
-            return CoreBetList.Live;
+            return string.Empty;
         }
 
         private bool IsShowLiveText(int sportTypeId)

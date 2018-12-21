@@ -86,10 +86,62 @@
         [TestCase("<p16 in=\"0\" />")]
         [TestCase("<p25 m=\"0\" /><p16 in=\"0\" />")]
         [TestCase("<p25 m=\"0\" /><p16 in=\"1\" />")]
-        public void BuildScore_TicketIsNonLive_ShowNothing(string extraInfo)
+        public void BuildScore_TicketIsNonLive_WithExtraInfo_ShowNothing(string extraInfo)
         {
             // Arrange.
             _ticket.ExtraInfo = extraInfo;
+            _ticket.IsLive = false;
+
+            // Act.
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.Null(template.Score.ToString());
+        }
+
+        [TestCase("<p16 in=\"1\" />")]
+        [TestCase("<p25 m=\"0\" /><p16 in=\"1\" />")]
+        public void BuildScore_TicketIsLiveAndTransDescHasInPlayXMLAttribute_ShowScoreIsInPlay(string transdesc)
+        {
+            // Arrange.
+            _ticket.TransDesc = transdesc;
+            _ticket.IsLive = true;
+            var expectedScore = "<span class=\"favorite\"> [IN-PLAY]</span>";
+
+            // Act.
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual(expectedScore, template.Score.ToString());
+        }
+
+        [TestCase("<p16 in=\"0\" />")]
+        [TestCase("<p25 m=\"0\" /><p16 in=\"0\" />")]
+        [TestCase("<p25 m=\"0\" />")]
+        [TestCase(null)]
+        [TestCase("")]
+        public void BuildScore_TicketIsLiveAndTransDescHasNotInPlayXMLAttribute_ShowScoreIsLive(string transdesc)
+        {
+            // Arrange.
+            _ticket.TransDesc = transdesc;
+            _ticket.IsLive = true;
+            var expectedScore = "<span class=\"favorite\"> [Live]</span>";
+
+            // Act.
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual(expectedScore, template.Score.ToString());
+        }
+
+        [TestCase("<p16 in=\"1\" />")]
+        [TestCase("<p16 in=\"0\" />")]
+        [TestCase("<p25 m=\"0\" /><p16 in=\"0\" />")]
+        [TestCase("<p25 m=\"0\" /><p16 in=\"1\" />")]
+        public void BuildScore_TicketIsNonLive_WithTransdesc_ShowNothing(string transdesc)
+        {
+            // Arrange.
+            _ticket.TransDesc = transdesc;
             _ticket.IsLive = false;
 
             // Act.
