@@ -795,4 +795,7 @@
   <data name="UnderSettlement" xml:space="preserve">
     <value>结算中</value>
   </data>
+  <data name="InPlay" xml:space="preserve">
+    <value>进行中</value>
+  </data>
 </root>
