@@ -364,17 +364,24 @@
 
         private static string GetInPlayStatus(string data)
         {
-            if (data.HasAttributeInXmlTag(ESportsXmlTag, InPlayXmlAttribute))
+            try
             {
-                var isInPlay = data.GetXmlTagAttributeValue(ESportsXmlTag, InPlayXmlAttribute) == "1";
-
-                if (isInPlay)
+                if (data.HasAttributeInXmlTag(ESportsXmlTag, InPlayXmlAttribute))
                 {
-                    return CoreBetList.InPlay;
-                }
-            }
+                    var isInPlay = data.GetXmlTagAttributeValue(ESportsXmlTag, InPlayXmlAttribute) == "1";
 
-            return string.Empty;
+                    if (isInPlay)
+                    {
+                        return CoreBetList.InPlay;
+                    }
+                }
+
+                return string.Empty;
+            }
+            catch
+            {
+                return string.Empty;
+            }
         }
 
         private bool IsShowLiveText(int sportTypeId)
