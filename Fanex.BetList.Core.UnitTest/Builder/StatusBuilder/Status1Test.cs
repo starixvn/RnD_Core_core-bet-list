@@ -31,6 +31,8 @@
         [TestCase("waiting", "Waiting")]
         [TestCase("void", "Void")]
         [TestCase("refund", "Refund")]
+        [TestCase("half won", "Half Won")]
+        [TestCase("half lose", "Half Lose")]
         public void BuildResult_Status_Result(string status, string expectedResult)
         {
             // Arrange
@@ -52,6 +54,8 @@
         [TestCase("waiting", "Cash Out")]
         [TestCase("void", "Void")]
         [TestCase("refund", "Refund")]
+        [TestCase("half won", "Cash Out")]
+        [TestCase("half lose", "Cash Out")]
         public void BuildResult_IsCashOutAllTicket_Result(string status, string expectedResult)
         {
             // Arrange
@@ -77,6 +81,8 @@
         [TestCase("waiting", "Waiting")]
         [TestCase("void", "Void")]
         [TestCase("refund", "Refund")]
+        [TestCase("half won", "Half Won")]
+        [TestCase("half lose", "Half Lose")]
         public void BuildResult_IsNotCashOutAllTicket_Result(string status, string expectedResult)
         {
             // Arrange
@@ -102,6 +108,8 @@
         [TestCase("waiting", "Waiting")]
         [TestCase("void", "Void")]
         [TestCase("refund", "Refund")]
+        [TestCase("half won", "Half Won")]
+        [TestCase("half lose", "Half Lose")]
         public void BuildResult_IsNotCashOutTicket_Result(string status, string expectedResult)
         {
             // Arrange

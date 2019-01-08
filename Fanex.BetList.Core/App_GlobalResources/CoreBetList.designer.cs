@@ -781,11 +781,29 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Half Lose.
+        /// </summary>
+        public static string halflose {
+            get {
+                return ResourceManager.GetString("halflose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Half Time.
         /// </summary>
         public static string HalfTime {
             get {
                 return ResourceManager.GetString("HalfTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Half Won.
+        /// </summary>
+        public static string halfwon {
+            get {
+                return ResourceManager.GetString("halfwon", resourceCulture);
             }
         }
         

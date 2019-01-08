@@ -865,4 +865,10 @@
   <data name="InPlay" xml:space="preserve">
     <value>IN-PLAY</value>
   </data>
+  <data name="halfwon" xml:space="preserve">
+    <value>Half Won</value>
+  </data>
+  <data name="halflose" xml:space="preserve">
+    <value>Half Lose</value>
+  </data>
 </root>

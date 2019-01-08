@@ -59,6 +59,8 @@
         protected static string GetResultString(string ticketStatus)
             => GetResultString(ticketStatus, 0);
 
+#pragma warning disable S1541 // Methods and properties should not be too complex
+
         protected static string GetResultString(string ticketStatus, byte settlementStatus)
         {
             string result = string.Empty;
@@ -97,6 +99,14 @@
                     result = CoreBetList.refund;
                     break;
 
+                case BetStatus.HalfWon:
+                    result = CoreBetList.halfwon;
+                    break;
+
+                case BetStatus.HalfLose:
+                    result = CoreBetList.halflose;
+                    break;
+
                 default:
                     result = string.Empty;
                     break;
@@ -104,6 +114,8 @@
 
             return result;
         }
+
+#pragma warning restore S1541 // Methods and properties should not be too complex
 
         protected virtual void BuildResult(ITicket ticket, List<ITicketData> ticketData)
         {
