@@ -1,7 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.TransBuilder
 {
+    using System.Globalization;
     using App_GlobalResources;
     using Entities;
+    using Fanex.BetList.Core.Utils;
     using NPOI.HSSF.UserModel;
     using NPOI.SS.UserModel;
     using Templates;
@@ -11,6 +13,8 @@
     /// </summary>
     public class Trans1 : ITrans
     {
+        private const string EventDateHtmlBlock = "<div class=\"event-date\">{0}</div>";
+
         public Trans1()
         {
             Template = new Trans_Template();
@@ -37,6 +41,9 @@
 
             return rtfTrans;
         }
+
+        public virtual string RenderEventDate(ITicket ticket)
+            => string.Format(EventDateHtmlBlock, Formatter.FormatDateTimeEn12ShortMonthNoSec(ticket.EventDate));
 
         protected virtual void BuildTransTime(ITicket ticket)
 #pragma warning disable S1449 // Culture should be specified for "string" operations

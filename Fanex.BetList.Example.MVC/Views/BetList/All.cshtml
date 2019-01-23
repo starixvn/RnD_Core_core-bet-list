@@ -103,7 +103,7 @@
                     @Html.Raw(ticket.BetTypeId): @Html.Raw(builder.CreateChoiceBuilder(ticket.BetTypeId).GetBetTypeName(ticket, ticketHelper, ticketData))
                 </td>
                 <td class="text-right">
-                    @Html.Raw(builder.BuildChoice(ticket, ticketHelper, ticketData, isShowScoreMap))
+                    @Html.Raw(builder.BuildChoice(ticket, ticketHelper, ticketData, isShowScoreMap) + builder.BuildTransEventDateAndStatusResult(ticket, ticketData))
                 </td>
                 <td class="text-center">
                     @Html.Raw(builder.BuildOdds(ticket, ticketData, funcGetOddsTypeName))

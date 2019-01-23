@@ -256,5 +256,16 @@
             var builder = new SystemParlayDetail();
             return builder.Build(ticketHelper, systemParlayData);
         }
+
+        public string BuildTransEventDateAndStatusResult(ITicket ticket, List<ITicketData> ticketData)
+        {
+            var statusBuilder = CreateStatusBuilder(ticket.BetTypeId);
+            var statusText = statusBuilder.RenderStatusResultText(ticket, ticketData);
+
+            var transBuilder = CreateTransBuilder(ticket.BetTypeId);
+            var eventDate = transBuilder.RenderEventDate(ticket);
+
+            return eventDate + statusText;
+        }
     }
 }

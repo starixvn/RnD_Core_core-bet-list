@@ -56,6 +56,16 @@
             return rtfStatus;
         }
 
+        public virtual string RenderStatusResultText(ITicket ticket, List<ITicketData> ticketData)
+        {
+            BuildResult(ticket, ticketData);
+            Template.StatusResult = null;
+            Template.ShowIP = null;
+            Template.CashOutHistory = null;
+
+            return Template.ToString();
+        }
+
         protected static string GetResultString(string ticketStatus)
             => GetResultString(ticketStatus, 0);
 

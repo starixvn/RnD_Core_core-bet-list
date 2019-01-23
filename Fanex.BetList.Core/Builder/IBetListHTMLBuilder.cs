@@ -40,5 +40,7 @@
         string BuildStatus(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP);
 
         string BuildSystemParlayDetail(ITicketHelper ticketHelper, ISystemParlayData systemParlayData);
+
+        string BuildTransEventDateAndStatusResult(ITicket ticket, List<ITicketData> ticketData);
     }
 }

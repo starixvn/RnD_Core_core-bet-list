@@ -11,5 +11,7 @@
         Trans_Template Render(ITicket ticket);
 
         IRichTextString RenderRTF(ITicket ticket, ITicketHelper ticketHelper);
+
+        string RenderEventDate(ITicket ticket);
     }
 }

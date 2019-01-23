@@ -12,5 +12,7 @@
         Status_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP);
 
         IRichTextString RenderRTF(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP, RTFHelper rtfHelper);
+
+        string RenderStatusResultText(ITicket ticket, List<ITicketData> ticketData);
     }
 }

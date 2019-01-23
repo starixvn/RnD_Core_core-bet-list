@@ -650,6 +650,28 @@
         }
 
         /// <summary>
+        /// Formats the date time en12 no sec.
+        /// </summary>
+        /// <param name="date">The date to format.</param>
+        /// <returns>Converted value string.</returns>
+        public static string FormatDateTimeEn12ShortMonthNoSec(object date)
+        {
+            if (Convert.IsDBNull(date) || date == null)
+            {
+                return string.Empty;
+            }
+
+            try
+            {
+                return Convert.ToDateTime(date).ToString("M/dd/yyyy hh:mm tt");
+            }
+            catch
+            {
+                return "Error";
+            }
+        }
+
+        /// <summary>
         /// Formats the date time en24.
         /// </summary>
         /// <param name="date">The date to format.</param>
