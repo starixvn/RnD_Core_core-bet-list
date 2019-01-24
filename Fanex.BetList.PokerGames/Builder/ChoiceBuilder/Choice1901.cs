@@ -8,9 +8,13 @@
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
+    using Fanex.BetList.Core.Utils;
 
-    public class Choice1901 : Choice1401
+    public class Choice1901 : Choice1
     {
+        private const string GameTypeRefId = "PG_GT";
+        private const string GameInfoRefId = "PG_GameInfo";
+
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             Template.betTeam = string.Empty;
@@ -80,7 +84,7 @@
         {
             if (IsSummaryTicket(ticket))
             {
-                Template.League.LeagueName.leagueName = GetBetTypeName(ticket, ticketHelper);
+                Template.League.LeagueName.leagueName = GetGameTypeName(ticket, ticketHelper);
                 Template.League.Append(BuildVideoPokerGameDetails(ticket));
             }
             else
@@ -93,12 +97,14 @@
         {
             if (Template.Match != null)
             {
-                base.BuildBetTeamsInfo(ticket, ref rtfHelper);
+                var gameInfoRows = Common.SplitHtmlIntoRows(Template.Match.ToString());
+
+                foreach (var row in gameInfoRows)
+                {
+                    rtfHelper.RTFRenderer.AddText("\n" + row);
+                }
             }
         }
-
-        private static string GetBetTypeName(ITicket ticket, ITicketHelper ticketHelper)
-            => ticketHelper.GetResourceData(GameTypeRefId, ticket.BetTypeId.ToString());
 
         private static string GetGameTypeName(ITicket ticket, ITicketHelper ticketHelper)
             => ticketHelper.GetResourceData(GameTypeRefId, ticket.TransDesc);
