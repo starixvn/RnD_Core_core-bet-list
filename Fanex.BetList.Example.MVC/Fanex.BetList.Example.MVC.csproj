@@ -474,6 +474,7 @@
     <Content Include="App_Data\AbnormalBet.xls" />
     <Content Include="App_Data\BetBuilder.xls" />
     <Content Include="App_Data\PHAllInOneP4A.xls" />
+    <Content Include="App_Data\VideoPokerGame.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />

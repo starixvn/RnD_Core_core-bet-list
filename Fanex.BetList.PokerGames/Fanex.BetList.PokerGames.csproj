@@ -60,7 +60,9 @@
     <Compile Include="Builder\ChoiceBuilder\Choice1401.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1402.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1499.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice1901.cs" />
     <Compile Include="Builder\OddsBuilder\Odds1401.cs" />
+    <Compile Include="Builder\StatusBuilder\Status1901.cs" />
     <Compile Include="Builder\StatusBuilder\Status1401.cs" />
     <Compile Include="Builder\StatusBuilder\Status1499.cs" />
     <Compile Include="Mapper\ChoiceMapper.cs" />

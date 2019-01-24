@@ -612,6 +612,26 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
             return BetListView(model);
         }
+        public ActionResult VideoPokerGame(BetListData model = null)
+        {
+
+            var betTypeIds = new List<int>();
+
+            for (var betTypeId = 1901; betTypeId <= 1999; betTypeId++)
+            {
+                betTypeIds.Add(betTypeId);
+            }
+
+            var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
+
+            DataSourcePath = "~/App_Data/VideoPokerGame.xls";
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
 
         public ActionResult SettlementStatus(BetListData model = null)
         {

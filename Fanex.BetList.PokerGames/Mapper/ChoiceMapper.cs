@@ -17,6 +17,16 @@
 
             // Map 'Shortdeck 6+' to 'Texas Holdem'.
             MapIdToBaseId(1405, 1402);
+
+            MapVideoPokerGame();
+        }
+
+        private void MapVideoPokerGame()
+        {
+            for (int betType = 1902; betType <= 1999; betType++)
+            {
+                MapIdToBaseId(betType, 1901);
+            }
         }
     }
 }
