@@ -792,4 +792,10 @@
   <data name="InPlay" xml:space="preserve">
     <value>進行中</value>
   </data>
+  <data name="halflose" xml:space="preserve">
+    <value>半輸</value>
+  </data>
+  <data name="halfwon" xml:space="preserve">
+    <value>半贏</value>
+  </data>
 </root>

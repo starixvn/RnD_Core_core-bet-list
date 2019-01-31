@@ -145,7 +145,7 @@
     <value>หรือ</value>
   </data>
   <data name="lose" xml:space="preserve">
-    <value>แพ้</value>
+    <value>เสีย</value>
   </data>
   <data name="member" xml:space="preserve">
     <value>สมาชิก</value>
@@ -202,7 +202,7 @@
     <value>เสมอ</value>
   </data>
   <data name="waiting" xml:space="preserve">
-    <value>รอ</value>
+    <value>สถานะรอ</value>
   </data>
   <data name="refund" xml:space="preserve">
     <value>คืนเงิน</value>
@@ -382,7 +382,7 @@
     <value>หน้าสุดท้าย</value>
   </data>
   <data name="lblLose" xml:space="preserve">
-    <value>แพ้</value>
+    <value>เสีย</value>
   </data>
   <data name="lblM" xml:space="preserve">
     <value>M = มาสเตอร์</value>
@@ -391,7 +391,7 @@
     <value>ทั้งสอง</value>
   </data>
   <data name="lblRunning" xml:space="preserve">
-    <value>รายการที่แข่งขันอยู่</value>
+    <value>กำลังแข่งขัน</value>
   </data>
   <data name="lblS" xml:space="preserve">
     <value>S = สูงสุด</value>
@@ -400,7 +400,7 @@
     <value>ระบบของ Parlay</value>
   </data>
   <data name="lblWaiting" xml:space="preserve">
-    <value>รอ</value>
+    <value>สถานะรอ</value>
   </data>
   <data name="lblWon" xml:space="preserve">
     <value>ชนะ</value>
@@ -665,5 +665,11 @@
   </data>
   <data name="UnderSettlement" xml:space="preserve">
     <value>กําลังดําเนินการชำระเงิน</value>
+  </data>
+  <data name="halflose" xml:space="preserve">
+    <value> เสียครึ่ง</value>
+  </data>
+  <data name="halfwon" xml:space="preserve">
+    <value>ชนะครึ่ง</value>
   </data>
 </root>

@@ -483,4 +483,13 @@
   <data name="UnderSettlement" xml:space="preserve">
     <value>Đang xử lý</value>
   </data>
+  <data name="lblWon" xml:space="preserve">
+    <value>Thắng</value>
+  </data>
+  <data name="halfwon" xml:space="preserve">
+    <value>Thắng một nửa</value>
+  </data>
+  <data name="halflose" xml:space="preserve">
+    <value>Thua một nửa</value>
+  </data>
 </root>

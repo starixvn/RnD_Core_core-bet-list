@@ -124,13 +124,13 @@
     <value>イーブン</value>
   </data>
   <data name="lblDraw" xml:space="preserve">
-    <value>引き分け</value>
+    <value>ドロー</value>
   </data>
   <data name="lblOr" xml:space="preserve">
     <value>Or</value>
   </data>
   <data name="lose" xml:space="preserve">
-    <value>マイナス</value>
+    <value>負け</value>
   </data>
   <data name="member" xml:space="preserve">
     <value>メンバー</value>
@@ -163,7 +163,7 @@
     <value>勝ち負け</value>
   </data>
   <data name="won" xml:space="preserve">
-    <value>ウォン</value>
+    <value>勝利</value>
   </data>
   <data name="lblMixParlay" xml:space="preserve">
     <value>ミックスパーレー</value>
@@ -178,10 +178,10 @@
     <value>進行中</value>
   </data>
   <data name="draw" xml:space="preserve">
-    <value>引き分け</value>
+    <value>ドロー</value>
   </data>
   <data name="waiting" xml:space="preserve">
-    <value>待機</value>
+    <value>待っている</value>
   </data>
   <data name="refund" xml:space="preserve">
     <value>払い戻し</value>
@@ -235,16 +235,16 @@
     <value>最後</value>
   </data>
   <data name="lblLose" xml:space="preserve">
-    <value>マイナス</value>
+    <value>負け</value>
   </data>
   <data name="lblRunning" xml:space="preserve">
     <value>実行中</value>
   </data>
   <data name="lblWaiting" xml:space="preserve">
-    <value>待機</value>
+    <value>待っている</value>
   </data>
   <data name="lblWon" xml:space="preserve">
-    <value>ウォン</value>
+    <value>勝利</value>
   </data>
   <data name="league" xml:space="preserve">
     <value>リーグ</value>
@@ -395,5 +395,14 @@
   </data>
   <data name="UnderSettlement" xml:space="preserve">
     <value>支払い中</value>
+  </data>
+  <data name="halflose" xml:space="preserve">
+    <value>半分負った</value>
+  </data>
+  <data name="voided" xml:space="preserve">
+    <value>無効</value>
+  </data>
+  <data name="halfwon" xml:space="preserve">
+    <value>半分勝った</value>
   </data>
 </root>
