@@ -2,6 +2,7 @@
 {
     using System.Globalization;
     using System.Linq;
+    using System.Text.RegularExpressions;
     using System.Xml.Linq;
 
     /// <summary>
@@ -84,5 +85,10 @@
         }
 
         public static XDocument ParseXml(this string value) => XDocument.Parse($"<root>{value}</root>");
+
+        public static string StripHTML(this string value)
+        {
+            return Regex.Replace(value, "<.*?>", string.Empty);
+        }
     }
 }

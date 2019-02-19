@@ -472,6 +472,7 @@
     <Content Include="App_Data\Happy5.xls" />
     <Content Include="App_Data\ESports2InPlay.xls" />
     <Content Include="App_Data\AbnormalBet.xls" />
+    <Content Include="App_Data\BetBuilder.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
