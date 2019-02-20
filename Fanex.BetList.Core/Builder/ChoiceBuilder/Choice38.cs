@@ -43,9 +43,14 @@
         private static string BuildSingleMatchParlayDetailLink(ITicket ticket, ITicketHelper ticketHelper)
         {
             var betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
-            var detailLink = $"<a href=\"javascript:void('');\">{betTypeName}</a>";
+            var detailLink =
+                $"<div onclick=\"showSingleMatchParlayDetail('{ticket.TransId}', '{ticket.CustId}', {ticketHelper.Index})\">" +
+                    $"<a href=\"javascript:void('');\">{betTypeName}</a>" +
+                $"</div>";
 
-            return $"<div onclick=\"showSingleMatchParlayDetail('{ticket.BetCheck}')\">{detailLink}</div>";
+            var detailBlock = $"<div id=\"divEvent_{ticket.TransId}{ticketHelper.Index}\" style=\"display: none\" ></div>";
+
+            return detailLink + detailBlock;
         }
 
         #endregion BUILD HTML

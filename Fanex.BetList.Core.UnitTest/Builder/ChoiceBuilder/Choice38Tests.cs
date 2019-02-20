@@ -22,8 +22,11 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             ticket = new Ticket();
             ticket.BetTypeId = 38;
             ticket.BetCheck = "1111";
+            ticket.TransId = 222;
+            ticket.CustId = 333;
             ticket.EventDate = new DateTime(2018, 01, 01, 5, 20, 25);
             ticketHelper = Substitute.For<ITicketHelper>();
+            ticketHelper.Index = 1;
             ticketHelper.GetBetTypeNameById(38).Returns(BetTypeName);
             rtfHelper = new RTFHelper().Clone();
         }
@@ -55,7 +58,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             var template = choice.Render(ticket, ticketHelper, null, false);
 
             // Assert
-            var expectedBetTypeName = $"<div onclick=\"showSingleMatchParlayDetail('1111')\"><a href=\"javascript:void('');\">{BetTypeName}</a></div>";
+            var expectedBetTypeName =
+                $"<div onclick=\"showSingleMatchParlayDetail('222', '333', 1)\"><a href=\"javascript:void('');\">{BetTypeName}</a></div>" +
+                $"<div id=\"divEvent_2221\" style=\"display: none\" ></div>";
             Assert.AreEqual(expectedBetTypeName, template.BetType.betTypeName);
         }
 
