@@ -1,5 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
+    using System;
     using System.Collections.Generic;
     using System.Globalization;
     using App_GlobalResources;
@@ -15,6 +16,8 @@
     public class Status1 : IStatus
     {
         private const string CashOutXmlTag = "p25";
+        private const string AbnormalBetXmlTag = "p1";
+        private const string AbnormalBetAttributeName = "ab";
 
         public Status1()
         {
@@ -22,6 +25,8 @@
         }
 
         public Status_Template Template { get; set; }
+
+        #region RENDER HTML
 
         public virtual Status_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP)
         {
@@ -36,26 +41,6 @@
             return Template;
         }
 
-        public virtual IRichTextString RenderRTF(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP, RTFHelper rtfHelper)
-        {
-            Render(ticket, ticketHelper, ticketData, isShowVNIP);
-
-            string status = Template.result;
-
-            BuildResultLRF(status, rtfHelper);
-
-            if (Template.ShowIP != null && Template.ShowIP.Visible)
-            {
-                status = string.Join(null, new[] { "\n", Template.ShowIP.betIp });
-                rtfHelper.RTFRenderer.AddText(status);
-            }
-
-            IRichTextString rtfStatus = rtfHelper.RTFRenderer.Render();
-            rtfHelper.RTFRenderer.Clear();
-
-            return rtfStatus;
-        }
-
         public virtual string RenderStatusResultText(ITicket ticket, List<ITicketData> ticketData)
         {
             BuildResult(ticket, ticketData);
@@ -66,85 +51,43 @@
             return Template.ToString();
         }
 
-        protected static string GetResultString(string ticketStatus)
-            => GetResultString(ticketStatus, 0);
-
-#pragma warning disable S1541 // Methods and properties should not be too complex
-
-        protected static string GetResultString(string ticketStatus, byte settlementStatus)
-        {
-            string result = string.Empty;
-
-            switch (ticketStatus.ToLowerInvariant())
-            {
-                case BetStatus.Running:
-                    result = DetectRealRunningStatus(settlementStatus);
-                    break;
-
-                case BetStatus.Reject:
-                    result = CoreBetList.reject;
-                    break;
-
-                case BetStatus.Won:
-                    result = CoreBetList.won;
-                    break;
-
-                case BetStatus.Lose:
-                    result = CoreBetList.lose;
-                    break;
-
-                case BetStatus.Draw:
-                    result = CoreBetList.draw;
-                    break;
-
-                case BetStatus.Waiting:
-                    result = CoreBetList.waiting;
-                    break;
-
-                case BetStatus.Void:
-                    result = CoreBetList.voided;
-                    break;
-
-                case BetStatus.Refund:
-                    result = CoreBetList.refund;
-                    break;
-
-                case BetStatus.HalfWon:
-                    result = CoreBetList.halfwon;
-                    break;
-
-                case BetStatus.HalfLose:
-                    result = CoreBetList.halflose;
-                    break;
-
-                default:
-                    result = string.Empty;
-                    break;
-            }
-
-            return result;
-        }
-
-#pragma warning restore S1541 // Methods and properties should not be too complex
-
+        /// <summary>
+        /// Build Result Text
+        /// </summary>
+        /// <param name="ticket"></param>
+        /// <param name="ticketData"></param>
         protected virtual void BuildResult(ITicket ticket, List<ITicketData> ticketData)
         {
-            var result = ticket.Status.ToLower(CultureInfo.InvariantCulture);
-            var resultText = GetResultString(ticket.Status, ticket.SettlementStatus);
+            var status = ticket.Status.ToLowerInvariant();
 
-            Template.result = result;
-
-            if (!string.IsNullOrEmpty(result))
-            {
-                Template.result = resultText;
-            }
-
-            if (IsCashOutOriginalTicket(ticket) && IsCashOutAll(ticket) && IsStatusNotVoidAndRefund(result))
+            if (IsCashOutOriginalTicket(ticket) && IsCashOutAll(ticket) && IsStatusNotVoidAndRefund(status))
             {
                 Template.result = CoreBetList.CashOut;
+                return;
             }
+
+            if (DetectAbnormalBet(ticket))
+            {
+                Template.result = CoreBetList.AbnormalBet;
+                return;
+            }
+
+            var statusText = GetResultString(ticket.Status, ticket.SettlementStatus);
+            Template.result = string.IsNullOrEmpty(statusText) ? status : statusText;
         }
 
+        protected virtual bool DetectAbnormalBet(ITicket ticket)
+        {
+            var status = ticket.Status.ToLowerInvariant();
+
+            return status.Equals(BetStatus.Void, StringComparison.InvariantCulture)
+               && ticket.ExtraInfo.GetXmlTagAttributeValue(AbnormalBetXmlTag, AbnormalBetAttributeName) == "1";
+        }
+
+        /// <summary>
+        /// Build Result Popup Link
+        /// </summary>
+        /// <param name="ticket"></param>
         protected virtual void BuildStatusResult(ITicket ticket)
         {
             var result = ticket.Status.ToLower(CultureInfo.InvariantCulture);
@@ -181,11 +124,6 @@
             Template.ShowIP.betIp = ticket.IP;
         }
 
-        protected virtual void BuildResultLRF(string status, RTFHelper rtfHelper)
-        {
-            rtfHelper.RTFRenderer.AddText(status, rtfHelper.PosFont);
-        }
-
         protected virtual void BuildCashOutHistory(ITicket ticket, ITicketHelper ticketHelper)
         {
             if (ticketHelper.HideStatusCashOutHistory || !IsCashOutTicket(ticket))
@@ -200,6 +138,85 @@
             Template.CashOutHistory.betdaqId = ticket.BetdaqId.ToString();
         }
 
+        #endregion RENDER HTML
+
+        #region RENDER EXCEL
+
+        public virtual IRichTextString RenderRTF(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP, RTFHelper rtfHelper)
+        {
+            Render(ticket, ticketHelper, ticketData, isShowVNIP);
+
+            string status = Template.result;
+
+            BuildResultLRF(status, rtfHelper);
+
+            if (Template.ShowIP != null && Template.ShowIP.Visible)
+            {
+                status = string.Join(null, new[] { "\n", Template.ShowIP.betIp });
+                rtfHelper.RTFRenderer.AddText(status);
+            }
+
+            IRichTextString rtfStatus = rtfHelper.RTFRenderer.Render();
+            rtfHelper.RTFRenderer.Clear();
+
+            return rtfStatus;
+        }
+
+        protected virtual void BuildResultLRF(string status, RTFHelper rtfHelper)
+        {
+            rtfHelper.RTFRenderer.AddText(status, rtfHelper.PosFont);
+        }
+
+        #endregion RENDER EXCEL
+
+        protected static string GetResultString(string ticketStatus)
+          => GetResultString(ticketStatus, 0);
+
+#pragma warning disable S1541 // Methods and properties should not be too complex
+
+        protected static string GetResultString(string ticketStatus, byte settlementStatus)
+        {
+            switch (ticketStatus.ToLowerInvariant())
+            {
+                case BetStatus.Running:
+                    return DetectRealRunningStatus(settlementStatus);
+
+                case BetStatus.Reject:
+                    return CoreBetList.reject;
+
+                case BetStatus.Won:
+                    return CoreBetList.won;
+
+                case BetStatus.Lose:
+                    return CoreBetList.lose;
+
+                case BetStatus.Draw:
+                    return CoreBetList.draw;
+
+                case BetStatus.Waiting:
+                    return CoreBetList.waiting;
+
+                case BetStatus.Void:
+                    return CoreBetList.voided;
+
+                case BetStatus.Refund:
+                    return CoreBetList.refund;
+
+                case BetStatus.HalfWon:
+                    return CoreBetList.halfwon;
+
+                case BetStatus.HalfLose:
+                    return CoreBetList.halflose;
+
+                default:
+                    return string.Empty;
+            }
+        }
+
+#pragma warning restore S1541 // Methods and properties should not be too complex
+
+        #region PRIVATE METHODS
+
         private static bool IsCashOutTicket(ITicket ticket)
             => (ticket.BetdaqId == 1 && !IsBetTradeTicket(ticket.BetTypeId) && IsSportsbook(ticket.SportTypeId)) ||
             ticket.ExtraInfo.HasAttributeInXmlTag(CashOutXmlTag, "s");
@@ -210,7 +227,8 @@
         private static bool IsBetTradeTicket(int betTypeId)
             => betTypeId == 901 || betTypeId == 902;
 
-        private static bool IsStatusNotVoidAndRefund(string status) => !status.Equals(BetStatus.Void) && !status.Equals(BetStatus.Refund);
+        private static bool IsStatusNotVoidAndRefund(string status)
+            => !status.Equals(BetStatus.Void) && !status.Equals(BetStatus.Refund);
 
         private static bool IsCashOutAll(ITicket ticket) => ticket.Stake == 0 && StakeIsZeroBeforeConvertCurrency(ticket);
 
@@ -237,5 +255,7 @@
 
             return CoreBetList.running;
         }
+
+        #endregion PRIVATE METHODS
     }
 }

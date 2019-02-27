@@ -12,5 +12,7 @@
             Template.StatusResult.Hide();
             Template.StatusResult.isoutright = "1";
         }
+
+        protected override bool DetectAbnormalBet(ITicket ticket) => false;
     }
 }

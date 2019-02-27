@@ -2,6 +2,7 @@
 {
     using Core.Builder.StatusBuilder;
     using Entities;
+    using Fanex.BetList.Core.App_GlobalResources;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -41,6 +42,20 @@
             // Assert
             const string IS_OUTRIGHT = "1";
             Assert.AreEqual(IS_OUTRIGHT, _status.Template.StatusResult.isoutright);
+        }
+
+        [Test]
+        public void BuildResult_Always_DisableDetectAbnormalBet()
+        {
+            // Arrange
+            _ticket.Status = BetStatus.Void;
+            _ticket.ExtraInfo = "<p1 ab=\"1\" />";
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, true);
+
+            // Assert
+            Assert.AreEqual(CoreBetList.voided, _status.Template.result);
         }
     }
 }

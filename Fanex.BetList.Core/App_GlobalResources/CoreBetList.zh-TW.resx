@@ -798,4 +798,7 @@
   <data name="halfwon" xml:space="preserve">
     <value>半贏</value>
   </data>
+  <data name="AbnormalBet" xml:space="preserve">
+    <value>非正規註單</value>
+  </data>
 </root>

@@ -672,4 +672,7 @@
   <data name="halfwon" xml:space="preserve">
     <value>ชนะครึ่ง</value>
   </data>
+  <data name="AbnormalBet" xml:space="preserve">
+    <value>เดิมพันผิดปกติ</value>
+  </data>
 </root>

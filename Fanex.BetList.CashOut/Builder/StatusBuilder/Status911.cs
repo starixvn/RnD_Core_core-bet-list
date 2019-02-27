@@ -1,7 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
     using System.Collections.Generic;
-    using System.Globalization;
     using App_GlobalResources;
     using Entities;
 
@@ -13,7 +12,7 @@
         {
             base.BuildResult(ticket, ticketData);
 
-            var status = ticket.Status.ToLower(CultureInfo.InvariantCulture);
+            var status = ticket.Status.ToLowerInvariant();
 
             if (status.Equals(BetStatus.Void) || status.Equals(BetStatus.Refund))
             {
@@ -24,6 +23,8 @@
                 Template.result = GetStatus();
             }
         }
+
+        protected override bool DetectAbnormalBet(ITicket ticket) => false;
 
         protected override void BuildCashOutHistory(ITicket ticket, ITicketHelper ticketHelper)
         {

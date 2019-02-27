@@ -871,4 +871,7 @@
   <data name="halflose" xml:space="preserve">
     <value>Half Lose</value>
   </data>
+  <data name="AbnormalBet" xml:space="preserve">
+    <value>Abnormal Bet</value>
+  </data>
 </root>

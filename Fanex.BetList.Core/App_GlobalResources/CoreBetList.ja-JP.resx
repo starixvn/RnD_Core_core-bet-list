@@ -405,4 +405,7 @@
   <data name="halfwon" xml:space="preserve">
     <value>半分勝った</value>
   </data>
+  <data name="AbnormalBet" xml:space="preserve">
+    <value>異常なベット</value>
+  </data>
 </root>

@@ -558,4 +558,7 @@
   <data name="halfwon" xml:space="preserve">
     <value>절반승리</value>
   </data>
+  <data name="AbnormalBet" xml:space="preserve">
+    <value>비정상 베팅</value>
+  </data>
 </root>

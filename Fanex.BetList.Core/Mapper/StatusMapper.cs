@@ -6,6 +6,8 @@
         {
             MapForFastMarkets();
             MapForBasketBall();
+            MapForMetricGaming();
+            MapForOthers();
         }
 
         private void MapForFastMarkets()
@@ -47,6 +49,23 @@
 
             // [617] Quarter X Which team to score the last basket
             MapIdToBaseId(617, 606);
+        }
+
+        private void MapForMetricGaming()
+        {
+            for (var betType = 802; betType <= 806; betType++)
+            {
+                MapIdToBaseId(betType, 801);
+            }
+        }
+
+        private void MapForOthers()
+        {
+            // Parlay
+            MapIdToBaseId(29, 9);
+
+            // Bet Builder map to Metric Gaming for Abnormal Bet
+            MapIdToBaseId(38, 801);
         }
     }
 }

@@ -207,6 +207,38 @@
             Assert.AreEqual(CoreBetList.running, _status.Template.result);
         }
 
+        [TestCase("<p1 ab=\"1\" />")]
+        public void BuildResult_IsAbnormalBetTicket_ShowAbnormalBet(string extraInfo)
+        {
+            // Arrange
+            _ticket.Status = BetStatus.Void;
+            _ticket.ExtraInfo = extraInfo;
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, true);
+
+            // Assert
+            Assert.AreEqual(CoreBetList.AbnormalBet, _status.Template.result);
+        }
+
+        [TestCase("Void", "<p1 ab=\"2\" />")]
+        [TestCase("Void", "<p2 ab=\"2\" />")]
+        [TestCase("Void", "<p1 aab=\"2\" />")]
+        [TestCase("Void", "")]
+        [TestCase("Void", null)]
+        public void BuildResult_IsNotAbnormalBetTicket_ShowAsNormalTicket(string status, string extraInfo)
+        {
+            // Arrange
+            _ticket.Status = status;
+            _ticket.ExtraInfo = extraInfo;
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, true);
+
+            // Assert
+            Assert.AreEqual(status, _status.Template.result);
+        }
+
         [TestCase("running")]
         [TestCase("waiting")]
         [TestCase("void")]

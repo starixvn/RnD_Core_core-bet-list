@@ -278,13 +278,13 @@ namespace Fanex.BetList.Core.UnitTest.Builder
         [TestCase(23002, "Status23002")]
         [TestCase(23003, "Status23003")]
         [TestCase(23101, "Status23101")]
-        [TestCase(29, "Status29")]
         [TestCase(31, "Status31")]
         [TestCase(32, "Status32")]
         [TestCase(33, "Status33")]
         [TestCase(71, "Status71")]
         [TestCase(73, "Status73")]
         [TestCase(9, "Status9")]
+        [TestCase(801, "Status801")]
         public void CreateStatusBuilder_WhenCalled_ReturnStatus(int betType, string expectedStatus)
         {
             var buider = CreateChoiceBuilder();

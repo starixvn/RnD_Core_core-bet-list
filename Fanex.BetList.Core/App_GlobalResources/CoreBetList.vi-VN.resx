@@ -492,4 +492,7 @@
   <data name="halflose" xml:space="preserve">
     <value>Thua một nửa</value>
   </data>
+  <data name="AbnormalBet" xml:space="preserve">
+    <value>Cược bất thường </value>
+  </data>
 </root>

@@ -13,5 +13,7 @@
 
             Template.StatusResult.refNo_MixParlay = ticket.RefNo;
         }
+
+        protected override bool DetectAbnormalBet(ITicket ticket) => false;
     }
 }

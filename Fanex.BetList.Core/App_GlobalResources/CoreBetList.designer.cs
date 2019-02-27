@@ -79,6 +79,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Abnormal Bet.
+        /// </summary>
+        public static string AbnormalBet {
+            get {
+                return ResourceManager.GetString("AbnormalBet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to AD.
         /// </summary>
         public static string ad {

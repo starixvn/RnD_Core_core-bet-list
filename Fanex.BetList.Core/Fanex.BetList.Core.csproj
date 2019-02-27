@@ -442,7 +442,6 @@
     <Compile Include="Builder\StatusBuilder\Status23002.cs" />
     <Compile Include="Builder\StatusBuilder\Status23003.cs" />
     <Compile Include="Builder\StatusBuilder\Status23101.cs" />
-    <Compile Include="Builder\StatusBuilder\Status29.cs" />
     <Compile Include="Builder\StatusBuilder\Status31.cs" />
     <Compile Include="Builder\StatusBuilder\Status32.cs" />
     <Compile Include="Builder\StatusBuilder\Status33.cs" />
@@ -450,6 +449,7 @@
     <Compile Include="Builder\StatusBuilder\Status606.cs" />
     <Compile Include="Builder\StatusBuilder\Status71.cs" />
     <Compile Include="Builder\StatusBuilder\Status73.cs" />
+    <Compile Include="Builder\StatusBuilder\Status801.cs" />
     <Compile Include="Builder\StatusBuilder\Status9.cs" />
     <Compile Include="Builder\SystemParlayBuilder\ISystemParlayDetail.cs" />
     <Compile Include="Builder\SystemParlayBuilder\SystemParlayDetail.cs" />
