@@ -24,8 +24,6 @@
             }
         }
 
-        protected override bool DetectAbnormalBet(ITicket ticket) => false;
-
         protected override void BuildCashOutHistory(ITicket ticket, ITicketHelper ticketHelper)
         {
             if (ticketHelper.HideStatusCashOutHistory)
