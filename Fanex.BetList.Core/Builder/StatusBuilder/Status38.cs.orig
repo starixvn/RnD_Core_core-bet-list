@@ -1,0 +1,29 @@
+﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
+{
+<<<<<<< HEAD
+    using Fanex.BetList.Core.Entities;
+
+    /// <summary>
+    /// Bet Builder
+    /// </summary>
+    public class Status38 : Status1
+    {
+        protected override bool DetectAbnormalBet(ITicket ticket) => false;
+=======
+    using System;
+    using Entities;
+
+    /// <summary>
+    /// Single Match Parlay
+    /// </summary>
+    public class Status38 : Status1
+    {
+        protected override void BuildStatusResult(ITicket ticket)
+        {
+            base.BuildStatusResult(ticket);
+
+            Template.StatusResult.betId = ticket.BetCheck;
+        }
+>>>>>>> #109066 - Change parameter of detail link and add BetCheck to Status result link
+    }
+}
