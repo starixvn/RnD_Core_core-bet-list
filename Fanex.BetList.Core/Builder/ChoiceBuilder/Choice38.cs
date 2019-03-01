@@ -40,6 +40,9 @@
             Template.League.LeagueName.Append(eventDate);
         }
 
+        public override string GetBetTypeName(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData = null)
+            => ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
+
         private static string BuildSingleMatchParlayDetailLink(ITicket ticket, ITicketHelper ticketHelper)
         {
             var betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
