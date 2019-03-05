@@ -35,9 +35,13 @@
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
         {
             base.BuildLeague(ticket, ticketHelper);
-            var eventDate = EventDateHtmlBeginTag + Formatter.FormatDateTimeEn12ShortMonthNoSec(ticket.EventDate) + EventDateHtmlEndTag;
 
-            Template.League.LeagueName.Append(eventDate);
+            if (ticket.EventDate != DateTime.MinValue)
+            {
+                var eventDate = EventDateHtmlBeginTag + Formatter.FormatDateTimeEn12ShortMonthNoSec(ticket.EventDate) + EventDateHtmlEndTag;
+
+                Template.League.LeagueName.Append(eventDate);
+            }
         }
 
         public override string GetBetTypeName(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData = null)
@@ -70,18 +74,27 @@
         protected override void BuildMatchInfo(ref RTFHelper rtfHelper)
         {
             base.BuildMatchInfo(ref rtfHelper);
+            var eventDate = BuildExcelEventDate();
 
-            rtfHelper.RTFRenderer.AddText(NewLineExcel + BuildExcelEventDate());
+            if (!string.IsNullOrEmpty(eventDate))
+            {
+                rtfHelper.RTFRenderer.AddText(NewLineExcel + eventDate);
+            }
         }
 
         private string BuildExcelEventDate()
         {
             var eventDateBlockIndex = Template.League.LeagueName.ToString()
                     .LastIndexOf(EventDateHtmlBeginTag, StringComparison.InvariantCulture);
-            var eventDateBlock = Template.League.LeagueName.ToString()
-                    .Remove(0, eventDateBlockIndex);
 
-            return eventDateBlock.StripHTML();
+            if (eventDateBlockIndex > 0)
+            {
+                var eventDateBlock = Template.League.LeagueName.ToString().Remove(0, eventDateBlockIndex);
+
+                return eventDateBlock.StripHTML();
+            }
+
+            return string.Empty;
         }
 
         #endregion BUILD EXCEL

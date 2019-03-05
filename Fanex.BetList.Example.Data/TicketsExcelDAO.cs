@@ -152,7 +152,8 @@
                 ticket.CommStatus = GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.CommStatus));
                 ticket.CustId = Convert.ToInt64(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.CustId)));
                 ticket.Currency = GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.Currency));
-                ticket.EventDate = Convert.ToDateTime(GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.EventDate)));
+                var eventDate = GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.EventDate));
+                ticket.EventDate = string.IsNullOrEmpty(eventDate) ? DateTime.MinValue : Convert.ToDateTime(eventDate);
                 ticket.EventStatus = GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.EventStatus));
                 ticket.Handicap1 = Convert.ToDecimal(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.Handicap1)));
                 ticket.Handicap2 = Convert.ToDecimal(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.Handicap2)));
