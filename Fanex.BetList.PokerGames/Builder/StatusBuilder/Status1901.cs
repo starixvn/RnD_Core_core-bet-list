@@ -14,6 +14,7 @@
             {
                 base.BuildStatusResult(ticket);
                 Template.StatusResult.refNo = $"'{ticket.BetCheck}'";
+                Template.StatusResult.betId = $"{ticket.BetId ?? 0}, '{ticket.BetCheck}', {ticket.CustId}";
             }
         }
     }
