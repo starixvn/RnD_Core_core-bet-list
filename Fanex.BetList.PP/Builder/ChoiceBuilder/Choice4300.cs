@@ -9,12 +9,6 @@
         {
             Template.betTeam =
                 $"<span class=\"handicap\">{ticketHelper.GetResourceData(GameTypeRefId, ticket.TransDesc)}</span>";
-
-            if (!string.IsNullOrEmpty(ticket.BetCheck)
-                    && !ticket.Status.ToLowerInvariant().Equals(BetStatus.Won))
-            {
-                Template.betTeam += " " + ticket.BetCheck;
-            }
         }
     }
 }
