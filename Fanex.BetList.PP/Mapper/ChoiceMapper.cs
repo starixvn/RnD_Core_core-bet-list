@@ -9,7 +9,7 @@
 
         private void Initialize()
         {
-            for (int betTypeId = 4102; betTypeId <= 4300; betTypeId++)
+            for (int betTypeId = 4102; betTypeId < 4300; betTypeId++)
             {
                 MapIdToBaseId(betTypeId, 4101);
             }

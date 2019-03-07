@@ -42,8 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builder\ChoiceBuilder\Choice4101.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice4300.cs" />
     <Compile Include="Builder\OddsBuilder\Odds4101.cs" />
     <Compile Include="Builder\StatusBuilder\Status4101.cs" />
+    <Compile Include="Builder\StatusBuilder\Status4300.cs" />
     <Compile Include="Mapper\ChoiceMapper.cs" />
     <Compile Include="Mapper\OddsMapper.cs" />
     <Compile Include="Mapper\StatusMapper.cs" />
