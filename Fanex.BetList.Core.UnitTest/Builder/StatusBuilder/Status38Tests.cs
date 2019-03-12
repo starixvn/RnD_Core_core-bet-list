@@ -1,14 +1,12 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.StatusBuilder
 {
-    using Common;
-    using Common.Enums;
     using Core.Builder.StatusBuilder;
     using Entities;
     using Fanex.BetList.Core.App_GlobalResources;
+    using NSubstitute;
     using NUnit.Framework;
-    using Stubs;
 
-    public class Status801Tests
+    public class Status38Tests
     {
         private IStatus _status;
         private ITicket _ticket;
@@ -17,9 +15,9 @@
         [SetUp]
         public void Setup()
         {
-            _status = new Status801();
-            _ticket = TestData.CreateTicket(801);
-            _ticketHelperStub = new TicketHelperStub();
+            _status = new Status38();
+            _ticket = new Ticket();
+            _ticketHelperStub = Substitute.For<ITicketHelper>();
         }
 
         [Test]

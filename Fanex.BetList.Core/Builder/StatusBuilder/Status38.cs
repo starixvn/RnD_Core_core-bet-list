@@ -1,11 +1,11 @@
 ﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
-    using Entities;
+    using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    /// Metric Gaming Super Live
+    /// Bet Builder
     /// </summary>
-    public class Status801 : Status1
+    public class Status38 : Status1
     {
         protected override bool DetectAbnormalBet(ITicket ticket) => false;
     }
