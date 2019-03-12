@@ -32,9 +32,9 @@ using System.Runtime.InteropServices;
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 <<<<<<< HEAD
-[assembly: AssemblyVersion("2.81.0.0")]
-[assembly: AssemblyFileVersion("2.81.0.0")]
+[assembly: AssemblyVersion("2.83.0.0")]
+[assembly: AssemblyFileVersion("2.83.0.0")]
 =======
-[assembly: AssemblyVersion("2.80.0.0")]
-[assembly: AssemblyFileVersion("2.80.0.0")]
->>>>>>> #109066 - Update AssemblyInfo
+[assembly: AssemblyVersion("2.82.0.0")]
+[assembly: AssemblyFileVersion("2.82.0.0")]
+>>>>>>> #109066 - Rebase master

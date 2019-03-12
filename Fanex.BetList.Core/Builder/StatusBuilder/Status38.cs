@@ -1,8 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
-    using System;
     using Entities;
-    using Fanex.BetList.Core.Entities;
 
     /// <summary>
     /// Single Match Parlay
@@ -15,7 +13,7 @@
 
             Template.StatusResult.betId = ticket.BetCheck;
         }
-        
+
         protected override bool DetectAbnormalBet(ITicket ticket) => false;
     }
 }
