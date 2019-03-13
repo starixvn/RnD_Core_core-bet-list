@@ -141,7 +141,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
         public ActionResult Allbet(BetListData model = null)
         {
-            var betTypes = _dataService.QueryBetTypes(2401, 2402, 2403, 2404, 2405);
+            var betTypes = _dataService.QueryBetTypes(2401, 2402, 2403, 2404, 2405, 2406);
             DataSourcePath = "~/App_Data/Allbet.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);

@@ -11,7 +11,7 @@
     [Ignore("Used for testing when changing old bet type")]
     public class BetListControllerTests
     {
-        private const string ActiveUrl = "http://ha.nexdev.net:7240/V4/";
+        private const string ActiveUrl = "http://ha.nexdev.net:7240/V3/";
         private const string MasterURL = "http://ha.nexdev.net:7240/Main/";
 
         [TestCase("")]

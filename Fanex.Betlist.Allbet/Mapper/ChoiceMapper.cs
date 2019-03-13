@@ -4,7 +4,7 @@
     {
         public ChoiceMapper()
         {
-            for (var betType = 2402; betType <= 2405; betType++)
+            for (var betType = 2402; betType <= 2499; betType++)
             {
                 MapIdToBaseId(betType, 2401);
             }
