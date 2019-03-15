@@ -54,6 +54,7 @@
         public BetListHTMLBuilder Append(string content)
         {
             _content.Append(content);
+
             return this;
         }
 
@@ -77,6 +78,7 @@
         {
             string choice = BuildChoice(ticket, ticketHelper, ticketData, isShowScoreMap);
             _content.Append(string.Join(null, new[] { openTag, choice, closeTag }));
+
             return this;
         }
 
@@ -122,9 +124,8 @@
         public Choice_Template BuildChoiceBlock(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
         {
             IChoice choiceBuilder = CreateChoiceBuilder(ticket.BetTypeId);
-            Choice_Template choice = choiceBuilder.Render(ticket, ticketHelper, ticketData, isShowScoreMap);
 
-            return choice;
+            return choiceBuilder.Render(ticket, ticketHelper, ticketData, isShowScoreMap);
         }
 
         /// <summary>
@@ -140,6 +141,7 @@
         {
             string odds = BuildOdds(ticket, ticketData, funcGetOddsTypeName);
             _content.Append(string.Join(null, new[] { openTag, odds, closeTag }));
+
             return this;
         }
 
@@ -153,9 +155,22 @@
         public string BuildOdds(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
         {
             IOdds oddsBuilder = CreateOddsBuilder(ticket.BetTypeId);
-            string odds = oddsBuilder.Render(ticket, ticketData, funcGetOddsTypeName);
 
-            return odds;
+            return oddsBuilder.Render(ticket, ticketData, funcGetOddsTypeName);
+        }
+
+        public string BuildOddsValue(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById getOddsTypeName)
+        {
+            var oddsBuilder = CreateOddsBuilder(ticket.BetTypeId);
+
+            return oddsBuilder.RenderOddsType(ticket, ticketData, getOddsTypeName);
+        }
+
+        public string BuildOddsTypeName(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById getOddsTypeName)
+        {
+            var oddsBuilder = CreateOddsBuilder(ticket.BetTypeId);
+
+            return oddsBuilder.RenderOddsValue(ticket, ticketData, getOddsTypeName);
         }
 
         /// <summary>
@@ -181,9 +196,8 @@
         public string BuildStake(ITicket ticket)
         {
             IStake stakeBuilder = CreateStakeBuilder(ticket.BetTypeId);
-            string stake = stakeBuilder.Render(ticket);
 
-            return stake;
+            return stakeBuilder.Render(ticket);
         }
 
         /// <summary>
@@ -208,8 +222,22 @@
         public string BuildTrans(ITicket ticket)
         {
             ITrans transBuilder = CreateTransBuilder(ticket.BetTypeId);
-            string trans = transBuilder.Render(ticket);
-            return trans;
+
+            return transBuilder.Render(ticket);
+        }
+
+        public string BuildTransTime(ITicket ticket)
+        {
+            var transBuilder = CreateTransBuilder(ticket.BetTypeId);
+
+            return transBuilder.RenderTranstime(ticket);
+        }
+
+        public string BuildRefNo(ITicket ticket)
+        {
+            var transBuilder = CreateTransBuilder(ticket.BetTypeId);
+
+            return transBuilder.RenderRefNo(ticket);
         }
 
         /// <summary>

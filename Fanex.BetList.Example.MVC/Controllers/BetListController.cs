@@ -745,7 +745,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
             BetListExcelBuilder builder = factory.CreateBuilder();
             ITicketHelper ticketHelper = new TicketHelper();
             GetCachePropertyById funcGetOddsTypeName = ticketHelper.GetOddsTypeNameById;
-            const short excelColumns = 7;
+            const short excelColumns = 11;
             builder.BuildWorksheet("BetList", excelColumns);
             var index = 0;
 
@@ -762,9 +762,13 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
                     builder.AddNo(index)
                            .AddTrans(ticket, ticketHelper)
+                           .AddTransTime(ticket, ticketHelper)
+                           .AddRefNo(ticket, ticketHelper)
                            .AddUsername(ticket, ticketHelper)
                            .AddChoice(ticket, ticketHelper, ticketData)
                            .AddOdds(ticket, ticketData, funcGetOddsTypeName)
+                           .AddOddsType(ticket, ticketData, funcGetOddsTypeName)
+                           .AddOddsValue(ticket, ticketData, funcGetOddsTypeName)
                            .AddStatus(ticket, ticketHelper, ticketData, true)
                            .AddStake(ticket);
                 }

@@ -27,6 +27,10 @@
 
         string BuildOdds(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName);
 
+        string BuildOddsValue(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById getOddsTypeName);
+
+        string BuildOddsTypeName(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById getOddsTypeName);
+
         BetListHTMLBuilder AddStake(ITicket ticket, string openTag, string closeTag);
 
         string BuildStake(ITicket ticket);
@@ -34,6 +38,10 @@
         BetListHTMLBuilder AddTrans(ITicket ticket, string openTag, string closeTag);
 
         string BuildTrans(ITicket ticket);
+
+        string BuildTransTime(ITicket ticket);
+
+        string BuildRefNo(ITicket ticket);
 
         BetListHTMLBuilder AddStatus(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, string openTag, string closeTag, bool isShowVNIP);
 

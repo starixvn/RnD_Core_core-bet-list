@@ -11,6 +11,10 @@
     /// </summary>
     public class Odds1 : IOdds
     {
+        private const string OddsValueOpenTag = "<div class=\"underdog\">";
+        private const string OddsTypeOpenTag = "<div class=\"oddstype\">";
+        private const string CloseTag = "</div>";
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Odds1" /> class.
         /// </summary>
@@ -31,12 +35,63 @@
             return Template;
         }
 
+        public virtual string RenderOddsValue(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
+        {
+            var template = Render(ticket, ticketData, funcGetOddsTypeName);
+
+            return $"{OddsValueOpenTag}{template.odds}{CloseTag}";
+        }
+
+        public virtual string RenderOddsType(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
+        {
+            var template = Render(ticket, ticketData, funcGetOddsTypeName);
+            var oddsTypeName = template.oddsType;
+
+            if (template.odds != "-" && string.IsNullOrEmpty(oddsTypeName))
+            {
+                var oddsType = string.IsNullOrEmpty(ticket.OddsType) ? "0" : ticket.OddsType;
+                oddsTypeName = funcGetOddsTypeName(oddsType);
+            }
+
+            return $"{OddsTypeOpenTag}{oddsTypeName}{CloseTag}";
+        }
+
         public virtual IRichTextString RenderRTF(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName, RTFHelper rtfHelper)
         {
             Render(ticket, ticketData, funcGetOddsTypeName);
-            var rtfOdds = BuildRTFOdds(rtfHelper);
 
-            return rtfOdds;
+            return BuildRTFOdds(rtfHelper);
+        }
+
+        public virtual IRichTextString RenderOddsValueRTF(
+            ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName, RTFHelper rtfHelper)
+        {
+            var oddsValue = RenderOddsValue(ticket, ticketData, funcGetOddsTypeName)
+                .Replace(OddsValueOpenTag, string.Empty)
+                .Replace(CloseTag, string.Empty);
+
+            var rtfNumberRenderer = new RTFNumber(rtfHelper.RTFRenderer, rtfHelper.PosFont, rtfHelper.NegFont);
+            rtfNumberRenderer.Render(oddsValue);
+
+            var oddsValueExcel = rtfHelper.RTFRenderer.Render();
+            rtfHelper.RTFRenderer.Clear();
+
+            return oddsValueExcel;
+        }
+
+        public virtual IRichTextString RenderOddsTypeRTF(
+            ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName, RTFHelper rtfHelper)
+        {
+            var oddsType = RenderOddsType(ticket, ticketData, funcGetOddsTypeName)
+                .Replace(OddsTypeOpenTag, string.Empty)
+                .Replace(CloseTag, string.Empty);
+
+            rtfHelper.RTFRenderer.AddText(oddsType, rtfHelper.PosFont);
+
+            var oddsTypeExcel = rtfHelper.RTFRenderer.Render();
+            rtfHelper.RTFRenderer.Clear();
+
+            return oddsTypeExcel;
         }
 
         /// <summary>
@@ -47,9 +102,7 @@
         protected virtual IRichTextString BuildRTFOdds(RTFHelper rtfHelper)
         {
             string odds = Template.odds;
-
             var rtfNumberRenderer = new RTFNumber(rtfHelper.RTFRenderer, rtfHelper.PosFont, rtfHelper.NegFont);
-
             rtfNumberRenderer.Render(odds);
 
             if (!string.IsNullOrEmpty(Template.oddsType))

@@ -43,9 +43,17 @@
 
         BetListExcelBuilder AddOdds(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName);
 
+        BetListExcelBuilder AddOddsValue(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName);
+
+        BetListExcelBuilder AddOddsType(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName);
+
         BetListExcelBuilder AddStake(ITicket ticket);
 
         BetListExcelBuilder AddTrans(ITicket ticket, ITicketHelper ticketHelper);
+
+        BetListExcelBuilder AddTransTime(ITicket ticket, ITicketHelper ticketHelper);
+
+        BetListExcelBuilder AddRefNo(ITicket ticket, ITicketHelper ticketHelper);
 
         BetListExcelBuilder AddStatus(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP);
     }

@@ -64,6 +64,12 @@
                 Trans.Time
             </th>
             <th>
+                Trans.Time (Only)
+            </th>
+            <th>
+                Ref No
+            </th>
+            <th>
                 Username
             </th>
             <th>
@@ -74,6 +80,12 @@
             </th>
             <th>
                 Odds
+            </th>
+            <th>
+                Odds Value
+            </th>
+            <th>
+                Odds Type
             </th>
             <th>
                 Stake
@@ -89,32 +101,44 @@
         {
             rowIndex++;
 
-            <tr>
-                <td class="text-center">
-                    @rowIndex
-                </td>
-                <td class="c">
-                    @Html.Raw(builder.BuildTrans(ticket))
-                </td>
-                <td class="text-center">
-                    @Html.Raw(builder.BuildUsername(ticket))
-                </td>
-                <td class="text-center">
-                    @Html.Raw(ticket.BetTypeId): @Html.Raw(builder.CreateChoiceBuilder(ticket.BetTypeId).GetBetTypeName(ticket, ticketHelper, ticketData))
-                </td>
-                <td class="text-right">
-                    @Html.Raw(builder.BuildChoice(ticket, ticketHelper, ticketData, isShowScoreMap))
-                </td>
-                <td class="text-center">
-                    @Html.Raw(builder.BuildOdds(ticket, ticketData, funcGetOddsTypeName))
-                </td>
-                <td class="text-center">
-                    @Html.Raw(builder.BuildStake(ticket))
-                </td>
-                <td class="text-center">
-                    @Html.Raw(builder.BuildStatus(ticket, ticketHelper, ticketData, true))
-                </td>
-            </tr>
+        <tr>
+            <td class="text-center">
+                @rowIndex
+            </td>
+            <td class="text-center">
+                @Html.Raw(builder.BuildTrans(ticket))
+            </td>
+            <td class="text-center">
+                @Html.Raw(builder.BuildTransTime(ticket))
+            </td>
+            <td class="text-center">
+                @Html.Raw(builder.BuildRefNo(ticket))
+            </td>
+            <td class="text-center">
+                @Html.Raw(builder.BuildUsername(ticket))
+            </td>
+            <td class="text-center">
+                @Html.Raw(ticket.BetTypeId): @Html.Raw(builder.CreateChoiceBuilder(ticket.BetTypeId).GetBetTypeName(ticket, ticketHelper, ticketData))
+            </td>
+            <td class="text-right">
+                @Html.Raw(builder.BuildChoice(ticket, ticketHelper, ticketData, isShowScoreMap))
+            </td>
+            <td class="text-center">
+                @Html.Raw(builder.BuildOdds(ticket, ticketData, funcGetOddsTypeName))
+            </td>
+            <td class="text-center">
+                @Html.Raw(builder.BuildOddsValue(ticket, ticketData, funcGetOddsTypeName))
+            </td>
+            <td class="text-center">
+                @Html.Raw(builder.BuildOddsTypeName(ticket, ticketData, funcGetOddsTypeName))
+            </td>
+            <td class="text-center">
+                @Html.Raw(builder.BuildStake(ticket))
+            </td>
+            <td class="text-center">
+                @Html.Raw(builder.BuildStatus(ticket, ticketHelper, ticketData, true))
+            </td>
+        </tr>
         }
     </tbody>
 </table>

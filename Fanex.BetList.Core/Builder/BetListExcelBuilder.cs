@@ -339,6 +339,24 @@ namespace Fanex.BetList.Core.Builder
             return this;
         }
 
+        public BetListExcelBuilder AddOddsValue(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
+        {
+            IOdds oddsBuilder = CreateOddsBuilder(ticket.BetTypeId);
+            var oddsValueExcel = oddsBuilder.RenderOddsValueRTF(ticket, ticketData, funcGetOddsTypeName, RTFHelper);
+            AddCell(oddsValueExcel);
+
+            return this;
+        }
+
+        public BetListExcelBuilder AddOddsType(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
+        {
+            IOdds oddsBuilder = CreateOddsBuilder(ticket.BetTypeId);
+            var oddsTypeExcel = oddsBuilder.RenderOddsTypeRTF(ticket, ticketData, funcGetOddsTypeName, RTFHelper);
+            AddCell(oddsTypeExcel);
+
+            return this;
+        }
+
         /// <summary>
         /// Adds the stake.
         /// </summary>
@@ -365,6 +383,24 @@ namespace Fanex.BetList.Core.Builder
             IRichTextString rtfTrans = transBuilder.RenderRTF(ticket, ticketHelper);
 
             AddCell(rtfTrans, ticketHelper.Index % 2 == 0 ? OddCellStyleCenterAligned : EvenCellStyleCenterAligned);
+            return this;
+        }
+
+        public BetListExcelBuilder AddTransTime(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            ITrans transBuilder = CreateTransBuilder(ticket.BetTypeId);
+            IRichTextString rtfTrans = transBuilder.RenderTransTimeRTF(ticket, ticketHelper);
+            AddCell(rtfTrans, ticketHelper.Index % 2 == 0 ? OddCellStyleCenterAligned : EvenCellStyleCenterAligned);
+
+            return this;
+        }
+
+        public BetListExcelBuilder AddRefNo(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            ITrans transBuilder = CreateTransBuilder(ticket.BetTypeId);
+            IRichTextString rtfRefNo = transBuilder.RenderRefNoRTF(ticket, ticketHelper);
+            AddCell(rtfRefNo, ticketHelper.Index % 2 == 0 ? OddCellStyleCenterAligned : EvenCellStyleCenterAligned);
+
             return this;
         }
 

@@ -10,8 +10,16 @@
 
         Trans_Template Render(ITicket ticket);
 
+        string RenderEventDate(ITicket ticket);
+
+        string RenderTranstime(ITicket ticket);
+
+        string RenderRefNo(ITicket ticket);
+
         IRichTextString RenderRTF(ITicket ticket, ITicketHelper ticketHelper);
 
-        string RenderEventDate(ITicket ticket);
+        IRichTextString RenderTransTimeRTF(ITicket ticket, ITicketHelper ticketHelper);
+
+        IRichTextString RenderRefNoRTF(ITicket ticket, ITicketHelper ticketHelper);
     }
 }
