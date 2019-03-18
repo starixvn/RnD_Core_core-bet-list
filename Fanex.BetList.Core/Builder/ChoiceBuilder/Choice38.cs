@@ -51,9 +51,11 @@
         {
             var betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
             var detailLink =
-                $"<div onclick=\"showSingleMatchParlayDetail('{ticket.TransId}', '{ticket.CustId}', {ticketHelper.Index})\">" +
-                    $"<a href=\"javascript:void('');\">{betTypeName}</a>" +
-                $"</div>";
+                "<div class=\"combinationLink\">" +
+                    $"<div onclick=\"showSingleMatchParlayDetail('{ticket.TransId}', '{ticket.CustId}', {ticketHelper.Index})\">" +
+                        $"<a href=\"javascript:void('');\">{betTypeName}</a>" +
+                    "</div>" +
+                "</div>";
 
             var detailBlock = $"<div id=\"divEvent_{ticket.TransId}{ticketHelper.Index}\" style=\"display: none\" ></div>";
 

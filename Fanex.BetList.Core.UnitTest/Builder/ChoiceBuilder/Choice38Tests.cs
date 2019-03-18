@@ -59,7 +59,8 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 
             // Assert
             var expectedBetTypeName =
-                $"<div onclick=\"showSingleMatchParlayDetail('222', '333', 1)\"><a href=\"javascript:void('');\">{BetTypeName}</a></div>" +
+                $"<div class=\"combinationLink\">" +
+                $"<div onclick=\"showSingleMatchParlayDetail('222', '333', 1)\"><a href=\"javascript:void('');\">{BetTypeName}</a></div></div>" +
                 $"<div id=\"divEvent_2221\" style=\"display: none\" ></div>";
             Assert.AreEqual(expectedBetTypeName, template.BetType.betTypeName);
         }
