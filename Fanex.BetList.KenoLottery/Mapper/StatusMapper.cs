@@ -4,18 +4,13 @@
     {
         public StatusMapper()
         {
-            Initialize();
-        }
+            var beginningRangeBetTypeId = 1031;
+            var endingRangeBetTypeId = 1049;
 
-        private void Initialize()
-        {
-            MapIdToBaseId(1032, 1031);
-            MapIdToBaseId(1033, 1031);
-            MapIdToBaseId(1034, 1031);
-            MapIdToBaseId(1035, 1031);
-            MapIdToBaseId(1036, 1031);
-            MapIdToBaseId(1037, 1031);
-            MapIdToBaseId(1038, 1031);
+            for (var betTypeIdInRange = beginningRangeBetTypeId + 1; betTypeIdInRange <= endingRangeBetTypeId; betTypeIdInRange++)
+            {
+                MapIdToBaseId(betTypeIdInRange, beginningRangeBetTypeId);
+            }
         }
     }
 }
