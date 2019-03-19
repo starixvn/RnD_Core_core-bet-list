@@ -36,7 +36,7 @@
         {
             BuildTransTime(ticket);
 
-            return $"{TransTimeOpenTag}{Template.transTime}{TransTimeCloseTag}";
+            return Template.transTime;
         }
 
         public virtual string RenderRefNo(ITicket ticket)

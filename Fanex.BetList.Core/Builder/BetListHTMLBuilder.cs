@@ -163,14 +163,14 @@
         {
             var oddsBuilder = CreateOddsBuilder(ticket.BetTypeId);
 
-            return oddsBuilder.RenderOddsType(ticket, ticketData, getOddsTypeName);
+            return oddsBuilder.RenderOddsValue(ticket, ticketData, getOddsTypeName);
         }
 
         public string BuildOddsTypeName(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById getOddsTypeName)
         {
             var oddsBuilder = CreateOddsBuilder(ticket.BetTypeId);
 
-            return oddsBuilder.RenderOddsValue(ticket, ticketData, getOddsTypeName);
+            return oddsBuilder.RenderOddsType(ticket, ticketData, getOddsTypeName);
         }
 
         /// <summary>

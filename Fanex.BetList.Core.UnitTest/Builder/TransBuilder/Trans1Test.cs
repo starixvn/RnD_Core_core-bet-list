@@ -61,7 +61,7 @@
             var transTime = _trans.RenderTranstime(_ticket);
 
             // Assert
-            Assert.AreEqual("<div class=\"time\">12/12/2012 12:12:12 PM</div>", transTime);
+            Assert.AreEqual("12/12/2012 12:12:12 PM", transTime);
         }
 
         [Test]
