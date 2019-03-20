@@ -407,7 +407,14 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
         public ActionResult KenoLottery(BetListData model = null)
         {
-            var betTypes = _dataService.QueryBetTypes(1031, 1032, 1033, 1034, 1035, 1036, 1037, 1038);
+            var betTypeIds = new List<int>();
+
+            for (var betTypeId = 1031; betTypeId <= 1048; betTypeId++)
+            {
+                betTypeIds.Add(betTypeId);
+            }
+
+            var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             DataSourcePath = "~/App_Data/KenoLottery.xls";
