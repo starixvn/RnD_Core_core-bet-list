@@ -41,20 +41,18 @@ namespace Fanex.BetList.PP.Tests.Builder.ChoiceBuilder
             Assert.AreEqual(expectedBetOptionHtml, template.betTeam);
         }
 
-        [TestCase("won")]
-        [TestCase("lose")]
-        [TestCase("draw")]
-        public void BuildBetTeam_StatusIsWon_NotShowBetCheck(string status)
+        [Test]
+        public void BuildBetTeam_BetCheckIsNotNull_ShowMainTicketGameTypeIdAndBetCheck()
         {
             // Arrange
-            _ticket.BetCheck = string.Empty;
-            _ticket.Status = status;
+            _ticket.BetCheck = "2324234@#";
+            _ticket.MatchCode = "ForcedCompleted=0*ReasonCode=0*RemainingAmount=0*BuyAmount=0*CampaignType=R*MainGameID=4300";
 
             // Act
             var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            string expectedBetOptionHtml = $"<span class=\"handicap\">{FakeGameType}</span>";
+            string expectedBetOptionHtml = $"<span class=\"handicap\">{FakeGameType} - {FakeGameType}</span> 2324234@#";
             Assert.AreEqual(expectedBetOptionHtml, template.betTeam);
         }
     }
