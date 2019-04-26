@@ -484,7 +484,7 @@
     <value>赛事</value>
   </data>
   <data name="refno" xml:space="preserve">
-    <value>参照号码</value>
+    <value>注单号码</value>
   </data>
   <data name="refund" xml:space="preserve">
     <value>退款</value>

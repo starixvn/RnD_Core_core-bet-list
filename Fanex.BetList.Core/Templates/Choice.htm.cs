@@ -28,6 +28,7 @@ namespace Fanex.BetList.Core
 			public Choice_BetType_Block BetType = new Choice_BetType_Block();
 			public Choice_Match_Block Match = new Choice_Match_Block();
 			public Choice_League_Block League = new Choice_League_Block();
+			public Choice_EventDate_Block EventDate = new Choice_EventDate_Block();
 			protected static string s5 = "</div>";
 			public override void ToString(ref StringBuilder bd)
 			{
@@ -49,6 +50,7 @@ namespace Fanex.BetList.Core
 					if(null != BetType) BetType.ToString(ref bd);
 					if(null != Match) Match.ToString(ref bd);
 					if(null != League) League.ToString(ref bd);
+					if(null != EventDate) EventDate.ToString(ref bd);
 					bd.Append(s5);
 				}
 				if(IsAssigned){bd.Append(Value);}
@@ -259,6 +261,24 @@ namespace Fanex.BetList.Core
 					bd.Append(s29);
 					bd.Append(leagueName);
 					bd.Append(s30);
+				}
+				if(IsAssigned){bd.Append(Value);}
+			}
+		}
+
+		public class Choice_EventDate_Block: Block
+		{
+			protected static string s31 = "<div class=\"event-date\">";
+			public string eventDate = "{eventDate}";
+			protected static string s32 = "</div>";
+			public override void ToString(ref StringBuilder bd)
+			{
+				if(!Visible) return;
+				if(RenderChild)
+				{
+					bd.Append(s31);
+					bd.Append(eventDate);
+					bd.Append(s32);
 				}
 				if(IsAssigned){bd.Append(Value);}
 			}

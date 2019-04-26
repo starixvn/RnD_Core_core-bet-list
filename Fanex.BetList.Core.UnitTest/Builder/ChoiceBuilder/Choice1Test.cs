@@ -3,15 +3,14 @@
 namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using System;
+    using System.Collections.Generic;
     using Common.Enums;
     using Core.Builder.ChoiceBuilder;
+    using Core.Utils;
     using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    /// Unit test for Choice1 class.
-    /// </summary>
     [TestFixture]
     public class Choice1Test
     {
@@ -127,6 +126,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         {
             // Arrange
             _ticket.LiveAwayScore = 1;
+            _ticket.SportTypeId = sportType;
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -141,6 +141,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         {
             // Arrange
             _ticket.LiveAwayScore = 1;
+            _ticket.SportTypeId = sportType;
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -1005,6 +1006,72 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticketHelper.Received().GetBetTypeNameById(
                 Arg.Is<object>(betType => (int)betType == _ticket.BetTypeId),
                 Arg.Is<object>(refNo => refNo.ToString() == _ticket.RefNo));
+        }
+
+        [TestCaseSource(nameof(PrepareSportsbookSportTypes))]
+        public void BuildEventKickoffDateTime_SportsbooksTicket_ShowEventKickoffDateTime(int sportTypeId)
+        {
+            // Arrange.
+            _ticket.SportTypeId = sportTypeId;
+
+            // Act.
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert.
+            Assert.IsTrue(_choice.Template.EventDate.Visible);
+        }
+
+        [TestCaseSource(nameof(PrepareSportsbookSportTypes))]
+        public void BuildEventKickoffDateTime_SportsbooksTicket_ShowEventKickoffDateTimeInCorrectFormat(int sportTypeId)
+        {
+            // Arrange.
+            var kickoffDateTime = DateTime.Now;
+
+            _ticket.SportTypeId = sportTypeId;
+            _ticket.EventDate = kickoffDateTime;
+
+            // Act.
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert.
+            var expectedKickoffTimeInCorrectFormat = Formatter.FormatDateTimeEn12ShortMonthNoSec(kickoffDateTime);
+
+            Assert.AreEqual(expectedKickoffTimeInCorrectFormat, _choice.Template.EventDate.eventDate);
+        }
+
+        public static IEnumerable<int> PrepareSportsbookSportTypes()
+        {
+            const int soccer = 1;
+            const int otherSports = 99;
+
+            for (var sportTypeId = soccer; sportTypeId <= otherSports; sportTypeId++)
+            {
+                yield return sportTypeId;
+            }
+        }
+
+        [TestCaseSource(nameof(PrepareNonSportsbookSportTypes))]
+        public void BuildEventKickoffDateTime_NonSportsbooksTicket_HideEventKickoffDateTime(int sportTypeId)
+        {
+            // Arrange.
+            _ticket.SportTypeId = sportTypeId;
+
+            // Act.
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert.
+            Assert.IsFalse(_choice.Template.EventDate.Visible);
+        }
+
+        public static IEnumerable<int> PrepareNonSportsbookSportTypes()
+        {
+            const int otherSports = 99;
+            const int goldDeluxe = 255;
+
+            for (var sportTypeId = otherSports + 1; sportTypeId <= goldDeluxe; sportTypeId++)
+            {
+                yield return sportTypeId;
+            }
         }
     }
 }

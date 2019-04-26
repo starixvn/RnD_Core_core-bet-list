@@ -6,9 +6,6 @@
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    /// Unit test for Choice10 class.
-    /// </summary>
     [TestFixture]
     public class Choice10Test
     {
@@ -25,9 +22,6 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        /// <summary>
-        /// The value of Template.Handicap.handicap is always null.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {
@@ -38,9 +32,6 @@
             Assert.IsNull(_choice.Template.Handicap.handicap);
         }
 
-        /// <summary>
-        /// The value of Template.Match.homeTeam is always null.
-        /// </summary>
         [Test]
         public void BuildMatch_Always_SetHomeTeamIsNull()
         {
@@ -51,9 +42,6 @@
             Assert.IsNull(_choice.Template.Match.homeTeam);
         }
 
-        /// <summary>
-        /// The value of Template.Match.awayTeam is always null.
-        /// </summary>
         [Test]
         public void BuildMatch_Always_SetAwayTeamIsNull()
         {
@@ -64,9 +52,6 @@
             Assert.IsNull(_choice.Template.Match.awayTeam);
         }
 
-        /// <summary>
-        /// The value of Template.Match.VS is always null.
-        /// </summary>
         [Test]
         public void BuildMatch_Always_SetMatchVSBlockIsNull()
         {
@@ -77,9 +62,6 @@
             Assert.IsNull(_choice.Template.Match.VS);
         }
 
-        /// <summary>
-        /// The value of Template.Match.home_firstGoal_lastGoal is always null.
-        /// </summary>
         [Test]
         public void BuildMatch_Always_SetHomeFGLGIsNull()
         {
@@ -90,9 +72,6 @@
             Assert.IsNull(_choice.Template.Match.home_firstGoal_lastGoal);
         }
 
-        /// <summary>
-        /// The value of Template.Match.away_firstGoal_lastGoal is always null.
-        /// </summary>
         [Test]
         public void BuildMatch_Always_SetAwayFGLGIsNull()
         {
@@ -143,9 +122,6 @@
             Assert.AreEqual(isLive, _choice.Template.Score.Visible);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always home team name when home id != 0.
-        /// </summary>
         [Test]
         public void BuildBetTeam_HomeIdNotZero_BetTeamIsHomeTeamName()
         {
@@ -161,9 +137,6 @@
             Assert.AreEqual(HOME_TEAM_NAME, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always away team name when home id = 0.
-        /// </summary>
         [Test]
         public void BuildBetTeam_HomeIdIsZero_BetTeamIsAwayTeamName()
         {
@@ -179,9 +152,6 @@
             Assert.AreEqual(AWEAY_TEAM_NAME, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeamClassName is always favorite.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
         {
@@ -191,6 +161,16 @@
             // Assert
             const string CSS_CLASS_FAVORITE = "favorite";
             Assert.AreEqual(CSS_CLASS_FAVORITE, _choice.Template.betTeamClassName);
+        }
+
+        [Test]
+        public void BuildEventKickoffDateTime_Always_HideEventKickoffDateTime()
+        {
+            // Act.
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert.
+            Assert.IsNull(_choice.Template.EventDate);
         }
     }
 }

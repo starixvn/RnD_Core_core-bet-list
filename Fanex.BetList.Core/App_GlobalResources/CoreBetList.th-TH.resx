@@ -165,9 +165,6 @@
   <data name="race" xml:space="preserve">
     <value>แข่งขัน</value>
   </data>
-  <data name="refno" xml:space="preserve">
-    <value>หมายเลขอ้างอิง</value>
-  </data>
   <data name="stake" xml:space="preserve">
     <value>เงินเดิมพัน </value>
   </data>

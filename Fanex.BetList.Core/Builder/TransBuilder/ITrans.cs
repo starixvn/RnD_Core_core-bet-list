@@ -10,8 +10,6 @@
 
         Trans_Template Render(ITicket ticket);
 
-        string RenderEventDate(ITicket ticket);
-
         string RenderTranstime(ITicket ticket);
 
         string RenderRefNo(ITicket ticket);

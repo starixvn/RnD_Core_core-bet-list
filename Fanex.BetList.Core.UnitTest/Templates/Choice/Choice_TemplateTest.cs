@@ -28,7 +28,7 @@
     [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleClass", Justification = "Reviewed.")]
     public class Choice_TemplateTest
     {
-        private const string ChoiceTemplate = "<div class='{0}'>{1}<span class=\"{2}\">{3}{4}{5}{6}</span>{7}{8}{9}</div>";
+        private const string ChoiceTemplate = "<div class='{0}'>{1}<span class=\"{2}\">{3}{4}{5}{6}</span>{7}{8}{9}{10}</div>";
 
         /// <summary>
         /// Visible the property is true return HTML string.
@@ -61,7 +61,8 @@
                                                 block.Score,
                                                 block.BetType,
                                                 block.Match,
-                                                block.League);
+                                                block.League,
+                                                block.EventDate);
             Assert.AreEqual(expectedHtml, choiceHtml);
         }
 
@@ -105,6 +106,7 @@
                 BetType = null,
                 Match = null,
                 League = null,
+                EventDate = null,
                 ticketStatus = ticketStatus,
                 betTeamClassName = betTeamClass,
                 betTeam = betTeam
@@ -120,6 +122,7 @@
                                                 string.Empty,
                                                 betTeamClass,
                                                 betTeam,
+                                                string.Empty,
                                                 string.Empty,
                                                 string.Empty,
                                                 string.Empty,
@@ -165,7 +168,8 @@
                                                 block.Score,
                                                 block.BetType,
                                                 block.Match,
-                                                block.League) + value;
+                                                block.League,
+                                                block.EventDate) + value;
             Assert.AreEqual(expectedHtml, choiceHtml);
         }
     }

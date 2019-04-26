@@ -30,5 +30,8 @@
         {
             Template.ticketStatus = string.Empty;
         }
+
+        protected override void BuildEventKickoffDateTime(ITicket ticket)
+            => Template.EventDate = null;
     }
 }

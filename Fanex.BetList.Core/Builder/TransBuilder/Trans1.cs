@@ -7,15 +7,8 @@
     using NPOI.SS.UserModel;
     using Templates;
 
-    /// <summary>
-    /// Trans for most bet types.
-    /// </summary>
     public class Trans1 : ITrans
     {
-        private const string EventDateHtmlBlock = "<div class=\"event-date\">{0}</div>";
-        private const string TransTimeOpenTag = "<div class=\"time\">";
-        private const string TransTimeCloseTag = "</div>";
-
         public Trans1()
         {
             Template = new Trans_Template();
@@ -45,9 +38,6 @@
 
             return Template.TransTime.refNo;
         }
-
-        public virtual string RenderEventDate(ITicket ticket)
-            => string.Format(EventDateHtmlBlock, Formatter.FormatDateTimeEn12ShortMonthNoSec(ticket.EventDate));
 
 #pragma warning disable S1449 // Culture should be specified for "string" operations
 

@@ -78,19 +78,6 @@
         }
 
         [Test]
-        public void RenderEventDate_Always_GetEventDate()
-        {
-            // Arrange
-            _ticket.EventDate = new DateTime(2012, 12, 12, 12, 12, 12);
-
-            // Act
-            var eventDate = _trans.RenderEventDate(_ticket);
-
-            // Assert
-            Assert.AreEqual("<div class=\"event-date\">12/12/2012 12:12 PM</div>", eventDate);
-        }
-
-        [Test]
         public void RenderRTF_Always_GetExpectedRTFText()
         {
             // Arrange

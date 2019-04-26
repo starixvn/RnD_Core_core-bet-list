@@ -166,7 +166,7 @@
     <value>賽事</value>
   </data>
   <data name="refno" xml:space="preserve">
-    <value>參照號碼</value>
+    <value>注單號碼</value>
   </data>
   <data name="stake" xml:space="preserve">
     <value>投注額 </value>

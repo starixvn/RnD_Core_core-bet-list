@@ -17,14 +17,7 @@
     /// </summary>
     public class Choice1 : IChoice
     {
-        /// <summary>
-        /// The Underdog = "underdog".
-        /// </summary>
         protected const string Underdog = "underdog";
-
-        /// <summary>
-        /// The Favorite = "favorite".
-        /// </summary>
         protected const string Favorite = "favorite";
 
         private const string VoidStatus = "void";
@@ -194,13 +187,6 @@
 
         #region Render Line Excel
 
-        /// <summary>
-        /// Builds the RTF choice.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="rtfHelper">The RTF helper.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <returns>Return RichTextString.</returns>
         protected virtual IRichTextString BuildRTFChoice(ITicket ticket, RTFHelper rtfHelper, ITicketHelper ticketHelper)
         {
             var isMixParlay = false;
@@ -219,14 +205,14 @@
             // the 4th line
             BuildMatchInfo(ref rtfHelper);
 
+            // the 5th line
+            BuildEventKickoffDateTimeInfo(rtfHelper);
+
             var choiceRtf = rtfHelper.RTFRenderer.Render();
             rtfHelper.RTFRenderer.Clear();
             return choiceRtf;
         }
 
-        /// <summary>
-        /// Adjusts the bet team to RTF.
-        /// </summary>
         protected virtual void AdjustBetTeamToRTF()
         {
             Template.betTeam = Template.betTeam.Replace("<span class=\"favorite\">", string.Empty);
@@ -239,12 +225,6 @@
 
         #region Build Html Block
 
-        /// <summary>
-        /// Builds the choice.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
         protected virtual void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             // The first build match information get home team, away team name, label (F)(L)(1F)(1L)
@@ -264,14 +244,10 @@
             BuildTicketStatus(ticket);
 
             BuildBetTeamClassNameAndHandicap(ticket);
+
+            BuildEventKickoffDateTime(ticket);
         }
 
-        /// <summary>
-        /// Builds the bet team.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
         protected virtual void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             var awayTeamName = ticketHelper.GetTeamNameById(ticket.AwayId);
@@ -281,10 +257,6 @@
             Template.betTeam = isBetHomeTeam ? homeTeamName : awayTeamName;
         }
 
-        /// <summary>
-        /// Builds the bet team class name and handicap.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
         protected virtual void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
             var isBetHomeTeam = IsBetHomeTeam(ticket);
@@ -323,11 +295,6 @@
             }
         }
 
-        /// <summary>
-        /// Builds the score.
-        /// Bettype 210, 413, 416 only support soccer
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
         protected virtual void BuildScore(ITicket ticket)
         {
             if (Template.Score == null)
@@ -393,12 +360,6 @@
                 !_liveScoreSports.Contains(sportTypeId);
         }
 
-        /// <summary>
-        /// Builds the type of the bet.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
         protected virtual void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             if (Template.BetType == null)
@@ -416,11 +377,6 @@
             Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, refNo);
         }
 
-        /// <summary>
-        /// Builds the match.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
         protected virtual void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
         {
             if (Template.Match == null)
@@ -436,11 +392,6 @@
             BuildFG_LGLabel(ticket.EventStatus, ref Template.Match.home_firstGoal_lastGoal, ref Template.Match.away_firstGoal_lastGoal);
         }
 
-        /// <summary>
-        /// Builds the league.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
         protected virtual void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
         {
             if (Template.League == null
@@ -452,11 +403,6 @@
             Template.League.LeagueName.leagueName = ticketHelper.GetLeagueNameById(ticket.LeagueId);
         }
 
-        /// <summary>
-        /// Builds the sport.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
         protected virtual void BuildSport(ITicket ticket, ITicketHelper ticketHelper)
         {
             if (Template.League == null)
@@ -467,10 +413,6 @@
             Template.League.sportTypeName = ticketHelper.GetSportNameById(ticket.SportTypeId);
         }
 
-        /// <summary>
-        /// Builds the ticket status.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
         protected virtual void BuildTicketStatus(ITicket ticket)
         {
             string statusId = ticket.StatusId != null ? ticket.StatusId.ToString() : string.Empty;
@@ -491,6 +433,19 @@
             if (statusId == BetStatusId.Refund || status == BetStatus.Refund)
             {
                 Template.ticketStatus = RefundStatus;
+            }
+        }
+
+        protected virtual void BuildEventKickoffDateTime(ITicket ticket)
+        {
+            if (IsSportsbook(ticket.SportTypeId))
+            {
+                Template.EventDate.Visible = true;
+                Template.EventDate.eventDate = Formatter.FormatDateTimeEn12ShortMonthNoSec(ticket.EventDate);
+            }
+            else
+            {
+                Template.EventDate.Visible = false;
             }
         }
 
@@ -519,11 +474,6 @@
             return betHomeTeam;
         }
 
-        /// <summary>
-        /// Builds the score map.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="isShowScoreMap">If set to <c>true</c> [is show score map].</param>
         private void BuildScoreMap(ITicket ticket, bool isShowScoreMap)
         {
             if (isShowScoreMap)
@@ -538,11 +488,6 @@
             }
         }
 
-        /// <summary>
-        /// Builds the odds.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
         private void BuildOdds(ITicket ticket, ITicketHelper ticketHelper)
         {
             if (ticketHelper.IsShowOddsWithChoice)
@@ -568,12 +513,6 @@
             }
         }
 
-        /// <summary>
-        /// Builds the bet figure.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="rtfHelper">The RTF helper.</param>
-        /// <param name="isMixParlay">If set to <c>true</c> [is mix parlay].</param>
         protected virtual void BuildBetFigure(ITicket ticket, ref RTFHelper rtfHelper, bool isMixParlay)
         {
             string choice = Template.betTeam;
@@ -601,10 +540,6 @@
             }
         }
 
-        /// <summary>
-        /// Builds the name of the bet type.
-        /// </summary>
-        /// <param name="rtfHelper">The RTF helper.</param>
         protected virtual void BuildBetTypeName(ref RTFHelper rtfHelper)
         {
             var choice = string.Empty;
@@ -616,11 +551,6 @@
             }
         }
 
-        /// <summary>
-        /// Builds the bet teams information.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="rtfHelper">The RTF helper.</param>
         protected virtual void BuildBetTeamsInfo(ITicket ticket, ref RTFHelper rtfHelper)
         {
             if (Template.Match != null)
@@ -648,10 +578,6 @@
             }
         }
 
-        /// <summary>
-        /// Builds the match information.
-        /// </summary>
-        /// <param name="rtfHelper">The RTF helper.</param>
         protected virtual void BuildMatchInfo(ref RTFHelper rtfHelper)
         {
             if (Template.League != null)
@@ -678,6 +604,16 @@
                     choice = choice.Replace(HtmlCharacters.NoneBreakingSpace, Space);
                     rtfHelper.RTFRenderer.AddText("\n" + choice);
                 }
+            }
+        }
+
+        protected virtual void BuildEventKickoffDateTimeInfo(RTFHelper rtfHelper)
+        {
+            if (Template.EventDate != null
+                && Template.EventDate.Visible
+                && !string.IsNullOrEmpty(Template.EventDate.eventDate))
+            {
+                rtfHelper.RTFRenderer.AddText("\n" + Template.EventDate.eventDate);
             }
         }
 
@@ -755,12 +691,6 @@
             return false;
         }
 
-        /// <summary>
-        /// Gets the bet status part.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="partName">Name of the part.</param>
-        /// <returns>Return the bet status array.</returns>
         private static string[] GetBetStatusPart(string[] source, string partName)
         {
             var part = source?.FirstOrDefault(item => item.StartsWith(partName, StringComparison.InvariantCulture)) ?? string.Empty;
@@ -769,14 +699,6 @@
             return partValue;
         }
 
-        /// <summary>
-        /// Calculates the FGLG label.
-        /// </summary>
-        /// <param name="firstClassName">First name of the class.</param>
-        /// <param name="lastClassName">Last name of the class.</param>
-        /// <param name="statusPart">The status part.</param>
-        /// <param name="homeFGLG">The home FGLG.</param>
-        /// <param name="awayFGLG">The away FGLG.</param>
         private static void CalculateFG_LGLabel(string firstClassName, string lastClassName, string[] statusPart, ref string homeFGLG, ref string awayFGLG)
         {
             if (statusPart.Length != 3)
@@ -805,14 +727,6 @@
             }
         }
 
-        /// <summary>
-        /// Updates the f g_ l g_ excel.
-        /// </summary>
-        /// <param name="firstTextName">First name of the text.</param>
-        /// <param name="lastTextName">Last name of the text.</param>
-        /// <param name="statusPart">The status part.</param>
-        /// <param name="homeFGLG">The home FGLG.</param>
-        /// <param name="awayFGLG">The away FGLG.</param>
         private static void UpdateFG_LG_Excel(string firstTextName, string lastTextName, string[] statusPart, ref string homeFGLG, ref string awayFGLG)
         {
             if (statusPart.Length != 3)
@@ -846,6 +760,14 @@
         private static bool IsOutRight(int betTypeId) => betTypeId == 10;
 
         private static bool IsBetTrade(int betTypeId) => betTypeId == 901 || betTypeId == 902;
+
+        private static bool IsSportsbook(int sportTypeId)
+        {
+            const int soccer = 1;
+            const int otherSports = 99;
+
+            return sportTypeId >= soccer && sportTypeId <= otherSports;
+        }
 
         #endregion Private function
     }

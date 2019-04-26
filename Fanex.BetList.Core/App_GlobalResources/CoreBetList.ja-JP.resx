@@ -144,9 +144,6 @@
   <data name="over" xml:space="preserve">
     <value>オーバー</value>
   </data>
-  <data name="refno" xml:space="preserve">
-    <value>受付番号</value>
-  </data>
   <data name="stake" xml:space="preserve">
     <value>ベット</value>
   </data>

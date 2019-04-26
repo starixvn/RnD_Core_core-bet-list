@@ -290,10 +290,7 @@
             var statusBuilder = CreateStatusBuilder(ticket.BetTypeId);
             var statusText = statusBuilder.RenderStatusResultText(ticket, ticketData);
 
-            var transBuilder = CreateTransBuilder(ticket.BetTypeId);
-            var eventDate = transBuilder.RenderEventDate(ticket);
-
-            return eventDate + statusText;
+            return statusText;
         }
     }
 }

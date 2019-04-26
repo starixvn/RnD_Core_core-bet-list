@@ -165,9 +165,6 @@
   <data name="race" xml:space="preserve">
     <value>경주</value>
   </data>
-  <data name="refno" xml:space="preserve">
-    <value>배팅 번호</value>
-  </data>
   <data name="stake" xml:space="preserve">
     <value>배팅 금액</value>
   </data>
