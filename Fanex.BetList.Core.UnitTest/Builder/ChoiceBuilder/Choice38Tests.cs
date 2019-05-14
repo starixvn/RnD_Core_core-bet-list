@@ -55,12 +55,13 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         public void BuildBetType_Always_ShowBetTypeAsLink()
         {
             // Act
+            ticket.Status = "won";
             var template = choice.Render(ticket, ticketHelper, null, false);
 
             // Assert
             var expectedBetTypeName =
                 $"<div class=\"combinationLink\">" +
-                $"<div onclick=\"showSingleMatchParlayDetail('222', '333', 1)\"><a href=\"javascript:void('');\">{BetTypeName}</a></div></div>" +
+                $"<div onclick=\"showSingleMatchParlayDetail('222', '333', 'won', 1)\"><a href=\"javascript:void('');\">{BetTypeName}</a></div></div>" +
                 $"<div id=\"divEvent_2221\" style=\"display: none\" ></div>";
             Assert.AreEqual(expectedBetTypeName, template.BetType.betTypeName);
         }

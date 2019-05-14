@@ -52,7 +52,7 @@
             var betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
             var detailLink =
                 "<div class=\"combinationLink\">" +
-                    $"<div onclick=\"showSingleMatchParlayDetail('{ticket.TransId}', '{ticket.CustId}', {ticketHelper.Index})\">" +
+                    $"<div onclick=\"showSingleMatchParlayDetail('{ticket.TransId}', '{ticket.CustId}', '{ticket.Status}', {ticketHelper.Index})\">" +
                         $"<a href=\"javascript:void('');\">{betTypeName}</a>" +
                     "</div>" +
                 "</div>";
