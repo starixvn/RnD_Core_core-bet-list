@@ -70,7 +70,7 @@
         {
             var betTypeName = Template.BetType.betTypeName.StripHTML();
 
-            rtfHelper.RTFRenderer.AddText(betTypeName);
+            rtfHelper.RTFRenderer.AddText(betTypeName, rtfHelper.PosFont);
         }
 
         protected override void BuildMatchInfo(ref RTFHelper rtfHelper)
