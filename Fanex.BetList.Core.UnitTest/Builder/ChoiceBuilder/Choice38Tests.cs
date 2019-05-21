@@ -19,12 +19,13 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         public void SetUp()
         {
             choice = new Choice38();
-            ticket = new Ticket();
-            ticket.BetTypeId = 38;
-            ticket.BetCheck = "1111";
-            ticket.TransId = 222;
-            ticket.CustId = 333;
-            ticket.EventDate = new DateTime(2018, 01, 01, 5, 20, 25);
+            ticket = new Ticket
+            {
+                BetTypeId = 38,
+                BetCheck = "1111",
+                TransId = 222,
+                CustId = 333
+            };
             ticketHelper = Substitute.For<ITicketHelper>();
             ticketHelper.Index = 1;
             ticketHelper.GetBetTypeNameById(38).Returns(BetTypeName);
@@ -67,47 +68,8 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildLeague_IsEventIsNotMinDateValue_AppendEventDateAtLast()
+        public void RenderRTF_BetType_RenderExpectedText()
         {
-            // Act
-            var template = choice.Render(ticket, ticketHelper, null, false);
-
-            // Assert
-            var expectedEventDate = "<div class=\"event-date\">1/01/2018 05:20 AM</div>";
-            Assert.True(template.League.LeagueName.ToString().Contains(expectedEventDate));
-        }
-
-        [Test]
-        public void BuildLeague_IsEventIsMinDateValue_DoNothing()
-        {
-            // Arrange
-            ticket.EventDate = DateTime.MinValue;
-
-            // Act
-            var template = choice.Render(ticket, ticketHelper, null, false);
-
-            // Assert
-            var expectedEventDate = "<div class=\"event-date\">";
-            Assert.False(template.League.LeagueName.ToString().Contains(expectedEventDate));
-        }
-
-        [Test]
-        public void RenderRTF_EventDateIsNotMinValue_RenderExpectedText()
-        {
-            // Act
-            var template = choice.RenderRTF(ticket, ticketHelper, null, false, rtfHelper);
-
-            // Assert
-            var expectedExcelText = "Single Match Parlay- vs -\n1/01/2018 05:20 AM";
-            Assert.AreEqual(expectedExcelText, template[0].ToString());
-        }
-
-        [Test]
-        public void RenderRTF_EventDateIsMinValue_RenderExpectedText()
-        {
-            // Arrange
-            ticket.EventDate = DateTime.MinValue;
-
             // Act
             var template = choice.RenderRTF(ticket, ticketHelper, null, false, rtfHelper);
 

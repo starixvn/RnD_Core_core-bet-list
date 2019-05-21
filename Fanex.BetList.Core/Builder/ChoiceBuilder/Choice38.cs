@@ -1,20 +1,14 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System;
-    using System.Collections.Generic;
     using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Utils;
     using Fanex.BetList.Core.Utils.StringExt;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Bet Type: Single Match Parlay - Bet Builder
     /// </summary>
     public class Choice38 : Choice1
     {
-        private const string EventDateHtmlBeginTag = "<div class=\"event-date\">";
-        private const string EventDateHtmlEndTag = "</div>";
-        private const string NewLineExcel = "\n";
-
         #region BUILD HTML
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
@@ -30,18 +24,6 @@
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             Template.BetType.betTypeName = BuildSingleMatchParlayDetailLink(ticket, ticketHelper);
-        }
-
-        protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
-        {
-            base.BuildLeague(ticket, ticketHelper);
-
-            if (ticket.EventDate != DateTime.MinValue)
-            {
-                var eventDate = EventDateHtmlBeginTag + Formatter.FormatDateTimeEn12ShortMonthNoSec(ticket.EventDate) + EventDateHtmlEndTag;
-
-                Template.League.LeagueName.Append(eventDate);
-            }
         }
 
         public override string GetBetTypeName(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData = null)
@@ -71,32 +53,6 @@
             var betTypeName = Template.BetType.betTypeName.StripHTML();
 
             rtfHelper.RTFRenderer.AddText(betTypeName, rtfHelper.PosFont);
-        }
-
-        protected override void BuildMatchInfo(ref RTFHelper rtfHelper)
-        {
-            base.BuildMatchInfo(ref rtfHelper);
-            var eventDate = BuildExcelEventDate();
-
-            if (!string.IsNullOrEmpty(eventDate))
-            {
-                rtfHelper.RTFRenderer.AddText(NewLineExcel + eventDate);
-            }
-        }
-
-        private string BuildExcelEventDate()
-        {
-            var eventDateBlockIndex = Template.League.LeagueName.ToString()
-                    .LastIndexOf(EventDateHtmlBeginTag, StringComparison.InvariantCulture);
-
-            if (eventDateBlockIndex > 0)
-            {
-                var eventDateBlock = Template.League.LeagueName.ToString().Remove(0, eventDateBlockIndex);
-
-                return eventDateBlock.StripHTML();
-            }
-
-            return string.Empty;
         }
 
         #endregion BUILD EXCEL
