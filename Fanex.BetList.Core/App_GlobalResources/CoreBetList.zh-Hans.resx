@@ -807,4 +807,7 @@
   <data name="Equal" xml:space="preserve">
     <value>等于</value>
   </data>
+  <data name="pending" xml:space="preserve">
+    <value>等待中</value>
+  </data>
 </root>

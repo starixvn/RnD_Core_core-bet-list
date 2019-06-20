@@ -204,6 +204,9 @@
                 case BetStatus.HalfLose:
                     return CoreBetList.halflose;
 
+                case BetStatus.Pending:
+                    return CoreBetList.pending;
+
                 default:
                     return string.Empty;
             }

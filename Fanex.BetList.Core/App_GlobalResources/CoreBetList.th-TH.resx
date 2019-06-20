@@ -675,4 +675,7 @@
   <data name="Equal" xml:space="preserve">
     <value>เสมอ</value>
   </data>
+  <data name="pending" xml:space="preserve">
+    <value>ระหว่างการดำเนินการ</value>
+  </data>
 </root>
