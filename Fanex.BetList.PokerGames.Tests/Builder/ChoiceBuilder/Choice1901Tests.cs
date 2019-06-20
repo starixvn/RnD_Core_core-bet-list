@@ -10,14 +10,13 @@
     public class Choice1901Tests
     {
         private const string TableResourceId = "Table";
-        private const string PointResourceId = "Point";
-        private const string PlayerIdResourceId = "PlayerID";
+        private const string PointResourceId = "PerPoint";
 
         private const string TableResourceIdPattern = "Table #{0}";
-        private const string PointResourceIdPattern = "({0} Points)";
-        private const string PlayerIdPattern = "PlayerID {0}";
-        private const string GameTypeName = "8 Cards";
-        private const string SportTypeName = "Video Poker";
+        private const string PointResourceIdPattern = "({0} Per Point)";
+        private const string GameTypeName = "Video Poker";
+        private const string GameGroupName = "Table Games";
+        private const string SportTypeName = "Card Club";
 
         private IChoice _choice;
         private ITicket _ticket;
@@ -32,57 +31,81 @@
 
             _ticket.BetTypeId = 1901;
             _ticket.Stake = 2000;
-            _ticket.LiveHomeScore = 111;
-            _ticket.Handicap1 = 1123.5M;
             _ticket.CustId = 1000;
             _ticket.Currency = "THB";
-            _ticket.TransDesc = "1401";
+            _ticket.TransDesc = "1901";
             _ticket.SportTypeId = 165;
             _ticket.MatchCode = "ForcedCompleted=0*ReasonCode=0*RemainingAmount=0*" +
                 "BuyAmount=0*ValidBetAmount=0*JPType=0*HandNumber=12345*TableNumber=9985" +
                 "*Point=10*PlayerID=168168*DoubleUpRate=0.2*DoubleUpOdds=0.5";
 
-            _ticketHelper.GetResourceData(Arg.Is(Choice1401.GameTypeRefId), Arg.Is(_ticket.SportTypeId.ToString())).Returns(SportTypeName);
-            _ticketHelper.GetResourceData(Arg.Is(Choice1401.GameInfoRefId), Arg.Is(TableResourceId)).Returns(TableResourceIdPattern);
-            _ticketHelper.GetResourceData(Arg.Is(Choice1401.GameInfoRefId), Arg.Is(PointResourceId)).Returns(PointResourceIdPattern);
-            _ticketHelper.GetResourceData(Arg.Is(Choice1401.GameInfoRefId), Arg.Is(PlayerIdResourceId)).Returns(PlayerIdPattern);
-            _ticketHelper.GetResourceData(Arg.Is(Choice1401.GameTypeRefId), Arg.Is(_ticket.TransDesc)).Returns(GameTypeName);
+            _ticketHelper.GetResourceData(Arg.Is(Choice1901.GameTypeRefId), Arg.Is(_ticket.SportTypeId.ToString())).Returns(SportTypeName);
+            _ticketHelper.GetResourceData(Arg.Is(Choice1901.GameInfoRefId), Arg.Is(TableResourceId)).Returns(TableResourceIdPattern);
+            _ticketHelper.GetResourceData(Arg.Is(Choice1901.GameInfoRefId), Arg.Is(PointResourceId)).Returns(PointResourceIdPattern);
+            _ticketHelper.GetResourceData(Arg.Is(Choice1901.GameTypeRefId), Arg.Is(_ticket.BetTypeId.ToString())).Returns(GameTypeName);
+            _ticketHelper.GetResourceData(Arg.Is(Choice1901.GameGroupRefId), Arg.Is(_ticket.TransDesc)).Returns(GameGroupName);
         }
 
         [Test]
-        public void BuildBetTeam_Always_BetTeamIsEmptyString()
+        public void BuildBetTeam_IsSummaryTicket_NotContainBetcheck()
         {
+            // Arrange
+            _ticket.BetCheck = string.Empty;
+            var expectedBetTeam = $"<span class=\"handicap\">{GameTypeName}</span>";
+
             // Act.
             var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            Assert.IsEmpty(template.betTeam);
+            Assert.AreEqual(expectedBetTeam, template.betTeam);
         }
 
         [Test]
-        public void BuildBetType_IsSummaryTicket_NotShow()
+        public void BuildBetTeam_IsDetailTicket_ContainBetcheck()
         {
             // Arrange
-            _ticket.BetCheck = string.Empty;
+            _ticket.BetCheck = "123456";
+            var expectedBetTeam = $"<span class=\"handicap\">{GameTypeName}</span> {_ticket.BetCheck}";
+
+            // Act.
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert.
+            Assert.AreEqual(expectedBetTeam, template.betTeam);
+        }
+
+        [Test]
+        public void BuildBetType_Alway_Null()
+        {
+            // Act.
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert.
+            Assert.IsNull(_choice.Template.BetType);
+        }
+
+        [Test]
+        public void BuildScore_Alway_Null()
+        {
+            // Act.
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert.
+            Assert.IsNull(_choice.Template.Score);
+        }
+
+        [Test]
+        public void BuildBetTeamClassNameAndHandicap_Alway_NullAndUnderdogClass()
+        {
+            // Arrange
+            var expectedClass = "underdog";
 
             // Act.
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            Assert.IsEmpty(_choice.Template.BetType.betTypeName);
-        }
-
-        [Test]
-        public void BuildBetType_IsDetailTicket_ShowGameTypeNameGotFromRemotingRefAsBetTypeName()
-        {
-            // Arrange
-            _ticket.BetCheck = "12312432";
-
-            // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, false);
-
-            // Assert.
-            Assert.AreEqual(GameTypeName, template.BetType.betTypeName);
+            Assert.IsNull(_choice.Template.Handicap.handicap);
+            Assert.AreEqual(expectedClass,_choice.Template.betTeamClassName);
         }
 
         [Test]
@@ -103,12 +126,12 @@
         {
             // Arrange
             _ticket.BetCheck = "12312432";
-
+            var expectedMatch = "<div class=\"game-info\"><div>Table #9985 (10 Per Point)</div></div>";
             // Act.
             var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            Assert.AreEqual(template.Match.ToString(), "<div class=\"game-info\"><div>Table #9985 (10 Points)</div><div>PlayerID 168168</div></div>");
+            Assert.AreEqual(expectedMatch, template.Match.ToString());
         }
 
         [Test]
@@ -122,13 +145,31 @@
         }
 
         [Test]
-        public void BuildLeague_IsSummaryTicket_ShowLeagueNameAsBetTypeName()
+        public void BuildLeague_IsSummarTicket_ShowGameGroupName()
         {
+            // Arrange
+            _ticket.BetCheck = string.Empty;
+            var expectedGameGroupName = $"<span class='gamegroupname'> {GameGroupName}</span>";
+
             // Act
             var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.AreEqual(GameTypeName, template.League.LeagueName.leagueName);
+            Assert.IsTrue(template.League.ToString().Contains(expectedGameGroupName));
+        }
+
+        [Test]
+        public void BuildLeague_IsSummarTicket_ShowJSFunction()
+        {
+            // Arrange
+            _ticket.BetCheck = string.Empty;
+            var expectedJSFunction = "showVideoPokerGameDetails";
+
+            // Act
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.IsTrue(template.League.ToString().Contains(expectedJSFunction));
         }
 
         [TestCase("WON", "1")]
@@ -191,20 +232,21 @@
         }
 
         [Test]
-        public void BuildLeague_IsDetailTicket_ReplaceLeagueNameByTransId3rdStoredInBetCheck()
+        public void BuildLeague_IsDetailTicket_NotShowJsFunction()
         {
             // Arrange.
             _ticket.BetCheck = "BC123";
+            var jsFunctionName = "showVideoPokerGameDetails";
 
             // Act.
             var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            Assert.AreEqual(_ticket.BetCheck, template.League.LeagueName.leagueName);
+            Assert.IsFalse(template.League.LeagueName.leagueName.Contains(jsFunctionName));
         }
 
         [Test]
-        public void BuildBetTeamInfo_MatchIsNotNull_RenderForExcel()
+        public void BuildBetTeamInfo_IsDetailTicket_RenderForExcel()
         {
             // Arrange.
             _ticket.BetCheck = "BC123";
@@ -215,16 +257,16 @@
             var linesInActualText = actualText[0].String.Split('\n');
 
             // Assert
-            Assert.AreEqual(GameTypeName, linesInActualText[1]);
-            Assert.AreEqual("Table #9985 (10 Points)", linesInActualText[2]);
-            Assert.AreEqual("PlayerID 168168", linesInActualText[3]);
-            Assert.AreEqual($"{SportTypeName} {_ticket.BetCheck}", linesInActualText[4]);
+            Assert.AreEqual($"{GameTypeName} {_ticket.BetCheck}", linesInActualText[0]);
+            Assert.AreEqual("Table #9985 (10 Per Point)", linesInActualText[1]);
+            Assert.AreEqual($"{SportTypeName} {GameGroupName}", linesInActualText[2]);
         }
 
         [Test]
-        public void BuildBetTeamInfo_MatchIsNull_RenderForExcel()
+        public void BuildBetTeamInfo_IsSummaryTicket_RenderForExcel()
         {
             // Arrange.
+            _ticket.BetCheck = string.Empty;
             var rtfHelper = new RTFHelper().Clone();
 
             // Act
@@ -232,7 +274,8 @@
             var linesInActualText = actualText[0].String.Split('\n');
 
             // Assert
-            Assert.AreEqual($"{SportTypeName} {GameTypeName}", linesInActualText[1]);
+            Assert.AreEqual($"{GameTypeName}", linesInActualText[0]);
+            Assert.AreEqual($"{SportTypeName} {GameGroupName}", linesInActualText[1]);
         }
     }
 }

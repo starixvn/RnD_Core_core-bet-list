@@ -11,7 +11,7 @@
     [Ignore("Used for testing when changing old bet type")]
     public class BetListControllerTests
     {
-        private const string ActiveUrl = "http://localhost:59158/";
+        private const string ActiveUrl = "http://ha.nexdev.net:7240/V5/";
         private const string MasterURL = "http://ha.nexdev.net:7240/Main/";
 
         [TestCase("")]
@@ -61,6 +61,7 @@
         [TestCase("BetList/ESports2")]
         [TestCase("BetList/Happy5")]
         [TestCase("BetList/ESports2InPlay")]
+        [TestCase("BetList/VideoPokerGame")]
         [TestCase("BetList/AbnormalBet")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Choice(string productUrl)
         {
@@ -128,6 +129,7 @@
         [TestCase("BetList/ESports2")]
         [TestCase("BetList/Happy5")]
         [TestCase("BetList/ESports2InPlay")]
+        [TestCase("BetList/VideoPokerGame")]
         [TestCase("BetList/AbnormalBet")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Trans(string productUrl)
         {
@@ -195,6 +197,7 @@
         [TestCase("BetList/ESports2")]
         [TestCase("BetList/Happy5")]
         [TestCase("BetList/ESports2InPlay")]
+        [TestCase("BetList/VideoPokerGame")]
         [TestCase("BetList/AbnormalBet")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Odds(string productUrl)
         {
@@ -262,6 +265,7 @@
         [TestCase("BetList/ESports2")]
         [TestCase("BetList/Happy5")]
         [TestCase("BetList/ESports2InPlay")]
+        [TestCase("BetList/VideoPokerGame")]
         [TestCase("BetList/AbnormalBet")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Stake(string productUrl)
         {
@@ -329,6 +333,7 @@
         [TestCase("BetList/ESports2")]
         [TestCase("BetList/Happy5")]
         [TestCase("BetList/ESports2InPlay")]
+        [TestCase("BetList/VideoPokerGame")]
         [TestCase("BetList/AbnormalBet")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Status(string productUrl)
         {

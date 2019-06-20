@@ -36,6 +36,7 @@
         public void BuildStatusResult_IsDetailTicket_ShowStatusResultWithRefNoIsBetCheck()
         {
             // Arrange
+            var expectedRefNo = "'1234'";
             _ticket.BetCheck = "1234";
 
             // Act.
@@ -43,7 +44,7 @@
 
             // Assert.
             Assert.True(template.StatusResult.Visible);
-            Assert.AreEqual(template.StatusResult.refNo, "'1234'");
+            Assert.AreEqual(expectedRefNo, template.StatusResult.refNo);
         }
     }
 }
