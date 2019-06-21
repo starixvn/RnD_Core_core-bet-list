@@ -21,6 +21,8 @@
         /// <param name="ticketData">The ticket data.</param>
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
+            const int expectedBetTeamLength = 2;
+
             var betTeam = string.Empty;
 
             if (string.Equals(ticket.BetTeam, BetTeamValue.HAOS))
@@ -33,7 +35,7 @@
                 betTeam = CoreBetList.AwayToWinAnyOtherScore;
             }
 
-            if (ticket.BetTeam.Length == 2)
+            if (ticket.BetTeam.Length == expectedBetTeamLength)
             {
                 betTeam = string.Join(null, new[] { ticket.BetTeam.Substring(0, 1), ":", ticket.BetTeam.Substring(1, 1) });
             }

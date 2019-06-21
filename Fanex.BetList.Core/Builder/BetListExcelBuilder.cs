@@ -16,42 +16,20 @@ namespace Fanex.BetList.Core.Builder
     using Utils.NPOIExt;
     using Utils.StringExt;
 
-    /// <summary>
-    /// CoreBetList Excel Builder.
-    /// </summary>
     public class BetListExcelBuilder : BetListBaseBuilder, IBetListExcelBuilder, IDisposable
     {
         #region Attributes
 
-        /// <summary>
-        /// The workbook.
-        /// </summary>
         private IWorkbook _workbook;
-
-        /// <summary>
-        /// The report columns number.
-        /// </summary>
         private short _reportColumnsNum;
-
-        /// <summary>
-        /// The worksheet.
-        /// </summary>
         private ISheet _worksheet;
-
         private bool _isDisposed;
-
-        /// <summary>
-        /// Index of the next cell in current row.
-        /// </summary>
         private int _nextCellIndex;
 
         #endregion Attributes
 
         #region Constructors
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BetListExcelBuilder" /> class.
-        /// </summary>
         public BetListExcelBuilder()
         {
             _workbook = new HSSFWorkbook();
@@ -84,40 +62,16 @@ namespace Fanex.BetList.Core.Builder
 
         #region Properties
 
-        /// <summary>
-        /// Gets or sets the odd cell style.
-        /// </summary>
-        /// <value>The odd cell style.</value>
         public ICellStyle OddCellStyle { get; set; }
 
-        /// <summary>
-        /// Gets or sets the even cell style.
-        /// </summary>
-        /// <value>The even cell style.</value>
         public ICellStyle EvenCellStyle { get; set; }
 
-        /// <summary>
-        /// Gets or sets the odd cell style center aligned.
-        /// </summary>
-        /// <value>The odd cell style center aligned.</value>
         public ICellStyle OddCellStyleCenterAligned { get; set; }
 
-        /// <summary>
-        /// Gets or sets the even cell style center aligned.
-        /// </summary>
-        /// <value>The even cell style center aligned.</value>
         public ICellStyle EvenCellStyleCenterAligned { get; set; }
 
-        /// <summary>
-        /// Gets or sets the RTF helper.
-        /// </summary>
-        /// <value>The RTF helper.</value>
         public RTFHelper RTFHelper { get; set; }
 
-        /// <summary>
-        /// Gets the last content row.
-        /// </summary>
-        /// <value>The last content row.</value>
         public int LastContentRow
         {
             get
@@ -130,9 +84,6 @@ namespace Fanex.BetList.Core.Builder
 
         #region IDisposable's Implementation
 
-        /// <summary>
-        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-        /// </summary>
         public void Dispose()
         {
             Dispose(true);
@@ -141,44 +92,22 @@ namespace Fanex.BetList.Core.Builder
 
         #endregion IDisposable's Implementation
 
-        /// <summary>
-        /// Creates the cell style.
-        /// </summary>
-        /// <returns>ICellStyle: the cell style object attaching to current workbook.</returns>
         public ICellStyle CreateCellStyle()
         {
             return _workbook.CreateCellStyle();
         }
 
-        /// <summary>
-        /// Creates the font.
-        /// </summary>
-        /// <returns>IFont: the Font object, attaching with current workbook.</returns>
         public IFont CreateFont()
         {
             return _workbook.CreateFont();
         }
 
-        /// <summary>
-        /// Sets the width of the column.
-        /// </summary>
-        /// <param name="columnIndex">Index of the column.</param>
-        /// <param name="columnWith">The column with.</param>
-        /// <returns>Current BetListExcelBuilder object.</returns>
         public BetListExcelBuilder SetColumnWidth(int columnIndex, short columnWith)
         {
             _worksheet.SetColumnWidth(columnIndex, columnWith);
             return this;
         }
 
-        /// <summary>
-        /// Builds the worksheet.
-        /// </summary>
-        /// <param name="sheetName">Name of the sheet.</param>
-        /// <param name="numberOfColumns">The number of columns.</param>
-        /// <param name="singleRowHeight">Height of the single row.</param>
-        /// <param name="displayGridlines">If set to <c>true</c> [display gridlines].</param>
-        /// <returns>Current BetListExcelBuilder object.</returns>
         public BetListExcelBuilder BuildWorksheet(string sheetName, short numberOfColumns, short singleRowHeight = 13, bool displayGridlines = false)
         {
             _worksheet = _workbook.CreateSheet(sheetName);
@@ -188,21 +117,12 @@ namespace Fanex.BetList.Core.Builder
             return this;
         }
 
-        /// <summary>
-        /// Gets the bet list.
-        /// </summary>
-        /// <returns>IWorkbook: current built workbook.</returns>
         public IWorkbook GetBetList()
         {
             AdaptRowHeight();
             return _workbook;
         }
 
-        /// <summary>
-        /// Adds the cell.
-        /// </summary>
-        /// <param name="rtfString">The RTF string.</param>
-        /// <returns>CellAddress: the address object of the newly added cell.</returns>
         public CellAddress AddCell(IRichTextString rtfString)
         {
             _nextCellIndex++;
@@ -215,7 +135,7 @@ namespace Fanex.BetList.Core.Builder
 
             ICell lastCell;
 
-            lastCell = lastRow.RowNum % 2 == 0
+            lastCell = IsEven(lastRow.RowNum)
                 ? lastRow.CreateCell(_nextCellIndex, EvenCellStyle)
                 : lastRow.CreateCell(_nextCellIndex, OddCellStyle);
 
@@ -224,12 +144,6 @@ namespace Fanex.BetList.Core.Builder
             return new CellAddress(lastCell.RowIndex, _nextCellIndex);
         }
 
-        /// <summary>
-        /// Adds the cell.
-        /// </summary>
-        /// <param name="rtfString">The RTF string.</param>
-        /// <param name="cellStyle">The cell style.</param>
-        /// <returns>CellAddress: the address object of the newly added cell.</returns>
         public CellAddress AddCell(IRichTextString rtfString, ICellStyle cellStyle)
         {
             _nextCellIndex++;
@@ -247,13 +161,6 @@ namespace Fanex.BetList.Core.Builder
             return new CellAddress(lastCell.RowIndex, _nextCellIndex);
         }
 
-        /// <summary>
-        /// Adds the merged cell.
-        /// </summary>
-        /// <param name="rtfString">The RTF string.</param>
-        /// <param name="mergedRange">The merged range.</param>
-        /// <param name="cellStyle">The cell style.</param>
-        /// <returns>CellAddress: the address object of the newly merged cell.</returns>
         public CellAddress AddMergedCell(IRichTextString rtfString, CellRangeAddress mergedRange, ICellStyle cellStyle)
         {
             _nextCellIndex++;
@@ -273,21 +180,12 @@ namespace Fanex.BetList.Core.Builder
             return new CellAddress(lastCell.RowIndex, _nextCellIndex);
         }
 
-        /// <summary>
-        /// Merges the cell.
-        /// </summary>
-        /// <param name="mergeRange">The merge range.</param>
         public void MergeCell(CellRangeAddress mergeRange)
         {
             _worksheet.AddMergedRegion(mergeRange);
             _nextCellIndex += mergeRange.LastColumn - mergeRange.FirstColumn;
         }
 
-        /// <summary>
-        /// Merges the cell.
-        /// </summary>
-        /// <param name="mergeRange">The merge range.</param>
-        /// <param name="cellStyle">The cell style.</param>
         public void MergeCell(CellRangeAddress mergeRange, ICellStyle cellStyle)
         {
             _worksheet.AddMergedRegion(mergeRange);
@@ -304,13 +202,6 @@ namespace Fanex.BetList.Core.Builder
             _nextCellIndex += mergeRange.LastColumn - mergeRange.FirstColumn;
         }
 
-        /// <summary>
-        /// Adds the choice.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        /// <returns>Current BetListExcelBuilder object.</returns>
         public BetListExcelBuilder AddChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             IChoice choiceBuilder = CreateChoiceBuilder(ticket.BetTypeId);
@@ -324,13 +215,6 @@ namespace Fanex.BetList.Core.Builder
             return this;
         }
 
-        /// <summary>
-        /// Adds the odds.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        /// <param name="funcGetOddsTypeName">Name of the function to get odds type.</param>
-        /// <returns>Current BetListExcelBuilder object.</returns>
         public BetListExcelBuilder AddOdds(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
         {
             IOdds oddsBuilder = CreateOddsBuilder(ticket.BetTypeId);
@@ -357,11 +241,6 @@ namespace Fanex.BetList.Core.Builder
             return this;
         }
 
-        /// <summary>
-        /// Adds the stake.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <returns>Current BetListExcelBuilder object.</returns>
         public BetListExcelBuilder AddStake(ITicket ticket)
         {
             IStake stakeBuilder = CreateStakeBuilder(ticket.BetTypeId);
@@ -371,18 +250,12 @@ namespace Fanex.BetList.Core.Builder
             return this;
         }
 
-        /// <summary>
-        /// Adds the trans.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <returns>Current BetListExcelBuilder object.</returns>
         public BetListExcelBuilder AddTrans(ITicket ticket, ITicketHelper ticketHelper)
         {
             ITrans transBuilder = CreateTransBuilder(ticket.BetTypeId);
             IRichTextString rtfTrans = transBuilder.RenderRTF(ticket, ticketHelper);
 
-            AddCell(rtfTrans, ticketHelper.Index % 2 == 0 ? OddCellStyleCenterAligned : EvenCellStyleCenterAligned);
+            AddCell(rtfTrans, IsEven(ticketHelper.Index) ? OddCellStyleCenterAligned : EvenCellStyleCenterAligned);
             return this;
         }
 
@@ -390,7 +263,7 @@ namespace Fanex.BetList.Core.Builder
         {
             ITrans transBuilder = CreateTransBuilder(ticket.BetTypeId);
             IRichTextString rtfTrans = transBuilder.RenderTransTimeRTF(ticket, ticketHelper);
-            AddCell(rtfTrans, ticketHelper.Index % 2 == 0 ? OddCellStyleCenterAligned : EvenCellStyleCenterAligned);
+            AddCell(rtfTrans, IsEven(ticketHelper.Index) ? OddCellStyleCenterAligned : EvenCellStyleCenterAligned);
 
             return this;
         }
@@ -399,31 +272,19 @@ namespace Fanex.BetList.Core.Builder
         {
             ITrans transBuilder = CreateTransBuilder(ticket.BetTypeId);
             IRichTextString rtfRefNo = transBuilder.RenderRefNoRTF(ticket, ticketHelper);
-            AddCell(rtfRefNo, ticketHelper.Index % 2 == 0 ? OddCellStyleCenterAligned : EvenCellStyleCenterAligned);
+            AddCell(rtfRefNo, IsEven(ticketHelper.Index) ? OddCellStyleCenterAligned : EvenCellStyleCenterAligned);
 
             return this;
         }
 
-        /// <summary>
-        /// Adds the status.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        /// <param name="isShowVNIP">If set to <c>true</c> VNIP is shown.</param>
-        /// <returns>Current BetListExcelBuilder object.</returns>
         public BetListExcelBuilder AddStatus(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP)
         {
             IStatus statusBuilder = CreateStatusBuilder(ticket.BetTypeId);
             IRichTextString rtfStatus = statusBuilder.RenderRTF(ticket, ticketHelper, ticketData, isShowVNIP, RTFHelper);
-            AddCell(rtfStatus, ticketHelper.Index % 2 == 0 ? OddCellStyleCenterAligned : EvenCellStyleCenterAligned);
+            AddCell(rtfStatus, IsEven(ticketHelper.Index) ? OddCellStyleCenterAligned : EvenCellStyleCenterAligned);
             return this;
         }
 
-        /// <summary>
-        /// Gets the last row.
-        /// </summary>
-        /// <returns>IRow: last row object in the current worksheet.</returns>
         private IRow GetLastRow()
         {
             IRow lastRow = _worksheet.GetRow(_worksheet.LastRowNum);
@@ -435,10 +296,6 @@ namespace Fanex.BetList.Core.Builder
             return lastRow;
         }
 
-        /// <summary>
-        /// Adds the new row.
-        /// </summary>
-        /// <returns>IRow: new added row.</returns>
         private IRow AddNewRow()
         {
             int newRowIndex = _worksheet.LastRowNum;
@@ -452,18 +309,11 @@ namespace Fanex.BetList.Core.Builder
             return newRow;
         }
 
-        /// <summary>
-        /// Determines whether the target sheet has rows.
-        /// </summary>
-        /// <returns><c>true</c> if the target sheet has rows; otherwise, <c>false</c>.</returns>
         private bool IsSheetHasRows()
         {
             return _worksheet.GetRow(_worksheet.LastRowNum) != null;
         }
 
-        /// <summary>
-        /// Adapts the height of the row.
-        /// </summary>
         private void AdaptRowHeight()
         {
             IEnumerator rowEnum = _worksheet.GetRowEnumerator();
@@ -481,11 +331,11 @@ namespace Fanex.BetList.Core.Builder
             }
         }
 
-        /// <summary>
-        /// Initialize the default RTF helper.
-        /// </summary>
         private void InitDefaultRTFHelper()
         {
+            const string fontName = "Tahoma";
+            const short fontSize = 9;
+
             RTFHelper.PosFont.Boldweight = (short)FontBoldWeight.Bold;
             RTFHelper.PosFontCrossed.Boldweight = (short)FontBoldWeight.Bold;
 
@@ -495,19 +345,19 @@ namespace Fanex.BetList.Core.Builder
             RTFHelper.NormalFont.Boldweight = (short)FontBoldWeight.Normal;
             RTFHelper.NormalFontCrossed.Boldweight = (short)FontBoldWeight.Normal;
 
-            RTFHelper.NegFont.FontName = "Tahoma";
-            RTFHelper.NegFontCrossed.FontName = "Tahoma";
-            RTFHelper.NormalFont.FontName = "Tahoma";
-            RTFHelper.NormalFontCrossed.FontName = "Tahoma";
-            RTFHelper.PosFont.FontName = "Tahoma";
-            RTFHelper.PosFontCrossed.FontName = "Tahoma";
+            RTFHelper.NegFont.FontName = fontName;
+            RTFHelper.NegFontCrossed.FontName = fontName;
+            RTFHelper.NormalFont.FontName = fontName;
+            RTFHelper.NormalFontCrossed.FontName = fontName;
+            RTFHelper.PosFont.FontName = fontName;
+            RTFHelper.PosFontCrossed.FontName = fontName;
 
-            RTFHelper.NegFont.FontHeightInPoints = 9;
-            RTFHelper.NegFontCrossed.FontHeightInPoints = 9;
-            RTFHelper.NormalFont.FontHeightInPoints = 9;
-            RTFHelper.NormalFontCrossed.FontHeightInPoints = 9;
-            RTFHelper.PosFont.FontHeightInPoints = 9;
-            RTFHelper.PosFontCrossed.FontHeightInPoints = 9;
+            RTFHelper.NegFont.FontHeightInPoints = fontSize;
+            RTFHelper.NegFontCrossed.FontHeightInPoints = fontSize;
+            RTFHelper.NormalFont.FontHeightInPoints = fontSize;
+            RTFHelper.NormalFontCrossed.FontHeightInPoints = fontSize;
+            RTFHelper.PosFont.FontHeightInPoints = fontSize;
+            RTFHelper.PosFontCrossed.FontHeightInPoints = fontSize;
 
             RTFHelper.NormalFontCrossed.IsStrikeout = true;
             RTFHelper.PosFontCrossed.IsStrikeout = true;
@@ -517,11 +367,15 @@ namespace Fanex.BetList.Core.Builder
             RTFHelper.NegFontCrossed.Color = (short)FontColor.Red;
         }
 
-        /// <summary>
-        /// Initialize the default cell styles.
-        /// </summary>
         private void InitDefaultCellStyles()
         {
+            const BorderStyle borderStyle = BorderStyle.Thin;
+            const short borderColorCode = 54;
+            const short oddCellForegroundColorCode = 26;
+            const short oddCellBackgroundColorCode = 43;
+            const short evenCellForegroundColorCode = 9;
+            const short evenCellBackgroundColorCode = 27;
+
             OddCellStyle.Alignment = HorizontalAlignment.Right;
             EvenCellStyle.Alignment = HorizontalAlignment.Right;
 
@@ -533,30 +387,30 @@ namespace Fanex.BetList.Core.Builder
             OddCellStyle.FillPattern = FillPattern.SolidForeground;
             EvenCellStyle.FillPattern = FillPattern.SolidForeground;
 
-            OddCellStyle.BorderTop = BorderStyle.Thin;
-            OddCellStyle.BorderRight = BorderStyle.Thin;
-            OddCellStyle.BorderBottom = BorderStyle.Thin;
-            OddCellStyle.BorderLeft = BorderStyle.Thin;
+            OddCellStyle.BorderTop = borderStyle;
+            OddCellStyle.BorderRight = borderStyle;
+            OddCellStyle.BorderBottom = borderStyle;
+            OddCellStyle.BorderLeft = borderStyle;
 
-            EvenCellStyle.BorderTop = BorderStyle.Thin;
-            EvenCellStyle.BorderRight = BorderStyle.Thin;
-            EvenCellStyle.BorderBottom = BorderStyle.Thin;
-            EvenCellStyle.BorderLeft = BorderStyle.Thin;
+            EvenCellStyle.BorderTop = borderStyle;
+            EvenCellStyle.BorderRight = borderStyle;
+            EvenCellStyle.BorderBottom = borderStyle;
+            EvenCellStyle.BorderLeft = borderStyle;
 
-            OddCellStyle.TopBorderColor = 54;
-            OddCellStyle.RightBorderColor = 54;
-            OddCellStyle.BottomBorderColor = 54;
-            OddCellStyle.LeftBorderColor = 54;
-            EvenCellStyle.TopBorderColor = 54;
-            EvenCellStyle.RightBorderColor = 54;
-            EvenCellStyle.BottomBorderColor = 54;
-            EvenCellStyle.LeftBorderColor = 54;
+            OddCellStyle.TopBorderColor = borderColorCode;
+            OddCellStyle.RightBorderColor = borderColorCode;
+            OddCellStyle.BottomBorderColor = borderColorCode;
+            OddCellStyle.LeftBorderColor = borderColorCode;
+            EvenCellStyle.TopBorderColor = borderColorCode;
+            EvenCellStyle.RightBorderColor = borderColorCode;
+            EvenCellStyle.BottomBorderColor = borderColorCode;
+            EvenCellStyle.LeftBorderColor = borderColorCode;
 
-            OddCellStyle.FillForegroundColor = 26;
-            OddCellStyle.FillBackgroundColor = 43;
+            OddCellStyle.FillForegroundColor = oddCellForegroundColorCode;
+            OddCellStyle.FillBackgroundColor = oddCellBackgroundColorCode;
 
-            EvenCellStyle.FillForegroundColor = 9;
-            EvenCellStyle.FillBackgroundColor = 27;
+            EvenCellStyle.FillForegroundColor = evenCellForegroundColorCode;
+            EvenCellStyle.FillBackgroundColor = evenCellBackgroundColorCode;
 
             OddCellStyle.SetFont(RTFHelper.NormalFont);
             EvenCellStyle.SetFont(RTFHelper.NormalFont);
@@ -576,12 +430,15 @@ namespace Fanex.BetList.Core.Builder
             OddCellStyleCenterAligned.WrapText = true;
         }
 
+        private static bool IsEven(int rowNumber)
+        {
+            const int even = 2;
+
+            return rowNumber % even == 0;
+        }
+
         #region IDisposable's Implementation
 
-        /// <summary>
-        /// Releases unmanaged and - optionally - managed resources.
-        /// </summary>
-        /// <param name="disposing"><c>True</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
         protected virtual void Dispose(bool disposing)
         {
             if (!_isDisposed)

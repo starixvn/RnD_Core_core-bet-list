@@ -10,48 +10,38 @@
     /// </summary>
     public class Choice175 : Choice1
     {
-        /// <summary>
-        /// Builds the bet team.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            var betTeam = string.Empty;
-
             switch (ticket.BetTeam.ToLowerInvariant())
             {
                 case BetTeamValue.HR:
-                    betTeam = string.Format("{0}/{1}", Template.Match.homeTeam, CoreBetList.RegularTime);
+                    Template.betTeam = $"{Template.Match.homeTeam}/{CoreBetList.RegularTime}";
                     break;
 
                 case BetTeamValue.HE:
-                    betTeam = string.Format("{0}/{1}", Template.Match.homeTeam, CoreBetList.ExtraTime);
+                    Template.betTeam = $"{Template.Match.homeTeam}/{CoreBetList.ExtraTime}";
                     break;
 
                 case BetTeamValue.HP:
-                    betTeam = string.Format("{0}/{1}", Template.Match.homeTeam, CoreBetList.Penalty);
+                    Template.betTeam = $"{Template.Match.homeTeam}/{CoreBetList.Penalty}";
                     break;
 
                 case BetTeamValue.AR:
-                    betTeam = string.Format("{0}/{1}", Template.Match.awayTeam, CoreBetList.RegularTime);
+                    Template.betTeam = $"{Template.Match.awayTeam}/{CoreBetList.RegularTime}";
                     break;
 
                 case BetTeamValue.AE:
-                    betTeam = string.Format("{0}/{1}", Template.Match.awayTeam, CoreBetList.ExtraTime);
+                    Template.betTeam = $"{Template.Match.awayTeam}/{CoreBetList.ExtraTime}";
                     break;
 
                 case BetTeamValue.AP:
-                    betTeam = string.Format("{0}/{1}", Template.Match.awayTeam, CoreBetList.Penalty);
+                    Template.betTeam = $"{Template.Match.awayTeam}/{CoreBetList.Penalty}";
                     break;
 
                 default:
-                    betTeam = string.Empty;
+                    Template.betTeam = string.Empty;
                     break;
             }
-
-            Template.betTeam = betTeam;
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)

@@ -72,7 +72,7 @@
             string resourceId = string.Empty;
             long actualRefNo = 0;
             string actualBetTypeId = MapperCollector.BetTypeHasParent(Convert.ToInt32(betTypeId))
-                ? GetParentIdByBetTypeId(betTypeId, betTypeId)
+                ? GetParentIdByBetTypeId(betTypeId)
                 : betTypeId.ToString();
 
             if (!IsShowOddsWithChoice)

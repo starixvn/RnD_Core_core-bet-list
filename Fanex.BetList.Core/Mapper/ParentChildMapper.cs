@@ -1,6 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Mapper
 {
-    using System.Diagnostics.CodeAnalysis;
+    using Fanex.BetList.Core.Constants;
 
     public class ParentChildMapper : BaseMapper
     {
@@ -9,77 +9,31 @@
             Initialize();
         }
 
-        [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2101:MethodMustNotContainMoreLinesThan", Justification = "Reviewed. Suppression is OK here.")]
         private void Initialize()
         {
-            ////2ND Over/Under (3rd) (178)
-            MapIdToBaseId(178, 18);
-
-            ////Exact 1H Goals (3rd) (179)
-            MapIdToBaseId(179, 412);
-
-            ////2ND Handicap (3rd) (183)
-            MapIdToBaseId(183, 17);
-
-            ////Exact 2H Goals (3rd)
-            MapIdToBaseId(187, 429);
-
-            ////Result And First Team To Score (own) (415)
-            MapIdToBaseId(415, 172);
-
-            ////Half Time/ Full Time Correct Score(own) (416)
-            MapIdToBaseId(416, 152);
-
-            ////1H Both Teams To Score (own) (427)
-            MapIdToBaseId(427, 188);
-
-            ////2H Odd/Even (own) (428)
-            MapIdToBaseId(428, 184);
-
-            ////2H 1X2 (own) (430)
-            MapIdToBaseId(430, 177);
-
-            ////2H Double Chance (own) (431)
-            MapIdToBaseId(431, 186);
-
-            ////2H Draw No Bet (own) (432)
-            MapIdToBaseId(432, 185);
-
-            ////2H Both Teams To Score (own) (433)
-            MapIdToBaseId(433, 146);
-
-            ////Both Halves Over 1.5 Yes/No (own) (434)
-            MapIdToBaseId(434, 189);
-
-            ////Both Halves Under 1.5 Yes/No (own) (435)
-            MapIdToBaseId(435, 190);
-
-            ////Home To Score In Both Halves (own) (436)
-            MapIdToBaseId(436, 147);
-
-            ////Away To Score In Both Halves (own) (437)
-            MapIdToBaseId(437, 148);
-
-            ////Home To Win Both Halves (own) (438)
-            MapIdToBaseId(438, 133);
-
-            ////Away To Win Both Halves (own) (439)
-            MapIdToBaseId(439, 134);
-
-            ////Home To Win Either Half (own) (440)
-            MapIdToBaseId(440, 149);
-
-            ////Away To Win Either Half (own) (441)
-            MapIdToBaseId(441, 150);
-
-            ////Highest Scoring Half (own) (442)
-            MapIdToBaseId(442, 140);
-
-            ////Highest Scoring Half Home Team (own) (443)
-            MapIdToBaseId(443, 141);
-
-            ////Highest Scoring Half Away Team (own) (444)
-            MapIdToBaseId(444, 142);
+            MapIdToBaseId(BetTypes.SecondHalfOverUnder3rd, BetTypes.SecondHalfOverUnder);
+            MapIdToBaseId(BetTypes.ExactFirstHalfGoals3rd, BetTypes.ExactFirstHalfGoals);
+            MapIdToBaseId(BetTypes.SecondHalfHandicap3rd, BetTypes.SecondHalfHandicap);
+            MapIdToBaseId(BetTypes.ExactSecondHalfGoals3rd, BetTypes.ExactSecondHalfGoals);
+            MapIdToBaseId(BetTypes.ResultAndFirstTeamToScoreOwn, BetTypes.ResultAndFirstTeamToScore);
+            MapIdToBaseId(BetTypes.HalfTimeFullTimeCorrectScoreAos, BetTypes.HalfTimeFullTimeCorrectScore);
+            MapIdToBaseId(BetTypes.FirstHalfBothTeamsToScoreOwn, BetTypes.FirstHalfBothTeamsToScore);
+            MapIdToBaseId(BetTypes.SecondHalfOddEvenOwn, BetTypes.SecondHalfOddEven);
+            MapIdToBaseId(BetTypes.SecondHalf1X2Own, BetTypes.SecondHalf1X2);
+            MapIdToBaseId(BetTypes.SecondHalfDoubleChanceOwn, BetTypes.SecondHalfDoubleChance);
+            MapIdToBaseId(BetTypes.SecondHalfDrawNoBetOwn, BetTypes.SecondHalfDrawNoBet);
+            MapIdToBaseId(BetTypes.SecondHalfBothTeamsToScoreOwn, BetTypes.SecondHalfBothTeamsToScore);
+            MapIdToBaseId(BetTypes.BothHalvesOver15YesNoOwn, BetTypes.BothHalvesOver15YesNo);
+            MapIdToBaseId(BetTypes.BothHalvesUnder15YesNoOwn, BetTypes.BothHalvesUnder15YesNo);
+            MapIdToBaseId(BetTypes.HomeToScoreInBothHalvesOwn, BetTypes.HomeToScoreInBothHalves);
+            MapIdToBaseId(BetTypes.AwayToScoreInBothHalvesOwn, BetTypes.AwayToScoreInBothHalves);
+            MapIdToBaseId(BetTypes.HomeToWinBothHalvesOwn, BetTypes.HomeToWinBothHalves);
+            MapIdToBaseId(BetTypes.AwayToWinBothHalvesOwn, BetTypes.AwayToWinBothHalves);
+            MapIdToBaseId(BetTypes.HomeToWinEitherHalfOwn, BetTypes.HomeToWinEitherHalf);
+            MapIdToBaseId(BetTypes.AwayToWinEitherHalfOwn, BetTypes.AwayToWinEitherHalf);
+            MapIdToBaseId(BetTypes.HighestScoringHalfOwn, BetTypes.HighestScoringHalf);
+            MapIdToBaseId(BetTypes.HighestScoringHalfHomeTeamOwn, BetTypes.HighestScoringHalfHomeTeam);
+            MapIdToBaseId(BetTypes.HighestScoringHalfAwayTeamOwn, BetTypes.HighestScoringHalfAwayTeam);
         }
     }
 }

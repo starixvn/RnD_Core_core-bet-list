@@ -14,23 +14,13 @@
     public class SystemParlayDetail : ISystemParlayDetail
     {
         private SystemParlayDetail_Template _template;
-
         private ISystemParlayData _systemParlayData;
-
         private ITicketHelper _ticketHelper;
-
         private IList<ISystemParlayTicket> _ticketList;
-
         private IList<ISystemParlaySerial> _serialList;
 
         #region ISystemParlayDetail Members
 
-        /// <summary>
-        /// Build html.
-        /// </summary>
-        /// <param name="ticketHelper">Ticket helper.</param>
-        /// <param name="systemParlayData">System Parlay Data.</param>
-        /// <returns>The html string is returned to client.</returns>
         public virtual string Build(ITicketHelper ticketHelper, ISystemParlayData systemParlayData)
         {
             _ticketHelper = ticketHelper;
@@ -75,9 +65,6 @@
             _template.TotalContents.TotalWinloss = Formatter.HighlightNegativeNumber(totalWinLost);
         }
 
-        /// <summary>
-        /// Renders the rows.
-        /// </summary>
         protected void RenderRows()
         {
             var dateList = _ticketList.Select(d => d.WinLostDate)
@@ -93,10 +80,6 @@
             RenderEmptyRowInCaseHaveNoData();
         }
 
-        /// <summary>
-        /// Render one day block.
-        /// </summary>
-        /// <param name="date">Date value.</param>
         protected void RenderOneDay(DateTime date)
         {
             var dataInDate = _ticketList.Where(d => d.WinLostDate == date).ToList();
@@ -110,11 +93,6 @@
             RenderSubTotalForOneDay(dataInDate);
         }
 
-        /// <summary>
-        /// Renders the event.
-        /// </summary>
-        /// <param name="dataInDate">The data in date.</param>
-        /// <param name="eventOrderInDay">The event order in day.</param>
         protected void RenderEvent(List<ISystemParlayTicket> dataInDate, int eventOrderInDay)
         {
             var dataInRow = dataInDate[eventOrderInDay];
@@ -126,9 +104,9 @@
             rowBlock.Status = GetBetListStatusName(dataInRow.StatusId);
             rowBlock.Winloss = Formatter.HighlightNegativeNumber(dataInRow.WinLost);
             rowBlock.Odds = dataInRow.MOdds == 0 ? "-" : Formatter.HighlightNegativeNumber40(dataInRow.MOdds);
-            rowBlock.Stake = Formatter.DecFormat(dataInRow.Stake, 2);
+            rowBlock.Stake = Formatter.DecFormat(dataInRow.Stake);
             rowBlock.PlayerCommission.Visible = _ticketHelper.ShowSystemParlayPlayerComm;
-            rowBlock.PlayerCommission.PlayerCommission = Formatter.DecFormat(dataInRow.PlayerComm, 2);
+            rowBlock.PlayerCommission.PlayerCommission = Formatter.DecFormat(dataInRow.PlayerComm);
 
             // Event
             RenderMatchBlock(rowBlock, dataInRow.Serial);
@@ -136,11 +114,6 @@
             _template.Contents.Append(rowBlock);
         }
 
-        /// <summary>
-        /// Render the match block.
-        /// </summary>
-        /// <param name="rowBlock">Row block.</param>
-        /// <param name="serial">Serial ID.</param>
         protected void RenderMatchBlock(SystemParlayDetail_Contents_Block rowBlock, long serial)
         {
             rowBlock.Match.Clear();
@@ -170,9 +143,6 @@
             _template.Contents.Append(subTotalBlock);
         }
 
-        /// <summary>
-        /// Renders the empty row in case have no data.
-        /// </summary>
         protected void RenderEmptyRowInCaseHaveNoData()
         {
             if (_ticketList.Count > 0)
@@ -194,37 +164,32 @@
             _template.Contents.Append(emptycontent);
         }
 
-        /// <summary>
-        /// Get bet list status name.
-        /// </summary>
-        /// <param name="status">Status code.</param>
-        /// <returns>Status name in string.</returns>
         protected string GetBetListStatusName(int status)
         {
-            switch (status)
+            switch (status.ToString())
             {
-                case 112:
+                case BetStatusId.Won:
                     return CoreBetList.lblWon;
 
-                case 113:
+                case BetStatusId.Lost:
                     return CoreBetList.lblLose;
 
-                case 111:
+                case BetStatusId.Draw:
                     return CoreBetList.lblDraw;
 
-                case 0:
+                case BetStatusId.Running:
                     return CoreBetList.lblRunning;
 
-                case 1:
+                case BetStatusId.Waiting:
                     return CoreBetList.lblWaiting;
 
-                case 101:
+                case BetStatusId.Reject:
                     return CoreBetList.reject;
 
-                case 102:
+                case BetStatusId.Void:
                     return CoreBetList.voided;
 
-                case 103:
+                case BetStatusId.Refund:
                     return CoreBetList.refund;
 
                 default:

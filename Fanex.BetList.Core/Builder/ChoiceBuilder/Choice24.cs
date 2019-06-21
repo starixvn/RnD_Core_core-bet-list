@@ -1,6 +1,5 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System;
     using System.Collections.Generic;
     using App_GlobalResources;
     using Constants;
@@ -13,16 +12,15 @@
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            string betTeam = ticket.BetTeam;
+            const int expectedBetTeamLength = 2;
 
-            if (!string.IsNullOrEmpty(betTeam) && betTeam.Length == 2)
+            if (!string.IsNullOrEmpty(ticket.BetTeam) && ticket.BetTeam.Length == expectedBetTeamLength)
             {
-                var firstChance = string.Equals(BetTeamValue.NumberOne, betTeam[0].ToString(), StringComparison.InvariantCultureIgnoreCase)
-                        ? CoreBetList.Home
-                        : CoreBetList.Away;
-                var secondChance = string.Equals(BetTeamValue.X, betTeam[1].ToString(), StringComparison.InvariantCultureIgnoreCase)
-                        ? CoreBetList.lblDraw
-                        : CoreBetList.Away;
+                var betTeam = ticket.BetTeam.ToLowerInvariant();
+                var firstChanceIndicator = betTeam[0].ToString();
+                var secondChanceIndicator = betTeam[1].ToString();
+                var firstChance = BetTeamValue.NumberOne == firstChanceIndicator ? CoreBetList.Home : CoreBetList.Away;
+                var secondChance = BetTeamValue.X == secondChanceIndicator ? CoreBetList.lblDraw : CoreBetList.Away;
 
                 Template.betTeam = $"{firstChance}<span class=\"{Underdog}\"> {CoreBetList.lblOr} </span>{secondChance}";
             }
@@ -35,7 +33,6 @@
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
             Template.betTeamClassName = Favorite;
-
             Template.Handicap.handicap = null;
         }
     }

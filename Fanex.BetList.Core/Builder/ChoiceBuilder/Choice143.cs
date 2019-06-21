@@ -13,25 +13,27 @@
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            var betTeam = ticket.BetTeam.ToLowerInvariant();
+            const int expectedBetTeamLength = 2;
 
-            // Bet team pattern length is always 2
-            if (betTeam.Length == 2)
+            if (ticket.BetTeam.Length == expectedBetTeamLength)
             {
-                var totalGoal = betTeam[1].ToString() == BetTeamValue.O ? CoreBetList.over : CoreBetList.under;
+                var betTeam = ticket.BetTeam.ToLowerInvariant();
+                var totalGoalIndicator = betTeam[1].ToString();
+                var teamIndicator = betTeam[0].ToString();
+                var totalGoal = totalGoalIndicator == BetTeamValue.O ? CoreBetList.over : CoreBetList.under;
                 var teamName = string.Empty;
 
-                switch (betTeam[0])
+                switch (teamIndicator)
                 {
-                    case 'h':
+                    case BetTeamValue.H:
                         teamName = CoreBetList.Home;
                         break;
 
-                    case 'a':
+                    case BetTeamValue.A:
                         teamName = CoreBetList.Away;
                         break;
 
-                    case 'd':
+                    case BetTeamValue.D:
                         teamName = CoreBetList.draw;
                         break;
 

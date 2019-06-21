@@ -11,13 +11,11 @@
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            var betTeam = string.Empty;
-            if (ticket.BetTeam.Length == 2)
-            {
-                betTeam = string.Join(null, new[] { ticket.BetTeam.Substring(0, 1), ":", ticket.BetTeam.Substring(1, 1) });
-            }
+            const int expectedBetTeamLength = 2;
 
-            Template.betTeam = string.Join(null, new[] { HtmlCharacters.NoneBreakingSpace, betTeam });
+            Template.betTeam = ticket.BetTeam.Length == expectedBetTeamLength
+                ? $"{HtmlCharacters.NoneBreakingSpace}{ticket.BetTeam[0]}:{ticket.BetTeam[1]}"
+                : HtmlCharacters.NoneBreakingSpace;
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)

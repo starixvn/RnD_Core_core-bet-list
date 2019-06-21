@@ -4,6 +4,7 @@
     using System.Globalization;
     using System.Web;
     using App_GlobalResources;
+    using Constants;
     using Entities;
     using NPOI.SS.UserModel;
 
@@ -42,7 +43,7 @@
         {
             if (ticket.BetTeam == "1")
             {
-                return ticketHelper.GetBetTypeNameById(9);
+                return ticketHelper.GetBetTypeNameById(BetTypes.MixParlay);
             }
 
             var bettypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);

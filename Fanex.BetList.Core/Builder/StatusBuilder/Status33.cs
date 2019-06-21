@@ -3,7 +3,9 @@
     using System;
     using System.Collections.Generic;
     using System.Globalization;
+    using System.Text.RegularExpressions;
     using App_GlobalResources;
+    using Constants;
     using Entities;
     using NPOI.SS.UserModel;
 
@@ -12,51 +14,15 @@
     /// </summary>
     public class Status33 : Status31
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Status33" /> class.
-        /// </summary>
-        public Status33()
-        {
-            WinBetId = 31;
-            PlaceBetId = 32;
-        }
-
-        protected int WinBetId { get; set; }
-
-        protected int PlaceBetId { get; set; }
-
-        /// <summary>
-        /// Renders the RTF.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        /// <param name="isShowVNIP">If set to <c>true</c> [VNIP is shown].</param>
-        /// <param name="rtfHelper">The RTF helper.</param>
-        /// <returns>
-        /// IRichTextString represents the Status block.
-        /// </returns>
         public override IRichTextString RenderRTF(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP, RTFHelper rtfHelper)
         {
             Render(ticket, ticketHelper, ticketData, isShowVNIP);
 
-            // Status != Win/Lose
-            if (Template.result.Length < 80)
-            {
-                rtfHelper.RTFRenderer.AddText(Template.result, rtfHelper.PosFont);
-            }
-            else
-            {
-                int breakPos = Template.result.IndexOf("<br/>", StringComparison.InvariantCulture);
+            var htmlTagMatching = new Regex("</?[^<>]*>");
+            var breakingLinesMatching = new Regex("<br\\s*/?>");
+            var plainResultText = htmlTagMatching.Replace(breakingLinesMatching.Replace(Template.result, "\n"), string.Empty);
 
-                string status_WinString = Template.result.Substring(0, breakPos);
-                string status_PlaceString = Template.result.Replace(status_WinString, string.Empty);
-
-                string status_Win = ExtractStringBetweenTag("b", status_WinString);
-                string status_Place = ExtractStringBetweenTag("b", status_PlaceString);
-                string[] status = { CoreBetList.win, ": ", status_Win, "\n", CoreBetList.place, ": ", status_Place };
-                rtfHelper.RTFRenderer.AddText(string.Join(null, status), rtfHelper.PosFont);
-            }
+            rtfHelper.RTFRenderer.AddText(plainResultText, rtfHelper.PosFont);
 
             if (Template.ShowIP.Visible)
             {
@@ -70,11 +36,6 @@
             return rtfStatus;
         }
 
-        /// <summary>
-        /// Builds the result.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketData">The ticket data.</param>
         protected override void BuildResult(ITicket ticket, List<ITicketData> ticketData)
         {
             base.BuildResult(ticket, ticketData);
@@ -86,8 +47,8 @@
 
                 if (foundTicketData != null && foundTicketData.Count > 1)
                 {
-                    string winStatus = foundTicketData.Find(item => item.BetTypeId == WinBetId).Status.ToLowerInvariant();
-                    string placeStatus = foundTicketData.Find(item => item.BetTypeId == PlaceBetId).Status.ToLowerInvariant();
+                    string winStatus = foundTicketData.Find(item => item.BetTypeId == BetTypes.Win).Status.ToLowerInvariant();
+                    string placeStatus = foundTicketData.Find(item => item.BetTypeId == BetTypes.Place).Status.ToLowerInvariant();
 
                     string contextWinStatus = GetResultString(winStatus);
                     string contextPlaceStatus = GetResultString(placeStatus);
@@ -119,31 +80,9 @@
             }
         }
 
-        /// <summary>
-        /// Gets the reference data.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        /// <returns>List of ITicketData.</returns>
         protected virtual List<ITicketData> GetReferenceData(ITicket ticket, List<ITicketData> ticketData)
         {
             return ticketData.FindAll(item => item.RefNo.Equals(ticket.TransId.ToString()));
-        }
-
-        /// <summary>
-        /// Extract string value between tags from a source string.
-        /// </summary>
-        /// <param name="tag">Name of the tag.</param>
-        /// <param name="source">Source string.</param>
-        /// <returns>Value string.</returns>
-        private static string ExtractStringBetweenTag(string tag, string source)
-        {
-            string startTag = string.Join(null, new[] { "<", tag, ">" });
-            string endTag = string.Join(null, new[] { "</", tag, ">" });
-
-            int startIndex = source.IndexOf(startTag, StringComparison.InvariantCulture) + startTag.Length;
-            int endIndex = source.IndexOf(endTag, startIndex, StringComparison.InvariantCulture);
-            return source.Substring(startIndex, endIndex - startIndex);
         }
     }
 }

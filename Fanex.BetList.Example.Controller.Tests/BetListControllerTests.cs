@@ -11,7 +11,7 @@
     [Ignore("Used for testing when changing old bet type")]
     public class BetListControllerTests
     {
-        private const string ActiveUrl = "http://ha.nexdev.net:7240/V3/";
+        private const string ActiveUrl = "http://localhost:59158/";
         private const string MasterURL = "http://ha.nexdev.net:7240/Main/";
 
         [TestCase("")]
@@ -56,6 +56,8 @@
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Choice(string productUrl)
         {
             // Arrange
+            const int choiceColumnIndex = 6;
+
             var activeClient = new HttpClient { BaseAddress = new Uri(ActiveUrl) };
             var masterClient = new HttpClient { BaseAddress = new Uri(MasterURL) };
 
@@ -63,8 +65,8 @@
             var activeResponseHtml = activeClient.GetAsync(productUrl).Result.Content.ReadAsStringAsync().Result;
             var masterResponseHtml = masterClient.GetAsync(productUrl).Result.Content.ReadAsStringAsync().Result;
 
-            var activeBetListChoiceColumnHtml = GetColumn(activeResponseHtml, 4);
-            var masterBetListChoiceColumnHtml = GetColumn(masterResponseHtml, 4);
+            var activeBetListChoiceColumnHtml = GetColumn(activeResponseHtml, choiceColumnIndex);
+            var masterBetListChoiceColumnHtml = GetColumn(masterResponseHtml, choiceColumnIndex);
 
             // Assert
             Assert.AreEqual(masterBetListChoiceColumnHtml, activeBetListChoiceColumnHtml);
@@ -112,6 +114,8 @@
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Trans(string productUrl)
         {
             // Arrange
+            const int transColumnIndex = 1;
+
             var activeClient = new HttpClient { BaseAddress = new Uri(ActiveUrl) };
             var masterClient = new HttpClient { BaseAddress = new Uri(MasterURL) };
 
@@ -119,8 +123,8 @@
             var activeResponseHtml = activeClient.GetAsync(productUrl).Result.Content.ReadAsStringAsync().Result;
             var masterResponseHtml = masterClient.GetAsync(productUrl).Result.Content.ReadAsStringAsync().Result;
 
-            var activeBetListChoiceColumnHtml = GetColumn(activeResponseHtml, 1);
-            var masterBetListChoiceColumnHtml = GetColumn(masterResponseHtml, 1);
+            var activeBetListChoiceColumnHtml = GetColumn(activeResponseHtml, transColumnIndex);
+            var masterBetListChoiceColumnHtml = GetColumn(masterResponseHtml, transColumnIndex);
 
             // Assert
             Assert.AreEqual(masterBetListChoiceColumnHtml, activeBetListChoiceColumnHtml);
@@ -168,6 +172,8 @@
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Odds(string productUrl)
         {
             // Arrange
+            const int oddsColumnIndex = 7;
+
             var activeClient = new HttpClient { BaseAddress = new Uri(ActiveUrl) };
             var masterClient = new HttpClient { BaseAddress = new Uri(MasterURL) };
 
@@ -175,8 +181,8 @@
             var activeResponseHtml = activeClient.GetAsync(productUrl).Result.Content.ReadAsStringAsync().Result;
             var masterResponseHtml = masterClient.GetAsync(productUrl).Result.Content.ReadAsStringAsync().Result;
 
-            var activeBetListChoiceColumnHtml = GetColumn(activeResponseHtml, 5);
-            var masterBetListChoiceColumnHtml = GetColumn(masterResponseHtml, 5);
+            var activeBetListChoiceColumnHtml = GetColumn(activeResponseHtml, oddsColumnIndex);
+            var masterBetListChoiceColumnHtml = GetColumn(masterResponseHtml, oddsColumnIndex);
 
             // Assert
             Assert.AreEqual(masterBetListChoiceColumnHtml, activeBetListChoiceColumnHtml);
@@ -224,6 +230,8 @@
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Stake(string productUrl)
         {
             // Arrange
+            const int stakeColumnIndex = 10;
+
             var activeClient = new HttpClient { BaseAddress = new Uri(ActiveUrl) };
             var masterClient = new HttpClient { BaseAddress = new Uri(MasterURL) };
 
@@ -231,8 +239,8 @@
             var activeResponseHtml = activeClient.GetAsync(productUrl).Result.Content.ReadAsStringAsync().Result;
             var masterResponseHtml = masterClient.GetAsync(productUrl).Result.Content.ReadAsStringAsync().Result;
 
-            var activeBetListChoiceColumnHtml = GetColumn(activeResponseHtml, 6);
-            var masterBetListChoiceColumnHtml = GetColumn(masterResponseHtml, 6);
+            var activeBetListChoiceColumnHtml = GetColumn(activeResponseHtml, stakeColumnIndex);
+            var masterBetListChoiceColumnHtml = GetColumn(masterResponseHtml, stakeColumnIndex);
 
             // Assert
             Assert.AreEqual(masterBetListChoiceColumnHtml, activeBetListChoiceColumnHtml);
@@ -280,6 +288,8 @@
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Status(string productUrl)
         {
             // Arrange
+            const int statusColumnIndex = 11;
+
             var activeClient = new HttpClient { BaseAddress = new Uri(ActiveUrl) };
             var masterClient = new HttpClient { BaseAddress = new Uri(MasterURL) };
 
@@ -287,8 +297,8 @@
             var activeResponseHtml = activeClient.GetAsync(productUrl).Result.Content.ReadAsStringAsync().Result;
             var masterResponseHtml = masterClient.GetAsync(productUrl).Result.Content.ReadAsStringAsync().Result;
 
-            var activeBetListChoiceColumnHtml = GetColumn(activeResponseHtml, 7);
-            var masterBetListChoiceColumnHtml = GetColumn(masterResponseHtml, 7);
+            var activeBetListChoiceColumnHtml = GetColumn(activeResponseHtml, statusColumnIndex);
+            var masterBetListChoiceColumnHtml = GetColumn(masterResponseHtml, statusColumnIndex);
 
             // Assert
             Assert.AreEqual(masterBetListChoiceColumnHtml, activeBetListChoiceColumnHtml);

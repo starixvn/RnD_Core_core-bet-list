@@ -166,9 +166,6 @@
             UpdateFG_LG_Excel(FirstHalfFirstGoalTextName, FirstHalfLastGoalTextName, fhfglg, ref homeFGLG, ref awayFGLG);
         }
 
-        /// <summary>
-        /// Updates all match member to null.
-        /// </summary>
         protected void UpdateAllMatchMemberToNull()
         {
             if (Template.Match == null)
@@ -189,7 +186,7 @@
 
         protected virtual IRichTextString BuildRTFChoice(ITicket ticket, RTFHelper rtfHelper, ITicketHelper ticketHelper)
         {
-            var isMixParlay = false;
+            const bool isMixParlay = false;
 
             AdjustBetTeamToRTF();
 
@@ -701,55 +698,66 @@
 
         private static void CalculateFG_LGLabel(string firstClassName, string lastClassName, string[] statusPart, ref string homeFGLG, ref string awayFGLG)
         {
-            if (statusPart.Length != 3)
+            const string goalIndicatorHtmlFormat = "<div class='{0}'>&nbsp;</div>";
+            const int numberOfExpectedIndicators = 3;
+
+            if (statusPart.Length != numberOfExpectedIndicators)
             {
                 return;
             }
 
-            if (statusPart[1] == BetTeamValue.NumberOne)
+            var firstGoalIndicator = statusPart[1];
+            var lastGoalIndicator = statusPart[2];
+
+            if (firstGoalIndicator == BetTeamValue.NumberOne)
             {
-                homeFGLG += string.Join(null, new[] { "<div class='", firstClassName, "'>&nbsp;</div>" });
+                homeFGLG += string.Format(goalIndicatorHtmlFormat, firstClassName);
             }
 
-            if (statusPart[1] == BetTeamValue.NumberTwo)
+            if (firstGoalIndicator == BetTeamValue.NumberTwo)
             {
-                awayFGLG += string.Join(null, new[] { "<div class='", firstClassName, "'>&nbsp;</div>" });
+                awayFGLG += string.Format(goalIndicatorHtmlFormat, firstClassName);
             }
 
-            if (statusPart[2] == BetTeamValue.NumberOne)
+            if (lastGoalIndicator == BetTeamValue.NumberOne)
             {
-                homeFGLG += string.Join(null, new[] { "<div class='", lastClassName, "'>&nbsp;</div>" });
+                homeFGLG += string.Format(goalIndicatorHtmlFormat, lastClassName);
             }
 
-            if (statusPart[2] == BetTeamValue.NumberTwo)
+            if (lastGoalIndicator == BetTeamValue.NumberTwo)
             {
-                awayFGLG += string.Join(null, new[] { "<div class='", lastClassName, "'>&nbsp;</div>" });
+                awayFGLG += string.Format(goalIndicatorHtmlFormat, lastClassName);
             }
         }
 
         private static void UpdateFG_LG_Excel(string firstTextName, string lastTextName, string[] statusPart, ref string homeFGLG, ref string awayFGLG)
         {
-            if (statusPart.Length != 3)
+            const int numberOfExpectedIndicators = 3;
+
+            if (statusPart.Length != numberOfExpectedIndicators)
             {
                 return;
             }
 
-            if (statusPart[1] == "1")
+            var firstGoalIndicator = statusPart[1];
+            var lastGoalIndicator = statusPart[2];
+
+            if (firstGoalIndicator == BetTeamValue.NumberOne)
             {
                 homeFGLG += firstTextName;
             }
 
-            if (statusPart[1] == "2")
+            if (firstGoalIndicator == BetTeamValue.NumberTwo)
             {
                 awayFGLG += firstTextName;
             }
 
-            if (statusPart[2] == "1")
+            if (lastGoalIndicator == BetTeamValue.NumberOne)
             {
                 homeFGLG += lastTextName;
             }
 
-            if (statusPart[2] == "2")
+            if (lastGoalIndicator == BetTeamValue.NumberTwo)
             {
                 awayFGLG += lastTextName;
             }
@@ -757,9 +765,9 @@
 
         private static bool IsCashOutBetTicket(ITicket ticket) => ticket.BetdaqId == 1 && !IsBetTrade(ticket.BetTypeId);
 
-        private static bool IsOutRight(int betTypeId) => betTypeId == 10;
+        private static bool IsOutRight(int betTypeId) => betTypeId == BetTypes.Outright;
 
-        private static bool IsBetTrade(int betTypeId) => betTypeId == 901 || betTypeId == 902;
+        private static bool IsBetTrade(int betTypeId) => betTypeId == BetTypes.Sold || betTypeId == BetTypes.Bought;
 
         private static bool IsSportsbook(int sportTypeId)
         {

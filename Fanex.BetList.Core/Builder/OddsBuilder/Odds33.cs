@@ -2,8 +2,8 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Data;
     using App_GlobalResources;
+    using Constants;
     using Entities;
     using NPOI.HSSF.UserModel;
     using NPOI.SS.UserModel;
@@ -15,24 +15,6 @@
     /// </summary>
     public class Odds33 : Odds1
     {
-        public Odds33()
-        {
-            Template = new Odds_Template();
-            WinBetId = 31;
-            PlaceBetId = 32;
-        }
-
-        protected int WinBetId { get; set; }
-
-        protected int PlaceBetId { get; set; }
-
-        /// <summary>
-        /// Renders the specified ticket.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        /// <param name="funcGetOddsTypeName">Name of the function get odds type.</param>
-        /// <returns>Odds_Template object.</returns>
         public override Odds_Template Render(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
         {
             if (ticketData != null && ticketData.Count > 0)
@@ -41,8 +23,8 @@
 
                 if (foundTicketData != null && foundTicketData.Count > 1)
                 {
-                    ITicketData winTicket = foundTicketData.Find(item => item.BetTypeId == WinBetId);
-                    ITicketData placeTicket = foundTicketData.Find(item => item.BetTypeId == PlaceBetId);
+                    ITicketData winTicket = foundTicketData.Find(item => item.BetTypeId == BetTypes.Win);
+                    ITicketData placeTicket = foundTicketData.Find(item => item.BetTypeId == BetTypes.Place);
 
                     string oddsWin = GetOddsWin(winTicket);
                     string oddsPlace = GetOddsPlace(placeTicket);
@@ -81,11 +63,6 @@
             return ticketData.FindAll(item => item.RefNo.Equals(ticket.TransId.ToString()));
         }
 
-        /// <summary>
-        /// Builds the RTF odds.
-        /// </summary>
-        /// <param name="rtfHelper">The RTF helper.</param>
-        /// <returns>IRichTextString object.</returns>
         protected override IRichTextString BuildRTFOdds(RTFHelper rtfHelper)
         {
             if (Template.odds == "-")
@@ -116,12 +93,6 @@
             return rtfOdds;
         }
 
-        /// <summary>
-        /// Extract string value between tags from a source string.
-        /// </summary>
-        /// <param name="tag">Name of the tags.</param>
-        /// <param name="source">Source string.</param>
-        /// <returns>Value string.</returns>
         private static string ExtractStringBetweenTag(string tag, string source)
         {
             string startTag = string.Join(null, new[] { "<", tag, ">" });
@@ -132,11 +103,6 @@
             return source.Substring(startIndex, endIndex - startIndex);
         }
 
-        /// <summary>
-        /// Gets the odds win.
-        /// </summary>
-        /// <param name="winTicket">The win ticket.</param>
-        /// <returns>Odds of win.</returns>
         private static string GetOddsWin(ITicketData winTicket)
         {
             string winStatus = winTicket.Status.ToLowerInvariant();
@@ -149,11 +115,6 @@
             return oddsWin;
         }
 
-        /// <summary>
-        /// Gets the odds place.
-        /// </summary>
-        /// <param name="placeTicket">The place ticket.</param>
-        /// <returns>Odds of place.</returns>
         private static string GetOddsPlace(ITicketData placeTicket)
         {
             string placeStatus = placeTicket.Status.ToLowerInvariant();

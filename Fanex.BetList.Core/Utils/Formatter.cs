@@ -45,6 +45,9 @@
 
         #endregion FORMAT STRINGS CONST
 
+        private const string DefaultFormattedNumericValue = "0";
+        private const byte DefaultDecimalPrecision = 2;
+
         #region CULTURE CONST
 
         private static readonly CultureInfo cult = new CultureInfo("en-US");
@@ -55,75 +58,46 @@
 
         #region Decimal
 
-        /// <summary>
-        /// Returns decimal format string.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <param name="decDigits">The dec digits.</param>
-        /// <returns>Converted value string.</returns>
+        public static string DecFormat(decimal value)
+            => DecFormat(value, DefaultDecimalPrecision);
+
         public static string DecFormat(decimal value, byte decDigits)
         {
             return value.ToString("N" + decDigits);
         }
 
-        /// <summary>
-        /// Returns decimal format string.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <param name="decDigits">The dec digits.</param>
-        /// <returns>Converted value string.</returns>
+        public static string DecFormat(object value)
+            => DecFormat(value, DefaultDecimalPrecision);
+
         public static string DecFormat(object value, byte decDigits)
         {
-            return DecFormat(value, decDigits, "0");
+            return DecFormat(value, decDigits, DefaultFormattedNumericValue);
         }
 
-        /// <summary>
-        /// Returns decimal format string.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <param name="decDigits">The dec digits.</param>
-        /// <param name="numberDefault">The number default.</param>
-        /// <returns>Converted value string.</returns>
         public static string DecFormat(object value, byte decDigits, string numberDefault)
         {
             return (Convert.IsDBNull(value) || value == null) ? numberDefault : DecFormat(Convert.ToDecimal(value), decDigits);
         }
 
-        /// <summary>
-        /// Returns decimal format string.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <param name="decDigits">The dec digits.</param>
-        /// <param name="chop">If set to <c>true</c> [chop].</param>
-        /// <returns>Converted value string.</returns>
         public static string DecFormat(decimal value, byte decDigits, bool chop)
         {
             if (!chop)
             {
                 return string.Format(DECIMALFORMAT2, value.ToString("N" + decDigits));
             }
-            else
+
+            int a = (int)Math.Pow(10, decDigits);
+
+            // Returns the largest integer less than or equal number
+            // If the value is negative, then we use Ceiling() function instead of Floor() function
+            if (value < 0)
             {
-                int a = (int)Math.Pow(10, decDigits);
-
-                // Returns the largest integer less than or equal number
-                // If the value is negative, then we use Ceiling() function instead of Floor() function
-                if (value < 0)
-                {
-                    return string.Format(DECIMALFORMAT2, Math.Ceiling(value * a) / a);
-                }
-
-                return string.Format(DECIMALFORMAT2, Math.Floor(value * a) / a);
+                return string.Format(DECIMALFORMAT2, Math.Ceiling(value * a) / a);
             }
+
+            return string.Format(DECIMALFORMAT2, Math.Floor(value * a) / a);
         }
 
-        /// <summary>
-        /// Returns decimal format string.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <param name="decDigits">The dec digits.</param>
-        /// <param name="chop">If set to <c>true</c> [chop].</param>
-        /// <returns>Converted value string.</returns>
         public static string DecFormat(object value, byte decDigits, bool chop)
         {
             return DecFormat(Convert.ToDecimal(value), decDigits, chop);
@@ -133,23 +107,11 @@
 
         #region Float
 
-        /// <summary>
-        /// Floats the format.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <param name="decDigits">The dec digits.</param>
-        /// <returns>Converted value string.</returns>
         public static string FloatFormat(float value, byte decDigits)
         {
             return value.ToString("N" + decDigits);
         }
 
-        /// <summary>
-        /// Floats the format.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <param name="decDigits">The dec digits.</param>
-        /// <returns>Converted value string.</returns>
         public static string FloatFormat(object value, byte decDigits)
         {
             return FloatFormat(Convert.ToSingle(value), decDigits);
@@ -159,23 +121,11 @@
 
         #region Double
 
-        /// <summary>
-        /// Doubles the format.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <param name="decDigits">The dec digits.</param>
-        /// <returns>Converted value string.</returns>
         public static string DoubleFormat(double value, byte decDigits)
         {
             return value.ToString("N" + decDigits);
         }
 
-        /// <summary>
-        /// Doubles the format.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <param name="decDigits">The dec digits.</param>
-        /// <returns>Converted value string.</returns>
         public static string DoubleFormat(object value, byte decDigits)
         {
             return DoubleFormat(Convert.ToDouble(value), decDigits);
@@ -185,17 +135,11 @@
 
         #region Number
 
-        /// <summary>
-        /// Formats the number1.
-        /// </summary>
-        /// <param name="objectToFormat">The object to format.</param>
-        /// <param name="culture">The culture.</param>
-        /// <returns>Formatted value string.</returns>
         public static string FormatNumber1(object objectToFormat, string culture)
         {
             if (Convert.IsDBNull(objectToFormat) || objectToFormat == null)
             {
-                return "0";
+                return DefaultFormattedNumericValue;
             }
 
             if (culture == CULTNAMEVI)
@@ -206,17 +150,11 @@
             return string.Format(DECIMALFORMAT1, objectToFormat);
         }
 
-        /// <summary>
-        /// Formats the number2.
-        /// </summary>
-        /// <param name="objectToFormat">The object.</param>
-        /// <param name="culture">The culture.</param>
-        /// <returns>Formatted value string.</returns>
         public static string FormatNumber2(object objectToFormat, string culture)
         {
             if (Convert.IsDBNull(objectToFormat) || objectToFormat == null)
             {
-                return "0";
+                return DefaultFormattedNumericValue;
             }
 
             if (culture == CULTNAMEVI)
@@ -227,17 +165,11 @@
             return string.Format(DECIMALFORMAT2, objectToFormat);
         }
 
-        /// <summary>
-        /// Formats the number20.
-        /// </summary>
-        /// <param name="objectToFormat">The object.</param>
-        /// <param name="culture">The culture.</param>
-        /// <returns>Formatted value string.</returns>
         public static string FormatNumber20(object objectToFormat, string culture)
         {
             if (Convert.IsDBNull(objectToFormat) || objectToFormat == null)
             {
-                return "0";
+                return DefaultFormattedNumericValue;
             }
 
             if (culture == CULTNAMEVI)
@@ -248,33 +180,21 @@
             return string.Format(DECIMALFORMAT20, objectToFormat);
         }
 
-        /// <summary>
-        /// Format number with maximum 3 significant decimal numbers (numbers that # 0).
-        /// </summary>
-        /// <param name="objectToFormat">The object.</param>
-        /// <returns>Converted value string.</returns>
         public static string FormatNumber3(object objectToFormat)
         {
             if (Convert.IsDBNull(objectToFormat) || objectToFormat == null)
             {
-                return "0";
+                return DefaultFormattedNumericValue;
             }
 
             return string.Format(DECIMALFORMAT3, objectToFormat);
         }
 
-        /// <summary>
-        /// Format number with 2 decimal, automatically remove redundant '0'
-        /// and do not include comma.
-        /// </summary>
-        /// <param name="objectToFormat">The object.</param>
-        /// <param name="culture">The culture.</param>
-        /// <returns>Converted value string.</returns>
         public static string FormatNumber2C(object objectToFormat, string culture)
         {
             if (Convert.IsDBNull(objectToFormat) || objectToFormat == null)
             {
-                return "0";
+                return DefaultFormattedNumericValue;
             }
 
             if (culture == CULTNAMEVI)
@@ -285,17 +205,11 @@
             return string.Format(DECIMALFORMAT2C, objectToFormat);
         }
 
-        /// <summary>
-        /// Formats the number30.
-        /// </summary>
-        /// <param name="objectToFormat">The object.</param>
-        /// <param name="culture">The culture.</param>
-        /// <returns>Converted value string.</returns>
         public static string FormatNumber30(object objectToFormat, string culture)
         {
             if (Convert.IsDBNull(objectToFormat) || objectToFormat == null)
             {
-                return "0";
+                return DefaultFormattedNumericValue;
             }
 
             if (culture == CULTNAMEVI)
@@ -306,18 +220,11 @@
             return string.Format(DECIMALFORMAT30, objectToFormat);
         }
 
-        /// <summary>
-        /// Format number with 3 decimal, automatically remove redundant '0'
-        /// and do not include comma.
-        /// </summary>
-        /// <param name="objectToFormat">The object.</param>
-        /// <param name="culture">The culture.</param>
-        /// <returns>Converted value string.</returns>
         public static string FormatNumber3C(object objectToFormat, string culture)
         {
             if (Convert.IsDBNull(objectToFormat) || objectToFormat == null)
             {
-                return "0";
+                return DefaultFormattedNumericValue;
             }
 
             if (culture == CULTNAMEVI)
@@ -328,17 +235,11 @@
             return string.Format(DECIMALFORMAT3C, objectToFormat);
         }
 
-        /// <summary>
-        /// Format number with 3 decimal, automatically remove redundant '0'.
-        /// </summary>
-        /// <param name="objectToFormat">The object.</param>
-        /// <param name="culture">The culture.</param>
-        /// <returns>Converted value string.</returns>
         public static string FormatNumber3(object objectToFormat, string culture)
         {
             if (Convert.IsDBNull(objectToFormat) || objectToFormat == null)
             {
-                return "0";
+                return DefaultFormattedNumericValue;
             }
 
             if (culture == CULTNAMEVI)
@@ -349,17 +250,11 @@
             return string.Format(DECIMALFORMAT3, objectToFormat);
         }
 
-        /// <summary>
-        /// Format number with 4 decimal, automatically remove redundant '0'.
-        /// </summary>
-        /// <param name="objectToFormat">The object.</param>
-        /// <param name="culture">The culture.</param>
-        /// <returns>Converted value string.</returns>
         public static string FormatNumber4(object objectToFormat, string culture)
         {
             if (Convert.IsDBNull(objectToFormat) || objectToFormat == null)
             {
-                return "0";
+                return DefaultFormattedNumericValue;
             }
 
             if (culture == CULTNAMEVI)
@@ -370,32 +265,21 @@
             return string.Format(DECIMALFORMAT4, objectToFormat);
         }
 
-        /// <summary>
-        /// Formats the number4.
-        /// </summary>
-        /// <param name="objectToFormat">The objectToFormat to format.</param>
-        /// <returns>Converted value string.</returns>
         public static string FormatNumber4(object objectToFormat)
         {
             if (Convert.IsDBNull(objectToFormat) || objectToFormat == null)
             {
-                return "0";
+                return DefaultFormattedNumericValue;
             }
 
             return string.Format(DECIMALFORMAT4, objectToFormat);
         }
 
-        /// <summary>
-        /// Formats the number40.
-        /// </summary>
-        /// <param name="objectToFormat">The objectToFormat.</param>
-        /// <param name="culture">The culture.</param>
-        /// <returns>Converted value string.</returns>
         public static string FormatNumber40(object objectToFormat, string culture)
         {
             if (Convert.IsDBNull(objectToFormat) || objectToFormat == null)
             {
-                return "0";
+                return DefaultFormattedNumericValue;
             }
 
             if (culture == CULTNAMEVI)
@@ -406,11 +290,6 @@
             return string.Format(DECIMALFORMAT40, objectToFormat);
         }
 
-        /// <summary>
-        /// Formats the sign number.
-        /// </summary>
-        /// <param name="number">The number.</param>
-        /// <returns>Converted value string.</returns>
         public static string FormatSignNumber(int number)
         {
             if (number > 0)
@@ -425,11 +304,6 @@
 
         #region Date
 
-        /// <summary>
-        /// Longs the date format.
-        /// </summary>
-        /// <param name="date">The date to format.</param>
-        /// <returns>Converted value string.</returns>
         public static string LongDateFormat(object date)
         {
             if (Convert.IsDBNull(date) || date == null)
@@ -440,11 +314,6 @@
             return string.Format(cult, "{0:MM/dd/yyyy HH:mm:ss}", date);
         }
 
-        /// <summary>
-        /// Shorts the date format.
-        /// </summary>
-        /// <param name="date">The date to format.</param>
-        /// <returns>Converted value string.</returns>
         public static string ShortDateFormat(object date)
         {
             if (Convert.IsDBNull(date) || date == null)
@@ -455,11 +324,6 @@
             return string.Format(cult, "{0:MM/dd/yyyy}", date);
         }
 
-        /// <summary>
-        /// Format input date to fully DATETIME format.
-        /// </summary>
-        /// <param name="date">The date to format.</param>
-        /// <returns>Converted value string.</returns>
         public static string FullDateFormat(object date)
         {
             if (Convert.IsDBNull(date) || date == null)
@@ -470,11 +334,6 @@
             return string.Format(cult, "{0:MM/dd/yyyy hh:mm:ss tt}", date);
         }
 
-        /// <summary>
-        /// Format the input date to Full Date.
-        /// </summary>
-        /// <param name="date">The date to format.</param>
-        /// <returns>Converted value string.</returns>
         public static string FullDateFormat2Ln(object date)
         {
             if (Convert.IsDBNull(date) || date == null)
@@ -485,21 +344,11 @@
             return string.Format(cult, "{0:MM/dd/yyyy<br/>hh:mm:ss tt}", date);
         }
 
-        /// <summary>
-        /// Format input date to full date.
-        /// </summary>
-        /// <param name="objectToFormat">The objectToFormat.</param>
-        /// <returns>Formatted value string.</returns>
         public static string FullDateFormat2Line(object objectToFormat)
         {
             return FullDateFormat2Ln(objectToFormat);
         }
 
-        /// <summary>
-        /// Format date time with only month/day hour:minute.
-        /// </summary>
-        /// <param name="date">The date to format.</param>
-        /// <returns>Converted value string.</returns>
         public static string FormatDateTime22(object date)
         {
             if (Convert.IsDBNull(date) || date == null)
@@ -507,21 +356,9 @@
                 return string.Empty;
             }
 
-            try
-            {
-                return Convert.ToDateTime(date).ToString("MM/dd hh:mm");
-            }
-            catch
-            {
-                return "Error";
-            }
+            return Convert.ToDateTime(date).ToString("MM/dd hh:mm");
         }
 
-        /// <summary>
-        /// Formats the date time22 DDMM.
-        /// </summary>
-        /// <param name="date">The date to format.</param>
-        /// <returns>Converted value string.</returns>
         public static string FormatDateTime22DDMM(object date)
         {
             if (Convert.IsDBNull(date) || date == null)
@@ -529,21 +366,9 @@
                 return string.Empty;
             }
 
-            try
-            {
-                return Convert.ToDateTime(date).ToString("dd/MM hh:mm");
-            }
-            catch
-            {
-                return "Error";
-            }
+            return Convert.ToDateTime(date).ToString("dd/MM hh:mm");
         }
 
-        /// <summary>
-        /// Formats the time millisecond.
-        /// </summary>
-        /// <param name="date">The date to format.</param>
-        /// <returns>Converted value string.</returns>
         public static string FormatTimeMiliSec(object date)
         {
             if (Convert.IsDBNull(date) || date == null)
@@ -551,21 +376,9 @@
                 return string.Empty;
             }
 
-            try
-            {
-                return Convert.ToDateTime(date).ToString(TIMEFORMATMILISEC);
-            }
-            catch
-            {
-                return "Error";
-            }
+            return Convert.ToDateTime(date).ToString(TIMEFORMATMILISEC);
         }
 
-        /// <summary>
-        /// Formats the date en.
-        /// </summary>
-        /// <param name="date">The date to format.</param>
-        /// <returns>Converted value string.</returns>
         public static string FormatDateEn(object date)
         {
             if (Convert.IsDBNull(date) || date == null)
@@ -573,21 +386,9 @@
                 return string.Empty;
             }
 
-            try
-            {
-                return Convert.ToDateTime(date).ToString("MM/dd/yyyy");
-            }
-            catch
-            {
-                return "Error";
-            }
+            return Convert.ToDateTime(date).ToString("MM/dd/yyyy");
         }
 
-        /// <summary>
-        /// Formats the date vi.
-        /// </summary>
-        /// <param name="date">The date to format.</param>
-        /// <returns>Converted value string.</returns>
         public static string FormatDateVi(object date)
         {
             if (Convert.IsDBNull(date) || date == null)
@@ -595,21 +396,9 @@
                 return string.Empty;
             }
 
-            try
-            {
-                return Convert.ToDateTime(date).ToString("dd/MM/yyyy");
-            }
-            catch
-            {
-                return "Error";
-            }
+            return Convert.ToDateTime(date).ToString("dd/MM/yyyy");
         }
 
-        /// <summary>
-        /// Formats the date time en12.
-        /// </summary>
-        /// <param name="date">The date to format.</param>
-        /// <returns>Converted value string.</returns>
         public static string FormatDateTimeEn12(object date)
         {
             if (Convert.IsDBNull(date) || date == null)
@@ -617,21 +406,9 @@
                 return string.Empty;
             }
 
-            try
-            {
-                return Convert.ToDateTime(date).ToString("MM/dd/yyyy hh:mm:ss tt");
-            }
-            catch
-            {
-                return "Error";
-            }
+            return Convert.ToDateTime(date).ToString("MM/dd/yyyy hh:mm:ss tt");
         }
 
-        /// <summary>
-        /// Formats the date time en12 no sec.
-        /// </summary>
-        /// <param name="date">The date to format.</param>
-        /// <returns>Converted value string.</returns>
         public static string FormatDateTimeEn12NoSec(object date)
         {
             if (Convert.IsDBNull(date) || date == null)
@@ -639,21 +416,9 @@
                 return string.Empty;
             }
 
-            try
-            {
-                return Convert.ToDateTime(date).ToString("MM/dd/yyyy hh:mm tt");
-            }
-            catch
-            {
-                return "Error";
-            }
+            return Convert.ToDateTime(date).ToString("MM/dd/yyyy hh:mm tt");
         }
 
-        /// <summary>
-        /// Formats the date time en12 no sec.
-        /// </summary>
-        /// <param name="date">The date to format.</param>
-        /// <returns>Converted value string.</returns>
         public static string FormatDateTimeEn12ShortMonthNoSec(object date)
         {
             if (Convert.IsDBNull(date) || date == null)
@@ -661,21 +426,9 @@
                 return string.Empty;
             }
 
-            try
-            {
-                return Convert.ToDateTime(date).ToString("M/dd/yyyy hh:mm tt");
-            }
-            catch
-            {
-                return "Error";
-            }
+            return Convert.ToDateTime(date).ToString("M/dd/yyyy hh:mm tt");
         }
 
-        /// <summary>
-        /// Formats the date time en24.
-        /// </summary>
-        /// <param name="date">The date to format.</param>
-        /// <returns>Converted value string.</returns>
         public static string FormatDateTimeEn24(object date)
         {
             if (Convert.IsDBNull(date) || date == null)
@@ -683,21 +436,9 @@
                 return string.Empty;
             }
 
-            try
-            {
-                return Convert.ToDateTime(date).ToString("MM/dd/yyyy HH:mm:ss");
-            }
-            catch
-            {
-                return "Error";
-            }
+            return Convert.ToDateTime(date).ToString("MM/dd/yyyy HH:mm:ss");
         }
 
-        /// <summary>
-        /// IF Time is 12:00, then do not return time.
-        /// </summary>
-        /// <param name="date">The date to format.</param>
-        /// <returns>Converted value string.</returns>
         public static string FormatDateOptionalTime(object date)
         {
             if (Convert.IsDBNull(date) || date == null)
@@ -705,63 +446,46 @@
                 return string.Empty;
             }
 
-            try
-            {
-                DateTime dt2 = Convert.ToDateTime(date);
-                if ((dt2.Hour == 12 || dt2.Hour == 0) && dt2.Minute == 0)
-                {
-                    return dt2.ToString("MM/dd/yyyy");
-                }
+            DateTime dateTime = Convert.ToDateTime(date);
 
-                return dt2.ToString("MM/dd/yyyy hh:mm:ss tt");
-            }
-            catch
+            if (dateTime == dateTime.Date)
             {
-                return "Error";
+                return dateTime.ToString("MM/dd/yyyy");
             }
+
+            return dateTime.ToString("MM/dd/yyyy hh:mm:ss tt");
         }
 
-        /// <summary>
-        /// Resets the start date.
-        /// </summary>
-        /// <param name="date">The date to format.</param>
-        /// <returns>The reset date.</returns>
         public static DateTime ResetStartDate(DateTime date)
         {
             int baseMinutes = date.Hour * 60;
             int baseSeconds = (baseMinutes + date.Minute) * 60;
-
             int totalMilliseconds = ((baseSeconds + date.Second) * 1000) + date.Millisecond;
 
             return date.AddMilliseconds(-totalMilliseconds);
         }
 
-        /// <summary>
-        /// Resets the end date.
-        /// </summary>
-        /// <param name="date">The date to format.</param>
-        /// <returns>The reset date.</returns>
         public static DateTime ResetEndDate(DateTime date)
         {
-            return ResetStartDate(date).Add(new TimeSpan(23, 59, 59));
+            var midnightTime = new TimeSpan(23, 59, 59);
+
+            return ResetStartDate(date).Add(midnightTime);
         }
 
         #endregion Date
 
         #region String
 
-        /// <summary>
-        /// Truncate With Tip.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <param name="maxLength">The maximum length.</param>
-        /// <param name="hasSpanReturn">If set to <c>true</c> [has span return].</param>
-        /// <returns>Converted value string.</returns>
         public static string TruncateWithTip(string value, int maxLength, bool hasSpanReturn)
         {
             if (value.Length > maxLength)
             {
-                return string.Format("<span title='{0}'>{1}...</span>", value.Replace("'", "&#39;"), HttpUtility.HtmlEncode(value.Substring(0, maxLength - 3)));
+                const int truncationIndicatorLength = 3;
+
+                return string.Format(
+                    "<span title='{0}'>{1}...</span>",
+                    value.Replace("'", "&#39;"),
+                    HttpUtility.HtmlEncode(value.Substring(0, maxLength - truncationIndicatorLength)));
             }
 
             if (hasSpanReturn)
@@ -772,22 +496,11 @@
             return value;
         }
 
-        /// <summary>
-        /// Truncates the with tip.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <param name="maxLength">Length of the max.</param>
-        /// <returns>Formatted value string.</returns>
         public static string TruncateWithTip(string value, int maxLength)
         {
             return TruncateWithTip(value, maxLength, false);
         }
 
-        /// <summary>
-        /// Highlight the negative number by red color.
-        /// </summary>
-        /// <param name="amount">The amount.</param>
-        /// <returns>Converted value string.</returns>
         public static string HighlightNegativeNumber(object amount)
         {
             decimal value = 0;
@@ -804,22 +517,17 @@
 
             if (value < 0)
             {
-                return $"<font color='#ff0000'>{DecFormat(amount, 2)}</font>";
+                return $"<font color='#ff0000'>{DecFormat(amount)}</font>";
             }
 
             if (value > 0)
             {
-                return DecFormat(amount, 2);
+                return DecFormat(amount);
             }
 
-            return "0";
+            return DefaultFormattedNumericValue;
         }
 
-        /// <summary>
-        /// Highlight the negative number by red color and convert with 4 decimal digits.
-        /// </summary>
-        /// <param name="amount">The amount.</param>
-        /// <returns>Converted value string.</returns>
         public static string HighlightNegativeNumber40(object amount)
         {
             var value = Convert.ToDecimal(amount);
@@ -834,7 +542,7 @@
                 return FormatNumber40(amount, CULTNAMEENG);
             }
 
-            return "0";
+            return DefaultFormattedNumericValue;
         }
 
         #endregion String

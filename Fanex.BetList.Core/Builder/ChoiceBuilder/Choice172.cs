@@ -12,44 +12,40 @@
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            var betTeam = string.Empty;
-
             switch (ticket.BetTeam.ToLowerInvariant())
             {
                 case BetTeamValue.HH:
-                    betTeam = string.Format("{0}/{1}", CoreBetList.Home, CoreBetList.Home);
+                    Template.betTeam = $"{CoreBetList.Home}/{CoreBetList.Home}";
                     break;
 
                 case BetTeamValue.DH:
-                    betTeam = string.Format("{0}/{1}", CoreBetList.draw, CoreBetList.Home);
+                    Template.betTeam = $"{CoreBetList.draw}/{CoreBetList.Home}";
                     break;
 
                 case BetTeamValue.HA:
-                    betTeam = string.Format("{0}/{1}", CoreBetList.Home, CoreBetList.Away);
+                    Template.betTeam = $"{CoreBetList.Home}/{CoreBetList.Away}";
                     break;
 
                 case BetTeamValue.AH:
-                    betTeam = string.Format("{0}/{1}", CoreBetList.Away, CoreBetList.Home);
+                    Template.betTeam = $"{CoreBetList.Away}/{CoreBetList.Home}";
                     break;
 
                 case BetTeamValue.DA:
-                    betTeam = string.Format("{0}/{1}", CoreBetList.draw, CoreBetList.Away);
+                    Template.betTeam = $"{CoreBetList.draw}/{CoreBetList.Away}";
                     break;
 
                 case BetTeamValue.AA:
-                    betTeam = string.Format("{0}/{1}", CoreBetList.Away, CoreBetList.Away);
+                    Template.betTeam = $"{CoreBetList.Away}/{CoreBetList.Away}";
                     break;
 
                 case BetTeamValue.NO:
-                    betTeam = CoreBetList.none;
+                    Template.betTeam = CoreBetList.none;
                     break;
 
                 default:
-                    betTeam = string.Empty;
+                    Template.betTeam = string.Empty;
                     break;
             }
-
-            Template.betTeam = betTeam;
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)

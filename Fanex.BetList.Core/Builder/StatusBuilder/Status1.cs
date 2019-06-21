@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Globalization;
     using App_GlobalResources;
+    using Constants;
     using Entities;
     using NPOI.SS.UserModel;
     using Templates;
@@ -51,11 +52,6 @@
             return Template.ToString();
         }
 
-        /// <summary>
-        /// Build Result Text
-        /// </summary>
-        /// <param name="ticket"></param>
-        /// <param name="ticketData"></param>
         protected virtual void BuildResult(ITicket ticket, List<ITicketData> ticketData)
         {
             var status = ticket.Status.ToLowerInvariant();
@@ -225,7 +221,7 @@
             => ticket.BetdaqId == 0 && ticket.ExtraInfo.HasAttributeInXmlTag(CashOutXmlTag, "s");
 
         private static bool IsBetTradeTicket(int betTypeId)
-            => betTypeId == 901 || betTypeId == 902;
+            => betTypeId == BetTypes.Sold || betTypeId == BetTypes.Bought;
 
         private static bool IsStatusNotVoidAndRefund(string status)
             => !status.Equals(BetStatus.Void) && !status.Equals(BetStatus.Refund);
@@ -234,7 +230,13 @@
 
         private static bool StakeIsZeroBeforeConvertCurrency(ITicket ticket) => ticket.OriginalBetType != -1;
 
-        private static bool IsSportsbook(int sportTypeId) => sportTypeId <= 99 || sportTypeId == 154;
+        private static bool IsSportsbook(int sportTypeId)
+        {
+            const int otherSports = 99;
+            const int horseRacingFixedOdds = 154;
+
+            return sportTypeId <= otherSports || sportTypeId == horseRacingFixedOdds;
+        }
 
         private static string DetectRealRunningStatus(byte settlementStatus)
         {

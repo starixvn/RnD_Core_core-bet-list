@@ -13,9 +13,6 @@ namespace Fanex.BetList.Core.Builder
     using StatusBuilder;
     using TransBuilder;
 
-    /// <summary>
-    /// The bet list base builder.
-    /// </summary>
     public class BetListBaseBuilder : IBetListBaseBuilder
     {
         private const string ChoiceBuilderNamespace = "Fanex.BetList.Core.Builder.ChoiceBuilder";
@@ -50,11 +47,6 @@ namespace Fanex.BetList.Core.Builder
             MapperCollector.CollectAllMapperData(assemblies);
         }
 
-        /// <summary>
-        /// Creates the choice builder.
-        /// </summary>
-        /// <param name="bettype">The bet type.</param>
-        /// <returns>IChoice: the Choice builder object.</returns>
         public IChoice CreateChoiceBuilder(int bettype)
         {
             var choiceName = ChoiceName;
@@ -73,13 +65,11 @@ namespace Fanex.BetList.Core.Builder
             return CreateInstance<IChoice, Choice1>(typeName);
         }
 
-        /// <summary>
-        /// Creates the odds builder.
-        /// </summary>
-        /// <param name="bettype">The bet type.</param>
-        /// <returns>IOdds: the Odds builder object.</returns>
         public IOdds CreateOddsBuilder(int bettype)
         {
+            const int partyBaccarat = 1101;
+            const int endOfLiveCasinoRange = 1199;
+
             var oddsName = OddsName;
             var betTypeId = bettype;
 
@@ -89,10 +79,10 @@ namespace Fanex.BetList.Core.Builder
                 oddsName = Odds3rdName;
             }
 
-            if (betTypeId <= 1199 && betTypeId >= 1101)
+            if (betTypeId <= endOfLiveCasinoRange && betTypeId >= partyBaccarat)
             {
                 // Odds of Live Casino bet types
-                betTypeId = 1101;
+                betTypeId = partyBaccarat;
             }
 
             betTypeId = MapperCollector.GetOddsBaseBetTypeOf(betTypeId);
@@ -102,11 +92,6 @@ namespace Fanex.BetList.Core.Builder
             return CreateInstance<IOdds, Odds1>(typeName);
         }
 
-        /// <summary>
-        /// Creates the stake builder.
-        /// </summary>
-        /// <param name="bettype">The bet type.</param>
-        /// <returns>IStake: the Stake builder object.</returns>
         public IStake CreateStakeBuilder(int bettype)
         {
             var stakeName = StakeName;
@@ -125,11 +110,6 @@ namespace Fanex.BetList.Core.Builder
             return CreateInstance<IStake, Stake1>(typeName);
         }
 
-        /// <summary>
-        /// Creates the status builder.
-        /// </summary>
-        /// <param name="bettype">The bet type.</param>
-        /// <returns>IStatus: the Status builder object.</returns>
         public IStatus CreateStatusBuilder(int bettype)
         {
             var statusName = StatusName;
@@ -148,11 +128,6 @@ namespace Fanex.BetList.Core.Builder
             return CreateInstance<IStatus, Status1>(typeName);
         }
 
-        /// <summary>
-        /// Creates the trans builder.
-        /// </summary>
-        /// <param name="bettype">The bet type.</param>
-        /// <returns>ITrans: the Trans builder object.</returns>
         public ITrans CreateTransBuilder(int bettype)
         {
             var transName = TransName;

@@ -12,40 +12,36 @@
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            var betTeam = string.Empty;
-
             switch (ticket.BetTeam.ToLowerInvariant())
             {
                 case BetTeamValue.YH:
-                    betTeam = string.Format("{0}/{1}", CoreBetList.lblYes, CoreBetList.Home);
+                    Template.betTeam = $"{CoreBetList.lblYes}/{CoreBetList.Home}";
                     break;
 
                 case BetTeamValue.YD:
-                    betTeam = string.Format("{0}/{1}", CoreBetList.lblYes, CoreBetList.draw);
+                    Template.betTeam = $"{CoreBetList.lblYes}/{CoreBetList.draw}";
                     break;
 
                 case BetTeamValue.YA:
-                    betTeam = string.Format("{0}/{1}", CoreBetList.lblYes, CoreBetList.Away);
+                    Template.betTeam = $"{CoreBetList.lblYes}/{CoreBetList.Away}";
                     break;
 
                 case BetTeamValue.NH:
-                    betTeam = string.Format("{0}/{1}", CoreBetList.lblNo, CoreBetList.Home);
+                    Template.betTeam = $"{CoreBetList.lblNo}/{CoreBetList.Home}";
                     break;
 
                 case BetTeamValue.ND:
-                    betTeam = string.Format("{0}/{1}", CoreBetList.lblNo, CoreBetList.draw);
+                    Template.betTeam = $"{CoreBetList.lblNo}/{CoreBetList.draw}";
                     break;
 
                 case BetTeamValue.NA:
-                    betTeam = string.Format("{0}/{1}", CoreBetList.lblNo, CoreBetList.Away);
+                    Template.betTeam = $"{ CoreBetList.lblNo}/{CoreBetList.Away}";
                     break;
 
                 default:
-                    betTeam = string.Empty;
+                    Template.betTeam = string.Empty;
                     break;
             }
-
-            Template.betTeam = betTeam;
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
