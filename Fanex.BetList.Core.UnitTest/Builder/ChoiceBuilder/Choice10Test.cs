@@ -1,6 +1,6 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Common.Enums;
+    using Constants;
     using Core.Builder.ChoiceBuilder;
     using Entities;
     using NSubstitute;

@@ -1,15 +1,12 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using App_GlobalResources;
-    using Common.Enums;
+    using Constants;
     using Core.Builder.ChoiceBuilder;
     using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    /// Unit test for Choice1328 class.
-    /// </summary>
     [TestFixture]
     public class Choice1328Test
     {
@@ -26,9 +23,6 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        /// <summary>
-        /// The value of Template.ticketStatus is always void when Ticket.Status = void.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {
@@ -39,9 +33,6 @@
             Assert.IsNull(_choice.Template.Handicap.handicap);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always 4 Points.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIs01_BetTeamAreSpaceAnd4AndPointResource()
         {
@@ -56,9 +47,6 @@
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always 5 Points.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIs02_BetTeamAreSpaceAnd5AndPointResource()
         {
@@ -73,9 +61,6 @@
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always 6 Points.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIs03_BetTeamAreSpaceAnd6AndPointResource()
         {
@@ -90,9 +75,6 @@
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always 7 UP Points.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIs04_BetTeamAreSpaceAnd7AndUpPointResource()
         {
@@ -107,9 +89,6 @@
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always empty.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamNotAre01Or02Or03Or04_BetTeamIsEmpty()
         {
@@ -123,9 +102,6 @@
             Assert.AreEqual("&nbsp;", _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.BetType.betTypeName is always bet type name.
-        /// </summary>
         [Test]
         public void BuildBetType_Always_SetBetTypeNameIsBetTypeName()
         {

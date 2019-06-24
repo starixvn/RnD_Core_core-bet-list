@@ -1,20 +1,17 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Common.Enums;
+    using Constants;
     using Core.Builder.ChoiceBuilder;
     using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    /// Unit test for Choice16 class.
-    /// </summary>
     [TestFixture]
     public class Choice16Test
     {
 #pragma warning disable S1144 // Unused private types or members should be removed
 
-        private static object[] expectedBetTeams =
+        private static readonly object[] expectedBetTeams =
         {
             new object[] { "0:0", "DD" },
             new object[] { "0:1", "DH" },
@@ -38,13 +35,10 @@
         {
             _choice = new Choice16();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes.HT_FT;
+            _ticket.BetTypeId = BetTypes.HalfTimeFullTime;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        /// <summary>
-        /// The value of Template.ticketStatus is always void when Ticket.Status = void.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {
@@ -55,9 +49,6 @@
             Assert.IsNull(_choice.Template.Handicap.handicap);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always bet team name.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIsEmpty_SetBetTeamIsEmpty()
         {
@@ -84,9 +75,6 @@
             Assert.AreEqual(expectedResult, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeamClassName is always favorite.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
         {

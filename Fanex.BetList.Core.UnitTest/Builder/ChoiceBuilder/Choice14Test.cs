@@ -1,15 +1,12 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Common.Enums;
+    using App_GlobalResources;
+    using Constants;
     using Core.Builder.ChoiceBuilder;
     using Entities;
-    using Fanex.BetList.Core.App_GlobalResources;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    /// Unit test for Choice14 class.
-    /// </summary>
     [TestFixture]
     public class Choice14Test
     {
@@ -35,13 +32,10 @@
         {
             _choice = new Choice14();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes.First_Goal_Last_Goal;
+            _ticket.BetTypeId = BetTypes.FirstGoalLastGoal;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        /// <summary>
-        /// The value of Template.ticketStatus is always void when Ticket.Status = void.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {
@@ -52,9 +46,6 @@
             Assert.IsNull(_choice.Template.Handicap.handicap);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always bet team name.
-        /// </summary>
         [Test]
         public void BuildBetTeam_Always_SetBetTeamIsEmpty()
         {
@@ -68,9 +59,6 @@
             Assert.IsEmpty(_choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeamClassName is always favorite.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
         {

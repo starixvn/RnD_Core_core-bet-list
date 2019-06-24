@@ -1,15 +1,12 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using App_GlobalResources;
-    using Common.Enums;
+    using Constants;
     using Core.Builder.ChoiceBuilder;
     using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    /// Unit test for Choice1307 class.
-    /// </summary>
     [TestFixture]
     public class Choice1307Test
     {
@@ -26,9 +23,6 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always Over.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIs1_BetTeamIsOverResource()
         {
@@ -42,9 +36,6 @@
             Assert.AreEqual(CoreBetList.over, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always Over.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIs2_BetTeamIsUnderResource()
         {
@@ -58,9 +49,6 @@
             Assert.AreEqual(CoreBetList.under, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always Between handicap 2 and handicap1.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamNotIs1AndNotIs2_BetTeamIsBetweenResourceHandicap2AndHandicap1()
         {
@@ -75,9 +63,6 @@
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.BetType.betTypeName is always bet type name.
-        /// </summary>
         [Test]
         public void BuildBetTeam_Always_SetBetTypeNameIsBetTypeName()
         {
@@ -91,9 +76,6 @@
             Assert.AreEqual("Bet type name", _choice.Template.BetType.betTypeName);
         }
 
-        /// <summary>
-        /// The value of Template.betTeamClassName is always favorite when BetTeam = 1.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIs1_BetTeamClassNameIsFavorite()
         {
@@ -108,9 +90,6 @@
             Assert.AreEqual(CSS_CLASS_FAVORITE, _choice.Template.betTeamClassName);
         }
 
-        /// <summary>
-        /// The value of Template.betTeamClassName is always favorite when BetTeam != 1.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_BetTeamIsNot1_BetTeamClassNameIsUnderdog()
         {

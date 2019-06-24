@@ -1,15 +1,12 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using App_GlobalResources;
-    using Common.Enums;
+    using Constants;
     using Core.Builder.ChoiceBuilder;
     using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    /// TODO: Update summary.
-    /// </summary>
     public class Choice140Test
     {
         private Choice140 _choice;

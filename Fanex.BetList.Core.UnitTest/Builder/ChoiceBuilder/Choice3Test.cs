@@ -1,15 +1,12 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using System.Globalization;
-    using Common.Enums;
+    using Constants;
     using Core.Builder.ChoiceBuilder;
     using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    /// Unit test for Choice3: Over/Under.
-    /// </summary>
     [TestFixture]
     public class Choice3Test
     {
@@ -22,13 +19,10 @@
         {
             _choice = new Choice3();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes.Over_Under;
+            _ticket.BetTypeId = BetTypes.OverUnder;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        /// <summary>
-        /// If the value of ticket.BetTeam is 'h', the Template.betTeam will be 'Over'.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIsCharacterH_BetTeamIsOver()
         {
@@ -43,9 +37,6 @@
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// If the value of ticket.BetTeam is 'a', the Template.betTeam will be 'Under'.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIsCharacterA_BetTeamIsUnder()
         {
@@ -60,9 +51,6 @@
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Handicap is always the value of ticket.Handicap1.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_Always_HandicapIsHandicap1()
         {

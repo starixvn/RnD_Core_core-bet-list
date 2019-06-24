@@ -1,13 +1,11 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.OddsBuilder
 {
     using Common;
-    using Common.Enums;
+    using Constants;
     using Core.Builder.OddsBuilder;
     using Core.Templates;
     using Entities;
-    using NPOI.HSSF.UserModel;
     using NUnit.Framework;
-    using Stubs;
 
     public class Odds1Test
     {

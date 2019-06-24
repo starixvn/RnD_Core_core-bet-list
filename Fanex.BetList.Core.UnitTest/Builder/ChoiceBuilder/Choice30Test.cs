@@ -1,14 +1,11 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Common.Enums;
+    using Constants;
     using Core.Builder.ChoiceBuilder;
     using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    /// Unit test for Choice30 class.
-    /// </summary>
     [TestFixture]
     public class Choice30Test
     {
@@ -21,13 +18,10 @@
         {
             _choice = new Choice30();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes.FirstCorrectScore;
+            _ticket.BetTypeId = BetTypes.FirstHalfCorrectScore;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is 0:4 UP when the ticket.BetTeam is 0:4.
-        /// </summary>
         [Test]
         public void BuildChoice_BetTeamIs04_BetTeamIsBetTeamAndUp()
         {
@@ -42,9 +36,6 @@
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is 4:0 UP when the ticket.BetTeam is 4:0.
-        /// </summary>
         [Test]
         public void BuildChoice_BetTeamIs40_BetTeamIsBetTeamAndUp()
         {
@@ -59,9 +50,6 @@
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always bet team.
-        /// </summary>
         [Test]
         public void BuildChoice_HomeIdNotZero_BetTeamAreSpaceAndBetTeam()
         {

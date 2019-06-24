@@ -1,15 +1,12 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Common.Enums;
+    using App_GlobalResources;
+    using Constants;
     using Core.Builder.ChoiceBuilder;
     using Entities;
-    using Fanex.BetList.Core.App_GlobalResources;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    /// Unit test for bet type First Half Exact Goal.
-    /// </summary>
     [TestFixture]
     public class Choice129Test
     {
@@ -37,7 +34,7 @@
         {
             _choice = new Choice129();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes.FirstHalft_Exact_Goal;
+            _ticket.BetTypeId = BetTypes.ExactFirstHalfGoal;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 

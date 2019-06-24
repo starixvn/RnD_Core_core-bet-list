@@ -79,7 +79,7 @@
             MapIdToBaseId(BetTypes.AwayTeamOverUnderDec, BetTypes.HomeTeamOverUnderDec);
             MapIdToBaseId(BetTypes.FirstHalfHomeTeamOverUnderDec, BetTypes.HomeTeamOverUnderDec);
             MapIdToBaseId(BetTypes.FirstHalfAwayTeamOverUnderDec, BetTypes.HomeTeamOverUnderDec);
-            MapIdToBaseId(BetTypes.FirstHalf3WayHandicap, BetTypes.ThirdWayHandicap);
+            MapIdToBaseId(BetTypes.FirstHalf3WayHandicap, BetTypes.ThreeWayHandicap);
             MapIdToBaseId(BetTypes.FirstHalfBothTeamsToScoreResult, BetTypes.BothTeamsToScoreResult);
             MapIdToBaseId(BetTypes.FirstHalfBothTeamsToScoreTotalGoals, BetTypes.BothTeamsToScoreTotalGoals);
             MapIdToBaseId(BetTypes.Asian1X2Handicap, BetTypes.Handicap);

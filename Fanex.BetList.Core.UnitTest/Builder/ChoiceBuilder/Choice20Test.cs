@@ -1,14 +1,11 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Common.Enums;
+    using Constants;
     using Core.Builder.ChoiceBuilder;
     using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    /// Unit test for Choice20: Money line.
-    /// </summary>
     [TestFixture]
     public class Choice20Test
     {
@@ -21,13 +18,10 @@
         {
             _choice = new Choice20();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes.Money_Line;
+            _ticket.BetTypeId = BetTypes.Moneyline;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        /// <summary>
-        /// The value of Handicap is always null.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_Always_HandicapIsNull()
         {
@@ -38,9 +32,6 @@
             Assert.IsNull(_choice.Template.Handicap.handicap);
         }
 
-        /// <summary>
-        /// The value of bet team class is always 'underdog'.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_Always_BetTeamClassNameIsUnderdog()
         {

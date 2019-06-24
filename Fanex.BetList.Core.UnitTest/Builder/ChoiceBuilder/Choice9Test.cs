@@ -1,15 +1,12 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using System.Diagnostics.CodeAnalysis;
-    using Common.Enums;
+    using Constants;
     using Core.Builder.ChoiceBuilder;
     using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    /// Unit test for Choice9 class.
-    /// </summary>
     [TestFixture]
     [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2100:CodeLineMustNotBeLongerThan", Justification = "Reviewed.")]
     public class Choice9Test
@@ -27,9 +24,6 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        /// <summary>
-        /// Return template choice.
-        /// </summary>
         [Test]
         public void Render_ClientMixParlaySubbetsDetailFunctionIsEmpty_ReturnTemplate()
         {
@@ -48,9 +42,6 @@
             Assert.AreEqual(expected, _choice.Template.ToString());
         }
 
-        /// <summary>
-        /// Return template choice.
-        /// </summary>
         [Test]
         public void Render_ClientMixParlaySubbetsDetailFunctionIsNotEmpty_ReturnTemplate()
         {

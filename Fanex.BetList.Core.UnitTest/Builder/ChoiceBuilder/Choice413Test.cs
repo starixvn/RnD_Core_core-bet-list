@@ -1,7 +1,7 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using App_GlobalResources;
-    using Common.Enums;
+    using Constants;
     using Core.Builder.ChoiceBuilder;
     using Entities;
     using NSubstitute;
@@ -117,7 +117,7 @@
         public void BuildBetType_Always_ShowParentBetTypeName()
         {
             // Arrange.
-            var parentBetTypeId = BetTypes.Correct_Score.ToString();
+            var parentBetTypeId = BetTypes.CorrectScore.ToString();
             var parentBetTypeName = "Parent Bet Type";
             _ticketHelper.GetParentIdByBetTypeId(Arg.Any<object>()).Returns(parentBetTypeId);
             _ticketHelper.GetBetTypeNameById(parentBetTypeId, Arg.Any<object>()).Returns(parentBetTypeName);

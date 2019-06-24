@@ -1,14 +1,11 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Common.Enums;
+    using Constants;
     using Core.Builder.ChoiceBuilder;
     using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    /// Unit test for Choice1304 class.
-    /// </summary>
     [TestFixture]
     public class Choice1304Test
     {
@@ -25,9 +22,6 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        /// <summary>
-        /// The value of Template.BetType.betTypeName is always bet type name.
-        /// </summary>
         [Test]
         public void BuildBetType_Always_SetBetTypeNameIsBetTypeName()
         {
@@ -41,9 +35,6 @@
             Assert.AreEqual("Bet type name", _choice.Template.BetType.betTypeName);
         }
 
-        /// <summary>
-        /// The value of Template.betTeamClassName is always favorite.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
         {

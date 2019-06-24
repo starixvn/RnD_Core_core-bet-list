@@ -1,7 +1,7 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using App_GlobalResources;
-    using Common.Enums;
+    using Constants;
     using Core.Builder.ChoiceBuilder;
     using Entities;
     using NSubstitute;
@@ -19,13 +19,10 @@
         {
             _choice = new Choice405();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes._2HCorrectScore;
+            _ticket.BetTypeId = BetTypes.SecondHalfCorrectScore;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is AOS when ticket.BetTeam is AOS or aos.
-        /// </summary>
         [TestCase("AOS")]
         [TestCase("aos")]
         public void BuildBetTeam_BetTeamIsAOS_BetTeamIsAOS(string betTeam)
@@ -40,9 +37,6 @@
             Assert.AreEqual("&nbsp;AOS", _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always bet team.
-        /// </summary>
         [Test]
         public void BuildChoice_BetTeamIsNotAOS_BetTeamAreSpaceAndBetTeam()
         {

@@ -1,14 +1,11 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Common.Enums;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
+    using Constants;
+    using Core.Builder.ChoiceBuilder;
+    using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    ///  Unit test for Choice161.
-    /// </summary>
     [TestFixture]
     public class Choice411Test
     {
@@ -21,7 +18,7 @@
         {
             _choice = new Choice411();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes._1HDrawNoBet;
+            _ticket.BetTypeId = BetTypes.FirstHalfDrawNoBetOwn;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
@@ -29,7 +26,7 @@
         public void BuildBetType_Always_ShowParentBetTypeName()
         {
             // Arrange.
-            var parentBetTypeId = BetTypes._3rd1HDrawNoBet.ToString();
+            var parentBetTypeId = BetTypes.FirstHalfDrawNoBet.ToString();
             var parentBetTypeName = "Parent Bet Type";
             _ticketHelper.GetParentIdByBetTypeId(Arg.Any<object>()).Returns(parentBetTypeId);
             _ticketHelper.GetBetTypeNameById(parentBetTypeId, Arg.Any<object>()).Returns(parentBetTypeName);

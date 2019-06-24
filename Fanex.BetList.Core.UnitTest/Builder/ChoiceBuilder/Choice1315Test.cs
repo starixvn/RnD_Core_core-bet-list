@@ -1,15 +1,12 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using App_GlobalResources;
-    using Common.Enums;
+    using Constants;
     using Core.Builder.ChoiceBuilder;
     using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    /// Unit test for Choice1315 class.
-    /// </summary>
     [TestFixture]
     public class Choice1315Test
     {
@@ -22,13 +19,10 @@
         {
             _choice = new Choice1315();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes.SetXWillThereBeATiebreak;
+            _ticket.BetTypeId = BetTypes.SetXPlayerToWinOnATiebreak;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        /// <summary>
-        /// The value of Template.ticketStatus is always void when Ticket.Status = void.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {
@@ -39,9 +33,6 @@
             Assert.IsNull(_choice.Template.Handicap.handicap);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always home team name.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIs1_BetTeamIsHomeTeamName()
         {
@@ -56,9 +47,6 @@
             Assert.AreEqual(_choice.Template.Match.homeTeam, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always away team name.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIs2_BetTeamIsAwayTeamName()
         {
@@ -73,9 +61,6 @@
             Assert.AreEqual(_choice.Template.Match.awayTeam, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always noTiebreak resource.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamNotIs1AndNotIs2_BetTeamIsNoTiebreakRescource()
         {
@@ -89,9 +74,6 @@
             Assert.AreEqual(CoreBetList.noTiebreak, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.BetType.betTypeName is always bet type name.
-        /// </summary>
         [Test]
         public void BuildBetType_Always_SetBetTypeNameIsBetTypeName()
         {

@@ -4,7 +4,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
     using System;
     using System.Collections.Generic;
     using App_GlobalResources;
-    using Common.Enums;
+    using Constants;
     using Core.Builder.ChoiceBuilder;
     using Entities;
     using NSubstitute;
@@ -25,9 +25,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticketHelper = Substitute.For<ITicketHelper>();
 
             _ticketHelper.Index = 1;
-            _ticketHelper.GetBetTypeNameById(BetTypes.Combine_Mix_Parlay).Returns("System Parlay");
+            _ticketHelper.GetBetTypeNameById(BetTypes.SystemParlay).Returns("System Parlay");
 
-            _ticket.BetTypeId = BetTypes.Combine_Mix_Parlay;
+            _ticket.BetTypeId = BetTypes.SystemParlay;
             _ticket.WinlostDate = new DateTime(2016, 03, 28, 12, 00, 00);
             _ticket.CustId = 13369475;
             _ticket.TransId = 5554525358;

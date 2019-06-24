@@ -4,7 +4,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using System;
     using System.Collections.Generic;
-    using Common.Enums;
+    using Constants;
     using Core.Builder.ChoiceBuilder;
     using Core.Utils;
     using Entities;

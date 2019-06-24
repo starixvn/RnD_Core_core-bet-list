@@ -86,7 +86,7 @@
             BetTypes.SetXTotalGames3rd,
             BetTypes.SetXGameHandicap3rd,
             BetTypes.SetXTotalGameOddEven,
-            BetTypes.SetXGameyWinner,
+            BetTypes.SetXGameYWinner,
             2701,
             2702,
             2703,

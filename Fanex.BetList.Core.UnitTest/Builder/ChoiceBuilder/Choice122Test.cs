@@ -1,26 +1,16 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using App_GlobalResources;
-    using Common.Enums;
+    using Constants;
     using Core.Builder.ChoiceBuilder;
     using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    /// Unit test for Choice122 class.
-    /// </summary>
     [TestFixture]
     public class Choice122Test
     {
-        /// <summary>
-        /// Underdog = "underdog".
-        /// </summary>
         private const string Underdog = "underdog";
-
-        /// <summary>
-        /// Favorite = "favorite".
-        /// </summary>
         private const string Favorite = "favorite";
 
         private IChoice _choice;
@@ -32,13 +22,10 @@
         {
             _choice = new Choice122();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes.Away_No_Bet;
+            _ticket.BetTypeId = BetTypes.AwayNoBet;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        /// <summary>
-        /// The value of Template.Score.homeScore is always Ticket.LiveHomeScore.
-        /// </summary>
         [Test]
         public void BuildScore_Always_SetHomeScoreIsLiveHomeScore()
         {
@@ -52,9 +39,6 @@
             Assert.AreEqual(_ticket.LiveHomeScore.ToString(), _choice.Template.Score.homeScore);
         }
 
-        /// <summary>
-        /// The value of Template.Score.awayScore is always Ticket.LiveAwayScore.
-        /// </summary>
         [Test]
         public void BuildScore_Always_SetAwayScoreIsLiveAwayScore()
         {
@@ -68,10 +52,6 @@
             Assert.AreEqual(_ticket.LiveAwayScore.ToString(), _choice.Template.Score.awayScore);
         }
 
-        /// <summary>
-        /// The value of Template.Score.Visible is always Ticket.IsLive.
-        /// </summary>
-        /// <param name="isLive">If set to <c>true</c> [is live].</param>
         [TestCase(true)]
         [TestCase(false)]
         public void BuildScore_Always_SetScoreVisibleIsIsLive(bool isLive)
@@ -86,9 +66,6 @@
             Assert.AreEqual(_ticket.IsLive, _choice.Template.Score.Visible);
         }
 
-        /// <summary>
-        /// The value of Template.League.LeagueName.leagueName is always league name get by identifier.
-        /// </summary>
         [Test]
         public void BuildLeague_Always_SetLeagueNameIsLeagueName()
         {
@@ -103,9 +80,6 @@
             Assert.AreEqual(LEAGUE_NAME, _choice.Template.League.LeagueName.leagueName);
         }
 
-        /// <summary>
-        /// The value of Template.League.LeagueName.leagueName is always league name get by identifier.
-        /// </summary>
         [Test]
         public void BuildSport_Always_SetSportNameIsSportName()
         {
@@ -120,9 +94,6 @@
             Assert.AreEqual(SPORT_NAME, _choice.Template.League.sportTypeName);
         }
 
-        /// <summary>
-        /// The value of Template.Match.homeTeam is always [HomeTeamName (N)] if the ticket is neutral.
-        /// </summary>
         [Test]
         public void BuildMatch_NeutralTicket_HomeTeamAreHomeTeamNameAndSpaceAndCharacterNWithinParenthese()
         {
@@ -138,9 +109,6 @@
             Assert.AreEqual(HOME_TEAM_NAME, _choice.Template.Match.homeTeam);
         }
 
-        /// <summary>
-        /// The value of Template.Match.homeTeam is always [HomeTeamName] if the ticket is not neutral.
-        /// </summary>
         [Test]
         public void BuildMatch_NotNeutralTicket_HomeTeamIsHomeTeamName()
         {
@@ -156,9 +124,6 @@
             Assert.AreEqual(HOME_TEAM_NAME, _choice.Template.Match.homeTeam);
         }
 
-        /// <summary>
-        /// The value of Template.Match.awayTeam is always away team name.
-        /// </summary>
         [Test]
         public void BuildMatch_Always_SetAwayTeamIsAwayTeamName()
         {
@@ -173,10 +138,6 @@
             Assert.AreEqual(AWAY_TEAM_NAME, _choice.Template.Match.awayTeam);
         }
 
-        /// <summary>
-        /// The value of Template.Match.home_firstGoal_lastGoal is always label (L) with these event status.
-        /// </summary>
-        /// <param name="eventStatus">The event status.</param>
         [TestCase("FL:0-1")]
         [TestCase("FL:2-1")]
         public void BuildFGLGLabel_EventStatus_HomeFGLGIsLableLG(string eventStatus)
@@ -192,10 +153,6 @@
             Assert.AreEqual(HOME_FGLG, _choice.Template.Match.home_firstGoal_lastGoal);
         }
 
-        /// <summary>
-        /// The value of Template.Match.home_firstGoal_lastGoal is always label (1L) with these event status.
-        /// </summary>
-        /// <param name="eventStatus">The event status.</param>
         [TestCase("1FL:0-1")]
         [TestCase("1FL:2-1")]
         public void BuildFGLGLabel_EventStatus_HomeFGLGIsLable1LG(string eventStatus)
@@ -211,10 +168,6 @@
             Assert.AreEqual(HOME_FGLG, _choice.Template.Match.home_firstGoal_lastGoal);
         }
 
-        /// <summary>
-        /// The value of Template.Match.home_firstGoal_lastGoal is always label (L)(1L) with these event status.
-        /// </summary>
-        /// <param name="eventStatus">The event status.</param>
         [TestCase("FL:0-1;1FL:0-1")]
         [TestCase("FL:2-1;1FL:2-1")]
         public void BuildFGLGLabel_EventStatus_HomeFGLGAreLableLGAndLable1LG(string eventStatus)
@@ -230,10 +183,6 @@
             Assert.AreEqual(HOME_FGLG, _choice.Template.Match.home_firstGoal_lastGoal);
         }
 
-        /// <summary>
-        /// The value of Template.Match.away_firstGoal_lastGoal is always label (L) with these event status.
-        /// </summary>
-        /// <param name="eventStatus">The event status.</param>
         [TestCase("FL:0-2")]
         [TestCase("FL:1-2")]
         public void BuildFGLGLabel_EventStatus_AwayFGLGIsLableLG(string eventStatus)
@@ -249,10 +198,6 @@
             Assert.AreEqual(AWAY_FGLG, _choice.Template.Match.away_firstGoal_lastGoal);
         }
 
-        /// <summary>
-        /// The value of Template.Match.away_firstGoal_lastGoal is always label (1L) with these event status.
-        /// </summary>
-        /// <param name="eventStatus">The event status.</param>
         [TestCase("1FL:0-2")]
         [TestCase("1FL:1-2")]
         public void BuildFGLGLabel_EventStatus_AwayFGLGIsLable1LG(string eventStatus)
@@ -268,10 +213,6 @@
             Assert.AreEqual(AWAY_FGLG, _choice.Template.Match.away_firstGoal_lastGoal);
         }
 
-        /// <summary>
-        /// The value of Template.Match.away_firstGoal_lastGoal is always label (L)(1L) with these event status.
-        /// </summary>
-        /// <param name="eventStatus">The event status.</param>
         [TestCase("FL:0-2;1FL:0-2")]
         [TestCase("FL:1-2;1FL:1-2")]
         public void BuildFGLGLabel_EventStatus_AwayFGLGAreLableLGAndLable1LG(string eventStatus)
@@ -287,10 +228,6 @@
             Assert.AreEqual(AWAY_FGLG, _choice.Template.Match.away_firstGoal_lastGoal);
         }
 
-        /// <summary>
-        /// The value of Template.Match.home_firstGoal_lastGoal is always label (F) with these event status.
-        /// </summary>
-        /// <param name="eventStatus">The event status.</param>
         [TestCase("FL:1-0")]
         [TestCase("FL:1-2")]
         public void BuildFGLGLabel_EventStatus_HomeFGLGIsLableFG(string eventStatus)
@@ -306,10 +243,6 @@
             Assert.AreEqual(HOME_FGLG, _choice.Template.Match.home_firstGoal_lastGoal);
         }
 
-        /// <summary>
-        /// The value of Template.Match.home_firstGoal_lastGoal is always label (1F) with these event status.
-        /// </summary>
-        /// <param name="eventStatus">The event status.</param>
         [TestCase("1FL:1-0")]
         [TestCase("1FL:1-2")]
         public void BuildFGLGLabel_EventStatus_HomeFGLGIsLable1FG(string eventStatus)
@@ -325,10 +258,6 @@
             Assert.AreEqual(HOME_FGLG, _choice.Template.Match.home_firstGoal_lastGoal);
         }
 
-        /// <summary>
-        /// The value of Template.Match.home_firstGoal_lastGoal is always label (F)(1F) with these event status.
-        /// </summary>
-        /// <param name="eventStatus">The event status.</param>
         [TestCase("FL:1-0;1FL:1-0")]
         [TestCase("FL:1-2;1FL:1-2")]
         public void BuildFGLGLabel_EventStatus_HomeFGLGAreLableFGAndLable1FG(string eventStatus)
@@ -344,9 +273,6 @@
             Assert.AreEqual(HOME_FGLG, _choice.Template.Match.home_firstGoal_lastGoal);
         }
 
-        /// <summary>
-        /// The value of Template.Match.home_firstGoal_lastGoal is always label (F)(L) with these event status.
-        /// </summary>
         [Test]
         public void BuildFGLGLabel_EventStatusIsFL11_HomeFGLGAreLableFGAndLableLG()
         {
@@ -361,9 +287,6 @@
             Assert.AreEqual(HOME_FGLG, _choice.Template.Match.home_firstGoal_lastGoal);
         }
 
-        /// <summary>
-        /// The value of Template.Match.home_firstGoal_lastGoal is always label (1F)(1L) with these event status.
-        /// </summary>
         [Test]
         public void BuildFGLGLabel_EventStatusIs1FL11_HomeFGLGAreLable1FGAndLable1LG()
         {
@@ -378,9 +301,6 @@
             Assert.AreEqual(HOME_FGLG, _choice.Template.Match.home_firstGoal_lastGoal);
         }
 
-        /// <summary>
-        /// The value of Template.Match.home_firstGoal_lastGoal is always label (F)(L)(1F)(1L) with these event status.
-        /// </summary>
         [Test]
         public void BuildFGLGLabel_EventStatusIsFL11And1FL11_HomeFGLGAreLableFGLGAndLable1FG1LG()
         {
@@ -396,9 +316,6 @@
             Assert.AreEqual(HOME_FGLG, _choice.Template.Match.home_firstGoal_lastGoal);
         }
 
-        /// <summary>
-        /// The value of Template.Match.away_firstGoal_lastGoal is always label (F)(L) with these event status.
-        /// </summary>
         [Test]
         public void BuildFGLGLabel_EventStatusIsFL22_AwayFGLGAreLableFGAndLableLG()
         {
@@ -413,9 +330,6 @@
             Assert.AreEqual(AWAY_FGLG, _choice.Template.Match.away_firstGoal_lastGoal);
         }
 
-        /// <summary>
-        /// The value of Template.Match.away_firstGoal_lastGoal is always label (1F)(1L) with these event status.
-        /// </summary>
         [Test]
         public void BuildFGLGLabel_EventStatusIs1FL22_AwayFGLGAreLable1FGAndLable1LG()
         {
@@ -430,9 +344,6 @@
             Assert.AreEqual(AWAY_FGLG, _choice.Template.Match.away_firstGoal_lastGoal);
         }
 
-        /// <summary>
-        /// The value of Template.Match.away_firstGoal_lastGoal is always label (F)(L)(1F)(1L) with these event status.
-        /// </summary>
         [Test]
         public void BuildFGLGLabel_EventStatusIsFL22And1FL22_AwayFGLGAreLableFGLGAndLable1FG1LG()
         {
@@ -448,10 +359,6 @@
             Assert.AreEqual(AWAY_FGLG, _choice.Template.Match.away_firstGoal_lastGoal);
         }
 
-        /// <summary>
-        /// The value of Template.Match.away_firstGoal_lastGoal is always label (F) with these event status.
-        /// </summary>
-        /// <param name="eventStatus">The event status.</param>
         [TestCase("FL:2-0")]
         [TestCase("FL:2-1")]
         public void BuildFGLGLabel_EventStatus_AwayFGLGIsLableFG(string eventStatus)
@@ -467,10 +374,6 @@
             Assert.AreEqual(AWAY_FGLG, _choice.Template.Match.away_firstGoal_lastGoal);
         }
 
-        /// <summary>
-        /// The value of Template.Match.away_firstGoal_lastGoal is always label (1F) with these event status.
-        /// </summary>
-        /// <param name="eventStatus">The event status.</param>
         [TestCase("1FL:2-0")]
         [TestCase("1FL:2-1")]
         public void BuildFGLGLabel_EventStatus_AwayFGLGIsLable1FG(string eventStatus)
@@ -486,10 +389,6 @@
             Assert.AreEqual(AWAY_FGLG, _choice.Template.Match.away_firstGoal_lastGoal);
         }
 
-        /// <summary>
-        /// The value of Template.Match.away_firstGoal_lastGoal is always label (F)(1L) with these event status.
-        /// </summary>
-        /// <param name="eventStatus">The event status.</param>
         [TestCase("FL:2-0;1FL:2-0")]
         [TestCase("FL:2-1;1FL:2-1")]
         public void BuildFGLGLabel_EventStatus_AwayFGLGAreLableFGAndLable1FG(string eventStatus)
@@ -505,10 +404,6 @@
             Assert.AreEqual(AWAY_FGLG, _choice.Template.Match.away_firstGoal_lastGoal);
         }
 
-        /// <summary>
-        /// The value of Template.Match.home_firstGoal_lastGoal is always empty with these event status.
-        /// </summary>
-        /// <param name="eventStatus">The event status.</param>
         [TestCase("")]
         [TestCase(null)]
         [TestCase("FL:2-2")]
@@ -529,10 +424,6 @@
             Assert.IsEmpty(_choice.Template.Match.home_firstGoal_lastGoal);
         }
 
-        /// <summary>
-        /// The value of Template.Match.away_firstGoal_lastGoal is always empty with these event status.
-        /// </summary>
-        /// <param name="eventStatus">The event status.</param>
         [TestCase("")]
         [TestCase(null)]
         [TestCase("FL:1-1")]
@@ -553,9 +444,6 @@
             Assert.IsEmpty(_choice.Template.Match.away_firstGoal_lastGoal);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always Template.Match.homeTeam when bet team of ticket contains character h.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamContainsCharacterh_BetTeamIsHomeTeamName()
         {
@@ -570,9 +458,6 @@
             Assert.AreEqual(_choice.Template.Match.homeTeam, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always Draw when bet team of ticket is null.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIsNull_BetTeamIsDrawResource()
         {
@@ -587,9 +472,6 @@
             Assert.AreEqual(CoreBetList.lblDraw, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always Draw when bet team of ticket is empty or not contains character h.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIsEmpty_BetTeamIsDrawResource()
         {
@@ -604,9 +486,6 @@
             Assert.AreEqual(CoreBetList.lblDraw, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeamClassName is always underdog.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsUnderdog()
         {
@@ -617,9 +496,6 @@
             Assert.AreEqual(Underdog, _choice.Template.betTeamClassName);
         }
 
-        /// <summary>
-        /// The value of Template.Score.scoreClassName is always favorite.
-        /// </summary>
         [Test]
         public void BuildScore_Always_SetScoreClassNameIsFavorite()
         {
@@ -630,9 +506,6 @@
             Assert.AreEqual(Favorite, _choice.Template.Score.scoreClassName);
         }
 
-        /// <summary>
-        /// The value of Template.ticketStatus is always empty when Ticket.Status = null.
-        /// </summary>
         [Test]
         public void BuildTicketStatus_Always_SetTicketStatusIsEmpty()
         {
@@ -643,9 +516,6 @@
             Assert.IsEmpty(_choice.Template.ticketStatus);
         }
 
-        /// <summary>
-        /// The value of Template.ticketStatus is always void when Ticket.Status = void.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {

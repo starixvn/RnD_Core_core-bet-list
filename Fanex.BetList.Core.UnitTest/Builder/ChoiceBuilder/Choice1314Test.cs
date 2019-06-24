@@ -1,15 +1,12 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using App_GlobalResources;
-    using Common.Enums;
+    using Constants;
     using Core.Builder.ChoiceBuilder;
     using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    /// Unit test for Choice1314 class.
-    /// </summary>
     [TestFixture]
     public class Choice1314Test
     {
@@ -26,9 +23,6 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always Draw when bet team of ticket is h.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIsCharacterh_BetTeamIsLableYesResource()
         {
@@ -42,9 +36,6 @@
             Assert.AreEqual(CoreBetList.lblYes, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always Draw when bet team of ticket is not h.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIsNotCharacterh_BetTeamIsLableNoResource()
         {
@@ -58,9 +49,6 @@
             Assert.AreEqual(CoreBetList.lblNo, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.BetType.betTypeName is always bet type name.
-        /// </summary>
         [Test]
         public void BuildBetType_Always_SetBetTypeNameIsBetTypeName()
         {

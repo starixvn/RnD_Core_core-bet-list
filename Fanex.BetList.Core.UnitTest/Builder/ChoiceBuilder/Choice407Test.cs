@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Common.Enums;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Entities;
+    using App_GlobalResources;
+    using Constants;
+    using Core.Builder.ChoiceBuilder;
+    using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -19,7 +19,7 @@
         {
             _choice = new Choice407();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes.ExactHomeTeamGoals;
+            _ticket.BetTypeId = BetTypes.ExactHomeTeamGoalsOwn;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
@@ -118,7 +118,7 @@
         public void BuildBetType_Always_ShowParentBetTypeName()
         {
             // Arrange.
-            var parentBetTypeId = BetTypes._3rdExactHomeTeamGoals.ToString();
+            var parentBetTypeId = BetTypes.ExactHomeTeamGoals.ToString();
             var parentBetTypeName = "Parent Bet Type";
             _ticketHelper.GetParentIdByBetTypeId(Arg.Any<object>()).Returns(parentBetTypeId);
             _ticketHelper.GetBetTypeNameById(parentBetTypeId, Arg.Any<object>()).Returns(parentBetTypeName);

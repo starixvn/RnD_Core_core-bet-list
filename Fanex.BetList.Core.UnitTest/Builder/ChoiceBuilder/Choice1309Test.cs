@@ -1,15 +1,12 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using App_GlobalResources;
-    using Common.Enums;
+    using Constants;
     using Core.Builder.ChoiceBuilder;
     using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    /// Unit test for Choice1309 class.
-    /// </summary>
     [TestFixture]
     public class Choice1309Test
     {
@@ -26,9 +23,6 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always home team name.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIs1_BetTeamIsHomeTeamName()
         {
@@ -45,9 +39,6 @@
             Assert.AreEqual(_choice.Template.Match.homeTeam, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeamClassName is underdog.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_BetTeamIs1AndHandicap2GreaterThanHandicap1_BetTeamClassNameIsUnderdog()
         {
@@ -64,9 +55,6 @@
             Assert.AreEqual(CSS_CLASS_UNDERDOG, _choice.Template.betTeamClassName);
         }
 
-        /// <summary>
-        /// The value of Template.betTeamClassName is underdog.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_BetTeamIs1AndHandicap2EqualHandicap1_BetTeamClassNameIsUnderdog()
         {
@@ -83,9 +71,6 @@
             Assert.AreEqual(CSS_CLASS_UNDERDOG, _choice.Template.betTeamClassName);
         }
 
-        /// <summary>
-        /// The value of Template.betTeamClassName is underdog.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_BetTeamIs1AndHandicap2LessThanHandicap1_BetTeamClassNameIsFavorite()
         {
@@ -102,9 +87,6 @@
             Assert.AreEqual(CSS_CLASS_FAVORITE, _choice.Template.betTeamClassName);
         }
 
-        /// <summary>
-        /// The value of Template.betTeamClassName is underdog.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_BetTeamIs1AndHandicap2LessThanHandicap1_HandicapIsMinusHandicap1()
         {
@@ -121,9 +103,6 @@
             Assert.AreEqual(expectedHandicap, _choice.Template.Handicap.handicap);
         }
 
-        /// <summary>
-        /// The value of Template.betTeamClassName is underdog.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_BetTeamIs1AndHandicap2GreaterThanHandicap1_HandicapIsHandicap2()
         {
@@ -140,9 +119,6 @@
             Assert.AreEqual(expectedHandicap, _choice.Template.Handicap.handicap);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always away team name.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIs2_BetTeamIsAwayTeamName()
         {
@@ -159,9 +135,6 @@
             Assert.AreEqual(AWAY_TEAM_NAME, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeamClassName is favorite.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_BetTeamIs2AndHandicap2GreaterThanHandicap1_BetTeamClassNameIsFavorite()
         {
@@ -178,9 +151,6 @@
             Assert.AreEqual(CSS_CLASS_FAVORITE, _choice.Template.betTeamClassName);
         }
 
-        /// <summary>
-        /// The value of Template.betTeamClassName is underdog.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_BetTeamIs2AndHandicap2EqualHandicap1_BetTeamClassNameIsUnderdog()
         {
@@ -197,9 +167,6 @@
             Assert.AreEqual(CSS_CLASS_UNDERDOG, _choice.Template.betTeamClassName);
         }
 
-        /// <summary>
-        /// The value of Template.betTeamClassName is underdog.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_BetTeamIs2AndHandicap2LessThanHandicap1_BetTeamClassNameIsUnderdog()
         {
@@ -216,9 +183,6 @@
             Assert.AreEqual(CSS_CLASS_UNDERDOG, _choice.Template.betTeamClassName);
         }
 
-        /// <summary>
-        /// The value of Template.betTeamClassName is underdog.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_BetTeamIs2AndHandicap2LessThanHandicap1_HandicapIsHandicap1()
         {
@@ -235,9 +199,6 @@
             Assert.AreEqual(expectedHandicap, _choice.Template.Handicap.handicap);
         }
 
-        /// <summary>
-        /// The value of Template.betTeamClassName is underdog.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_BetTeamIs2AndHandicap2GreaterThanHandicap1_HandicapIsMinusHandicap2()
         {
@@ -254,9 +215,6 @@
             Assert.AreEqual(expectedHandicap, _choice.Template.Handicap.handicap);
         }
 
-        /// <summary>
-        /// The value of Template.betTeamClassName is underdog.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_BetTeamNotIs1AndNotIs2_BetTeamClassNameIsUnderdog()
         {
@@ -271,9 +229,6 @@
             Assert.AreEqual(CSS_CLASS_UNDERDOG, _choice.Template.betTeamClassName);
         }
 
-        /// <summary>
-        /// The value of Template.betTeamClassName is underdog.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_BetTeamNotIs1AndNotIs2AndHandicap2GreaterThanHandicap1_BetTeamAreDrawResourceAndhResourceAndHandicap2()
         {
@@ -289,9 +244,6 @@
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeamClassName is underdog.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_BetTeamNotIs1AndNotIs2AndHandicap1GreaterThanHandicap2_BetTeamAreDrawResourceAndaResourceAndHandicap1()
         {
@@ -307,9 +259,6 @@
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.Handicap.handicap is always null.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_BetTeamIsNot1AndIsNot2_SetHandicapIsNull()
         {
@@ -323,9 +272,6 @@
             Assert.IsNull(_choice.Template.Handicap.handicap);
         }
 
-        /// <summary>
-        /// The value of Template.BetType.betTypeName is always bet type name.
-        /// </summary>
         [Test]
         public void BuildBetType_Always_SetBetTypeNameIsBetTypeName()
         {

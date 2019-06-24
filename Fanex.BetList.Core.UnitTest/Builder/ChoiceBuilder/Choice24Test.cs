@@ -1,7 +1,7 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using App_GlobalResources;
-    using Common.Enums;
+    using Constants;
     using Core.Builder.ChoiceBuilder;
     using Entities;
     using NSubstitute;
@@ -21,7 +21,7 @@
         {
             _choice = new Choice24();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes.Double_Change;
+            _ticket.BetTypeId = BetTypes.DoubleChance;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 

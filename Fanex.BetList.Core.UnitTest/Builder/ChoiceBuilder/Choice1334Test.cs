@@ -2,15 +2,12 @@
 {
     using System.Globalization;
     using App_GlobalResources;
-    using Common.Enums;
+    using Constants;
     using Core.Builder.ChoiceBuilder;
     using Entities;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    /// Unit test for Choice1334 class.
-    /// </summary>
     [TestFixture]
     public class Choice1334Test
     {
@@ -27,9 +24,6 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        /// <summary>
-        /// The value of Template.ticketStatus is always handicap1.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {
@@ -43,9 +37,6 @@
             Assert.AreEqual(_ticket.Handicap1.ToString(CultureInfo.InvariantCulture), _choice.Template.Handicap.handicap);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always under.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIs1_BetTeamIsUnderResource()
         {
@@ -60,9 +51,6 @@
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always Over.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIs2_BetTeamIsOverResource()
         {
@@ -77,9 +65,6 @@
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always Between handicap 2 and handicap1.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamNotIs1AndNotIs2_BetTeamIsExactlyResource()
         {
@@ -94,9 +79,6 @@
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.BetType.betTypeName is always bet type name.
-        /// </summary>
         [Test]
         public void BuildBetType_Always_SetBetTypeNameIsBetTypeName()
         {

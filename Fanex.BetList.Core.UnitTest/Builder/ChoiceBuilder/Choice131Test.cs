@@ -1,21 +1,18 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Common.Enums;
+    using App_GlobalResources;
+    using Constants;
     using Core.Builder.ChoiceBuilder;
     using Entities;
-    using Fanex.BetList.Core.App_GlobalResources;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    /// Unit test for bet type Home Team Total Goal 131.
-    /// </summary>
     [TestFixture]
     public class Choice131Test
     {
 #pragma warning disable S1144 // Unused private types or members should be removed
 
-        private static object[] expectedBetTeams =
+        private static readonly object[] expectedBetTeams =
         {
             new object[] { "0-1", "0-1", "Betting on that 0 or 1 goal will be scored by Home Team." },
             new object[] { "2-3",  "2-3", "Betting on the total number of goals in Half Time will be 1 goal." },
@@ -33,7 +30,7 @@
         {
             _choice = new Choice131();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes.Home_Team_Total_Goal;
+            _ticket.BetTypeId = BetTypes.HomeTeamTotalGoal;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
