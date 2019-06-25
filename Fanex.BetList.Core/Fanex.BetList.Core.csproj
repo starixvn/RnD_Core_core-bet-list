@@ -509,6 +509,7 @@
     <Compile Include="Utils\RTFNumber.cs" />
     <Compile Include="Utils\RtfTextRender.cs" />
     <Compile Include="Utils\StringExt\StringExtension.cs" />
+    <Compile Include="Utils\TicketHelperExt\ScoreBoxExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App_GlobalResources\CoreBetList.resx">
