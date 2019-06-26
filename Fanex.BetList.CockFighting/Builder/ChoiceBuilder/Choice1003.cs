@@ -101,7 +101,7 @@
 
         internal static Dictionary<string, string> ParseTransDesc(string transDesc)
         {
-            Dictionary<string, string> transDescItems = new Dictionary<string, string>();
+            var transDescItems = new Dictionary<string, string>();
 
             if (string.IsNullOrEmpty(transDesc))
             {
@@ -111,8 +111,11 @@
             var keyValuePairs = transDesc.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
             foreach (var keyValuePair in keyValuePairs)
             {
+                const int exepectedNumberOfKeyValuePairs = 2;
+
                 var keyValue = keyValuePair.Split(new[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
-                if (keyValue.Length == 2)
+
+                if (keyValue.Length == exepectedNumberOfKeyValuePairs)
                 {
                     transDescItems.Add(keyValue[0].ToLowerInvariant(), keyValue[1]);
                 }

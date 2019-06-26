@@ -6,15 +6,14 @@
     {
         public ChoiceMapper()
         {
-            Initialize();
-        }
-
-        private void Initialize()
-        {
+            MapForOtherBetTypes();
             MapForFastMarkets();
             MapForBasketBall();
             MapForPoolHouseAllInOne();
+        }
 
+        private void MapForOtherBetTypes()
+        {
             MapIdToBaseId(BetTypes.SecondHalfHandicap, BetTypes.Handicap);
             MapIdToBaseId(BetTypes.FirstHalfDoubleChance, BetTypes.DoubleChance);
             MapIdToBaseId(BetTypes.ResultTotalGoals, BetTypes.FirstHalfResultTotalGoals);

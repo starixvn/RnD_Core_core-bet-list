@@ -120,6 +120,8 @@
 
         private static IDictionary<string, string> ParseTransDesc(string originalTransDesc)
         {
+            const int exepectedNumberOfTransDescInfoPairs = 2;
+
             var parsedTransDesc = new Dictionary<string, string>();
 
             if (!string.IsNullOrEmpty(originalTransDesc))
@@ -132,7 +134,7 @@
                 {
                     var keyValue = keyValuePair.Split(new[] { KeyValueSeparator }, StringSplitOptions.RemoveEmptyEntries);
 
-                    if (keyValue.Length == 2)
+                    if (keyValue.Length == exepectedNumberOfTransDescInfoPairs)
                     {
                         parsedTransDesc.Add(keyValue[0].ToLowerInvariant(), keyValue[1]);
                     }

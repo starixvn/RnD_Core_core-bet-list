@@ -7,6 +7,7 @@
     using Resources;
     using Templates;
     using Utils;
+    using Utils.TicketExt;
 
     public class Choice1600 : Choice1
     {
@@ -83,7 +84,7 @@
 
         protected static string BuildDetailsLink(ITicket ticket)
         {
-            if (IsSettledTicket(ticket))
+            if (ticket.IsSettled())
             {
                 string[] detailsFunctionDivCompositions =
                 {
@@ -96,20 +97,6 @@
             }
 
             return string.Empty;
-        }
-
-        private static bool IsSettledTicket(ITicket ticket)
-        {
-            string statusId = ticket.StatusId != null ? ticket.StatusId.ToString() : string.Empty;
-            string status = ticket.Status ?? string.Empty;
-
-            status = status.Trim().ToLowerInvariant();
-
-            bool isWin = statusId == BetStatusId.Won || status == BetStatus.Won;
-            bool isLoss = statusId == BetStatusId.Lost || status == BetStatus.Lose;
-            bool isDraw = statusId == BetStatusId.Draw || status == BetStatus.Draw;
-
-            return isDraw || isWin || isLoss;
         }
     }
 }

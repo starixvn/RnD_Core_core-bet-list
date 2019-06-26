@@ -112,6 +112,20 @@
 
         public static string Minus { get; set; } = "<font color='#B50000'>{0}</font>";
 
+        public static void RegisterMultipleOddsTypes(int betType)
+        {
+            if (!oddsBettypes.Contains(betType))
+            {
+                lock (oddsBettypes)
+                {
+                    if (!oddsBettypes.Contains(betType))
+                    {
+                        oddsBettypes.Add(betType);
+                    }
+                }
+            }
+        }
+
         public static int ShowOddsByBettype(int betType, int oddsType)
             => oddsBettypes.Contains(betType) ? oddsType : 0;
 

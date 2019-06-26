@@ -15,6 +15,7 @@
         private const string MasterURL = "http://ha.nexdev.net:7240/Main/";
 
         [TestCase("")]
+        [TestCase("BetList/All")]
         [TestCase("BetList/BetRadar")]
         [TestCase("BetList/New11BetTypes")]
         [TestCase("BetList/New60BetTypesBetRadar")]
@@ -46,13 +47,21 @@
         [TestCase("BetList/Keno")]
         [TestCase("BetList/PHAIO3")]
         [TestCase("BetList/BonusSystem")]
+        [TestCase("BetList/ChangingToHomeAway")]
+        [TestCase("BetList/CorrectTranslations")]
         [TestCase("BetList/OneRnGCasino")]
         [TestCase("BetList/FastMarkets2")]
         [TestCase("BetList/Asian1x2HDP")]
+        [TestCase("BetList/UpcomingSports")]
         [TestCase("BetList/PP")]
         [TestCase("BetList/Parlay")]
+        [TestCase("BetList/BetBuilder")]
         [TestCase("BetList/PokerGames")]
+        [TestCase("BetList/SettlementStatus")]
+        [TestCase("BetList/ESports2")]
         [TestCase("BetList/Happy5")]
+        [TestCase("BetList/ESports2InPlay")]
+        [TestCase("BetList/AbnormalBet")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Choice(string productUrl)
         {
             // Arrange
@@ -73,6 +82,7 @@
         }
 
         [TestCase("")]
+        [TestCase("BetList/All")]
         [TestCase("BetList/BetRadar")]
         [TestCase("BetList/New11BetTypes")]
         [TestCase("BetList/New60BetTypesBetRadar")]
@@ -104,13 +114,21 @@
         [TestCase("BetList/Keno")]
         [TestCase("BetList/PHAIO3")]
         [TestCase("BetList/BonusSystem")]
+        [TestCase("BetList/ChangingToHomeAway")]
+        [TestCase("BetList/CorrectTranslations")]
         [TestCase("BetList/OneRnGCasino")]
         [TestCase("BetList/FastMarkets2")]
         [TestCase("BetList/Asian1x2HDP")]
+        [TestCase("BetList/UpcomingSports")]
         [TestCase("BetList/PP")]
         [TestCase("BetList/Parlay")]
+        [TestCase("BetList/BetBuilder")]
         [TestCase("BetList/PokerGames")]
+        [TestCase("BetList/SettlementStatus")]
+        [TestCase("BetList/ESports2")]
         [TestCase("BetList/Happy5")]
+        [TestCase("BetList/ESports2InPlay")]
+        [TestCase("BetList/AbnormalBet")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Trans(string productUrl)
         {
             // Arrange
@@ -131,6 +149,7 @@
         }
 
         [TestCase("")]
+        [TestCase("BetList/All")]
         [TestCase("BetList/BetRadar")]
         [TestCase("BetList/New11BetTypes")]
         [TestCase("BetList/New60BetTypesBetRadar")]
@@ -162,13 +181,21 @@
         [TestCase("BetList/Keno")]
         [TestCase("BetList/PHAIO3")]
         [TestCase("BetList/BonusSystem")]
+        [TestCase("BetList/ChangingToHomeAway")]
+        [TestCase("BetList/CorrectTranslations")]
         [TestCase("BetList/OneRnGCasino")]
         [TestCase("BetList/FastMarkets2")]
         [TestCase("BetList/Asian1x2HDP")]
+        [TestCase("BetList/UpcomingSports")]
         [TestCase("BetList/PP")]
         [TestCase("BetList/Parlay")]
+        [TestCase("BetList/BetBuilder")]
         [TestCase("BetList/PokerGames")]
+        [TestCase("BetList/SettlementStatus")]
+        [TestCase("BetList/ESports2")]
         [TestCase("BetList/Happy5")]
+        [TestCase("BetList/ESports2InPlay")]
+        [TestCase("BetList/AbnormalBet")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Odds(string productUrl)
         {
             // Arrange
@@ -189,6 +216,7 @@
         }
 
         [TestCase("")]
+        [TestCase("BetList/All")]
         [TestCase("BetList/BetRadar")]
         [TestCase("BetList/New11BetTypes")]
         [TestCase("BetList/New60BetTypesBetRadar")]
@@ -220,13 +248,21 @@
         [TestCase("BetList/Keno")]
         [TestCase("BetList/PHAIO3")]
         [TestCase("BetList/BonusSystem")]
+        [TestCase("BetList/ChangingToHomeAway")]
+        [TestCase("BetList/CorrectTranslations")]
         [TestCase("BetList/OneRnGCasino")]
         [TestCase("BetList/FastMarkets2")]
         [TestCase("BetList/Asian1x2HDP")]
+        [TestCase("BetList/UpcomingSports")]
         [TestCase("BetList/PP")]
         [TestCase("BetList/Parlay")]
+        [TestCase("BetList/BetBuilder")]
         [TestCase("BetList/PokerGames")]
+        [TestCase("BetList/SettlementStatus")]
+        [TestCase("BetList/ESports2")]
         [TestCase("BetList/Happy5")]
+        [TestCase("BetList/ESports2InPlay")]
+        [TestCase("BetList/AbnormalBet")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Stake(string productUrl)
         {
             // Arrange
@@ -247,6 +283,7 @@
         }
 
         [TestCase("")]
+        [TestCase("BetList/All")]
         [TestCase("BetList/BetRadar")]
         [TestCase("BetList/New11BetTypes")]
         [TestCase("BetList/New60BetTypesBetRadar")]
@@ -278,13 +315,21 @@
         [TestCase("BetList/Keno")]
         [TestCase("BetList/PHAIO3")]
         [TestCase("BetList/BonusSystem")]
+        [TestCase("BetList/ChangingToHomeAway")]
+        [TestCase("BetList/CorrectTranslations")]
         [TestCase("BetList/OneRnGCasino")]
         [TestCase("BetList/FastMarkets2")]
         [TestCase("BetList/Asian1x2HDP")]
+        [TestCase("BetList/UpcomingSports")]
         [TestCase("BetList/PP")]
         [TestCase("BetList/Parlay")]
+        [TestCase("BetList/BetBuilder")]
         [TestCase("BetList/PokerGames")]
+        [TestCase("BetList/SettlementStatus")]
+        [TestCase("BetList/ESports2")]
         [TestCase("BetList/Happy5")]
+        [TestCase("BetList/ESports2InPlay")]
+        [TestCase("BetList/AbnormalBet")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Status(string productUrl)
         {
             // Arrange

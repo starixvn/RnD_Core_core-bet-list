@@ -54,7 +54,6 @@
     <Compile Include="Builder\ChoiceBuilder\Choice9003Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9005Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9073Test.cs" />
-    <Compile Include="Builder\OddsBuilder\Odds9001Test.cs" />
     <Compile Include="Builder\StatusBuilder\Status9001Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

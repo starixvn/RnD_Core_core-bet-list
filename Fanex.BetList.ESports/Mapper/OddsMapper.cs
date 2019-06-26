@@ -1,21 +1,20 @@
 ﻿namespace Fanex.BetList.Core.Mapper
 {
+    using Fanex.BetList.Core.Utils;
+    using Fanex.BetList.ESports.Constants;
+
     public class OddsMapper : BaseMapper
     {
         public OddsMapper()
         {
-            Initialize();
+            RegisterMultipleOddsTypes();
         }
 
-        private void Initialize()
+        private static void RegisterMultipleOddsTypes()
         {
-            const int baseBetTypeId = 9001;
-            const int startFollowingBetTypeId = 9002;
-            const int endFollowingBetTypeId = 9086;
-
-            for (int betTypeId = startFollowingBetTypeId; betTypeId <= endFollowingBetTypeId; betTypeId++)
+            for (int betTypeId = BetTypes.MapXMoneyline; betTypeId <= BetTypes.MapXTotalOverlordsOddEven; betTypeId++)
             {
-                MapIdToBaseId(betTypeId, baseBetTypeId);
+                ConvertByBetType.RegisterMultipleOddsTypes(betTypeId);
             }
         }
     }
