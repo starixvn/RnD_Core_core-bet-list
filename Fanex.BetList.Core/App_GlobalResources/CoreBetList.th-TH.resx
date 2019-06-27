@@ -672,4 +672,7 @@
   <data name="AbnormalBet" xml:space="preserve">
     <value>เดิมพันผิดปกติ</value>
   </data>
+  <data name="Equal" xml:space="preserve">
+    <value>เสมอ</value>
+  </data>
 </root>

@@ -801,4 +801,7 @@
   <data name="AbnormalBet" xml:space="preserve">
     <value>非正規註單</value>
   </data>
+  <data name="Equal" xml:space="preserve">
+    <value>等於</value>
+  </data>
 </root>

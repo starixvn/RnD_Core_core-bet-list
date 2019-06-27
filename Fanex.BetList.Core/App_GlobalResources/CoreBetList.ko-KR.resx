@@ -558,4 +558,7 @@
   <data name="AbnormalBet" xml:space="preserve">
     <value>비정상 베팅</value>
   </data>
+  <data name="Equal" xml:space="preserve">
+    <value>동일한</value>
+  </data>
 </root>

@@ -804,4 +804,7 @@
   <data name="AbnormalBet" xml:space="preserve">
     <value>非正规注单</value>
   </data>
+  <data name="Equal" xml:space="preserve">
+    <value>等于</value>
+  </data>
 </root>

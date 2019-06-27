@@ -495,4 +495,7 @@
   <data name="AbnormalBet" xml:space="preserve">
     <value>Cược bất thường </value>
   </data>
+  <data name="Equal" xml:space="preserve">
+    <value>Hòa</value>
+  </data>
 </root>
