@@ -874,4 +874,7 @@
   <data name="AbnormalBet" xml:space="preserve">
     <value>Abnormal Bet</value>
   </data>
+  <data name="Equal" xml:space="preserve">
+    <value>Equal</value>
+  </data>
 </root>

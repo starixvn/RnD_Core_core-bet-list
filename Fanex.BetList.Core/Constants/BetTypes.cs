@@ -207,6 +207,9 @@
         public const int FirstHalfAwayTeamOverUnderDec = 464;
         public const int Asian1X2Handicap = 465;
         public const int FirstHalfAsian1X2Handicap = 466;
+        public const int HalfTimeFullTimeExactTotalGoals = 467;
+        public const int ScoreBoxHandicap = 468;
+        public const int ScoreBoxOverUnder = 469;
         public const int ChargeCommission = 500;
         public const int MatchWinner = 501;
         public const int MatchWinner1X2 = 502;

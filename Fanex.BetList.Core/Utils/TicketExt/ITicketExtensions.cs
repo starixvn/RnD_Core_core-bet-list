@@ -6,16 +6,16 @@
     {
         public static bool IsSettled(this ITicket ticket)
         {
-            string statusId = ticket.StatusId != null ? ticket.StatusId.ToString() : string.Empty;
-            string status = ticket.Status ?? string.Empty;
+            var statusId = ticket.StatusId != null ? ticket.StatusId.ToString() : string.Empty;
+            var status = ticket.Status ?? string.Empty;
 
             status = status.Trim().ToLowerInvariant();
 
-            bool isWin = statusId == BetStatusId.Won || status == BetStatus.Won;
-            bool isLoss = statusId == BetStatusId.Lost || status == BetStatus.Lose;
-            bool isDraw = statusId == BetStatusId.Draw || status == BetStatus.Draw;
+            var isWon = statusId == BetStatusId.Won || status == BetStatus.Won || status == BetStatus.HalfWon;
+            var isLose = statusId == BetStatusId.Lost || status == BetStatus.Lose || status == BetStatus.HalfLose;
+            var isDraw = statusId == BetStatusId.Draw || status == BetStatus.Draw;
 
-            return isDraw || isWin || isLoss;
+            return isDraw || isWon || isLose;
         }
     }
 }

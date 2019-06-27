@@ -186,6 +186,9 @@
     <Compile Include="Builder\ChoiceBuilder\Choice459Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice460Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice461Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice467Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice468Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice469Tests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice500Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice614Tests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice612Tests.cs" />
@@ -247,6 +250,7 @@
     <Compile Include="Builder\ChoiceBuilder\Choice130Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice136Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds29Test.cs" />
+    <Compile Include="Builder\OddsBuilder\Odds468Tests.cs" />
     <Compile Include="Builder\OddsBuilder\Odds500Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds71Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds1Test.cs" />

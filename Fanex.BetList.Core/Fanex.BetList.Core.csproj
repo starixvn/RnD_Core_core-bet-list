@@ -313,6 +313,9 @@
     <Compile Include="Builder\ChoiceBuilder\Choice459.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice460.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice461.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice467.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice468.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice469.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice5.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice500.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice501.cs" />
@@ -395,6 +398,7 @@
     <Compile Include="Builder\OddsBuilder\Odds1101.cs" />
     <Compile Include="Builder\OddsBuilder\Odds29.cs" />
     <Compile Include="Builder\OddsBuilder\Odds33.cs" />
+    <Compile Include="Builder\OddsBuilder\Odds468.cs" />
     <Compile Include="Builder\OddsBuilder\Odds500.cs" />
     <Compile Include="Builder\OddsBuilder\Odds71.cs" />
     <Compile Include="Builder\OddsBuilder\Odds72.cs" />
@@ -489,6 +493,7 @@
     <Compile Include="Mapper\ChoiceMapper.cs" />
     <Compile Include="Mapper\IMapper.cs" />
     <Compile Include="Mapper\MapperCollector.cs" />
+    <Compile Include="Mapper\OddsMapper.cs" />
     <Compile Include="Mapper\ParentChildMapper.cs" />
     <Compile Include="Mapper\StatusMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

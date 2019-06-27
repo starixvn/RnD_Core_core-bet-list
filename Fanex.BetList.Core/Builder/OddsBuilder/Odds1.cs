@@ -6,18 +6,12 @@
     using Templates;
     using Utils;
 
-    /// <summary>
-    /// Class Odds1.
-    /// </summary>
     public class Odds1 : IOdds
     {
         private const string OddsValueOpenTag = "<div class=\"underdog\">";
         private const string OddsTypeOpenTag = "<div class=\"oddstype\">";
         private const string CloseTag = "</div>";
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Odds1" /> class.
-        /// </summary>
         public Odds1()
         {
             Template = new Odds_Template();
@@ -94,11 +88,6 @@
             return oddsTypeExcel;
         }
 
-        /// <summary>
-        /// Builds the RTF odds.
-        /// </summary>
-        /// <param name="rtfHelper">The RTF helper.</param>
-        /// <returns>IRichTextString represents excel-formatted Odds string.</returns>
         protected virtual IRichTextString BuildRTFOdds(RTFHelper rtfHelper)
         {
             string odds = Template.odds;

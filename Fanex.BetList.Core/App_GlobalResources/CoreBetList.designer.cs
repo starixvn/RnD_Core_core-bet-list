@@ -520,6 +520,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Equal.
+        /// </summary>
+        public static string Equal {
+            get {
+                return ResourceManager.GetString("Equal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Even.
         /// </summary>
         public static string even {

@@ -249,7 +249,7 @@
         }
 
         [Test]
-        public void BuildBetTeamsInfo_Always_ThỉdLineIsTableMode()
+        public void BuildBetTeamsInfo_Always_ThirdLineIsTableMode()
         {
             // Arrange.
             var rtfHelper = new RTFHelper().Clone();
