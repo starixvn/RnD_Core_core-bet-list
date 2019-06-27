@@ -49,6 +49,11 @@ div.match + div.league + div.no-details {
     font-weight: 600;
 }
 
+.bettype-description {
+    color: #003399;
+    font-weight: normal;
+}
+
 .firstGoal {
     background: url("Images/firstGoal.gif") no-repeat scroll center center transparent;
     display: inline;
