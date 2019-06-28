@@ -435,7 +435,7 @@
 
         protected virtual void BuildEventKickoffDateTime(ITicket ticket)
         {
-            if (IsSportsbook(ticket.SportTypeId))
+            if (IsSportsbook(ticket.SportTypeId) && ticket.EventDate.HasValue)
             {
                 Template.EventDate.Visible = true;
                 Template.EventDate.eventDate = Formatter.FormatDateTimeEn12ShortMonthNoSec(ticket.EventDate);

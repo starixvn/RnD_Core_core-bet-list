@@ -1013,6 +1013,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         {
             // Arrange.
             _ticket.SportTypeId = sportTypeId;
+            _ticket.EventDate = DateTime.Now;
 
             // Act.
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -1037,6 +1038,20 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             var expectedKickoffTimeInCorrectFormat = Formatter.FormatDateTimeEn12ShortMonthNoSec(kickoffDateTime);
 
             Assert.AreEqual(expectedKickoffTimeInCorrectFormat, _choice.Template.EventDate.eventDate);
+        }
+
+        [TestCaseSource(nameof(PrepareSportsbookSportTypes))]
+        public void BuildEventKickoffDateTime_SportsbooksTicketButNoEventDate_HideEventKickoffDateTime(int sportTypeId)
+        {
+            // Arrange.
+            _ticket.SportTypeId = sportTypeId;
+            _ticket.EventDate = null;
+
+            // Act.
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert.
+            Assert.IsFalse(_choice.Template.EventDate.Visible);
         }
 
         public static IEnumerable<int> PrepareSportsbookSportTypes()

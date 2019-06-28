@@ -107,7 +107,7 @@
 
         string CommStatus { get; set; }
 
-        DateTime EventDate { get; set; }
+        DateTime? EventDate { get; set; }
 
         string TransDesc { get; set; }
 

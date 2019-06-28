@@ -665,8 +665,7 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
             return BetListView(model);
         }
-        
-        
+
         public ActionResult ESports2InPlay(BetListData model = null)
         {
 
