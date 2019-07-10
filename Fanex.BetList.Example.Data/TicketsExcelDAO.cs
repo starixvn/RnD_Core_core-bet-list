@@ -198,7 +198,7 @@
                 ticket.OddsSpread = Convert.ToDecimal(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.OddsSpread)));
                 ticket.OriginalBetType = Convert.ToInt32(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.OriginalBetType)));
                 ticket.BetdaqId = Convert.ToInt64(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.BetdaqId)));
-                ticket.ExtraInfo = row.GetCell((int)TicketTemplateColumnIndex.ExtraInfo).ToString();
+                ticket.ExtraInfo = GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.ExtraInfo));
                 ticket.OriginalStake = Convert.ToDecimal(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.OriginalStake)));
                 ticket.RefCode = Convert.ToInt64(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.RefCode)));
                 ticket.WalletType = Convert.ToByte(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.WalletType)));
