@@ -97,13 +97,13 @@
         private void ParseTransDesc(string transDesc)
         {
             const string gameIdIndicator = "betChoice=";
-            const int expectedNumberOfInfoParts = 2;
+            const int numberOfExpectedInfo = 2;
 
             int lengthOfNeededInfo = transDesc.IndexOf(';');
             string neededInfo = transDesc.Substring(0, lengthOfNeededInfo < 0 ? transDesc.Length : lengthOfNeededInfo);
             string[] parts = neededInfo.Split(',');
 
-            if (parts.Length == expectedNumberOfInfoParts)
+            if (parts.Length == numberOfExpectedInfo)
             {
                 if (parts[0].StartsWith(gameIdIndicator, StringComparison.InvariantCultureIgnoreCase))
                 {

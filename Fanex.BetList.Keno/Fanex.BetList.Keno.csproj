@@ -44,6 +44,7 @@
     <Compile Include="Builder\ChoiceBuilder\Choice1501.cs" />
     <Compile Include="Builder\StatusBuilder\Status1501.cs" />
     <Compile Include="Builder\TransBuilder\Trans1501.cs" />
+    <Compile Include="Constants\BetTypeRanges.cs" />
     <Compile Include="Mapper\ChoiceMapper.cs" />
     <Compile Include="Mapper\StatusMapper.cs" />
     <Compile Include="Mapper\TransMapper.cs" />
