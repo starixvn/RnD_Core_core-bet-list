@@ -17,7 +17,7 @@
     [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleClass", Justification = "Reviewed.")]
     public class Stake_Bonus_BlockTest
     {
-        private const string BonusIconTemplate = "{0}{1}";
+        private const string BonusIconTemplate = "{0}{1}{2}";
 
         [Test]
         public void ToString_BlockIsInvisible_ReturnEmptyString()
@@ -48,7 +48,7 @@
             bonusBlock.ToString(ref bonusIconHtml);
 
             // Assert.
-            var expectedHtml = string.Format(BonusIconTemplate, bonusBlock.BonusIcon, bonusBlock.Wallet);
+            var expectedHtml = string.Format(BonusIconTemplate, bonusBlock.RebateBonusIcon, bonusBlock.BonusIcon, bonusBlock.Wallet);
 
             Assert.AreEqual(expectedHtml, bonusIconHtml.ToString());
         }
@@ -69,7 +69,7 @@
             bonusBlock.ToString(ref bonusIconHtml);
 
             // Assert.
-            var expectedHtml = string.Format(BonusIconTemplate, bonusBlock.BonusIcon, bonusBlock.Wallet) + extendedValue;
+            var expectedHtml = string.Format(BonusIconTemplate, bonusBlock.RebateBonusIcon, bonusBlock.BonusIcon, bonusBlock.Wallet) + extendedValue;
 
             Assert.AreEqual(expectedHtml, bonusIconHtml.ToString());
         }

@@ -1627,6 +1627,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rebate.
+        /// </summary>
+        public static string Rebate {
+            get {
+                return ResourceManager.GetString("Rebate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ref No.
         /// </summary>
         public static string refno {

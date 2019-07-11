@@ -877,4 +877,7 @@
   <data name="Equal" xml:space="preserve">
     <value>Equal</value>
   </data>
+  <data name="Rebate" xml:space="preserve">
+    <value>Rebate</value>
+  </data>
 </root>

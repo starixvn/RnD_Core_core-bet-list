@@ -54,7 +54,6 @@
         {
             // Arrange.
             _ticket.BetTeam = betTeam;
-            _ticketHelper.GetResourceData(Arg.Any<string>(), Arg.Any<string>()).Returns("Bet Team");
 
             // Act.
             _choice.Render(_ticket, _ticketHelper, null, false);

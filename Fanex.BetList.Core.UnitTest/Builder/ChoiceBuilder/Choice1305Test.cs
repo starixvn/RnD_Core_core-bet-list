@@ -26,14 +26,17 @@
         public void BuildBetType_Always_SetBetTypeNameIsParentBetTypeName()
         {
             // Arrange
-            const string BET_TYPE_NAME = "Bet type name";
-            _ticketHelper.GetBetTypeNameById(Arg.Any<object>(), Arg.Any<object>()).Returns(BET_TYPE_NAME);
+            const string expectedBetTypeName = "Bet type name";
+            const string parentBetTypeId = "2";
+
+            _ticketHelper.GetParentIdByBetTypeId(_ticket.BetTypeId).Returns(parentBetTypeId);
+            _ticketHelper.GetBetTypeNameById(parentBetTypeId, Arg.Any<object>()).Returns(expectedBetTypeName);
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.AreEqual(BET_TYPE_NAME, _choice.Template.BetType.betTypeName);
+            Assert.AreEqual(expectedBetTypeName, _choice.Template.BetType.betTypeName);
         }
     }
 }

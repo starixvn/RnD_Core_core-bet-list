@@ -7,7 +7,7 @@
     using NUnit.Framework;
 
     [TestFixture]
-    public class Choice901Test
+    public class Choice901Tests
     {
         private IChoice _choice;
         private ITicket _ticket;
@@ -36,10 +36,12 @@
         [Test]
         public void RenderRTF_WhenCalled_DoNotChangeBetType()
         {
+            var rtfHelper = new RTFHelper().Clone();
+
             _ticket.BetTypeId = 901;
             _ticket.BetId = 1;
 
-            _choice.Render(_ticket, _ticketHelper, Arg.Any<List<ITicketData>>(), Arg.Any<bool>());
+            _choice.RenderRTF(_ticket, _ticketHelper, Arg.Any<List<ITicketData>>(), Arg.Any<bool>(), rtfHelper);
 
             const int BetType = 901;
             Assert.AreEqual(BetType, _ticket.BetTypeId);

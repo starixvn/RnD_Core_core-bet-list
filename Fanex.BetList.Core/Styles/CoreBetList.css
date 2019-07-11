@@ -237,3 +237,12 @@ div.match + div.league + div.no-details {
 .bonus-icon:hover {
     cursor: pointer
 }
+
+.rebate-bonus-icon {
+    background: url(Images/rebateBonus.png) no-repeat scroll center center transparent;
+    display: inline-block;
+    height: 14px;
+    width: 14px;
+    position: relative;
+    top: 2px;
+}

@@ -51,39 +51,39 @@
 
         protected virtual void BuildBonus(ITicket ticket)
         {
-            const byte MixWallet = 0;
             const byte BonusWallet = 1;
             const byte CashWallet = 2;
 
-            if (ticket.WalletType == BonusWallet)
+            if (IsRebateBonusTicket(ticket))
             {
-                if (ticket.RefCode == 0)
-                {
-                    ShowIndicatingTextOfBonusWallet();
-                }
-                else
-                {
-                    ShowBonusIcon(ticket);
-                }
+                Template.Bonus.BonusIcon.Visible = false;
+                Template.Bonus.Wallet.Visible = false;
+
+                return;
             }
-            else if (ticket.WalletType == CashWallet)
+
+            Template.Bonus.RebateBonusIcon.Visible = false;
+
+            if (ticket.RefCode == 0)
             {
-                if (ticket.RefCode == 0)
+                switch (ticket.WalletType)
                 {
-                    ShowIndicatingTextOfCashWallet();
+                    case BonusWallet:
+                        ShowIndicatingTextOfBonusWallet();
+                        break;
+
+                    case CashWallet:
+                        ShowIndicatingTextOfCashWallet();
+                        break;
+
+                    default:
+                        HideBonusPart();
+                        break;
                 }
-                else
-                {
-                    ShowBonusIcon(ticket);
-                }
-            }
-            else if (ticket.WalletType == MixWallet && ticket.RefCode != 0)
-            {
-                ShowBonusIcon(ticket);
             }
             else
             {
-                HideBonusPart();
+                ShowBonusIcon(ticket);
             }
         }
 
@@ -101,7 +101,20 @@
                 return;
             }
 
-            string bonusText = Template.Bonus.BonusIcon.Visible ? $"\n({CoreBetList.Bonus})" : "\n" + Template.Bonus.Wallet.type;
+            string bonusText;
+
+            if (Template.Bonus.RebateBonusIcon.Visible)
+            {
+                bonusText = $"\n({CoreBetList.Rebate})";
+            }
+            else if (Template.Bonus.BonusIcon.Visible)
+            {
+                bonusText = $"\n({CoreBetList.Bonus})";
+            }
+            else
+            {
+                bonusText = $"\n{Template.Bonus.Wallet.type}";
+            }
 
             rtfHelper.RTFRenderer.AddText(bonusText, rtfHelper.PosFont);
         }
@@ -130,6 +143,17 @@
             Template.Bonus.Wallet.type = $"({CoreBetList.Cash})";
 
             Template.Bonus.BonusIcon.Visible = false;
+        }
+
+        protected static bool IsRebateBonusTicket(ITicket ticket)
+        {
+            const string bonusXmlTag = "p1";
+            const string bonusTypeAttributeName = "t";
+            const string rebateBonusType = "2";
+
+            var bonusType = ticket.ExtraInfo.GetXmlTagAttributeValue(bonusXmlTag, bonusTypeAttributeName);
+
+            return bonusType == rebateBonusType;
         }
 
         protected virtual void BuildOriginalStake(ITicket ticket)

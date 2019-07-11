@@ -14,14 +14,9 @@
 
             var status = ticket.Status.ToLowerInvariant();
 
-            if (status.Equals(BetStatus.Void) || status.Equals(BetStatus.Refund))
-            {
-                Template.result = string.Format(ResultHtmlFormat, Template.result, GetStatus());
-            }
-            else
-            {
-                Template.result = GetStatus();
-            }
+            Template.result = status.Equals(BetStatus.Void) || status.Equals(BetStatus.Refund)
+                ? string.Format(ResultHtmlFormat, Template.result, GetStatus())
+                : GetStatus();
         }
 
         protected override void BuildCashOutHistory(ITicket ticket, ITicketHelper ticketHelper)

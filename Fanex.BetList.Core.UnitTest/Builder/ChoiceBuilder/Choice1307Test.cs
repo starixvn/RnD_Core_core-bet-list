@@ -67,13 +67,17 @@
         public void BuildBetTeam_Always_SetBetTypeNameIsBetTypeName()
         {
             // Arrange
-            _ticketHelper.GetBetTypeNameById(Arg.Any<object>(), Arg.Any<object>(), Arg.Any<object>(), Arg.Any<object>()).Returns("Bet type name");
+            const string expectedBetTypeName = "Bet type name";
+
+            _ticketHelper
+                .GetBetTypeNameById(_ticket.BetTypeId, _ticket.RefNo, _ticket.BetId, Arg.Any<object>())
+                .Returns(expectedBetTypeName);
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.AreEqual("Bet type name", _choice.Template.BetType.betTypeName);
+            Assert.AreEqual(expectedBetTypeName, _choice.Template.BetType.betTypeName);
         }
 
         [Test]
@@ -86,8 +90,9 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            const string CSS_CLASS_FAVORITE = "favorite";
-            Assert.AreEqual(CSS_CLASS_FAVORITE, _choice.Template.betTeamClassName);
+            const string favorite = "favorite";
+
+            Assert.AreEqual(favorite, _choice.Template.betTeamClassName);
         }
 
         [Test]
@@ -100,8 +105,9 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            const string CSS_CLASS_UNDERDOG = "underdog";
-            Assert.AreEqual(CSS_CLASS_UNDERDOG, _choice.Template.betTeamClassName);
+            const string underdog = "underdog";
+
+            Assert.AreEqual(underdog, _choice.Template.betTeamClassName);
         }
     }
 }

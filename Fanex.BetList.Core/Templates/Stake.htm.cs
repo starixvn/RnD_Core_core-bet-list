@@ -60,6 +60,7 @@ namespace Fanex.BetList.Core
 
 		public class Stake_Bonus_Block: Block
 		{
+			public Stake_Bonus_RebateBonusIcon_Block RebateBonusIcon = new Stake_Bonus_RebateBonusIcon_Block();
 			public Stake_Bonus_BonusIcon_Block BonusIcon = new Stake_Bonus_BonusIcon_Block();
 			public Stake_Bonus_Wallet_Block Wallet = new Stake_Bonus_Wallet_Block();
 			public override void ToString(ref StringBuilder bd)
@@ -67,6 +68,7 @@ namespace Fanex.BetList.Core
 				if(!Visible) return;
 				if(RenderChild)
 				{
+					if(null != RebateBonusIcon) RebateBonusIcon.ToString(ref bd);
 					if(null != BonusIcon) BonusIcon.ToString(ref bd);
 					if(null != Wallet) Wallet.ToString(ref bd);
 				}
@@ -74,27 +76,45 @@ namespace Fanex.BetList.Core
 			}
 		}
 
-		public class Stake_Bonus_BonusIcon_Block: Block
+		public class Stake_Bonus_RebateBonusIcon_Block: Block
 		{
-			protected static string s4 = "<span class=\"bonus-icon\" onclick=\"javascript:ShowBonusDetails(";
-			public string refCode = "{refCode}";
-			protected static string s5 = ",";
-			public string transId = "{transId}";
-			protected static string s6 = ");\" title=\"";
-			public string bonusIconTitle = "{bonusIconTitle}";
-			protected static string s7 = "\"></span>";
+			protected static string s4 = "<div class=\"rebate-bonus\"><span class=\"rebate-bonus-icon\"></span>";
+			protected static string s5{get{return App_GlobalResources.CoreBetList.Rebate;}}
+			protected static string s6 = "</div>";
 			public override void ToString(ref StringBuilder bd)
 			{
 				if(!Visible) return;
 				if(RenderChild)
 				{
 					bd.Append(s4);
-					bd.Append(refCode);
 					bd.Append(s5);
-					bd.Append(transId);
 					bd.Append(s6);
-					bd.Append(bonusIconTitle);
+				}
+				if(IsAssigned){bd.Append(Value);}
+			}
+		}
+
+		public class Stake_Bonus_BonusIcon_Block: Block
+		{
+			protected static string s7 = "<span class=\"bonus-icon\" onclick=\"javascript:ShowBonusDetails(";
+			public string refCode = "{refCode}";
+			protected static string s8 = ",";
+			public string transId = "{transId}";
+			protected static string s9 = ");\" title=\"";
+			public string bonusIconTitle = "{bonusIconTitle}";
+			protected static string s10 = "\"></span>";
+			public override void ToString(ref StringBuilder bd)
+			{
+				if(!Visible) return;
+				if(RenderChild)
+				{
 					bd.Append(s7);
+					bd.Append(refCode);
+					bd.Append(s8);
+					bd.Append(transId);
+					bd.Append(s9);
+					bd.Append(bonusIconTitle);
+					bd.Append(s10);
 				}
 				if(IsAssigned){bd.Append(Value);}
 			}
@@ -102,17 +122,17 @@ namespace Fanex.BetList.Core
 
 		public class Stake_Bonus_Wallet_Block: Block
 		{
-			protected static string s8 = "<span class=\"light-blue\">";
+			protected static string s11 = "<span class=\"light-blue\">";
 			public string type = "{type}";
-			protected static string s9 = "</span>";
+			protected static string s12 = "</span>";
 			public override void ToString(ref StringBuilder bd)
 			{
 				if(!Visible) return;
 				if(RenderChild)
 				{
-					bd.Append(s8);
+					bd.Append(s11);
 					bd.Append(type);
-					bd.Append(s9);
+					bd.Append(s12);
 				}
 				if(IsAssigned){bd.Append(Value);}
 			}

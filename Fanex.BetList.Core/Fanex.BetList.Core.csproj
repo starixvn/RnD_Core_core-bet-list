@@ -78,6 +78,7 @@
     <Content Include="Styles\Images\bonus.png" />
     <Content Include="Styles\Images\firstGoal.gif" />
     <Content Include="Styles\Images\lastGoal.gif" />
+    <Content Include="Styles\Images\rebateBonus.png" />
     <Content Include="Templates\SystemParlayDetail.htm" />
     <Content Include="Templates\Status.htm" />
     <Content Include="Templates\Stake.htm" />

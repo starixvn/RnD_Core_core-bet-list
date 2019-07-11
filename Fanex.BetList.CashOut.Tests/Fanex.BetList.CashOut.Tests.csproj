@@ -63,6 +63,7 @@
     <Compile Include="Builder\ChoiceBuilder\Choice912Tests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice911Tests.cs" />
     <Compile Include="Builder\OddsBuilder\Odds911Tests.cs" />
+    <Compile Include="Builder\StakeBuilder\Stake911Tests.cs" />
     <Compile Include="Builder\StatusBuilder\Status912Tests.cs" />
     <Compile Include="Builder\StatusBuilder\Status911Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
