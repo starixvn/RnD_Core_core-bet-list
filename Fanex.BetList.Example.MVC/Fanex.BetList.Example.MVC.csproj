@@ -190,6 +190,7 @@
     <Content Include="Content\images\lastGoal.gif" />
     <Content Include="Content\images\q_Icon2_1.png" />
     <Content Include="Content\images\q_Icon_2.png" />
+    <Content Include="Content\images\rebateBonus.png" />
     <Content Include="Content\images\ScoreMapWL.png" />
     <Content Include="Content\lucky3.css" />
     <Content Include="Content\Microgaming.css" />
@@ -476,6 +477,7 @@
     <Content Include="App_Data\PHAllInOneP4A.xls" />
     <Content Include="App_Data\VideoPokerGame.xls" />
     <Content Include="App_Data\RefundResult.xls" />
+    <Content Include="App_Data\RebateBonus.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
