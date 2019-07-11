@@ -1,12 +1,12 @@
 ﻿namespace Fanex.BetList.Voidbridge.Tests.Builder.ChoiceBuilder
 {
+    using System;
+    using System.Globalization;
     using Core.App_GlobalResources;
     using Core.Builder.ChoiceBuilder;
     using Core.Entities;
     using NSubstitute;
     using NUnit.Framework;
-    using System;
-    using System.Globalization;
 
     [TestFixture]
     public class Choice4001Test
@@ -165,7 +165,7 @@
 
         private string BuildVoidBridgeDetailsLink(string transactionType)
         {
-            string[] detailsFunctionDivCompositions = new[]
+            string[] detailsFunctionDivCompositions =
             {
                 "<div class=\"detail voidbridge-detail\" onclick=\"showVoidBridgeDetails(",
                 _ticket.TransId.ToString(CultureInfo.InvariantCulture),
@@ -199,7 +199,7 @@
             _choice.RenderRTF(_ticket, _ticketHelper, null, false, new RTFHelper().Clone());
 
             ////Assert
-            Assert.AreEqual(_choice.Template.League.sportTypeName, "Voidbridge");
+            Assert.AreEqual("Voidbridge", _choice.Template.League.sportTypeName);
         }
 
         [Test]
@@ -228,7 +228,7 @@
             _choice.RenderRTF(_ticket, _ticketHelper, null, false, new RTFHelper().Clone());
 
             ////Assert
-            Assert.AreEqual(_choice.Template.betTeam, "Amazon 1");
+            Assert.AreEqual("Amazon 1", _choice.Template.betTeam);
         }
     }
 }

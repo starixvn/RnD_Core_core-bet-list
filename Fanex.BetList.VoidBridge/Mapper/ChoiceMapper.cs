@@ -1,17 +1,14 @@
 ﻿namespace Fanex.BetList.Core.Mapper
 {
+    using BetList.VoidBirdge.Constants;
+
     public class ChoiceMapper : BaseMapper
     {
         public ChoiceMapper()
         {
-            Initialize();
-        }
-
-        private void Initialize()
-        {
-            for (int i = 4002; i <= 4099; i++)
+            for (int betTypeId = BetTypeRanges.BaseBetTypeId + 1; betTypeId <= BetTypeRanges.MaxBetTypeIdRange; betTypeId++)
             {
-                MapIdToBaseId(i, 4001);
+                MapIdToBaseId(betTypeId, BetTypeRanges.BaseBetTypeId);
             }
         }
     }

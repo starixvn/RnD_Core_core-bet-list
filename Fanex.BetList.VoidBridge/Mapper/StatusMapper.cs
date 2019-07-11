@@ -1,17 +1,14 @@
 ﻿namespace Fanex.BetList.Core.Mapper
 {
+    using BetList.VoidBirdge.Constants;
+
     public class StatusMapper : BaseMapper
     {
         public StatusMapper()
         {
-            Initialize();
-        }
-
-        private void Initialize()
-        {
-            for (int i = 4002; i <= 4099; i++)
+            for (int betTypeId = BetTypeRanges.BaseBetTypeId + 1; betTypeId <= BetTypeRanges.MaxBetTypeIdRange; betTypeId++)
             {
-                this.MapIdToBaseId(i, 4001);
+                MapIdToBaseId(betTypeId, BetTypeRanges.BaseBetTypeId);
             }
         }
     }

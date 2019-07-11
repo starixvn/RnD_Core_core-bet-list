@@ -55,13 +55,15 @@
         public void BuildStatusResult_ForDetailTickets_RefNoIsBetCheckString()
         {
             ////Arrange
-            _ticket.BetCheck = "123";
+            const string expectedBetCheck = "123";
+
+            _ticket.BetCheck = expectedBetCheck;
 
             ////Act
             _status.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            Assert.AreEqual("'123'", _status.Template.StatusResult.refNo);
+            Assert.AreEqual($"'{expectedBetCheck}'", _status.Template.StatusResult.refNo);
         }
 
         [Test]
