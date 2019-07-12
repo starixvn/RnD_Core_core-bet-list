@@ -678,4 +678,7 @@
   <data name="pending" xml:space="preserve">
     <value>รอดำเนินการ</value>
   </data>
+  <data name="Rebate" xml:space="preserve">
+    <value>ส่วนลด</value>
+  </data>
 </root>

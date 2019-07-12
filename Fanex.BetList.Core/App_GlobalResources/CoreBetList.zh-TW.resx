@@ -807,4 +807,7 @@
   <data name="pending" xml:space="preserve">
     <value>待定</value>
   </data>
+  <data name="Rebate" xml:space="preserve">
+    <value>返水紅利</value>
+  </data>
 </root>
