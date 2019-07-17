@@ -63,6 +63,7 @@
         [TestCase("BetList/ESports2InPlay")]
         [TestCase("BetList/VideoPokerGame")]
         [TestCase("BetList/AbnormalBet")]
+        [TestCase("BetList/RebateBonus")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Choice(string productUrl)
         {
             // Arrange
@@ -131,6 +132,7 @@
         [TestCase("BetList/ESports2InPlay")]
         [TestCase("BetList/VideoPokerGame")]
         [TestCase("BetList/AbnormalBet")]
+        [TestCase("BetList/RebateBonus")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Trans(string productUrl)
         {
             // Arrange
@@ -199,6 +201,7 @@
         [TestCase("BetList/ESports2InPlay")]
         [TestCase("BetList/VideoPokerGame")]
         [TestCase("BetList/AbnormalBet")]
+        [TestCase("BetList/RebateBonus")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Odds(string productUrl)
         {
             // Arrange
@@ -267,6 +270,7 @@
         [TestCase("BetList/ESports2InPlay")]
         [TestCase("BetList/VideoPokerGame")]
         [TestCase("BetList/AbnormalBet")]
+        [TestCase("BetList/RebateBonus")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Stake(string productUrl)
         {
             // Arrange
@@ -335,6 +339,7 @@
         [TestCase("BetList/ESports2InPlay")]
         [TestCase("BetList/VideoPokerGame")]
         [TestCase("BetList/AbnormalBet")]
+        [TestCase("BetList/RebateBonus")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Status(string productUrl)
         {
             // Arrange
