@@ -1,14 +1,14 @@
 ﻿namespace Fanex.BetList.Core.Mapper
 {
-    using BetList.Keno.Constants;
+    using Constants;
 
     public class StatusMapper : BaseMapper
     {
         public StatusMapper()
         {
-            for (int betTypeId = BetTypeRanges.BaseBetTypeId + 1; betTypeId <= BetTypeRanges.MaxBetTypeIdRange; betTypeId++)
+            for (int betTypeId = KenoBetTypes.BaseBetTypeId + 1; betTypeId <= KenoBetTypes.MaxBetTypeIdRange; betTypeId++)
             {
-                MapIdToBaseId(betTypeId, BetTypeRanges.BaseBetTypeId);
+                MapIdToBaseId(betTypeId, KenoBetTypes.BaseBetTypeId);
             }
         }
     }
