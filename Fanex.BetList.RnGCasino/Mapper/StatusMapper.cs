@@ -1,6 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Mapper
 {
-    using BetList.Core.Constants;
+    using Constants;
 
     public class StatusMapper : BaseMapper
     {
@@ -16,53 +16,53 @@
 
         private void MappingForRNGGames()
         {
-            for (var betType = BetTypeRanges.BattleWar; betType <= BetTypeRanges.ProgressiveJackpot; betType++)
+            for (var betType = RnGCasinoBetTypes.BattleWar; betType <= RnGCasinoBetTypes.ProgressiveJackpot; betType++)
             {
-                MapIdToBaseId(betType, BetTypeRanges.Baccarat);
+                MapIdToBaseId(betType, RnGCasinoBetTypes.Baccarat);
             }
         }
 
         private void MappingForMiniGames()
         {
-            for (var betType = BetTypeRanges.MiniBaccarat; betType <= BetTypeRanges.MiniProgressiveJackpot; betType++)
+            for (var betType = RnGCasinoBetTypes.MiniBaccarat; betType <= RnGCasinoBetTypes.MiniProgressiveJackpot; betType++)
             {
-                MapIdToBaseId(betType, BetTypeRanges.Baccarat);
+                MapIdToBaseId(betType, RnGCasinoBetTypes.Baccarat);
             }
         }
 
         private void MappingForMobileGames()
         {
-            for (var betType = BetTypeRanges.MobileBaccarat; betType <= BetTypeRanges.MobileProgressiveJackpot; betType++)
+            for (var betType = RnGCasinoBetTypes.MobileBaccarat; betType <= RnGCasinoBetTypes.MobileProgressiveJackpot; betType++)
             {
-                MapIdToBaseId(betType, BetTypeRanges.Baccarat);
+                MapIdToBaseId(betType, RnGCasinoBetTypes.Baccarat);
             }
         }
 
         private void MappingForTabletGames()
         {
-            for (var betType = BetTypeRanges.TabletBaccarat; betType <= BetTypeRanges.TabletProgressiveJackpot; betType++)
+            for (var betType = RnGCasinoBetTypes.TabletBaccarat; betType <= RnGCasinoBetTypes.TabletProgressiveJackpot; betType++)
             {
-                MapIdToBaseId(betType, BetTypeRanges.Baccarat);
+                MapIdToBaseId(betType, RnGCasinoBetTypes.Baccarat);
             }
         }
 
         private void MappingForJackpotContribution()
         {
-            foreach (var betType in BetTypeRanges.JackpotContributionBetTypes)
+            foreach (var betType in RnGCasinoBetTypes.JackpotContributionBetTypes)
             {
                 MapperData.Remove(betType);
 
-                MapIdToBaseId(betType, BetTypeRanges.JackpotContribution);
+                MapIdToBaseId(betType, RnGCasinoBetTypes.JackpotContribution);
             }
         }
 
         private void MappingForProgressiveJackpot()
         {
-            foreach (var betType in BetTypeRanges.ProgressiveJackpotBetTypes)
+            foreach (var betType in RnGCasinoBetTypes.ProgressiveJackpotBetTypes)
             {
                 MapperData.Remove(betType);
 
-                MapIdToBaseId(betType, BetTypeRanges.ProgressiveJackpot);
+                MapIdToBaseId(betType, RnGCasinoBetTypes.ProgressiveJackpot);
             }
         }
     }

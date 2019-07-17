@@ -1,15 +1,15 @@
 ﻿namespace Fanex.BetList.Core.Mapper
 {
     using System.Linq;
-    using BetList.Core.Constants;
+    using Constants;
 
     public class StakeMapper : BaseMapper
     {
         public StakeMapper()
         {
-            foreach (var betType in BetTypeRanges.JackpotContributionBetTypes.Union(BetTypeRanges.ProgressiveJackpotBetTypes))
+            foreach (var betType in RnGCasinoBetTypes.JackpotContributionBetTypes.Union(RnGCasinoBetTypes.ProgressiveJackpotBetTypes))
             {
-                MapIdToBaseId(betType, BetTypeRanges.JackpotContribution);
+                MapIdToBaseId(betType, RnGCasinoBetTypes.JackpotContribution);
             }
         }
     }

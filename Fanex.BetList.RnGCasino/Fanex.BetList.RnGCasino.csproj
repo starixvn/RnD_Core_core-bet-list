@@ -48,7 +48,7 @@
     <Compile Include="Builder\StatusBuilder\Status2101.cs" />
     <Compile Include="Builder\StatusBuilder\Status2198.cs" />
     <Compile Include="Builder\StatusBuilder\Status2199.cs" />
-    <Compile Include="Constants\BetTypeRanges.cs" />
+    <Compile Include="Constants\RnGCasinoBetTypes.cs" />
     <Compile Include="Mapper\OddsMapper.cs" />
     <Compile Include="Mapper\StakeMapper.cs" />
     <Compile Include="Mapper\StatusMapper.cs" />
