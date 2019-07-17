@@ -44,7 +44,7 @@
   <ItemGroup>
     <Compile Include="Builder\ChoiceBuilder\Choice4001.cs" />
     <Compile Include="Builder\StatusBuilder\Status4001.cs" />
-    <Compile Include="Constants\BetTypeRanges.cs" />
+    <Compile Include="Constants\VoidBridgeBetTypes.cs" />
     <Compile Include="Mapper\ChoiceMapper.cs" />
     <Compile Include="Mapper\StatusMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
