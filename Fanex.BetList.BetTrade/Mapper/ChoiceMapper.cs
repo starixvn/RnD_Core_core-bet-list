@@ -1,12 +1,12 @@
 ﻿namespace Fanex.BetList.Core.Mapper
 {
-    using BetList.BetTrade.Constants;
+    using Constants;
 
     public class ChoiceMapper : BaseMapper
     {
         public ChoiceMapper()
         {
-            MapIdToBaseId(BetTypes.Bought, BetTypes.Sold);
+            MapIdToBaseId(BetTradeBetTypes.Bought, BetTradeBetTypes.Sold);
         }
     }
 }

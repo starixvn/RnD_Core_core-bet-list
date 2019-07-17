@@ -1,12 +1,12 @@
 ﻿namespace Fanex.BetList.Core.Mapper
 {
-    using BetList.CashOut.Constants;
+    using Constants;
 
     public class StakeMapper : BaseMapper
     {
         public StakeMapper()
         {
-            MapIdToBaseId(BetTypes.Bought, BetTypes.CashOut);
+            MapIdToBaseId(CashOutBetTypes.Bought, CashOutBetTypes.CashOut);
         }
     }
 }

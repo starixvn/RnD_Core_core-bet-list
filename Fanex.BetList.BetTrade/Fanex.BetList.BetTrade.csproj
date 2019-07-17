@@ -57,7 +57,7 @@
     <Compile Include="Builder\StakeBuilder\Stake901.cs" />
     <Compile Include="Builder\StatusBuilder\Status901.cs" />
     <Compile Include="Builder\StatusBuilder\Status902.cs" />
-    <Compile Include="Constants\BetTypes.cs" />
+    <Compile Include="Constants\BetTradeBetTypes.cs" />
     <Compile Include="Mapper\ChoiceMapper.cs" />
     <Compile Include="Mapper\StakeMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
