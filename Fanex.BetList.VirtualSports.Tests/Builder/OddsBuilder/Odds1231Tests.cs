@@ -1,15 +1,12 @@
 ﻿namespace Fanex.BetList.VirtualSports.Tests.Builder.OddsBuilder
 {
     using Core.Builder.OddsBuilder;
+    using Core.Constants;
     using Core.Entities;
     using Core.UnitTest.Common;
-    using Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    /// Odd test class for bet type 1231.
-    /// </summary>
     public class Odds1231Tests
     {
         private Odds1231 _odds;
@@ -19,7 +16,7 @@
         public void Setup()
         {
             _odds = new Odds1231();
-            _ticket = TestData.CreateTicket(BetTypes.VHR_Win);
+            _ticket = TestData.CreateTicket(InspireVirtualRacingBetTypes.Win);
         }
 
         [Test]

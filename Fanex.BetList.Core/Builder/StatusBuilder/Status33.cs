@@ -54,13 +54,9 @@
                     string contextPlaceStatus = GetResultString(placeStatus);
 
                     string[] tmpWinStatus = { "<span class='blue' style='font-weight:normal;'>", CoreBetList.win, ": ", "<b>", contextWinStatus, "</b>", "</span>" };
-
                     string winStatusMarkup = string.Join(null, tmpWinStatus);
-
                     string[] tmpPlaceStatus = { "<span class='' style='font-weight:normal;'>", CoreBetList.place, ": ", "<b>", contextPlaceStatus, "</b>", "</span>" };
-
                     string placeStatusMarkup = string.Join(null, tmpPlaceStatus);
-
                     string ticketBetStatus = ticket.Status.ToLower(CultureInfo.InvariantCulture);
 
                     switch (ticketBetStatus)

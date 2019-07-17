@@ -7,7 +7,7 @@
     using Fanex.BetList.Core.Utils.TicketExt;
 
     /// <summary>
-    /// Half Time/Full Time Exact Total Goals
+    /// Score Box Handicap
     /// </summary>
     public class Odds468 : Odds1
     {

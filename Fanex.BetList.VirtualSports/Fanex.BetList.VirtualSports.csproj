@@ -60,9 +60,15 @@
     <Compile Include="Builder\OddsBuilder\Odds2799.cs" />
     <Compile Include="Builder\StatusBuilder\Status1231.cs" />
     <Compile Include="Builder\StatusBuilder\Status1233.cs" />
+    <Compile Include="Constants\BetRadarSharedBetTypes.cs" />
+    <Compile Include="Constants\InspireVirtualSoccerBetTypes.cs" />
+    <Compile Include="Constants\InspireVirtualRacingBetTypes.cs" />
+    <Compile Include="Constants\BetRadarVirtualBasketballBetTypes.cs" />
+    <Compile Include="Constants\BetRadarVirtualSoccerBetTypes.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Mapper\ChoiceMapper.cs" />
     <Compile Include="Mapper\OddsMapper.cs" />
+    <Compile Include="Mapper\RepresentativeMapper.cs" />
     <Compile Include="Mapper\StatusMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

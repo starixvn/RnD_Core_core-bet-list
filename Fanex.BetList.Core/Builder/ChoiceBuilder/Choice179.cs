@@ -4,19 +4,12 @@
     using App_GlobalResources;
     using Constants;
     using Entities;
-    using Mapper;
 
     /// <summary>
-    /// Bet type name: Exact 1H Goals.
+    /// Exact First Half Goals (3rd)
     /// </summary>
     public class Choice179 : Choice1
     {
-        /// <summary>
-        /// Builds the bet team.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             var betTeam = string.Empty;
@@ -55,20 +48,6 @@
         {
             Template.Handicap.handicap = null;
             Template.betTeamClassName = Favorite;
-        }
-
-        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-        {
-            var betTypeName = GetParentBetTypeName(ticket, ticketHelper);
-
-            Template.BetType.betTypeName = betTypeName;
-        }
-
-        private static string GetParentBetTypeName(ITicket ticket, ITicketHelper ticketHelper)
-        {
-            var parentBetTypeId = MapperCollector.GetParentBetTypeOf(ticket.BetTypeId);
-
-            return ticketHelper.GetBetTypeNameById(parentBetTypeId, ticket.RefNo);
         }
     }
 }

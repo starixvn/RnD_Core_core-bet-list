@@ -6,6 +6,8 @@
     {
         string GetBetType(string betTypeId, string resourceId, long refNo);
 
+        string GetDisplayedBetType(string betTypeId, string resourceId, long refNo);
+
         string GetParentBetTypeIdByBetTypeId(string betTypeId, string defaultParentBetTypeId);
 
         string GetSportName(string sportId);

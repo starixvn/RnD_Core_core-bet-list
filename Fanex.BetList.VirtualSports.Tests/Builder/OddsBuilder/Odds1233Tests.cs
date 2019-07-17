@@ -3,18 +3,15 @@
     using System.Collections.Generic;
     using Core.App_GlobalResources;
     using Core.Builder.OddsBuilder;
+    using Core.Constants;
     using Core.Entities;
     using Core.Templates;
     using Core.UnitTest.Common;
-    using Core.UnitTest.Common.Enums;
     using Core.Utils;
     using NUnit.Framework;
 
     public class Odds1233Tests
     {
-        private const int WinBetId = 1231;
-        private const int PlaceBetId = 1232;
-
         private Odds1233 _odds;
         private ITicket _ticket;
 
@@ -22,7 +19,7 @@
         public void Setup()
         {
             _odds = new Odds1233();
-            _ticket = TestData.CreateTicket(BetTypes.VHR_WinPlace);
+            _ticket = TestData.CreateTicket(InspireVirtualRacingBetTypes.WinPlace);
         }
 
         [Test]
@@ -30,8 +27,8 @@
         {
             // Arrange
             var ticketData = new List<ITicketData>();
-            var winTicketData = TestData.CreateTicketData(WinBetId, _ticket.RefNo, "draw");
-            var placeTicketData = TestData.CreateTicketData(PlaceBetId, _ticket.RefNo, "draw");
+            var winTicketData = TestData.CreateTicketData(InspireVirtualRacingBetTypes.Win, _ticket.RefNo, "draw");
+            var placeTicketData = TestData.CreateTicketData(InspireVirtualRacingBetTypes.Place, _ticket.RefNo, "draw");
             ticketData.Add(winTicketData);
             ticketData.Add(placeTicketData);
 
@@ -50,8 +47,8 @@
         {
             // Arrange
             var ticketData = new List<ITicketData>();
-            var winTicketData = TestData.CreateTicketData(WinBetId, _ticket.TransId.ToString(), "draw");
-            var placeTicketData = TestData.CreateTicketData(PlaceBetId, _ticket.TransId.ToString(), "draw");
+            var winTicketData = TestData.CreateTicketData(InspireVirtualRacingBetTypes.Win, _ticket.TransId.ToString(), "draw");
+            var placeTicketData = TestData.CreateTicketData(InspireVirtualRacingBetTypes.Place, _ticket.TransId.ToString(), "draw");
             ticketData.Add(winTicketData);
             ticketData.Add(placeTicketData);
 
@@ -97,8 +94,8 @@
         {
             // Act
             var ticketData = new List<ITicketData>();
-            var winTicketData = TestData.CreateTicketData(WinBetId, _ticket.RefNo, "draw");
-            var placeTicketData = TestData.CreateTicketData(PlaceBetId, _ticket.RefNo, "draw");
+            var winTicketData = TestData.CreateTicketData(InspireVirtualRacingBetTypes.Win, _ticket.RefNo, "draw");
+            var placeTicketData = TestData.CreateTicketData(InspireVirtualRacingBetTypes.Place, _ticket.RefNo, "draw");
             ticketData.Add(winTicketData);
             ticketData.Add(placeTicketData);
 

@@ -2,22 +2,21 @@
 {
     using Core.App_GlobalResources;
     using Core.Builder.ChoiceBuilder;
+    using Core.Constants;
     using NSubstitute;
     using NUnit.Framework;
 
     public class Choice2802Tests : MatchCodeTests
     {
-        private const int TestingBetTypeId = 2802;
-
         [SetUp]
         public override void Setup()
         {
             base.Setup();
 
             Choice = new Choice2802();
-            Ticket.BetTypeId = TestingBetTypeId;
+            Ticket.BetTypeId = BetRadarVirtualBasketballBetTypes.FirstHalfWinner;
 
-            TicketHelper.GetBetTypeNameById(Arg.Is(TestingBetTypeId), Arg.Any<object>()).Returns("1H Winner");
+            TicketHelper.GetBetTypeNameById(Arg.Is(BetRadarVirtualBasketballBetTypes.FirstHalfWinner), Arg.Any<object>()).Returns("1H Winner");
         }
 
         [Test]

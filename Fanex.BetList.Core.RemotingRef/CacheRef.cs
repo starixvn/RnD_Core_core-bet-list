@@ -19,6 +19,9 @@
         public string GetBetType(string betTypeId, string resourceId, long refNo)
             => _remotingRefService.GetBetTypeName(betTypeId, CurrentLanguage, DefaultValue, resourceId, refNo);
 
+        public string GetDisplayedBetType(string betTypeId, string resourceId, long refNo)
+            => _remotingRefService.GetDisplayedBetTypeName(betTypeId, resourceId, refNo, CurrentLanguage, DefaultValue);
+
         public string GetParentBetTypeIdByBetTypeId(string betTypeId, string defaultParentBetTypeId)
             => _remotingRefService.GetParentIdByBetTypeId(betTypeId, defaultParentBetTypeId);
 

@@ -3,13 +3,9 @@
     using System;
     using Core.Builder.ChoiceBuilder;
     using Core.Entities;
-    using Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    /// Unit test for Choice1220 class.
-    /// </summary>
     [TestFixture]
     public class Choice1201Tests
     {
@@ -22,7 +18,6 @@
         {
             _choice = new Choice1201();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes.VT_PlayerWin;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 

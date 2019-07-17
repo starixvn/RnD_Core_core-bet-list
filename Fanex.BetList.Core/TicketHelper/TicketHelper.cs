@@ -68,12 +68,10 @@
 
         public string GetBetTypeNameById(object betTypeId, object refNo, object betId, object betCheck = null)
         {
-            string resource = (betId ?? betCheck)?.ToString();
-            string resourceId = string.Empty;
-            long actualRefNo = 0;
-            string actualBetTypeId = MapperCollector.BetTypeHasParent(Convert.ToInt32(betTypeId))
-                ? GetParentIdByBetTypeId(betTypeId)
-                : betTypeId.ToString();
+            var resource = (betId ?? betCheck)?.ToString();
+            var resourceId = string.Empty;
+            var actualRefNo = 0L;
+            var representativeBetTypeId = MapperCollector.GetRepresentativeBetTypeOf(Convert.ToInt32(betTypeId));
 
             if (!IsShowOddsWithChoice)
             {
@@ -86,7 +84,12 @@
                 resourceId = resource.Substring(1);
             }
 
-            return _cacheRef.GetBetType(actualBetTypeId, resourceId, actualRefNo);
+            if (representativeBetTypeId == 0)
+            {
+                return _cacheRef.GetDisplayedBetType(betTypeId.ToString(), resourceId, actualRefNo);
+            }
+
+            return _cacheRef.GetBetType(representativeBetTypeId.ToString(), resourceId, actualRefNo);
         }
 
         public string GetCasinoBetTeamNameById(object betTeamId)

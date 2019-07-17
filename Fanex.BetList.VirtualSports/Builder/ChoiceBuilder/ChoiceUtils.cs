@@ -26,7 +26,7 @@
 
         public static string ParseMatchInfo(string transDesc, ITicketHelper ticketHelper)
         {
-            string matchCode = ParseNeccessaryInfoFromTransDesc(transDesc, MatchInfoPattern);
+            var matchCode = ParseNeccessaryInfoFromTransDesc(transDesc, MatchInfoPattern);
 
             return ticketHelper.GetBetRadarMatchCodeFormat(matchCode);
         }
@@ -38,9 +38,11 @@
         {
             if (!string.IsNullOrEmpty(transDesc))
             {
-                Match match = Regex.Match(transDesc, pattern, RegexOptions.IgnoreCase);
+                const int expectedNumberOfTransDescParts = 2;
 
-                if (match?.Groups.Count >= 2)
+                var match = Regex.Match(transDesc, pattern, RegexOptions.IgnoreCase);
+
+                if (match?.Groups.Count >= expectedNumberOfTransDescParts)
                 {
                     return match.Groups[1].Value;
                 }

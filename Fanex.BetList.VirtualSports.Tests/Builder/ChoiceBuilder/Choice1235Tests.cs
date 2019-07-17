@@ -3,13 +3,9 @@
     using Core.App_GlobalResources;
     using Core.Builder.ChoiceBuilder;
     using Core.Entities;
-    using Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    /// Unit test for Choice1235 class.
-    /// </summary>
     [TestFixture]
     public class Choice1235Tests
     {
@@ -22,13 +18,9 @@
         {
             _choice = new Choice1235();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes.VT_ScoreBet;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always Win-0 when bet team of ticket is 1.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIs1_BetTeamIsVirtualTennisScoreBetWin0Resource()
         {
@@ -42,9 +34,6 @@
             Assert.AreEqual(CoreBetList.virtualtennis_scorebet_win_0, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always Win-15 when bet team of ticket is 2.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIs2_BetTeamIsVirtualTennisScoreBetWin15Resource()
         {
@@ -58,9 +47,6 @@
             Assert.AreEqual(CoreBetList.virtualtennis_scorebet_win_15, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always Win-30 when bet team of ticket is 3.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIs3_BetTeamIsVirtualTennisScoreBetWin30Resource()
         {
@@ -74,9 +60,6 @@
             Assert.AreEqual(CoreBetList.virtualtennis_scorebet_win_30, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always Win-40 when bet team of ticket is 4.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIs4_BetTeamIsVirtualTennisScoreBetWin40Resource()
         {
@@ -90,9 +73,6 @@
             Assert.AreEqual(CoreBetList.virtualtennis_scorebet_win_40, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always 0-Win when bet team of ticket is 5.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIs5_BetTeamIsVirtualTennisScoreBet0WinResource()
         {
@@ -106,9 +86,6 @@
             Assert.AreEqual(CoreBetList.virtualtennis_scorebet_0_win, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always 15-Win when bet team of ticket is 6.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIs6_BetTeamIsVirtualTennisScoreBet15WinResource()
         {
@@ -122,9 +99,6 @@
             Assert.AreEqual(CoreBetList.virtualtennis_scorebet_15_win, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always 30-Win when bet team of ticket is 7.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIs7_BetTeamIsVirtualTennisScoreBet30WinResource()
         {
@@ -138,9 +112,6 @@
             Assert.AreEqual(CoreBetList.virtualtennis_scorebet_30_win, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always 40-Win when bet team of ticket is 8.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIs8_BetTeamIsVirtualTennisScoreBetWin40Resource()
         {

@@ -3,13 +3,9 @@
     using System;
     using Core.Builder.ChoiceBuilder;
     using Core.Entities;
-    using Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    /// Unit test for Choice1231 class.
-    /// </summary>
     [TestFixture]
     public class Choice1231Tests
     {
@@ -22,13 +18,9 @@
         {
             _choice = new Choice1231();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes.VHR_Win;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        /// <summary>
-        /// The value of Template.Match.VS is always null.
-        /// </summary>
         [Test]
         public void BuildMatch_Always_SetMatchVSBlockIsNull()
         {
@@ -39,9 +31,6 @@
             Assert.IsNull(_choice.Template.Match.VS);
         }
 
-        /// <summary>
-        /// The value of Template.Match.home_firstGoal_lastGoal is always null.
-        /// </summary>
         [Test]
         public void BuildMatch_Always_SetHomeFGLGIsNull()
         {
@@ -52,9 +41,6 @@
             Assert.IsNull(_choice.Template.Match.home_firstGoal_lastGoal);
         }
 
-        /// <summary>
-        /// The value of Template.Match.away_firstGoal_lastGoal is always null.
-        /// </summary>
         [Test]
         public void BuildMatch_Always_SetAwayFGLGIsNull()
         {
@@ -65,9 +51,6 @@
             Assert.IsNull(_choice.Template.Match.away_firstGoal_lastGoal);
         }
 
-        /// <summary>
-        /// The value of Template.Match.awayTeam is always null.
-        /// </summary>
         [Test]
         public void BuildMatch_Always_SetAwayTeamIsNull()
         {
@@ -78,9 +61,6 @@
             Assert.IsNull(_choice.Template.Match.awayTeam);
         }
 
-        /// <summary>
-        /// The value of Template.Match.homeTeam is always Ticket.ShowTime when show time is valid format.
-        /// </summary>
         [Test]
         public void BuildMatch_ShowTimeIsValidFormat_HomeTeamIsShowTimeBeFormatted()
         {
@@ -95,9 +75,6 @@
             Assert.AreEqual(expetedShowTime, _choice.Template.Match.homeTeam);
         }
 
-        /// <summary>
-        /// The value of Template.Match.homeTeam is always Ticket.ShowTime when show time is invalid format.
-        /// </summary>
         [Test]
         public void BuildMatch_ShowTimeIsInValidFormat_HomeTeamIsShowTime()
         {
@@ -111,9 +88,6 @@
             Assert.IsEmpty(_choice.Template.Match.homeTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always Ticket.MatchCode - HorseTeamName.
-        /// </summary>
         [Test]
         public void BuildBetTeam_Always_SetBetTeamAreMatchCodeAndHorseTeamName()
         {
@@ -132,9 +106,6 @@
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of Template.betTeamClassName is always favorite.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
         {
@@ -146,9 +117,6 @@
             Assert.AreEqual(CSS_CLASS_FAVORITE, _choice.Template.betTeamClassName);
         }
 
-        /// <summary>
-        /// The value of Template.Handicap.handicap is always null.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {

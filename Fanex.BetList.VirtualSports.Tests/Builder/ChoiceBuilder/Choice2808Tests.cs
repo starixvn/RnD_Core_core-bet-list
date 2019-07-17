@@ -1,22 +1,21 @@
 ﻿namespace Fanex.BetList.VirtualSports.Tests.Builder.ChoiceBuilder
 {
     using Core.Builder.ChoiceBuilder;
+    using Core.Constants;
     using NSubstitute;
     using NUnit.Framework;
 
     public class Choice2808Tests : Choice2807Tests
     {
-        private const int TestingBetTypeId = 2808;
-
         [SetUp]
         public override void Setup()
         {
             base.Setup();
 
             Choice = new Choice2808();
-            Ticket.BetTypeId = TestingBetTypeId;
+            Ticket.BetTypeId = BetRadarVirtualBasketballBetTypes.FirstHalfWinningMargin7Way;
 
-            TicketHelper.GetBetTypeNameById(Arg.Is(TestingBetTypeId), Arg.Any<object>()).Returns("FH Winning Margin 7 Way");
+            TicketHelper.GetBetTypeNameById(Arg.Is(BetRadarVirtualBasketballBetTypes.FirstHalfWinningMargin7Way), Arg.Any<object>()).Returns("FH Winning Margin 7 Way");
         }
 
         [TestCase("d")]

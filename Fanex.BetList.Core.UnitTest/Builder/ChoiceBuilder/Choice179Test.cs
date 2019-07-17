@@ -5,9 +5,6 @@
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    ///  Unit test for Choice179.
-    /// </summary>
     [TestFixture]
     public class Choice179Test
     {

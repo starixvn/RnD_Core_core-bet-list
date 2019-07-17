@@ -3,13 +3,9 @@
     using Core.App_GlobalResources;
     using Core.Builder.ChoiceBuilder;
     using Core.Entities;
-    using Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    /// Unit test for Choice1236 class.
-    /// </summary>
     [TestFixture]
     public class Choice1236Tests
     {
@@ -22,13 +18,9 @@
         {
             _choice = new Choice1236();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes.VT_TotalPoints;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        /// <summary>
-        /// The value of Template.betTeam is always [BetTeam Points] when bet team of ticket is 1.
-        /// </summary>
         [Test]
         public void BuildBetTeam_Always_SetBetTeamAreBetTeamAndSpaceAndPointsResource()
         {

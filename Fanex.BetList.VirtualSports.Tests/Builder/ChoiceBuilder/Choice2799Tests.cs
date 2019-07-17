@@ -2,14 +2,13 @@
 {
     using System.Collections.Generic;
     using Core.Builder.ChoiceBuilder;
+    using Core.Constants;
     using Core.Entities;
     using NSubstitute;
     using NUnit.Framework;
 
     public class Choice2799Tests
     {
-        private const int TestingBetTypeId = 2799;
-
         private IChoice _choice;
         private ITicket _ticket;
         private ITicketHelper _ticketHelper;
@@ -19,9 +18,9 @@
         {
             _choice = new Choice2799();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = TestingBetTypeId;
+            _ticket.BetTypeId = BetRadarSharedBetTypes.MixParlay;
             _ticketHelper = Substitute.For<ITicketHelper>();
-            _ticketHelper.GetBetTypeNameById(TestingBetTypeId).Returns("Mix Parlay");
+            _ticketHelper.GetBetTypeNameById(BetRadarSharedBetTypes.MixParlay).Returns("Mix Parlay");
         }
 
         [Test]
@@ -30,7 +29,7 @@
             // Arrange.
             const string TestingBetTypeName = "Testing Name";
 
-            _ticketHelper.GetBetTypeNameById(TestingBetTypeId).Returns(TestingBetTypeName);
+            _ticketHelper.GetBetTypeNameById(BetRadarSharedBetTypes.MixParlay).Returns(TestingBetTypeName);
 
             // Act.
             var template = _choice.Render(_ticket, _ticketHelper, null, false);
@@ -108,7 +107,7 @@
             const string TestingCombination = "Trebles (1bets)";
 
             _ticketHelper
-                .GetCombinationMPOfferNameList(Arg.Any<string>(), Arg.Any<string>(), Arg.Any<decimal>(), Arg.Any<decimal>())
+                .GetCombinationMPOfferNameList(_ticket.BetTeam, _ticket.BetCheck, _ticket.Handicap1, _ticket.Handicap2)
                 .Returns(new List<string> { TestingCombination });
 
             // Act.

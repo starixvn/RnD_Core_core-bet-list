@@ -1,22 +1,21 @@
 ﻿namespace Fanex.BetList.VirtualSports.Tests.Builder.ChoiceBuilder
 {
     using Core.Builder.ChoiceBuilder;
+    using Core.Constants;
     using NSubstitute;
     using NUnit.Framework;
 
     public class Choice2702Tests : MatchCodeTests
     {
-        private const int TestingBetTypeId = 2702;
-
         [SetUp]
         public override void Setup()
         {
             base.Setup();
 
             Choice = new Choice2702();
-            Ticket.BetTypeId = TestingBetTypeId;
+            Ticket.BetTypeId = BetRadarVirtualSoccerBetTypes.FirstHalf1X2;
 
-            TicketHelper.GetBetTypeNameById(Arg.Is(TestingBetTypeId), Arg.Any<object>()).Returns("FT.1X2");
+            TicketHelper.GetBetTypeNameById(Arg.Is(BetRadarVirtualSoccerBetTypes.FirstHalf1X2), Arg.Any<object>()).Returns("1H 1X2");
         }
 
         [TestCase("1", "HT.1")]

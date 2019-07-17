@@ -69,6 +69,53 @@
         }
 
         [Test]
+        public void GetDisplayedBetType_Always_CallGetDisplayedBetTypeNameOfRemotingRefService()
+        {
+            // Arrange.
+            var betTypeId = "betTypeId";
+            var resourceId = "resourceId";
+            var refNo = 0L;
+
+            // Act.
+            _cacheRef.GetDisplayedBetType(betTypeId, resourceId, refNo);
+
+            // Assert.
+            _remotingRefService
+                .Received()
+                .GetDisplayedBetTypeName(
+                    Arg.Is(betTypeId),
+                    Arg.Is(resourceId),
+                    Arg.Is(refNo),
+                    Arg.Is(_currentTestingLanguage),
+                    Arg.Is(_defaultValue));
+        }
+
+        [Test]
+        public void GetDisplayedBetType_Always_ReturnExactResultOfRemotingRefService()
+        {
+            // Arrange.
+            var betTypeId = "betTypeId";
+            var resourceId = "resourceId";
+            var refNo = 0L;
+            var displayedBetTypeName = "displayedBetTypeName";
+
+            _remotingRefService
+                .GetDisplayedBetTypeName(
+                    Arg.Is(betTypeId),
+                    Arg.Is(resourceId),
+                    Arg.Is(refNo),
+                    Arg.Is(_currentTestingLanguage),
+                    Arg.Is(_defaultValue))
+                .Returns(displayedBetTypeName);
+
+            // Act.
+            var actualResult = _cacheRef.GetDisplayedBetType(betTypeId, resourceId, refNo);
+
+            // Assert.
+            Assert.AreSame(displayedBetTypeName, actualResult);
+        }
+
+        [Test]
         public void GetParentBetTypeIdByBetTypeId_Always_CallGetParentIdByBetTypeIdOfRemotingRefService()
         {
             // Arrange.

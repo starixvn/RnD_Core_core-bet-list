@@ -1,39 +1,20 @@
 ﻿namespace Fanex.BetList.Core.Builder.OddsBuilder
 {
+    using System;
+    using System.Collections.Generic;
     using App_GlobalResources;
+    using Constants;
     using Entities;
     using NPOI.HSSF.UserModel;
     using NPOI.SS.UserModel;
     using Templates;
     using Utils;
-    using System;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Virtual Horse Racing - Win/Place.
     /// </summary>
     public class Odds1233 : Odds1
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Odds1233" /> class.
-        /// </summary>
-        public Odds1233()
-        {
-            WinBetId = 1231;
-            PlaceBetId = 1232;
-        }
-
-        protected int WinBetId { get; set; }
-
-        protected int PlaceBetId { get; set; }
-
-        /// <summary>
-        /// Renders the specified ticket.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketData">The ticket data.</param>
-        /// <param name="funcGetOddsTypeName">Name of the function get odds type.</param>
-        /// <returns>Odds_Template object.</returns>
         public override Odds_Template Render(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
         {
             if (ticketData != null && ticketData.Count > 0)
@@ -42,8 +23,8 @@
 
                 if (foundTicketData != null && foundTicketData.Count > 1)
                 {
-                    ITicketData winTicket = foundTicketData.Find(item => item.BetTypeId == WinBetId);
-                    ITicketData placeTicket = foundTicketData.Find(item => item.BetTypeId == PlaceBetId);
+                    ITicketData winTicket = foundTicketData.Find(item => item.BetTypeId == InspireVirtualRacingBetTypes.Win);
+                    ITicketData placeTicket = foundTicketData.Find(item => item.BetTypeId == InspireVirtualRacingBetTypes.Place);
 
                     string oddsWin = Formatter.FormatNumber3(winTicket.Odds);
                     string oddsPlace = Formatter.FormatNumber3(placeTicket.Odds);
