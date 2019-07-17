@@ -1,7 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Mapper
 {
-    using Fanex.BetList.Core.Utils;
-    using Fanex.BetList.ESports.Constants;
+    using Constants;
+    using Utils;
 
     public class OddsMapper : BaseMapper
     {
@@ -12,7 +12,7 @@
 
         private static void RegisterMultipleOddsTypes()
         {
-            for (int betTypeId = BetTypes.MapXMoneyline; betTypeId <= BetTypes.MapXTotalOverlordsOddEven; betTypeId++)
+            for (int betTypeId = ESportsBetTypes.MapXMoneyline; betTypeId <= ESportsBetTypes.MapXTotalOverlordsOddEven; betTypeId++)
             {
                 ConvertByBetType.RegisterMultipleOddsTypes(betTypeId);
             }

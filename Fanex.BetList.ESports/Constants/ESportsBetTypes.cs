@@ -1,6 +1,6 @@
-﻿namespace Fanex.BetList.ESports.Constants
+﻿namespace Fanex.BetList.Core.Constants
 {
-    public static class BetTypes
+    internal static class ESportsBetTypes
     {
         public const int MapXMoneyline = 9001;
         public const int MapXTotalKillsHandicap = 9002;

@@ -1,14 +1,14 @@
 ﻿namespace Fanex.BetList.Core.Mapper
 {
-    using Fanex.BetList.ESports.Constants;
+    using Constants;
 
     public class StatusMapper : BaseMapper
     {
         public StatusMapper()
         {
-            for (int betTypeId = BetTypes.MapXTotalKillsHandicap; betTypeId <= BetTypes.MapXTotalOverlordsOddEven; betTypeId++)
+            for (int betTypeId = ESportsBetTypes.MapXTotalKillsHandicap; betTypeId <= ESportsBetTypes.MapXTotalOverlordsOddEven; betTypeId++)
             {
-                MapIdToBaseId(betTypeId, BetTypes.MapXMoneyline);
+                MapIdToBaseId(betTypeId, ESportsBetTypes.MapXMoneyline);
             }
         }
     }

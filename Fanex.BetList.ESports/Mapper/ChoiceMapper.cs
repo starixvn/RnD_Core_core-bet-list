@@ -1,6 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Mapper
 {
-    using Fanex.BetList.ESports.Constants;
+    using Constants;
 
     public class ChoiceMapper : BaseMapper
     {
@@ -22,55 +22,55 @@
         {
             var moneylineBasedBetTypes = new[]
             {
-                BetTypes.MapXTotalKillsMoneyline,
-                BetTypes.MapXFirstBlood,
-                BetTypes.MapXFirsttoYKills,
-                BetTypes.MapXTotalTowersMoneyline,
-                BetTypes.MapXFirstTierYTower,
-                BetTypes.MapXTotalRoshansMoneyline,
-                BetTypes.MapX1stRoshan,
-                BetTypes.MapX2ndRoshan,
-                BetTypes.MapX3rdRoshan,
-                BetTypes.MapXTotalBarracksMoneyline,
-                BetTypes.MapXBarracks1stLane,
-                BetTypes.MapXBarracks2ndLane,
-                BetTypes.MapXBarracks3rdLane,
-                BetTypes.MapXTotalTurretsMoneyline,
-                BetTypes.MapXFirstTierYTurret,
-                BetTypes.MapXTotalDragonsMoneyline,
-                BetTypes.MapX1stDragon,
-                BetTypes.MapX2ndDragon,
-                BetTypes.MapX3rdDragon,
-                BetTypes.MapXTotalBaronsMoneyline,
-                BetTypes.MapX1stBaron,
-                BetTypes.MapX2ndBaron,
-                BetTypes.MapX3rdBaron,
-                BetTypes.MapXTotalInhibitorsMoneyline,
-                BetTypes.MapX1stInhibitor,
-                BetTypes.MapX2ndInhibitor,
-                BetTypes.MapX3rdInhibitor,
-                BetTypes.MapXTotalTyrantsMoneyline,
-                BetTypes.MapX1stTyrant,
-                BetTypes.MapX2ndTyrant,
-                BetTypes.MapX3rdTyrant,
-                BetTypes.MapXTotalOverlordsMoneyline,
-                BetTypes.MapX1stOverlord,
-                BetTypes.MapX2ndOverlord,
-                BetTypes.MapX3rdOverlord,
-                BetTypes.MapXFirsttoYRounds,
-                BetTypes.MapXFirstHalf,
-                BetTypes.MapXSecondHalf,
-                BetTypes.MapXMostFirstKill,
-                BetTypes.MapXClutches,
-                BetTypes.MapX16thRound,
-                BetTypes.MapXRoundYMoneyline,
-                BetTypes.MapXRoundYTotalKillsMoneyline,
-                BetTypes.MapXRoundYFirstKill
+                ESportsBetTypes.MapXTotalKillsMoneyline,
+                ESportsBetTypes.MapXFirstBlood,
+                ESportsBetTypes.MapXFirsttoYKills,
+                ESportsBetTypes.MapXTotalTowersMoneyline,
+                ESportsBetTypes.MapXFirstTierYTower,
+                ESportsBetTypes.MapXTotalRoshansMoneyline,
+                ESportsBetTypes.MapX1stRoshan,
+                ESportsBetTypes.MapX2ndRoshan,
+                ESportsBetTypes.MapX3rdRoshan,
+                ESportsBetTypes.MapXTotalBarracksMoneyline,
+                ESportsBetTypes.MapXBarracks1stLane,
+                ESportsBetTypes.MapXBarracks2ndLane,
+                ESportsBetTypes.MapXBarracks3rdLane,
+                ESportsBetTypes.MapXTotalTurretsMoneyline,
+                ESportsBetTypes.MapXFirstTierYTurret,
+                ESportsBetTypes.MapXTotalDragonsMoneyline,
+                ESportsBetTypes.MapX1stDragon,
+                ESportsBetTypes.MapX2ndDragon,
+                ESportsBetTypes.MapX3rdDragon,
+                ESportsBetTypes.MapXTotalBaronsMoneyline,
+                ESportsBetTypes.MapX1stBaron,
+                ESportsBetTypes.MapX2ndBaron,
+                ESportsBetTypes.MapX3rdBaron,
+                ESportsBetTypes.MapXTotalInhibitorsMoneyline,
+                ESportsBetTypes.MapX1stInhibitor,
+                ESportsBetTypes.MapX2ndInhibitor,
+                ESportsBetTypes.MapX3rdInhibitor,
+                ESportsBetTypes.MapXTotalTyrantsMoneyline,
+                ESportsBetTypes.MapX1stTyrant,
+                ESportsBetTypes.MapX2ndTyrant,
+                ESportsBetTypes.MapX3rdTyrant,
+                ESportsBetTypes.MapXTotalOverlordsMoneyline,
+                ESportsBetTypes.MapX1stOverlord,
+                ESportsBetTypes.MapX2ndOverlord,
+                ESportsBetTypes.MapX3rdOverlord,
+                ESportsBetTypes.MapXFirsttoYRounds,
+                ESportsBetTypes.MapXFirstHalf,
+                ESportsBetTypes.MapXSecondHalf,
+                ESportsBetTypes.MapXMostFirstKill,
+                ESportsBetTypes.MapXClutches,
+                ESportsBetTypes.MapX16thRound,
+                ESportsBetTypes.MapXRoundYMoneyline,
+                ESportsBetTypes.MapXRoundYTotalKillsMoneyline,
+                ESportsBetTypes.MapXRoundYFirstKill
             };
 
             foreach (var betTypeId in moneylineBasedBetTypes)
             {
-                MapIdToBaseId(betTypeId, BetTypes.MapXMoneyline);
+                MapIdToBaseId(betTypeId, ESportsBetTypes.MapXMoneyline);
             }
         }
 
@@ -78,23 +78,23 @@
         {
             var handicapBasedBetTypes = new[]
             {
-                BetTypes.MapXTotalTowersHandicap,
-                BetTypes.MapXTotalRoshansHandicap,
-                BetTypes.MapXTotalBarracksHandicap,
-                BetTypes.MapXTotalTurretsHandicap,
-                BetTypes.MapXTotalDragonsHandicap,
-                BetTypes.MapXTotalBaronsHandicap,
-                BetTypes.MapXTotalInhibitorsHandicap,
-                BetTypes.MapXTotalTyrantsHandicap,
-                BetTypes.MapXTotalOverlordsHandicap,
-                BetTypes.MapXRoundsHandicap,
-                BetTypes.MapXClutchesHandicap,
-                BetTypes.MapXRoundYTotalKillsHandicap
+                ESportsBetTypes.MapXTotalTowersHandicap,
+                ESportsBetTypes.MapXTotalRoshansHandicap,
+                ESportsBetTypes.MapXTotalBarracksHandicap,
+                ESportsBetTypes.MapXTotalTurretsHandicap,
+                ESportsBetTypes.MapXTotalDragonsHandicap,
+                ESportsBetTypes.MapXTotalBaronsHandicap,
+                ESportsBetTypes.MapXTotalInhibitorsHandicap,
+                ESportsBetTypes.MapXTotalTyrantsHandicap,
+                ESportsBetTypes.MapXTotalOverlordsHandicap,
+                ESportsBetTypes.MapXRoundsHandicap,
+                ESportsBetTypes.MapXClutchesHandicap,
+                ESportsBetTypes.MapXRoundYTotalKillsHandicap
             };
 
             foreach (var betTypeId in handicapBasedBetTypes)
             {
-                MapIdToBaseId(betTypeId, BetTypes.MapXTotalKillsHandicap);
+                MapIdToBaseId(betTypeId, ESportsBetTypes.MapXTotalKillsHandicap);
             }
         }
 
@@ -102,24 +102,24 @@
         {
             var overUnderBasedBetTypes = new[]
             {
-                BetTypes.MapXTotalTowersOverUnder,
-                BetTypes.MapXTotalRoshansOverUnder,
-                BetTypes.MapXTotalBarracksOverUnder,
-                BetTypes.MapXTotalTurretsOverUnder,
-                BetTypes.MapXTotalDragonsOverUnder,
-                BetTypes.MapXTotalBaronsOverUnder,
-                BetTypes.MapXTotalInhibitorsOverUnder,
-                BetTypes.MapXTotalTyrantsOverUnder,
-                BetTypes.MapXTotalOverlordsOverUnder,
-                BetTypes.MapXDurationOverUnderByMins,
-                BetTypes.MapXRoundsOverUnder,
-                BetTypes.MapXRoundYTotalKillsOverUnder,
-                BetTypes.MapXRoundsOverUnderOvertime
+                ESportsBetTypes.MapXTotalTowersOverUnder,
+                ESportsBetTypes.MapXTotalRoshansOverUnder,
+                ESportsBetTypes.MapXTotalBarracksOverUnder,
+                ESportsBetTypes.MapXTotalTurretsOverUnder,
+                ESportsBetTypes.MapXTotalDragonsOverUnder,
+                ESportsBetTypes.MapXTotalBaronsOverUnder,
+                ESportsBetTypes.MapXTotalInhibitorsOverUnder,
+                ESportsBetTypes.MapXTotalTyrantsOverUnder,
+                ESportsBetTypes.MapXTotalOverlordsOverUnder,
+                ESportsBetTypes.MapXDurationOverUnderByMins,
+                ESportsBetTypes.MapXRoundsOverUnder,
+                ESportsBetTypes.MapXRoundYTotalKillsOverUnder,
+                ESportsBetTypes.MapXRoundsOverUnderOvertime
             };
 
             foreach (var betTypeId in overUnderBasedBetTypes)
             {
-                MapIdToBaseId(betTypeId, BetTypes.MapXTotalKillsOverUnder);
+                MapIdToBaseId(betTypeId, ESportsBetTypes.MapXTotalKillsOverUnder);
             }
         }
 
@@ -127,28 +127,28 @@
         {
             var oddEvenBasedBetTypes = new[]
             {
-                BetTypes.MapXRoundsOddEven,
-                BetTypes.MapXRoundYTotalKillsOddEven,
-                BetTypes.MapXTotalTowersOddEven,
-                BetTypes.MapXTotalRoshansOddEven,
-                BetTypes.MapXTotalBarracksOddEven,
-                BetTypes.MapXTotalTurretsOddEven,
-                BetTypes.MapXTotalDragonsOddEven,
-                BetTypes.MapXTotalBaronsOddEven,
-                BetTypes.MapXTotalInhibitorsOddEven,
-                BetTypes.MapXTotalTyrantsOddEven,
-                BetTypes.MapXTotalOverlordsOddEven
+                ESportsBetTypes.MapXRoundsOddEven,
+                ESportsBetTypes.MapXRoundYTotalKillsOddEven,
+                ESportsBetTypes.MapXTotalTowersOddEven,
+                ESportsBetTypes.MapXTotalRoshansOddEven,
+                ESportsBetTypes.MapXTotalBarracksOddEven,
+                ESportsBetTypes.MapXTotalTurretsOddEven,
+                ESportsBetTypes.MapXTotalDragonsOddEven,
+                ESportsBetTypes.MapXTotalBaronsOddEven,
+                ESportsBetTypes.MapXTotalInhibitorsOddEven,
+                ESportsBetTypes.MapXTotalTyrantsOddEven,
+                ESportsBetTypes.MapXTotalOverlordsOddEven
             };
 
             foreach (var betTypeId in oddEvenBasedBetTypes)
             {
-                MapIdToBaseId(betTypeId, BetTypes.MapXTotalKillsOddEven);
+                MapIdToBaseId(betTypeId, ESportsBetTypes.MapXTotalKillsOddEven);
             }
         }
 
         private void MapForESports2CorrectScore()
         {
-            MapIdToBaseId(BetTypes.MapXFinalRoundBombPlant, BetTypes.MapXRoundYBombPlant);
+            MapIdToBaseId(ESportsBetTypes.MapXFinalRoundBombPlant, ESportsBetTypes.MapXRoundYBombPlant);
         }
     }
 }
