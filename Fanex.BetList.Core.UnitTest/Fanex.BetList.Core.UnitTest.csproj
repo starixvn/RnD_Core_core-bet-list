@@ -135,7 +135,6 @@
     <Compile Include="Builder\ChoiceBuilder\Choice223Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice22Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice38Tests.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice411Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice195Test.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -159,10 +158,7 @@
     <Compile Include="Builder\ChoiceBuilder\Choice3Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice401Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice405Test.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice406Test.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice407Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice408Test.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice410Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice412Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice416Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice413Test.cs" />
@@ -185,7 +181,6 @@
     <Compile Include="Builder\ChoiceBuilder\Choice458Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice459Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice460Test.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice461Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice467Tests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice468Tests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice469Tests.cs" />

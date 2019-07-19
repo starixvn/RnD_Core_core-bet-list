@@ -6,7 +6,7 @@
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    /// Bet type name: Total Corners (3rd).
+    /// Total Corners (3rd).
     /// </summary>
     public class Choice199 : Choice1
     {
@@ -21,13 +21,6 @@
         {
             Template.Handicap.handicap = null;
             Template.betTeamClassName = Favorite;
-        }
-
-        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-        {
-            var parentBetTypeId = ticketHelper.GetParentIdByBetTypeId(ticket.BetTypeId);
-
-            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(parentBetTypeId, ticket.RefNo);
         }
     }
 }

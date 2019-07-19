@@ -4,7 +4,7 @@
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    /// Bet type name: Extra Time 1H Correct Score.
+    /// Extra Time 1H Correct Score.
     /// </summary>
     public class Choice165 : Choice1
     {

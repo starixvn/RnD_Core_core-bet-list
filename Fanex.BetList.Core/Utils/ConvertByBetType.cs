@@ -72,7 +72,7 @@
             BetTypes.Bought,
             1003,
             1004,
-            BetTypes.CricketMatchWinner,
+            BetTypes.SSMatchWinner,
             BetTypes.SetHandicap,
             BetTypes.MatchTotalGamesOddEven,
             BetTypes.MatchTotalGamesOverUnder,

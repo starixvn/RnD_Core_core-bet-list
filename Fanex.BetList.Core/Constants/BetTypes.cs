@@ -256,7 +256,7 @@
         public const int QuarterXWhichTeamToScoreTheLastBasket = 617;
         public const int Sold = 901;
         public const int Bought = 902;
-        public const int CricketMatchWinner = 1301;
+        public const int SSMatchWinner = 1301;
         public const int MatchCorrectScore = 1302;
         public const int SetHandicap = 1303;
         public const int TotalSets = 1304;

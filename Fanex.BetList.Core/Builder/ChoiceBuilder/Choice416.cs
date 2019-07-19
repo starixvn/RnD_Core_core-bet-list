@@ -1,12 +1,12 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text.RegularExpressions;
     using App_GlobalResources;
     using Constants;
     using Entities;
-    using System.Collections.Generic;
-    using System.Text.RegularExpressions;
     using Utils;
-    using System;
 
     public class Choice416 : Choice413
     {
@@ -52,13 +52,6 @@
                 Template.Score.Visible = true;
                 Template.Score.SetValue(BuildExcludingBlock(ticket.BetTeam, ticket.TransDesc));
             }
-        }
-
-        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-        {
-            var parentBetTypeId = ticketHelper.GetParentIdByBetTypeId(ticket.BetTypeId);
-
-            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(parentBetTypeId, ticket.RefNo);
         }
 
         protected override void BuildBetFigure(ITicket ticket, ref RTFHelper rtfHelper, bool isMixParlay)

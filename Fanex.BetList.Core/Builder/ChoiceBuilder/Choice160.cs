@@ -6,16 +6,10 @@
     using Entities;
 
     /// <summary>
-    /// Bet type name: Next Goal.
+    /// Next Goal (3rd).
     /// </summary>
     public class Choice160 : Choice1
     {
-        /// <summary>
-        /// Builds the bet team.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             var betTeam = string.Empty;
@@ -46,13 +40,6 @@
         {
             Template.Handicap.handicap = null;
             Template.betTeamClassName = Favorite;
-        }
-
-        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-        {
-            var parentBetTypeId = ticketHelper.GetParentIdByBetTypeId(ticket.BetTypeId);
-
-            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(parentBetTypeId, ticket.RefNo);
         }
     }
 }

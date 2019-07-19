@@ -1,7 +1,6 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using App_GlobalResources;
-    using Constants;
     using Core.Builder.ChoiceBuilder;
     using Entities;
     using NSubstitute;
@@ -169,22 +168,6 @@
             // Assert.
             const string CSS_CLASS_FAVORITE = "favorite";
             Assert.AreEqual(CSS_CLASS_FAVORITE, _choice.Template.betTeamClassName);
-        }
-
-        [Test]
-        public void BuildBetType_Always_ShowParentBetTypeName()
-        {
-            // Arrange.
-            var parentBetTypeId = BetTypes.CorrectScore.ToString();
-            var parentBetTypeName = "Parent Bet Type";
-            _ticketHelper.GetParentIdByBetTypeId(Arg.Any<object>()).Returns(parentBetTypeId);
-            _ticketHelper.GetBetTypeNameById(parentBetTypeId, Arg.Any<object>()).Returns(parentBetTypeName);
-
-            // Act
-            _choice.Render(_ticket, _ticketHelper, null, false);
-
-            // Assert
-            Assert.AreEqual(parentBetTypeName, _choice.Template.BetType.betTypeName);
         }
     }
 }

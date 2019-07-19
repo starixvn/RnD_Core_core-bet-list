@@ -54,6 +54,8 @@
             Assert.AreEqual(expected, _choice.Template.betTeam);
         }
 
+#pragma warning disable S4144 // Methods should not have identical implementations
+
         [TestCase("A1", "Away to Win by 1 Goal")]
         [TestCase("A2", "Away to Win by 2 Goals")]
         [TestCase("A3", "Away to Win by 3+ Goals")]
@@ -71,6 +73,8 @@
             // Assert.
             Assert.AreEqual(expected, _choice.Template.betTeam);
         }
+
+#pragma warning restore S4144 // Methods should not have identical implementations
 
         [TestCase("D")]
         [TestCase("d")]
@@ -124,23 +128,6 @@
             const string favorite = "favorite";
 
             Assert.AreEqual(favorite, _choice.Template.betTeamClassName);
-        }
-
-        [Test]
-        public void BuildBetType_Always_ShowParentBetTypeName()
-        {
-            // Arrange.
-            var parentBetTypeId = BetTypes.ExactHomeTeamGoals.ToString();
-            var parentBetTypeName = "Parent Bet Type";
-
-            _ticketHelper.GetParentIdByBetTypeId(Arg.Any<object>()).Returns(parentBetTypeId);
-            _ticketHelper.GetBetTypeNameById(parentBetTypeId, Arg.Any<object>()).Returns(parentBetTypeName);
-
-            // Act.
-            _choice.Render(_ticket, _ticketHelper, null, false);
-
-            // Assert.
-            Assert.AreEqual(parentBetTypeName, _choice.Template.BetType.betTypeName);
         }
     }
 }

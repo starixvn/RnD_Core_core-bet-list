@@ -6,7 +6,7 @@
     using Entities;
 
     /// <summary>
-    /// Bet type name:  Result/Total Goals (3rd).
+    /// Result/Total Goals (3rd).
     /// </summary>
     public class Choice163 : Choice143
     {
@@ -42,13 +42,6 @@
                     Template.betTeam = string.Empty;
                     break;
             }
-        }
-
-        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-        {
-            var parentBetTypeId = ticketHelper.GetParentIdByBetTypeId(ticket.BetTypeId);
-
-            Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(parentBetTypeId, ticket.RefNo);
         }
     }
 }
