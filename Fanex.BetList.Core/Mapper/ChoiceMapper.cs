@@ -46,11 +46,22 @@
             MapIdToBaseId(BetTypes.FirstGoalSpecificTime15Min, BetTypes.NextGoalTime);
             MapIdToBaseId(BetTypes.CornersOddEven, BetTypes.FirstHalfHomeTeamOddEven);
             MapIdToBaseId(BetTypes.AwayTeamExactCorners, BetTypes.HomeTeamExactCorners);
-
             MapIdToBaseId(BetTypes.HomeTeamTotalCornersOverUnder, BetTypes.SecondHalfOverUnder);
             MapIdToBaseId(BetTypes.AwayTeamTotalCornersOverUnder, BetTypes.SecondHalfOverUnder);
+            MapIdToBaseId(BetTypes.FirstHalfAwayTeamExactCorners, BetTypes.FirstHalfHomeTeamExactCorners);
+            MapIdToBaseId(BetTypes.FirstHalfTotalCorners, BetTypes.HomeTeamExactCorners);
+            MapIdToBaseId(BetTypes.FirstHalfCornersOddEven, BetTypes.FirstHalfHomeTeamOddEven);
             MapIdToBaseId(BetTypes.FirstHalfHomeCornerOverUnder, BetTypes.SecondHalfOverUnder);
             MapIdToBaseId(BetTypes.FirstHalfAwayCornerOverUnder, BetTypes.SecondHalfOverUnder);
+            MapIdToBaseId(BetTypes.FirstHalfFirstCorner, BetTypes.FirstCorner);
+            MapIdToBaseId(BetTypes.LastCorner, BetTypes.FirstCorner);
+            MapIdToBaseId(BetTypes.FirstHalfLastCorner, BetTypes.FirstCorner);
+            MapIdToBaseId(BetTypes.FirstHalfPlayerSentOff, BetTypes.HomeToWinBothHalves);
+            MapIdToBaseId(BetTypes.HomeTeamPlayerSentOff, BetTypes.HomeToWinBothHalves);
+            MapIdToBaseId(BetTypes.FirstHalfHomeTeamPlayerSentOff, BetTypes.HomeToWinBothHalves);
+            MapIdToBaseId(BetTypes.AwayTeamPlayerSentOff, BetTypes.HomeToWinBothHalves);
+            MapIdToBaseId(BetTypes.FirstHalfAwayTeamPlayerSentOff, BetTypes.HomeToWinBothHalves);
+            MapIdToBaseId(BetTypes.GoalScorerFirst, BetTypes.GoalScorerAnytime);
         }
 
         private void MapForSportingSolution()
@@ -101,6 +112,7 @@
             MapIdToBaseId(BetTypes.AwayTeamOverUnder, BetTypes.HomeTeamOverUnder);
             MapIdToBaseId(BetTypes.FirstHalfHomeTeamOverUnder, BetTypes.HomeTeamOverUnder);
             MapIdToBaseId(BetTypes.FirstHalfAwayTeamOverUnder, BetTypes.HomeTeamOverUnder);
+            MapIdToBaseId(BetTypes.SecondHalfCorrectScore, BetTypes.CorrectScoreAos);
             MapIdToBaseId(BetTypes.ExactTotalGoalsOwn, BetTypes.ExactTotalGoals);
             MapIdToBaseId(BetTypes.ExactHomeTeamGoalsOwn, BetTypes.ExactHomeTeamGoals);
             MapIdToBaseId(BetTypes.ExactAwayTeamGoalsOwn, BetTypes.ExactHomeTeamGoals);
