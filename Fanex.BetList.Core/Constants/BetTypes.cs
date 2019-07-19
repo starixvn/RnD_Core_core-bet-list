@@ -265,6 +265,7 @@
         public const int MatchTotalGames3Way = 1307;
         public const int MatchGamesHandicap3rd = 1308;
         public const int MatchHandicapGames3Way = 1309;
+        public const int PlayerXMatchTotalGames2Way = 1310;
         public const int SetXWinner3rd = 1311;
         public const int SetXTotalGames3rd = 1312;
         public const int SetXTotalGames3Way = 1313;
@@ -273,8 +274,20 @@
         public const int SetXGameHandicap3rd = 1316;
         public const int SetXCorrectScore = 1317;
         public const int SetXTotalGameOddEven = 1318;
+        public const int SetXRaceToYGames = 1319;
+        public const int SetXScoreAfter2Games = 1320;
+        public const int SetXScoreAfter4Games = 1321;
+        public const int SetXScoreAfter6Games = 1322;
+        public const int SetXTotalDeuceGames2Way = 1323;
         public const int SetXGameYWinner = 1324;
+        public const int SetXGameYCorrectScore = 1325;
+        public const int SetXGameYPointHandicap = 1326;
+        public const int SetXGameYDueceBetting = 1327;
         public const int SetXGameYTotalPointsExact = 1328;
+        public const int SetXGameYTotalPoints2Way = 1329;
+        public const int SetXGameYTotalPoints3Way = 1330;
+        public const int SetXGameYTotalPointsOddEven = 1331;
+        public const int SetXGameYTotalPointZWinner = 1332;
         public const int SetXGameYAndGameYAdd1Winner = 1333;
         public const int SetXGameYAndGameYAdd1Points = 1334;
     }

@@ -66,17 +66,11 @@
     <Compile Include="Builder\BetListBaseBuilderTest.cs" />
     <Compile Include="Builder\ChoiceBuilder\3rd\Choice_22006Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice128Test.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1301Test.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1303Test.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1305Test.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1306Test.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1308Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1312Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1316Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1317Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1318Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice131Test.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1324Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice133Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1101Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice143Test.cs" />
@@ -212,7 +206,6 @@
     <Compile Include="Builder\ChoiceBuilder\Choice15Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice14Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1307Test.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1313Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1314Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1315Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1328Test.cs" />

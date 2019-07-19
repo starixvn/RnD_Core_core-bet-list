@@ -8,6 +8,7 @@
         {
             MapForOtherBetTypes();
             MapForBetRadar();
+            MapForSportingSolution();
             MapForFastMarkets();
             MapForBasketBall();
             MapForPoolHouseAllInOne();
@@ -50,6 +51,29 @@
             MapIdToBaseId(BetTypes.AwayTeamTotalCornersOverUnder, BetTypes.SecondHalfOverUnder);
             MapIdToBaseId(BetTypes.FirstHalfHomeCornerOverUnder, BetTypes.SecondHalfOverUnder);
             MapIdToBaseId(BetTypes.FirstHalfAwayCornerOverUnder, BetTypes.SecondHalfOverUnder);
+        }
+
+        private void MapForSportingSolution()
+        {
+            MapIdToBaseId(BetTypes.SSMatchWinner, BetTypes.Moneyline);
+            MapIdToBaseId(BetTypes.SetHandicap, BetTypes.Handicap);
+            MapIdToBaseId(BetTypes.MatchTotalGamesOddEven, BetTypes.OddEven);
+            MapIdToBaseId(BetTypes.MatchTotalGamesOverUnder, BetTypes.OverUnder);
+            MapIdToBaseId(BetTypes.MatchGamesHandicap3rd, BetTypes.Handicap);
+            MapIdToBaseId(BetTypes.PlayerXMatchTotalGames2Way, BetTypes.TotalSets);
+            MapIdToBaseId(BetTypes.SetXTotalGames3Way, BetTypes.MatchTotalGames3Way);
+            MapIdToBaseId(BetTypes.SetXRaceToYGames, BetTypes.SetXWinner3rd);
+            MapIdToBaseId(BetTypes.SetXScoreAfter2Games, BetTypes.MatchCorrectScore);
+            MapIdToBaseId(BetTypes.SetXScoreAfter4Games, BetTypes.MatchCorrectScore);
+            MapIdToBaseId(BetTypes.SetXScoreAfter6Games, BetTypes.MatchCorrectScore);
+            MapIdToBaseId(BetTypes.SetXTotalDeuceGames2Way, BetTypes.TotalSets);
+            MapIdToBaseId(BetTypes.SetXGameYWinner, BetTypes.SetXWinner3rd);
+            MapIdToBaseId(BetTypes.SetXGameYCorrectScore, BetTypes.MatchCorrectScore);
+            MapIdToBaseId(BetTypes.SetXGameYPointHandicap, BetTypes.SetXGameHandicap3rd);
+            MapIdToBaseId(BetTypes.SetXGameYDueceBetting, BetTypes.SetXWillThereBeATiebreak);
+            MapIdToBaseId(BetTypes.SetXGameYTotalPoints2Way, BetTypes.TotalSets);
+            MapIdToBaseId(BetTypes.SetXGameYTotalPoints3Way, BetTypes.MatchTotalGames3Way);
+            MapIdToBaseId(BetTypes.SetXGameYTotalPointZWinner, BetTypes.SetXWinner3rd);
         }
 
         private void MapForBasketBall()
