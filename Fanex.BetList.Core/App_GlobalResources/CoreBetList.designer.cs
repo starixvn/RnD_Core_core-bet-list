@@ -403,6 +403,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Corner Before.
+        /// </summary>
+        public static string CornerBefore {
+            get {
+                return ResourceManager.GetString("CornerBefore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Corners.
         /// </summary>
         public static string Corners {
@@ -543,6 +552,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string events {
             get {
                 return ResourceManager.GetString("events", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exact.
+        /// </summary>
+        public static string Exact {
+            get {
+                return ResourceManager.GetString("Exact", resourceCulture);
             }
         }
         
@@ -1281,6 +1299,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string NoAndUnder {
             get {
                 return ResourceManager.GetString("NoAndUnder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Corner Before.
+        /// </summary>
+        public static string NoCornerBefore {
+            get {
+                return ResourceManager.GetString("NoCornerBefore", resourceCulture);
             }
         }
         

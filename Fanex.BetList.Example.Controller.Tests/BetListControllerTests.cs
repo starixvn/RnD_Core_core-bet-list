@@ -63,7 +63,9 @@
         [TestCase("BetList/ESports2InPlay")]
         [TestCase("BetList/VideoPokerGame")]
         [TestCase("BetList/AbnormalBet")]
+        [TestCase("BetList/PHAIO4A")]
         [TestCase("BetList/RebateBonus")]
+        [TestCase("BetList/PHAIO4B")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Choice(string productUrl)
         {
             // Arrange
@@ -132,7 +134,9 @@
         [TestCase("BetList/ESports2InPlay")]
         [TestCase("BetList/VideoPokerGame")]
         [TestCase("BetList/AbnormalBet")]
+        [TestCase("BetList/PHAIO4A")]
         [TestCase("BetList/RebateBonus")]
+        [TestCase("BetList/PHAIO4B")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Trans(string productUrl)
         {
             // Arrange
@@ -201,7 +205,9 @@
         [TestCase("BetList/ESports2InPlay")]
         [TestCase("BetList/VideoPokerGame")]
         [TestCase("BetList/AbnormalBet")]
+        [TestCase("BetList/PHAIO4A")]
         [TestCase("BetList/RebateBonus")]
+        [TestCase("BetList/PHAIO4B")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Odds(string productUrl)
         {
             // Arrange
@@ -270,7 +276,9 @@
         [TestCase("BetList/ESports2InPlay")]
         [TestCase("BetList/VideoPokerGame")]
         [TestCase("BetList/AbnormalBet")]
+        [TestCase("BetList/PHAIO4A")]
         [TestCase("BetList/RebateBonus")]
+        [TestCase("BetList/PHAIO4B")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Stake(string productUrl)
         {
             // Arrange
@@ -339,7 +347,9 @@
         [TestCase("BetList/ESports2InPlay")]
         [TestCase("BetList/VideoPokerGame")]
         [TestCase("BetList/AbnormalBet")]
+        [TestCase("BetList/PHAIO4A")]
         [TestCase("BetList/RebateBonus")]
+        [TestCase("BetList/PHAIO4B")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Status(string productUrl)
         {
             // Arrange
