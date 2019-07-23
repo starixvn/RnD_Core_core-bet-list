@@ -18,8 +18,6 @@
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
-            base.BuildBetTeamClassNameAndHandicap(ticket);
-
             Template.Handicap.handicap = ConvertByBetType.Hdp(ticket.Handicap1);
             Template.betTeamClassName = BetTeamValue.O == ticket.BetTeam.ToLowerInvariant() ? Favorite : Underdog;
         }

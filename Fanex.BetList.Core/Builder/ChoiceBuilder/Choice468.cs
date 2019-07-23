@@ -6,7 +6,7 @@
     using Fanex.BetList.Core.Utils.TicketHelperExt;
 
     /// <summary>
-    /// Score Box Handicap
+    /// PHAIO 4A: Score Box Handicap
     /// </summary>
     public class Choice468 : Choice1
     {

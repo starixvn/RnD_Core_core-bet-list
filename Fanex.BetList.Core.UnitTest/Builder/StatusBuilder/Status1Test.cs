@@ -163,6 +163,8 @@
             Assert.AreEqual(CoreBetList.UnderSettlement, _status.Template.result);
         }
 
+#pragma warning disable S4144 // Methods should not have identical implementations
+
         [TestCase(8)]
         [TestCase(10)]
         [TestCase(24)]
@@ -179,6 +181,8 @@
             // Assert
             Assert.AreEqual(CoreBetList.UnderSettlement, _status.Template.result);
         }
+
+#pragma warning restore S4144 // Methods should not have identical implementations
 
         [Test]
         public void BuildResult_RunningTicketWithUndecidedSettlementStatus_ShowRunning()

@@ -408,4 +408,7 @@
   <data name="pending" xml:space="preserve">
     <value>保留中</value>
   </data>
+  <data name="Equal" xml:space="preserve">
+    <value>同点</value>
+  </data>
 </root>

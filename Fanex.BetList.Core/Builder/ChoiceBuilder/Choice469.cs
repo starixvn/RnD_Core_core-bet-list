@@ -6,7 +6,7 @@
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    /// Score Box Over/Under
+    /// PHAIO 4A: Score Box Over/Under
     /// </summary>
     public class Choice469 : Choice468
     {

@@ -6,7 +6,7 @@
     using Fanex.BetList.Core.Entities;
 
     /// <summary>
-    /// Half Time/Full Time Exact Total Goals
+    /// PHAIO 4A: Half Time/Full Time Exact Total Goals
     /// </summary>
     public class Choice467 : Choice1
     {
