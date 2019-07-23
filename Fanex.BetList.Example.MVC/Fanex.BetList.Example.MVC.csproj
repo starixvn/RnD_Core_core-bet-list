@@ -478,6 +478,7 @@
     <Content Include="App_Data\VideoPokerGame.xls" />
     <Content Include="App_Data\RefundResult.xls" />
     <Content Include="App_Data\RebateBonus.xls" />
+    <Content Include="App_Data\PHAllInOneP4B.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
