@@ -2,6 +2,9 @@
 {
     using Fanex.BetList.Core.Entities;
 
+    /// <summary>
+    /// Next Set Piece
+    /// </summary>
     public class Choice803 : Choice801
     {
         private const string AfterText = "After";

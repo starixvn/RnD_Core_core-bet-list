@@ -6,7 +6,7 @@
     using NUnit.Framework;
 
     [TestFixture]
-    public class Choice806Test
+    public class Choice806Tests
     {
         private IChoice _choice;
         private ITicket _ticket;

@@ -1,6 +1,7 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
     using Core.Builder.ChoiceBuilder;
+    using Core.Utils;
     using Entities;
     using NSubstitute;
     using NUnit.Framework;
@@ -33,7 +34,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            var expectedHtml = "Yes <span class=\"underdog\">&</span> Over";
+            const string expectedHtml = "Yes <span class=\"underdog\">&</span> Over";
 
             Assert.AreEqual(expectedHtml, _choice.Template.betTeam);
         }
@@ -51,7 +52,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            var expectedHtml = "Yes <span class=\"underdog\">&</span> Under";
+            const string expectedHtml = "Yes <span class=\"underdog\">&</span> Under";
 
             Assert.AreEqual(expectedHtml, _choice.Template.betTeam);
         }
@@ -69,7 +70,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            var expectedHtml = "No <span class=\"underdog\">&</span> Over";
+            const string expectedHtml = "No <span class=\"underdog\">&</span> Over";
 
             Assert.AreEqual(expectedHtml, _choice.Template.betTeam);
         }
@@ -87,7 +88,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            var expectedHtml = "No <span class=\"underdog\">&</span> Under";
+            const string expectedHtml = "No <span class=\"underdog\">&</span> Under";
 
             Assert.AreEqual(expectedHtml, _choice.Template.betTeam);
         }
@@ -96,13 +97,17 @@
         public void BuildBetTeamClassNameAndHandicap_Handicap_ShowTotalGoals()
         {
             // Arrange.
-            _ticket.Handicap1 = 2;
+            const decimal handicap1 = 2;
+
+            _ticket.Handicap1 = handicap1;
 
             // Act.
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            Assert.AreEqual(_choice.Template.Handicap.handicap, "2");
+            var expectedDisplayedHandicap = ConvertByBetType.Hdp(handicap1);
+
+            Assert.AreEqual(expectedDisplayedHandicap, _choice.Template.Handicap.handicap);
         }
 
         [Test]
@@ -112,8 +117,9 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            const string CSS_CLASS_FAVORITE = "favorite";
-            Assert.AreEqual(CSS_CLASS_FAVORITE, _choice.Template.betTeamClassName);
+            const string favorite = "favorite";
+
+            Assert.AreEqual(favorite, _choice.Template.betTeamClassName);
         }
     }
 }

@@ -17,6 +17,7 @@
             _status = new Status1901();
             _ticket = Substitute.For<ITicket>();
             _ticketHelper = Substitute.For<ITicketHelper>();
+            _ticket.Status = BetStatus.Won;
         }
 
         [Test]
@@ -36,7 +37,7 @@
         public void BuildStatusResult_IsDetailTicket_ShowStatusResultWithRefNoIsBetCheck()
         {
             // Arrange
-            var expectedRefNo = "'1234'";
+            const string expectedRefNo = "'1234'";
             _ticket.BetCheck = "1234";
 
             // Act.

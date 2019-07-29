@@ -41,6 +41,7 @@
         {
             // Arrange
             _ticket.BetCheck = "Player History Number";
+            _ticket.Status = BetStatus.Won;
 
             // Act
             Status_Template statusTemplate = _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -92,7 +93,7 @@
         {
             // Arrange
             _ticket.BetCheck = "Player History Number";
-            _ticket.Status = "void";
+            _ticket.Status = BetStatus.Void;
 
             // Act
             Status_Template statusTemplate = _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -109,7 +110,7 @@
         {
             // Arrange
             _ticket.BetCheck = "Player History Number";
-            _ticket.Status = "running";
+            _ticket.Status = BetStatus.Running;
             _ticket.WinlostDate = new DateTime(2015, 12, 21);
 
             // Act
@@ -125,7 +126,7 @@
         {
             // Arrange
             _ticket.BetCheck = "Player History Number";
-            _ticket.Status = "running";
+            _ticket.Status = BetStatus.Running;
             _ticket.WinlostDate = new DateTime(2015, 12, 21);
 
             // Act

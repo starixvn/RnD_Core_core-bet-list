@@ -55,11 +55,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Builder\ChoiceBuilder\Choice804Test.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice803Test.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice801Test.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice806Test.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice805Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice804Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice803Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice801Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice806Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice805Tests.cs" />
+    <Compile Include="Builder\StatusBuilder\Status801Tests.cs" />
+    <Compile Include="Builder\TransBuilder\Trans801Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -76,9 +78,7 @@
       <Name>Fanex.BetList.MetricGaming</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Builder\TransBuilder\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>

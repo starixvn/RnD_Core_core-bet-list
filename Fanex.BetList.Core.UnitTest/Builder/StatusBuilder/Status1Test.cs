@@ -3,6 +3,7 @@
     using System;
     using Core.App_GlobalResources;
     using Core.Builder.StatusBuilder;
+    using Core.Constants;
     using Entities;
     using NSubstitute;
     using NUnit.Framework;
@@ -23,16 +24,16 @@
         }
 
         [TestCase("", "")]
-        [TestCase("running", "Running")]
-        [TestCase("reject", "Reject")]
-        [TestCase("won", "Won")]
-        [TestCase("lose", "Lose")]
-        [TestCase("draw", "Draw")]
-        [TestCase("waiting", "Waiting")]
-        [TestCase("void", "Void")]
-        [TestCase("refund", "Refund")]
-        [TestCase("half won", "Half Won")]
-        [TestCase("half lose", "Half Lose")]
+        [TestCase(BetStatus.Running, "Running")]
+        [TestCase(BetStatus.Reject, "Reject")]
+        [TestCase(BetStatus.Won, "Won")]
+        [TestCase(BetStatus.Lose, "Lose")]
+        [TestCase(BetStatus.Draw, "Draw")]
+        [TestCase(BetStatus.Waiting, "Waiting")]
+        [TestCase(BetStatus.Void, "Void")]
+        [TestCase(BetStatus.Refund, "Refund")]
+        [TestCase(BetStatus.HalfWon, "Half Won")]
+        [TestCase(BetStatus.HalfLose, "Half Lose")]
         public void BuildResult_Status_Result(string status, string expectedResult)
         {
             // Arrange
@@ -46,16 +47,16 @@
         }
 
         [TestCase("", "Cash Out")]
-        [TestCase("running", "Cash Out")]
-        [TestCase("reject", "Cash Out")]
-        [TestCase("won", "Cash Out")]
-        [TestCase("lose", "Cash Out")]
-        [TestCase("draw", "Cash Out")]
-        [TestCase("waiting", "Cash Out")]
-        [TestCase("void", "Void")]
-        [TestCase("refund", "Refund")]
-        [TestCase("half won", "Cash Out")]
-        [TestCase("half lose", "Cash Out")]
+        [TestCase(BetStatus.Running, "Cash Out")]
+        [TestCase(BetStatus.Reject, "Cash Out")]
+        [TestCase(BetStatus.Won, "Cash Out")]
+        [TestCase(BetStatus.Lose, "Cash Out")]
+        [TestCase(BetStatus.Draw, "Cash Out")]
+        [TestCase(BetStatus.Waiting, "Cash Out")]
+        [TestCase(BetStatus.Void, "Void")]
+        [TestCase(BetStatus.Refund, "Refund")]
+        [TestCase(BetStatus.HalfWon, "Cash Out")]
+        [TestCase(BetStatus.HalfLose, "Cash Out")]
         public void BuildResult_IsCashOutAllTicket_Result(string status, string expectedResult)
         {
             // Arrange
@@ -73,16 +74,16 @@
         }
 
         [TestCase("", "")]
-        [TestCase("running", "Running")]
-        [TestCase("reject", "Reject")]
-        [TestCase("won", "Won")]
-        [TestCase("lose", "Lose")]
-        [TestCase("draw", "Draw")]
-        [TestCase("waiting", "Waiting")]
-        [TestCase("void", "Void")]
-        [TestCase("refund", "Refund")]
-        [TestCase("half won", "Half Won")]
-        [TestCase("half lose", "Half Lose")]
+        [TestCase(BetStatus.Running, "Running")]
+        [TestCase(BetStatus.Reject, "Reject")]
+        [TestCase(BetStatus.Won, "Won")]
+        [TestCase(BetStatus.Lose, "Lose")]
+        [TestCase(BetStatus.Draw, "Draw")]
+        [TestCase(BetStatus.Waiting, "Waiting")]
+        [TestCase(BetStatus.Void, "Void")]
+        [TestCase(BetStatus.Refund, "Refund")]
+        [TestCase(BetStatus.HalfWon, "Half Won")]
+        [TestCase(BetStatus.HalfLose, "Half Lose")]
         public void BuildResult_IsNotCashOutAllTicket_Result(string status, string expectedResult)
         {
             // Arrange
@@ -100,16 +101,16 @@
         }
 
         [TestCase("", "")]
-        [TestCase("running", "Running")]
-        [TestCase("reject", "Reject")]
-        [TestCase("won", "Won")]
-        [TestCase("lose", "Lose")]
-        [TestCase("draw", "Draw")]
-        [TestCase("waiting", "Waiting")]
-        [TestCase("void", "Void")]
-        [TestCase("refund", "Refund")]
-        [TestCase("half won", "Half Won")]
-        [TestCase("half lose", "Half Lose")]
+        [TestCase(BetStatus.Running, "Running")]
+        [TestCase(BetStatus.Reject, "Reject")]
+        [TestCase(BetStatus.Won, "Won")]
+        [TestCase(BetStatus.Lose, "Lose")]
+        [TestCase(BetStatus.Draw, "Draw")]
+        [TestCase(BetStatus.Waiting, "Waiting")]
+        [TestCase(BetStatus.Void, "Void")]
+        [TestCase(BetStatus.Refund, "Refund")]
+        [TestCase(BetStatus.HalfWon, "Half Won")]
+        [TestCase(BetStatus.HalfLose, "Half Lose")]
         public void BuildResult_IsNotCashOutTicket_Result(string status, string expectedResult)
         {
             // Arrange
@@ -221,11 +222,11 @@
             Assert.AreEqual(CoreBetList.AbnormalBet, _status.Template.result);
         }
 
-        [TestCase("Void", "<p1 ab=\"2\" />")]
-        [TestCase("Void", "<p2 ab=\"2\" />")]
-        [TestCase("Void", "<p1 aab=\"2\" />")]
-        [TestCase("Void", "")]
-        [TestCase("Void", null)]
+        [TestCase(BetStatus.Void, "<p1 ab=\"2\" />")]
+        [TestCase(BetStatus.Void, "<p2 ab=\"2\" />")]
+        [TestCase(BetStatus.Void, "<p1 aab=\"2\" />")]
+        [TestCase(BetStatus.Void, "")]
+        [TestCase(BetStatus.Void, null)]
         public void BuildResult_IsNotAbnormalBetTicket_ShowAsNormalTicket(string status, string extraInfo)
         {
             // Arrange
@@ -236,15 +237,14 @@
             _status.Render(_ticket, _ticketHelper, null, true);
 
             // Assert
-            Assert.AreEqual(status, _status.Template.result);
+            StringAssert.AreEqualIgnoringCase(status, _status.Template.result);
         }
 
-        [TestCase("running")]
-        [TestCase("waiting")]
-        [TestCase("void")]
-        [TestCase("reject")]
-        [TestCase("refund")]
-        public void BuildStatusResult_Status_StatusResultVisibleIsFalse(string status)
+        [TestCase(BetStatus.Running)]
+        [TestCase(BetStatus.Waiting)]
+        [TestCase(BetStatus.Void)]
+        [TestCase(BetStatus.Reject)]
+        public void BuildStatusResult_UnsettledTicket_HideResultLink(string status)
         {
             // Arrange
             _ticket.Status = status;
@@ -256,10 +256,70 @@
             Assert.IsFalse(_status.Template.StatusResult.Visible);
         }
 
-        [TestCase("")]
-        [TestCase("won")]
-        [TestCase("lose")]
-        [TestCase("draw")]
+        [Test]
+        public void BuildStatusResult_SportsbookRefundedTicket_ShowResultLink()
+        {
+            // Arrange
+            _ticket.SportTypeId = 1;
+            _ticket.Status = BetStatus.Refund;
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, true);
+
+            // Assert
+            Assert.IsTrue(_status.Template.StatusResult.Visible);
+        }
+
+        [Test]
+        public void BuildStatusResult_NonSportsbookRefundedTicket_ShowResultLink()
+        {
+            // Arrange
+            _ticket.SportTypeId = 100;
+            _ticket.Status = BetStatus.Refund;
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, true);
+
+            // Assert
+            Assert.IsFalse(_status.Template.StatusResult.Visible);
+        }
+
+        [Test]
+        public void BuildStatusResult_ParlayRefundedTicket_ShowResultLink()
+        {
+            // Arrange
+            _ticket.BetTypeId = BetTypes.SystemParlay;
+            _ticket.Status = BetStatus.Refund;
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, true);
+
+            // Assert
+            Assert.IsFalse(_status.Template.StatusResult.Visible);
+        }
+
+        [TestCase(BetStatus.Won)]
+        [TestCase(BetStatus.HalfWon)]
+        [TestCase(BetStatus.Lose)]
+        [TestCase(BetStatus.HalfLose)]
+        [TestCase(BetStatus.Draw)]
+        public void BuildStatusResult_SettledTicket_HideResultLink(string status)
+        {
+            // Arrange
+            _ticket.Status = status;
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, true);
+
+            // Assert
+            Assert.IsTrue(_status.Template.StatusResult.Visible);
+        }
+
+        [TestCase(BetStatus.Won)]
+        [TestCase(BetStatus.HalfWon)]
+        [TestCase(BetStatus.Lose)]
+        [TestCase(BetStatus.HalfLose)]
+        [TestCase(BetStatus.Draw)]
         public void BuildStatusResult_Status_MatchIdIsMatchId(string status)
         {
             // Arrange
@@ -273,10 +333,11 @@
             Assert.AreEqual(_ticket.MatchId.ToString(), _status.Template.StatusResult.matchId);
         }
 
-        [TestCase("")]
-        [TestCase("won")]
-        [TestCase("lose")]
-        [TestCase("draw")]
+        [TestCase(BetStatus.Won)]
+        [TestCase(BetStatus.HalfWon)]
+        [TestCase(BetStatus.Lose)]
+        [TestCase(BetStatus.HalfLose)]
+        [TestCase(BetStatus.Draw)]
         public void BuildStatusResult_Status_BetTypeIsBetTypeId(string status)
         {
             // Arrange
@@ -290,10 +351,11 @@
             Assert.AreEqual(_ticket.BetTypeId.ToString(), _status.Template.StatusResult.betType);
         }
 
-        [TestCase("")]
-        [TestCase("won")]
-        [TestCase("lose")]
-        [TestCase("draw")]
+        [TestCase(BetStatus.Won)]
+        [TestCase(BetStatus.HalfWon)]
+        [TestCase(BetStatus.Lose)]
+        [TestCase(BetStatus.HalfLose)]
+        [TestCase(BetStatus.Draw)]
         public void BuildStatusResult_StatusAndRaceIsEmpty_RaceIsZero(string status)
         {
             // Arrange
@@ -308,28 +370,31 @@
             Assert.AreEqual(RACE, _status.Template.StatusResult.race);
         }
 
-        [TestCase("")]
-        [TestCase("won")]
-        [TestCase("lose")]
-        [TestCase("draw")]
+        [TestCase(BetStatus.Won)]
+        [TestCase(BetStatus.HalfWon)]
+        [TestCase(BetStatus.Lose)]
+        [TestCase(BetStatus.HalfLose)]
+        [TestCase(BetStatus.Draw)]
         public void BuildStatusResult_Status_RaceIsRace(string status)
         {
             // Arrange
-            const string RACE = "10";
+            const string race = "10";
+
             _ticket.Status = status;
-            _ticket.Race = RACE;
+            _ticket.Race = race;
 
             // Act
             _status.Render(_ticket, _ticketHelper, null, true);
 
             // Assert
-            Assert.AreEqual(RACE, _status.Template.StatusResult.race);
+            Assert.AreEqual(race, _status.Template.StatusResult.race);
         }
 
-        [TestCase("")]
-        [TestCase("won")]
-        [TestCase("lose")]
-        [TestCase("draw")]
+        [TestCase(BetStatus.Won)]
+        [TestCase(BetStatus.HalfWon)]
+        [TestCase(BetStatus.Lose)]
+        [TestCase(BetStatus.HalfLose)]
+        [TestCase(BetStatus.Draw)]
         public void BuildStatusResult_Status_RefNoIsTransId(string status)
         {
             // Arrange
@@ -343,10 +408,11 @@
             Assert.AreEqual(_ticket.TransId.ToString(), _status.Template.StatusResult.refNo);
         }
 
-        [TestCase("")]
-        [TestCase("won")]
-        [TestCase("lose")]
-        [TestCase("draw")]
+        [TestCase(BetStatus.Won)]
+        [TestCase(BetStatus.HalfWon)]
+        [TestCase(BetStatus.Lose)]
+        [TestCase(BetStatus.HalfLose)]
+        [TestCase(BetStatus.Draw)]
         public void BuildStatusResult_Status_SportTypeIsSportTypeId(string status)
         {
             // Arrange
@@ -360,10 +426,11 @@
             Assert.AreEqual(_ticket.SportTypeId.ToString(), _status.Template.StatusResult.sportType);
         }
 
-        [TestCase("")]
-        [TestCase("won")]
-        [TestCase("lose")]
-        [TestCase("draw")]
+        [TestCase(BetStatus.Won)]
+        [TestCase(BetStatus.HalfWon)]
+        [TestCase(BetStatus.Lose)]
+        [TestCase(BetStatus.HalfLose)]
+        [TestCase(BetStatus.Draw)]
         public void BuildStatusResult_Status_LeagueIsLeagueId(string status)
         {
             // Arrange
@@ -377,10 +444,11 @@
             Assert.AreEqual(_ticket.LeagueId.ToString(), _status.Template.StatusResult.league);
         }
 
-        [TestCase("")]
-        [TestCase("won")]
-        [TestCase("lose")]
-        [TestCase("draw")]
+        [TestCase(BetStatus.Won)]
+        [TestCase(BetStatus.HalfWon)]
+        [TestCase(BetStatus.Lose)]
+        [TestCase(BetStatus.HalfLose)]
+        [TestCase(BetStatus.Draw)]
         public void BuildStatusResult_Status_UsernameIsUsername(string status)
         {
             // Arrange
@@ -394,10 +462,11 @@
             Assert.AreEqual(_ticket.UserName, _status.Template.StatusResult.userName);
         }
 
-        [TestCase("")]
-        [TestCase("won")]
-        [TestCase("lose")]
-        [TestCase("draw")]
+        [TestCase(BetStatus.Won)]
+        [TestCase(BetStatus.HalfWon)]
+        [TestCase(BetStatus.Lose)]
+        [TestCase(BetStatus.HalfLose)]
+        [TestCase(BetStatus.Draw)]
         public void BuildStatusResult_Status_WinlostDateIsWinlostDate(string status)
         {
             // Arrange
@@ -473,8 +542,8 @@
             Assert.IsFalse(_status.Template.CashOutHistory.Visible);
         }
 
-        [TestCase(901)]
-        [TestCase(902)]
+        [TestCase(BetTypes.Sold)]
+        [TestCase(BetTypes.Bought)]
         public void BuildCashOutHistory_BetTypeIsBetTradeAndBetdaqIdIsOne_HideCashOutHistory(int betTypeId)
         {
             // Arrange

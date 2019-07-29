@@ -7,10 +7,11 @@
     using App_GlobalResources;
     using Constants;
     using Entities;
-    using Fanex.BetList.Core.Utils.StringExt;
     using NPOI.SS.UserModel;
     using Templates;
     using Utils;
+    using Utils.StringExt;
+    using Utils.TicketExt;
 
     /// <summary>
     /// Bet type name: Handicap.
@@ -435,7 +436,7 @@
 
         protected virtual void BuildEventKickoffDateTime(ITicket ticket)
         {
-            if (IsSportsbook(ticket.SportTypeId) && ticket.EventDate.HasValue)
+            if (ticket.IsSportsbook() && ticket.EventDate.HasValue)
             {
                 Template.EventDate.Visible = true;
                 Template.EventDate.eventDate = Formatter.FormatDateTimeEn12ShortMonthNoSec(ticket.EventDate);
@@ -768,14 +769,6 @@
         private static bool IsOutRight(int betTypeId) => betTypeId == BetTypes.Outright;
 
         private static bool IsBetTrade(int betTypeId) => betTypeId == BetTypes.Sold || betTypeId == BetTypes.Bought;
-
-        private static bool IsSportsbook(int sportTypeId)
-        {
-            const int soccer = 1;
-            const int otherSports = 99;
-
-            return sportTypeId >= soccer && sportTypeId <= otherSports;
-        }
 
         #endregion Private function
     }

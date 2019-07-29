@@ -8,20 +8,29 @@
     [TestFixture]
     public class Status2008Tests
     {
+        private IStatus _status;
+        private ITicket _ticket;
+        private ITicketHelper _ticketHelper;
+
+        [SetUp]
+        public void Setup()
+        {
+            _status = new Status2008();
+            _ticket = Substitute.For<ITicket>();
+            _ticketHelper = Substitute.For<ITicketHelper>();
+            _ticket.Status = BetStatus.Won;
+            _ticket.TransDesc = "534534534";
+        }
+
         [TestCase(" ")]
         [TestCase(null)]
         public void BuildStatusResult_TransDescIsNullOrWhiteSpace_HideStatusResult(string transDesc)
         {
             // Arrange
-            var ticketHelper = Substitute.For<ITicketHelper>();
-            var ticket = new Ticket
-            {
-                Status = "WIN",
-                TransDesc = transDesc
-            };
+            _ticket.TransDesc = transDesc;
 
             // Act
-            var template = new Status2008().Render(ticket, ticketHelper, null, true);
+            var template = _status.Render(_ticket, _ticketHelper, null, true);
 
             // Assert
             Assert.False(template.StatusResult.Visible);
@@ -30,16 +39,8 @@
         [Test]
         public void BuildStatusResult_TransDescIsNotNullOrWhiteSpace_ShowStatusResult()
         {
-            // Arrange
-            var ticketHelper = Substitute.For<ITicketHelper>();
-            var ticket = new Ticket
-            {
-                Status = "WIN",
-                TransDesc = "534534534"
-            };
-
             // Act
-            var template = new Status2008().Render(ticket, ticketHelper, null, true);
+            var template = _status.Render(_ticket, _ticketHelper, null, true);
 
             // Assert
             Assert.True(template.StatusResult.Visible);
@@ -50,18 +51,12 @@
         public void BuildStatusResult_TransDescIsNotNullOrWhiteSpace_BetIdParamContainsBetCheckAndCustId(int? betId, int expectedBetId)
         {
             // Arrange
-            var ticketHelper = Substitute.For<ITicketHelper>();
-            var ticket = new Ticket
-            {
-                BetId = betId,
-                BetCheck = "10",
-                CustId = 100,
-                Status = "WIN",
-                TransDesc = "534534534"
-            };
+            _ticket.BetId = betId;
+            _ticket.BetCheck = "10";
+            _ticket.CustId = 100;
 
             // Act
-            var template = new Status2008().Render(ticket, ticketHelper, null, true);
+            var template = _status.Render(_ticket, _ticketHelper, null, true);
 
             // Assert
             var expectedLink = $"{expectedBetId},'10',100";

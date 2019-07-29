@@ -1,13 +1,13 @@
 ﻿namespace Fanex.BetList.Voidbridge.Tests.Builder.StatusBuilder
 {
+    using System;
+    using System.Globalization;
+    using System.Text.RegularExpressions;
     using Core.Builder.StatusBuilder;
     using Core.Entities;
     using Core.Utils;
     using NSubstitute;
     using NUnit.Framework;
-    using System;
-    using System.Globalization;
-    using System.Text.RegularExpressions;
 
     [TestFixture]
     public class Status4001Test
@@ -19,9 +19,9 @@
         [SetUp]
         public void Setup()
         {
-            this._ticket = Substitute.For<ITicket>();
-            this._ticketHelper = Substitute.For<ITicketHelper>();
-            this._status = new Status4001();
+            _ticket = Substitute.For<ITicket>();
+            _ticketHelper = Substitute.For<ITicketHelper>();
+            _status = new Status4001();
         }
 
         [Test]
@@ -41,6 +41,7 @@
         public void BuildStatusResult_ForDetailTickets_ShowStatusResultLink()
         {
             ////Arrange
+            _ticket.Status = BetStatus.Won;
             _ticket.BetCheck = "123";
 
             ////Act
@@ -60,7 +61,7 @@
             _status.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            Assert.AreEqual(_status.Template.StatusResult.refNo, "'123'");
+            Assert.AreEqual("'123'", _status.Template.StatusResult.refNo);
         }
 
         [Test]
@@ -90,7 +91,7 @@
 
             ////Assert
             var expectedRunningLink = BuildRunningLink(_ticket, "Running");
-            Assert.AreEqual(_status.Template.result, expectedRunningLink);
+            Assert.AreEqual(expectedRunningLink, _status.Template.result);
         }
 
         [Test]
@@ -103,7 +104,7 @@
             _status.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            Assert.AreEqual(_status.Template.result, "Won");
+            Assert.AreEqual("Won", _status.Template.result);
         }
 
         [Test]
@@ -116,7 +117,7 @@
             _status.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            Assert.AreEqual(_status.Template.result, "status");
+            Assert.AreEqual("status", _status.Template.result);
         }
 
         private static string BuildRunningLink(ITicket ticket, string status)

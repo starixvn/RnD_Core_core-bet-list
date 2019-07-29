@@ -5,9 +5,6 @@
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    /// The Unit testing for Trans71 class.
-    /// </summary>
     public class Trans71Test
     {
         private Trans71 _trans;

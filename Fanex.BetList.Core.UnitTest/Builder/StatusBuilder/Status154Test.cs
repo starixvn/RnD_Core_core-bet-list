@@ -5,9 +5,6 @@
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    ///  Test Class Status for Bet Type 154.
-    /// </summary>
     public class Status154Test
     {
         private IStatus _status;
@@ -22,6 +19,7 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
+        [Test]
         public void BuildStatusResult_BetIdIsNull_BetIdIsZero()
         {
             // Arrange

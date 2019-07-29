@@ -6,7 +6,7 @@
     using NUnit.Framework;
 
     [TestFixture]
-    public class Choice804Test
+    public class Choice805Tests
     {
         private IChoice _choice;
         private ITicket _ticket;
@@ -15,21 +15,17 @@
         [SetUp]
         public void Setup()
         {
-            _choice = new Choice804();
+            _choice = new Choice805();
             _ticket = Substitute.For<ITicket>();
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
         [Test]
-        public void BuildBetTeam_WhenCalled_ReturnBetChoiceName()
+        public void BuildBetTeamClassNameAndHandicap_WhenCalled_HandicapIsVisible()
         {
-            _ticket.TransDesc = "betchoice=1;BettypeTime=xxx;Time=xxx;SettledTime=xxx;GameResult=xxx;GameResultTimexxx";
-            _ticketHelper.GetResourceData("SuperLive", "1").Returns("No Goal");
-
             _choice.Render(_ticket, _ticketHelper, null, false);
 
-            const string ExpectedBetTeam = "No Goal";
-            Assert.AreEqual(ExpectedBetTeam, _choice.Template.betTeam);
+            Assert.IsFalse(_choice.Template.Handicap.Visible);
         }
 
         [Test]
@@ -42,14 +38,16 @@
         }
 
         [Test]
-        public void BuildBetTeamClassNameAndHandicap_WhenCalled_AlwaysSetHandicapIsBettypeTime()
+        public void BuildBetTeam_WhenCalled_ReturnBetChoiceName()
         {
-            _ticket.TransDesc = "betchoice=xxx;BettypeTime=06:50-07:50;Time=xxx;SettledTime=xxx;GameResult=xxx;GameResultTimexxx";
+            _ticket.TransDesc = "betchoice=9;BettypeTime=ASE,57;Time=xxx;SettledTime=xxx;GameResult=xxx;GameResultTimexxx";
+            _ticketHelper.GetResourceData("SuperLive", "9").Returns("Over");
+            _ticketHelper.GetTeamNameById("ASE").Returns("BetTeam");
 
             _choice.Render(_ticket, _ticketHelper, null, false);
 
-            const string ExpectedHandicap = "06:50-07:50";
-            Assert.AreEqual(ExpectedHandicap, _choice.Template.Handicap.handicap);
+            const string ExpectedBetTeam = "BetTeam Over 57%";
+            Assert.AreEqual(ExpectedBetTeam, _choice.Template.betTeam);
         }
     }
 }

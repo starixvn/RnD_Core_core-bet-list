@@ -230,11 +230,6 @@
         public const int QuarterXHomeTeamOverUnder = 615;
         public const int QuarterXAwayTeamOverUnder = 616;
         public const int QuarterXWhichTeamToScoreTheLastBasket = 617;
-        public const int GoalWithin60Seconds = 801;
-        public const int NextSetPiece = 803;
-        public const int EverySingleMinute = 804;
-        public const int TimeOfPossession = 805;
-        public const int FirstGoal = 806;
         public const int Sold = 901;
         public const int Bought = 902;
         public const int BetTradeCommission = 903;

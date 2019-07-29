@@ -41,6 +41,7 @@
         {
             // Arrange.
             _ticket.BetCheck = "BetCheck";
+            _ticket.Status = BetStatus.Won;
 
             // Act.
             Status_Template template = _status.Render(_ticket, _ticketHelper, null, false);
@@ -87,8 +88,8 @@
         public void BuildResult_TicketIsRunningAndBetCheckIsNotNullOrEmpty_ResultIsDisplayedAsLink()
         {
             // Arrange.
-            _ticket.Status = "running";
             _ticket.BetCheck = "BetCheck";
+            _ticket.Status = BetStatus.Running;
 
             // Act.
             Status_Template template = _status.Render(_ticket, _ticketHelper, null, false);

@@ -2,6 +2,9 @@
 {
     using Fanex.BetList.Core.Entities;
 
+    /// <summary>
+    /// Every Single Minute
+    /// </summary>
     public class Choice804 : Choice801
     {
         protected override string GetBetTypeTime(ITicket ticket)

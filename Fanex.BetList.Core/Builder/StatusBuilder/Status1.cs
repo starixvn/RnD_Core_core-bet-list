@@ -10,6 +10,7 @@
     using Templates;
     using Utils;
     using Utils.StringExt;
+    using Utils.TicketExt;
 
     /// <summary>
     /// Sportsbook: Handicap.
@@ -80,23 +81,9 @@
                && ticket.ExtraInfo.GetXmlTagAttributeValue(AbnormalBetXmlTag, AbnormalBetAttributeName) == "1";
         }
 
-        /// <summary>
-        /// Build Result Popup Link
-        /// </summary>
-        /// <param name="ticket"></param>
         protected virtual void BuildStatusResult(ITicket ticket)
         {
-            var result = ticket.Status.ToLower(CultureInfo.InvariantCulture);
-
-            if (result.Equals(BetStatus.Running)
-                || result.Equals(BetStatus.Waiting)
-                || result.Equals(BetStatus.Void)
-                || result.Equals(BetStatus.Reject)
-                || result.Equals(BetStatus.Refund))
-            {
-                Template.StatusResult.Hide();
-            }
-            else
+            if (ticket.IsSettled() || IsSportsbookRefundedTicket(ticket))
             {
                 Template.StatusResult.matchId = ticket.MatchId.ToString(CultureInfo.InvariantCulture);
                 Template.StatusResult.betType = ticket.BetTypeId.ToString(CultureInfo.InvariantCulture);
@@ -106,6 +93,10 @@
                 Template.StatusResult.league = ticket.LeagueId.ToString(CultureInfo.InvariantCulture);
                 Template.StatusResult.userName = ticket.UserName;
                 Template.StatusResult.winlostDate = Formatter.FullDateFormat(ticket.WinlostDate);
+            }
+            else
+            {
+                Template.StatusResult.Hide();
             }
         }
 
@@ -217,7 +208,7 @@
         #region PRIVATE METHODS
 
         private static bool IsCashOutTicket(ITicket ticket)
-            => (ticket.BetdaqId == 1 && !IsBetTradeTicket(ticket.BetTypeId) && IsSportsbook(ticket.SportTypeId)) ||
+            => (ticket.BetdaqId == 1 && !IsBetTradeTicket(ticket.BetTypeId) && ticket.IsSportsbook()) ||
             ticket.ExtraInfo.HasAttributeInXmlTag(CashOutXmlTag, "s");
 
         private static bool IsCashOutOriginalTicket(ITicket ticket)
@@ -232,14 +223,6 @@
         private static bool IsCashOutAll(ITicket ticket) => ticket.Stake == 0 && StakeIsZeroBeforeConvertCurrency(ticket);
 
         private static bool StakeIsZeroBeforeConvertCurrency(ITicket ticket) => ticket.OriginalBetType != -1;
-
-        private static bool IsSportsbook(int sportTypeId)
-        {
-            const int otherSports = 99;
-            const int horseRacingFixedOdds = 154;
-
-            return sportTypeId <= otherSports || sportTypeId == horseRacingFixedOdds;
-        }
 
         private static string DetectRealRunningStatus(byte settlementStatus)
         {
@@ -260,6 +243,9 @@
 
             return CoreBetList.running;
         }
+
+        private static bool IsSportsbookRefundedTicket(ITicket ticket)
+            => ticket.IsRefunded() && ticket.IsSportsbook();
 
         #endregion PRIVATE METHODS
     }

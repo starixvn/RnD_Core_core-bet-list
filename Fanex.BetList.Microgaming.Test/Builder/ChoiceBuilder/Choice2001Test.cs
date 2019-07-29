@@ -47,7 +47,7 @@
         }
 
         [Test]
-        public void BuildSport_WhenCalled_ReturnMicroGamming()
+        public void BuildSport_WhenCalled_ReturnMicroGaming()
         {
             _ticketHelper.GetSportNameById(Arg.Any<int>()).Returns("Microgaming");
             _choice.Render(_ticket, _ticketHelper, null, false);

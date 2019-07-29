@@ -4,6 +4,9 @@
     using System.Collections.Generic;
     using Fanex.BetList.Core.Entities;
 
+    /// <summary>
+    /// Goal Within 60 Seconds
+    /// </summary>
     public class Choice801 : Choice1
     {
         protected const string MetricGamingResourceId = "SuperLive";
