@@ -411,13 +411,13 @@
     <Content Include="App_Data\GoldDeluxe.xls">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="App_Data\MetricGamming.xls">
+    <Content Include="App_Data\MetricGaming.xls">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="App_Data\BetTrade.xls">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="App_Data\MicroGamming.xls">
+    <Content Include="App_Data\MicroGaming.xls">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="App_Data\MyanmarOdds.xls">
@@ -475,6 +475,7 @@
     <Content Include="App_Data\BetBuilder.xls" />
     <Content Include="App_Data\PHAllInOneP4A.xls" />
     <Content Include="App_Data\VideoPokerGame.xls" />
+    <Content Include="App_Data\RefundResult.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />

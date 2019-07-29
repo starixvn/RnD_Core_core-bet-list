@@ -115,24 +115,24 @@ namespace Fanex.BetList.Example.MVC.Controllers
             return BetListView(model);
         }
 
-        public ActionResult MetricGamming(BetListData model = null)
+        public ActionResult MetricGaming(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(801, 803, 804, 805, 806);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/MetricGamming.xls";
+            DataSourcePath = "~/App_Data/MetricGaming.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
             return BetListView(model);
         }
 
-        public ActionResult MicroGamming(BetListData model = null)
+        public ActionResult MicroGaming(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(2001, 2002, 2003, 2004, 2005, 2006, 2007);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/MicroGamming.xls";
+            DataSourcePath = "~/App_Data/MicroGaming.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -733,6 +733,18 @@ namespace Fanex.BetList.Example.MVC.Controllers
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             DataSourcePath = "~/App_Data/PHAllInOneP4A.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
+        public ActionResult RefundResult(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes();
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            DataSourcePath = "~/App_Data/RefundResult.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
