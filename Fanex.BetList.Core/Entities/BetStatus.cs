@@ -12,7 +12,6 @@
         public const string Reject = "reject";
         public const string HalfWon = "half won";
         public const string HalfLose = "half lose";
-
         public const string Pending = "pending";
     }
 

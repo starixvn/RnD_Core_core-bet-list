@@ -258,7 +258,6 @@
     <Compile Include="Builder\StakeBuilder\Stake500Test.cs" />
     <Compile Include="Builder\StatusBuilder\3rd\Status_22006Test.cs" />
     <Compile Include="Builder\StatusBuilder\Status221Tests.cs" />
-    <Compile Include="Builder\StatusBuilder\Status223Tests.cs" />
     <Compile Include="Builder\StatusBuilder\Status38Tests.cs" />
     <Compile Include="Builder\StatusBuilder\Status500Test.cs" />
     <Compile Include="Builder\StatusBuilder\Status606Tests.cs" />

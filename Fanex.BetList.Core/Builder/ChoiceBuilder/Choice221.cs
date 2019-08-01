@@ -1,5 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using System.Collections.Generic;
     using System.Text.RegularExpressions;
     using Entities;
     using Utils;
@@ -7,8 +8,19 @@
     /// <summary>
     /// Fast Markets: Next 1 minute.
     /// </summary>
-    public class Choice221 : Choice223
+    public class Choice221 : Choice1
     {
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {
+            var choice = ticketHelper.GetFastMarketSituation(
+                ticket.BetTypeId.ToString(),
+                ticket.BetTeam,
+                ticket.Handicap1,
+                ticket.Handicap2);
+
+            Template.betTeam = choice;
+        }
+
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
             if (ticket.OddsSpread != 0)

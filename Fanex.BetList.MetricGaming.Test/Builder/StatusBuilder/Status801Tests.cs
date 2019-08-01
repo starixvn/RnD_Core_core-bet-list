@@ -36,7 +36,7 @@
         }
 
         [Test]
-        public void BuildStatusResult__SettledTicketBetIdBetIdHasValue_ResultLinkBetIdIsTicketBetId()
+        public void BuildStatusResult_SettledTicketBetIdBetIdHasValue_ResultLinkBetIdIsTicketBetId()
         {
             // Arrange.
             const long betId = 80101;
@@ -51,7 +51,7 @@
         }
 
         [Test]
-        public void BuildStatusResult__RefundedTicket_HideResultLink()
+        public void BuildStatusResult_RefundedTicket_HideResultLink()
         {
             // Arrange.
             _ticket.Status = BetStatus.Refund;

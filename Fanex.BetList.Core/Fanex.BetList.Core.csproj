@@ -442,7 +442,6 @@
     <Compile Include="Builder\StatusBuilder\Status155.cs" />
     <Compile Include="Builder\StatusBuilder\Status156.cs" />
     <Compile Include="Builder\StatusBuilder\Status221.cs" />
-    <Compile Include="Builder\StatusBuilder\Status223.cs" />
     <Compile Include="Builder\StatusBuilder\Status23001.cs" />
     <Compile Include="Builder\StatusBuilder\Status23002.cs" />
     <Compile Include="Builder\StatusBuilder\Status23003.cs" />
