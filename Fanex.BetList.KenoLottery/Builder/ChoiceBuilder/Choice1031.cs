@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System;
     using System.Collections.Generic;
-    using Entities;
-    using Templates;
+    using Fanex.BetList.Core.Entities;
+    using Fanex.BetList.Core.Templates;
+    using Fanex.BetList.Core.Utils;
 
     public class Choice1031 : Choice1
     {
@@ -14,7 +14,10 @@
         {
             if (!string.IsNullOrEmpty(ticket.TransDesc))
             {
-                ParseTransDesc(ticket.TransDesc);
+                var parsedTransDesc = TransDescParser.ParseTransDesc(ticket.TransDesc);
+
+                _choiceId = parsedTransDesc.Item1;
+                _gameId = parsedTransDesc.Item2;
             }
 
             return base.Render(ticket, ticketHelper, ticketData, isShowScoreMap);
@@ -40,7 +43,7 @@
 
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
         {
-            string gameTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
+            var gameTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
 
             Template.League.LeagueName.leagueName = $"{gameTypeName} [{_gameId}]";
         }
@@ -56,23 +59,5 @@
 
         protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
             => Template.Match = null;
-
-        private void ParseTransDesc(string transDesc)
-        {
-            const string GameIdIndicator = "betChoice=";
-            int lengthOfNeededInfo = transDesc.IndexOf(';');
-            string neededInfo = transDesc.Substring(0, lengthOfNeededInfo < 0 ? transDesc.Length : lengthOfNeededInfo);
-            string[] parts = neededInfo.Split(',');
-
-            if (parts.Length == 2)
-            {
-                if (parts[0].StartsWith(GameIdIndicator, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    _gameId = parts[0].Substring(parts[0].IndexOf('=') + 1).Trim();
-                }
-
-                _choiceId = parts[1].Trim();
-            }
-        }
     }
 }

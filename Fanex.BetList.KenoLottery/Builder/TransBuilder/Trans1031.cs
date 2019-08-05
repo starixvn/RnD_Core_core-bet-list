@@ -1,6 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Builder.TransBuilder
 {
-    using Entities;
+    using Fanex.BetList.Core.Entities;
 
     public class Trans1031 : Trans1
     {

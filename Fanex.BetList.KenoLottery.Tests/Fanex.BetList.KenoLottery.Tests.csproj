@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builder\ChoiceBuilder\Choice1031Tests.cs" />
+    <Compile Include="Builder\OddsBuilder\Odds1037Tests.cs" />
     <Compile Include="Builder\StatusBuilder\Status1031Tests.cs" />
     <Compile Include="Builder\TransBuilder\Trans1031Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

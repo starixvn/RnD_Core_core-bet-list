@@ -1,7 +1,7 @@
 ﻿namespace Fanex.BetList.KenoLottery.Tests.Builder.TransBuilder
 {
-    using Core.Builder.TransBuilder;
-    using Core.Entities;
+    using Fanex.BetList.Core.Builder.TransBuilder;
+    using Fanex.BetList.Core.Entities;
     using NSubstitute;
     using NUnit.Framework;
 

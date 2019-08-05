@@ -1,15 +1,14 @@
 ﻿namespace Fanex.BetList.Core.Mapper
 {
+    using Fanex.BetList.Core.Constants;
+
     public class ChoiceMapper : BaseMapper
     {
         public ChoiceMapper()
         {
-            var beginningRangeBetTypeId = 1031;
-            var endingRangeBetTypeId = 1049;
-
-            for (var betTypeIdInRange = beginningRangeBetTypeId + 1; betTypeIdInRange <= endingRangeBetTypeId; betTypeIdInRange++)
+            for (var betTypeId = KenoLotteryBetTypes.Max5D90; betTypeId <= KenoLotteryBetTypes.EndingRangeBetTypeId; betTypeId++)
             {
-                MapIdToBaseId(betTypeIdInRange, beginningRangeBetTypeId);
+                MapIdToBaseId(betTypeId, KenoLotteryBetTypes.Max5D60);
             }
         }
     }

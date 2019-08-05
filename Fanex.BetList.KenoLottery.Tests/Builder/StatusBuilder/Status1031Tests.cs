@@ -1,7 +1,7 @@
 ﻿namespace Fanex.BetList.KenoLottery.Tests.Builder.StatusBuilder
 {
-    using Core.Builder.StatusBuilder;
-    using Core.Entities;
+    using Fanex.BetList.Core.Builder.StatusBuilder;
+    using Fanex.BetList.Core.Entities;
     using NSubstitute;
     using NUnit.Framework;
 

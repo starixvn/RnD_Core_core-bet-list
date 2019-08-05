@@ -1,7 +1,8 @@
 ﻿namespace Fanex.BetList.KenoLottery.Tests.Builder.ChoiceBuilder
 {
-    using Core.Builder.ChoiceBuilder;
-    using Core.Entities;
+    using Fanex.BetList.Core.Builder.ChoiceBuilder;
+    using Fanex.BetList.Core.Constants;
+    using Fanex.BetList.Core.Entities;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -16,7 +17,7 @@
         {
             _choice = new Choice1031();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = 1031;
+            _ticket.BetTypeId = KenoLotteryBetTypes.Max5D60;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
