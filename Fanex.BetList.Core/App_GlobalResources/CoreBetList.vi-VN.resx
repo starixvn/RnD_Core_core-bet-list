@@ -501,4 +501,13 @@
   <data name="Rebate" xml:space="preserve">
     <value>Chiết khấu</value>
   </data>
+  <data name="Exact" xml:space="preserve">
+    <value>Chính xác</value>
+  </data>
+  <data name="CornerBefore" xml:space="preserve">
+    <value>Phạt góc trước {0}:00</value>
+  </data>
+  <data name="NoCornerBefore" xml:space="preserve">
+    <value>Không có phạt góc trước {0}:00</value>
+  </data>
 </root>

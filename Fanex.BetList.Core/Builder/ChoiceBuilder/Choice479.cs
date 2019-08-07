@@ -13,14 +13,16 @@
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            Template.betTeam = ticket.BetTeam.ToLowerInvariant() == BetTeamValue.Y
+            var betOption = ticket.BetTeam.ToLowerInvariant() == BetTeamValue.Y
                 ? CoreBetList.CornerBefore
                 : CoreBetList.NoCornerBefore;
+
+            Template.betTeam = string.Format(betOption, ConvertByBetType.Hdp(ticket.Handicap1));
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
-            Template.Handicap.handicap = $"{ConvertByBetType.Hdp(ticket.Handicap1)}:00";
+            Template.Handicap = null;
             Template.betTeamClassName = Favorite;
         }
     }

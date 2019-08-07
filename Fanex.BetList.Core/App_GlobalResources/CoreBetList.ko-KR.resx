@@ -561,4 +561,19 @@
   <data name="Equal" xml:space="preserve">
     <value>동일한</value>
   </data>
+  <data name="Exact" xml:space="preserve">
+    <value>정확함</value>
+  </data>
+  <data name="SecondHalf" xml:space="preserve">
+    <value>후반전</value>
+  </data>
+  <data name="FirstHalf" xml:space="preserve">
+    <value>전반전</value>
+  </data>
+  <data name="CornerBefore" xml:space="preserve">
+    <value>{0}:00 이전 코너</value>
+  </data>
+  <data name="NoCornerBefore" xml:space="preserve">
+    <value>{0}:00 이전 코너 없음</value>
+  </data>
 </root>

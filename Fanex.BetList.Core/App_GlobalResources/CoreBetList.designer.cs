@@ -403,7 +403,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Corner Before.
+        ///   Looks up a localized string similar to Corner Before {0}:00.
         /// </summary>
         public static string CornerBefore {
             get {
@@ -1303,7 +1303,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No Corner Before.
+        ///   Looks up a localized string similar to No Corner Before {0}:00.
         /// </summary>
         public static string NoCornerBefore {
             get {

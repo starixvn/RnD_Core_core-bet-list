@@ -681,4 +681,13 @@
   <data name="Rebate" xml:space="preserve">
     <value>ส่วนลด</value>
   </data>
+  <data name="Exact" xml:space="preserve">
+    <value>แน่นอน</value>
+  </data>
+  <data name="CornerBefore" xml:space="preserve">
+    <value>ลูกเตะมุมก่อน {0}:00</value>
+  </data>
+  <data name="NoCornerBefore" xml:space="preserve">
+    <value>ไม่มีลูกเตะมุมก่อน {0}:00</value>
+  </data>
 </root>

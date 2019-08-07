@@ -884,9 +884,9 @@
     <value>Exact</value>
   </data>
   <data name="CornerBefore" xml:space="preserve">
-    <value>Corner Before</value>
+    <value>Corner Before {0}:00</value>
   </data>
   <data name="NoCornerBefore" xml:space="preserve">
-    <value>No Corner Before</value>
+    <value>No Corner Before {0}:00</value>
   </data>
 </root>

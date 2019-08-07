@@ -411,4 +411,13 @@
   <data name="Equal" xml:space="preserve">
     <value>同点</value>
   </data>
+  <data name="Exact" xml:space="preserve">
+    <value>正確</value>
+  </data>
+  <data name="CornerBefore" xml:space="preserve">
+    <value>{0}:00 前にコーナー</value>
+  </data>
+  <data name="NoCornerBefore" xml:space="preserve">
+    <value>{0}:00 前にコーナーがありません</value>
+  </data>
 </root>
