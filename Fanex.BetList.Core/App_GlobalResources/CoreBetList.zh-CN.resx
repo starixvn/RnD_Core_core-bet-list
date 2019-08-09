@@ -811,6 +811,6 @@
     <value>等于</value>
   </data>
   <data name="pending" xml:space="preserve">
-    <value>等待中</value>
+    <value>待定</value>
   </data>
 </root>
