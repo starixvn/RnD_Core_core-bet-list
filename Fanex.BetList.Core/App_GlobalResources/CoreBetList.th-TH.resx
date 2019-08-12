@@ -385,7 +385,7 @@
     <value>M = มาสเตอร์</value>
   </data>
   <data name="lblNeither" xml:space="preserve">
-    <value>ทั้งสอง</value>
+    <value>ไม่เป็นทั้งสอง</value>
   </data>
   <data name="lblRunning" xml:space="preserve">
     <value>ยอมรับการวางเดิมพันแล้ว</value>

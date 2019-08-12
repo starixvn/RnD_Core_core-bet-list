@@ -334,7 +334,7 @@
     <value>混合过关</value>
   </data>
   <data name="lblNeither" xml:space="preserve">
-    <value>皆不</value>
+    <value>两者皆不</value>
   </data>
   <data name="lblNo" xml:space="preserve">
     <value>否</value>
@@ -565,7 +565,7 @@
     <value>3球或以上</value>
   </data>
   <data name="Tie" xml:space="preserve">
-    <value>平局</value>
+    <value>和局</value>
   </data>
   <data name="time" xml:space="preserve">
     <value>时间</value>

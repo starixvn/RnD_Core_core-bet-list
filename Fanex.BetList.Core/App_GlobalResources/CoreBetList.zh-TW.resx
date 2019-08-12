@@ -418,7 +418,7 @@
     <value>M = 總代理</value>
   </data>
   <data name="lblNeither" xml:space="preserve">
-    <value>皆不</value>
+    <value>两者皆不</value>
   </data>
   <data name="lblNoDraw" xml:space="preserve">
     <value>不是和局</value>
@@ -535,7 +535,7 @@
     <value>大熱門</value>
   </data>
   <data name="Tie" xml:space="preserve">
-    <value>平局</value>
+    <value>和局</value>
   </data>
   <data name="time" xml:space="preserve">
     <value>時間</value>

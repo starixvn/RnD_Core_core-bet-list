@@ -510,4 +510,10 @@
   <data name="NoCornerBefore" xml:space="preserve">
     <value>Không có phạt góc trước {0}:00</value>
   </data>
+  <data name="lblNeither" xml:space="preserve">
+    <value>Không bên nào</value>
+  </data>
+  <data name="Tie" xml:space="preserve">
+    <value>Hòa</value>
+  </data>
 </root>

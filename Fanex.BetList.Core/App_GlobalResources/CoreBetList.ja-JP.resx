@@ -420,4 +420,10 @@
   <data name="NoCornerBefore" xml:space="preserve">
     <value>{0}:00 前にコーナーがありません</value>
   </data>
+  <data name="lblNeither" xml:space="preserve">
+    <value>得点なし</value>
+  </data>
+  <data name="Tie" xml:space="preserve">
+    <value>タイ</value>
+  </data>
 </root>

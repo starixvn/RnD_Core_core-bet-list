@@ -337,7 +337,7 @@
     <value>M=마스터</value>
   </data>
   <data name="lblNeither" xml:space="preserve">
-    <value>어느 쪽도 포함되지 않습니다.</value>
+    <value>양팀 모두 아닙니다</value>
   </data>
   <data name="lblRunning" xml:space="preserve">
     <value>진행중</value>
@@ -575,5 +575,8 @@
   </data>
   <data name="NoCornerBefore" xml:space="preserve">
     <value>{0}:00 이전 코너 없음</value>
+  </data>
+  <data name="Tie" xml:space="preserve">
+    <value>동점</value>
   </data>
 </root>
