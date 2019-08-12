@@ -22,7 +22,7 @@
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
-            Template.Handicap = null;
+            Template.Handicap.handicap = null;
             Template.betTeamClassName = Favorite;
         }
     }

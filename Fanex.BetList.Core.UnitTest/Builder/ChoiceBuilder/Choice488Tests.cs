@@ -26,7 +26,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            Assert.IsNull(_choice.Template.Handicap);
+            Assert.IsNull(_choice.Template.Handicap.handicap);
         }
 
         [Test]
