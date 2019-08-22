@@ -68,7 +68,7 @@
         public void RenderRefNo_Always_GetTransTimeBlock()
         {
             // Arrange
-            _ticket.TransId = 1243432423;
+            _ticket.TransId = 1_243_432_423;
 
             // Act
             var refNo = _trans.RenderRefNo(_ticket);
@@ -81,7 +81,7 @@
         public void RenderRTF_Always_GetExpectedRTFText()
         {
             // Arrange
-            _ticket.TransId = 1243432423;
+            _ticket.TransId = 1_243_432_423;
             _ticket.TransDate = new DateTime(2012, 12, 12, 12, 12, 12);
 
             // Act
@@ -108,7 +108,7 @@
         public void RenderRefNoRTF_Always_GetExpectedRTFText()
         {
             // Arrange
-            _ticket.TransId = 1243432423;
+            _ticket.TransId = 1_243_432_423;
 
             // Act
             var excelText = _trans.RenderRefNoRTF(_ticket, null);

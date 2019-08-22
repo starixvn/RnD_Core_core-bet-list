@@ -28,10 +28,10 @@
         [TestCase("h1", "Home to Win by 1 Goal")]
         [TestCase("h2", "Home to Win by 2 Goals")]
         [TestCase("h3", "Home to Win by 3+ Goals")]
-        public void BuildBetTeam_BetTeamStartsWithH_BetChoiceStartsWithHome(string betTeam, string expectedBetChoice)
+        public void BuildBetTeam_BetTeamStartsWithH_BetChoiceStartsWithHome(string homeBetTeam, string expectedBetChoice)
         {
             // Arrange.
-            _ticket.BetTeam = betTeam;
+            _ticket.BetTeam = homeBetTeam;
 
             // Act.
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -46,10 +46,10 @@
         [TestCase("a1", "Away to Win by 1 Goal")]
         [TestCase("a2", "Away to Win by 2 Goals")]
         [TestCase("a3", "Away to Win by 3+ Goals")]
-        public void BuildBetTeam_BetTeamStartsWithA_BetChoiceStartsWithAway(string betTeam, string expectedBetChoice)
+        public void BuildBetTeam_BetTeamStartsWithA_BetChoiceStartsWithAway(string awayBetTeam, string expectedBetChoice)
         {
             // Arrange.
-            _ticket.BetTeam = betTeam;
+            _ticket.BetTeam = awayBetTeam;
 
             // Act.
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());

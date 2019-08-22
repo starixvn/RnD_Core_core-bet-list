@@ -57,9 +57,9 @@
         }
 
         [TestCase("Betchoice=10,CockOwner=a,b")]
-        public void BuildBetTeam_TransDescContainsInvalidData_ReturnEmptyMemberChoice(string transDesc)
+        public void BuildBetTeam_TransDescContainsInvalidData_ReturnEmptyMemberChoice(string invalidTransDesc)
         {
-            _ticket.TransDesc = transDesc;
+            _ticket.TransDesc = invalidTransDesc;
 
             var actualMemberChoice = _choice.Render(_ticket, _ticketHelper, null, false).betTeam;
 
