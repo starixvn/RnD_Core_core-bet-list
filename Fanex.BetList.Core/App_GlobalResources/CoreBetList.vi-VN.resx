@@ -193,7 +193,7 @@
     <value>Xỉu</value>
   </data>
   <data name="voided" xml:space="preserve">
-    <value>Hủy bỏ</value>
+    <value>Hủy</value>
   </data>
   <data name="waiting" xml:space="preserve">
     <value>Đang Chờ</value>

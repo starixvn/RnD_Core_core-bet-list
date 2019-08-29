@@ -160,7 +160,7 @@
     <value>오버</value>
   </data>
   <data name="pending" xml:space="preserve">
-    <value>보류</value>
+    <value>대기중</value>
   </data>
   <data name="race" xml:space="preserve">
     <value>경주</value>
@@ -190,7 +190,7 @@
     <value>총</value>
   </data>
   <data name="reject" xml:space="preserve">
-    <value>거부</value>
+    <value>거부됨</value>
   </data>
   <data name="running" xml:space="preserve">
     <value>진행중</value>
@@ -199,7 +199,7 @@
     <value>무승부</value>
   </data>
   <data name="waiting" xml:space="preserve">
-    <value> 대기중</value>
+    <value>대기중</value>
   </data>
   <data name="refund" xml:space="preserve">
     <value>환불</value>
@@ -346,7 +346,7 @@
     <value>시스템 팔레이</value>
   </data>
   <data name="lblWaiting" xml:space="preserve">
-    <value> 대기중</value>
+    <value>대기중</value>
   </data>
   <data name="lblWon" xml:space="preserve">
     <value>승리</value>

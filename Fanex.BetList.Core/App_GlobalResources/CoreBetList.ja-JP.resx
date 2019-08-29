@@ -160,7 +160,7 @@
     <value>勝ち負け</value>
   </data>
   <data name="won" xml:space="preserve">
-    <value>勝利</value>
+    <value>勝ち</value>
   </data>
   <data name="lblMixParlay" xml:space="preserve">
     <value>ミックスパーレー</value>
@@ -178,7 +178,7 @@
     <value>ドロー</value>
   </data>
   <data name="waiting" xml:space="preserve">
-    <value>待っている</value>
+    <value>承認中</value>
   </data>
   <data name="refund" xml:space="preserve">
     <value>払い戻し</value>
@@ -235,13 +235,13 @@
     <value>負け</value>
   </data>
   <data name="lblRunning" xml:space="preserve">
-    <value>実行中</value>
+    <value>進行中</value>
   </data>
   <data name="lblWaiting" xml:space="preserve">
-    <value>待っている</value>
+    <value>承認中</value>
   </data>
   <data name="lblWon" xml:space="preserve">
-    <value>勝利</value>
+    <value>勝ち</value>
   </data>
   <data name="league" xml:space="preserve">
     <value>リーグ</value>
@@ -388,7 +388,7 @@
     <value>アウェイ</value>
   </data>
   <data name="ResultPending" xml:space="preserve">
-    <value>結果が保留中です</value>
+    <value>結果が保留中</value>
   </data>
   <data name="UnderSettlement" xml:space="preserve">
     <value>支払い中</value>
@@ -404,5 +404,8 @@
   </data>
   <data name="AbnormalBet" xml:space="preserve">
     <value>異常なベット</value>
+  </data>
+  <data name="pending" xml:space="preserve">
+    <value>保留中</value>
   </data>
 </root>

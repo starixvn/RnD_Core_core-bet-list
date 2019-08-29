@@ -193,7 +193,7 @@
     <value>总和</value>
   </data>
   <data name="reject" xml:space="preserve">
-    <value>取消</value>
+    <value>已取消</value>
   </data>
   <data name="running" xml:space="preserve">
     <value>进行中</value>
