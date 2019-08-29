@@ -32,14 +32,11 @@ a {
 }
 
 div.match + div.league + div.no-details {
+    background: none repeat scroll 0 0 transparent;
     color: #666666;
+    font-weight: normal;
     line-height: 15px;
     margin-top: 1px;
-}
-
-div.match + div.league + div.no-details {
-    background: none repeat scroll 0 0 transparent;
-    font-weight: normal;
     text-align: right;
     text-transform: none;
 }
@@ -57,33 +54,25 @@ div.match + div.league + div.no-details {
 .firstGoal {
     background: url("Images/firstGoal.gif") no-repeat scroll center center transparent;
     display: inline;
-    height: 10px;
     padding: 0 4px;
-    width: 14px;
 }
 
 .lastGoal {
     background: url("Images/lastGoal.gif") no-repeat scroll center center transparent;
     display: inline;
-    height: 10px;
     padding: 0 4px;
-    width: 14px;
 }
 
 .fhFirstGoal {
     background: url(Images/1F.gif) no-repeat scroll center center transparent;
     display: inline;
-    height: 10px;
     padding: 0 4px;
-    width: 14px;
 }
 
 .fhLastGoal {
     background: url(Images/1L.gif) no-repeat scroll center center transparent;
     display: inline;
-    height: 10px;
     padding: 0 4px;
-    width: 14px;
 }
 
 .match {
@@ -100,9 +89,9 @@ div.match + div.league + div.no-details {
     color: #606060;
 }
 
-    .handicap.custom {
-        font-weight: bold;
-    }
+.handicap.custom {
+    font-weight: bold;
+}
 
 .sport {
     color: #0066CC;
@@ -119,21 +108,13 @@ div.match + div.league + div.no-details {
     color: #755200;
     display: inline;
     font-weight: bold;
-    height: 10px;
     line-height: 20px;
     padding: 0 1px 0 18px;
-    width: 14px;
 }
 
 .detail:hover {
-        background: url("Images/q_Icon_2.png") no-repeat scroll left center transparent;
-    color: #755200;
+    background: url("Images/q_Icon_2.png") no-repeat scroll left center transparent;
     cursor: pointer;
-    display: inline;
-    font-weight: bold;
-    height: 10px;
-        padding: 0 1px 0 18px;
-    width: 14px;
 }
 
 .combinationLink {
@@ -154,10 +135,10 @@ div.match + div.league + div.no-details {
     font-weight: bold;
 }
 
-    .detail-link:hover,
-    .detail-link:focus {
-        color: #755200;
-    }
+.detail-link:hover,
+.detail-link:focus {
+    color: #755200;
+}
 
 .scoremap {
     float: left;

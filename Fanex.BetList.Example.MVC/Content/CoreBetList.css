@@ -32,14 +32,11 @@ a {
 }
 
 div.match + div.league + div.no-details {
+    background: none repeat scroll 0 0 transparent;
     color: #666666;
+    font-weight: normal;
     line-height: 15px;
     margin-top: 1px;
-}
-
-div.match + div.league + div.no-details {
-    background: none repeat scroll 0 0 transparent;
-    font-weight: normal;
     text-align: right;
     text-transform: none;
 }
@@ -57,33 +54,25 @@ div.match + div.league + div.no-details {
 .firstGoal {
     background: url("Images/firstGoal.gif") no-repeat scroll center center transparent;
     display: inline;
-    height: 10px;
     padding: 0 4px;
-    width: 14px;
 }
 
 .lastGoal {
     background: url("Images/lastGoal.gif") no-repeat scroll center center transparent;
     display: inline;
-    height: 10px;
     padding: 0 4px;
-    width: 14px;
 }
 
 .fhFirstGoal {
     background: url(Images/1F.gif) no-repeat scroll center center transparent;
     display: inline;
-    height: 10px;
     padding: 0 4px;
-    width: 14px;
 }
 
 .fhLastGoal {
     background: url(Images/1L.gif) no-repeat scroll center center transparent;
     display: inline;
-    height: 10px;
     padding: 0 4px;
-    width: 14px;
 }
 
 .match {
@@ -119,22 +108,14 @@ div.match + div.league + div.no-details {
     color: #755200;
     display: inline;
     font-weight: bold;
-    height: 10px;
     line-height: 20px;
     padding: 0 1px 0 18px;
-    width: 14px;
 }
 
-.detail:hover {
+    .detail:hover {
         background: url("Images/q_Icon_2.png") no-repeat scroll left center transparent;
-    color: #755200;
-    cursor: pointer;
-    display: inline;
-    font-weight: bold;
-    height: 10px;
-        padding: 0 1px 0 18px;
-    width: 14px;
-}
+        cursor: pointer;
+    }
 
 .combinationLink {
     line-height: 20px;
@@ -234,9 +215,9 @@ div.match + div.league + div.no-details {
     width: 18px;
 }
 
-.bonus-icon:hover {
-    cursor: pointer
-}
+    .bonus-icon:hover {
+        cursor: pointer
+    }
 
 .rebate-bonus-icon {
     background: url(Images/rebateBonus.png) no-repeat scroll center center transparent;
