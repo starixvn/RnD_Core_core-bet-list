@@ -6,106 +6,105 @@ namespace Fanex.BetList.Core.UnitTest.Common
 
     public static class TestData
     {
-        private static ITicket Ticket
+        private static ITicket CreateTicket()
         {
-            get
+            var ticket = new Ticket
             {
-                var ticket = new Ticket
-                {
-                    ActualStake = 10.22M,
-                    AgentComm = -0.01M,
-                    AgentDiscount = 0,
-                    AgentPositionTaking = 0.4M,
-                    AgentWinlost = 2.04M,
-                    AwayId = 172,
-                    BetCheck = null,
-                    BetId = 0,
-                    BetTeam = string.Empty,
-                    BetTypeId = 1,
-                    Comm = 0.01M,
-                    CommStatus = "0",
-                    CustId = 244288,
-                    EventDate = new DateTime(2013, 12, 16, 12, 05, 00),
-                    EventStatus = null,
-                    Handicap1 = 0,
-                    Handicap2 = 0.75M,
-                    HomeId = 549,
-                    IP = "202.156.8.236",
-                    IsLive = false,
-                    IsNeutral = false,
-                    LeagueId = 10,
-                    LiveAwayScore = 0,
-                    LiveHomeScore = 0,
-                    MasterDiscount = 0,
-                    MasterOdds = -0.25M,
-                    MasterPositionTaking = 0.4M,
-                    MasterWinlost = 2.04M,
-                    MatchCode = "2006",
-                    MatchId = 7435516,
-                    Odds = -0.73M,
-                    OddsType = "4",
-                    PlayerComm = 0,
-                    Race = null,
-                    RefNo = "100000000000",
-                    ShowTime = "<font color=\"red\">LIVE</font> 12:15AM",
-                    SportTypeId = 1,
-                    Stake = 14,
-                    Status = "LOSE",
-                    SuperComm = 0,
-                    SuperDiscount = 0,
-                    SuperPositionTaking = 0,
-                    SuperWinlost = 0,
-                    TransDate = new DateTime(2014, 01, 20, 11, 59, 00),
-                    TransId = 5386789330,
-                    UserName = "MHOSD06006",
-                    Winlost = -2.11M,
-                    WinlostDate = new DateTime(2014, 01, 20, 12, 00, 00),
-                    BetdaqId = -1,
-                    ExtraInfo = "<p />"
-                };
+                ActualStake = 10.22M,
+                AgentComm = -0.01M,
+                AgentDiscount = 0,
+                AgentPositionTaking = 0.4M,
+                AgentWinlost = 2.04M,
+                AwayId = 172,
+                BetCheck = null,
+                BetId = 0,
+                BetTeam = string.Empty,
+                BetTypeId = 1,
+                Comm = 0.01M,
+                CommStatus = "0",
+                CustId = 244288,
+                EventDate = new DateTime(2013, 12, 16, 12, 05, 00),
+                EventStatus = null,
+                Handicap1 = 0,
+                Handicap2 = 0.75M,
+                HomeId = 549,
+                IP = "202.156.8.236",
+                IsLive = false,
+                IsNeutral = false,
+                LeagueId = 10,
+                LiveAwayScore = 0,
+                LiveHomeScore = 0,
+                MasterDiscount = 0,
+                MasterOdds = -0.25M,
+                MasterPositionTaking = 0.4M,
+                MasterWinlost = 2.04M,
+                MatchCode = "2006",
+                MatchId = 7435516,
+                Odds = -0.73M,
+                OddsType = "4",
+                PlayerComm = 0,
+                Race = null,
+                RefNo = "100000000000",
+                ShowTime = "<font color=\"red\">LIVE</font> 12:15AM",
+                SportTypeId = 1,
+                Stake = 14,
+                Status = "LOSE",
+                SuperComm = 0,
+                SuperDiscount = 0,
+                SuperPositionTaking = 0,
+                SuperWinlost = 0,
+                TransDate = new DateTime(2014, 01, 20, 11, 59, 00),
+                TransId = 5386789330,
+                UserName = "MHOSD06006",
+                Winlost = -2.11M,
+                WinlostDate = new DateTime(2014, 01, 20, 12, 00, 00),
+                BetdaqId = -1,
+                ExtraInfo = "<p />"
+            };
 
-                return ticket;
-            }
+            return ticket;
         }
 
-        private static ITicketData TicketData
+        private static ITicketData CreateTicketData()
         {
-            get
+            var ticketData = new TicketData
             {
-                var ticketData = new TicketData
-                {
-                    RefNo = "100000000000",
-                    Odds = 1,
-                    Stake = 5,
-                    Status = "WON",
-                    AgentPT = 0.38M,
-                    MasterPT = 0.31M,
-                    SuperPT = 0.01M,
-                    BetTypeId = 1,
-                    BetTeam = "2"
-                };
+                RefNo = "100000000000",
+                Odds = 1,
+                Stake = 5,
+                Status = "WON",
+                AgentPT = 0.38M,
+                MasterPT = 0.31M,
+                SuperPT = 0.01M,
+                BetTypeId = 1,
+                BetTeam = "2"
+            };
 
-                return ticketData;
-            }
+            return ticketData;
         }
 
         public static ITicket CreateTicket(int betTypeId)
         {
-            Ticket.BetTypeId = betTypeId;
+            var ticket = CreateTicket();
 
-            return Ticket;
+            ticket.BetTypeId = betTypeId;
+
+            return ticket;
         }
 
         public static ITicketData CreateTicketData(int betTypeId)
         {
-            TicketData.BetTypeId = betTypeId;
+            var ticketData = CreateTicketData();
 
-            return TicketData;
+            ticketData.BetTypeId = betTypeId;
+
+            return ticketData;
         }
 
         public static ITicketData CreateTicketData(int betTypeId, string refNo, string status)
         {
-            var ticketData = TicketData;
+            var ticketData = CreateTicketData();
+
             ticketData.BetTypeId = betTypeId;
             ticketData.RefNo = refNo;
             ticketData.Status = status;

@@ -1,6 +1,7 @@
 ﻿namespace Fanex.BetList.CashOut.Tests.Builder.ChoiceBuilder
 {
     using Core.Builder.ChoiceBuilder;
+    using Core.Constants;
     using Core.Entities;
     using Core.UnitTest.Common;
     using NSubstitute;
@@ -16,8 +17,7 @@
         [SetUp]
         public void Setup()
         {
-            _ticket = TestData.CreateTicket(912);
-            _ticket.BetTypeId = 912;
+            _ticket = TestData.CreateTicket(CashOutBetTypes.Bought);
             _choice = new Choice912();
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
@@ -26,7 +26,7 @@
         public void Render_Always_ReturnCashOutLabelWithOriginalBetTypeTemplate()
         {
             // Arrange
-            _ticket.OriginalBetType = 6;
+            _ticket.OriginalBetType = BetTypes.TotalGoal;
             _ticket.RefNo = "10000";
             _ticket.BetdaqId = 324345345324;
 
@@ -34,7 +34,7 @@
             var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            _ticket.BetTypeId = 6;
+            _ticket.BetTypeId = BetTypes.TotalGoal;
             var cashOutLabelHtml = "<div class=\"underdog\">Bought from No.: 324345345324</div>";
             var choice = new Choice6();
             var originalBetTypeTemplate = choice.Render(_ticket, _ticketHelper, null, false);

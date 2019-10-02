@@ -2,6 +2,7 @@
 {
     using Core.App_GlobalResources;
     using Core.Builder.StatusBuilder;
+    using Core.Constants;
     using Core.Entities;
     using Core.UnitTest.Common;
     using Core.Utils;
@@ -22,19 +23,19 @@
         [SetUp]
         public void Setup()
         {
-            _ticket = TestData.CreateTicket(911);
+            _ticket = TestData.CreateTicket(CashOutBetTypes.CashOut);
             _ticketHelper = Substitute.For<ITicketHelper>();
             _status = new Status911();
             _rtfHelper = CreateRTFHelper();
         }
 
-        [TestCase("Void")]
-        [TestCase("Refund")]
-        public void BuildResult_StatusIsVoidOrRefund_ShowCashOutBelowStatus(string status)
+        [TestCase(BetStatus.Void, "Void")]
+        [TestCase(BetStatus.Refund, "Refund")]
+        public void BuildResult_StatusIsVoidOrRefund_ShowCashOutBelowStatus(string status, string originalDisplayedStatus)
         {
             // Arrange
             _ticket.Status = status;
-            var expectedTemplate = string.Format(ResultHtmlFormat, status, CoreBetList.CashOut);
+            var expectedTemplate = string.Format(ResultHtmlFormat, originalDisplayedStatus, CoreBetList.CashOut);
 
             // Act
             var template = _status.Render(_ticket, _ticketHelper, null, false);
@@ -43,12 +44,12 @@
             Assert.AreEqual(expectedTemplate, template.result);
         }
 
-        [TestCase("Win")]
-        [TestCase("Lose")]
-        [TestCase("Draw")]
-        [TestCase("Reject")]
-        [TestCase("Waiting")]
-        [TestCase("Running")]
+        [TestCase(BetStatus.Won)]
+        [TestCase(BetStatus.Lose)]
+        [TestCase(BetStatus.Draw)]
+        [TestCase(BetStatus.Reject)]
+        [TestCase(BetStatus.Waiting)]
+        [TestCase(BetStatus.Running)]
         public void BuildResult_StatusIsNotVoidOrRefund_ShowCashOutInstead(string status)
         {
             // Arrange
@@ -131,7 +132,7 @@
         {
             // Arrange
             _ticketHelper.HideStatusCashOutHistory.Returns(false);
-            _ticket.BetTypeId = 1;
+            _ticket.BetTypeId = BetTypes.Handicap;
 
             // Act
             _status.Render(_ticket, _ticketHelper, null, false);
@@ -145,7 +146,7 @@
         {
             // Arrange
             _ticketHelper.HideStatusCashOutHistory.Returns(false);
-            _ticket.BetdaqId = 1;
+            _ticket.BetdaqId = BetTypes.Handicap;
 
             // Act
             _status.Render(_ticket, _ticketHelper, null, false);
@@ -154,13 +155,13 @@
             Assert.AreEqual(_ticket.BetdaqId.ToString(), _status.Template.CashOutHistory.betdaqId);
         }
 
-        [TestCase("Void")]
-        [TestCase("Refund")]
-        public void BuildResultLRF_StatusIsVoidOrRefund_RemoveHtmlTag(string status)
+        [TestCase(BetStatus.Void, "Void")]
+        [TestCase(BetStatus.Refund, "Refund")]
+        public void BuildResultLRF_StatusIsVoidOrRefund_RemoveHtmlTag(string status, string originalDisplayedStatus)
         {
             // Arrange
             _ticket.Status = status;
-            var expectedTemplate = $"{status}\n({CoreBetList.CashOut})";
+            var expectedTemplate = $"{originalDisplayedStatus}\n({CoreBetList.CashOut})";
 
             // Act
             var template = _status.RenderRTF(_ticket, _ticketHelper, null, false, _rtfHelper);
@@ -169,12 +170,12 @@
             Assert.IsTrue(template.String.Contains(expectedTemplate));
         }
 
-        [TestCase("Win")]
-        [TestCase("Lose")]
-        [TestCase("Draw")]
-        [TestCase("Reject")]
-        [TestCase("Waiting")]
-        [TestCase("Running")]
+        [TestCase(BetStatus.Won)]
+        [TestCase(BetStatus.Lose)]
+        [TestCase(BetStatus.Draw)]
+        [TestCase(BetStatus.Reject)]
+        [TestCase(BetStatus.Waiting)]
+        [TestCase(BetStatus.Running)]
         public void BuildResultLRF_StatusIsNotVoidOrRefund_RemoveHtmlTag(string status)
         {
             // Arrange

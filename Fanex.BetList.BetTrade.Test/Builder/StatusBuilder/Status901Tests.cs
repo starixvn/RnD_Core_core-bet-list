@@ -21,15 +21,15 @@ namespace Fanex.BetList.BetTrade.Test.Builder.StatusBuilder
             ticketHelper = Substitute.For<ITicketHelper>();
             ticket = new Ticket
             {
-                Status = "Won"
+                Status = BetStatus.Won
             };
 
             rtfHelper = new RTFHelper().Clone();
         }
 
-        [TestCase("Void")]
-        [TestCase("Refund")]
-        public void BuildResult_StatusIsVoidOrRefund_ShowSoldStatusBelow(string ticketStatus)
+        [TestCase(BetStatus.Void, "Void")]
+        [TestCase(BetStatus.Refund, "Refund")]
+        public void BuildResult_StatusIsVoidOrRefund_ShowSoldStatusBelow(string ticketStatus, string originalDisplayedStatus)
         {
             // Arrange
             ticket.Status = ticketStatus;
@@ -39,14 +39,14 @@ namespace Fanex.BetList.BetTrade.Test.Builder.StatusBuilder
 
             // Assert
             Assert.AreEqual(
-                $"{ticketStatus}<br/><div style='font-weight: normal;'>({CoreBetList.Sold})</div>",
+                $"{originalDisplayedStatus}<br/><div style='font-weight: normal;'>({CoreBetList.Sold})</div>",
                 status.Template.result);
         }
 
-        [TestCase("Running")]
-        [TestCase("Won")]
-        [TestCase("Lose")]
-        [TestCase("Draw")]
+        [TestCase(BetStatus.Running)]
+        [TestCase(BetStatus.Won)]
+        [TestCase(BetStatus.Lose)]
+        [TestCase(BetStatus.Draw)]
         public void BuildResult_StatusIsNotVoidOrRefund_ShowSoldStatus(string ticketStatus)
         {
             // Arrange
@@ -85,8 +85,8 @@ namespace Fanex.BetList.BetTrade.Test.Builder.StatusBuilder
                 status.Template.result);
         }
 
-        [TestCase("Void", "Void\n(Sold)\n")]
-        [TestCase("Won", "Sold\n")]
+        [TestCase(BetStatus.Void, "Void\n(Sold)\n")]
+        [TestCase(BetStatus.Won, "Sold\n")]
         public void BuildResultRTF_Always_GetExpectedRTFText(string ticketStatus, string expected)
         {
             // Arrange

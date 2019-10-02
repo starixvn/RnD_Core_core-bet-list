@@ -1,6 +1,7 @@
 ﻿namespace Fanex.BetList.CashOut.Tests.Builder.ChoiceBuilder
 {
     using Core.Builder.ChoiceBuilder;
+    using Core.Constants;
     using Core.Entities;
     using Core.UnitTest.Common;
     using Core.Utils;
@@ -19,8 +20,7 @@
         [SetUp]
         public void Setup()
         {
-            _ticket = TestData.CreateTicket(911);
-            _ticket.BetTypeId = 911;
+            _ticket = TestData.CreateTicket(CashOutBetTypes.CashOut);
             _choice = new Choice911();
             _ticketHelper = Substitute.For<ITicketHelper>();
             _rtfHelper = CreateRTFHelper();
@@ -30,15 +30,15 @@
         public void Render_Always_ReturnCashOutLabelWithOriginalBetTypeTemplate()
         {
             // Arrange
-            _ticket.OriginalBetType = 6;
+            _ticket.OriginalBetType = BetTypes.TotalGoal;
             _ticket.RefNo = "10000";
 
             // Act
             var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            _ticket.BetTypeId = 6;
-            var cashOutLabelHtml = "<div class=\"underdog\">Cash Out from No.: 10000</div>";
+            const string cashOutLabelHtml = "<div class=\"underdog\">Cash Out from No.: 10000</div>";
+            _ticket.BetTypeId = BetTypes.TotalGoal;
             var choice = new Choice6();
             var originalBetTypeTemplate = choice.Render(_ticket, _ticketHelper, null, false);
             originalBetTypeTemplate.betTeam = cashOutLabelHtml + originalBetTypeTemplate.betTeam;
@@ -50,9 +50,10 @@
         public void GetBetTypeName_Always_ReturnBetTypeNameOfOriginalBetType()
         {
             // Arrange
-            _ticket.OriginalBetType = 1;
-            var expectedBetTypeName = "Handicap";
-            _ticketHelper.GetBetTypeNameById(1, Arg.Any<object>()).Returns(expectedBetTypeName);
+            const string expectedBetTypeName = "Handicap";
+
+            _ticket.OriginalBetType = BetTypes.Handicap;
+            _ticketHelper.GetBetTypeNameById(BetTypes.Handicap, Arg.Any<object>()).Returns(expectedBetTypeName);
 
             // Act
             var betTypeName = _choice.GetBetTypeName(_ticket, _ticketHelper);
@@ -65,15 +66,16 @@
         public void RenderRTF_Always_ReturnCashOutLabelWithOriginalBetTypeTemplate()
         {
             // Arrange
-            _ticket.OriginalBetType = 1;
+            _ticket.OriginalBetType = BetTypes.Handicap;
             _ticket.RefNo = "10000";
 
             // Act
             var template = _choice.RenderRTF(_ticket, _ticketHelper, null, false, _rtfHelper);
 
             // Assert
+            const string cashOutLabel = "Cash Out from No.: 10000";
+
             var choice = new Choice1();
-            var cashOutLabel = "Cash Out from No.: 10000";
             var originalBetTypeTemplate = choice.RenderRTF(_ticket, _ticketHelper, null, false, _rtfHelper);
             var expectedTemplate = cashOutLabel + "\n" + originalBetTypeTemplate[0].String;
             Assert.AreEqual(expectedTemplate, template[0].String);
@@ -83,7 +85,7 @@
         public void RenderRTF_CashOutLabel_HasPostFont()
         {
             // Arrange
-            _ticket.OriginalBetType = 1;
+            _ticket.OriginalBetType = BetTypes.Handicap;
             _ticket.RefNo = "10000";
 
             // Act
@@ -97,7 +99,7 @@
         public void RenderRTF_OriginalBetTypeTemplate_DoesNotChangeFont()
         {
             // Arrange
-            _ticket.OriginalBetType = 1;
+            _ticket.OriginalBetType = BetTypes.Handicap;
             _ticket.RefNo = "10000";
 
             // Act

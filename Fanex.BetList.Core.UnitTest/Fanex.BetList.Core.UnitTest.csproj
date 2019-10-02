@@ -97,6 +97,7 @@
     <Compile Include="Builder\ChoiceBuilder\Choice169Test.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Builder\ChoiceBuilder\Choice17000Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice170Test.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -232,7 +233,9 @@
     <Compile Include="Builder\OddsBuilder\Odds29Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds468Tests.cs" />
     <Compile Include="Builder\OddsBuilder\Odds1Test.cs" />
+    <Compile Include="Builder\StakeBuilder\Stake17000Test.cs" />
     <Compile Include="Builder\StakeBuilder\Stake1Test.cs" />
+    <Compile Include="Builder\StatusBuilder\Status17000Test.cs" />
     <Compile Include="Builder\StatusBuilder\Status221Tests.cs" />
     <Compile Include="Builder\StatusBuilder\Status38Tests.cs" />
     <Compile Include="Builder\StatusBuilder\Status606Tests.cs" />
@@ -259,8 +262,11 @@
     <Compile Include="Templates\Choice\Choice_TemplateTest.cs" />
     <Compile Include="Templates\Odds\Odds_TemplateTest.cs" />
     <Compile Include="Templates\Stake\Stake_Bonus_BlockTest.cs" />
-    <Compile Include="Templates\Stake\Stake_Bonus_BonusIcon_BlockTest.cs" />
-    <Compile Include="Templates\Stake\Stake_Bonus_Wallet_BlockTest.cs" />
+    <Compile Include="Templates\Stake\Stake_Bonus_NonPeakHoursPromotionIcon_BlockTest.cs" />
+    <Compile Include="Templates\Stake\Stake_Bonus_NormalBonus_BlockTest.cs" />
+    <Compile Include="Templates\Stake\Stake_Bonus_NormalBonus_BonusIcon_BlockTest.cs" />
+    <Compile Include="Templates\Stake\Stake_Bonus_NormalBonus_Wallet_BlockTest.cs" />
+    <Compile Include="Templates\Stake\Stake_Bonus_RebateBonusIcon_BlockTest.cs" />
     <Compile Include="Templates\Stake\Stake_OriginalStake_BlockTest.cs" />
     <Compile Include="Templates\Stake\Stake_TemplateTest.cs" />
     <Compile Include="Templates\Status\Status_CashOutHistory_BlockTest.cs" />

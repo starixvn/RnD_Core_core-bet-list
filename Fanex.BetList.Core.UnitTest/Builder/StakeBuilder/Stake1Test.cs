@@ -127,7 +127,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
         }
 
         [Test]
-        public void Render_WalletTypeAndRefCodeAreZero_HideBonusPart()
+        public void Render_WalletTypeAndRefCodeAreZero_HideNormalBonusPart()
         {
             // Arrange
             _ticket.WalletType = 0;
@@ -137,7 +137,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             var template = _stake.Render(_ticket);
 
             // Assert
-            Assert.IsFalse(template.Bonus.Visible);
+            Assert.IsFalse(template.Bonus.NormalBonus.Visible);
         }
 
         [Test]
@@ -151,7 +151,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             var template = _stake.Render(_ticket);
 
             // Assert
-            Assert.IsFalse(template.Bonus.BonusIcon.Visible);
+            Assert.IsFalse(template.Bonus.NormalBonus.BonusIcon.Visible);
         }
 
         [Test]
@@ -165,7 +165,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             var template = _stake.Render(_ticket);
 
             // Assert
-            Assert.IsTrue(template.Bonus.Wallet.Visible);
+            Assert.IsTrue(template.Bonus.NormalBonus.Wallet.Visible);
         }
 
         [Test]
@@ -181,7 +181,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             // Assert
             var expectedText = $"({CoreBetList.Bonus})";
 
-            Assert.AreEqual(expectedText, template.Bonus.Wallet.type);
+            Assert.AreEqual(expectedText, template.Bonus.NormalBonus.Wallet.type);
         }
 
         [Test]
@@ -195,7 +195,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             var template = _stake.Render(_ticket);
 
             // Assert
-            Assert.IsFalse(template.Bonus.BonusIcon.Visible);
+            Assert.IsFalse(template.Bonus.NormalBonus.BonusIcon.Visible);
         }
 
 
@@ -210,7 +210,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             var template = _stake.Render(_ticket);
 
             // Assert
-            Assert.IsTrue(template.Bonus.Wallet.Visible);
+            Assert.IsTrue(template.Bonus.NormalBonus.Wallet.Visible);
         }
 
 
@@ -227,7 +227,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             // Assert
             var expectedText = $"({CoreBetList.Cash})";
 
-            Assert.AreEqual(expectedText, template.Bonus.Wallet.type);
+            Assert.AreEqual(expectedText, template.Bonus.NormalBonus.Wallet.type);
         }
 
         [Test]
@@ -241,7 +241,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             var template = _stake.Render(_ticket);
 
             // Assert
-            Assert.IsTrue(template.Bonus.BonusIcon.Visible);
+            Assert.IsTrue(template.Bonus.NormalBonus.BonusIcon.Visible);
         }
 
         [Test]
@@ -257,7 +257,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             // Assert
             var expectedText = CoreBetList.ShowTransactionDetails;
 
-            Assert.AreEqual(expectedText, template.Bonus.BonusIcon.bonusIconTitle);
+            Assert.AreEqual(expectedText, template.Bonus.NormalBonus.BonusIcon.bonusIconTitle);
         }
 
         [Test]
@@ -271,7 +271,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             var template = _stake.Render(_ticket);
 
             // Assert
-            Assert.IsFalse(template.Bonus.Wallet.Visible);
+            Assert.IsFalse(template.Bonus.NormalBonus.Wallet.Visible);
         }
 
         [TestCase("<p1 t=\"2\" />")]
@@ -290,38 +290,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             Assert.IsTrue(template.Bonus.RebateBonusIcon.Visible);
         }
 
-        [TestCase("<p1 t=\"2\" />")]
-        [TestCase("<p1 t=\"2\" /><p25 s=\"100\" a=\"100\" />")]
-        [TestCase("<p1 t=\"2\" p=\"2\" />")]
-        [TestCase("<p1 p=\"2\" t=\"2\" />")]
-        public void Render_ExtraInfoContainsRebateBonusIndicator_HideBonusIcon(string extraInfo)
-        {
-            // Arrange
-            _ticket.ExtraInfo = extraInfo;
-
-            // Act
-            var template = _stake.Render(_ticket);
-
-            // Assert
-            Assert.IsFalse(template.Bonus.BonusIcon.Visible);
-        }
-
-        [TestCase("<p1 t=\"2\" />")]
-        [TestCase("<p1 t=\"2\" /><p25 s=\"100\" a=\"100\" />")]
-        [TestCase("<p1 t=\"2\" p=\"2\" />")]
-        [TestCase("<p1 p=\"2\" t=\"2\" />")]
-        public void Render_ExtraInfoContainsRebateBonusIndicator_HideWalletType(string extraInfo)
-        {
-            // Arrange
-            _ticket.ExtraInfo = extraInfo;
-
-            // Act
-            var template = _stake.Render(_ticket);
-
-            // Assert
-            Assert.IsFalse(template.Bonus.Wallet.Visible);
-        }
-
         [TestCase("<p1 t=\"1\" />")]
         [TestCase("<p1 t=\"3\" />")]
         [TestCase("<p1 p=\"2\" />")]
@@ -337,6 +305,38 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
 
             // Assert
             Assert.IsFalse(template.Bonus.RebateBonusIcon.Visible);
+        }
+
+        [TestCase("<p37 i=\"123\" />")]
+        [TestCase("<p37 i=\"2222\" /><p25 s=\"100\" a=\"100\" />")]
+        [TestCase("<p37 i=\"256\" p=\"2\" />")]
+        [TestCase("<p37 p=\"2\" i=\"112\" />")]
+        public void Render_ExtraInfoContainsNonPeakHoursPromotionIndicator_ShowNonPeakHoursPromotionIcon(string extraInfo)
+        {
+            // Arrange
+            _ticket.ExtraInfo = extraInfo;
+
+            // Act
+            var template = _stake.Render(_ticket);
+
+            // Assert
+            Assert.IsTrue(template.Bonus.NonPeakHoursPromotionIcon.Visible);
+        }
+
+        [TestCase("<p1 i=\"222\" />")]
+        [TestCase("<p37 t=\"2\" /><p25 s=\"100\" a=\"100\" />")]
+        [TestCase("")]
+        [TestCase(null)]
+        public void Render_ExtraInfoDoesNotContainNonPeakHoursPromotionIndicator_HideNonPeakHoursPromotionIcon(string extraInfo)
+        {
+            // Arrange
+            _ticket.ExtraInfo = extraInfo;
+
+            // Act
+            var template = _stake.Render(_ticket);
+
+            // Assert
+            Assert.IsFalse(template.Bonus.NonPeakHoursPromotionIcon.Visible);
         }
 
         [Test]
@@ -406,7 +406,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             Assert.AreEqual(expectedText, stakeLines[stakeLines.Length - 1]);
         }
 
-
         [TestCase("<p1 t=\"2\" />")]
         [TestCase("<p1 t=\"2\" /><p25 s=\"100\" a=\"100\" />")]
         [TestCase("<p1 t=\"2\" p=\"2\" />")]
@@ -426,7 +425,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             Assert.AreEqual(expectedText, stakeLines[stakeLines.Length - 1]);
         }
 
-
         [TestCase("<p1 t=\"1\" />")]
         [TestCase("<p1 t=\"3\" />")]
         [TestCase("<p1 p=\"2\" />")]
@@ -445,5 +443,41 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             Assert.AreEqual(1, stakeLines.Length);
         }
 
+        [TestCase("<p37 i=\"123\" />")]
+        [TestCase("<p37 i=\"2222\" /><p25 s=\"100\" a=\"100\" />")]
+        [TestCase("<p37 i=\"256\" p=\"2\" />")]
+        [TestCase("<p37 p=\"2\" i=\"112\" />")]
+        public void RenderRTF_ExtraInfoContainsNonPeakHoursPromotionIndicatorLastLineIsPromotion(string extraInfo)
+        {
+            // Arrange
+            _ticket.ExtraInfo = extraInfo;
+
+            // Act
+            var stakeRichText = _stake.RenderRTF(_ticket, new RTFHelper().Clone());
+            var stakeLines = stakeRichText.String.Split('\n');
+
+            // Assert
+            var expectedText = $"({CoreBetList.Promotion})";
+
+            Assert.AreEqual(expectedText, stakeLines[stakeLines.Length - 1]);
+        }
+
+
+        [TestCase("<p1 i=\"222\" />")]
+        [TestCase("<p37 t=\"2\" />")]
+        [TestCase("")]
+        [TestCase(null)]
+        public void RenderRTF_ExtraInfoDoesNotContainNonPeakHoursPromotionIndicator_HidePromotionPart(string extraInfo)
+        {
+            // Arrange
+            _ticket.ExtraInfo = extraInfo;
+
+            // Act
+            var stakeRichText = _stake.RenderRTF(_ticket, new RTFHelper().Clone());
+            var stakeLines = stakeRichText.String.Split('\n');
+
+            // Assert
+            Assert.AreEqual(1, stakeLines.Length);
+        }
     }
 }

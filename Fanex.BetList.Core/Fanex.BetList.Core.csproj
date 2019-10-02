@@ -78,6 +78,7 @@
     <Content Include="Styles\Images\bonus.png" />
     <Content Include="Styles\Images\firstGoal.gif" />
     <Content Include="Styles\Images\lastGoal.gif" />
+    <Content Include="Styles\Images\nphPromotion.png" />
     <Content Include="Styles\Images\rebateBonus.png" />
     <Content Include="Templates\SystemParlayDetail.htm" />
     <Content Include="Templates\Status.htm" />
@@ -162,6 +163,7 @@
     <Compile Include="Builder\BetListBaseBuilder.cs" />
     <Compile Include="Builder\BetListExcelBuilder.cs" />
     <Compile Include="Builder\BetListHTMLBuilder.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice17000.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice22.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1.cs">
       <SubType>Code</SubType>
@@ -323,6 +325,7 @@
     <Compile Include="Builder\OddsBuilder\Odds468.cs" />
     <Compile Include="Builder\StakeBuilder\IStake.cs" />
     <Compile Include="Builder\StakeBuilder\Stake1.cs" />
+    <Compile Include="Builder\StakeBuilder\Stake17000.cs" />
     <Compile Include="Builder\StatusBuilder\IStatus.cs" />
     <Compile Include="Builder\StatusBuilder\Status1.cs" />
     <Compile Include="Builder\StatusBuilder\Status10.cs" />
@@ -353,6 +356,7 @@
     <Compile Include="Builder\StatusBuilder\Status154.cs" />
     <Compile Include="Builder\StatusBuilder\Status155.cs" />
     <Compile Include="Builder\StatusBuilder\Status156.cs" />
+    <Compile Include="Builder\StatusBuilder\Status17000.cs" />
     <Compile Include="Builder\StatusBuilder\Status221.cs" />
     <Compile Include="Builder\StatusBuilder\Status38.cs" />
     <Compile Include="Builder\StatusBuilder\Status606.cs" />

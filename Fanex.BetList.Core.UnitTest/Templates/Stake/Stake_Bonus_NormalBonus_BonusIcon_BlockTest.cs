@@ -5,8 +5,7 @@
     using Core.Templates;
     using NUnit.Framework;
 
-    [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleClass", Justification = "Reviewed.")]
-    public class Stake_Bonus_BonusIcon_BlockWrapper : Stake_Bonus_BonusIcon_Block
+    public class Stake_Bonus_NormalBonus_BonusIcon_BlockWrapper : Stake_Bonus_NormalBonus_BonusIcon_Block
     {
         public void SetAssigned(bool isAssigned)
         {
@@ -14,20 +13,19 @@
         }
     }
 
-    [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleClass", Justification = "Reviewed.")]
-    public class Stake_Bonus_BonusIcon_BlockTest
+    public class Stake_Bonus_NormalBonus_BonusIcon_BlockTest
     {
         private const string BonusIconTemplate = "<span class=\"bonus-icon\" onclick=\"javascript:ShowBonusDetails({0},{1});\" title=\"{2}\"></span>";
 
         [Test]
         public void ToString_BlockIsInvisible_ReturnEmptyString()
         {
-            // Arrange
-            var bonusIconBlock = new Stake_Bonus_BonusIcon_Block();
+            // Arrange.
+            var bonusIconBlock = new Stake_Bonus_NormalBonus_BonusIcon_Block();
 
             bonusIconBlock.Visible = false;
 
-            // Act
+            // Act.
             var bonusIconHtml = new StringBuilder();
 
             bonusIconBlock.ToString(ref bonusIconHtml);
@@ -39,18 +37,19 @@
         [Test]
         public void ToString_DoNothing_ReturnDefaultHtml()
         {
-            // Arrange
-            var bonusIconBlock = new Stake_Bonus_BonusIcon_Block();
+            // Arrange.
+            var bonusIconBlock = new Stake_Bonus_NormalBonus_BonusIcon_Block();
 
-            // Act
+            // Act.
             var bonusIconHtml = new StringBuilder();
 
             bonusIconBlock.ToString(ref bonusIconHtml);
 
             // Assert.
-            var refCode = "{refCode}";
-            var transId = "{transId}";
-            var bonusIconTitle = "{bonusIconTitle}";
+            const string refCode = "{refCode}";
+            const string transId = "{transId}";
+            const string bonusIconTitle = "{bonusIconTitle}";
+
             var expectedHtml = string.Format(BonusIconTemplate, refCode, transId, bonusIconTitle);
 
             Assert.AreEqual(expectedHtml, bonusIconHtml.ToString());
@@ -59,17 +58,18 @@
         [Test]
         public void ToString_AssignBlockProperties_ReturnHtmlWithPassedData()
         {
-            // Arrange
-            var refCode = "refCode";
-            var transId = "transId";
-            var bonusIconTitle = "bonusIconTitle";
-            var bonusIconBlock = new Stake_Bonus_BonusIcon_Block();
+            // Arrange.
+            const string refCode = "refCode";
+            const string transId = "transId";
+            const string bonusIconTitle = "bonusIconTitle";
+
+            var bonusIconBlock = new Stake_Bonus_NormalBonus_BonusIcon_Block();
 
             bonusIconBlock.refCode = refCode;
             bonusIconBlock.transId = transId;
             bonusIconBlock.bonusIconTitle = bonusIconTitle;
 
-            // Act
+            // Act.
             var bonusIconHtml = new StringBuilder();
 
             bonusIconBlock.ToString(ref bonusIconHtml);
@@ -83,22 +83,24 @@
         [Test]
         public void ToString_WhenCallAppend_ReturnHtmlWithAppendedText()
         {
-            // Arrange
-            var extendedValue = "extended";
-            var bonusIconBlock = new Stake_Bonus_BonusIcon_BlockWrapper();
+            // Arrange.
+            const string extendedValue = "extended";
+
+            var bonusIconBlock = new Stake_Bonus_NormalBonus_BonusIcon_BlockWrapper();
 
             bonusIconBlock.SetAssigned(true);
             bonusIconBlock.Append(extendedValue);
 
-            // Act
+            // Act.
             var bonusIconHtml = new StringBuilder();
 
             bonusIconBlock.ToString(ref bonusIconHtml);
 
             // Assert.
-            var refCode = "{refCode}";
-            var transId = "{transId}";
-            var bonusIconTitle = "{bonusIconTitle}";
+            const string refCode = "{refCode}";
+            const string transId = "{transId}";
+            const string bonusIconTitle = "{bonusIconTitle}";
+
             var expectedHtml = string.Format(BonusIconTemplate, refCode, transId, bonusIconTitle) + extendedValue;
 
             Assert.AreEqual(expectedHtml, bonusIconHtml.ToString());
@@ -107,22 +109,21 @@
         [Test]
         public void ToString_WhenCallSetValue_ReturnSetText()
         {
-            // Arrange
-            var extendedValue = "extended";
-            var bonusIconBlock = new Stake_Bonus_BonusIcon_BlockWrapper();
+            // Arrange.
+            const string newText = "extended";
+
+            var bonusIconBlock = new Stake_Bonus_NormalBonus_BonusIcon_BlockWrapper();
 
             bonusIconBlock.SetAssigned(true);
-            bonusIconBlock.SetValue(extendedValue);
+            bonusIconBlock.SetValue(newText);
 
-            // Act
+            // Act.
             var bonusIconHtml = new StringBuilder();
 
             bonusIconBlock.ToString(ref bonusIconHtml);
 
             // Assert.
-            var expectedHtml = extendedValue;
-
-            Assert.AreEqual(expectedHtml, bonusIconHtml.ToString());
+            Assert.AreEqual(newText, bonusIconHtml.ToString());
         }
     }
 }

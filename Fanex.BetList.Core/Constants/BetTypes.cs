@@ -285,5 +285,6 @@
         public const int SetXGameYTotalPointZWinner = 1332;
         public const int SetXGameYAndGameYAdd1Winner = 1333;
         public const int SetXGameYAndGameYAdd1Points = 1334;
+        public const int SabaLuckySpin = 17000;
     }
 }

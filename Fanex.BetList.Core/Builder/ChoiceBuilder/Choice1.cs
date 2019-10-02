@@ -438,12 +438,12 @@
         {
             if (ticket.IsSportsbook() && ticket.EventDate.HasValue)
             {
-                Template.EventDate.Visible = true;
+                Template.EventDate.Show();
                 Template.EventDate.eventDate = Formatter.FormatDateTimeEn12ShortMonthNoSec(ticket.EventDate);
             }
             else
             {
-                Template.EventDate.Visible = false;
+                Template.EventDate.Hide();
             }
         }
 

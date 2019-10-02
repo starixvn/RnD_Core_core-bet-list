@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
+    using Fanex.BetList.Core.Constants;
     using Fanex.BetList.Core.Entities;
     using NSubstitute;
     using NUnit.Framework;
@@ -24,13 +25,12 @@
         [Test]
         public void Render_WhenCalled_DoNotChangeBetType()
         {
-            _ticket.BetTypeId = 901;
+            _ticket.BetTypeId = BetTradeBetTypes.Sold;
             _ticket.BetId = 1;
 
             _choice.Render(_ticket, _ticketHelper, Arg.Any<List<ITicketData>>(), Arg.Any<bool>());
 
-            const int BetType = 901;
-            Assert.AreEqual(BetType, _ticket.BetTypeId);
+            Assert.AreEqual(BetTradeBetTypes.Sold, _ticket.BetTypeId);
         }
 
         [Test]
@@ -38,13 +38,12 @@
         {
             var rtfHelper = new RTFHelper().Clone();
 
-            _ticket.BetTypeId = 901;
+            _ticket.BetTypeId = BetTradeBetTypes.Sold;
             _ticket.BetId = 1;
 
             _choice.RenderRTF(_ticket, _ticketHelper, Arg.Any<List<ITicketData>>(), Arg.Any<bool>(), rtfHelper);
 
-            const int BetType = 901;
-            Assert.AreEqual(BetType, _ticket.BetTypeId);
+            Assert.AreEqual(BetTradeBetTypes.Sold, _ticket.BetTypeId);
         }
     }
 }

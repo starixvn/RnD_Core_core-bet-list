@@ -8,7 +8,8 @@
         {
             base.BuildBonus(ticket);
 
-            Template.Bonus.RebateBonusIcon.Visible = false;
+            Template.Bonus.RebateBonusIcon.Hide();
+            Template.Bonus.NonPeakHoursPromotionIcon.Hide();
         }
     }
 }

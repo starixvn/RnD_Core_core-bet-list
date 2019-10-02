@@ -1,11 +1,9 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Templates.Stake
 {
-    using System.Diagnostics.CodeAnalysis;
     using System.Text;
     using Core.Templates;
     using NUnit.Framework;
 
-    [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleClass", Justification = "Reviewed.")]
     public class Stake_Bonus_BlockWrapper : Stake_Bonus_Block
     {
         public void SetAssigned(bool isAssigned)
@@ -14,10 +12,9 @@
         }
     }
 
-    [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleClass", Justification = "Reviewed.")]
     public class Stake_Bonus_BlockTest
     {
-        private const string BonusIconTemplate = "{0}{1}{2}";
+        private const string BonusTemplate = "{0}{1}{2}";
 
         [Test]
         public void ToString_BlockIsInvisible_ReturnEmptyString()
@@ -28,12 +25,12 @@
             bonusBlock.Visible = false;
 
             // Act
-            var bonusIconHtml = new StringBuilder();
+            var bonusHtml = new StringBuilder();
 
-            bonusBlock.ToString(ref bonusIconHtml);
+            bonusBlock.ToString(ref bonusHtml);
 
             // Assert.
-            Assert.IsEmpty(bonusIconHtml.ToString());
+            Assert.IsEmpty(bonusHtml.ToString());
         }
 
         [Test]
@@ -43,56 +40,57 @@
             var bonusBlock = new Stake_Bonus_Block();
 
             // Act
-            var bonusIconHtml = new StringBuilder();
+            var bonusHtml = new StringBuilder();
 
-            bonusBlock.ToString(ref bonusIconHtml);
+            bonusBlock.ToString(ref bonusHtml);
 
             // Assert.
-            var expectedHtml = string.Format(BonusIconTemplate, bonusBlock.RebateBonusIcon, bonusBlock.BonusIcon, bonusBlock.Wallet);
+            var expectedHtml = string.Format(BonusTemplate, bonusBlock.NormalBonus, bonusBlock.RebateBonusIcon, bonusBlock.NonPeakHoursPromotionIcon);
 
-            Assert.AreEqual(expectedHtml, bonusIconHtml.ToString());
+            Assert.AreEqual(expectedHtml, bonusHtml.ToString());
         }
 
         [Test]
         public void ToString_WhenCallAppend_ReturnHtmlWithAppendedText()
         {
             // Arrange
-            var extendedValue = "extended";
+            const string extendedValue = "extended";
+
             var bonusBlock = new Stake_Bonus_BlockWrapper();
 
             bonusBlock.SetAssigned(true);
             bonusBlock.Append(extendedValue);
 
             // Act
-            var bonusIconHtml = new StringBuilder();
+            var bonusHtml = new StringBuilder();
 
-            bonusBlock.ToString(ref bonusIconHtml);
+            bonusBlock.ToString(ref bonusHtml);
 
             // Assert.
-            var expectedHtml = string.Format(BonusIconTemplate, bonusBlock.RebateBonusIcon, bonusBlock.BonusIcon, bonusBlock.Wallet) + extendedValue;
+            var originalGeneratedHtml = string.Format(BonusTemplate, bonusBlock.NormalBonus, bonusBlock.RebateBonusIcon, bonusBlock.NonPeakHoursPromotionIcon);
+            var expectedHtml = $"{originalGeneratedHtml}{extendedValue}";
 
-            Assert.AreEqual(expectedHtml, bonusIconHtml.ToString());
+            Assert.AreEqual(expectedHtml, bonusHtml.ToString());
         }
 
         [Test]
         public void ToString_WhenCallSetValue_ReturnSetText()
         {
             // Arrange
-            var extendedValue = "extended";
+            const string newText = "extended";
+
             var bonusBlock = new Stake_Bonus_BlockWrapper();
 
             bonusBlock.SetAssigned(true);
-            bonusBlock.SetValue(extendedValue);
+            bonusBlock.SetValue(newText);
 
             // Act
-            var bonusIconHtml = new StringBuilder();
+            var bonusHtml = new StringBuilder();
 
-            bonusBlock.ToString(ref bonusIconHtml);
+            bonusBlock.ToString(ref bonusHtml);
 
             // Assert.
-            var expectedHtml = extendedValue;
-
-            Assert.AreEqual(expectedHtml, bonusIconHtml.ToString());
+            Assert.AreEqual(newText, bonusHtml.ToString());
         }
     }
 }

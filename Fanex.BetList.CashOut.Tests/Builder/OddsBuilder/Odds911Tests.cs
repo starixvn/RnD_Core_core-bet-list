@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.CashOut.Tests.Builder.OddsBuilder
 {
     using Core.Builder.OddsBuilder;
+    using Core.Constants;
     using Core.Entities;
     using Core.UnitTest.Common;
-    using NSubstitute;
     using NUnit.Framework;
 
     [TestFixture]
@@ -15,8 +15,7 @@
         [SetUp]
         public void Setup()
         {
-            _ticket = TestData.CreateTicket(911);
-            _ticket.BetTypeId = 911;
+            _ticket = TestData.CreateTicket(CashOutBetTypes.CashOut);
             _odds = new Odds911();
         }
 
@@ -24,7 +23,7 @@
         public void Render_Always_ReturnOriginalBetTypeOdds()
         {
             // Arrange
-            _ticket.OriginalBetType = 1;
+            _ticket.OriginalBetType = BetTypes.Handicap;
             _ticket.Odds = 100;
             _ticket.OddsType = "1";
 
@@ -32,7 +31,7 @@
             var template = _odds.Render(_ticket, null, GetCachePropertyByIdStub);
 
             // Assert
-            _ticket.BetTypeId = 1;
+            _ticket.BetTypeId = BetTypes.Handicap;
             var odds = new Odds1();
             var expectedTempate = odds.Render(_ticket, null, GetCachePropertyByIdStub);
             Assert.AreEqual(expectedTempate.ToString(), template.ToString());
@@ -42,7 +41,7 @@
         public void RenderRTF_Always_ReturnOriginalBetTypeOdds()
         {
             // Arrange
-            _ticket.OriginalBetType = 1;
+            _ticket.OriginalBetType = BetTypes.Handicap;
             _ticket.Odds = 100;
             _ticket.OddsType = "1";
 
@@ -50,7 +49,7 @@
             var template = _odds.RenderRTF(_ticket, null, GetCachePropertyByIdStub, new RTFHelper().Clone());
 
             // Assert
-            _ticket.BetTypeId = 1;
+            _ticket.BetTypeId = BetTypes.Handicap;
             var odds = new Odds1();
             var expectedTempate = odds.RenderRTF(_ticket, null, GetCachePropertyByIdStub, new RTFHelper().Clone());
             Assert.AreEqual(expectedTempate.String, template.String);

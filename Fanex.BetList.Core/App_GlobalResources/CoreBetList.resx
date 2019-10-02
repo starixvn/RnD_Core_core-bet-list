@@ -889,4 +889,7 @@
   <data name="NoCornerBefore" xml:space="preserve">
     <value>No Corner Before {0}:00</value>
   </data>
+  <data name="Promotion" xml:space="preserve">
+    <value>Promotion</value>
+  </data>
 </root>

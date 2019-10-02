@@ -60,15 +60,31 @@ namespace Fanex.BetList.Core
 
 		public class Stake_Bonus_Block: Block
 		{
+			public Stake_Bonus_NormalBonus_Block NormalBonus = new Stake_Bonus_NormalBonus_Block();
 			public Stake_Bonus_RebateBonusIcon_Block RebateBonusIcon = new Stake_Bonus_RebateBonusIcon_Block();
-			public Stake_Bonus_BonusIcon_Block BonusIcon = new Stake_Bonus_BonusIcon_Block();
-			public Stake_Bonus_Wallet_Block Wallet = new Stake_Bonus_Wallet_Block();
+			public Stake_Bonus_NonPeakHoursPromotionIcon_Block NonPeakHoursPromotionIcon = new Stake_Bonus_NonPeakHoursPromotionIcon_Block();
 			public override void ToString(ref StringBuilder bd)
 			{
 				if(!Visible) return;
 				if(RenderChild)
 				{
+					if(null != NormalBonus) NormalBonus.ToString(ref bd);
 					if(null != RebateBonusIcon) RebateBonusIcon.ToString(ref bd);
+					if(null != NonPeakHoursPromotionIcon) NonPeakHoursPromotionIcon.ToString(ref bd);
+				}
+				if(IsAssigned){bd.Append(Value);}
+			}
+		}
+
+		public class Stake_Bonus_NormalBonus_Block: Block
+		{
+			public Stake_Bonus_NormalBonus_BonusIcon_Block BonusIcon = new Stake_Bonus_NormalBonus_BonusIcon_Block();
+			public Stake_Bonus_NormalBonus_Wallet_Block Wallet = new Stake_Bonus_NormalBonus_Wallet_Block();
+			public override void ToString(ref StringBuilder bd)
+			{
+				if(!Visible) return;
+				if(RenderChild)
+				{
 					if(null != BonusIcon) BonusIcon.ToString(ref bd);
 					if(null != Wallet) Wallet.ToString(ref bd);
 				}
@@ -76,63 +92,81 @@ namespace Fanex.BetList.Core
 			}
 		}
 
-		public class Stake_Bonus_RebateBonusIcon_Block: Block
+		public class Stake_Bonus_NormalBonus_BonusIcon_Block: Block
 		{
-			protected static string s4 = "<div class=\"rebate-bonus\"><span class=\"rebate-bonus-icon\"></span>";
-			protected static string s5{get{return App_GlobalResources.CoreBetList.Rebate;}}
-			protected static string s6 = "</div>";
+			protected static string s4 = "<span class=\"bonus-icon\" onclick=\"javascript:ShowBonusDetails(";
+			public string refCode = "{refCode}";
+			protected static string s5 = ",";
+			public string transId = "{transId}";
+			protected static string s6 = ");\" title=\"";
+			public string bonusIconTitle = "{bonusIconTitle}";
+			protected static string s7 = "\"></span>";
 			public override void ToString(ref StringBuilder bd)
 			{
 				if(!Visible) return;
 				if(RenderChild)
 				{
 					bd.Append(s4);
-					bd.Append(s5);
-					bd.Append(s6);
-				}
-				if(IsAssigned){bd.Append(Value);}
-			}
-		}
-
-		public class Stake_Bonus_BonusIcon_Block: Block
-		{
-			protected static string s7 = "<span class=\"bonus-icon\" onclick=\"javascript:ShowBonusDetails(";
-			public string refCode = "{refCode}";
-			protected static string s8 = ",";
-			public string transId = "{transId}";
-			protected static string s9 = ");\" title=\"";
-			public string bonusIconTitle = "{bonusIconTitle}";
-			protected static string s10 = "\"></span>";
-			public override void ToString(ref StringBuilder bd)
-			{
-				if(!Visible) return;
-				if(RenderChild)
-				{
-					bd.Append(s7);
 					bd.Append(refCode);
-					bd.Append(s8);
+					bd.Append(s5);
 					bd.Append(transId);
-					bd.Append(s9);
+					bd.Append(s6);
 					bd.Append(bonusIconTitle);
-					bd.Append(s10);
+					bd.Append(s7);
 				}
 				if(IsAssigned){bd.Append(Value);}
 			}
 		}
 
-		public class Stake_Bonus_Wallet_Block: Block
+		public class Stake_Bonus_NormalBonus_Wallet_Block: Block
 		{
-			protected static string s11 = "<span class=\"light-blue\">";
+			protected static string s8 = "<span class=\"light-blue\">";
 			public string type = "{type}";
-			protected static string s12 = "</span>";
+			protected static string s9 = "</span>";
 			public override void ToString(ref StringBuilder bd)
 			{
 				if(!Visible) return;
 				if(RenderChild)
 				{
-					bd.Append(s11);
+					bd.Append(s8);
 					bd.Append(type);
+					bd.Append(s9);
+				}
+				if(IsAssigned){bd.Append(Value);}
+			}
+		}
+
+		public class Stake_Bonus_RebateBonusIcon_Block: Block
+		{
+			protected static string s10 = "<div class=\"rebate-bonus\"><span class=\"rebate-bonus-icon\"></span>";
+			protected static string s11{get{return App_GlobalResources.CoreBetList.Rebate;}}
+			protected static string s12 = "</div>";
+			public override void ToString(ref StringBuilder bd)
+			{
+				if(!Visible) return;
+				if(RenderChild)
+				{
+					bd.Append(s10);
+					bd.Append(s11);
 					bd.Append(s12);
+				}
+				if(IsAssigned){bd.Append(Value);}
+			}
+		}
+
+		public class Stake_Bonus_NonPeakHoursPromotionIcon_Block: Block
+		{
+			protected static string s13 = "<div class=\"nph-promotion\"><span class=\"nph-promotion-icon\"></span>";
+			protected static string s14{get{return App_GlobalResources.CoreBetList.Promotion;}}
+			protected static string s15 = "</div>";
+			public override void ToString(ref StringBuilder bd)
+			{
+				if(!Visible) return;
+				if(RenderChild)
+				{
+					bd.Append(s13);
+					bd.Append(s14);
+					bd.Append(s15);
 				}
 				if(IsAssigned){bd.Append(Value);}
 			}
