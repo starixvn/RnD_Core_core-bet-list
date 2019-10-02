@@ -693,6 +693,17 @@
             return BetListView(model);
         }
 
+        public ActionResult NonPeakHoursPromotion(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes();
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            DataSourcePath = "~/App_Data/NonPeakHoursPromotion.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+
+            return BetListView(model);
+        }
+
         private ViewResult BetListView(BetListData model)
         {
             return View("All", model);
