@@ -41,10 +41,12 @@
             var betTeamClass = "favorite";
             var betTeam = "Milan Reds";
             var choiceHtml = string.Empty;
-            var block = new Choice_Template();
-            block.ticketStatus = ticketStatus;
-            block.betTeamClassName = betTeamClass;
-            block.betTeam = betTeam;
+            var block = new Choice_Template
+            {
+                ticketStatus = ticketStatus,
+                betTeamClassName = betTeamClass,
+                betTeam = betTeam
+            };
 
             // Act
             choiceHtml = block.ToString();
@@ -70,7 +72,7 @@
         /// Visible the property is false return empty string.
         /// </summary>
         [Test]
-        public void ToString_BlockIsVisible_ReturnEmptyString()
+        public void ToString_BlockIsInvisible_ReturnEmptyString()
         {
             // Arrange
             var choiceHtml = string.Empty;

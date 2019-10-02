@@ -20,7 +20,7 @@
         }
 
         [Test]
-        public void Render_OddsTypeIsNull_OddsTypeIsZero()
+        public void Render_TicketOddsIsZero_ShowZeroAsOdds()
         {
             // Arrange
             _ticket.OddsType = null;
@@ -33,34 +33,16 @@
         }
 
         [Test]
-        public void Render_OddsTypeIsNull_OddsTypeIsZero1()
+        public void Render_Always_DoNotShowOddsTypeName()
         {
             // Arrange
             _ticket.OddsType = "1";
 
             // Act
-            _odds.Render(_ticket, null, GetCachePropertyByIdStub);
+            _odds.Render(_ticket, null, id => id.ToString());
 
             // Assert
-            Assert.AreEqual("0.27", _odds.Template.odds);
-        }
-
-        [Test]
-        public void Render_OddsTypeIsNull_OddsTypeIsZero12()
-        {
-            // Arrange
-            _ticket.OddsType = "1";
-
-            // Act
-            _odds.Render(_ticket, null, GetCachePropertyByIdStub);
-
-            // Assert
-            Assert.AreEqual("1", _odds.Template.oddsType);
-        }
-
-        private static string GetCachePropertyByIdStub(object id)
-        {
-            return id.ToString();
+            Assert.IsEmpty(_odds.Template.oddsType);
         }
     }
 }

@@ -19,7 +19,7 @@
         public void Setup()
         {
             _ticketHelper = Substitute.For<ITicketHelper>();
-            _ticket = TestData.CreateTicket(609);
+            _ticket = TestData.CreateTicket(BetTypes.QuarterXHandicap);
             _choice = new Choice609();
         }
 

@@ -56,7 +56,7 @@
         /// Visible the property is false return empty string.
         /// </summary>
         [Test]
-        public void ToString_BlockIsVisible_ReturnEmptyString()
+        public void ToString_BlockIsInvisible_ReturnEmptyString()
         {
             // Arrange
             var scoreHtml = new StringBuilder();

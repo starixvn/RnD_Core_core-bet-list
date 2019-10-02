@@ -2,6 +2,7 @@
 {
     using Common;
     using Core.App_GlobalResources;
+    using Core.App_GlobalResources;
     using Core.Builder.StatusBuilder;
     using Core.Constants;
     using Core.Templates;

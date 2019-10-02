@@ -2,6 +2,7 @@
 {
     using Common;
     using Core.Builder.ChoiceBuilder;
+    using Core.Constants;
     using Entities;
     using NSubstitute;
     using NUnit.Framework;
@@ -17,7 +18,7 @@
         public void Setup()
         {
             _ticketHelper = Substitute.For<ITicketHelper>();
-            _ticket = TestData.CreateTicket(612);
+            _ticket = TestData.CreateTicket(BetTypes.QuarterXMoneyline);
             _choice = new Choice612();
         }
 
