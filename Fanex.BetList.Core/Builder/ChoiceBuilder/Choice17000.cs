@@ -29,7 +29,7 @@
 
             if (!string.IsNullOrEmpty(ticket.ExtraInfo))
             {
-                Template.Handicap.handicap = $" - {GetPromotionId(ticket.ExtraInfo)}";
+                Template.Handicap.handicap = $"- {GetPromotionId(ticket.ExtraInfo)}";
             }
         }
 

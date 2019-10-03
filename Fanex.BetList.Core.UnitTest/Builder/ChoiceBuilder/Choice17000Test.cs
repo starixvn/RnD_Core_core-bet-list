@@ -99,7 +99,7 @@
             var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            var expectedDisplayingHandicap = $" - {promotionId}";
+            var expectedDisplayingHandicap = $"- {promotionId}";
 
             Assert.AreEqual(expectedDisplayingHandicap, template.Handicap.handicap);
         }
