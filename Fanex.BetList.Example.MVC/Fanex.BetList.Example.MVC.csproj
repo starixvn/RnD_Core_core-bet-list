@@ -188,7 +188,6 @@
     <Content Include="Content\images\q_Icon_2.png" />
     <Content Include="Content\images\rebateBonus.png" />
     <Content Include="Content\images\ScoreMapWL.png" />
-    <Content Include="Content\lucky3.css" />
     <Content Include="Content\Microgaming.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -349,10 +348,6 @@
       <Project>{0b1f8272-e921-4539-8d3a-bcfc10280f4e}</Project>
       <Name>Fanex.BetList.Keno</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.Lucky3\Fanex.BetList.Lucky3.csproj">
-      <Project>{9ce8fb6f-00d8-462c-a734-c0608a294ff7}</Project>
-      <Name>Fanex.BetList.Lucky3</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.MetricGaming\Fanex.BetList.MetricGaming.csproj">
       <Project>{054031e6-3e06-47d9-b3d1-b8a8e164e504}</Project>
       <Name>Fanex.BetList.MetricGaming</Name>
@@ -433,7 +428,6 @@
     <Content Include="App_Data\BasketballAIO.xls" />
     <Content Include="App_Data\CashOut.xls" />
     <Content Include="App_Data\BetRadarVirtualSports.xls" />
-    <Content Include="App_Data\Lucky3.xls" />
     <Content Include="App_Data\BonusSystem.xls" />
     <Content Include="App_Data\KenoLottery.xls" />
     <Content Include="App_Data\Keno.xls" />
