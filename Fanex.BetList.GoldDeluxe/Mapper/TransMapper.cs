@@ -1,20 +1,14 @@
 ﻿namespace Fanex.BetList.Core.Mapper
 {
+    using Constants;
+
     public class TransMapper : BaseMapper
     {
         public TransMapper()
         {
-            Initialize();
-        }
-
-        private void Initialize()
-        {
-            const int BaseBetTypeId = 1701;
-            const int MaxBetTypeIdRange = 1705;
-
-            for (int betTypeId = BaseBetTypeId + 1; betTypeId <= MaxBetTypeIdRange; betTypeId++)
+            for (int betTypeId = GoldDeluxeBetTypes.Roulette; betTypeId <= GoldDeluxeBetTypes.BidMe; betTypeId++)
             {
-                MapIdToBaseId(betTypeId, BaseBetTypeId);
+                MapIdToBaseId(betTypeId, GoldDeluxeBetTypes.Baccarat);
             }
         }
     }

@@ -6,7 +6,7 @@
     {
         public TransMapper()
         {
-            for (int betTypeId = KenoBetTypes.BaseBetTypeId + 1; betTypeId <= KenoBetTypes.MaxBetTypeIdRange; betTypeId++)
+            for (int betTypeId = KenoBetTypes.BaseBetTypeId + 1; betTypeId <= KenoBetTypes.HighestBetTypeIdInRange; betTypeId++)
             {
                 MapIdToBaseId(betTypeId, KenoBetTypes.BaseBetTypeId);
             }

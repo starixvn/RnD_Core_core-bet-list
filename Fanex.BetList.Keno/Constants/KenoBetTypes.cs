@@ -3,6 +3,6 @@
     internal static class KenoBetTypes
     {
         public const int BaseBetTypeId = 1501;
-        public const int MaxBetTypeIdRange = 1599;
+        public const int HighestBetTypeIdInRange = 1599;
     }
 }

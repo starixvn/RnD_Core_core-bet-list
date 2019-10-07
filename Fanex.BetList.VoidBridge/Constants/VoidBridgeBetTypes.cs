@@ -3,6 +3,6 @@
     internal static class VoidBridgeBetTypes
     {
         public const int BaseBetTypeId = 4001;
-        public const int MaxBetTypeIdRange = 4099;
+        public const int HighestBetTypeIdInRange = 4099;
     }
 }

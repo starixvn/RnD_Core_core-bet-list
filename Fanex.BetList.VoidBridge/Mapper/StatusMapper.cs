@@ -6,7 +6,7 @@
     {
         public StatusMapper()
         {
-            for (int betTypeId = VoidBridgeBetTypes.BaseBetTypeId + 1; betTypeId <= VoidBridgeBetTypes.MaxBetTypeIdRange; betTypeId++)
+            for (int betTypeId = VoidBridgeBetTypes.BaseBetTypeId + 1; betTypeId <= VoidBridgeBetTypes.HighestBetTypeIdInRange; betTypeId++)
             {
                 MapIdToBaseId(betTypeId, VoidBridgeBetTypes.BaseBetTypeId);
             }

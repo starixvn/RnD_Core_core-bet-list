@@ -58,6 +58,7 @@
     <Compile Include="Builder\ChoiceBuilder\Choice1702.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1703.cs" />
     <Compile Include="Builder\TransBuilder\Trans1701.cs" />
+    <Compile Include="Constants\GoldDeluxeBetTypes.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Mapper\ChoiceMapper.cs" />
     <Compile Include="Mapper\TransMapper.cs" />
