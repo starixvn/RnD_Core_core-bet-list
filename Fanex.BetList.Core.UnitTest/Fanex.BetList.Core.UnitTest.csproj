@@ -227,7 +227,6 @@
     <Compile Include="Builder\ChoiceBuilder\Choice24Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice71Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice72Test.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice73Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice25Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice27Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice26Test.cs" />

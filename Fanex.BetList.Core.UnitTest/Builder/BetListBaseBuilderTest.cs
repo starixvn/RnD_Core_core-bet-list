@@ -306,7 +306,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder
         [TestCase(7, "Choice7")]
         [TestCase(71, "Choice71")]
         [TestCase(72, "Choice72")]
-        [TestCase(73, "Choice73")]
         [TestCase(8, "Choice8")]
         [TestCase(9, "Choice9")]
         [TestCase(-22006, "Choice_22006")]
@@ -330,7 +329,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder
         [TestCase(500, "Odds500")]
         [TestCase(71, "Odds71")]
         [TestCase(72, "Odds72")]
-        [TestCase(73, "Odds73")]
         public void CreateOddsBuilder_WhenCalled_ReturnOdds(int betType, string expectedOdds)
         {
             var buider = CreateChoiceBuilder();
@@ -413,7 +411,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder
         [TestCase(616, "Status606")]
         [TestCase(617, "Status606")]
         [TestCase(71, "Status71")]
-        [TestCase(73, "Status73")]
         [TestCase(9, "Status9")]
         public void CreateStatusBuilder_WhenCalled_ReturnStatus(int betType, string expectedStatus)
         {
@@ -427,7 +424,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder
         [TestCase(-22006, "Trans_22006")]
         [TestCase(1, "Trans1")]
         [TestCase(71, "Trans71")]
-        [TestCase(73, "Trans73")]
         public void CreateTransBuilder_WhenCalled_ReturnTrans(int betType, string expectedTrans)
         {
             var buider = CreateChoiceBuilder();
