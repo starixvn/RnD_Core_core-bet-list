@@ -580,7 +580,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
-            DataSourcePath = "~/App_Data/VideoPokerGame.xls";
+            DataSourcePath = "~/App_Data/CardClub.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);

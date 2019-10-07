@@ -2,16 +2,16 @@
 {
     using Fanex.BetList.Core.Constants;
 
-    public class StatusMapper : BaseMapper
+    public class ChoiceMapper : BaseMapper
     {
-        public StatusMapper()
+        public ChoiceMapper()
         {
             MapCardClub();
         }
 
         private void MapCardClub()
         {
-            for (int betType = CardClubBetTypes.VideoPoker + 1; betType <= CardClubBetTypes.HighestBetTypeId; betType++)
+            for (int betType = CardClubBetTypes.VideoPoker + 1; betType <= CardClubBetTypes.HighestBetTypeIdInRange; betType++)
             {
                 MapIdToBaseId(betType, CardClubBetTypes.VideoPoker);
             }

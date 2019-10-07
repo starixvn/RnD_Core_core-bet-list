@@ -1,4 +1,4 @@
-﻿namespace Fanex.BetList.PokerGames.Tests.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.CardClub.Tests.Builder.ChoiceBuilder
 {
     using System;
     using System.Globalization;

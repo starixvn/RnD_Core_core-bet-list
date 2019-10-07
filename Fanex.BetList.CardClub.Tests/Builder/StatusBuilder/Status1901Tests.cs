@@ -1,4 +1,4 @@
-﻿namespace Fanex.BetList.PokerGames.Tests.Builder.StatusBuilder
+﻿namespace Fanex.BetList.CardClub.Tests.Builder.StatusBuilder
 {
     using Core.Builder.StatusBuilder;
     using Core.Entities;

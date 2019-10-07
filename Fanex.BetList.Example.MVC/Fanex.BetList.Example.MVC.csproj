@@ -308,6 +308,10 @@
       <Project>{95198f80-e7f6-4b7b-b0b7-f2c11a5886af}</Project>
       <Name>Fanex.BetList.Bullfighting</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.CardClub\Fanex.BetList.CardClub.csproj">
+      <Project>{d504aa63-e8d2-4819-a1da-f9451d4f0468}</Project>
+      <Name>Fanex.BetList.CardClub</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.CashOut\Fanex.BetList.CashOut.csproj">
       <Project>{eeb53cdf-8346-4f95-9997-b7bc052d1f18}</Project>
       <Name>Fanex.BetList.CashOut</Name>
@@ -371,10 +375,6 @@
     <ProjectReference Include="..\Fanex.BetList.NumberGame\Fanex.BetList.NumberGame.csproj">
       <Project>{b26ba5c4-a25c-4e28-b3fb-a585245d5e52}</Project>
       <Name>Fanex.BetList.NumberGame</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.PokerGames\Fanex.BetList.PokerGames.csproj">
-      <Project>{d504aa63-e8d2-4819-a1da-f9451d4f0468}</Project>
-      <Name>Fanex.BetList.PokerGames</Name>
     </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.PP\Fanex.BetList.PP.csproj">
       <Project>{502c6122-7b87-4a3c-9be2-782b411675cd}</Project>
