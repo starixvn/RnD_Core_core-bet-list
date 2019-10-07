@@ -176,7 +176,6 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\bullfighting.css" />
     <Content Include="Content\CockFighting.css" />
     <Content Include="Content\CoreBetList.css" />
     <Content Include="Content\images\1F.gif" />
@@ -301,10 +300,6 @@
     <ProjectReference Include="..\Fanex.BetList.BetTrade\Fanex.BetList.BetTrade.csproj">
       <Project>{386bf8aa-7ee2-46bb-aecc-6cd829671881}</Project>
       <Name>Fanex.BetList.BetTrade</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.Bullfighting\Fanex.BetList.Bullfighting.csproj">
-      <Project>{95198f80-e7f6-4b7b-b0b7-f2c11a5886af}</Project>
-      <Name>Fanex.BetList.Bullfighting</Name>
     </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.CardClub\Fanex.BetList.CardClub.csproj">
       <Project>{d504aa63-e8d2-4819-a1da-f9451d4f0468}</Project>
@@ -443,10 +438,8 @@
     <Content Include="App_Data\KenoLottery.xls" />
     <Content Include="App_Data\Keno.xls" />
     <Content Include="App_Data\PHAllInOneP3.xls" />
-    <Content Include="App_Data\Bullfighting.xls" />
     <Content Include="App_Data\ChangingToHomeAway.xls" />
     <Content Include="App_Data\CorrectTranslations.xls" />
-    <Content Include="App_Data\Bullfighting.xls" />
     <Content Include="App_Data\FastMarkets2.xls" />
     <Content Include="App_Data\OneRnGCasino.xls" />
     <Content Include="App_Data\Asian1X2HDP.xls" />
