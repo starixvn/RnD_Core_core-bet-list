@@ -1,21 +1,18 @@
 ﻿namespace Fanex.BetList.NumberGame.Tests.Builder.ChoiceBuilder
 {
     using Core.Builder.ChoiceBuilder;
+    using Core.Constants;
     using Core.Entities;
     using Core.Resources;
-    using Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    ///  Unit testing class for bet type 87.
-    /// </summary>
     public class Choice87Test
     {
 #pragma warning disable S1144 // Unused private types or members should be removed
 
         // ticket.Live, betId, ticket.BetTeam, expectedValue
-        private static object[] betTeamNames =
+        private static readonly object[] betTeamNames =
         {
             new object[] { true, 0, "h", string.Join(null, NumberGameLang.high, " [0]") },
             new object[] { false, 0, "h", string.Join(null, NumberGameLang.high, " [0]") },
@@ -38,7 +35,7 @@
         {
             _choice = new Choice87();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes.Next_High_Low;
+            _ticket.BetTypeId = NumberGameBetTypes.NextHighLow;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
@@ -95,14 +92,7 @@
             Assert.AreEqual("favorite", choiceTemplate.betTeamClassName);
         }
 
-        /// <summary>
-        /// Check whether build choice function render choice template right.
-        /// </summary>
-        /// <param name="isLive"> Indicate ticket is live or not.</param>
-        /// <param name="betId"> Bet id of the ticket.</param>
-        /// <param name="ticketBetTeam"> Bet team of ticket.</param>
-        /// <param name="expectedBetTeam"> Expected bet team rendered by build choice function.</param>
-        [Test, TestCaseSource("betTeamNames")]
+        [Test, TestCaseSource(nameof(betTeamNames))]
         public void BuildBetTeam_WhenCalled_SetValidNameForBetTeam(bool isLive, long betId, string ticketBetTeam, string expectedBetTeam)
         {
             // Arrange

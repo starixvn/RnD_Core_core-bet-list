@@ -2,15 +2,15 @@
 {
     using Core.App_GlobalResources;
     using Core.Builder.ChoiceBuilder;
+    using Core.Constants;
     using Core.Entities;
     using Core.Resources;
-    using Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
 
     public class Choice81Test
     {
-        private static string spanClassWith37point5 = " <span style='color:#555555'>37.5</span> ";
+        private static readonly string spanClassWith37point5 = " <span style='color:#555555'>37.5</span> ";
         private Choice81 _choice;
         private ITicket _ticket;
         private ITicketHelper _ticketHelper;
@@ -20,7 +20,7 @@
         {
             _choice = new Choice81();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes._1st_Ball_OU;
+            _ticket.BetTypeId = NumberGameBetTypes.FirstBallOverUnder;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 

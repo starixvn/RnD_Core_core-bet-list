@@ -1,6 +1,7 @@
 ﻿namespace Fanex.BetList.NumberGame.Tests.Builder.ChoiceBuilder
 {
     using Core.Builder.ChoiceBuilder;
+    using Core.Constants;
     using Core.Entities;
     using Core.Resources;
     using NSubstitute;
@@ -122,16 +123,15 @@
             const string betChoice = "Big";
             const string matchCode = "2222";
             const string betTypeName = "Big/Small";
-            const int betTypeId = 8101;
 
-            _ticket.BetTypeId = betTypeId;
+            _ticket.BetTypeId = Happy5BetTypes.BigSmall;
             _ticket.BetTeam = betTeam;
             _ticket.MatchCode = matchCode;
 
             _ticketHelper
                 .GetResourceData(Arg.Is(Choice8101.BetChoiceRefId), Arg.Is(betTeam))
                 .Returns(betChoice);
-            _ticketHelper.GetBetTypeNameById(Arg.Is(betTypeId), Arg.Any<string>()).Returns(betTypeName);
+            _ticketHelper.GetBetTypeNameById(Arg.Is(Happy5BetTypes.BigSmall), Arg.Any<string>()).Returns(betTypeName);
 
             // Act.
             var actualText = _choice.RenderRTF(_ticket, _ticketHelper, null, false, new RTFHelper().Clone());

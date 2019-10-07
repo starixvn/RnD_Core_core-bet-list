@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.NumberGame.Tests.Builder.ChoiceBuilder
 {
     using Core.Builder.ChoiceBuilder;
+    using Core.Constants;
     using Core.Entities;
     using Core.Resources;
-    using Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -11,7 +11,7 @@
     {
 #pragma warning disable S1144 // Unused private types or members should be removed
 
-        private static object[] betTeamNames =
+        private static readonly object[] betTeamNames =
         {
             // ticket.Live, betId, ticket.BetTeam, expectedValue
             new object[] { true, 0, "1:1", string.Join(null, NumberGameLang.lblOverOdd,  " [0]") },
@@ -46,7 +46,7 @@
         {
             _choice = new Choice89();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes.Next_Combo;
+            _ticket.BetTypeId = NumberGameBetTypes.NextCombo;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
@@ -105,7 +105,7 @@
             Assert.AreEqual("favorite", choiceTemplate.betTeamClassName);
         }
 
-        [Test, TestCaseSource("betTeamNames")]
+        [Test, TestCaseSource(nameof(betTeamNames))]
         public void BuildBetTeam_WhenCalled_SetValidNameForBetTeam(bool isLive, long betId, string ticketBetTeam, string expectedBetTeam)
         {
             // Arrange

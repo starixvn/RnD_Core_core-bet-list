@@ -2,23 +2,20 @@
 {
     using Core.App_GlobalResources;
     using Core.Builder.ChoiceBuilder;
+    using Core.Constants;
     using Core.Entities;
     using Core.Resources;
-    using Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    /// TODO: Update summary.
-    /// </summary>
     public class Choice85Test
     {
-        private static string spanClassWith37point5 = " <span style='color:#555555'>37.5</span> ";
+        private static readonly string spanClassWith37point5 = " <span style='color:#555555'>37.5</span> ";
 
         // ticket.Live, betId, expectedValue
 #pragma warning disable S1144 // Unused private types or members should be removed
 
-        private static object[] liveScores =
+        private static readonly object[] liveScores =
         {
             new object[] { true, 0, " [0]" },
             new object[] { true, 2, " [2]" },
@@ -37,7 +34,7 @@
         {
             _choice = new Choice85();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes.N_Over_Under;
+            _ticket.BetTypeId = NumberGameBetTypes.OverUnder;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
@@ -84,14 +81,12 @@
             Assert.AreEqual("favorite", choiceTemplate.betTeamClassName);
         }
 
-        /// <summary>
-        ///  Test whether bet type is combined by core bet list resource full time and bet type name get from ticket.
-        /// </summary>
         [Test]
         public void BuildBetType_TicketIsNotLive_SetBetTypeNameIsFtResourcePointAndBetTypeName()
         {
             // Arrange
-            var betTypeName = "A Bettype Name";
+            const string betTypeName = "A Bettype Name";
+
             _ticketHelper.GetBetTypeNameById(Arg.Any<int>(), Arg.Any<object>()).Returns(betTypeName);
             _ticket.IsLive = false;
 
@@ -102,14 +97,12 @@
             Assert.AreEqual($"{CoreBetList.ft}. {betTypeName}", _choice.Template.BetType.betTypeName);
         }
 
-        /// <summary>
-        ///  Test whether bet type is combined by core bet list resource next and bet type name get from ticket.
-        /// </summary>
         [Test]
         public void BuildBetType_TicketIsLive_SetBetTypeNameIsNextResourceBreakingAndBetTypeName()
         {
             // Arrange
-            var betTypeName = "A Bettype Name";
+            const string betTypeName = "A Bettype Name";
+
             _ticketHelper.GetBetTypeNameById(Arg.Any<int>(), Arg.Any<object>()).Returns(betTypeName);
             _ticket.IsLive = true;
 
@@ -120,13 +113,7 @@
             Assert.AreEqual($"{NumberGameLang.next}&nbsp;{betTypeName}", _choice.Template.BetType.betTypeName);
         }
 
-        /// <summary>
-        ///  Check whether bet team is valid.
-        /// </summary>
-        /// <param name="isLive"> Is live ticket.</param>
-        /// <param name="betId"> Bet id of ticket.</param>
-        /// <param name="liveScore"> Live score string.</param>
-        [Test, TestCaseSource("liveScores")]
+        [Test, TestCaseSource(nameof(liveScores))]
         public void BuildBetTeam_Always_SetBetTeamIsValid(bool isLive, long betId, string liveScore)
         {
             // Arrange

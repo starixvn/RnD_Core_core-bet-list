@@ -1,15 +1,12 @@
 ﻿namespace Fanex.BetList.NumberGame.Tests.Builder.ChoiceBuilder
 {
     using Core.Builder.ChoiceBuilder;
+    using Core.Constants;
     using Core.Entities;
     using Core.Resources;
-    using Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    ///  Unit testing class for bet type 88.
-    /// </summary>
     public class Choice88Test
     {
         private Choice88 _choice;
@@ -21,7 +18,7 @@
         {
             _choice = new Choice88();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes.Warrior;
+            _ticket.BetTypeId = NumberGameBetTypes.Warrior;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
@@ -45,9 +42,6 @@
             Assert.IsNull(choiceTemplate.Match.VS);
         }
 
-        /// <summary>
-        ///  Build choice function always set bet team by combined number game no and match code.
-        /// </summary>
         [Test]
         public void BuildMatch_Always_SetHomeTeamIsJoinedByNumberGameNoResourceAndMatchCode()
         {

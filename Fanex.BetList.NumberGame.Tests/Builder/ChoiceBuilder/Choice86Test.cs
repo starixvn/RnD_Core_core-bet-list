@@ -2,9 +2,9 @@
 {
     using Core.App_GlobalResources;
     using Core.Builder.ChoiceBuilder;
+    using Core.Constants;
     using Core.Entities;
     using Core.Resources;
-    using Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -12,7 +12,7 @@
     {
 #pragma warning disable S1144 // Unused private types or members should be removed
 
-        private static object[] liveScores =
+        private static readonly object[] liveScores =
         {
             // ticket.Live, betId, expectedValue
             new object[] { true, 0, " [0]" },
@@ -32,7 +32,7 @@
         {
             _choice = new Choice86();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes.N_Over_Under;
+            _ticket.BetTypeId = NumberGameBetTypes.OverUnder;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
@@ -46,9 +46,6 @@
             Assert.IsNull(choiceTemplate.Match.VS);
         }
 
-        /// <summary>
-        ///  Check build choice function set home team block is number game resource and match code.
-        /// </summary>
         [Test]
         public void BuildMatch_Always_SetHomeTeamIsJoinedByNumberGameNoResourceAndMatchCode()
         {
@@ -84,14 +81,12 @@
             Assert.AreEqual("favorite", choiceTemplate.betTeamClassName);
         }
 
-        /// <summary>
-        ///  Check build choice function render template choice has bet type name is full time resource and bet type name.
-        /// </summary>
         [Test]
         public void BuildBetType_TicketIsNotLive_SetBetTypeNameIsFtResourcePointAndBetTypeName()
         {
             // Arrange
-            var betTypeName = "A Bettype Name";
+            const string betTypeName = "A Bettype Name";
+
             _ticketHelper.GetBetTypeNameById(Arg.Any<int>(), Arg.Any<object>()).Returns(betTypeName);
             _ticket.IsLive = false;
 
@@ -103,14 +98,12 @@
             Assert.AreEqual(extected, _choice.Template.BetType.betTypeName);
         }
 
-        /// <summary>
-        ///  Check build choice function render template choice has bet type name is next resource and bet type name.
-        /// </summary>
         [Test]
         public void BuildBetType_TicketIsLive_SetBetTypeNameIsNextResourceBreakingAndBetTypeName()
         {
             // Arrange
-            var betTypeName = "A Bettype Name";
+            const string betTypeName = "A Bettype Name";
+
             _ticketHelper.GetBetTypeNameById(Arg.Any<int>(), Arg.Any<object>()).Returns(betTypeName);
             _ticket.IsLive = true;
 
@@ -122,13 +115,7 @@
             Assert.AreEqual(exptected, _choice.Template.BetType.betTypeName);
         }
 
-        /// <summary>
-        /// Check whether build choice function return valid bet team or not.
-        /// </summary>
-        /// <param name="isLive"> Is live ticket.</param>
-        /// <param name="betId"> Bet id of ticket.</param>
-        /// <param name="liveScore"> Live score status of ticket.</param>
-        [Test, TestCaseSource("liveScores")]
+        [Test, TestCaseSource(nameof(liveScores))]
         public void BuildBetTeam_WhenCalled_SetValidNameForBetTeam(bool isLive, long betId, string liveScore)
         {
             // Arrange

@@ -2,15 +2,12 @@
 {
     using Core.App_GlobalResources;
     using Core.Builder.ChoiceBuilder;
+    using Core.Constants;
     using Core.Entities;
     using Core.Resources;
-    using Core.UnitTest.Common.Enums;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    /// TODO: Update summary.
-    /// </summary>
     public class Choice83Test
     {
         private Choice83 _choice;
@@ -22,7 +19,7 @@
         {
             _choice = new Choice83();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes._1st_Ball_OE;
+            _ticket.BetTypeId = NumberGameBetTypes.FirstBallOddEven;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
