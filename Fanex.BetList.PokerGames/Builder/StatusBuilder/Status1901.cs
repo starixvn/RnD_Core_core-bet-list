@@ -2,6 +2,9 @@
 {
     using Fanex.BetList.Core.Entities;
 
+    /// <summary>
+    /// Video Poker
+    /// </summary>
     public class Status1901 : Status1
     {
         protected override void BuildStatusResult(ITicket ticket)

@@ -1,31 +1,19 @@
 ﻿namespace Fanex.BetList.Core.Mapper
 {
+    using Fanex.BetList.Core.Constants;
+
     public class ChoiceMapper : BaseMapper
     {
         public ChoiceMapper()
         {
-            Initialize();
+            MapCardClub();
         }
 
-        private void Initialize()
+        private void MapCardClub()
         {
-            // Map 'OMAHA' to 'Texas Holdem'.
-            MapIdToBaseId(1403, 1402);
-
-            // Map '3 Pic Switch (3 Pictures/Sakong)' to '8 Cards'.
-            MapIdToBaseId(1404, 1401);
-
-            // Map 'Shortdeck 6+' to 'Texas Holdem'.
-            MapIdToBaseId(1405, 1402);
-
-            MapVideoPokerGame();
-        }
-
-        private void MapVideoPokerGame()
-        {
-            for (int betType = 1902; betType <= 1999; betType++)
+            for (int betType = CardClubBetTypes.VideoPoker + 1; betType <= CardClubBetTypes.HighestBetTypeId; betType++)
             {
-                MapIdToBaseId(betType, 1901);
+                MapIdToBaseId(betType, CardClubBetTypes.VideoPoker);
             }
         }
     }

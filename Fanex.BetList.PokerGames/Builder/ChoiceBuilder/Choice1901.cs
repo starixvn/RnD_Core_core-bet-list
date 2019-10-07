@@ -3,14 +3,15 @@
     using System;
     using System.Collections.Generic;
     using System.Globalization;
-    using System.Linq;
-    using System.Text;
     using System.Text.RegularExpressions;
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.Utils;
+    using Fanex.BetList.Core.Utils.StringExt;
 
+    /// <summary>
+    /// Video Poker
+    /// </summary>
     public class Choice1901 : Choice1
     {
         public const string GameTypeRefId = "PG_GT";
@@ -92,7 +93,7 @@
         {
             if (Template.Match != null)
             {
-                var gameInfoRows = Common.SplitHtmlIntoRows(Template.Match.ToString());
+                var gameInfoRows = Template.Match.ToString().SplitHTMLIntoRows();
 
                 foreach (var row in gameInfoRows)
                 {

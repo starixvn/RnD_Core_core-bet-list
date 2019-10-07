@@ -455,7 +455,6 @@
     <Content Include="App_Data\Asian1X2HDP.xls" />
     <Content Include="App_Data\PP.xls" />
     <Content Include="App_Data\Parlay.xls" />
-    <Content Include="App_Data\PokerGames.xls" />
     <Content Include="App_Data\UpcomingSports.xls" />
     <Content Include="App_Data\SettlementStatus.xls" />
     <Content Include="App_Data\ESports2.xls" />
@@ -464,7 +463,7 @@
     <Content Include="App_Data\AbnormalBet.xls" />
     <Content Include="App_Data\BetBuilder.xls" />
     <Content Include="App_Data\PHAllInOneP4A.xls" />
-    <Content Include="App_Data\VideoPokerGame.xls" />
+    <Content Include="App_Data\CardClub.xls" />
     <Content Include="App_Data\RefundResult.xls" />
     <Content Include="App_Data\RebateBonus.xls" />
     <Content Include="App_Data\PHAllInOneP4B.xls" />

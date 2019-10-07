@@ -1,21 +1,19 @@
 ﻿namespace Fanex.BetList.Core.Mapper
 {
+    using Fanex.BetList.Core.Constants;
+
     public class StatusMapper : BaseMapper
     {
         public StatusMapper()
         {
-            Initialize();
+            MapCardClub();
         }
 
-        private void Initialize()
+        private void MapCardClub()
         {
-            const int startFollowingBetTypeId = 1402;
-            const int endFollowingBetTypeId = 1498;
-            const int baseBetTypeId = 1401;
-
-            for (int betTypeId = startFollowingBetTypeId; betTypeId <= endFollowingBetTypeId; betTypeId++)
+            for (int betType = CardClubBetTypes.VideoPoker + 1; betType <= CardClubBetTypes.HighestBetTypeId; betType++)
             {
-                MapIdToBaseId(betTypeId, baseBetTypeId);
+                MapIdToBaseId(betType, CardClubBetTypes.VideoPoker);
             }
         }
     }
