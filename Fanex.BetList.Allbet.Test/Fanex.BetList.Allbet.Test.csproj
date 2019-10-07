@@ -76,7 +76,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Fanex.Betlist.Allbet\Fanex.BetList.Allbet.csproj">
+    <ProjectReference Include="..\Fanex.BetList.Allbet\Fanex.BetList.Allbet.csproj">
       <Project>{ebf46368-f937-49df-b24d-bac01ed3a947}</Project>
       <Name>Fanex.BetList.Allbet</Name>
     </ProjectReference>
