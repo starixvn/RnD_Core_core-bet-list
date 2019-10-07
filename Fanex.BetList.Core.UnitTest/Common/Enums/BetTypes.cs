@@ -17,64 +17,9 @@ namespace Fanex.BetList.Core.UnitTest.Common.Enums
         public const int P2P_Games = 72;
 
         /// <summary>
-        /// BetType = 73.
-        /// </summary>
-        public const int Bingo = 73;
-
-        /// <summary>
         /// BetType = 1000.
         /// </summary>
         public const int P2P = 1000;
-
-        /// <summary>
-        /// BetType = 81.
-        /// </summary>
-        public const int _1st_Ball_OU = 81;
-
-        /// <summary>
-        /// BetType = 82.
-        /// </summary>
-        public const int Last_Ball_OU = 82;
-
-        /// <summary>
-        /// BetType = 83.
-        /// </summary>
-        public const int _1st_Ball_OE = 83;
-
-        /// <summary>
-        /// BetType = 84.
-        /// </summary>
-        public const int Last_Ball_OE = 84;
-
-        /// <summary>
-        /// BetType = 85.
-        /// </summary>
-        public const int N_Over_Under = 85;
-
-        /// <summary>
-        /// BetType = 86.
-        /// </summary>
-        public const int N_Odd_Even = 86;
-
-        /// <summary>
-        /// BetType = 87.
-        /// </summary>
-        public const int Next_High_Low = 87;
-
-        /// <summary>
-        /// BetType = 88.
-        /// </summary>
-        public const int Warrior = 88;
-
-        /// <summary>
-        /// BetType = 89.
-        /// </summary>
-        public const int Next_Combo = 89;
-
-        /// <summary>
-        /// BetType = 90.
-        /// </summary>
-        public const int NumberWheel = 90;
 
         /// <summary>
         /// BetType = 1101.

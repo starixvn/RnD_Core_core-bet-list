@@ -54,7 +54,6 @@
             BetTypes.SecondHalfOddEvenOwn,
             BetTypes.Asian1X2Handicap,
             BetTypes.FirstHalfAsian1X2Handicap,
-            BetTypes.MatchWinner,
             BetTypes.WhichTeamToScoreTheHighestQuarter,
             BetTypes.WhichTeamToScoreTheFirstBasket,
             BetTypes.WhichTeamToScoreTheLastBasket,

@@ -283,8 +283,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder
         [TestCase(496, "Choice140")]
         [TestCase(497, "Choice452")]
         [TestCase(5, "Choice5")]
-        [TestCase(500, "Choice500")]
-        [TestCase(501, "Choice501")]
         [TestCase(6, "Choice6")]
         [TestCase(601, "Choice601")]
         [TestCase(602, "Choice602")]
@@ -326,7 +324,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder
         [TestCase(33, "Odds33")]
         [TestCase(468, "Odds468")]
         [TestCase(469, "Odds468")]
-        [TestCase(500, "Odds500")]
         [TestCase(71, "Odds71")]
         [TestCase(72, "Odds72")]
         public void CreateOddsBuilder_WhenCalled_ReturnOdds(int betType, string expectedOdds)
@@ -340,7 +337,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder
 
         [TestCase(-22006, "Stake_22006")]
         [TestCase(1, "Stake1")]
-        [TestCase(500, "Stake500")]
         public void CreateStakeBuilder_WhenCalled_ReturnStake(int betType, string expectedStake)
         {
             var buider = CreateChoiceBuilder();
@@ -399,7 +395,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder
         [TestCase(32, "Status32")]
         [TestCase(33, "Status33")]
         [TestCase(38, "Status38")]
-        [TestCase(500, "Status500")]
         [TestCase(607, "Status606")]
         [TestCase(609, "Status606")]
         [TestCase(610, "Status606")]
