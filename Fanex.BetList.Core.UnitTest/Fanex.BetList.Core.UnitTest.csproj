@@ -312,7 +312,6 @@
     <Compile Include="Utils\TicketHelperExt\ScoreBoxExtensionsTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Fanex.BetList.Core.UnitTest.ruleset" />
     <None Include="packages.config" />
     <None Include="runopencover.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

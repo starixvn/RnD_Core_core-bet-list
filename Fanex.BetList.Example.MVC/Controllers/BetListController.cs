@@ -746,12 +746,9 @@
 
         private BetListData GetDataSource(BetListData model, string sourcePath)
         {
-            if (model != null)
+            if (model != null && !string.IsNullOrWhiteSpace(model.Language) && model.Language != DefaultLanguage)
             {
-                if (!string.IsNullOrWhiteSpace(model.Language) && model.Language != DefaultLanguage)
-                {
-                    Thread.CurrentThread.CurrentUICulture = new CultureInfo(model.Language);
-                }
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(model.Language);
             }
 
             BetListData betListData = _dataService.GetBetListData(sourcePath, model.BetTypeId);
