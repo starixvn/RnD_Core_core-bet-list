@@ -126,18 +126,6 @@
             return BetListView(model);
         }
 
-        public ActionResult MicroGaming(BetListData model = null)
-        {
-            var betTypes = _dataService.QueryBetTypes(2001, 2002, 2003, 2004, 2005, 2006, 2007);
-
-            ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/MicroGaming.xls";
-            model = GetDataSource(model, sourcePath: DataSourcePath);
-            model.DataFilePath = DataSourcePath;
-
-            return BetListView(model);
-        }
-
         public ActionResult Allbet(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(2401, 2402, 2403, 2404, 2405, 2406);
