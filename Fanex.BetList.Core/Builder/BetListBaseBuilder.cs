@@ -67,9 +67,6 @@ namespace Fanex.BetList.Core.Builder
 
         public IOdds CreateOddsBuilder(int bettype)
         {
-            const int partyBaccarat = 1101;
-            const int endOfLiveCasinoRange = 1199;
-
             var oddsName = OddsName;
             var betTypeId = bettype;
 
@@ -77,12 +74,6 @@ namespace Fanex.BetList.Core.Builder
             {
                 // Internal conventional bettype id of 3rd products
                 oddsName = Odds3rdName;
-            }
-
-            if (betTypeId <= endOfLiveCasinoRange && betTypeId >= partyBaccarat)
-            {
-                // Odds of Live Casino bet types
-                betTypeId = partyBaccarat;
             }
 
             betTypeId = MapperCollector.GetOddsBaseBetTypeOf(betTypeId);

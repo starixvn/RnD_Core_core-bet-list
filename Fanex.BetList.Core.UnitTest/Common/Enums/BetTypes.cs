@@ -17,31 +17,6 @@ namespace Fanex.BetList.Core.UnitTest.Common.Enums
         public const int P2P_Games = 72;
 
         /// <summary>
-        /// BetType = 1000.
-        /// </summary>
-        public const int P2P = 1000;
-
-        /// <summary>
-        /// BetType = 1101.
-        /// </summary>
-        public const int Baccarat = 1101;
-
-        /// <summary>
-        /// BetType = 1102.
-        /// </summary>
-        public const int Roulette = 1102;
-
-        /// <summary>
-        /// BetType = 1103.
-        /// </summary>
-        public const int Sicbo = 1103;
-
-        /// <summary>
-        /// BetType = 1104.
-        /// </summary>
-        public const int LiveCasino_LiveRoulette = 1104;
-
-        /// <summary>
         /// BetType = 23001.
         /// </summary>
         public const int CasinoTransfer = 23001;

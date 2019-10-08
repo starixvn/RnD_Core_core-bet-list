@@ -2,13 +2,10 @@
 {
     /// <summary>
     /// Reference data for bet types:
-    /// 1) Horse Racing (33) => Build Odds, Status.
-    /// 2) Live Casino Baccarat (1101) => Build Choice.
-    /// 3) Live Roulette (1102) => Build Choice.
-    /// 4) Virtual Horse Racing - Win/Place (1233) => Build Odds, Status.
-    /// 5) Gold Deluxe Baccarat (1702) => Build Choice.
-    /// 6) Gold Deluxe Live Roulette (1702) => Build Choice.
-    /// 7) Gold Deluxe Parlay Baccarat (1703) => Build Choice.
+    /// 1) Virtual Horse Racing - Win/Place (1233) => Build Odds, Status.
+    /// 2) Gold Deluxe Baccarat (1702) => Build Choice.
+    /// 3) Gold Deluxe Live Roulette (1702) => Build Choice.
+    /// 4) Gold Deluxe Parlay Baccarat (1703) => Build Choice.
     /// </summary>
     public interface ITicketData
     {

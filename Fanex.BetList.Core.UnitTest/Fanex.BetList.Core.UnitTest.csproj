@@ -74,7 +74,6 @@
     <Compile Include="Builder\ChoiceBuilder\Choice1318Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice131Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice133Test.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1101Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice143Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice140Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice13Test.cs" />
@@ -198,9 +197,6 @@
     <Compile Include="Builder\ChoiceBuilder\Choice601Tests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice10Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice2Test.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1102Test.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1103Test.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1104Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice121Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice122Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice123Test.cs" />
