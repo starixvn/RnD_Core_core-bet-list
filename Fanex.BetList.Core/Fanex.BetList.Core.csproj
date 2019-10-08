@@ -172,7 +172,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Builder\ChoiceBuilder\Choice10.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1101.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice12.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice121.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice122.cs" />
