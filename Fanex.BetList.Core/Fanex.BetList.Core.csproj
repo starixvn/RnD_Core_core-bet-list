@@ -167,7 +167,6 @@
     <Compile Include="Builder\BetListExcelBuilder.cs" />
     <Compile Include="Builder\BetListHTMLBuilder.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice22.cs" />
-    <Compile Include="Builder\ChoiceBuilder\3rd\Choice_22006.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -329,17 +328,14 @@
     <Compile Include="Builder\IBetListBaseBuilder.cs" />
     <Compile Include="Builder\IBetListExcelBuilder.cs" />
     <Compile Include="Builder\IBetListHTMLBuilder.cs" />
-    <Compile Include="Builder\OddsBuilder\3rd\Odds_22006.cs" />
     <Compile Include="Builder\OddsBuilder\IOdds.cs" />
     <Compile Include="Builder\OddsBuilder\Odds1.cs" />
     <Compile Include="Builder\OddsBuilder\Odds29.cs" />
     <Compile Include="Builder\OddsBuilder\Odds468.cs" />
     <Compile Include="Builder\OddsBuilder\Odds71.cs" />
     <Compile Include="Builder\OddsBuilder\Odds72.cs" />
-    <Compile Include="Builder\StakeBuilder\3rd\Stake_22006.cs" />
     <Compile Include="Builder\StakeBuilder\IStake.cs" />
     <Compile Include="Builder\StakeBuilder\Stake1.cs" />
-    <Compile Include="Builder\StatusBuilder\3rd\Status_22006.cs" />
     <Compile Include="Builder\StatusBuilder\IStatus.cs" />
     <Compile Include="Builder\StatusBuilder\Status1.cs" />
     <Compile Include="Builder\StatusBuilder\Status10.cs" />
@@ -381,7 +377,6 @@
     <Compile Include="Builder\StatusBuilder\Status9.cs" />
     <Compile Include="Builder\SystemParlayBuilder\ISystemParlayDetail.cs" />
     <Compile Include="Builder\SystemParlayBuilder\SystemParlayDetail.cs" />
-    <Compile Include="Builder\TransBuilder\3rd\Trans_22006.cs" />
     <Compile Include="Builder\TransBuilder\ITrans.cs" />
     <Compile Include="Builder\TransBuilder\Trans1.cs" />
     <Compile Include="Builder\TransBuilder\Trans71.cs" />
@@ -446,7 +441,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="CoreBetList.cd" />
     <Content Include="packages.config" />
     <Content Include="Fanex.BetList.Core.ruleset" />
   </ItemGroup>

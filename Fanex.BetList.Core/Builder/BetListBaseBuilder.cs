@@ -24,15 +24,10 @@ namespace Fanex.BetList.Core.Builder
         private const string CacheKey = "Fanex.BetList.Core.CacheKey";
 
         private const string ChoiceName = ".Choice";
-        private const string Choice3rdName = "._3rd.Choice";
         private const string OddsName = ".Odds";
-        private const string Odds3rdName = "._3rd.Odds";
         private const string StatusName = ".Status";
-        private const string Status3rdName = "._3rd.Status";
         private const string StakeName = ".Stake";
-        private const string Stake3rdName = "._3rd.Stake";
         private const string TransName = ".Trans";
-        private const string Trans3rdName = "._3rd.Trans";
 
         private readonly ObjectCache _cache;
         private readonly CacheItemPolicy _cachePolicy;
@@ -49,90 +44,40 @@ namespace Fanex.BetList.Core.Builder
 
         public IChoice CreateChoiceBuilder(int bettype)
         {
-            var choiceName = ChoiceName;
-            var betTypeId = bettype;
-
-            if (betTypeId < 0)
-            {
-                // Internal conventional bettype id of 3rd products
-                choiceName = Choice3rdName;
-            }
-
-            betTypeId = MapperCollector.GetChoiceBaseBetTypeOf(betTypeId);
-
-            string typeName = string.Join(null, new[] { ChoiceBuilderNamespace, choiceName, betTypeId.ToString().Replace('-', '_') });
+            var betTypeId = MapperCollector.GetChoiceBaseBetTypeOf(bettype);
+            var typeName = string.Join(null, new[] { ChoiceBuilderNamespace, ChoiceName, betTypeId.ToString().Replace('-', '_') });
 
             return CreateInstance<IChoice, Choice1>(typeName);
         }
 
         public IOdds CreateOddsBuilder(int bettype)
         {
-            var oddsName = OddsName;
-            var betTypeId = bettype;
-
-            if (betTypeId < 0)
-            {
-                // Internal conventional bettype id of 3rd products
-                oddsName = Odds3rdName;
-            }
-
-            betTypeId = MapperCollector.GetOddsBaseBetTypeOf(betTypeId);
-
-            string typeName = string.Join(null, new[] { OddsBuilderNamespace, oddsName, betTypeId.ToString().Replace('-', '_') });
+            var betTypeId = MapperCollector.GetOddsBaseBetTypeOf(bettype);
+            var typeName = string.Join(null, new[] { OddsBuilderNamespace, OddsName, betTypeId.ToString().Replace('-', '_') });
 
             return CreateInstance<IOdds, Odds1>(typeName);
         }
 
         public IStake CreateStakeBuilder(int bettype)
         {
-            var stakeName = StakeName;
-            var betTypeId = bettype;
-
-            if (bettype < 0)
-            {
-                // Internal conventional bettype id of 3rd products
-                stakeName = Stake3rdName;
-            }
-
-            betTypeId = MapperCollector.GetStakeBaseBetTypeOf(betTypeId);
-
-            string typeName = string.Join(null, new[] { StakeBuilderNamespace, stakeName, betTypeId.ToString().Replace('-', '_') });
+            var betTypeId = MapperCollector.GetStakeBaseBetTypeOf(bettype);
+            var typeName = string.Join(null, new[] { StakeBuilderNamespace, StakeName, betTypeId.ToString().Replace('-', '_') });
 
             return CreateInstance<IStake, Stake1>(typeName);
         }
 
         public IStatus CreateStatusBuilder(int bettype)
         {
-            var statusName = StatusName;
-            var betTypeId = bettype;
-
-            if (betTypeId < 0)
-            {
-                // Internal conventional bettype id of 3rd products
-                statusName = Status3rdName;
-            }
-
-            betTypeId = MapperCollector.GetStatusBaseBetTypeOf(betTypeId);
-
-            string typeName = string.Join(null, new[] { StatusBuilderNamespace, statusName, betTypeId.ToString().Replace('-', '_') });
+            var betTypeId = MapperCollector.GetStatusBaseBetTypeOf(bettype);
+            var typeName = string.Join(null, new[] { StatusBuilderNamespace, StatusName, betTypeId.ToString().Replace('-', '_') });
 
             return CreateInstance<IStatus, Status1>(typeName);
         }
 
         public ITrans CreateTransBuilder(int bettype)
         {
-            var transName = TransName;
-            var betTypeId = bettype;
-
-            if (betTypeId < 0)
-            {
-                // Internal conventional bettype id of 3rd products
-                transName = Trans3rdName;
-            }
-
-            betTypeId = MapperCollector.GetTransBaseBetTypeOf(betTypeId);
-
-            string typeName = string.Join(null, new[] { TransBuilderNamespace, transName, betTypeId.ToString().Replace('-', '_') });
+            var betTypeId = MapperCollector.GetTransBaseBetTypeOf(bettype);
+            var typeName = string.Join(null, new[] { TransBuilderNamespace, TransName, betTypeId.ToString().Replace('-', '_') });
 
             return CreateInstance<ITrans, Trans1>(typeName);
         }

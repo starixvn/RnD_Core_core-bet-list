@@ -296,7 +296,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder
         [TestCase(72, "Choice72")]
         [TestCase(8, "Choice8")]
         [TestCase(9, "Choice9")]
-        [TestCase(-22006, "Choice_22006")]
         public void CreateChoiceBuilder_WhenCalled_ReturnChoice(int betType, string expectedChoice)
         {
             var buider = CreateChoiceBuilder();
@@ -306,7 +305,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder
             Assert.AreEqual(expectedChoice, choice.GetType().Name);
         }
 
-        [TestCase(-22006, "Odds_22006")]
         [TestCase(1, "Odds1")]
         [TestCase(29, "Odds29")]
         [TestCase(468, "Odds468")]
@@ -322,7 +320,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder
             Assert.AreEqual(expectedOdds, choice.GetType().Name);
         }
 
-        [TestCase(-22006, "Stake_22006")]
         [TestCase(1, "Stake1")]
         public void CreateStakeBuilder_WhenCalled_ReturnStake(int betType, string expectedStake)
         {
@@ -333,7 +330,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder
             Assert.AreEqual(expectedStake, choice.GetType().Name);
         }
 
-        [TestCase(-22006, "Status_22006")]
         [TestCase(1, "Status1")]
         [TestCase(10, "Status10")]
         [TestCase(1311, "Status1311")]
@@ -397,7 +393,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder
             Assert.AreEqual(expectedStatus, choice.GetType().Name);
         }
 
-        [TestCase(-22006, "Trans_22006")]
         [TestCase(1, "Trans1")]
         [TestCase(71, "Trans71")]
         public void CreateTransBuilder_WhenCalled_ReturnTrans(int betType, string expectedTrans)

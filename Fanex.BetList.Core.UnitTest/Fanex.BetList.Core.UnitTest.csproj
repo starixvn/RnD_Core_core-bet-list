@@ -66,7 +66,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builder\BetListBaseBuilderTest.cs" />
-    <Compile Include="Builder\ChoiceBuilder\3rd\Choice_22006Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice128Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1312Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1316Test.cs" />
@@ -242,7 +241,6 @@
     <Compile Include="Builder\OddsBuilder\Odds71Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds1Test.cs" />
     <Compile Include="Builder\StakeBuilder\Stake1Test.cs" />
-    <Compile Include="Builder\StatusBuilder\3rd\Status_22006Test.cs" />
     <Compile Include="Builder\StatusBuilder\Status221Tests.cs" />
     <Compile Include="Builder\StatusBuilder\Status38Tests.cs" />
     <Compile Include="Builder\StatusBuilder\Status606Tests.cs" />
