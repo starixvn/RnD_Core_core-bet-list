@@ -160,11 +160,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder
         [TestCase(225, "Choice223")]
         [TestCase(226, "Choice223")]
         [TestCase(227, "Choice223")]
-        [TestCase(23001, "Choice23001")]
-        [TestCase(23002, "Choice23002")]
-        [TestCase(23101, "Choice23101")]
-        [TestCase(23201, "Choice23201")]
-        [TestCase(23202, "Choice23202")]
         [TestCase(24, "Choice24")]
         [TestCase(25, "Choice25")]
         [TestCase(26, "Choice26")]
@@ -292,8 +287,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder
         [TestCase(616, "Choice610")]
         [TestCase(617, "Choice606")]
         [TestCase(7, "Choice7")]
-        [TestCase(71, "Choice71")]
-        [TestCase(72, "Choice72")]
         [TestCase(8, "Choice8")]
         [TestCase(9, "Choice9")]
         public void CreateChoiceBuilder_WhenCalled_ReturnChoice(int betType, string expectedChoice)
@@ -309,8 +302,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder
         [TestCase(29, "Odds29")]
         [TestCase(468, "Odds468")]
         [TestCase(469, "Odds468")]
-        [TestCase(71, "Odds71")]
-        [TestCase(72, "Odds72")]
         public void CreateOddsBuilder_WhenCalled_ReturnOdds(int betType, string expectedOdds)
         {
             var buider = CreateChoiceBuilder();
@@ -366,10 +357,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder
         [TestCase(225, "Status221")]
         [TestCase(226, "Status221")]
         [TestCase(227, "Status221")]
-        [TestCase(23001, "Status23001")]
-        [TestCase(23002, "Status23002")]
-        [TestCase(23003, "Status23003")]
-        [TestCase(23101, "Status23101")]
         [TestCase(29, "Status9")]
         [TestCase(38, "Status38")]
         [TestCase(607, "Status606")]
@@ -382,7 +369,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder
         [TestCase(615, "Status606")]
         [TestCase(616, "Status606")]
         [TestCase(617, "Status606")]
-        [TestCase(71, "Status71")]
         [TestCase(9, "Status9")]
         public void CreateStatusBuilder_WhenCalled_ReturnStatus(int betType, string expectedStatus)
         {
@@ -394,7 +380,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder
         }
 
         [TestCase(1, "Trans1")]
-        [TestCase(71, "Trans71")]
         public void CreateTransBuilder_WhenCalled_ReturnTrans(int betType, string expectedTrans)
         {
             var buider = CreateChoiceBuilder();

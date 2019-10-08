@@ -1,11 +1,11 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.StatusBuilder
 {
     using Common;
-    using Common.Enums;
+    using Core.App_GlobalResources;
     using Core.Builder.StatusBuilder;
+    using Core.Constants;
     using Core.Templates;
     using Entities;
-    using Fanex.BetList.Core.App_GlobalResources;
     using NUnit.Framework;
     using Stubs;
 
@@ -19,7 +19,7 @@
         public void Setup()
         {
             _status = new Status9();
-            _ticket = TestData.CreateTicket(BetTypes.Casino_Games);
+            _ticket = TestData.CreateTicket(BetTypes.MixParlay);
             _ticketHelperStub = new TicketHelperStub();
         }
 
