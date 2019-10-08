@@ -6,7 +6,6 @@
     using Core.Constants;
     using Core.Entities;
     using Core.Utils;
-    using NPOI.HSSF.UserModel;
     using NSubstitute;
     using NUnit.Framework;
 

@@ -105,7 +105,7 @@
 
             // Assert.
             Assert.IsNull(_choice.Template.Handicap.handicap);
-            Assert.AreEqual(expectedClass,_choice.Template.betTeamClassName);
+            Assert.AreEqual(expectedClass, _choice.Template.betTeamClassName);
         }
 
         [Test]
