@@ -13,9 +13,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder
     {
         [TestCase(1, "Choice1")]
         [TestCase(10, "Choice10")]
-        [TestCase(1000, "Choice1000")]
-        [TestCase(1001, "Choice1001")]
-        [TestCase(1002, "Choice1002")]
         [TestCase(1101, "Choice1101")]
         [TestCase(1102, "Choice1102")]
         [TestCase(1103, "Choice1103")]
@@ -315,7 +312,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder
 
         [TestCase(-22006, "Odds_22006")]
         [TestCase(1, "Odds1")]
-        [TestCase(1000, "Odds1000")]
         [TestCase(1101, "Odds1101")]
         [TestCase(29, "Odds29")]
         [TestCase(468, "Odds468")]
@@ -345,9 +341,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder
         [TestCase(-22006, "Status_22006")]
         [TestCase(1, "Status1")]
         [TestCase(10, "Status10")]
-        [TestCase(1000, "Status1000")]
-        [TestCase(1001, "Status1001")]
-        [TestCase(1002, "Status1002")]
         [TestCase(1311, "Status1311")]
         [TestCase(1312, "Status1312")]
         [TestCase(1313, "Status1313")]

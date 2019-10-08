@@ -172,9 +172,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Builder\ChoiceBuilder\Choice10.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1000.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1001.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1002.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1101.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1102.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1103.cs" />
@@ -339,7 +336,6 @@
     <Compile Include="Builder\OddsBuilder\3rd\Odds_22006.cs" />
     <Compile Include="Builder\OddsBuilder\IOdds.cs" />
     <Compile Include="Builder\OddsBuilder\Odds1.cs" />
-    <Compile Include="Builder\OddsBuilder\Odds1000.cs" />
     <Compile Include="Builder\OddsBuilder\Odds1101.cs" />
     <Compile Include="Builder\OddsBuilder\Odds29.cs" />
     <Compile Include="Builder\OddsBuilder\Odds468.cs" />
@@ -352,9 +348,6 @@
     <Compile Include="Builder\StatusBuilder\IStatus.cs" />
     <Compile Include="Builder\StatusBuilder\Status1.cs" />
     <Compile Include="Builder\StatusBuilder\Status10.cs" />
-    <Compile Include="Builder\StatusBuilder\Status1000.cs" />
-    <Compile Include="Builder\StatusBuilder\Status1001.cs" />
-    <Compile Include="Builder\StatusBuilder\Status1002.cs" />
     <Compile Include="Builder\StatusBuilder\Status1311.cs" />
     <Compile Include="Builder\StatusBuilder\Status1312.cs" />
     <Compile Include="Builder\StatusBuilder\Status1313.cs" />
