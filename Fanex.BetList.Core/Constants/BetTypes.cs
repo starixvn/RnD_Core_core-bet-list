@@ -30,9 +30,6 @@
         public const int ThreeWayHandicap = 28;
         public const int SystemParlay = 29;
         public const int FirstHalfCorrectScore = 30;
-        public const int Win = 31;
-        public const int Place = 32;
-        public const int WinPlace = 33;
         public const int SingleMatchParlay = 38;
         public const int HomeNoBet = 121;
         public const int AwayNoBet = 122;

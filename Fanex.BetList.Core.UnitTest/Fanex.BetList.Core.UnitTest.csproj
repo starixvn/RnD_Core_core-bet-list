@@ -233,7 +233,6 @@
     <Compile Include="Builder\ChoiceBuilder\Choice5Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice4Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice30Test.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice31Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice28Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1309Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice29Test.cs">
@@ -254,8 +253,6 @@
     <Compile Include="Builder\StatusBuilder\Status606Tests.cs" />
     <Compile Include="Builder\StatusBuilder\Status9Test.cs" />
     <Compile Include="Builder\StatusBuilder\Status71Test.cs" />
-    <Compile Include="Builder\StatusBuilder\Status33Test.cs" />
-    <Compile Include="Builder\StatusBuilder\Status31Test.cs" />
     <Compile Include="Builder\StatusBuilder\Status154Test.cs" />
     <Compile Include="Builder\StatusBuilder\Status1000Test.cs" />
     <Compile Include="Builder\StatusBuilder\Status10Test.cs" />
