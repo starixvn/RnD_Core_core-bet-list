@@ -1,17 +1,14 @@
 ﻿namespace Fanex.BetList.Core.Mapper
 {
+    using Fanex.BetList.Core.Constants;
+
     public class ChoiceMapper : BaseMapper
     {
         public ChoiceMapper()
         {
-            Initialize();
-        }
-
-        private void Initialize()
-        {
-            for (int betTypeId = 4102; betTypeId < 4300; betTypeId++)
+            for (int betTypeId = PragmaticPlayBetTypes.BaseBetTypeId + 1; betTypeId < PragmaticPlayBetTypes.HighestBetTypeIdInRange; betTypeId++)
             {
-                MapIdToBaseId(betTypeId, 4101);
+                MapIdToBaseId(betTypeId, PragmaticPlayBetTypes.BaseBetTypeId);
             }
         }
     }

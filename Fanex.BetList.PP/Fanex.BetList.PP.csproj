@@ -47,6 +47,7 @@
     <Compile Include="Builder\StakeBuilder\Stake4300.cs" />
     <Compile Include="Builder\StatusBuilder\Status4101.cs" />
     <Compile Include="Builder\StatusBuilder\Status4300.cs" />
+    <Compile Include="Constants\PragmaticPlayBetTypes.cs" />
     <Compile Include="Mapper\ChoiceMapper.cs" />
     <Compile Include="Mapper\OddsMapper.cs" />
     <Compile Include="Mapper\StatusMapper.cs" />

@@ -3,8 +3,8 @@
     using System;
     using System.Collections.Generic;
     using System.Text.RegularExpressions;
-    using App_GlobalResources;
-    using Entities;
+    using Fanex.BetList.Core.App_GlobalResources;
+    using Fanex.BetList.Core.Entities;
 
     public class Choice4101 : Choice1
     {

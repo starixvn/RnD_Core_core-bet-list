@@ -36,7 +36,9 @@
 
         private static Dictionary<string, string> DeserializeAdditionalInfo(string additionalInfo)
         {
-            Dictionary<string, string> transDescItems = new Dictionary<string, string>();
+            const int requiredNumberOfParts = 2;
+
+            var transDescItems = new Dictionary<string, string>();
 
             if (string.IsNullOrEmpty(additionalInfo))
             {
@@ -48,7 +50,7 @@
             foreach (var keyValuePair in keyValuePairs)
             {
                 var keyValue = keyValuePair.Split(new[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
-                if (keyValue.Length == 2)
+                if (keyValue.Length == requiredNumberOfParts)
                 {
                     transDescItems.Add(keyValue[0], keyValue[1].Trim());
                 }

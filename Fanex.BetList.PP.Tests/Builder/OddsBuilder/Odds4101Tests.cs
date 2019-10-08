@@ -1,8 +1,8 @@
 ﻿namespace Fanex.BetList.PP.Tests.Builder.OddsBuilder
 {
-    using Core.Builder.OddsBuilder;
-    using Core.Entities;
-    using Core.Templates;
+    using Fanex.BetList.Core.Builder.OddsBuilder;
+    using Fanex.BetList.Core.Entities;
+    using Fanex.BetList.Core.Templates;
     using NSubstitute;
     using NUnit.Framework;
 

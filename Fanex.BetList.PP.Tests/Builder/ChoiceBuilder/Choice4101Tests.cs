@@ -1,10 +1,10 @@
 ﻿namespace Fanex.BetList.PP.Tests.Builder.ChoiceBuilder
 {
     using System;
-    using Core.App_GlobalResources;
-    using Core.Builder.ChoiceBuilder;
-    using Core.Entities;
-    using Core.Templates;
+    using Fanex.BetList.Core.App_GlobalResources;
+    using Fanex.BetList.Core.Builder.ChoiceBuilder;
+    using Fanex.BetList.Core.Entities;
+    using Fanex.BetList.Core.Templates;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -112,7 +112,7 @@
             _ticket.TransId = 1;
             _ticket.WinlostDate = DateTime.Today;
             _ticket.CustId = 2;
-            _ticket.Status = "WON";
+            _ticket.Status = BetStatus.Won;
             _ticket.BetCheck = betCheck;
 
             // Act.
@@ -133,7 +133,7 @@
             _ticket.TransId = 1;
             _ticket.WinlostDate = DateTime.Today.AddDays(-2);
             _ticket.CustId = 2;
-            _ticket.Status = "WON";
+            _ticket.Status = BetStatus.Won;
 
             // Act.
             Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);

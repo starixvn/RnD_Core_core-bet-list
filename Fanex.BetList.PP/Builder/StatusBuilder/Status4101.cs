@@ -2,9 +2,9 @@
 {
     using System.Collections.Generic;
     using System.Text.RegularExpressions;
-    using App_GlobalResources;
-    using Entities;
-    using Utils;
+    using Fanex.BetList.Core.App_GlobalResources;
+    using Fanex.BetList.Core.Entities;
+    using Fanex.BetList.Core.Utils;
 
     public class Status4101 : Status1
     {

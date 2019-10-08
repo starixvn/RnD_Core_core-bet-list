@@ -1,10 +1,10 @@
 ﻿namespace Fanex.BetList.PP.Tests.Builder.StatusBuilder
 {
-    using Core.App_GlobalResources;
-    using Core.Builder.StatusBuilder;
-    using Core.Entities;
-    using Core.Templates;
-    using Core.Utils;
+    using Fanex.BetList.Core.App_GlobalResources;
+    using Fanex.BetList.Core.Builder.StatusBuilder;
+    using Fanex.BetList.Core.Entities;
+    using Fanex.BetList.Core.Templates;
+    using Fanex.BetList.Core.Utils;
     using NSubstitute;
     using NUnit.Framework;
 
