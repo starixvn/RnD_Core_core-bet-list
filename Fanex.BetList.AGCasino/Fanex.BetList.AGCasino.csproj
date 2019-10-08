@@ -47,13 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builder\ChoiceBuilder\Choice1801.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1803.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1804.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1802.cs" />
     <Compile Include="Builder\StatusBuilder\Status1801.cs" />
-    <Compile Include="Builder\StatusBuilder\Status1803.cs" />
-    <Compile Include="Builder\StatusBuilder\Status1804.cs" />
-    <Compile Include="Builder\StatusBuilder\Status1802.cs" />
+    <Compile Include="Constants\AGCasinoBetTypes.cs" />
+    <Compile Include="Mapper\ChoiceMapper.cs" />
+    <Compile Include="Mapper\StatusMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

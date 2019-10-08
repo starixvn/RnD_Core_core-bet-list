@@ -1,10 +1,5 @@
 ﻿namespace Fanex.BetList.AGCasino.Tests.Builder.StatusBuilder
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Builder.StatusBuilder;
     using Fanex.BetList.Core.Entities;
     using NSubstitute;

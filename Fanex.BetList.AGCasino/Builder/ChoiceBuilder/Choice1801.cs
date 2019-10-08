@@ -7,7 +7,7 @@
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
 
-    public class Choice1801 : Choice1101
+    public class Choice1801 : Choice1
     {
         private const string OpenBetTypeNameTag = "<span class='ag-casino-bet-type'>";
         private const string CloseBetTypeNameTag = "</span>";
@@ -90,33 +90,33 @@
         private static Choice_League_Block BuildShowMicroGamingRnGBetsDetails(ITicket ticket)
         {
             string[] detailsFunctionCompositions =
-                {
-                    "showAGCasinoDetails(&quot;",
-                    ticket.TransId.ToString(),
-                    "&quot;",
-                    ",&quot;",
-                        ticket.WinlostDate.ToString(CultureInfo.InvariantCulture),
-                    "&quot;",
-                    ",&quot;",
-                    ticket.CustId.ToString(),
-                        "&quot;",
-                    ",&quot;",
-                    GetTransactionType(ticket),
-                    "&quot;);"
-                };
+            {
+                "showAGCasinoDetails(&quot;",
+                ticket.TransId.ToString(),
+                "&quot;",
+                ",&quot;",
+                ticket.WinlostDate.ToString(CultureInfo.InvariantCulture),
+                "&quot;",
+                ",&quot;",
+                ticket.CustId.ToString(),
+                "&quot;",
+                ",&quot;",
+                GetTransactionType(ticket),
+                "&quot;);"
+            };
 
             string detailsFunction = string.Join(null, detailsFunctionCompositions);
 
             string[] detailsFunctionDivCompositions =
-                {
-                    "<div class=\"detail\" onclick='",
-                    detailsFunction,
-                    "'>",
-                    "<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">",
-                    CoreBetList.details,
-                    "</a>",
-                    "</div>"
-                };
+            {
+                "<div class=\"detail\" onclick='",
+                detailsFunction,
+                "'>",
+                "<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">",
+                CoreBetList.details,
+                "</a>",
+                "</div>"
+            };
 
             string markups = string.Join(null, detailsFunctionDivCompositions);
 
@@ -199,7 +199,9 @@
 
         private static Dictionary<string, string> DeserializeTransDesc(string transDesc)
         {
-            Dictionary<string, string> transDescItems = new Dictionary<string, string>();
+            const int numberOfExpressionsOfEachProperty = 2;
+
+            var transDescItems = new Dictionary<string, string>();
 
             if (string.IsNullOrEmpty(transDesc))
             {
@@ -210,7 +212,7 @@
             foreach (var keyValuePair in keyValuePairs)
             {
                 var keyValue = keyValuePair.Split(new[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
-                if (keyValue.Length == 2)
+                if (keyValue.Length == numberOfExpressionsOfEachProperty)
                 {
                     transDescItems.Add(keyValue[0], keyValue[1]);
                 }

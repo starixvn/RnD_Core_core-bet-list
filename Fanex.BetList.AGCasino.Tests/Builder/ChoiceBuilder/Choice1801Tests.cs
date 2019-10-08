@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.AGCasino.Tests.Builder.ChoiceBuilder
 {
     using System;
-    using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
+    using Fanex.BetList.Core.Constants;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Utils;
     using NPOI.HSSF.UserModel;
@@ -23,25 +23,36 @@
             _choice = new Choice1801();
             _ticket = Substitute.For<ITicket>();
             _ticketHelper = Substitute.For<ITicketHelper>();
+
+            _ticket.BetTypeId = AGCasinoBetTypes.Baccarat;
+            _ticket.TransId = 1;
+            _ticket.CustId = 10000;
         }
 
-        [TestCase("WON", "1")]
-        [TestCase("LOSE", "1")]
-        [TestCase("DRAW", "1")]
-        [TestCase("REFUND", "1")]
-        [TestCase("REJECT", "2")]
-        [TestCase("VOID", "2")]
-        [TestCase("RUNNING", "3")]
-        [TestCase("WAITING", "3")]
-        [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2100:CodeLineMustNotBeLongerThan", Justification = "Reviewed.")]
+        [Test]
+        public void BuildMatch_Always_HideMatch()
+        {
+            // Act.
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert.
+            Assert.IsNull(template.Match);
+        }
+
+        [TestCase(BetStatus.Won, "1")]
+        [TestCase(BetStatus.Lose, "1")]
+        [TestCase(BetStatus.Draw, "1")]
+        [TestCase(BetStatus.Refund, "1")]
+        [TestCase(BetStatus.Reject, "2")]
+        [TestCase(BetStatus.Void, "2")]
+        [TestCase(BetStatus.Running, "3")]
+        [TestCase(BetStatus.Waiting, "3")]
         public void BuildLeague_MainTicketWinlostIsToday_ReturnDetailtButtonHtml(string ticketStatus, string transctionType)
         {
             //// Arrange
             _ticket.TransDesc = string.Empty;
-            _ticket.TransId = 1;
             _ticket.WinlostDate = DateTime.Today;
             _ticket.Status = ticketStatus;
-            _ticket.CustId = 10000;
 
             //// Act
             _choice.Render(_ticket, _ticketHelper, null, false);
@@ -58,23 +69,20 @@
             Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedTemplate));
         }
 
-        [TestCase("WON", "1")]
-        [TestCase("LOSE", "1")]
-        [TestCase("DRAW", "1")]
-        [TestCase("REFUND", "1")]
-        [TestCase("REJECT", "2")]
-        [TestCase("VOID", "2")]
-        [TestCase("RUNNING", "3")]
-        [TestCase("WAITING", "3")]
-        [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2100:CodeLineMustNotBeLongerThan", Justification = "Reviewed.")]
+        [TestCase(BetStatus.Won, "1")]
+        [TestCase(BetStatus.Lose, "1")]
+        [TestCase(BetStatus.Draw, "1")]
+        [TestCase(BetStatus.Refund, "1")]
+        [TestCase(BetStatus.Reject, "2")]
+        [TestCase(BetStatus.Void, "2")]
+        [TestCase(BetStatus.Running, "3")]
+        [TestCase(BetStatus.Waiting, "3")]
         public void BuildLeague_MainTicketWinlostIsYesterday_ReturnDetailtButtonHtml(string ticketStatus, string transctionType)
         {
             //// Arrange
             _ticket.TransDesc = string.Empty;
-            _ticket.TransId = 1;
             _ticket.WinlostDate = DateTime.Today.AddDays(-1);
             _ticket.Status = ticketStatus;
-            _ticket.CustId = 10000;
 
             //// Act
             _choice.Render(_ticket, _ticketHelper, null, false);
@@ -87,14 +95,11 @@
         }
 
         [Test]
-        [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2100:CodeLineMustNotBeLongerThan", Justification = "Reviewed.")]
         public void BuildLeague_ForPreviousDaysSummaryTicket_ReturnDetailLinkHtml()
         {
             ////Arrange
             _ticket.TransDesc = string.Empty;
-            _ticket.TransId = 1;
             _ticket.WinlostDate = DateTime.Today.AddDays(-2);
-            _ticket.CustId = 10000;
 
             ////Act
             _choice.Render(_ticket, _ticketHelper, null, false);
@@ -109,8 +114,8 @@
         public void BuildBetTeam_TransDecsHasDataOfBetChoice_ReturnBetChoice()
         {
             //// Arrange
-            var choiceName = "Choice Name";
-            _ticket.BetTypeId = 1801;
+            const string choiceName = "Choice Name";
+
             _ticket.TransDesc = "round=DSP*tableCode=va21*game=BAC*type=1*val=";
 
             _ticketHelper.GetResourceData("AG_Baccarat", "1").Returns(choiceName);
@@ -126,7 +131,6 @@
         public void BuildBetTeam_TransDecsDoesNotDataOfBetChoice_ReturnEmpty()
         {
             //// Arrange
-            _ticket.BetTypeId = 1801;
             _ticket.TransDesc = "round=DSP*tableCode=va21*game=BAC*type=1";
 
             //// Act
@@ -140,7 +144,6 @@
         public void RenderRTF_SubTicket_RemoveHtmlTag()
         {
             //// Arrange
-            _ticket.BetTypeId = 1801;
             _ticket.TransDesc = "round=DSP*tableCode=va21*game=BAC*type=1*val=";
 
             var workbook = new HSSFWorkbook();
