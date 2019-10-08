@@ -55,6 +55,7 @@
     <Compile Include="Builder\ChoiceBuilder\Choice1701Tests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1702Tests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1703Tests.cs" />
+    <Compile Include="Builder\TransBuilder\Trans1701Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

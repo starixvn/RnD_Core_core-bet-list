@@ -1,6 +1,12 @@
 ﻿namespace Fanex.BetList.Core.Builder.TransBuilder
 {
-    public class Trans1701 : Trans71
+    using Entities;
+
+    public class Trans1701 : Trans1
     {
+        protected override void BuildRefNo(ITicket ticket)
+        {
+            Template.TransTime.refNo = ticket.RefNo;
+        }
     }
 }
