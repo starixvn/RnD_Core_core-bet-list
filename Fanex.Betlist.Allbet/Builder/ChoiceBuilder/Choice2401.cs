@@ -11,7 +11,7 @@
     using Resource;
     using Templates;
 
-    public class Choice2401 : Choice1101
+    public class Choice2401 : Choice1
     {
         private const string OpenBetTypeNameTag = "<span class='allbet-bet-type-name'>";
         private const string CloseBetTypeNameTag = "</span>";
@@ -27,6 +27,11 @@
         private const string AllBetRefId = "AllBet_BT";
         private const string BetChoiceDataKey = "CHOICE";
         private const string TableCodeKey = "TableCode";
+
+        protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            Template.Match = null;
+        }
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
@@ -52,7 +57,9 @@
 
         private static Dictionary<string, string> DeserializeTransDesc(string transDesc)
         {
-            Dictionary<string, string> transDescItems = new Dictionary<string, string>();
+            const int numberOfExpressionsOfEachProperty = 2;
+
+            var transDescItems = new Dictionary<string, string>();
 
             if (string.IsNullOrEmpty(transDesc))
             {
@@ -63,7 +70,7 @@
             foreach (var keyValuePair in keyValuePairs)
             {
                 var keyValue = keyValuePair.Split(new[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
-                if (keyValue.Length == 2)
+                if (keyValue.Length == numberOfExpressionsOfEachProperty)
                 {
                     transDescItems.Add(keyValue[0], keyValue[1]);
                 }
@@ -105,8 +112,8 @@
 
         private static Choice_League_Block BuildDetailLink(ITicket ticket)
         {
-            StringBuilder detailLinkMarkupBuilder = new StringBuilder();
-            string detailFunction = BuildDetailFunction(ticket);
+            var detailLinkMarkupBuilder = new StringBuilder();
+            var detailFunction = BuildDetailFunction(ticket);
 
             detailLinkMarkupBuilder
                 .Append("<div class=\"detail allbet-casino-detail\" onclick='")
@@ -126,7 +133,7 @@
 
         private static string BuildDetailFunction(ITicket ticket)
         {
-            StringBuilder detailFunctionBuilder = new StringBuilder();
+            var detailFunctionBuilder = new StringBuilder();
 
             detailFunctionBuilder.Append("showTodayRunningBetsDetails(&quot;")
                 .Append(ticket.TransId.ToString())

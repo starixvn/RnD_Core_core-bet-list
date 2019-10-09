@@ -1,12 +1,14 @@
 ﻿namespace Fanex.BetList.Core.Mapper
 {
+    using Constants;
+
     public class StatusMapper : BaseMapper
     {
         public StatusMapper()
         {
-            for (var betType = 2402; betType <= 2499; betType++)
+            for (var betType = AllbetBetTypes.VipBaccarat; betType <= AllbetBetTypes.HighestBetTypeIdInRange; betType++)
             {
-                MapIdToBaseId(betType, 2401);
+                MapIdToBaseId(betType, AllbetBetTypes.Baccarat);
             }
         }
     }
