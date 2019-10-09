@@ -83,8 +83,6 @@
     <Content Include="Templates\Status.htm" />
     <Content Include="Templates\Stake.htm" />
     <Content Include="Templates\Odds.htm" />
-    <Content Include="Templates\Resources\BetList.css" />
-    <Content Include="Templates\Resources\Images\bgHeader.jpg" />
     <Content Include="Templates\Trans.htm" />
     <EmbeddedResource Include="App_GlobalResources\CoreBetList.ja-JP.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -117,8 +115,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>CoreBetList.zh-TW.designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Templates\Resources\Images\firstGoal.gif" />
-    <EmbeddedResource Include="Templates\Resources\Images\lastGoal.gif" />
     <Content Include="Templates\Choice.htm" />
   </ItemGroup>
   <ItemGroup>
