@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builder\ChoiceBuilder\Choice2401.cs" />
+    <Compile Include="Builder\OddsBuilder\Odds2407.cs" />
     <Compile Include="Builder\StatusBuilder\Status2401.cs" />
     <Compile Include="Constants\AllbetBetTypes.cs" />
     <Compile Include="Mapper\ChoiceMapper.cs" />
@@ -88,6 +89,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AllbetLang.resx</DependentUpon>
     </Compile>
+    <Compile Include="Utils\TransDescParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resource\AllbetLang.ja-JP.resx">

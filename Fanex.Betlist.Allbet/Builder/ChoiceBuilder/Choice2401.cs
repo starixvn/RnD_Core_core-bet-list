@@ -3,13 +3,13 @@
     using System;
     using System.Collections.Generic;
     using System.Globalization;
-    using System.Linq;
     using System.Text;
     using System.Text.RegularExpressions;
     using App_GlobalResources;
     using Entities;
     using Resource;
     using Templates;
+    using Utils;
 
     public class Choice2401 : Choice1
     {
@@ -25,8 +25,17 @@
         private const string GameTableIdFormat = "<span class=\"gamegroupname\">{0}</span>";
 
         private const string AllBetRefId = "AllBet_BT";
-        private const string BetChoiceDataKey = "CHOICE";
+        private const string BetChoiceDataKey = "Choice";
         private const string TableCodeKey = "TableCode";
+
+        private Dictionary<string, string> _parsedTransDesc;
+
+        public override Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
+        {
+            _parsedTransDesc = ticket.ParseTransDesc();
+
+            return base.Render(ticket, ticketHelper, ticketData, isShowScoreMap);
+        }
 
         protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
         {
@@ -34,49 +43,16 @@
         }
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+            => Template.betTeam = GetBetChoice(ticketHelper);
+
+        private string GetBetChoice(ITicketHelper ticketHelper)
         {
-            Template.betTeam = string.Empty;
-
-            if (!string.IsNullOrWhiteSpace(ticket.TransDesc))
+            if (_parsedTransDesc != null && _parsedTransDesc.ContainsKey(BetChoiceDataKey))
             {
-                Template.betTeam = GetBetChoice(ticket, ticketHelper);
-            }
-        }
-
-        private static string GetBetChoice(ITicket ticket, ITicketHelper ticketHelper)
-        {
-            var transDecsParsed = DeserializeTransDesc(ticket.TransDesc.ToUpperInvariant());
-
-            if (transDecsParsed.ContainsKey(BetChoiceDataKey))
-            {
-                return ticketHelper.GetResourceData(AllBetRefId, transDecsParsed[BetChoiceDataKey]);
+                return ticketHelper.GetResourceData(AllBetRefId, _parsedTransDesc[BetChoiceDataKey]);
             }
 
             return string.Empty;
-        }
-
-        private static Dictionary<string, string> DeserializeTransDesc(string transDesc)
-        {
-            const int numberOfExpressionsOfEachProperty = 2;
-
-            var transDescItems = new Dictionary<string, string>();
-
-            if (string.IsNullOrEmpty(transDesc))
-            {
-                return transDescItems;
-            }
-
-            var keyValuePairs = transDesc.Split(new[] { '*' }, StringSplitOptions.RemoveEmptyEntries);
-            foreach (var keyValuePair in keyValuePairs)
-            {
-                var keyValue = keyValuePair.Split(new[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
-                if (keyValue.Length == numberOfExpressionsOfEachProperty)
-                {
-                    transDescItems.Add(keyValue[0], keyValue[1]);
-                }
-            }
-
-            return transDescItems;
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
@@ -91,8 +67,7 @@
 
             if (!string.IsNullOrEmpty(ticket.TransDesc))
             {
-                string betId = AllbetLang.BetID + ": " + ticket.BetCheck;
-                Template.BetType.betTypeName = string.Format("{0}{1}{2}", OpenBetIdTag, betId, CloseBetIdTag);
+                Template.BetType.betTypeName = $"{OpenBetIdTag}{AllbetLang.BetID}: {ticket.BetCheck}{CloseBetIdTag}";
             }
         }
 
@@ -106,7 +81,7 @@
             }
             else
             {
-                Template.League.LeagueName.leagueName += " " + BuildGameTableId(ticket.TransDesc) + " " + BuildGameId(ticket);
+                Template.League.LeagueName.leagueName += " " + GetTableCode() + " " + BuildGameId(ticket);
             }
         }
 
@@ -183,26 +158,21 @@
         {
             var betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
 
-            return string.Format("{0}{1}{2}", OpenBetTypeNameTag, betTypeName, CloseBetTypeNameTag);
+            return $"{OpenBetTypeNameTag}{betTypeName}{CloseBetTypeNameTag}";
         }
 
-        private static string BuildGameTableId(string transDesc)
+        private string GetTableCode()
         {
-            var tableCode = transDesc
-                .Split('*')
-                .FirstOrDefault(x => x.IndexOf(TableCodeKey + "=", StringComparison.OrdinalIgnoreCase) == 0);
+            if (_parsedTransDesc != null && _parsedTransDesc.ContainsKey(TableCodeKey))
+            {
+                return string.Format(GameTableIdFormat, _parsedTransDesc[TableCodeKey]);
+            }
 
-            return string.IsNullOrEmpty(tableCode)
-                ? string.Empty
-                : string.Format(GameTableIdFormat, tableCode.Split('=')[1]);
+            return string.Empty;
         }
 
         private static string BuildGameId(ITicket ticket)
-        {
-            var gameId = ticket.MatchCode;
-
-            return string.Format("{0}{1}{2}", OpenGameIdTag, gameId, CloseGameIdTag);
-        }
+            => $"{OpenGameIdTag}{ticket.MatchCode}{CloseGameIdTag}";
 
         protected override void AdjustBetTeamToRTF()
         {
