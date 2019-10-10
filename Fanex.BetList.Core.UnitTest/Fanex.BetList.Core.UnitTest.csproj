@@ -214,6 +214,15 @@
     <Compile Include="Builder\ChoiceBuilder\Choice1333Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1334Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice24Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice703Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice706Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice707Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice708Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice709Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice710Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice711Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice712Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice714Tests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice25Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice27Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice26Test.cs" />

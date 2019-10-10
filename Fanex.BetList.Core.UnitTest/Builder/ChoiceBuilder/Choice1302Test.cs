@@ -18,7 +18,7 @@
         {
             _choice = new Choice1302();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes.MatchCorrectScore;
+            _ticket.BetTypeId = BetTypes.MatchCorrectScore3rd;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 

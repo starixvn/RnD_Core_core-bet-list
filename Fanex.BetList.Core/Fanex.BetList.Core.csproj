@@ -289,6 +289,15 @@
     <Compile Include="Builder\ChoiceBuilder\Choice602.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice601.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice7.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice703.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice706.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice707.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice708.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice709.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice710.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice711.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice712.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice714.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice8.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice126.cs" />

@@ -15,6 +15,8 @@
             MapForPHAIO2();
             MapForPHAIO4B();
             MapForCricket();
+            MapForBadmintonAIO();
+
         }
 
         private void MapForOtherBetTypes()
@@ -76,12 +78,12 @@
             MapIdToBaseId(BetTypes.PlayerXMatchTotalGames2Way, BetTypes.TotalSets);
             MapIdToBaseId(BetTypes.SetXTotalGames3Way, BetTypes.MatchTotalGames3Way);
             MapIdToBaseId(BetTypes.SetXRaceToYGames, BetTypes.SetXWinner3rd);
-            MapIdToBaseId(BetTypes.SetXScoreAfter2Games, BetTypes.MatchCorrectScore);
-            MapIdToBaseId(BetTypes.SetXScoreAfter4Games, BetTypes.MatchCorrectScore);
-            MapIdToBaseId(BetTypes.SetXScoreAfter6Games, BetTypes.MatchCorrectScore);
+            MapIdToBaseId(BetTypes.SetXScoreAfter2Games, BetTypes.MatchCorrectScore3rd);
+            MapIdToBaseId(BetTypes.SetXScoreAfter4Games, BetTypes.MatchCorrectScore3rd);
+            MapIdToBaseId(BetTypes.SetXScoreAfter6Games, BetTypes.MatchCorrectScore3rd);
             MapIdToBaseId(BetTypes.SetXTotalDeuceGames2Way, BetTypes.TotalSets);
             MapIdToBaseId(BetTypes.SetXGameYWinner, BetTypes.SetXWinner3rd);
-            MapIdToBaseId(BetTypes.SetXGameYCorrectScore, BetTypes.MatchCorrectScore);
+            MapIdToBaseId(BetTypes.SetXGameYCorrectScore, BetTypes.MatchCorrectScore3rd);
             MapIdToBaseId(BetTypes.SetXGameYPointHandicap, BetTypes.SetXGameHandicap3rd);
             MapIdToBaseId(BetTypes.SetXGameYDueceBetting, BetTypes.SetXWillThereBeATiebreak);
             MapIdToBaseId(BetTypes.SetXGameYTotalPoints2Way, BetTypes.TotalSets);
@@ -183,10 +185,19 @@
             MapIdToBaseId(BetTypes.CornerHighestScoringHalf, BetTypes.HighestScoringHalf);
             MapIdToBaseId(BetTypes.CornerHighestScoringHalf2Way, BetTypes.HighestScoringHalf2Way);
         }
-
+        
         private void MapForCricket()
         {
             MapIdToBaseId(BetTypes.CricketMatchWinner, BetTypes.Moneyline);
+        }
+
+        private void MapForBadmintonAIO()
+        {
+            MapIdToBaseId(BetTypes.MatchHandicap, BetTypes.Handicap);
+            MapIdToBaseId(BetTypes.MatchNumberOfGames, BetTypes.SecondHalfOverUnder);
+            MapIdToBaseId(BetTypes.MatchPointHandicap, BetTypes.Handicap);
+            MapIdToBaseId(BetTypes.MatchPointOverUnder, BetTypes.SecondHalfOverUnder);
+            MapIdToBaseId(BetTypes.GameXPointYWinner, BetTypes.GameXRaceToYPoints);
         }
     }
 }
