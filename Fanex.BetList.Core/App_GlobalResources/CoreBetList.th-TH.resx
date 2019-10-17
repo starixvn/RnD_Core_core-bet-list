@@ -690,4 +690,7 @@
   <data name="NoCornerBefore" xml:space="preserve">
     <value>ไม่มีลูกเตะมุมก่อน {0}:00</value>
   </data>
+  <data name="Promotion" xml:space="preserve">
+    <value>โปรโมชั่น</value>
+  </data>
 </root>

@@ -516,4 +516,7 @@
   <data name="Tie" xml:space="preserve">
     <value>Hòa</value>
   </data>
+  <data name="Promotion" xml:space="preserve">
+    <value>Khuyến mãi</value>
+  </data>
 </root>

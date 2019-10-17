@@ -825,4 +825,7 @@
   <data name="NoCornerBefore" xml:space="preserve">
     <value>在{0}:00前无角球</value>
   </data>
+  <data name="Promotion" xml:space="preserve">
+    <value>促销活动</value>
+  </data>
 </root>

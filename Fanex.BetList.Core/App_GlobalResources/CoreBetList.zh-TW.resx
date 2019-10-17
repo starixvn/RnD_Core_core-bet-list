@@ -809,7 +809,7 @@
   </data>
   <data name="Rebate" xml:space="preserve">
     <value>返水紅利</value>
-  </data> 
+  </data>
   <data name="Exact" xml:space="preserve">
     <value>精準</value>
   </data>
@@ -818,5 +818,8 @@
   </data>
   <data name="NoCornerBefore" xml:space="preserve">
     <value>在{0}:00前無角球</value>
+  </data>
+  <data name="Promotion" xml:space="preserve">
+    <value>促銷活動</value>
   </data>
 </root>
