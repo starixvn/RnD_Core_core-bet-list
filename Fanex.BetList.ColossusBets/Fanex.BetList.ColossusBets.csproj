@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{89B48C7F-9EA2-40CF-879C-5509555D3B1D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Fanex.BetList.Core</RootNamespace>
+    <AssemblyName>Fanex.BetList.ColossusBets</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>Fanex.BetList.ColossusBets.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>Fanex.BetList.ColossusBets.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.0.6\lib\net40\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI, Version=2.0.6.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.0.6\lib\net40\NPOI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TplCore, Version=1.0.4854.17253, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TplCore.1.0.4854.17254\lib\net40\TplCore.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Builder\BuilderExtension.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice18000.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Builder\ChoiceBuilder\Choice18005.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice18004.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice18003.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice18002.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice18001.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice18006.cs" />
+    <Compile Include="Builder\StatusBuilder\Status18000.cs" />
+    <Compile Include="Builder\StatusBuilder\Status18006.cs" />
+    <Compile Include="Builder\StatusBuilder\Status18005.cs" />
+    <Compile Include="Builder\StatusBuilder\Status18004.cs" />
+    <Compile Include="Builder\StatusBuilder\Status18003.cs" />
+    <Compile Include="Builder\StatusBuilder\Status18002.cs" />
+    <Compile Include="Builder\StatusBuilder\Status18001.cs" />
+    <Compile Include="Builder\TransBuilder\Trans18000.cs" />
+    <Compile Include="Builder\TransBuilder\Trans18006.cs" />
+    <Compile Include="Builder\TransBuilder\Trans18005.cs" />
+    <Compile Include="Builder\TransBuilder\Trans18004.cs" />
+    <Compile Include="Builder\TransBuilder\Trans18003.cs" />
+    <Compile Include="Builder\TransBuilder\Trans18002.cs" />
+    <Compile Include="Builder\TransBuilder\Trans18001.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\ColosussBetsLabel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ColosussBetsLabel.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\ColossusBetsDetail.htm.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Fanex.BetList.ColossusBets.ruleset" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj">
+      <Project>{b0838d04-2306-4362-af22-9fcd0be6f8e7}</Project>
+      <Name>Fanex.BetList.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CodeAnalysis\CodeAnalysisConfiguration.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Templates\ColossusBetsDetail.htm">
+      <Generator>TplBuilder</Generator>
+    </Content>
+    <Content Include="Templates\Content\ColossusBets.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ColosussBetsLabel.ja-JP.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ColosussBetsLabel.ko-KR.resx" />
+    <EmbeddedResource Include="Resources\ColosussBetsLabel.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ColosussBetsLabel.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ColosussBetsLabel.th-TH.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ColosussBetsLabel.vi-VN.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ColosussBetsLabel.zh-CN.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ColosussBetsLabel.zh-TW.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.7.14.0.8411\analyzers\Google.Protobuf.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.7.14.0.8411\analyzers\SonarAnalyzer.CSharp.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.7.14.0.8411\analyzers\SonarAnalyzer.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

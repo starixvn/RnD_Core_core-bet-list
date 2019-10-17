@@ -177,6 +177,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\CockFighting.css" />
+    <Content Include="Content\ColossusBets.css" />
     <Content Include="Content\CoreBetList.css" />
     <Content Include="Content\images\1F.gif" />
     <Content Include="Content\images\1L.gif" />
@@ -312,6 +313,10 @@
       <Project>{5a3e7893-910a-48a7-9582-58a864068ca8}</Project>
       <Name>Fanex.BetList.CockFighting</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.ColossusBets\Fanex.BetList.ColossusBets.csproj">
+      <Project>{89b48c7f-9ea2-40cf-879c-5509555d3b1d}</Project>
+      <Name>Fanex.BetList.ColossusBets</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.Core.RemotingRef\Fanex.BetList.Core.RemotingRef.csproj">
       <Project>{0eadbd74-9c9f-4011-a669-034014865dc9}</Project>
       <Name>Fanex.BetList.Core.RemotingRef</Name>
@@ -400,6 +405,9 @@
     <Content Include="App_Data\MyanmarOdds.xls">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="App_Data\ColossusBets.xls">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="App_Data\60NewBetTypeBetRadarData.xls" />
     <Content Include="App_Data\AGCasino.xls" />
     <Content Include="App_Data\PHAllInOne.xls" />
@@ -413,6 +421,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="App_Data\FastMarkets.xls">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\ColossusBetsDetails.xls">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="App_Data\NumberGame.xls" />
@@ -449,6 +460,7 @@
     <None Include="fonts\glyphicons-halflings-regular.woff" />
     <None Include="Scripts\jquery-1.9.0.min.map" />
     <Content Include="Views\BetList\All.cshtml" />
+    <Content Include="Views\BetList\ColosussBetsDetails.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
