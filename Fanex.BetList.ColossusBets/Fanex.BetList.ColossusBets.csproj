@@ -57,27 +57,13 @@
     <Compile Include="Builder\ChoiceBuilder\Choice18000.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
-    <Compile Include="Builder\ChoiceBuilder\Choice18005.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice18004.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice18003.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice18002.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice18001.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice18006.cs" />
     <Compile Include="Builder\StatusBuilder\Status18000.cs" />
-    <Compile Include="Builder\StatusBuilder\Status18006.cs" />
-    <Compile Include="Builder\StatusBuilder\Status18005.cs" />
-    <Compile Include="Builder\StatusBuilder\Status18004.cs" />
-    <Compile Include="Builder\StatusBuilder\Status18003.cs" />
-    <Compile Include="Builder\StatusBuilder\Status18002.cs" />
-    <Compile Include="Builder\StatusBuilder\Status18001.cs" />
     <Compile Include="Builder\TransBuilder\Trans18000.cs" />
-    <Compile Include="Builder\TransBuilder\Trans18006.cs" />
-    <Compile Include="Builder\TransBuilder\Trans18005.cs" />
-    <Compile Include="Builder\TransBuilder\Trans18004.cs" />
-    <Compile Include="Builder\TransBuilder\Trans18003.cs" />
-    <Compile Include="Builder\TransBuilder\Trans18002.cs" />
-    <Compile Include="Builder\TransBuilder\Trans18001.cs" />
+    <Compile Include="Constants\ColossusBetsBetTypes.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Mapper\ChoiceMapper.cs" />
+    <Compile Include="Mapper\StatusMapper.cs" />
+    <Compile Include="Mapper\TransMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\ColosussBetsLabel.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -97,9 +83,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CodeAnalysis\CodeAnalysisConfiguration.xml">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Templates\ColossusBetsDetail.htm">
       <Generator>TplBuilder</Generator>
     </Content>
@@ -132,6 +115,7 @@
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.7.14.0.8411\analyzers\SonarAnalyzer.CSharp.dll" />
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.7.14.0.8411\analyzers\SonarAnalyzer.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

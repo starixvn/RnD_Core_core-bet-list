@@ -23,7 +23,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>Fanex.BetList.ColossusBets.Tests.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,7 +31,6 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>Fanex.BetList.ColossusBets.Tests.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NSubstitute, Version=2.0.3.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
@@ -57,11 +55,11 @@
   <ItemGroup>
     <Compile Include="Builder\BuilderExtensionTests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice18000Tests.cs" />
+    <Compile Include="Builder\StatusBuilder\Status18000Tests.cs" />
     <Compile Include="Builder\TransBuilder\Trans18000Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Fanex.BetList.ColossusBets.Tests.ruleset" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
