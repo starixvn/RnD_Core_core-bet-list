@@ -364,6 +364,10 @@
       <Project>{9ea9fe4a-ac19-4ff5-908f-54a7831b41ee}</Project>
       <Name>Fanex.BetList.RnGCasino</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.Spadegaming\Fanex.BetList.Spadegaming.csproj">
+      <Project>{ebca17e0-b3af-41e5-9a1f-caa81341a3b4}</Project>
+      <Name>Fanex.BetList.Spadegaming</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.VirtualSports\Fanex.BetList.VirtualSports.csproj">
       <Project>{f3dc05fd-883b-47f6-9f13-5506bf084cae}</Project>
       <Name>Fanex.BetList.VirtualSports</Name>
@@ -445,6 +449,7 @@
     <Content Include="App_Data\NonPeakHoursPromotion.xls" />
     <Content Include="App_Data\BadmintonAIO.xls" />
     <Content Include="App_Data\PHAllInOneP5.xls" />
+    <Content Include="App_Data\SG.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />

@@ -742,6 +742,27 @@
             return BetListView(model);
         }
 
+        public ActionResult SG(BetListData model = null)
+        {
+
+            var betTypeIds = new List<int>();
+
+            for (var betTypeId = 4301; betTypeId <= 4326; betTypeId++)
+            {
+                betTypeIds.Add(betTypeId);
+            }
+            
+            var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
+
+            DataSourcePath = "~/App_Data/SG.xls";
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
+
         private ViewResult BetListView(BetListData model)
         {
             return View("All", model);
