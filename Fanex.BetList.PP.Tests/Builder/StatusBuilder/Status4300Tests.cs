@@ -2,7 +2,6 @@
 {
     using Fanex.BetList.Core.Builder.StatusBuilder;
     using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Templates;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -29,7 +28,7 @@
             _ticket.Status = status;
 
             // Act.
-            Status_Template template = _status.Render(_ticket, _ticketHelper, null, false);
+            var template = _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.False(template.StatusResult.Visible);

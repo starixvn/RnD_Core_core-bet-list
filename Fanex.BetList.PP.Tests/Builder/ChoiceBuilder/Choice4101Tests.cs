@@ -1,10 +1,11 @@
 ﻿namespace Fanex.BetList.PP.Tests.Builder.ChoiceBuilder
 {
     using System;
+    using System.Globalization;
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
+    using Fanex.BetList.Core.Constants;
     using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Templates;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -24,7 +25,12 @@
             _ticket = Substitute.For<ITicket>();
             _ticketHelper = Substitute.For<ITicketHelper>();
 
-            _ticket.TransDesc = "4101";
+            _ticket.TransId = 1;
+            _ticket.WinlostDate = DateTime.Today;
+            _ticket.CustId = 2;
+            _ticket.Status = BetStatus.Won;
+            _ticket.TransDesc = PragmaticPlayBetTypes.BaseBetTypeId.ToString(CultureInfo.InvariantCulture);
+
             _ticketHelper.GetResourceData(Arg.Is(Choice4101.GameTypeRefId), Arg.Is(_ticket.TransDesc)).Returns(FakeGameType);
             _ticketHelper.GetResourceData(Arg.Is(Choice4101.GameGroupRefId), Arg.Is(_ticket.TransDesc)).Returns(FakeGameGroup);
         }
@@ -43,10 +49,10 @@
         public void BuildBetTeam_Always_BeTeamStarstsWithHtmlContainingExpectedBetOption()
         {
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            string expectedBetOptionHtml = $"<span class=\"handicap\">{FakeGameType}</span>";
+            var expectedBetOptionHtml = $"<span class=\"handicap\">{FakeGameType}</span>";
 
             StringAssert.StartsWith(expectedBetOptionHtml, template.betTeam);
         }
@@ -59,10 +65,10 @@
             _ticket.BetCheck = betCheck;
 
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            string expectedBetOptionHtml = $"<span class=\"handicap\">{FakeGameType}</span>";
+            var expectedBetOptionHtml = $"<span class=\"handicap\">{FakeGameType}</span>";
 
             Assert.AreEqual(expectedBetOptionHtml, template.betTeam);
         }
@@ -76,7 +82,7 @@
             _ticket.BetCheck = betCheck;
 
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             StringAssert.EndsWith(betCheck, template.betTeam);
@@ -96,10 +102,10 @@
         public void BuildLeague_Always_LeagueNameStarstsWithHtmlContainingGameGroup()
         {
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            string expectedBetOptionHtml = $"<span class=\"gamegroupname\"> {FakeGameGroup}</span>";
+            var expectedBetOptionHtml = $"<span class=\"gamegroupname\"> {FakeGameGroup}</span>";
 
             StringAssert.StartsWith(expectedBetOptionHtml, template.League.LeagueName.ToString());
         }
@@ -109,14 +115,10 @@
         public void BuildLeague_TicketBetCheckIsNullOrEmpty_AppendLeagueNameWithDetailsLinkContainingExpectedParameters(string betCheck)
         {
             // Arrange.
-            _ticket.TransId = 1;
-            _ticket.WinlostDate = DateTime.Today;
-            _ticket.CustId = 2;
-            _ticket.Status = BetStatus.Won;
             _ticket.BetCheck = betCheck;
 
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             var detailLink = $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a>";
@@ -130,16 +132,14 @@
         public void GetTransactionType_WinlostDateIs2DaysAgo_TransactionTypeInDetailsLinkIsZero()
         {
             // Arrange.
-            _ticket.TransId = 1;
             _ticket.WinlostDate = DateTime.Today.AddDays(-2);
-            _ticket.CustId = 2;
-            _ticket.Status = BetStatus.Won;
 
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            var expectedTransactionType = "0";
+            const string expectedTransactionType = "0";
+
             var detailLink = $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a>";
             var parameterList = $"{_ticket.TransId}, '{_ticket.WinlostDate}', {_ticket.CustId}, {expectedTransactionType}";
             var expectedHtml = $"<div class=\"detail pp-detail\" onclick=\"showPPDetails({parameterList});\">{detailLink}</div>";
@@ -158,16 +158,13 @@
         public void GetTransactionType_WinlostDateIsTodayAndStatusIsWonOrLoseOrDrawOrRefund_TransactionTypeInDetailsLinkIsOne(string status)
         {
             // Arrange.
-            _ticket.TransId = 1;
-            _ticket.WinlostDate = DateTime.Today;
-            _ticket.CustId = 2;
             _ticket.Status = status;
 
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            var expectedTransactionType = "1";
+            const string expectedTransactionType = "1";
             var detailLink = $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a>";
             var parameterList = $"{_ticket.TransId}, '{_ticket.WinlostDate}', {_ticket.CustId}, {expectedTransactionType}";
             var expectedHtml = $"<div class=\"detail pp-detail\" onclick=\"showPPDetails({parameterList});\">{detailLink}</div>";
@@ -182,16 +179,14 @@
         public void GetTransactionType_WinlostDateIsTodayAndStatusIsRejectOrVoid_TransactionTypeInDetailsLinkIsTwo(string status)
         {
             // Arrange.
-            _ticket.TransId = 1;
-            _ticket.WinlostDate = DateTime.Today;
-            _ticket.CustId = 2;
             _ticket.Status = status;
 
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            var expectedTransactionType = "2";
+            const string expectedTransactionType = "2";
+
             var detailLink = $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a>";
             var parameterList = $"{_ticket.TransId}, '{_ticket.WinlostDate}', {_ticket.CustId}, {expectedTransactionType}";
             var expectedHtml = $"<div class=\"detail pp-detail\" onclick=\"showPPDetails({parameterList});\">{detailLink}</div>";
@@ -206,16 +201,14 @@
         public void GetTransactionType_WinlostDateIsTodayAndStatusIsRunningOrWaiting_TransactionTypeInDetailsLinkIsThree(string status)
         {
             // Arrange.
-            _ticket.TransId = 1;
-            _ticket.WinlostDate = DateTime.Today;
-            _ticket.CustId = 2;
             _ticket.Status = status;
 
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            var expectedTransactionType = "3";
+            const string expectedTransactionType = "3";
+
             var detailLink = $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a>";
             var parameterList = $"{_ticket.TransId}, '{_ticket.WinlostDate}', {_ticket.CustId}, {expectedTransactionType}";
             var expectedHtml = $"<div class=\"detail pp-detail\" onclick=\"showPPDetails({parameterList});\">{detailLink}</div>";
@@ -227,16 +220,14 @@
         public void GetTransactionType_WinlostDateIsTodayAndStatusIsNotInAcceptedStatusList_TransactionTypeInDetailsLinkIsZero()
         {
             // Arrange.
-            _ticket.TransId = 1;
-            _ticket.WinlostDate = DateTime.Today;
-            _ticket.CustId = 2;
             _ticket.Status = "I'm not an accepted status";
 
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            var expectedTransactionType = "0";
+            const string expectedTransactionType = "0";
+
             var detailLink = $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a>";
             var parameterList = $"{_ticket.TransId}, '{_ticket.WinlostDate}', {_ticket.CustId}, {expectedTransactionType}";
             var expectedHtml = $"<div class=\"detail pp-detail\" onclick=\"showPPDetails({parameterList});\">{detailLink}</div>";
@@ -248,7 +239,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapToNull()
         {
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.Null(template.Handicap);
@@ -258,17 +249,19 @@
         public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameToUnderdog()
         {
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            Assert.AreEqual("underdog", template.betTeamClassName);
+            const string expectedCssClassName = "underdog";
+
+            Assert.AreEqual(expectedCssClassName, template.betTeamClassName);
         }
 
         [Test]
         public void BuildBetType_Always_BetTypeIsSetToNull()
         {
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.Null(template.BetType);
@@ -278,7 +271,7 @@
         public void BuildMatch_Always_BetTypeIsSetToNull()
         {
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.Null(template.Match);
@@ -288,7 +281,7 @@
         public void BuildScore_Always_BetTypeIsSetToNull()
         {
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.Null(template.Score);
@@ -312,6 +305,7 @@
         {
             // Arrange.
             const string betCheck = "Bet Check";
+
             var rtfHelper = new RTFHelper().Clone();
 
             _ticket.BetCheck = betCheck;
@@ -327,11 +321,13 @@
         public void BuildMatchInfo_Always_SecondRowIsSportTypeAndGameGroup()
         {
             // Arrange.
+            const int sportId = 248;
             const string sportName = "Sport name";
+
             var rtfHelper = new RTFHelper().Clone();
 
-            _ticket.SportTypeId = 248;
-            _ticketHelper.GetSportNameById(Arg.Is(_ticket.SportTypeId)).Returns(sportName);
+            _ticket.SportTypeId = sportId;
+            _ticketHelper.GetSportNameById(Arg.Is(sportId)).Returns(sportName);
 
             // Act.
             var actualText = _choice.RenderRTF(_ticket, _ticketHelper, null, false, rtfHelper);

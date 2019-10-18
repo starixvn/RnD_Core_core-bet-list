@@ -2,7 +2,6 @@
 {
     using Fanex.BetList.Core.Builder.OddsBuilder;
     using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Templates;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -22,7 +21,7 @@
         public void Render_Always_OddsIsHyphen()
         {
             // Act.
-            Odds_Template template = _odds.Render(_ticket, null, Substitute.For<GetCachePropertyById>());
+            var template = _odds.Render(_ticket, null, Substitute.For<GetCachePropertyById>());
 
             // Assert.
             Assert.AreEqual("-", template.odds);
@@ -32,7 +31,7 @@
         public void Render_Always_OddsTypeIsNull()
         {
             // Act.
-            Odds_Template template = _odds.Render(_ticket, null, Substitute.For<GetCachePropertyById>());
+            var template = _odds.Render(_ticket, null, Substitute.For<GetCachePropertyById>());
 
             // Assert.
             Assert.Null(template.oddsType);
