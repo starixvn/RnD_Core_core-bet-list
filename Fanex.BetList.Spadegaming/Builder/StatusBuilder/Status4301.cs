@@ -1,10 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
-    using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Utils;
-    using Fanex.BetList.Core.Utils.StringExt;
 
     public class Status4301 : Status1
     {
@@ -19,49 +15,6 @@
                 base.BuildStatusResult(ticket);
                 Template.StatusResult.betId = $"{ticket.BetId ?? 0}, '{ticket.BetCheck}', {ticket.CustId}";
             }
-        }
-
-        protected override void BuildResult(ITicket ticket, List<ITicketData> ticketData)
-        {
-            string status = ticket.Status.ToLowerInvariant();
-
-            if (!string.IsNullOrEmpty(ticket.BetCheck) && BetStatus.Running == status)
-            {
-                Template.result = BuildRunningResultLink(ticket);
-            }
-            else
-            {
-                base.BuildResult(ticket, ticketData);
-            }
-        }
-
-        private static string BuildRunningResultLink(ITicket ticket)
-        {
-            var parameterList = new object[]
-            {
-                ticket.MatchId,
-                string.IsNullOrEmpty(ticket.Race) ? "0" : ticket.Race,
-                ticket.BetTypeId,
-                ticket.SportTypeId,
-                ticket.TransId,
-                $"'{ticket.UserName}'",
-                $"'{Formatter.FullDateFormat(ticket.WinlostDate)}'",
-                "0",
-                ticket.LeagueId,
-                "0",
-                ticket.BetId ?? 0,
-                $"'{ticket.BetCheck}'",
-                ticket.CustId
-            };
-
-            return $"<div class=\"result\" onclick=\"ViewResult({string.Join(", ", parameterList)});\">{CoreBetList.running}</div>";
-        }
-
-        protected override void BuildResultLRF(string status, RTFHelper rtfHelper)
-        {
-            string originalStatus = status.StripHTML();
-
-            base.BuildResultLRF(originalStatus, rtfHelper);
         }
     }
 }

@@ -1,9 +1,7 @@
 ﻿namespace Fanex.BetList.Spadegaming.Tests.Builder.StatusBuilder
 {
-    using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Builder.StatusBuilder;
     using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Utils;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -75,37 +73,6 @@
             var expectedParameters = $"0, '{_ticket.BetCheck}', {_ticket.CustId}";
 
             Assert.AreEqual(expectedParameters, template.StatusResult.betId);
-        }
-
-        [Test]
-        public void BuildResult_TicketIsRunningAndBetCheckIsNotNullOrEmpty_ResultIsDisplayedAsLink()
-        {
-            // Arrange.
-            _ticket.Status = BetStatus.Running;
-
-            // Act.
-            var template = _status.Render(_ticket, _ticketHelper, null, false);
-
-            // Assert.
-            var parameterList = new object[]
-            {
-                _ticket.MatchId,
-                string.IsNullOrEmpty(_ticket.Race) ? "0" : _ticket.Race,
-                _ticket.BetTypeId,
-                _ticket.SportTypeId,
-                _ticket.TransId,
-                $"'{_ticket.UserName}'",
-                $"'{Formatter.FullDateFormat(_ticket.WinlostDate)}'",
-                "0",
-                _ticket.LeagueId,
-                "0",
-                _ticket.BetId ?? 0,
-                $"'{_ticket.BetCheck}'",
-                _ticket.CustId
-            };
-            var expectedHtml = $"<div class=\"result\" onclick=\"ViewResult({string.Join(", ", parameterList)});\">{CoreBetList.running}</div>";
-
-            Assert.AreEqual(expectedHtml, template.result);
         }
     }
 }
