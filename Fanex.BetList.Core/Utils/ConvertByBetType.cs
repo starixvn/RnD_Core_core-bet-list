@@ -69,8 +69,6 @@
             BetTypes.QuarterXWhichTeamToScoreTheLastBasket,
             BetTypes.Sold,
             BetTypes.Bought,
-            1003,
-            1004,
             BetTypes.SSMatchWinner,
             BetTypes.SetHandicap,
             BetTypes.MatchTotalGamesOddEven,

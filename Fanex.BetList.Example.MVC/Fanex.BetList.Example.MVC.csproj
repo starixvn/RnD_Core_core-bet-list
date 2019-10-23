@@ -176,7 +176,6 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\CockFighting.css" />
     <Content Include="Content\ColossusBets.css" />
     <Content Include="Content\CoreBetList.css" />
     <Content Include="Content\images\1F.gif" />
@@ -189,7 +188,6 @@
     <Content Include="Content\images\q_Icon_2.png" />
     <Content Include="Content\images\rebateBonus.png" />
     <Content Include="Content\images\ScoreMapWL.png" />
-    <Content Include="Content\Microgaming.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -309,10 +307,6 @@
       <Project>{eeb53cdf-8346-4f95-9997-b7bc052d1f18}</Project>
       <Name>Fanex.BetList.CashOut</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.CockFighting\Fanex.BetList.CockFighting.csproj">
-      <Project>{5a3e7893-910a-48a7-9582-58a864068ca8}</Project>
-      <Name>Fanex.BetList.CockFighting</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.ColossusBets\Fanex.BetList.ColossusBets.csproj">
       <Project>{89b48c7f-9ea2-40cf-879c-5509555d3b1d}</Project>
       <Name>Fanex.BetList.ColossusBets</Name>
@@ -404,7 +398,6 @@
     <Content Include="App_Data\60NewBetTypeBetRadarData.xls" />
     <Content Include="App_Data\AGCasino.xls" />
     <Content Include="App_Data\PHAllInOne.xls" />
-    <Content Include="App_Data\CockFighting.xls" />
     <Content Include="App_Data\RnGCasinoSingleWallet.xls" />
     <Content Include="App_Data\Allbet.xls" />
     <Content Include="App_Data\VoidBridge.xls" />
