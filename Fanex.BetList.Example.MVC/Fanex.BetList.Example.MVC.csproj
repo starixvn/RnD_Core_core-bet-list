@@ -357,10 +357,6 @@
       <Project>{054031e6-3e06-47d9-b3d1-b8a8e164e504}</Project>
       <Name>Fanex.BetList.MetricGaming</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.MyanmarOdds\Fanex.BetList.MyanmarOdds.csproj">
-      <Project>{a757a8fc-9989-4945-8319-74a02a2e7d2d}</Project>
-      <Name>Fanex.BetList.MyanmarOdds</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.NumberGame\Fanex.BetList.NumberGame.csproj">
       <Project>{b26ba5c4-a25c-4e28-b3fb-a585245d5e52}</Project>
       <Name>Fanex.BetList.NumberGame</Name>
@@ -400,9 +396,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="App_Data\BetTrade.xls">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="App_Data\MyanmarOdds.xls">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="App_Data\ColossusBets.xls">

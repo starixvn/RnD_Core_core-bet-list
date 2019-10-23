@@ -205,18 +205,6 @@
             return BetListView(model);
         }
 
-        public ActionResult MyanmarOdds(BetListData model = null)
-        {
-            var betTypes = _dataService.QueryBetTypes(301, 302, 303, 304);
-
-            ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/MyanmarOdds.xls";
-            model = GetDataSource(model, sourcePath: DataSourcePath);
-            model.DataFilePath = DataSourcePath;
-
-            return BetListView(model);
-        }
-
         public ActionResult PHAllInOne(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(4, 30, 151, 159, 161, 162, 171, 191, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 461, 462, 463, 464);
