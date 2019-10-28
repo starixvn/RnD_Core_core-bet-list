@@ -8,6 +8,7 @@
         {
             MapForFastMarkets();
             MapForBasketBall();
+            MapForBadminton();
             MapForOthers();
         }
 
@@ -31,6 +32,12 @@
             MapIdToBaseId(BetTypes.QuarterXHomeTeamOverUnder, BetTypes.FirstHalfRaceToXPoints);
             MapIdToBaseId(BetTypes.QuarterXAwayTeamOverUnder, BetTypes.FirstHalfRaceToXPoints);
             MapIdToBaseId(BetTypes.QuarterXWhichTeamToScoreTheLastBasket, BetTypes.FirstHalfRaceToXPoints);
+        }
+
+        private void MapForBadminton()
+        {
+            MapIdToBaseId(BetTypes.GameXRaceToYPoints, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.GameXPointYWinner, BetTypes.FirstHalfRaceToXPoints);
         }
 
         private void MapForOthers()
