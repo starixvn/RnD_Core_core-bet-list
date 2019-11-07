@@ -231,6 +231,7 @@
         public const int SecondHalfCorrectCorners = 495;
         public const int CornerHighestScoringHalf = 496;
         public const int CornerHighestScoringHalf2Way = 497;
+        public const int CricketMatchWinner = 501;
         public const int WinningMargin14Way = 601;
         public const int WinningMargin12Way = 602;
         public const int WhichTeamToScoreTheHighestQuarter = 603;

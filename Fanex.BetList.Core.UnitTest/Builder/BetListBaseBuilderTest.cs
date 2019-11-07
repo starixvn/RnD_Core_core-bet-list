@@ -268,6 +268,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder
         [TestCase(496, "Choice140")]
         [TestCase(497, "Choice452")]
         [TestCase(5, "Choice5")]
+        [TestCase(501, "Choice20")]
         [TestCase(6, "Choice6")]
         [TestCase(601, "Choice601")]
         [TestCase(602, "Choice602")]
