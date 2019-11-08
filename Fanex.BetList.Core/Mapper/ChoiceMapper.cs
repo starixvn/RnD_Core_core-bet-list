@@ -16,7 +16,6 @@
             MapForPHAIO4B();
             MapForCricket();
             MapForBadmintonAIO();
-
         }
 
         private void MapForOtherBetTypes()
@@ -185,7 +184,7 @@
             MapIdToBaseId(BetTypes.CornerHighestScoringHalf, BetTypes.HighestScoringHalf);
             MapIdToBaseId(BetTypes.CornerHighestScoringHalf2Way, BetTypes.HighestScoringHalf2Way);
         }
-        
+
         private void MapForCricket()
         {
             MapIdToBaseId(BetTypes.CricketMatchWinner, BetTypes.Moneyline);
