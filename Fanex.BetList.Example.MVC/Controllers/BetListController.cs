@@ -744,7 +744,6 @@
 
         public ActionResult SG(BetListData model = null)
         {
-
             var betTypeIds = new List<int>();
 
             for (var betTypeId = 4301; betTypeId <= 4326; betTypeId++)
