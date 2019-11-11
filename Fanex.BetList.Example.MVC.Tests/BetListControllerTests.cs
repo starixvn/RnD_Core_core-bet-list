@@ -61,6 +61,7 @@
         [TestCase("BetList/PHAIO4A")]
         [TestCase("BetList/RebateBonus")]
         [TestCase("BetList/PHAIO4B")]
+        [TestCase("BetList/NonPeakHoursPromotion")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Choice(string productUrl)
         {
             // Arrange
@@ -127,6 +128,7 @@
         [TestCase("BetList/PHAIO4A")]
         [TestCase("BetList/RebateBonus")]
         [TestCase("BetList/PHAIO4B")]
+        [TestCase("BetList/NonPeakHoursPromotion")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Trans(string productUrl)
         {
             // Arrange
@@ -193,6 +195,7 @@
         [TestCase("BetList/PHAIO4A")]
         [TestCase("BetList/RebateBonus")]
         [TestCase("BetList/PHAIO4B")]
+        [TestCase("BetList/NonPeakHoursPromotion")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Odds(string productUrl)
         {
             // Arrange
@@ -259,6 +262,7 @@
         [TestCase("BetList/PHAIO4A")]
         [TestCase("BetList/RebateBonus")]
         [TestCase("BetList/PHAIO4B")]
+        [TestCase("BetList/NonPeakHoursPromotion")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Stake(string productUrl)
         {
             // Arrange
@@ -325,6 +329,7 @@
         [TestCase("BetList/PHAIO4A")]
         [TestCase("BetList/RebateBonus")]
         [TestCase("BetList/PHAIO4B")]
+        [TestCase("BetList/NonPeakHoursPromotion")]
         public void CompareHtmlBetweenMasterBranchAndActiveBranch_Status(string productUrl)
         {
             // Arrange
