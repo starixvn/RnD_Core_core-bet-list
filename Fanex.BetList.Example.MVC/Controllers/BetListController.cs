@@ -490,11 +490,11 @@
         {
             var betTypeIds = new List<int>();
 
-            for (var betTypeId = 4101; betTypeId <= 4120; betTypeId++)
+            for (var betTypeId = 4101; betTypeId <= 4300; betTypeId++)
             {
                 betTypeIds.Add(betTypeId);
             }
-
+            
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
             DataSourcePath = "~/App_Data/PP.xls";

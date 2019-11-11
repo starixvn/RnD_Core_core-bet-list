@@ -29,7 +29,7 @@
             _ticket.WinlostDate = DateTime.Today;
             _ticket.CustId = 2;
             _ticket.Status = BetStatus.Won;
-            _ticket.TransDesc = PragmaticPlayBetTypes.BaseBetTypeId.ToString(CultureInfo.InvariantCulture);
+            _ticket.TransDesc = PragmaticPlayBetTypes.Dragons888.ToString(CultureInfo.InvariantCulture);
 
             _ticketHelper.GetResourceData(Arg.Is(Choice4101.GameTypeRefId), Arg.Is(_ticket.TransDesc)).Returns(FakeGameType);
             _ticketHelper.GetResourceData(Arg.Is(Choice4101.GameGroupRefId), Arg.Is(_ticket.TransDesc)).Returns(FakeGameGroup);

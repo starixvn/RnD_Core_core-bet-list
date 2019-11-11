@@ -58,6 +58,7 @@
     <Compile Include="Builder\ChoiceBuilder\Choice4300Tests.cs" />
     <Compile Include="Builder\OddsBuilder\Odds4101Tests.cs" />
     <Compile Include="Builder\StakeBuilder\Stake4300Tests.cs" />
+    <Compile Include="Builder\StatusBuilder\Status4299Tests.cs" />
     <Compile Include="Builder\StatusBuilder\Status4300Tests.cs" />
     <Compile Include="Builder\StatusBuilder\Status4101Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
