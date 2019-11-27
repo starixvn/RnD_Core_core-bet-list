@@ -714,6 +714,7 @@
             }
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
+
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             DataSourcePath = "~/App_Data/BadmintonAIO.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
@@ -749,7 +750,7 @@
             {
                 betTypeIds.Add(betTypeId);
             }
-            
+
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
             DataSourcePath = "~/App_Data/SG.xls";
