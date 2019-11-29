@@ -892,4 +892,7 @@
   <data name="Promotion" xml:space="preserve">
     <value>Promotion</value>
   </data>
+  <data name="SabaLuckySpinProgramPattern" xml:space="preserve">
+    <value>{0} {1}</value>
+  </data>
 </root>

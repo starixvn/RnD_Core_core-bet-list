@@ -1,5 +1,6 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
+    using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Constants;
     using Fanex.BetList.Core.Entities;
@@ -9,6 +10,8 @@
 
     public class Choice17000Test
     {
+        private const string FakeBetTypeName = "Saba Lucky Spin";
+
         private IChoice _choice;
         private ITicket _ticket;
         private ITicketHelper _ticketHelper;
@@ -19,6 +22,8 @@
             _choice = new Choice17000();
             _ticket = TestData.CreateTicket(BetTypes.SabaLuckySpin);
             _ticketHelper = Substitute.For<ITicketHelper>();
+
+            _ticketHelper.GetBetTypeNameById(Arg.Is(BetTypes.SabaLuckySpin)).Returns(FakeBetTypeName);
         }
 
         [Test]
@@ -31,19 +36,51 @@
             Assert.IsNull(template.Match);
         }
 
-        [Test]
-        public void BuildBetTeam_Always_ShowBetTypeNameAsBetTeam()
+        [TestCase("<p37 i=\"123\" d=\"2019-01-27\" />")]
+        [TestCase("<p37 i=\"123\" d=\"2019-1-27\" />")]
+        [TestCase("<p37 i=\"123\" d=\"2019/01/27\" />")]
+        public void BuildBetTeam_ExtraInfoContainsCorrectProgramDate_CombineMonthOfProgramAndBetTypeNameInCorrectOrders(string extraInfo)
         {
             // Arrange.
-            const string fakeBetTypeName = "Saba Lucky Spin";
+            const string monthRefId = "month";
+            const string testedMonth = "01";
+            const string expectedMonthName = "January";
 
-            _ticketHelper.GetBetTypeNameById(Arg.Is(BetTypes.SabaLuckySpin)).Returns(fakeBetTypeName);
+            _ticket.ExtraInfo = extraInfo;
+            _ticketHelper.GetResourceData(Arg.Is(monthRefId), testedMonth).Returns(expectedMonthName);
 
             // Act.
             var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            Assert.AreEqual(fakeBetTypeName, template.betTeam);
+            var expectedBetTeam = string.Format(CoreBetList.SabaLuckySpinProgramPattern, expectedMonthName, FakeBetTypeName);
+
+            Assert.AreEqual(expectedBetTeam, template.betTeam);
+        }
+
+        [TestCase("<p37 i=\"123\" d=\"2019-27\" />")]
+        [TestCase("<p37 i=\"123\" />")]
+        [TestCase("<p37 i=\"123\" k=\"2019-01-27\" />")]
+        public void BuildBetTeam_ExtraInfoContainsIncorrectProgramDate_ShowBetTypeNameAsBetTeam(string extraInfo)
+        {
+            // Arrange.
+            _ticket.ExtraInfo = extraInfo;
+
+            // Act.
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert.
+            Assert.AreEqual(FakeBetTypeName, template.betTeam);
+        }
+
+        [Test]
+        public void BuildBetTeam_Always_BetTeamContainsBetTypeName()
+        {
+            // Act.
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert.
+            StringAssert.Contains(FakeBetTypeName, template.betTeam);
         }
 
         [Test]
