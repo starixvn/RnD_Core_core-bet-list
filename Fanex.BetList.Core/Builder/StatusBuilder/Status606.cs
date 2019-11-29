@@ -3,7 +3,7 @@
     using Entities;
 
     /// <summary>
-    /// Bet type : 1H Race to X Points
+    /// 1H Race to X Points
     /// </summary>
     public class Status606 : Status1
     {

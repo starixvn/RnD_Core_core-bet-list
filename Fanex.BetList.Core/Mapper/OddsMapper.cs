@@ -11,6 +11,7 @@
 
             RegisterMultipleOddsTypesForPHAIO4B();
             RegisterMultipleOddsTypesForBadmintonAIO();
+            RegisterMultipleOddsTypesForPHAIO5();
         }
 
         private void MapForScoreBox()
@@ -46,6 +47,20 @@
             ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.GameXRaceToYPoints);
             ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.GameXPointYWinner);
             ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.GameXExtraPoints);
+        }
+
+        private static void RegisterMultipleOddsTypesForPHAIO5()
+        {
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.AwayPenaltyShootoutRoundX);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.HomePenaltyShootoutRoundX);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.AwayPenaltyShootoutOverUnderFirst10);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.HomePenaltyShootoutOverUnderFirst10);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.AwayPenaltyShootoutOverUnderFinalResult);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.HomePenaltyShootoutOverUnderFinalResult);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.PenaltyShootoutToGoToSuddenDeath);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.PenaltyShootoutOddEvenFirst10);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.PenaltyShootoutOddEvenFinalResult);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.ExtraTimeOddEven);
         }
     }
 }

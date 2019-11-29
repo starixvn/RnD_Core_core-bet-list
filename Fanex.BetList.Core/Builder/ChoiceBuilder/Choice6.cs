@@ -10,12 +10,6 @@
     /// </summary>
     public class Choice6 : Choice1
     {
-        /// <summary>
-        /// Set bet team to template.
-        /// </summary>
-        /// <param name="ticket"> Total goal ticket.</param>
-        /// <param name="ticketHelper"> Valid ticker helper instance.</param>
-        /// <param name="ticketData"> Ticket data.</param>
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             // &nbsp; because export format

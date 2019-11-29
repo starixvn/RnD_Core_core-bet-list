@@ -629,10 +629,10 @@
     <value>Table</value>
   </data>
   <data name="AwayToWinAnyOtherScore" xml:space="preserve">
-    <value>Away To Win Any Other Score</value>
+    <value>Away To Win With AOS</value>
   </data>
   <data name="HomeToWinAnyOtherScore" xml:space="preserve">
-    <value>Home To Win Any Other Score</value>
+    <value>Home To Win With AOS</value>
   </data>
   <data name="ZeroGoals" xml:space="preserve">
     <value>0 Goals</value>
@@ -835,14 +835,8 @@
   <data name="rate" xml:space="preserve">
     <value>Rate</value>
   </data>
-  <data name="Home171" xml:space="preserve">
-    <value>Home</value>
-  </data>
   <data name="forRefNo" xml:space="preserve">
     <value>For Ref No</value>
-  </data>
-  <data name="Away171" xml:space="preserve">
-    <value>Away</value>
   </data>
   <data name="ProgressiveJackpotWonDetails" xml:space="preserve">
     <value>Progressive Jackpot Won Details</value>
@@ -891,6 +885,18 @@
   </data>
   <data name="Promotion" xml:space="preserve">
     <value>Promotion</value>
+  </data>
+  <data name="NineAndOver" xml:space="preserve">
+    <value>9+</value>
+  </data>
+  <data name="ZeroToFour" xml:space="preserve">
+    <value>0-4</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Score</value>
+  </data>
+  <data name="Miss" xml:space="preserve">
+    <value>Miss</value>
   </data>
   <data name="SabaLuckySpinProgramPattern" xml:space="preserve">
     <value>{0} {1}</value>

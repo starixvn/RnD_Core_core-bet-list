@@ -7,18 +7,16 @@
     using Entities;
     using Utils;
 
+    /// <summary>
+    /// Pool House All In One: Correct Score(AOS).
+    /// </summary>
     public class Choice413 : Choice4
     {
-        private const string Space = " ";
-
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            string choice = ticket.BetTeam;
+            var choice = ticket.BetTeam.ToLowerInvariant();
 
-            choice = BetTeamValue.AOS == choice.ToLowerInvariant() ? CoreBetList.AOS : choice.Replace(":", "-");
-
-            // "&nbsp" because export format
-            Template.betTeam = HtmlCharacters.NoneBreakingSpace + choice;
+            Template.betTeam = BetTeamValue.AOS == choice ? CoreBetList.AOS : choice.Replace(":", "-");
         }
 
         protected override void BuildScore(ITicket ticket)
@@ -30,7 +28,7 @@
 
             base.BuildScore(ticket);
 
-            if (BetTeamValue.AOS == ticket.BetTeam.ToLowerInvariant() && !string.IsNullOrEmpty(ticket.TransDesc))
+            if (IsAOS(ticket))
             {
                 if (Template.Score.Visible)
                 {
@@ -50,54 +48,37 @@
 
             if (Template.Handicap != null && Template.Handicap.Visible && Template.Handicap.handicap != null)
             {
-                choice += string.Join(null, new[] { Space, Template.Handicap.handicap });
+                choice += $" {Template.Handicap.handicap}";
             }
 
             if (Template.Score != null && Template.Score.Visible && ticket.IsLive)
             {
-                choice += string.Join(null, new[] { " [", Template.Score.homeScore, "-", Template.Score.awayScore, "]" });
+                choice += $" [{Template.Score.homeScore}-{Template.Score.awayScore}]";
             }
 
             if (isMixParlay)
             {
-                choice += string.Join(null, new[] { " @ ", Formatter.FormatNumber3(ticket.Odds, null) });
+                choice += $" @{Formatter.FormatNumber3(ticket.Odds, null)}";
             }
 
-            if (BetTeamValue.AOS == ticket.BetTeam.ToLowerInvariant() && !string.IsNullOrEmpty(ticket.TransDesc))
+            if (IsAOS(ticket))
             {
-                string[] excluding =
-                {
-                    "\n",
-                    CoreBetList.Excluding,
-                    ": ",
-                    FormatTransDesc(ticket.TransDesc)
-                };
-
-                choice += string.Join(null, excluding);
+                choice += $"\n{CoreBetList.Excluding}: {FormatTransDesc(ticket.TransDesc)}";
             }
 
             if (!string.IsNullOrEmpty(choice))
             {
-                choice = choice.Replace(HtmlCharacters.NoneBreakingSpace, Space);
                 rtfHelper.RTFRenderer.AddText(choice, rtfHelper.PosFont);
             }
         }
+
+        protected virtual bool IsAOS(ITicket ticket)
+            => BetTeamValue.AOS == ticket.BetTeam.ToLowerInvariant() && !string.IsNullOrEmpty(ticket.TransDesc);
 
         private static string FormatTransDesc(string transDesc)
             => Regex.Replace(transDesc, ",\\s*", ", ").Replace(":", "-");
 
         private static string BuildExcludingBlock(string transDesc)
-        {
-            string[] excludingTag =
-            {
-                "<div class=\"excluding-choices\">",
-                CoreBetList.Excluding,
-                ": ",
-                FormatTransDesc(transDesc),
-                "</div>"
-            };
-
-            return string.Join(null, excludingTag);
-        }
+            => $"<div class=\"excluding-choices\">{CoreBetList.Excluding}: {FormatTransDesc(transDesc)}</div>";
     }
 }

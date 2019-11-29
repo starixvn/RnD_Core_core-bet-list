@@ -463,7 +463,7 @@
     <value>수요일</value>
   </data>
   <data name="lblYes" xml:space="preserve">
-    <value>예</value>
+    <value>네</value>
   </data>
   <data name="lblNo" xml:space="preserve">
     <value>아니요</value>
@@ -481,10 +481,10 @@
     <value>라이브</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>홈</value>
+    <value>홈팀</value>
   </data>
   <data name="Away" xml:space="preserve">
-    <value>원정</value>
+    <value>원정팀</value>
   </data>
   <data name="bingo" xml:space="preserve">
     <value>빙고게임</value>
@@ -537,12 +537,6 @@
   <data name="AOSHTExcluding" xml:space="preserve">
     <value>AOS HT 제외</value>
   </data>
-  <data name="Home171" xml:space="preserve">
-    <value>홈 팀</value>
-  </data>
-  <data name="Away171" xml:space="preserve">
-    <value>원정팀</value>
-  </data>
   <data name="ResultPending" xml:space="preserve">
     <value>결과 보류</value>
   </data>
@@ -578,5 +572,35 @@
   </data>
   <data name="Tie" xml:space="preserve">
     <value>동점</value>
+  </data>
+  <data name="Penalty" xml:space="preserve">
+    <value>페널티킥</value>
+  </data>
+  <data name="OwnGoal" xml:space="preserve">
+    <value>자책골</value>
+  </data>
+  <data name="FreeKick" xml:space="preserve">
+    <value>프리킥</value>
+  </data>
+  <data name="Header" xml:space="preserve">
+    <value>헤딩골</value>
+  </data>
+  <data name="Shot" xml:space="preserve">
+    <value>슛</value>
+  </data>
+  <data name="ScoreDraw" xml:space="preserve">
+    <value>모든 점수 무승부(0-0 제외)</value>
+  </data>
+  <data name="AwayToWinAnyOtherScore" xml:space="preserve">
+    <value>원정팀에서 다른 득점으로 승리</value>
+  </data>
+  <data name="HomeToWinAnyOtherScore" xml:space="preserve">
+    <value>홈팀에서 다른 득점으로 승리</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>점수</value>
+  </data>
+  <data name="Miss" xml:space="preserve">
+    <value>실패</value>
   </data>
 </root>

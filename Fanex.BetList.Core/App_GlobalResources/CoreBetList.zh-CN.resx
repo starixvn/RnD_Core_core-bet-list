@@ -765,12 +765,6 @@
   <data name="NoGoal408" xml:space="preserve">
     <value>无进球</value>
   </data>
-  <data name="Home171" xml:space="preserve">
-    <value>主</value>
-  </data>
-  <data name="Away171" xml:space="preserve">
-    <value>客</value>
-  </data>
   <data name="Cash" xml:space="preserve">
     <value>现金</value>
   </data>
@@ -827,5 +821,11 @@
   </data>
   <data name="Promotion" xml:space="preserve">
     <value>促销活动</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>得分</value>
+  </data>
+  <data name="Miss" xml:space="preserve">
+    <value>未得分</value>
   </data>
 </root>

@@ -121,13 +121,13 @@
     <value>選択</value>
   </data>
   <data name="even" xml:space="preserve">
-    <value>イーブン</value>
+    <value>偶数</value>
   </data>
   <data name="lblDraw" xml:space="preserve">
     <value>ドロー</value>
   </data>
   <data name="lblOr" xml:space="preserve">
-    <value>Or</value>
+    <value>または</value>
   </data>
   <data name="lose" xml:space="preserve">
     <value>負け</value>
@@ -136,7 +136,7 @@
     <value>メンバー</value>
   </data>
   <data name="odd" xml:space="preserve">
-    <value>オッド</value>
+    <value>奇数</value>
   </data>
   <data name="odds" xml:space="preserve">
     <value>オッズ</value>
@@ -381,12 +381,6 @@
   <data name="AOSHTExcluding" xml:space="preserve">
     <value>AOS HT 除外</value>
   </data>
-  <data name="Home171" xml:space="preserve">
-    <value>ホーム</value>
-  </data>
-  <data name="Away171" xml:space="preserve">
-    <value>アウェイ</value>
-  </data>
   <data name="ResultPending" xml:space="preserve">
     <value>結果が保留中</value>
   </data>
@@ -425,5 +419,47 @@
   </data>
   <data name="Tie" xml:space="preserve">
     <value>タイ</value>
+  </data>
+  <data name="NoGoal408" xml:space="preserve">
+    <value>ゴールなし</value>
+  </data>
+  <data name="Penalty" xml:space="preserve">
+    <value>ペナルティ</value>
+  </data>
+  <data name="OwnGoal" xml:space="preserve">
+    <value>オウンゴール</value>
+  </data>
+  <data name="FreeKick" xml:space="preserve">
+    <value>フリーキック</value>
+  </data>
+  <data name="Header" xml:space="preserve">
+    <value>ヘディング</value>
+  </data>
+  <data name="Shot" xml:space="preserve">
+    <value>シュート</value>
+  </data>
+  <data name="lblBoth" xml:space="preserve">
+    <value>両方</value>
+  </data>
+  <data name="lblOne" xml:space="preserve">
+    <value>ひとつ</value>
+  </data>
+  <data name="ScoreDraw" xml:space="preserve">
+    <value>スコアドロー（0-0を除く）</value>
+  </data>
+  <data name="nogoal" xml:space="preserve">
+    <value>ゴールなし</value>
+  </data>
+  <data name="AwayToWinAnyOtherScore" xml:space="preserve">
+    <value>別のスコアを勝つためのアウェイ</value>
+  </data>
+  <data name="HomeToWinAnyOtherScore" xml:space="preserve">
+    <value>別のスコアを勝つためにホーム</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>スコア</value>
+  </data>
+  <data name="Miss" xml:space="preserve">
+    <value>ミス</value>
   </data>
 </root>

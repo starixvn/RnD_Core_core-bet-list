@@ -1,5 +1,6 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
+    using App_GlobalResources;
     using Constants;
     using Core.Builder.ChoiceBuilder;
     using Entities;
@@ -22,70 +23,89 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        [Test]
-        public void BuildBetTeam_LengthBetTeamIsHAOS_BetTeamIsHomeToWinAnyOtherScore()
+        [TestCase("haos")]
+        [TestCase("HAOS")]
+        public void BuildBetTeam_BetTeamIsHAOS_BetChoiceIsHomeToWinAnyOtherScore(string homeToWinWithAos)
         {
-            // Arrange
-            _ticket.BetTeam = "haos";
+            // Arrange.
+            _ticket.BetTeam = homeToWinWithAos;
 
-            // Act
+            // Act.
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert
-            Assert.AreEqual("&nbsp;Home To Win Any Other Score", _choice.Template.betTeam);
+            // Assert.
+            Assert.AreEqual(CoreBetList.HomeToWinAnyOtherScore, _choice.Template.betTeam);
+        }
+
+        [TestCase("aaos")]
+        [TestCase("AAOS")]
+        public void BuildBetTeam_BetTeamIsAAOS_BetChoiceIsAwayToWinAnyOtherScore(string awayToWinWithAos)
+        {
+            // Arrange.
+            _ticket.BetTeam = awayToWinWithAos;
+
+            // Act.
+            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+
+            // Assert.
+            Assert.AreEqual(CoreBetList.AwayToWinAnyOtherScore, _choice.Template.betTeam);
         }
 
         [Test]
-        public void BuildBetTeam_LengthBetTeamIsAAOS_BetTeamIsAwayToWinAnyOtherScore()
+        public void BuildBetTeam_BetTeamIsAStringOfTwoCharacters_SeparateThemByColon()
         {
-            // Arrange
-            _ticket.BetTeam = "aaos";
+            // Arrange.
+            const string betTeam = "12";
 
-            // Act
+            _ticket.BetTeam = betTeam;
+
+            // Act.
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert
-            Assert.AreEqual("&nbsp;Away To Win Any Other Score", _choice.Template.betTeam);
+            // Assert.
+            const string displayedBetChoice = "1:2";
+
+            Assert.AreEqual(displayedBetChoice, _choice.Template.betTeam);
         }
 
         [Test]
-        public void BuildBetTeam_BetTeamIsAB_BetTeamIsAColonB()
+        public void BuildBetTeam_BetTeamIsNotInAcceptableList_BetChoiceIsEmpty()
         {
-            // Arrange
-            _ticket.BetTeam = "ab";
+            // Arrange.
+            const string invalidBetTeam = "xyz";
 
-            // Act
+            _ticket.BetTeam = invalidBetTeam;
+
+            // Act.
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert
-            Assert.AreEqual("&nbsp;a:b", _choice.Template.betTeam);
+            // Assert.
+            Assert.IsEmpty(_choice.Template.betTeam);
         }
 
         [Test]
-        public void BuildBetTeam_LengthBetTeamNotEqual2HAOSAAOS_BetTeamIsEmpty()
+        public void BuildBetType_Always_SendBetTypeIdRefNoBetIdAndBetCheckToGetBetTypeNameByIdOfTicketHelper()
         {
-            // Arrange
-            _ticket.BetTeam = "bet team";
+            // Arrange.
+            const string refNo = "100001";
+            const long betId = 801;
+            const string betCheck = "801";
 
-            // Act
+            _ticket.RefNo = refNo;
+            _ticket.BetId = betId;
+            _ticket.BetCheck = betCheck;
+
+            // Act.
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
-            // Assert
-            Assert.AreEqual("&nbsp;", _choice.Template.betTeam);
-        }
-
-        [Test]
-        public void BuildBetType_Always_SetBetTypeNameIsBetTypeName()
-        {
-            // Arrange
-            const string BET_TYPE_NAME = "Bet type name";
-            _ticketHelper.GetBetTypeNameById(Arg.Any<object>(), Arg.Any<object>(), Arg.Any<object>(), Arg.Any<object>()).Returns(BET_TYPE_NAME);
-
-            // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
-
-            // Assert
-            Assert.AreEqual(BET_TYPE_NAME, _choice.Template.BetType.betTypeName);
+            // Assert.
+            _ticketHelper
+                .Received()
+                .GetBetTypeNameById(
+                    Arg.Is(BetTypes.SetXCorrectScore),
+                    Arg.Is(refNo),
+                    Arg.Is(betId),
+                    Arg.Is(betCheck));
         }
     }
 }

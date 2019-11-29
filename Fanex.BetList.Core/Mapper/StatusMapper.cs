@@ -10,6 +10,7 @@
             MapForBasketBall();
             MapForBadminton();
             MapForCornerMatches();
+            MapForPHAIO5();
             MapForOthers();
         }
 
@@ -39,6 +40,15 @@
         {
             MapIdToBaseId(BetTypes.GameXRaceToYPoints, BetTypes.FirstHalfRaceToXPoints);
             MapIdToBaseId(BetTypes.GameXPointYWinner, BetTypes.FirstHalfRaceToXPoints);
+        }
+
+        private void MapForPHAIO5()
+        {
+            MapIdToBaseId(BetTypes.AwayPenaltyShootoutRoundX, BetTypes.ExtraTimeNextGoalMethod);
+            MapIdToBaseId(BetTypes.HomePenaltyShootoutRoundX, BetTypes.ExtraTimeNextGoalMethod);
+            MapIdToBaseId(BetTypes.PenaltyShootoutWoodworkRoundX, BetTypes.ExtraTimeNextGoalMethod);
+            MapIdToBaseId(BetTypes.PenaltyShootoutBothOneNeitherRoundX, BetTypes.ExtraTimeNextGoalMethod);
+            MapIdToBaseId(BetTypes.PenaltyShootout1X2RoundX, BetTypes.ExtraTimeNextGoalMethod);
         }
 
         private void MapForOthers()

@@ -6,9 +6,6 @@
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    /// Unit test for Choice156: Set x Total Games.
-    /// </summary>
     [TestFixture]
     public class Choice156Test
     {
@@ -25,9 +22,6 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        /// <summary>
-        /// If the value of ticket.BetTeam is 'o', the Template.betTeam will be 'Over'.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIsCharacterO_BetTeamIsOver()
         {
@@ -42,9 +36,6 @@
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// If the value of ticket.BetTeam is 'u', the Template.betTeam will be 'Under'.
-        /// </summary>
         [Test]
         public void BuildBetTeam_BetTeamIsCharacterU_BetTeamIsUnder()
         {
@@ -59,9 +50,6 @@
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
-        /// <summary>
-        /// The value of bet team class is 'favorite' when bet team is 'o'.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_BetTeamIsCharacterO_BetTeamClassNameIsFavorite()
         {
@@ -76,9 +64,6 @@
             Assert.AreEqual(expectedBetTeamClassName, _choice.Template.betTeamClassName);
         }
 
-        /// <summary>
-        /// The value of bet team class is 'underdog' when bet team is 'u'.
-        /// </summary>
         [Test]
         public void BuildBetTeamClassNameAndHandicap_BetTeamIsCharacterU_BetTeamClassNameIsUnderdog()
         {
@@ -93,9 +78,6 @@
             Assert.AreEqual(expectedBetTeamClassName, _choice.Template.betTeamClassName);
         }
 
-        /// <summary>
-        /// The value of Template.BetType.betTypeName is always bet type name.
-        /// </summary>
         [Test]
         public void BuildBetType_Always_SetBetTypeNameIsBetTypeName()
         {

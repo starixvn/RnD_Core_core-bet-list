@@ -1,7 +1,7 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using App_GlobalResources;
     using System.Globalization;
+    using App_GlobalResources;
     using Core.Builder.ChoiceBuilder;
     using Core.Templates;
     using Entities;

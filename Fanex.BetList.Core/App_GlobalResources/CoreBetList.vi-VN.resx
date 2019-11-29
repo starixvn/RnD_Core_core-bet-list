@@ -453,12 +453,6 @@
   <data name="AOSHTExcluding" xml:space="preserve">
     <value>AOS HT Ngoại trừ</value>
   </data>
-  <data name="Home171" xml:space="preserve">
-    <value>Đội nhà</value>
-  </data>
-  <data name="Away171" xml:space="preserve">
-    <value>Đội khách</value>
-  </data>
   <data name="Cash" xml:space="preserve">
     <value>Tiền mặt</value>
   </data>
@@ -518,5 +512,29 @@
   </data>
   <data name="Promotion" xml:space="preserve">
     <value>Khuyến mãi</value>
+  </data>
+  <data name="OwnGoal" xml:space="preserve">
+    <value>Phản lưới nhà</value>
+  </data>
+  <data name="Header" xml:space="preserve">
+    <value>Đánh đầu</value>
+  </data>
+  <data name="Shot" xml:space="preserve">
+    <value>Sút</value>
+  </data>
+  <data name="ScoreDraw" xml:space="preserve">
+    <value>Hòa Có Bàn Thắng (Ngoại Trừ 0-0)</value>
+  </data>
+  <data name="AwayToWinAnyOtherScore" xml:space="preserve">
+    <value>Đội khách Thắng với Tỷ số Khác</value>
+  </data>
+  <data name="HomeToWinAnyOtherScore" xml:space="preserve">
+    <value>Đội nhà Chiến thắng với Tỉ số Khác</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Ghi bàn</value>
+  </data>
+  <data name="Miss" xml:space="preserve">
+    <value>Hụt</value>
   </data>
 </root>

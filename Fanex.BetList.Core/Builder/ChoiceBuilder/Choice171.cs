@@ -15,15 +15,15 @@
             switch (ticket.BetTeam.ToLowerInvariant())
             {
                 case BetTeamValue.H1:
-                    Template.betTeam = $"{CoreBetList.Home171} {CoreBetList.ToWinByOneGoal}";
+                    Template.betTeam = $"{CoreBetList.Home} {CoreBetList.ToWinByOneGoal}";
                     break;
 
                 case BetTeamValue.H2:
-                    Template.betTeam = $"{CoreBetList.Home171} {CoreBetList.ToWinByTwoGoals}";
+                    Template.betTeam = $"{CoreBetList.Home} {CoreBetList.ToWinByTwoGoals}";
                     break;
 
                 case BetTeamValue.H3:
-                    Template.betTeam = $"{CoreBetList.Home171} {CoreBetList.ToWinByThreeUpGoals}";
+                    Template.betTeam = $"{CoreBetList.Home} {CoreBetList.ToWinByThreeUpGoals}";
                     break;
 
                 case BetTeamValue.D:
@@ -31,15 +31,15 @@
                     break;
 
                 case BetTeamValue.A1:
-                    Template.betTeam = $"{CoreBetList.Away171} {CoreBetList.ToWinByOneGoal}";
+                    Template.betTeam = $"{CoreBetList.Away} {CoreBetList.ToWinByOneGoal}";
                     break;
 
                 case BetTeamValue.A2:
-                    Template.betTeam = $"{CoreBetList.Away171} {CoreBetList.ToWinByTwoGoals}";
+                    Template.betTeam = $"{CoreBetList.Away} {CoreBetList.ToWinByTwoGoals}";
                     break;
 
                 case BetTeamValue.A3:
-                    Template.betTeam = $"{CoreBetList.Away171} {CoreBetList.ToWinByThreeUpGoals}";
+                    Template.betTeam = $"{CoreBetList.Away} {CoreBetList.ToWinByThreeUpGoals}";
                     break;
 
                 default:

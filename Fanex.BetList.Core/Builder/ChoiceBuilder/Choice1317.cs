@@ -6,41 +6,32 @@
     using Fanex.BetList.Core.Constants;
 
     /// <summary>
-    /// Set x Correct Score (SS).
+    /// Sporting Solution: Set X Correct Score.
     /// </summary>
     public class Choice1317 : Choice1302
     {
-        /// <summary>
-        /// Builds the bet team for Set x Correct Score.
-        /// If bet team is XY then the displaying bet team is x:y.
-        /// If bet team is HAOS then the displaying bet team is Home To Win Any Other Score.
-        /// If bet team is AAOS then the displaying bet team is Away To Win Any Other Score.
-        /// </summary>
-        /// <param name="ticket">The ticket.</param>
-        /// <param name="ticketHelper">The ticket helper.</param>
-        /// <param name="ticketData">The ticket data.</param>
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            const int expectedBetTeamLength = 2;
+            const int betTeamFixedLength = 2;
 
-            var betTeam = string.Empty;
+            var betTeam = ticket.BetTeam.ToLowerInvariant();
 
-            if (string.Equals(ticket.BetTeam, BetTeamValue.HAOS))
+            Template.betTeam = string.Empty;
+
+            if (betTeam == BetTeamValue.HAOS)
             {
-                betTeam = CoreBetList.HomeToWinAnyOtherScore;
+                Template.betTeam = CoreBetList.HomeToWinAnyOtherScore;
             }
 
-            if (string.Equals(ticket.BetTeam, BetTeamValue.AAOS))
+            if (betTeam == BetTeamValue.AAOS)
             {
-                betTeam = CoreBetList.AwayToWinAnyOtherScore;
+                Template.betTeam = CoreBetList.AwayToWinAnyOtherScore;
             }
 
-            if (ticket.BetTeam.Length == expectedBetTeamLength)
+            if (betTeam.Length == betTeamFixedLength)
             {
-                betTeam = string.Join(null, new[] { ticket.BetTeam.Substring(0, 1), ":", ticket.BetTeam.Substring(1, 1) });
+                Template.betTeam = $"{betTeam.Substring(0, 1)}:{betTeam.Substring(1, 1)}";
             }
-
-            Template.betTeam = string.Join(null, new[] { HtmlCharacters.NoneBreakingSpace, betTeam });
         }
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)

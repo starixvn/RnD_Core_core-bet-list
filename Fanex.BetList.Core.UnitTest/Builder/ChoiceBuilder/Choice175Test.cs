@@ -1,14 +1,10 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Entities;
     using NSubstitute;
     using NUnit.Framework;
 
-    /// <summary>
-    ///  Unit test for Choice175.
-    /// </summary>
     [TestFixture]
     public class Choice175Test
     {
@@ -24,11 +20,6 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        /// <summary>
-        /// Builds the bet team_ bet team_ template bet team.
-        /// </summary>
-        /// <param name="betTeam">The bet team.</param>
-        /// <param name="expected">The expected.</param>
         [TestCase("HR", "Home team name/Regular Time")]
         [TestCase("HE", "Home team name/Extra Time")]
         [TestCase("HP", "Home team name/Penalty")]

@@ -633,12 +633,6 @@
   <data name="TwoHDotX" xml:space="preserve">
     <value>ครึ่งหลัง.X</value>
   </data>
-  <data name="Home171" xml:space="preserve">
-    <value>หน้าหลัก</value>
-  </data>
-  <data name="Away171" xml:space="preserve">
-    <value>ทีมเยือน</value>
-  </data>
   <data name="Cash" xml:space="preserve">
     <value>เงินสด</value>
   </data>
@@ -664,7 +658,7 @@
     <value>กําลังดําเนินการชำระเงิน</value>
   </data>
   <data name="halflose" xml:space="preserve">
-    <value> เสียครึ่ง</value>
+    <value>เสียครึ่ง</value>
   </data>
   <data name="halfwon" xml:space="preserve">
     <value>ชนะครึ่ง</value>
@@ -692,5 +686,29 @@
   </data>
   <data name="Promotion" xml:space="preserve">
     <value>โปรโมชั่น</value>
+  </data>
+  <data name="OwnGoal" xml:space="preserve">
+    <value>ทำลูกเข้าประตูตัวเอง</value>
+  </data>
+  <data name="Header" xml:space="preserve">
+    <value>ลูกโหม่ง</value>
+  </data>
+  <data name="Shot" xml:space="preserve">
+    <value>ยิงเข้าประตู</value>
+  </data>
+  <data name="ScoreDraw" xml:space="preserve">
+    <value>คะแนนเสมอ (ไม่รวม 0-0)</value>
+  </data>
+  <data name="AwayToWinAnyOtherScore" xml:space="preserve">
+    <value>ทีมเยือนชนะด้วยแต้มใดๆ</value>
+  </data>
+  <data name="HomeToWinAnyOtherScore" xml:space="preserve">
+    <value>ทีมเจ้าบ้านชนะด้วยแต้มใดๆ</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>คะแนน</value>
+  </data>
+  <data name="Miss" xml:space="preserve">
+    <value>พลาด</value>
   </data>
 </root>

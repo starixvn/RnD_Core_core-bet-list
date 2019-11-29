@@ -42,10 +42,10 @@
         [TestCase("h1", "Home to Win by 1 Goal")]
         [TestCase("h2", "Home to Win by 2 Goals")]
         [TestCase("h3", "Home to Win by 3+ Goals")]
-        public void BuildBetTeam_BetTeamStartsWithH_BetChoiceStartsWithHome(string betTeam, string expected)
+        public void BuildBetTeam_BetTeamStartsWithH_BetChoiceStartsWithHome(string betToHome, string expected)
         {
             // Arrange.
-            _ticket.BetTeam = betTeam;
+            _ticket.BetTeam = betToHome;
 
             // Act.
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -53,8 +53,6 @@
             // Assert.
             Assert.AreEqual(expected, _choice.Template.betTeam);
         }
-
-#pragma warning disable S4144 // Methods should not have identical implementations
 
         [TestCase("A1", "Away to Win by 1 Goal")]
         [TestCase("A2", "Away to Win by 2 Goals")]
@@ -62,10 +60,10 @@
         [TestCase("a1", "Away to Win by 1 Goal")]
         [TestCase("a2", "Away to Win by 2 Goals")]
         [TestCase("a3", "Away to Win by 3+ Goals")]
-        public void BuildBetTeam_BetTeamStartsWithA_BetChoiceStartsWithAway(string betTeam, string expected)
+        public void BuildBetTeam_BetTeamStartsWithA_BetChoiceStartsWithAway(string betToAway, string expected)
         {
             // Arrange.
-            _ticket.BetTeam = betTeam;
+            _ticket.BetTeam = betToAway;
 
             // Act.
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
@@ -74,11 +72,9 @@
             Assert.AreEqual(expected, _choice.Template.betTeam);
         }
 
-#pragma warning restore S4144 // Methods should not have identical implementations
-
         [TestCase("D")]
         [TestCase("d")]
-        public void BuildBetTeam_BetTeamStartsWithD_BetChoiceIsAnyScoreDraw(string betTeam)
+        public void BuildBetTeam_BetTeamIsD_BetChoiceIsAnyScoreDraw(string betTeam)
         {
             // Arrange.
             _ticket.BetTeam = betTeam;
@@ -87,16 +83,14 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            const string expectation = "Any Score Draw (Exclude 0-0)";
-
-            Assert.AreEqual(expectation, _choice.Template.betTeam);
+            Assert.AreEqual(CoreBetList.ScoreDraw, _choice.Template.betTeam);
         }
 
         [TestCase("NG")]
         [TestCase("ng")]
         [TestCase("nG")]
         [TestCase("Ng")]
-        public void BuildBetTeam_BetTeamStartsWithNG_BetChoiceIsNoGoal(string betTeam)
+        public void BuildBetTeam_BetTeamIsNG_BetChoiceIsNoGoal(string betTeam)
         {
             // Arrange.
             _ticket.BetTeam = betTeam;

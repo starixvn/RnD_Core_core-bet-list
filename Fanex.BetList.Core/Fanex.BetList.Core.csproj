@@ -241,6 +241,13 @@
     <Compile Include="Builder\ChoiceBuilder\Choice3.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice30.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice38.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice382.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice383.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice384.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice385.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice391.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice392.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice397.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice4.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice401.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice408.cs" />
@@ -369,6 +376,7 @@
     <Compile Include="Builder\StatusBuilder\Status221.cs" />
     <Compile Include="Builder\StatusBuilder\Status38.cs" />
     <Compile Include="Builder\StatusBuilder\Status486.cs" />
+    <Compile Include="Builder\StatusBuilder\Status395.cs" />
     <Compile Include="Builder\StatusBuilder\Status606.cs" />
     <Compile Include="Builder\StatusBuilder\Status9.cs" />
     <Compile Include="Builder\SystemParlayBuilder\ISystemParlayDetail.cs" />

@@ -15,7 +15,8 @@
             MapForPHAIO2();
             MapForPHAIO4B();
             MapForCricket();
-            MapForBadmintonAIO();
+            MapForBadmintonAIO2();
+            MapForPHAIO5();
         }
 
         private void MapForOtherBetTypes()
@@ -190,13 +191,30 @@
             MapIdToBaseId(BetTypes.CricketMatchWinner, BetTypes.Moneyline);
         }
 
-        private void MapForBadmintonAIO()
+        private void MapForBadmintonAIO2()
         {
             MapIdToBaseId(BetTypes.MatchHandicap, BetTypes.Handicap);
             MapIdToBaseId(BetTypes.MatchNumberOfGames, BetTypes.SecondHalfOverUnder);
             MapIdToBaseId(BetTypes.MatchPointHandicap, BetTypes.Handicap);
             MapIdToBaseId(BetTypes.MatchPointOverUnder, BetTypes.SecondHalfOverUnder);
             MapIdToBaseId(BetTypes.GameXPointYWinner, BetTypes.GameXRaceToYPoints);
+        }
+
+        private void MapForPHAIO5()
+        {
+            MapIdToBaseId(BetTypes.AwayPenaltyShootoutRoundX, BetTypes.HomePenaltyShootoutRoundX);
+            MapIdToBaseId(BetTypes.AwayPenaltyShootoutOverUnderFirst10, BetTypes.HomeTeamOverUnder);
+            MapIdToBaseId(BetTypes.HomePenaltyShootoutOverUnderFirst10, BetTypes.HomeTeamOverUnder);
+            MapIdToBaseId(BetTypes.AwayPenaltyShootoutOverUnderFinalResult, BetTypes.HomeTeamOverUnder);
+            MapIdToBaseId(BetTypes.HomePenaltyShootoutOverUnderFinalResult, BetTypes.HomeTeamOverUnder);
+            MapIdToBaseId(BetTypes.PenaltyShootoutToGoToSuddenDeath, BetTypes.HomeToWinBothHalves);
+            MapIdToBaseId(BetTypes.PenaltyShootoutOddEvenFirst10, BetTypes.FirstHalfHomeTeamOddEven);
+            MapIdToBaseId(BetTypes.PenaltyShootoutOddEvenFinalResult, BetTypes.FirstHalfHomeTeamOddEven);
+            MapIdToBaseId(BetTypes.ExtraTimeNextGoalMethod, BetTypes.FirstGoalMethod);
+            MapIdToBaseId(BetTypes.ExtraTimeNextGoalOwn, BetTypes.NextGoal);
+            MapIdToBaseId(BetTypes.ExtraTimeDoubleChance, BetTypes.DoubleChance);
+            MapIdToBaseId(BetTypes.ExtraTimeCorrectScoreOwn, BetTypes.CorrectScoreAos);
+            MapIdToBaseId(BetTypes.ExtraTimeOddEven, BetTypes.FirstHalfHomeTeamOddEven);
         }
     }
 }

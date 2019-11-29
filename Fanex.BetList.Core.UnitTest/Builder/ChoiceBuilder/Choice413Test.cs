@@ -31,7 +31,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            string expectedBetTeam = "&nbsp;4-4";
+            string expectedBetTeam = "4-4";
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
@@ -46,7 +46,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            Assert.AreEqual("&nbsp;AOS", _choice.Template.betTeam);
+            Assert.AreEqual(CoreBetList.AOS, _choice.Template.betTeam);
         }
 
         public void BuildBetTeam_BetTeamIsNotAOS_NotShowExcludingChoices()
