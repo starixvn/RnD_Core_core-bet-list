@@ -9,6 +9,7 @@
             MapForFastMarkets();
             MapForBasketBall();
             MapForBadminton();
+            MapForCornerMatches();
             MapForOthers();
         }
 
@@ -44,6 +45,11 @@
         {
             // Parlay
             MapIdToBaseId(BetTypes.SystemParlay, BetTypes.MixParlay);
+        }
+
+        private void MapForCornerMatches()
+        {
+            MapIdToBaseId(BetTypes.FirstHalfCornersRace, BetTypes.CornersRace);
         }
     }
 }
