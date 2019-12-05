@@ -454,7 +454,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            Assert.AreEqual(CoreBetList.lblDraw, _choice.Template.betTeam);
+            Assert.AreEqual(CoreBetList.draw, _choice.Template.betTeam);
         }
 
         [Test]

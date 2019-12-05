@@ -997,15 +997,6 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Draw.
-        /// </summary>
-        public static string lblDraw {
-            get {
-                return ResourceManager.GetString("lblDraw", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Lose.
         /// </summary>
         public static string lblLose {

@@ -135,9 +135,6 @@
   <data name="lblBoth" xml:space="preserve">
     <value>ทั้งสอง</value>
   </data>
-  <data name="lblDraw" xml:space="preserve">
-    <value>เสมอ</value>
-  </data>
   <data name="lblOne" xml:space="preserve">
     <value>หนึ่ง</value>
   </data>

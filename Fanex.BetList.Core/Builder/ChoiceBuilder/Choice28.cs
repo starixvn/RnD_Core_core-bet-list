@@ -37,7 +37,7 @@
             }
             else
             {
-                teamName = CoreBetList.lblDraw;
+                teamName = CoreBetList.draw;
                 if (hdp1 - hdp2 > 0)
                 {
                     handicap = CoreBetList.a;

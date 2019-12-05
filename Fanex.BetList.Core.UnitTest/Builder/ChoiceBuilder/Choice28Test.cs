@@ -90,7 +90,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            var expectedBetTeam = string.Format("{0}&nbsp;<span class=\"underdog\">({1}+1)</span>", CoreBetList.lblDraw, CoreBetList.a);
+            var expectedBetTeam = string.Format("{0}&nbsp;<span class=\"underdog\">({1}+1)</span>", CoreBetList.draw, CoreBetList.a);
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
@@ -106,7 +106,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            var expectedBetTeam = string.Format("{0}&nbsp;<span class=\"underdog\">({1}+1)</span>", CoreBetList.lblDraw, CoreBetList.h);
+            var expectedBetTeam = string.Format("{0}&nbsp;<span class=\"underdog\">({1}+1)</span>", CoreBetList.draw, CoreBetList.h);
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
@@ -122,7 +122,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            var expectedBetTeam = string.Format("{0}&nbsp;<span class=\"underdog\">(0)</span>", CoreBetList.lblDraw);
+            var expectedBetTeam = string.Format("{0}&nbsp;<span class=\"underdog\">(0)</span>", CoreBetList.draw);
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
     }

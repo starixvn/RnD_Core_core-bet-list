@@ -132,9 +132,6 @@
   <data name="lblBoth" xml:space="preserve">
     <value>Cả hai</value>
   </data>
-  <data name="lblDraw" xml:space="preserve">
-    <value>Hòa</value>
-  </data>
   <data name="lblMixParlay" xml:space="preserve">
     <value>Cá cược tổng hợp</value>
   </data>

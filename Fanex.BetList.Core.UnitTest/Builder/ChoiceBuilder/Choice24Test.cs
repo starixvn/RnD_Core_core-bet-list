@@ -73,7 +73,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            string expectedBetTeam = string.Format(BetTeamTemplate, CoreBetList.Home, CoreBetList.lblOr, CoreBetList.lblDraw);
+            string expectedBetTeam = string.Format(BetTeamTemplate, CoreBetList.Home, CoreBetList.lblOr, CoreBetList.draw);
 
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
@@ -89,7 +89,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert.
-            string expectedBetTeam = string.Format(BetTeamTemplate, CoreBetList.Away, CoreBetList.lblOr, CoreBetList.lblDraw);
+            string expectedBetTeam = string.Format(BetTeamTemplate, CoreBetList.Away, CoreBetList.lblOr, CoreBetList.draw);
 
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }

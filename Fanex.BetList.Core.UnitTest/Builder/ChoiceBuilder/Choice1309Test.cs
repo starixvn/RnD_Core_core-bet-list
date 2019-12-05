@@ -240,7 +240,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            var expectedBetTeam = string.Format("{0}&nbsp;({1}+2)", CoreBetList.lblDraw, CoreBetList.h);
+            var expectedBetTeam = string.Format("{0}&nbsp;({1}+2)", CoreBetList.draw, CoreBetList.h);
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
@@ -255,7 +255,7 @@
             _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            var expectedBetTeam = string.Format("{0}&nbsp;({1}+2)", CoreBetList.lblDraw, CoreBetList.a);
+            var expectedBetTeam = string.Format("{0}&nbsp;({1}+2)", CoreBetList.draw, CoreBetList.a);
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 

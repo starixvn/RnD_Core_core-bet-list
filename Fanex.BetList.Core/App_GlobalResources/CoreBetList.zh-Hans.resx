@@ -321,9 +321,6 @@
   <data name="lblBoth" xml:space="preserve">
     <value>双方</value>
   </data>
-  <data name="lblDraw" xml:space="preserve">
-    <value>和局</value>
-  </data>
   <data name="lblLose" xml:space="preserve">
     <value>输</value>
   </data>

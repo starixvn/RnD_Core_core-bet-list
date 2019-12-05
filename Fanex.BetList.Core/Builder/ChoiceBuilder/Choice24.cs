@@ -20,7 +20,7 @@
                 var firstChanceIndicator = betTeam[0].ToString();
                 var secondChanceIndicator = betTeam[1].ToString();
                 var firstChance = BetTeamValue.NumberOne == firstChanceIndicator ? CoreBetList.Home : CoreBetList.Away;
-                var secondChance = BetTeamValue.X == secondChanceIndicator ? CoreBetList.lblDraw : CoreBetList.Away;
+                var secondChance = BetTeamValue.X == secondChanceIndicator ? CoreBetList.draw : CoreBetList.Away;
 
                 Template.betTeam = $"{firstChance}<span class=\"{Underdog}\"> {CoreBetList.lblOr} </span>{secondChance}";
             }

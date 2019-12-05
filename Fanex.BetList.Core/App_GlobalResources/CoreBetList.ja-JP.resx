@@ -123,9 +123,6 @@
   <data name="even" xml:space="preserve">
     <value>偶数</value>
   </data>
-  <data name="lblDraw" xml:space="preserve">
-    <value>ドロー</value>
-  </data>
   <data name="lblOr" xml:space="preserve">
     <value>または</value>
   </data>
