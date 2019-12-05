@@ -444,6 +444,7 @@
     <Content Include="App_Data\PHAllInOneP4B.xls" />
     <Content Include="App_Data\NonPeakHoursPromotion.xls" />
     <Content Include="App_Data\BadmintonAIO.xls" />
+    <Content Include="App_Data\PHAllInOneP5.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
