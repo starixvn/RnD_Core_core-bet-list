@@ -34,7 +34,7 @@
             Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
 
             // Assert
-            string expectedDisplayingBetTeam = CoreBetList.nogoal;
+            string expectedDisplayingBetTeam = CoreBetList.NoGoal14;
 
             Assert.AreEqual(expectedDisplayingBetTeam, template.betTeam);
         }

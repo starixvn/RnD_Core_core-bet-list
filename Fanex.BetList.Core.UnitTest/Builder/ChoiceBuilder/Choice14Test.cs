@@ -14,7 +14,7 @@
 
         private static readonly object[] expectedBetTeams =
         {
-            new object[] { "0:0", CoreBetList.nogoal },
+            new object[] { "0:0", CoreBetList.NoGoal14 },
             new object[] { "1:1", CoreBetList.HomeFG },
             new object[] { "1:2", CoreBetList.HomeLG },
             new object[] { "2:1", CoreBetList.AwayFG },
