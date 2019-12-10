@@ -33,7 +33,7 @@
                 .Returns(expectedBetTypeName);
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(expectedBetTypeName, _choice.Template.BetType.betTypeName);
@@ -43,7 +43,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
         {
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string favorite = "favorite";

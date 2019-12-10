@@ -29,7 +29,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.AreEqual(CoreBetList.lblYes, template.betTeam);
@@ -43,7 +43,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.AreEqual(CoreBetList.lblNo, template.betTeam);
@@ -66,7 +66,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_BetTeamClassNameIsFavorite()
         {
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string expectedClass = "favorite";

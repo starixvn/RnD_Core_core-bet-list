@@ -29,7 +29,7 @@
             _ticket.BetTeam = "1h";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(CoreBetList.FirstHalf, _choice.Template.betTeam);
@@ -42,7 +42,7 @@
             _ticket.BetTeam = "2h";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(CoreBetList.SecondHalf, _choice.Template.betTeam);
@@ -55,7 +55,7 @@
             _ticket.BetTeam = "tie";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(CoreBetList.Tie, _choice.Template.betTeam);

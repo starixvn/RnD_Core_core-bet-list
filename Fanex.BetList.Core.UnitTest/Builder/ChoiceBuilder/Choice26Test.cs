@@ -27,7 +27,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsNull(_choice.Template.Handicap.handicap);
@@ -40,7 +40,7 @@
             _ticket.BetTeam = "b";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(CoreBetList.lblBoth, _choice.Template.betTeam);
@@ -53,7 +53,7 @@
             _ticket.BetTeam = "o";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(CoreBetList.lblOne, _choice.Template.betTeam);
@@ -66,7 +66,7 @@
             _ticket.BetTeam = "n";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(CoreBetList.nogoal, _choice.Template.betTeam);
@@ -76,7 +76,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
         {
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string CSS_CLASS_FAVORITE = "favorite";

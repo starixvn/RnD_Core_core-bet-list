@@ -28,7 +28,7 @@
             _ticket.BetTeam = "1";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(CoreBetList.virtualtennis_scorebet_win_0, _choice.Template.betTeam);
@@ -41,7 +41,7 @@
             _ticket.BetTeam = "2";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(CoreBetList.virtualtennis_scorebet_win_15, _choice.Template.betTeam);
@@ -54,7 +54,7 @@
             _ticket.BetTeam = "3";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(CoreBetList.virtualtennis_scorebet_win_30, _choice.Template.betTeam);
@@ -67,7 +67,7 @@
             _ticket.BetTeam = "4";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(CoreBetList.virtualtennis_scorebet_win_40, _choice.Template.betTeam);
@@ -80,7 +80,7 @@
             _ticket.BetTeam = "5";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(CoreBetList.virtualtennis_scorebet_0_win, _choice.Template.betTeam);
@@ -93,7 +93,7 @@
             _ticket.BetTeam = "6";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(CoreBetList.virtualtennis_scorebet_15_win, _choice.Template.betTeam);
@@ -106,7 +106,7 @@
             _ticket.BetTeam = "7";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(CoreBetList.virtualtennis_scorebet_30_win, _choice.Template.betTeam);
@@ -119,7 +119,7 @@
             _ticket.BetTeam = "8";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(CoreBetList.virtualtennis_scorebet_40_win, _choice.Template.betTeam);

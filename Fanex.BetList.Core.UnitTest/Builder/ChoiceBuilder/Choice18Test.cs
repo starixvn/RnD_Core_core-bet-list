@@ -31,7 +31,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(expected, _choice.Template.betTeam);
@@ -44,7 +44,7 @@
             _ticket.BetTeam = "O";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string CSS_BETTEAM_CLASS = "favorite";
@@ -58,7 +58,7 @@
             _ticket.BetTeam = "U";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string CSS_BETTEAM_CLASS = "underdog";

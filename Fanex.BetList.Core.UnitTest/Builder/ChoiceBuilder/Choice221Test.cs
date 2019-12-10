@@ -35,7 +35,7 @@
             _ticket.OddsSpread = 2.5M;
 
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.AreEqual("2.5", template.Handicap.handicap);
@@ -48,7 +48,7 @@
             _ticket.OddsSpread = 2.5M;
 
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             StringAssert.EndsWith("<br/>", template.betTeam);
@@ -61,7 +61,7 @@
             _ticket.OddsSpread = 0;
 
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.IsNull(template.Handicap);
@@ -71,7 +71,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameToFavorite()
         {
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string Favorite = "favorite";

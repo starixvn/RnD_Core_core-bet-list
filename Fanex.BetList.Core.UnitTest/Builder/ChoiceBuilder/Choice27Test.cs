@@ -26,7 +26,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsNull(_choice.Template.Handicap.handicap);
@@ -36,7 +36,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsUnderdog()
         {
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string CSS_CLASS_UNDERDOG = "underdog";

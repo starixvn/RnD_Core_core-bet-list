@@ -28,7 +28,7 @@
             _ticket.BetTeam = "abc";
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.IsEmpty(_choice.Template.betTeam);
@@ -42,7 +42,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string expectation = "Home to Win by 1 Goal";
@@ -58,7 +58,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string expectation = "Home to Win by 2+ Goals";
@@ -74,7 +74,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string expectation = "Any Score Draw (Exclude 0-0)";
@@ -90,7 +90,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string expectation = "Away to Win by 1 Goal";
@@ -106,7 +106,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string expectation = "Away to Win by 2+ Goals";
@@ -124,7 +124,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.AreEqual(CoreBetList.NoGoal408, _choice.Template.betTeam);
@@ -134,7 +134,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.IsNull(_choice.Template.Handicap.handicap);
@@ -144,7 +144,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
         {
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string favorite = "favorite";

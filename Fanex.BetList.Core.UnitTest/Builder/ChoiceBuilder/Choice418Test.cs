@@ -31,7 +31,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string expectedHtml = "Yes <span class=\"underdog\">&</span> Over";
@@ -49,7 +49,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string expectedHtml = "Yes <span class=\"underdog\">&</span> Under";
@@ -67,7 +67,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string expectedHtml = "No <span class=\"underdog\">&</span> Over";
@@ -85,7 +85,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string expectedHtml = "No <span class=\"underdog\">&</span> Under";
@@ -102,7 +102,7 @@
             _ticket.Handicap1 = handicap1;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             var expectedDisplayedHandicap = ConvertByBetType.Hdp(handicap1);
@@ -114,7 +114,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
         {
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string favorite = "favorite";

@@ -29,7 +29,7 @@
             _ticket.BetTeam = "0:4";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             string expectedBetTeam = string.Format("&nbsp;{0} UP", _ticket.BetTeam);
@@ -43,7 +43,7 @@
             _ticket.BetTeam = "4:0";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             string expectedBetTeam = string.Format("&nbsp;{0} UP", _ticket.BetTeam);
@@ -57,7 +57,7 @@
             _ticket.BetTeam = "bet team";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             string expectedBetTeam = string.Format("&nbsp;{0}", _ticket.BetTeam);

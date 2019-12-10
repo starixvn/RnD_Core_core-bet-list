@@ -27,7 +27,7 @@
             _ticket.BetTeam = "abc";
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.IsEmpty(_choice.Template.betTeam);
@@ -41,7 +41,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string expected = "Home/Home";
@@ -59,7 +59,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string expected = "Home/Away";
@@ -77,7 +77,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string expected = "Draw/Home";
@@ -93,7 +93,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string expected = "Away/Away";
@@ -111,7 +111,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string expected = "Away/Home";
@@ -129,7 +129,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string expected = "Draw/Away";
@@ -147,7 +147,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string expected = "None";
@@ -159,7 +159,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_HandicapIsNull()
         {
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.IsNull(_choice.Template.Handicap.handicap);
@@ -169,7 +169,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_BetTeamClassNameIsFavorite()
         {
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string favorite = "favorite";

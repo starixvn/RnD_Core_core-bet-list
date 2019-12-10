@@ -31,7 +31,7 @@
             _ticket.LiveHomeScore = 1;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(_ticket.LiveHomeScore.ToString(), _choice.Template.Score.homeScore);
@@ -44,7 +44,7 @@
             _ticket.LiveAwayScore = 1;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(_ticket.LiveAwayScore.ToString(), _choice.Template.Score.awayScore);
@@ -58,7 +58,7 @@
             _ticket.IsLive = isLive;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(isLive, _choice.Template.Score.Visible);
@@ -68,7 +68,7 @@
         public void BuildScore_Always_SetScoreClassNameIsFavorite()
         {
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string CSS_BETTEAM_CLASS = "favorite";

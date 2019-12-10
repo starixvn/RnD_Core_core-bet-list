@@ -155,7 +155,7 @@
             _ticket.Handicap1 = ObservedHandicap1;
 
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.AreEqual(ObservedHandicap1.ToString(CultureInfo.InvariantCulture), template.Handicap.handicap);
@@ -165,7 +165,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameToFavorite()
         {
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string Favorite = "favorite";

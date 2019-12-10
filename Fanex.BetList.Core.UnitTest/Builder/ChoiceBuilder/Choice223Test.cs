@@ -55,7 +55,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapToNull()
         {
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.IsNull(template.Handicap.handicap);
@@ -65,7 +65,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameToFavorite()
         {
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string Favorite = "favorite";

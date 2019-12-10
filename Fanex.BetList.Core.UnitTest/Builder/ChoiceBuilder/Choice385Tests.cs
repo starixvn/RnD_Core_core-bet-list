@@ -31,7 +31,7 @@
             _ticket.BetTeam = betToHome;
 
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.AreEqual(CoreBetList.Home, template.betTeam);
@@ -45,7 +45,7 @@
             _ticket.BetTeam = betToDraw;
 
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.AreEqual(CoreBetList.draw, template.betTeam);
@@ -60,7 +60,7 @@
             _ticket.BetTeam = betToAway;
 
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.AreEqual(CoreBetList.Away, template.betTeam);
@@ -75,7 +75,7 @@
             _ticket.BetTeam = invalidBetTeam;
 
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.IsEmpty(template.betTeam);
@@ -85,7 +85,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_HandicapIsNull()
         {
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.IsNull(template.Handicap.handicap);
@@ -95,7 +95,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_BetTeamClassNameIsFavorite()
         {
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string favorite = "favorite";

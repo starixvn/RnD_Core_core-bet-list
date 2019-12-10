@@ -43,7 +43,7 @@
             _ticketHelper.GetTeamNameById(_ticket.AwayId).Returns<string>("Away team name");
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(expected, _choice.Template.betTeam);
@@ -53,7 +53,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsNull(_choice.Template.Handicap.handicap);
@@ -63,7 +63,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
         {
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string CSS_CLASS_FAVORITE = "favorite";

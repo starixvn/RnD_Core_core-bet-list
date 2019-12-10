@@ -46,7 +46,7 @@
             _ticketHelper.GetTeamNameById(_ticket.AwayId).Returns<string>("Away team name");
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(expected, _choice.Template.betTeam);

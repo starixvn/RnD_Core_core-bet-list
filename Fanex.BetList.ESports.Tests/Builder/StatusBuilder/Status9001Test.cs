@@ -25,7 +25,7 @@
             _ticket.BetId = null;
 
             // Act.
-            _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.AreEqual("0", _status.Template.StatusResult.betId);
@@ -38,7 +38,7 @@
             _ticket.BetId = 80101;
 
             // Act.
-            _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.AreEqual("80101", _status.Template.StatusResult.betId);

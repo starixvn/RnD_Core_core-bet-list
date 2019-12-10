@@ -42,7 +42,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.SportTypeId = sportType;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(_ticket.LiveHomeScore.ToString(), _choice.Template.Score.homeScore);
@@ -59,7 +59,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.SportTypeId = sportType;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(_ticket.LiveHomeScore.ToString(), _choice.Template.Score.homeScore);
@@ -110,7 +110,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.SportTypeId = sportType;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual("<span class=\"favorite\"> [Live]</span>", _choice.Template.Score.ToString());
@@ -129,7 +129,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.SportTypeId = sportType;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(_ticket.LiveAwayScore.ToString(), _choice.Template.Score.awayScore);
@@ -144,7 +144,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.SportTypeId = sportType;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(_ticket.LiveAwayScore.ToString(), _choice.Template.Score.awayScore);
@@ -158,7 +158,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.IsLive = isLive;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(isLive, _choice.Template.Score.Visible);
@@ -168,7 +168,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         public void BuildScore_Always_SetScoreClassNameIsFavorite()
         {
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string CSS_CLASS_FAVORITE = "favorite";
@@ -183,7 +183,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticketHelper.GetLeagueNameById(Arg.Any<int>()).Returns<string>(LEAGUE_NAME);
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(LEAGUE_NAME, _choice.Template.League.LeagueName.leagueName);
@@ -197,7 +197,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticketHelper.GetSportNameById(Arg.Any<int>()).Returns<string>(SPORT_NAME);
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(SPORT_NAME, _choice.Template.League.sportTypeName);
@@ -211,7 +211,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticketHelper.GetBetTypeNameById(Arg.Any<int>(), Arg.Any<object>()).Returns<string>(BET_TYPE_NAME);
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(BET_TYPE_NAME, _choice.Template.BetType.betTypeName);
@@ -225,7 +225,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticketHelper.GetTeamNameById(Arg.Any<long>()).Returns<string>("Home team name");
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string HOME_TEAM_NAME = "Home team name (N)";
@@ -241,7 +241,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticketHelper.GetTeamNameById(Arg.Any<long>()).Returns<string>(HOME_TEAM_NAME);
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(HOME_TEAM_NAME, _choice.Template.Match.homeTeam);
@@ -255,7 +255,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticketHelper.GetTeamNameById(Arg.Any<long>()).Returns<string>(AWAY_TEAM_NAME);
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(AWAY_TEAM_NAME, _choice.Template.Match.awayTeam);
@@ -269,7 +269,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.EventStatus = eventStatus;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string HOME_FGLG = "&nbsp;<div class='lastGoal'>&nbsp;</div>";
@@ -284,7 +284,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.EventStatus = eventStatus;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string HOME_FGLG = "&nbsp;<div class='fhLastGoal'>&nbsp;</div>";
@@ -299,7 +299,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.EventStatus = eventStatus;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string HOME_FGLG = "&nbsp;<div class='lastGoal'>&nbsp;</div><div class='fhLastGoal'>&nbsp;</div>";
@@ -314,7 +314,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.EventStatus = eventStatus;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string AWAY_FGLG = "&nbsp;<div class='lastGoal'>&nbsp;</div>";
@@ -329,7 +329,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.EventStatus = eventStatus;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string AWAY_FGLG = "&nbsp;<div class='fhLastGoal'>&nbsp;</div>";
@@ -344,7 +344,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.EventStatus = eventStatus;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string AWAY_FGLG = "&nbsp;<div class='lastGoal'>&nbsp;</div><div class='fhLastGoal'>&nbsp;</div>";
@@ -359,7 +359,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.EventStatus = eventStatus;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string HOME_FGLG = "&nbsp;<div class='firstGoal '>&nbsp;</div>";
@@ -374,7 +374,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.EventStatus = eventStatus;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string HOME_FGLG = "&nbsp;<div class='fhFirstGoal'>&nbsp;</div>";
@@ -389,7 +389,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.EventStatus = eventStatus;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string HOME_FGLG = "&nbsp;<div class='firstGoal '>&nbsp;</div><div class='fhFirstGoal'>&nbsp;</div>";
@@ -403,7 +403,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.EventStatus = "FL:1-1";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string HOME_FGLG = "&nbsp;<div class='firstGoal '>&nbsp;</div><div class='lastGoal'>&nbsp;</div>";
@@ -417,7 +417,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.EventStatus = "1FL:1-1";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string HOME_FGLG = "&nbsp;<div class='fhFirstGoal'>&nbsp;</div><div class='fhLastGoal'>&nbsp;</div>";
@@ -431,7 +431,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.EventStatus = "FL:1-1;1FL:1-1";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string HOME_FGLG = "&nbsp;<div class='firstGoal '>&nbsp;</div><div class='lastGoal'>&nbsp;</div><div class='fhFirstGoal'>&nbsp;</div><div class='fhLastGoal'>&nbsp;</div>";
@@ -445,7 +445,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.EventStatus = "FL:2-2";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string AWAY_FGLG = "&nbsp;<div class='firstGoal '>&nbsp;</div><div class='lastGoal'>&nbsp;</div>";
@@ -459,7 +459,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.EventStatus = "1FL:2-2";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string AWAY_FGLG = "&nbsp;<div class='fhFirstGoal'>&nbsp;</div><div class='fhLastGoal'>&nbsp;</div>";
@@ -473,7 +473,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.EventStatus = "FL:2-2;1FL:2-2";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string AWAY_FGLG = "&nbsp;<div class='firstGoal '>&nbsp;</div><div class='lastGoal'>&nbsp;</div><div class='fhFirstGoal'>&nbsp;</div><div class='fhLastGoal'>&nbsp;</div>";
@@ -488,7 +488,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.EventStatus = eventStatus;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string AWAY_FGLG = "&nbsp;<div class='firstGoal '>&nbsp;</div>";
@@ -503,7 +503,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.EventStatus = eventStatus;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string AWAY_FGLG = "&nbsp;<div class='fhFirstGoal'>&nbsp;</div>";
@@ -520,7 +520,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.EventStatus = eventStatus;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string AWAY_FGLG = "&nbsp;<div class='firstGoal '>&nbsp;</div><div class='fhFirstGoal'>&nbsp;</div>";
@@ -541,7 +541,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.EventStatus = eventStatus;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsEmpty(_choice.Template.Match.home_firstGoal_lastGoal);
@@ -561,7 +561,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.EventStatus = eventStatus;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsEmpty(_choice.Template.Match.away_firstGoal_lastGoal);
@@ -576,7 +576,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticketHelper.GetTeamNameById(Arg.Any<long>()).Returns<string>(HOME_TEAM_NAME);
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(HOME_TEAM_NAME, _choice.Template.betTeam);
@@ -591,7 +591,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticketHelper.GetTeamNameById(Arg.Any<long>()).Returns<string>(AWAY_TEAM_NAME);
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(AWAY_TEAM_NAME, _choice.Template.betTeam);
@@ -606,7 +606,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticketHelper.GetTeamNameById(Arg.Any<long>()).Returns<string>(AWAY_TEAM_NAME);
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(AWAY_TEAM_NAME, _choice.Template.betTeam);
@@ -621,7 +621,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.Handicap2 = 2;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string CSS_CLASS_UNDERDOG = "underdog";
@@ -637,7 +637,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.Handicap2 = 1;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string CSS_CLASS_UNDERDOG = "underdog";
@@ -653,7 +653,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.Handicap2 = 1;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string CSS_CLASS_FAVORITE = "favorite";
@@ -669,7 +669,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.Handicap2 = 1;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string CSS_CLASS_UNDERDOG = "underdog";
@@ -685,7 +685,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.Handicap2 = 1;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string CSS_CLASS_UNDERDOG = "underdog";
@@ -701,7 +701,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.Handicap2 = 2;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string CSS_CLASS_FAVORITE = "favorite";
@@ -717,7 +717,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.Handicap2 = 2;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(_ticket.Handicap2.ToString(), _choice.Template.Handicap.handicap);
@@ -732,7 +732,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.Handicap2 = 1;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(string.Format("-{0}", _ticket.Handicap1), _choice.Template.Handicap.handicap);
@@ -745,7 +745,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.StatusId = null;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsEmpty(_choice.Template.ticketStatus);
@@ -759,7 +759,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.StatusId = VOID_STATUSID;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string VOID_STATUS = "void";
@@ -773,7 +773,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.Status = null;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsEmpty(_choice.Template.ticketStatus);
@@ -787,7 +787,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.Status = VOID_STATUS;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(VOID_STATUS, _choice.Template.ticketStatus);
@@ -801,7 +801,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.StatusId = REFUND_STATUSID;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string REFUND_STATUS = "refund";
@@ -816,7 +816,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.Status = REFUND_STATUS;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(REFUND_STATUS, _choice.Template.ticketStatus);
@@ -830,7 +830,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.StatusId = REJECT_STATUSID;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string REJECT_STATUS = "reject";
@@ -845,7 +845,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.Status = REJECT_STATUS;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(REJECT_STATUS, _choice.Template.ticketStatus);
@@ -858,7 +858,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticketHelper.IsShowOddsWithChoice = false;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsNull(_choice.Template.Handicap.Odds);
@@ -873,7 +873,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.Odds = 1;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(_ticket.Odds.ToString(), _choice.Template.Handicap.Odds.odds);
@@ -888,7 +888,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.Odds = -1;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsNull(_choice.Template.Handicap.Odds);
@@ -951,7 +951,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.BetTeam = "h";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             string expectedBetTeamClassName = "favorite";
@@ -1016,7 +1016,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.EventDate = DateTime.Now;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.IsTrue(_choice.Template.EventDate.Visible);
@@ -1032,7 +1032,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.EventDate = kickoffDateTime;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             var expectedKickoffTimeInCorrectFormat = Formatter.FormatDateTimeEn12ShortMonthNoSec(kickoffDateTime);
@@ -1048,7 +1048,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.EventDate = null;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.IsFalse(_choice.Template.EventDate.Visible);
@@ -1072,7 +1072,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.SportTypeId = sportTypeId;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.IsFalse(_choice.Template.EventDate.Visible);

@@ -30,7 +30,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.AreEqual(CoreBetList.ZeroToFour, template.betTeam);
@@ -44,7 +44,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.AreEqual(CoreBetList.NineAndOver, template.betTeam);
@@ -58,7 +58,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string expectedBetChoice = "5";
@@ -74,7 +74,7 @@
             _ticket.BetTeam = invalidBetTeam;
 
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.IsEmpty(template.betTeam);
@@ -89,7 +89,7 @@
             _ticket.BetTeam = invalidBetTeam;
 
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.IsEmpty(template.betTeam);
@@ -99,7 +99,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_HandicapIsNull()
         {
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.IsNull(template.Handicap.handicap);
@@ -109,7 +109,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_BetTeamClassNameIsFavorite()
         {
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string favorite = "favorite";

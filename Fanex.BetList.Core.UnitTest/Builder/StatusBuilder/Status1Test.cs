@@ -40,7 +40,7 @@
             _ticket.Status = status;
 
             // Act
-            _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(expectedResult, _status.Template.result);
@@ -67,7 +67,7 @@
             _ticket.ExtraInfo = "<p25 s=\"999\" a=\"1000\"/>";
 
             // Act
-            _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(expectedResult, _status.Template.result);

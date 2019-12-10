@@ -29,7 +29,7 @@
             _ticket.BetTeam = "h";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             string expectedBetTeam = "Odd";
@@ -43,7 +43,7 @@
             _ticket.BetTeam = "a";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             string expectedBetTeam = "Even";
@@ -54,7 +54,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_HandicapIsNull()
         {
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsNull(_choice.Template.Handicap.handicap);
@@ -67,7 +67,7 @@
             _ticket.BetTeam = "h";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             string expectedBetTeamClassName = "favorite";
@@ -81,7 +81,7 @@
             _ticket.BetTeam = "a";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             string expectedBetTeamClassName = "underdog";

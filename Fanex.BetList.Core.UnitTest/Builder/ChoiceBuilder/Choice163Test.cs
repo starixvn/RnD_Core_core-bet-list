@@ -29,7 +29,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string expectation = "Home/Under";
@@ -46,7 +46,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string expectation = "Home/Over";
@@ -63,7 +63,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string expectation = "Draw/Under";
@@ -80,7 +80,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string expectation = "Draw/Over";
@@ -97,7 +97,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string expectation = "Away/Under";
@@ -114,7 +114,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string expectation = "Away/Over";

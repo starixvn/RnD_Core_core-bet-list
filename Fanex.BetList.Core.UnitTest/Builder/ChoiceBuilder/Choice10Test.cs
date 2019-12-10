@@ -26,7 +26,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsNull(_choice.Template.Handicap.handicap);
@@ -36,7 +36,7 @@
         public void BuildMatch_Always_SetHomeTeamIsNull()
         {
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsNull(_choice.Template.Match.homeTeam);
@@ -46,7 +46,7 @@
         public void BuildMatch_Always_SetAwayTeamIsNull()
         {
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsNull(_choice.Template.Match.awayTeam);
@@ -56,7 +56,7 @@
         public void BuildMatch_Always_SetMatchVSBlockIsNull()
         {
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsNull(_choice.Template.Match.VS);
@@ -66,7 +66,7 @@
         public void BuildMatch_Always_SetHomeFGLGIsNull()
         {
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsNull(_choice.Template.Match.home_firstGoal_lastGoal);
@@ -76,7 +76,7 @@
         public void BuildMatch_Always_SetAwayFGLGIsNull()
         {
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsNull(_choice.Template.Match.away_firstGoal_lastGoal);
@@ -89,7 +89,7 @@
             _ticket.LiveHomeScore = 1;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(_ticket.LiveHomeScore.ToString(), _choice.Template.Score.homeScore);
@@ -102,7 +102,7 @@
             _ticket.LiveAwayScore = 1;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(_ticket.LiveAwayScore.ToString(), _choice.Template.Score.awayScore);
@@ -116,7 +116,7 @@
             _ticket.IsLive = isLive;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(isLive, _choice.Template.Score.Visible);
@@ -131,7 +131,7 @@
             _ticketHelper.GetTeamNameById(Arg.Any<long>()).Returns<string>(HOME_TEAM_NAME);
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(HOME_TEAM_NAME, _choice.Template.betTeam);
@@ -146,7 +146,7 @@
             _ticketHelper.GetTeamNameById(Arg.Any<long>()).Returns<string>(AWEAY_TEAM_NAME);
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(AWEAY_TEAM_NAME, _choice.Template.betTeam);
@@ -156,7 +156,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
         {
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string CSS_CLASS_FAVORITE = "favorite";
@@ -167,7 +167,7 @@
         public void BuildEventKickoffDateTime_Always_HideEventKickoffDateTime()
         {
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.IsNull(_choice.Template.EventDate);

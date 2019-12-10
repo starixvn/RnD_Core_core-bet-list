@@ -47,7 +47,7 @@
             _ticket.Status = BetStatus.Refund;
 
             // Act.
-            var template = _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.IsFalse(template.StatusResult.Visible);

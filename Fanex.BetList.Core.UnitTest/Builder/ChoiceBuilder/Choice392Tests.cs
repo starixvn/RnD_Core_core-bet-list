@@ -30,7 +30,7 @@
             _ticket.BetTeam = homeToWinWithAos;
 
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.AreEqual(CoreBetList.HomeToWinAnyOtherScore, template.betTeam);
@@ -44,7 +44,7 @@
             _ticket.BetTeam = awayToWinWithAos;
 
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.AreEqual(CoreBetList.AwayToWinAnyOtherScore, template.betTeam);
@@ -63,7 +63,7 @@
             _ticket.TransDesc = validTransDesc;
 
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string formattedTransDesc = "0-1, 0-2, 1-2";
@@ -84,7 +84,7 @@
             _ticket.TransDesc = validTransDesc;
 
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.IsFalse(template.Score.Visible);
@@ -101,7 +101,7 @@
             _ticket.TransDesc = string.Empty;
 
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.IsFalse(template.Score.Visible);

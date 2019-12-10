@@ -27,7 +27,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsNull(_choice.Template.Handicap.handicap);
@@ -37,7 +37,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
         {
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string CSS_CLASS_FAVORITE = "favorite";
@@ -54,7 +54,7 @@
             _ticketHelper.GetTeamNameById(Arg.Any<long>()).Returns("Home team name");
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             var expectedBetTeam = "Home team name&nbsp;<span class=\"underdog\">(+1)</span>";
@@ -71,7 +71,7 @@
             _ticketHelper.GetTeamNameById(Arg.Any<long>()).Returns("Away team name");
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             var expectedBetTeam = "Away team name&nbsp;<span class=\"underdog\">(+1)</span>";
@@ -87,7 +87,7 @@
             _ticket.Handicap1 = 2;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             var expectedBetTeam = string.Format("{0}&nbsp;<span class=\"underdog\">({1}+1)</span>", CoreBetList.draw, CoreBetList.a);
@@ -103,7 +103,7 @@
             _ticket.Handicap1 = 1;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             var expectedBetTeam = string.Format("{0}&nbsp;<span class=\"underdog\">({1}+1)</span>", CoreBetList.draw, CoreBetList.h);
@@ -119,7 +119,7 @@
             _ticket.Handicap1 = 1;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             var expectedBetTeam = string.Format("{0}&nbsp;<span class=\"underdog\">(0)</span>", CoreBetList.draw);

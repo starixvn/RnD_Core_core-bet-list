@@ -41,7 +41,7 @@
             _ticket.BetTeam = betToHome;
 
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.AreEqual(HomeTeamName, template.betTeam);
@@ -55,7 +55,7 @@
             _ticket.BetTeam = betToAway;
 
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.AreEqual(AwayTeamName, template.betTeam);
@@ -70,7 +70,7 @@
             _ticket.BetTeam = invalidBetTeam;
 
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.IsEmpty(template.betTeam);

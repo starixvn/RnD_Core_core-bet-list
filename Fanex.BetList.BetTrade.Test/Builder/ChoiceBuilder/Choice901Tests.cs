@@ -28,7 +28,7 @@
             _ticket.BetTypeId = BetTradeBetTypes.Sold;
             _ticket.BetId = 1;
 
-            _choice.Render(_ticket, _ticketHelper, Arg.Any<List<ITicketData>>(), Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, Arg.Any<List<ITicketData>>(), false);
 
             Assert.AreEqual(BetTradeBetTypes.Sold, _ticket.BetTypeId);
         }
@@ -41,7 +41,7 @@
             _ticket.BetTypeId = BetTradeBetTypes.Sold;
             _ticket.BetId = 1;
 
-            _choice.RenderRTF(_ticket, _ticketHelper, Arg.Any<List<ITicketData>>(), Arg.Any<bool>(), rtfHelper);
+            _choice.RenderRTF(_ticket, _ticketHelper, Arg.Any<List<ITicketData>>(), false, rtfHelper);
 
             Assert.AreEqual(BetTradeBetTypes.Sold, _ticket.BetTypeId);
         }

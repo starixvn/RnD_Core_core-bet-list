@@ -45,7 +45,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticketHelper.ClientSystemParlaySubbetsDetailFunction = "javascript:ShowSystemParlaySubbets(200);";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             var expectedShowSubbetsLink = "<a id=\"hidden0\" href=\"javascript:ShowSystemParlaySubbets(200);\">System Parlay</a>";
@@ -63,7 +63,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticketHelper.ClientSystemParlaySubbetsDetailFunction = string.Empty;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             var expectedShowSubbetsLink = "<a id=\"hidden0\" href=\"javascript:showCombMP(5554525358, 1, '100411681798', 13369475);\">System Parlay</a>";
@@ -77,7 +77,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticketHelper.ClientSystemParlaySubbetsDetailFunction = string.Empty;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             var expectedShowSubbetsLink = "<a id=\"hidden0\" href=\"javascript:showNewCombMP(5554525358, 1, '100411681798', 1, 3, '1', '2', 13369475);\">System Parlay</a>";
@@ -91,7 +91,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticketHelper.ShowSystemParlayDetail = false;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             var expectedDetailLink = $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a>";
@@ -109,7 +109,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticketHelper.ShowSystemParlayDetail = true;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             var expectedDetailLink = $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a>";
@@ -127,7 +127,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticketHelper.ShowSystemParlayDetail = true;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             var expectedDetailLink = $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a>";
@@ -143,7 +143,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticketHelper.ClientDetailSystemParlayFunction = string.Empty;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             var expectedDetailJsFunction = $"<div class=\"detail\" onclick=\"showCombMPDetail('100411681798', '03/28/2016 12:00:00', 5554525358, '', 13369475, '2');\"><a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a></div>";
@@ -159,7 +159,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticketHelper.ClientDetailSystemParlayFunction = "showClientDetailSystemParlayFunc();";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             var expectedDetailJsFunction = $"<div class=\"detail\" onclick=\"showClientDetailSystemParlayFunc();\"><a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a></div>";
@@ -177,7 +177,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticketHelper.GetCombinationMPOfferName(Arg.Any<string>()).Returns("Trixie");
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             var expectedCombinationOfferName = "<span class=\"offer-name\" id=\"combinationOfferName_55545253581\"> - Trixie</span>";
@@ -192,7 +192,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
                         .Returns(new List<string>() { "Doubles (3bets)", "Trebles (1bets)" });
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             var expectedCombinationOfferName = "<div class=\"offer-name-list\" id=\"combinationOfferName_55545253581\"><div>Doubles (3bets)</div><div>Trebles (1bets)</div></div>";
@@ -212,7 +212,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticketHelper.GetCombinationMPOfferName(Arg.Any<string>()).Returns("Trixie");
 
             // Act
-            var rtfChoice = _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), rtfHelper);
+            var rtfChoice = _choice.RenderRTF(_ticket, _ticketHelper, null, false, rtfHelper);
 
             // Assert
             var expectedFirstLine = "System Parlay - Trixie";
@@ -228,7 +228,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
                             .Returns(new List<string>() { "Doubles (3bets)", "Trebles (1bets)" });
 
             // Act
-            var rtfChoice = _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), rtfHelper);
+            var rtfChoice = _choice.RenderRTF(_ticket, _ticketHelper, null, false, rtfHelper);
             var splittedRTFChoice = rtfChoice[0].String.Split('\n');
 
             // Assert
@@ -245,7 +245,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
                             .Returns(new List<string>() { "Doubles (3bets)", "Trebles (1bets)" });
 
             // Act
-            var rtfChoice = _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), rtfHelper);
+            var rtfChoice = _choice.RenderRTF(_ticket, _ticketHelper, null, false, rtfHelper);
 
             // Assert
             var expectedOutput = "System Parlay\nDoubles (3bets)\nTrebles (1bets)";

@@ -4,7 +4,6 @@
     using App_GlobalResources;
     using Constants;
     using Entities;
-    using Utils;
 
     /// <summary>
     /// E-Sports 2.0: Map X Total Kills Odd/Even.

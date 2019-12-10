@@ -55,7 +55,7 @@
         public void BuildMatch_Always_SetAwayTeamIsNull()
         {
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsNull(_choice.Template.Match.awayTeam);

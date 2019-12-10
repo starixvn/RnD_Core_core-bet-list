@@ -28,7 +28,7 @@
             _ticket.BetTeam = "4:4/4:4";
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             string expectedBetTeam = "&nbsp;Half Time 4-4 / Full Time 4-4";
@@ -47,7 +47,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             string expectedBetTeam = $"&nbsp;{expected}";
@@ -61,7 +61,7 @@
             _ticket.BetTeam = "4:4/4:4";
 
             // Act.
-            var choiceHtml = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>()).ToString();
+            var choiceHtml = _choice.Render(_ticket, _ticketHelper, null, false).ToString();
 
             // Assert.
             StringAssert.DoesNotContain(CoreBetList.Excluding, choiceHtml);
@@ -79,7 +79,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            var choiceHtml = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>()).ToString();
+            var choiceHtml = _choice.Render(_ticket, _ticketHelper, null, false).ToString();
 
             // Assert.
             StringAssert.DoesNotContain(CoreBetList.Excluding, choiceHtml);
@@ -94,7 +94,7 @@
             _ticket.TransDesc = "1:1,1:2,2:1/";
 
             // Act.
-            var choiceHtml = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>()).ToString();
+            var choiceHtml = _choice.Render(_ticket, _ticketHelper, null, false).ToString();
 
             // Assert.
             string expectedChoiceList = $"{CoreBetList.AOSHTExcluding}: 1-1, 1-2, 2-1";
@@ -110,7 +110,7 @@
             _ticket.TransDesc = "/1:1,1:2,2:1";
 
             // Act.
-            var choiceHtml = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>()).ToString();
+            var choiceHtml = _choice.Render(_ticket, _ticketHelper, null, false).ToString();
 
             // Assert.
             string expectedChoiceList = $"{CoreBetList.AOSFTExcluding}: 1-1, 1-2, 2-1";
@@ -126,7 +126,7 @@
             _ticket.TransDesc = "0:0/1:1,1:2,2:1";
 
             // Act.
-            var choiceHtml = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>()).ToString();
+            var choiceHtml = _choice.Render(_ticket, _ticketHelper, null, false).ToString();
 
             // Assert.
             string expectedChoiceList = $"{CoreBetList.AOSHTExcluding}: 0-0";
@@ -142,7 +142,7 @@
             _ticket.TransDesc = "0:0/1:1,1:2,2:1";
 
             // Act.
-            var choiceHtml = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>()).ToString();
+            var choiceHtml = _choice.Render(_ticket, _ticketHelper, null, false).ToString();
 
             // Assert.
             string expectedChoiceList = $"{CoreBetList.AOSFTExcluding}: 1-1, 1-2, 2-1";
@@ -153,7 +153,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.IsNull(_choice.Template.Handicap.handicap);
@@ -163,7 +163,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
         {
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string CSS_CLASS_FAVORITE = "favorite";

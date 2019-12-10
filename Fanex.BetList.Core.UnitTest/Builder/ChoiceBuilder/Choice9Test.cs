@@ -35,7 +35,7 @@
             _ticket.RefNo = "2000";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             string expected = "<a id=\"hidden0\" href=\"javascript:showMP(1000, '2000', 1);\">Bet type name</a><br/><div id=\"divEvent_1000\" style=\"display: none\" ></div>";
@@ -52,7 +52,7 @@
             _ticket.RefNo = "2000";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             string expected = "<a id=\"hidden0\" href=\"Client MixParlay\">Bet type name</a><br/><div id=\"divEvent_1000\" style=\"display: none\" ></div>";

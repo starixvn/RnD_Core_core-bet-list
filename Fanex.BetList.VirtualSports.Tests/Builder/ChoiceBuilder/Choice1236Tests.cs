@@ -28,7 +28,7 @@
             _ticket.BetTeam = "bet team";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             string expectedBetTeam = string.Format("{0} {1}", _ticket.BetTeam, CoreBetList.points);

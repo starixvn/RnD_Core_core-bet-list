@@ -30,7 +30,7 @@
             _ticket.BetTeam = "1";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(CoreBetList.over, _choice.Template.betTeam);
@@ -43,7 +43,7 @@
             _ticket.BetTeam = "2";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(CoreBetList.under, _choice.Template.betTeam);
@@ -56,7 +56,7 @@
             _ticket.BetTeam = string.Empty;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             string expectedBetTeam = string.Format(CoreBetList.betweenXandY, _ticket.Handicap2, _ticket.Handicap1);
@@ -74,7 +74,7 @@
                 .Returns(expectedBetTypeName);
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(expectedBetTypeName, _choice.Template.BetType.betTypeName);
@@ -87,7 +87,7 @@
             _ticket.BetTeam = "1";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string favorite = "favorite";
@@ -102,7 +102,7 @@
             _ticket.BetTeam = string.Empty;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string underdog = "underdog";

@@ -29,7 +29,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.IsNull(_choice.Template.Handicap.handicap);
@@ -43,7 +43,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.IsEmpty(_choice.Template.betTeam);
@@ -56,7 +56,7 @@
             _ticket.BetTeam = "1XA";
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.IsEmpty(_choice.Template.betTeam);
@@ -70,7 +70,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             string expectedBetTeam = string.Format(BetTeamTemplate, CoreBetList.Home, CoreBetList.lblOr, CoreBetList.draw);
@@ -86,7 +86,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             string expectedBetTeam = string.Format(BetTeamTemplate, CoreBetList.Away, CoreBetList.lblOr, CoreBetList.draw);
@@ -101,7 +101,7 @@
             _ticket.BetTeam = "12";
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             string expectedBetTeam = string.Format(BetTeamTemplate, CoreBetList.Home, CoreBetList.lblOr, CoreBetList.Away);

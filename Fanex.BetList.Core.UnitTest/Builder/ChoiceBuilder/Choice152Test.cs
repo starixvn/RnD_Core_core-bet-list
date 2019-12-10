@@ -28,7 +28,7 @@
             _ticket.BetTeam = "A Bet Team";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(_ticket.BetTeam, _choice.Template.betTeam);

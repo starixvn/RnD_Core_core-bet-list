@@ -28,7 +28,7 @@
             _ticket.BetTeam = "1";
 
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             string ExpectedBetOption = $"{CoreBetList.HtAsian}.1";
@@ -43,7 +43,7 @@
             _ticket.BetTeam = "2";
 
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             string ExpectedBetOption = $"{CoreBetList.HtAsian}.2";
@@ -59,7 +59,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             string ExpectedBetOption = $"{CoreBetList.HtAsian}.X";

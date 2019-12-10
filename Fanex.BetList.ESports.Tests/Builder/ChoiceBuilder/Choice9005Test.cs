@@ -28,7 +28,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string expectedBetTeam = "Odd";
@@ -44,7 +44,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string expectedBetTeam = "Even";
@@ -60,7 +60,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string expectedClass = "favorite";
@@ -76,7 +76,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string expectedClass = "underdog";

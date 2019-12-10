@@ -33,7 +33,7 @@
             _ticket.LiveHomeScore = 1;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(_ticket.LiveHomeScore.ToString(), _choice.Template.Score.homeScore);
@@ -46,7 +46,7 @@
             _ticket.LiveAwayScore = 1;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(_ticket.LiveAwayScore.ToString(), _choice.Template.Score.awayScore);
@@ -60,7 +60,7 @@
             _ticket.IsLive = isLive;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(_ticket.IsLive, _choice.Template.Score.Visible);
@@ -74,7 +74,7 @@
             _ticketHelper.GetLeagueNameById(Arg.Any<int>()).Returns<string>(LEAGUE_NAME);
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(LEAGUE_NAME, _choice.Template.League.LeagueName.leagueName);
@@ -88,7 +88,7 @@
             _ticketHelper.GetSportNameById(Arg.Any<int>()).Returns<string>(SPORT_NAME);
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(SPORT_NAME, _choice.Template.League.sportTypeName);
@@ -102,7 +102,7 @@
             _ticketHelper.GetTeamNameById(Arg.Any<long>()).Returns<string>("Home team name");
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string HOME_TEAM_NAME = "Home team name (N)";
@@ -118,7 +118,7 @@
             _ticketHelper.GetTeamNameById(Arg.Any<long>()).Returns<string>(HOME_TEAM_NAME);
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(HOME_TEAM_NAME, _choice.Template.Match.homeTeam);
@@ -132,7 +132,7 @@
             _ticketHelper.GetTeamNameById(Arg.Any<long>()).Returns<string>(AWAY_TEAM_NAME);
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(AWAY_TEAM_NAME, _choice.Template.Match.awayTeam);
@@ -146,7 +146,7 @@
             _ticket.EventStatus = eventStatus;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string HOME_FGLG = "&nbsp;<div class='lastGoal'>&nbsp;</div>";
@@ -161,7 +161,7 @@
             _ticket.EventStatus = eventStatus;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string HOME_FGLG = "&nbsp;<div class='fhLastGoal'>&nbsp;</div>";
@@ -176,7 +176,7 @@
             _ticket.EventStatus = eventStatus;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string HOME_FGLG = "&nbsp;<div class='lastGoal'>&nbsp;</div><div class='fhLastGoal'>&nbsp;</div>";
@@ -191,7 +191,7 @@
             _ticket.EventStatus = eventStatus;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string AWAY_FGLG = "&nbsp;<div class='lastGoal'>&nbsp;</div>";
@@ -206,7 +206,7 @@
             _ticket.EventStatus = eventStatus;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string AWAY_FGLG = "&nbsp;<div class='fhLastGoal'>&nbsp;</div>";
@@ -221,7 +221,7 @@
             _ticket.EventStatus = eventStatus;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string AWAY_FGLG = "&nbsp;<div class='lastGoal'>&nbsp;</div><div class='fhLastGoal'>&nbsp;</div>";
@@ -236,7 +236,7 @@
             _ticket.EventStatus = eventStatus;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string HOME_FGLG = "&nbsp;<div class='firstGoal '>&nbsp;</div>";
@@ -251,7 +251,7 @@
             _ticket.EventStatus = eventStatus;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string HOME_FGLG = "&nbsp;<div class='fhFirstGoal'>&nbsp;</div>";
@@ -266,7 +266,7 @@
             _ticket.EventStatus = eventStatus;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string HOME_FGLG = "&nbsp;<div class='firstGoal '>&nbsp;</div><div class='fhFirstGoal'>&nbsp;</div>";
@@ -280,7 +280,7 @@
             _ticket.EventStatus = "FL:1-1";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string HOME_FGLG = "&nbsp;<div class='firstGoal '>&nbsp;</div><div class='lastGoal'>&nbsp;</div>";
@@ -294,7 +294,7 @@
             _ticket.EventStatus = "1FL:1-1";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string HOME_FGLG = "&nbsp;<div class='fhFirstGoal'>&nbsp;</div><div class='fhLastGoal'>&nbsp;</div>";
@@ -308,7 +308,7 @@
             _ticket.EventStatus = "FL:1-1;1FL:1-1";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string HOME_FGLG = "&nbsp;<div class='firstGoal '>&nbsp;</div><div class='lastGoal'>&nbsp;</div>"
@@ -323,7 +323,7 @@
             _ticket.EventStatus = "FL:2-2";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string AWAY_FGLG = "&nbsp;<div class='firstGoal '>&nbsp;</div><div class='lastGoal'>&nbsp;</div>";
@@ -337,7 +337,7 @@
             _ticket.EventStatus = "1FL:2-2";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string AWAY_FGLG = "&nbsp;<div class='fhFirstGoal'>&nbsp;</div><div class='fhLastGoal'>&nbsp;</div>";
@@ -351,7 +351,7 @@
             _ticket.EventStatus = "FL:2-2;1FL:2-2";
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string AWAY_FGLG = "&nbsp;<div class='firstGoal '>&nbsp;</div><div class='lastGoal'>&nbsp;</div>"
@@ -367,7 +367,7 @@
             _ticket.EventStatus = eventStatus;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string AWAY_FGLG = "&nbsp;<div class='firstGoal '>&nbsp;</div>";
@@ -382,7 +382,7 @@
             _ticket.EventStatus = eventStatus;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string AWAY_FGLG = "&nbsp;<div class='fhFirstGoal'>&nbsp;</div>";
@@ -397,7 +397,7 @@
             _ticket.EventStatus = eventStatus;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             const string AWAY_FGLG = "&nbsp;<div class='firstGoal '>&nbsp;</div><div class='fhFirstGoal'>&nbsp;</div>";
@@ -418,7 +418,7 @@
             _ticket.EventStatus = eventStatus;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsEmpty(_choice.Template.Match.home_firstGoal_lastGoal);
@@ -438,7 +438,7 @@
             _ticket.EventStatus = eventStatus;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsEmpty(_choice.Template.Match.away_firstGoal_lastGoal);
@@ -452,7 +452,7 @@
             _ticketHelper.GetTeamNameById(Arg.Any<long>()).Returns("Home team name");
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(_choice.Template.Match.homeTeam, _choice.Template.betTeam);
@@ -466,7 +466,7 @@
             _ticketHelper.GetTeamNameById(Arg.Any<long>()).Returns<string>("Away team name");
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(CoreBetList.draw, _choice.Template.betTeam);
@@ -480,7 +480,7 @@
             _ticketHelper.GetTeamNameById(Arg.Any<long>()).Returns<string>("Away team name");
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(CoreBetList.draw, _choice.Template.betTeam);
@@ -490,7 +490,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsUnderdog()
         {
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(Underdog, _choice.Template.betTeamClassName);
@@ -500,7 +500,7 @@
         public void BuildScore_Always_SetScoreClassNameIsFavorite()
         {
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(Favorite, _choice.Template.Score.scoreClassName);
@@ -510,7 +510,7 @@
         public void BuildTicketStatus_Always_SetTicketStatusIsEmpty()
         {
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsEmpty(_choice.Template.ticketStatus);
@@ -520,7 +520,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsNull(_choice.Template.Handicap.handicap);

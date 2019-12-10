@@ -28,7 +28,7 @@
             _ticket.BetTeam = "4:4";
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             string expectedBetTeam = "4-4";
@@ -43,7 +43,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.AreEqual(CoreBetList.AOS, _choice.Template.betTeam);
@@ -55,7 +55,7 @@
             _ticket.BetTeam = "4:4";
 
             // Act.
-            var choiceHtml = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>()).ToString();
+            var choiceHtml = _choice.Render(_ticket, _ticketHelper, null, false).ToString();
 
             // Assert.
             StringAssert.DoesNotContain(CoreBetList.Excluding, choiceHtml);
@@ -69,7 +69,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            var choiceHtml = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>()).ToString();
+            var choiceHtml = _choice.Render(_ticket, _ticketHelper, null, false).ToString();
 
             // Assert.
             StringAssert.DoesNotContain(CoreBetList.Excluding, choiceHtml);
@@ -84,7 +84,7 @@
             _ticket.TransDesc = "1:1,1:2,2:1";
 
             // Act.
-            var choiceHtml = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>()).ToString();
+            var choiceHtml = _choice.Render(_ticket, _ticketHelper, null, false).ToString();
 
             // Assert.
             string expectedChoiceList = $"{CoreBetList.Excluding}: 1-1, 1-2, 2-1";
@@ -95,7 +95,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
         {
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.IsNull(_choice.Template.Handicap.handicap);
@@ -105,7 +105,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
         {
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string CSS_CLASS_FAVORITE = "favorite";

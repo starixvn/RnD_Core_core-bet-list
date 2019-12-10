@@ -31,7 +31,7 @@
             _ticket.BetTeam = homeToWinWithAos;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.AreEqual(CoreBetList.HomeToWinAnyOtherScore, _choice.Template.betTeam);
@@ -45,7 +45,7 @@
             _ticket.BetTeam = awayToWinWithAos;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.AreEqual(CoreBetList.AwayToWinAnyOtherScore, _choice.Template.betTeam);
@@ -60,7 +60,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string displayedBetChoice = "1:2";
@@ -77,7 +77,7 @@
             _ticket.BetTeam = invalidBetTeam;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.IsEmpty(_choice.Template.betTeam);
@@ -96,7 +96,7 @@
             _ticket.BetCheck = betCheck;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             _ticketHelper

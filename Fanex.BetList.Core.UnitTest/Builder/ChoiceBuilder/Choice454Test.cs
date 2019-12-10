@@ -31,7 +31,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             string expectedBetOption = $"{CoreBetList.Home}/{CoreBetList.draw} <span class=\"underdog\">&</span> {CoreBetList.Home}";
@@ -47,7 +47,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             string expectedBetOption = $"{CoreBetList.Home}/{CoreBetList.Away} <span class=\"underdog\">&</span> {CoreBetList.Home}";
@@ -65,7 +65,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             string expectedBetOption = $"{CoreBetList.Away}/{CoreBetList.draw} <span class=\"underdog\">&</span> {CoreBetList.Home}";
@@ -83,7 +83,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             string expectedBetOption = $"{CoreBetList.Home}/{CoreBetList.draw} <span class=\"underdog\">&</span> {CoreBetList.Away}";
@@ -99,7 +99,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             string expectedBetOption = $"{CoreBetList.Home}/{CoreBetList.Away} <span class=\"underdog\">&</span> {CoreBetList.Away}";
@@ -117,7 +117,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             string expectedBetOption = $"{CoreBetList.Away}/{CoreBetList.draw} <span class=\"underdog\">&</span> {CoreBetList.Away}";
@@ -135,7 +135,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(CoreBetList.NoGoal14, template.betTeam);
@@ -154,7 +154,7 @@
             _ticket.BetTeam = betTeam;
 
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsEmpty(template.betTeam);
@@ -164,7 +164,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapToNull()
         {
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.IsNull(template.Handicap.handicap);
@@ -174,7 +174,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameToFavorite()
         {
             // Act.
-            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             const string Favorite = "favorite";

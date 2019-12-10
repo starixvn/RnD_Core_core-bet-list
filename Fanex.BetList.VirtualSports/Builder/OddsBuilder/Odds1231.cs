@@ -1,7 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.OddsBuilder
 {
-    using Entities;
     using System.Collections.Generic;
+    using Entities;
     using Templates;
     using Utils;
 
