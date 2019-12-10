@@ -723,6 +723,18 @@
             return BetListView(model);
         }
 
+        public ActionResult VirtualGames(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes(4601);
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            DataSourcePath = "~/App_Data/VirtualGames.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
         public ActionResult PHAIO5(BetListData model = null)
         {
             var betTypeIds = new List<int>();
