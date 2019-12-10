@@ -4,7 +4,6 @@
     using App_GlobalResources;
     using Constants;
     using Entities;
-    using Mapper;
 
     /// <summary>
     /// Bet type name: Exact 2ND Half Goals.

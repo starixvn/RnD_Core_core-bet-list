@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using System.Collections.Generic;
     using Entities;
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Constants;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Set x Total Games Odd/Even.

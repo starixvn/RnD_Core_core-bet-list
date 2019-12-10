@@ -2,7 +2,6 @@
 {
     using App_GlobalResources;
     using Entities;
-    using Fanex.BetList.Core.Utils;
     using NPOI.HSSF.UserModel;
     using NPOI.SS.UserModel;
     using Templates;

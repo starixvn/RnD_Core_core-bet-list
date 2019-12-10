@@ -4,7 +4,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Entities;
     using NSubstitute;
     using NUnit.Framework;
-    using System;
 
     [TestFixture]
     public class Choice38Tests

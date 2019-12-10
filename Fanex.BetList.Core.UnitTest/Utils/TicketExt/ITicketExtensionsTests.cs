@@ -138,6 +138,5 @@
             // Assert.
             Assert.IsFalse(isSportsbook);
         }
-
     }
 }

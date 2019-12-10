@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using System.Collections.Generic;
     using App_GlobalResources;
     using Constants;
     using Entities;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Bet type name:  To Win From Behind

@@ -1,8 +1,8 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using System.Collections.Generic;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Utils.StringExt;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Bet Type: Single Match Parlay - Bet Builder

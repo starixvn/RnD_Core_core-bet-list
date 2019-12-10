@@ -1,6 +1,5 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Templates.Stake
 {
-    using System.Diagnostics.CodeAnalysis;
     using System.Text;
     using Core.Templates;
     using NUnit.Framework;

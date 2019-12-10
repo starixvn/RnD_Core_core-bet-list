@@ -1,7 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using Entities;
     using System.Collections.Generic;
+    using Entities;
 
     /// <summary>
     /// Total Sets.

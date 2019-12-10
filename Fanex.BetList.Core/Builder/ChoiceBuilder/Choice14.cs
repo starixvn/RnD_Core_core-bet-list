@@ -1,8 +1,8 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Entities;
     using App_GlobalResources;
+    using Entities;
 
     /// <summary>
     /// First Goal/Last Goal.

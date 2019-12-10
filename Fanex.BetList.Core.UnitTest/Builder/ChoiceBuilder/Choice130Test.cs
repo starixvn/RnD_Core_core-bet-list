@@ -14,7 +14,7 @@
     {
 #pragma warning disable S1144 // Unused private types or members should be removed
 
-        private static object[] expectedBetTeams =
+        private static readonly object[] expectedBetTeams =
         {
             new object[] { "0", CoreBetList.NoGoals, "Betting on the total number of goals in Half Time will be no goals." },
             new object[] { "1", CoreBetList.OneGoal, "Betting on the total number of goals in Half Time will be 1 goal." },
