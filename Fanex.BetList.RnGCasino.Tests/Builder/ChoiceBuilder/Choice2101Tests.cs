@@ -28,7 +28,7 @@
         public void BuildScore_Always_SetScoreBlockToNull()
         {
             // Act
-            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsNull(choiceTemplate.Score);
@@ -42,7 +42,7 @@
             _ticketHelper.GetResourceData("RNG_Casino_GT", "1").Returns("Baccarat");
 
             // Act
-            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             bool containingGameType = choiceTemplate.betTeam.Contains("Baccarat");
@@ -57,7 +57,7 @@
             _ticketHelper.GetResourceData("RNG_Casino_GT", "1").Returns("Baccarat");
 
             // Act
-            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             bool containingColorHandicapCssClasss = choiceTemplate.betTeam.Contains("colorHandicap");
@@ -72,7 +72,7 @@
             _ticketHelper.GetResourceData("RNG_Casino_GT", "1").Returns("Baccarat");
 
             // Act
-            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             string expectedMarkup = "<span class=\"colorHandicap\">Baccarat</span>";
@@ -88,7 +88,7 @@
             _ticketHelper.GetResourceData("RNG_Casino_GT", "1").Returns("Baccarat");
 
             // Act
-            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             string expectedMarkup = "<span class=\"colorHandicap\">Baccarat</span> ";
@@ -102,7 +102,7 @@
             _ticket.BetCheck = "Player History Number";
 
             // Act
-            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             bool containingPlayerHistoryNumber = choiceTemplate.betTeam.Contains("Player History Number");
@@ -113,7 +113,7 @@
         public void BuildMatch_Always_SetBetTypeToNull()
         {
             // Act
-            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsNull(choiceTemplate.BetType);
@@ -123,7 +123,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapToNull()
         {
             // Act
-            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsTrue(string.IsNullOrEmpty(choiceTemplate.Handicap.handicap));
@@ -133,7 +133,7 @@
         public void BuildBetTeam_Always_SetBetTeamCssClassNameToUnderdog()
         {
             // Act
-            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual("underdog", choiceTemplate.betTeamClassName);
@@ -143,7 +143,7 @@
         public void BuildMatch_Always_SetMatchToNull()
         {
             // Act
-            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsNull(choiceTemplate.Match);
@@ -157,7 +157,7 @@
             _ticketHelper.GetResourceData("RNG_Casino_GT", "1").Returns("Baccarat");
 
             // Act
-            _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), CreateRTFHelperStub());
+            _choice.RenderRTF(_ticket, _ticketHelper, null, false, CreateRTFHelperStub());
 
             // Assert
             Assert.AreEqual("Baccarat", _choice.Template.betTeam);
@@ -172,7 +172,7 @@
             _ticketHelper.GetResourceData("RNG_Casino_GT", "1").Returns("Baccarat");
 
             // Act
-            _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), CreateRTFHelperStub());
+            _choice.RenderRTF(_ticket, _ticketHelper, null, false, CreateRTFHelperStub());
 
             // Assert
             Assert.AreEqual("Baccarat Player History Number", _choice.Template.betTeam);
@@ -188,7 +188,7 @@
             _ticketHelper.GetSportNameById(_ticket.SportTypeId).Returns("RNG - RNG Game");
 
             // Act
-            _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), CreateRTFHelperStub());
+            _choice.RenderRTF(_ticket, _ticketHelper, null, false, CreateRTFHelperStub());
 
             // Assert
             var expectedLine = "RNG - RNG Game Card Games";
@@ -203,7 +203,7 @@
             _ticketHelper.GetResourceData("RNG_Casino_GG", "1").Returns("Baccarat");
 
             // Act
-            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             var expectedGameGroup = "<span class='gamegroupname'> Baccarat</span>";
@@ -217,7 +217,7 @@
             _ticket.BetCheck = "Player History Number";
 
             // Act
-            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             bool containingDetailsLink = choiceTemplate.League.ToString().Contains("Details");
@@ -228,7 +228,7 @@
         public void BuildLeague_BetCheckIsEmpty_ContainDetailLink()
         {
             // Act
-            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             bool containingDetailsLink = choiceTemplate.League.ToString().Contains("Details");
@@ -245,7 +245,7 @@
             _ticket.WinlostDate = winLostDate;
 
             // Act
-            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             string expectedJsFunction = string.Format("showRnGCasinoDetails(123, '{0}', 456, 0);", winLostDate.ToString(CultureInfo.InvariantCulture));

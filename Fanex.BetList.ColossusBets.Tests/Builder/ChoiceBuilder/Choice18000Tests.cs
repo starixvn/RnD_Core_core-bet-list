@@ -35,7 +35,7 @@
             _ticket.BetCheck = betCheck;
 
             //// Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             //// Assert
             string expected = "<div class=\"combinationLink\">" +

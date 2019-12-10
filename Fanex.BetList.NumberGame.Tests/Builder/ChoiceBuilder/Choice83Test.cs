@@ -66,7 +66,7 @@
             _ticket.BetTeam = "h87898";
 
             // Act
-            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(CoreBetList.even, choiceTemplate.betTeam);
@@ -76,7 +76,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
         {
             // Act
-            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual("favorite", choiceTemplate.betTeamClassName);

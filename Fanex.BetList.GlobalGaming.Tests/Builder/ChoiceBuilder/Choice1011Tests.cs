@@ -45,7 +45,7 @@
             _ticket.Status = status;
 
             // Act
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsEmpty(template.betTeam);
@@ -61,7 +61,7 @@
             _ticket.Currency = "UUS";
 
             // Act
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             var expectedCoinsInBlock = $"<div><span class=\"dark-orange\">{BuyAmount}</span>: UUS 0.1</div>";
@@ -78,7 +78,7 @@
             _ticket.Currency = "UUS";
 
             // Act
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             var expectedRemainingBlock = $"<div><span class=\"dark-orange\">{RemainingAmount}</span>: UUS 0.1</div>";
@@ -95,7 +95,7 @@
             _ticket.Currency = "UUS";
 
             // Act
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsEmpty(template.betTeam);
@@ -111,7 +111,7 @@
             _ticket.Currency = "UUS";
 
             // Act
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             var expectedBetTeamBlock = $"<div><span class=\"dark-orange\">{BuyAmount}</span>: UUS 1.01</div>";
@@ -129,7 +129,7 @@
             _ticket.Currency = "UUS";
 
             // Act
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             var expectedBetTeamBlock = $"<div><span class=\"dark-orange\">{BuyAmount}</span>: UUS 1.01</div>";
@@ -140,7 +140,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_BetTeamClassNameIsUnderdog()
         {
             // Act
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual("underdog", template.betTeamClassName);
@@ -150,7 +150,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_HandicapIsNull()
         {
             // Act
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsNull(template.Handicap);
@@ -165,7 +165,7 @@
             _ticketHelper.GetResourceData(GameTypeRefId, Arg.Any<string>()).Returns(gameType);
 
             // Act
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             var expectedGameTypeBlock = $"<div class=\"underdog\"><span class=\"colorHandicap\">{gameType}</span></div>";
@@ -182,7 +182,7 @@
             _ticketHelper.GetResourceData(GameTypeRefId, Arg.Any<string>()).Returns(gameType);
 
             // Act
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             var expectedGameTypeBlock = $"<div class=\"underdog\"><span class=\"colorHandicap\">{gameType}</span><br />{gamePlayId}</div>";
@@ -197,7 +197,7 @@
             _ticketHelper.GetResourceData(GameGroupRefId, Arg.Any<string>()).Returns(gameGroupName);
 
             // Act
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             var expectedGameGroupBlock = $"<div class=\"gamegroupname\">{gameGroupName}</div>";
@@ -208,7 +208,7 @@
         public void BuildScore_Always_ScoreIsNull()
         {
             // Act
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsNull(template.Score);
@@ -221,7 +221,7 @@
             _ticket.BetCheck = "123";
 
             // Act
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsNull(template.League);
@@ -237,7 +237,7 @@
             _ticket.CustId = 123;
 
             // Act
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             var expectedDetailsLink = CreateGlobalGamingDetailsLink(_ticket, "0");
@@ -262,7 +262,7 @@
             _ticket.Status = status;
 
             // Act
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             var expectedDetailsLink = CreateGlobalGamingDetailsLink(_ticket, transType);
@@ -287,7 +287,7 @@
             _ticket.Status = status;
 
             // Act
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             var expectedDetailsLink = CreateGlobalGamingDetailsLink(_ticket, transType);
@@ -331,7 +331,7 @@
             _ticket.Status = status;
 
             // Act
-            _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), new RTFHelper().Clone());
+            _choice.RenderRTF(_ticket, _ticketHelper, null, false, new RTFHelper().Clone());
 
             // Assert
             Assert.IsEmpty(_choice.Template.betTeam);
@@ -347,7 +347,7 @@
             _ticket.Currency = "UUS";
 
             // Act
-            _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), new RTFHelper().Clone());
+            _choice.RenderRTF(_ticket, _ticketHelper, null, false, new RTFHelper().Clone());
 
             // Assert
             var expectedCoinsIn = $"{BuyAmount}: UUS 0.1";
@@ -364,7 +364,7 @@
             _ticket.Currency = "UUS";
 
             // Act
-            _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), new RTFHelper().Clone());
+            _choice.RenderRTF(_ticket, _ticketHelper, null, false, new RTFHelper().Clone());
 
             // Assert
             var expectedRemaining = $"\n{RemainingAmount}: UUS 0.1";
@@ -381,7 +381,7 @@
             _ticket.Currency = "UUS";
 
             // Act
-            _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), new RTFHelper().Clone());
+            _choice.RenderRTF(_ticket, _ticketHelper, null, false, new RTFHelper().Clone());
 
             // Assert
             Assert.IsEmpty(_choice.Template.betTeam);
@@ -397,7 +397,7 @@
             _ticket.Currency = "UUS";
 
             // Act
-            _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), new RTFHelper().Clone());
+            _choice.RenderRTF(_ticket, _ticketHelper, null, false, new RTFHelper().Clone());
 
             // Assert
             var expectedBetTeam = $"{BuyAmount}: UUS 1.01";
@@ -415,7 +415,7 @@
             _ticket.Currency = "UUS";
 
             // Act
-            _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), new RTFHelper().Clone());
+            _choice.RenderRTF(_ticket, _ticketHelper, null, false, new RTFHelper().Clone());
 
             // Assert
             var expectedBetTeam = $"{BuyAmount}: UUS 1.01";
@@ -431,7 +431,7 @@
             _ticketHelper.GetResourceData(GameTypeRefId, Arg.Any<string>()).Returns(gameType);
 
             // Act
-            _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), new RTFHelper().Clone());
+            _choice.RenderRTF(_ticket, _ticketHelper, null, false, new RTFHelper().Clone());
 
             // Assert
             Assert.AreEqual(gameType, _choice.Template.BetType.ToString());
@@ -447,7 +447,7 @@
             _ticketHelper.GetResourceData(GameTypeRefId, Arg.Any<string>()).Returns(gameType);
 
             // Act
-            _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), new RTFHelper().Clone());
+            _choice.RenderRTF(_ticket, _ticketHelper, null, false, new RTFHelper().Clone());
 
             // Assert
             var expectedBetType = $"{gameType}\n{gamePlayId}";
@@ -462,7 +462,7 @@
             _ticketHelper.GetResourceData(GameGroupRefId, Arg.Any<string>()).Returns(gameGroupName);
 
             // Act
-            _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), new RTFHelper().Clone());
+            _choice.RenderRTF(_ticket, _ticketHelper, null, false, new RTFHelper().Clone());
 
             // Assert
             Assert.AreEqual(gameGroupName, _choice.Template.Match.ToString());

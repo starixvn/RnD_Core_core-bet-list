@@ -170,7 +170,7 @@
             _ticket.MatchCode = gameId;
 
             // Act
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             var expectedLeagueName = string.Format(
@@ -249,7 +249,7 @@
             _ticket.MatchCode = gameId;
 
             // Act
-            _choice.RenderRTF(_ticket, _ticketHelper, null, Arg.Any<bool>(), rtfHelper);
+            _choice.RenderRTF(_ticket, _ticketHelper, null, false, rtfHelper);
 
             // Assert
             var expectedLeagueName = string.Format("{0} {1} {2}", BetTypeName, gameTableId, gameId);

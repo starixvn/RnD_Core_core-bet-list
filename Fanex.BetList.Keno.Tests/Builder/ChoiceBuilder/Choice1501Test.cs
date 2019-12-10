@@ -24,7 +24,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_HandicapBlockIsNull()
         {
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.IsNull(template.Handicap);
@@ -34,7 +34,7 @@
         public void BuildBetTeamClassNameAndHandicap_Always_BetTeamClassNameIsFavorite()
         {
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.AreEqual("favorite", template.betTeamClassName);
@@ -44,7 +44,7 @@
         public void BuildMatch_Always_MatchBlockIsNull()
         {
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.IsNull(template.Match);
@@ -58,7 +58,7 @@
             _ticket.IsLive = isLive;
 
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsNull(template.Score);
@@ -75,7 +75,7 @@
             _ticket.TransDesc = transDesc;
 
             // Act.
-            _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             _ticketHelper.Received().GetKenoBetChoiceName(Arg.Is(choiceId), out string anyBetTypeId);
@@ -92,7 +92,7 @@
             _ticketHelper.GetKenoBetChoiceName(Arg.Is(choiceId), out string anyBetTypeId).Returns(betChoice);
 
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             string expectedBetTeam = string.Format(betChoice, 1.5, 100);
@@ -112,7 +112,7 @@
             _ticket.TransDesc = transDesc;
 
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.AreEqual(string.Empty, template.betTeam);
@@ -127,7 +127,7 @@
             _ticketHelper.GetKenoBetTypeName(Arg.Any<string>()).Returns(BetTypeName);
 
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.AreEqual(BetTypeName, template.BetType.betTypeName);
@@ -144,7 +144,7 @@
             _ticket.TransDesc = transDesc;
 
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.True(template.League.LeagueName.leagueName.Contains($"[{expectedGameId}]"));
@@ -165,7 +165,7 @@
             _ticket.TransDesc = transDesc;
 
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.True(template.League.LeagueName.leagueName.Contains("[]"));

@@ -27,7 +27,7 @@
             _ticket.BetCheck = null;
 
             // Act
-            var template = _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsNull(template.StatusResult);
@@ -43,7 +43,7 @@
             _ticket.Status = status;
 
             // Act
-            var template = _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsTrue(template.StatusResult.Visible);
@@ -64,7 +64,7 @@
             _ticket.BetId = BetId;
 
             // Act
-            var template = _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             var expectedBetId = $"{BetId}, '{BetCheck}', {CustId}";
@@ -101,7 +101,7 @@
             _ticket.Status = status;
 
             // Act
-            var template = _status.Render(_ticket, _ticketHelper, null, Arg.Any<bool>());
+            var template = _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsNull(template.StatusResult);

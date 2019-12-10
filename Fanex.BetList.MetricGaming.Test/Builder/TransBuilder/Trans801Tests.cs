@@ -1,6 +1,4 @@
-﻿
-
-namespace Fanex.BetList.MetricGaming.Test.Builder.TransBuilder
+﻿namespace Fanex.BetList.MetricGaming.Test.Builder.TransBuilder
 {
     using Fanex.BetList.Core.Builder.TransBuilder;
     using Fanex.BetList.Core.Entities;
@@ -25,7 +23,7 @@ namespace Fanex.BetList.MetricGaming.Test.Builder.TransBuilder
             // Arrange.
             _ticket.RefNo = "100";
 
-            // Act
+            // Act.
             _trans.Render(_ticket);
 
             // Assert.
