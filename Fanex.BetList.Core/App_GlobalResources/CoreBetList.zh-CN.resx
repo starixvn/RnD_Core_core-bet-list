@@ -694,7 +694,7 @@
     <value>乌龙球</value>
   </data>
   <data name="ScoreDraw" xml:space="preserve">
-    <value>任何比数的平局(不包含 0-0)</value>
+    <value>任何比数的平局 (不包含 0-0)</value>
   </data>
   <data name="Shot" xml:space="preserve">
     <value>射门</value>

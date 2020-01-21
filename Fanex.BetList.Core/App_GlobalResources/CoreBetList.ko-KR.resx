@@ -586,7 +586,7 @@
     <value>슛</value>
   </data>
   <data name="ScoreDraw" xml:space="preserve">
-    <value>모든 점수 무승부(0-0 제외)</value>
+    <value>모든 점수 무승부 (0-0 제외)</value>
   </data>
   <data name="AwayToWinAnyOtherScore" xml:space="preserve">
     <value>원정팀에서 다른 득점으로 승리</value>
