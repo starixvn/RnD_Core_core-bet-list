@@ -1,6 +1,5 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Constants;
     using Fanex.BetList.Core.Entities;
@@ -23,62 +22,18 @@
         }
 
         [Test]
-        public void BuildBetTeam_BetTeamIs1_BetChoiceIsHome()
+        public void BuildBetTeam_Always_BetChoiceIsUppercaseOfTicketBetTeam()
         {
             // Arrange.
-            const string betToHome = "1";
+            const string betTeam = "x";
 
-            _ticket.BetTeam = betToHome;
+            _ticket.BetTeam = betTeam;
 
             // Act.
             var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            Assert.AreEqual(CoreBetList.Home, template.betTeam);
-        }
-
-        [TestCase("x")]
-        [TestCase("X")]
-        public void BuildBetTeam_BetTeamIsX_BetChoiceIsDraw(string betToDraw)
-        {
-            // Arrange.
-            _ticket.BetTeam = betToDraw;
-
-            // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, false);
-
-            // Assert.
-            Assert.AreEqual(CoreBetList.draw, template.betTeam);
-        }
-
-        [Test]
-        public void BuildBetTeam_BetTeamIs2_BetChoiceIsAway()
-        {
-            // Arrange.
-            const string betToAway = "2";
-
-            _ticket.BetTeam = betToAway;
-
-            // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, false);
-
-            // Assert.
-            Assert.AreEqual(CoreBetList.Away, template.betTeam);
-        }
-
-        [Test]
-        public void BuildBetTeam_BetTeamIsNot1X2_BetChoiceIsEmpty()
-        {
-            // Arrange.
-            const string invalidBetTeam = "A";
-
-            _ticket.BetTeam = invalidBetTeam;
-
-            // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, false);
-
-            // Assert.
-            Assert.IsEmpty(template.betTeam);
+            Assert.AreEqual(betTeam.ToUpperInvariant(), template.betTeam);
         }
 
         [Test]
