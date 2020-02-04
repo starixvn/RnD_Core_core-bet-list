@@ -494,7 +494,7 @@
             {
                 betTypeIds.Add(betTypeId);
             }
-            
+
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
             DataSourcePath = "~/App_Data/PP.xls";
@@ -760,7 +760,6 @@
 
             return BetListView(model);
         }
-
 
         private ViewResult BetListView(BetListData model)
         {
