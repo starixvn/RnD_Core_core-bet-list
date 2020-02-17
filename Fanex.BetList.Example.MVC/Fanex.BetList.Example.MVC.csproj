@@ -368,6 +368,10 @@
       <Project>{ebca17e0-b3af-41e5-9a1f-caa81341a3b4}</Project>
       <Name>Fanex.BetList.Spadegaming</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.VirtualGames\Fanex.BetList.VirtualGames.csproj">
+      <Project>{64136a6a-e244-47e8-89b7-548cbe8e5d5a}</Project>
+      <Name>Fanex.BetList.VirtualGames</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.VirtualSports\Fanex.BetList.VirtualSports.csproj">
       <Project>{f3dc05fd-883b-47f6-9f13-5506bf084cae}</Project>
       <Name>Fanex.BetList.VirtualSports</Name>
