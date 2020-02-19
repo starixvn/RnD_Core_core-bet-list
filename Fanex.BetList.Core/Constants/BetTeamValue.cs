@@ -130,5 +130,7 @@
         public const string A21to25 = "a21-25";
         public const string A21Over = "a21+";
         public const string A26Over = "a26+";
+
+        public const string R = "r";
     }
 }

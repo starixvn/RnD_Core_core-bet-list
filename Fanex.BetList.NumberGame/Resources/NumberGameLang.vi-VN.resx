@@ -150,4 +150,10 @@
   <data name="Number" xml:space="preserve">
     <value>Số {0}</value>
   </data>
+  <data name="Red" xml:space="preserve">
+    <value>Đỏ</value>
+  </data>
+  <data name="Blue" xml:space="preserve">
+    <value>Xanh</value>
+  </data>
 </root>

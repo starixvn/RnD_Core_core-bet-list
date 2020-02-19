@@ -31,6 +31,7 @@
             86,
             87,
             88,
+            BetTypes.NextRB,
             BetTypes.FullTime1X2Handicap,
             BetTypes.FirstHalf1X2Handicap,
             BetTypes.FullTimeGameHandicap,

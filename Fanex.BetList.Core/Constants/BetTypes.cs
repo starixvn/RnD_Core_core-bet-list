@@ -31,6 +31,7 @@
         public const int SystemParlay = 29;
         public const int FirstHalfCorrectScore = 30;
         public const int SingleMatchParlay = 38;
+        public const int NextRB = 91;
         public const int HomeNoBet = 121;
         public const int AwayNoBet = 122;
         public const int DrawNoDraw = 123;

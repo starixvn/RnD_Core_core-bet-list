@@ -29,6 +29,7 @@ namespace Fanex.BetList.Core.UnitTest.Utils
         [TestCase(86)]
         [TestCase(87)]
         [TestCase(88)]
+        [TestCase(91)]
         [TestCase(124)]
         [TestCase(125)]
         [TestCase(153)]
