@@ -42,6 +42,18 @@
             return View(model);
         }
 
+        public ActionResult SAGaming(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes(3001, 3002, 3003, 3004, 3005, 3006,3007);
+            DataSourcePath = "~/App_Data/SAGaming.xls";
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
         public ActionResult BetRadar(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(133, 134, 135, 140, 141, 145, 146, 147, 148, 149, 150, 151, 152);
