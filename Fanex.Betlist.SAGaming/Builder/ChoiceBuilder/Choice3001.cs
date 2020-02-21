@@ -46,7 +46,7 @@
 
             if (!string.IsNullOrEmpty(ticket.TransDesc))
             {
-                Template.BetType.betTypeName = string.Format(BetIdTag, $"{SAGamingResources.BetId}: {ticket.BetId}");
+                Template.BetType.betTypeName = string.Format(BetIdTag, $"{SAGamingResources.BetId}: {ticket.BetTeam}");
             }
         }
 
