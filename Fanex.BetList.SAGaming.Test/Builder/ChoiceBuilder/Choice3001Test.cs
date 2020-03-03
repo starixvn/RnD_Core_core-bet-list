@@ -228,7 +228,7 @@
         {
             return string.Format(
                 "<div class=\"detail sagaming-casino-detail\"" +
-                " onclick='showTodayRunningBetsDetails(&quot;{0}&quot;,&quot;{1}&quot;,&quot;{2}&quot;,&quot;{3}&quot;);'>" +
+                " onclick='showSAGamingDetails(&quot;{0}&quot;,&quot;{1}&quot;,&quot;{2}&quot;,&quot;{3}&quot;);'>" +
                 "<a style=\"color:#755200;font-weight:bold\"" +
                 " href=\"javascript:void(&quot;&quot;);\">Details</a></div>",
                 ticket.TransId.ToString(),

@@ -6,7 +6,7 @@
     {
         public StatusMapper()
         {
-            for (var betType = SAGamingBetTypes.DragonTiger; betType <= SAGamingBetTypes.MoneyWheel; betType++)
+            for (var betType = SAGamingBetTypes.DragonTiger; betType <= SAGamingBetTypes.Tips; betType++)
             {
                 MapIdToBaseId(betType, SAGamingBetTypes.Baccarat);
             }
