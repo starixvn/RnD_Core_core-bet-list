@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builder\ChoiceBuilder\Choice1902Tests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1901Tests.cs" />
     <Compile Include="Builder\StatusBuilder\Status1901Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
