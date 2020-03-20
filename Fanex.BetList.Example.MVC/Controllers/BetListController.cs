@@ -64,7 +64,26 @@
 
             return BetListView(model);
         }
+        
+        public ActionResult SabaClub(BetListData model = null)
+        {
+            var betTypeIds = new List<int>();
 
+            for (var betTypeId = 1612; betTypeId <= 1699; betTypeId++)
+            {
+                betTypeIds.Add(betTypeId);
+            }
+
+            var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
+
+            DataSourcePath = "~/App_Data/SabaClub.xls";
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
         
         public ActionResult SexyGaming(BetListData model = null)
         {
