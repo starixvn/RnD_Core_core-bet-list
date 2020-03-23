@@ -16,6 +16,7 @@
 
         [TestCase("")]
         [TestCase("BetList/All")]
+        [TestCase("BetList/SexyGaming")]
         [TestCase("BetList/BetRadar")]
         [TestCase("BetList/New11BetTypes")]
         [TestCase("BetList/New60BetTypesBetRadar")]
@@ -85,6 +86,7 @@
 
         [TestCase("")]
         [TestCase("BetList/All")]
+        [TestCase("BetList/SexyGaming")]
         [TestCase("BetList/BetRadar")]
         [TestCase("BetList/New11BetTypes")]
         [TestCase("BetList/New60BetTypesBetRadar")]
@@ -154,6 +156,7 @@
 
         [TestCase("")]
         [TestCase("BetList/All")]
+        [TestCase("BetList/SexyGaming")]
         [TestCase("BetList/BetRadar")]
         [TestCase("BetList/New11BetTypes")]
         [TestCase("BetList/New60BetTypesBetRadar")]
@@ -223,6 +226,7 @@
 
         [TestCase("")]
         [TestCase("BetList/All")]
+        [TestCase("BetList/SexyGaming")]
         [TestCase("BetList/BetRadar")]
         [TestCase("BetList/New11BetTypes")]
         [TestCase("BetList/New60BetTypesBetRadar")]
@@ -292,6 +296,7 @@
 
         [TestCase("")]
         [TestCase("BetList/All")]
+        [TestCase("BetList/SexyGaming")]
         [TestCase("BetList/BetRadar")]
         [TestCase("BetList/New11BetTypes")]
         [TestCase("BetList/New60BetTypesBetRadar")]

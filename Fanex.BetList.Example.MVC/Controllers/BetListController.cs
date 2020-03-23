@@ -54,6 +54,18 @@
             return BetListView(model);
         }
 
+        public ActionResult SexyGaming(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes(3101,3102,3103,3104,3105);
+            DataSourcePath = "~/App_Data/SexyGaming.xls";
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+        
         public ActionResult BetRadar(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(133, 134, 135, 140, 141, 145, 146, 147, 148, 149, 150, 151, 152);
