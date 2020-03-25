@@ -54,6 +54,18 @@
             return BetListView(model);
         }
 
+        public ActionResult Indo4D(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes(5001,5002,5003,5004,5005,5006,5007);
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            DataSourcePath = "~/App_Data/Indo4D.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
+        
         public ActionResult SexyGaming(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(3101,3102,3103,3104,3105);
