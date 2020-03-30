@@ -69,6 +69,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Builder\ChoiceBuilder\Choice3101Test.cs" />
+    <Compile Include="Builder\OddBuilder\Odds3101Test.cs" />
     <Compile Include="Builder\StatusBuilder\Status3101Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

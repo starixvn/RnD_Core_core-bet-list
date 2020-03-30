@@ -21,7 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>Fanex.BetList.Allbet.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>Fanex.BetList.SexyGaming.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,7 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>Fanex.BetList.Allbet.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>Fanex.BetList.SexyGaming.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -43,8 +43,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builder\ChoiceBuilder\Choice3101.cs" />
+    <Compile Include="Builder\OddsBuilder\Odds3101.cs" />
     <Compile Include="Builder\StatusBuilder\Status3101.cs" />
     <Compile Include="Constants\SexyGamingBetTypes.cs" />
+    <Compile Include="Mapper\OddsMapper.cs" />
     <Compile Include="Mapper\ChoiceMapper.cs" />
     <Compile Include="Mapper\StatusMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -134,6 +136,7 @@
     <Content Include="Content\SexyGaming.css" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Fanex.BetList.SexyGaming.ruleset" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
