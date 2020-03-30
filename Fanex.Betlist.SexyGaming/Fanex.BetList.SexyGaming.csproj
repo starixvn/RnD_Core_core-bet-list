@@ -134,7 +134,6 @@
     <Content Include="Content\SexyGaming.css" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Fanex.BetList.Allbet.ruleset" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
