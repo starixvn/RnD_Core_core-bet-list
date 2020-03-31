@@ -51,5 +51,9 @@
         string GetLotteryBetTypeName(string lotteryBettypeId);
 
         string GetBetRadarMatchCodeFormat(string matchCode);
+
+        string GetTableGamesBetChoiceName(string tableGamesBetChoiceId, out string tableGamesBetTypeId);
+
+        string GetTableGamesBetTypeName(string tableGamesBetTypeId);
     }
 }

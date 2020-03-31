@@ -116,6 +116,10 @@
 
         string GetBetRadarMatchCodeFormat(string matchCode);
 
+        string GetTableGamesBetChoiceName(string tableGamesBetChoiceId, out string tableGamesBetTypeId);
+
+        string GetTableGamesBetTypeName(string tableGamesBetTypeId);
+
         #endregion METHODS TO RESOLVE NAMES FROM IDS
     }
 }

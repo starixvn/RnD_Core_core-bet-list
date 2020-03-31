@@ -160,5 +160,15 @@ namespace Fanex.BetList.Core.UnitTest.Stubs
         {
             return _oddsName + oddsTypeId;
         }
+
+        public string GetTableGamesBetChoiceName(string tableGamesBetChoiceId, out string tableGamesBetTypeId)
+        {
+            tableGamesBetTypeId = _gameName + tableGamesBetChoiceId;
+
+            return _gameName + tableGamesBetTypeId;
+        }
+
+        public string GetTableGamesBetTypeName(string tableGamesBetTypeId)
+            => _betTypeName + tableGamesBetTypeId;
     }
 }

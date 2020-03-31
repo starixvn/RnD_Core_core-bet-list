@@ -42,6 +42,25 @@
             return View(model);
         }
 
+        public ActionResult TableGames(BetListData model = null)
+        {
+            var betTypeIds = new List<int>();
+
+            for (var betTypeId = 4901; betTypeId <= 5000; betTypeId++)
+            {
+                betTypeIds.Add(betTypeId);
+            }
+
+            var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+
+            DataSourcePath = $"~/App_Data/{nameof(TableGames)}.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
         public ActionResult SAGaming(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(3001, 3002, 3003, 3004, 3005, 3006,3007);
@@ -84,7 +103,6 @@
 
             return BetListView(model);
         }
-        
         public ActionResult SexyGaming(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(3101,3102,3103,3104,3105);

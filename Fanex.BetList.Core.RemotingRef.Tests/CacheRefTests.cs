@@ -778,5 +778,81 @@
             // Assert.
             Assert.AreSame(matchPattern, actualResult);
         }
+
+        [Test]
+        public void GetTableGamesBetChoiceName_Always_CallGetTableGamesBetChoiceOfRemotingRefService()
+        {
+            // Arrange.
+            var tableGamesBetChoiceId = "tableGamesBetChoiceId";
+
+            // Act.
+            _cacheRef.GetTableGamesBetChoiceName(tableGamesBetChoiceId, out _);
+
+            // Assert.
+            _remotingRefService
+                .Received()
+                .GetTableGamesBetChoice(
+                    Arg.Is(tableGamesBetChoiceId),
+                    Arg.Is(_currentTestingLanguage),
+                    out _);
+        }
+
+        [Test]
+        public void GetTableGamesBetChoiceName_Always_ReturnExactResultOfRemotingRefService()
+        {
+            // Arrange.
+            var tableGamesBetChoiceId = "tableGamesBetChoiceId";
+            var tableGamesBetChoiceName = "tableGamesBetChoiceName";
+            var tableGamesBetTypeId = "tableGamesBetTypeId";
+
+            _remotingRefService
+                .GetTableGamesBetChoice(Arg.Is(tableGamesBetChoiceId), Arg.Is(_currentTestingLanguage), out _)
+                .Returns(parameters =>
+                {
+                    parameters[2] = tableGamesBetTypeId;
+
+                    return tableGamesBetChoiceName;
+                });
+
+            // Act.
+            var actualTableGamesBetChoiceName = _cacheRef.GetTableGamesBetChoiceName(tableGamesBetChoiceId, out string actualTableGamesBetTypeId);
+
+            // Assert.
+            Assert.AreSame(tableGamesBetChoiceName, actualTableGamesBetChoiceName);
+            Assert.AreSame(tableGamesBetTypeId, actualTableGamesBetTypeId);
+        }
+
+        [Test]
+        public void GetTableGamesBetTypeName_Always_CallGetTableGamesBetTypeOfRemotingRefService()
+        {
+            // Arrange.
+            var tableGamesBetTypeId = "tableGamesBetTypeId";
+
+            // Act.
+            _cacheRef.GetTableGamesBetTypeName(tableGamesBetTypeId);
+
+            // Assert.
+            _remotingRefService
+                .Received()
+                .GetTableGamesBetType(Arg.Is(tableGamesBetTypeId), Arg.Is(_currentTestingLanguage), string.Empty);
+        }
+
+        [Test]
+        public void GetTableGamesBetTypeName_Always_ReturnExactResultOfRemotingRefService()
+        {
+            // Arrange.
+            var tableGamesBetTypeId = "tableGamesBetTypeId";
+            var tableGamesBetTypeName = "tableGamesBetTypeName";
+
+            _remotingRefService
+                .GetTableGamesBetType(Arg.Is(tableGamesBetTypeId), Arg.Is(_currentTestingLanguage), string.Empty)
+                .Returns(tableGamesBetTypeName);
+
+            // Act.
+            var actualResult = _cacheRef.GetTableGamesBetTypeName(tableGamesBetTypeId);
+
+            // Assert.
+            Assert.AreSame(tableGamesBetTypeName, actualResult);
+        }
     }
 }

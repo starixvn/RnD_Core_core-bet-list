@@ -83,5 +83,11 @@
 
         public string GetBetRadarMatchCodeFormat(string matchCode)
             => _remotingRefService.GetBetRadarMatchCodeFormat(matchCode, CurrentLanguage);
+
+        public string GetTableGamesBetChoiceName(string tableGamesBetChoiceId, out string tableGamesBetTypeId)
+            => _remotingRefService.GetTableGamesBetChoice(tableGamesBetChoiceId, CurrentLanguage, out tableGamesBetTypeId);
+
+        public string GetTableGamesBetTypeName(string tableGamesBetTypeId)
+            => _remotingRefService.GetTableGamesBetType(tableGamesBetTypeId, CurrentLanguage, DefaultValue);
     }
 }

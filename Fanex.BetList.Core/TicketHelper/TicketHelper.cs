@@ -191,5 +191,11 @@
 
         public string GetBetRadarMatchCodeFormat(string matchCode)
             => _cacheRef.GetBetRadarMatchCodeFormat(matchCode);
+
+        public string GetTableGamesBetChoiceName(string tableGamesBetChoiceId, out string tableGamesBetTypeId)
+            => _cacheRef.GetTableGamesBetChoiceName(tableGamesBetChoiceId, out tableGamesBetTypeId);
+
+        public string GetTableGamesBetTypeName(string tableGamesBetTypeId)
+            => _cacheRef.GetTableGamesBetTypeName(tableGamesBetTypeId);
     }
 }
