@@ -62,6 +62,7 @@
     <Compile Include="Builder\StatusBuilder\Status1901.cs" />
     <Compile Include="Constants\CardClubBetTypes.cs" />
     <Compile Include="Mapper\StatusMapper.cs" />
+    <Compile Include="Mapper\ChoiceMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
