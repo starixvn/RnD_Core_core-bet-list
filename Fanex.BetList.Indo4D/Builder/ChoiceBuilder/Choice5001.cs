@@ -40,11 +40,14 @@
             {
                 var separators = new[] { ';', '|' };
                 var choiceItems = transDesc.Split(separators);
-                if (choiceItems.Length == 3)
+                const int numberElementOfChoice = 3;
+                const int betContentIndex = 2;
+
+                if (choiceItems.Length == numberElementOfChoice)
                 {
                     choice.DrawType = choiceItems[0];
                     choice.DrawDate = choiceItems[1];
-                    choice.BetContent = choiceItems[2];
+                    choice.BetContent = choiceItems[betContentIndex];
                 }
             }
 
