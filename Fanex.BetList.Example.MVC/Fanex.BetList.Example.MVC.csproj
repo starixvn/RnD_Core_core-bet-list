@@ -298,6 +298,10 @@
       <Project>{ebf46368-f937-49df-b24d-bac01ed3a947}</Project>
       <Name>Fanex.BetList.Allbet</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.BBIN\Fanex.BetList.BBIN.csproj">
+      <Project>{0ea42fd9-9118-41f6-ad60-1c420e67343c}</Project>
+      <Name>Fanex.BetList.BBIN</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.BetTrade\Fanex.BetList.BetTrade.csproj">
       <Project>{386bf8aa-7ee2-46bb-aecc-6cd829671881}</Project>
       <Name>Fanex.BetList.BetTrade</Name>
@@ -481,6 +485,7 @@
     <Content Include="App_Data\SabaClub.xls" />
     <Content Include="App_Data\Indo4D.xls" />
     <Content Include="App_Data\SexyGaming.xls" />
+    <Content Include="App_Data\BBIN.xls" />
     <Content Include="App_Data\TableGames.xls" />
     <Content Include="App_Data\DelayPayout.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />

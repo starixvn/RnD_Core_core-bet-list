@@ -41,6 +41,18 @@
 
             return View(model);
         }
+        
+        public ActionResult BBIN(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes(3300);
+            DataSourcePath = "~/App_Data/BBIN.xls";
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
 
         public ActionResult DelayPayout(BetListData model = null)
         {
