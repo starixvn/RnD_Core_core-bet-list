@@ -23,29 +23,29 @@
         [Test]
         public void BuildStatusResult_TrandescDataIsEmpty_HideStatusResultLink()
         {
-            // Arrange
+            // Arrange.
             _ticket.TransDesc = string.Empty;
 
-            // Act
+            // Act.
             _status.Render(_ticket, _ticketHelper, null, false);
 
-            // Assert
+            // Assert.
             Assert.IsTrue(string.IsNullOrEmpty(_status.Template.StatusResult.ToString()));
         }
 
         [Test]
         public void BuildStatusResult_TrandescDataIsNotEmpty_ShowStatusResultLink()
         {
-            // Arrange
+            // Arrange.
             _ticket.BetId = 1;
             _ticket.CustId = 123;
             _ticket.TransDesc = "TransDesc";
             _ticket.BetCheck = "BetCheck";
 
-            // Act
+            // Act.
             _status.Render(_ticket, _ticketHelper, null, false);
 
-            // Assert
+            // Assert.
             Assert.AreEqual("1, 'BetCheck', 123, 'TransDesc'", _status.Template.StatusResult.betId);
         }
     }
