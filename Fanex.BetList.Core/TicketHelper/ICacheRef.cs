@@ -52,7 +52,11 @@
 
         string GetBetRadarMatchCodeFormat(string matchCode);
 
+#pragma warning disable S3874 // "out" and "ref" parameters should not be used
+
         string GetTableGamesBetChoiceName(string tableGamesBetChoiceId, out string tableGamesBetTypeId);
+
+#pragma warning restore S3874 // "out" and "ref" parameters should not be used
 
         string GetTableGamesBetTypeName(string tableGamesBetTypeId);
     }
