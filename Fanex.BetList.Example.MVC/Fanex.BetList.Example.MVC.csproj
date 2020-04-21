@@ -170,6 +170,7 @@
   <ItemGroup>
     <Content Include="CodeAnalysis\CodeAnalysisConfiguration.xml" />
     <Content Include="Content\AGCasino.css" />
+    <Content Include="Content\BBin.css" />
     <Content Include="Content\SAGaming.css" />
     <Content Include="Content\SexyGaming.css" />
     <Content Include="Content\Allbet.css" />

@@ -42,6 +42,11 @@
     <Compile Include="Builder\OddsBuilder\Odds3300.cs" />
     <Compile Include="Builder\StatusBuilder\Status3300.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource\BBinResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BBinResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Utils\TransDescParser.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -53,7 +58,19 @@
   <ItemGroup>
     <Content Include="Content\BBIN.css" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Resource\BBinResources.ja-JP.resx" />
+    <EmbeddedResource Include="Resource\BBinResources.ko-KR.resx" />
+    <EmbeddedResource Include="Resource\BBinResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>BBinResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resource\BBinResources.th-TH.resx" />
+    <EmbeddedResource Include="Resource\BBinResources.vi-VN.resx" />
+    <EmbeddedResource Include="Resource\BBinResources.zh-CN.resx" />
+    <EmbeddedResource Include="Resource\BBinResources.zh-Hans.resx" />
+    <EmbeddedResource Include="Resource\BBinResources.zh-TW.resx" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

@@ -11,7 +11,7 @@
     [TestFixture]
     public class Choice3300Tests
     {
-        ////Choice=*site=BEST-ODDS* TABLECODE = B001 * gamename = 3003 * result = D; S7:T;H10* results = D; S7:T;H10* winResult = D; S7:T;H10
+        ////Choice=2,1:35,5.00,0.00@5,1:35,5.00,0.00*site=BEST-ODDS* TABLECODE = B001 * gamename = 3003 * result = D; S7:T;H10* results = D; S7:T;H10* winResult = D; S7:T;H10
         private const int BetTypeId = 3300;
         private const string BetTypeName = "BBIN Live";
 
@@ -34,26 +34,50 @@
         }
 
         [Test]
-        public void BuildBetTeam_TransDecsHasDataOfGameName_ReturnGameName()
+        public void BuildBetTeam_TransDecsHasChoice_ReturnChoiceName()
         {
             // Arrange.
-            const string gameName = "Dragon Tiger";
-
-            _ticket.TransDesc = "Choice=*site=BEST-ODDS*TABLECODE=B001*gamename=3003*result=D;S7:T;H10*results=D;S7:T;H10*winResult=D;S7:T;H10";
-            _ticketHelper.GetResourceData("BBIN_GT", "3003").Returns(gameName);
+            const string choiceName = "banker";
+            var betTeamFormat = "<div><span class='favorite'>{0}</span>&nbsp;<span class='handicap custom'>({1} {2})</span></div>";
+            var expectedBetTeam = string.Format(betTeamFormat, choiceName, "RM", 5);
+            _ticket.Currency = "RM";
+            _ticket.TransDesc = "Choice=2,1:35,5.00,0.00*site=BEST-ODDS*TABLECODE=B001*gamename=3003*result=D;S7:T;H10*results=D;S7:T;H10*winResult=D;S7:T;H10";
+            _ticketHelper.GetResourceData("BBIN_BT", "30030002").Returns(choiceName);
 
             // Act.
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            Assert.AreEqual(gameName, _choice.Template.betTeam);
+            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
         [Test]
-        public void BuildBetTeam_TransDecsDoesNotHasDataOfGameName_ReturnEmpty()
+        public void BuildBetTeam_TransDecsHasChoices_ReturnChoiceNames()
         {
             // Arrange.
-            _ticket.TransDesc = "Choice=*site=BEST-ODDS*TABLECODE=B001*result=D;S7:T;H10*results=D;S7:T;H10*winResult=D;S7:T;H10";
+            var choice1 = "choice name 1";
+            var choice2 = "choice name 2";
+            var betTeamFormat = "<div><span class='favorite'>{0}</span>&nbsp;<span class='handicap custom'>({1} {2})</span></div><div><span class='favorite'>{3}</span>&nbsp;<span class='handicap custom'>({4} {5})</span></div>";
+            var expectedBetTeam = string.Format(betTeamFormat, choice1, "RM", 5, choice2, "RM", 10);
+            _ticket.Currency = "RM";
+            _ticket.TransDesc = "Choice=2,1:35,5.00,0.00@5,1:35,10.00,0.00*site=BEST-ODDS*TABLECODE=B001*gamename=3003*result=D;S7:T;H10*results=D;S7:T;H10*winResult=D;S7:T;H10";
+            _ticketHelper.GetResourceData("BBIN_BT", "30030002").Returns(choice1);
+            _ticketHelper.GetResourceData("BBIN_BT", "30030005").Returns(choice2);
+
+            // Act.
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert.
+            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
+        }
+
+        [TestCase("Choice=*site=BEST-ODDS*TABLECODE=B001*result=D;S7:T;H10*results=D;S7:T;H10*winResult=D;S7:T;H10")]
+        [TestCase("Choice=2,1:35,5.00*site=BEST-ODDS*TABLECODE=B001*result=D;S7:T;H10*results=D;S7:T;H10*winResult=D;S7:T;H10")]
+        [TestCase("Choice=2;1:35;5.00;0.00*site=BEST-ODDS*TABLECODE=B001*gamename=3003*result=D;S7:T;H10*results=D;S7:T;H10*winResult=D;S7:T;H10")]
+        public void BuildBetTeam_TransDecsDoesNotHasDataOfGameName_ReturnEmpty(string transDesc)
+        {
+            // Arrange.
+            _ticket.TransDesc = transDesc;
 
             // Act.
             _choice.Render(_ticket, _ticketHelper, null, false);
@@ -76,12 +100,12 @@
         }
 
         [Test]
-        public void BuildBetType_TransDecsIsNotEmpty_ReturnBetCheckData()
+        public void BuildBetType_DetailTicket_ReturnBetCheckData()
         {
             // Arrange.
             _ticket.TransDesc = "Transdesc";
             _ticket.BetCheck = "123";
-            var betIdMarkup = string.Format("<span class='bbin-bet-id'>{0}</span>", "123");
+            var betIdMarkup = string.Format("<span class='bbin-bet-id'>BetID: {0}</span>", "123");
 
             // Act.
             _choice.Render(_ticket, _ticketHelper, null, false);
@@ -149,7 +173,7 @@
         }
 
         [Test]
-        public void BuildLeague_ForLeagueName_ReturnBetTypeName()
+        public void BuildLeague_SummaryTicket_ReturnBetTypeName()
         {
             // Arrange & Act.
             _choice.Render(_ticket, _ticketHelper, null, false);
@@ -157,6 +181,35 @@
             // Assert.
             Assert.IsTrue(_choice.Template.League.LeagueName.leagueName.Contains(BetTypeName));
         }
+
+        [Test]
+        public void BuildLeague_DetailTicket_NotContaintBetTypeName()
+        {
+            // Arrange
+            _ticket.TransDesc = "Choice=2,1:35,5.00,0.00*site=BEST-ODDS*TABLECODE=B001*gamename=3003*result=D;S7:T;H10*results=D;S7:T;H10*winResult=D;S7:T;H10";
+
+            // Act.
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert.
+            Assert.IsFalse(_choice.Template.League.LeagueName.leagueName.Contains(BetTypeName));
+        }
+
+        [Test]
+        public void BuildLeague_DetailTicket_ShowGameNameAndTableCodeAndGameId()
+        {
+            // Arrange
+            _ticket.BetTeam = "game id";
+            _ticketHelper.GetResourceData("BBIN_GT", "3003").Returns("Game name");
+            _ticket.TransDesc = "Choice=2,1:35,5.00,0.00*site=BEST-ODDS*TABLECODE=B001*gamename=3003*result=D;S7:T;H10*results=D;S7:T;H10*winResult=D;S7:T;H10";
+            var expectedLeague = $"Game name <span class=\"gamegroupname\">B001</span> <span class='bbin-game-id'>game id</span>";
+            // Act.
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert.
+            Assert.AreEqual(expectedLeague, _choice.Template.League.LeagueName.leagueName);
+        }
+
 
         [TestCase("")]
         [TestCase("Trandesc")]
@@ -188,7 +241,7 @@
         }
 
         [Test]
-        public void RemoveHtmlTagFromLeagueName_FromSettledTicket_LeagueNameIsBetTypeNameAndGameTableIdAndGameId()
+        public void RemoveHtmlTagFromLeagueName_FromSettledTicket_LeagueNameIsGameNameAndGameTableIdAndGameId()
         {
             // Arrange.
             const string gameId = "12345";
@@ -199,14 +252,14 @@
                 RTFRenderer = new RtfTextRender()
             };
 
-            _ticket.TransDesc = $"Choice=*site=BEST-ODDS*TABLECODE={gameTableId}*gamename=3003*result=D;S7:T;H10*results=D;S7:T;H10*winResult=D;S7:T;H10";
+            _ticket.TransDesc = $"Choice=2,1:35,5.00,0.00*site=BEST-ODDS*TABLECODE={gameTableId}*gamename=3003*result=D;S7:T;H10*results=D;S7:T;H10*winResult=D;S7:T;H10";
             _ticket.BetTeam = gameId;
-
+            _ticketHelper.GetResourceData("BBIN_GT", "3003").Returns("Game name");
             // Act.
             _choice.RenderRTF(_ticket, _ticketHelper, null, false, rtfHelper);
 
             // Assert.
-            var expectedLeagueName = string.Format("{0} {1} {2}", BetTypeName, gameTableId, gameId);
+            var expectedLeagueName = string.Format("{0} {1} {2}", "Game name", gameTableId, gameId);
 
             Assert.AreEqual(expectedLeagueName, _choice.Template.League.LeagueName.leagueName);
         }

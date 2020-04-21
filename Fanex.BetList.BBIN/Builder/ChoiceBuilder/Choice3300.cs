@@ -4,27 +4,26 @@
     using System.Collections.Generic;
     using System.Globalization;
     using System.Text;
-    using System.Text.RegularExpressions;
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
+    using Fanex.BetList.Core.Resource;
     using Fanex.BetList.Core.Templates;
     using Fanex.BetList.Core.Utils;
+    using Fanex.BetList.Core.Utils.StringExt;
 
     public class Choice3300 : Choice1
     {
+        private const string BetTeamFormat = "<div><span class='favorite'>{0}</span>&nbsp;<span class='handicap custom'>({1}{2})</span></div>";
         private const string OpenBetTypeNameTag = "<span class='bbin-bet-type-name'>";
         private const string CloseBetTypeNameTag = "</span>";
-
         private const string OpenBetIdTag = "<span class='bbin-bet-id'>";
         private const string CloseBetIdTag = "</span>";
-
         private const string OpenGameIdTag = "<span class='bbin-game-id'>";
         private const string CloseGameIdTag = "</span>";
-
         private const string GameTableIdFormat = "<span class=\"gamegroupname\">{0}</span>";
 
-        private const string BBINRefId = "BBIN_GT";
         private const string GameNameKey = "GameName";
+        private const string ChoiceKey = "Choice";
         private const string TableCodeKey = "TableCode";
 
         private IDictionary<string, string> _parsedTransDesc;
@@ -37,17 +36,10 @@
         }
 
         protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
-        {
-            Template.Match = null;
-        }
+            => Template.Match = null;
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-            => Template.betTeam = GetGameName(ticketHelper);
-
-        private string GetGameName(ITicketHelper ticketHelper)
-            => _parsedTransDesc != null && _parsedTransDesc.ContainsKey(GameNameKey)
-            ? ticketHelper.GetResourceData(BBINRefId, _parsedTransDesc[GameNameKey])
-            : string.Empty;
+            => Template.betTeam = GetChoiceInfo(ticket, ticketHelper);
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
@@ -61,16 +53,15 @@
 
             if (!ticket.IsSummaryTicket())
             {
-                Template.BetType.betTypeName = $"{OpenBetIdTag}{ticket.BetCheck}{CloseBetIdTag}";
+                Template.BetType.betTypeName = $"{OpenBetIdTag}{BBinResources.BetId}: {ticket.BetCheck}{CloseBetIdTag}";
             }
         }
 
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
         {
-            Template.League.LeagueName.leagueName = BuildBetTypeName(ticket, ticketHelper);
-
             if (ticket.IsSummaryTicket())
             {
+                Template.League.LeagueName.leagueName = BuildBetTypeName(ticket, ticketHelper);
                 if (ticket.IsNotRunningTicket())
                 {
                     Template.League.Append(BuildDetailLink(ticket));
@@ -78,9 +69,36 @@
             }
             else
             {
-                Template.League.LeagueName.leagueName += $" {GetTableCode()} {BuildGameId(ticket)}";
+                var leagueName = $"{GetGameName(ticketHelper)} {GetTableCode()} {BuildGameId(ticket)}";
+                Template.League.LeagueName.leagueName = leagueName;
             }
         }
+        private string GetChoiceInfo(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            var betTeam = new StringBuilder();
+            var choices = _parsedTransDesc.ContainsKey(ChoiceKey) ? _parsedTransDesc[ChoiceKey].Split('@') : new string[] { };
+            foreach (var choice in choices)
+            {
+                var gameId = _parsedTransDesc.ContainsKey(GameNameKey) ? _parsedTransDesc[GameNameKey] : string.Empty;
+                var choiceInfo = choice.Split(',');
+                if (choiceInfo.Length >= 3)
+                {
+                    var shortChoiceId = choiceInfo[0];
+                    var choiceId = shortChoiceId.Length == 1 ? $"{gameId}000{shortChoiceId}" : $"{gameId}00{shortChoiceId}";
+                    var amount = Cast.AsDecimal(choiceInfo[2]);
+                    var choiceName = ticketHelper.GetResourceData("BBIN_BT", choiceId);
+
+                    betTeam.AppendFormat(BetTeamFormat, choiceName, $"{ticket.Currency} ", ConvertByBetType.Stake(amount));
+                }
+            }
+
+            return betTeam.ToString();
+        }
+
+        private string GetGameName(ITicketHelper ticketHelper)
+            => _parsedTransDesc != null && _parsedTransDesc.ContainsKey(GameNameKey)
+            ? ticketHelper.GetResourceData("BBIN_GT", _parsedTransDesc[GameNameKey])
+            : string.Empty;
 
         private static Choice_League_Block BuildDetailLink(ITicket ticket)
         {
@@ -168,14 +186,9 @@
 
         protected override void AdjustBetTeamToRTF()
         {
-            RemoveHtmlTagFromLeagueName();
+            Template.betTeam = string.Join("\n", Template.betTeam.SplitHTMLIntoRows());
+            Template.League.LeagueName.leagueName = string.Join(string.Empty, Template.League.LeagueName.leagueName.StripHTML());
             RemoveHtmlTagFromBetTypeName();
-        }
-
-        private void RemoveHtmlTagFromLeagueName()
-        {
-            var htmlTagMatching = new Regex("</?[^<>]*>");
-            Template.League.LeagueName.leagueName = htmlTagMatching.Replace(Template.League.LeagueName.leagueName, string.Empty);
         }
 
         private void RemoveHtmlTagFromBetTypeName()
