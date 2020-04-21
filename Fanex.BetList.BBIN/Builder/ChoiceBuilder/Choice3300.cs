@@ -84,7 +84,7 @@
                 if (choiceInfo.Length >= 3)
                 {
                     var shortChoiceId = choiceInfo[0];
-                    var choiceId = shortChoiceId.Length == 1 ? $"{gameId}000{shortChoiceId}" : $"{gameId}00{shortChoiceId}";
+                    var choiceId = gameId + shortChoiceId.PadLeft(4, '0');
                     var amount = Cast.AsDecimal(choiceInfo[2]);
                     var choiceName = ticketHelper.GetResourceData("BBIN_BT", choiceId);
 
