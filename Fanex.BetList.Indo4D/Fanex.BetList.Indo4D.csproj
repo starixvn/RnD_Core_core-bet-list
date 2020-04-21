@@ -57,6 +57,11 @@
     <Compile Include="Mapper\StatusMapper.cs" />
     <Compile Include="Mapper\TransMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource\Indo4DResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Indo4DResources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj">
@@ -72,6 +77,20 @@
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.7.14.0.8411\analyzers\Google.Protobuf.dll" />
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.7.14.0.8411\analyzers\SonarAnalyzer.CSharp.dll" />
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.7.14.0.8411\analyzers\SonarAnalyzer.dll" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Resource\Indo4DResources.ja-JP.resx" />
+    <EmbeddedResource Include="Resource\Indo4DResources.ko-KR.resx" />
+    <EmbeddedResource Include="Resource\Indo4DResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Indo4DResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resource\Indo4DResources.th-TH.resx" />
+    <EmbeddedResource Include="Resource\Indo4DResources.vi-VN.resx" />
+    <EmbeddedResource Include="Resource\Indo4DResources.zh-CN.resx" />
+    <EmbeddedResource Include="Resource\Indo4DResources.zh-Hans.resx" />
+    <EmbeddedResource Include="Resource\Indo4DResources.zh-TW.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

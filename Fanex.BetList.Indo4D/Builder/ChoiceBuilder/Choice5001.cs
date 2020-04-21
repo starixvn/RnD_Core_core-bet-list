@@ -2,10 +2,13 @@
 {
     using System.Collections.Generic;
     using Fanex.BetList.Core.Entities;
+    using Fanex.BetList.Core.Resource;
     using Fanex.BetList.Core.Templates;
 
     public class Choice5001 : Choice1
     {
+        private const string betOptionOpenTag = "<div class=\"underdog\">";
+        private const string betOptionCloseTag = "</div>";
         private MemberChoice choiceInfo;
 
         public override Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
@@ -20,9 +23,14 @@
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
-            Template.Handicap = null;
+            var optionText = string.Join(" / ", choiceInfo.Options);
+            var option = choiceInfo.Options.Count > 0 ? $"{betOptionOpenTag}{optionText}{betOptionCloseTag}" : string.Empty;
+            Template.Handicap.handicap = option;
             Template.betTeamClassName = Favorite;
         }
+
+        protected override void AdjustBetTeamToRTF()
+            => Template.Handicap.handicap = Template.Handicap.handicap.Replace(betOptionOpenTag, "\n").Replace(betOptionCloseTag, string.Empty);
 
         protected override void BuildScore(ITicket ticket)
             => Template.Score = null;
@@ -42,12 +50,23 @@
                 var choiceItems = transDesc.Split(separators);
                 const int numberElementOfChoice = 3;
                 const int betContentIndex = 2;
+                const int boxIndex = 3;
+                const int luckyPickIndex = 4;
 
-                if (choiceItems.Length == numberElementOfChoice)
+                if (choiceItems.Length >= numberElementOfChoice)
                 {
                     choice.DrawType = choiceItems[0];
                     choice.DrawDate = choiceItems[1];
                     choice.BetContent = choiceItems[betContentIndex];
+
+                    if (choiceItems.Length > luckyPickIndex && !string.IsNullOrWhiteSpace(choiceItems[luckyPickIndex]))
+                    {
+                        choice.Options.Add(Indo4DResources.LuckyPick);
+                    }
+                    if (choiceItems.Length > boxIndex && !string.IsNullOrWhiteSpace(choiceItems[boxIndex]))
+                    {
+                        choice.Options.Add(Indo4DResources.Box);
+                    }
                 }
             }
 
@@ -56,11 +75,18 @@
 
         private class MemberChoice
         {
+            public MemberChoice()
+            {
+                Options = new List<string>();
+            }
+
             public string DrawType { get; set; }
 
             public string DrawDate { get; set; }
 
             public string BetContent { get; set; }
+
+            public List<string> Options { get; set; }
         }
     }
 }

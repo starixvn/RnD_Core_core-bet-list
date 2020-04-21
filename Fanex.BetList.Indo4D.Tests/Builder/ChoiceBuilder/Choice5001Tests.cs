@@ -85,13 +85,17 @@
         }
 
         [Test]
-        public void BuildBetTeamClassNameAndHandicap_Always_HandicapBlockIsNull()
+        public void BuildBetTeamClassNameAndHandicap_Always_HandicapIsOption()
         {
+            // Arrange.
+            _ticket.TransDesc = "SG4D;2020/03/24;2480;B;L";
+            var expectedOption = "<div>Lucky pick / Box</div>";
+
             // Act.
             var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            Assert.IsNull(template.Handicap);
+            Assert.AreEqual(expectedOption, template.Handicap.handicap);
         }
 
         [Test]
