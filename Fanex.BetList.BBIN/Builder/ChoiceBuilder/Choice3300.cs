@@ -81,7 +81,8 @@
             {
                 var gameId = _parsedTransDesc.ContainsKey(GameNameKey) ? _parsedTransDesc[GameNameKey] : string.Empty;
                 var choiceInfo = choice.Split(',');
-                if (choiceInfo.Length >= 3)
+                const int minInfoLength = 3;
+                if (choiceInfo.Length >= minInfoLength)
                 {
                     var shortChoiceId = choiceInfo[0];
                     var choiceId = gameId + shortChoiceId.PadLeft(4, '0');

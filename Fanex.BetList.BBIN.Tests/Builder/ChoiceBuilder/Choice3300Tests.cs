@@ -72,9 +72,8 @@
         }
 
         [TestCase("Choice=*site=BEST-ODDS*TABLECODE=B001*result=D;S7:T;H10*results=D;S7:T;H10*winResult=D;S7:T;H10")]
-        [TestCase("Choice=2,1:35,5.00*site=BEST-ODDS*TABLECODE=B001*result=D;S7:T;H10*results=D;S7:T;H10*winResult=D;S7:T;H10")]
-        [TestCase("Choice=2;1:35;5.00;0.00*site=BEST-ODDS*TABLECODE=B001*gamename=3003*result=D;S7:T;H10*results=D;S7:T;H10*winResult=D;S7:T;H10")]
-        public void BuildBetTeam_TransDecsDoesNotHasDataOfGameName_ReturnEmpty(string transDesc)
+        [TestCase("Choice=2,1:35*site=BEST-ODDS*TABLECODE=B001*result=D;S7:T;H10*results=D;S7:T;H10*winResult=D;S7:T;H10")]        
+        public void BuildBetTeam_TransDecsDoesHasInvalidChoice_ReturnEmptySection(string transDesc)
         {
             // Arrange.
             _ticket.TransDesc = transDesc;
