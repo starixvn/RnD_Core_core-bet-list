@@ -171,6 +171,7 @@
     <Content Include="CodeAnalysis\CodeAnalysisConfiguration.xml" />
     <Content Include="Content\AGCasino.css" />
     <Content Include="Content\BBin.css" />
+    <Content Include="Content\GTCasino.css" />
     <Content Include="Content\SAGaming.css" />
     <Content Include="Content\SexyGaming.css" />
     <Content Include="Content\Allbet.css" />
@@ -347,6 +348,10 @@
       <Project>{9b786951-7d5c-42c4-a9df-ec558bc44593}</Project>
       <Name>Fanex.BetList.GoldDeluxe</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.Betlist.GTCasino\Fanex.BetList.GTCasino.csproj">
+      <Project>{74b65800-76ca-4055-95c6-0cc45d178308}</Project>
+      <Name>Fanex.BetList.GTCasino</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.Indo4D\Fanex.BetList.Indo4D.csproj">
       <Project>{f29f5396-1efe-4657-8080-d9a798f864bf}</Project>
       <Name>Fanex.BetList.Indo4D</Name>
@@ -489,6 +494,7 @@
     <Content Include="App_Data\BBIN.xls" />
     <Content Include="App_Data\TableGames.xls" />
     <Content Include="App_Data\DelayPayout.xls" />
+    <Content Include="App_Data\GTCasino.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
