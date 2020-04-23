@@ -46,6 +46,51 @@
             Assert.AreEqual(expectedResult, _status.Template.result);
         }
 
+        [TestCase(0, "Won")]
+        [TestCase(1, "Delay Payout")]        
+        public void BuildResult_WonTicket_ShowExpectedResult(byte settlementStatus, string expectedResult)
+        {
+            // Arrange
+            _ticket.Status = "Won";
+            _ticket.SettlementStatus = settlementStatus;
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual(expectedResult, _status.Template.result);
+        }
+
+        [TestCase(0, "Lose")]
+        [TestCase(1, "Delay Payout")]
+        public void BuildResult_LoseTicket_ShowExpectedResult(byte settlementStatus, string expectedResult)
+        {
+            // Arrange
+            _ticket.Status = "Lose";
+            _ticket.SettlementStatus = settlementStatus;
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual(expectedResult, _status.Template.result);
+        }
+
+        [TestCase(0, "Draw")]
+        [TestCase(1, "Delay Payout")]
+        public void BuildResult_DrawTicket_ShowExpectedResult(byte settlementStatus, string expectedResult)
+        {
+            // Arrange
+            _ticket.Status = "Draw";
+            _ticket.SettlementStatus = settlementStatus;
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual(expectedResult, _status.Template.result);
+        }
+
         [TestCase("", "Cash Out")]
         [TestCase(BetStatus.Running, "Cash Out")]
         [TestCase(BetStatus.Reject, "Cash Out")]
@@ -133,7 +178,7 @@
         [TestCase(7)]
         [TestCase(13)]
         [TestCase(15)]
-        public void BuildResult_RunningTicketWithPendingSettlementStatus_ShowResultPending(byte settlementStatus)
+        public void BuildResult_RunningTicketWithPendingSettlementStatus_ShowDelayPayout(byte settlementStatus)
         {
             // Arrange
             _ticket.Status = BetStatus.Running;
@@ -143,7 +188,7 @@
             _status.Render(_ticket, _ticketHelper, null, true);
 
             // Assert
-            Assert.AreEqual(CoreBetList.ResultPending, _status.Template.result);
+            Assert.AreEqual(CoreBetList.DelayPayout, _status.Template.result);
         }
 
         [TestCase(4)]

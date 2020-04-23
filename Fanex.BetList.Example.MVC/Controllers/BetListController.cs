@@ -42,6 +42,18 @@
             return View(model);
         }
 
+        public ActionResult DelayPayout(BetListData model = null)
+        {
+            DataSourcePath = "~/App_Data/DelayPayout.xls";
+
+            ViewBag.BetTypes = CreateSelectListItem(_dataService.QueryBetTypes(1, 2, 3));
+            model = GetDataSource(model, DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
+
         public ActionResult TableGames(BetListData model = null)
         {
             var betTypeIds = new List<int>();

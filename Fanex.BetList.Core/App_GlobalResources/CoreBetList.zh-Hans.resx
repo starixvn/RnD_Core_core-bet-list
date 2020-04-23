@@ -825,4 +825,7 @@
   <data name="Goal" xml:space="preserve">
     <value>进球</value>
   </data>
+  <data name="DelayPayout" xml:space="preserve">
+    <value>延迟付款</value>
+  </data>
 </root>

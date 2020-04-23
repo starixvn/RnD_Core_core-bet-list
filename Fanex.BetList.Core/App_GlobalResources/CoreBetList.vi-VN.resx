@@ -535,6 +535,8 @@
     <value>Hụt</value>
   </data>
   <data name="Goal" xml:space="preserve">
-    <value>Bàn Thắng</value>
+    <value>Bàn Thắng</value></data>
+  <data name="DelayPayout" xml:space="preserve">
+    <value>Chậm Trả Thưởng</value>
   </data>
 </root>

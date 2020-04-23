@@ -172,13 +172,13 @@
                     return CoreBetList.reject;
 
                 case BetStatus.Won:
-                    return CoreBetList.won;
+                    return DetectRealSettledStatus(settlementStatus, CoreBetList.won);
 
                 case BetStatus.Lose:
-                    return CoreBetList.lose;
+                    return DetectRealSettledStatus(settlementStatus, CoreBetList.lose);
 
                 case BetStatus.Draw:
-                    return CoreBetList.draw;
+                    return DetectRealSettledStatus(settlementStatus, CoreBetList.draw);
 
                 case BetStatus.Waiting:
                     return CoreBetList.waiting;
@@ -190,13 +190,10 @@
                     return CoreBetList.refund;
 
                 case BetStatus.HalfWon:
-                    return CoreBetList.halfwon;
+                    return DetectRealSettledStatus(settlementStatus, CoreBetList.halfwon);
 
                 case BetStatus.HalfLose:
-                    return CoreBetList.halflose;
-
-                case BetStatus.Pending:
-                    return CoreBetList.pending;
+                    return DetectRealSettledStatus(settlementStatus, CoreBetList.halflose);
 
                 default:
                     return string.Empty;
@@ -232,7 +229,7 @@
 
             if ((settlementStatus & pendingStatus) == pendingStatus)
             {
-                return CoreBetList.ResultPending;
+                return CoreBetList.DelayPayout;
             }
 
             if ((settlementStatus & underSettlementStatus) == underSettlementStatus
@@ -242,6 +239,18 @@
             }
 
             return CoreBetList.running;
+        }
+
+        private static string DetectRealSettledStatus(byte settlementStatus, string settledStatus)
+        {
+            const byte pendingStatus = 1;
+
+            if ((settlementStatus & pendingStatus) == pendingStatus)
+            {
+                return CoreBetList.DelayPayout;
+            }
+
+            return settledStatus;
         }
 
         private static bool IsSportsbookRefundedTicket(ITicket ticket)
