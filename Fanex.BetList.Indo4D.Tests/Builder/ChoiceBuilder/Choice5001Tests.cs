@@ -89,7 +89,7 @@
         {
             // Arrange.
             _ticket.TransDesc = "SG4D;2020/03/24;2480;B;L";
-            var expectedOption = "<div>Lucky pick / Box</div>";
+            var expectedOption = "<div class=\"underdog\">Lucky pick / Box</div>";
 
             // Act.
             var template = _choice.Render(_ticket, _ticketHelper, null, false);
