@@ -708,4 +708,7 @@
   <data name="Miss" xml:space="preserve">
     <value>พลาด</value>
   </data>
+  <data name="Goal" xml:space="preserve">
+    <value>การทำประตู</value>
+  </data>
 </root>

@@ -817,6 +817,9 @@
     <value>得分</value>
   </data>
   <data name="Miss" xml:space="preserve">
-    <value>未得分</value>
+    <value>不進</value>
+  </data>
+  <data name="Goal" xml:space="preserve">
+    <value>進球</value>
   </data>
 </root>

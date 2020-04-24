@@ -24,7 +24,7 @@
 
         [TestCase("s")]
         [TestCase("S")]
-        public void BuildBetTeam_BetTeamIsS_BetChoiceIsScore(string betToScore)
+        public void BuildBetTeam_BetTeamIsS_BetChoiceIsGoal(string betToScore)
         {
             // Arrange.
             _ticket.BetTeam = betToScore;
@@ -33,7 +33,7 @@
             var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            Assert.AreEqual(CoreBetList.Score, template.betTeam);
+            Assert.AreEqual(CoreBetList.Goal, template.betTeam);
         }
 
         [TestCase("m")]

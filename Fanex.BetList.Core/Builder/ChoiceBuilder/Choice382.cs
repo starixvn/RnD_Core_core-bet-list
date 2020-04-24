@@ -15,7 +15,7 @@
             switch (ticket.BetTeam.ToLowerInvariant())
             {
                 case BetTeamValue.S:
-                    Template.betTeam = CoreBetList.Score;
+                    Template.betTeam = CoreBetList.Goal;
                     break;
 
                 case BetTeamValue.M:

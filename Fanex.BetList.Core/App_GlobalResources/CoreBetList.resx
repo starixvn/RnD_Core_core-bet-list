@@ -898,4 +898,7 @@
   <data name="SabaLuckySpinProgramPattern" xml:space="preserve">
     <value>{0} {1}</value>
   </data>
+  <data name="Goal" xml:space="preserve">
+    <value>Goal</value>
+  </data>
 </root>

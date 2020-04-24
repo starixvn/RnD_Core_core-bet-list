@@ -534,4 +534,7 @@
   <data name="Miss" xml:space="preserve">
     <value>Hụt</value>
   </data>
+  <data name="Goal" xml:space="preserve">
+    <value>Bàn Thắng</value>
+  </data>
 </root>
