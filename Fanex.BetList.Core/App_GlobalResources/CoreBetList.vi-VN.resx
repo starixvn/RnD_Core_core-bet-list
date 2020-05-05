@@ -539,4 +539,10 @@
   <data name="DelayPayout" xml:space="preserve">
     <value>Chậm Trả Thưởng</value>
   </data>
+  <data name="TeamNameRoundGoal" xml:space="preserve">
+    <value>{0} Loạt {1}: Bàn thắng @{2}</value>
+  </data>
+  <data name="TeamNameRoundMiss" xml:space="preserve">
+    <value>{0} Loạt {0}: Hụt @{2}</value>
+  </data>
 </root>

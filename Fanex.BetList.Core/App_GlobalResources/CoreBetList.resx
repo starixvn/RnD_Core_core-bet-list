@@ -909,4 +909,10 @@
   <data name="BetID" xml:space="preserve">
     <value>BetID</value>
   </data>
+  <data name="TeamNameRoundGoal" xml:space="preserve">
+    <value>{0} Round {1}: Goal @{2}</value>
+  </data>
+  <data name="TeamNameRoundMiss" xml:space="preserve">
+    <value>{0} Round {1}: Miss @{2}</value>
+  </data>
 </root>

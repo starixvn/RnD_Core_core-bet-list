@@ -1996,6 +1996,24 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} Round {1}: Goal @{2}.
+        /// </summary>
+        public static string TeamNameRoundGoal {
+            get {
+                return ResourceManager.GetString("TeamNameRoundGoal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} Round {1}: Miss @{2}.
+        /// </summary>
+        public static string TeamNameRoundMiss {
+            get {
+                return ResourceManager.GetString("TeamNameRoundMiss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tennis.
         /// </summary>
         public static string Tennis {

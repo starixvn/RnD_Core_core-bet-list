@@ -831,4 +831,10 @@
   <data name="BetID" xml:space="preserve">
     <value>参照号</value>
   </data>
+  <data name="TeamNameRoundGoal" xml:space="preserve">
+    <value>{0} 回合{1}: 进球 @{2}</value>
+  </data>
+  <data name="TeamNameRoundMiss" xml:space="preserve">
+    <value>{0} 回合{1}: 没进 @{2}</value>
+  </data>
 </root>

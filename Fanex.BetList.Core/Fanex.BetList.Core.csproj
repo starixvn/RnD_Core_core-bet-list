@@ -244,6 +244,7 @@
     <Compile Include="Builder\ChoiceBuilder\Choice382.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice383.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice384.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice376.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice385.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice391.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice392.cs" />
@@ -434,6 +435,7 @@
     <Compile Include="Utils\RtfTextRender.cs" />
     <Compile Include="Utils\StringExt\StringExtension.cs" />
     <Compile Include="Utils\TicketExt\ITicketExtensions.cs" />
+    <Compile Include="Utils\TicketHelperExt\PenaltyShootoutComboExtensions.cs" />
     <Compile Include="Utils\TicketHelperExt\ScoreBoxExtensions.cs" />
   </ItemGroup>
   <ItemGroup>

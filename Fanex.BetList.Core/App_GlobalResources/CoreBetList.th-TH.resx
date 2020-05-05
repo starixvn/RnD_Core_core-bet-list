@@ -717,4 +717,10 @@
   <data name="BetID" xml:space="preserve">
     <value>ID การเดิมพัน</value>
   </data>
+  <data name="TeamNameRoundGoal" xml:space="preserve">
+    <value>{0} รอบ {1}: การทำประตู @{2}</value>
+  </data>
+  <data name="TeamNameRoundMiss" xml:space="preserve">
+    <value>{0} รอบ {1}: พลาด @{2}</value>
+  </data>
 </root>

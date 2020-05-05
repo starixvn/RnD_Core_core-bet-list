@@ -898,6 +898,19 @@
             return BetListView(model);
         }
 
+        public ActionResult PHAIO51(BetListData model = null)
+        {
+            var betTypeIds = new List<int>() { 367 };
+            var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            DataSourcePath = "~/App_Data/PHAllInOneP51.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
         public ActionResult SG(BetListData model = null)
         {
             var betTypeIds = new List<int>();
