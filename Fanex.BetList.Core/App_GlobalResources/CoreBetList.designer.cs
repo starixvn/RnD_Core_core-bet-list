@@ -223,6 +223,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to BetID.
+        /// </summary>
+        public static string BetID {
+            get {
+                return ResourceManager.GetString("BetID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bet List.
         /// </summary>
         public static string BetList {

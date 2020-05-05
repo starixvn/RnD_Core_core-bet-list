@@ -830,5 +830,8 @@
   </data>
   <data name="DelayPayout" xml:space="preserve">
     <value>延迟结算</value>
+    </data>
+  <data name="BetID" xml:space="preserve">
+    <value>参照号</value>
   </data>
 </root>

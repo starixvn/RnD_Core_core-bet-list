@@ -89,6 +89,18 @@
             return BetListView(model);
         }
 
+        public ActionResult IONCasino(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes(5601, 5602, 5603, 5604);
+            DataSourcePath = "~/App_Data/IONCasino.xls";
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+        
         public ActionResult GTCasino(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(3201, 3202, 3203, 3204, 3205, 3206);
@@ -99,7 +111,8 @@
             model.DataFilePath = DataSourcePath;
 
             return BetListView(model);
-        }
+        }     
+           
         public ActionResult TableGames(BetListData model = null)
         {
             var betTypeIds = new List<int>();

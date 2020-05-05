@@ -906,4 +906,7 @@
   <data name="TxId" xml:space="preserve">
     <value>TxID</value>
   </data>
+  <data name="BetID" xml:space="preserve">
+    <value>BetID</value>
+  </data>
 </root>

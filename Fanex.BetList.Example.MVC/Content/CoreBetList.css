@@ -46,6 +46,14 @@ div.match + div.league + div.no-details {
     font-weight: 600;
 }
 
+.bettype > .bet-id {
+    color: #bbb;
+}
+
+.leagueName > .bet-type-name {
+    color: #696969;
+}
+
 .bettype-description {
     color: #003399;
     font-weight: normal;

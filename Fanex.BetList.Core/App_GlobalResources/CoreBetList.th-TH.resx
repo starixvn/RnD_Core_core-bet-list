@@ -713,5 +713,8 @@
   </data>
   <data name="DelayPayout" xml:space="preserve">
     <value>การจ่ายเงินล่าช้า</value>
+    </data>
+  <data name="BetID" xml:space="preserve">
+    <value>ID การเดิมพัน</value>
   </data>
 </root>

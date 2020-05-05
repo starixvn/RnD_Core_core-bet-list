@@ -356,6 +356,10 @@
       <Project>{f29f5396-1efe-4657-8080-d9a798f864bf}</Project>
       <Name>Fanex.BetList.Indo4D</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.Betlist.ION\Fanex.BetList.IONCasino.csproj">
+      <Project>{96ce1eca-344b-4229-b8f8-c622735fe97f}</Project>
+      <Name>Fanex.BetList.IONCasino</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.KenoLottery\Fanex.BetList.KenoLottery.csproj">
       <Project>{ae7d0ff9-c449-4fa4-a399-267426354b7f}</Project>
       <Name>Fanex.BetList.KenoLottery</Name>
@@ -499,6 +503,7 @@
     <Content Include="App_Data\TableGames.xls" />
     <Content Include="App_Data\DelayPayout.xls" />
     <Content Include="App_Data\GTCasino.xls" />
+    <Content Include="App_Data\IONCasino.xls" />
     <Content Include="App_Data\LicenseeId.xls" />
     <Content Include="App_Data\RNGWar.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
