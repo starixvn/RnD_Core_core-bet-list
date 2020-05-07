@@ -48,6 +48,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builder\OddsBuilder\Odds4601Tests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice4601Tests.cs" />
     <Compile Include="Builder\StatusBuilder\Status4601Tests.cs" />
     <Compile Include="Builder\TransBuilder\Trans4601Tests.cs" />
