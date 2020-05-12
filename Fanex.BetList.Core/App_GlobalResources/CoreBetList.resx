@@ -901,6 +901,6 @@
   <data name="Goal" xml:space="preserve">
     <value>Goal</value></data>
   <data name="DelayPayout" xml:space="preserve">
-    <value>Delay Payout</value>
+    <value>Delayed Payout</value>
   </data>
 </root>

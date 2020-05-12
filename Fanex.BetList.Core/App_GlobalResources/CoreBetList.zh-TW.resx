@@ -823,6 +823,6 @@
     <value>進球</value>
   </data>
   <data name="DelayPayout" xml:space="preserve">
-    <value>延遲付款</value>
+    <value>延遲結算</value>
   </data>
 </root>

@@ -711,4 +711,7 @@
   <data name="Goal" xml:space="preserve">
     <value>การทำประตู</value>
   </data>
+  <data name="DelayPayout" xml:space="preserve">
+    <value>การจ่ายเงินล่าช้า</value>
+  </data>
 </root>
