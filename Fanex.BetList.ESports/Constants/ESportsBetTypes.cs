@@ -88,5 +88,7 @@
         public const int MapXTotalInhibitorsOddEven = 9084;
         public const int MapXTotalTyrantsOddEven = 9085;
         public const int MapXTotalOverlordsOddEven = 9086;
+        public const int MapXOvertime = 9087;
+        public const int CorrectMapScore = 9088;
     }
 }

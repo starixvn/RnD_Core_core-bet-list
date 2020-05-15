@@ -6,7 +6,7 @@
     {
         public StatusMapper()
         {
-            for (int betTypeId = ESportsBetTypes.MapXTotalKillsHandicap; betTypeId <= ESportsBetTypes.MapXTotalOverlordsOddEven; betTypeId++)
+            for (int betTypeId = ESportsBetTypes.MapXTotalKillsHandicap; betTypeId <= ESportsBetTypes.CorrectMapScore; betTypeId++)
             {
                 MapIdToBaseId(betTypeId, ESportsBetTypes.MapXMoneyline);
             }

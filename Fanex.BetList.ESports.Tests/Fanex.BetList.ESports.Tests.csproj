@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>Fanex.BetList.ESports.Tests.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,6 +33,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>Fanex.BetList.ESports.Tests.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NSubstitute, Version=2.0.3.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
@@ -49,9 +51,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builder\ChoiceBuilder\Choice9088Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9001Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9002Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9003Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice9087Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9005Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9073Test.cs" />
     <Compile Include="Builder\StatusBuilder\Status9001Test.cs" />
@@ -67,8 +71,13 @@
       <Name>Fanex.BetList.ESports</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.7.14.0.8411\analyzers\Google.Protobuf.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.7.14.0.8411\analyzers\SonarAnalyzer.CSharp.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.7.14.0.8411\analyzers\SonarAnalyzer.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Fanex.BetList.ESports.Tests.ruleset" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

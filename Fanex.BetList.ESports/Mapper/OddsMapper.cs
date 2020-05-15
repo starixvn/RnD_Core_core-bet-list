@@ -12,7 +12,7 @@
 
         private static void RegisterMultipleOddsTypes()
         {
-            for (int betTypeId = ESportsBetTypes.MapXMoneyline; betTypeId <= ESportsBetTypes.MapXTotalOverlordsOddEven; betTypeId++)
+            for (int betTypeId = ESportsBetTypes.MapXMoneyline; betTypeId <= ESportsBetTypes.MapXOvertime; betTypeId++)
             {
                 ConvertByBetType.RegisterMultipleOddsTypes(betTypeId);
             }

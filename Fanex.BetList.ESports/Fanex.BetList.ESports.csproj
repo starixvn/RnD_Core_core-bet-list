@@ -42,9 +42,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builder\ChoiceBuilder\Choice9088.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9001.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9002.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9003.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice9087.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9005.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9073.cs" />
     <Compile Include="Builder\StatusBuilder\Status9001.cs" />
