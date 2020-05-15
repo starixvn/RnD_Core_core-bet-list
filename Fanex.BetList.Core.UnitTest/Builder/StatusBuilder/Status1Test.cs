@@ -47,7 +47,7 @@
         }
 
         [TestCase(0, "Won")]
-        [TestCase(1, "Delay Payout")]        
+        [TestCase(1, "Delayed Payout")]        
         public void BuildResult_WonTicket_ShowExpectedResult(byte settlementStatus, string expectedResult)
         {
             // Arrange
@@ -62,7 +62,7 @@
         }
 
         [TestCase(0, "Lose")]
-        [TestCase(1, "Delay Payout")]
+        [TestCase(1, "Delayed Payout")]
         public void BuildResult_LoseTicket_ShowExpectedResult(byte settlementStatus, string expectedResult)
         {
             // Arrange
@@ -77,7 +77,7 @@
         }
 
         [TestCase(0, "Draw")]
-        [TestCase(1, "Delay Payout")]
+        [TestCase(1, "Delayed Payout")]
         public void BuildResult_DrawTicket_ShowExpectedResult(byte settlementStatus, string expectedResult)
         {
             // Arrange
