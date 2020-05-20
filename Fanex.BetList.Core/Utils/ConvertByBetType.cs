@@ -168,6 +168,23 @@
             return string.Format(Formatter.DECIMALFORMAT3, odds);
         }
 
+        public static string Odds4(object oddsValue, object betType, object oddsType)
+        {
+            var odds = GetOddsByBetType(Convert.ToDouble(oddsValue), Convert.ToInt32(betType), Convert.ToInt32(oddsType));
+
+            if (odds < 0)
+            {
+                return string.Format(Minus, string.Format(Formatter.DECIMALFORMAT4, odds));
+            }
+
+            if (odds.Equals(0))
+            {
+                return "-";
+            }
+
+            return string.Format(Formatter.DECIMALFORMAT4, odds);
+        }
+
         public static string VirtualHorseRacingOdds(object oddsValue, object betType, object oddsType)
         {
             var odds = GetOddsByBetType(Convert.ToDouble(oddsValue), Convert.ToInt32(betType), Convert.ToInt32(oddsType));
