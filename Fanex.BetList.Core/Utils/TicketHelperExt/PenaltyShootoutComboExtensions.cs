@@ -37,7 +37,7 @@
             {
                 Round = round;
                 Option = option;
-                Odds = odds;
+                OddsString = odds;
                 TeamName = teamName;
             }
 
@@ -47,7 +47,7 @@
 
             public string Option { get; }
 
-            public string Odds { get; }
+            public string OddsString { get; }
 
             public string Text => GetDisplayText();
 
@@ -55,7 +55,7 @@
             {
                 var text = string.Empty;
 
-                if (string.IsNullOrEmpty(Option) || Option == "-" || string.IsNullOrEmpty(Odds))
+                if (string.IsNullOrEmpty(Option) || Option == "-" || string.IsNullOrEmpty(OddsString))
                     return text;
 
                 if (Option == BetTeamValue.S)
@@ -68,7 +68,8 @@
                     text = CoreBetList.TeamNameRoundMiss;
                 }
 
-                return string.Format(text, TeamName, Round, Odds);
+                double.TryParse(OddsString, out double odds);
+                return string.Format(text, TeamName, Round, string.Format(Formatter.DECIMALFORMAT2C, odds));
             }
         }
     }
