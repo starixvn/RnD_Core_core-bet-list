@@ -134,6 +134,8 @@
         public const int Next1MinuteSetPiece = 225;
         public const int WhichCombinationWillHappenFirstInNext1Min = 226;
         public const int WhichCombinationWillHappenFirstInNext5Mins = 227;
+
+        public const int PenaltyShootoutComboFirst10 = 376;
         public const int AwayPenaltyShootoutRoundX = 381;
         public const int HomePenaltyShootoutRoundX = 382;
         public const int PenaltyShootoutWoodworkRoundX = 383;

@@ -5,37 +5,33 @@
     using Fanex.BetList.Core.Constants;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.UnitTest.Common;
-    using Fanex.BetList.Core.Utils.TicketHelperExt;
     using NSubstitute;
     using NUnit.Framework;
 
     public class Choice376Tests
     {
-        private const string ScoreBoxDescription = "score box description";
-
         private IChoice _choice;
         private ITicket _ticket;
         private ITicketHelper _ticketHelper;
         private List<ITicketData> _ticketData;
         private bool _isShowScoreMap;
+        const string homeTeamName = "home team";
+        const string awayTeamName = "away team";
+        const string emptyBettype = "<div class=\"bettype\"> </div>";
 
         [SetUp]
         public void Setup()
         {
-            const string homeTeamName = "home team";
-            const string awayTeamName = "away team";
 
-            _choice = new Choice468();
-            _ticket = TestData.CreateTicket(BetTypes.ScoreBoxHandicap);
+
+            _choice = new Choice376();
+            _ticket = TestData.CreateTicket(BetTypes.PenaltyShootoutComboFirst10);
             _ticketHelper = Substitute.For<ITicketHelper>();
             _ticketData = Substitute.For<List<ITicketData>>();
             _isShowScoreMap = false;
 
-            _ticketHelper.GetResourceData(ScoreBoxExtensions.ScoreBoxRefId, Arg.Any<string>()).Returns(ScoreBoxDescription);
             _ticketHelper.GetTeamNameById(_ticket.HomeId).Returns(homeTeamName);
             _ticketHelper.GetTeamNameById(_ticket.AwayId).Returns(awayTeamName);
-
-            _ticket.BetTeam = "A";
         }
 
         [Test]
@@ -49,65 +45,101 @@
         }
 
         [Test]
-        public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameToFavorite()
+        public void BuildBetTeamClassNameAndHandicap_Always_SetCssIsBetType()
         {
             // Act.
             var template = _choice.Render(_ticket, _ticketHelper, _ticketData, _isShowScoreMap);
 
             // Assert.
-            const string favorite = "favorite";
-
-            Assert.AreEqual(favorite, template.betTeamClassName);
+            Assert.AreEqual("bettype", template.betTeamClassName);
         }
 
         [Test]
-        public void BuildBetType_BetCheckIsValid_AppendScoreBoxDescriptionAfterBetTypeName()
+        public void BuildBetType_Always_SetBettypeNameIsEmpty()
         {
             // Arrange.
-            _ticket.BetCheck = "0:5";
 
             // Act.
             var template = _choice.Render(_ticket, _ticketHelper, _ticketData, _isShowScoreMap);
-            var generatedHtml = template.BetType.ToString();
 
             // Assert.
-            var expectedHtml = string.Format(Choice468.ScoreBoxDescriptionHtmlFormat, ScoreBoxDescription);
-
-            StringAssert.EndsWith(expectedHtml, generatedHtml);
+            Assert.IsEmpty(template.BetType.betTypeName);
         }
 
         [Test]
-        public void BuildBetType_BetCheckIsEmpty_OnlyShowBetTypeName()
+        public void BuildBetType_BetCheckIsEmpty_BetTypeIsEmpty()
         {
             // Arrange.
             _ticket.BetCheck = string.Empty;
 
             // Act.
             var template = _choice.Render(_ticket, _ticketHelper, _ticketData, _isShowScoreMap);
-            var generatedHtml = template.BetType.ToString();
 
             // Assert.
-            var unexpectedHtml = string.Format(Choice468.ScoreBoxDescriptionHtmlFormat, ScoreBoxDescription);
-
-            StringAssert.DoesNotContain(unexpectedHtml, generatedHtml);
+            Assert.AreEqual(emptyBettype, template.BetType.ToString());
         }
 
         [Test]
-        public void BuildBetTypeName_BetCheckIsValid_ScoreBoxDescriptionsGoAfterBetTypeName()
+        public void BuildBetType_BetTeamIsEmpty_BetTypeIsEmpty()
         {
             // Arrange.
-            var rtfHelper = new RTFHelper().Clone();
-
-            _ticket.BetCheck = "0:1.55";
+            _ticket.BetCheck = string.Empty;
 
             // Act.
-            var actualText = _choice.RenderRTF(_ticket, _ticketHelper, _ticketData, _isShowScoreMap, rtfHelper);
-            var linesInActualText = actualText[0].String.Split('\n');
+            var template = _choice.Render(_ticket, _ticketHelper, _ticketData, _isShowScoreMap);
 
             // Assert.
-            var thirdLine = linesInActualText[2];
+            Assert.AreEqual(emptyBettype, template.BetType.ToString());
+        }
 
-            Assert.AreEqual(ScoreBoxDescription, thirdLine);
+        [Test]
+        public void BuildBetTypeName_Always_OrderAscByRound()
+        {
+            // Arrange.
+            _ticket.BetCheck = "1.3,1.3,1.2,1.2";
+            _ticket.BetTeam = "SSSS";
+            var expectedBetType = emptyBettype + string.Format(Choice376.OptionHtmlFormat, $"{homeTeamName} Round 1: Goal @1.30");
+            expectedBetType += string.Format(Choice376.OptionHtmlFormat, $"{awayTeamName} Round 1: Goal @1.20");
+            expectedBetType += string.Format(Choice376.OptionHtmlFormat, $"{homeTeamName} Round 2: Goal @1.30");
+            expectedBetType += string.Format(Choice376.OptionHtmlFormat, $"{awayTeamName} Round 2: Goal @1.20");
+
+            // Act.
+            var template = _choice.Render(_ticket, _ticketHelper, _ticketData, _isShowScoreMap);
+
+            // Assert.
+            Assert.AreEqual(expectedBetType, template.BetType.ToString());
+        }
+
+        [Test]
+        public void BuildBetTypeName_OptionIsHyphen_Hide()
+        {
+            // Arrange.
+            _ticket.BetCheck = "1.3,1.3";
+            _ticket.BetTeam = "-S";
+            var expectedBetType = emptyBettype + string.Format(Choice376.OptionHtmlFormat, string.Empty);
+            expectedBetType += string.Format(Choice376.OptionHtmlFormat, $"{awayTeamName} Round 1: Goal @1.30");
+
+            // Act.
+            var template = _choice.Render(_ticket, _ticketHelper, _ticketData, _isShowScoreMap);
+
+            // Assert.
+            Assert.AreEqual(expectedBetType, template.BetType.ToString());
+        }
+
+        [Test]
+        public void BuildBetTypeName_OddsIsEmpty_Hide()
+        {
+            // Arrange.
+            _ticket.BetCheck = ",1.3";
+            _ticket.BetTeam = "SS";
+            var expectedBetType = emptyBettype + string.Format(Choice376.OptionHtmlFormat, string.Empty);
+            expectedBetType += string.Format(Choice376.OptionHtmlFormat, $"{awayTeamName} Round 1: Goal @1.30");
+
+            // Act.
+            var template = _choice.Render(_ticket, _ticketHelper, _ticketData, _isShowScoreMap);
+
+            // Assert.
+            Assert.AreEqual(expectedBetType, template.BetType.ToString());
         }
     }
 }

@@ -56,7 +56,10 @@
                 var text = string.Empty;
 
                 if (string.IsNullOrEmpty(Option) || Option == "-" || string.IsNullOrEmpty(OddsString))
+                {
                     return text;
+                }
+                    
 
                 if (Option == BetTeamValue.S)
                 {
