@@ -2,6 +2,7 @@ namespace Fanex.BetList.Core.Builder
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Reflection;
     using System.Runtime.Caching;
@@ -120,7 +121,13 @@ namespace Fanex.BetList.Core.Builder
                 }
                 catch
                 {
-                    assemblies = AppDomain.CurrentDomain.GetAssemblies().ToList();
+                    assemblies = new List<Assembly>();
+                    var path = Path.GetDirectoryName(typeof(BetListBaseBuilder).Assembly.Location);
+
+                    foreach (var dllPath in Directory.GetFiles(path, "Fanex.BetList.*.dll"))
+                    {
+                        assemblies.Add(Assembly.LoadFile(dllPath));
+                    }
                 }
 
                 assemblies = assemblies.Where(x => x.FullName.StartsWith("Fanex.BetList.", StringComparison.InvariantCulture)).ToList();
