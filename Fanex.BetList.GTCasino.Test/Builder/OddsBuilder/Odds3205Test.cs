@@ -25,12 +25,12 @@
             };
         }
 
-        [TestCase("choice=8011")]
-        [TestCase("Choice=8012*TableCode=C103")]
-        [TestCase("CHOICE=8013*TableCode=C103*site=7333333")]
-        [TestCase("cHoice=8111*TableCode=C103*site=7333333*comms=100")]
-        [TestCase("choice=8012*TableCode=C103*site=7333333*comms=100*enterType=106")]
-        [TestCase("CHOICE=8013*TableCode=C103*site=7333333")]
+        [TestCase("choice=5004")]
+        [TestCase("Choice=5005*TableCode=C103")]
+        [TestCase("CHOICE=5006*TableCode=C103*site=7333333")]
+        [TestCase("cHoice=5010*TableCode=C103*site=7333333*comms=100")]
+        [TestCase("choice=5011*TableCode=C103*site=7333333*comms=100*enterType=106")]
+        [TestCase("CHOICE=5012*TableCode=C103*site=7333333")]
         public void Render_ChoiceIsDoubleBet_HideOdds(string transDesc)
         {
             // Arrange.
@@ -43,12 +43,12 @@
             Assert.AreEqual("-", template.odds);
         }
 
-        [TestCase("choice=8011")]
-        [TestCase("Choice=8012*TableCode=C103")]
-        [TestCase("CHOICE=8013*TableCode=C103*site=7333333")]
-        [TestCase("cHoice=8111*TableCode=C103*site=7333333*comms=100")]
-        [TestCase("choice=8012*TableCode=C103*site=7333333*comms=100*enterType=106")]
-        [TestCase("CHOICE=8013*TableCode=C103*site=7333333")]
+        [TestCase("choice=5004")]
+        [TestCase("Choice=5005*TableCode=C103")]
+        [TestCase("CHOICE=5006*TableCode=C103*site=7333333")]
+        [TestCase("cHoice=5010*TableCode=C103*site=7333333*comms=100")]
+        [TestCase("choice=5011*TableCode=C103*site=7333333*comms=100*enterType=106")]
+        [TestCase("CHOICE=5012*TableCode=C103*site=7333333")]
         public void Render_ChoiceIsDoubleBet_HideOddsType(string transDesc)
         {
             // Arrange.
