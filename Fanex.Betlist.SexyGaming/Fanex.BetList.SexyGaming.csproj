@@ -90,7 +90,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SexyGamingLang.resx</DependentUpon>
     </Compile>
-    <Compile Include="Utils\TransDescParser.cs" />
+    <Compile Include="Utils\TransDescParser.cs" >
+		<SonarQubeExclude>true</SonarQubeExclude>
+	</Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resource\SexyGamingLang.ja-JP.resx">

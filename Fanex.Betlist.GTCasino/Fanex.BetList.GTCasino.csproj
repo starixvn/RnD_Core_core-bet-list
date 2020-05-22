@@ -21,7 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>Fanex.BetList.Allbet.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>Fanex.BetList.GTCasino.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,7 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>Fanex.BetList.Allbet.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>Fanex.BetList.GTCasino.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -90,7 +90,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GTCasinoLang.resx</DependentUpon>
     </Compile>
-    <Compile Include="Utils\TransDescParser.cs" />
+    <Compile Include="Utils\TransDescParser.cs">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resource\GTCasinoLang.ja-JP.resx">
@@ -130,6 +132,7 @@
     <Content Include="Content\GTCasino.css" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Fanex.BetList.GTCasino.ruleset" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

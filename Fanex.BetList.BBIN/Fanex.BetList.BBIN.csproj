@@ -49,7 +49,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BBinResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Utils\TransDescParser.cs" />
+    <Compile Include="Utils\TransDescParser.cs" >
+		<SonarQubeExclude>true</SonarQubeExclude>
+	</Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj">
