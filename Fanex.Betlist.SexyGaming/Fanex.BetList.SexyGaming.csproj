@@ -42,7 +42,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Builder\ChoiceBuilder\Choice3101.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice3101.cs" >
+		<SonarQubeExclude>true</SonarQubeExclude>
+	</Compile>
     <Compile Include="Builder\OddsBuilder\Odds3101.cs" />
     <Compile Include="Builder\StatusBuilder\Status3101.cs" />
     <Compile Include="Constants\SexyGamingBetTypes.cs" />

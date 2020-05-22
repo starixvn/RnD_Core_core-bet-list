@@ -43,7 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builder\ChoiceBuilder\Choice3201.cs" />
-    <Compile Include="Builder\OddsBuilder\Odds3201.cs" />
+    <Compile Include="Builder\OddsBuilder\Odds3201.cs" >
+		<SonarQubeExclude>true</SonarQubeExclude>
+	</Compile>
     <Compile Include="Builder\OddsBuilder\Odds3205.cs" >
 		<SonarQubeExclude>true</SonarQubeExclude>
 	</Compile>
