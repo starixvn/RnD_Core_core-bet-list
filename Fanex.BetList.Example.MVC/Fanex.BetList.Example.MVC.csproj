@@ -495,12 +495,14 @@
     <Content Include="App_Data\TableGames.xls" />
     <Content Include="App_Data\DelayPayout.xls" />
     <Content Include="App_Data\GTCasino.xls" />
+    <Content Include="App_Data\LicenseeId.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
     <None Include="Scripts\jquery-1.9.0.min.map" />
     <Content Include="Views\BetList\All.cshtml" />
     <Content Include="Views\BetList\ColosussBetsDetails.cshtml" />
+    <Content Include="Views\BetList\LicenseeId.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

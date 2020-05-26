@@ -2,12 +2,15 @@
 {
     using App_GlobalResources;
     using Entities;
+    using Fanex.BetList.Core.Utils.StringExt;
     using NPOI.HSSF.UserModel;
     using NPOI.SS.UserModel;
     using Templates;
 
     public class Trans1 : ITrans
     {
+        private const string SportsbookXmlTag = "p1";
+
         public Trans1()
         {
             Template = new Trans_Template();
@@ -20,6 +23,8 @@
             BuildTransTime(ticket);
 
             BuildRefNo(ticket);
+
+            BuildLicenseeTxId(ticket);
 
             return Template;
         }
@@ -38,6 +43,13 @@
             return Template.TransTime.refNo;
         }
 
+        public virtual string RenderLicenseeTxId(ITicket ticket)
+        {
+            BuildLicenseeTxId(ticket);
+
+            return Template.LicenseeTxId.Value;
+        }
+
 #pragma warning disable S1449 // Culture should be specified for "string" operations
 
         protected virtual void BuildTransTime(ITicket ticket)
@@ -48,12 +60,31 @@
         protected virtual void BuildRefNo(ITicket ticket)
             => Template.TransTime.refNo = ticket.TransId.ToString(); // For Mix parlay(Trans9) to reuse
 
+        protected virtual void BuildLicenseeTxId(ITicket ticket)
+        {
+            if (HasLicenseeTxId(ticket))
+            {
+                Template.LicenseeTxId.Value = ticket.ExtraInfo.GetXmlTagAttributeValue(SportsbookXmlTag, "lt");
+            }
+            else
+            {
+                Template.LicenseeTxId.Value = string.Empty;
+                Template.LicenseeTxId.Hide();
+            }
+        }
+
         public virtual IRichTextString RenderRTF(ITicket ticket, ITicketHelper ticketHelper)
         {
             Render(ticket);
 
             var refNo = string.Join(null, new[] { CoreBetList.refno, ": ", Template.TransTime.refNo });
             var rtfTrans = new HSSFRichTextString(string.Join(null, new[] { refNo, "\n", Template.transTime }));
+
+            if (HasLicenseeTxId(ticket))
+            {
+                var licenseeTxId = string.Join(null, new[] { CoreBetList.TxId, ": ", Template.LicenseeTxId.Value });
+                rtfTrans = new HSSFRichTextString(string.Join(null, new[] { licenseeTxId, "\n", refNo, "\n", Template.transTime }));
+            }
 
             return rtfTrans;
         }
@@ -71,5 +102,15 @@
 
             return new HSSFRichTextString(Template.TransTime.refNo);
         }
+
+        public virtual IRichTextString RenderLicenseeTxIdRTF(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            BuildLicenseeTxId(ticket);
+
+            return new HSSFRichTextString(Template.LicenseeTxId.Value);
+        }
+
+        private static bool HasLicenseeTxId(ITicket ticket)
+            => ticket.ExtraInfo != null && ticket.ExtraInfo.HasAttributeInXmlTag(SportsbookXmlTag, "lt");
     }
 }

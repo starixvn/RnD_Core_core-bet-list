@@ -277,6 +277,15 @@ namespace Fanex.BetList.Core.Builder
             return this;
         }
 
+        public BetListExcelBuilder AddLicenseeTxId(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            ITrans transBuilder = CreateTransBuilder(ticket.BetTypeId);
+            IRichTextString rtfLicenseeTxId = transBuilder.RenderLicenseeTxIdRTF(ticket, ticketHelper);
+            AddCell(rtfLicenseeTxId, IsEven(ticketHelper.Index) ? OddCellStyleCenterAligned : EvenCellStyleCenterAligned);
+
+            return this;
+        }
+
         public BetListExcelBuilder AddStatus(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP)
         {
             IStatus statusBuilder = CreateStatusBuilder(ticket.BetTypeId);

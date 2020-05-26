@@ -466,7 +466,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delay Payout.
+        ///   Looks up a localized string similar to Delayed Payout.
         /// </summary>
         public static string DelayPayout {
             get {
@@ -2181,6 +2181,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string TwoHDotX {
             get {
                 return ResourceManager.GetString("TwoHDotX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TxID.
+        /// </summary>
+        public static string TxId {
+            get {
+                return ResourceManager.GetString("TxId", resourceCulture);
             }
         }
         

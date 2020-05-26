@@ -240,6 +240,13 @@
             return transBuilder.RenderRefNo(ticket);
         }
 
+        public string BuildLicenseeTxId(ITicket ticket)
+        {
+            var transBuilder = CreateTransBuilder(ticket.BetTypeId);
+
+            return transBuilder.RenderLicenseeTxId(ticket);
+        }
+
         /// <summary>
         /// Adds the status.
         /// </summary>

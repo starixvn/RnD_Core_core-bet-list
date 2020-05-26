@@ -28,7 +28,7 @@
     [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleClass", Justification = "Reviewed.")]
     public class Trans_TemplateTest
     {
-        private const string TransTemplate = "{0}<div class=\"time\">{1}</div>";
+        private const string TransTemplate = "{0}{1}<div class=\"time\">{2}</div>";
 
         /// <summary>
         /// Visible the property is true return HTML string.
@@ -48,7 +48,7 @@
             transHtml = block.ToString();
 
             // Assert
-            var expectedHtml = string.Format(TransTemplate, block.TransTime, transTime);
+            var expectedHtml = string.Format(TransTemplate, block.LicenseeTxId, block.TransTime, transTime);
             Assert.AreEqual(expectedHtml, transHtml);
         }
 
@@ -64,14 +64,15 @@
             var block = new Trans_Template
             {
                 transTime = transTime,
-                TransTime = null
+                TransTime = null,
+                LicenseeTxId = null
             };
 
             // Act
             transHtml = block.ToString();
 
             // Assert
-            var expectedHtml = string.Format(TransTemplate, string.Empty, transTime);
+            var expectedHtml = string.Format(TransTemplate, string.Empty, string.Empty, transTime);
             Assert.AreEqual(expectedHtml, transHtml);
         }
 
@@ -116,7 +117,7 @@
             transHtml = block.ToString();
 
             // Assert
-            var expectedHtml = string.Format(TransTemplate, block.TransTime, transTime) + value;
+            var expectedHtml = string.Format(TransTemplate, block.LicenseeTxId, block.TransTime, transTime) + value;
             Assert.AreEqual(expectedHtml, transHtml);
         }
     }

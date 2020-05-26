@@ -903,4 +903,7 @@
   <data name="DelayPayout" xml:space="preserve">
     <value>Delayed Payout</value>
   </data>
+  <data name="TxId" xml:space="preserve">
+    <value>TxID</value>
+  </data>
 </root>

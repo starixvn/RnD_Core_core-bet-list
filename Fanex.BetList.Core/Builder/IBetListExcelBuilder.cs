@@ -55,6 +55,8 @@
 
         BetListExcelBuilder AddRefNo(ITicket ticket, ITicketHelper ticketHelper);
 
+        BetListExcelBuilder AddLicenseeTxId(ITicket ticket, ITicketHelper ticketHelper);
+
         BetListExcelBuilder AddStatus(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP);
     }
 }

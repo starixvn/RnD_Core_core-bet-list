@@ -41,7 +41,19 @@
 
             return View(model);
         }
-        
+
+        public ActionResult LicenseeId(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes();
+            DataSourcePath = "~/App_Data/LicenseeId.xls";
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return View("LicenseeId", model);
+        }
+
         public ActionResult BBIN(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(3300);
@@ -97,7 +109,7 @@
 
         public ActionResult SAGaming(BetListData model = null)
         {
-            var betTypes = _dataService.QueryBetTypes(3001, 3002, 3003, 3004, 3005, 3006,3007);
+            var betTypes = _dataService.QueryBetTypes(3001, 3002, 3003, 3004, 3005, 3006, 3007);
             DataSourcePath = "~/App_Data/SAGaming.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
@@ -109,7 +121,7 @@
 
         public ActionResult Indo4D(BetListData model = null)
         {
-            var betTypes = _dataService.QueryBetTypes(5001,5002,5003,5004,5005,5006,5007);
+            var betTypes = _dataService.QueryBetTypes(5001, 5002, 5003, 5004, 5005, 5006, 5007);
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             DataSourcePath = "~/App_Data/Indo4D.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
@@ -117,7 +129,7 @@
 
             return BetListView(model);
         }
-        
+
         public ActionResult SabaClub(BetListData model = null)
         {
             var betTypeIds = new List<int>();
@@ -139,7 +151,7 @@
         }
         public ActionResult SexyGaming(BetListData model = null)
         {
-            var betTypes = _dataService.QueryBetTypes(3101,3102,3103,3104,3105);
+            var betTypes = _dataService.QueryBetTypes(3101, 3102, 3103, 3104, 3105);
             DataSourcePath = "~/App_Data/SexyGaming.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
@@ -148,7 +160,7 @@
 
             return BetListView(model);
         }
-        
+
         public ActionResult BetRadar(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(133, 134, 135, 140, 141, 145, 146, 147, 148, 149, 150, 151, 152);
@@ -932,7 +944,7 @@
             BetListExcelBuilder builder = factory.CreateBuilder();
             ITicketHelper ticketHelper = new TicketHelper();
             GetCachePropertyById funcGetOddsTypeName = ticketHelper.GetOddsTypeNameById;
-            const short excelColumns = 11;
+            const short excelColumns = 12;
             builder.BuildWorksheet("BetList", excelColumns);
             var index = 0;
 
@@ -951,6 +963,7 @@
                            .AddTrans(ticket, ticketHelper)
                            .AddTransTime(ticket, ticketHelper)
                            .AddRefNo(ticket, ticketHelper)
+                           .AddLicenseeTxId(ticket, ticketHelper)
                            .AddUsername(ticket, ticketHelper)
                            .AddChoice(ticket, ticketHelper, ticketData)
                            .AddOdds(ticket, ticketData, funcGetOddsTypeName)

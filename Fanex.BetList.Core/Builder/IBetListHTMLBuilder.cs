@@ -43,6 +43,8 @@
 
         string BuildRefNo(ITicket ticket);
 
+        string BuildLicenseeTxId(ITicket ticket);
+
         BetListHTMLBuilder AddStatus(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, string openTag, string closeTag, bool isShowVNIP);
 
         string BuildStatus(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP);

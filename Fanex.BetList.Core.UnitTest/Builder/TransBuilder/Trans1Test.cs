@@ -39,6 +39,37 @@
         }
 
         [Test]
+        public void BuildLicenseeTxId_HasLicenseeTxId_ShowTxId()
+        {
+            // Arrange
+            var txid = "1212124343434";
+            var licensee = $"<div class=\"licenseeTxid\">TxID: {txid}</div>";
+            _ticket.ExtraInfo = $"<p1 lt='{txid}'/>";
+
+            // Act
+            _trans.Render(_ticket);
+
+            // Assert
+            Assert.AreEqual(licensee, _trans.Template.LicenseeTxId.ToString());
+        }
+
+        [TestCase(null)]
+        [TestCase("")]
+        [TestCase("<p12 lt='jdjdjd'/>")]
+        [TestCase("<p1 ab='jdjdjd'/>")]
+        public void BuildLicenseeTxId_HasNotLicenseeTxId_HideTxId(string extraInfo)
+        {
+            // Arrange
+            _ticket.ExtraInfo = extraInfo;
+
+            // Act
+            _trans.Render(_ticket);
+
+            // Assert
+            Assert.IsEmpty(_trans.Template.LicenseeTxId.Value);
+        }
+
+        [Test]
         public void BuildRefNo_Always_SetRefNoIsTranId()
         {
             // Arrange
@@ -92,6 +123,36 @@
         }
 
         [Test]
+        public void RenderRTF_HasNotLicenseeTxId_HideLicenseeTxIdText()
+        {
+            // Arrange
+            _ticket.TransId = 1_243_432_423;
+            _ticket.ExtraInfo = string.Empty;
+            _ticket.TransDate = new DateTime(2012, 12, 12, 12, 12, 12);
+
+            // Act
+            var excelText = _trans.RenderRTF(_ticket, null);
+
+            // Assert
+            Assert.AreEqual("Ref No: 1243432423\n12/12/2012 12:12:12 PM", excelText.ToString());
+        }
+
+        [Test]
+        public void RenderRTF_HasLicenseeTxId_ShowLicenseeTxIdText()
+        {
+            // Arrange
+            _ticket.TransId = 1_243_432_423;
+            _ticket.ExtraInfo = "<p1 lt=\"123456789\" />";
+            _ticket.TransDate = new DateTime(2012, 12, 12, 12, 12, 12);
+
+            // Act
+            var excelText = _trans.RenderRTF(_ticket, null);
+
+            // Assert
+            Assert.AreEqual("TxID: 123456789\nRef No: 1243432423\n12/12/2012 12:12:12 PM", excelText.ToString());
+        }
+
+        [Test]
         public void RenderTransTimeRTF_Always_GetExpectedRTFText()
         {
             // Arrange
@@ -115,6 +176,19 @@
 
             // Assert
             Assert.AreEqual("1243432423", excelText.ToString());
+        }
+
+        [Test]
+        public void RenderLicenseeTxIdRTF_Always_GetExpectedRTFText()
+        {
+            // Arrange
+            _ticket.ExtraInfo = "<p1 lt=\"232323\" />";
+
+            // Act
+            var excelText = _trans.RenderLicenseeTxIdRTF(_ticket, null);
+
+            // Assert
+            Assert.AreEqual("232323", excelText.ToString());
         }
     }
 }
