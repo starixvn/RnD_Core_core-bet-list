@@ -54,6 +54,18 @@
             return View("LicenseeId", model);
         }
 
+        public ActionResult RNGWAR(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes(5500);
+            DataSourcePath = "~/App_Data/RNGWAR.xls";
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+        
         public ActionResult BBIN(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(3300);
