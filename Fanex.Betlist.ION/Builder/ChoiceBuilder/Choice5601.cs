@@ -19,6 +19,14 @@
         private const string ChoiceKey = "Choice";
 
         private IDictionary<string, string> _parsedTransDesc;
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            Template.Handicap = null;
+            Template.betTeamClassName = Underdog;
+        }
+
+        protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
+            => Template.Match = null;
 
         public override Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
         {
@@ -27,17 +35,8 @@
             return base.Render(ticket, ticketHelper, ticketData, isShowScoreMap);
         }
 
-        protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
-            => Template.Match = null;
-
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
             => Template.betTeam = GetChoiceInfo(ticket, ticketHelper);
-
-        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
-        {
-            Template.Handicap = null;
-            Template.betTeamClassName = Underdog;
-        }
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
@@ -62,6 +61,13 @@
                 Template.League.LeagueName.leagueName = bettype;
             }
         }
+
+        protected override void AdjustBetTeamToRTF()
+        {
+            Template.betTeam = string.Join("\n", Template.betTeam.SplitHTMLIntoRows());
+            Template.League.LeagueName.leagueName = string.Join(string.Empty, Template.League.LeagueName.leagueName.StripHTML());
+            RemoveHtmlTagFromBetTypeName();
+        }
         private string GetChoiceInfo(ITicket ticket, ITicketHelper ticketHelper)
         {
             var betTeam = new StringBuilder();
@@ -82,6 +88,26 @@
             }
 
             return betTeam.ToString();
+        }
+
+        private static string BuildDetailFunction(ITicket ticket)
+        {
+            var detailFunctionBuilder = new StringBuilder();
+
+            detailFunctionBuilder.Append("showIONCasinoBetDetails(&quot;")
+                .Append(ticket.TransId.ToString())
+                .Append("&quot;")
+                .Append(",&quot;")
+                .Append(ticket.WinlostDate.ToString(CultureInfo.InvariantCulture))
+                .Append("&quot;")
+                .Append(",&quot;")
+                .Append(ticket.CustId.ToString())
+                .Append("&quot;")
+                .Append(",&quot;")
+                .Append(GetTransactionType(ticket))
+                .Append("&quot;);");
+
+            return detailFunctionBuilder.ToString();
         }
 
         private static Choice_League_Block BuildDetailLink(ITicket ticket)
@@ -105,24 +131,11 @@
             return detailTemplateBlock;
         }
 
-        private static string BuildDetailFunction(ITicket ticket)
+        private static string BuildBetTypeName(ITicket ticket, ITicketHelper ticketHelper)
         {
-            var detailFunctionBuilder = new StringBuilder();
+            var betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
 
-            detailFunctionBuilder.Append("showIONCasinoBetDetails(&quot;")
-                .Append(ticket.TransId.ToString())
-                .Append("&quot;")
-                .Append(",&quot;")
-                .Append(ticket.WinlostDate.ToString(CultureInfo.InvariantCulture))
-                .Append("&quot;")
-                .Append(",&quot;")
-                .Append(ticket.CustId.ToString())
-                .Append("&quot;")
-                .Append(",&quot;")
-                .Append(GetTransactionType(ticket))
-                .Append("&quot;);");
-
-            return detailFunctionBuilder.ToString();
+            return $"{OpenBetTypeNameTag}{betTypeName}{CloseSpanTag}";
         }
 
         private static string GetTransactionType(ITicket ticket)
@@ -151,20 +164,6 @@
             }
 
             return "0";
-        }
-
-        private static string BuildBetTypeName(ITicket ticket, ITicketHelper ticketHelper)
-        {
-            var betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
-
-            return $"{OpenBetTypeNameTag}{betTypeName}{CloseSpanTag}";
-        }
-       
-        protected override void AdjustBetTeamToRTF()
-        {
-            Template.betTeam = string.Join("\n", Template.betTeam.SplitHTMLIntoRows());
-            Template.League.LeagueName.leagueName = string.Join(string.Empty, Template.League.LeagueName.leagueName.StripHTML());
-            RemoveHtmlTagFromBetTypeName();
         }
 
         private void RemoveHtmlTagFromBetTypeName()
