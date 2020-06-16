@@ -42,8 +42,8 @@
             {
                 return transDescItems;
             }
-
-            var betcheck = ticket.BetCheck.Replace("[", string.Empty).Replace("]", string.Empty);
+            var betChoiceSection = ticket.BetCheck.Split('&');
+            var betcheck = betChoiceSection[0].Replace("[", string.Empty).Replace("]", string.Empty);
             var splittedTransDescParts = betcheck.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
 
             foreach (var part in splittedTransDescParts)
@@ -54,6 +54,30 @@
                 {
                     transDescItems.Add(keyValuePair[0].Trim(), keyValuePair[1].Trim());
                 }
+            }
+
+            return transDescItems;
+        }
+
+        public static Dictionary<string, string> ParseBetChoice(this ITicket ticket)
+        {
+            var transDescItems = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+
+            if (string.IsNullOrEmpty(ticket.BetCheck))
+            {
+                return transDescItems;
+            }
+
+            var betcheck = ticket.BetCheck.Replace("[", string.Empty).Replace("]", string.Empty);
+            var splittedTransDescParts = betcheck.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+            var betChoiceSection = ticket.BetCheck.Split('&');
+            var betChoiceIds = betChoiceSection.Length > 1 ? betChoiceSection[1].Split(';') : new string[splittedTransDescParts.Length];
+
+            for (var i = 0; i < splittedTransDescParts.Length; i++)
+            {
+                var keyValuePair = splittedTransDescParts[i].Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+
+                transDescItems.Add(keyValuePair[0].Trim(), i < betChoiceIds.Length ? betChoiceIds[i] : string.Empty);
             }
 
             return transDescItems;

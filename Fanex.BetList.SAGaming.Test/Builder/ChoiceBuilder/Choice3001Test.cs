@@ -33,13 +33,32 @@
         }
 
         [Test]
+        public void BuildBetTeam_BetCheckHasDataOfBetChoice_HasNotChoiceId_ReturnBetChoiceName()
+        {
+            ////Arrange
+            const string choiceName = "Player";
+            var betTeamFormat = "<div><span class='favorite'>{0}</span>&nbsp;<span class='handicap custom'>(UUS {1})</span></div>";
+            var expectedBetTeam = string.Format(betTeamFormat, choiceName, 2);
+            _ticket.BetCheck = "[1,2]";
+            _ticket.Currency = "UUS";
+            _ticketHelper.GetResourceData("SA_BT", "1").Returns(choiceName);
+
+            ////Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            ////Assert
+            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
+        }
+
+        [Test]
         public void BuildBetTeam_BetCheckHasDataOfBetChoice_ReturnBetChoiceName()
         {
             ////Arrange
             const string choiceName = "Player";
-            var betTeamFormat = "<div><span class='favorite'>{0}</span>&nbsp;<span class='handicap custom'>({1})</span></div>";
+            var betTeamFormat = "<div><span class='favorite'>{0}</span>&nbsp;<span class='handicap custom'>(UUS {1})</span><span class='bet-id'> - 123</span></div>";
             var expectedBetTeam = string.Format(betTeamFormat, choiceName, 2);
-            _ticket.BetCheck = "[1,2]";
+            _ticket.BetCheck = "[1,2]&123";
+            _ticket.Currency = "UUS";
             _ticketHelper.GetResourceData("SA_BT", "1").Returns(choiceName);
 
             ////Act
@@ -62,12 +81,13 @@
         }
 
         [Test]
-        public void BuildBetTeam_BetCheckHasMultipDataOfBetChoice_ReturnMultipBetChoice()
+        public void BuildBetTeam_BetCheckHasMultipDataOfBetChoice_HasNotChoiceId_ReturnMultipBetChoice()
         {
             ////Arrange
             const string choiceName = "Player";
             _ticket.BetCheck = "[1,2];[2,10]";
-            var betTeamFormat = "<div><span class='favorite'>{0}</span>&nbsp;<span class='handicap custom'>({1})</span></div>";
+            _ticket.Currency = "UUS";
+            var betTeamFormat = "<div><span class='favorite'>{0}</span>&nbsp;<span class='handicap custom'>(UUS {1})</span></div>";
             var expectedChoice1 = string.Format(betTeamFormat, choiceName, 2);
             var expectedChoice2 = string.Format(betTeamFormat, choiceName, 10);
             _ticketHelper.GetResourceData("SA_BT", Arg.Any<string>()).Returns(choiceName);
@@ -77,6 +97,25 @@
 
             ////Assert
             Assert.AreEqual(expectedChoice1+expectedChoice2, _choice.Template.betTeam);
+        }
+
+        [Test]
+        public void BuildBetTeam_BetCheckHasMultipDataOfBetChoice_ReturnMultipBetChoice()
+        {
+            ////Arrange
+            const string choiceName = "Player";
+            _ticket.BetCheck = "[1,2];[2,10]&123;123";
+            _ticket.Currency = "UUS";
+            var betTeamFormat = "<div><span class='favorite'>{0}</span>&nbsp;<span class='handicap custom'>(UUS {1})</span><span class='bet-id'> - 123</span></div>";
+            var expectedChoice1 = string.Format(betTeamFormat, choiceName, 2);
+            var expectedChoice2 = string.Format(betTeamFormat, choiceName, 10);
+            _ticketHelper.GetResourceData("SA_BT", Arg.Any<string>()).Returns(choiceName);
+
+            ////Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            ////Assert
+            Assert.AreEqual(expectedChoice1 + expectedChoice2, _choice.Template.betTeam);
         }
 
         [Test]
@@ -127,7 +166,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            var betIdMarkup = string.Format("<span class='sagaming-bet-id'>{0}</span>", "BetID: " + "123");
+            var betIdMarkup = string.Format("<span class='bet-id'>{0}</span>", "BetID: " + "123");
             Assert.AreEqual(betIdMarkup, _choice.Template.BetType.betTypeName);
         }
 
@@ -217,7 +256,7 @@
 
             // Assert
             var expectedLeagueName = string.Format(
-                "<span class='sagaming-bet-type-name'>{0}</span> <span class=\"gamegroupname\">{1}</span> <span class='sagaming-game-id'>{2}</span>",
+                "<span class='bet-type-name'>{0}</span> <span class=\"gamegroupname\">{1}</span> <span class='sagaming-game-id'>{2}</span>",
                 BetTypeName,
                 gameTableId,
                 gameId);

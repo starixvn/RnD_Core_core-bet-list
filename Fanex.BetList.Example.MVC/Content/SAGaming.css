@@ -1,7 +1,4 @@
-﻿.sagaming-bet-id {
+﻿.bet-id {
     color: #bbb;
-}
-
-.sagaming-bet-type-name {
-    color: #696969;
+    font-weight: 600;
 }

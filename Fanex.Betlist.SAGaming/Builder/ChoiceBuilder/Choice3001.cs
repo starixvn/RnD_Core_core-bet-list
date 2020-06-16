@@ -7,17 +7,16 @@
     using App_GlobalResources;
     using Entities;
     using Fanex.BetList.Core.Utils.StringExt;
-    using Resource;
     using Templates;
     using Utils;
 
     public class Choice3001 : Choice1
     {
-        private const string BetTeamFormat = "<div><span class='favorite'>{0}</span>&nbsp;<span class='handicap custom'>({1})</span></div>";
+        private const string BetTeamFormat = "<div><span class='favorite'>{0}</span>&nbsp;<span class='handicap custom'>({1})</span>{2}</div>";
 
-        private const string BetTypeNameTag = "<span class='sagaming-bet-type-name'>{0}</span>";
+        private const string BetTypeNameTag = "<span class='bet-type-name'>{0}</span>";
 
-        private const string BetIdTag = "<span class='sagaming-bet-id'>{0}</span>";
+        private const string BetIdTag = "<span class='bet-id'>{0}</span>";
 
         private const string GameIdTag = "<span class='sagaming-game-id'>{0}</span>";
 
@@ -46,7 +45,7 @@
 
             if (!string.IsNullOrEmpty(ticket.TransDesc))
             {
-                Template.BetType.betTypeName = string.Format(BetIdTag, $"{SAGamingResources.BetId}: {ticket.BetTeam}");
+                Template.BetType.betTypeName = string.Format(BetIdTag, $"{CoreBetList.BetID}: {ticket.BetTeam}");
             }
         }
 
@@ -71,12 +70,23 @@
             foreach (var item in choiceOption)
             {
                 var choiceName = ticketHelper.GetResourceData(SAGamingBetRefId, item.Key);
-                var choiceStake = item.Value;
+                var choiceStake = $"{ticket.Currency} {item.Value}";
 
-                betTeam.AppendFormat(BetTeamFormat, choiceName, choiceStake);
+                var choiceId = GetBetChoiceId(ticket, item.Key);
+
+                betTeam.AppendFormat(BetTeamFormat, choiceName, choiceStake, choiceId);
             }
 
             return betTeam.ToString();
+        }
+
+        private static string GetBetChoiceId(ITicket ticket, string key)
+        {
+            var betchoiceIds = ticket.ParseBetChoice();
+
+            return betchoiceIds.ContainsKey(key) && !string.IsNullOrEmpty(betchoiceIds[key]) ?
+                string.Format(BetIdTag, $" - {betchoiceIds[key]}") :
+                string.Empty;
         }
 
         protected static Choice_League_Block BuildDetailLink(ITicket ticket)
