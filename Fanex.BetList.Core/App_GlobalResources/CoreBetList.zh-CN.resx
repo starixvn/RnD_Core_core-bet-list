@@ -843,4 +843,70 @@
   <data name="JackpotWonDetails" xml:space="preserve">
     <value>积包赢利详情</value>
   </data>
+  <data name="1q" xml:space="preserve">
+    <value>第 1 节</value>
+  </data>
+  <data name="2q" xml:space="preserve">
+    <value>第 2 节</value>
+  </data>
+  <data name="3q" xml:space="preserve">
+    <value>第 3 节</value>
+  </data>
+  <data name="4q" xml:space="preserve">
+    <value>第 4 节</value>
+  </data>
+  <data name="a12" xml:space="preserve">
+    <value>客队赢第 1 &amp; 2 节</value>
+  </data>
+  <data name="a13" xml:space="preserve">
+    <value>客队赢第 1 &amp; 3 节</value>
+  </data>
+  <data name="a14" xml:space="preserve">
+    <value>客队赢第 1 &amp; 4 节</value>
+  </data>
+  <data name="a23" xml:space="preserve">
+    <value>客队赢第 2 &amp; 3 节</value>
+  </data>
+  <data name="a24" xml:space="preserve">
+    <value>客队赢第 2 &amp; 4 节</value>
+  </data>
+  <data name="a34" xml:space="preserve">
+    <value>客队赢第 3 &amp; 4 节</value>
+  </data>
+  <data name="aos12" xml:space="preserve">
+    <value>1 &amp; 2 节的其他结果</value>
+  </data>
+  <data name="aos13" xml:space="preserve">
+    <value>1 &amp; 3 节的其他结果</value>
+  </data>
+  <data name="aos14" xml:space="preserve">
+    <value>1 &amp; 4 节的其他结果</value>
+  </data>
+  <data name="aos23" xml:space="preserve">
+    <value>2 &amp; 3 节的其他结果</value>
+  </data>
+  <data name="aos24" xml:space="preserve">
+    <value>2 &amp; 4 节的其他结果</value>
+  </data>
+  <data name="aos34" xml:space="preserve">
+    <value>3 &amp; 4 节的其他结果</value>
+  </data>
+  <data name="h12" xml:space="preserve">
+    <value>主队赢第 1 &amp; 2 节</value>
+  </data>
+  <data name="h13" xml:space="preserve">
+    <value>主队赢第 1 &amp; 3 节</value>
+  </data>
+  <data name="h14" xml:space="preserve">
+    <value>主队赢第 1 &amp; 4 节</value>
+  </data>
+  <data name="h23" xml:space="preserve">
+    <value>主队赢第 2 &amp; 3 节</value>
+  </data>
+  <data name="h24" xml:space="preserve">
+    <value>主队赢第 2 &amp; 4 节</value>
+  </data>
+  <data name="h34" xml:space="preserve">
+    <value>主队赢第 3 &amp; 4 节</value>
+  </data>
 </root>

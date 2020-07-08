@@ -34,6 +34,12 @@
             MapIdToBaseId(BetTypes.QuarterXHomeTeamOverUnder, BetTypes.FirstHalfRaceToXPoints);
             MapIdToBaseId(BetTypes.QuarterXAwayTeamOverUnder, BetTypes.FirstHalfRaceToXPoints);
             MapIdToBaseId(BetTypes.QuarterXWhichTeamToScoreTheLastBasket, BetTypes.FirstHalfRaceToXPoints);
+
+            MapIdToBaseId(BetTypes.QuarterXLastDigitScore, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.QuarterXHomeTeamLastDigitScore, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.QuarterXAwayTeamLastDigitScore, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.QuarterX1X2, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.QuarterXDoubleChance, BetTypes.FirstHalfRaceToXPoints);
         }
 
         private void MapForBadminton()

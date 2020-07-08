@@ -918,4 +918,70 @@
   <data name="JackpotWonDetails" xml:space="preserve">
     <value>Jackpot Won Details</value>
   </data>
+  <data name="h12" xml:space="preserve">
+    <value>Home To Win Quarter 1 &amp; 2</value>
+  </data>
+  <data name="h13" xml:space="preserve">
+    <value>Home To Win Quarter 1 &amp; 3</value>
+  </data>
+  <data name="h14" xml:space="preserve">
+    <value>Home To Win Quarter 1 &amp; 4</value>
+  </data>
+  <data name="h23" xml:space="preserve">
+    <value>Home To Win Quarter 2 &amp; 3</value>
+  </data>
+  <data name="h24" xml:space="preserve">
+    <value>Home To Win Quarter 2 &amp; 4</value>
+  </data>
+  <data name="h34" xml:space="preserve">
+    <value>Home To Win Quarter 3 &amp; 4</value>
+  </data>
+  <data name="a12" xml:space="preserve">
+    <value>Away To Win Quarter 1 &amp; 2</value>
+  </data>
+  <data name="a13" xml:space="preserve">
+    <value>Away To Win Quarter 1 &amp; 3</value>
+  </data>
+  <data name="a14" xml:space="preserve">
+    <value>Away To Win Quarter 1 &amp; 4</value>
+  </data>
+  <data name="a24" xml:space="preserve">
+    <value>Away To Win Quarter 2 &amp; 4</value>
+  </data>
+  <data name="a23" xml:space="preserve">
+    <value>Away To Win Quarter 2 &amp; 3</value>
+  </data>
+  <data name="a34" xml:space="preserve">
+    <value>Away To Win Quarter 3 &amp; 4</value>
+  </data>
+  <data name="aos12" xml:space="preserve">
+    <value>AOS For Quarter 1 &amp; 2</value>
+  </data>
+  <data name="aos13" xml:space="preserve">
+    <value>AOS For Quarter 1 &amp; 3</value>
+  </data>
+  <data name="aos14" xml:space="preserve">
+    <value>AOS For Quarter 1 &amp; 4</value>
+  </data>
+  <data name="aos23" xml:space="preserve">
+    <value>AOS For Quarter 2 &amp; 3</value>
+  </data>
+  <data name="aos24" xml:space="preserve">
+    <value>AOS For Quarter 2 &amp; 4</value>
+  </data>
+  <data name="aos34" xml:space="preserve">
+    <value>AOS For Quarter 3 &amp; 4</value>
+  </data>
+  <data name="1q" xml:space="preserve">
+    <value>Quarter 1</value>
+  </data>
+  <data name="2q" xml:space="preserve">
+    <value>Quarter 2</value>
+  </data>
+  <data name="3q" xml:space="preserve">
+    <value>Quarter 3</value>
+  </data>
+  <data name="4q" xml:space="preserve">
+    <value>Quarter 4</value>
+  </data>
 </root>

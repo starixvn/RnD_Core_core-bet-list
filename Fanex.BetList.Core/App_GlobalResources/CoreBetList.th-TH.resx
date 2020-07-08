@@ -726,4 +726,70 @@
   <data name="JackpotWonDetails" xml:space="preserve">
     <value>รายละเอียดรางวัลแจ็คพอต</value>
   </data>
+  <data name="1q" xml:space="preserve">
+    <value>ควอเตอร์ที่ 1</value>
+  </data>
+  <data name="2q" xml:space="preserve">
+    <value>ควอเตอร์ที่ 2</value>
+  </data>
+  <data name="3q" xml:space="preserve">
+    <value>ควอเตอร์ที่ 3</value>
+  </data>
+  <data name="4q" xml:space="preserve">
+    <value>ควอเตอร์ที่ 4</value>
+  </data>
+  <data name="a12" xml:space="preserve">
+    <value>ทีมเยือนชนะควอเตอร์ที่ 1 และ 2</value>
+  </data>
+  <data name="a13" xml:space="preserve">
+    <value>ทีมเยือนชนะควอเตอร์ที่ 1 และ 3</value>
+  </data>
+  <data name="a14" xml:space="preserve">
+    <value>ทีมเยือนชนะควอเตอร์ที่ 1 และ 4</value>
+  </data>
+  <data name="a23" xml:space="preserve">
+    <value>ทีมเยือนชนะควอเตอร์ที่ 2 และ 3</value>
+  </data>
+  <data name="a24" xml:space="preserve">
+    <value>ทีมเยือนชนะควอเตอร์ที่ 2 และ 4</value>
+  </data>
+  <data name="a34" xml:space="preserve">
+    <value>ทีมเยือนชนะควอเตอร์ที่ 3 และ 4</value>
+  </data>
+  <data name="aos12" xml:space="preserve">
+    <value>AOS ของควอเตอร์ที่ 1 และ 2</value>
+  </data>
+  <data name="aos13" xml:space="preserve">
+    <value>AOS ของควอเตอร์ที่ 1 และ 3</value>
+  </data>
+  <data name="aos14" xml:space="preserve">
+    <value>AOS ของควอเตอร์ที่ 1 และ 4</value>
+  </data>
+  <data name="aos23" xml:space="preserve">
+    <value>AOS ของควอเตอร์ที่ 2 และ 3</value>
+  </data>
+  <data name="aos24" xml:space="preserve">
+    <value>AOS ของควอเตอร์ที่ 2 และ 4</value>
+  </data>
+  <data name="aos34" xml:space="preserve">
+    <value>AOS ของควอเตอร์ที่ 3 และ 4</value>
+  </data>
+  <data name="h12" xml:space="preserve">
+    <value>ทีมเหย้าชนะควอเตอร์ที่ 1 และ 2</value>
+  </data>
+  <data name="h13" xml:space="preserve">
+    <value>ทีมเหย้าชนะควอเตอร์ที่ 1 และ 3</value>
+  </data>
+  <data name="h14" xml:space="preserve">
+    <value>ทีมเหย้าชนะควอเตอร์ที่ 1 และ 4</value>
+  </data>
+  <data name="h23" xml:space="preserve">
+    <value>ทีมเหย้าชนะควอเตอร์ที่ 2 และ 3</value>
+  </data>
+  <data name="h24" xml:space="preserve">
+    <value>ทีมเหย้าชนะควอเตอร์ที่ 2 และ 4</value>
+  </data>
+  <data name="h34" xml:space="preserve">
+    <value>ทีมเหย้าชนะควอเตอร์ที่ 3 และ 4</value>
+  </data>
 </root>

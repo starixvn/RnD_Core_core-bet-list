@@ -59,6 +59,7 @@
         public const string FourOver = "4-over";
         public const string SevenOver = "7-over";
         public const string TewlveOver = "12-over";
+        public const string NumberOneOver = "1+";
 
         public const string FourZero = "4:0";
         public const string ZeroFour = "0:4";

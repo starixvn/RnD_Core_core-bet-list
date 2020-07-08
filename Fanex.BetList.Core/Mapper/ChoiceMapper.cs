@@ -100,6 +100,23 @@
             MapIdToBaseId(BetTypes.QuarterXHomeTeamOverUnder, BetTypes.QuarterXOverUnder);
             MapIdToBaseId(BetTypes.QuarterXAwayTeamOverUnder, BetTypes.QuarterXOverUnder);
             MapIdToBaseId(BetTypes.QuarterXWhichTeamToScoreTheLastBasket, BetTypes.FirstHalfRaceToXPoints);
+            for (var i = BetTypes.LastDigitScore; i <= BetTypes.AwayTeamLastDigitScore2H; i++)
+            {
+                MapIdToBaseId(i, BetTypes.CorrectScore);
+            }
+
+            for (var i = BetTypes.QuarterXHomeTeamLastDigitScore; i <= BetTypes.QuarterX1X2; i++)
+            {
+                MapIdToBaseId(i, BetTypes.QuarterXLastDigitScore);
+            }
+
+            MapIdToBaseId(BetTypes.Quarter3Quarter4Result, BetTypes.Quarter1Quarter2Result);
+            MapIdToBaseId(BetTypes.QuarterToWinToNil, BetTypes.Moneyline);
+            MapIdToBaseId(BetTypes.QuarterToWinFromBehind, BetTypes.Moneyline);
+            MapIdToBaseId(BetTypes.QuartersWinnersHandicap, BetTypes.Handicap);
+            MapIdToBaseId(BetTypes.AwayTeamQuartersWinOverUnder, BetTypes.HomeTeamQuartersWinOverUnder);
+            MapIdToBaseId(BetTypes.QuarterDrawOverUnder, BetTypes.HomeTeamQuartersWinOverUnder);
+            MapIdToBaseId(BetTypes.FirstHalfSecondHalfResult, BetTypes.Quarter1Quarter2Result);
         }
 
         private void MapForFastMarkets()

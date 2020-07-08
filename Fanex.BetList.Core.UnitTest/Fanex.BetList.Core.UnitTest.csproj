@@ -193,6 +193,16 @@
     <Compile Include="Builder\ChoiceBuilder\Choice488Tests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice493Tests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice494Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice646Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice644Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice643Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice642Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice640Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice638Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice633Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice632Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice631Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice627Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice614Tests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice612Tests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice611Tests.cs" />

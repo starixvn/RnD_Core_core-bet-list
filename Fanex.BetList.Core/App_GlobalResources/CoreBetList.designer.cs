@@ -61,11 +61,101 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Quarter 1.
+        /// </summary>
+        public static string _1q {
+            get {
+                return ResourceManager.GetString("1q", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quarter 2.
+        /// </summary>
+        public static string _2q {
+            get {
+                return ResourceManager.GetString("2q", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quarter 3.
+        /// </summary>
+        public static string _3q {
+            get {
+                return ResourceManager.GetString("3q", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quarter 4.
+        /// </summary>
+        public static string _4q {
+            get {
+                return ResourceManager.GetString("4q", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A.
         /// </summary>
         public static string a {
             get {
                 return ResourceManager.GetString("a", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Away To Win Quarter 1 &amp; 2.
+        /// </summary>
+        public static string a12 {
+            get {
+                return ResourceManager.GetString("a12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Away To Win Quarter 1 &amp; 3.
+        /// </summary>
+        public static string a13 {
+            get {
+                return ResourceManager.GetString("a13", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Away To Win Quarter 1 &amp; 4.
+        /// </summary>
+        public static string a14 {
+            get {
+                return ResourceManager.GetString("a14", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Away To Win Quarter 2 &amp; 3.
+        /// </summary>
+        public static string a23 {
+            get {
+                return ResourceManager.GetString("a23", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Away To Win Quarter 2 &amp; 4.
+        /// </summary>
+        public static string a24 {
+            get {
+                return ResourceManager.GetString("a24", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Away To Win Quarter 3 &amp; 4.
+        /// </summary>
+        public static string a34 {
+            get {
+                return ResourceManager.GetString("a34", resourceCulture);
             }
         }
         
@@ -147,6 +237,60 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string AOS {
             get {
                 return ResourceManager.GetString("AOS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AOS For Quarter 1 &amp; 2.
+        /// </summary>
+        public static string aos12 {
+            get {
+                return ResourceManager.GetString("aos12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AOS For Quarter 1 &amp; 3.
+        /// </summary>
+        public static string aos13 {
+            get {
+                return ResourceManager.GetString("aos13", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AOS For Quarter 1 &amp; 4.
+        /// </summary>
+        public static string aos14 {
+            get {
+                return ResourceManager.GetString("aos14", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AOS For Quarter 2 &amp; 3.
+        /// </summary>
+        public static string aos23 {
+            get {
+                return ResourceManager.GetString("aos23", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AOS For Quarter 2 &amp; 4.
+        /// </summary>
+        public static string aos24 {
+            get {
+                return ResourceManager.GetString("aos24", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AOS For Quarter 3 &amp; 4.
+        /// </summary>
+        public static string aos34 {
+            get {
+                return ResourceManager.GetString("aos34", resourceCulture);
             }
         }
         
@@ -822,6 +966,60 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string h {
             get {
                 return ResourceManager.GetString("h", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home To Win Quarter 1 &amp; 2.
+        /// </summary>
+        public static string h12 {
+            get {
+                return ResourceManager.GetString("h12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home To Win Quarter 1 &amp; 3.
+        /// </summary>
+        public static string h13 {
+            get {
+                return ResourceManager.GetString("h13", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home To Win Quarter 1 &amp; 4.
+        /// </summary>
+        public static string h14 {
+            get {
+                return ResourceManager.GetString("h14", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home To Win Quarter 2 &amp; 3.
+        /// </summary>
+        public static string h23 {
+            get {
+                return ResourceManager.GetString("h23", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home To Win Quarter 2 &amp; 4.
+        /// </summary>
+        public static string h24 {
+            get {
+                return ResourceManager.GetString("h24", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home To Win Quarter 3 &amp; 4.
+        /// </summary>
+        public static string h34 {
+            get {
+                return ResourceManager.GetString("h34", resourceCulture);
             }
         }
         

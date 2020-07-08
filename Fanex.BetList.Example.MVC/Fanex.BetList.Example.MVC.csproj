@@ -507,6 +507,7 @@
     <Content Include="App_Data\LicenseeId.xls" />
     <Content Include="App_Data\RNGWar.xls" />
     <Content Include="App_Data\PHAllInOneP51.xls" />
+    <Content Include="App_Data\BasketballAIOP2.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />

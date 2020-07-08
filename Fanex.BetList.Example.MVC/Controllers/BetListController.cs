@@ -42,6 +42,22 @@
             return View(model);
         }
 
+        public ActionResult BasketballAIO2(BetListData model = null)
+        {
+            var bettypeIds = new int[50];
+            for (var i = 0; i <= 29; i++)
+            {
+                bettypeIds[i] = i + 618;
+            }
+            var betTypes = _dataService.QueryBetTypes(bettypeIds);
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            DataSourcePath = "~/App_Data/BasketballAIOP2.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+
+            return BetListView(model);
+        }
+
         public ActionResult LicenseeId(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes();
@@ -65,7 +81,7 @@
 
             return BetListView(model);
         }
-        
+
         public ActionResult BBIN(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(3300);
@@ -100,7 +116,7 @@
 
             return BetListView(model);
         }
-        
+
         public ActionResult GTCasino(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(3201, 3202, 3203, 3204, 3205, 3206);
@@ -111,8 +127,8 @@
             model.DataFilePath = DataSourcePath;
 
             return BetListView(model);
-        }     
-           
+        }
+
         public ActionResult TableGames(BetListData model = null)
         {
             var betTypeIds = new List<int>();
