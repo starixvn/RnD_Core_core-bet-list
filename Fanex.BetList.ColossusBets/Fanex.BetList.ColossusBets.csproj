@@ -83,6 +83,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <AdditionalFiles Include="..\SonarQube\betlistcore\CSharp\SonarLint.xml">
+      <Link>SonarLint.xml</Link>
+    </AdditionalFiles>
     <Content Include="Templates\ColossusBetsDetail.htm" />
     <Content Include="Templates\Content\ColossusBets.css" />
   </ItemGroup>

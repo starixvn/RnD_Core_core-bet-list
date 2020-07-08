@@ -63,5 +63,10 @@
     <None Include="Fanex.BetList.Spadegaming.ruleset" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="..\SonarQube\betlistcore\CSharp\SonarLint.xml">
+      <Link>SonarLint.xml</Link>
+    </AdditionalFiles>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

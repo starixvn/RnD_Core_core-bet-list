@@ -78,7 +78,11 @@
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.7.14.0.8411\analyzers\SonarAnalyzer.CSharp.dll" />
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.7.14.0.8411\analyzers\SonarAnalyzer.dll" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AdditionalFiles Include="..\SonarQube\betlistcore\CSharp\SonarLint.xml">
+      <Link>SonarLint.xml</Link>
+    </AdditionalFiles>
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resource\Indo4DResources.ja-JP.resx" />
     <EmbeddedResource Include="Resource\Indo4DResources.ko-KR.resx" />

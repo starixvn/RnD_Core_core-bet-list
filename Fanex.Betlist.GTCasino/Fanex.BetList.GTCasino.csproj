@@ -43,12 +43,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builder\ChoiceBuilder\Choice3201.cs" />
-    <Compile Include="Builder\OddsBuilder\Odds3201.cs" >
-		<SonarQubeExclude>true</SonarQubeExclude>
-	</Compile>
-    <Compile Include="Builder\OddsBuilder\Odds3205.cs" >
-		<SonarQubeExclude>true</SonarQubeExclude>
-	</Compile>
+    <Compile Include="Builder\OddsBuilder\Odds3201.cs">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </Compile>
+    <Compile Include="Builder\OddsBuilder\Odds3205.cs">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </Compile>
     <Compile Include="Builder\StatusBuilder\Status3201.cs" />
     <Compile Include="Constants\GTCasinoBetTypes.cs" />
     <Compile Include="Mapper\ChoiceMapper.cs" />
@@ -133,6 +133,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <AdditionalFiles Include="..\SonarQube\betlistcore\CSharp\SonarLint.xml">
+      <Link>SonarLint.xml</Link>
+    </AdditionalFiles>
     <Content Include="Content\GTCasino.css" />
   </ItemGroup>
   <ItemGroup>
