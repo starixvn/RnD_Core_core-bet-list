@@ -915,4 +915,7 @@
   <data name="TeamNameRoundMiss" xml:space="preserve">
     <value>{0} Round {1}: Miss @{2}</value>
   </data>
+  <data name="JackpotWonDetails" xml:space="preserve">
+    <value>Jackpot Won Details</value>
+  </data>
 </root>

@@ -6,10 +6,12 @@
     {
         public StatusMapper()
         {
-            for (int betTypeId = PragmaticPlayBetTypes.Dragons888 + 1; betTypeId < PragmaticPlayBetTypes.TournamentPrize; betTypeId++)
+            for (int betTypeId = PragmaticPlayBetTypes.Dragons888 + 1; betTypeId < PragmaticPlayBetTypes.JackpotContribution; betTypeId++)
             {
                 MapIdToBaseId(betTypeId, PragmaticPlayBetTypes.Dragons888);
             }
+
+            MapIdToBaseId(PragmaticPlayBetTypes.JackpotPrize, PragmaticPlayBetTypes.TournamentPrize);
         }
     }
 }

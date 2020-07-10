@@ -6,10 +6,12 @@
     {
         public ChoiceMapper()
         {
-            for (int betTypeId = PragmaticPlayBetTypes.Dragons888 + 1; betTypeId < PragmaticPlayBetTypes.PromotionPrize; betTypeId++)
+            for (int betTypeId = PragmaticPlayBetTypes.Dragons888 + 1; betTypeId < PragmaticPlayBetTypes.JackpotContribution; betTypeId++)
             {
                 MapIdToBaseId(betTypeId, PragmaticPlayBetTypes.Dragons888);
             }
+
+            MapIdToBaseId(PragmaticPlayBetTypes.TournamentPrize, PragmaticPlayBetTypes.Dragons888);            
         }
     }
 }

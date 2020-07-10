@@ -840,4 +840,7 @@
   <data name="TeamNameRoundMiss" xml:space="preserve">
     <value>{0} 回合{1}: 没进 @{2}</value>
   </data>
+  <data name="JackpotWonDetails" xml:space="preserve">
+    <value>积包赢利详情</value>
+  </data>
 </root>

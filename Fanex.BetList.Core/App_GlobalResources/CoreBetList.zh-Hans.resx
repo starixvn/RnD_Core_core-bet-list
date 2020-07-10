@@ -769,7 +769,7 @@
     <value>显示交易详情</value>
   </data>
   <data name="forRefNo" xml:space="preserve">
-    <value>参照号码:</value>
+    <value>参照号码</value>
   </data>
   <data name="rate" xml:space="preserve">
     <value>比率</value>
@@ -836,5 +836,8 @@
   </data>
   <data name="TeamNameRoundMiss" xml:space="preserve">
     <value>{0} 回合{1}: 没进 @{2}</value>
+  </data>
+  <data name="JackpotWonDetails" xml:space="preserve">
+    <value>积包赢利详情</value>
   </data>
 </root>

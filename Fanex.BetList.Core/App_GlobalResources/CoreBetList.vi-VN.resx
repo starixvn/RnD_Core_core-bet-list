@@ -545,4 +545,7 @@
   <data name="TeamNameRoundMiss" xml:space="preserve">
     <value>{0} Loạt {0}: Hụt @{2}</value>
   </data>
+  <data name="JackpotWonDetails" xml:space="preserve">
+    <value>Chi tiết cược thắng Jackpot</value>
+  </data>
 </root>

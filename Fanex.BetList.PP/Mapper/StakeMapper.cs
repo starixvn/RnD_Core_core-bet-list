@@ -7,6 +7,7 @@
         public StakeMapper()
         {
             MapIdToBaseId(PragmaticPlayBetTypes.TournamentPrize, PragmaticPlayBetTypes.PromotionPrize);
+            MapIdToBaseId(PragmaticPlayBetTypes.JackpotPrize, PragmaticPlayBetTypes.JackpotContribution);
         }
     }
 }

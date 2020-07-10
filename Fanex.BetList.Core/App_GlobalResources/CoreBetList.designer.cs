@@ -1006,6 +1006,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Jackpot Won Details.
+        /// </summary>
+        public static string JackpotWonDetails {
+            get {
+                return ResourceManager.GetString("JackpotWonDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Last.
         /// </summary>
         public static string last {
