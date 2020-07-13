@@ -7,6 +7,6 @@
         public const int MaxDice60 = 1037;
         public const int MaxDice90 = 1038;
 
-        public const int EndingRangeBetTypeId = 1049;
+        public const int EndingRangeBetTypeId = 1099;
     }
 }
