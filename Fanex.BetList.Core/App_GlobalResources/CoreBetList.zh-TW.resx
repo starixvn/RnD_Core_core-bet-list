@@ -166,7 +166,7 @@
     <value>注單號碼</value>
   </data>
   <data name="stake" xml:space="preserve">
-    <value>投注額 </value>
+    <value>投注額</value>
   </data>
   <data name="status" xml:space="preserve">
     <value>狀態</value>

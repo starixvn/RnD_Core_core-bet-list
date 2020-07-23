@@ -163,7 +163,7 @@
     <value>แข่งขัน</value>
   </data>
   <data name="stake" xml:space="preserve">
-    <value>เงินเดิมพัน </value>
+    <value>เงินเดิมพัน</value>
   </data>
   <data name="status" xml:space="preserve">
     <value>สถานะ</value>
