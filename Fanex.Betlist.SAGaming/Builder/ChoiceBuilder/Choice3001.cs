@@ -22,8 +22,9 @@
 
         private const string TableIdFormat = "<span class=\"gamegroupname\">{0}</span>";
 
-        private const string SAGamingBetRefId = "SA_BT";
         private const string TableCodeKey = "TableCode";
+
+        protected virtual string GetRefResourceId() => "SA_BT";
 
         protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
         {
@@ -63,13 +64,13 @@
             }
         }
 
-        private static string GetBetChoice(ITicket ticket, ITicketHelper ticketHelper)
+        private string GetBetChoice(ITicket ticket, ITicketHelper ticketHelper)
         {
             var betTeam = new StringBuilder();
             var choiceOption = ticket.ParseBetcheck();
             foreach (var item in choiceOption)
             {
-                var choiceName = ticketHelper.GetResourceData(SAGamingBetRefId, item.Key);
+                var choiceName = ticketHelper.GetResourceData(GetRefResourceId(), item.Key);
                 var choiceStake = $"{ticket.Currency} {item.Value}";
 
                 var choiceId = GetBetChoiceId(ticket, item.Key);

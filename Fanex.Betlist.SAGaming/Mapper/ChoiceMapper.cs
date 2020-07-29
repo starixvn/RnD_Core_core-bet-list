@@ -6,10 +6,7 @@
     {
         public ChoiceMapper()
         {
-            for (var betType = SAGamingBetTypes.DragonTiger; betType <= SAGamingBetTypes.MoneyWheel; betType++)
-            {
-                MapIdToBaseId(betType, SAGamingBetTypes.Baccarat);
-            }
+            
         }
     }
 }

@@ -22,10 +22,11 @@
             foreach (var part in splittedTransDescParts)
             {
                 var keyValuePair = part.Split(new[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
-
-                if (keyValuePair.Length == numberOfExpressionsOfEachProperty)
+                var key = keyValuePair[0].Trim();
+                if (keyValuePair.Length == numberOfExpressionsOfEachProperty &&
+                    !transDescItems.ContainsKey(key))
                 {
-                    transDescItems.Add(keyValuePair[0].Trim(), keyValuePair[1].Trim());
+                    transDescItems.Add(key, keyValuePair[1].Trim());
                 }
             }
 
@@ -49,10 +50,11 @@
             foreach (var part in splittedTransDescParts)
             {
                 var keyValuePair = part.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-
-                if (keyValuePair.Length == numberOfExpressionsOfEachProperty)
+                var key = keyValuePair[0].Trim();
+                if (keyValuePair.Length == numberOfExpressionsOfEachProperty &&
+                    !transDescItems.ContainsKey(key))
                 {
-                    transDescItems.Add(keyValuePair[0].Trim(), keyValuePair[1].Trim());
+                    transDescItems.Add(key, keyValuePair[1].Trim());
                 }
             }
 
@@ -76,8 +78,11 @@
             for (var i = 0; i < splittedTransDescParts.Length; i++)
             {
                 var keyValuePair = splittedTransDescParts[i].Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-
-                transDescItems.Add(keyValuePair[0].Trim(), i < betChoiceIds.Length ? betChoiceIds[i] : string.Empty);
+                var key = keyValuePair[0].Trim();
+                if(!transDescItems.ContainsKey(key))
+                {
+                    transDescItems.Add(key, i < betChoiceIds.Length ? betChoiceIds[i] : string.Empty);
+                }                
             }
 
             return transDescItems;
