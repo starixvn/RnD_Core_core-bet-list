@@ -1,5 +1,6 @@
 ﻿namespace Fanex.BetList.SabaClub.Tests.Builder.StatusBuilder
 {
+    using System;
     using Fanex.BetList.Core.Builder.StatusBuilder;
     using Fanex.BetList.Core.Entities;
     using NSubstitute;
@@ -21,16 +22,45 @@
 
 
         [Test]
-        public void BuildStatusResult_Always_HideResultLink()
+        public void BuildStatusResult_BetCheckIsEmpty_HideResultLink()
         {
             // Arrange
-
+            _ticket.BetCheck = string.Empty;
 
             // Act
             _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
             Assert.IsTrue(string.IsNullOrEmpty(_status.Template.StatusResult.ToString()));
+        }
+
+        [Test]
+        public void BuildStatusResult_MoreThan10Day_HideResultLink()
+        {
+            // Arrange
+            _ticket.BetCheck = "betcheck";
+            _ticket.WinlostDate = DateTime.Today.AddDays(-11);
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.IsTrue(string.IsNullOrEmpty(_status.Template.StatusResult.ToString()));
+        }
+
+        [Test]
+        public void BuildStatusResult_TicketToday_ShowResultLink()
+        {
+            // Arrange
+            _ticket.BetCheck = "betcheck";
+            _ticket.WinlostDate = DateTime.Today;
+            _ticket.Status = "Won";
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.IsFalse(string.IsNullOrEmpty(_status.Template.StatusResult.ToString()));
         }
     }
 }
