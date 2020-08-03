@@ -260,6 +260,7 @@
     <Compile Include="Builder\OddsBuilder\Odds29Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds468Tests.cs" />
     <Compile Include="Builder\OddsBuilder\Odds1Test.cs" />
+    <Compile Include="Builder\StakeBuilder\Stake17003Test.cs" />
     <Compile Include="Builder\StakeBuilder\Stake17000Test.cs" />
     <Compile Include="Builder\StakeBuilder\Stake1Test.cs" />
     <Compile Include="Builder\StatusBuilder\Status17000Test.cs" />

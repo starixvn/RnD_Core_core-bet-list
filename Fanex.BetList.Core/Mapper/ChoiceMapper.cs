@@ -24,6 +24,7 @@
             MapIdToBaseId(BetTypes.SecondHalfHandicap, BetTypes.Handicap);
             MapIdToBaseId(BetTypes.ResultTotalGoals, BetTypes.FirstHalfResultTotalGoals);
             MapIdToBaseId(BetTypes.FirstHalfDoubleChance, BetTypes.DoubleChance);
+            MapIdToBaseId(BetTypes.SabaLoyaltyPointsExchange, BetTypes.SabaLuckySpin);
         }
 
         private void MapForBetRadar()

@@ -61,6 +61,7 @@
         {
             // Parlay
             MapIdToBaseId(BetTypes.SystemParlay, BetTypes.MixParlay);
+            MapIdToBaseId(BetTypes.SabaLoyaltyPointsExchange, BetTypes.SabaLuckySpin);
         }
 
         private void MapForCornerMatches()
