@@ -53,7 +53,6 @@
     <Compile Include="Builder\StatusBuilder\Status3001.cs" />
     <Compile Include="Constants\SAGamingBetTypes.cs" />
     <Compile Include="Mapper\OddsMapper.cs" />
-    <Compile Include="Mapper\ChoiceMapper.cs" />
     <Compile Include="Mapper\StatusMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\TicketParser.cs">
