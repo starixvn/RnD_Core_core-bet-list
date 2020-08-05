@@ -1,7 +1,10 @@
 ﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
     using System;
+    using System.Globalization;
     using Fanex.BetList.Core.Entities;
+    using Fanex.BetList.Core.Utils;
+    using Fanex.BetList.Core.Utils.TicketExt;
 
     public class Status1612 : Status1
     {
@@ -9,11 +12,24 @@
 
         protected override void BuildStatusResult(ITicket ticket)
         {
-            if (ShowResultLink(ticket))
+            if (ticket.IsSettled() || ticket.IsRefunded())
             {
-                base.BuildStatusResult(ticket);
-                Template.StatusResult.refNo = $"'{ticket.BetCheck}'";
-                Template.StatusResult.betId = $"{ticket.BetId ?? 0}, '{ticket.MatchCode}', {ticket.CustId}, '{ticket.BetCheck}'";                
+                if(IsSupportViewResultLink(ticket))
+                {
+                    Template.StatusResult.matchId = ticket.MatchId.ToString(CultureInfo.InvariantCulture);
+                    Template.StatusResult.betType = ticket.BetTypeId.ToString(CultureInfo.InvariantCulture);
+                    Template.StatusResult.race = string.IsNullOrEmpty(ticket.Race) ? "0" : ticket.Race;
+                    Template.StatusResult.refNo = ticket.TransId.ToString(CultureInfo.InvariantCulture);
+                    Template.StatusResult.sportType = ticket.SportTypeId.ToString(CultureInfo.InvariantCulture);
+                    Template.StatusResult.league = ticket.LeagueId.ToString(CultureInfo.InvariantCulture);
+                    Template.StatusResult.userName = ticket.UserName;
+                    Template.StatusResult.winlostDate = Formatter.FullDateFormat(ticket.WinlostDate);
+                    Template.StatusResult.betId = $"{ticket.BetId ?? 0}, '{ticket.MatchCode}', {ticket.CustId}, '{ticket.BetCheck}'";
+                }
+                else
+                {
+                    Template.StatusResult.Hide();
+                }
             }
             else
             {
@@ -21,7 +37,7 @@
             }
         }
 
-        private static bool ShowResultLink(ITicket ticket)
+        private static bool IsSupportViewResultLink(ITicket ticket)
         {
             var minDate = DateTime.Today.AddDays(dayAgoSupportResultPage);
 
