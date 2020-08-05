@@ -36,10 +36,10 @@
             Assert.IsEmpty(_choice.Template.betTeam);
         }       
 
-        [TestCase("1q", "1st Quarter")]
-        [TestCase("2q", "2nd Quarter")]
-        [TestCase("3q", "3rd Quarter")]
-        [TestCase("4q", "4th Quarter")]
+        [TestCase("1q", "Quarter 1")]
+        [TestCase("2q", "Quarter 2")]
+        [TestCase("3q", "Quarter 3")]
+        [TestCase("4q", "Quarter 4")]
         [TestCase("tie", "Tie")]
         [TestCase("Tie", "Tie")]
         public void BuildBetTeam_ValidBetTeam_ReturnExpectedBetChoice(string betTeam, string expectedBetChoice)
