@@ -7,13 +7,13 @@
 
     public class Odds2401 : Odds1
     {
-        private const string Lucky6ChoiceId = "1100";
+        private static readonly List<string> ChoiceIdsHiddenOdds = new List<string> { "1100", "1231", "1232" };
 
         public override Odds_Template Render(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
         {
             var choiceId = GetChoiceId(ticket);
 
-            if (!string.IsNullOrEmpty(choiceId) && Lucky6ChoiceId.Equals(choiceId))
+            if (!string.IsNullOrEmpty(choiceId) && ChoiceIdsHiddenOdds.Contains(choiceId))
             {
                 Template.odds = "-";
                 Template.oddsType = string.Empty;
