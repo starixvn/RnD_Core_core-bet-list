@@ -31,6 +31,12 @@
         [TestCase("cHoice=8111*TableCode=C103*site=7333333*comms=100")]
         [TestCase("choice=8012*TableCode=C103*site=7333333*comms=100*enterType=106")]
         [TestCase("CHOICE=8013*TableCode=C103*site=7333333")]
+        [TestCase("CHOICE=8021*TableCode=C103*site=7333333")]
+        [TestCase("CHOICE=8022*TableCode=C103*site=7333333")]
+        [TestCase("CHOICE=8023*TableCode=C103*site=7333333")]
+        [TestCase("CHOICE=8121*TableCode=C103*site=7333333")]
+        [TestCase("CHOICE=8122*TableCode=C103*site=7333333")]
+        [TestCase("CHOICE=8123*TableCode=C103*site=7333333")]
         public void Render_ChoiceIsDoubleBet_HideOdds(string transDesc)
         {
             // Arrange.
