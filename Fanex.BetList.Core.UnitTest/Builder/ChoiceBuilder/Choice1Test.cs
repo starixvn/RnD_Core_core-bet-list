@@ -28,7 +28,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [TestCase(1)]
-        [TestCase(3)]
         [TestCase(4)]
         [TestCase(8)]
         [TestCase(26)]
@@ -117,7 +116,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [TestCase(1)]
-        [TestCase(3)]
         [TestCase(4)]
         [TestCase(8)]
         [TestCase(26)]

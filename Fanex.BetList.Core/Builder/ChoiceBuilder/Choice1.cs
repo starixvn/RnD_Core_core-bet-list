@@ -38,7 +38,7 @@
         private const int MuayThaiSportId = 44;
         private const int HandicapBetTypeId = 1;
         private const string LightBlue = " light-blue";
-        private readonly int[] _liveScoreSports = { 1, 3, 4, 8, 26, 28, 49, 51 };
+        private readonly int[] _liveScoreSports = { 1, 4, 8, 26, 28, 49, 51 };
         private const string ESportsXmlTag = "p16";
         private const string InPlayXmlAttribute = "in";
         private const int ESportsSportType = 43;
