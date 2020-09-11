@@ -68,6 +68,12 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Builder\ChoiceBuilder\Choice3007Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice3006Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice3005Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice3004Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice3003Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice3002Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice3001Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds3001Test.cs" />
     <Compile Include="Builder\StatusBuilder\Status3001Test.cs" />

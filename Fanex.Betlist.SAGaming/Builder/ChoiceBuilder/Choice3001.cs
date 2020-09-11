@@ -24,7 +24,7 @@
 
         private const string TableCodeKey = "TableCode";
 
-        protected virtual string GetRefResourceId() => "SA_BT";
+        public virtual string GetRefResourceId() => "SA_BT";
 
         protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
         {

@@ -2,6 +2,6 @@
 {
     public class Choice3004 : Choice3001
     {
-        protected override string GetRefResourceId() => "SA_FT";
+        public override string GetRefResourceId() => "SA_FT";
     }
 }
