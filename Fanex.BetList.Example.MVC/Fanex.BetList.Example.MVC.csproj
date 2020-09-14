@@ -360,6 +360,10 @@
       <Project>{96ce1eca-344b-4229-b8f8-c622735fe97f}</Project>
       <Name>Fanex.BetList.IONCasino</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.Joker\Fanex.BetList.Joker.csproj">
+      <Project>{85cde384-17a0-4a5e-81cb-6ad93e766b32}</Project>
+      <Name>Fanex.BetList.Joker</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.KenoLottery\Fanex.BetList.KenoLottery.csproj">
       <Project>{ae7d0ff9-c449-4fa4-a399-267426354b7f}</Project>
       <Name>Fanex.BetList.KenoLottery</Name>
@@ -513,6 +517,7 @@
     <Content Include="App_Data\PHAllInOneP51.xls" />
     <Content Include="App_Data\BasketballAIOP2.xls" />
     <Content Include="App_Data\PGSoft.xls" />
+    <Content Include="App_Data\Joker.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />

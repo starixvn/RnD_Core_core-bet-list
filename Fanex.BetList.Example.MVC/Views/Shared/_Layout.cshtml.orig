@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="Stylesheet" href="~/Content/CoreBetList.css" />
+    <link href="~/Content/GTCasino.css" rel="stylesheet" />
+    <link href="~/Content/SexyGaming.css" rel="stylesheet" />
+    <link href="~/Content/Allbet.css" rel="stylesheet" />
+    <link href="~/Content/SAGaming.css" rel="stylesheet" />
+    <link href="~/Content/bbin.css" rel="stylesheet" />
+    <link href="~/Content/AGCasino.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/jquery-1.9.0.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/bootstrap.min.js" type="text/javascript"></script>
+    @RenderSection("head", false)
+</head>
+<body>
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="~/BetList/All">Core BetList</a>
+    </div>
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+<<<<<<< Updated upstream
+=======
+            <li><a href="~/BetList/Joker">Joker</a></li>
+            <li><a href="~/BetList/WM">WM Live Casino</a></li>
+>>>>>>> Stashed changes
+            <li><a href="~/BetList/PGSoft">PG Soft</a></li>
+            <li><a href="~/BetList/pp">Pramatic</a></li>
+            <li><a href="~/BetList/BasketballAIO2">BasketballAIO P2</a></li>
+            <li><a href="~/BetList/LicenseeId">LicenseeId</a></li>
+            <li><a href="~/BetList/RNGWAR">RNGWAR</a></li>
+            <li><a href="~/BetList/DelayPayout">Delay Payout</a></li>
+            <li><a href="~/BetList/GTCasino">GT Casino</a></li>
+            <li><a href="~/BetList/SabaClub">Saba.Club</a></li>
+            <li><a href="~/BetList/NumberGame">Number Game</a></li>
+        </ul>
+    </div>
+    @RenderBody()
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

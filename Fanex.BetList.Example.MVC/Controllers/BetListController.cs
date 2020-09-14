@@ -42,6 +42,25 @@
             return View(model);
         }
 
+        public ActionResult Joker(BetListData model = null)
+        {
+            var betTypeIds = new List<int>();
+
+            for (var betTypeId = 6401; betTypeId <= 6700; betTypeId++)
+            {
+                betTypeIds.Add(betTypeId);
+            }
+
+            var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
+
+            DataSourcePath = "~/App_Data/Joker.xls";
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
         public ActionResult PGSoft(BetListData model = null)
         {
             var betTypeIds = new List<int>();
