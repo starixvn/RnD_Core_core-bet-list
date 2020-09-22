@@ -1086,5 +1086,85 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
                 yield return sportTypeId;
             }
         }
+
+        [Test]
+        public void BuildOdds_IsMyanmarOdds_ShowOddsSpread()
+        {
+            // Arrange
+            _ticketHelper.IsShowOddsWithChoice = false;
+            _ticket.OddsType = "6";
+            _ticket.OddsSpread = 75;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            var oddsSpread = " <span class='sport'>(75)</span>";
+            Assert.IsTrue(_choice.Template.Handicap.handicap.Contains(oddsSpread));
+        }
+
+        [Test]
+        public void BuildOdds_IsNotMyanmarOdds_HideOddsSpread()
+        {
+            // Arrange
+            _ticketHelper.IsShowOddsWithChoice = false;
+            _ticket.OddsType = "1";
+            _ticket.OddsSpread = 75;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            var oddsSpread = " <span class='sport'>(75)</span>";
+            Assert.IsFalse(_choice.Template.Handicap.handicap.Contains(oddsSpread));
+        }
+
+        [TestCase(-10)]
+        public void BuildOdds_IsMyanmarOdds_OddsSpreadLessThanZero_ShowRedColorText(decimal oddsSpread)
+        {
+            // Arrange
+            _ticketHelper.IsShowOddsWithChoice = false;
+            _ticket.OddsType = "6";
+            _ticket.OddsSpread = oddsSpread;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            var oddsSpreadSection = $" <span class='favorite'>({oddsSpread})</span>";
+            Assert.IsTrue(_choice.Template.Handicap.handicap.Contains(oddsSpreadSection));
+        }
+
+        [TestCase(0)]
+        [TestCase(10)]
+        public void BuildOdds_IsMyanmarOdds_OddsSpreadMoreThanZero_ShowBlueColorText(decimal oddsSpread)
+        {
+            // Arrange
+            _ticketHelper.IsShowOddsWithChoice = false;
+            _ticket.OddsType = "6";
+            _ticket.OddsSpread = oddsSpread;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            var oddsSpreadSection = $" <span class='sport'>({oddsSpread})</span>";
+            Assert.IsTrue(_choice.Template.Handicap.handicap.Contains(oddsSpreadSection));
+        }
+
+        public void BuildOdds_IncorrectOddsType_HideOddsSpread()
+        {
+            // Arrange
+            _ticketHelper.IsShowOddsWithChoice = false;
+            _ticket.OddsType = "tambay";
+            _ticket.OddsSpread = 75;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            var oddsSpread = " <span class='sport'>(75)</span>";
+            Assert.IsFalse(_choice.Template.Handicap.handicap.Contains(oddsSpread));
+        }
     }
 }

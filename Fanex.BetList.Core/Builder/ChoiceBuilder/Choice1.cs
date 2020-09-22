@@ -507,6 +507,7 @@
                 if (Template.Handicap != null)
                 {
                     Template.Handicap.Odds = null;
+                    BuildMyanmarOdds(ticket);
                 }
             }
         }
@@ -518,6 +519,9 @@
 
             if (Template.Handicap != null && Template.Handicap.Visible && Template.Handicap.handicap != null)
             {
+                Template.Handicap.handicap = Template.Handicap.handicap.Replace("<span class='favorite'>", string.Empty);
+                Template.Handicap.handicap = Template.Handicap.handicap.Replace("<span class='sport'>", string.Empty);
+                Template.Handicap.handicap = Template.Handicap.handicap.Replace("</span>", string.Empty);
                 choice += string.Join(null, new[] { Space, Template.Handicap.handicap });
             }
 
@@ -769,6 +773,20 @@
         private static bool IsOutRight(int betTypeId) => betTypeId == BetTypes.Outright;
 
         private static bool IsBetTrade(int betTypeId) => betTypeId == BetTypes.Sold || betTypeId == BetTypes.Bought;
+
+        private void BuildMyanmarOdds(ITicket ticket)
+        {
+            var oddsType = string.IsNullOrEmpty(ticket.OddsType) ? "0" : ticket.OddsType;
+            var result = Int32.TryParse(oddsType, out int oddsTypeInt);
+            if (result && oddsTypeInt == OddsTypes.Myanmar)
+            {
+                const string percentageFormat = " <span class='{0}'>({1})</span>";
+
+                var percentageClass = ticket.OddsSpread < 0 ? Favorite : "sport";
+                var percentageValue = Formatter.DecFormat(ticket.OddsSpread, 0);
+                Template.Handicap.handicap += string.Format(percentageFormat, percentageClass, percentageValue);
+            }
+        }
 
         #endregion Private function
     }

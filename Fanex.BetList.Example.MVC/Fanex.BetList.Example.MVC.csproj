@@ -518,9 +518,8 @@
     <Content Include="App_Data\BasketballAIOP2.xls" />
     <Content Include="App_Data\PGSoft.xls" />
     <Content Include="App_Data\Joker.xls" />
-    <Content Include="App_Data\TimeMachine.xls">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="App_Data\TimeMachine.xls"/>
+    <Content Include="App_Data\MyanmarOdds.xls"/>
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
