@@ -12,8 +12,8 @@
             }
             else
             {
-                base.BuildStatusResult(ticket);
-                Template.StatusResult.betId = $"{ticket.BetId ?? 0}, '{ticket.BetCheck}', {ticket.CustId}";
+                base.BuildStatusResult(ticket);                
+                Template.StatusResult.betId = $"{ticket.BetId ?? 0}, '{ticket.MatchCode}', '{ticket.CustId}', '{ticket.BetCheck}'";
             }
         }
     }
