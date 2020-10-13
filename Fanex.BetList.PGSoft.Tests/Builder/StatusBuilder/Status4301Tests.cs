@@ -1,4 +1,4 @@
-﻿namespace Fanex.BetList.Spadegaming.Tests.Builder.StatusBuilder
+﻿namespace Fanex.BetList.PGSoft.Tests.Builder.StatusBuilder
 {
     using Fanex.BetList.Core.Builder.StatusBuilder;
     using Fanex.BetList.Core.Entities;
@@ -20,6 +20,7 @@
 
             _ticket.BetId = 123;
             _ticket.BetCheck = "BetCheck";
+            _ticket.MatchCode = "MatchCode";
             _ticket.CustId = 456;
             _ticket.Status = BetStatus.Won;
         }
@@ -55,7 +56,7 @@
             var template = _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            var expectedParameters = $"{_ticket.BetId}, '{_ticket.BetCheck}', {_ticket.CustId}";
+            var expectedParameters = $"{_ticket.BetId}, '{_ticket.MatchCode}', '{_ticket.CustId}', '{_ticket.BetCheck}'";
 
             Assert.AreEqual(expectedParameters, template.StatusResult.betId);
         }
@@ -70,7 +71,7 @@
             var template = _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            var expectedParameters = $"0, '{_ticket.BetCheck}', {_ticket.CustId}";
+            var expectedParameters = $"0, '{_ticket.MatchCode}', '{_ticket.CustId}', '{_ticket.BetCheck}'";
 
             Assert.AreEqual(expectedParameters, template.StatusResult.betId);
         }

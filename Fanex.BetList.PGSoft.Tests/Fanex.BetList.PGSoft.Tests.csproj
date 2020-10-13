@@ -8,8 +8,8 @@
     <ProjectGuid>{29C0E59C-C846-46D0-8561-4A2671B117F7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Fanex.BetList.Spadegaming.Tests</RootNamespace>
-    <AssemblyName>Fanex.BetList.Spadegaming.Tests</AssemblyName>
+    <RootNamespace>Fanex.BetList.PGSoft.Tests</RootNamespace>
+    <AssemblyName>Fanex.BetList.PGSoft.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
