@@ -36,3 +36,6 @@ Fanex.BetList.Core.suo
 packages/
 *.ncrunchsolution
 .vs/
+/Fanex.BetList.Example.MVC/Controllers/BetListController.cs.orig
+/Fanex.BetList.Example.MVC/Fanex.BetList.Example.MVC.csproj.orig
+/Fanex.BetList.Example.MVC/Views/Shared/_Layout.cshtml.orig

@@ -42,6 +42,19 @@
             return View(model);
         }
 
+        public ActionResult TimeMachine(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes();
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+
+            DataSourcePath = "~/App_Data/TimeMachine.xls";
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
         public ActionResult Joker(BetListData model = null)
         {
             var betTypeIds = new List<int>();

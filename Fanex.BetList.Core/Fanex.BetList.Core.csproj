@@ -167,6 +167,7 @@
     <Compile Include="Builder\BetListBaseBuilder.cs" />
     <Compile Include="Builder\BetListExcelBuilder.cs" />
     <Compile Include="Builder\BetListHTMLBuilder.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice228.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice627.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice631.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice646.cs" />
@@ -360,6 +361,7 @@
     <Compile Include="Builder\StakeBuilder\Stake17000.cs" />
     <Compile Include="Builder\StatusBuilder\IStatus.cs" />
     <Compile Include="Builder\StatusBuilder\Status1.cs" />
+    <Compile Include="Builder\StatusBuilder\Status228.cs" />
     <Compile Include="Builder\StatusBuilder\Status10.cs" />
     <Compile Include="Builder\StatusBuilder\Status1311.cs" />
     <Compile Include="Builder\StatusBuilder\Status1312.cs" />
