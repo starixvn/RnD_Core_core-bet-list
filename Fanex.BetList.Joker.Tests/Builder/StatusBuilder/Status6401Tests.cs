@@ -1,4 +1,4 @@
-﻿namespace Fanex.BetList.Spadegaming.Tests.Builder.StatusBuilder
+﻿namespace Fanex.BetList.Joker.Tests.Builder.StatusBuilder
 {
     using Fanex.BetList.Core.Builder.StatusBuilder;
     using Fanex.BetList.Core.Entities;
@@ -55,7 +55,7 @@
             var template = _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            var expectedParameters = $"{_ticket.BetId}, '{_ticket.BetCheck}', {_ticket.CustId}";
+            var expectedParameters = $"{_ticket.BetId}, '', '{_ticket.CustId}', '{_ticket.BetCheck}'";
 
             Assert.AreEqual(expectedParameters, template.StatusResult.betId);
         }
@@ -70,7 +70,7 @@
             var template = _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            var expectedParameters = $"0, '{_ticket.BetCheck}', {_ticket.CustId}";
+            var expectedParameters = $"0, '', '{_ticket.CustId}', '{_ticket.BetCheck}'";
 
             Assert.AreEqual(expectedParameters, template.StatusResult.betId);
         }
