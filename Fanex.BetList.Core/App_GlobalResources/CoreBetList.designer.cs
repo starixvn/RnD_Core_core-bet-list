@@ -358,6 +358,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Before Minute {0}.
+        /// </summary>
+        public static string BeforeMinute {
+            get {
+                return ResourceManager.GetString("BeforeMinute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to bets.
         /// </summary>
         public static string bet {
@@ -2451,15 +2460,6 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string UnderSettlement {
             get {
                 return ResourceManager.GetString("UnderSettlement", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Until {0}.
-        /// </summary>
-        public static string Until {
-            get {
-                return ResourceManager.GetString("Until", resourceCulture);
             }
         }
         

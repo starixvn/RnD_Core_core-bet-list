@@ -596,4 +596,7 @@
   <data name="h34" xml:space="preserve">
     <value>Đội Nhà Thắng Ván 3 &amp; 4</value>
   </data>
+  <data name="BeforeMinute" xml:space="preserve">
+    <value>Trước phút {0}</value>
+  </data>
 </root>

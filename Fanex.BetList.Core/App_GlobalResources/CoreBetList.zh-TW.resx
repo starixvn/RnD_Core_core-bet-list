@@ -903,7 +903,7 @@
   <data name="h34" xml:space="preserve">
     <value>主隊贏第 3 &amp; 4 節</value>
   </data>
-  <data name="Until" xml:space="preserve">
-    <value>到{0}為止</value>
+  <data name="BeforeMinute" xml:space="preserve">
+    <value>在第{0}分前</value>
   </data>
 </root>

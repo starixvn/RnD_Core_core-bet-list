@@ -459,4 +459,7 @@
   <data name="Miss" xml:space="preserve">
     <value>ミス</value>
   </data>
+  <data name="BeforeMinute" xml:space="preserve">
+    <value>分{0}の前</value>
+  </data>
 </root>
