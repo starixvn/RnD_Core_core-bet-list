@@ -158,6 +158,7 @@
     <Compile Include="Builder\ChoiceBuilder\Choice391Tests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice392Tests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice397Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice228Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice3Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice401Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice408Test.cs" />
@@ -263,6 +264,7 @@
     <Compile Include="Builder\StakeBuilder\Stake17003Test.cs" />
     <Compile Include="Builder\StakeBuilder\Stake17000Test.cs" />
     <Compile Include="Builder\StakeBuilder\Stake1Test.cs" />
+    <Compile Include="Builder\StatusBuilder\Status228Test.cs" />
     <Compile Include="Builder\StatusBuilder\Status17000Test.cs" />
     <Compile Include="Builder\StatusBuilder\Status221Tests.cs" />
     <Compile Include="Builder\StatusBuilder\Status38Tests.cs" />

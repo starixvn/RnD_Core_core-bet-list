@@ -100,6 +100,7 @@ namespace Fanex.BetList.Core.UnitTest.Utils
         [TestCase(8101)]
         [TestCase(8102)]
         [TestCase(8104)]
+        [TestCase(228)]
         public void ShowOddsByBettype_BetTypeIsOddsBetType_ReturnOddsType(int betType)
         {
             // Arrange
