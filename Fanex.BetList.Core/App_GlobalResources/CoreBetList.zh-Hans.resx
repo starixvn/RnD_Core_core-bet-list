@@ -906,4 +906,7 @@
   <data name="h34" xml:space="preserve">
     <value>主队赢第 3 &amp; 4 节</value>
   </data>
+  <data name="Until" xml:space="preserve">
+    <value>到{0}为止</value>
+  </data>
 </root>

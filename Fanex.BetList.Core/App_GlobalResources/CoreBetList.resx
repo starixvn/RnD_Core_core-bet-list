@@ -985,6 +985,6 @@
     <value>Quarter 4</value>
   </data>
   <data name="Until" xml:space="preserve">
-    <value>Until</value>
+    <value>Until {0}</value>
   </data>
 </root>

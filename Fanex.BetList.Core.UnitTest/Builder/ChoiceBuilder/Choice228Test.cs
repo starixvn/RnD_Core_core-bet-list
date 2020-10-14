@@ -27,7 +27,7 @@
         public void BuildBetTeam_BetTeamIsCharacterH_BetTeamIsOver()
         {
             // Arrange
-            _ticket.BetTeam = "h";
+            _ticket.BetTeam = "o";
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, false);
@@ -41,7 +41,7 @@
         public void BuildBetTeam_BetTeamIsCharacterA_BetTeamIsUnder()
         {
             // Arrange
-            _ticket.BetTeam = "a";
+            _ticket.BetTeam = "u";
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, false);
@@ -52,16 +52,44 @@
         }
 
         [Test]
-        public void BuildBetTeamClassNameAndHandicap_Always_HandicapIsHandicap1()
+        public void BuildBetTeamClassNameAndHandicap_Over_betTeamClassNameIsFavorite()
         {
             // Arrange
-            _ticket.Handicap1 = 1;
+            _ticket.BetTeam = "o";
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.AreEqual(_ticket.Handicap1.ToString(CultureInfo.InvariantCulture), _choice.Template.Handicap.handicap);
+            Assert.AreEqual("favorite", _choice.Template.betTeamClassName);
+        }
+
+        [Test]
+        public void BuildBetTeamClassNameAndHandicap_Under_betTeamClassNameIsFavorite()
+        {
+            // Arrange
+            _ticket.BetTeam = "u";
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual("underdog", _choice.Template.betTeamClassName);
+        }
+
+        [Test]
+        public void BuildBetTeamClassNameAndHandicap_Handicap_CorrectFormat()
+        {
+            // Arrange
+            _ticket.Handicap1 = 14;
+            _ticket.OddsSpread = 0.5m;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            var expectedFormat = "0.5<span class='favorite'> (Until 14:59)</span>";
+            Assert.AreEqual(expectedFormat, _choice.Template.Handicap.handicap);
         }
     }
 }

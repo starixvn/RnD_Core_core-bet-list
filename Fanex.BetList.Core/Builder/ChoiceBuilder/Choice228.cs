@@ -14,7 +14,8 @@
             base.BuildBetTeamClassNameAndHandicap(ticket);
 
             var timeNumber = Convert.ToInt32(ticket.Handicap1);
-            var timeMachine = $"<span class='favorite'> ({CoreBetList.Until} {timeNumber.ToString("D2")}:59)</span>";
+            var timeNumberText = $"{timeNumber.ToString("D2")}:59";
+            var timeMachine = $"<span class='favorite'> ({string.Format(CoreBetList.Until, timeNumberText)})</span>";
 
             Template.Handicap.handicap = ConvertByBetType.Hdp(ticket.OddsSpread) + timeMachine;
             Template.betTeamClassName = IsOver(ticket) ? Favorite : Underdog;

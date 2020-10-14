@@ -2455,7 +2455,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Until.
+        ///   Looks up a localized string similar to Until {0}.
         /// </summary>
         public static string Until {
             get {

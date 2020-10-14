@@ -792,4 +792,7 @@
   <data name="h34" xml:space="preserve">
     <value>ทีมเหย้าชนะควอเตอร์ที่ 3 และ 4</value>
   </data>
+  <data name="Until" xml:space="preserve">
+    <value>ถึง {0}</value>
+  </data>
 </root>
