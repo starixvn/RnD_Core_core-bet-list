@@ -91,5 +91,21 @@
             var expectedFormat = "0.5<span class='favorite'> (Before Minute 15)</span>";
             Assert.AreEqual(expectedFormat, _choice.Template.Handicap.handicap);
         }
+
+        [Test]
+        public void BuildBetFigure_Always_RemoveHTML()
+        {
+            // Arrange
+            var rtfHelper = new RTFHelper().Clone();
+            _ticket.Handicap1 = 14;
+            _ticket.OddsSpread = 0.5m;
+
+            // Act
+            _choice.RenderRTF(_ticket, _ticketHelper, null, false, rtfHelper);
+
+            // Assert
+            Assert.IsFalse(_choice.Template.Handicap.handicap.Contains("<span"));
+            Assert.IsFalse(_choice.Template.Handicap.handicap.Contains("</span>"));
+        }
     }
 }

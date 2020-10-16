@@ -23,6 +23,13 @@
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
             => Template.betTeam = IsOver(ticket) ? CoreBetList.over : CoreBetList.under;
 
+        protected override void BuildBetFigure(ITicket ticket, ref RTFHelper rtfHelper, bool isMixParlay)
+        {
+            Template.Handicap.handicap = Template.Handicap.handicap.Replace("<span class='favorite'>", string.Empty);
+            Template.Handicap.handicap = Template.Handicap.handicap.Replace("</span>", string.Empty);
+
+            base.BuildBetFigure(ticket, ref rtfHelper, isMixParlay);            
+        }
         private static bool IsOver(ITicket ticket) => ticket.BetTeam.ToLowerInvariant() == BetTeamValue.O;
     }
 }
