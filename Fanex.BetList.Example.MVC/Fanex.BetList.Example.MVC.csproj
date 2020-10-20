@@ -428,6 +428,10 @@
       <Project>{0f87bc2a-0625-42b3-b695-3e6384e588db}</Project>
       <Name>Fanex.BetList.VoidBridge</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.Betlist.WM\Fanex.BetList.WM.csproj">
+      <Project>{55a282e7-4a51-4c78-b4f9-58658bd85b97}</Project>
+      <Name>Fanex.BetList.WM</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\BetListDummyData.xls">
