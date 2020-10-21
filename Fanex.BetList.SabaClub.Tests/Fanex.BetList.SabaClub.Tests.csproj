@@ -60,6 +60,7 @@
     <Compile Include="Builder\ChoiceBuilder\Choice1612Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds1612Test.cs" />
     <Compile Include="Builder\StatusBuilder\Status1612Tests.cs" />
+    <Compile Include="Builder\StatusBuilder\Status1634Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

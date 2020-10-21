@@ -6,9 +6,14 @@
     {
         public StatusMapper()
         {
-            for (var betTypeId = SabaClubBetTypes.MinRange + 1; betTypeId <= SabaClubBetTypes.MaxRange; betTypeId++)
+            for (var id = SabaClubBetTypes.MinRange + 1; id < SabaClubBetTypes.Blackjack; id++)
             {
-                MapIdToBaseId(betTypeId, SabaClubBetTypes.MinRange);
+                MapIdToBaseId(id, SabaClubBetTypes.MinRange);
+            }
+
+            for (var id = SabaClubBetTypes.Blackjack + 1; id <= SabaClubBetTypes.MaxRange; id++)
+            {
+                MapIdToBaseId(id, SabaClubBetTypes.MinRange);
             }
         }
     }

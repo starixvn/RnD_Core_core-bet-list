@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Builder\ChoiceBuilder\Choice1612.cs" />
     <Compile Include="Builder\OddsBuilder\Odds1612.cs" />
+    <Compile Include="Builder\StatusBuilder\Status1634.cs" />
     <Compile Include="Builder\StatusBuilder\Status1612.cs" />
     <Compile Include="Constants\SabaClubBetTypes.cs" />
     <Compile Include="Mapper\ChoiceMapper.cs" />
