@@ -29,7 +29,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 
         [TestCase(1)]
         [TestCase(4)]
-        [TestCase(8)]
         [TestCase(26)]
         [TestCase(28)]
         [TestCase(49)]
@@ -117,7 +116,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 
         [TestCase(1)]
         [TestCase(4)]
-        [TestCase(8)]
         [TestCase(26)]
         [TestCase(28)]
         public void BuildScore_FromLiveScoreSportType_SetAwayScoreIsLiveAwayScore(int sportType)
@@ -133,11 +131,46 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             Assert.AreEqual(_ticket.LiveAwayScore.ToString(), _choice.Template.Score.awayScore);
         }
 
+        [TestCase(2020, 11, 4, 0, 0, 0)]
+        [TestCase(2020, 11, 3, 0, 0, 0)]
+        public void BuildScore_Baseball_OldData_ShowLiveScore(int year, int month, int day, int hour, int minute, int second)
+        {
+            // Arrange
+            _ticket.IsLive = true;
+            _ticket.TransDate = new DateTime(year, month, day, hour, minute, second);
+            _ticket.LiveAwayScore = 1;
+            _ticket.SportTypeId = 8;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual("1", _choice.Template.Score.awayScore);
+        }
+
+        [TestCase(2020, 11, 5, 0, 0, 0)]
+        [TestCase(2020, 11, 6, 0, 0, 0)]
+        public void BuildScore_Baseball_NewData_ShowLiveText(int year, int month, int day, int hour, int minute, int second)
+        {
+            // Arrange
+            _ticket.IsLive = true;
+            _ticket.TransDate = new DateTime(year, month, day, hour, minute, second);
+            _ticket.LiveAwayScore = 1;
+            _ticket.SportTypeId = 8;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual("<span class=\"favorite\"> [Live]</span>", _choice.Template.Score.ToString());
+        }
+
         [TestCase(181)]
         [TestCase(208)]
         public void BuildScore_FromSportTypeIsNotInSportsbook_SetAwayScoreIsLiveAwayScore(int sportType)
         {
             // Arrange
+            _ticket.IsLive = true;
             _ticket.LiveAwayScore = 1;
             _ticket.SportTypeId = sportType;
 

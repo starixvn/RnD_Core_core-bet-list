@@ -38,7 +38,7 @@
         private const int MuayThaiSportId = 44;
         private const int HandicapBetTypeId = 1;
         private const string LightBlue = " light-blue";
-        private readonly int[] _liveScoreSports = { 1, 4, 8, 26, 28, 49, 51 };
+        private readonly int[] _liveScoreSports = { 1, 4, 26, 28, 49, 51 };
         private const string ESportsXmlTag = "p16";
         private const string InPlayXmlAttribute = "in";
         private const int ESportsSportType = 43;
@@ -300,7 +300,7 @@
                 return;
             }
 
-            if (IsShowLiveText(ticket.SportTypeId))
+            if (IsShowLiveText(ticket.SportTypeId, ticket.TransDate))
             {
                 var scoreStatus = ticket.SportTypeId == ESportsSportType ? GetScoreStatus(ticket) : CoreBetList.Live;
 
@@ -349,9 +349,15 @@
             }
         }
 
-        private bool IsShowLiveText(int sportTypeId)
+        private bool IsShowLiveText(int sportTypeId, DateTime transDate)
         {
+            var CutOffDate = new DateTime(2020, 11, 5, 0, 0, 0);
+            const int sportTypeOfBaseball = 8;
             const int MaxSportsbookSportTypeId = 99;
+            if (sportTypeId == sportTypeOfBaseball)
+            {
+                return transDate >= CutOffDate;
+            }
 
             return sportTypeId > 0 &&
                 sportTypeId <= MaxSportsbookSportTypeId &&
