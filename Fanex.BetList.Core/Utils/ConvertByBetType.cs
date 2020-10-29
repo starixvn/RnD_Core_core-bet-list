@@ -240,6 +240,9 @@
             => string.Format(Formatter.DECIMALFORMAT2, value);
 
         public static string Pt(object value)
+            => (Cast.AsDecimal(value) * PercentageFactor).ToString("G29");
+
+        public static string Pt20(object value)
             => (Cast.AsDecimal(value) * PercentageFactor).ToString("N0");
 
         public static string PtValue(object value)
