@@ -74,20 +74,6 @@
             return BetListView(model);
         }
         
-
-        public ActionResult MyanmarOdds(BetListData model = null)
-        {
-            var betTypes = _dataService.QueryBetTypes();
-            ViewBag.BetTypes = CreateSelectListItem(betTypes);
-
-            DataSourcePath = "~/App_Data/MyanmarOdds.xls";
-            ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            model = GetDataSource(model, DataSourcePath);
-            model.DataFilePath = DataSourcePath;
-
-            return BetListView(model);
-        }
-        
         public ActionResult TimeMachine(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes();

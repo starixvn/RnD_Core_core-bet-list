@@ -106,5 +106,24 @@
             // Assert
             Assert.IsTrue(string.IsNullOrEmpty(_status.Template.StatusResult.ToString()));
         }
+
+        [Test]
+        public void BuildStatusResult_Settle_MatchCodeIsEmpty_ShowSiteIdDefault()
+        {
+            // Arrange
+            _ticket.MatchCode = string.Empty;
+            _ticket.BetCheck = "betcheck";
+            _ticket.WinlostDate = DateTime.Today;
+            _ticket.Status = "Refund";
+            _ticket.CustId = 123;
+
+            var expectedBetId = "0, '4100300', 123, 'betcheck'";
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual(expectedBetId, _status.Template.StatusResult.betId);
+        }
     }
 }

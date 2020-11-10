@@ -6,7 +6,7 @@
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Utils;
 
-    public class Status1634 : Status1
+    public class Status1634 : Status1612
     {
         protected override void BuildResult(ITicket ticket, List<ITicketData> ticketData)
         {
@@ -33,7 +33,6 @@
             else
             {
                 base.BuildStatusResult(ticket);
-                Template.StatusResult.betId = $"{ticket.BetId ?? 0}, '{ticket.MatchCode}', {ticket.CustId}, '{ticket.BetCheck}'";
             }
         }
 

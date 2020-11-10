@@ -9,13 +9,16 @@
     public class Status1612 : Status1
     {
         private const int dayAgoSupportResultPage = -10;
+        private const string siteIdDefault = "4100300";
 
         protected override void BuildStatusResult(ITicket ticket)
         {
             if (ticket.IsSettled() || ticket.IsRefunded())
             {
-                if(IsSupportViewResultLink(ticket))
+                if (IsSupportViewResultLink(ticket))
                 {
+                    var siteId = string.IsNullOrEmpty(ticket.MatchCode) ? siteIdDefault : ticket.MatchCode;
+
                     Template.StatusResult.matchId = ticket.MatchId.ToString(CultureInfo.InvariantCulture);
                     Template.StatusResult.betType = ticket.BetTypeId.ToString(CultureInfo.InvariantCulture);
                     Template.StatusResult.race = string.IsNullOrEmpty(ticket.Race) ? "0" : ticket.Race;
@@ -24,7 +27,7 @@
                     Template.StatusResult.league = ticket.LeagueId.ToString(CultureInfo.InvariantCulture);
                     Template.StatusResult.userName = ticket.UserName;
                     Template.StatusResult.winlostDate = Formatter.FullDateFormat(ticket.WinlostDate);
-                    Template.StatusResult.betId = $"{ticket.BetId ?? 0}, '{ticket.MatchCode}', {ticket.CustId}, '{ticket.BetCheck}'";
+                    Template.StatusResult.betId = $"{ticket.BetId ?? 0}, '{siteId}', {ticket.CustId}, '{ticket.BetCheck}'";
                 }
                 else
                 {

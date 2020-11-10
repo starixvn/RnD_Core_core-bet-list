@@ -1,5 +1,6 @@
 ﻿namespace Fanex.BetList.SabaClub.Tests.Builder.StatusBuilder
 {
+    using System;
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Builder.StatusBuilder;
     using Fanex.BetList.Core.Entities;
@@ -88,45 +89,99 @@
 
             // Assert.
             Assert.False(template.StatusResult.Visible);
+        }       
+
+        [Test]
+        public void BuildStatusResult_MoreThan10Day_HideResultLink()
+        {
+            // Arrange
+            _ticket.BetCheck = "betcheck";
+            _ticket.WinlostDate = DateTime.Today.AddDays(-11);
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.IsTrue(string.IsNullOrEmpty(_status.Template.StatusResult.ToString()));
         }
 
         [Test]
-        public void BuildStatusResult_TicketBetCheckIsNotNullOrEmpty_ShowResultLink()
+        public void BuildStatusResult_TicketToday_ShowResultLink()
         {
-            // Act.
-            var template = _status.Render(_ticket, _ticketHelper, null, false);
+            // Arrange
+            _ticket.BetCheck = "betcheck";
+            _ticket.WinlostDate = DateTime.Today;
+            _ticket.Status = "Won";
 
-            // Assert.
-            Assert.True(template.StatusResult.Visible);
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.IsFalse(string.IsNullOrEmpty(_status.Template.StatusResult.ToString()));
         }
 
         [Test]
-        public void BuildStatusResult_TicketBetCheckIsNotNullOrEmpty_AppendBetCheckAndCustIdAfterBetIdInParameterListOfResultLink()
+        public void BuildStatusResult_SettleTicket_ShowResultLink()
         {
-            // Act.
-            var template = _status.Render(_ticket, _ticketHelper, null, false);
+            // Arrange
+            _ticket.BetCheck = "betcheck";
+            _ticket.WinlostDate = DateTime.Today;
+            _ticket.Status = "Won";
 
-            // Assert.
-            var expectedParameters = $"{_ticket.BetId}, '{_ticket.MatchCode}', {_ticket.CustId}, '{_ticket.BetCheck}'";
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, false);
 
-            Assert.AreEqual(expectedParameters, template.StatusResult.betId);
+            // Assert
+            Assert.IsFalse(string.IsNullOrEmpty(_status.Template.StatusResult.ToString()));
         }
 
         [Test]
-        public void BuildStatusResult_TicketBetIdIsNullAndTicketBetCheckIsNotNullOrEmpty_SetZeroAsBetIdInParameterListOfResultLink()
+        public void BuildStatusResult_SettleRefund_ShowResultLink()
         {
-            // Arrange.
-            _ticket.BetId = null;
+            // Arrange
+            _ticket.BetCheck = "betcheck";
+            _ticket.WinlostDate = DateTime.Today;
+            _ticket.Status = "Refund";
 
-            // Act.
-            var template = _status.Render(_ticket, _ticketHelper, null, false);
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, false);
 
-            // Assert.
-            var expectedParameters = $"0, '{_ticket.MatchCode}', {_ticket.CustId}, '{_ticket.BetCheck}'";
-
-            Assert.AreEqual(expectedParameters, template.StatusResult.betId);
+            // Assert
+            Assert.IsFalse(string.IsNullOrEmpty(_status.Template.StatusResult.ToString()));
         }
 
-        
+        [Test]
+        public void BuildStatusResult_SettleReject_HideResultLink()
+        {
+            // Arrange
+            _ticket.BetCheck = "betcheck";
+            _ticket.WinlostDate = DateTime.Today;
+            _ticket.Status = "Reject";
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.IsTrue(string.IsNullOrEmpty(_status.Template.StatusResult.ToString()));
+        }
+
+        [Test]
+        public void BuildStatusResult_Settle_MatchCodeIsEmpty_ShowSiteIdDefault()
+        {
+            // Arrange
+            _ticket.MatchCode = string.Empty;
+            _ticket.BetCheck = "betcheck";
+            _ticket.WinlostDate = DateTime.Today;
+            _ticket.Status = "Refund";
+            _ticket.CustId = 123;
+
+            var expectedBetId = "123, '4100300', 123, 'betcheck'";
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual(expectedBetId, _status.Template.StatusResult.betId);
+        }
     }
 }
