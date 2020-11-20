@@ -376,6 +376,10 @@
       <Project>{0b1f8272-e921-4539-8d3a-bcfc10280f4e}</Project>
       <Name>Fanex.BetList.Keno</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.LeapGaming\Fanex.BetList.LeapGaming.csproj">
+      <Project>{e26d13f6-d1fe-49c1-990d-f3436909902c}</Project>
+      <Name>Fanex.BetList.LeapGaming</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.MetricGaming\Fanex.BetList.MetricGaming.csproj">
       <Project>{054031e6-3e06-47d9-b3d1-b8a8e164e504}</Project>
       <Name>Fanex.BetList.MetricGaming</Name>
@@ -530,6 +534,9 @@
     <Content Include="App_Data\MyanmarOdds.xls" />
     <Content Include="App_Data\GDG.xls" />
     <Content Include="App_Data\GodOfFurtune.xls" />
+    <Content Include="App_Data\LeapGaming.xls">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />

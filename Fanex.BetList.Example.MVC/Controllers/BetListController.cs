@@ -42,6 +42,26 @@
             return View(model);
         }
 
+        public ActionResult LeapGaming(BetListData model = null)
+        {
+            var betTypeIds = new List<int>();
+
+            for (var betTypeId = 3501; betTypeId <= 3599; betTypeId++)
+            {
+                betTypeIds.Add(betTypeId);
+            }
+
+            var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
+
+            DataSourcePath = "~/App_Data/LeapGaming.xls";
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
+        
         public ActionResult GDG(BetListData model = null)
         {
             var betTypeIds = new List<int>();
@@ -72,13 +92,7 @@
             return BetListView(model);
         }
 
-            DataSourcePath = "~/App_Data/GDG.xls";
-            ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            model = GetDataSource(model, DataSourcePath);
-            model.DataFilePath = DataSourcePath;
-
-            return BetListView(model);
-        }
+           
 
         public ActionResult WM(BetListData model = null)
         {
