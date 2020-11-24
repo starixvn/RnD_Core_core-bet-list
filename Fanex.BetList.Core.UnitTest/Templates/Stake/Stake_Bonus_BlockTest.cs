@@ -14,7 +14,7 @@
 
     public class Stake_Bonus_BlockTest
     {
-        private const string BonusTemplate = "{0}{1}{2}";
+        private const string BonusTemplate = "{0}{1}{2}{3}";
 
         [Test]
         public void ToString_BlockIsInvisible_ReturnEmptyString()
@@ -45,7 +45,7 @@
             bonusBlock.ToString(ref bonusHtml);
 
             // Assert.
-            var expectedHtml = string.Format(BonusTemplate, bonusBlock.NormalBonus, bonusBlock.RebateBonusIcon, bonusBlock.NonPeakHoursPromotionIcon);
+            var expectedHtml = string.Format(BonusTemplate, bonusBlock.NormalBonus, bonusBlock.RebateBonusIcon, bonusBlock.NonPeakHoursPromotionIcon, bonusBlock.GodOfFortune);
 
             Assert.AreEqual(expectedHtml, bonusHtml.ToString());
         }
@@ -67,7 +67,7 @@
             bonusBlock.ToString(ref bonusHtml);
 
             // Assert.
-            var originalGeneratedHtml = string.Format(BonusTemplate, bonusBlock.NormalBonus, bonusBlock.RebateBonusIcon, bonusBlock.NonPeakHoursPromotionIcon);
+            var originalGeneratedHtml = string.Format(BonusTemplate, bonusBlock.NormalBonus, bonusBlock.RebateBonusIcon, bonusBlock.NonPeakHoursPromotionIcon, bonusBlock.GodOfFortune);
             var expectedHtml = $"{originalGeneratedHtml}{extendedValue}";
 
             Assert.AreEqual(expectedHtml, bonusHtml.ToString());

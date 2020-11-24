@@ -14,6 +14,7 @@
     public class Stake1 : IStake
     {
         private const string CashOutXmlTag = "p25";
+        private const string SportsbookXmlTag = "p1";
 
         public Stake1()
         {
@@ -54,6 +55,7 @@
             BuildNormalBonus(ticket);
             BuildRebateBonus(ticket);
             BuildNonPeakHoursPromotion(ticket);
+            BuildGodOfFortune(ticket);
         }
 
         protected void BuildNormalBonus(ITicket ticket)
@@ -115,17 +117,35 @@
 
         protected static bool IsRebateBonusTicket(ITicket ticket)
         {
-            const string bonusXmlTag = "p1";
             const string bonusTypeAttributeName = "t";
             const string rebateBonusType = "2";
 
-            var bonusType = ticket.ExtraInfo.GetXmlTagAttributeValue(bonusXmlTag, bonusTypeAttributeName);
+            var bonusType = ticket.ExtraInfo.GetXmlTagAttributeValue(SportsbookXmlTag, bonusTypeAttributeName);
 
             return bonusType == rebateBonusType;
         }
 
         protected virtual void BuildNonPeakHoursPromotion(ITicket ticket)
             => Template.Bonus.NonPeakHoursPromotionIcon.Visible &= IsNonPeakHoursPromotionTicket(ticket);
+
+        protected virtual void BuildGodOfFortune(ITicket ticket)
+        {
+            Template.Bonus.GodOfFortune.Visible &= IsGodOfFortuneTicket(ticket);
+            if (Template.Bonus.GodOfFortune.Visible)
+            {
+                var stake = ConvertByBetType.Stake(ticket.Stake - ticket.ActualStake);
+                var discount = ticket.ExtraInfo.GetXmlTagAttributeValue(SportsbookXmlTag, "d");
+                Template.Bonus.GodOfFortune.returnStake = string.Format(CoreBetList.ReturnStake, stake);
+                Template.Bonus.GodOfFortune.discount = string.Format(CoreBetList.Discount, discount);
+            }
+        }
+
+        protected static bool IsGodOfFortuneTicket(ITicket ticket)
+        {
+            const string godOfFortuneAttributeName = "d";
+
+            return ticket.ExtraInfo.HasAttributeInXmlTag(SportsbookXmlTag, godOfFortuneAttributeName);
+        }
 
         protected static bool IsNonPeakHoursPromotionTicket(ITicket ticket)
         {
@@ -171,6 +191,12 @@
             if (Template.Bonus.NonPeakHoursPromotionIcon.Visible)
             {
                 bonusIndicatingText += $"\n({CoreBetList.Promotion})";
+            }
+
+            if (Template.Bonus.GodOfFortune.Visible)
+            {
+                bonusIndicatingText += $"\n{Template.Bonus.GodOfFortune.returnStake}";
+                bonusIndicatingText += $"\n{Template.Bonus.GodOfFortune.discount}";
             }
 
             return bonusIndicatingText;

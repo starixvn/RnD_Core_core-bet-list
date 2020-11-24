@@ -293,6 +293,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
         [TestCase("<p1 t=\"1\" />")]
         [TestCase("<p1 t=\"3\" />")]
         [TestCase("<p1 p=\"2\" />")]
+        [TestCase("<p1 d=\"2\" />")]
         [TestCase("")]
         [TestCase(null)]
         public void Render_ExtraInfoDoesNotContainRebateBonusIndicator_HideRebateBonusIcon(string extraInfo)
@@ -323,6 +324,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             Assert.IsTrue(template.Bonus.NonPeakHoursPromotionIcon.Visible);
         }
 
+        [TestCase("<p1 d=\"1\" />")]
         [TestCase("<p1 i=\"222\" />")]
         [TestCase("<p37 t=\"2\" /><p25 s=\"100\" a=\"100\" />")]
         [TestCase("")]
@@ -337,6 +339,68 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
 
             // Assert
             Assert.IsFalse(template.Bonus.NonPeakHoursPromotionIcon.Visible);
+        }
+
+        [TestCase("<p1 d=\"5\" />")]
+        [TestCase("<p1 d=\"5\" lt=\"123345\" />")]
+        public void Render_ExtraInfoContainsGodOfFortune_ShowGodOfFortuneInfo(string extraInfo)
+        {
+            // Arrange
+            _ticket.ExtraInfo = extraInfo;
+
+            // Act
+            var template = _stake.Render(_ticket);
+
+            // Assert
+            Assert.IsTrue(template.Bonus.GodOfFortune.Visible);
+        }
+
+        [TestCase("<p1 i=\"222\" />")]
+        [TestCase("<p37 t=\"2\" /><p25 s=\"100\" a=\"100\" />")]
+        [TestCase("")]
+        [TestCase(null)]
+        public void Render_ExtraInfoDoesNotContainGodOfFortune_HideGodOfFortuneInfo(string extraInfo)
+        {
+            // Arrange
+            _ticket.ExtraInfo = extraInfo;
+
+            // Act
+            var template = _stake.Render(_ticket);
+
+            // Assert
+            Assert.IsFalse(template.Bonus.GodOfFortune.Visible);
+        }
+
+        [Test]
+        public void Render_GodOfFortune_ShowCorrectStake()
+        {
+            // Arrange
+            _ticket.ExtraInfo = "<p1 d=\"10\" />";
+            _ticket.Stake = 200;
+            _ticket.ActualStake = 180;
+            var expectedStake ="Return Stake 20";
+
+            // Act
+            var template = _stake.Render(_ticket);
+
+            // Assert
+            Assert.AreEqual(expectedStake, template.Bonus.GodOfFortune.returnStake);
+        }
+
+        [Test]
+        public void Render_GodOfFortune_ShowCorrectDiscount()
+        {
+            // Arrange
+            _ticket.ExtraInfo = "<p1 d=\"10\" />";
+            _ticket.Stake = 200;
+            _ticket.ActualStake = 198;
+            var expectedStake = "Discount 10% off";
+
+            // Act
+            var template = _stake.Render(_ticket);
+
+            // Assert
+            Assert.AreEqual(expectedStake, template.Bonus.GodOfFortune.discount);
         }
 
         [Test]
@@ -462,12 +526,49 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             Assert.AreEqual(expectedText, stakeLines[stakeLines.Length - 1]);
         }
 
-
         [TestCase("<p1 i=\"222\" />")]
         [TestCase("<p37 t=\"2\" />")]
         [TestCase("")]
         [TestCase(null)]
         public void RenderRTF_ExtraInfoDoesNotContainNonPeakHoursPromotionIndicator_HidePromotionPart(string extraInfo)
+        {
+            // Arrange
+            _ticket.ExtraInfo = extraInfo;
+
+            // Act
+            var stakeRichText = _stake.RenderRTF(_ticket, new RTFHelper().Clone());
+            var stakeLines = stakeRichText.String.Split('\n');
+
+            // Assert
+            Assert.AreEqual(1, stakeLines.Length);
+        }
+
+        [TestCase("<p1 d=\"10\" />")]
+        public void RenderRTF_ExtraInfoContainsGodOfFortune_LastLineIsGodOfFortune(string extraInfo)
+        {
+            // Arrange
+            _ticket.Stake = 200;
+            _ticket.ActualStake = 180;
+            _ticket.ExtraInfo = extraInfo;
+
+            // Act
+            var stakeRichText = _stake.RenderRTF(_ticket, new RTFHelper().Clone());
+            var stakeLines = stakeRichText.String.Split('\n');
+
+            // Assert
+            var expectedReturnStakeText = "Return Stake 20";
+            var expectedDiscountText = "Discount 10% off";
+
+            Assert.AreEqual(expectedReturnStakeText, stakeLines[stakeLines.Length - 2]);
+            Assert.AreEqual(expectedDiscountText, stakeLines[stakeLines.Length - 1]);
+        }
+
+
+        [TestCase("<p1 i=\"222\" />")]
+        [TestCase("<p37 t=\"2\" />")]
+        [TestCase("")]
+        [TestCase(null)]
+        public void RenderRTF_ExtraInfoDoesNotContainGodOfFortune_HideGodOfFortune(string extraInfo)
         {
             // Arrange
             _ticket.ExtraInfo = extraInfo;

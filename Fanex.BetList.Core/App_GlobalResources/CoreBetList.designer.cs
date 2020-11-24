@@ -655,6 +655,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Discount {0}% off.
+        /// </summary>
+        public static string Discount {
+            get {
+                return ResourceManager.GetString("Discount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Draw.
         /// </summary>
         public static string draw {
@@ -1974,6 +1983,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string results {
             get {
                 return ResourceManager.GetString("results", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Return Stake {0}.
+        /// </summary>
+        public static string ReturnStake {
+            get {
+                return ResourceManager.GetString("ReturnStake", resourceCulture);
             }
         }
         

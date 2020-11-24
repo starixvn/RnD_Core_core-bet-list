@@ -899,7 +899,8 @@
     <value>{0} {1}</value>
   </data>
   <data name="Goal" xml:space="preserve">
-    <value>Goal</value></data>
+    <value>Goal</value>
+  </data>
   <data name="DelayPayout" xml:space="preserve">
     <value>Delayed Payout</value>
   </data>
@@ -986,5 +987,11 @@
   </data>
   <data name="BeforeMinute" xml:space="preserve">
     <value>Before Minute {0}</value>
+  </data>
+  <data name="Discount" xml:space="preserve">
+    <value>Discount {0}% off</value>
+  </data>
+  <data name="ReturnStake" xml:space="preserve">
+    <value>Return Stake {0}</value>
   </data>
 </root>

@@ -63,6 +63,7 @@ namespace Fanex.BetList.Core
 			public Stake_Bonus_NormalBonus_Block NormalBonus = new Stake_Bonus_NormalBonus_Block();
 			public Stake_Bonus_RebateBonusIcon_Block RebateBonusIcon = new Stake_Bonus_RebateBonusIcon_Block();
 			public Stake_Bonus_NonPeakHoursPromotionIcon_Block NonPeakHoursPromotionIcon = new Stake_Bonus_NonPeakHoursPromotionIcon_Block();
+			public Stake_Bonus_GodOfFortune_Block GodOfFortune = new Stake_Bonus_GodOfFortune_Block();
 			public override void ToString(ref StringBuilder bd)
 			{
 				if(!Visible) return;
@@ -71,6 +72,7 @@ namespace Fanex.BetList.Core
 					if(null != NormalBonus) NormalBonus.ToString(ref bd);
 					if(null != RebateBonusIcon) RebateBonusIcon.ToString(ref bd);
 					if(null != NonPeakHoursPromotionIcon) NonPeakHoursPromotionIcon.ToString(ref bd);
+					if(null != GodOfFortune) GodOfFortune.ToString(ref bd);
 				}
 				if(IsAssigned){bd.Append(Value);}
 			}
@@ -167,6 +169,28 @@ namespace Fanex.BetList.Core
 					bd.Append(s13);
 					bd.Append(s14);
 					bd.Append(s15);
+				}
+				if(IsAssigned){bd.Append(Value);}
+			}
+		}
+
+		public class Stake_Bonus_GodOfFortune_Block: Block
+		{
+			protected static string s16 = "<div class=\"return-stake\">";
+			public string returnStake = "{returnStake}";
+			protected static string s17 = "</div><div class=\"discount\">";
+			public string discount = "{discount}";
+			protected static string s18 = "</div>";
+			public override void ToString(ref StringBuilder bd)
+			{
+				if(!Visible) return;
+				if(RenderChild)
+				{
+					bd.Append(s16);
+					bd.Append(returnStake);
+					bd.Append(s17);
+					bd.Append(discount);
+					bd.Append(s18);
 				}
 				if(IsAssigned){bd.Append(Value);}
 			}
