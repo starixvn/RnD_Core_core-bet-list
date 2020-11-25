@@ -24,7 +24,7 @@
             Template.stake = stakeSection.ToString();
         }
 
-        public override IRichTextString RenderRTF(ITicket ticket, RTFHelper rtfHelper)
+        public override IRichTextString RenderRTF(ITicket ticket, ITicketHelper ticketHelper, RTFHelper rtfHelper)
         {
             var stake = ConvertByBetType.Stake(ticket.Stake);
             rtfHelper.RTFRenderer.AddText(stake + "\n", rtfHelper.PosFont);

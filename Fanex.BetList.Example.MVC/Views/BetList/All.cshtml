@@ -133,7 +133,7 @@
                 @Html.Raw(builder.BuildOddsTypeName(ticket, ticketData, funcGetOddsTypeName))
             </td>
             <td class="text-center">
-                @Html.Raw(builder.BuildStake(ticket))
+                @Html.Raw(builder.BuildStake(ticket, ticketHelper))
             </td>
             <td class="text-center">
                 @Html.Raw(builder.BuildStatus(ticket, ticketHelper, ticketData, true))

@@ -21,8 +21,11 @@
         [Test]
         public void BuildStake_Always_ShowHyphen()
         {
+            // Arrange
+            var ticketHelper = Substitute.For<ITicketHelper>();
+
             // Act
-            var stake = _stake.Render(_ticket);
+            var stake = _stake.Render(_ticket, ticketHelper);
 
             // Assert
             Assert.AreEqual("-", stake.stake);

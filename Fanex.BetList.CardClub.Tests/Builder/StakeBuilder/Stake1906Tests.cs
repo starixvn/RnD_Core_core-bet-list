@@ -2,6 +2,7 @@ namespace Fanex.BetList.PP.Tests.Builder.StakeBuilder
 {
     using Fanex.BetList.Core.Builder.StakeBuilder;
     using Fanex.BetList.Core.Entities;
+    using NSubstitute;
     using NUnit.Framework;
 
     [TestFixture]
@@ -13,9 +14,10 @@ namespace Fanex.BetList.PP.Tests.Builder.StakeBuilder
             // Arrange
             var ticket = new Ticket { Stake = 0 };
             var stake = new Stake1906();
+            var ticketHelper = Substitute.For<ITicketHelper>();
 
             // Act
-            var template = stake.Render(ticket);
+            var template = stake.Render(ticket, ticketHelper);
 
             // Assert
             Assert.AreEqual("-", template.stake);
@@ -27,9 +29,10 @@ namespace Fanex.BetList.PP.Tests.Builder.StakeBuilder
             // Arrange
             var ticket = new Ticket { Stake = 10 };
             var stake = new Stake1906();
+            var ticketHelper = Substitute.For<ITicketHelper>();
 
             // Act
-            var template = stake.Render(ticket);
+            var template = stake.Render(ticket, ticketHelper);
 
             // Assert
             Assert.AreEqual("-", template.stake);

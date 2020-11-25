@@ -23,18 +23,18 @@
 
         public Stake_Template Template { get; set; }
 
-        public virtual Stake_Template Render(ITicket ticket)
+        public virtual Stake_Template Render(ITicket ticket, ITicketHelper ticketHelper)
         {
             BuildStake(ticket);
             BuildOriginalStake(ticket);
-            BuildBonus(ticket);
+            BuildBonus(ticket, ticketHelper);
 
             return Template;
         }
 
-        public virtual IRichTextString RenderRTF(ITicket ticket, RTFHelper rtfHelper)
+        public virtual IRichTextString RenderRTF(ITicket ticket, ITicketHelper ticketHelper, RTFHelper rtfHelper)
         {
-            Render(ticket);
+            Render(ticket, ticketHelper);
 
             BuildOriginalStakeRTF(ticket, rtfHelper);
             BuildStake(rtfHelper);
@@ -50,12 +50,12 @@
             Template.stake = ConvertByBetType.Stake(ticket.Stake);
         }
 
-        protected virtual void BuildBonus(ITicket ticket)
+        protected virtual void BuildBonus(ITicket ticket, ITicketHelper ticketHelper)
         {
             BuildNormalBonus(ticket);
             BuildRebateBonus(ticket);
             BuildNonPeakHoursPromotion(ticket);
-            BuildGodOfFortune(ticket);
+            BuildGodOfFortune(ticket, ticketHelper);
         }
 
         protected void BuildNormalBonus(ITicket ticket)
@@ -128,15 +128,18 @@
         protected virtual void BuildNonPeakHoursPromotion(ITicket ticket)
             => Template.Bonus.NonPeakHoursPromotionIcon.Visible &= IsNonPeakHoursPromotionTicket(ticket);
 
-        protected virtual void BuildGodOfFortune(ITicket ticket)
+        protected virtual void BuildGodOfFortune(ITicket ticket, ITicketHelper ticketHelper)
         {
             Template.Bonus.GodOfFortune.Visible &= IsGodOfFortuneTicket(ticket);
             if (Template.Bonus.GodOfFortune.Visible)
             {
                 var stake = ConvertByBetType.Stake(ticket.Stake - ticket.ActualStake);
                 var discount = ticket.ExtraInfo.GetXmlTagAttributeValue(SportsbookXmlTag, "d");
-                Template.Bonus.GodOfFortune.returnStake = string.Format(CoreBetList.ReturnStake, stake);
-                Template.Bonus.GodOfFortune.discount = string.Format(CoreBetList.Discount, discount);
+                var returnStakeText = ticketHelper.GetResourceData("God_of_Fortune", "29v");
+                var discountText = ticketHelper.GetResourceData("God_of_Fortune", "29d");
+
+                Template.Bonus.GodOfFortune.returnStake = string.Format(returnStakeText, stake);
+                Template.Bonus.GodOfFortune.discount = string.Format(discountText, discount);
             }
         }
 

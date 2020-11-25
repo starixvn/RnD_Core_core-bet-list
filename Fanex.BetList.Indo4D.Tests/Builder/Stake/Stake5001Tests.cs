@@ -5,6 +5,7 @@ using Fanex.BetList.Core.Entities;
 using Fanex.BetList.Core.UnitTest.Common;
 using NUnit.Framework;
 using System.Linq;
+using NSubstitute;
 
 namespace Fanex.BetList.Indo4D.Tests.Builder.Stake
 {
@@ -22,9 +23,10 @@ namespace Fanex.BetList.Indo4D.Tests.Builder.Stake
             ticket.ActualStake = acutalStake;
             ticket.Stake = stakeValue;
             var stake = new Stake5001();
+            var ticketHelper = Substitute.For<ITicketHelper>();
 
             // Act.
-            var template = stake.Render(ticket);
+            var template = stake.Render(ticket, ticketHelper);
 
             // Assert.
 
@@ -39,8 +41,10 @@ namespace Fanex.BetList.Indo4D.Tests.Builder.Stake
             var ticket = TestData.CreateTicket(Indo4DBetTypes.FourD);
             var stake = new Stake5001();
             var htmlTags = new List<string> { "<div>", "</div>", "</font>", "<font color='#B50000'>" };
+            var ticketHelper = Substitute.For<ITicketHelper>();
+
             // Act
-            var template = stake.RenderRTF(ticket, new RTFHelper().Clone());
+            var template = stake.RenderRTF(ticket, ticketHelper, new RTFHelper().Clone());
 
             // Assert
             Assert.IsFalse(htmlTags.Any(i => template.String.Contains(i)));

@@ -180,9 +180,9 @@
         /// <param name="openTag">The open tag.</param>
         /// <param name="closeTag">The close tag.</param>
         /// <returns>Current BetListHTMLBuilder object.</returns>
-        public BetListHTMLBuilder AddStake(ITicket ticket, string openTag, string closeTag)
+        public BetListHTMLBuilder AddStake(ITicket ticket, ITicketHelper ticketHelper, string openTag, string closeTag)
         {
-            string stake = BuildStake(ticket);
+            string stake = BuildStake(ticket, ticketHelper);
 
             _content.Append(string.Join(null, new[] { openTag, stake, closeTag }));
             return this;
@@ -193,11 +193,11 @@
         /// </summary>
         /// <param name="ticket">The ticket.</param>
         /// <returns>System.String: the HTML markup of Stake for input data.</returns>
-        public string BuildStake(ITicket ticket)
+        public string BuildStake(ITicket ticket, ITicketHelper ticketHelper)
         {
             IStake stakeBuilder = CreateStakeBuilder(ticket.BetTypeId);
 
-            return stakeBuilder.Render(ticket);
+            return stakeBuilder.Render(ticket, ticketHelper);
         }
 
         /// <summary>

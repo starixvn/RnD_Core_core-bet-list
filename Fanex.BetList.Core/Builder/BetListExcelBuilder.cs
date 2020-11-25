@@ -241,10 +241,10 @@ namespace Fanex.BetList.Core.Builder
             return this;
         }
 
-        public BetListExcelBuilder AddStake(ITicket ticket)
+        public BetListExcelBuilder AddStake(ITicket ticket, ITicketHelper ticketHelper)
         {
             IStake stakeBuilder = CreateStakeBuilder(ticket.BetTypeId);
-            IRichTextString rtfStake = stakeBuilder.RenderRTF(ticket, RTFHelper);
+            IRichTextString rtfStake = stakeBuilder.RenderRTF(ticket, ticketHelper, RTFHelper);
             AddCell(rtfStake);
 
             return this;

@@ -4,7 +4,7 @@
 
     public class Stake17000 : Stake1
     {
-        protected override void BuildBonus(ITicket ticket)
+        protected override void BuildBonus(ITicket ticket, ITicketHelper ticketHelper)
         {
             Template.Bonus.Hide();
         }

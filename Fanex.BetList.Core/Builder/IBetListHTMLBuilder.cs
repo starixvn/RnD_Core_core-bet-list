@@ -31,9 +31,9 @@
 
         string BuildOddsTypeName(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById getOddsTypeName);
 
-        BetListHTMLBuilder AddStake(ITicket ticket, string openTag, string closeTag);
+        BetListHTMLBuilder AddStake(ITicket ticket, ITicketHelper ticketHelper, string openTag, string closeTag);
 
-        string BuildStake(ITicket ticket);
+        string BuildStake(ITicket ticket, ITicketHelper ticketHelper);
 
         BetListHTMLBuilder AddTrans(ITicket ticket, string openTag, string closeTag);
 

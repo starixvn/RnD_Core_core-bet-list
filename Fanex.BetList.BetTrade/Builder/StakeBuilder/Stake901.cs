@@ -4,9 +4,9 @@
 
     public class Stake901 : Stake1
     {
-        protected override void BuildBonus(ITicket ticket)
+        protected override void BuildBonus(ITicket ticket, ITicketHelper ticketHelper)
         {
-            base.BuildBonus(ticket);
+            base.BuildBonus(ticket, ticketHelper);
 
             Template.Bonus.RebateBonusIcon.Hide();
             Template.Bonus.NonPeakHoursPromotionIcon.Hide();

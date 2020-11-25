@@ -47,7 +47,7 @@
 
         BetListExcelBuilder AddOddsType(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName);
 
-        BetListExcelBuilder AddStake(ITicket ticket);
+        BetListExcelBuilder AddStake(ITicket ticket, ITicketHelper ticketHelper);
 
         BetListExcelBuilder AddTrans(ITicket ticket, ITicketHelper ticketHelper);
 

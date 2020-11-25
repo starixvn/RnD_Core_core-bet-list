@@ -11,8 +11,8 @@
     {
         Stake_Template Template { get; set; }
 
-        Stake_Template Render(ITicket ticket);
+        Stake_Template Render(ITicket ticket, ITicketHelper ticketHelper);
 
-        IRichTextString RenderRTF(ITicket ticket, RTFHelper rtfHelper);
+        IRichTextString RenderRTF(ITicket ticket, ITicketHelper ticketHelper, RTFHelper rtfHelper);
     }
 }

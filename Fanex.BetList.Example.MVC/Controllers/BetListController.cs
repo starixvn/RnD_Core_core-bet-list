@@ -1118,7 +1118,7 @@
                            .AddOddsType(ticket, ticketData, funcGetOddsTypeName)
                            .AddOddsValue(ticket, ticketData, funcGetOddsTypeName)
                            .AddStatus(ticket, ticketHelper, ticketData, true)
-                           .AddStake(ticket);
+                           .AddStake(ticket, ticketHelper);
                 }
 
                 var ms = new MemoryStream();

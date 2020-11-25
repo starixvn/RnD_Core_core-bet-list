@@ -2,6 +2,7 @@
 {
     using Core.Builder.StakeBuilder;
     using Core.Entities;
+    using NSubstitute;
     using NUnit.Framework;
 
     public class Stake901Tests
@@ -12,9 +13,10 @@
             // Arrange.
             var stake = new Stake901();
             var ticket = new Ticket();
+            var ticketHelper = Substitute.For<ITicketHelper>();
 
             // Act.
-            var template = stake.Render(ticket);
+            var template = stake.Render(ticket, ticketHelper);
 
             // Assert.
             Assert.IsFalse(template.Bonus.RebateBonusIcon.Visible);
@@ -26,9 +28,10 @@
             // Arrange.
             var stake = new Stake901();
             var ticket = new Ticket();
+            var ticketHelper = Substitute.For<ITicketHelper>();
 
             // Act.
-            var template = stake.Render(ticket);
+            var template = stake.Render(ticket, ticketHelper);
 
             // Assert.
             Assert.IsFalse(template.Bonus.NonPeakHoursPromotionIcon.Visible);

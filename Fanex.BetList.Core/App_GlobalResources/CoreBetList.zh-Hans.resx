@@ -909,10 +909,4 @@
   <data name="BeforeMinute" xml:space="preserve">
     <value>在第{0}分前</value>
   </data>
-  <data name="ReturnStake" xml:space="preserve">
-    <value>返還金額 {0}</value>
-  </data>
-  <data name="Discount" xml:space="preserve">
-    <value>折扣 {0}%</value>
-  </data>
 </root>

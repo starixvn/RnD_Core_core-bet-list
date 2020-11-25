@@ -8,24 +8,29 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
     using Core.Builder.StakeBuilder;
     using Entities;
     using NUnit.Framework;
+    using NSubstitute;
 
     public class Stake1Test
     {
         private Stake1 _stake;
         private ITicket _ticket;
+        private ITicketHelper _ticketHelper;
 
         [SetUp]
         public void Setup()
         {
             _stake = new Stake1();
             _ticket = TestData.CreateTicket(BetTypes.Handicap);
+            _ticketHelper = Substitute.For<ITicketHelper>();
+            _ticketHelper.GetResourceData("God_of_Fortune", "29v").Returns("Return Stake {0}");
+            _ticketHelper.GetResourceData("God_of_Fortune", "29d").Returns("Discount {0}% off");
         }
 
         [Test]
         public void Render_Always_ReturnStakeIsTicketStake()
         {
             // Act
-            var template = _stake.Render(_ticket);
+            var template = _stake.Render(_ticket, _ticketHelper);
 
             // Assert
             string expectedStake = _ticket.Stake.ToString();
@@ -39,7 +44,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             ArrangeCashOutTicket(0, "<p25 s=\"1000\" a=\"1000\"/>", 1000);
 
             // Act
-            var template = _stake.Render(_ticket);
+            var template = _stake.Render(_ticket, _ticketHelper);
 
             // Assert
             Assert.IsTrue(template.OriginalStake.Visible);
@@ -54,7 +59,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             ArrangeCashOutTicket(betDaqId, extraInfo, 1000);
 
             // Act
-            var template = _stake.Render(_ticket);
+            var template = _stake.Render(_ticket, _ticketHelper);
 
             // Assert
             Assert.IsFalse(template.OriginalStake.Visible);
@@ -68,7 +73,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             ArrangeCashOutTicket(betdaqId, "<p25 s=\"1000\" a=\"1000\"/>", 1000);
 
             // Act
-            var template = _stake.Render(_ticket);
+            var template = _stake.Render(_ticket, _ticketHelper);
 
             // Assert
             Assert.AreEqual(ConvertByBetType.Stake(_ticket.OriginalStake), template.OriginalStake.stake);
@@ -82,7 +87,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             ArrangeCashOutTicket(0, extraInfo, -1);
 
             // Act
-            var template = _stake.Render(_ticket);
+            var template = _stake.Render(_ticket, _ticketHelper);
 
             // Assert
             Assert.AreEqual(ConvertByBetType.Stake(expectedStake), template.OriginalStake.stake);
@@ -97,7 +102,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             ArrangeCashOutTicket(betDaqId, extraInfo);
 
             // Act
-            var template = _stake.RenderRTF(_ticket, new RTFHelper().Clone());
+            var template = _stake.RenderRTF(_ticket, _ticketHelper, new RTFHelper().Clone());
 
             // Assert
             var expectedTemplate = $"{ConvertByBetType.Stake(_ticket.Stake)}";
@@ -112,7 +117,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             ArrangeCashOutTicket(betdaqId, "<p25 s=\"1000\" a=\"1000\"/>", 1000);
 
             // Act
-            var template = _stake.RenderRTF(_ticket, new RTFHelper().Clone());
+            var template = _stake.RenderRTF(_ticket, _ticketHelper, new RTFHelper().Clone());
 
             // Asserts
             var expectedTemplate = $"{ConvertByBetType.Stake(1000)}\n{ConvertByBetType.Stake(_ticket.Stake)}";
@@ -134,7 +139,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             _ticket.RefCode = 0;
 
             // Act
-            var template = _stake.Render(_ticket);
+            var template = _stake.Render(_ticket, _ticketHelper);
 
             // Assert
             Assert.IsFalse(template.Bonus.NormalBonus.Visible);
@@ -148,7 +153,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             _ticket.RefCode = 0;
 
             // Act
-            var template = _stake.Render(_ticket);
+            var template = _stake.Render(_ticket, _ticketHelper);
 
             // Assert
             Assert.IsFalse(template.Bonus.NormalBonus.BonusIcon.Visible);
@@ -162,7 +167,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             _ticket.RefCode = 0;
 
             // Act
-            var template = _stake.Render(_ticket);
+            var template = _stake.Render(_ticket, _ticketHelper);
 
             // Assert
             Assert.IsTrue(template.Bonus.NormalBonus.Wallet.Visible);
@@ -176,7 +181,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             _ticket.RefCode = 0;
 
             // Act
-            var template = _stake.Render(_ticket);
+            var template = _stake.Render(_ticket, _ticketHelper);
 
             // Assert
             var expectedText = $"({CoreBetList.Bonus})";
@@ -192,7 +197,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             _ticket.RefCode = 0;
 
             // Act
-            var template = _stake.Render(_ticket);
+            var template = _stake.Render(_ticket, _ticketHelper);
 
             // Assert
             Assert.IsFalse(template.Bonus.NormalBonus.BonusIcon.Visible);
@@ -207,7 +212,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             _ticket.RefCode = 0;
 
             // Act
-            var template = _stake.Render(_ticket);
+            var template = _stake.Render(_ticket, _ticketHelper);
 
             // Assert
             Assert.IsTrue(template.Bonus.NormalBonus.Wallet.Visible);
@@ -222,7 +227,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             _ticket.RefCode = 0;
 
             // Act
-            var template = _stake.Render(_ticket);
+            var template = _stake.Render(_ticket, _ticketHelper);
 
             // Assert
             var expectedText = $"({CoreBetList.Cash})";
@@ -238,7 +243,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             _ticket.RefCode = 100;
 
             // Act
-            var template = _stake.Render(_ticket);
+            var template = _stake.Render(_ticket, _ticketHelper);
 
             // Assert
             Assert.IsTrue(template.Bonus.NormalBonus.BonusIcon.Visible);
@@ -252,7 +257,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             _ticket.RefCode = 100;
 
             // Act
-            var template = _stake.Render(_ticket);
+            var template = _stake.Render(_ticket, _ticketHelper);
 
             // Assert
             var expectedText = CoreBetList.ShowTransactionDetails;
@@ -268,7 +273,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             _ticket.RefCode = 100;
 
             // Act
-            var template = _stake.Render(_ticket);
+            var template = _stake.Render(_ticket, _ticketHelper);
 
             // Assert
             Assert.IsFalse(template.Bonus.NormalBonus.Wallet.Visible);
@@ -284,7 +289,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             _ticket.ExtraInfo = extraInfo;
 
             // Act
-            var template = _stake.Render(_ticket);
+            var template = _stake.Render(_ticket, _ticketHelper);
 
             // Assert
             Assert.IsTrue(template.Bonus.RebateBonusIcon.Visible);
@@ -302,7 +307,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             _ticket.ExtraInfo = extraInfo;
 
             // Act
-            var template = _stake.Render(_ticket);
+            var template = _stake.Render(_ticket, _ticketHelper);
 
             // Assert
             Assert.IsFalse(template.Bonus.RebateBonusIcon.Visible);
@@ -318,7 +323,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             _ticket.ExtraInfo = extraInfo;
 
             // Act
-            var template = _stake.Render(_ticket);
+            var template = _stake.Render(_ticket, _ticketHelper);
 
             // Assert
             Assert.IsTrue(template.Bonus.NonPeakHoursPromotionIcon.Visible);
@@ -335,7 +340,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             _ticket.ExtraInfo = extraInfo;
 
             // Act
-            var template = _stake.Render(_ticket);
+            var template = _stake.Render(_ticket, _ticketHelper);
 
             // Assert
             Assert.IsFalse(template.Bonus.NonPeakHoursPromotionIcon.Visible);
@@ -349,7 +354,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             _ticket.ExtraInfo = extraInfo;
 
             // Act
-            var template = _stake.Render(_ticket);
+            var template = _stake.Render(_ticket, _ticketHelper);
 
             // Assert
             Assert.IsTrue(template.Bonus.GodOfFortune.Visible);
@@ -365,7 +370,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             _ticket.ExtraInfo = extraInfo;
 
             // Act
-            var template = _stake.Render(_ticket);
+            var template = _stake.Render(_ticket, _ticketHelper);
 
             // Assert
             Assert.IsFalse(template.Bonus.GodOfFortune.Visible);
@@ -381,7 +386,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             var expectedStake ="Return Stake 20";
 
             // Act
-            var template = _stake.Render(_ticket);
+            var template = _stake.Render(_ticket, _ticketHelper);
 
             // Assert
             Assert.AreEqual(expectedStake, template.Bonus.GodOfFortune.returnStake);
@@ -397,7 +402,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             var expectedStake = "Discount 10% off";
 
             // Act
-            var template = _stake.Render(_ticket);
+            var template = _stake.Render(_ticket, _ticketHelper);
 
             // Assert
             Assert.AreEqual(expectedStake, template.Bonus.GodOfFortune.discount);
@@ -411,7 +416,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             _ticket.RefCode = 0;
 
             // Act
-            var stakeRichText = _stake.RenderRTF(_ticket, new RTFHelper().Clone());
+            var stakeRichText = _stake.RenderRTF(_ticket, _ticketHelper, new RTFHelper().Clone());
             var stakeLines = stakeRichText.String.Split('\n');
 
             // Assert
@@ -426,7 +431,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             _ticket.RefCode = 0;
 
             // Act
-            var stakeRichText = _stake.RenderRTF(_ticket, new RTFHelper().Clone());
+            var stakeRichText = _stake.RenderRTF(_ticket, _ticketHelper, new RTFHelper().Clone());
             var stakeLines = stakeRichText.String.Split('\n');
 
             // Assert
@@ -444,7 +449,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             _ticket.RefCode = 0;
 
             // Act
-            var stakeRichText = _stake.RenderRTF(_ticket, new RTFHelper().Clone());
+            var stakeRichText = _stake.RenderRTF(_ticket, _ticketHelper, new RTFHelper().Clone());
             var stakeLines = stakeRichText.String.Split('\n');
 
             // Assert
@@ -461,7 +466,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             _ticket.RefCode = 100;
 
             // Act
-            var stakeRichText = _stake.RenderRTF(_ticket, new RTFHelper().Clone());
+            var stakeRichText = _stake.RenderRTF(_ticket, _ticketHelper, new RTFHelper().Clone());
             var stakeLines = stakeRichText.String.Split('\n');
 
             // Assert
@@ -480,7 +485,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             _ticket.ExtraInfo = extraInfo;
 
             // Act
-            var stakeRichText = _stake.RenderRTF(_ticket, new RTFHelper().Clone());
+            var stakeRichText = _stake.RenderRTF(_ticket, _ticketHelper, new RTFHelper().Clone());
             var stakeLines = stakeRichText.String.Split('\n');
 
             // Assert
@@ -500,7 +505,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             _ticket.ExtraInfo = extraInfo;
 
             // Act
-            var stakeRichText = _stake.RenderRTF(_ticket, new RTFHelper().Clone());
+            var stakeRichText = _stake.RenderRTF(_ticket, _ticketHelper, new RTFHelper().Clone());
             var stakeLines = stakeRichText.String.Split('\n');
 
             // Assert
@@ -517,7 +522,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             _ticket.ExtraInfo = extraInfo;
 
             // Act
-            var stakeRichText = _stake.RenderRTF(_ticket, new RTFHelper().Clone());
+            var stakeRichText = _stake.RenderRTF(_ticket, _ticketHelper, new RTFHelper().Clone());
             var stakeLines = stakeRichText.String.Split('\n');
 
             // Assert
@@ -536,7 +541,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             _ticket.ExtraInfo = extraInfo;
 
             // Act
-            var stakeRichText = _stake.RenderRTF(_ticket, new RTFHelper().Clone());
+            var stakeRichText = _stake.RenderRTF(_ticket, _ticketHelper, new RTFHelper().Clone());
             var stakeLines = stakeRichText.String.Split('\n');
 
             // Assert
@@ -549,10 +554,10 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             // Arrange
             _ticket.Stake = 200;
             _ticket.ActualStake = 180;
-            _ticket.ExtraInfo = extraInfo;
+            _ticket.ExtraInfo = extraInfo;            
 
             // Act
-            var stakeRichText = _stake.RenderRTF(_ticket, new RTFHelper().Clone());
+            var stakeRichText = _stake.RenderRTF(_ticket, _ticketHelper, new RTFHelper().Clone());
             var stakeLines = stakeRichText.String.Split('\n');
 
             // Assert
@@ -574,7 +579,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.StakeBuilder
             _ticket.ExtraInfo = extraInfo;
 
             // Act
-            var stakeRichText = _stake.RenderRTF(_ticket, new RTFHelper().Clone());
+            var stakeRichText = _stake.RenderRTF(_ticket, _ticketHelper, new RTFHelper().Clone());
             var stakeLines = stakeRichText.String.Split('\n');
 
             // Assert
