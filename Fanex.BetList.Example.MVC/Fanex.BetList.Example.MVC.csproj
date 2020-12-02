@@ -340,6 +340,10 @@
       <Project>{C170087E-7A8F-4CBC-A0F7-F869DFFE48FD}</Project>
       <Name>Fanex.BetList.Example.Extension</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.Betlist.GDG\Fanex.BetList.GDG.csproj">
+      <Project>{fddc27bf-b231-4d8a-a2fb-26495c2dad8c}</Project>
+      <Name>Fanex.BetList.GDG</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.GlobalGaming\Fanex.BetList.GlobalGaming.csproj">
       <Project>{2b8a67cf-d4c8-47fd-a7f1-db3b9525e567}</Project>
       <Name>Fanex.BetList.GlobalGaming</Name>
@@ -524,6 +528,7 @@
     <Content Include="App_Data\Joker.xls" />
     <Content Include="App_Data\TimeMachine.xls" />
     <Content Include="App_Data\MyanmarOdds.xls" />
+    <Content Include="App_Data\GDG.xls" />
     <Content Include="App_Data\GodOfFurtune.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />

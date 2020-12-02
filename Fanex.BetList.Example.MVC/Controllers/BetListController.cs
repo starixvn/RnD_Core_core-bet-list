@@ -42,11 +42,38 @@
             return View(model);
         }
 
+        public ActionResult GDG(BetListData model = null)
+        {
+            var betTypeIds = new List<int>();
+
+            for (var betTypeId = 5701; betTypeId <= 5799; betTypeId++)
+            {
+                betTypeIds.Add(betTypeId);
+            }
+
+            var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
+
+            DataSourcePath = "~/App_Data/GDG.xls";
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+        
         public ActionResult GodOfFortune(BetListData model = null)
         {
             DataSourcePath = "~/App_Data/GodOfFurtune.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(_dataService.QueryBetTypes(29));
+            model = GetDataSource(model, DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
+            DataSourcePath = "~/App_Data/GDG.xls";
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
