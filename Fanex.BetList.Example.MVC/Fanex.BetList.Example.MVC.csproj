@@ -308,6 +308,10 @@
       <Project>{386bf8aa-7ee2-46bb-aecc-6cd829671881}</Project>
       <Name>Fanex.BetList.BetTrade</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.Betlist.BG\Fanex.BetList.BG.csproj">
+      <Project>{eb86abe8-d9d9-4fde-acde-6e1dbb4da44f}</Project>
+      <Name>Fanex.BetList.BG</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.CardClub\Fanex.BetList.CardClub.csproj">
       <Project>{d504aa63-e8d2-4819-a1da-f9451d4f0468}</Project>
       <Name>Fanex.BetList.CardClub</Name>
@@ -534,6 +538,7 @@
     <Content Include="App_Data\MyanmarOdds.xls" />
     <Content Include="App_Data\GDG.xls" />
     <Content Include="App_Data\GodOfFurtune.xls" />
+    <Content Include="App_Data\BG.xls" />
     <Content Include="App_Data\LeapGaming.xls">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

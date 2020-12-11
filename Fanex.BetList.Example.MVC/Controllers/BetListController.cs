@@ -81,6 +81,17 @@
             return BetListView(model);
         }
         
+        public ActionResult BG(BetListData model = null)
+        {
+            DataSourcePath = "~/App_Data/BG.xls";
+
+            ViewBag.BetTypes = CreateSelectListItem(_dataService.QueryBetTypes(29));
+            model = GetDataSource(model, DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }          
+
         public ActionResult GodOfFortune(BetListData model = null)
         {
             DataSourcePath = "~/App_Data/GodOfFurtune.xls";
@@ -90,8 +101,7 @@
             model.DataFilePath = DataSourcePath;
 
             return BetListView(model);
-        }          
-
+        } 
         public ActionResult WM(BetListData model = null)
         {
             var betTypeIds = new List<int>();

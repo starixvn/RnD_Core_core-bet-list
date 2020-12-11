@@ -46,6 +46,11 @@ div.match + div.league + div.no-details {
     font-weight: 600;
 }
 
+.underdog > .bet-id, .favorite > .bet-id {
+    color: #bbb;
+    display: block;
+}
+
 .bettype > .bet-id {
     color: #bbb;
 }
