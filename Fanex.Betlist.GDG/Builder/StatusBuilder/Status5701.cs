@@ -14,6 +14,7 @@
             }
             else
             {
+                Template.StatusResult.league = ticket.BetTeam;
                 Template.StatusResult.betId = $"{ticket.BetId ?? 0}, '{ticket.MatchCode}', {ticket.CustId}, '{ticket.BetCheck}'";
             }
         }

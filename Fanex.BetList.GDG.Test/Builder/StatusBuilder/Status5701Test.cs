@@ -49,5 +49,19 @@
             ////Assert
             Assert.AreEqual("123, 'MatchCode', 1234, 'BetCheck'", _status.Template.StatusResult.betId);
         }
+
+        [Test]
+        public void BuildStatusResult_Always_ShowSiteIdFromLeague()
+        {
+            ////Arrange
+            _ticket.TransDesc = "transdesc";
+            _ticket.BetTeam = "SiteId";
+
+            ////Act
+            _status.Render(_ticket, _ticketHelper, null, false);
+
+            ////Assert
+            Assert.AreEqual("SiteId", _status.Template.StatusResult.league);
+        }
     }
 }

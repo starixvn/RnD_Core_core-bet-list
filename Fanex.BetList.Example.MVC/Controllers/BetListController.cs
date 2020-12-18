@@ -90,9 +90,7 @@
             model.DataFilePath = DataSourcePath;
 
             return BetListView(model);
-        }
-
-           
+        }          
 
         public ActionResult WM(BetListData model = null)
         {
