@@ -42,6 +42,26 @@
             return View(model);
         }
 
+        public ActionResult Happy5LinkedGames(BetListData model = null)
+        {
+            var betTypeIds = new List<int>();
+
+            for (var betTypeId = 3601; betTypeId <= 3610; betTypeId++)
+            {
+                betTypeIds.Add(betTypeId);
+            }
+
+            var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
+
+            DataSourcePath = "~/App_Data/Happy5LinkedGames.xls";
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
         public ActionResult LeapGaming(BetListData model = null)
         {
             var betTypeIds = new List<int>();

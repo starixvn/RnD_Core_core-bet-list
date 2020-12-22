@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builder\ChoiceBuilder\Choice81.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice3601.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice8101.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice83.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice85.cs" />
@@ -52,9 +53,16 @@
     <Compile Include="Builder\ChoiceBuilder\Choice88.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice89.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice90.cs" />
+    <Compile Include="Builder\OddsBuilder\Odds3601.cs" />
+    <Compile Include="Builder\StatusBuilder\Status3601.cs" />
+    <Compile Include="Builder\TransBuilder\Trans3601.cs" />
+    <Compile Include="Constants\Happy5LinkedGamesBetTypes.cs" />
     <Compile Include="Constants\Happy5BetTypes.cs" />
     <Compile Include="Constants\NumberGameBetTypes.cs" />
     <Compile Include="Mapper\ChoiceMapper.cs" />
+    <Compile Include="Mapper\OddsMapper.cs" />
+    <Compile Include="Mapper\StatusMapper.cs" />
+    <Compile Include="Mapper\TransMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\NumberGameLang.Designer.cs">
       <AutoGen>True</AutoGen>
