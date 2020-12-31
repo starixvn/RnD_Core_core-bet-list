@@ -42,6 +42,25 @@
             return View(model);
         }
 
+        public ActionResult MaxGame(BetListData model = null)
+        {
+            var betTypeIds = new List<int>();
+
+            for (var betTypeId = 5401; betTypeId <= 5700; betTypeId++)
+            {
+                betTypeIds.Add(betTypeId);
+            }
+
+            var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
+
+            DataSourcePath = "~/App_Data/MaxGame.xls";
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
         public ActionResult Happy5LinkedGames(BetListData model = null)
         {
             var betTypeIds = new List<int>();

@@ -384,6 +384,10 @@
       <Project>{e26d13f6-d1fe-49c1-990d-f3436909902c}</Project>
       <Name>Fanex.BetList.LeapGaming</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.MaxGame\Fanex.BetList.MaxGame.csproj">
+      <Project>{1e3f40b6-bd60-4b5e-8ba5-028a30c3202c}</Project>
+      <Name>Fanex.BetList.MaxGame</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.MetricGaming\Fanex.BetList.MetricGaming.csproj">
       <Project>{054031e6-3e06-47d9-b3d1-b8a8e164e504}</Project>
       <Name>Fanex.BetList.MetricGaming</Name>
@@ -543,6 +547,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="App_Data\Happy5LinkedGames.xls" />
+    <Content Include="App_Data\MaxGame.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
