@@ -21,6 +21,7 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
+        [Test]
         public void BuildStatusResult_Always_HideResultLink()
         {
             // Arrange.

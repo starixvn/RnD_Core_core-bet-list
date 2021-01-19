@@ -38,6 +38,7 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NPOI, Version=2.0.6.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1" />
     <Reference Include="NSubstitute, Version=2.0.3.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
       <HintPath>..\packages\NSubstitute.2.0.3\lib\net45\NSubstitute.dll</HintPath>
     </Reference>
@@ -57,10 +58,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builder\ChoiceBuilder\Choice1698Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice1699Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice1612Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds1612Test.cs" />
+    <Compile Include="Builder\StakeBuilder\Stake1698Test.cs" />
+    <Compile Include="Builder\StatusBuilder\Status1698Tests.cs" />
     <Compile Include="Builder\StatusBuilder\Status1612Tests.cs" />
     <Compile Include="Builder\StatusBuilder\Status1634Tests.cs" />
+    <Compile Include="Builder\StatusBuilder\Status1699Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

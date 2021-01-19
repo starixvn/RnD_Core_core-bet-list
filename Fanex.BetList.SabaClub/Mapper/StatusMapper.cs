@@ -11,7 +11,7 @@
                 MapIdToBaseId(id, SabaClubBetTypes.MinRange);
             }
 
-            for (var id = SabaClubBetTypes.Blackjack + 1; id <= SabaClubBetTypes.MaxRange; id++)
+            for (var id = SabaClubBetTypes.Blackjack + 1; id < SabaClubBetTypes.JackpotContribution; id++)
             {
                 MapIdToBaseId(id, SabaClubBetTypes.MinRange);
             }

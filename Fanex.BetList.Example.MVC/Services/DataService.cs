@@ -20,28 +20,19 @@ namespace Fanex.BetList.Example.MVC.Services
 
         public List<BetType> QueryBetTypes(params int[] betTypeIds)
         {
-            ObjectCache cache = MemoryCache.Default;
-            var betTypes = (List<BetType>)cache.Get("BetTypes");
+            var betTypes = new List<BetType>();
 
-            if (betTypes == null || !betTypes.Any())
+            using (var input = new StreamReader(BetTypeFilePath))
             {
-                betTypes = new List<BetType>();
-                using (var input = new StreamReader(BetTypeFilePath))
+                IWorkbook workbook = new HSSFWorkbook(new POIFSFileSystem(input.BaseStream));
+                ISheet sheet = workbook.GetSheet("BetTypes");
+                int lastRowNumber = sheet.LastRowNum;
+
+                for (int rowNum = 2; rowNum <= lastRowNumber; rowNum++)
                 {
-                    IWorkbook workbook = new HSSFWorkbook(new POIFSFileSystem(input.BaseStream));
-                    ISheet sheet = workbook.GetSheet("BetTypes");
-                    int lastRowNumber = sheet.LastRowNum;
-
-                    for (int rowNum = 2; rowNum <= lastRowNumber; rowNum++)
-                    {
-                        var betType = CreateBetTypeFromExcelRow(sheet.GetRow(rowNum));
-                        betTypes.Add(betType);
-                    }
+                    var betType = CreateBetTypeFromExcelRow(sheet.GetRow(rowNum));
+                    betTypes.Add(betType);
                 }
-
-                CacheItemPolicy policy = new CacheItemPolicy();
-                policy.ChangeMonitors.Add(new HostFileChangeMonitor(new List<string> { BetTypeFilePath }));
-                cache.Add("BetTypes", betTypes, policy);
             }
 
             if (betTypeIds.Length > 0)

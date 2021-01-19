@@ -25,6 +25,22 @@ namespace Fanex.BetList.SabaClub.Tests.Builder.ChoiceBuilder
         }
 
         [Test]
+        public void BuildLeague_DetailTicketHasJackpotPrize_ShowJackpotDetailLink()
+        {
+            // Arrange
+            _ticket.ExtraInfo = "jp=1;jpw=xxxxxxxxxxx";
+            _ticket.BetCheck = "betcheck";
+            _ticket.CustId = 123;
+            _ticket.BetTypeId = SabaClubBetTypes.FourGuardians;
+            var expectedJSFunction = "showSabaClubJackpotWonDetails('xxxxxxxxxxx', '123', '1640')";
+
+            // Act
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.IsTrue(template.League.ToString().Contains(expectedJSFunction));
+        }
+        [Test]
         public void BuildLeague_BetCheckIsEmpty_ShowDetailLink()
         {
             // Arrange

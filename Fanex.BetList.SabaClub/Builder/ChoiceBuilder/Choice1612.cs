@@ -10,6 +10,8 @@
 
     public class Choice1612 : Choice1
     {
+        private const string JackpotTransIdInfo = "jpw=";
+        private const string JackpotInfo = "jp=1";
         private readonly Regex htmlTagMatching = new Regex("</?[^<>]*>");
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
@@ -26,9 +28,15 @@
 
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
         {
-            if (IsSummaryTicket(ticket))
+            var isSummary = IsSummaryTicket(ticket);
+            if (isSummary)
             {
                 Template.League.Append(BuildSabaClubeDetails(ticket));
+            }
+
+            if (!isSummary && TicketHasJackpotInfo(ticket))
+            {
+                Template.League.Append(BuildShowJackpotWonDetails(ticket));
             }
 
             Template.League.LeagueName = null;
@@ -46,7 +54,22 @@
         protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
             => Template.Match = null;
 
+        private static bool TicketHasJackpotInfo(ITicket ticket)
+            => !string.IsNullOrEmpty(ticket.ExtraInfo) && ticket.ExtraInfo.ToLowerInvariant().Contains(JackpotInfo);
+
         private static bool IsSummaryTicket(ITicket ticket) => string.IsNullOrWhiteSpace(ticket.BetCheck);
+
+        private static string BuildShowJackpotWonDetails(ITicket ticket)
+        {
+            var indexOfJackpotTransId = ticket.ExtraInfo.LastIndexOf(JackpotTransIdInfo, StringComparison.InvariantCultureIgnoreCase) + 4;
+            var transId = ticket.ExtraInfo.Substring(indexOfJackpotTransId, ticket.ExtraInfo.Length - indexOfJackpotTransId);
+            var detailLinkMarkup =
+                $"<div class=\"detail sabaclub-detail\" onclick=\"showSabaClubJackpotWonDetails('{transId}', '{ticket.CustId}', '{ticket.BetTypeId}');\">" +
+                $"<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void('');\">{CoreBetList.JackpotWonDetails}</a>" +
+                $"</div>";
+
+            return detailLinkMarkup;
+        }
 
         private static Choice_League_Block BuildSabaClubeDetails(ITicket ticket)
         {

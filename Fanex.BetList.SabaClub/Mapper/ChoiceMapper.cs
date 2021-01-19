@@ -6,7 +6,7 @@
     {
         public ChoiceMapper()
         {
-            for (var betTypeId = SabaClubBetTypes.MinRange + 1; betTypeId <= SabaClubBetTypes.MaxRange; betTypeId++)
+            for (var betTypeId = SabaClubBetTypes.MinRange + 1; betTypeId < SabaClubBetTypes.JackpotContribution; betTypeId++)
             {
                 MapIdToBaseId(betTypeId, SabaClubBetTypes.MinRange);
             }

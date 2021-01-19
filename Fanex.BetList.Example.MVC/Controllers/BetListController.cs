@@ -412,14 +412,8 @@
 
         public ActionResult SabaClub(BetListData model = null)
         {
-            var betTypeIds = new List<int>();
 
-            for (var betTypeId = 1612; betTypeId <= 1699; betTypeId++)
-            {
-                betTypeIds.Add(betTypeId);
-            }
-
-            var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
+            var betTypes = _dataService.QueryBetTypes(1612, 1634, 1640, 1698, 1699);
 
             DataSourcePath = "~/App_Data/SabaClub.xls";
 

@@ -6,7 +6,7 @@
     {
         public OddsMapper()
         {
-            for (var betTypeId = SabaClubBetTypes.MinRange + 1; betTypeId <= SabaClubBetTypes.MaxRange; betTypeId++)
+            for (var betTypeId = SabaClubBetTypes.MinRange + 1; betTypeId <= SabaClubBetTypes.JackpotPrize; betTypeId++)
             {
                 MapIdToBaseId(betTypeId, SabaClubBetTypes.MinRange);
             }
