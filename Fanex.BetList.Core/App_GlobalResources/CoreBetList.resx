@@ -988,4 +988,31 @@
   <data name="BeforeMinute" xml:space="preserve">
     <value>Before Minute {0}</value>
   </data>
+  <data name="Caught" xml:space="preserve">
+    <value>Caught</value>
+  </data>
+  <data name="NotCaught" xml:space="preserve">
+    <value>Not Caught</value>
+  </data>
+  <data name="HomeBack" xml:space="preserve">
+    <value>Home Back</value>
+  </data>
+  <data name="DrawBack" xml:space="preserve">
+    <value>Draw Back</value>
+  </data>
+  <data name="AwayBack" xml:space="preserve">
+    <value>Away Back</value>
+  </data>
+  <data name="HomeLay" xml:space="preserve">
+    <value>Home Lay</value>
+  </data>
+  <data name="DrawLay" xml:space="preserve">
+    <value>Draw Lay</value>
+  </data>
+  <data name="AwayLay" xml:space="preserve">
+    <value>Away Lay</value>
+  </data>
+  <data name="AO" xml:space="preserve">
+    <value>AO</value>
+  </data>
 </root>

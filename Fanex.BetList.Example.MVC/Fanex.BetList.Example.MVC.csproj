@@ -553,6 +553,7 @@
     <Content Include="App_Data\Happy5LinkedGames.xls" />
     <Content Include="App_Data\MaxGame.xls" />
     <Content Include="App_Data\SportsLottery.xls" />
+    <Content Include="App_Data\CricketAIOP1.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />

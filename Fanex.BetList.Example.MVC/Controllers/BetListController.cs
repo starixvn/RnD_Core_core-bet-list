@@ -42,6 +42,24 @@
             return View(model);
         }
 
+        public ActionResult CricketAIO(BetListData model = null)
+        {
+            var betTypeIds = new List<int>();
+
+            for (var betTypeId = 9400; betTypeId <= 9606; betTypeId++)
+            {
+                betTypeIds.Add(betTypeId);
+            }
+
+            var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
+
+            DataSourcePath = "~/App_Data/CricketAIOP1.xls";
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
         public ActionResult SportsLottery(BetListData model = null)
         {
             var betTypeIds = new List<int>();

@@ -2,6 +2,8 @@
 {
     public static class BetTeamValue
     {
+        public const string C = "c";
+        public const string NC = "nc";
         public const string H = "h";
         public const string X = "x";
         public const string OneH = "1h";

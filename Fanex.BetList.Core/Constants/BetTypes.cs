@@ -294,7 +294,7 @@
         public const int QuarterToWinFromBehind = 636;
         public const int QuartersWinnersHandicap = 637;
         public const int HomeTeamQuartersWinOverUnder = 638;
-        public const int AwayTeamQuartersWinOverUnder= 639;
+        public const int AwayTeamQuartersWinOverUnder = 639;
         public const int ExactQuarterDraw = 640;
         public const int QuarterDrawOverUnder = 641;
         public const int DoubleQuarterWinner = 642;
@@ -355,5 +355,92 @@
         public const int SabaLuckySpin = 17000;
         public const int SabaLoyaltyPointsExchange = 17003;
         public const int SabaRedEnvelope = 17004;
+
+        public const int SuperOverWinner = 9400;
+        public const int TossWinner = 9401;
+
+        public const int HomeWicketXMethodOfDismissal = 9434;
+        public const int AwayWicketXMethodOfDismissal = 9435;
+        public const int HomeFirstInnsWicketXMethodOfDismissal = 9436;
+        public const int AwayFirstInnsWicketXMethodOfDismissal = 9437;
+        public const int HomeSecondInnsWicketXMethodOfDismissal = 9438;
+        public const int AwaySecondInnsWicketXMethodOfDismissal = 9439;
+        public const int HomeOverXExactRuns = 9484;
+        public const int AwayOverXExactRuns = 9485;
+        public const int HomeOverXBallYExactRuns = 9490;
+        public const int AwayOverXBallYExactRuns = 9491;
+        public const int HomeInnsRunsOE = 9496;
+        public const int AwayInnsRunsOE = 9497;
+        public const int Home1stInnsRunsOE = 9498;
+        public const int Away1stInnsRunsOE = 9499;
+        public const int Home2ndInnsRunsOE = 9500;
+        public const int Away2ndInnsRunsOE = 9501;
+
+        public const int HomeGroup1XRunsOE = 9502;
+        public const int AwayGroup1XRunsOE = 9503;
+        public const int Home1stInnsGroup1X = 9504;
+        public const int Away1stInnsGroup1X = 9505;
+        public const int Home2ndInnsGroup1XRunsOE = 9506;
+        public const int Away2ndInnsGroup1XRunsOE = 9507;
+        public const int HomeScoreAtEndOfOverXOE = 9508;
+        public const int AwayScoreAtEndOfOverXOE = 9509;
+        public const int Home1stInnsScoreAtEndOfOverXOE = 9510;
+        public const int Away1stInnsScoreAtEndOfOverXOE = 9511;
+        public const int Home2ndInnsScoreAtEndOfOverXOE = 9512;
+        public const int Away2ndInnsScoreAtEndOfOverXOE = 9513;
+        public const int HomeFallOfWicketXOE = 9514;
+        public const int AwayFallOfWicketXOE = 9515;
+        public const int Home1stInnsFallOfWicketXOE = 9516;
+        public const int Away1stInnsFallOfWicketXOE = 9517;
+        public const int Home2ndInnsFallOfWicketXOE = 9518;
+        public const int Away2ndInnsFallOfWicketXOE = 9519;
+        public const int MatchFoursOE = 9527;
+        public const int MatchSixesOE = 9528;
+        public const int MatchExtrasOE = 9530;
+        public const int HomeInnsFoursOE = 9532;
+        public const int AwayInnsFoursOE = 9533;
+
+        public const int OneXTwoBackLay = 9538;
+        public const int MatchWinnerBackLay = 9539;
+        public const int SuperOverWinnerWinnerBackLay = 9540;
+
+        public const int HomeInnsRunsFancy = 9541;
+        public const int AwayInnsRunsFancy = 9542;
+        public const int Home1stInnsRunsFancy = 9543;
+        public const int Away1stInnsRunsFancy = 9544;
+        public const int Home2ndInnsRunsFancy = 9545;
+        public const int Away2ndInnsRunsFancy = 9546;
+
+        public const int HomeGroup1XRunsFancy = 9547;
+        public const int Home1stInnsGroup1XRunsFancy = 9549;
+        public const int Home2ndInnsGroup1XRunsFancy = 9551;
+        public const int AwayGroup1XRunsFancy = 9548;
+        public const int Away1stInnsGroup1XRunsFancy = 9550;
+        public const int Away2ndInnsGroup1XRunsFancy = 9552;
+        public const int HomeScoreAtEndOfOverXFancy = 9553;
+        public const int Home1stInnsScoreAtEndOfOverXFancy = 9555;
+        public const int Home2ndInnsScoreAtEndOfOverXFancy = 9557;
+        public const int AwayScoreAtEndOfOverXFancy = 9554;
+        public const int Away1stInnsScoreAtEndOfOverXFancy = 9556;
+        public const int Away2ndInnsScoreAtEndOfOverXFancy = 9558;
+        public const int HomeFallOfWicketXFancy = 9559;
+        public const int Home1stInnsFallOfWicketXFancy = 9561;
+        public const int Home2ndInnsFallOfWicketXFancy = 9563;
+        public const int AwayFallOfWicketXFancy = 9560;
+        public const int Away1stInnsFallOfWicketXFancy = 9562;
+        public const int Away2ndInnsFallOfWicketXFancy = 9564;
+        public const int MatchFoursFancy = 9566;
+        public const int MatchSixesFancy = 9567;
+        public const int MatchWicketsFancy = 9569;
+        public const int MatchExtrasFancy = 9570;
+        public const int HighestIndividualScoreFancy = 9572;
+        public const int HighestOverScoreFancy = 9573;
+        public const int HomeInnsFoursFancy = 9574;
+        public const int AwayInnsFoursFancy = 9575;
+        public const int HomeInnsSixesFancy = 9580;
+        public const int AwayInnsSixesFancy = 9581;
+        public const int OverUnderDec = 9604;
+        public const int OddEvenDec = 9605;
+        public const int Fancy = 9606;
     }
 }

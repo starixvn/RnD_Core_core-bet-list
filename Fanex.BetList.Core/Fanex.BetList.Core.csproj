@@ -177,6 +177,14 @@
     <Compile Include="Builder\BetListExcelBuilder.cs" />
     <Compile Include="Builder\BetListHTMLBuilder.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice17004.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice9496.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice9547.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice9541.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice9538.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice9502.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice9484.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice9434.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice9400.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice228.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice627.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice631.cs" />
