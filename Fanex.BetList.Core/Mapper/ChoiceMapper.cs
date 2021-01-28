@@ -239,6 +239,34 @@
         private void MapForCricketAIO()
         {
             MapIdToBaseId(BetTypes.TossWinner, BetTypes.SuperOverWinner);
+
+            MapIdToBaseId(BetTypes.AwayInnsRunsOU, BetTypes.HomeInnsRunsOU);
+            MapIdToBaseId(BetTypes.Home1stInnsRunsOU, BetTypes.HomeInnsRunsOU);
+            MapIdToBaseId(BetTypes.Away1stInnsRunsOU, BetTypes.HomeInnsRunsOU);
+            MapIdToBaseId(BetTypes.Home2ndInnsRunsOU, BetTypes.HomeInnsRunsOU);
+            MapIdToBaseId(BetTypes.Away2ndInnsRunsOU, BetTypes.HomeInnsRunsOU);
+
+            MapIdToBaseId(BetTypes.AwayGroup1XRunsOU, BetTypes.HomeGroup1XRunsOU);
+            MapIdToBaseId(BetTypes.Home1stInnsGroup1XRunsOU, BetTypes.HomeGroup1XRunsOU);
+            MapIdToBaseId(BetTypes.Away1stInnsGroup1XRunsOU, BetTypes.HomeGroup1XRunsOU);
+            MapIdToBaseId(BetTypes.Home2ndInnsGroup1XRunsOU, BetTypes.HomeGroup1XRunsOU);
+            MapIdToBaseId(BetTypes.Away2ndInnsGroup1XRunsOU, BetTypes.HomeGroup1XRunsOU);
+            MapIdToBaseId(BetTypes.HomeScoreAtEndOfOverXOU, BetTypes.HomeGroup1XRunsOU);
+            MapIdToBaseId(BetTypes.AwayScoreAtEndOfOverXOU, BetTypes.HomeGroup1XRunsOU);
+            MapIdToBaseId(BetTypes.Home1stInnsScoreAtEndOfOverXOU, BetTypes.HomeGroup1XRunsOU);
+            MapIdToBaseId(BetTypes.Away1stInnsScoreAtEndOfOverXOU, BetTypes.HomeGroup1XRunsOU);
+            MapIdToBaseId(BetTypes.Home2ndInnsScoreAtEndOfOverXOU, BetTypes.HomeGroup1XRunsOU);
+            MapIdToBaseId(BetTypes.Away2ndInnsScoreAtEndOfOverXOU, BetTypes.HomeGroup1XRunsOU);
+            MapIdToBaseId(BetTypes.HomeScoreAfterOverXBallYOU, BetTypes.HomeGroup1XRunsOU);
+            MapIdToBaseId(BetTypes.AwayScoreAfterOverXBallYOU, BetTypes.HomeGroup1XRunsOU);
+
+            MapIdToBaseId(BetTypes.HomeFallOfWicketXOU, BetTypes.HomeGroup1XRunsOU);
+            MapIdToBaseId(BetTypes.AwayFallOfWicketXOU, BetTypes.HomeGroup1XRunsOU);
+            MapIdToBaseId(BetTypes.Home1stInnsFallOfWicketXOU, BetTypes.HomeGroup1XRunsOU);
+            MapIdToBaseId(BetTypes.Away1stInnsFallOfWicketXOU, BetTypes.HomeGroup1XRunsOU);
+            MapIdToBaseId(BetTypes.Home2ndInnsFallOfWicketXOU, BetTypes.HomeGroup1XRunsOU);
+            MapIdToBaseId(BetTypes.Away2ndInnsFallOfWicketXOU, BetTypes.HomeGroup1XRunsOU);
+
             MapIdToBaseId(BetTypes.HomeFirstInnsWicketXMethodOfDismissal, BetTypes.HomeWicketXMethodOfDismissal);
             MapIdToBaseId(BetTypes.HomeSecondInnsWicketXMethodOfDismissal, BetTypes.HomeWicketXMethodOfDismissal);
             MapIdToBaseId(BetTypes.AwayFirstInnsWicketXMethodOfDismissal, BetTypes.HomeWicketXMethodOfDismissal);

@@ -359,6 +359,34 @@
         public const int SuperOverWinner = 9400;
         public const int TossWinner = 9401;
 
+        public const int HomeInnsRunsOU = 9404;
+        public const int AwayInnsRunsOU = 9405;
+        public const int Home1stInnsRunsOU = 9406;
+        public const int Away1stInnsRunsOU = 9407;
+        public const int Home2ndInnsRunsOU = 9408;
+        public const int Away2ndInnsRunsOU = 9409;
+        public const int HomeGroup1XRunsOU = 9410;
+        public const int AwayGroup1XRunsOU = 9411;
+        public const int Home1stInnsGroup1XRunsOU = 9412;
+        public const int Away1stInnsGroup1XRunsOU = 9413;
+        public const int Home2ndInnsGroup1XRunsOU = 9414;
+        public const int Away2ndInnsGroup1XRunsOU = 9415;
+        public const int HomeScoreAtEndOfOverXOU = 9416;
+        public const int AwayScoreAtEndOfOverXOU = 9417;
+        public const int Home1stInnsScoreAtEndOfOverXOU = 9418;
+        public const int Away1stInnsScoreAtEndOfOverXOU = 9419;
+        public const int Home2ndInnsScoreAtEndOfOverXOU = 9420;
+        public const int Away2ndInnsScoreAtEndOfOverXOU = 9421;
+        public const int HomeScoreAfterOverXBallYOU = 9422;
+        public const int AwayScoreAfterOverXBallYOU = 9423;
+
+        public const int HomeFallOfWicketXOU = 9428;
+        public const int AwayFallOfWicketXOU = 9429;
+        public const int Home1stInnsFallOfWicketXOU = 9430;
+        public const int Away1stInnsFallOfWicketXOU = 9431;
+        public const int Home2ndInnsFallOfWicketXOU = 9432;
+        public const int Away2ndInnsFallOfWicketXOU = 9433;
+
         public const int HomeWicketXMethodOfDismissal = 9434;
         public const int AwayWicketXMethodOfDismissal = 9435;
         public const int HomeFirstInnsWicketXMethodOfDismissal = 9436;
