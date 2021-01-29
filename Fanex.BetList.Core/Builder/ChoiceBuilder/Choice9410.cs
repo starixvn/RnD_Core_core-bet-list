@@ -4,7 +4,7 @@
     using System.Collections.Generic;
 
     /// <summary>
-    /// Home Group 1-X Runs OU
+    /// Home Group 1-X Runs
     /// </summary>
     public class Choice9410 : Choice9404
     {

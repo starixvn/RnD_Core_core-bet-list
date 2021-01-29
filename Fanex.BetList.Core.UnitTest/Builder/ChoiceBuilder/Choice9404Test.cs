@@ -18,7 +18,7 @@
         {
             _choice = new Choice9404();
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = BetTypes.HomeInnsRunsOU;
+            _ticket.BetTypeId = BetTypes.HomeInnsRuns;
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
@@ -37,6 +37,22 @@
 
             // Assert
             Assert.AreEqual(teamName, _choice.Template.betTeam);
+        }
+
+        [TestCase("o", "favorite")]
+        [TestCase("O", "favorite")]
+        [TestCase("u", "underdog")]
+        [TestCase("U", "underdog")]
+        public void BuildBetTeamClassNameAndHandicap_Return_CorrectBetTeamClassName(string betteam, string expectedBetTeamClassName)
+        {
+            // Arrange            
+            _ticket.BetTeam = betteam;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual(expectedBetTeamClassName, _choice.Template.betTeamClassName);
         }
     }
 }
