@@ -393,6 +393,18 @@
         public const int AwayFirstInnsWicketXMethodOfDismissal = 9437;
         public const int HomeSecondInnsWicketXMethodOfDismissal = 9438;
         public const int AwaySecondInnsWicketXMethodOfDismissal = 9439;
+
+        public const int MatchFours = 9446;
+        public const int MatchSixes = 9447;
+        public const int MatchWickets = 9449;
+        public const int MatchExtras = 9450;
+        public const int HighestIndividualScore = 9452;
+        public const int HighestOverScore = 9453;
+        public const int HomeInnsFours = 9454;
+        public const int AwayInnsFours = 9455;
+        public const int HomeInnsSixes = 9460;
+        public const int AwayInnsSixes = 9461;
+
         public const int HomeOverXExactRuns = 9484;
         public const int AwayOverXExactRuns = 9485;
         public const int HomeOverXBallYExactRuns = 9490;

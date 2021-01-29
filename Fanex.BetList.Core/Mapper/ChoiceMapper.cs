@@ -267,6 +267,17 @@
             MapIdToBaseId(BetTypes.Home2ndInnsFallOfWicketXOU, BetTypes.HomeGroup1XRunsOU);
             MapIdToBaseId(BetTypes.Away2ndInnsFallOfWicketXOU, BetTypes.HomeGroup1XRunsOU);
 
+            MapIdToBaseId(BetTypes.MatchFours, BetTypes.HomeInnsRunsOU);
+            MapIdToBaseId(BetTypes.MatchSixes, BetTypes.HomeInnsRunsOU);
+            MapIdToBaseId(BetTypes.MatchWickets, BetTypes.HomeInnsRunsOU);
+            MapIdToBaseId(BetTypes.MatchExtras, BetTypes.HomeInnsRunsOU);
+            MapIdToBaseId(BetTypes.HighestIndividualScore, BetTypes.HomeInnsRunsOU);
+            MapIdToBaseId(BetTypes.HighestOverScore, BetTypes.HomeInnsRunsOU);
+            MapIdToBaseId(BetTypes.HomeInnsFours, BetTypes.HomeInnsRunsOU);
+            MapIdToBaseId(BetTypes.AwayInnsFours, BetTypes.HomeInnsRunsOU);
+            MapIdToBaseId(BetTypes.HomeInnsSixes, BetTypes.HomeInnsRunsOU);
+            MapIdToBaseId(BetTypes.AwayInnsSixes, BetTypes.HomeInnsRunsOU);
+
             MapIdToBaseId(BetTypes.HomeFirstInnsWicketXMethodOfDismissal, BetTypes.HomeWicketXMethodOfDismissal);
             MapIdToBaseId(BetTypes.HomeSecondInnsWicketXMethodOfDismissal, BetTypes.HomeWicketXMethodOfDismissal);
             MapIdToBaseId(BetTypes.AwayFirstInnsWicketXMethodOfDismissal, BetTypes.HomeWicketXMethodOfDismissal);
