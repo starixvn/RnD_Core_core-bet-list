@@ -57,22 +57,16 @@ namespace Fanex.BetList.Example.MVC.Services
 
         public BetListData GetBetListData(string sourcePath, int betTypeId)
         {
-            ObjectCache cache = MemoryCache.Default;
             var absolutePath = HostingEnvironment.MapPath(sourcePath);
 
-            var betListData = (BetListData)cache.Get(absolutePath);
-            if (betListData == null || !betListData.Tickets.Any())
-            {
-                betListData = new BetListData();
+            var betListData = new BetListData();
 
-                TicketsExcelDAO ticketDAO = new TicketsExcelDAO(absolutePath);
-                betListData.Tickets = ticketDAO.GetTickets();
-                betListData.TicketData = ticketDAO.GetTicketData().ToList();
+            TicketsExcelDAO ticketDAO = new TicketsExcelDAO(absolutePath);
+            betListData.Tickets = ticketDAO.GetTickets();
+            betListData.TicketData = ticketDAO.GetTicketData().ToList();
 
-                CacheItemPolicy policy = new CacheItemPolicy();
-                policy.ChangeMonitors.Add(new HostFileChangeMonitor(new List<string> { absolutePath }));
-                cache.Set(absolutePath, betListData, policy);
-            }
+            CacheItemPolicy policy = new CacheItemPolicy();
+            policy.ChangeMonitors.Add(new HostFileChangeMonitor(new List<string> { absolutePath }));
 
             return betListData;
         }
