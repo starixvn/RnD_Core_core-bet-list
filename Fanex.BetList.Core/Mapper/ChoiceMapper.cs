@@ -285,7 +285,7 @@
             MapIdToBaseId(BetTypes.AwayOverXBallYExactRuns, BetTypes.HomeOverXExactRuns); 
             MapIdToBaseId(BetTypes.MatchWinnerBackLay, BetTypes.OneXTwoBackLay);
             MapIdToBaseId(BetTypes.SuperOverWinnerWinnerBackLay, BetTypes.OneXTwoBackLay);
-            MapIdToBaseId(BetTypes.OverUnderDec, BetTypes.OverUnder);    
+            MapIdToBaseId(BetTypes.OverUnderDec, BetTypes.HomeInnsRuns);    
         }
 
         private void MapForCricketAIOForOddEven()

@@ -348,7 +348,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder
         [TestCase(9575, "Choice9541")]
         [TestCase(9580, "Choice9541")]
         [TestCase(9581, "Choice9541")]
-        [TestCase(9604, "Choice3")]
+        [TestCase(9604, "Choice9404")]
         [TestCase(9605, "Choice9496")]
         [TestCase(9606, "Choice9541")]
         [TestCase(9405, "Choice9404")]
