@@ -11,7 +11,16 @@
             MapForBadminton();
             MapForCornerMatches();
             MapForPHAIO5();
+            MapForCricket();
             MapForOthers();
+        }
+
+        private void MapForCricket()
+        {
+            for (var betType = BetTypes.SuperOverWinner; betType <= BetTypes.Fancy; betType++)
+            {
+                MapIdToBaseId(betType, BetTypes.SetXWinner);
+            }
         }
 
         private void MapForFastMarkets()
