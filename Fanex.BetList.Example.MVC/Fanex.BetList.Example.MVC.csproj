@@ -360,6 +360,10 @@
       <Project>{74b65800-76ca-4055-95c6-0cc45d178308}</Project>
       <Name>Fanex.BetList.GTCasino</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.Habanero\Fanex.BetList.Habanero.csproj">
+      <Project>{ac520017-0264-4680-9a92-d39b9e459f10}</Project>
+      <Name>Fanex.BetList.Habanero</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.Indo4D\Fanex.BetList.Indo4D.csproj">
       <Project>{f29f5396-1efe-4657-8080-d9a798f864bf}</Project>
       <Name>Fanex.BetList.Indo4D</Name>
@@ -558,6 +562,7 @@
     <Content Include="App_Data\MaxGame.xls" />
     <Content Include="App_Data\SportsLottery.xls" />
     <Content Include="App_Data\CricketAIOP1.xls" />
+    <Content Include="App_Data\Habanero.xls" />
     <Content Include="App_Data\PragmaticLiveCasino.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />

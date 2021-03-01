@@ -1,6 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Utils.TicketExt
 {
     using Fanex.BetList.Core.Entities;
+    using System;
 
     public static class ITicketExtensions
     {
@@ -36,6 +37,34 @@
 
             return (ticket.SportTypeId >= soccer && ticket.SportTypeId <= otherSports)
                 || ticket.SportTypeId == horseRacingFixedOdds;
+        }
+
+        public static string GetTransactionType(this ITicket ticket)
+        {
+            if (ticket.WinlostDate.Date >= DateTime.Today.AddDays(-1))
+            {
+                switch (ticket.Status.ToLowerInvariant())
+                {
+                    case BetStatus.Won:
+                    case BetStatus.Refund:
+                    case BetStatus.Lose:
+                    case BetStatus.Draw:                    
+                        return "1";
+
+                    case BetStatus.Void:
+                    case BetStatus.Reject:                    
+                        return "2";
+
+                    case BetStatus.Running:
+                    case BetStatus.Waiting:
+                        return "3";
+
+                    default:
+                        return "0";
+                }
+            }
+
+            return "0";
         }
     }
 }
