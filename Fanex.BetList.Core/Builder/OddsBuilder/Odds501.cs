@@ -8,7 +8,7 @@
 
     public class Odds501 : Odds1
     {
-        private static readonly DateTime CutOffTime = new DateTime(2021, 4, 18, 0, 0, 0);
+        private static readonly DateTime CutOffTime = new DateTime(2021, 4, 8, 0, 0, 0);
 
         public override Odds_Template Render(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
         {
