@@ -245,6 +245,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.MaxGame", "Fa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.MaxGame.Tests", "Fanex.BetList.MaxGame.Tests\Fanex.BetList.MaxGame.Tests.csproj", "{DFA1DF5C-3661-43B0-B780-B4B041E1CC25}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SportsLottery", "SportsLottery", "{E11D90C6-5E81-41EE-B13C-587096C3FE91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.SportsLottery", "Fanex.BetList.SportsLottery\Fanex.BetList.SportsLottery.csproj", "{F632A217-5F61-44FA-8773-274840675E2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.SportsLottery.Tests", "Fanex.BetList.SportsLottery.Tests\Fanex.BetList.SportsLottery.Tests.csproj", "{24BDF7B5-F089-4FF7-BD1E-3A408A2AC42C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1164,6 +1170,30 @@ Global
 		{DFA1DF5C-3661-43B0-B780-B4B041E1CC25}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{DFA1DF5C-3661-43B0-B780-B4B041E1CC25}.Release|x86.ActiveCfg = Release|Any CPU
 		{DFA1DF5C-3661-43B0-B780-B4B041E1CC25}.Release|x86.Build.0 = Release|Any CPU
+		{F632A217-5F61-44FA-8773-274840675E2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F632A217-5F61-44FA-8773-274840675E2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F632A217-5F61-44FA-8773-274840675E2A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F632A217-5F61-44FA-8773-274840675E2A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F632A217-5F61-44FA-8773-274840675E2A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F632A217-5F61-44FA-8773-274840675E2A}.Debug|x86.Build.0 = Debug|Any CPU
+		{F632A217-5F61-44FA-8773-274840675E2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F632A217-5F61-44FA-8773-274840675E2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F632A217-5F61-44FA-8773-274840675E2A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F632A217-5F61-44FA-8773-274840675E2A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{F632A217-5F61-44FA-8773-274840675E2A}.Release|x86.ActiveCfg = Release|Any CPU
+		{F632A217-5F61-44FA-8773-274840675E2A}.Release|x86.Build.0 = Release|Any CPU
+		{24BDF7B5-F089-4FF7-BD1E-3A408A2AC42C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24BDF7B5-F089-4FF7-BD1E-3A408A2AC42C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24BDF7B5-F089-4FF7-BD1E-3A408A2AC42C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{24BDF7B5-F089-4FF7-BD1E-3A408A2AC42C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{24BDF7B5-F089-4FF7-BD1E-3A408A2AC42C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{24BDF7B5-F089-4FF7-BD1E-3A408A2AC42C}.Debug|x86.Build.0 = Debug|Any CPU
+		{24BDF7B5-F089-4FF7-BD1E-3A408A2AC42C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24BDF7B5-F089-4FF7-BD1E-3A408A2AC42C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24BDF7B5-F089-4FF7-BD1E-3A408A2AC42C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{24BDF7B5-F089-4FF7-BD1E-3A408A2AC42C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{24BDF7B5-F089-4FF7-BD1E-3A408A2AC42C}.Release|x86.ActiveCfg = Release|Any CPU
+		{24BDF7B5-F089-4FF7-BD1E-3A408A2AC42C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1243,6 +1273,8 @@ Global
 		{D9B840F3-AE82-4942-B06C-925EED07C787} = {10B31AAA-FABA-4A69-8498-40F5ACD6D683}
 		{1E3F40B6-BD60-4B5E-8BA5-028A30C3202C} = {30390930-558E-4FEF-B06B-28480B6B759A}
 		{DFA1DF5C-3661-43B0-B780-B4B041E1CC25} = {30390930-558E-4FEF-B06B-28480B6B759A}
+		{F632A217-5F61-44FA-8773-274840675E2A} = {E11D90C6-5E81-41EE-B13C-587096C3FE91}
+		{24BDF7B5-F089-4FF7-BD1E-3A408A2AC42C} = {E11D90C6-5E81-41EE-B13C-587096C3FE91}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C03A9D91-0F6A-4E80-81C6-184114E18F76}

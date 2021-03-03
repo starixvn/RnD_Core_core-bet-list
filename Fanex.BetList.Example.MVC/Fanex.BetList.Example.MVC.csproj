@@ -428,6 +428,10 @@
       <Project>{ebca17e0-b3af-41e5-9a1f-caa81341a3b4}</Project>
       <Name>Fanex.BetList.Spadegaming</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.SportsLottery\Fanex.BetList.SportsLottery.csproj">
+      <Project>{f632a217-5f61-44fa-8773-274840675e2a}</Project>
+      <Name>Fanex.BetList.SportsLottery</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.TableGames\Fanex.BetList.TableGames.csproj">
       <Project>{ced6a787-1394-4f14-9a9f-ef27e9037cab}</Project>
       <Name>Fanex.BetList.TableGames</Name>
@@ -548,6 +552,7 @@
     </Content>
     <Content Include="App_Data\Happy5LinkedGames.xls" />
     <Content Include="App_Data\MaxGame.xls" />
+    <Content Include="App_Data\SportsLottery.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />

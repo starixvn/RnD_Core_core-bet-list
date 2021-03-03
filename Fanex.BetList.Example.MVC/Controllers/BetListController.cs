@@ -42,6 +42,25 @@
             return View(model);
         }
 
+        public ActionResult SportsLottery(BetListData model = null)
+        {
+            var betTypeIds = new List<int>();
+
+            for (var betTypeId = 3611; betTypeId <= 3620; betTypeId++)
+            {
+                betTypeIds.Add(betTypeId);
+            }
+
+            var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+
+            DataSourcePath = $"~/App_Data/SportsLottery.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
         public ActionResult MaxGame(BetListData model = null)
         {
             var betTypeIds = new List<int>();
