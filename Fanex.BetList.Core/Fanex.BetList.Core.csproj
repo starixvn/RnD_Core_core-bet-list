@@ -374,6 +374,7 @@
     <Compile Include="Builder\OddsBuilder\IOdds.cs" />
     <Compile Include="Builder\OddsBuilder\Odds1.cs" />
     <Compile Include="Builder\OddsBuilder\Odds29.cs" />
+    <Compile Include="Builder\OddsBuilder\Odds501.cs" />
     <Compile Include="Builder\OddsBuilder\Odds468.cs" />
     <Compile Include="Builder\StakeBuilder\IStake.cs" />
     <Compile Include="Builder\StakeBuilder\Stake1.cs" />
