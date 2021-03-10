@@ -6,7 +6,7 @@
     public class Choice3611 : Choice1
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-            => Template.betTeam = ticketHelper.GetResourceData("SoccerLotteryChoice", ticket.TransDesc);
+            => Template.betTeam = ticketHelper.GetResourceData("SportsLotteryChoice", GetSplitValue(ticket.TransDesc));
 
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
         {
@@ -35,5 +35,11 @@
 
         protected override void BuildBetTypeName(ref RTFHelper rtfHelper)
             => rtfHelper.RTFRenderer.AddText(string.Empty);
+
+        private static string GetSplitValue(string strValue)
+        {
+            string[] strTemp = strValue.Split('=');
+            return strTemp.Length > 1 ? strTemp[1].ToString() : string.Empty;
+        }
     }
 }
