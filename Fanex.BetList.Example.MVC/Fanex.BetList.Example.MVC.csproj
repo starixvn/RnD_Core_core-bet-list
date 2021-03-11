@@ -404,6 +404,10 @@
       <Project>{502c6122-7b87-4a3c-9be2-782b411675cd}</Project>
       <Name>Fanex.BetList.PP</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.PragmaticLiveCasino\Fanex.BetList.PragmaticLiveCasino.csproj">
+      <Project>{2acb779f-ea3b-4d41-9025-5cf43065f03c}</Project>
+      <Name>Fanex.BetList.PragmaticLiveCasino</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.RnGCasino\Fanex.BetList.RnGCasino.csproj">
       <Project>{9ea9fe4a-ac19-4ff5-908f-54a7831b41ee}</Project>
       <Name>Fanex.BetList.RnGCasino</Name>
@@ -554,6 +558,7 @@
     <Content Include="App_Data\MaxGame.xls" />
     <Content Include="App_Data\SportsLottery.xls" />
     <Content Include="App_Data\CricketAIOP1.xls" />
+    <Content Include="App_Data\PragmaticLiveCasino.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />

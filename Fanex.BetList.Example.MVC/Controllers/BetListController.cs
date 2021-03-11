@@ -1,11 +1,5 @@
 ﻿namespace Fanex.BetList.Example.MVC.Controllers
 {
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.IO;
-    using System.Linq;
-    using System.Threading;
-    using System.Web.Mvc;
     using Fanex.BetList.Core.Builder;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Factories;
@@ -14,6 +8,12 @@
     using Fanex.BetList.Example.MVC.Models;
     using Fanex.BetList.Example.MVC.Services;
     using Fanex.BetList.Example.MVC.ViewModel;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.IO;
+    using System.Linq;
+    using System.Threading;
+    using System.Web.Mvc;
 
     public class BetListController : Controller
     {
@@ -137,7 +137,7 @@
             return BetListView(model);
         }
 
-        
+
         public ActionResult GDG(BetListData model = null)
         {
             var betTypeIds = new List<int>();
@@ -156,7 +156,7 @@
 
             return BetListView(model);
         }
-        
+
         public ActionResult BG(BetListData model = null)
         {
             DataSourcePath = "~/App_Data/BG.xls";
@@ -166,7 +166,7 @@
             model.DataFilePath = DataSourcePath;
 
             return BetListView(model);
-        }          
+        }
 
         public ActionResult GodOfFortune(BetListData model = null)
         {
@@ -177,7 +177,7 @@
             model.DataFilePath = DataSourcePath;
 
             return BetListView(model);
-        } 
+        }
         public ActionResult WM(BetListData model = null)
         {
             var betTypeIds = new List<int>();
@@ -196,7 +196,7 @@
 
             return BetListView(model);
         }
-        
+
         public ActionResult MyanmarOdds(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes();
@@ -209,7 +209,7 @@
 
             return BetListView(model);
         }
-        
+
         public ActionResult TimeMachine(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes();
@@ -1160,6 +1160,18 @@
             DataSourcePath = "~/App_Data/SG.xls";
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
+        public ActionResult PragmaticLiveCasino(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes(3701, 3702, 3703, 3704, 3705, 3706, 3707, 3708, 3709);
+            DataSourcePath = "~/App_Data/PragmaticLiveCasino.xls";
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
             return BetListView(model);
