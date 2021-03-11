@@ -11,5 +11,6 @@
         public const int SpeedBaccaratB = 3707;
         public const int SpeedBaccaratC = 3708;
         public const int MegaSicbo = 3709;
+        public const int HighestBetTypeIdInRange = 3799;
     }
 }

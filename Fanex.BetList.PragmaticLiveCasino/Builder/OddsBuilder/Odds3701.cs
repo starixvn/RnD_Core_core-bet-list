@@ -8,15 +8,10 @@
     {
         public override Odds_Template Render(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
         {
-            if (string.IsNullOrEmpty(ticket.TransDesc))
-            {
-                Template.odds = "-";
-                Template.oddsType = string.Empty;
+            Template.odds = "-";
+            Template.oddsType = string.Empty;
 
-                return Template;
-            }
-
-            return base.Render(ticket, ticketData, funcGetOddsTypeName);
+            return Template;
         }
     }
 }

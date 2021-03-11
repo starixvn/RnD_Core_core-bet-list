@@ -255,7 +255,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PragmaticLiveCasino", "Prag
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.PragmaticLiveCasino", "Fanex.BetList.PragmaticLiveCasino\Fanex.BetList.PragmaticLiveCasino.csproj", "{2ACB779F-EA3B-4D41-9025-5CF43065F03C}"
 EndProject
-
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.PragmaticLiveCasino.Test", "Fanex.BetList.PragmaticLiveCasino.Tests\Fanex.BetList.PragmaticLiveCasino.Test.csproj", "{7F43D1E9-993A-43CD-AD9E-935DDD8E59D2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1211,6 +1212,18 @@ Global
 		{24BDF7B5-F089-4FF7-BD1E-3A408A2AC42C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{24BDF7B5-F089-4FF7-BD1E-3A408A2AC42C}.Release|x86.ActiveCfg = Release|Any CPU
 		{24BDF7B5-F089-4FF7-BD1E-3A408A2AC42C}.Release|x86.Build.0 = Release|Any CPU
+		{7F43D1E9-993A-43CD-AD9E-935DDD8E59D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F43D1E9-993A-43CD-AD9E-935DDD8E59D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F43D1E9-993A-43CD-AD9E-935DDD8E59D2}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{7F43D1E9-993A-43CD-AD9E-935DDD8E59D2}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{7F43D1E9-993A-43CD-AD9E-935DDD8E59D2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7F43D1E9-993A-43CD-AD9E-935DDD8E59D2}.Debug|x86.Build.0 = Debug|Any CPU
+		{7F43D1E9-993A-43CD-AD9E-935DDD8E59D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F43D1E9-993A-43CD-AD9E-935DDD8E59D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F43D1E9-993A-43CD-AD9E-935DDD8E59D2}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{7F43D1E9-993A-43CD-AD9E-935DDD8E59D2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{7F43D1E9-993A-43CD-AD9E-935DDD8E59D2}.Release|x86.ActiveCfg = Release|Any CPU
+		{7F43D1E9-993A-43CD-AD9E-935DDD8E59D2}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1292,7 +1305,7 @@ Global
 		{DFA1DF5C-3661-43B0-B780-B4B041E1CC25} = {30390930-558E-4FEF-B06B-28480B6B759A}
 		{F632A217-5F61-44FA-8773-274840675E2A} = {E11D90C6-5E81-41EE-B13C-587096C3FE91}
 		{24BDF7B5-F089-4FF7-BD1E-3A408A2AC42C} = {E11D90C6-5E81-41EE-B13C-587096C3FE91}
-		{24BDF7B5-F089-4FF7-BD1E-3A408A2AC42C} = {E11D90C6-5E81-41EE-B13C-587096C3FE91}
+		{7F43D1E9-993A-43CD-AD9E-935DDD8E59D2} = {565E75FD-3264-4A25-8535-7B4DB76944C1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C03A9D91-0F6A-4E80-81C6-184114E18F76}

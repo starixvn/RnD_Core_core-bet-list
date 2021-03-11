@@ -6,7 +6,7 @@
     {
         public ChoiceMapper()
         {
-            for (var betType = PragmaticLiveCasinoBetTypes.BaccaratA + 1; betType <= PragmaticLiveCasinoBetTypes.MegaSicbo; betType++)
+            for (var betType = PragmaticLiveCasinoBetTypes.BaccaratA + 1; betType <= PragmaticLiveCasinoBetTypes.HighestBetTypeIdInRange; betType++)
             {
                 MapIdToBaseId(betType, PragmaticLiveCasinoBetTypes.BaccaratA);
             }

@@ -14,9 +14,7 @@
             }
             else
             {
-                var externalLink = string.Format("{0}, '{1}', {2}, '{3}'", ticket.BetId ?? 0, ticket.MatchCode, ticket.CustId, ticket.TransDesc);
-
-                Template.StatusResult.betId = externalLink;
+                Template.StatusResult.betId = $"{ticket.BetId ?? 0}, '', {ticket.CustId}, '{ticket.BetCheck}'";
             }
         }
     }

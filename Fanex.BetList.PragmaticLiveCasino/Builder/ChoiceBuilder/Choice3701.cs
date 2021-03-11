@@ -2,46 +2,21 @@
 {
     using App_GlobalResources;
     using Entities;
-    using Fanex.BetList.Core.Resource;
+    using Fanex.BetList.Core.Utils.StringExt;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Text;
-    using System.Text.RegularExpressions;
     using Templates;
-    using Utils;
 
     public class Choice3701 : Choice1
     {
-        private const string OpenBetTypeNameTag = "<span class='pragmatic-live-casino-bet-type-name'>";
-        private const string CloseBetTypeNameTag = "</span>";
-
-        private const string OpenBetIdTag = "<span class='pragmatic-live-casino-bet-id'>";
-        private const string CloseBetIdTag = "</span>";
-
-        private const string OpenGameIdTag = "<span class='pragmatic-live-casino-game-id'>";
-        private const string CloseGameIdTag = "</span>";
-
-        private const string GameTableIdFormat = "<span class=\"gamegroupname\">{0}</span>";
-
-        private const string TableCodeKey = "TableCode";
-
-        private Dictionary<string, string> _parsedTransDesc;
-
-        public override Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
-        {
-            _parsedTransDesc = ticket.ParseTransDesc();
-
-            return base.Render(ticket, ticketHelper, ticketData, isShowScoreMap);
-        }
+        private const string BetTypeNameTag = "<span class='bet-type-name'>{0}</span>";
+        private const string BetIdTag = "<span class='bet-id'>{0}</span>";
+        private const string GameIdTag = "<span class='game-id'>{0}</span>";
 
         protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
-        {
-            Template.Match = null;
-        }
-
-        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-            => Template.betTeam = string.Empty;
+            => Template.Match = null;
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
@@ -49,14 +24,14 @@
             Template.betTeamClassName = Favorite;
         }
 
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+            => Template.betTeam = GetBetChoice(ticket, ticketHelper);
+
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            Template.BetType.betTypeName = string.Empty;
+            base.BuildBetType(ticket, ticketHelper, ticketData);
 
-            if (!string.IsNullOrEmpty(ticket.TransDesc))
-            {
-                Template.BetType.betTypeName = $"{OpenBetIdTag}{PragmaticLiveCasino.BetID}: {ticket.BetCheck}{CloseBetIdTag}";
-            }
+            Template.BetType.Visible = false;
         }
 
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
@@ -69,8 +44,29 @@
             }
             else
             {
-                Template.League.LeagueName.leagueName += " " + GetTableCode() + " " + BuildGameId(ticket);
+                Template.League.LeagueName.leagueName += " " + BuildGameId(ticket);
             }
+        }
+
+        protected override void BuildBetTypeName(ref RTFHelper rtfHelper)
+            => rtfHelper.RTFRenderer.AddText(string.Empty);
+
+        protected override void AdjustBetTeamToRTF()
+        {
+            Template.betTeam = string.Join("\n", Template.betTeam.SplitHTMLIntoRows());
+            Template.League.LeagueName.leagueName = string.Join(string.Empty, Template.League.LeagueName.leagueName.StripHTML());
+        }
+
+        private string GetBetChoice(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            var betTeam = new StringBuilder();
+
+            if (!string.IsNullOrEmpty(ticket.BetCheck))
+            {
+                betTeam.AppendFormat(BetIdTag, $"{CoreBetList.BetID}: {ticket.BetCheck}");
+            }
+
+            return betTeam.ToString();
         }
 
         private static Choice_League_Block BuildDetailLink(ITicket ticket)
@@ -120,15 +116,15 @@
             {
                 switch (ticket.Status.ToLowerInvariant())
                 {
+                    case BetStatus.Reject:
+                    case BetStatus.Void:
+                        return "2";
+
                     case BetStatus.Won:
                     case BetStatus.Lose:
                     case BetStatus.Draw:
                     case BetStatus.Refund:
                         return "1";
-
-                    case BetStatus.Reject:
-                    case BetStatus.Void:
-                        return "2";
 
                     case BetStatus.Running:
                     case BetStatus.Waiting:
@@ -146,39 +142,10 @@
         {
             var betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
 
-            return $"{OpenBetTypeNameTag}{betTypeName}{CloseBetTypeNameTag}";
-        }
-
-        private string GetTableCode()
-        {
-            if (_parsedTransDesc != null && _parsedTransDesc.ContainsKey(TableCodeKey))
-            {
-                return string.Format(GameTableIdFormat, _parsedTransDesc[TableCodeKey]);
-            }
-
-            return string.Empty;
+            return string.Format(BetTypeNameTag, betTypeName);
         }
 
         private static string BuildGameId(ITicket ticket)
-            => $"{OpenGameIdTag}{ticket.MatchCode}{CloseGameIdTag}";
-
-        protected override void AdjustBetTeamToRTF()
-        {
-            RemoveHtmlTagFromLeagueName();
-            RemoveHtmlTagFromBetTypeName();
-        }
-
-        private void RemoveHtmlTagFromLeagueName()
-        {
-            var htmlTagMatching = new Regex("</?[^<>]*>");
-            Template.League.LeagueName.leagueName = htmlTagMatching.Replace(Template.League.LeagueName.leagueName, string.Empty);
-        }
-
-        private void RemoveHtmlTagFromBetTypeName()
-        {
-            Template.BetType.betTypeName = Template.BetType.betTypeName
-                .Replace(OpenBetIdTag, string.Empty)
-                .Replace(CloseBetIdTag, string.Empty);
-        }
+            => string.Format(GameIdTag, ticket.MatchCode);
     }
 }
