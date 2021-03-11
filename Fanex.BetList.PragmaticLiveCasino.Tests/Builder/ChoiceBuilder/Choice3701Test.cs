@@ -89,7 +89,7 @@
         public void BuildLeague_ForTodaySummaryTicket_ReturnDetailLinkHtml(string ticketStatus, string transactionType)
         {
             ////Arrange
-            _ticket.TransDesc = string.Empty;
+            _ticket.BetCheck = "";
             _ticket.WinlostDate = DateTime.Today;
             _ticket.Status = ticketStatus;
 
@@ -112,7 +112,7 @@
         public void BuildLeague_ForYesterdaySummaryTicket_ReturnDetailLinkHtml(string ticketStatus, string transactionType)
         {
             ////Arrange
-            _ticket.TransDesc = string.Empty;
+            _ticket.BetCheck = "";
             _ticket.WinlostDate = DateTime.Today.AddDays(-1);
             _ticket.Status = ticketStatus;
 
@@ -128,7 +128,7 @@
         public void BuildLeague_ForPreviousDaysSummaryTicket_ReturnDetailLinkHtml()
         {
             ////Arrange
-            _ticket.TransDesc = string.Empty;
+            _ticket.BetCheck = "";
             _ticket.WinlostDate = DateTime.Today.AddDays(-2);
 
             ////Act
@@ -140,11 +140,11 @@
         }
 
         [Test]
-        public void BuildLeague_FromSettledTicket_LeagueNameIsBetTypeNameAndGameId()
+        public void BuildLeague_FromBetCheck_LeagueNameIsBetTypeNameAndGameId()
         {
             // Arrange
             const string gameId = "12345";
-            _ticket.TransDesc = "transdesc";
+            _ticket.BetCheck = "156";
             _ticket.MatchCode = gameId;
 
             // Act
@@ -200,7 +200,7 @@
         public void RenderRTF_ForBetTypeNameOfDetailTicket_RemoveHtmlTag()
         {
             ////Arrange
-            _ticket.TransDesc = "transdesc";
+            _ticket.BetCheck = "123";
             var rtfHelper = new RTFHelper().Clone();
 
             ////Act
@@ -211,7 +211,7 @@
         }
 
         [Test]
-        public void RemoveHtmlTagFromLeagueName_FromSettledTicket_LeagueNameIsBetTypeNameAndGameId()
+        public void RemoveHtmlTagFromLeagueName_FromBetCheck_LeagueNameIsBetTypeNameAndGameId()
         {
             // Arrange
             const string gameId = "12345";
@@ -220,7 +220,7 @@
             {
                 RTFRenderer = new RtfTextRender()
             };
-            _ticket.TransDesc = "transdesc";
+            _ticket.BetCheck = "156";
             _ticket.MatchCode = gameId;
 
             // Act

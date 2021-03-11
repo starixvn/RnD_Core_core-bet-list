@@ -26,8 +26,6 @@
 
         public void Render_Always_HideOdds()
         {
-            // Arrange.
-
             // Act.
             var template = _odds.Render(_ticket, null, id => id.ToString());
 

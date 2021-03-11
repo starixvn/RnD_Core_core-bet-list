@@ -20,33 +20,25 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        [Test]
-        public void BuildStatusResult_TrandescDataIsEmpty_HideStatusResultLink()
-        {
-            ////Arrange
-            _ticket.TransDesc = string.Empty;
-
-            ////Act
-            _status.Render(_ticket, _ticketHelper, null, false);
-
-            ////Assert
-            Assert.IsTrue(string.IsNullOrEmpty(_status.Template.StatusResult.ToString()));
-        }
-
-        [Test]
-        public void BuildStatusResult_TrandescDataIsNotEmpty_ShowStatusResultLink()
+        [TestCase(BetStatus.Won, "1, '', 123, ''")]
+        [TestCase(BetStatus.Lose, "1, '', 123, ''")]
+        [TestCase(BetStatus.Draw, "1, '', 123, ''")]
+        [TestCase(BetStatus.Running, "0")]
+        [TestCase(BetStatus.Waiting, "0")]
+        public void BuildStatusResult_ReturnCorrectResult(string ticketStatus, string expectedResult)
         {
             ////Arrange
             _ticket.BetId = 1;
             _ticket.CustId = 123;
             _ticket.TransDesc = "TransDesc";
             _ticket.MatchCode = "MatchCode";
+            _ticket.Status = ticketStatus;
 
             ////Act
             _status.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            Assert.AreEqual("1, '', 123, ''", _status.Template.StatusResult.betId);
+            Assert.AreEqual(expectedResult, _status.Template.StatusResult.betId);
         }
     }
 }
