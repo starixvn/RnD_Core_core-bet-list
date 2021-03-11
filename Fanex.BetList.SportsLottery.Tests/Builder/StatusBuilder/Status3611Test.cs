@@ -21,29 +21,17 @@
         }
        
         [Test]
-        public void BuildStatusResult_Always_RefNoIsRefNo()
-        {
-            ////Arrange
-            _ticket.RefNo = "refnooo";
-
-            ////Act
-            _status.Render(_ticket, _ticketHelper, null, false);
-
-            ////Assert
-            Assert.AreEqual("'refnooo'", _status.Template.StatusResult.refNo);
-        }
-
-        [Test]
-        public void BuildStatusResult_Always_BetIdIsCustId()
+        public void BuildStatusResult_AlwaysCorrect_BetId()
         {
             ////Arrange
             _ticket.CustId = 123;
+            _ticket.BetCheck = "BetCheck";
 
             ////Act
             _status.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            Assert.AreEqual("123", _status.Template.StatusResult.betId);
+            Assert.AreEqual("0, '', 123, 'BetCheck'", _status.Template.StatusResult.betId);
         }
     }
 }

@@ -70,8 +70,8 @@
         public void BuildBetTeam_GetRefResource_ByTransDesc()
         {
             // Arrange.
-            _ticketHelper.GetResourceData("SoccerLotteryChoice", "3612_1").Returns("Small");
-            _ticket.TransDesc = "3612_1";
+            _ticketHelper.GetResourceData("SportsLotteryChoice", "3612_1").Returns("Small");
+            _ticket.TransDesc = "betchoice=3612_1";
 
             // Act.
             var act = _choice.Render(_ticket, _ticketHelper, null, false);
