@@ -20,9 +20,9 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        [TestCase(BetStatus.Won, "1, '', 123, ''")]
-        [TestCase(BetStatus.Lose, "1, '', 123, ''")]
-        [TestCase(BetStatus.Draw, "1, '', 123, ''")]
+        [TestCase(BetStatus.Won, "1, '', 123, 'MatchCode'")]
+        [TestCase(BetStatus.Lose, "1, '', 123, 'MatchCode'")]
+        [TestCase(BetStatus.Draw, "1, '', 123, 'MatchCode'")]
         [TestCase(BetStatus.Running, "0")]
         [TestCase(BetStatus.Waiting, "0")]
         public void BuildStatusResult_ReturnCorrectResult(string ticketStatus, string expectedResult)
@@ -30,7 +30,6 @@
             ////Arrange
             _ticket.BetId = 1;
             _ticket.CustId = 123;
-            _ticket.TransDesc = "TransDesc";
             _ticket.MatchCode = "MatchCode";
             _ticket.Status = ticketStatus;
 

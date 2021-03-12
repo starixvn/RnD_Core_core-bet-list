@@ -11,7 +11,7 @@
 
             if (ticket.IsSettled())
             {
-                Template.StatusResult.betId = $"{ticket.BetId ?? 0}, '', {ticket.CustId}, '{ticket.BetCheck}'";
+                Template.StatusResult.betId = $"{ticket.BetId ?? 0}, '', {ticket.CustId}, '{ticket.MatchCode}'";
             }
             else
             {
