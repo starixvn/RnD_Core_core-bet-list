@@ -57,7 +57,6 @@
     <AdditionalFiles Include="..\SonarQube\betlistcore\CSharp\SonarLint.xml">
       <Link>SonarLint.xml</Link>
     </AdditionalFiles>
-    <Content Include="Content\PragmaticLiveCasino.css" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Fanex.BetList.PragmaticLiveCasino.ruleset" />
