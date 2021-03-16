@@ -5,7 +5,7 @@
     using Fanex.BetList.Core.Entities;
     using NUnit.Framework;
 
-    public class Odds2401Test
+    public class Odds3701Test
     {
         private const decimal Odds = 0.75M;
 

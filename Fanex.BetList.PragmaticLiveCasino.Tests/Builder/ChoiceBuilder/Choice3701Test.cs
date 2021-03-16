@@ -1,4 +1,4 @@
-﻿namespace Fanex.BetList.GDG.Tests.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.PragmaticLiveCasino.Tests.Builder.ChoiceBuilder
 {
     using Core.Builder.ChoiceBuilder;
     using Core.Constants;
