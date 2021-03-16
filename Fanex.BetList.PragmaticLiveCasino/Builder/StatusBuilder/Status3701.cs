@@ -1,7 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
     using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Utils.TicketExt;
 
     public class Status3701 : Status1
     {
@@ -9,13 +8,13 @@
         {
             base.BuildStatusResult(ticket);
 
-            if (ticket.IsSettled())
+            if (string.IsNullOrEmpty(ticket.BetCheck))
             {
-                Template.StatusResult.betId = $"{ticket.BetId ?? 0}, '', {ticket.CustId}, '{ticket.MatchCode}'";
+                Template.StatusResult.Hide();
             }
             else
             {
-                Template.StatusResult.Hide();
+                Template.StatusResult.betId = $"{ticket.BetId ?? 0}, '', {ticket.CustId}, '{ticket.MatchCode}'";
             }
         }
     }

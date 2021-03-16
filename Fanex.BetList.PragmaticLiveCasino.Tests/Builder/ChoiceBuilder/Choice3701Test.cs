@@ -144,7 +144,7 @@
         {
             // Arrange
             const string gameId = "12345";
-            _ticket.BetCheck = "156";
+            _ticket.BetCheck = "BetCheck";
             _ticket.MatchCode = gameId;
 
             // Act
@@ -200,7 +200,7 @@
         public void RenderRTF_ForBetTypeNameOfDetailTicket_RemoveHtmlTag()
         {
             ////Arrange
-            _ticket.BetCheck = "123";
+            _ticket.BetCheck = "BetCheck";
             var rtfHelper = new RTFHelper().Clone();
 
             ////Act
@@ -220,7 +220,7 @@
             {
                 RTFRenderer = new RtfTextRender()
             };
-            _ticket.BetCheck = "156";
+            _ticket.BetCheck = "BetCheck";
             _ticket.MatchCode = gameId;
 
             // Act

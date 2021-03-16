@@ -20,24 +20,34 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
-        [TestCase(BetStatus.Won, "1, '', 123, 'MatchCode'")]
-        [TestCase(BetStatus.Lose, "1, '', 123, 'MatchCode'")]
-        [TestCase(BetStatus.Draw, "1, '', 123, 'MatchCode'")]
-        [TestCase(BetStatus.Running, "0")]
-        [TestCase(BetStatus.Waiting, "0")]
-        public void BuildStatusResult_ReturnCorrectResult(string ticketStatus, string expectedResult)
+        [Test]
+        public void BuildStatusResult_BetCheckDataIsEmpty_HideStatusResultLink()
         {
             ////Arrange
-            _ticket.BetId = 1;
-            _ticket.CustId = 123;
-            _ticket.MatchCode = "MatchCode";
-            _ticket.Status = ticketStatus;
+            _ticket.BetCheck = string.Empty;
 
             ////Act
             _status.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            Assert.AreEqual(expectedResult, _status.Template.StatusResult.betId);
+            Assert.IsTrue(string.IsNullOrEmpty(_status.Template.StatusResult.ToString()));
+        }
+
+        [Test]
+        public void BuildStatusResult_BetCheckIsNotEmpty_ShowStatusResultLink()
+        {
+            ////Arrange
+            _ticket.BetId = 123;
+            _ticket.CustId = 1234;
+            _ticket.TransDesc = "transdesc";
+            _ticket.BetCheck = "BetCheck";
+            _ticket.MatchCode = "MatchCode";
+
+            ////Act
+            _status.Render(_ticket, _ticketHelper, null, false);
+
+            ////Assert
+            Assert.AreEqual("123, '', 1234, 'MatchCode'", _status.Template.StatusResult.betId);
         }
     }
 }
