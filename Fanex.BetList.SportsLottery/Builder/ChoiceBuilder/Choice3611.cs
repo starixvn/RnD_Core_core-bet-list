@@ -39,7 +39,7 @@
         private static string GetSplitValue(string strValue)
         {
             string[] strTemp = strValue.Split('=');
-            return strTemp.Length > 1 ? strTemp[1].ToString() : string.Empty;
+            return strTemp.Length > 1 ? strTemp[1] : string.Empty;
         }
     }
 }
