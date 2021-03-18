@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Fanax.BetList.PragmaticLiveCasino.Test</RootNamespace>
     <AssemblyName>Fanax.BetList.PragmaticLiveCasino.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -29,6 +29,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,6 +38,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
@@ -68,12 +70,6 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="Builder\ChoiceBuilder\Choice3701Test.cs" />
-    <Compile Include="Builder\OddsBuilder\Odds3701Test.cs" />
-    <Compile Include="Builder\StatusBuilder\Status3701Test.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -82,11 +78,16 @@
       <Name>Fanex.BetList.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.PragmaticLiveCasino\Fanex.BetList.PragmaticLiveCasino.csproj">
-      <Project>{2acb779f-ea3b-4d41-9025-5cf43065f03c}</Project>
+      <Project>{e56e254b-3ea9-4a8f-9854-9900b7bd0c3d}</Project>
       <Name>Fanex.BetList.PragmaticLiveCasino</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="Builder\ChoiceBuilder\Choice3701Test.cs" />
+    <Compile Include="Builder\OddsBuilder\Odds3701Test.cs" />
+    <Compile Include="Builder\StatusBuilder\Status3701Test.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

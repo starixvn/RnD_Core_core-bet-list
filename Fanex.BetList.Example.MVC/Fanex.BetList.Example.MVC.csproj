@@ -405,7 +405,7 @@
       <Name>Fanex.BetList.PP</Name>
     </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.PragmaticLiveCasino\Fanex.BetList.PragmaticLiveCasino.csproj">
-      <Project>{2acb779f-ea3b-4d41-9025-5cf43065f03c}</Project>
+      <Project>{e56e254b-3ea9-4a8f-9854-9900b7bd0c3d}</Project>
       <Name>Fanex.BetList.PragmaticLiveCasino</Name>
     </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.RnGCasino\Fanex.BetList.RnGCasino.csproj">

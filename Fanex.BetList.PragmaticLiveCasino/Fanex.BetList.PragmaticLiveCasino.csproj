@@ -4,14 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2ACB779F-EA3B-4D41-9025-5CF43065F03C}</ProjectGuid>
+    <ProjectGuid>{E56E254B-3EA9-4A8F-9854-9900B7BD0C3D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Fanex.BetList.Core</RootNamespace>
     <AssemblyName>Fanex.BetList.PragmaticLiveCasino</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
+    <CodeAnalysisRuleSet>..\SonarQube\betlistcorecsharp.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,7 +22,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>Fanex.BetList.PragmaticLiveCasino.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\SonarQube\betlistcorecsharp.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,7 +32,8 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>Fanex.BetList.PragmaticLiveCasino.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\SonarQube\betlistcorecsharp.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -42,16 +45,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Builder\ChoiceBuilder\Choice3701.cs" />
-    <Compile Include="Builder\OddsBuilder\Odds3701.cs">
-      <SonarQubeExclude>true</SonarQubeExclude>
-    </Compile>
-    <Compile Include="Builder\StatusBuilder\Status3701.cs" />
-    <Compile Include="Constants\PragmaticLiveCasinoBetTypes.cs" />
-    <Compile Include="Mapper\ChoiceMapper.cs" />
-    <Compile Include="Mapper\OddsMapper.cs" />
-    <Compile Include="Mapper\StatusMapper.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj">
+      <Project>{b0838d04-2306-4362-af22-9fcd0be6f8e7}</Project>
+      <Name>Fanex.BetList.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="..\SonarQube\betlistcore\CSharp\SonarLint.xml">
@@ -59,22 +56,26 @@
     </AdditionalFiles>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Fanex.BetList.PragmaticLiveCasino.ruleset" />
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
+    <None Include="..\SonarQube\betlistcorecsharp.ruleset">
+      <Link>betlistcorecsharp.ruleset</Link>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj">
-      <Project>{b0838d04-2306-4362-af22-9fcd0be6f8e7}</Project>
-      <Name>Fanex.BetList.Core</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.8.9.0.19135\analyzers\Google.Protobuf.dll" />
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.8.9.0.19135\analyzers\SonarAnalyzer.CFG.dll" />
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.8.9.0.19135\analyzers\SonarAnalyzer.CSharp.dll" />
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.8.9.0.19135\analyzers\SonarAnalyzer.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Builder\ChoiceBuilder\Choice3701.cs" />
+    <Compile Include="Builder\OddsBuilder\Odds3701.cs" />
+    <Compile Include="Builder\StatusBuilder\Status3701.cs" />
+    <Compile Include="Constants\PragmaticLiveCasinoBetTypes.cs" />
+    <Compile Include="Mapper\ChoiceMapper.cs" />
+    <Compile Include="Mapper\OddsMapper.cs" />
+    <Compile Include="Mapper\StatusMapper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
