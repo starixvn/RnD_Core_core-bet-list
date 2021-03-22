@@ -17,7 +17,7 @@
                 return base.Render(ticket, ticketData, funcGetOddsTypeName);
             }
 
-            Template.odds = ConvertByBetType.Odds(ticket.Odds, ticket.BetTypeId, ticket.OddsType);
+            Template.odds = string.Format(Formatter.DECIMALFORMAT3, ticket.Odds);
             Template.oddsType = string.Empty;
 
             return Template;

@@ -50,5 +50,19 @@
             // Assert.
             Assert.AreEqual("DEC", oddsTemplate.oddsType);
         }
+
+        [Test]
+        public void Render_TransDateGreaterThanCutOffTime_ReturnDBOddsValue()
+        {
+            // Arrange
+            _ticket.TransDate = new DateTime(2021, 4, 9, 0, 0, 0);
+            _ticket.Odds = (decimal)1.98;
+
+            // Act.
+            var oddsTemplate = _odds.Render(_ticket, _ticketData, _getOddsTypeNameFunc);
+
+            // Assert.
+            Assert.AreEqual("1.98", oddsTemplate.odds);
+        }
     }
 }
