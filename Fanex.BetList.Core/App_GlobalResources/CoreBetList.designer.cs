@@ -340,7 +340,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Away Back.
+        ///   Looks up a localized string similar to {0} Back.
         /// </summary>
         public static string AwayBack {
             get {
@@ -358,7 +358,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Away Lay.
+        ///   Looks up a localized string similar to {0} Lay.
         /// </summary>
         public static string AwayLay {
             get {
@@ -1177,7 +1177,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Home Back.
+        ///   Looks up a localized string similar to {0} Back.
         /// </summary>
         public static string HomeBack {
             get {
@@ -1195,7 +1195,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Home Lay.
+        ///   Looks up a localized string similar to {0} Lay.
         /// </summary>
         public static string HomeLay {
             get {

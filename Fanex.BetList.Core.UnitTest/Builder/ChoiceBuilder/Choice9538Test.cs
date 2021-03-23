@@ -19,16 +19,20 @@
             _choice = new Choice9538();
             _ticket = Substitute.For<ITicket>();
             _ticket.BetTypeId = BetTypes.OneXTwoBackLay;
+            _ticket.HomeId = 1;
+            _ticket.AwayId = 2;
             _ticketHelper = Substitute.For<ITicketHelper>();
+            _ticketHelper.GetTeamNameById(1).Returns("home 1");
+            _ticketHelper.GetTeamNameById(2).Returns("away 1");
         }
 
 
-        [TestCase("1b", "Home Back")]
+        [TestCase("1b", "home 1 Back")]
         [TestCase("xb", "Draw Back")]
-        [TestCase("2b", "Away Back")]
-        [TestCase("1l", "Home Lay")]
+        [TestCase("2b", "away 1 Back")]
+        [TestCase("1l", "home 1 Lay")]
         [TestCase("xl", "Draw Lay")]
-        [TestCase("2l", "Away Lay")]
+        [TestCase("2l", "away 1 Lay")]
         public void BuildBetTeam_Always_ShowCorrectText(string betteam, string text)
         {
             // Arrange

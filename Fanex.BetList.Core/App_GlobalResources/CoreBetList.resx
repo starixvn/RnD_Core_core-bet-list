@@ -995,22 +995,22 @@
     <value>Not Caught</value>
   </data>
   <data name="HomeBack" xml:space="preserve">
-    <value>Home Back</value>
+    <value>{0} Back</value>
   </data>
   <data name="DrawBack" xml:space="preserve">
     <value>Draw Back</value>
   </data>
   <data name="AwayBack" xml:space="preserve">
-    <value>Away Back</value>
+    <value>{0} Back</value>
   </data>
   <data name="HomeLay" xml:space="preserve">
-    <value>Home Lay</value>
+    <value>{0} Lay</value>
   </data>
   <data name="DrawLay" xml:space="preserve">
     <value>Draw Lay</value>
   </data>
   <data name="AwayLay" xml:space="preserve">
-    <value>Away Lay</value>
+    <value>{0} Lay</value>
   </data>
   <data name="AO" xml:space="preserve">
     <value>AO</value>
