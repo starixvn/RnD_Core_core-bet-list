@@ -994,25 +994,13 @@
   <data name="NotCaught" xml:space="preserve">
     <value>Not Caught</value>
   </data>
-  <data name="HomeBack" xml:space="preserve">
-    <value>{0} Back</value>
-  </data>
-  <data name="DrawBack" xml:space="preserve">
-    <value>Draw Back</value>
-  </data>
-  <data name="AwayBack" xml:space="preserve">
-    <value>{0} Back</value>
-  </data>
-  <data name="HomeLay" xml:space="preserve">
-    <value>{0} Lay</value>
-  </data>
-  <data name="DrawLay" xml:space="preserve">
-    <value>Draw Lay</value>
-  </data>
-  <data name="AwayLay" xml:space="preserve">
-    <value>{0} Lay</value>
-  </data>
   <data name="AO" xml:space="preserve">
     <value>AO</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="Lay" xml:space="preserve">
+    <value>Lay</value>
   </data>
 </root>

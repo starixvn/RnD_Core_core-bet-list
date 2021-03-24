@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using App_GlobalResources;
     using Entities;
+    using Fanex.BetList.Core.Constants;
 
     /// <summary>
     /// 1X2 (Back & Lay)
@@ -14,27 +15,35 @@
             var betTeam = ticket.BetTeam.ToLowerInvariant();
             var betteams = new Dictionary<string, string>
             {
-                { "hb", CoreBetList.HomeBack },
-                { "1b", CoreBetList.HomeBack },
-                { "1l", CoreBetList.HomeLay },
-                { "hl", CoreBetList.HomeLay },
-                { "xb", CoreBetList.DrawBack },
-                { "xl", CoreBetList.DrawLay },
-                { "2b", CoreBetList.AwayBack },
-                { "ab", CoreBetList.AwayBack },
-                { "2l", CoreBetList.AwayLay },
-                { "al", CoreBetList.AwayLay }
+                { "hb", CoreBetList.Back },
+                { "1b", CoreBetList.Back },
+                { "1l", CoreBetList.Lay },
+                { "hl", CoreBetList.Lay },
+                { "xb", CoreBetList.Back },
+                { "xl", CoreBetList.Lay },
+                { "2b", CoreBetList.Back },
+                { "ab", CoreBetList.Back },
+                { "2l", CoreBetList.Lay },
+                { "al", CoreBetList.Lay }
             };
-            var betTeamFormat = betteams.ContainsKey(betTeam) ? betteams[betTeam] : betTeam;
+            var betTeamAction = betteams.ContainsKey(betTeam) ? betteams[betTeam] : betTeam;
             var teamName = GetTeamName(ticket, ticketHelper);
-
-            Template.betTeam = string.Format(betTeamFormat, teamName);
+            var teamNameFormat = $" <span class='underdog'>{teamName}</span> ";
+            Template.betTeam = teamNameFormat + betTeamAction;
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
             Template.Handicap.handicap = null;
             Template.betTeamClassName = Favorite;
+        }
+
+        protected override void BuildBetFigure(ITicket ticket, ref RTFHelper rtfHelper, bool isMixParlay)
+        {
+            Template.betTeam = Template.betTeam.Replace("<span class='underdog'>", string.Empty);
+            Template.betTeam = Template.betTeam.Replace("</span>", string.Empty);
+
+            base.BuildBetFigure(ticket, ref rtfHelper, isMixParlay);
         }
 
         private string GetTeamName(ITicket ticket, ITicketHelper ticketHelper)
@@ -50,7 +59,7 @@
                 return ticketHelper.GetTeamNameById(ticket.AwayId);
             }
 
-            return string.Empty;
+            return CoreBetList.draw;
         }
     }
 }

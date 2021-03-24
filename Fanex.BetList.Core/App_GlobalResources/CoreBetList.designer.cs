@@ -340,29 +340,11 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} Back.
-        /// </summary>
-        public static string AwayBack {
-            get {
-                return ResourceManager.GetString("AwayBack", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Away FG.
         /// </summary>
         public static string AwayFG {
             get {
                 return ResourceManager.GetString("AwayFG", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} Lay.
-        /// </summary>
-        public static string AwayLay {
-            get {
-                return ResourceManager.GetString("AwayLay", resourceCulture);
             }
         }
         
@@ -381,6 +363,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string AwayToWinAnyOtherScore {
             get {
                 return ResourceManager.GetString("AwayToWinAnyOtherScore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Back.
+        /// </summary>
+        public static string Back {
+            get {
+                return ResourceManager.GetString("Back", resourceCulture);
             }
         }
         
@@ -696,24 +687,6 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string draw {
             get {
                 return ResourceManager.GetString("draw", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Draw Back.
-        /// </summary>
-        public static string DrawBack {
-            get {
-                return ResourceManager.GetString("DrawBack", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Draw Lay.
-        /// </summary>
-        public static string DrawLay {
-            get {
-                return ResourceManager.GetString("DrawLay", resourceCulture);
             }
         }
         
@@ -1177,29 +1150,11 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} Back.
-        /// </summary>
-        public static string HomeBack {
-            get {
-                return ResourceManager.GetString("HomeBack", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Home FG.
         /// </summary>
         public static string HomeFG {
             get {
                 return ResourceManager.GetString("HomeFG", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} Lay.
-        /// </summary>
-        public static string HomeLay {
-            get {
-                return ResourceManager.GetString("HomeLay", resourceCulture);
             }
         }
         
@@ -1299,6 +1254,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string last {
             get {
                 return ResourceManager.GetString("last", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lay.
+        /// </summary>
+        public static string Lay {
+            get {
+                return ResourceManager.GetString("Lay", resourceCulture);
             }
         }
         
