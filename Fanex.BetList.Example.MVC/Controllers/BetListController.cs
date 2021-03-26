@@ -431,7 +431,7 @@
         }
         public ActionResult SexyGaming(BetListData model = null)
         {
-            var betTypes = _dataService.QueryBetTypes(3101, 3102, 3103, 3104, 3105);
+            var betTypes = _dataService.QueryBetTypes(3101, 3102, 3103, 3104, 3105, 3150);
             DataSourcePath = "~/App_Data/SexyGaming.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);

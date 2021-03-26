@@ -1,13 +1,13 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using App_GlobalResources;
+    using Entities;
+    using Resource;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Text;
     using System.Text.RegularExpressions;
-    using App_GlobalResources;
-    using Entities;
-    using Resource;
     using Templates;
     using Utils;
 
@@ -16,8 +16,8 @@
         private const string OpenBetTypeNameTag = "<span class='sexygaming-bet-type-name'>";
         private const string CloseBetTypeNameTag = "</span>";
 
-        private const string OpenBetIdTag = "<span class='sexygaming-bet-id'>";
-        private const string CloseBetIdTag = "</span>";
+        protected const string OpenBetIdTag = "<span class='sexygaming-bet-id'>";
+        protected const string CloseBetIdTag = "</span>";
 
         private const string OpenGameIdTag = "<span class='sexygaming-game-id'>";
         private const string CloseGameIdTag = "</span>";
@@ -85,7 +85,7 @@
             }
         }
 
-        private static Choice_League_Block BuildDetailLink(ITicket ticket)
+        protected static Choice_League_Block BuildDetailLink(ITicket ticket)
         {
             var detailLinkMarkupBuilder = new StringBuilder();
             var detailFunction = BuildDetailFunction(ticket);
@@ -154,7 +154,7 @@
             return "0";
         }
 
-        private static string BuildBetTypeName(ITicket ticket, ITicketHelper ticketHelper)
+        protected static string BuildBetTypeName(ITicket ticket, ITicketHelper ticketHelper)
         {
             var betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
 
