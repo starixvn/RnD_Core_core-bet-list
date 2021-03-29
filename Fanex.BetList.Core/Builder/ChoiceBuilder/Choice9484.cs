@@ -1,7 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System.Collections.Generic;
     using Entities;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Home Over X Exact Runs.
@@ -9,7 +9,7 @@
     public class Choice9484 : Choice9434
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-            => Template.betTeam = ticket.BetTeam;
+            => Template.betTeam = ticket.BetTeam.ToUpper();
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
