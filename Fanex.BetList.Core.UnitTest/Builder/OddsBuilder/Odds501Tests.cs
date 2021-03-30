@@ -52,7 +52,7 @@
         }
 
         [Test]
-        public void Render_TransDateGreaterThanCutOffTime_ReturnCorrectFormatValue(decimal odds)
+        public void Render_TransDateGreaterThanCutOffTime_ReturnCorrectFormatValue()
         {
             // Arrange
             _ticket.TransDate = new DateTime(2021, 4, 9, 0, 0, 0);

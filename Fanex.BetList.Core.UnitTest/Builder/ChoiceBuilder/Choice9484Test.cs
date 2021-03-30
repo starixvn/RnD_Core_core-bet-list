@@ -25,8 +25,8 @@
         }
 
 
-        [TestCase("0","0")]
-        [TestCase("tambay", "tambay")]
+        [TestCase("0", "0")]
+        [TestCase("tambay", "TAMBAY")]
         public void BuildBetTeam_Always_ShowCorrectText(string betteam, string teamName)
         {
             // Arrange
