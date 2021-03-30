@@ -1,0 +1,136 @@
+﻿namespace Fanex.BetList.SexyGaming.Tests.Builder.ChoiceBuilder
+{
+    using Core.Builder.ChoiceBuilder;
+    using Core.Constants;
+    using Core.Entities;
+    using NSubstitute;
+    using NUnit.Framework;
+    using System;
+    using System.Globalization;
+
+    [TestFixture]
+    public class Choice3150Test
+    {
+        private const string BetTypeName = "Lucky Draw";
+
+        private IChoice _choice;
+        private ITicket _ticket;
+        private ITicketHelper _ticketHelper;
+
+        [SetUp]
+        public void Setup()
+        {
+            _choice = new Choice3150();
+            _ticket = Substitute.For<ITicket>();
+            _ticketHelper = Substitute.For<ITicketHelper>();
+
+            _ticket.BetTypeId = SexyGamingBetTypes.LuckyDraw;
+            _ticket.TransId = 1;
+            _ticket.CustId = 1000;
+
+            _ticketHelper.GetBetTypeNameById(SexyGamingBetTypes.LuckyDraw).Returns(BetTypeName);
+        }
+
+
+        [TestCase("choice=1001*comms=1*tableCode=B001*result=P;S6;H2:B;D10;D5 *results=B;8:P;5")]
+        [TestCase("comms=1*tableCode=B001*result=P;S6;H2:B;D10;D5 *results=B;8:P;5")]
+        public void BuildBetTeam_Always_ReturnEmpty(string transDesc)
+        {
+            ////Arrange
+            _ticket.TransDesc = "comms=1*tableCode=B001*result=P;S6;H2:B;D10;D5 *results=B;8:P;5";
+
+            ////Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            ////Assert
+            Assert.IsTrue(string.IsNullOrEmpty(_choice.Template.betTeam));
+        }
+
+        [TestCase(BetStatus.Won, "1")]
+        [TestCase(BetStatus.Lose, "1")]
+        [TestCase(BetStatus.Draw, "1")]
+        [TestCase(BetStatus.Refund, "1")]
+        [TestCase(BetStatus.Reject, "2")]
+        [TestCase(BetStatus.Void, "2")]
+        [TestCase(BetStatus.Running, "3")]
+        [TestCase(BetStatus.Waiting, "3")]
+        public void BuildLeague_ForTodaySummaryTicket_ReturnDetailLinkHtml(string ticketStatus, string transactionType)
+        {
+            ////Arrange
+            _ticket.TransDesc = string.Empty;
+            _ticket.WinlostDate = DateTime.Today;
+            _ticket.Status = ticketStatus;
+
+            ////Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            ////Assert
+            string expectedTemplate = BuildExpectedTemplateDetailLinkHtml(_ticket, transactionType);
+            Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedTemplate));
+        }
+
+        [TestCase(BetStatus.Won, "1")]
+        [TestCase(BetStatus.Lose, "1")]
+        [TestCase(BetStatus.Draw, "1")]
+        [TestCase(BetStatus.Refund, "1")]
+        [TestCase(BetStatus.Reject, "2")]
+        [TestCase(BetStatus.Void, "2")]
+        [TestCase(BetStatus.Running, "3")]
+        [TestCase(BetStatus.Waiting, "3")]
+        public void BuildLeague_ForYesterdaySummaryTicket_ReturnDetailLinkHtml(string ticketStatus, string transactionType)
+        {
+            ////Arrange
+            _ticket.TransDesc = string.Empty;
+            _ticket.WinlostDate = DateTime.Today.AddDays(-1);
+            _ticket.Status = ticketStatus;
+
+            ////Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            ////Assert
+            string expectedTemplate = BuildExpectedTemplateDetailLinkHtml(_ticket, transactionType);
+            Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedTemplate));
+        }
+
+        [Test]
+        public void BuildLeague_ForPreviousDaysSummaryTicket_ReturnDetailLinkHtml()
+        {
+            ////Arrange
+            _ticket.TransDesc = string.Empty;
+            _ticket.WinlostDate = DateTime.Today.AddDays(-2);
+
+            ////Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            ////Assert
+            string expectedTemplate = BuildExpectedTemplateDetailLinkHtml(_ticket, "0");
+            Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedTemplate));
+        }
+
+        [Test]
+        public void BuildLeague_FromSettledTicket_LeagueNameIsBetTypeName()
+        {
+            // Arrange
+            _ticket.TransDesc = $"choice=1001*comms=100*site=BEST-ODDS*state=0*result=B;S6;H2:P;D10;D5*results=B;8:P;5*winResult=1001;1004";
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            var expectedLeagueName = string.Format("<span class='sexygaming-bet-type-name'>{0}</span>", BetTypeName);
+            Assert.AreEqual(expectedLeagueName, _choice.Template.League.LeagueName.leagueName);
+        }
+
+        private string BuildExpectedTemplateDetailLinkHtml(ITicket ticket, string transactionType)
+        {
+            return string.Format(
+                "<div class=\"detail sexygaming-casino-detail\"" +
+                " onclick='showSexyGamingBetDetails(&quot;{0}&quot;,&quot;{1}&quot;,&quot;{2}&quot;,&quot;{3}&quot;);'>" +
+                "<a style=\"color:#755200;font-weight:bold\"" +
+                " href=\"javascript:void(&quot;&quot;);\">Details</a></div>",
+                ticket.TransId.ToString(),
+                ticket.WinlostDate.ToString(CultureInfo.InvariantCulture),
+                ticket.CustId.ToString(),
+                transactionType);
+        }
+    }
+}
