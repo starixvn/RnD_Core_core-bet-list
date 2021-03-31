@@ -985,9 +985,6 @@
   <data name="4q" xml:space="preserve">
     <value>Quarter 4</value>
   </data>
-  <data name="BeforeMinute" xml:space="preserve">
-    <value>Before Minute {0}</value>
-  </data>
   <data name="Caught" xml:space="preserve">
     <value>Caught</value>
   </data>

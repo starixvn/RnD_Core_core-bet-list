@@ -88,7 +88,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            var expectedFormat = "0.5<span class='favorite'> (Before Minute 15)</span>";
+            var expectedFormat = "0.5<span class='favorite'> (00:00 ~ 15:00)</span>";
             Assert.AreEqual(expectedFormat, _choice.Template.Handicap.handicap);
         }
 

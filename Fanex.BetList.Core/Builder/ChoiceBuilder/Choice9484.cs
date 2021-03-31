@@ -9,7 +9,7 @@
     public class Choice9484 : Choice9434
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-            => Template.betTeam = ticket.BetTeam.ToLowerInvariant();
+            => Template.betTeam = ticket.BetTeam.ToUpperInvariant();
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {

@@ -135,6 +135,11 @@
 
         #region Number
 
+        public static string FormatTwoDigit(int number)
+        {
+            return number < 10 ? "0" + number : number.ToString(CultureInfo.InvariantCulture);
+        }
+
         public static string FormatNumber1(object objectToFormat, string culture)
         {
             if (Convert.IsDBNull(objectToFormat) || objectToFormat == null)

@@ -600,9 +600,6 @@
   <data name="Miss" xml:space="preserve">
     <value>실패</value>
   </data>
-  <data name="BeforeMinute" xml:space="preserve">
-    <value>분{0}이전</value>
-  </data>
   <data name="Back" xml:space="preserve">
     <value>{0} 백</value>
   </data>

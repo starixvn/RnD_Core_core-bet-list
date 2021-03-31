@@ -792,9 +792,6 @@
   <data name="h34" xml:space="preserve">
     <value>ทีมเหย้าชนะควอเตอร์ที่ 3 และ 4</value>
   </data>
-  <data name="BeforeMinute" xml:space="preserve">
-    <value>ก่อนนาที {0}</value>
-  </data>
   <data name="Back" xml:space="preserve">
     <value>แบ๊ค {0}</value>
   </data>

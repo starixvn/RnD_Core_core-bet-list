@@ -367,15 +367,6 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Before Minute {0}.
-        /// </summary>
-        public static string BeforeMinute {
-            get {
-                return ResourceManager.GetString("BeforeMinute", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to bets.
         /// </summary>
         public static string bet {
