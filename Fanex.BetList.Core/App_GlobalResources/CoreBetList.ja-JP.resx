@@ -462,4 +462,10 @@
   <data name="BeforeMinute" xml:space="preserve">
     <value>分{0}の前</value>
   </data>
+  <data name="Back" xml:space="preserve">
+    <value>{0} バック</value>
+  </data>
+  <data name="Lay" xml:space="preserve">
+    <value>{0} レイ</value>
+  </data>
 </root>

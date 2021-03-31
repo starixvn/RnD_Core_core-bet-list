@@ -232,15 +232,6 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to AO.
-        /// </summary>
-        public static string AO {
-            get {
-                return ResourceManager.GetString("AO", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to AOS.
         /// </summary>
         public static string AOS {
@@ -367,7 +358,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Back.
+        ///   Looks up a localized string similar to {0} Back.
         /// </summary>
         public static string Back {
             get {
@@ -1258,7 +1249,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lay.
+        ///   Looks up a localized string similar to {0} Lay.
         /// </summary>
         public static string Lay {
             get {

@@ -795,4 +795,10 @@
   <data name="BeforeMinute" xml:space="preserve">
     <value>ก่อนนาที {0}</value>
   </data>
+  <data name="Back" xml:space="preserve">
+    <value>แบ๊ค {0}</value>
+  </data>
+  <data name="Lay" xml:space="preserve">
+    <value>เลย์ของ {0}</value>
+  </data>
 </root>

@@ -1,9 +1,8 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System.Collections.Generic;
     using App_GlobalResources;
     using Entities;
-    using Fanex.BetList.Core.Constants;
+    using System.Collections.Generic;
 
     /// <summary>
     /// 1X2 (Back & Lay)
@@ -28,8 +27,8 @@
             };
             var betTeamAction = betteams.ContainsKey(betTeam) ? betteams[betTeam] : betTeam;
             var teamName = GetTeamName(ticket, ticketHelper);
-            var teamNameFormat = $" <span class='underdog'>{teamName}</span> ";
-            Template.betTeam = teamNameFormat + betTeamAction;
+            var teamNameFormat = $"<span class='underdog'>{teamName}</span>";
+            Template.betTeam = string.Format(betTeamAction, teamNameFormat);
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
@@ -46,7 +45,7 @@
             base.BuildBetFigure(ticket, ref rtfHelper, isMixParlay);
         }
 
-        private string GetTeamName(ITicket ticket, ITicketHelper ticketHelper)
+        private static string GetTeamName(ITicket ticket, ITicketHelper ticketHelper)
         {
             var betTeam = ticket.BetTeam.ToLowerInvariant();
             if (betTeam.StartsWith("h") || betTeam.StartsWith("1"))

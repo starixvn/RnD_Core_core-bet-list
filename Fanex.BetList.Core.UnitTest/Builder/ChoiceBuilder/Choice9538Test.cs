@@ -26,12 +26,12 @@
             _ticketHelper.GetTeamNameById((long)2).Returns("away 1");
         }
 
-        [TestCase("1b", " <span class='underdog'>home 1</span> Back")]
-        [TestCase("xb", " <span class='underdog'>Draw</span> Back")]
-        [TestCase("2b", " <span class='underdog'>away 1</span> Back")]
-        [TestCase("1l", " <span class='underdog'>home 1</span> Lay")]
-        [TestCase("xl", " <span class='underdog'>Draw</span> Lay")]
-        [TestCase("2l", " <span class='underdog'>away 1</span> Lay")]
+        [TestCase("1b", "<span class='underdog'>home 1</span> Back")]
+        [TestCase("xb", "<span class='underdog'>Draw</span> Back")]
+        [TestCase("2b", "<span class='underdog'>away 1</span> Back")]
+        [TestCase("1l", "<span class='underdog'>home 1</span> Lay")]
+        [TestCase("xl", "<span class='underdog'>Draw</span> Lay")]
+        [TestCase("2l", "<span class='underdog'>away 1</span> Lay")]
         public void BuildBetTeam_Always_ShowCorrectText(string betteam, string text)
         {
             // Arrange

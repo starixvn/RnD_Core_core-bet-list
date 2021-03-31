@@ -994,13 +994,10 @@
   <data name="NotCaught" xml:space="preserve">
     <value>Not Caught</value>
   </data>
-  <data name="AO" xml:space="preserve">
-    <value>AO</value>
-  </data>
   <data name="Back" xml:space="preserve">
-    <value>Back</value>
+    <value>{0} Back</value>
   </data>
   <data name="Lay" xml:space="preserve">
-    <value>Lay</value>
+    <value>{0} Lay</value>
   </data>
 </root>

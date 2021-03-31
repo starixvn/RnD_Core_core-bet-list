@@ -599,4 +599,10 @@
   <data name="BeforeMinute" xml:space="preserve">
     <value>Trước phút {0}</value>
   </data>
+  <data name="Back" xml:space="preserve">
+    <value>{0} Thắng</value>
+  </data>
+  <data name="Lay" xml:space="preserve">
+    <value>{0} Thua</value>
+  </data>
 </root>
