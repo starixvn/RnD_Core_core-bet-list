@@ -19,9 +19,12 @@
             _choice = new Choice3601();
             _ticket = Substitute.For<ITicket>();
             _ticket.BetTypeId = Happy5LinkedGamesBetTypes.OverUnder;
+            _ticket.SportTypeId = 168;
             _ticketHelper = Substitute.For<ITicketHelper>();
             _ticketHelper.GetResourceData(Choice3601.BetChoiceRefId, "3601_0").Returns("choice0");
             _ticketHelper.GetResourceData(Choice3601.BetChoiceRefId, "3601_1").Returns("choice1");
+            _ticketHelper.GetResourceData(Choice3601.BetChoiceRefId, "168_1").Returns("1 Ball");
+            _ticketHelper.GetResourceData(Choice3601.BetChoiceRefId, "168_2").Returns("2 Balls");
         }
 
         [TestCase(null)]
@@ -79,7 +82,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            Assert.AreEqual("[choice0]", _choice.Template.betTeam);
+            Assert.AreEqual("<div class='underdog'>1 Ball</div>[choice0]", _choice.Template.betTeam);
         }
 
         [Test]
@@ -87,12 +90,13 @@
         {
             // Arrange.
             _ticket.TransDesc = "BetContent=01";
+            var expected = "<div class='underdog'>2 Balls</div>[choice0], [choice1]";
 
             // Act.
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            Assert.AreEqual("[choice0], [choice1]", _choice.Template.betTeam);
+            Assert.AreEqual(expected, _choice.Template.betTeam);
         }
 
         [Test]
@@ -159,7 +163,7 @@
             // Assert.
             var expectedMatch = string.Format(NumberGameLang.Number, matchCode);
 
-            Assert.AreEqual(expectedMatch, linesInActualText[1]);
+            Assert.AreEqual(expectedMatch, linesInActualText[2]);
         }
 
         [Test]

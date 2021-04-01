@@ -1,9 +1,11 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System;
-    using System.Collections.Generic;
     using Core.Entities;
     using Core.Resources;
+    using Fanex.BetList.Core.Utils.StringExt;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// Happy 5 Linked Games: Over/Under
@@ -12,13 +14,18 @@
     {
         private readonly int numberOfExpressionsOfEachProperty = 2;
         public const string BetChoiceRefId = "Parlay5Choice";
+        private const string Hyphen = "-";
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             if (!string.IsNullOrEmpty(ticket.TransDesc))
             {
-                var betChoicesName = GetBetChoices(ticket, ticketHelper);
-                Template.betTeam = string.Join(", ", betChoicesName);
+                var betChoices = GetBetChoices(ticket, ticketHelper);
+                var totalBalls = betChoices.Count(i => !i.Equals($"[{Hyphen}]"));
+                var totalBallKeyResourceId = $"{ticket.SportTypeId}_{totalBalls}";
+                var totalBallsFormat = $"<div class='underdog'>{ticketHelper.GetResourceData(BetChoiceRefId, totalBallKeyResourceId)}</div>";
+
+                Template.betTeam = totalBallsFormat + string.Join(", ", betChoices);
             }
             else
             {
@@ -45,6 +52,9 @@
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
             => Template.League.LeagueName.leagueName = string.Empty;
 
+        protected override void AdjustBetTeamToRTF()
+            => Template.betTeam = string.Join("\n", Template.betTeam.SplitHTMLIntoRows());
+
         protected override void BuildBetTeamsInfo(ITicket ticket, ref RTFHelper rtfHelper)
         {
             var matchCodeText = GetMatchCode(ticket.BetCheck);
@@ -64,19 +74,27 @@
 
         private List<string> GetBetChoices(ITicket ticket, ITicketHelper ticketHelper)
         {
-            var betChoicesName = new List<string>();
+            var betChoices = new List<string>();
             var contentTransDesc = Split(ticket.TransDesc, '=');
             if (contentTransDesc.Length == numberOfExpressionsOfEachProperty)
             {
                 var betChoicesId = contentTransDesc[1].Trim().ToCharArray();
-                foreach (var resourceId in betChoicesId)
+                foreach (var id in betChoicesId)
                 {
-                    var choiceName = ticketHelper.GetResourceData(BetChoiceRefId, $"{ticket.BetTypeId}_{resourceId.ToString()}");
-                    betChoicesName.Add($"[{choiceName}]");
+                    var resourceId = id.ToString();
+                    if (resourceId.Equals(Hyphen))
+                    {
+                        betChoices.Add($"[{Hyphen}]");
+                    }
+                    else
+                    {
+                        var choiceName = ticketHelper.GetResourceData(BetChoiceRefId, $"{ticket.BetTypeId}_{resourceId}");
+                        betChoices.Add($"[{choiceName}]");
+                    }
                 }
             }
 
-            return betChoicesName;
+            return betChoices;
         }
 
         private static string[] Split(string value, char separator)
