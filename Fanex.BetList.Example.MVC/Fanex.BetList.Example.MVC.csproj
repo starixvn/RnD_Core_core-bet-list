@@ -320,6 +320,10 @@
       <Project>{eeb53cdf-8346-4f95-9997-b7bc052d1f18}</Project>
       <Name>Fanex.BetList.CashOut</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.CG\Fanex.BetList.CG.csproj">
+      <Project>{b52ec037-5124-46e6-99f2-d02583fe6953}</Project>
+      <Name>Fanex.BetList.CG</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.ColossusBets\Fanex.BetList.ColossusBets.csproj">
       <Project>{89b48c7f-9ea2-40cf-879c-5509555d3b1d}</Project>
       <Name>Fanex.BetList.ColossusBets</Name>
@@ -564,6 +568,7 @@
     <Content Include="App_Data\CricketAIOP1.xls" />
     <Content Include="App_Data\Habanero.xls" />
     <Content Include="App_Data\PragmaticLiveCasino.xls" />
+    <Content Include="App_Data\CG.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
