@@ -137,7 +137,8 @@
 
         public static string FormatTwoDigit(int number)
         {
-            return number < 10 ? "0" + number : number.ToString(CultureInfo.InvariantCulture);
+            const int minNumberHasTwoDigit = 10;
+            return number < minNumberHasTwoDigit ? "0" + number : number.ToString(CultureInfo.InvariantCulture);
         }
 
         public static string FormatNumber1(object objectToFormat, string culture)
