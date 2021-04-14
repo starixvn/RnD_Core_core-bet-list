@@ -102,7 +102,8 @@
             8101,
             8102,
             8104,
-            BetTypes.TimeMachineOverUnder
+            BetTypes.TimeMachineOverUnder,
+            BetTypes.TimeMachineHDP
         });
 
         public static string Minus { get; set; } = "<font color='#B50000'>{0}</font>";

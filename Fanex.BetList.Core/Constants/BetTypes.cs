@@ -136,6 +136,7 @@
         public const int WhichCombinationWillHappenFirstInNext1Min = 226;
         public const int WhichCombinationWillHappenFirstInNext5Mins = 227;
         public const int TimeMachineOverUnder = 228;
+        public const int TimeMachineHDP = 229;
 
         public const int PenaltyShootoutComboFirst10 = 376;
         public const int AwayPenaltyShootoutRoundX = 381;

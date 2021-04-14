@@ -29,6 +29,8 @@
             {
                 MapIdToBaseId(betType, BetTypes.Next1Minute);
             }
+
+            MapIdToBaseId(BetTypes.TimeMachineHDP, BetTypes.TimeMachineOverUnder);
         }
 
         private void MapForBasketBall()

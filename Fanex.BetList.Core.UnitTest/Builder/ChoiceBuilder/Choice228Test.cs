@@ -1,6 +1,5 @@
 ﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using System.Globalization;
     using Constants;
     using Core.Builder.ChoiceBuilder;
     using Entities;
@@ -88,7 +87,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            var expectedFormat = "0.5<span class='favorite'> (00:00 ~ 15:00)</span>";
+            var expectedFormat = "0.5<span class='favorite'> (00:00 - 15:00)</span>";
             Assert.AreEqual(expectedFormat, _choice.Template.Handicap.handicap);
         }
 
