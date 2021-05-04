@@ -29,15 +29,11 @@
         private string GetTeamNameColor(ITicket ticket)
         {
             var isBetHomeTeam = IsBetHomeTeam(ticket);
-            var betTeamClassName = string.Empty;
+            var betTeamClassName = ticket.OddsSpread > 0 ? Favorite : Underdog;
 
             if (isBetHomeTeam)
             {
                 betTeamClassName = ticket.OddsSpread < 0 ? Favorite : Underdog;
-            }
-            else
-            {
-                betTeamClassName = ticket.OddsSpread > 0 ? Favorite : Underdog;
             }
 
             return betTeamClassName;

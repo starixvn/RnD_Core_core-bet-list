@@ -6,6 +6,7 @@
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
+    using Fanex.BetList.Core.Utils.TicketExt;
 
     public class Choice1801 : Choice1
     {
@@ -101,7 +102,7 @@
                 ticket.CustId.ToString(),
                 "&quot;",
                 ",&quot;",
-                GetTransactionType(ticket),
+                ticket.GetTransactionType(),
                 "&quot;);"
             };
 
@@ -126,41 +127,7 @@
 
             return detailtTemplateBlock;
         }
-
-        private static string GetTransactionType(ITicket ticket)
-        {
-            ////@TransType
-            ////+ 0 : All (DRAW/WON/LOSE/Reject/Void/Refund/Running/Waiting)
-            ////+ 1 : DRAW/WON/LOSE/Refund
-            ////+ 2 : Reject/Void
-            ////+ 3 : Running/Waiting
-            //// Use this because web server vs db is same GMT
-            if (ticket.WinlostDate.Date >= DateTime.Today.AddDays(-1))
-            {
-                switch (ticket.Status.ToLowerInvariant())
-                {
-                    case BetStatus.Won:
-                    case BetStatus.Lose:
-                    case BetStatus.Draw:
-                    case BetStatus.Refund:
-                        return "1";
-
-                    case BetStatus.Reject:
-                    case BetStatus.Void:
-                        return "2";
-
-                    case BetStatus.Running:
-                    case BetStatus.Waiting:
-                        return "3";
-
-                    default:
-                        return "0";
-                }
-            }
-
-            return "0"; ////Yesterday Ticket
-        }
-
+        
         private static string GetRoomAndTable(ITicket ticket, ITicketHelper ticketHelper)
         {
             var transDecsParsed = DeserializeTransDesc(ticket.TransDesc.ToUpperInvariant());

@@ -5,6 +5,7 @@
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Utils.StringExt;
+    using Fanex.BetList.Core.Utils.TicketExt;
 
     public class Choice5401 : Choice1
     {
@@ -50,37 +51,9 @@
         private static string BuildPGSoftDetailsLink(ITicket ticket)
         {
             var detailLink = $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a>";
-            var parameterList = $"{ticket.TransId}, '{ticket.WinlostDate}', {ticket.CustId}, {GetTransactionType(ticket)}";
+            var parameterList = $"{ticket.TransId}, '{ticket.WinlostDate}', {ticket.CustId}, {ticket.GetTransactionType()}";
 
             return $"<div class=\"detail maxgame-detail\" onclick=\"showMaxGameBetDetails({parameterList});\">{detailLink}</div>";
-        }
-
-        private static string GetTransactionType(ITicket ticket)
-        {
-            if (ticket.WinlostDate.Date >= DateTime.Today.AddDays(-1))
-            {
-                switch (ticket.Status.ToLowerInvariant())
-                {
-                    case BetStatus.Running:
-                    case BetStatus.Waiting:
-                        return "3";
-
-                    case BetStatus.Reject:
-                    case BetStatus.Void:
-                        return "2";
-
-                    case BetStatus.Won:
-                    case BetStatus.Lose:
-                    case BetStatus.Draw:
-                    case BetStatus.Refund:
-                        return "1";
-
-                    default:
-                        return "0";
-                }
-            }
-
-            return "0";
         }
     }
 }

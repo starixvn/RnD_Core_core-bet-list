@@ -7,6 +7,7 @@
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
+    using Fanex.BetList.Core.Utils.TicketExt;
 
     public class Choice1612 : Choice1
     {
@@ -84,7 +85,7 @@
                 ", ",
                 ticket.CustId.ToString(CultureInfo.InvariantCulture),
                 ", ",
-                GetTransactionType(ticket),
+                ticket.GetTransactionType(),
                 ");\">",
                 "<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void('');\">",
                 CoreBetList.details,
@@ -97,40 +98,6 @@
             detailtTemplateBlock.SetValue(detailLinkMarkup);
 
             return detailtTemplateBlock;
-        }
-
-        private static string GetTransactionType(ITicket ticket)
-        {
-            // @TransType
-            // + 0 : All (DRAW/WON/LOSE/Reject/Void/Refund/Running/Waiting)
-            // + 1 : DRAW/WON/LOSE/Refund
-            // + 2 : Reject/Void
-            // + 3 : Running/Waiting
-            // Use this because web server and db are in the same timezone
-            if (ticket.WinlostDate.Date >= DateTime.Today.AddDays(-1))
-            {
-                switch (ticket.Status.ToLowerInvariant())
-                {
-                    case BetStatus.Won:
-                    case BetStatus.Lose:
-                    case BetStatus.Draw:
-                    case BetStatus.Refund:
-                        return "1";
-
-                    case BetStatus.Reject:
-                    case BetStatus.Void:
-                        return "2";
-
-                    case BetStatus.Running:
-                    case BetStatus.Waiting:
-                        return "3";
-
-                    default:
-                        return "0";
-                }
-            }
-
-            return "0"; // Previous days Ticket
         }
     }
 }

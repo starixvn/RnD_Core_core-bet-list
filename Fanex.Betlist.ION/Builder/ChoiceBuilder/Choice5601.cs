@@ -7,6 +7,7 @@
     using App_GlobalResources;
     using Entities;
     using Fanex.BetList.Core.Utils.StringExt;
+    using Fanex.BetList.Core.Utils.TicketExt;
     using Templates;
     using Utils;
 
@@ -104,7 +105,7 @@
                 .Append(ticket.CustId.ToString())
                 .Append("&quot;")
                 .Append(",&quot;")
-                .Append(GetTransactionType(ticket))
+                .Append(ticket.GetTransactionType())
                 .Append("&quot;);");
 
             return detailFunctionBuilder.ToString();
@@ -136,34 +137,6 @@
             var betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
 
             return $"{OpenBetTypeNameTag}{betTypeName}{CloseSpanTag}";
-        }
-
-        private static string GetTransactionType(ITicket ticket)
-        {
-            if (ticket.WinlostDate.Date >= DateTime.Today.AddDays(-1))
-            {
-                switch (ticket.Status.ToLowerInvariant())
-                {
-                    case BetStatus.Won:
-                    case BetStatus.Lose:
-                    case BetStatus.Draw:
-                    case BetStatus.Refund:
-                        return "1";
-
-                    case BetStatus.Reject:
-                    case BetStatus.Void:
-                        return "2";
-
-                    case BetStatus.Running:
-                    case BetStatus.Waiting:
-                        return "3";
-
-                    default:
-                        return "0";
-                }
-            }
-
-            return "0";
         }
 
         private void RemoveHtmlTagFromBetTypeName()
