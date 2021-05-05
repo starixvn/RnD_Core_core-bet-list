@@ -42,6 +42,20 @@
             return View(model);
         }
 
+        public ActionResult VGaming(BetListData model = null)
+        {
+
+            var betTypes = _dataService.QueryBetTypes(3802, 3820, 3829, 3898, 3899);
+
+            DataSourcePath = "~/App_Data/VGaming.xls";
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
         public ActionResult Habanero(BetListData model = null)
         {
             var betTypeIds = new List<int>();

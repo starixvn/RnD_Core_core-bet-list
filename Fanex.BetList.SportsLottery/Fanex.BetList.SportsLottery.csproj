@@ -21,7 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>Fanex.BetList.TableGames.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>Fanex.BetList.SportsLottery.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -31,7 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>Fanex.BetList.TableGames.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>Fanex.BetList.SportsLottery.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
@@ -63,6 +63,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Fanex.BetList.SportsLottery.ruleset" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

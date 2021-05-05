@@ -448,6 +448,10 @@
       <Project>{ced6a787-1394-4f14-9a9f-ef27e9037cab}</Project>
       <Name>Fanex.BetList.TableGames</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.VGaming\Fanex.BetList.VGaming.csproj">
+      <Project>{a53d26dd-dc97-42ce-9afd-54558d453b81}</Project>
+      <Name>Fanex.BetList.VGaming</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.VirtualGames\Fanex.BetList.VirtualGames.csproj">
       <Project>{64136a6a-e244-47e8-89b7-548cbe8e5d5a}</Project>
       <Name>Fanex.BetList.VirtualGames</Name>
@@ -569,6 +573,7 @@
     <Content Include="App_Data\Habanero.xls" />
     <Content Include="App_Data\PragmaticLiveCasino.xls" />
     <Content Include="App_Data\CG.xls" />
+    <Content Include="App_Data\VGaming.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
