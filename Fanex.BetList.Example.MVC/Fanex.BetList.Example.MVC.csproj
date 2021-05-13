@@ -292,6 +292,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Fanex.BetList.AdvantPlay\Fanex.BetList.AdvantPlay.csproj">
+      <Project>{32427af1-2dae-48d8-bfe4-496efb140e7f}</Project>
+      <Name>Fanex.BetList.AdvantPlay</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.AGCasino\Fanex.BetList.AGCasino.csproj">
       <Project>{c18e1369-66c3-4a87-82bf-10e13e6cc2a0}</Project>
       <Name>Fanex.BetList.AGCasino</Name>
@@ -574,6 +578,7 @@
     <Content Include="App_Data\PragmaticLiveCasino.xls" />
     <Content Include="App_Data\CG.xls" />
     <Content Include="App_Data\VGaming.xls" />
+    <Content Include="App_Data\AdvantPlay.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
