@@ -112,6 +112,25 @@
 
             return BetListView(model);
         }
+
+        public ActionResult AdvantPlayMini(BetListData model = null)
+        {
+            var betTypeIds = new List<int>();
+
+            for (var betTypeId = 7801; betTypeId <= 7899; betTypeId++)
+            {
+                betTypeIds.Add(betTypeId);
+            }
+
+            var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
+
+            DataSourcePath = "~/App_Data/AdvantPlayMini.xls";
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
         public ActionResult CricketAIO(BetListData model = null)
         {
             var betTypeIds = new List<int>();
