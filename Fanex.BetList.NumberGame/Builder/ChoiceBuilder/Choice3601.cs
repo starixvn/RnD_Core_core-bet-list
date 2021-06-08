@@ -12,7 +12,7 @@
     /// </summary>
     public class Choice3601 : Choice1
     {
-        private readonly int numberOfExpressionsOfEachProperty = 2;
+        public const int numberOfExpressionsOfEachProperty = 2;
         public const string BetChoiceRefId = "Parlay5Choice";
         private const string Hyphen = "-";
 
@@ -72,7 +72,7 @@
             return string.Format(NumberGameLang.Number, matchCode);
         }
 
-        private List<string> GetBetChoices(ITicket ticket, ITicketHelper ticketHelper)
+        private static List<string> GetBetChoices(ITicket ticket, ITicketHelper ticketHelper)
         {
             var betChoices = new List<string>();
             var contentTransDesc = Split(ticket.TransDesc, '=');

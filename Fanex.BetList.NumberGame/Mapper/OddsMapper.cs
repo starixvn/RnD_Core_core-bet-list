@@ -13,7 +13,10 @@
         {
             for (var betTypeId = Happy5LinkedGamesBetTypes.OverUnder; betTypeId <= Happy5LinkedGamesBetTypes.HighestBetTypeIdInRange; betTypeId++)
             {
-                MapIdToBaseId(betTypeId, Happy5LinkedGamesBetTypes.OverUnder);
+                if (betTypeId != Happy5LinkedGamesBetTypes.Soccer5)
+                {
+                    MapIdToBaseId(betTypeId, Happy5LinkedGamesBetTypes.OverUnder);
+                }                
             }
         }
     }

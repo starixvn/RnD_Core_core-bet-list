@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builder\ChoiceBuilder\Choice3604Tests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice3601Tests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice8101Tests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice81Test.cs" />

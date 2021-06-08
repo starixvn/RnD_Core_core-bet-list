@@ -44,6 +44,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builder\ChoiceBuilder\Choice3604.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice81.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice3601.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice8101.cs" />
