@@ -176,6 +176,7 @@
     <Compile Include="Builder\BetListHTMLBuilder.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice17004.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice229.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice630.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9404.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9496.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9410.cs" />
@@ -372,6 +373,7 @@
     <Compile Include="Builder\IBetListHTMLBuilder.cs" />
     <Compile Include="Builder\OddsBuilder\IOdds.cs" />
     <Compile Include="Builder\OddsBuilder\Odds1.cs" />
+    <Compile Include="Builder\OddsBuilder\Odds38.cs" />
     <Compile Include="Builder\OddsBuilder\Odds29.cs" />
     <Compile Include="Builder\OddsBuilder\Odds501.cs" />
     <Compile Include="Builder\OddsBuilder\Odds468.cs" />

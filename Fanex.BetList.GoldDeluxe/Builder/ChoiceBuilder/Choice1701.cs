@@ -24,7 +24,7 @@
                 foreach (ITicketData refDataItem in foundTicketData)
                 {
                     string betTeamName = GetBetTeamName(refDataItem, ticketHelper);
-                    string odds = ConvertByBetType.Odds(refDataItem.Odds, ticket.BetTypeId, ticket.OddsType);
+                    string odds = ConvertByBetType.Odds(refDataItem.Odds, ticket.BetTypeId, ticket.SportTypeId, ticket.OddsType);
 
                     betTeam.AppendFormat(BetTeamFormat, betTeamName, ConvertByBetType.Stake(refDataItem.Stake), odds);
                 }

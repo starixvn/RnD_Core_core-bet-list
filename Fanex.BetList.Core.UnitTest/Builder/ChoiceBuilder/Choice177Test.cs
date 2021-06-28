@@ -17,14 +17,17 @@
         {
             _choice = new Choice177();
             _ticket = Substitute.For<ITicket>();
+            _ticket.HomeId = 1;
+            _ticket.AwayId = 2;
+
             _ticketHelper = Substitute.For<ITicketHelper>();
+            _ticketHelper.GetTeamNameById(_ticket.HomeId).Returns("Team name 1");
+            _ticketHelper.GetTeamNameById(_ticket.AwayId).Returns("Team name 2");
         }
 
-        [TestCase("1", "2H.1")]
-        [TestCase("2", "2H.2")]
-        [TestCase("X", "2H.X")]
-        [TestCase("x", "2H.X")]
-        [TestCase("abc", "")]
+        [TestCase("1", "Team name 1")]
+        [TestCase("2", "Team name 2")]
+        [TestCase("X", "Draw")]
         public void BuildBetTeam_BetTeam_TemplateBetTeam(string betTeam, string expected)
         {
             // Arrange

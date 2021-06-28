@@ -18,22 +18,28 @@
         {
             _choice = new Choice385();
             _ticket = TestData.CreateTicket(BetTypes.PenaltyShootout1X2RoundX);
+            _ticket.HomeId = 1;
+            _ticket.AwayId = 2;
+
             _ticketHelper = Substitute.For<ITicketHelper>();
+            _ticketHelper.GetTeamNameById(_ticket.HomeId).Returns("Team name 1");
+            _ticketHelper.GetTeamNameById(_ticket.AwayId).Returns("Team name 2");
         }
 
-        [Test]
-        public void BuildBetTeam_Always_BetChoiceIsUppercaseOfTicketBetTeam()
+        [TestCase("1", "Team name 1")]
+        [TestCase("2", "Team name 2")]
+        [TestCase("X", "Draw")]
+        [TestCase("x", "Draw")]
+        public void BuildBetTeam_Always_BetChoiceIsExpectedBetTeam(string betTeam, string expected)
         {
             // Arrange.
-            const string betTeam = "x";
-
             _ticket.BetTeam = betTeam;
 
             // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, false);
+            _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            Assert.AreEqual(betTeam.ToUpperInvariant(), template.betTeam);
+            Assert.AreEqual(expected, _choice.Template.betTeam);
         }
 
         [Test]

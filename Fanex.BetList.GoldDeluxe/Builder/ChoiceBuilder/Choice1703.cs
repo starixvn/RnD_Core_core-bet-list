@@ -28,7 +28,7 @@
             var ticketDetails = GetTicketReference(ticket, ticketData);
             foreach (var ticketDetail in ticketDetails)
             {
-                var odds = ConvertByBetType.Odds(ticketDetail.Odds, ticket.BetTypeId, ticket.OddsType);
+                var odds = ConvertByBetType.Odds(ticketDetail.Odds, ticket.BetTypeId, ticket.SportTypeId, ticket.OddsType);
                 var betTeam = ticketHelper.GetResourceData(ResourceId, ticketDetail.BetTeam);
                 var league = string.Format("{0} {1} {2}", ticketHelper.GetSportNameById(ticket.SportTypeId), betTypeName, GetBetChoice(ticketDetail.TransDesc));
 
@@ -74,7 +74,7 @@
 
                 foreach (var ticketDetail in ticketDetails)
                 {
-                    var odds = ConvertByBetType.Odds(ticketDetail.Odds, ticket.BetTypeId, ticket.OddsType);
+                    var odds = ConvertByBetType.Odds(ticketDetail.Odds, ticket.BetTypeId, ticket.SportTypeId, ticket.OddsType);
                     var betTeam = string.Format(BetTeamFormat, ticketHelper.GetResourceData(ResourceId, ticketDetail.BetTeam), odds);
                     var league = string.Format(LeagueFormat, ticketHelper.GetSportNameById(ticket.SportTypeId), betTypeName, GetBetChoice(ticketDetail.TransDesc));
 

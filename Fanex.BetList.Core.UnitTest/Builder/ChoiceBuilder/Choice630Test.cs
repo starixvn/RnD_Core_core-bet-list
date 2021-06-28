@@ -1,0 +1,80 @@
+﻿namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
+{
+    using Fanex.BetList.Core.Builder.ChoiceBuilder;
+    using Fanex.BetList.Core.Entities;
+    using NSubstitute;
+    using NUnit.Framework;
+
+    [TestFixture]
+    public class Choice630Test
+    {
+        private IChoice _choice;
+        private ITicket _ticket;
+        private ITicketHelper _ticketHelper;
+
+        [SetUp]
+        public void Setup()
+        {
+            _choice = new Choice630();
+            _ticket = Substitute.For<ITicket>();
+            _ticket.HomeId = 1;
+            _ticket.AwayId = 2;
+
+            _ticketHelper = Substitute.For<ITicketHelper>();
+            _ticketHelper.GetTeamNameById(_ticket.HomeId).Returns("Team name 1");
+            _ticketHelper.GetTeamNameById(_ticket.AwayId).Returns("Team name 2");
+        }
+
+        [TestCase("1", "Team name 1")]
+        [TestCase("2", "Team name 2")]
+        [TestCase("X", "Draw")]
+        public void BuildBetTeam_BetTeam_TemplateBetTeam(string betTeam, string expected)
+        {
+            // Arrange
+            _ticket.BetTeam = betTeam;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual(expected, _choice.Template.betTeam);
+        }
+
+        [Test]
+        public void BuildBetTeamClassNameAndHandicap_Always_SetHandicapIsNull()
+        {
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.IsNull(_choice.Template.Handicap.handicap);
+        }
+
+        [Test]
+        public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
+        {
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            const string CSS_CLASS_FAVORITE = "favorite";
+            Assert.AreEqual(CSS_CLASS_FAVORITE, _choice.Template.betTeamClassName);
+        }
+
+        [Test]
+        public void BuildBetType_Always_SetBetTypeNameIsBetTypeName()
+        {
+            // Arrange
+            const string expectedBetTypeName = "Bet type name";
+            _ticketHelper
+                .GetBetTypeNameById(Arg.Any<int>(), Arg.Any<string>(), Arg.Any<long?>(), Arg.Any<string>())
+                .Returns(expectedBetTypeName);
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual(expectedBetTypeName, _choice.Template.BetType.betTypeName);
+        }
+    }
+}

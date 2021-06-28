@@ -6,17 +6,8 @@
     /// <summary>
     /// Pool House All In One Phase 5: Penalty Shootout 1X2 - Round X.
     /// </summary>
-    public class Choice385 : Choice1
+    public class Choice385 : Choice5
     {
-        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-            => Template.betTeam = ticket.BetTeam.ToUpperInvariant();
-
-        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
-        {
-            Template.Handicap.handicap = null;
-            Template.betTeamClassName = Favorite;
-        }
-
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
             => Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.RefNo, ticket.BetId, ticket.BetCheck);
     }

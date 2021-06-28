@@ -497,7 +497,7 @@
             if (ticketHelper.IsShowOddsWithChoice)
             {
                 object oddsType = string.IsNullOrEmpty(ticket.OddsType) ? (object)0 : ticket.OddsType;
-                string odds = ConvertByBetType.Odds(ticket.Odds, ticket.BetTypeId, oddsType);
+                string odds = ConvertByBetType.Odds(ticket.Odds, ticket.BetTypeId, ticket.SportTypeId, oddsType);
 
                 if (odds == "-")
                 {

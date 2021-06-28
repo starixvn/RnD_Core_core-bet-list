@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using Constants;
+    using Fanex.BetList.Core.Utils.TicketExt;
 
     public static class ConvertByBetType
     {
@@ -11,7 +12,7 @@
 
         private const byte PercentageFactor = 100;
 
-        private static List<int> oddsBettypes = new List<int>(new[]
+        private static List<int> multipleOddsBettypes = new List<int>(new[]
         {
             BetTypes.Handicap,
             BetTypes.OddEven,
@@ -110,31 +111,31 @@
 
         public static void RegisterMultipleOddsTypes(int betType)
         {
-            if (!oddsBettypes.Contains(betType))
+            if (!multipleOddsBettypes.Contains(betType))
             {
-                lock (oddsBettypes)
+                lock (multipleOddsBettypes)
                 {
-                    if (!oddsBettypes.Contains(betType))
+                    if (!multipleOddsBettypes.Contains(betType))
                     {
-                        oddsBettypes.Add(betType);
+                        multipleOddsBettypes.Add(betType);
                     }
                 }
             }
         }
 
-        public static int ShowOddsByBettype(int betType, int oddsType)
-            => oddsBettypes.Contains(betType) ? oddsType : 0;
+        public static int ShowOddsByBettype(int betType, int sportType, int oddsType)
+            => multipleOddsBettypes.Contains(betType) || (sportType.IsSportsbook() && oddsType == OddsTypes.Decimal) ? oddsType : 0;
 
-        public static double GetOddsByBetType(double odds, int betType, int oddsType)
+        public static double GetOddsByBetType(double odds, int betType, int sportType, int oddsType)
         {
-            var isShownOddType = ShowOddsByBettype(betType, oddsType) != 0;
+            var isMultipleOdds = multipleOddsBettypes.Contains(betType);
 
-            if (isShownOddType && oddsType == OddsTypes.Decimal)
+            if (isMultipleOdds && oddsType == OddsTypes.Decimal)
             {
                 return odds + 1;
             }
 
-            if (isShownOddType && oddsType == OddsTypes.US)
+            if (isMultipleOdds && oddsType == OddsTypes.US)
             {
                 return odds * PercentageFactor;
             }
@@ -154,9 +155,9 @@
                 string.Format(Formatter.DECIMALFORMAT3, odds);
         }
 
-        public static string Odds(object oddsValue, object betType, object oddsType)
+        public static string Odds(object oddsValue, object betType, object sportType, object oddsType)
         {
-            var odds = GetOddsByBetType(Convert.ToDouble(oddsValue), Convert.ToInt32(betType), Convert.ToInt32(oddsType));
+            var odds = GetOddsByBetType(Convert.ToDouble(oddsValue), Convert.ToInt32(betType), Convert.ToInt32(sportType), Convert.ToInt32(oddsType));
 
             if (odds < 0)
             {
@@ -171,9 +172,9 @@
             return string.Format(Formatter.DECIMALFORMAT3, odds);
         }
 
-        public static string VirtualHorseRacingOdds(object oddsValue, object betType, object oddsType)
+        public static string VirtualHorseRacingOdds(object oddsValue, object betType, object sportType, object oddsType)
         {
-            var odds = GetOddsByBetType(Convert.ToDouble(oddsValue), Convert.ToInt32(betType), Convert.ToInt32(oddsType));
+            var odds = GetOddsByBetType(Convert.ToDouble(oddsValue), Convert.ToInt32(betType), Convert.ToInt32(sportType), Convert.ToInt32(oddsType));
 
             if (odds < 0)
             {
@@ -188,8 +189,8 @@
             return string.Format(Formatter.DECIMALFORMAT3, odds);
         }
 
-        public static object OddsType(object betType, object oddsTypeValue)
-            => ShowOddsByBettype(Convert.ToInt32(betType), Convert.ToInt32(oddsTypeValue));
+        public static object OddsType(object betType, object sportType, object oddsTypeValue)
+            => ShowOddsByBettype(Convert.ToInt32(betType), Convert.ToInt32(sportType), Convert.ToInt32(oddsTypeValue));
 
         public static string MOdds(object value)
             => Odds(value);

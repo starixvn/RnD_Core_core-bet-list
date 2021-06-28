@@ -109,11 +109,8 @@
                 MapIdToBaseId(i, BetTypes.CorrectScore);
             }
 
-            for (var i = BetTypes.QuarterXHomeTeamLastDigitScore; i <= BetTypes.QuarterX1X2; i++)
-            {
-                MapIdToBaseId(i, BetTypes.QuarterXLastDigitScore);
-            }
-
+            MapIdToBaseId(BetTypes.QuarterXHomeTeamLastDigitScore, BetTypes.QuarterXLastDigitScore);
+            MapIdToBaseId(BetTypes.QuarterXAwayTeamLastDigitScore, BetTypes.QuarterXLastDigitScore);
             MapIdToBaseId(BetTypes.Quarter3Quarter4Result, BetTypes.Quarter1Quarter2Result);
             MapIdToBaseId(BetTypes.QuarterToWinToNil, BetTypes.Moneyline);
             MapIdToBaseId(BetTypes.QuarterToWinFromBehind, BetTypes.Moneyline);

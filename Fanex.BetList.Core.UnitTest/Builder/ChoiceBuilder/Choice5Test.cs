@@ -34,20 +34,6 @@
         }
 
         [Test]
-        public void BuildBetTeam_HomeIdNotZero_BetTeamAreFTResourceAndPointAndBetTeamToUpper()
-        {
-            // Arrange
-            _ticket.BetTeam = "bet team";
-
-            // Act
-            _choice.Render(_ticket, _ticketHelper, null, false);
-
-            // Assert
-            string expectedBetTeam = string.Format("{0}.{1}", CoreBetList.ft, _ticket.BetTeam.ToUpperInvariant());
-            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
-        }
-
-        [Test]
         public void BuildBetTeamClassNameAndHandicap_Always_SetBetTeamClassNameIsFavorite()
         {
             // Act

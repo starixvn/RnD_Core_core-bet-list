@@ -23,8 +23,8 @@
         {
             object oddsType = string.IsNullOrEmpty(ticket.OddsType) ? (object)0 : ticket.OddsType;
 
-            Template.odds = ConvertByBetType.Odds(ticket.Odds, ticket.BetTypeId, oddsType);
-            Template.oddsType = funcGetOddsTypeName(ConvertByBetType.OddsType(ticket.BetTypeId, oddsType));
+            Template.odds = ConvertByBetType.Odds(ticket.Odds, ticket.BetTypeId, ticket.SportTypeId, oddsType);
+            Template.oddsType = funcGetOddsTypeName(ConvertByBetType.OddsType(ticket.BetTypeId, ticket.SportTypeId, oddsType));
 
             return Template;
         }

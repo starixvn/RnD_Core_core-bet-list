@@ -129,9 +129,6 @@
   <data name="ft" xml:space="preserve">
     <value>เต็มเวลา</value>
   </data>
-  <data name="ht" xml:space="preserve">
-    <value>ครึ่งเวลาแรก</value>
-  </data>
   <data name="lblBoth" xml:space="preserve">
     <value>ทั้งสอง</value>
   </data>
@@ -620,15 +617,6 @@
   </data>
   <data name="AOSHTExcluding" xml:space="preserve">
     <value>AOS ครึ่งแรก ไม่รวม</value>
-  </data>
-  <data name="TwoHDotOne" xml:space="preserve">
-    <value>ครึ่งหลัง.1</value>
-  </data>
-  <data name="TwoHDotTwo" xml:space="preserve">
-    <value>ครึ่งหลัง.2</value>
-  </data>
-  <data name="TwoHDotX" xml:space="preserve">
-    <value>ครึ่งหลัง.X</value>
   </data>
   <data name="Cash" xml:space="preserve">
     <value>เงินสด</value>

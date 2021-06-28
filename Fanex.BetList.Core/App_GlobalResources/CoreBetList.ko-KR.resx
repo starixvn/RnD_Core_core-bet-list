@@ -126,9 +126,6 @@
   <data name="ft" xml:space="preserve">
     <value>풀게임</value>
   </data>
-  <data name="ht" xml:space="preserve">
-    <value>전반</value>
-  </data>
   <data name="lblBoth" xml:space="preserve">
     <value>양팀</value>
   </data>

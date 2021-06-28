@@ -9,7 +9,5 @@
     /// </summary>
     public class Choice2702 : Choice2701
     {
-        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-            => Template.betTeam = $"{CoreBetList.ht}.{ticket.BetTeam.ToUpperInvariant()}";
     }
 }

@@ -14,7 +14,7 @@
         {
             object oddsType = string.IsNullOrEmpty(ticket.OddsType) ? (object)0 : ticket.OddsType;
 
-            Template.odds = ConvertByBetType.VirtualHorseRacingOdds(ticket.Odds, ticket.BetTypeId, oddsType);
+            Template.odds = ConvertByBetType.VirtualHorseRacingOdds(ticket.Odds, ticket.BetTypeId, ticket.SportTypeId, oddsType);
             Template.oddsType = string.Empty;
 
             return Template;

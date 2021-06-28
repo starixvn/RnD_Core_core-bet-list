@@ -15,7 +15,7 @@
         {
             var odds = ticket.IsSettled() ? ticket.Odds : 0;
 
-            Template.odds = ConvertByBetType.Odds(odds, ticket.BetTypeId, ticket.OddsType);
+            Template.odds = ConvertByBetType.Odds(odds, ticket.BetTypeId, ticket.SportTypeId, ticket.OddsType);
             Template.oddsType = string.Empty;
 
             return Template;

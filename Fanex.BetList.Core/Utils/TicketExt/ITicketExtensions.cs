@@ -30,13 +30,16 @@
         }
 
         public static bool IsSportsbook(this ITicket ticket)
+            => IsSportsbook(ticket.SportTypeId);
+
+        public static bool IsSportsbook(this int sportTypeId)
         {
             const int soccer = 1;
             const int otherSports = 99;
             const int horseRacingFixedOdds = 154;
 
-            return (ticket.SportTypeId >= soccer && ticket.SportTypeId <= otherSports)
-                || ticket.SportTypeId == horseRacingFixedOdds;
+            return (sportTypeId >= soccer && sportTypeId <= otherSports)
+                || sportTypeId == horseRacingFixedOdds;
         }
 
         public static string GetTransactionType(this ITicket ticket)

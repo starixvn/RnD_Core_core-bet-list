@@ -1177,15 +1177,6 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to HT.
-        /// </summary>
-        public static string ht {
-            get {
-                return ResourceManager.GetString("ht", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to HT Asian.
         /// </summary>
         public static string HtAsian {
@@ -2424,33 +2415,6 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string TwoGoalsAndOver {
             get {
                 return ResourceManager.GetString("TwoGoalsAndOver", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 2H.1.
-        /// </summary>
-        public static string TwoHDotOne {
-            get {
-                return ResourceManager.GetString("TwoHDotOne", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 2H.2.
-        /// </summary>
-        public static string TwoHDotTwo {
-            get {
-                return ResourceManager.GetString("TwoHDotTwo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 2H.X.
-        /// </summary>
-        public static string TwoHDotX {
-            get {
-                return ResourceManager.GetString("TwoHDotX", resourceCulture);
             }
         }
         

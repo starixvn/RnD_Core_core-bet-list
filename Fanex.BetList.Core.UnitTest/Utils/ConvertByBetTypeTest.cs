@@ -107,25 +107,40 @@ namespace Fanex.BetList.Core.UnitTest.Utils
             int oddsType = 1;
 
             // Act
-            int result = ConvertByBetType.ShowOddsByBettype(betType, oddsType);
+            int result = ConvertByBetType.ShowOddsByBettype(betType, 1, oddsType);
 
             // Assert
             Assert.AreEqual(oddsType, result);
         }
 
         [Test]
-        public void ShowOddsByBettype_BetTypeIsNotOddsBetType_ReturnZero()
+        public void ShowOddsByBettype_DecimalOddsOfSB_ShowOdds()
         {
             // Arrange
             int betType = 1000;
             int oddsType = 1;
+            var sportsbook = 1;
 
             // Act
-            int result = ConvertByBetType.ShowOddsByBettype(betType, oddsType);
+            int result = ConvertByBetType.ShowOddsByBettype(betType, sportsbook, oddsType);
 
             // Assert
-            int expected = 0;
-            Assert.AreEqual(expected, result);
+            Assert.AreEqual(1, result);
+        }
+
+        [Test]
+        public void ShowOddsByBettype_DecimalOddsOfThirdPartyProduct_HideOdds()
+        {
+            // Arrange
+            int betType = 1000;
+            int oddsType = 1;
+            var sportsbook = 1000;
+
+            // Act
+            int result = ConvertByBetType.ShowOddsByBettype(betType, sportsbook, oddsType);
+
+            // Assert
+            Assert.AreEqual(0, result);
         }
     }
 }

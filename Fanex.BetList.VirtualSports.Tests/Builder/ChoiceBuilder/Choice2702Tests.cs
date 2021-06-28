@@ -14,14 +14,18 @@
 
             Choice = new Choice2702();
             Ticket.BetTypeId = BetRadarVirtualSoccerBetTypes.FirstHalf1X2;
+            Ticket.HomeId = 1;
+            Ticket.AwayId = 2;
 
             TicketHelper.GetBetTypeNameById(Arg.Is(BetRadarVirtualSoccerBetTypes.FirstHalf1X2), Arg.Any<object>()).Returns("1H 1X2");
+            TicketHelper.GetTeamNameById(Ticket.HomeId).Returns("Team name 1");
+            TicketHelper.GetTeamNameById(Ticket.AwayId).Returns("Team name 2");
         }
 
-        [TestCase("1", "HT.1")]
-        [TestCase("x", "HT.X")]
-        [TestCase("X", "HT.X")]
-        [TestCase("2", "HT.2")]
+        [TestCase("1", "Team name 1")]
+        [TestCase("x", "Draw")]
+        [TestCase("X", "Draw")]
+        [TestCase("2", "Team name 2")]
         public void BuildTeamName_Always_RenderCorrectName(string betTeam, string expectedBetTeam)
         {
             // Arrange.

@@ -47,7 +47,7 @@
                 Template.odds = "-";
             }
 
-            Template.oddsType = funcGetOddsTypeName(ConvertByBetType.OddsType(ticket.BetTypeId, ticket.OddsType));
+            Template.oddsType = funcGetOddsTypeName(ConvertByBetType.OddsType(ticket.BetTypeId, ticket.SportTypeId, ticket.OddsType));
 
             return Template;
         }

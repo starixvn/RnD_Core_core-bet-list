@@ -20,7 +20,12 @@
             _choice = new Choice15();
             _ticket = Substitute.For<ITicket>();
             _ticket.BetTypeId = BetTypes.FirstHalf1X2;
+            _ticket.HomeId = 1;
+            _ticket.AwayId = 2;
+
             _ticketHelper = Substitute.For<ITicketHelper>();
+            _ticketHelper.GetTeamNameById(_ticket.HomeId).Returns("Team name 1");
+            _ticketHelper.GetTeamNameById(_ticket.AwayId).Returns("Team name 2");
         }
 
         [Test]
@@ -33,18 +38,19 @@
             Assert.IsNull(_choice.Template.Handicap.handicap);
         }
 
-        [Test]
-        public void BuildBetTeam_Always_SetBetTeamAreHtResourceAndPointAndBetTeamToUpper()
+        [TestCase("x", "Draw")]
+        [TestCase("1", "Team name 1")]
+        [TestCase("2", "Team name 2")]
+        public void BuildBetTeam_Always_ShowBetTeamName(string betTeam, string expectedBetTeamName)
         {
             // Arrange
-            _ticket.BetTeam = "bet team";
+            _ticket.BetTeam = betTeam;
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            string expectedBetTeam = string.Format("{0}.{1}", CoreBetList.ht, _ticket.BetTeam.ToUpperInvariant());
-            Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
+            Assert.AreEqual(expectedBetTeamName, _choice.Template.betTeam);
         }
 
         [Test]

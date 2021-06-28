@@ -129,9 +129,6 @@
   <data name="ft" xml:space="preserve">
     <value>全场</value>
   </data>
-  <data name="ht" xml:space="preserve">
-    <value>半场</value>
-  </data>
   <data name="lblBoth" xml:space="preserve">
     <value>双方</value>
   </data>
@@ -635,15 +632,6 @@
   </data>
   <data name="TwoGoalsAndOver" xml:space="preserve">
     <value>2球或以上</value>
-  </data>
-  <data name="TwoHDotOne" xml:space="preserve">
-    <value>下半场.1</value>
-  </data>
-  <data name="TwoHDotTwo" xml:space="preserve">
-    <value>下半场.2</value>
-  </data>
-  <data name="TwoHDotX" xml:space="preserve">
-    <value>下半场.X</value>
   </data>
   <data name="ZeroGoals" xml:space="preserve">
     <value>0球</value>
