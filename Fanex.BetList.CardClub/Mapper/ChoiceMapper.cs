@@ -11,7 +11,7 @@
 
         private void MapCardClub()
         {
-            const int numberBettypeForTaiXiu = 10;
+            const int numberBettypeForTaiXiu = 100;
             for (var i = 1; i < numberBettypeForTaiXiu; i++)
             {
                 MapIdToBaseId(CardClubBetTypes.TaiXiu + i, CardClubBetTypes.TaiXiu);
