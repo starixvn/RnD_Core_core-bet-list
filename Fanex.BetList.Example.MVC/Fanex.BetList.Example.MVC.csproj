@@ -320,6 +320,10 @@
       <Project>{eb86abe8-d9d9-4fde-acde-6e1dbb4da44f}</Project>
       <Name>Fanex.BetList.BG</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.Bitcoin\Fanex.BetList.Bitcoin.csproj">
+      <Project>{94e19d8b-f138-4384-bad5-98eed2fa2cad}</Project>
+      <Name>Fanex.BetList.Bitcoin</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.CardClub\Fanex.BetList.CardClub.csproj">
       <Project>{d504aa63-e8d2-4819-a1da-f9451d4f0468}</Project>
       <Name>Fanex.BetList.CardClub</Name>
@@ -584,6 +588,7 @@
     <Content Include="App_Data\VGaming.xls" />
     <Content Include="App_Data\AdvantPlay.xls" />
     <Content Include="App_Data\AdvantPlayMini.xls" />
+    <Content Include="App_Data\Bitcoin.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />

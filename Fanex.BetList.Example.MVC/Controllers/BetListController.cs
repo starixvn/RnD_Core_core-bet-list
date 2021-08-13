@@ -42,6 +42,20 @@
             return View(model);
         }
 
+        public ActionResult Bitcoin(BetListData model = null)
+        {
+
+            var betTypes = _dataService.QueryBetTypes(7901, 7902);
+
+            DataSourcePath = "~/App_Data/Bitcoin.xls";
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
         public ActionResult VGaming(BetListData model = null)
         {
 
