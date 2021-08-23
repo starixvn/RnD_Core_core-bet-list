@@ -395,6 +395,8 @@
         public const int HomeSecondInnsWicketXMethodOfDismissal = 9438;
         public const int AwaySecondInnsWicketXMethodOfDismissal = 9439;
 
+        public const int HighestOpeningPartnership = 9442;
+        public const int HighestScoreInOver1 = 9443;
         public const int MatchFours = 9446;
         public const int MatchSixes = 9447;
         public const int MatchWickets = 9449;
@@ -483,5 +485,14 @@
         public const int OverUnderDec = 9604;
         public const int OddEvenDec = 9605;
         public const int Fancy = 9606;
+
+        public const int HomeOverXRuns = 9607;
+        public const int AwayOverXRuns = 9608;
+        public const int Home1stInnsOverXRuns = 9609;
+        public const int Away1stInnsOverXRuns = 9610;
+        public const int Home2ndInnsOverXRuns = 9611;
+        public const int Away2ndInnsOverXRuns = 9612;
+        public const int HomeOverXBallYRuns = 9613;
+        public const int AwayOverXBallYRuns = 9614;
     }
 }
