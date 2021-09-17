@@ -42,6 +42,8 @@ namespace Fanax.BetList.Allbet.Test.Builder.OddBuilder
         [TestCase("choice=14002*site=IBC*tableCode=301")]
         [TestCase("choice=14004*site=IBC*tableCode=301")]
         [TestCase("choice=14006*site=IBC*tableCode=301")]
+        [TestCase("choice=10013*site=IBC*tableCode=301")]
+        [TestCase("choice=10014*site=IBC*tableCode=301")]
         public void Render_BetChoiceHideOdds_HideOdds(string transdesc)
         {
             // Arrange

@@ -15,7 +15,9 @@ namespace Fanex.BetList.Core.Builder.OddsBuilder
         {
             "14002",
             "14004",
-            "14006"
+            "14006",
+            "10013",
+            "10014"
         };       
 
         public override Odds_Template Render(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
