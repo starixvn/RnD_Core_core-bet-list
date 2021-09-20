@@ -165,6 +165,72 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             Assert.AreEqual("<span class=\"favorite\"> [Live]</span>", _choice.Template.Score.ToString());
         }
 
+        [TestCase(2021, 10, 6, 0, 0, 0)]
+        public void BuildScore_IceHocky_OldData_ShowLiveScore(int year, int month, int day, int hour, int minute, int second)
+        {
+            // Arrange
+            _ticket.IsLive = true;
+            _ticket.TransDate = new DateTime(year, month, day, hour, minute, second);
+            _ticket.LiveAwayScore = 1;
+            _ticket.SportTypeId = 4;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual("1", _choice.Template.Score.awayScore);
+        }
+
+        [TestCase(2021, 10, 7, 0, 0, 0)]
+        [TestCase(2021, 10, 8, 0, 0, 0)]
+        public void BuildScore_IceHocky_NewData_ShowLiveText(int year, int month, int day, int hour, int minute, int second)
+        {
+            // Arrange
+            _ticket.IsLive = true;
+            _ticket.TransDate = new DateTime(year, month, day, hour, minute, second);
+            _ticket.LiveAwayScore = 1;
+            _ticket.SportTypeId = 4;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual("<span class=\"favorite\"> [Live]</span>", _choice.Template.Score.ToString());
+        }
+
+        [TestCase(2021, 10, 6, 0, 0, 0)]
+        public void BuildScore_Rugby_OldData_ShowLiveScore(int year, int month, int day, int hour, int minute, int second)
+        {
+            // Arrange
+            _ticket.IsLive = true;
+            _ticket.TransDate = new DateTime(year, month, day, hour, minute, second);
+            _ticket.LiveAwayScore = 1;
+            _ticket.SportTypeId = 4;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual("1", _choice.Template.Score.awayScore);
+        }
+
+        [TestCase(2021, 10, 7, 0, 0, 0)]
+        [TestCase(2021, 10, 8, 0, 0, 0)]
+        public void BuildScore_Rugby_NewData_ShowLiveText(int year, int month, int day, int hour, int minute, int second)
+        {
+            // Arrange
+            _ticket.IsLive = true;
+            _ticket.TransDate = new DateTime(year, month, day, hour, minute, second);
+            _ticket.LiveAwayScore = 1;
+            _ticket.SportTypeId = 4;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual("<span class=\"favorite\"> [Live]</span>", _choice.Template.Score.ToString());
+        }
+
         [TestCase(181)]
         [TestCase(208)]
         public void BuildScore_FromSportTypeIsNotInSportsbook_SetAwayScoreIsLiveAwayScore(int sportType)

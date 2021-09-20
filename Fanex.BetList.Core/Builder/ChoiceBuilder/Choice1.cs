@@ -38,7 +38,7 @@
         private const int MuayThaiSportId = 44;
         private const int HandicapBetTypeId = 1;
         private const string LightBlue = " light-blue";
-        private readonly int[] _liveScoreSports = { 1, 4, 26, 28, 49, 51 };
+        private readonly int[] _liveScoreSports = { 1, 28, 49, 51 };
         private const string ESportsXmlTag = "p16";
         private const string InPlayXmlAttribute = "in";
         private const int ESportsSportType = 43;
@@ -357,6 +357,12 @@
             if (sportTypeId == sportTypeOfBaseball)
             {
                 return transDate >= CutOffDate;
+            }
+            var rubyAndIceHockey = new List<int> { 4, 26 };
+            var cutOfDateOfRubyAndIceHockey = new DateTime(2021, 10, 7, 0, 0, 0);
+            if (rubyAndIceHockey.Contains(sportTypeId))
+            {
+                return transDate >= cutOfDateOfRubyAndIceHockey;
             }
 
             return sportTypeId > 0 &&
