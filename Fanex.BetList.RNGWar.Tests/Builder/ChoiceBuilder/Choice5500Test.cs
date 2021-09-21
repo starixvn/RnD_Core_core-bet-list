@@ -30,20 +30,18 @@
             _ticketHelper.GetBetTypeNameById(5500).Returns(BetTypeName);
         }
 
-
         [Test]
         public void BuildLeague_Always_SetLeagueNameIsBetTypeName()
         {
             // Arrange
             _ticket.BetCheck = "transId3rd";
-            var bettypeName = "<span class='sport'>RNG War</span>";
-            bettypeName += "<div class='handicap'>transId3rd</div>";
+            var bettypeName = "<span class=\"gamegroupname\"> RNG War</span>";
 
             // Act
             var act = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.AreEqual(bettypeName, act.League.LeagueName.leagueName);
+            Assert.IsTrue(act.League.LeagueName.ToString().Contains(bettypeName));
         }
 
         [TestCase(BetStatus.Won, "1")]
@@ -160,7 +158,33 @@
         }
 
         [Test]
-        public void BuildBetTeamClassNameAndHandicap_Always_SetbetTeamClassNameIsEmpty()
+        public void BuildBetTeam_SummarTicket_SetBetTeamIsEmpty()
+        {
+            // Arrange
+            _ticket.BetCheck = string.Empty;
+
+            // Act
+            var act = _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.IsEmpty(act.betTeam);
+        }
+
+        [Test]
+        public void BuildBetTeam_DetailTicket_SetBetTeamIsTransId3rd()
+        {
+            // Arrange
+            _ticket.BetCheck = "TransId 3rd";
+
+            // Act
+            var act = _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual("TransId 3rd", act.betTeam);
+        }
+
+        [Test]
+        public void BuildBetTeamClassNameAndHandicap_Always_SetbetTeamClassNameIsUnderdog()
         {
             // Arrange
 
@@ -169,7 +193,7 @@
             var act = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.IsEmpty(act.betTeamClassName);
+            Assert.AreEqual("underdog", act.betTeamClassName);
         }
 
         [Test]
@@ -185,6 +209,30 @@
             Assert.IsNull(act.Match);
         }
 
+
+       
+        [Test]
+        public void BuildMatchInfo_Always_SecondRowIsSportTypeAndGameGroup()
+        {
+            // Arrange.
+            const int sportTypeId = 167;
+            const string sportName = "Sport name";
+
+            var rtfHelper = new RTFHelper().Clone();
+
+            _ticket.SportTypeId = sportTypeId;
+            _ticketHelper.GetSportNameById(Arg.Is(sportTypeId)).Returns(sportName);
+
+            // Act.
+            var actualText = _choice.RenderRTF(_ticket, _ticketHelper, null, false, rtfHelper);
+            var linesInActualText = actualText[0].String.Split('\n');
+
+            // Assert.
+            var expectation = $"{sportName} {BetTypeName}";
+
+            Assert.AreEqual(expectation, linesInActualText[1]);
+        }
+        
         private string BuildExpectedTemplateDetailLinkHtml(ITicket ticket, string transactionType)
         {
             return string.Format(
