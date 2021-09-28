@@ -13,7 +13,14 @@
 
             for (var id = VGamingBetTypes.Blackjack + 1; id < VGamingBetTypes.JackpotContribution; id++)
             {
-                MapIdToBaseId(id, VGamingBetTypes.MinRange);
+                if (id == VGamingBetTypes.CasinoHoldemPoker)
+                {
+                    MapIdToBaseId(VGamingBetTypes.CasinoHoldemPoker, VGamingBetTypes.Blackjack);
+                }
+                else
+                {
+                    MapIdToBaseId(id, VGamingBetTypes.MinRange);
+                }
             }
         }
     }
