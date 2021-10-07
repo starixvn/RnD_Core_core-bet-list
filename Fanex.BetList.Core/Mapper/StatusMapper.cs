@@ -17,7 +17,7 @@
 
         private void MapForCricket()
         {
-            for (var betType = BetTypes.SuperOverWinner; betType <= BetTypes.Fancy; betType++)
+            for (var betType = BetTypes.SuperOverWinner; betType <= BetTypes.AwayOverXBallYRuns; betType++)
             {
                 MapIdToBaseId(betType, BetTypes.SetXWinner);
             }
