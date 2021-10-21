@@ -6,46 +6,38 @@
 
     public class MatchInfo
     {
-        public MatchInfo(string transdesc)
+        public MatchInfo(string transdesc, ITicketHelper ticketHelper)
         {
             var items = ParseTransDesc(transdesc);
-
-            MatchDate = items.ContainsKey("md") ? items["md"] : string.Empty;
-            MatchId = items.ContainsKey("mid") ? items["mid"] : string.Empty;
-            Season = items.ContainsKey("se") ? items["se"] : string.Empty;
+           
             Odds = items.ContainsKey("o") ? Convert.ToDecimal(items["o"]) : 0;
             Status = items.ContainsKey("mo") ? items["mo"] : string.Empty;
+            Status = ticketHelper.GetResourceData("LG_STMT", Status);
 
-            var selection = items.ContainsKey("s") ? items["s"] : string.Empty;
-            selectionItems = Split(selection, ':');
+            BetTeam = items.ContainsKey("b") ? items["b"] : string.Empty;
+            BetTeam = ticketHelper.GetResourceData("LG_BC", BetTeam);
+
+            BetChoice = items.ContainsKey("s") ? items["s"] : string.Empty;
+            BetChoice = ticketHelper.GetResourceData("LG_SEL", BetChoice);
 
             var match = items.ContainsKey("m") ? items["m"] : string.Empty;
-            matchItems = Split(match, ':');
+            matchItems = Split(match, '-');
         }
-
-        public string MatchDate { get; }
-
-        public string MatchId { get; }
-
-        public string Season { get; }
-
-        public string Match { get; }
-
+       
         public string HomeTeam => matchItems.Length > 0 ? matchItems[0].Trim() : string.Empty;
 
         public string AwayTeam => matchItems.Length > 1 ? matchItems[1].Trim() : string.Empty;
 
-        public string BetTeam => selectionItems.Length > 1 ? selectionItems[1].Trim() : string.Empty;
+        public string BetTeam { get; }
 
-        public string BetChoice => selectionItems.Length > 0 ? selectionItems[0].Trim() : string.Empty;
+        public string BetChoice { get; }
 
         public decimal Odds { get; }
 
         public string Status { get; }
 
-        private readonly string[] selectionItems;
-
         private readonly string[] matchItems;
+
         private static IDictionary<string, string> ParseTransDesc(string transDesc)
         {
             const int numberOfExpressionsOfEachProperty = 2;
@@ -77,15 +69,8 @@
         public LeapGamingResource(ITicketHelper ticketHelper)
         {
             MixParlay = ticketHelper.GetResourceData(RefResource, "mix");
-            MatchDate = ticketHelper.GetResourceData(RefResource, "md");
-            MatchId = ticketHelper.GetResourceData(RefResource, "mid");
-            Season = ticketHelper.GetResourceData(RefResource, "se");
         }
 
         public string MixParlay { get; }
-        public string MatchDate { get; }
-        public string MatchId { get; }
-        public string Season { get; }
-
     }
 }
