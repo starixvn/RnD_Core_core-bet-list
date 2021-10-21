@@ -11,16 +11,17 @@
                 MapIdToBaseId(id, VGamingBetTypes.MinRange);
             }
 
-            for (var id = VGamingBetTypes.Blackjack + 1; id < VGamingBetTypes.JackpotContribution; id++)
+            for (var id = VGamingBetTypes.Blackjack + 1; id < VGamingBetTypes.CasinoHoldemPoker; id++)
             {
-                if (id == VGamingBetTypes.CasinoHoldemPoker)
-                {
-                    MapIdToBaseId(VGamingBetTypes.CasinoHoldemPoker, VGamingBetTypes.Blackjack);
-                }
-                else
-                {
-                    MapIdToBaseId(id, VGamingBetTypes.MinRange);
-                }
+                MapIdToBaseId(id, VGamingBetTypes.MinRange);
+            }
+
+            MapIdToBaseId(VGamingBetTypes.CasinoHoldemPoker, VGamingBetTypes.Blackjack);
+            MapIdToBaseId(VGamingBetTypes.TexasHoldemPoker, VGamingBetTypes.Blackjack);
+
+            for (var id = VGamingBetTypes.TexasHoldemPoker + 1; id < VGamingBetTypes.JackpotContribution; id++)
+            {
+                MapIdToBaseId(id, VGamingBetTypes.MinRange);
             }
         }
     }
