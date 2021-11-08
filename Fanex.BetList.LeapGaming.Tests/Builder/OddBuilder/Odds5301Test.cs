@@ -42,7 +42,7 @@ namespace Fanax.BetList.LeapGaming.Test.Builder.OddBuilder
         public void Render_SingleBet_ShowOdds()
         {
             // Arrange
-            _ticket.BetCheck = "GT14, 1";
+            _ticket.BetCheck = "1";
 
             // Act
             var template = _odds.Render(_ticket, null, id => id.ToString());

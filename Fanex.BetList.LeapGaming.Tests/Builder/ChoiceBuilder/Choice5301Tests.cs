@@ -67,7 +67,7 @@
         public void BuildChoice_SingleBet_NoContainLineHtml()
         {
             // Arrange            
-            _ticket.ExtraInfo = "<p49 mt=\"GT14, 4\" />";
+            _ticket.ExtraInfo = "<p49 mt=\"1\" />";
             _ticket.TransDesc = "md=5;mid=710897;se=2954;m=London:Florence;s=S03 : Florence;o=4.0";
 
             // Act
@@ -95,7 +95,7 @@
         public void BuildLeague_Running_SingleBet_IsNull()
         {
             // Arrange
-            _ticket.BetCheck = "GT14, 4";
+            _ticket.BetCheck = "1";
             _ticket.Status = "running";
 
             // Act
@@ -119,20 +119,6 @@
         }
 
         [Test]
-        public void BuildLeague_MultipleBet_ShowBetMode()
-        {
-            // Arrange
-            _ticket.ExtraInfo = "<p49 mt=\"GT03, 4\" />";
-
-            // Act
-            _choice.Render(_ticket, _ticketHelper, null, false);
-
-            // Assert
-            Assert.IsTrue(_choice.Template.League.LeagueName.leagueName.Contains("4-Fold (4)"));
-        }
-
-
-        [Test]
         public void BuildLeague_MultipleBet_SupportJavascript()
         {
             // Arrange            
@@ -150,8 +136,10 @@
         public void RenderRTF_SingleBet_ShowFullTicket()
         {
             // Arrange
-            _ticket.ExtraInfo = "<p49 mt=\"GT14, 4\" />";
-            _ticket.TransDesc = "md=5;mid=710897;se=2954;m=London:Florence;s=S03 : Florence;o=4.0";
+            _ticket.ExtraInfo = "<p49 mt=\"1\" />";
+            _ticket.TransDesc = "b=1121;m=London-Florence;s=S03;o=4.0";
+            _ticketHelper.GetResourceData("LG_BC", "1121").Returns("away");
+            _ticketHelper.GetResourceData("LG_SEL", "S03").Returns("Full Time Result");
             var workbook = new HSSFWorkbook();
             var rtfHelper = new RTFHelper
             {
@@ -169,11 +157,10 @@
             var linesInActualText = act[0].String.Split('\n');
 
             // Assert
-            Assert.AreEqual("Florence", linesInActualText[0]);
+            Assert.AreEqual("away", linesInActualText[0]);
             Assert.AreEqual("Full Time Result", linesInActualText[1]);
             Assert.AreEqual("London - vs - Florence", linesInActualText[2]);
-            Assert.AreEqual("Match Day 5, Match 710897, Season 2954", linesInActualText[3]);
-            Assert.AreEqual("LG Virtual Sports Virtual Football", linesInActualText[4]);
+            Assert.AreEqual("LG Virtual Sports Virtual Football", linesInActualText[3]);
         }
 
         [Test]
@@ -181,8 +168,9 @@
         {
             // Arrange
             _ticket.Status = "WON";
-            _ticket.ExtraInfo = "<p49 mt=\"GT03, 4\" />";
+            _ticket.ExtraInfo = "<p49 mt=\"4\" />";
             _ticket.TransDesc = "md=5;mid=710897;se=2954;m=London:Florence;s=S03 : Florence;o=4.0;mo=lose|md=5;mid=710897;se=2954;m=London:Florence;s=S03 : Florence;o=4.0;mo=lose";
+            _ticketHelper.GetResourceData("LG_MTPL", "4").Returns("4-Fold");
             var workbook = new HSSFWorkbook();
             var rtfHelper = new RTFHelper
             {
@@ -200,8 +188,8 @@
             var linesInActualText = act[0].String.Split('\n');
 
             // Assert
-            Assert.AreEqual("Mix Parlay", linesInActualText[0]);
-            Assert.AreEqual("4-Fold (4)", linesInActualText[1]);
+            Assert.AreEqual("LG Virtual Sports - Mix Parlay", linesInActualText[0]);
+            Assert.AreEqual("4-Fold", linesInActualText[1]);
         }
 
         [Test]
