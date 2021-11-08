@@ -78,7 +78,7 @@
                 .Append("<div class=\"detail pragmatic-live-casino-detail\" onclick='")
                 .Append(detailFunction)
                 .Append("'>")
-                .Append("<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">")
+                .Append("<a class=\"detail-link\" href=\"javascript:void(&quot;&quot;);\">")
                 .Append(CoreBetList.details)
                 .Append("</a>")
                 .Append("</div>");

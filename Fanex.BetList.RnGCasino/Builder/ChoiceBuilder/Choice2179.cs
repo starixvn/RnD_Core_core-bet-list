@@ -34,7 +34,7 @@
             var transId = ticket.ExtraInfo.Substring(indexOfJackpotTransId, ticket.ExtraInfo.Length - indexOfJackpotTransId);
             var detailLinkMarkup =
                 $"<div class=\"detail rng-casino-detail\" onclick=\"showProgressiveJackpotWonDetails('{transId}', '{ticket.CustId}', '{ticket.BetTypeId}');\">" +
-                $"<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void('');\">{CoreBetList.ProgressiveJackpotWonDetails}</a>" +
+                $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.ProgressiveJackpotWonDetails}</a>" +
                 $"</div>";
 
             var detailtTemplateBlock = new Choice_League_Block();

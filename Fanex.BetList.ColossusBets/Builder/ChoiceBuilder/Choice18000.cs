@@ -44,7 +44,7 @@
         private static string BuildShowColossusBetsDetails(string refNo, string winlossDate, string transId, string custId, string betCheck)
         {
             string detailsFunction = $"showColossusBetsDetails('{refNo}', '{winlossDate}', '{transId}', '{custId}', '{betCheck}');";
-            string detailsLink = $"<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void('');\">{CoreBetList.details}</a>";
+            string detailsLink = $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a>";
 
             return $"<div class=\"detail colossus-bets-details\" onclick=\"{detailsFunction }\">{detailsLink}</div>";
         }

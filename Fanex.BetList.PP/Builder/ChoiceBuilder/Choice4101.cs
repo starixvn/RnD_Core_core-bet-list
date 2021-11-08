@@ -67,7 +67,7 @@
             var transId = ticket.ExtraInfo.Substring(indexOfJackpotTransId, ticket.ExtraInfo.Length - indexOfJackpotTransId);
             var detailLinkMarkup =
                 $"<div class=\"detail pp-detail\" onclick=\"showPPJackpotWonDetails('{transId}', '{ticket.CustId}', '{ticket.BetTypeId}');\">" +
-                $"<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void('');\">{CoreBetList.JackpotWonDetails}</a>" +
+                $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.JackpotWonDetails}</a>" +
                 $"</div>";
 
             return detailLinkMarkup;

@@ -113,7 +113,7 @@
                 "<div class=\"detail\" onclick='",
                 detailsFunction,
                 "'>",
-                "<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">",
+                "<a class=\"detail-link\" href=\"javascript:void(&quot;&quot;);\">",
                 CoreBetList.details,
                 "</a>",
                 "</div>"

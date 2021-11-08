@@ -29,7 +29,7 @@
             _odds.Render(_ticket, null, Substitute.For<GetCachePropertyById>());
 
             // Assert
-            Assert.AreEqual("<font color='#B50000'>-0.73</font>", _odds.Template.odds);
+            Assert.AreEqual("<font class='minus-value'>-0.73</font>", _odds.Template.odds);
         }
 
         [Test]

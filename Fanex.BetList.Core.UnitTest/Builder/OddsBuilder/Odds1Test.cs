@@ -29,7 +29,7 @@
             Odds_Template template = _odds.Render(_ticket, null, GetCachePropertyByIdStub);
 
             // Assert
-            var expectedOdds = "<font color='#B50000'>-0.73</font>";
+            var expectedOdds = "<font class='minus-value'>-0.73</font>";
             Assert.AreEqual(expectedOdds, template.odds);
         }
 

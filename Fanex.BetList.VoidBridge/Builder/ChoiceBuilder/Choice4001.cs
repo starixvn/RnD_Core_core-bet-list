@@ -106,7 +106,7 @@
                 ", ",
                 ticket.GetTransactionType(),
                 ");\">",
-                "<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void('');\">",
+                "<a class=\"detail-link\" href=\"javascript:void('');\">",
                 CoreBetList.details,
                 "</a>",
                 "</div>"

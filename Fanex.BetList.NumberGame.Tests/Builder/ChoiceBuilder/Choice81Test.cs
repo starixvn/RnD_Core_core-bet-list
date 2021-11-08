@@ -10,7 +10,7 @@
 
     public class Choice81Test
     {
-        private static readonly string spanClassWith37point5 = " <span style='color:#555555'>37.5</span> ";
+        private static readonly string spanClassWith37point5 = " <span class='number-game-odds'>37.5</span> ";
         private Choice81 _choice;
         private ITicket _ticket;
         private ITicketHelper _ticketHelper;

@@ -188,7 +188,7 @@
                 _ticket.WinlostDate.ToString(CultureInfo.InvariantCulture),
                 transctionType);
             string expectedTemplate = $"<div class=\"detail video-poker-game-detail\" onclick=\"{expectedJsFunction}\">" +
-                 "<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void('');\">Details</a></div>";
+                 "<a class=\"detail-link\" href=\"javascript:void('');\">Details</a></div>";
 
             Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedTemplate));
         }

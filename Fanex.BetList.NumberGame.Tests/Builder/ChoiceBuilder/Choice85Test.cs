@@ -10,7 +10,7 @@
 
     public class Choice85Test
     {
-        private static readonly string spanClassWith37point5 = " <span style='color:#555555'>37.5</span> ";
+        private static readonly string spanClassWith37point5 = " <span class='number-game-odds'>37.5</span> ";
 
         // ticket.Live, betId, expectedValue
 #pragma warning disable S1144 // Unused private types or members should be removed

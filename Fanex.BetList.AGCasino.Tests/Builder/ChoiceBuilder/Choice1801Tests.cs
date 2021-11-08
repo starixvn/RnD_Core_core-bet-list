@@ -61,7 +61,7 @@
             string expectedTemplate =
                 string.Format(
                "<div class=\"detail\" " +
-               "onclick='showAGCasinoDetails(&quot;1&quot;,&quot;{1}&quot;,&quot;10000&quot;,&quot;{0}&quot;);'><a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">" +
+               "onclick='showAGCasinoDetails(&quot;1&quot;,&quot;{1}&quot;,&quot;10000&quot;,&quot;{0}&quot;);'><a class=\"detail-link\" href=\"javascript:void(&quot;&quot;);\">" +
                "Details</a></div>",
                 transctionType,
                 _ticket.WinlostDate.ToString(CultureInfo.InvariantCulture));
@@ -89,7 +89,7 @@
 
             //// Assert
             string expectedTemplate = string.Format("<div class=\"detail\" onclick='showAGCasinoDetails(&quot;1&quot;,&quot;{0}&quot;,&quot;10000&quot;,&quot;{1}&quot;);'>" +
-                "<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">Details</a></div>", _ticket.WinlostDate.ToString(CultureInfo.InvariantCulture), transctionType);
+                "<a class=\"detail-link\" href=\"javascript:void(&quot;&quot;);\">Details</a></div>", _ticket.WinlostDate.ToString(CultureInfo.InvariantCulture), transctionType);
 
             Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedTemplate));
         }
@@ -106,7 +106,7 @@
 
             ////Assert
             string expectedTemplate = string.Format("<div class=\"detail\" onclick='showAGCasinoDetails(&quot;1&quot;,&quot;{0}&quot;,&quot;10000&quot;,&quot;{1}&quot;);'>" +
-                "<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void(&quot;&quot;);\">Details</a></div>", _ticket.WinlostDate.ToString(CultureInfo.InvariantCulture), "0");
+                "<a class=\"detail-link\" href=\"javascript:void(&quot;&quot;);\">Details</a></div>", _ticket.WinlostDate.ToString(CultureInfo.InvariantCulture), "0");
             Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedTemplate));
         }
 

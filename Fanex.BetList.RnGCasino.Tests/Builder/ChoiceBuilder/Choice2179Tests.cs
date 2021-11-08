@@ -35,7 +35,7 @@
 
             // Assert
             var expectedDetailLink = $"<div class=\"detail rng-casino-detail\" onclick=\"showProgressiveJackpotWonDetails('1233213123', '1', '2198');\">" +
-                 $"<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void('');\">Progressive Jackpot Won Details</a></div>";
+                 $"<a class=\"detail-link\" href=\"javascript:void('');\">Progressive Jackpot Won Details</a></div>";
             Assert.True(choice.League.ToString().Contains(expectedDetailLink));
         }
 
@@ -52,7 +52,7 @@
 
             // Assert
             var expectedDetailLink = $"<div class=\"detail rng-casino-detail\" onclick=\"showProgressiveJackpotWonDetails('1233213123', '1', '2198');\">" +
-                 $"<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void('');\">Progressive Jackpot Won Details</a></div>";
+                 $"<a class=\"detail-link\" href=\"javascript:void('');\">Progressive Jackpot Won Details</a></div>";
             Assert.False(choice.League.ToString().Contains(expectedDetailLink));
         }
 
@@ -71,7 +71,7 @@
 
             // Assert
             var expectedDetailLink = $"<div class=\"detail rng-casino-detail\" onclick=\"showProgressiveJackpotWonDetails('1233213123', '1', '2198');\">" +
-                 $"<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void('');\">Progressive Jackpot Won Details</a></div>";
+                 $"<a class=\"detail-link\" href=\"javascript:void('');\">Progressive Jackpot Won Details</a></div>";
             Assert.False(choice.League.ToString().Contains(expectedDetailLink));
         }
     }

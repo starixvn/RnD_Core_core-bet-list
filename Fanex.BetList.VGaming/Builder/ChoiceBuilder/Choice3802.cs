@@ -66,7 +66,7 @@
             var transId = ticket.ExtraInfo.Substring(indexOfJackpotTransId, ticket.ExtraInfo.Length - indexOfJackpotTransId);
             var detailLinkMarkup =
                 $"<div class=\"detail vgaming-detail\" onclick=\"showVGamingJackpotWonDetails('{transId}', '{ticket.CustId}', '{ticket.BetTypeId}');\">" +
-                $"<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void('');\">{CoreBetList.JackpotWonDetails}</a>" +
+                $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.JackpotWonDetails}</a>" +
                 $"</div>";
 
             return detailLinkMarkup;
@@ -87,7 +87,7 @@
                 ", ",
                 ticket.GetTransactionType(),
                 ");\">",
-                "<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void('');\">",
+                "<a class=\"detail-link\" href=\"javascript:void('');\">",
                 CoreBetList.details,
                 "</a>",
                 "</div>"

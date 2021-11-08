@@ -2,6 +2,15 @@ a {
     text-decoration: none;
 }
 
+.number-game-odds {
+    color: #555555;
+}
+.minus-value {
+    color: #B50000;
+}
+.minus-number {
+    color: #ff0000;
+}
 .line {
     border-bottom: 1px solid #A0A0A0;
     margin-bottom: 5px;

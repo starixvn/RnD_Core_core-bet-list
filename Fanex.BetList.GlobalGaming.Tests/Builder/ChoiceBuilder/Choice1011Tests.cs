@@ -296,7 +296,7 @@
 
         private static string CreateGlobalGamingDetailsLink(ITicket ticket, string transType)
         {
-            var link = string.Format("<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void('');\">{0}</a>", CoreBetList.details);
+            var link = string.Format("<a class=\"detail-link\" href=\"javascript:void('');\">{0}</a>", CoreBetList.details);
 
             return string.Format(
                 "<div class=\"detail global-gaming-detail\" onclick=\"showGlobalGaming('{0}', '{1}', '{2}', '{3}');\">{4}</div>",

@@ -7,7 +7,7 @@
 
     public static class ConvertByBetType
     {
-        public const string FontOpenTag = "<font color='#B50000'>";
+        public const string FontOpenTag = "<font class='minus-value'>";
         public const string FontCloseTag = "</font>";
 
         private const byte PercentageFactor = 100;
@@ -107,7 +107,7 @@
             BetTypes.TimeMachineHDP
         });
 
-        public static string Minus { get; set; } = "<font color='#B50000'>{0}</font>";
+        public static string Minus { get; set; } = "<font class='minus-value'>{0}</font>";
 
         public static void RegisterMultipleOddsTypes(int betType)
         {

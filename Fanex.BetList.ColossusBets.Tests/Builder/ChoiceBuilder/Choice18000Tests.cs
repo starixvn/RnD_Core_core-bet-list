@@ -43,7 +43,7 @@
                                 "</div>" +
                                 "<div class=\"detail colossus-bets-details\" " +
                                 "onclick=\"showColossusBetsDetails('300', '" + _ticket.WinlostDate.ToString(CultureInfo.InvariantCulture) + "', '200', '10000', '" + betCheck + "');\">" +
-                                "<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void('');\">Details</a></div>";
+                                "<a class=\"detail-link\" href=\"javascript:void('');\">Details</a></div>";
 
             Assert.AreEqual(expected, _choice.Template.ToString());
         }

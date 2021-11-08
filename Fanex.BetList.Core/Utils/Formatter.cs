@@ -523,7 +523,7 @@
 
             if (value < 0)
             {
-                return $"<font color='#ff0000'>{DecFormat(amount)}</font>";
+                return $"<font class='minus-number'>{DecFormat(amount)}</font>";
             }
 
             if (value > 0)
@@ -540,7 +540,7 @@
 
             if (value < 0)
             {
-                return $"<font color='#ff0000'>{FormatNumber40(amount, CULTNAMEENG)}</font>";
+                return $"<font class='minus-number'>{FormatNumber40(amount, CULTNAMEENG)}</font>";
             }
 
             if (value > 0)
