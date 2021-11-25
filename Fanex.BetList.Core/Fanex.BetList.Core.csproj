@@ -418,6 +418,7 @@
     <Compile Include="Builder\StatusBuilder\Status486.cs" />
     <Compile Include="Builder\StatusBuilder\Status395.cs" />
     <Compile Include="Builder\StatusBuilder\Status606.cs" />
+    <Compile Include="Builder\StatusBuilder\Status29.cs" />
     <Compile Include="Builder\StatusBuilder\Status9.cs" />
     <Compile Include="Builder\SystemParlayBuilder\ISystemParlayDetail.cs" />
     <Compile Include="Builder\SystemParlayBuilder\SystemParlayDetail.cs" />

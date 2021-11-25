@@ -244,6 +244,12 @@
         private static string DetectRealSettledStatus(byte settlementStatus, string settledStatus)
         {
             const byte pendingStatus = 1;
+            const byte abnormalStatus = 255;
+
+            if ((settlementStatus & abnormalStatus) == abnormalStatus)
+            {
+                return CoreBetList.UnderSettlement;
+            }
 
             if ((settlementStatus & pendingStatus) == pendingStatus)
             {

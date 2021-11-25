@@ -71,7 +71,6 @@
         private void MapForOthers()
         {
             // Parlay
-            MapIdToBaseId(BetTypes.SystemParlay, BetTypes.MixParlay);
             MapIdToBaseId(BetTypes.SabaLoyaltyPointsExchange, BetTypes.SabaLuckySpin);
             MapIdToBaseId(BetTypes.SabaRedEnvelope, BetTypes.SabaLuckySpin);
         }
