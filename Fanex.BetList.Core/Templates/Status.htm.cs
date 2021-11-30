@@ -15,6 +15,7 @@ namespace Fanex.BetList.Core
 		{
 			protected static string s0 = "<div class=\"status\">";
 			public string result = "{result}";
+			public Status_NewCashOut_Block NewCashOut = new Status_NewCashOut_Block();
 			protected static string s1 = "</div>";
 			public Status_CashOutHistory_Block CashOutHistory = new Status_CashOutHistory_Block();
 			public Status_StatusResult_Block StatusResult = new Status_StatusResult_Block();
@@ -26,6 +27,7 @@ namespace Fanex.BetList.Core
 				{
 					bd.Append(s0);
 					bd.Append(result);
+					if(null != NewCashOut) NewCashOut.ToString(ref bd);
 					bd.Append(s1);
 					if(null != CashOutHistory) CashOutHistory.ToString(ref bd);
 					if(null != StatusResult) StatusResult.ToString(ref bd);
@@ -42,35 +44,53 @@ namespace Fanex.BetList.Core
 
 		}
 
-		public class Status_CashOutHistory_Block: Block
+		public class Status_NewCashOut_Block: Block
 		{
-			protected static string s2 = "<div class=\"result cashout-history\" onclick=\"ViewCashOutHistory(";
-			public string transId = "{transId}";
-			protected static string s3 = ", ";
-			public string refNo = "{refNo}";
-			protected static string s4 = ", ";
-			public string betType = "{betType}";
-			protected static string s5 = ", ";
-			public string betdaqId = "{betdaqId}";
-			protected static string s6 = ")\">";
-			protected static string s7{get{return App_GlobalResources.CoreBetList.details;}}
-			protected static string s8 = "</div>";
+			protected static string s2 = "<div class=\"cashout\">(";
+			protected static string s3{get{return App_GlobalResources.CoreBetList.CashOut;}}
+			protected static string s4 = ")</div>";
 			public override void ToString(ref StringBuilder bd)
 			{
 				if(!Visible) return;
 				if(RenderChild)
 				{
 					bd.Append(s2);
-					bd.Append(transId);
 					bd.Append(s3);
-					bd.Append(refNo);
 					bd.Append(s4);
-					bd.Append(betType);
+				}
+				if(IsAssigned){bd.Append(Value);}
+			}
+		}
+
+		public class Status_CashOutHistory_Block: Block
+		{
+			protected static string s5 = "<div class=\"result cashout-history\" onclick=\"ViewCashOutHistory(";
+			public string transId = "{transId}";
+			protected static string s6 = ", ";
+			public string refNo = "{refNo}";
+			protected static string s7 = ", ";
+			public string betType = "{betType}";
+			protected static string s8 = ", ";
+			public string betdaqId = "{betdaqId}";
+			protected static string s9 = ")\">";
+			protected static string s10{get{return App_GlobalResources.CoreBetList.details;}}
+			protected static string s11 = "</div>";
+			public override void ToString(ref StringBuilder bd)
+			{
+				if(!Visible) return;
+				if(RenderChild)
+				{
 					bd.Append(s5);
-					bd.Append(betdaqId);
+					bd.Append(transId);
 					bd.Append(s6);
+					bd.Append(refNo);
 					bd.Append(s7);
+					bd.Append(betType);
 					bd.Append(s8);
+					bd.Append(betdaqId);
+					bd.Append(s9);
+					bd.Append(s10);
+					bd.Append(s11);
 				}
 				if(IsAssigned){bd.Append(Value);}
 			}
@@ -78,61 +98,61 @@ namespace Fanex.BetList.Core
 
 		public class Status_StatusResult_Block: Block
 		{
-			protected static string s9 = "<div class=\"result\" onclick=\"ViewResult(";
+			protected static string s12 = "<div class=\"result\" onclick=\"ViewResult(";
 			public string matchId = "{matchId}";
-			protected static string s10 = ", ";
-			public string race = "0";
-			protected static string s11 = ", ";
-			public string betType = "{betType}";
-			protected static string s12 = ", ";
-			public string sportType = "{sportType}";
 			protected static string s13 = ", ";
+			public string race = "0";
+			protected static string s14 = ", ";
+			public string betType = "{betType}";
+			protected static string s15 = ", ";
+			public string sportType = "{sportType}";
+			protected static string s16 = ", ";
 			public string refNo = "{refNo}";
-			protected static string s14 = ", '";
+			protected static string s17 = ", '";
 			public string userName = "{userName}";
-			protected static string s15 = "', '";
+			protected static string s18 = "', '";
 			public string winlostDate = "{winlostDate}";
-			protected static string s16 = "', ";
+			protected static string s19 = "', ";
 			public string refNo_MixParlay = "0";
-			protected static string s17 = ", ";
+			protected static string s20 = ", ";
 			public string league = "{league}";
-			protected static string s18 = ", ";
+			protected static string s21 = ", ";
 			public string isoutright = "0";
-			protected static string s19 = ", ";
+			protected static string s22 = ", ";
 			public string betId = "0";
-			protected static string s20 = ");\">";
-			protected static string s21{get{return App_GlobalResources.CoreBetList.results;}}
-			protected static string s22 = "</div>";
+			protected static string s23 = ");\">";
+			protected static string s24{get{return App_GlobalResources.CoreBetList.results;}}
+			protected static string s25 = "</div>";
 			public override void ToString(ref StringBuilder bd)
 			{
 				if(!Visible) return;
 				if(RenderChild)
 				{
-					bd.Append(s9);
-					bd.Append(matchId);
-					bd.Append(s10);
-					bd.Append(race);
-					bd.Append(s11);
-					bd.Append(betType);
 					bd.Append(s12);
-					bd.Append(sportType);
+					bd.Append(matchId);
 					bd.Append(s13);
-					bd.Append(refNo);
+					bd.Append(race);
 					bd.Append(s14);
-					bd.Append(userName);
+					bd.Append(betType);
 					bd.Append(s15);
-					bd.Append(winlostDate);
+					bd.Append(sportType);
 					bd.Append(s16);
-					bd.Append(refNo_MixParlay);
+					bd.Append(refNo);
 					bd.Append(s17);
-					bd.Append(league);
+					bd.Append(userName);
 					bd.Append(s18);
-					bd.Append(isoutright);
+					bd.Append(winlostDate);
 					bd.Append(s19);
-					bd.Append(betId);
+					bd.Append(refNo_MixParlay);
 					bd.Append(s20);
+					bd.Append(league);
 					bd.Append(s21);
+					bd.Append(isoutright);
 					bd.Append(s22);
+					bd.Append(betId);
+					bd.Append(s23);
+					bd.Append(s24);
+					bd.Append(s25);
 				}
 				if(IsAssigned){bd.Append(Value);}
 			}
@@ -140,29 +160,29 @@ namespace Fanex.BetList.Core
 
 		public class Status_ShowIP_Block: Block
 		{
-			protected static string s23 = "<div class=\"ip\"><br /><div class=\"";
+			protected static string s26 = "<div class=\"ip\"><br /><div class=\"";
 			public string divIP = "iplink";
-			protected static string s24 = "\" onclick=\"";
+			protected static string s27 = "\" onclick=\"";
 			public string openIpFunc = "OpenIPInfo";
-			protected static string s25 = "('";
+			protected static string s28 = "('";
 			public string betIp = "{betIp}";
-			protected static string s26 = "');\">";
+			protected static string s29 = "');\">";
 			protected string t0_betIp;
-			protected static string s27 = "</div></div>";
+			protected static string s30 = "</div></div>";
 			public override void ToString(ref StringBuilder bd)
 			{
 				if(!Visible) return;
 				if(RenderChild)
 				{
-					bd.Append(s23);
-					bd.Append(divIP);
-					bd.Append(s24);
-					bd.Append(openIpFunc);
-					bd.Append(s25);
-					bd.Append(betIp);
 					bd.Append(s26);
-					bd.Append(betIp);
+					bd.Append(divIP);
 					bd.Append(s27);
+					bd.Append(openIpFunc);
+					bd.Append(s28);
+					bd.Append(betIp);
+					bd.Append(s29);
+					bd.Append(betIp);
+					bd.Append(s30);
 				}
 				if(IsAssigned){bd.Append(Value);}
 			}

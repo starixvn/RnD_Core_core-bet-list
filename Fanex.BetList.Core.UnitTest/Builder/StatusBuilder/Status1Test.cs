@@ -701,6 +701,45 @@
             Assert.AreEqual(_ticket.BetdaqId.ToString(), _status.Template.CashOutHistory.betdaqId);
         }
 
+        [Test]
+        public void BuildStatusResult_NewCashOut_HideResultLink()
+        {
+            // Arrange
+            _ticket.BetdaqId = -2;
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.False(_status.Template.StatusResult.Visible);
+        }
+
+        [Test]
+        public void BuildResult_NewCashOut_ShowCashOut()
+        {
+            // Arrange
+            _ticket.BetdaqId = -2;
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.True(_status.Template.NewCashOut.Visible);
+        }
+
+        [Test]
+        public void BuildResult_IsNotNewCashOut_HideCashOut()
+        {
+            // Arrange
+            _ticket.BetdaqId = -1;
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.False(_status.Template.NewCashOut.Visible);
+        }
+
         private void ArrangeCashOutTicket(long betdaqId, string extraInfo, decimal originalStake = 0)
         {
             _ticket.BetdaqId = betdaqId;

@@ -191,6 +191,10 @@ div.match + div.league + div.no-details {
     font-weight: bold;
 }
 
+.status .cashout{
+    font-weight: normal;
+}
+
 .result {
     cursor: pointer;
     color: rgb(27, 164, 237);

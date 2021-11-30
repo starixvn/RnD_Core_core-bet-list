@@ -28,7 +28,7 @@
     [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleClass", Justification = "Reviewed.")]
     public class Status_TemplateTest
     {
-        private const string StatusTemplate = "<div class=\"status\">{0}</div>{1}{2}{3}";
+        private const string StatusTemplate = "<div class=\"status\">{0}{1}</div>{2}{3}{4}";
 
         /// <summary>
         /// Visible the property is true return HTML string.
@@ -47,7 +47,7 @@
             var statusHtml = block.ToString();
 
             // Assert
-            var expectedHtml = string.Format(StatusTemplate, result, block.CashOutHistory, block.StatusResult, block.ShowIP);
+            var expectedHtml = string.Format(StatusTemplate, result, block.NewCashOut, block.CashOutHistory, block.StatusResult, block.ShowIP);
             Assert.AreEqual(expectedHtml, statusHtml);
         }
 
@@ -90,7 +90,7 @@
             var statusHtml = block.ToString();
 
             // Assert
-            var expectedHtml = string.Format(StatusTemplate, result, block.CashOutHistory, block.StatusResult, block.ShowIP) + value;
+            var expectedHtml = string.Format(StatusTemplate, result, block.NewCashOut, block.CashOutHistory, block.StatusResult, block.ShowIP) + value;
             Assert.AreEqual(expectedHtml, statusHtml);
         }
     }

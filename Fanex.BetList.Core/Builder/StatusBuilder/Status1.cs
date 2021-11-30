@@ -40,12 +40,15 @@
 
             BuildCashOutHistory(ticket, ticketHelper);
 
+            BuildNewCashOut(ticket);
+
             return Template;
         }
 
         public virtual string RenderStatusResultText(ITicket ticket, List<ITicketData> ticketData)
         {
             BuildResult(ticket, ticketData);
+            Template.NewCashOut = null;
             Template.StatusResult = null;
             Template.ShowIP = null;
             Template.CashOutHistory = null;
@@ -83,7 +86,11 @@
 
         protected virtual void BuildStatusResult(ITicket ticket)
         {
-            if (ticket.IsSettled() || IsSportsbookRefundedTicket(ticket))
+            if(IsNewCashOutTicket(ticket))
+            {
+                Template.StatusResult.Hide();
+            }
+            else if (ticket.IsSettled() || IsSportsbookRefundedTicket(ticket))
             {
                 Template.StatusResult.matchId = ticket.MatchId.ToString(CultureInfo.InvariantCulture);
                 Template.StatusResult.betType = ticket.BetTypeId.ToString(CultureInfo.InvariantCulture);
@@ -125,6 +132,18 @@
             Template.CashOutHistory.betdaqId = ticket.BetdaqId.ToString();
         }
 
+        protected virtual void BuildNewCashOut(ITicket ticket)
+        {
+            if (IsNewCashOutTicket(ticket))
+            {
+                Template.NewCashOut.Show();
+            }
+            else
+            {
+                Template.NewCashOut.Hide();
+            }
+        }
+
         #endregion RENDER HTML
 
         #region RENDER EXCEL
@@ -136,6 +155,12 @@
             string status = Template.result;
 
             BuildResultLRF(status, rtfHelper);
+
+            if (Template.NewCashOut != null && Template.NewCashOut.Visible)
+            {
+                status = string.Join(null, new[] { "\n", $"({CoreBetList.CashOut})" });
+                rtfHelper.RTFRenderer.AddText(status);
+            }
 
             if (Template.ShowIP != null && Template.ShowIP.Visible)
             {
@@ -262,6 +287,12 @@
         private static bool IsSportsbookRefundedTicket(ITicket ticket)
             => ticket.IsRefunded() && ticket.IsSportsbook();
 
+        private static bool IsNewCashOutTicket(ITicket ticket)
+        {
+            const int newCashoutSinal = -2;
+
+            return ticket.BetdaqId == newCashoutSinal;
+        }
         #endregion PRIVATE METHODS
     }
 }
