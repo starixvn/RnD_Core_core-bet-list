@@ -20,16 +20,11 @@
             _gettingOddsTypeNameFunc = Substitute.For<GetCachePropertyById>();
         }
 
-        [TestCase("betChoice=1705152116,101;referID=")]
-        [TestCase("betChoice=1705152116,102;referID=")]
-        [TestCase("betChoice=1705152116,103;referID=")]
-        [TestCase("betChoice=1705152116,104;referID=")]
-        [TestCase("betChoice=1705152116,105;referID=")]
-        [TestCase("betChoice=1705152116,106;referID=")]
-        public void Render_ChoiceIdIsInHidingOddsList_ShowHyphenAsOdds(string transDesc)
+        [TestCase(BetStatus.Running)]
+        public void Render_RunningTicket_ShowHyphenAsOdds(string status)
         {
             // Arrange.
-            _ticket.TransDesc = transDesc;
+            _ticket.Status = status;
 
             // Act.
             var template = _odds.Render(_ticket, null, _gettingOddsTypeNameFunc);
@@ -38,31 +33,22 @@
             Assert.AreEqual("-", template.odds);
         }
 
-        [TestCase("betChoice=1705152116,101;referID=")]
-        [TestCase("betChoice=1705152116,102;referID=")]
-        [TestCase("betChoice=1705152116,103;referID=")]
-        [TestCase("betChoice=1705152116,104;referID=")]
-        [TestCase("betChoice=1705152116,105;referID=")]
-        [TestCase("betChoice=1705152116,106;referID=")]
-        public void Render_ChoiceIdIsInHidingOddsList_HideOddsTypeName(string transDesc)
-        {
-            // Arrange.
-            _ticket.TransDesc = transDesc;
-
-            // Act.
-            var template = _odds.Render(_ticket, null, _gettingOddsTypeNameFunc);
-
-            // Assert.
-            Assert.IsEmpty(template.oddsType);
-        }
-
-        [Test]
-        public void Render_ChoiceIdIsNotInHidingOddsList_ShowTicketOdds()
+        [TestCase(null)]
+        [TestCase(BetStatus.Won)]
+        [TestCase(BetStatus.HalfWon)]
+        [TestCase(BetStatus.Draw)]
+        [TestCase(BetStatus.Lose)]
+        [TestCase(BetStatus.HalfLose)]
+        [TestCase(BetStatus.Void)]
+        [TestCase(BetStatus.Refund)]
+        [TestCase(BetStatus.Waiting)]
+        [TestCase(BetStatus.Pending)]
+        [TestCase(BetStatus.Reject)]
+        public void Render_NotRunningTicket_ShowTicketOdds(string status)
         {
             // Arrange.
             const decimal odds = 2;
-
-            _ticket.TransDesc = "betChoice=1705152116,100;referID=";
+            _ticket.Status = status;
             _ticket.Odds = odds;
 
             // Act.
