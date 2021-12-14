@@ -12,6 +12,11 @@
             }
 
             MapIdToBaseId(PragmaticPlayBetTypes.JackpotPrize, PragmaticPlayBetTypes.TournamentPrize);
+
+            for (int betTypeId = PragmaticPlayBetTypes.CandyVillage; betTypeId <= PragmaticPlayBetTypes.HighestBetTypeIdInRange; betTypeId++)
+            {
+                MapIdToBaseId(betTypeId, PragmaticPlayBetTypes.Dragons888);
+            }
         }
     }
 }
