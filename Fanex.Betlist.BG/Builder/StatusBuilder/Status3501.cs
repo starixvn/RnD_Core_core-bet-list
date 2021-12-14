@@ -1,20 +1,22 @@
 ﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
     using Fanex.BetList.Core.Entities;
+    using Fanex.BetList.Core.Utils.TicketExt;
 
     public class Status3501 : Status1
     {
         protected override void BuildStatusResult(ITicket ticket)
         {
             base.BuildStatusResult(ticket);
-
-            if (string.IsNullOrEmpty(ticket.TransDesc))
+            const int daySupportResultLink = 40;
+            if (string.IsNullOrEmpty(ticket.TransDesc) ||
+                ticket.IsTicketHide3rdResultLink(daySupportResultLink))
             {
                 Template.StatusResult.Hide();
             }
             else
             {
-                Template.StatusResult.betId = $"{ticket.BetId ?? 0}, '{ticket.BetTeam}', {ticket.CustId}, '{ticket.BetCheck}'";
+                Template.StatusResult.betId = $"{ticket.CurrencyId}, '{ticket.MatchCode}', {ticket.CustId}, '{ticket.BetCheck}', '{ticket.SiteId}'";
             }
         }
     }

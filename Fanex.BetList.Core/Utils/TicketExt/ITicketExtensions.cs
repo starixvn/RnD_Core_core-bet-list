@@ -69,5 +69,12 @@
 
             return "0";
         }
+
+        public static bool IsTicketHide3rdResultLink(this ITicket ticket, int daySupport3rdResultPage)
+        {
+            var minDate = DateTime.Today.AddDays(-daySupport3rdResultPage);
+
+            return ticket.WinlostDate < minDate;
+        }
     }
 }

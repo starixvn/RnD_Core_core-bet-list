@@ -17,9 +17,7 @@
             else
             {
                 base.BuildStatusResult(ticket);
-                var externalLink = $"'{ticket.BetId}', '{ticket.BetCheck}', '{ticket.CustId}'";
-
-                Template.StatusResult.refNo = "'" + ticket.BetCheck + "'";
+                var externalLink = $"{ticket.CurrencyId}, '{ticket.BetTeam}', {ticket.CustId}, '{ticket.BetCheck}', '{ticket.SiteId}'";
                 Template.StatusResult.betId = externalLink;
             }
         }
