@@ -121,5 +121,9 @@
         public string ExtraInfo { get; set; }
 
         public byte SettlementStatus { get; set; }
+
+        public int CurrencyId { get; set; }
+
+        public string SiteId { get; set; }
     }
 }

@@ -124,5 +124,9 @@
         string ExtraInfo { get; set; }
 
         byte SettlementStatus { get; set; }
+
+        int CurrencyId { get; set; }
+
+        string SiteId { get; set; }
     }
 }
