@@ -455,7 +455,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder
         [TestCase(225, "Status221")]
         [TestCase(226, "Status221")]
         [TestCase(227, "Status221")]
-        [TestCase(29, "Status9")]
         [TestCase(38, "Status38")]
         [TestCase(607, "Status606")]
         [TestCase(609, "Status606")]
@@ -468,6 +467,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder
         [TestCase(616, "Status606")]
         [TestCase(617, "Status606")]
         [TestCase(9, "Status9")]
+        [TestCase(29, "Status29")]
         public void CreateStatusBuilder_WhenCalled_ReturnStatus(int betType, string expectedStatus)
         {
             var buider = CreateChoiceBuilder();

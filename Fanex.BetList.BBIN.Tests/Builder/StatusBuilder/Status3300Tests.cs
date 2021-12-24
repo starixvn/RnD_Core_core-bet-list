@@ -1,5 +1,6 @@
 ﻿namespace Fanex.BetList.BBIN.Tests.Builder.StatusBuilder
 {
+    using System;
     using Fanex.BetList.Core.Builder.StatusBuilder;
     using Fanex.BetList.Core.Entities;
     using NSubstitute;
@@ -37,16 +38,34 @@
         public void BuildStatusResult_TrandescDataIsNotEmpty_ShowStatusResultLink()
         {
             // Arrange.
-            _ticket.BetId = 1;
+            _ticket.WinlostDate = DateTime.Today;
+            _ticket.TransDesc = "gamename=gameid3rd";
+            _ticket.CurrencyId = 72;
             _ticket.CustId = 123;
-            _ticket.TransDesc = "TransDesc";
-            _ticket.BetTeam = "BetTeam";
-
+            _ticket.BetCheck = "transid3rd";
+            _ticket.SiteId = "siteid";
             // Act.
             _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            Assert.AreEqual("1, 'BetTeam', 123, 'TransDesc'", _status.Template.StatusResult.betId);
+            Assert.AreEqual("72, 'gameid3rd', 123, 'transid3rd', 'siteid'", _status.Template.StatusResult.betId);
+        }
+
+        [Test]
+        public void BuildStatusResult_Expired30Day_HideStatusResultLink()
+        {
+            // Arrange.
+            _ticket.WinlostDate = DateTime.Today.AddDays(-30);
+            _ticket.TransDesc = "gamename=gameid3rd";
+            _ticket.CurrencyId = 72;
+            _ticket.CustId = 123;
+            _ticket.BetCheck = "transid3rd";
+            _ticket.SiteId = "siteid";
+            // Act.
+            _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert.
+            Assert.IsTrue(string.IsNullOrEmpty(_status.Template.StatusResult.ToString()));
         }
     }
 }
