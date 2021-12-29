@@ -48,6 +48,7 @@ namespace Fanex.BetList.Core
 		{
 			protected static string s2 = "<div class=\"cashout\">(";
 			protected static string s3{get{return App_GlobalResources.CoreBetList.CashOut;}}
+			public string amount = "{amount}";
 			protected static string s4 = ")</div>";
 			public override void ToString(ref StringBuilder bd)
 			{
@@ -56,6 +57,7 @@ namespace Fanex.BetList.Core
 				{
 					bd.Append(s2);
 					bd.Append(s3);
+					bd.Append(amount);
 					bd.Append(s4);
 				}
 				if(IsAssigned){bd.Append(Value);}

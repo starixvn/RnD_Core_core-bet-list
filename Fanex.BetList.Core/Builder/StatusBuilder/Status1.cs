@@ -86,7 +86,7 @@
 
         protected virtual void BuildStatusResult(ITicket ticket)
         {
-            if(IsNewCashOutTicket(ticket))
+            if (IsNewCashOutTicket(ticket))
             {
                 Template.StatusResult.Hide();
             }
@@ -136,6 +136,8 @@
         {
             if (IsNewCashOutTicket(ticket))
             {
+                var amountText = ticket.IsSettled() ? $": {ConvertByBetType.Winloss(ticket.Winlost + ticket.ActualStake)}" : string.Empty;
+                Template.NewCashOut.amount = amountText;
                 Template.NewCashOut.Show();
             }
             else
@@ -158,7 +160,8 @@
 
             if (Template.NewCashOut != null && Template.NewCashOut.Visible)
             {
-                status = string.Join(null, new[] { "\n", $"({CoreBetList.CashOut})" });
+                var amountText = ticket.IsSettled() ? $": {ConvertByBetType.Winloss(ticket.Winlost + ticket.ActualStake)}" : string.Empty;
+                status = string.Join(null, new[] { "\n", $"({CoreBetList.CashOut}{amountText})" });
                 rtfHelper.RTFRenderer.AddText(status);
             }
 

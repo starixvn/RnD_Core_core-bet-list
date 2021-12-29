@@ -740,6 +740,71 @@
             Assert.False(_status.Template.NewCashOut.Visible);
         }
 
+        [Test]
+        public void BuildResult_IsWONTicketNewCashOut_ShowAmountCashOut()
+        {
+            // Arrange
+            _ticket.Status = "WON";
+            _ticket.BetdaqId = -2;
+            _ticket.Winlost = 10;
+            _ticket.ActualStake = 5;
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual(": 15.00", _status.Template.NewCashOut.amount);
+        }
+
+        [Test]
+        public void BuildResult_IsLOSETicketNewCashOut_ShowAmountCashOut()
+        {
+            // Arrange
+            _ticket.Status = "LOSE";
+            _ticket.BetdaqId = -2;
+            _ticket.Winlost = 10;
+            _ticket.ActualStake = 5;
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual(": 15.00", _status.Template.NewCashOut.amount);
+        }
+
+        [Test]
+        public void BuildResult_IsDrawTicketNewCashOut_ShowAmountCashOut()
+        {
+            // Arrange
+            _ticket.Status = "Draw";
+            _ticket.BetdaqId = -2;
+            _ticket.Winlost = 10;
+            _ticket.ActualStake = 5;
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual(": 15.00", _status.Template.NewCashOut.amount);
+        }
+
+        [TestCase("Refund")]
+        [TestCase("Void")]
+        public void BuildResult_IsTicketNewCashOut_AmountCashOutIsEmpty(string statusTicket)
+        {
+            // Arrange
+            _ticket.Status = statusTicket;
+            _ticket.BetdaqId = -2;
+            _ticket.Winlost = 10;
+            _ticket.ActualStake = 5;
+
+            // Act
+            _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.IsEmpty(_status.Template.NewCashOut.amount);
+        }
+
         private void ArrangeCashOutTicket(long betdaqId, string extraInfo, decimal originalStake = 0)
         {
             _ticket.BetdaqId = betdaqId;
