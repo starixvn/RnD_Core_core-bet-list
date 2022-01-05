@@ -59,6 +59,7 @@
     <Compile Include="Builder\OddsBuilder\Odds3601.cs" />
     <Compile Include="Builder\StatusBuilder\Status3601.cs" />
     <Compile Include="Builder\TransBuilder\Trans3601.cs" />
+    <Compile Include="Builder\TransBuilder\Trans81.cs" />
     <Compile Include="Constants\Happy5LinkedGamesBetTypes.cs" />
     <Compile Include="Constants\Happy5BetTypes.cs" />
     <Compile Include="Constants\NumberGameBetTypes.cs" />

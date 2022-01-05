@@ -13,5 +13,7 @@
         public const int FullTimeRaceToXPoints = 2809;
         public const int HomeTeamOverUnder = 2811;
         public const int AwayTeamOverUnder = 2812;
+
+        public const int HighestBetTypeIdInRange = 2899;
     }
 }

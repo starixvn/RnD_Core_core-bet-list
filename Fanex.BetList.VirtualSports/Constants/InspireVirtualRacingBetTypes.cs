@@ -5,5 +5,7 @@
         public const int Win = 1231;
         public const int Place = 1232;
         public const int WinPlace = 1233;
+
+        public const int HighestBetTypeIdInRange = 1236;
     }
 }

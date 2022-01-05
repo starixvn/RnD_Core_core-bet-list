@@ -12,5 +12,6 @@
         public const int Warrior = 88;
         public const int NextCombo = 89;
         public const int NumberWheel = 90;
+        public const int NextRedBlue = 91;
     }
 }

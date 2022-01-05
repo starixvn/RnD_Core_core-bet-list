@@ -62,6 +62,8 @@
     <Compile Include="Builder\OddsBuilder\Odds2799.cs" />
     <Compile Include="Builder\StatusBuilder\Status1231.cs" />
     <Compile Include="Builder\StatusBuilder\Status1233.cs" />
+    <Compile Include="Builder\TransBuilder\Trans1201.cs" />
+    <Compile Include="Builder\TransBuilder\Trans2701.cs" />
     <Compile Include="Constants\BetRadarSharedBetTypes.cs" />
     <Compile Include="Constants\InspireVirtualSoccerBetTypes.cs" />
     <Compile Include="Constants\InspireVirtualRacingBetTypes.cs" />
@@ -72,6 +74,7 @@
     <Compile Include="Mapper\OddsMapper.cs" />
     <Compile Include="Mapper\RepresentativeMapper.cs" />
     <Compile Include="Mapper\StatusMapper.cs" />
+    <Compile Include="Mapper\TransMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -110,6 +113,7 @@
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.8.22.0.31243\analyzers\SonarAnalyzer.CSharp.dll" />
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.8.22.0.31243\analyzers\SonarAnalyzer.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
