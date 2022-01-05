@@ -11,10 +11,12 @@
                 MapIdToBaseId(id, SabaClubBetTypes.MinRange);
             }
 
-            for (var id = SabaClubBetTypes.Blackjack + 1; id < SabaClubBetTypes.JackpotContribution; id++)
+            for (var id = SabaClubBetTypes.Blackjack + 1; id < SabaClubBetTypes.JackpotContribution && id != SabaClubBetTypes.CasinoHoldemPoker; id++)
             {
                 MapIdToBaseId(id, SabaClubBetTypes.MinRange);
             }
+
+            MapIdToBaseId(SabaClubBetTypes.CasinoHoldemPoker, SabaClubBetTypes.Blackjack);
         }
     }
 }
