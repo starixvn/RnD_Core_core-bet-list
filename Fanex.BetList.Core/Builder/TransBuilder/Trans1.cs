@@ -64,7 +64,7 @@
         {
             if (HasLicenseeTxId(ticket))
             {
-                Template.LicenseeTxId.Value = ticket.ExtraInfo.GetXmlTagAttributeValue(SportsbookXmlTag, "lt");
+                Template.LicenseeTxId.Value = ticket.ExtraInfo.GetXmlTagAttributeValue(GetExtraInfoTag(), "lt");
             }
             else
             {
@@ -110,7 +110,11 @@
             return new HSSFRichTextString(Template.LicenseeTxId.Value);
         }
 
-        private static bool HasLicenseeTxId(ITicket ticket)
-            => ticket.ExtraInfo != null && ticket.ExtraInfo.HasAttributeInXmlTag(SportsbookXmlTag, "lt");
+        public virtual string GetExtraInfoTag()
+            => SportsbookXmlTag;
+
+        private bool HasLicenseeTxId(ITicket ticket)
+            => ticket.ExtraInfo != null && ticket.ExtraInfo.HasAttributeInXmlTag(GetExtraInfoTag(), "lt");
+
     }
 }

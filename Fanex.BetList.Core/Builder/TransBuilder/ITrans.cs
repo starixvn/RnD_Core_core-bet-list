@@ -23,5 +23,7 @@
         IRichTextString RenderRefNoRTF(ITicket ticket, ITicketHelper ticketHelper);
 
         IRichTextString RenderLicenseeTxIdRTF(ITicket ticket, ITicketHelper ticketHelper);
+
+        string GetExtraInfoTag();
     }
 }
