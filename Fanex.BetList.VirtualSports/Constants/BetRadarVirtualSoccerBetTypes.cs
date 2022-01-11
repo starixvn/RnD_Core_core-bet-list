@@ -9,7 +9,5 @@
         public const int Handicap = 2705;
         public const int FirstHalfHandicap = 2706;
         public const int CorrectScore = 2707;
-
-        public const int HighestBetTypeIdInRange = 2799;
     }
 }

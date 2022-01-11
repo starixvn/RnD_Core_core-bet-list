@@ -9,7 +9,8 @@
 
     public class Trans1 : ITrans
     {
-        private const string SportsbookXmlTag = "p1";
+        protected virtual string ExtraInfoTag
+            => "p1";
 
         public Trans1()
         {
@@ -64,7 +65,7 @@
         {
             if (HasLicenseeTxId(ticket))
             {
-                Template.LicenseeTxId.Value = ticket.ExtraInfo.GetXmlTagAttributeValue(GetExtraInfoTag(), "lt");
+                Template.LicenseeTxId.Value = ticket.ExtraInfo.GetXmlTagAttributeValue(ExtraInfoTag, "lt");
             }
             else
             {
@@ -110,11 +111,8 @@
             return new HSSFRichTextString(Template.LicenseeTxId.Value);
         }
 
-        public virtual string GetExtraInfoTag()
-            => SportsbookXmlTag;
-
         private bool HasLicenseeTxId(ITicket ticket)
-            => ticket.ExtraInfo != null && ticket.ExtraInfo.HasAttributeInXmlTag(GetExtraInfoTag(), "lt");
+            => ticket.ExtraInfo != null && ticket.ExtraInfo.HasAttributeInXmlTag(ExtraInfoTag, "lt");
 
     }
 }

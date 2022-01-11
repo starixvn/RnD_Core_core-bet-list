@@ -69,6 +69,7 @@
     <Compile Include="Constants\InspireVirtualRacingBetTypes.cs" />
     <Compile Include="Constants\BetRadarVirtualBasketballBetTypes.cs" />
     <Compile Include="Constants\BetRadarVirtualSoccerBetTypes.cs" />
+    <Compile Include="Constants\InspireVirtualTennisBetTypes.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Mapper\ChoiceMapper.cs" />
     <Compile Include="Mapper\OddsMapper.cs" />
