@@ -85,6 +85,8 @@
     <Compile Include="Builder\OddsBuilder\Odds2799Tests.cs" />
     <Compile Include="Builder\StatusBuilder\Status1231Tests.cs" />
     <Compile Include="Builder\StatusBuilder\Status1233Tests.cs" />
+    <Compile Include="Builder\TransBuilder\Trans1201Tests.cs" />
+    <Compile Include="Builder\TransBuilder\Trans2701Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

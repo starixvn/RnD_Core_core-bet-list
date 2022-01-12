@@ -7,20 +7,45 @@
 
     public class Trans3601Tests
     {
-        [Test]
-        public void BuildRefNo_Always_SetRefNoIsRefNo()
+        private Trans3601 _trans;
+        private ITicket _ticket;
+
+        [SetUp]
+        public void Setup()
         {
-            // Arrange.
-            var trans = new Trans3601();
-            var ticket = Substitute.For<ITicket>();
+            _trans = new Trans3601();
+            _ticket = Substitute.For<ITicket>();
+        }
 
-            ticket.RefNo = "100";
+        [Test]
+        public void BuildLicenseeTxId_HasLicenseeTxId_ShowTxId()
+        {
+            // Arrange
+            var txid = "1212124343434";
+            var licensee = $"<div class=\"licenseeTxid\">TxID: {txid}</div>";
+            _ticket.ExtraInfo = $"<p3 lt='{txid}'/>";
 
-            // Act.
-            var template = trans.Render(ticket);
+            // Act
+            _trans.Render(_ticket);
 
-            // Assert.
-            Assert.AreEqual(ticket.RefNo, template.TransTime.refNo);
+            // Assert
+            Assert.AreEqual(licensee, _trans.Template.LicenseeTxId.ToString());
+        }
+
+        [TestCase(null)]
+        [TestCase("")]
+        [TestCase("<p99 lt='123123'/>")]
+        [TestCase("<p3 ab='jdjdjd'/>")]
+        public void BuildLicenseeTxId_HasNotLicenseeTxId_HideTxId(string extraInfo)
+        {
+            // Arrange
+            _ticket.ExtraInfo = extraInfo;
+
+            // Act
+            _trans.Render(_ticket);
+
+            // Assert
+            Assert.IsEmpty(_trans.Template.LicenseeTxId.Value);
         }
     }
 }
