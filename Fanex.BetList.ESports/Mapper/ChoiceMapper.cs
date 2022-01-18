@@ -16,8 +16,40 @@
             MapForESports2OverUnder();
             MapForESports2OddEven();
             MapForESports2CorrectScore();
+            MapESportMapXToKill();
+            MapIdToBaseId(ESportsBetTypes.MapXTotalGoldMoneyline, ESportsBetTypes.MapX1stKill);
+            MapIdToBaseId(ESportsBetTypes.MapXFirstDarkTyrant, ESportsBetTypes.MapX1stKill);
+            MapIdToBaseId(ESportsBetTypes.MapXFirstHerald, ESportsBetTypes.MapX1stKill);
+
+            MapIdToBaseId(ESportsBetTypes.MapXWillStormDragonBeKilledYesNo, ESportsBetTypes.MapXOvertime);
+            MapIdToBaseId(ESportsBetTypes.MapXWillFirstAegisBeSnatchedYesNo, ESportsBetTypes.MapXOvertime);
+            MapIdToBaseId(ESportsBetTypes.MapXFirstElderDragon, ESportsBetTypes.MapXOvertime);
+
+            MapIdToBaseId(ESportsBetTypes.MapXFirstBarrackLocation, ESportsBetTypes.MapXFirstInhibitorLocation);
         }
 
+        private void MapESportMapXToKill()
+        {
+            var moneylineBasedBetTypes = new[]
+            {
+                ESportsBetTypes.MapX2ndKill,
+                ESportsBetTypes.MapX3rdKill,
+                ESportsBetTypes.MapX4thKill,
+                ESportsBetTypes.MapX5thKill,
+                ESportsBetTypes.MapX6thKill,
+                ESportsBetTypes.MapX7thKill,
+                ESportsBetTypes.MapX8thKill,
+                ESportsBetTypes.MapX9thKill,
+                ESportsBetTypes.MapX10thKill,
+                ESportsBetTypes.MapX15thKill,
+                ESportsBetTypes.MapX20thKill
+            };
+
+            foreach (var betTypeId in moneylineBasedBetTypes)
+            {
+                MapIdToBaseId(betTypeId, ESportsBetTypes.MapX1stKill);
+            }
+        }
         private void MapForESports2Moneyline()
         {
             var moneylineBasedBetTypes = new[]
@@ -89,7 +121,10 @@
                 ESportsBetTypes.MapXTotalOverlordsHandicap,
                 ESportsBetTypes.MapXRoundsHandicap,
                 ESportsBetTypes.MapXClutchesHandicap,
-                ESportsBetTypes.MapXRoundYTotalKillsHandicap
+                ESportsBetTypes.MapXRoundYTotalKillsHandicap,
+                ESportsBetTypes.MapXTotalKillsAt10MinsHandicap,
+                ESportsBetTypes.MapXTotalKillsat20MinsHandicap,
+                ESportsBetTypes.MapXTotalGoldHandicap
             };
 
             foreach (var betTypeId in handicapBasedBetTypes)
@@ -114,7 +149,32 @@
                 ESportsBetTypes.MapXDurationOverUnderByMins,
                 ESportsBetTypes.MapXRoundsOverUnder,
                 ESportsBetTypes.MapXRoundYTotalKillsOverUnder,
-                ESportsBetTypes.MapXRoundsOverUnderOvertime
+                ESportsBetTypes.MapXRoundsOverUnderOvertime,
+                ESportsBetTypes.MapXFirstToYKillsTimeOverUnder,
+                ESportsBetTypes.MapXFirstBloodTimeOverUnder,
+                ESportsBetTypes.MapXTotalKillsat10MinsOverUnder,
+                ESportsBetTypes.MapXTotalKillsat20MinsOverUnder,
+                ESportsBetTypes.MapXHomeTeamTotalKillsat10MinsOverUnder,
+                ESportsBetTypes.MapXAwayTeamTotalKillsat10MinsOverUnder,
+                ESportsBetTypes.MapXHomeTeamTotalKillsat20MinsOverUnder,
+                ESportsBetTypes.MapXAwayTeamTotalKillsat20MinsOverUnder,
+                ESportsBetTypes.MapXHomeTeamTotalKillsOverUnder,
+                ESportsBetTypes.MapXAwayTeamTotalKillsOverUnder,
+                ESportsBetTypes.MapXTotalGoldOverUnder,
+                ESportsBetTypes.MapXHomeTeamTotalGoldOverUnder,
+                ESportsBetTypes.MapXAwayTeamTotalGoldOverUnder,
+                ESportsBetTypes.MapXFirstTyrantTimeOverUnder,
+                ESportsBetTypes.MapXFirstOverlordTimeOverUnder,
+                ESportsBetTypes.MapXFirstHeraldTimeOverUnder,
+                ESportsBetTypes.MapXFirstBaronTimeOverUnder,
+                ESportsBetTypes.MapXFirstBaronNoPlayersBuffOverUnder,
+                ESportsBetTypes.MapXFirstInhibitorTimeOverUnder,
+                ESportsBetTypes.MapXFirstDragonTimeOverUnder,
+                ESportsBetTypes.MapXFirstTowerTimeOverUnder,
+                ESportsBetTypes.MapXFirstRoshanTimeOverUnder,
+                ESportsBetTypes.MapXFirstBarrackTimeOverUnder,
+                ESportsBetTypes.MapXTotalBombDetonationsOverUnder,
+                ESportsBetTypes.MapXTotalBombDefusesOverUnder
             };
 
             foreach (var betTypeId in overUnderBasedBetTypes)
@@ -137,7 +197,8 @@
                 ESportsBetTypes.MapXTotalBaronsOddEven,
                 ESportsBetTypes.MapXTotalInhibitorsOddEven,
                 ESportsBetTypes.MapXTotalTyrantsOddEven,
-                ESportsBetTypes.MapXTotalOverlordsOddEven
+                ESportsBetTypes.MapXTotalOverlordsOddEven,
+                ESportsBetTypes.MapXTotalGoldOddEven
             };
 
             foreach (var betTypeId in oddEvenBasedBetTypes)

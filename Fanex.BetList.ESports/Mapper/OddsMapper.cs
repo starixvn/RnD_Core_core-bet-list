@@ -12,9 +12,12 @@
 
         private static void RegisterMultipleOddsTypes()
         {
-            for (int betTypeId = ESportsBetTypes.MapXMoneyline; betTypeId <= ESportsBetTypes.MapXOvertime; betTypeId++)
+            for (int betTypeId = ESportsBetTypes.MapXMoneyline; betTypeId <= ESportsBetTypes.MapXFirstTurretLocationKOG; betTypeId++)
             {
-                ConvertByBetType.RegisterMultipleOddsTypes(betTypeId);
+                if(betTypeId != ESportsBetTypes.CorrectMapScore)
+                {
+                    ConvertByBetType.RegisterMultipleOddsTypes(betTypeId);
+                }                
             }
         }
     }

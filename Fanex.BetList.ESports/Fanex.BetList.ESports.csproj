@@ -45,6 +45,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builder\ChoiceBuilder\Choice9113.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice9135.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice9130.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice9142.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice9141.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice9114.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice9101.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9088.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9001.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9002.cs" />

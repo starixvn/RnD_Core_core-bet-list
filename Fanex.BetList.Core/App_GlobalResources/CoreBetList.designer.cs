@@ -430,6 +430,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bottom.
+        /// </summary>
+        public static string Bottom {
+            get {
+                return ResourceManager.GetString("Bottom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bought.
         /// </summary>
         public static string Bought {
@@ -1465,6 +1474,24 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mid.
+        /// </summary>
+        public static string Mid {
+            get {
+                return ResourceManager.GetString("Mid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mid or Bottom.
+        /// </summary>
+        public static string MidBottom {
+            get {
+                return ResourceManager.GetString("MidBottom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Min.
         /// </summary>
         public static string Min {
@@ -1740,6 +1767,24 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string over {
             get {
                 return ResourceManager.GetString("over", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overlord.
+        /// </summary>
+        public static string Overlord {
+            get {
+                return ResourceManager.GetString("Overlord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overlord or Middle.
+        /// </summary>
+        public static string OverlordMiddle {
+            get {
+                return ResourceManager.GetString("OverlordMiddle", resourceCulture);
             }
         }
         
@@ -2338,6 +2383,33 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Top.
+        /// </summary>
+        public static string Top {
+            get {
+                return ResourceManager.GetString("Top", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Top or Bottom.
+        /// </summary>
+        public static string TopBottom {
+            get {
+                return ResourceManager.GetString("TopBottom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Top or Mid.
+        /// </summary>
+        public static string TopMid {
+            get {
+                return ResourceManager.GetString("TopMid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total.
         /// </summary>
         public static string total {
@@ -2433,6 +2505,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string type {
             get {
                 return ResourceManager.GetString("type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tyrant.
+        /// </summary>
+        public static string Tyrant {
+            get {
+                return ResourceManager.GetString("Tyrant", resourceCulture);
             }
         }
         

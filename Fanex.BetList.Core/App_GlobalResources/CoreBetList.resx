@@ -985,4 +985,31 @@
   <data name="Lay" xml:space="preserve">
     <value>{0} Lay</value>
   </data>
+  <data name="Mid" xml:space="preserve">
+    <value>Mid</value>
+  </data>
+  <data name="TopBottom" xml:space="preserve">
+    <value>Top or Bottom</value>
+  </data>
+  <data name="Top" xml:space="preserve">
+    <value>Top</value>
+  </data>
+  <data name="Bottom" xml:space="preserve">
+    <value>Bottom</value>
+  </data>
+  <data name="Overlord" xml:space="preserve">
+    <value>Overlord</value>
+  </data>
+  <data name="Tyrant" xml:space="preserve">
+    <value>Tyrant</value>
+  </data>
+  <data name="OverlordMiddle" xml:space="preserve">
+    <value>Overlord or Middle</value>
+  </data>
+  <data name="MidBottom" xml:space="preserve">
+    <value>Mid or Bottom</value>
+  </data>
+  <data name="TopMid" xml:space="preserve">
+    <value>Top or Mid</value>
+  </data>
 </root>

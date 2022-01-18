@@ -134,5 +134,6 @@
         public const string A26Over = "a26+";
 
         public const string R = "r";
+        public const string T = "t";
     }
 }
