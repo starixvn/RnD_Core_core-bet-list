@@ -718,7 +718,7 @@
     <value>現金編號從：</value>
   </data>
   <data name="CashOut" xml:space="preserve">
-    <value>現金</value>
+    <value>即時兌現</value>
   </data>
   <data name="BoughtLabel" xml:space="preserve">
     <value>買編號從：</value>
