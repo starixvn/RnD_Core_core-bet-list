@@ -37,7 +37,7 @@
             // Arrange
             var txid = "1212124343434";
             var licensee = $"<div class=\"licenseeTxid\">TxID: {txid}</div>";
-            _ticket.ExtraInfo = $"<p48 lt='{txid}'/>";
+            _ticket.ExtraInfo = $"<p28 lt='{txid}'/>";
 
             // Act
             _trans.Render(_ticket);
@@ -49,7 +49,7 @@
         [TestCase(null)]
         [TestCase("")]
         [TestCase("<p99 lt='1211111'/>")]
-        [TestCase("<p48 ab='jdjdjd'/>")]
+        [TestCase("<p28 ab='jdjdjd'/>")]
         public void BuildLicenseeTxId_HasNotLicenseeTxId_HideTxId(string extraInfo)
         {
             // Arrange

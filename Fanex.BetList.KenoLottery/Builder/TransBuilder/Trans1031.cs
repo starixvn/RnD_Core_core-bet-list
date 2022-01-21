@@ -4,7 +4,7 @@
 
     public class Trans1031 : Trans1
     {
-        protected override string ExtraInfoTag => "p48";
+        protected override string ExtraInfoTag => "p28";
 
         protected override void BuildRefNo(ITicket ticket)
         {
