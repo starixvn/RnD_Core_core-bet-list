@@ -44,10 +44,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builder\ChoiceBuilder\Choice4600.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice4599.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice4301.cs" />
+    <Compile Include="Builder\OddsBuilder\Odds4301.cs" />
+    <Compile Include="Builder\StakeBuilder\Stake4599.cs" />
+    <Compile Include="Builder\StatusBuilder\Status4600.cs" />
+    <Compile Include="Builder\StatusBuilder\Status4599.cs" />
     <Compile Include="Builder\StatusBuilder\Status4301.cs" />
     <Compile Include="Constants\SpadegamingBetTypes.cs" />
     <Compile Include="Mapper\ChoiceMapper.cs" />
+    <Compile Include="Mapper\OddsMapper.cs" />
+    <Compile Include="Mapper\StakeMapper.cs" />
     <Compile Include="Mapper\StatusMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

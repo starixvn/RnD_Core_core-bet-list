@@ -9,6 +9,8 @@
 
     public class Choice4301 : Choice1
     {
+        private const string JackpotInfo = "jp=1";
+        private const string JackpotTransIdInfo = "jpw=";
         public const string GameGroupRefId = "SG_RNG_GG";
         public const string GameTypeRefId = "SG_RNG_GT";
 
@@ -45,6 +47,28 @@
             {
                 Template.League.Append(BuildSpadegamingDetailsLink(ticket));
             }
+            else
+            {
+                if(TicketHasJackpotInfo(ticket))
+                {
+                    Template.League.Append(BuildShowJackpotWonDetails(ticket));
+                }
+            }
+        }
+
+        private static bool TicketHasJackpotInfo(ITicket ticket)
+            => !string.IsNullOrEmpty(ticket.ExtraInfo) && ticket.ExtraInfo.ToLowerInvariant().Contains(JackpotInfo);
+
+        private static string BuildShowJackpotWonDetails(ITicket ticket)
+        {
+            var indexOfJackpotTransId = ticket.ExtraInfo.LastIndexOf(JackpotTransIdInfo, StringComparison.InvariantCultureIgnoreCase) + 4;
+            var transId = ticket.ExtraInfo.Substring(indexOfJackpotTransId, ticket.ExtraInfo.Length - indexOfJackpotTransId);
+            var detailLinkMarkup =
+                $"<div class=\"detail SG-detail\" onclick=\"showSGJackpotWonDetails('{transId}', '{ticket.CustId}', '{ticket.BetTypeId}');\">" +
+                $"<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void('');\">{CoreBetList.JackpotWonDetails}</a>" +
+                $"</div>";
+
+            return detailLinkMarkup;
         }
 
         private static string BuildSpadegamingDetailsLink(ITicket ticket)

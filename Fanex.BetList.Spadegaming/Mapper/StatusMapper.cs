@@ -6,7 +6,7 @@
     {
         public StatusMapper()
         {
-            for (int betTypeId = SpadegamingBetTypes.TriplePanda; betTypeId < SpadegamingBetTypes.HighestBetTypeIdInRange; betTypeId++)
+            for (int betTypeId = SpadegamingBetTypes.TriplePanda; betTypeId < SpadegamingBetTypes.JackpotContribution; betTypeId++)
             {
                 MapIdToBaseId(betTypeId, SpadegamingBetTypes.FishingGod);
             }
