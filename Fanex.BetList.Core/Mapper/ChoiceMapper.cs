@@ -531,18 +531,19 @@
             MapIdToBaseId(BetTypes.FirstInnsHighestIndividualScoreFancy, BetTypes.HomeInnsRunsFancy);
 
 
-            MapIdToBaseId(BetTypes.AwayBatsmanSixes, BetTypes.HomeBatsmanSixes);
-            MapIdToBaseId(BetTypes.Home1stInnsBatsmanSixes, BetTypes.HomeBatsmanSixes);
-            MapIdToBaseId(BetTypes.Away1stInnsBatsmanSixes, BetTypes.HomeBatsmanSixes);
-            MapIdToBaseId(BetTypes.Home2ndInnsBatsmanSixes, BetTypes.HomeBatsmanSixes);
-            MapIdToBaseId(BetTypes.Away2ndInnsBatsmanSixes, BetTypes.HomeBatsmanSixes);
+            MapIdToBaseId(BetTypes.HomeBatsmanSixes, BetTypes.Home1stInnsBatsmanMilestones);
+            MapIdToBaseId(BetTypes.AwayBatsmanSixes, BetTypes.Home1stInnsBatsmanMilestones);
+            MapIdToBaseId(BetTypes.Home1stInnsBatsmanSixes, BetTypes.Home1stInnsBatsmanMilestones);
+            MapIdToBaseId(BetTypes.Away1stInnsBatsmanSixes, BetTypes.Home1stInnsBatsmanMilestones);
+            MapIdToBaseId(BetTypes.Home2ndInnsBatsmanSixes, BetTypes.Home1stInnsBatsmanMilestones);
+            MapIdToBaseId(BetTypes.Away2ndInnsBatsmanSixes, BetTypes.Home1stInnsBatsmanMilestones);
 
-            MapIdToBaseId(BetTypes.HomeBatsmanFours, BetTypes.HomeBatsmanSixes);
-            MapIdToBaseId(BetTypes.AwayBatsmanFours, BetTypes.HomeBatsmanSixes);
-            MapIdToBaseId(BetTypes.Home1stInnsBatsmanFours, BetTypes.HomeBatsmanSixes);
-            MapIdToBaseId(BetTypes.Away1stInnsBatsmanFours, BetTypes.HomeBatsmanSixes);
-            MapIdToBaseId(BetTypes.Home2ndInnsBatsmanFours, BetTypes.HomeBatsmanSixes);
-            MapIdToBaseId(BetTypes.Away2ndInnsBatsmanFours, BetTypes.HomeBatsmanSixes);
+            MapIdToBaseId(BetTypes.HomeBatsmanFours, BetTypes.Home1stInnsBatsmanMilestones);
+            MapIdToBaseId(BetTypes.AwayBatsmanFours, BetTypes.Home1stInnsBatsmanMilestones);
+            MapIdToBaseId(BetTypes.Home1stInnsBatsmanFours, BetTypes.Home1stInnsBatsmanMilestones);
+            MapIdToBaseId(BetTypes.Away1stInnsBatsmanFours, BetTypes.Home1stInnsBatsmanMilestones);
+            MapIdToBaseId(BetTypes.Home2ndInnsBatsmanFours, BetTypes.Home1stInnsBatsmanMilestones);
+            MapIdToBaseId(BetTypes.Away2ndInnsBatsmanFours, BetTypes.Home1stInnsBatsmanMilestones);
         }
     }
 }
