@@ -135,5 +135,9 @@
 
         public const string R = "r";
         public const string T = "t";
+        public const string LBW = "lbw";
+        public const string Ro = "ro";
+        public const string Ot = "ot";
+
     }
 }

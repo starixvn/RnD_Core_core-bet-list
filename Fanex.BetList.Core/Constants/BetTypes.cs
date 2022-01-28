@@ -568,5 +568,55 @@
         public const int Away1stInnsTopBowler = 9659;
         public const int Home2ndInnsTopBowler = 9660;
         public const int Away2ndInnsTopBowler = 9661;
+
+        public const int Home1stInnsWicketXMethodofDismissal6Way = 9638;
+        public const int Away1stInnsWicketXMethodofDismissal6Way = 9639;
+        public const int Home2ndInnsWicketXMethodofDismissal6Way = 9640;
+        public const int Away2ndInnsWicketXMethodofDismissal6Way = 9641;
+
+        public const int HomeBatsmanMilestones = 9698;
+        public const int AwayBatsmanMilestones = 9699;
+        public const int HomeBatsmanRuns = 9680;
+        public const int AwayBatsmanRuns = 9690;
+
+        public const int HomeBatsmanRunsFancy = 9714;
+        public const int AwayBatsmanRunsFancy = 9719;
+
+        public const int HomeBatsmanRunsOE = 9681;
+        public const int AwayBatsmanRunsOE = 9691;
+
+        public const int HomeFallofWicketXFancy = 9559;
+        public const int AwayFallofWicketXFancy = 9560;
+
+        public const int HomeNextManOut = 9662;
+        public const int AwayNextManOut = 9663;
+
+        public const int HomeOverXDeliveryYRuns = 9616;
+        public const int AwayOverXDeliveryYRuns = 9617;
+
+        public const int HomeOverXRunsOE = 9618;
+        public const int AwayOverXRunsOE = 9619;
+
+        public const int HomePlayerRuns = 9676;
+        public const int AwayPlayerRuns = 9686;
+
+        public const int HomePlayerRunsFancy = 9712;
+        public const int AwayPlayerRunsFancy = 9717;
+
+        public const int HomePlayerRunsOE = 9677;
+        public const int AwayPlayerRunsOE = 9687;
+
+        public const int HomePrematchTopBatsman = 9668;
+        public const int AwayPrematchTopBatsman = 9669;
+        public const int HomePrematchTopBowler = 9672;
+        public const int AwayPrematchTopBowler = 9673;
+        public const int HomeTopBatsman = 9650;
+        public const int AwayTopBatsman = 9651;
+        public const int HomeTopBowler = 9656;
+        public const int AwayTopBowler = 9657;
+
+        public const int HomeWicketXMethodofDismissal6Way = 9636;
+        public const int AwayWicketXMethodofDismissal6Way = 9637;
+        public const int MostRunOuts = 9615;
     }
 }

@@ -457,6 +457,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bowled.
+        /// </summary>
+        public static string Bowled {
+            get {
+                return ResourceManager.GetString("Bowled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cash.
         /// </summary>
         public static string Cash {
@@ -1384,6 +1393,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to LBW.
+        /// </summary>
+        public static string LBW {
+            get {
+                return ResourceManager.GetString("LBW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to League.
         /// </summary>
         public static string league {
@@ -1753,6 +1771,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Others.
+        /// </summary>
+        public static string Others {
+            get {
+                return ResourceManager.GetString("Others", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Outstanding.
         /// </summary>
         public static string outstanding {
@@ -2059,6 +2086,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Run Out.
+        /// </summary>
+        public static string RunOut {
+            get {
+                return ResourceManager.GetString("RunOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} {1}.
         /// </summary>
         public static string SabaLuckySpinProgramPattern {
@@ -2244,6 +2280,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string status {
             get {
                 return ResourceManager.GetString("status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stumped.
+        /// </summary>
+        public static string Stumped {
+            get {
+                return ResourceManager.GetString("Stumped", resourceCulture);
             }
         }
         

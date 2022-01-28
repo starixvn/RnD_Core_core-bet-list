@@ -177,6 +177,7 @@
     <Compile Include="Builder\ChoiceBuilder\Choice17004.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice229.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice630.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice9638.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9683.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9664.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9670.cs" />

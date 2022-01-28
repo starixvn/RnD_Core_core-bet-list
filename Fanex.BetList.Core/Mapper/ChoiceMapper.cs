@@ -311,7 +311,57 @@
             MapIdToBaseId(BetTypes.Away2ndInnsTopBowler, BetTypes.Home1stInnsPrematchTopBatsman);
 
 
-    }
+            MapIdToBaseId(BetTypes.Away1stInnsWicketXMethodofDismissal6Way, BetTypes.Home1stInnsWicketXMethodofDismissal6Way);
+            MapIdToBaseId(BetTypes.Home2ndInnsWicketXMethodofDismissal6Way, BetTypes.Home1stInnsWicketXMethodofDismissal6Way);
+            MapIdToBaseId(BetTypes.Away2ndInnsWicketXMethodofDismissal6Way, BetTypes.Home1stInnsWicketXMethodofDismissal6Way);
+
+            MapIdToBaseId(BetTypes.HomeBatsmanMilestones, BetTypes.Home1stInnsBatsmanMilestones);
+            MapIdToBaseId(BetTypes.AwayBatsmanMilestones, BetTypes.Home1stInnsBatsmanMilestones);
+            MapIdToBaseId(BetTypes.HomeBatsmanRuns, BetTypes.Home1stInnsBatsmanMilestones);
+            MapIdToBaseId(BetTypes.AwayBatsmanRuns, BetTypes.Home1stInnsBatsmanMilestones);
+
+            MapIdToBaseId(BetTypes.HomeBatsmanRunsFancy, BetTypes.Home1stInnsBatsmanRunsFancy);
+            MapIdToBaseId(BetTypes.AwayBatsmanRunsFancy, BetTypes.Home1stInnsBatsmanRunsFancy);
+
+            MapIdToBaseId(BetTypes.HomeBatsmanRunsOE, BetTypes.Home1stInnsBatsmanRunsOE);
+            MapIdToBaseId(BetTypes.AwayBatsmanRunsOE, BetTypes.Home1stInnsBatsmanRunsOE);
+
+            MapIdToBaseId(BetTypes.HomeFallofWicketXFancy, BetTypes.HomeInnsRunsFancy);
+            MapIdToBaseId(BetTypes.AwayFallofWicketXFancy, BetTypes.HomeInnsRunsFancy);
+
+            MapIdToBaseId(BetTypes.MostRunOuts, BetTypes.FirstTenMinutes1X2);
+            MapIdToBaseId(BetTypes.HomeNextManOut, BetTypes.Home1stInnsNextManOut);
+            MapIdToBaseId(BetTypes.AwayNextManOut, BetTypes.Home1stInnsNextManOut);
+
+            MapIdToBaseId(BetTypes.HomeOverXDeliveryYRuns, BetTypes.HomeGroup1XRuns);
+            MapIdToBaseId(BetTypes.AwayOverXDeliveryYRuns, BetTypes.HomeGroup1XRuns);
+
+            MapIdToBaseId(BetTypes.HomeOverXRunsOE, BetTypes.HomeGroup1XRunsOE);
+            MapIdToBaseId(BetTypes.AwayOverXRunsOE, BetTypes.HomeGroup1XRunsOE);
+
+            MapIdToBaseId(BetTypes.HomePlayerRuns, BetTypes.Home1stInnsBatsmanMilestones);
+            MapIdToBaseId(BetTypes.AwayPlayerRuns, BetTypes.Home1stInnsBatsmanMilestones);
+
+            MapIdToBaseId(BetTypes.HomePlayerRunsFancy, BetTypes.Home1stInnsBatsmanRunsFancy);
+            MapIdToBaseId(BetTypes.AwayPlayerRunsFancy, BetTypes.Home1stInnsBatsmanRunsFancy);
+
+            MapIdToBaseId(BetTypes.HomePlayerRunsOE, BetTypes.Home1stInnsBatsmanRunsOE);
+            MapIdToBaseId(BetTypes.AwayPlayerRunsOE, BetTypes.Home1stInnsBatsmanRunsOE);
+
+            MapIdToBaseId(BetTypes.HomePrematchTopBatsman, BetTypes.Home1stInnsPrematchTopBatsman);
+            MapIdToBaseId(BetTypes.AwayPrematchTopBatsman, BetTypes.Home1stInnsPrematchTopBatsman);
+            MapIdToBaseId(BetTypes.HomePrematchTopBowler, BetTypes.Home1stInnsPrematchTopBatsman);
+            MapIdToBaseId(BetTypes.AwayPrematchTopBowler, BetTypes.Home1stInnsPrematchTopBatsman);
+            MapIdToBaseId(BetTypes.HomeTopBatsman, BetTypes.Home1stInnsPrematchTopBatsman);
+            MapIdToBaseId(BetTypes.AwayTopBatsman, BetTypes.Home1stInnsPrematchTopBatsman);
+            MapIdToBaseId(BetTypes.HomeTopBowler, BetTypes.Home1stInnsPrematchTopBatsman);
+            MapIdToBaseId(BetTypes.AwayTopBowler, BetTypes.Home1stInnsPrematchTopBatsman);
+
+            MapIdToBaseId(BetTypes.HomeWicketXMethodofDismissal6Way, BetTypes.Home1stInnsWicketXMethodofDismissal6Way);
+            MapIdToBaseId(BetTypes.AwayWicketXMethodofDismissal6Way, BetTypes.Home1stInnsWicketXMethodofDismissal6Way);
+
+            MapIdToBaseId(BetTypes.MostRunOuts, BetTypes.Home1stInnsWicketXMethodofDismissal6Way);
+        }
         private void MapForCricketAIOP1()
         {
             MapIdToBaseId(BetTypes.TossWinner, BetTypes.SuperOverWinner);
