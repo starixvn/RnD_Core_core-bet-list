@@ -618,5 +618,57 @@
         public const int HomeWicketXMethodofDismissal6Way = 9636;
         public const int AwayWicketXMethodofDismissal6Way = 9637;
         public const int MostRunOuts = 9615;
+
+        public const int BoundaryFoursHome1stInnsOverX = 9626;
+        public const int BoundaryFoursAway1stInnsOverX = 9627;
+        public const int BoundaryFoursHome2ndInnsOverX = 9628;
+        public const int BoundaryFoursAway2ndInnsOverX = 9629;
+        public const int BoundaryFoursHomeOverX = 9624;
+        public const int BoundaryFoursAwayOverX = 9625;
+
+        public const int BoundarySixesHomeOverX = 9630;
+        public const int BoundarySixesAwayOverX = 9631;
+        public const int BoundarySixesHome1stInnsOverX = 9632;
+        public const int BoundarySixesAway1stInnsOverX = 9633;
+        public const int BoundarySixesHome2ndInnsOverX = 9634;
+        public const int BoundarySixesAway2ndInnsOverX = 9635;
+
+        public const int Home1stInnsSixesFancy = 9582;
+        public const int Away1stInnsSixesFancy = 9583;
+        public const int Home2ndInnsSixesFancy = 9584;
+        public const int Away2ndInnsSixesFancy = 9585;
+        public const int Home1stInnsFoursFancy = 9576;
+        public const int Away1stInnsFoursFancy = 9577;
+        public const int Home2ndInnsFoursFancy = 9578;
+        public const int Away2ndInnsFoursFancy = 9579;
+
+        public const int Home1stInnsFoursOE = 9534;
+        public const int Away1stInnsFoursOE = 9535;
+        public const int Home2ndInnsFoursOE = 9536;
+        public const int Away2ndInnsFoursOE = 9537;
+
+        public const int HomeOverXRunsFancy = 9722;
+        public const int AwayOverXRunsFancy = 9723;
+        public const int Home1stInnsOverXRunsFancy = 9724;
+        public const int Away1stInnsOverXRunsFancy = 9725;
+        public const int Home2ndInnsOverXRunsFancy = 9726;
+        public const int Away2ndInnsOverXRunsFancy = 9727;
+
+        public const int FirstInnsHighestOverScoreFancy = 9728;
+        public const int FirstInnsHighestIndividualScoreFancy = 9729;
+
+        public const int HomeBatsmanSixes = 9730;
+        public const int AwayBatsmanSixes = 9731;
+        public const int Home1stInnsBatsmanSixes = 9732;
+        public const int Away1stInnsBatsmanSixes = 9733;
+        public const int Home2ndInnsBatsmanSixes = 9734;
+        public const int Away2ndInnsBatsmanSixes = 9735;
+
+        public const int HomeBatsmanFours = 9736;
+        public const int AwayBatsmanFours = 9737;
+        public const int Home1stInnsBatsmanFours = 9738;
+        public const int Away1stInnsBatsmanFours = 9739;
+        public const int Home2ndInnsBatsmanFours = 9696;
+        public const int Away2ndInnsBatsmanFours = 9697;
     }
 }
