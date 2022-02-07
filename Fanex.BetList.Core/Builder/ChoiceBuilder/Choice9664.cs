@@ -1,9 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using Entities;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Constants;
-    using Fanex.BetList.Core.Utils;
     using System.Collections.Generic;
 
     /// <summary>
@@ -13,17 +10,24 @@
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            const int NumberOfTeams = 2;
             var players = ticket.TransDesc.Split(',');
             if (players.Length >= 1)
             {
                 Template.betTeam = ticketHelper.GetTeamNameById(players[0]);
-                if (players.Length >= NumberOfTeams)
-                {
-                    Template.betTeam += $"<div class='match'>{ticketHelper.GetTeamNameById(players[0])} - vs - {ticketHelper.GetTeamNameById(players[1])}";
-                }
             }
 
+        }
+
+        protected override void BuildPlayers(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData = null)
+        {
+            const int NumberOfTeams = 2;
+            var players = ticket.TransDesc.Split(',');
+            if (players.Length >= NumberOfTeams)
+            {
+                Template.Players.Visible = true;
+                Template.Players.homePlayer = ticketHelper.GetTeamNameById(players[0]);
+                Template.Players.awayPlayer = ticketHelper.GetTeamNameById(players[1]);
+            }
         }
     }
 }

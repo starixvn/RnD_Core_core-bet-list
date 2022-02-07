@@ -420,6 +420,10 @@
         public const int Away2ndInnsSixes = 9465;
         public const int HomeOverXExactRuns = 9484;
         public const int AwayOverXExactRuns = 9485;
+        public const int Home1stInnsOverXExactRuns = 9486;
+        public const int Away1stInnsOverXExactRuns = 9487;
+        public const int Home2ndInnsOverXExactRuns = 9488;
+        public const int Away2ndInnsOverXExactRuns = 9489;
         public const int HomeOverXBallYExactRuns = 9490;
         public const int AwayOverXBallYExactRuns = 9491;
         public const int HomeInnsRunsOE = 9496;

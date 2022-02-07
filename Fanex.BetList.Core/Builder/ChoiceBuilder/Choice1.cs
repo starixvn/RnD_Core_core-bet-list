@@ -233,6 +233,8 @@
 
             BuildScore(ticket);
 
+            BuildPlayers(ticket, ticketHelper, ticketData);
+
             BuildBetType(ticket, ticketHelper, ticketData);
 
             BuildLeague(ticket, ticketHelper);
@@ -457,6 +459,11 @@
             {
                 Template.EventDate.Hide();
             }
+        }
+
+        protected virtual void BuildPlayers(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData = null)
+        {
+            Template.Players.Visible = false;
         }
 
         #endregion Build Html Block
