@@ -194,6 +194,9 @@
             // the 1st line
             BuildBetFigure(ticket, ref rtfHelper, isMixParlay);
 
+            // the players line
+            BuildPlayers(ticket, ref rtfHelper);
+
             // the 2nd line
             BuildBetTypeName(ref rtfHelper);
 
@@ -559,6 +562,10 @@
                 choice = choice.Replace(HtmlCharacters.NoneBreakingSpace, Space);
                 rtfHelper.RTFRenderer.AddText(choice, rtfHelper.PosFont);
             }
+        }
+
+        protected virtual void BuildPlayers(ITicket ticket, ref RTFHelper rtfHelper)
+        {
         }
 
         protected virtual void BuildBetTypeName(ref RTFHelper rtfHelper)

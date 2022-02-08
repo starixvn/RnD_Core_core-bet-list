@@ -3,7 +3,6 @@
     using Entities;
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Constants;
-    using Fanex.BetList.Core.Utils;
     using System.Collections.Generic;
 
     /// <summary>
@@ -13,11 +12,18 @@
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            var teamName = $"<span class='{Underdog}'>{ticketHelper.GetTeamNameById(ticket.TransDesc)}</span> - ";
+            var teamName = $"{ticketHelper.GetTeamNameById(ticket.TransDesc)} - ";
             var yesNo = BetTeamValue.N == ticket.BetTeam.ToLowerInvariant() ? 
                 CoreBetList.lblNo : 
                 CoreBetList.lblYes;
             Template.betTeam = $"{teamName}{yesNo}";
+        }
+
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            base.BuildBetTeamClassNameAndHandicap(ticket);
+
+            Template.betTeamClassName = Underdog;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using Entities;
+    using Fanex.BetList.Core.Constants;
     using System.Collections.Generic;
 
     /// <summary>
@@ -27,6 +28,20 @@
                 Template.Players.Visible = true;
                 Template.Players.homePlayer = ticketHelper.GetTeamNameById(players[0]);
                 Template.Players.awayPlayer = ticketHelper.GetTeamNameById(players[1]);
+            }
+        }
+
+        protected override void BuildPlayers(ITicket ticket, ref RTFHelper rtfHelper)
+        {
+            if (Template.Players != null)
+            {
+                var choice = string.Empty;
+                if (!string.IsNullOrEmpty(Template.Players.homePlayer) && !string.IsNullOrEmpty(Template.Players.awayPlayer))
+                {
+                    choice = string.Join(null, new[] { "\n", Template.Players.homePlayer, " - vs - ", Template.Players.awayPlayer });
+                    choice = choice.Replace(HtmlCharacters.NoneBreakingSpace, " ");
+                    rtfHelper.RTFRenderer.AddText(choice);
+                }
             }
         }
     }
