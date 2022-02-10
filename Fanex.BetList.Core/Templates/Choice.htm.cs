@@ -25,8 +25,7 @@ namespace Fanex.BetList.Core
 			public Choice_OddMixParlay_Block OddMixParlay = new Choice_OddMixParlay_Block();
 			public Choice_Score_Block Score = new Choice_Score_Block();
 			protected static string s4 = "</span>";
-            public Choice_Players_Block Players = new Choice_Players_Block();
-            public Choice_BetType_Block BetType = new Choice_BetType_Block();
+			public Choice_BetType_Block BetType = new Choice_BetType_Block();
 			public Choice_Match_Block Match = new Choice_Match_Block();
 			public Choice_League_Block League = new Choice_League_Block();
 			public Choice_EventDate_Block EventDate = new Choice_EventDate_Block();
@@ -48,8 +47,7 @@ namespace Fanex.BetList.Core
 					if(null != OddMixParlay) OddMixParlay.ToString(ref bd);
 					if(null != Score) Score.ToString(ref bd);
 					bd.Append(s4);
-                    if (null != Players) Players.ToString(ref bd);
-                    if (null != BetType) BetType.ToString(ref bd);
+					if(null != BetType) BetType.ToString(ref bd);
 					if(null != Match) Match.ToString(ref bd);
 					if(null != League) League.ToString(ref bd);
 					if(null != EventDate) EventDate.ToString(ref bd);
@@ -286,35 +284,7 @@ namespace Fanex.BetList.Core
 			}
 		}
 
-        public class Choice_Players_Block : Block
-        {
-            protected static string s33 = "<div class=\"match\"><span>";
-            public string homePlayer = "{homePlayer}";
-            protected static string s34 = "</span>";
-            public Choice_Match_VS_Block VS = new Choice_Match_VS_Block();
-            protected static string s35 = "<span>";
-            public string awayPlayer = "{awayPlayer}";
-            protected static string s36 = "</span>";
-            protected static string s37 = "</div>";
-            public override void ToString(ref StringBuilder bd)
-            {
-                if (!Visible) return;
-                if (RenderChild)
-                {
-                    bd.Append(s33);
-                    bd.Append(homePlayer);
-                    bd.Append(s34);
-                    if (null != VS) VS.ToString(ref bd);
-                    bd.Append(s35);
-                    bd.Append(awayPlayer);
-                    bd.Append(s36);
-                    bd.Append(s37);
-                }
-                if (IsAssigned) { bd.Append(Value); }
-            }
-        }
-
-    }
+	}
 }
 #pragma warning enable
 #endregion

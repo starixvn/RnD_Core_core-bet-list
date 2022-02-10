@@ -322,7 +322,8 @@
             MapIdToBaseId(BetTypes.AwayBatsmanRunsOE, BetTypes.Home1stInnsBatsmanRunsOE);
 
             MapIdToBaseId(BetTypes.MostRunOuts, BetTypes.FirstTenMinutes1X2);
-            MapIdToBaseId(BetTypes.AwayNextManOut, BetTypes.HomeNextManOut);
+            MapIdToBaseId(BetTypes.HomeNextManOut, BetTypes.Home1stInnsNextManOut);
+            MapIdToBaseId(BetTypes.AwayNextManOut, BetTypes.Home1stInnsNextManOut);
             MapIdToBaseId(BetTypes.HomeOverXDeliveryYRuns, BetTypes.HomeGroup1XRuns);
             MapIdToBaseId(BetTypes.AwayOverXDeliveryYRuns, BetTypes.HomeGroup1XRuns);
             MapIdToBaseId(BetTypes.HomeOverXRunsOE, BetTypes.HomeGroup1XRunsOE);

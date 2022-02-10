@@ -194,9 +194,6 @@
             // the 1st line
             BuildBetFigure(ticket, ref rtfHelper, isMixParlay);
 
-            // the players line
-            BuildPlayers(ticket, ref rtfHelper);
-
             // the 2nd line
             BuildBetTypeName(ref rtfHelper);
 
@@ -235,8 +232,6 @@
             BuildBetTeam(ticket, ticketHelper, ticketData);
 
             BuildScore(ticket);
-
-            BuildPlayers(ticket, ticketHelper, ticketData);
 
             BuildBetType(ticket, ticketHelper, ticketData);
 
@@ -464,11 +459,6 @@
             }
         }
 
-        protected virtual void BuildPlayers(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData = null)
-        {
-            Template.Players.Visible = false;
-        }
-
         #endregion Build Html Block
 
         public virtual string GetBetTypeName(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData = null)
@@ -562,10 +552,6 @@
                 choice = choice.Replace(HtmlCharacters.NoneBreakingSpace, Space);
                 rtfHelper.RTFRenderer.AddText(choice, rtfHelper.PosFont);
             }
-        }
-
-        protected virtual void BuildPlayers(ITicket ticket, ref RTFHelper rtfHelper)
-        {
         }
 
         protected virtual void BuildBetTypeName(ref RTFHelper rtfHelper)

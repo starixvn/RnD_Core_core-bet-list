@@ -9,40 +9,35 @@
     /// </summary>
     public class Choice9664 : Choice1
     {
+        private const int NumberOfTeams = 2;
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             var players = ticket.TransDesc.Split(',');
             if (players.Length >= 1)
             {
-                Template.betTeam = ticketHelper.GetTeamNameById(players[0]);
-            }
+                Template.betTeam = ticketHelper.GetTeamNameById(players[0]).Replace(" ", HtmlCharacters.NoneBreakingSpace);
 
-        }
-
-        protected override void BuildPlayers(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData = null)
-        {
-            const int NumberOfTeams = 2;
-            var players = ticket.TransDesc.Split(',');
-            if (players.Length >= NumberOfTeams)
-            {
-                Template.Players.Visible = true;
-                Template.Players.homePlayer = ticketHelper.GetTeamNameById(players[0]);
-                Template.Players.awayPlayer = ticketHelper.GetTeamNameById(players[1]);
-            }
-        }
-
-        protected override void BuildPlayers(ITicket ticket, ref RTFHelper rtfHelper)
-        {
-            if (Template.Players != null)
-            {
-                var choice = string.Empty;
-                if (!string.IsNullOrEmpty(Template.Players.homePlayer) && !string.IsNullOrEmpty(Template.Players.awayPlayer))
+                if (players.Length >= NumberOfTeams)
                 {
-                    choice = string.Join(null, new[] { "\n", Template.Players.homePlayer, " - vs - ", Template.Players.awayPlayer });
-                    choice = choice.Replace(HtmlCharacters.NoneBreakingSpace, " ");
-                    rtfHelper.RTFRenderer.AddText(choice);
+                    var choicePlayers = string.Join(null, ticketHelper.GetTeamNameById(players[0]), " & ", ticketHelper.GetTeamNameById(players[1]), " - ");
+                    choicePlayers = choicePlayers.Replace(" ", HtmlCharacters.NoneBreakingSpace);
+                    Template.betTeam = string.Join(null, "<span class=\"match\">", choicePlayers, "</span>" ,Template.betTeam);
                 }
             }
+        }
+
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            Template.Handicap.handicap = null;
+            Template.betTeamClassName = Favorite;
+        }
+
+        protected override void AdjustBetTeamToRTF()
+        {
+            base.AdjustBetTeamToRTF();
+
+            Template.betTeam = Template.betTeam.Replace("<span class=\"match\">", string.Empty);
+            Template.betTeam = Template.betTeam.Replace("</span>", string.Empty);
         }
     }
 }
