@@ -1,5 +1,6 @@
-﻿namespace Fanex.BetList.GDG.Test.Builder.StatusBuilder
+﻿namespace Fanex.BetList.BG.Test.Builder.StatusBuilder
 {
+    using System;
     using Core.Builder.StatusBuilder;
     using Core.Entities;
     using NSubstitute;
@@ -18,35 +19,53 @@
             _status = new Status3501();
             _ticket = Substitute.For<ITicket>();
             _ticketHelper = Substitute.For<ITicketHelper>();
+            
+            _ticket.BetCheck = "BetCheck";
+            _ticket.CustId = 456;
+            _ticket.Status = BetStatus.Won;
+            _ticket.BetTeam = "betteam";
+            _ticket.CurrencyId = 20;
+            _ticket.SiteId = "siteid";
+            _ticket.WinlostDate = DateTime.Today;
+            _ticket.MatchCode = "matchecode";
+        }
+
+
+        [Test]
+        public void BuildStatusResult_NewDetailTicket_ShowResultLink()
+        {
+            // Arrange
+            _ticket.TransDesc = "transdesc";
+
+            // Act.
+            var template = _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert.
+            Assert.True(template.StatusResult.Visible);
         }
 
         [Test]
-        public void BuildStatusResult_TrandescDataIsEmpty_HideStatusResultLink()
+        public void BuildStatusResult_OldDetailTicket_ShowResultLink()
         {
-            ////Arrange
-            _ticket.TransDesc = string.Empty;
+            // Act.
+            _ticket.WinlostDate = DateTime.Today.AddDays(-41);
+            var template = _status.Render(_ticket, _ticketHelper, null, false);
 
-            ////Act
-            _status.Render(_ticket, _ticketHelper, null, false);
-
-            ////Assert
-            Assert.IsTrue(string.IsNullOrEmpty(_status.Template.StatusResult.ToString()));
+            // Assert.
+            Assert.False(template.StatusResult.Visible);
         }
 
         [Test]
         public void BuildStatusResult_TrandescDataIsNotEmpty_ShowStatusResultLink()
         {
-            ////Arrange
-            _ticket.BetId = 123;
-            _ticket.CustId = 1234;
+            //// Arrange
             _ticket.TransDesc = "transdesc";
-            _ticket.BetCheck = "BetCheck";
-            _ticket.BetTeam = "betteam";
+
             ////Act
             _status.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            Assert.AreEqual("123, 'betteam', 1234, 'BetCheck'", _status.Template.StatusResult.betId);
+            Assert.AreEqual("20, 'matchecode', 456, 'BetCheck', 'siteid'", _status.Template.StatusResult.betId);
         }
     }
 }

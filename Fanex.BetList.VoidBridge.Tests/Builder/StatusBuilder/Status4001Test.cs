@@ -22,6 +22,26 @@
             _ticket = Substitute.For<ITicket>();
             _ticketHelper = Substitute.For<ITicketHelper>();
             _status = new Status4001();
+
+            _ticket.CustId = 456;
+            _ticket.BetTeam = "betteam";
+            _ticket.CurrencyId = 20;
+            _ticket.SiteId = "siteid";
+        }
+
+        [Test]
+        public void BuildStatusResult_TicketBetCheckIsNotNullOrEmpty_AppendResultParameterList()
+        {
+            // Arrange
+            _ticket.BetCheck = "BetCheck";
+
+            // Act.
+            var template = _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert.
+            var expectedParameters = $"20, '{_ticket.BetTeam}', {_ticket.CustId}, '{_ticket.BetCheck}', '{_ticket.SiteId}'";
+
+            Assert.AreEqual(expectedParameters, template.StatusResult.betId);
         }
 
         [Test]
@@ -49,21 +69,6 @@
 
             ////Assert
             Assert.IsTrue(_status.Template.StatusResult.Visible);
-        }
-
-        [Test]
-        public void BuildStatusResult_ForDetailTickets_RefNoIsBetCheckString()
-        {
-            ////Arrange
-            const string expectedBetCheck = "123";
-
-            _ticket.BetCheck = expectedBetCheck;
-
-            ////Act
-            _status.Render(_ticket, _ticketHelper, null, false);
-
-            ////Assert
-            Assert.AreEqual($"'{expectedBetCheck}'", _status.Template.StatusResult.refNo);
         }
 
         [Test]

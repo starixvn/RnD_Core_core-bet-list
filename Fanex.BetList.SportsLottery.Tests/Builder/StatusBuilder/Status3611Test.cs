@@ -18,20 +18,23 @@
             _status = new Status3611();
             _ticket = Substitute.For<ITicket>();
             _ticketHelper = Substitute.For<ITicketHelper>();
+
+            _ticket.CustId = 456;
+            _ticket.BetTeam = "betteam";
+            _ticket.CurrencyId = 20;
+            _ticket.SiteId = "siteid";
         }
-       
+
         [Test]
-        public void BuildStatusResult_AlwaysCorrect_BetId()
+        public void BuildStatusResult_TicketBetCheckIsNotNullOrEmpty_AppendResultParameterList()
         {
-            ////Arrange
-            _ticket.CustId = 123;
-            _ticket.BetCheck = "BetCheck";
+            // Act.
+            var template = _status.Render(_ticket, _ticketHelper, null, false);
 
-            ////Act
-            _status.Render(_ticket, _ticketHelper, null, false);
+            // Assert.
+            var expectedParameters = $"20, '', {_ticket.CustId}, '{_ticket.BetCheck}', '{_ticket.SiteId}'";
 
-            ////Assert
-            Assert.AreEqual("0, '', 123, 'BetCheck'", _status.Template.StatusResult.betId);
+            Assert.AreEqual(expectedParameters, template.StatusResult.betId);
         }
     }
 }

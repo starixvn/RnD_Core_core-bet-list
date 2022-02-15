@@ -1,5 +1,6 @@
 ﻿namespace Fanex.BetList.CardClub.Tests.Builder.StatusBuilder
 {
+    using System;
     using Core.Builder.StatusBuilder;
     using Core.Entities;
     using NSubstitute;
@@ -17,7 +18,14 @@
             _status = new Status1901();
             _ticket = Substitute.For<ITicket>();
             _ticketHelper = Substitute.For<ITicketHelper>();
+
+            _ticket.BetCheck = "BetCheck";
+            _ticket.CustId = 456;
             _ticket.Status = BetStatus.Won;
+            _ticket.BetTeam = "betteam";
+            _ticket.CurrencyId = 20;
+            _ticket.SiteId = "siteid";
+            _ticket.WinlostDate = DateTime.Today;
         }
 
         [Test]
@@ -34,18 +42,38 @@
         }
 
         [Test]
-        public void BuildStatusResult_IsDetailTicket_ShowStatusResultWithRefNoIsBetCheck()
+        public void BuildStatusResult_OldTicket_ShowResultLink()
         {
-            // Arrange
-            const string expectedRefNo = "'1234'";
-            _ticket.BetCheck = "1234";
+            // Act.
+            _ticket.WinlostDate = DateTime.Today.AddDays(-91);
+            var template = _status.Render(_ticket, _ticketHelper, null, false);
 
+            // Assert.
+            Assert.False(template.StatusResult.Visible);
+        }
+
+        [Test]
+        public void BuildStatusResult_NewDetailTicket_ShowResultLink()
+        {
             // Act.
             var template = _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
             Assert.True(template.StatusResult.Visible);
-            Assert.AreEqual(expectedRefNo, template.StatusResult.refNo);
+        }
+
+        [Test]
+        public void BuildStatusResult_IsDetailTicket_ShowStatusResultWithRefNoIsBetCheck()
+        {
+            // Arrange
+
+            // Act.
+            var template = _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert.
+            var expectedParameters = $"20, '{_ticket.BetTeam}', {_ticket.CustId}, '{_ticket.BetCheck}', '{_ticket.SiteId}'";
+
+            Assert.AreEqual(expectedParameters, template.StatusResult.betId);
         }
     }
 }

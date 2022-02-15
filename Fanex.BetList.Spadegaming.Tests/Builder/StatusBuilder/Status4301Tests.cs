@@ -1,5 +1,6 @@
 ﻿namespace Fanex.BetList.Spadegaming.Tests.Builder.StatusBuilder
 {
+    using System;
     using Fanex.BetList.Core.Builder.StatusBuilder;
     using Fanex.BetList.Core.Entities;
     using NSubstitute;
@@ -18,10 +19,13 @@
             _ticket = Substitute.For<ITicket>();
             _ticketHelper = Substitute.For<ITicketHelper>();
 
-            _ticket.BetId = 123;
             _ticket.BetCheck = "BetCheck";
             _ticket.CustId = 456;
             _ticket.Status = BetStatus.Won;
+            _ticket.BetTeam = "betteam";
+            _ticket.CurrencyId = 20;
+            _ticket.SiteId = "siteid";
+            _ticket.WinlostDate = DateTime.Today;
         }
 
         [TestCase(null)]
@@ -39,7 +43,7 @@
         }
 
         [Test]
-        public void BuildStatusResult_TicketBetCheckIsNotNullOrEmpty_ShowResultLink()
+        public void BuildStatusResult_NewDetailTicket_ShowResultLink()
         {
             // Act.
             var template = _status.Render(_ticket, _ticketHelper, null, false);
@@ -49,28 +53,24 @@
         }
 
         [Test]
-        public void BuildStatusResult_TicketBetCheckIsNotNullOrEmpty_AppendBetCheckAndCustIdAfterBetIdInParameterListOfResultLink()
+        public void BuildStatusResult_OldDetailTicket_ShowResultLink()
         {
             // Act.
+            _ticket.WinlostDate = DateTime.Today.AddDays(-31);
             var template = _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            var expectedParameters = $"{_ticket.BetId}, '{_ticket.BetCheck}', {_ticket.CustId}";
-
-            Assert.AreEqual(expectedParameters, template.StatusResult.betId);
+            Assert.False(template.StatusResult.Visible);
         }
 
         [Test]
-        public void BuildStatusResult_TicketBetIdIsNullAndTicketBetCheckIsNotNullOrEmpty_SetZeroAsBetIdInParameterListOfResultLink()
+        public void BuildStatusResult_TicketBetCheckIsNotNullOrEmpty_AppendResultParameterList()
         {
-            // Arrange.
-            _ticket.BetId = null;
-
             // Act.
             var template = _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            var expectedParameters = $"0, '{_ticket.BetCheck}', {_ticket.CustId}";
+            var expectedParameters = $"20, '{_ticket.BetTeam}', {_ticket.CustId}, '{_ticket.BetCheck}', '{_ticket.SiteId}'";
 
             Assert.AreEqual(expectedParameters, template.StatusResult.betId);
         }

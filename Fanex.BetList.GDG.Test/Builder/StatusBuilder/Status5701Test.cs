@@ -1,5 +1,6 @@
 ﻿namespace Fanex.BetList.GDG.Test.Builder.StatusBuilder
 {
+    using System;
     using Core.Builder.StatusBuilder;
     using Core.Entities;
     using NSubstitute;
@@ -18,6 +19,15 @@
             _status = new Status5701();
             _ticket = Substitute.For<ITicket>();
             _ticketHelper = Substitute.For<ITicketHelper>();
+
+            _ticket.BetCheck = "BetCheck";
+            _ticket.CustId = 456;
+            _ticket.Status = BetStatus.Won;
+            _ticket.BetTeam = "betteam";
+            _ticket.CurrencyId = 20;
+            _ticket.SiteId = "siteid";
+            _ticket.WinlostDate = DateTime.Today;
+            _ticket.MatchCode = "matchcode";
         }
 
         [Test]
@@ -34,34 +44,28 @@
         }
 
         [Test]
-        public void BuildStatusResult_TrandescDataIsNotEmpty_ShowStatusResultLink()
+        public void BuildStatusResult_OldDetailTicket_ShowResultLink()
         {
-            ////Arrange
-            _ticket.BetId = 123;
-            _ticket.CustId = 1234;
-            _ticket.TransDesc = "transdesc";
-            _ticket.BetCheck = "BetCheck";
-            _ticket.MatchCode = "MatchCode";
+            // Act.
+            _ticket.WinlostDate = DateTime.Today.AddDays(-61);
+            var template = _status.Render(_ticket, _ticketHelper, null, false);
 
-            ////Act
-            _status.Render(_ticket, _ticketHelper, null, false);
-
-            ////Assert
-            Assert.AreEqual("123, 'MatchCode', 1234, 'BetCheck'", _status.Template.StatusResult.betId);
+            // Assert.
+            Assert.False(template.StatusResult.Visible);
         }
 
         [Test]
-        public void BuildStatusResult_Always_ShowSiteIdFromLeague()
+        public void BuildStatusResult_TrandescDataIsNotEmpty_ShowStatusResultLink()
         {
             ////Arrange
             _ticket.TransDesc = "transdesc";
-            _ticket.BetTeam = "SiteId";
 
             ////Act
             _status.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            Assert.AreEqual("SiteId", _status.Template.StatusResult.league);
+            Assert.AreEqual("20, 'matchcode', 456, 'BetCheck', 'siteid'", _status.Template.StatusResult.betId);
         }
+
     }
 }

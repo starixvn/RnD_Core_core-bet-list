@@ -51,20 +51,6 @@
         }
 
         [Test]
-        public void BuildStatusResult_BetCheckIsNotEmpty_RefNoIsStringOfBetCheck()
-        {
-            // Arrange
-            _ticket.BetCheck = "Player History Number";
-
-            // Act
-            Status_Template statusTemplate = _status.Render(_ticket, _ticketHelper, null, false);
-
-            // Assert
-            var expectedRefNo = "'Player History Number'";
-            Assert.AreEqual(expectedRefNo, statusTemplate.StatusResult.refNo);
-        }
-
-        [Test]
         public void BuildResultLRF_Always_ContainStatusOnly()
         {
             // Act
