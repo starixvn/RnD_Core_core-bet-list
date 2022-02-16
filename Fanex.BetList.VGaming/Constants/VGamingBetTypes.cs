@@ -9,5 +9,6 @@
         public const int TexasHoldemPoker = 3837;
         public const int JackpotContribution = 3898;        
         public const int JackpotPrize = 3899;
+        public const int PaiGowPoker = 3842;
     }
 }
