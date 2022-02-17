@@ -86,7 +86,7 @@
             }
         }
 
-        private static Choice_League_Block BuildDetailLink(ITicket ticket)
+        public static Choice_League_Block BuildDetailLink(ITicket ticket)
         {
             var detailLinkMarkupBuilder = new StringBuilder();
             var detailFunction = BuildDetailFunction(ticket);
@@ -127,7 +127,7 @@
             return detailFunctionBuilder.ToString();
         }
 
-        private static string BuildBetTypeName(ITicket ticket, ITicketHelper ticketHelper)
+        public static string BuildBetTypeName(ITicket ticket, ITicketHelper ticketHelper)
         {
             var betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
 
@@ -144,7 +144,7 @@
             return string.Empty;
         }
 
-        private static string BuildGameId(ITicket ticket)
+        public static string BuildGameId(ITicket ticket)
             => $"{OpenGameIdTag}{ticket.MatchCode}{CloseGameIdTag}";
 
         protected override void AdjustBetTeamToRTF()

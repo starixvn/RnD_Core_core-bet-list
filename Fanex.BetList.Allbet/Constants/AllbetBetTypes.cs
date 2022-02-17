@@ -7,6 +7,6 @@
         public const int SicboHiLo = 2404;
         public const int BullBull = 2407;
         public const int PokDeng = 2408;
-        public const int HighestBetTypeIdInRange = 2499;
+        public const int Promotion = 2499;
     }
 }

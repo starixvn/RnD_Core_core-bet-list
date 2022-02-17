@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builder\ChoiceBuilder\Choice2401.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice2499.cs" />
     <Compile Include="Builder\OddsBuilder\Odds2401.cs" />
     <Compile Include="Builder\OddsBuilder\Odds2404.cs" />
     <Compile Include="Builder\OddsBuilder\Odds2408.cs" />

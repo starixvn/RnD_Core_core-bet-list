@@ -6,7 +6,7 @@
     {
         public StatusMapper()
         {
-            for (var betType = AllbetBetTypes.VipBaccarat; betType <= AllbetBetTypes.HighestBetTypeIdInRange; betType++)
+            for (var betType = AllbetBetTypes.VipBaccarat; betType <= AllbetBetTypes.Promotion; betType++)
             {
                 MapIdToBaseId(betType, AllbetBetTypes.Baccarat);
             }
