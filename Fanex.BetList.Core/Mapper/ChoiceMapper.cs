@@ -266,6 +266,7 @@
             MapIdToBaseId(BetTypes.Away2ndInnsBatsmanRuns, BetTypes.Home1stInnsBatsmanMilestones);
             
             MapIdToBaseId(BetTypes.Home2ndInnsBatsmanRunsFancy, BetTypes.Home1stInnsBatsmanRunsFancy);
+            MapIdToBaseId(BetTypes.Away1stInnsBatsmanRunsFancy, BetTypes.Home1stInnsBatsmanRunsFancy);
             MapIdToBaseId(BetTypes.Away2ndInnsBatsmanRunsFancy, BetTypes.Home1stInnsBatsmanRunsFancy);
 
             MapIdToBaseId(BetTypes.Away1stInnsBatsmanRunsOE, BetTypes.Home1stInnsBatsmanRunsOE);

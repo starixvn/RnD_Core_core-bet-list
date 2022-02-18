@@ -534,11 +534,6 @@
         public const int Home2ndInnsBatsmanRunsFancy = 9716;
         public const int Away2ndInnsBatsmanRunsFancy = 9721;
 
-        public const int Home1stInnsFallofWicketXFancy = 9561;
-        public const int Away1stInnsFallofWicketXFancy = 9562;
-        public const int Home2ndInnsFallofWicketXFancy = 9563;
-        public const int Away2ndInnsFallofWicketXFancy = 9564;
-
         public const int Home1stInnsNextManOut = 9664;
         public const int Away1stInnsNextManOut = 9665;
         public const int Home2ndInnsNextManOut = 9666;
