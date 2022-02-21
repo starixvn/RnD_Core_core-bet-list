@@ -16,7 +16,7 @@
             var yesNo = BetTeamValue.N == ticket.BetTeam.ToLowerInvariant() ? 
                 CoreBetList.lblNo : 
                 CoreBetList.lblYes;
-            Template.betTeam = $"{teamName}{yesNo}";
+            Template.betTeam = $"{teamName}<span class=\"favorite\">{yesNo}</span>";
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)

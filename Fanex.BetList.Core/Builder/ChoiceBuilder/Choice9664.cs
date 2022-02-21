@@ -21,7 +21,7 @@
                 {
                     var choicePlayers = string.Join(null, ticketHelper.GetTeamNameById(players[0]), " & ", ticketHelper.GetTeamNameById(players[1]), " - ");
                     choicePlayers = choicePlayers.Replace(" ", HtmlCharacters.NoneBreakingSpace);
-                    Template.betTeam = string.Join(null, "<span class=\"match\">", choicePlayers, "</span>" ,Template.betTeam);
+                    Template.betTeam = string.Join(null, "<span class=\"players\">", choicePlayers, "</span>" ,Template.betTeam);
                 }
             }
         }
@@ -36,7 +36,7 @@
         {
             base.AdjustBetTeamToRTF();
 
-            Template.betTeam = Template.betTeam.Replace("<span class=\"match\">", string.Empty);
+            Template.betTeam = Template.betTeam.Replace("<span class=\"match underdog\">", string.Empty);
             Template.betTeam = Template.betTeam.Replace("</span>", string.Empty);
         }
     }

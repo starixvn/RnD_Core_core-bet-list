@@ -13,8 +13,8 @@
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             var teamName = $"{ticketHelper.GetTeamNameById(ticket.TransDesc)} - ";
-            var oddEven = BetTeamValue.O == ticket.BetTeam.ToLowerInvariant() ? 
-                CoreBetList.odd : 
+            var oddEven = BetTeamValue.O == ticket.BetTeam.ToLowerInvariant() ?
+                $"<span class=\"favorite\">{CoreBetList.odd}</span>" : 
                 CoreBetList.even;
             Template.betTeam = $"{teamName}{oddEven}";
         }

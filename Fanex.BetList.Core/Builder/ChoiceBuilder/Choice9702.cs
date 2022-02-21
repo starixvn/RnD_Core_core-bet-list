@@ -14,7 +14,7 @@
         {
             var teamName = $"{ticketHelper.GetTeamNameById(ticket.TransDesc)} - ";
             var overUnder = BetTeamValue.O == ticket.BetTeam.ToLowerInvariant() ? 
-                CoreBetList.over : 
+                $"<span class=\"favorite\">{CoreBetList.over}</span>" : 
                 CoreBetList.under;
             Template.betTeam = $"{teamName}{overUnder}";
         }

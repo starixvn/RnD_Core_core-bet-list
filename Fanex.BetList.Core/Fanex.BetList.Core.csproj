@@ -178,6 +178,7 @@
     <Compile Include="Builder\ChoiceBuilder\Choice229.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice630.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9486.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice9626.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9638.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9683.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9664.cs" />
@@ -374,6 +375,7 @@
     <Compile Include="Builder\ChoiceBuilder\Choice206.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice210.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice216.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice9730.cs" />
     <Compile Include="Builder\ChoiceBuilder\IChoice.cs" />
     <Compile Include="Builder\IBetListBaseBuilder.cs" />
     <Compile Include="Builder\IBetListExcelBuilder.cs" />

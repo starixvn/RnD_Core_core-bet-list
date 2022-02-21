@@ -476,20 +476,19 @@
             MapIdToBaseId(BetTypes.AwayFallOfWicketXFancy, BetTypes.HomeGroup1XRunsFancy);
             MapIdToBaseId(BetTypes.Away1stInnsFallOfWicketXFancy, BetTypes.HomeGroup1XRunsFancy);
             MapIdToBaseId(BetTypes.Away2ndInnsFallOfWicketXFancy, BetTypes.HomeGroup1XRunsFancy);
+            
+            MapIdToBaseId(BetTypes.BoundaryFoursAway1stInnsOverX, BetTypes.BoundaryFoursHome1stInnsOverX);
+            MapIdToBaseId(BetTypes.BoundaryFoursHome2ndInnsOverX, BetTypes.BoundaryFoursHome1stInnsOverX);
+            MapIdToBaseId(BetTypes.BoundaryFoursAway2ndInnsOverX, BetTypes.BoundaryFoursHome1stInnsOverX);
+            MapIdToBaseId(BetTypes.BoundaryFoursHomeOverX, BetTypes.BoundaryFoursHome1stInnsOverX);
+            MapIdToBaseId(BetTypes.BoundaryFoursAwayOverX, BetTypes.BoundaryFoursHome1stInnsOverX);
 
-            MapIdToBaseId(BetTypes.BoundaryFoursHome1stInnsOverX, BetTypes.HomeGroup1XRunsFancy);
-            MapIdToBaseId(BetTypes.BoundaryFoursAway1stInnsOverX, BetTypes.HomeGroup1XRunsFancy);
-            MapIdToBaseId(BetTypes.BoundaryFoursHome2ndInnsOverX, BetTypes.HomeGroup1XRunsFancy);
-            MapIdToBaseId(BetTypes.BoundaryFoursAway2ndInnsOverX, BetTypes.HomeGroup1XRunsFancy);
-            MapIdToBaseId(BetTypes.BoundaryFoursHomeOverX, BetTypes.HomeGroup1XRunsFancy);
-            MapIdToBaseId(BetTypes.BoundaryFoursAwayOverX, BetTypes.HomeGroup1XRunsFancy);
-
-            MapIdToBaseId(BetTypes.BoundarySixesHomeOverX, BetTypes.HomeGroup1XRunsFancy);
-            MapIdToBaseId(BetTypes.BoundarySixesAwayOverX, BetTypes.HomeGroup1XRunsFancy);
-            MapIdToBaseId(BetTypes.BoundarySixesHome1stInnsOverX, BetTypes.HomeGroup1XRunsFancy);
-            MapIdToBaseId(BetTypes.BoundarySixesAway1stInnsOverX, BetTypes.HomeGroup1XRunsFancy);
-            MapIdToBaseId(BetTypes.BoundarySixesHome2ndInnsOverX, BetTypes.HomeGroup1XRunsFancy);
-            MapIdToBaseId(BetTypes.BoundarySixesAway2ndInnsOverX, BetTypes.HomeGroup1XRunsFancy);
+            MapIdToBaseId(BetTypes.BoundarySixesHomeOverX, BetTypes.BoundaryFoursHome1stInnsOverX);
+            MapIdToBaseId(BetTypes.BoundarySixesAwayOverX, BetTypes.BoundaryFoursHome1stInnsOverX);
+            MapIdToBaseId(BetTypes.BoundarySixesHome1stInnsOverX, BetTypes.BoundaryFoursHome1stInnsOverX);
+            MapIdToBaseId(BetTypes.BoundarySixesAway1stInnsOverX, BetTypes.BoundaryFoursHome1stInnsOverX);
+            MapIdToBaseId(BetTypes.BoundarySixesHome2ndInnsOverX, BetTypes.BoundaryFoursHome1stInnsOverX);
+            MapIdToBaseId(BetTypes.BoundarySixesAway2ndInnsOverX, BetTypes.BoundaryFoursHome1stInnsOverX);
 
             MapIdToBaseId(BetTypes.Home1stInnsSixesFancy, BetTypes.HomeInnsRunsFancy);
             MapIdToBaseId(BetTypes.Away1stInnsSixesFancy, BetTypes.HomeInnsRunsFancy);
@@ -517,20 +516,19 @@
             MapIdToBaseId(BetTypes.FirstInnsHighestOverScoreFancy, BetTypes.HomeInnsRunsFancy);
             MapIdToBaseId(BetTypes.FirstInnsHighestIndividualScoreFancy, BetTypes.HomeInnsRunsFancy);
 
+            
+            MapIdToBaseId(BetTypes.AwayBatsmanSixes, BetTypes.HomeBatsmanSixes);
+            MapIdToBaseId(BetTypes.Home1stInnsBatsmanSixes, BetTypes.HomeBatsmanSixes);
+            MapIdToBaseId(BetTypes.Away1stInnsBatsmanSixes, BetTypes.HomeBatsmanSixes);
+            MapIdToBaseId(BetTypes.Home2ndInnsBatsmanSixes, BetTypes.HomeBatsmanSixes);
+            MapIdToBaseId(BetTypes.Away2ndInnsBatsmanSixes, BetTypes.HomeBatsmanSixes);
 
-            MapIdToBaseId(BetTypes.HomeBatsmanSixes, BetTypes.Home1stInnsBatsmanMilestones);
-            MapIdToBaseId(BetTypes.AwayBatsmanSixes, BetTypes.Home1stInnsBatsmanMilestones);
-            MapIdToBaseId(BetTypes.Home1stInnsBatsmanSixes, BetTypes.Home1stInnsBatsmanMilestones);
-            MapIdToBaseId(BetTypes.Away1stInnsBatsmanSixes, BetTypes.Home1stInnsBatsmanMilestones);
-            MapIdToBaseId(BetTypes.Home2ndInnsBatsmanSixes, BetTypes.Home1stInnsBatsmanMilestones);
-            MapIdToBaseId(BetTypes.Away2ndInnsBatsmanSixes, BetTypes.Home1stInnsBatsmanMilestones);
-
-            MapIdToBaseId(BetTypes.HomeBatsmanFours, BetTypes.Home1stInnsBatsmanMilestones);
-            MapIdToBaseId(BetTypes.AwayBatsmanFours, BetTypes.Home1stInnsBatsmanMilestones);
-            MapIdToBaseId(BetTypes.Home1stInnsBatsmanFours, BetTypes.Home1stInnsBatsmanMilestones);
-            MapIdToBaseId(BetTypes.Away1stInnsBatsmanFours, BetTypes.Home1stInnsBatsmanMilestones);
-            MapIdToBaseId(BetTypes.Home2ndInnsBatsmanFours, BetTypes.Home1stInnsBatsmanMilestones);
-            MapIdToBaseId(BetTypes.Away2ndInnsBatsmanFours, BetTypes.Home1stInnsBatsmanMilestones);
+            MapIdToBaseId(BetTypes.HomeBatsmanFours, BetTypes.HomeBatsmanSixes);
+            MapIdToBaseId(BetTypes.AwayBatsmanFours, BetTypes.HomeBatsmanSixes);
+            MapIdToBaseId(BetTypes.Home1stInnsBatsmanFours, BetTypes.HomeBatsmanSixes);
+            MapIdToBaseId(BetTypes.Away1stInnsBatsmanFours, BetTypes.HomeBatsmanSixes);
+            MapIdToBaseId(BetTypes.Home2ndInnsBatsmanFours, BetTypes.HomeBatsmanSixes);
+            MapIdToBaseId(BetTypes.Away2ndInnsBatsmanFours, BetTypes.HomeBatsmanSixes);
         }
     }
 }
