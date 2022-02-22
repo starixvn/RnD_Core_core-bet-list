@@ -238,9 +238,11 @@ div.match + div.league + div.no-details {
     margin-right: 2px;
 }
 
+.players-choice {
+    word-break: break-word;
+    white-space: normal;
+}
+
 .players {
     color: #000000;
-    font-weight: bold !important;
-    line-height: 15px;
-    word-break: break-word;
 }

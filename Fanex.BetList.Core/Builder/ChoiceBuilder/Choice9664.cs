@@ -10,6 +10,7 @@
     public class Choice9664 : Choice1
     {
         private const int NumberOfTeams = 2;
+        private const string PlayerChoiceClass = "favorite players-choice";
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             var players = ticket.TransDesc.Split(',');
@@ -29,15 +30,15 @@
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
             Template.Handicap.handicap = null;
-            Template.betTeamClassName = Favorite;
+            Template.betTeamClassName = PlayerChoiceClass;
         }
 
         protected override void AdjustBetTeamToRTF()
         {
             base.AdjustBetTeamToRTF();
 
-            Template.betTeam = Template.betTeam.Replace("<span class=\"match underdog\">", string.Empty);
-            Template.betTeam = Template.betTeam.Replace("</span>", string.Empty);
+            Template.betTeam = Template.betTeam.Replace("<span class=\"players\">", string.Empty);
+            Template.betTeam = Template.betTeam.Replace("<span class=\"favorite players-choice\">", string.Empty);
         }
     }
 }
