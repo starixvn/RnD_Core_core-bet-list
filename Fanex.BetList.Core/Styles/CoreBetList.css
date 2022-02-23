@@ -239,10 +239,8 @@ div.match + div.league + div.no-details {
 }
 
 .players-choice {
+    color: #000000;
+    font-weight: bold !important;
     word-break: break-word;
     white-space: normal;
-}
-
-.players {
-    color: #000000;
 }

@@ -14,7 +14,7 @@
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            Template.betTeam = ticket.Handicap1.ToString(CultureInfo.InvariantCulture);
+            Template.betTeam = ticket.Handicap1.ToString("G29", CultureInfo.InvariantCulture);
             if (ticket.BetTeam == BetTeamLessThan)
             {
                 Template.betTeam = "< " + Template.betTeam;
