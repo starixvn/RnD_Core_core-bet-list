@@ -51,6 +51,7 @@
     <Compile Include="Builder\OddsBuilder\Odds2408.cs" />
     <Compile Include="Builder\OddsBuilder\Odds2407.cs" />
     <Compile Include="Builder\StatusBuilder\Status2401.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2499.cs" />
     <Compile Include="Constants\AllbetBetTypes.cs" />
     <Compile Include="Mapper\ChoiceMapper.cs" />
     <Compile Include="Mapper\StatusMapper.cs" />

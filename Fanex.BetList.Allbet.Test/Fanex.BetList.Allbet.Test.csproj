@@ -77,6 +77,7 @@
     <Compile Include="Builder\OddsBuilder\Odds2408Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds2407Test.cs" />
     <Compile Include="Builder\StatusBuilder\Status2401Test.cs" />
+    <Compile Include="Builder\StatusBuilder\Status2499Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
