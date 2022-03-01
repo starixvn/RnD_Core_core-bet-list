@@ -16,7 +16,7 @@
             var players = ticket.TransDesc.Split(',');
             if (players.Length >= 1)
             {
-                Template.betTeam = ticketHelper.GetTeamNameById(players[0]).Replace(" ", HtmlCharacters.NoneBreakingSpace);
+                Template.betTeam = ticketHelper.GetTeamNameById(players[0]);
 
                 if (players.Length >= NumberOfTeams)
                 {

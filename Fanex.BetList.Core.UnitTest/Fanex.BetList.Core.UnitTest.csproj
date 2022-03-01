@@ -269,10 +269,18 @@
     <Compile Include="Builder\ChoiceBuilder\Choice29Test.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
+    <Compile Include="Builder\ChoiceBuilder\Choice9626Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice9638Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice9664Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice9670Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice9683Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice9702Tests.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice9715Tests.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice129Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice130Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice136Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice9486Tests.cs" />
     <Compile Include="Builder\OddsBuilder\Odds38Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds29Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds501Tests.cs" />

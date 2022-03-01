@@ -375,7 +375,6 @@
     <Compile Include="Builder\ChoiceBuilder\Choice206.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice210.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice216.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice9730.cs" />
     <Compile Include="Builder\ChoiceBuilder\IChoice.cs" />
     <Compile Include="Builder\IBetListBaseBuilder.cs" />
     <Compile Include="Builder\IBetListExcelBuilder.cs" />

@@ -25,12 +25,14 @@
         }
 
 
-        [TestCase("0", "0")]
-        [TestCase("tambay", "TAMBAY")]
-        public void BuildBetTeam_Always_ShowCorrectText(string betteam, string teamName)
+        [TestCase("0", 8.50d, "< 8.5")]
+        [TestCase("2", 4.5000d, "4.5")]
+        [TestCase("7", 3.5000d,"> 3.5")]
+        public void BuildBetTeam_Always_ShowCorrectText(string betteam, decimal handicap,  string teamName)
         {
             // Arrange
             _ticket.BetTeam = betteam;
+            _ticket.Handicap1 = handicap;
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, false);
