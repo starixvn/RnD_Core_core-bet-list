@@ -59,7 +59,7 @@
         public void BuildLeague_ForTodaySummaryTicket_ReturnDetailLinkHtml(string ticketStatus, string transactionType)
         {
             ////Arrange
-            _ticket.TransDesc = string.Empty;
+            _ticket.MatchCode = string.Empty;
             _ticket.WinlostDate = DateTime.Today;
             _ticket.Status = ticketStatus;
 
@@ -76,8 +76,7 @@
         {
             // Arrange
             const string campaignName = "testCampaignName";
-
-            _ticket.TransDesc = "comms=1*tableCode=B001*result=P;S6;H2:B;D10;D5 *results=B;8:P;5";
+            
             _ticket.MatchCode = campaignName;
 
             // Act
