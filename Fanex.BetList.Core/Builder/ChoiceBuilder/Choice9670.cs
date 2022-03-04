@@ -9,7 +9,7 @@
     public class Choice9670 : Choice1
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-            => Template.betTeam = ticketHelper.GetTeamNameById(ticket.TransDesc);
+            => Template.betTeam = ticket.TransDesc != null ? ticketHelper.GetTeamNameById(ticket.TransDesc) : string.Empty;
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {

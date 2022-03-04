@@ -13,8 +13,8 @@
         private const string PlayerChoiceClass = "players-choice";
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            var players = ticket.TransDesc.Split(',');
-            if (players.Length >= 1)
+            var players = ticket.TransDesc?.Split(',');
+            if (players != null && players.Length >= 1)
             {
                 Template.betTeam = ticketHelper.GetTeamNameById(players[0]);
 
