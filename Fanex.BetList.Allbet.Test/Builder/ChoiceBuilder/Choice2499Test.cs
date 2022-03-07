@@ -95,7 +95,7 @@
             return string.Format(
                 "<div class=\"detail allbet-casino-detail\"" +
                 " onclick='showTodayRunningBetsDetails(&quot;{0}&quot;,&quot;{1}&quot;,&quot;{2}&quot;,&quot;{3}&quot;);'>" +
-                "<a style=\"color:#755200;font-weight:bold\"" +
+                "<a class=\"detail-link\"" +
                 " href=\"javascript:void(&quot;&quot;);\">Details</a></div>",
                 ticket.TransId.ToString(),
                 ticket.WinlostDate.ToString(CultureInfo.InvariantCulture),
