@@ -100,9 +100,11 @@
                 "0",
                 _ticket.LeagueId,
                 "0",
-                _ticket.BetId ?? 0,
+                _ticket.CurrencyId,
+                $"'{_ticket.BetTeam}'",
+                _ticket.CustId,
                 $"'{_ticket.BetCheck}'",
-                _ticket.CustId
+                $"'{_ticket.SiteId}'",
             };
             var expectedHtml = $"<div class=\"result\" onclick=\"ViewResult({string.Join(", ", parameterList)});\">{CoreBetList.running}</div>";
 

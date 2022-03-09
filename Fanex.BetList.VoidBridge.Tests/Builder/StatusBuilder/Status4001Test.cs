@@ -129,41 +129,26 @@
 
         private static string BuildRunningLink(ITicket ticket, string status)
         {
-            var viewRunningTicketResultTag = new[]
-                    {
-                        "<div class=\"result\" onclick=\"ViewResult(",
-                        ticket.MatchId.ToString(CultureInfo.InvariantCulture),
-                        ", ",
-                        string.IsNullOrEmpty(ticket.Race) ? "0" : ticket.Race,
-                        ", ",
-                        ticket.BetTypeId.ToString(CultureInfo.InvariantCulture),
-                        ", ",
-                        ticket.SportTypeId.ToString(CultureInfo.InvariantCulture),
-                        ", ",
-                        "'",
-                        ticket.BetCheck ?? string.Empty,
-                        "'",
-                        ", ",
-                        "'",
-                        ticket.UserName ?? string.Empty,
-                        "'",
-                        ", ",
-                        "'",
-                        Formatter.FullDateFormat(ticket.WinlostDate),
-                        "'",
-                        ", ",
-                        "0, ",
-                        ticket.LeagueId.ToString(CultureInfo.InvariantCulture),
-                        ", 0, 0, '",
-                        ticket.BetCheck ?? string.Empty,
-                        "','",
-                        ticket.CustId.ToString(),
-                        "');\">",
-                        status,
-                        "</div>"
-                    };
+            var parameterList = new object[]
+            {
+                ticket.MatchId,
+                string.IsNullOrEmpty(ticket.Race) ? "0" : ticket.Race,
+                ticket.BetTypeId,
+                ticket.SportTypeId,
+                ticket.TransId,
+                $"'{ticket.UserName}'",
+                $"'{Formatter.FullDateFormat(ticket.WinlostDate)}'",
+                "0",
+                ticket.LeagueId,
+                "0",
+                ticket.CurrencyId,
+                $"'{ticket.BetTeam}'",
+                ticket.CustId,
+                $"'{ticket.BetCheck}'",
+                $"'{ticket.SiteId}'"
+            };
 
-            return string.Join(null, viewRunningTicketResultTag);
+            return $"<div class=\"result\" onclick=\"ViewResult({string.Join(", ", parameterList)});\">{status}</div>";
         }
 
         [Test]

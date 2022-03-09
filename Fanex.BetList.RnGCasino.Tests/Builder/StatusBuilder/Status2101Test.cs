@@ -103,10 +103,33 @@
             Status_Template statusTemplate = _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            var expectedMarkup = "<div class=\"result\" onclick=\"ViewResult(0, 0, 0, 0, 'Player History Number', '', '12/21/2015 12:00:00 AM', 0, 0, 0, 0);\">Running</div>";
+            var expectedMarkup = BuildExpectedRunningLink(_ticket, "Running");
             Assert.AreEqual(expectedMarkup, statusTemplate.result);
         }
 
+        private string BuildExpectedRunningLink(ITicket ticket, string status)
+        {
+            var parameterList = new object[]
+            {
+                ticket.MatchId,
+                string.IsNullOrEmpty(ticket.Race) ? "0" : ticket.Race,
+                ticket.BetTypeId,
+                ticket.SportTypeId,
+                ticket.TransId,
+                $"'{ticket.UserName}'",
+                $"'{Formatter.FullDateFormat(ticket.WinlostDate)}'",
+                "0",
+                ticket.LeagueId,
+                "0",
+                ticket.CurrencyId,
+                $"'{ticket.BetTeam}'",
+                ticket.CustId,
+                $"'{ticket.BetCheck}'",
+                $"'{ticket.SiteId}'"
+            };
+
+            return $"<div class=\"result\" onclick=\"ViewResult({string.Join(", ", parameterList)});\">{status}</div>";
+        }
         [Test]
         public void BuildResult_BetCheckIsNotEmptyAndResultIsRunning_ResultContainsBetCheck()
         {
