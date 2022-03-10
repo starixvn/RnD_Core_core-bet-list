@@ -1,5 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Mapper
 {
+    using System.Collections.Generic;
     using Fanex.BetList.Core.Constants;
 
     public class StatusMapper : BaseMapper
@@ -17,9 +18,10 @@
 
         private void MapForCricket()
         {
-            for (var betType = BetTypes.SuperOverWinner; betType <= BetTypes.AwayOverXBallYRuns; betType++)
+            var manOutTicket = new List<int> { BetTypes.HomeNextManOut, BetTypes.AwayNextManOut };
+            for (var betType = BetTypes.SuperOverWinner; betType <= BetTypes.HighestOfCricket; betType++)
             {
-                MapIdToBaseId(betType, BetTypes.SetXWinner);
+                MapIdToBaseId(betType, manOutTicket.Contains(betType) ? BetTypes.HomeNextManOut : BetTypes.SetXWinner);
             }
         }
 

@@ -669,5 +669,6 @@
         public const int Away1stInnsBatsmanFours = 9739;
         public const int Home2ndInnsBatsmanFours = 9696;
         public const int Away2ndInnsBatsmanFours = 9697;
+        public const int HighestOfCricket = 9998;
     }
 }
