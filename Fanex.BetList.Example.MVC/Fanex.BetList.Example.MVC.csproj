@@ -171,6 +171,7 @@
     <Content Include="CodeAnalysis\CodeAnalysisConfiguration.xml" />
     <Content Include="Content\AGCasino.css" />
     <Content Include="Content\BBin.css" />
+    <Content Include="Content\FGG.css" />
     <Content Include="Content\GTCasino.css" />
     <Content Include="Content\SAGaming.css" />
     <Content Include="Content\SexyGaming.css" />
@@ -359,6 +360,10 @@
     <ProjectReference Include="..\Fanex.BetList.Example.Extension\Fanex.BetList.Example.Extension.csproj">
       <Project>{C170087E-7A8F-4CBC-A0F7-F869DFFE48FD}</Project>
       <Name>Fanex.BetList.Example.Extension</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.FGG\Fanex.BetList.FGG.csproj">
+      <Project>{cdccac52-d873-49c3-bb6f-79d7753d96cd}</Project>
+      <Name>Fanex.BetList.FGG</Name>
     </ProjectReference>
     <ProjectReference Include="..\Fanex.Betlist.GDG\Fanex.BetList.GDG.csproj">
       <Project>{fddc27bf-b231-4d8a-a2fb-26495c2dad8c}</Project>

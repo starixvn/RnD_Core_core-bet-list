@@ -1314,6 +1314,25 @@
             return BetListView(model);
         }
 
+        public ActionResult FGG(BetListData model = null)
+        {
+            var betTypeIds = new List<int>();
+
+            for (var betTypeId = 8202; betTypeId <= 8299; betTypeId++)
+            {
+                betTypeIds.Add(betTypeId);
+            }
+
+            DataSourcePath = "~/App_Data/FGG.xls";
+
+            var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
         private ViewResult BetListView(BetListData model)
         {
             return View("All", model);
