@@ -19,10 +19,42 @@
         private void MapForCricket()
         {
             var manOutTicket = new List<int> { BetTypes.HomeNextManOut, BetTypes.AwayNextManOut };
+
+            var defaultStatusBetTypes = new List<int> {
+                BetTypes.MostFours, BetTypes.MostSixes,
+                BetTypes.MatchFours, BetTypes.MatchSixes, BetTypes.MatchRunOuts,
+                BetTypes.MatchDotBalls,
+                BetTypes.HomeFirstStInnsFours, BetTypes.AwayFirstStInnsFours, BetTypes.HomeSecondInnsFours, BetTypes.AwaySecondInnsFours,
+                BetTypes.Home1stInnsSixes, BetTypes.Away1stInnsSixes, BetTypes.Home2ndInnsSixes, BetTypes.Away2ndInnsSixes,
+                BetTypes.MatchFoursOE, BetTypes.MatchSixesOE, BetTypes.MatchRunOutsOE,
+                BetTypes.MatchDotBallsOE,
+                BetTypes.Home1stInnsFoursOE, BetTypes.Away1stInnsFoursOE, BetTypes.Home2ndInnsFoursOE, BetTypes.Away2ndInnsFoursOE,
+                BetTypes.HomeInnsRunsFancy,BetTypes.AwayInnsRunsFancy, BetTypes.Home1stInnsRunsFancy, BetTypes.Away1stInnsRunsFancy, BetTypes.Home2ndInnsRunsFancy, BetTypes.Away2ndInnsRunsFancy,
+                BetTypes.MatchFoursFancy, BetTypes.MatchSixesFancy, BetTypes.MatchWicketsFancy,
+                BetTypes.MatchExtrasFancy,BetTypes.HighestIndividualScoreFancy, BetTypes.HighestOverScoreFancy, BetTypes.HomeInnsFoursFancy, BetTypes.AwayInnsFoursFancy,
+                BetTypes.Home1stInnsFoursFancy, BetTypes.Away1stInnsFoursFancy, BetTypes.Home2ndInnsFoursFancy, BetTypes.Away2ndInnsFoursFancy,
+                BetTypes.HomeInnsSixesFancy, BetTypes.AwayInnsSixesFancy, BetTypes.Home1stInnsSixesFancy, BetTypes.Away1stInnsSixesFancy, BetTypes.Home2ndInnsSixesFancy, BetTypes.Away2ndInnsSixesFancy,
+                BetTypes.MostRunOuts,
+                BetTypes.HomeTopBatsman, BetTypes.AwayTopBatsman, BetTypes.Home1stInnsTopBatsman, BetTypes.Away1stInnsTopBatsman, BetTypes.Home2ndInnsTopBatsman,
+                BetTypes.Away2ndInnsTopBatsman, BetTypes.HomeTopBowler, BetTypes.AwayTopBowler, BetTypes.Home1stInnsTopBowler, BetTypes.Away1stInnsTopBowler,
+                BetTypes.Home2ndInnsTopBowler, BetTypes.Away2ndInnsTopBowler,
+                BetTypes.HomePrematchTopBatsman, BetTypes.AwayPrematchTopBatsman,
+                BetTypes.Home1stInnsPrematchTopBatsman, BetTypes.Away1stInnsPrematchTopBatsman, BetTypes.HomePrematchTopBowler, BetTypes.AwayPrematchTopBowler,
+                BetTypes.Home1stInnsPrematchTopBowler, BetTypes.Away1stInnsPrematchTopBowler,
+                BetTypes.FirstInnsHighestIndividualScore, BetTypes.FirstInnsHighestOverScore,
+                BetTypes.FirstInnsHighestOverScoreFancy, BetTypes.FirstInnsHighestIndividualScoreFancy,
+                BetTypes.FirstInnsHighestOpeningPartnership, BetTypes.FirstInnsHighestScoreinOver1
+            };
+
             for (var betType = BetTypes.SuperOverWinner; betType <= BetTypes.HighestOfCricket; betType++)
             {
-                MapIdToBaseId(betType, manOutTicket.Contains(betType) ? BetTypes.HomeNextManOut : BetTypes.SetXWinner);
+                if (!defaultStatusBetTypes.Contains(betType) && !manOutTicket.Contains(betType))
+                {
+                    MapIdToBaseId(betType, BetTypes.SetXWinner);
+                }
             }
+
+            MapIdToBaseId(BetTypes.AwayNextManOut, BetTypes.HomeNextManOut);
         }
 
         private void MapForFastMarkets()
