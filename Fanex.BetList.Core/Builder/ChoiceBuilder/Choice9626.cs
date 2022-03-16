@@ -11,7 +11,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             => Template.betTeam = ticket.BetTeam.ToLowerInvariant() == BetTeamValue.N ? CoreBetList.lblNo : CoreBetList.lblYes;
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-            => Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.BetId, ticket.BetCheck);
+            => Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId, ticket.RefNo, ticket.BetId, ticket.BetCheck);
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
