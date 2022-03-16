@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Fanex.BetList.FGG.Utils
+namespace Fanex.BetList.Core.Utils
 {
     using System.Collections.Generic;
     using Fanex.BetList.Core.Entities;

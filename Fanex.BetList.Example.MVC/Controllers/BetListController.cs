@@ -1322,7 +1322,6 @@
             {
                 betTypeIds.Add(betTypeId);
             }
-
             DataSourcePath = "~/App_Data/FGG.xls";
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());

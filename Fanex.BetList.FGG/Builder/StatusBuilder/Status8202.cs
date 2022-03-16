@@ -1,6 +1,5 @@
-﻿namespace Fanex.BetList.FGG.Builder.StatusBuilder
+﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
-    using Fanex.BetList.Core.Builder.StatusBuilder;
     using Fanex.BetList.Core.Entities;
 
     public class Status8202 : Status1

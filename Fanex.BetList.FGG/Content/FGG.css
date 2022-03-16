@@ -1,7 +1,12 @@
 ﻿.fgg-bet-id {
-    color: #bbb;
+    color: #A9A9A9;
+    font-weight: normal;
 }
 
 .fgg-bet-type-name {
-    color: #696969;
+    color: #808080;
+}
+
+.fgg-game-id {
+    color: #808080;
 }

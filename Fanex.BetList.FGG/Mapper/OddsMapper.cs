@@ -1,7 +1,6 @@
-﻿namespace Fanex.BetList.FGG.Mapper
+﻿namespace Fanex.BetList.Core.Mapper
 {
-    using Fanex.BetList.Core.Mapper;
-    using Fanex.BetList.FGG.Constants;
+    using Fanex.BetList.Core.Constants;
 
     public class OddsMapper : BaseMapper
     {

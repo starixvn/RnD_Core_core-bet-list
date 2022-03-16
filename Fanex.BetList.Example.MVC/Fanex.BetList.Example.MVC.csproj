@@ -595,6 +595,7 @@
     <Content Include="App_Data\AdvantPlayMini.xls" />
     <Content Include="App_Data\Bitcoin.xls" />
     <Content Include="App_Data\ESports4.xls" />
+    <Content Include="App_Data\FGG.xls" />
     <Content Include="App_Data\CricketAIOP2.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />

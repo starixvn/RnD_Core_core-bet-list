@@ -1,24 +1,22 @@
-﻿namespace Fanex.BetList.FGG.Builder.ChoiceBuilder
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
     using System.Globalization;
     using System.Text;
     using System.Text.RegularExpressions;
     using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
     using Fanex.BetList.Core.Utils.TicketExt;
     using Fanex.BetList.FGG.Resouce;
-    using Fanex.BetList.FGG.Utils;
+    using Fanex.BetList.Core.Utils;
 
     public class Choice8202 : Choice1
     {
         private const string OpenBetTypeNameTag = "<span class='fgg-bet-type-name'>";
-        private const string CloseBetTypeNameTag = "</span>";
-
         private const string OpenBetIdTag = "<span class='fgg-bet-id'>";
-        private const string CloseBetIdTag = "</span>";
+        private const string OpenGameIdTag = "<span class='fgg-game-id'>";
+        private const string CloseSpanTag = "</span>";
 
         private const string HTMLTagMatching ="</?[^<>]*>";
         private const string TableCodeKey = "tableCode";
@@ -39,7 +37,7 @@
 
             if (!string.IsNullOrEmpty(ticket.MatchCode))
             {
-                Template.BetType.betTypeName = $"{OpenBetIdTag}{FGGLang.BetID}: {ticket.BetCheck}{CloseBetIdTag}";
+                Template.BetType.betTypeName = $"{OpenBetIdTag}{FGGLang.BetID}: {ticket.BetCheck}{CloseSpanTag}";
             }
         }
 
@@ -79,7 +77,7 @@
             }
             else
             {
-                Template.League.LeagueName.leagueName += " " + ticket.MatchCode;
+                Template.League.LeagueName.leagueName += " " + OpenGameIdTag + ticket.MatchCode + CloseSpanTag;
             }
         }
 
@@ -92,7 +90,7 @@
         {
             var betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
 
-            return $"{OpenBetTypeNameTag}{betTypeName}{CloseBetTypeNameTag}";
+            return $"{OpenBetTypeNameTag}{betTypeName}{CloseSpanTag}";
         }
 
         public static Choice_League_Block BuildDetailLink(ITicket ticket)

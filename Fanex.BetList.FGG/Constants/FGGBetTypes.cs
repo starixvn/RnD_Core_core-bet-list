@@ -1,4 +1,4 @@
-﻿namespace Fanex.BetList.FGG.Constants
+﻿namespace Fanex.BetList.Core.Constants
 {
     internal static class FGGBetTypes
     {
