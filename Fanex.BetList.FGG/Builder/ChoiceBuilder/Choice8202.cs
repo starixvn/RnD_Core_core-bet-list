@@ -99,7 +99,7 @@
             var detailFunction = BuildDetailFunction(ticket);
 
             detailLinkMarkupBuilder
-                .Append("<div class=\"detail ffg-detail\" onclick='")
+                .Append("<div class=\"detail fgg-detail\" onclick='")
                 .Append(detailFunction)
                 .Append("'>")
                 .Append("<a class=\"detail-link\" href=\"javascript:void(&quot;&quot;);\">")

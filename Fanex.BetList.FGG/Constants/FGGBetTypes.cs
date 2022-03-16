@@ -1,6 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Constants
 {
-    internal static class FGGBetTypes
+    public static class FGGBetTypes
     {
         public const int Baccarat = 8202;
         public const int DragonTiger = 8203;
