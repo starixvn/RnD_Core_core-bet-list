@@ -55,12 +55,6 @@
     <Compile Include="Mapper\OddsMapper.cs" />
     <Compile Include="Mapper\StatusMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resouce\FGGLang.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FGGLang.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Utils\TransDescParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.8.34.0.42011\analyzers\Google.Protobuf.dll" />
@@ -75,23 +69,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resouce\FGGLang.ja-JP.resx" />
-    <EmbeddedResource Include="Resouce\FGGLang.ko-KR.resx" />
-    <EmbeddedResource Include="Resouce\FGGLang.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>FGGLang.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resouce\FGGLang.th-TH.resx" />
-    <EmbeddedResource Include="Resouce\FGGLang.vi-VN.resx" />
-    <EmbeddedResource Include="Resouce\FGGLang.zh-CN.resx" />
-    <EmbeddedResource Include="Resouce\FGGLang.zh-Hans.resx" />
-    <EmbeddedResource Include="Resouce\FGGLang.zh-TW.resx" />
-  </ItemGroup>
-  <ItemGroup>
     <AdditionalFiles Include="..\SonarQube\betlistcore\CSharp\SonarLint.xml">
       <Link>SonarLint.xml</Link>
     </AdditionalFiles>
-    <Content Include="Content\FGG.css" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\SonarQube\betlistcorecsharp.ruleset">

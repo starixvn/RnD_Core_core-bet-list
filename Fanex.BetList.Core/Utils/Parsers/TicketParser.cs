@@ -1,10 +1,10 @@
-﻿using System;
-namespace Fanex.BetList.Core.Utils
+﻿namespace Fanex.BetList.Core.Utils.Parsers
 {
+    using System;
     using System.Collections.Generic;
     using Fanex.BetList.Core.Entities;
 
-    public static class TransDescParser
+    public static class TicketParser
     {
         public static Dictionary<string, string> ParseTransDesc(this ITicket ticket)
         {

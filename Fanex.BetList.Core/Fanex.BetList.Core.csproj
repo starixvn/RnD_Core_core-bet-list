@@ -487,6 +487,7 @@
     <Compile Include="Utils\TicketExt\ITicketExtensions.cs" />
     <Compile Include="Utils\TicketHelperExt\PenaltyShootoutComboExtensions.cs" />
     <Compile Include="Utils\TicketHelperExt\ScoreBoxExtensions.cs" />
+    <Compile Include="Utils\Parsers\TicketParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App_GlobalResources\CoreBetList.resx">

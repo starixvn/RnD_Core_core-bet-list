@@ -7,20 +7,18 @@
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
+    using Fanex.BetList.Core.Utils.Parsers;
     using Fanex.BetList.Core.Utils.TicketExt;
-    using Fanex.BetList.FGG.Resouce;
-    using Fanex.BetList.Core.Utils;
 
     public class Choice8202 : Choice1
     {
-        private const string OpenBetTypeNameTag = "<span class='fgg-bet-type-name'>";
-        private const string OpenBetIdTag = "<span class='fgg-bet-id'>";
-        private const string OpenGameIdTag = "<span class='fgg-game-id'>";
+        private const string OpenBetTypeNameTag = "<span class='bet-type-name'>";
+        private const string OpenBetIdTag = "<span class='bet-id'>";
+        private const string OpenGameIdTag = "<span class='game-id'>";
         private const string CloseSpanTag = "</span>";
 
         private const string HTMLTagMatching ="</?[^<>]*>";
         private const string TableCodeKey = "tableCode";
-        private const string BettypeClass = "fgg-bet-id";
 
         private Dictionary<string, string> _parsedTransDesc;
 
@@ -37,7 +35,7 @@
 
             if (!string.IsNullOrEmpty(ticket.MatchCode))
             {
-                Template.BetType.betTypeName = $"{OpenBetIdTag}{FGGLang.BetID}: {ticket.BetCheck}{CloseSpanTag}";
+                Template.BetType.betTypeName = $"{OpenBetIdTag}{CoreBetList.BetID}: {ticket.BetCheck}{CloseSpanTag}";
             }
         }
 
@@ -54,7 +52,7 @@
 
                     return $"{bettypeName} {_parsedTransDesc[TableCodeKey]}";
                 }
-
+                 
                 return bettypeName;
             }
 
@@ -64,7 +62,7 @@
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
             Template.Handicap = null;
-            Template.betTeamClassName = BettypeClass;
+            Template.betTeamClassName = Underdog;
         }
 
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)

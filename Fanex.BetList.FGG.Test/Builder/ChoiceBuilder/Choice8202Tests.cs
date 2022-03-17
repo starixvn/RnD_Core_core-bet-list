@@ -17,6 +17,8 @@
         private ITicket _ticket;
         private ITicketHelper _ticketHelper;
 
+        private const string Baccarat = "Baccarat";
+
         [SetUp]
         public void Setup()
         {
@@ -28,7 +30,7 @@
             _ticket.TransId = 1;
             _ticket.CustId = 1000;
 
-            _ticketHelper.GetBetTypeNameById(FGGBetTypes.Baccarat).Returns("Baccarat");
+            _ticketHelper.GetBetTypeNameById(FGGBetTypes.Baccarat).Returns(Baccarat);
         }
 
         [Test]
@@ -55,7 +57,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            var betIdMarkup = string.Format("<span class='fgg-bet-id'>{0}</span>", "BetID: " + "123");
+            var betIdMarkup = string.Format("<span class='bet-id'>{0}</span>", "BetID: " + "123");
             Assert.AreEqual(betIdMarkup, _choice.Template.BetType.betTypeName);
         }
 
@@ -137,7 +139,23 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            Assert.IsTrue(_choice.Template.League.LeagueName.leagueName.Contains('Baccarat'));
+            Assert.IsTrue(_choice.Template.League.LeagueName.leagueName.Contains(Baccarat));
+        }
+
+        [Test]
+        public void BuildBetTeam_MatchCodeIsNotEmpty_TransdecsNotEmpty_ReturnBetypeNameWithTable()
+        {
+            ////Arrange
+            _ticket.MatchCode = "123123";
+            _ticket.TransDesc = "tableCode=4";
+            _ticket.BetCheck = "123";
+
+            ////Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            ////Assert
+            var targetLeageName = Baccarat + " 4";
+            Assert.AreEqual(targetLeageName, _choice.Template.betTeam);
         }
 
         private string BuildExpectedTemplateDetailLinkHtml(ITicket ticket, string transactionType)
@@ -151,6 +169,43 @@
                 ticket.WinlostDate.ToString(CultureInfo.InvariantCulture),
                 ticket.CustId.ToString(),
                 transactionType);
+        }
+
+        [Test]
+        public void RenderRTF_ForBetTypeNameOfDetailTicket_RemoveHtmlTag()
+        {
+            ////Arrange
+            _ticket.TransDesc = "transdesc";
+            var rtfHelper = new RTFHelper().Clone();
+
+            ////Act
+            _choice.RenderRTF(_ticket, _ticketHelper, null, false, rtfHelper);
+
+            ////Assert
+            Assert.IsFalse(_choice.Template.BetType.betTypeName.Contains("</span>"));
+        }
+
+        [Test]
+        public void RemoveHtmlTagFromLeagueName_FromSettledTicket_LeagueNameIsBetTypeNameGameId()
+        {
+            // Arrange
+            const string gameId = "12345";
+
+            var rtfHelper = new RTFHelper()
+            {
+                RTFRenderer = new RtfTextRender()
+            };
+
+            _ticket.TransDesc = $"tableCode=4";
+            _ticket.MatchCode = gameId;
+
+            // Act
+            _choice.RenderRTF(_ticket, _ticketHelper, null, false, rtfHelper);
+
+            // Assert
+            var expectedLeagueName = string.Format("{0} {1}", Baccarat, gameId);
+
+            Assert.AreEqual(expectedLeagueName, _choice.Template.League.LeagueName.leagueName);
         }
     }
 }
