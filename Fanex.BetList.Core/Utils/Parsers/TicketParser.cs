@@ -25,7 +25,7 @@
 
                 if (keyValuePair.Length == numberOfExpressionsOfEachProperty)
                 {
-                    transDescItems.Add(keyValuePair[0], keyValuePair[1]);
+                    transDescItems.Add(keyValuePair[0].ToLowerInvariant(), keyValuePair[1]);
                 }
             }
 

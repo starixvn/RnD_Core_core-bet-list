@@ -7,7 +7,7 @@
     {
         protected override void BuildStatusResult(ITicket ticket)
         {
-            if (string.IsNullOrEmpty(ticket.MatchCode))
+            if (string.IsNullOrEmpty(ticket.BetCheck))
             {
                 Template.StatusResult.Hide();
             }

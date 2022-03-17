@@ -34,7 +34,7 @@
         }
 
         [Test]
-        public void BuildBetType_MatchCodeIsEmpty_ReturnEmpty()
+        public void BuildBetTeam_BetCheckIsEmpty_ReturnEmpty()
         {
             ////Arrange
             _ticket.MatchCode = string.Empty;
@@ -43,22 +43,23 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            Assert.IsTrue(string.IsNullOrEmpty(_choice.Template.BetType.betTypeName));
+            Assert.IsTrue(string.IsNullOrEmpty(_choice.Template.betTeam));
         }
 
         [Test]
-        public void BuildBetType_MatchCodeIsNotEmpty_ReturnBetId()
+        public void BuildBetTeam_BetCheckIsNotEmpty_ReturnTableGameAndBetId()
         {
             ////Arrange
             _ticket.MatchCode = "123123";
             _ticket.BetCheck = "123";
+            _ticket.TransDesc = "tablecode=4";
 
             ////Act
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            var betIdMarkup = string.Format("<span class='bet-id'>{0}</span>", "BetID: " + "123");
-            Assert.AreEqual(betIdMarkup, _choice.Template.BetType.betTypeName);
+            var betIdMarkup = string.Format("Baccarat 4<span class='bet-id'>{0}</span>", "BetID: " + "123");
+            Assert.AreEqual(betIdMarkup, _choice.Template.betTeam);
         }
 
         [Test]
@@ -142,22 +143,6 @@
             Assert.IsTrue(_choice.Template.League.LeagueName.leagueName.Contains(Baccarat));
         }
 
-        [Test]
-        public void BuildBetTeam_MatchCodeIsNotEmpty_TransdecsNotEmpty_ReturnBetypeNameWithTable()
-        {
-            ////Arrange
-            _ticket.MatchCode = "123123";
-            _ticket.TransDesc = "tableCode=4";
-            _ticket.BetCheck = "123";
-
-            ////Act
-            _choice.Render(_ticket, _ticketHelper, null, false);
-
-            ////Assert
-            var targetLeageName = Baccarat + " 4";
-            Assert.AreEqual(targetLeageName, _choice.Template.betTeam);
-        }
-
         private string BuildExpectedTemplateDetailLinkHtml(ITicket ticket, string transactionType)
         {
             return string.Format(
@@ -198,6 +183,7 @@
 
             _ticket.TransDesc = $"tableCode=4";
             _ticket.MatchCode = gameId;
+            _ticket.BetCheck = "12323";
 
             // Act
             _choice.RenderRTF(_ticket, _ticketHelper, null, false, rtfHelper);

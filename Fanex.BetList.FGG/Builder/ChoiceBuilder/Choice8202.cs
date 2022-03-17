@@ -18,7 +18,7 @@
         private const string CloseSpanTag = "</span>";
 
         private const string HTMLTagMatching ="</?[^<>]*>";
-        private const string TableCodeKey = "tableCode";
+        private const string TableCodeKey = "tablecode";
 
         private Dictionary<string, string> _parsedTransDesc;
 
@@ -31,20 +31,24 @@
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            Template.BetType.betTypeName = string.Empty;
+            base.BuildBetType(ticket, ticketHelper, ticketData);
 
-            if (!string.IsNullOrEmpty(ticket.MatchCode))
-            {
-                Template.BetType.betTypeName = $"{OpenBetIdTag}{CoreBetList.BetID}: {ticket.BetCheck}{CloseSpanTag}";
-            }
+            Template.BetType.Visible = false;
         }
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-            => Template.betTeam = GetBetChoice(ticket, ticketHelper);
+        {
+            Template.betTeam = GetBetChoice(ticket, ticketHelper);
+
+            if (!string.IsNullOrEmpty(ticket.BetCheck))
+            {
+                Template.betTeam += $"{OpenBetIdTag}{CoreBetList.BetID}: {ticket.BetCheck}{CloseSpanTag}";
+            }
+        }
 
         private string GetBetChoice(ITicket ticket, ITicketHelper ticketHelper)
         {
-            if (!string.IsNullOrEmpty(ticket.MatchCode))
+            if (!string.IsNullOrEmpty(ticket.BetCheck))
             {
                 var bettypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
                 if (_parsedTransDesc != null && _parsedTransDesc.ContainsKey(TableCodeKey))
@@ -69,7 +73,7 @@
         {
             Template.League.LeagueName.leagueName = BuildBetTypeName(ticket, ticketHelper);
 
-            if (string.IsNullOrEmpty(ticket.MatchCode))
+            if (string.IsNullOrEmpty(ticket.BetCheck))
             {
                 Template.League.Append(BuildDetailLink(ticket));
             }
