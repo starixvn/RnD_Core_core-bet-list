@@ -22,7 +22,7 @@
         }
 
         [Test]
-        public void BuildStatusResult_TrandescDataIsNotEmpty_ShowStatusResultLink()
+        public void BuildStatusResult_BetCheckIsNotEmpty_ShowStatusResultLink()
         {
             ////Arrange
             _ticket.BetId = 1;
@@ -39,6 +39,26 @@
 
             ////Assert
             Assert.AreEqual("1, 'team', 123, 'betcheck', 'site'", _status.Template.StatusResult.betId);
+        }
+
+        [Test]
+        public void BuildStatusResult_BetCheckIsEmpty_ShowStatusResultLink()
+        {
+            ////Arrange
+            _ticket.BetId = 1;
+            _ticket.CustId = 123;
+            _ticket.CurrencyId = 1;
+            _ticket.BetCheck = "";
+            _ticket.BetTeam = "team";
+            _ticket.EventDate = DateTime.Today;
+            _ticket.SiteId = "site";
+            _ticket.MatchCode = "MatchCode";
+
+            ////Act
+            _status.Render(_ticket, _ticketHelper, null, false);
+
+            ////Assert
+            Assert.AreEqual("0", _status.Template.StatusResult.betId);
         }
     }
 }

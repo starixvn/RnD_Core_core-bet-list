@@ -47,7 +47,7 @@
         }
 
         [Test]
-        public void BuildBetTeam_BetCheckIsNotEmpty_ReturnTableGameAndBetId()
+        public void BuildBetTeam_BetCheckIsNotEmpty_TableCodeIsNotEmpty_ReturnTableGameAndBetId()
         {
             ////Arrange
             _ticket.MatchCode = "123123";
@@ -59,6 +59,22 @@
 
             ////Assert
             var betIdMarkup = string.Format("Baccarat 4<span class='bet-id'>{0}</span>", "BetID: " + "123");
+            Assert.AreEqual(betIdMarkup, _choice.Template.betTeam);
+        }
+
+        [Test]
+        public void BuildBetTeam_BetCheckIsNotEmpty_TableCodeIsEmpty_ReturnBetId()
+        {
+            ////Arrange
+            _ticket.MatchCode = "123123";
+            _ticket.BetCheck = "123";
+            _ticket.TransDesc = "";
+
+            ////Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            ////Assert
+            var betIdMarkup = string.Format("Baccarat<span class='bet-id'>{0}</span>", "BetID: " + "123");
             Assert.AreEqual(betIdMarkup, _choice.Template.betTeam);
         }
 
