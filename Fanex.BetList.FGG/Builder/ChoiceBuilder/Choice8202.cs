@@ -3,11 +3,11 @@
     using System.Collections.Generic;
     using System.Globalization;
     using System.Text;
-    using System.Text.RegularExpressions;
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
     using Fanex.BetList.Core.Utils.Parsers;
+    using Fanex.BetList.Core.Utils.StringExt;
     using Fanex.BetList.Core.Utils.TicketExt;
 
     public class Choice8202 : Choice1
@@ -17,7 +17,6 @@
         private const string OpenGameIdTag = "<span class='game-id'>";
         private const string CloseSpanTag = "</span>";
 
-        private const string HTMLTagMatching ="</?[^<>]*>";
         private const string TableCodeKey = "tablecode";
 
         private Dictionary<string, string> _parsedTransDesc;
@@ -138,19 +137,12 @@
 
         protected override void AdjustBetTeamToRTF()
         {
-            RemoveHtmlTagFromBetTypeName();
-            RemoveHtmlTagFromLeagueName();
-        }
-        private void RemoveHtmlTagFromLeagueName()
-        {
-            var htmlTagMatching = new Regex(HTMLTagMatching);
-            Template.League.LeagueName.leagueName = htmlTagMatching.Replace(Template.League.LeagueName.leagueName, string.Empty);
+            Template.betTeam = Template.betTeam.Replace(OpenBetIdTag, "\r\n");
+            Template.betTeam = string.Join(string.Empty, Template.betTeam.StripHTML());
+            Template.League.LeagueName.leagueName = string.Join(string.Empty, Template.League.LeagueName.leagueName.StripHTML());
         }
 
-        private void RemoveHtmlTagFromBetTypeName()
-        {
-            var htmlTagMatching = new Regex(HTMLTagMatching);
-            Template.BetType.betTypeName = htmlTagMatching.Replace(Template.BetType.betTypeName, string.Empty);
-        }
+        protected override void BuildBetTypeName(ref RTFHelper rtfHelper)
+            => rtfHelper.RTFRenderer.AddText(string.Empty);
     }
 }
