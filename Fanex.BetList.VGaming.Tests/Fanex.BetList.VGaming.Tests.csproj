@@ -67,6 +67,7 @@
     <Compile Include="Builder\StatusBuilder\Status3802Tests.cs" />
     <Compile Include="Builder\StatusBuilder\Status3820Tests.cs" />
     <Compile Include="Builder\StatusBuilder\Status3899Tests.cs" />
+    <Compile Include="Builder\TransBuilder\Trans3802Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
