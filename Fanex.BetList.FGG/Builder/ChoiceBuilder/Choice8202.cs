@@ -119,7 +119,7 @@
         {
             var detailFunctionBuilder = new StringBuilder();
 
-            detailFunctionBuilder.Append("showTodayRunningBetsDetails(&quot;")
+            detailFunctionBuilder.Append("showFGGBetDetails(&quot;")
                 .Append(ticket.TransId.ToString())
                 .Append("&quot;")
                 .Append(",&quot;")
