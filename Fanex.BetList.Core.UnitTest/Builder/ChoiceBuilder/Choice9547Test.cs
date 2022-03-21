@@ -23,7 +23,7 @@
             _ticket.Handicap2 = 2;
             _ticket.BetId = 99;
             _ticketHelper = Substitute.For<ITicketHelper>();
-            _ticketHelper.GetBetTypeNameById(BetTypes.HomeGroup1XRunsFancy, (long?)99, Arg.Any<object>()).Returns("Bettype name 99");
+            _ticketHelper.GetBetTypeNameById(BetTypes.HomeGroup1XRunsFancy, Arg.Any<object>(), (long?)99, Arg.Any<object>()).Returns("Bettype name 99");
         }
 
 

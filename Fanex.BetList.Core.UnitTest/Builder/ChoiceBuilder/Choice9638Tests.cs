@@ -21,7 +21,7 @@
             _ticket.BetTypeId = BetTypes.Home1stInnsWicketXMethodofDismissal6Way;
             _ticket.BetId = 99;
             _ticketHelper = Substitute.For<ITicketHelper>();
-            _ticketHelper.GetBetTypeNameById(BetTypes.Home1stInnsWicketXMethodofDismissal6Way, (long?)99, Arg.Any<object>()).Returns("Bettype name 99");
+            _ticketHelper.GetBetTypeNameById(BetTypes.Home1stInnsWicketXMethodofDismissal6Way, Arg.Any<object>(), (long?)99, Arg.Any<object>()).Returns("Bettype name 99");
         }
 
         [TestCase("c", "Caught")]

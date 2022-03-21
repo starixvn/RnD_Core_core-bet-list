@@ -21,7 +21,7 @@
             _ticket.BetId = 98;
             _ticket.BetTypeId = BetTypes.HomeGroup1XRuns;
             _ticketHelper = Substitute.For<ITicketHelper>();
-            _ticketHelper.GetBetTypeNameById(BetTypes.HomeGroup1XRuns, (long?)98, Arg.Any<object>()).Returns("Bettype name 98");
+            _ticketHelper.GetBetTypeNameById(BetTypes.HomeGroup1XRuns, Arg.Any<object>(), (long?)98, Arg.Any<object>()).Returns("Bettype name 98");
         }
 
         [Test]

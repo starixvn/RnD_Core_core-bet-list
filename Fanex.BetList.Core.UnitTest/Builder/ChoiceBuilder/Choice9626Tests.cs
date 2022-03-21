@@ -21,7 +21,7 @@
             _ticket.BetTypeId = BetTypes.HomeOverXExactRuns;
             _ticket.BetId = 99;
             _ticketHelper = Substitute.For<ITicketHelper>();
-            _ticketHelper.GetBetTypeNameById(BetTypes.HomeOverXExactRuns, (long?)99, Arg.Any<object>()).Returns("Bettype name 99");
+            _ticketHelper.GetBetTypeNameById(BetTypes.HomeOverXExactRuns, Arg.Any<object>(), (long?)99, Arg.Any<object>()).Returns("Bettype name 99");
         }
 
         [TestCase("n", "No")]
