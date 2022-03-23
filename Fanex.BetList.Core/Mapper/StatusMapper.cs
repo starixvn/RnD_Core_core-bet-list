@@ -18,7 +18,15 @@
 
         private void MapForCricket()
         {
-            var manOutTicket = new List<int> { BetTypes.HomeNextManOut, BetTypes.AwayNextManOut };
+            var manOutTicket = new List<int>
+            {
+                BetTypes.HomeNextManOut,
+                BetTypes.AwayNextManOut,
+                BetTypes.Away1stInnsNextManOut,
+                BetTypes.Away2ndInnsNextManOut,
+                BetTypes.Home1stInnsNextManOut,
+                BetTypes.Home2ndInnsNextManOut
+            };
 
             var defaultStatusBetTypes = new List<int> {
                 BetTypes.MostFours, BetTypes.MostSixes,
@@ -48,13 +56,18 @@
 
             for (var betType = BetTypes.SuperOverWinner; betType <= BetTypes.HighestOfCricket; betType++)
             {
-                if (!defaultStatusBetTypes.Contains(betType) && !manOutTicket.Contains(betType))
+                if(manOutTicket.Contains(betType))
                 {
-                    MapIdToBaseId(betType, BetTypes.SetXWinner);
+                    MapIdToBaseId(betType, BetTypes.HomeNextManOut);
                 }
-            }
-
-            MapIdToBaseId(BetTypes.AwayNextManOut, BetTypes.HomeNextManOut);
+                else
+                {
+                    if (!defaultStatusBetTypes.Contains(betType))
+                    {
+                        MapIdToBaseId(betType, BetTypes.SetXWinner);
+                    }
+                }
+            }            
         }
 
         private void MapForFastMarkets()
