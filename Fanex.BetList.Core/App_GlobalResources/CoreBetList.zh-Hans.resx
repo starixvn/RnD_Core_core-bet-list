@@ -894,4 +894,22 @@
   <data name="h34" xml:space="preserve">
     <value>主队赢第 3 &amp; 4 节</value>
   </data>
+  <data name="Bowled" xml:space="preserve">
+    <value>投杀</value>
+  </data>
+  <data name="LBW" xml:space="preserve">
+    <value>触身</value>
+  </data>
+  <data name="RunOut" xml:space="preserve">
+    <value>追杀</value>
+  </data>
+  <data name="Stumped" xml:space="preserve">
+    <value>击杀</value>
+  </data>
+  <data name="Others" xml:space="preserve">
+    <value>其他</value>
+  </data>
+  <data name="Caught2" xml:space="preserve">
+    <value>接杀</value>
+  </data>
 </root>

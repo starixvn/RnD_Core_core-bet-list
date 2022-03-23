@@ -14,7 +14,7 @@
         {
             var betteams = new Dictionary<string, string>
             {
-                { BetTeamValue.C, CoreBetList.Caught },
+                { BetTeamValue.C, CoreBetList.Caught2 },
                 { BetTeamValue.B, CoreBetList.Bowled },
                 { BetTeamValue.LBW, CoreBetList.LBW },
                 { BetTeamValue.Ro, CoreBetList.RunOut },

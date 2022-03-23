@@ -529,6 +529,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Caught.
+        /// </summary>
+        public static string Caught2 {
+            get {
+                return ResourceManager.GetString("Caught2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Choice.
         /// </summary>
         public static string choice {
