@@ -23,7 +23,7 @@
 
         public override Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
         {
-            _parsedTransDesc = ticket.ParseTransDesc();
+            _parsedTransDesc = ExtraInfoParser.ParseExtraInfo(ticket.TransDesc);
 
             return base.Render(ticket, ticketHelper, ticketData, isShowScoreMap);
         }
