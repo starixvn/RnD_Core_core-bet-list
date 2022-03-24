@@ -1,4 +1,5 @@
-﻿using Fanex.BetList.Core.Builder.TransBuilder;
+﻿using System;
+using Fanex.BetList.Core.Builder.TransBuilder;
 using Fanex.BetList.Core.Entities;
 using NSubstitute;
 using NUnit.Framework;
@@ -23,7 +24,7 @@ namespace Fanex.BetList.VGaming.Tests.Builder.TransBuilder
             // Arrange
             var txid = "1212124343434";
             var licensee = $"<div class=\"licenseeTxid\">TxID: {txid}</div>";
-            _ticket.ExtraInfo = $"<p66 lt='{txid}'/>";
+            _ticket.MatchCode = $"JPType=0*lt={txid}";
 
             // Act
             _trans.Render(_ticket);
@@ -34,18 +35,47 @@ namespace Fanex.BetList.VGaming.Tests.Builder.TransBuilder
 
         [TestCase(null)]
         [TestCase("")]
-        [TestCase("<p99 lt='123123'/>")]
-        [TestCase("<p66 ab='jdjdjd'/>")]
+        [TestCase("ab=jdjdjd")]
         public void BuildLicenseeTxId_HasNotLicenseeTxId_HideTxId(string extraInfo)
         {
             // Arrange
-            _ticket.ExtraInfo = extraInfo;
+            _ticket.MatchCode = extraInfo;
 
             // Act
             _trans.Render(_ticket);
 
             // Assert
             Assert.IsEmpty(_trans.Template.LicenseeTxId.Value);
+        }
+
+        [Test]
+        public void RenderRTF_HasNotLicenseeTxId_HideLicenseeTxIdText()
+        {
+            // Arrange
+            _ticket.TransId = 1_243_432_423;
+            _ticket.MatchCode = string.Empty;
+            _ticket.TransDate = new DateTime(2012, 12, 12, 12, 12, 12);
+
+            // Act
+            var excelText = _trans.RenderRTF(_ticket, null);
+
+            // Assert
+            Assert.AreEqual("Ref No: 1243432423\n12/12/2012 12:12:12 PM", excelText.ToString());
+        }
+
+        [Test]
+        public void RenderRTF_HasLicenseeTxId_ShowLicenseeTxIdText()
+        {
+            // Arrange
+            _ticket.TransId = 1_243_432_423;
+            _ticket.MatchCode = "lt=123456789";
+            _ticket.TransDate = new DateTime(2012, 12, 12, 12, 12, 12);
+
+            // Act
+            var excelText = _trans.RenderRTF(_ticket, null);
+
+            // Assert
+            Assert.AreEqual("TxID: 123456789\nRef No: 1243432423\n12/12/2012 12:12:12 PM", excelText.ToString());
         }
     }
 }

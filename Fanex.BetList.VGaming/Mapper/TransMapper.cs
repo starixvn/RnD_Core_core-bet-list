@@ -6,7 +6,7 @@ namespace Fanex.BetList.Core.Mapper
     {
         public TransMapper()
         {
-            for (var betTypeId = VGamingBetTypes.MinRange + 1; betTypeId < VGamingBetTypes.JackpotContribution; betTypeId++)
+            for (var betTypeId = VGamingBetTypes.MinRange + 1; betTypeId < VGamingBetTypes.JackpotPrize; betTypeId++)
             {
                 MapIdToBaseId(betTypeId, VGamingBetTypes.MinRange);
             }
