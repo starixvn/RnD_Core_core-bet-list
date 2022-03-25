@@ -402,8 +402,7 @@
             MapIdToBaseId(BetTypes.Away1stInnsOverXExactRuns, BetTypes.Home1stInnsOverXExactRuns);
             MapIdToBaseId(BetTypes.Home2ndInnsOverXExactRuns, BetTypes.Home1stInnsOverXExactRuns);
             MapIdToBaseId(BetTypes.Away2ndInnsOverXExactRuns, BetTypes.Home1stInnsOverXExactRuns);
-            MapIdToBaseId(BetTypes.HomeOverXBallYExactRuns, BetTypes.HomeOverXExactRuns);
-            MapIdToBaseId(BetTypes.AwayOverXBallYExactRuns, BetTypes.HomeOverXExactRuns);
+            MapIdToBaseId(BetTypes.AwayOverXBallYExactRuns, BetTypes.HomeOverXBallYExactRuns);
             MapIdToBaseId(BetTypes.MatchWinnerBackLay, BetTypes.OneXTwoBackLay);
             MapIdToBaseId(BetTypes.SuperOverWinnerWinnerBackLay, BetTypes.OneXTwoBackLay);
             MapIdToBaseId(BetTypes.OverUnderDec, BetTypes.HomeInnsRuns);

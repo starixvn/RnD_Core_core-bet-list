@@ -133,6 +133,7 @@
     <Compile Include="Builder\ChoiceBuilder\Choice229Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9410Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9404Test.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice9490Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9547Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9541Test.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9538Test.cs" />
