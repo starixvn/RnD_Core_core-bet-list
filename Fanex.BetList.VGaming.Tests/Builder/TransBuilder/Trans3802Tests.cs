@@ -1,11 +1,10 @@
-﻿using System;
-using Fanex.BetList.Core.Builder.TransBuilder;
-using Fanex.BetList.Core.Entities;
-using NSubstitute;
-using NUnit.Framework;
-
-namespace Fanex.BetList.VGaming.Tests.Builder.TransBuilder
+﻿namespace Fanex.BetList.VGaming.Tests.Builder.TransBuilder
 {
+    using Fanex.BetList.Core.Builder.TransBuilder;
+    using Fanex.BetList.Core.Entities;
+    using NSubstitute;
+    using NUnit.Framework;
+
     public class Trans3802Tests
     {
         private Trans3802 _trans;
@@ -46,36 +45,6 @@ namespace Fanex.BetList.VGaming.Tests.Builder.TransBuilder
 
             // Assert
             Assert.IsEmpty(_trans.Template.LicenseeTxId.Value);
-        }
-
-        [Test]
-        public void RenderRTF_HasNotLicenseeTxId_HideLicenseeTxIdText()
-        {
-            // Arrange
-            _ticket.TransId = 1_243_432_423;
-            _ticket.MatchCode = string.Empty;
-            _ticket.TransDate = new DateTime(2012, 12, 12, 12, 12, 12);
-
-            // Act
-            var excelText = _trans.RenderRTF(_ticket, null);
-
-            // Assert
-            Assert.AreEqual("Ref No: 1243432423\n12/12/2012 12:12:12 PM", excelText.ToString());
-        }
-
-        [Test]
-        public void RenderRTF_HasLicenseeTxId_ShowLicenseeTxIdText()
-        {
-            // Arrange
-            _ticket.TransId = 1_243_432_423;
-            _ticket.MatchCode = "lt=123456789";
-            _ticket.TransDate = new DateTime(2012, 12, 12, 12, 12, 12);
-
-            // Act
-            var excelText = _trans.RenderRTF(_ticket, null);
-
-            // Assert
-            Assert.AreEqual("TxID: 123456789\nRef No: 1243432423\n12/12/2012 12:12:12 PM", excelText.ToString());
         }
     }
 }

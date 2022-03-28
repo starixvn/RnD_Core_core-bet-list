@@ -111,7 +111,7 @@
             return new HSSFRichTextString(Template.LicenseeTxId.Value);
         }
 
-        private bool HasLicenseeTxId(ITicket ticket)
+        protected virtual bool HasLicenseeTxId(ITicket ticket)
             => ticket.ExtraInfo != null && ticket.ExtraInfo.HasAttributeInXmlTag(ExtraInfoTag, "lt");
 
     }
