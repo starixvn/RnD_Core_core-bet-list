@@ -11,6 +11,7 @@
             {
                 SabaClubBetTypes.CasinoHoldemPoker,
                 SabaClubBetTypes.HiLo,
+                SabaClubBetTypes.TexasHoldemPoker
             };
 
             for (var id = SabaClubBetTypes.MinRange + 1; id < SabaClubBetTypes.Blackjack; id++)
