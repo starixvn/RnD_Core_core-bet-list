@@ -40,7 +40,9 @@
 
             BuildCashOutHistory(ticket, ticketHelper);
 
-            BuildNewCashOut(ticket);
+            BuildNewCashOutHistory(ticket);
+
+            BuildNewCashOutAmount(ticket);
 
             return Template;
         }
@@ -48,10 +50,11 @@
         public virtual string RenderStatusResultText(ITicket ticket, List<ITicketData> ticketData)
         {
             BuildResult(ticket, ticketData);
-            Template.NewCashOut = null;
+            Template.NewCashOutAmount = null;
             Template.StatusResult = null;
             Template.ShowIP = null;
             Template.CashOutHistory = null;
+            Template.NewCashOutHistory = null;
 
             return Template.ToString();
         }
@@ -86,7 +89,7 @@
 
         protected virtual void BuildStatusResult(ITicket ticket)
         {
-            if (IsNewCashOutTicket(ticket))
+            if (IsNewSettledCashOutTicket(ticket))
             {
                 Template.StatusResult.Hide();
             }
@@ -132,17 +135,33 @@
             Template.CashOutHistory.betdaqId = ticket.BetdaqId.ToString();
         }
 
-        protected virtual void BuildNewCashOut(ITicket ticket)
+        protected virtual void BuildNewCashOutHistory(ITicket ticket)
         {
             if (IsNewCashOutTicket(ticket))
             {
-                var amountText = ticket.IsSettled() ? $": {ConvertByBetType.Winloss(ticket.Winlost + ticket.ActualStake)}" : string.Empty;
-                Template.NewCashOut.amount = amountText;
-                Template.NewCashOut.Show();
+                Template.NewCashOutHistory.transId = ticket.TransId.ToString();
+                Template.NewCashOutHistory.custId = ticket.CustId.ToString();
+                Template.NewCashOutHistory.winlostdate = Formatter.FullDateFormat(ticket.WinlostDate);
+                Template.NewCashOutHistory.currency = ticket.Currency;
+                Template.NewCashOutHistory.Show();
             }
             else
             {
-                Template.NewCashOut.Hide();
+                Template.NewCashOutHistory.Hide();
+            }
+        }
+
+        protected virtual void BuildNewCashOutAmount(ITicket ticket)
+        {
+            if (IsNewSettledCashOutTicket(ticket))
+            {
+                var amountText = ticket.IsSettled() ? $": {ConvertByBetType.Winloss(ticket.Winlost + ticket.ActualStake)}" : string.Empty;
+                Template.NewCashOutAmount.amount = amountText;
+                Template.NewCashOutAmount.Show();
+            }
+            else
+            {
+                Template.NewCashOutAmount.Hide();
             }
         }
 
@@ -158,7 +177,7 @@
 
             BuildResultLRF(status, rtfHelper);
 
-            if (Template.NewCashOut != null && Template.NewCashOut.Visible)
+            if (Template.NewCashOutAmount != null && Template.NewCashOutAmount.Visible)
             {
                 var amountText = ticket.IsSettled() ? $": {ConvertByBetType.Winloss(ticket.Winlost + ticket.ActualStake)}" : string.Empty;
                 status = string.Join(null, new[] { "\n", $"({CoreBetList.CashOut}{amountText})" });
@@ -290,12 +309,20 @@
         private static bool IsSportsbookRefundedTicket(ITicket ticket)
             => ticket.IsRefunded() && ticket.IsSportsbook();
 
-        private static bool IsNewCashOutTicket(ITicket ticket)
+        private static bool IsNewSettledCashOutTicket(ITicket ticket)
         {
             const int newCashoutSinal = -2;
 
             return ticket.BetdaqId == newCashoutSinal;
         }
+
+        private static bool IsNewCashOutTicket(ITicket ticket)
+        {
+            var CutOffDate = new DateTime(2022, 3, 16, 0, 0, 0);
+
+            return ticket.TransDate >= CutOffDate && ticket.ExtraInfo.HasAttributeInXmlTag(CashOutXmlTag, "selTime");
+        }
+
         #endregion PRIVATE METHODS
     }
 }

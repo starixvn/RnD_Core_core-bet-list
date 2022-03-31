@@ -1,9 +1,14 @@
 ﻿<div class="status">
     {result}
-    <!--NewCashOut-->
+    <!--NewCashOutAmount-->
     <div class="cashout">({static:App_GlobalResources.CoreBetList.CashOut}{amount})</div>
-    <!--/NewCashOut-->
+    <!--/NewCashOutAmount-->
 </div>
+<!--NewCashOutHistory-->
+<div class="result cashout-history" onclick="ViewNewCashOutHistory({ transId }, { custId }, '{winlostdate}', '{currency}')">
+    {static:App_GlobalResources.CoreBetList.details}
+</div>
+<!--/NewCashOutHistory-->
 <!--CashOutHistory-->
 <div class="result cashout-history" onclick="ViewCashOutHistory({transId}, {refNo}, {betType}, {betdaqId})">
     {static:App_GlobalResources.CoreBetList.details}

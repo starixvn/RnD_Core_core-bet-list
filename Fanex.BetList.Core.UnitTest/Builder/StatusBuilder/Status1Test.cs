@@ -724,7 +724,7 @@
             _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.True(_status.Template.NewCashOut.Visible);
+            Assert.True(_status.Template.NewCashOutAmount.Visible);
         }
 
         [Test]
@@ -737,7 +737,7 @@
             _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.False(_status.Template.NewCashOut.Visible);
+            Assert.False(_status.Template.NewCashOutAmount.Visible);
         }
 
         [Test]
@@ -753,7 +753,7 @@
             _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.AreEqual(": 15.00", _status.Template.NewCashOut.amount);
+            Assert.AreEqual(": 15.00", _status.Template.NewCashOutAmount.amount);
         }
 
         [Test]
@@ -769,7 +769,7 @@
             _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.AreEqual(": 15.00", _status.Template.NewCashOut.amount);
+            Assert.AreEqual(": 15.00", _status.Template.NewCashOutAmount.amount);
         }
 
         [Test]
@@ -785,7 +785,7 @@
             _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.AreEqual(": 15.00", _status.Template.NewCashOut.amount);
+            Assert.AreEqual(": 15.00", _status.Template.NewCashOutAmount.amount);
         }
 
         [TestCase("Refund")]
@@ -802,7 +802,7 @@
             _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.IsEmpty(_status.Template.NewCashOut.amount);
+            Assert.IsEmpty(_status.Template.NewCashOutAmount.amount);
         }
 
         private void ArrangeCashOutTicket(long betdaqId, string extraInfo, decimal originalStake = 0)
