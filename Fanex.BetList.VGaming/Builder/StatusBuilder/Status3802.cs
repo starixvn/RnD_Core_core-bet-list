@@ -17,7 +17,7 @@
             {
                 if (IsSupportViewResultLink(ticket))
                 {
-                    var siteId = string.IsNullOrEmpty(ticket.MatchCode) ? siteIdDefault : ticket.MatchCode;
+                    var siteId = string.IsNullOrEmpty(ticket.SiteId) ? siteIdDefault : ticket.SiteId;
 
                     Template.StatusResult.matchId = ticket.MatchId.ToString(CultureInfo.InvariantCulture);
                     Template.StatusResult.betType = ticket.BetTypeId.ToString(CultureInfo.InvariantCulture);
