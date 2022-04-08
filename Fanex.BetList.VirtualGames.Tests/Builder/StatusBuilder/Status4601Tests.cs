@@ -47,20 +47,23 @@
         }
 
         [Test]
-        public void BuildStatusResult_BetCheckIsNotEmpty_RefNoIsStringOfBetCheck()
+        public void BuildStatusResult_BetCheckIsNotEmpty_CorrectParaForResult()
         {
             // Arrange.
             const string betCheck = "PB012001010001";
-
+            _ticket.CurrencyId = 20;
+            _ticket.BetTeam = "betteam";
+            _ticket.CustId = 123;
+            _ticket.SiteId = "siteid";
             _ticket.BetCheck = betCheck;
 
             // Act.
             var statusTemplate = _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            var expectedRefNo = $"'{betCheck}'";
+            var expectedBetId = "20, 'betteam', 123, 'PB012001010001', 'siteid'";
 
-            Assert.AreEqual(expectedRefNo, statusTemplate.StatusResult.refNo);
+            Assert.AreEqual(expectedBetId, statusTemplate.StatusResult.betId);
         }
     }
 }

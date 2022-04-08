@@ -66,7 +66,7 @@
             return string.Empty;
         }
 
-        private static string GetTableCode(string betCheck)
+        protected static string GetTableCode(string betCheck)
         {
             const int tableCodeIndex = 1;
             const int tableCodeLength = 3;
