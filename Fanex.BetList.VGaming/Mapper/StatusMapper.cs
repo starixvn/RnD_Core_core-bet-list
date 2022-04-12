@@ -11,7 +11,8 @@
             {
                 VGamingBetTypes.CasinoHoldemPoker,
                 VGamingBetTypes.TexasHoldemPoker,
-                VGamingBetTypes.PaiGowPoker
+                VGamingBetTypes.PaiGowPoker,
+                VGamingBetTypes.HiLo
             };
 
             for (var id = VGamingBetTypes.MinRange + 1; id < VGamingBetTypes.Blackjack; id++)
