@@ -51,7 +51,7 @@
                 _ticket.LeagueId,
                 "0",
                 _ticket.BetId ?? 0,
-                $"'{_ticket.MatchCode}'",
+                $"'{_ticket.SiteId}'",
                 _ticket.CustId,
                 $"'{_ticket.BetCheck}'"
             };

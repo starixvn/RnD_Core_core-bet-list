@@ -20,10 +20,26 @@
             {
                 BetTypeId =VirtualGamesBetTypes.Baccarat,
                 OddsType = "1",
-                Odds = Odds
+                Odds = Odds,
+                Status = BetStatus.Won
             };
         }
 
+        [TestCase(4608)]
+        [TestCase(4609)]
+        [TestCase(4610)]
+        public void Render_TowerGame_HideOdds(int bettype)
+        {
+            // Arrange
+            _ticket.BetTypeId = bettype;
+
+            // Act
+            var template = _odds.Render(_ticket, null, id => id.ToString());
+
+            // Assert
+            Assert.AreEqual("-", template.odds);
+            Assert.AreEqual(string.Empty, template.oddsType);
+        }
         [Test]
         public void Render_DrawTicket_HideOdds()
         {

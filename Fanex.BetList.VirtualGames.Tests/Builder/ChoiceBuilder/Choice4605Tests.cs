@@ -21,6 +21,21 @@
             _ticketHelper = Substitute.For<ITicketHelper>();
         }
 
+        [TestCase(4608)]
+        [TestCase(4609)]
+        [TestCase(4610)]
+        public void BuildBetTeam_TowerGame_DontShowBetChoice(int bettype)
+        {
+            // Arrange.
+            _ticket.BetTypeId = bettype;
+
+            // Act.
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert.
+            Assert.IsEmpty(template.betTeam);
+        }
+
         [TestCase("betChoice=1", "1")]
         [TestCase("BetChoice=2;referID=", "2")]
         [TestCase("referId=111,betchoice=3", "3")]

@@ -61,7 +61,7 @@
             var statusTemplate = _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            var expectedBetId = "20, 'betteam', 123, 'PB012001010001', 'siteid'";
+            var expectedBetId = "20, 'PB012001010001', 123, '100000000000', 'siteid'";
 
             Assert.AreEqual(expectedBetId, statusTemplate.StatusResult.betId);
         }
