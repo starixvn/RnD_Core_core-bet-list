@@ -11,8 +11,6 @@
         {
             base.BuildStatusResult(ticket);
 
-            var betId = ticket.BetId ?? 0;
-
             Template.StatusResult.betId = $"{ticket.BetId.ToString()}, '{ticket.TransDesc}'";
         }
     }

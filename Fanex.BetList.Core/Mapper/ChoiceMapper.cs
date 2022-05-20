@@ -21,6 +21,7 @@
             MapForCricketAIOForOddEven();
             MapForCricketAIOForFancy();
             MapForCricketAIOP2();
+            MapForCricketAIOP4();
         }
 
         private void MapForOtherBetTypes()
@@ -321,7 +322,10 @@
 
             MapIdToBaseId(BetTypes.HomeBatsmanRunsOE, BetTypes.Home1stInnsBatsmanRunsOE);
             MapIdToBaseId(BetTypes.AwayBatsmanRunsOE, BetTypes.Home1stInnsBatsmanRunsOE);
+        }
 
+        private void MapForCricketAIOP4()
+        {
             MapIdToBaseId(BetTypes.MostRunOuts, BetTypes.FirstTenMinutes1X2);
             MapIdToBaseId(BetTypes.HomeNextManOut, BetTypes.Home1stInnsNextManOut);
             MapIdToBaseId(BetTypes.AwayNextManOut, BetTypes.Home1stInnsNextManOut);
