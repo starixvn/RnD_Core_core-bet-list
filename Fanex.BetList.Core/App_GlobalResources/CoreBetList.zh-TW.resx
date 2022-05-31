@@ -936,4 +936,10 @@
   <data name="Caught2" xml:space="preserve">
     <value>接殺</value>
   </data>
+  <data name="Caught" xml:space="preserve">
+    <value>接殺出局</value>
+  </data>
+  <data name="NotCaught" xml:space="preserve">
+    <value>非接殺出局</value>
+  </data>
 </root>

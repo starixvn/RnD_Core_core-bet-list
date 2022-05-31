@@ -912,4 +912,10 @@
   <data name="Caught2" xml:space="preserve">
     <value>接杀</value>
   </data>
+  <data name="Caught" xml:space="preserve">
+    <value>接杀出局</value>
+  </data>
+  <data name="NotCaught" xml:space="preserve">
+    <value>非接杀出局</value>
+  </data>
 </root>

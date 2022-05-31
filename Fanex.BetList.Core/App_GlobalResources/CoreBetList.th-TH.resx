@@ -786,4 +786,10 @@
   <data name="Lay" xml:space="preserve">
     <value>เลย์ของ {0}</value>
   </data>
+  <data name="Caught" xml:space="preserve">
+    <value>ตามทัน</value>
+  </data>
+  <data name="NotCaught" xml:space="preserve">
+    <value>ตามไม่ทัน</value>
+  </data>
 </root>
