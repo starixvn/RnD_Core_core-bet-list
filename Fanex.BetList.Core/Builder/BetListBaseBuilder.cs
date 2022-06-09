@@ -6,7 +6,6 @@ namespace Fanex.BetList.Core.Builder
     using System.Linq;
     using System.Reflection;
     using System.Runtime.Caching;
-    using System.Web.Compilation;
     using ChoiceBuilder;
     using Mapper;
     using OddsBuilder;
@@ -117,7 +116,7 @@ namespace Fanex.BetList.Core.Builder
             {
                 try
                 {
-                    assemblies = BuildManager.GetReferencedAssemblies().Cast<Assembly>().ToList();
+                    assemblies = AppDomain.CurrentDomain.GetAssemblies().ToList();
                 }
                 catch
                 {

@@ -3,7 +3,7 @@
     using System;
     using System.Globalization;
     using System.Web;
-
+    using System.Net;
     /// <summary>
     /// Formatting utilities.
     /// </summary>
@@ -491,12 +491,12 @@
                 return string.Format(
                     "<span title='{0}'>{1}...</span>",
                     value.Replace("'", "&#39;"),
-                    HttpUtility.HtmlEncode(value.Substring(0, maxLength - truncationIndicatorLength)));
+                    WebUtility.HtmlEncode(value.Substring(0, maxLength - truncationIndicatorLength)));
             }
 
             if (hasSpanReturn)
             {
-                return string.Format("<span>{0}</span>", HttpUtility.HtmlEncode(value));
+                return string.Format("<span>{0}</span>", WebUtility.HtmlEncode(value));
             }
 
             return value;

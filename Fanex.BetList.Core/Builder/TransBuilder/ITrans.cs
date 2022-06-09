@@ -1,7 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.TransBuilder
 {
     using Entities;
-    using NPOI.SS.UserModel;
+    using BetListNPOI.SS.UserModel;
     using Templates;
 
     public interface ITrans

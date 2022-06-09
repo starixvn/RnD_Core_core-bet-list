@@ -1,7 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Utils
 {
-    using NPOI.SS.UserModel;
-
+    using BetListNPOI.SS.UserModel;
     /// <summary>
     /// Class RTFNumber.
     /// </summary>

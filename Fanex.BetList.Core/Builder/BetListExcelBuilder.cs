@@ -5,9 +5,9 @@ namespace Fanex.BetList.Core.Builder
     using System.Collections.Generic;
     using ChoiceBuilder;
     using Entities;
-    using NPOI.HSSF.UserModel;
-    using NPOI.SS.UserModel;
-    using NPOI.SS.Util;
+    using BetListNPOI.HSSF.UserModel;
+    using BetListNPOI.SS.UserModel;
+    using BetListNPOI.SS.Util;
     using OddsBuilder;
     using StakeBuilder;
     using StatusBuilder;
@@ -15,7 +15,7 @@ namespace Fanex.BetList.Core.Builder
     using Utils;
     using Utils.NPOIExt;
     using Utils.StringExt;
-
+    using CellAddress = Fanex.BetList.Core.Entities.CellAddress;
     public class BetListExcelBuilder : BetListBaseBuilder, IBetListExcelBuilder, IDisposable
     {
         #region Attributes

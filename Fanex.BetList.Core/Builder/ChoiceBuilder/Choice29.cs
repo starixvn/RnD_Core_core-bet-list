@@ -6,7 +6,7 @@
     using App_GlobalResources;
     using Constants;
     using Entities;
-    using NPOI.SS.UserModel;
+    using BetListNPOI.SS.UserModel;
 
     /// <summary>
     /// Combination Mix Parlay.
@@ -56,14 +56,6 @@
             return bettypeName;
         }
 
-        private static string GetCustId(ITicket ticket)
-        {
-            string custIdInTicket = ticket.CustId.ToString(CultureInfo.InvariantCulture);
-            string custIdInRequest = HttpContext.Current?.Request?["custid"] ?? custIdInTicket;
-
-            return ticket.CustId > 0 ? custIdInTicket : custIdInRequest;
-        }
-
         private static string BuildShowSystemParlaySubbetsFunc(ITicket ticket, ITicketHelper ticketHelper)
         {
             return string.IsNullOrWhiteSpace(ticketHelper.ClientSystemParlaySubbetsDetailFunction)
@@ -99,15 +91,13 @@
 
         private static string BuildSystemParlayDetailJsFunction(ITicket ticket, ITicketHelper ticketHelper)
         {
-            string custid = GetCustId(ticket);
-
             return string.IsNullOrWhiteSpace(ticketHelper.ClientDetailSystemParlayFunction)
                         ? JoinSystemParlayDetailJsFunc(
                             ticket.RefNo,
                             ticket.WinlostDate.ToString(CultureInfo.InvariantCulture),
                             ticket.TransId.ToString(CultureInfo.InvariantCulture),
                             ticket.BetId.ToString(),
-                            custid,
+                            ticket.CustId.ToString(),
                             ticket.BetTeam)
                         : ticketHelper.ClientDetailSystemParlayFunction;
         }
@@ -117,10 +107,8 @@
 
         private static string JoinSystemParlaySubbetsFunc(ITicket ticket, ITicketHelper ticketHelper)
         {
-            var custId = GetCustId(ticket);
-
             return IsOldSystemParlay(ticket.BetCheck)
-                ? $"javascript:showCombMP('{ticket.TransId}', {ticketHelper.Index}, '{ticket.RefNo}', {custId});"
+                ? $"javascript:showCombMP('{ticket.TransId}', {ticketHelper.Index}, '{ticket.RefNo}', {ticket.custId});"
                 : string.Format(
                     "javascript:showNewCombMP('{0}', {1}, '{2}', {3}, {4}, '{5}', '{6}', {7});",
                     ticket.TransId,
@@ -130,7 +118,7 @@
                     ticket.Handicap2,
                     ticket.BetCheck,
                     ticket.BetTeam,
-                    custId);
+                    ticket.CustId);
         }
 
         private static string BuildCombinationOfferName(ITicket ticket, ITicketHelper ticketHelper)

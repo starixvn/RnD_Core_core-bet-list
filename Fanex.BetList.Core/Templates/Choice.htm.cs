@@ -3,8 +3,7 @@
 using System;
 using System.Web;
 using System.Text;
-using TplCore;
-using TplCore.Element;
+using TplNetCore.Element;
 #pragma warning disable
 namespace Fanex.BetList.Core
 {

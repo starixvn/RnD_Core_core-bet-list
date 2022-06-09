@@ -2,8 +2,8 @@
 {
     using System.Collections.Generic;
     using Entities;
-    using NPOI.HSSF.UserModel;
-    using NPOI.SS.UserModel;
+    using BetListNPOI.HSSF.UserModel;
+    using BetListNPOI.SS.UserModel;
 
     /// <summary>
     /// Renderer for RTF.

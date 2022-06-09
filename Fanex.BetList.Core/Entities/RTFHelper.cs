@@ -1,7 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Entities
 {
     using System.Collections.Generic;
-    using NPOI.SS.UserModel;
+    using BetListNPOI.SS.UserModel;
     using Utils;
 
     public struct RTFHelper
@@ -40,7 +40,7 @@
 
             return tmp;
         }
-
+/*
         public List<RTFFormattingRun> GetFormattingRuns(IRichTextString text)
         {
             var formattingRuns = new List<RTFFormattingRun>();
@@ -52,7 +52,7 @@
 
             return formattingRuns;
         }
-
+*/
         public void ApplyFormattingRuns(IRichTextString text, List<RTFFormattingRun> formattingRuns, int beginIndex = 0)
         {
             foreach (var format in formattingRuns)
@@ -63,9 +63,10 @@
                 text.ApplyFont(begin, end, format.FontIndex);
             }
         }
-
+/*
         private static RTFFormattingRun GetFormatingRun(IRichTextString text, int formatIndex)
         {
+            
             var beginIndex = text.GetIndexOfFormattingRun(formatIndex);
             short fontIndex = text.GetFontAtIndex(formatIndex);
             var length = 0;
@@ -85,6 +86,6 @@
             }
 
             return new RTFFormattingRun(beginIndex, length, fontIndex);
-        }
+        }*/
     }
 }

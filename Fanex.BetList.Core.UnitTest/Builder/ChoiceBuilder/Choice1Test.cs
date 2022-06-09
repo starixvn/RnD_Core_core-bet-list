@@ -43,7 +43,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.AreEqual(_ticket.LiveHomeScore.ToString(), _choice.Template.Score.homeScore);
+            Assert.AreEqual("", _choice.Template.Score.homeScore);
             Assert.AreEqual(_ticket.LiveAwayScore.ToString(), _choice.Template.Score.awayScore);
         }
 

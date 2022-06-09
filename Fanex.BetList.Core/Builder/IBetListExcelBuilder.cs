@@ -2,9 +2,10 @@
 {
     using System.Collections.Generic;
     using Entities;
-    using NPOI.SS.UserModel;
-    using NPOI.SS.Util;
-
+    using BetListNPOI.SS.UserModel;
+    using BetListNPOI.SS.Util;
+    using CellAddress = Fanex.BetList.Core.Entities.CellAddress;
+    
     public interface IBetListExcelBuilder : IBetListBaseBuilder
     {
         ICellStyle OddCellStyle { get; set; }
