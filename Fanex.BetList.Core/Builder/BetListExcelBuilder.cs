@@ -5,9 +5,9 @@ namespace Fanex.BetList.Core.Builder
     using System.Collections.Generic;
     using ChoiceBuilder;
     using Entities;
-    using BetListNPOI.HSSF.UserModel;
-    using BetListNPOI.SS.UserModel;
-    using BetListNPOI.SS.Util;
+    using NPOI.HSSF.UserModel;
+    using NPOI.SS.UserModel;
+    using NPOI.SS.Util;
     using OddsBuilder;
     using StakeBuilder;
     using StatusBuilder;

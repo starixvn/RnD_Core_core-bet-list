@@ -6,7 +6,7 @@
     using App_GlobalResources;
     using Constants;
     using Entities;
-    using BetListNPOI.SS.UserModel;
+    using NPOI.SS.UserModel;
 
     /// <summary>
     /// Combination Mix Parlay.

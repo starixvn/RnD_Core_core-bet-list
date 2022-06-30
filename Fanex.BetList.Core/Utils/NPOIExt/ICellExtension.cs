@@ -1,7 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Utils.NPOIExt
 {
     using System;
-    using BetListNPOI.SS.UserModel;
+    using NPOI.SS.UserModel;
 
     /// <summary>
     /// Extension for ICell.

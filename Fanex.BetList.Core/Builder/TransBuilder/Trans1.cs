@@ -3,8 +3,8 @@
     using App_GlobalResources;
     using Entities;
     using Fanex.BetList.Core.Utils.StringExt;
-    using BetListNPOI.HSSF.UserModel;
-    using BetListNPOI.SS.UserModel;
+    using NPOI.HSSF.UserModel;
+    using NPOI.SS.UserModel;
     using Templates;
 
     public class Trans1 : ITrans

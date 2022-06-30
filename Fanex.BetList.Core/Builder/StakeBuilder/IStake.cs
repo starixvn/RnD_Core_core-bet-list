@@ -1,7 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.StakeBuilder
 {
     using Entities;
-    using BetListNPOI.SS.UserModel;
+    using NPOI.SS.UserModel;
     using Templates;
 
     /// <summary>

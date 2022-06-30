@@ -1,7 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Entities
 {
     using System.Collections.Generic;
-    using BetListNPOI.SS.UserModel;
+    using NPOI.SS.UserModel;
     using Utils;
 
     public struct RTFHelper
