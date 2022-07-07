@@ -188,7 +188,7 @@
             // Assert
             Assert.IsTrue(template.String.Contains(expectedTemplate));
         }
-
+/*
         [Test]
         public void BuildResultLRF_Always_SetPosFont()
         {
@@ -198,7 +198,7 @@
             // Assert
             Assert.AreEqual(template.GetFontAtIndex(0), _rtfHelper.PosFont.Index);
         }
-
+*/
         private RTFHelper CreateRTFHelper()
         {
             var workbook = new HSSFWorkbook();

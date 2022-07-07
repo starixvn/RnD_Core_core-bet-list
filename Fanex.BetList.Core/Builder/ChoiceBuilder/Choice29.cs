@@ -108,7 +108,7 @@
         private static string JoinSystemParlaySubbetsFunc(ITicket ticket, ITicketHelper ticketHelper)
         {
             return IsOldSystemParlay(ticket.BetCheck)
-                ? $"javascript:showCombMP('{ticket.TransId}', {ticketHelper.Index}, '{ticket.RefNo}', {ticket.custId});"
+                ? $"javascript:showCombMP('{ticket.TransId}', {ticketHelper.Index}, '{ticket.RefNo}', {ticket.CustId});"
                 : string.Format(
                     "javascript:showNewCombMP('{0}', {1}, '{2}', {3}, {4}, '{5}', '{6}', {7});",
                     ticket.TransId,

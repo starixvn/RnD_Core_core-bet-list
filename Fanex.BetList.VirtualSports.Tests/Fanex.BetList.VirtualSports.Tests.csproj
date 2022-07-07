@@ -1,126 +1,23 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\NUnit.3.10.1\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.10.1\build\NUnit.props')" />
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CFE70A90-C890-4686-9516-7BCF6EDA8434}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Fanex.BetList.VirtualSports.Tests</RootNamespace>
-    <AssemblyName>Fanex.BetList.VirtualSports.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
-      <HintPath>..\packages\NPOI.2.0.6\lib\net40\ICSharpCode.SharpZipLib.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="NPOI, Version=2.0.6.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\NPOI.2.0.6\lib\net40\NPOI.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="NSubstitute, Version=2.0.3.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
-      <HintPath>..\packages\NSubstitute.2.0.3\lib\net40\NSubstitute.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="nunit.framework, Version=3.10.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.10.1\lib\net40\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="TplCore, Version=1.0.4854.17253, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TplCore.1.0.4854.17254\lib\net40\TplCore.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Builder\ChoiceBuilder\Choice1224Tests.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1206Tests.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1205Tests.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1204Tests.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1203Tests.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1201Tests.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1220Tests.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1231Tests.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1235Tests.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1236Tests.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice2701Tests.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice2702Tests.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice2703Tests.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice2705Tests.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice2707Tests.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice2799Tests.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice2801Tests.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice2802Tests.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice2807Tests.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice2808Tests.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice2809Tests.cs" />
-    <Compile Include="Builder\ChoiceBuilder\MatchCodeTests.cs" />
-    <Compile Include="Builder\OddsBuilder\Odds1231Tests.cs" />
-    <Compile Include="Builder\OddsBuilder\Odds1233Tests.cs" />
-    <Compile Include="Builder\OddsBuilder\Odds2799Tests.cs" />
-    <Compile Include="Builder\StatusBuilder\Status1231Tests.cs" />
-    <Compile Include="Builder\StatusBuilder\Status1233Tests.cs" />
-    <Compile Include="Builder\TransBuilder\Trans1201Tests.cs" />
-    <Compile Include="Builder\TransBuilder\Trans2701Tests.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Fanex.BetList.Core.UnitTest\Fanex.BetList.Core.UnitTest.csproj">
-      <Project>{879AB95E-FB73-4F65-BD8A-7E4F579BCFDB}</Project>
-      <Name>Fanex.BetList.Core.UnitTest</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj">
-      <Project>{B0838D04-2306-4362-AF22-9FCD0BE6F8E7}</Project>
-      <Name>Fanex.BetList.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.VirtualSports\Fanex.BetList.VirtualSports.csproj">
-      <Project>{f3dc05fd-883b-47f6-9f13-5506bf084cae}</Project>
-      <Name>Fanex.BetList.VirtualSports</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+      <OutputType>Library</OutputType>
+      <TargetFrameworks>net6.0</TargetFrameworks>
+      <Nullable>enable</Nullable>
+      <IsPackable>false</IsPackable>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\NUnit.3.10.1\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.10.1\build\NUnit.props'))" />
-  </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+    <ItemGroup>      
+      <PackageReference Include="HtmlAgilityPack" Version="1.11.43" />      
+      <PackageReference Include="Microsoft.net.test.sdk" Version="17.2.0" />  
+      <PackageReference Include="NSubstitute" Version="4.3.0" />      
+      <PackageReference Include="nunit" Version="3.13.3" />      
+      <PackageReference Include="NUnit.Console" Version="3.15.0" />      
+      <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />      
+      <PackageReference Include="System.Net.Http" Version="4.3.4" />      
+      <PackageReference Include="TplNetCore" Version="1.0.0-beta1" />      
+    </ItemGroup>
+    <ItemGroup>            
+      <ProjectReference Include="..\Fanex.Betlist.VirtualSports\Fanex.BetList.VirtualSports.csproj" />            
+      <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj" />            
+      <ProjectReference Include="..\Fanex.BetList.Core.UnitTest\Fanex.BetList.Core.UnitTest.csproj" /> 
+    </ItemGroup>
 </Project>

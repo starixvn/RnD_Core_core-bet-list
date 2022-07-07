@@ -1,20 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
-        <Description>Betlist Core</Description>
-        <PackageTags>Fanex.BetList.Core</PackageTags>
+        <TargetFrameworks>net461;netstandard2.0</TargetFrameworks> 
         <version>2.111.5.0</version>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <Version>3.0.0.0-net5-09</Version>
+        <PackageReleaseNotes>Support .net Core for Betlist Core package</PackageReleaseNotes>
+        <Description>BetList core package</Description>
+        <Authors>Nexcel Solutions</Authors>
+        <PackageTags>Fanex BetList</PackageTags>
+        <PackageProjectUrl>https://nexdev.net/projects/fanex-betlistcore/wiki/Core_Bet_List</PackageProjectUrl>
     </PropertyGroup>
     <ItemGroup>
       <PackageReference Include="NPOI" Version="2.5.6" />
       <PackageReference Include="System.Runtime.Caching" Version="6.0.0" />
-      <PackageReference Include="TplNetCore" Version="1.0.0-beta1" />
-    <Compile Include="Builder\ChoiceBuilder\Choice3900.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice3905.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice3910.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice3911.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice3913.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice3915.cs" />
+      <PackageReference Include="TplNetCore" Version="1.0.0-beta1" />    
     </ItemGroup>    
 </Project>

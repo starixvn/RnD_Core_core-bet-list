@@ -39,7 +39,7 @@ namespace Fanex.BetList.Core.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Fanex.BetList.Core.Resources.BitcoinLang", typeof(BitcoinLang).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Fanex.BetList.Bitcoin.Resources.BitcoinLang", typeof(BitcoinLang).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

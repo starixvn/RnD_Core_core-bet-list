@@ -90,10 +90,10 @@
         private IRichTextString AddCashOutLabel(IRichTextString originalTicketChoice, ITicket ticket, RTFHelper rtfHelper)
         {
             var cashOutLabel = $"{BuildCashOutLabel(ticket)}\n";
-            var formattingRuns = rtfHelper.GetFormattingRuns(originalTicketChoice);
+            //var formattingRuns = rtfHelper.GetFormattingRuns(originalTicketChoice);
             var text = new HSSFRichTextString(cashOutLabel + originalTicketChoice.String);
 
-            rtfHelper.ApplyFormattingRuns(text, formattingRuns, cashOutLabel.Length);
+            //rtfHelper.ApplyFormattingRuns(text, formattingRuns, cashOutLabel.Length);
 
             text.ApplyFont(0, cashOutLabel.Length, rtfHelper.PosFont);
 

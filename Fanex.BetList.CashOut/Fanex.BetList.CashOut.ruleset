@@ -1,4 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<RuleSet Name="SonarQube - R&amp;D / Bet List Core Sonar way" ToolsVersion="15.0">
-  <Include Path="..\sonarqube\betlistcorecsharp.ruleset" Action="Default" />
-</RuleSet>

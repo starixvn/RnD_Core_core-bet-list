@@ -39,7 +39,7 @@ namespace Fanex.BetList.Core.Resource {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Fanex.BetList.Core.Resource.Indo4DResources", typeof(Indo4DResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Fanex.BetList.Indo4D.Resource.Indo4DResources", typeof(Indo4DResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

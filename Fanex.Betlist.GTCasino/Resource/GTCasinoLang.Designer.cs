@@ -39,7 +39,7 @@ namespace Fanex.BetList.Core.Resource {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Fanex.BetList.Core.Resource.GTCasinoLang", typeof(GTCasinoLang).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Fanex.BetList.GTCasino.Resource.GTCasinoLang", typeof(GTCasinoLang).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

@@ -391,8 +391,8 @@ namespace Fanex.BetList.Core.Builder
             // There's probably a bug in the VerticalAlignment enum of NPOI 2.0.6.0,
             // where VerticalAlignment.Top is actually resulting in middle alignment,
             // and VerticalAlignment.Bottom is in fact top alignment.
-            OddCellStyle.VerticalAlignment = VerticalAlignment.Bottom;
-            EvenCellStyle.VerticalAlignment = VerticalAlignment.Bottom;
+            OddCellStyle.VerticalAlignment = VerticalAlignment.Center;
+            EvenCellStyle.VerticalAlignment = VerticalAlignment.Center;
             OddCellStyle.FillPattern = FillPattern.SolidForeground;
             EvenCellStyle.FillPattern = FillPattern.SolidForeground;
 

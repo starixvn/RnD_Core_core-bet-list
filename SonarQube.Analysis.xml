@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<SonarQubeAnalysisProperties  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
-  <Property Name="sonar.cpd.exclusions">
-    **/*Mapper.cs,**/*AssemblyInfo.cs,**/*Choice2705.cs,**/*Choice2701.cs,**/*Choice2008.cs,**/*Choice1031.cs,
-    **/*Choice1501.cs,**/*Choice1233.cs,**/*Choice1801.cs,**/*Choice171.cs,**/*Choice2101.cs,**/*Choice4001.cs,
-    **/*Odds33.cs,**/*Choice408.cs,**/*Status1233.cs,**/*Status4001.cs,**/*Choice413.cs,**/*Choice2401.cs,
-    **/*Status33.cs,**/*Choice1011.cs,**/*Choice416.cs, **/*Tests.cs, **/*Test.cs
-  </Property>
-</SonarQubeAnalysisProperties>

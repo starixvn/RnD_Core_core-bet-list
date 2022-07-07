@@ -1,126 +1,20 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F3DC05FD-883B-47F6-9F13-5506BF084CAE}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Fanex.BetList.Core</RootNamespace>
-    <AssemblyName>Fanex.BetList.VirtualSports</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>Fanex.BetList.VirtualSports.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>Fanex.BetList.VirtualSports.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <ItemGroup>
-    <Compile Include="Builder\ChoiceBuilder\Choice1201.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1203.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1224.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1206.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1205.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1204.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1220.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1231.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1235.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice1236.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice2701.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice2702.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice2703.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice2705.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice2707.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice2799.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice2801.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice2802.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice2807.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice2808.cs" />
-    <Compile Include="Builder\ChoiceBuilder\Choice2809.cs" />
-    <Compile Include="Builder\ChoiceBuilder\ChoiceUtils.cs" />
-    <Compile Include="Builder\OddsBuilder\Odds1231.cs" />
-    <Compile Include="Builder\OddsBuilder\Odds1233.cs" />
-    <Compile Include="Builder\OddsBuilder\Odds2799.cs" />
-    <Compile Include="Builder\StatusBuilder\Status1231.cs" />
-    <Compile Include="Builder\StatusBuilder\Status1233.cs" />
-    <Compile Include="Builder\TransBuilder\Trans1201.cs" />
-    <Compile Include="Builder\TransBuilder\Trans2701.cs" />
-    <Compile Include="Constants\BetRadarSharedBetTypes.cs" />
-    <Compile Include="Constants\InspireVirtualSoccerBetTypes.cs" />
-    <Compile Include="Constants\InspireVirtualRacingBetTypes.cs" />
-    <Compile Include="Constants\BetRadarVirtualBasketballBetTypes.cs" />
-    <Compile Include="Constants\BetRadarVirtualSoccerBetTypes.cs" />
-    <Compile Include="Constants\InspireVirtualTennisBetTypes.cs" />
-    <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Mapper\ChoiceMapper.cs" />
-    <Compile Include="Mapper\OddsMapper.cs" />
-    <Compile Include="Mapper\RepresentativeMapper.cs" />
-    <Compile Include="Mapper\StatusMapper.cs" />
-    <Compile Include="Mapper\TransMapper.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj">
-      <Project>{B0838D04-2306-4362-AF22-9FCD0BE6F8E7}</Project>
-      <Name>Fanex.BetList.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
-      <HintPath>..\packages\NPOI.2.0.6\lib\net40\ICSharpCode.SharpZipLib.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="NPOI, Version=2.0.6.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\NPOI.2.0.6\lib\net40\NPOI.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="TplCore, Version=1.0.4854.17253, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TplCore.1.0.4854.17254\lib\net40\TplCore.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Fanex.BetList.VirtualSports.ruleset" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <AdditionalFiles Include="..\SonarQube\betlistcore\CSharp\SonarLint.xml">
-      <Link>SonarLint.xml</Link>
-    </AdditionalFiles>
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.8.22.0.31243\analyzers\Google.Protobuf.dll" />
-    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.8.22.0.31243\analyzers\SonarAnalyzer.CFG.dll" />
-    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.8.22.0.31243\analyzers\SonarAnalyzer.CSharp.dll" />
-    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.8.22.0.31243\analyzers\SonarAnalyzer.dll" />
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFrameworks>net461;netstandard2.0</TargetFrameworks> 
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <FileVersion>2.0.0.0</FileVersion>
+        <Version>2.0.0.0-net5-03</Version>
+        <PackageReleaseNotes>Support .net Core for Betlist Core package</PackageReleaseNotes>
+        <Description>BetList core package</Description>
+        <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+        <Authors>Nexcel Solutions</Authors>
+        <PackageTags>Fanex BetList</PackageTags>
+        <PackageProjectUrl>https://nexdev.net/projects/fanex-betlistcore/wiki/Core_Bet_List</PackageProjectUrl>
+    </PropertyGroup>
+    <ItemGroup>
+      <PackageReference Include="TplNetCore" Version="1.0.0-beta1" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj" />
+    </ItemGroup>
 </Project>

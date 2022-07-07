@@ -40,8 +40,8 @@
 
             return tmp;
         }
-/*
-        public List<RTFFormattingRun> GetFormattingRuns(IRichTextString text)
+
+        /*public List<RTFFormattingRun> GetFormattingRuns(IRichTextString text)
         {
             var formattingRuns = new List<RTFFormattingRun>();
 
@@ -51,8 +51,8 @@
             }
 
             return formattingRuns;
-        }
-*/
+        }*/
+
         public void ApplyFormattingRuns(IRichTextString text, List<RTFFormattingRun> formattingRuns, int beginIndex = 0)
         {
             foreach (var format in formattingRuns)
@@ -63,8 +63,8 @@
                 text.ApplyFont(begin, end, format.FontIndex);
             }
         }
-/*
-        private static RTFFormattingRun GetFormatingRun(IRichTextString text, int formatIndex)
+
+        /*private static RTFFormattingRun GetFormatingRun(IRichTextString text, int formatIndex)
         {
             
             var beginIndex = text.GetIndexOfFormattingRun(formatIndex);
