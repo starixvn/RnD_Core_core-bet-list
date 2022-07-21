@@ -11,6 +11,9 @@
         private const string betOptionCloseTag = "</div>";
         private MemberChoice choiceInfo;
 
+        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+            => Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
+
         public override Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
         {
             choiceInfo = GetBetChoiceId(ticket.TransDesc);

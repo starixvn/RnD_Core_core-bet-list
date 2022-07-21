@@ -66,7 +66,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            var expectedShowSubbetsLink = "<a id=\"hidden0\" href=\"javascript:showCombMP(5554525358, 1, '100411681798', 13369475);\">System Parlay</a>";
+            var expectedShowSubbetsLink = "<a id=\"hidden0\" href=\"javascript:showCombMP('5554525358', 1, '100411681798', 13369475);\">System Parlay</a>";
             StringAssert.Contains(expectedShowSubbetsLink, _choice.Template.ToString());
         }
 
@@ -80,7 +80,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            var expectedShowSubbetsLink = "<a id=\"hidden0\" href=\"javascript:showNewCombMP(5554525358, 1, '100411681798', 1, 3, '1', '2', 13369475);\">System Parlay</a>";
+            var expectedShowSubbetsLink = "<a id=\"hidden0\" href=\"javascript:showNewCombMP('5554525358', 1, '100411681798', 1, 3, '1', '2', 13369475);\">System Parlay</a>";
             StringAssert.Contains(expectedShowSubbetsLink, _choice.Template.ToString());
         }
 
@@ -146,7 +146,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            var expectedDetailJsFunction = $"<div class=\"detail\" onclick=\"showCombMPDetail('100411681798', '03/28/2016 12:00:00', 5554525358, '', 13369475, '2');\"><a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a></div>";
+            var expectedDetailJsFunction = $"<div class=\"detail\" onclick=\"showCombMPDetail('100411681798', '03/28/2016 12:00:00', '5554525358', '', 13369475, '2');\"><a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a></div>";
             StringAssert.Contains(expectedDetailJsFunction, _choice.Template.ToString());
         }
 

@@ -127,9 +127,9 @@
         {
             string[] detailsFunctionDivCompositions =
             {
-                "<div class=\"detail video-poker-game-detail\" onclick=\"showVideoPokerGameDetails(",
+                "<div class=\"detail video-poker-game-detail\" onclick=\"showVideoPokerGameDetails('",
                 ticket.TransId.ToString(CultureInfo.InvariantCulture),
-                ", ",
+                "', ",
                 "'",
                 ticket.WinlostDate.ToString(CultureInfo.InvariantCulture),
                 "'",

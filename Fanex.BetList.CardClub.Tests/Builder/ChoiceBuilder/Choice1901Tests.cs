@@ -194,7 +194,7 @@
 
             ////Assert
             string expectedJsFunction = string.Format(
-                "showVideoPokerGameDetails(123, '{0}', 456, {1});",
+                "showVideoPokerGameDetails('123', '{0}', 456, {1});",
                 _ticket.WinlostDate.ToString(CultureInfo.InvariantCulture),
                 transctionType);
             string expectedTemplate = $"<div class=\"detail video-poker-game-detail\" onclick=\"{expectedJsFunction}\">" +
@@ -225,7 +225,7 @@
 
             ////Assert
             string expectedJsFunction = string.Format(
-                "showVideoPokerGameDetails(123, '{0}', 456, {1});",
+                "showVideoPokerGameDetails('123', '{0}', 456, {1});",
                 _ticket.WinlostDate.ToString(CultureInfo.InvariantCulture),
                 0);
             Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedJsFunction));

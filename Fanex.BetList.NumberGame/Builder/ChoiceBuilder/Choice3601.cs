@@ -16,6 +16,9 @@
         public const string BetChoiceRefId = "Parlay5Choice";
         private const string Hyphen = "-";
 
+        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+            => Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
+
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             if (!string.IsNullOrEmpty(ticket.TransDesc))

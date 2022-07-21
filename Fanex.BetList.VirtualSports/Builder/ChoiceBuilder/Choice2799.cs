@@ -47,7 +47,7 @@
         private static string BuildMixParlaySubBetsFuncName(ITicket ticket, ITicketHelper ticketHelper)
         {
             return string.IsNullOrWhiteSpace(ticketHelper.ClientSystemParlaySubbetsDetailFunction)
-                ? $"javascript:showNewCombMP({ticket.TransId},{ticketHelper.Index},'{ticket.RefNo}',{ticket.Handicap1},{ticket.Handicap2},'{ticket.BetCheck}','{ticket.BetTeam}',{ticket.CustId});"
+                ? $"javascript:showNewCombMP('{ticket.TransId}',{ticketHelper.Index},'{ticket.RefNo}',{ticket.Handicap1},{ticket.Handicap2},'{ticket.BetCheck}','{ticket.BetTeam}',{ticket.CustId});"
                 : ticketHelper.ClientSystemParlaySubbetsDetailFunction;
         }
 

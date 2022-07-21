@@ -95,9 +95,9 @@
         {
             string[] detailsFunctionDivCompositions =
             {
-                "<div class=\"detail voidbridge-detail\" onclick=\"showVoidBridgeDetails(",
+                "<div class=\"detail voidbridge-detail\" onclick=\"showVoidBridgeDetails('",
                 ticket.TransId.ToString(CultureInfo.InvariantCulture),
-                ", ",
+                "', ",
                 "'",
                 ticket.WinlostDate.ToString(CultureInfo.InvariantCulture),
                 "'",

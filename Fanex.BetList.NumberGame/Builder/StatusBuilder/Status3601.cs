@@ -7,7 +7,7 @@
         protected override void BuildStatusResult(ITicket ticket)
         {
             base.BuildStatusResult(ticket);
-            Template.StatusResult.refNo = $"'{ticket.RefNo}'";
+            Template.StatusResult.refNo = $"{ticket.RefNo}";
             Template.StatusResult.betId = $"{ticket.CurrencyId}, '{ticket.RefNo}', {ticket.CustId}, '{ticket.BetCheck}', '{ticket.SiteId}'";
         }
     }

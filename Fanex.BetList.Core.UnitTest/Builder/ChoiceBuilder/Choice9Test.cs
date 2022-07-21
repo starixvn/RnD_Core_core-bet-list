@@ -38,7 +38,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            string expected = "<a id=\"hidden0\" href=\"javascript:showMP(1000, '2000', 1);\">Bet type name</a><br/><div id=\"divEvent_1000\" style=\"display: none\" ></div>";
+            string expected = "<a id=\"hidden0\" href=\"javascript:showMP('1000', '2000', 1);\">Bet type name</a><br/><div id=\"divEvent_1000\" style=\"display: none\" ></div>";
             Assert.AreEqual(expected, _choice.Template.ToString());
         }
 

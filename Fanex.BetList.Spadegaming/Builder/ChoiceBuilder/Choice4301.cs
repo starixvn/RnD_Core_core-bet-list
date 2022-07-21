@@ -74,7 +74,7 @@
         private static string BuildSpadegamingDetailsLink(ITicket ticket)
         {
             var detailLink = $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a>";
-            var parameterList = $"{ticket.TransId}, '{ticket.WinlostDate}', {ticket.CustId}, {ticket.GetTransactionType()}";
+            var parameterList = $"'{ticket.TransId}', '{ticket.WinlostDate}', {ticket.CustId}, {ticket.GetTransactionType()}";
 
             return $"<div class=\"detail sg-detail\" onclick=\"showSGDetails({parameterList});\">{detailLink}</div>";
         }

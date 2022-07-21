@@ -122,7 +122,7 @@
 
             // Assert.
             var detailLink = $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a>";
-            var parameterList = $"{_ticket.TransId}, '{_ticket.WinlostDate}', {_ticket.CustId}, 1";
+            var parameterList = $"'{_ticket.TransId}', '{_ticket.WinlostDate}', {_ticket.CustId}, 1";
             var expectedHtml = $"<div class=\"detail advantplaymini-detail\" onclick=\"showAdvantPlayMiniBetDetails({parameterList});\">{detailLink}</div>";
 
             StringAssert.Contains(expectedHtml, template.League.ToString());

@@ -113,16 +113,16 @@
         }
 
         private static string JoinSystemParlayDetailJsFunc(string refNo, string winlossDate, string transId, string betId, string custId, string betTeam)
-            => $"showCombMPDetail('{refNo}', '{winlossDate}', {transId}, '{betId}', {custId}, '{betTeam}');";
+            => $"showCombMPDetail('{refNo}', '{winlossDate}', '{transId}', '{betId}', {custId}, '{betTeam}');";
 
         private static string JoinSystemParlaySubbetsFunc(ITicket ticket, ITicketHelper ticketHelper)
         {
             var custId = GetCustId(ticket);
 
             return IsOldSystemParlay(ticket.BetCheck)
-                ? $"javascript:showCombMP({ticket.TransId}, {ticketHelper.Index}, '{ticket.RefNo}', {custId});"
+                ? $"javascript:showCombMP('{ticket.TransId}', {ticketHelper.Index}, '{ticket.RefNo}', {custId});"
                 : string.Format(
-                    "javascript:showNewCombMP({0}, {1}, '{2}', {3}, {4}, '{5}', '{6}', {7});",
+                    "javascript:showNewCombMP('{0}', {1}, '{2}', {3}, {4}, '{5}', '{6}', {7});",
                     ticket.TransId,
                     ticketHelper.Index,
                     ticket.RefNo,

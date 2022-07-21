@@ -29,7 +29,7 @@
             string[] components;
 
             clientMixParlayDetailFunction = string.IsNullOrWhiteSpace(ticketHelper.ClientMixParlaySubbetsDetailFunction)
-                ? $"javascript:showMP({ticket.TransId}, '{ticket.RefNo}', {ticket.CustId});"
+                ? $"javascript:showMP('{ticket.TransId}', '{ticket.RefNo}', {ticket.CustId});"
                 : ticketHelper.ClientMixParlaySubbetsDetailFunction;
 
             components = new[]

@@ -68,9 +68,9 @@ namespace Fanex.BetList.Core
 
 		public class Status_NewCashOutHistory_Block: Block
 		{
-			protected static string s5 = "<div class=\"result cashout-history\" onclick=\"ViewNewCashOutHistory(";
+			protected static string s5 = "<div class=\"result cashout-history\" onclick=\"ViewNewCashOutHistory('";
 			public string  transId  = "{ transId }";
-			protected static string s6 = ", ";
+			protected static string s6 = "', ";
 			public string  custId  = "{ custId }";
 			protected static string s7 = ", '";
 			public string winlostdate = "{winlostdate}";
@@ -102,11 +102,11 @@ namespace Fanex.BetList.Core
 
 		public class Status_CashOutHistory_Block: Block
 		{
-			protected static string s12 = "<div class=\"result cashout-history\" onclick=\"ViewCashOutHistory(";
+			protected static string s12 = "<div class=\"result cashout-history\" onclick=\"ViewCashOutHistory('";
 			public string transId = "{transId}";
-			protected static string s13 = ", ";
+			protected static string s13 = "', '";
 			public string refNo = "{refNo}";
-			protected static string s14 = ", ";
+			protected static string s14 = "', ";
 			public string betType = "{betType}";
 			protected static string s15 = ", ";
 			public string betdaqId = "{betdaqId}";
@@ -144,15 +144,15 @@ namespace Fanex.BetList.Core
 			public string betType = "{betType}";
 			protected static string s22 = ", ";
 			public string sportType = "{sportType}";
-			protected static string s23 = ", ";
+			protected static string s23 = ", '";
 			public string refNo = "{refNo}";
-			protected static string s24 = ", '";
+			protected static string s24 = "', '";
 			public string userName = "{userName}";
 			protected static string s25 = "', '";
 			public string winlostDate = "{winlostDate}";
-			protected static string s26 = "', ";
+			protected static string s26 = "', '";
 			public string refNo_MixParlay = "0";
-			protected static string s27 = ", ";
+			protected static string s27 = "', ";
 			public string league = "{league}";
 			protected static string s28 = ", ";
 			public string isoutright = "0";

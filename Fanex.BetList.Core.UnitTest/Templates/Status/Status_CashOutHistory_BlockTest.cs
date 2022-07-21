@@ -28,7 +28,7 @@
     [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleClass", Justification = "Reviewed.")]
     public class Status_CashOutHistory_BlockTest
     {
-        private const string StatusTemplate = "<div class=\"result cashout-history\" onclick=\"ViewCashOutHistory({0}, {1}, {2}, {3})\">Details</div>";
+        private const string StatusTemplate = "<div class=\"result cashout-history\" onclick=\"ViewCashOutHistory('{0}', '{1}', {2}, {3})\">Details</div>";
 
         /// <summary>
         /// Visible the property is true return HTML string.

@@ -28,7 +28,7 @@
     [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleClass", Justification = "Reviewed.")]
     public class Status_StatusResult_BlockTest
     {
-        private const string StatusTemplate = "<div class=\"result\" onclick=\"ViewResult({0}, {1}, {2}, {3}, {4}, '{5}', '{6}', {7}, {8}, {9}, {10});\">Results</div>";
+        private const string StatusTemplate = "<div class=\"result\" onclick=\"ViewResult({0}, {1}, {2}, {3}, '{4}', '{5}', '{6}', {7}, {8}, {9}, {10});\">Results</div>";
 
         /// <summary>
         /// Visible the property is true return HTML string.

@@ -64,7 +64,7 @@
         private static string BuildCGDetailsLink(ITicket ticket)
         {
             var detailLink = $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a>";
-            var parameterList = $"{ticket.TransId}, '{ticket.WinlostDate}', {ticket.CustId}, {GetTransactionType(ticket)}";
+            var parameterList = $"'{ticket.TransId}', '{ticket.WinlostDate}', {ticket.CustId}, {GetTransactionType(ticket)}";
 
             return $"<div class=\"detail cg-detail\" onclick=\"showCGBetDetails({parameterList});\">{detailLink}</div>";
         }

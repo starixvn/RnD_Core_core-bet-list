@@ -94,7 +94,7 @@
             var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            var expectedParamterList = $"{testingTransId},{testingIndex},'{testingRefNo}',{testingHandicap1},{testingHandicap2},'{testingBetCheck}','{testingBetTeam}',{testingCustId}";
+            var expectedParamterList = $"'{testingTransId}',{testingIndex},'{testingRefNo}',{testingHandicap1},{testingHandicap2},'{testingBetCheck}','{testingBetTeam}',{testingCustId}";
             var expectedHtml = $"<a id=\"hidden0\" href=\"javascript:showNewCombMP({expectedParamterList});\">";
 
             StringAssert.Contains(expectedHtml, template.ToString());

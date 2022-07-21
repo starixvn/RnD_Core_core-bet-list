@@ -135,7 +135,7 @@
                 string.IsNullOrEmpty(ticket.Race) ? "0" : ticket.Race,
                 ticket.BetTypeId,
                 ticket.SportTypeId,
-                ticket.TransId,
+                $"'{ticket.TransId}'",
                 $"'{ticket.UserName}'",
                 $"'{Formatter.FullDateFormat(ticket.WinlostDate)}'",
                 "0",

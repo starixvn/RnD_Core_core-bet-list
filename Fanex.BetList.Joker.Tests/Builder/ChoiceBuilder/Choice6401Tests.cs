@@ -122,7 +122,7 @@
 
             // Assert.
             var detailLink = $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a>";
-            var parameterList = $"{_ticket.TransId}, '{_ticket.WinlostDate}', {_ticket.CustId}, 1";
+            var parameterList = $"'{_ticket.TransId}', '{_ticket.WinlostDate}', {_ticket.CustId}, 1";
             var expectedHtml = $"<div class=\"detail joker-detail\" onclick=\"showJokerBetDetails({parameterList});\">{detailLink}</div>";
 
             StringAssert.Contains(expectedHtml, template.League.ToString());
@@ -141,7 +141,7 @@
             const string expectedTransactionType = "0";
 
             var detailLink = $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a>";
-            var parameterList = $"{_ticket.TransId}, '{_ticket.WinlostDate}', {_ticket.CustId}, {expectedTransactionType}";
+            var parameterList = $"'{_ticket.TransId}', '{_ticket.WinlostDate}', {_ticket.CustId}, {expectedTransactionType}";
             var expectedHtml = $"<div class=\"detail joker-detail\" onclick=\"showJokerBetDetails({parameterList});\">{detailLink}</div>";
 
             StringAssert.Contains(expectedHtml, template.League.ToString());
@@ -167,7 +167,7 @@
             const string expectedTransactionType = "1";
 
             var detailLink = $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a>";
-            var parameterList = $"{_ticket.TransId}, '{_ticket.WinlostDate}', {_ticket.CustId}, {expectedTransactionType}";
+            var parameterList = $"'{_ticket.TransId}', '{_ticket.WinlostDate}', {_ticket.CustId}, {expectedTransactionType}";
             var expectedHtml = $"<div class=\"detail joker-detail\" onclick=\"showJokerBetDetails({parameterList});\">{detailLink}</div>";
 
             StringAssert.Contains(expectedHtml, template.League.ToString());
@@ -189,7 +189,7 @@
             const string expectedTransactionType = "2";
 
             var detailLink = $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a>";
-            var parameterList = $"{_ticket.TransId}, '{_ticket.WinlostDate}', {_ticket.CustId}, {expectedTransactionType}";
+            var parameterList = $"'{_ticket.TransId}', '{_ticket.WinlostDate}', {_ticket.CustId}, {expectedTransactionType}";
             var expectedHtml = $"<div class=\"detail joker-detail\" onclick=\"showJokerBetDetails({parameterList});\">{detailLink}</div>";
 
             StringAssert.Contains(expectedHtml, template.League.ToString());
@@ -211,7 +211,7 @@
             const string expectedTransactionType = "3";
 
             var detailLink = $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a>";
-            var parameterList = $"{_ticket.TransId}, '{_ticket.WinlostDate}', {_ticket.CustId}, {expectedTransactionType}";
+            var parameterList = $"'{_ticket.TransId}', '{_ticket.WinlostDate}', {_ticket.CustId}, {expectedTransactionType}";
             var expectedHtml = $"<div class=\"detail joker-detail\" onclick=\"showJokerBetDetails({parameterList});\">{detailLink}</div>";
 
             StringAssert.Contains(expectedHtml, template.League.ToString());
@@ -232,7 +232,7 @@
             const string expectedTransactionType = "0";
 
             var detailLink = $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a>";
-            var parameterList = $"{_ticket.TransId}, '{_ticket.WinlostDate}', {_ticket.CustId}, {expectedTransactionType}";
+            var parameterList = $"'{_ticket.TransId}', '{_ticket.WinlostDate}', {_ticket.CustId}, {expectedTransactionType}";
             var expectedHtml = $"<div class=\"detail joker-detail\" onclick=\"showJokerBetDetails({parameterList});\">{detailLink}</div>";
 
             StringAssert.Contains(expectedHtml, template.League.ToString());

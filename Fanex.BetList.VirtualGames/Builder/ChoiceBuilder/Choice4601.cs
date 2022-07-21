@@ -9,6 +9,9 @@
         public const string ChoiceRefId = "VirtualGamesChoice";
         public const string TableRefId = "VirtualGamesTable";
 
+        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+            => Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
+
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             var betChoiceId = GetBetChoiceId(ticket.TransDesc);

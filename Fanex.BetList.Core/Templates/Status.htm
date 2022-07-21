@@ -5,17 +5,17 @@
     <!--/NewCashOutAmount-->
 </div>
 <!--NewCashOutHistory-->
-<div class="result cashout-history" onclick="ViewNewCashOutHistory({ transId }, { custId }, '{winlostdate}', '{currency}')">
+<div class="result cashout-history" onclick="ViewNewCashOutHistory('{ transId }', { custId }, '{winlostdate}', '{currency}')">
     {static:App_GlobalResources.CoreBetList.details}
 </div>
 <!--/NewCashOutHistory-->
 <!--CashOutHistory-->
-<div class="result cashout-history" onclick="ViewCashOutHistory({transId}, {refNo}, {betType}, {betdaqId})">
+<div class="result cashout-history" onclick="ViewCashOutHistory('{transId}', '{refNo}', {betType}, {betdaqId})">
     {static:App_GlobalResources.CoreBetList.details}
 </div>
 <!--/CashOutHistory-->
 <!--StatusResult-->
-<div class="result" onclick="ViewResult({matchId}, {race:0}, {betType}, {sportType}, {refNo}, '{userName}', '{winlostDate}', {refNo_MixParlay:0}, {league}, {isoutright:0}, {betId:0});">
+<div class="result" onclick="ViewResult({matchId}, {race:0}, {betType}, {sportType}, '{refNo}', '{userName}', '{winlostDate}', '{refNo_MixParlay:0}', {league}, {isoutright:0}, {betId:0});">
     {static:App_GlobalResources.CoreBetList.results}
 </div>
 <!--/StatusResult-->
