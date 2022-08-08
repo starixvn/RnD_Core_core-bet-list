@@ -596,6 +596,7 @@
     <Content Include="App_Data\ESports4.xls" />
     <Content Include="App_Data\FGG.xls" />
     <Content Include="App_Data\CricketAIOP2.xls" />
+    <Content Include="App_Data\VolleyballAIO.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />

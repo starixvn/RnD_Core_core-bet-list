@@ -670,5 +670,27 @@
         public const int Home2ndInnsBatsmanFours = 9696;
         public const int Away2ndInnsBatsmanFours = 9697;
         public const int HighestOfCricket = 9998;
+
+        public const int VolleyballCorrectScore = 3900;
+        public const int VolleyballFirstServe = 3901;
+        public const int VolleyballHighestScoringSetTotal = 3902;
+        public const int VolleyballSetXWinner15Points = 3903;
+        public const int VolleyballSetXPointsHandicap15Points = 3904;
+        public const int VolleyballSetXTotalPointsOverUnder15Points = 3905;
+        public const int VolleyballSetXTotalPointsOddEven = 3906;
+        public const int VolleyballSetXHomeOverUnder = 3907;
+        public const int VolleyballSetXAwayOverUnder = 3908;
+        public const int VolleyballSetXPointYWinner = 3909;
+        public const int VolleyballSetXPointsCorrectScore = 3910;
+        public const int VolleyballSetXWinningMargin = 3911;
+        public const int VolleyballSetXRaceToYPoints = 3912;
+        public const int VolleyballSetXWinnerAndTotalPoints = 3913;
+        public const int VolleyballWillThereBeA5thSet = 3914;
+        public const int VolleyballLeadingTeamAfterSetXFirstYPoints3Way = 3915;
+        public const int VolleyballLeadingTeamAfterSetXFirstYPoints = 3916;
+        public const int VolleyballSetXPointsCorrectScore15Points = 3917;
+        public const int VolleyballSetXMoneyline = 3918;
+        public const int SetXPointsHandicap = 219;
+        public const int SetXTotalPointsOverUnder = 220;
     }
 }

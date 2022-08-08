@@ -603,4 +603,34 @@
   <data name="Lay" xml:space="preserve">
     <value>{0} 레이</value>
   </data>
+  <data name="a_wm_2" xml:space="preserve">
+    <value>2점 차이로 원정팀 승리</value>
+  </data>
+  <data name="a_wm_3_4" xml:space="preserve">
+    <value>3 - 4점 차이로 원정팀 승리</value>
+  </data>
+  <data name="a_wm_5_7" xml:space="preserve">
+    <value>5 - 7점 차이로 원정팀 승리</value>
+  </data>
+  <data name="a_wm_8_11" xml:space="preserve">
+    <value>8 - 11점 차이로 원정팀 승리</value>
+  </data>
+  <data name="a_wm_over_12" xml:space="preserve">
+    <value>12점 이상으로 원정팀 승리</value>
+  </data>
+  <data name="h_wm_2" xml:space="preserve">
+    <value>2점 차이로 홈팀 승리</value>
+  </data>
+  <data name="h_wm_3_4" xml:space="preserve">
+    <value>3 - 4점 차이로 홈팀 승리</value>
+  </data>
+  <data name="h_wm_5_7" xml:space="preserve">
+    <value>5 - 7점 차이로 홈팀 승리</value>
+  </data>
+  <data name="h_wm_8_11" xml:space="preserve">
+    <value>8 - 11점 차이로 홈팀 승리</value>
+  </data>
+  <data name="h_wm_over_12" xml:space="preserve">
+    <value>12점 이상으로 홈팀 승리</value>
+  </data>
 </root>

@@ -14,6 +14,7 @@
             MapForPHAIO5();
             MapForCricket();
             MapForOthers();
+            MapForVolleyballAIO();
         }
 
         private void MapForCricket()
@@ -125,6 +126,27 @@
         private void MapForCornerMatches()
         {
             MapIdToBaseId(BetTypes.FirstHalfCornersRace, BetTypes.CornersRace);
+        }
+
+        private void MapForVolleyballAIO()
+        {
+            MapIdToBaseId(BetTypes.VolleyballSetXPointYWinner, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.VolleyballSetXRaceToYPoints, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.VolleyballLeadingTeamAfterSetXFirstYPoints, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.VolleyballLeadingTeamAfterSetXFirstYPoints3Way, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.VolleyballSetXWinner15Points, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.VolleyballSetXPointsHandicap15Points, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.VolleyballSetXTotalPointsOverUnder15Points, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.VolleyballSetXTotalPointsOddEven, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.VolleyballSetXHomeOverUnder, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.VolleyballSetXAwayOverUnder, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.VolleyballSetXPointsCorrectScore, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.VolleyballSetXWinningMargin, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.VolleyballSetXWinnerAndTotalPoints, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.VolleyballSetXPointsCorrectScore15Points, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.VolleyballSetXMoneyline, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.SetXPointsHandicap, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.SetXTotalPointsOverUnder, BetTypes.FirstHalfRaceToXPoints);
         }
     }
 }

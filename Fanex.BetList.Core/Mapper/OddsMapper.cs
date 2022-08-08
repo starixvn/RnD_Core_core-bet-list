@@ -12,6 +12,7 @@
             RegisterMultipleOddsTypesForPHAIO4B();
             RegisterMultipleOddsTypesForBadmintonAIO();
             RegisterMultipleOddsTypesForPHAIO5();
+            RegisterMultipleOddsTypesForVolleyballAIO();
         }
 
         private void MapForScoreBox()
@@ -61,6 +62,25 @@
             ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.PenaltyShootoutOddEvenFirst10);
             ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.PenaltyShootoutOddEvenFinalResult);
             ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.ExtraTimeOddEven);
+        }
+
+        private static void RegisterMultipleOddsTypesForVolleyballAIO()
+        {
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.VolleyballFirstServe);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.VolleyballHighestScoringSetTotal);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.VolleyballSetXWinner15Points);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.VolleyballSetXPointsHandicap15Points);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.VolleyballSetXTotalPointsOverUnder15Points);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.VolleyballSetXTotalPointsOddEven);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.VolleyballSetXHomeOverUnder);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.VolleyballSetXAwayOverUnder);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.VolleyballSetXPointYWinner);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.VolleyballSetXRaceToYPoints);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.VolleyballWillThereBeA5thSet);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.VolleyballLeadingTeamAfterSetXFirstYPoints);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.VolleyballSetXMoneyline);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.SetXPointsHandicap);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.SetXTotalPointsOverUnder);
         }
     }
 }

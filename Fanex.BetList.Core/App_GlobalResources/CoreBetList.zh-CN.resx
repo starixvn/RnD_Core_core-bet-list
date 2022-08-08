@@ -948,4 +948,34 @@
   <data name="NotCaught" xml:space="preserve">
     <value>非接杀出局</value>
   </data>
+  <data name="a_wm_over_12" xml:space="preserve">
+    <value>客 赢12分以上</value>
+  </data>
+  <data name="a_wm_8_11" xml:space="preserve">
+    <value>客 赢8-11分</value>
+  </data>
+  <data name="a_wm_5_7" xml:space="preserve">
+    <value>客 赢5-7分</value>
+  </data>
+  <data name="a_wm_3_4" xml:space="preserve">
+    <value>客 赢3-4分</value>
+  </data>
+  <data name="a_wm_2" xml:space="preserve">
+    <value>客 赢2分</value>
+  </data>
+  <data name="h_wm_2" xml:space="preserve">
+    <value>主 赢2分</value>
+  </data>
+  <data name="h_wm_3_4" xml:space="preserve">
+    <value>主 赢3-4分</value>
+  </data>
+  <data name="h_wm_5_7" xml:space="preserve">
+    <value>主 赢5-7分</value>
+  </data>
+  <data name="h_wm_8_11" xml:space="preserve">
+    <value>主 赢8-11分</value>
+  </data>
+  <data name="h_wm_over_12" xml:space="preserve">
+    <value>主 赢12分以上</value>
+  </data>
 </root>

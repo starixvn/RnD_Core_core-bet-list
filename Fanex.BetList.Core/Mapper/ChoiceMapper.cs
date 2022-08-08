@@ -22,6 +22,7 @@
             MapForCricketAIOForFancy();
             MapForCricketAIOP2();
             MapForCricketAIOP4();
+            MapForVolleyballAIO();
         }
 
         private void MapForOtherBetTypes()
@@ -533,6 +534,33 @@
             MapIdToBaseId(BetTypes.Away1stInnsBatsmanFours, BetTypes.Home1stInnsBatsmanMilestones);
             MapIdToBaseId(BetTypes.Home2ndInnsBatsmanFours, BetTypes.Home1stInnsBatsmanMilestones);
             MapIdToBaseId(BetTypes.Away2ndInnsBatsmanFours, BetTypes.Home1stInnsBatsmanMilestones);
+        }
+
+        private void MapForVolleyballAIO()
+        {
+            MapIdToBaseId(BetTypes.VolleyballFirstServe, BetTypes.Moneyline);
+
+            MapIdToBaseId(BetTypes.VolleyballHighestScoringSetTotal, BetTypes.HomeTeamOverUnder);
+
+            MapIdToBaseId(BetTypes.VolleyballSetXWinner15Points, BetTypes.QuarterXMoneyline);
+            MapIdToBaseId(BetTypes.VolleyballSetXPointYWinner, BetTypes.QuarterXMoneyline);
+            MapIdToBaseId(BetTypes.VolleyballSetXRaceToYPoints, BetTypes.QuarterXMoneyline);
+            MapIdToBaseId(BetTypes.VolleyballLeadingTeamAfterSetXFirstYPoints, BetTypes.QuarterXMoneyline);
+
+            MapIdToBaseId(BetTypes.VolleyballSetXPointsHandicap15Points, BetTypes.GameXPointHandicap);
+            MapIdToBaseId(BetTypes.SetXPointsHandicap, BetTypes.GameXPointHandicap); 
+
+            MapIdToBaseId(BetTypes.VolleyballSetXTotalPointsOddEven, BetTypes.QuarterXOddEven);
+
+            MapIdToBaseId(BetTypes.VolleyballSetXHomeOverUnder, BetTypes.VolleyballSetXTotalPointsOverUnder15Points);
+            MapIdToBaseId(BetTypes.VolleyballSetXAwayOverUnder, BetTypes.VolleyballSetXTotalPointsOverUnder15Points);
+            MapIdToBaseId(BetTypes.SetXTotalPointsOverUnder, BetTypes.VolleyballSetXTotalPointsOverUnder15Points);
+
+            MapIdToBaseId(BetTypes.VolleyballWillThereBeA5thSet, BetTypes.HomeToWinBothHalves);
+
+            MapIdToBaseId(BetTypes.VolleyballSetXPointsCorrectScore15Points, BetTypes.VolleyballSetXPointsCorrectScore);
+
+            MapIdToBaseId(BetTypes.VolleyballSetXMoneyline, BetTypes.QuarterXMoneyline);
         }
     }
 }

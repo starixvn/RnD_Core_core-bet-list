@@ -176,6 +176,12 @@
     <Compile Include="Builder\BetListHTMLBuilder.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice17004.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice229.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice3900.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice3905.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice3910.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice3911.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice3913.cs" />
+    <Compile Include="Builder\ChoiceBuilder\Choice3915.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice630.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9490.cs" />
     <Compile Include="Builder\ChoiceBuilder\Choice9486.cs" />

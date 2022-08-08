@@ -106,6 +106,51 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Away To Win By 2 Points.
+        /// </summary>
+        public static string a_wm_2 {
+            get {
+                return ResourceManager.GetString("a_wm_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Away To Win By 3 - 4 Points.
+        /// </summary>
+        public static string a_wm_3_4 {
+            get {
+                return ResourceManager.GetString("a_wm_3_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Away To Win By 5 - 7 Points.
+        /// </summary>
+        public static string a_wm_5_7 {
+            get {
+                return ResourceManager.GetString("a_wm_5_7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Away To Win By 8 - 11 Points.
+        /// </summary>
+        public static string a_wm_8_11 {
+            get {
+                return ResourceManager.GetString("a_wm_8_11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Away To Win By 12+ Points.
+        /// </summary>
+        public static string a_wm_over_12 {
+            get {
+                return ResourceManager.GetString("a_wm_over_12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Away To Win Quarter 1 &amp; 2.
         /// </summary>
         public static string a12 {
@@ -1011,6 +1056,51 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string h {
             get {
                 return ResourceManager.GetString("h", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home To Win By 2 Points.
+        /// </summary>
+        public static string h_wm_2 {
+            get {
+                return ResourceManager.GetString("h_wm_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home To Win By 3 - 4 Points.
+        /// </summary>
+        public static string h_wm_3_4 {
+            get {
+                return ResourceManager.GetString("h_wm_3_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home To Win By 5 - 7 Points.
+        /// </summary>
+        public static string h_wm_5_7 {
+            get {
+                return ResourceManager.GetString("h_wm_5_7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home To Win By 8 - 11 Points.
+        /// </summary>
+        public static string h_wm_8_11 {
+            get {
+                return ResourceManager.GetString("h_wm_8_11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home To Win By 12+ Points.
+        /// </summary>
+        public static string h_wm_over_12 {
+            get {
+                return ResourceManager.GetString("h_wm_over_12", resourceCulture);
             }
         }
         
