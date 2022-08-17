@@ -19,7 +19,7 @@
             else
             {
                 base.BuildStatusResult(ticket);
-                Template.StatusResult.refNo = $"'{ticket.BetCheck}'";
+                Template.StatusResult.refNo = $"{ticket.BetCheck}";
                 Template.StatusResult.betId = $"{ticket.CurrencyId}, '{ticket.BetTeam}', {ticket.CustId}, '{ticket.BetCheck}', '{ticket.SiteId}'";
             }
         }
