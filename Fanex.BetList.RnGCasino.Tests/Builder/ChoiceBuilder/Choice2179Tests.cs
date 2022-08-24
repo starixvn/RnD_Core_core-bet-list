@@ -1,5 +1,6 @@
 ﻿namespace Fanex.BetList.RnGCasino.Tests.Builder.ChoiceBuilder
 {
+    using System;
     using Core.Builder.ChoiceBuilder;
     using Core.Entities;
     using NSubstitute;
@@ -29,12 +30,12 @@
             _ticket.ExtraInfo = jackpotInfo;
             _ticket.CustId = 1;
             _ticket.BetTypeId = 2198;
-
+            _ticket.WinlostDate = new DateTime(2022, 8, 24);
             // Act
             var choice = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            var expectedDetailLink = $"<div class=\"detail rng-casino-detail\" onclick=\"showProgressiveJackpotWonDetails('1233213123', '1', '2198');\">" +
+            var expectedDetailLink = $"<div class=\"detail rng-casino-detail\" onclick=\"showProgressiveJackpotWonDetails('1233213123', '1', '2198', '8/24/2022 12:00:00 AM');\">" +
                  $"<a class=\"detail-link\" href=\"javascript:void('');\">Progressive Jackpot Won Details</a></div>";
             Assert.True(choice.League.ToString().Contains(expectedDetailLink));
         }
@@ -46,12 +47,13 @@
             _ticket.ExtraInfo = "jp=1,jpw=1233213123";
             _ticket.CustId = 1;
             _ticket.BetTypeId = 2198;
+            _ticket.WinlostDate = new DateTime(2022, 8, 24);
 
             // Act
             var choice = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            var expectedDetailLink = $"<div class=\"detail rng-casino-detail\" onclick=\"showProgressiveJackpotWonDetails('1233213123', '1', '2198');\">" +
+            var expectedDetailLink = $"<div class=\"detail rng-casino-detail\" onclick=\"showProgressiveJackpotWonDetails('1233213123', '1', '2198', '8/24/2022 12:00:00 AM');\">" +
                  $"<a class=\"detail-link\" href=\"javascript:void('');\">Progressive Jackpot Won Details</a></div>";
             Assert.False(choice.League.ToString().Contains(expectedDetailLink));
         }
@@ -65,12 +67,13 @@
             _ticket.ExtraInfo = jackpotInfo;
             _ticket.CustId = 1;
             _ticket.BetTypeId = 2198;
+            _ticket.WinlostDate = new DateTime(2022, 8, 24);
 
             // Act
             var choice = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            var expectedDetailLink = $"<div class=\"detail rng-casino-detail\" onclick=\"showProgressiveJackpotWonDetails('1233213123', '1', '2198');\">" +
+            var expectedDetailLink = $"<div class=\"detail rng-casino-detail\" onclick=\"showProgressiveJackpotWonDetails('1233213123', '1', '2198', '8/24/2022 12:00:00 AM');\">" +
                  $"<a class=\"detail-link\" href=\"javascript:void('');\">Progressive Jackpot Won Details</a></div>";
             Assert.False(choice.League.ToString().Contains(expectedDetailLink));
         }

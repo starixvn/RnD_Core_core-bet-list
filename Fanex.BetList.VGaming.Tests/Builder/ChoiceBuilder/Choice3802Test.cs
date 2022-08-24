@@ -1,6 +1,7 @@
 ﻿
 namespace Fanex.BetList.VGaming.Tests.Builder.ChoiceBuilder
 {
+    using System;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Constants;
     using Fanex.BetList.Core.Entities;
@@ -32,7 +33,8 @@ namespace Fanex.BetList.VGaming.Tests.Builder.ChoiceBuilder
             _ticket.BetCheck = "betcheck";
             _ticket.CustId = 123;
             _ticket.BetTypeId = VGamingBetTypes.FourGuardians;
-            var expectedJSFunction = "showVGamingJackpotWonDetails('xxxxxxxxxxx', '123', '3829')";
+            _ticket.WinlostDate = new DateTime(2022, 8, 24);
+            var expectedJSFunction = "showVGamingJackpotWonDetails('xxxxxxxxxxx', '123', '3829', '8/24/2022 12:00:00 AM')";
 
             // Act
             var template = _choice.Render(_ticket, _ticketHelper, null, false);

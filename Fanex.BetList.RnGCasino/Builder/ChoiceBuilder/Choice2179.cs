@@ -33,7 +33,7 @@
             var indexOfJackpotTransId = ticket.ExtraInfo.LastIndexOf(JackpotTransIdInfo, StringComparison.InvariantCultureIgnoreCase) + 4;
             var transId = ticket.ExtraInfo.Substring(indexOfJackpotTransId, ticket.ExtraInfo.Length - indexOfJackpotTransId);
             var detailLinkMarkup =
-                $"<div class=\"detail rng-casino-detail\" onclick=\"showProgressiveJackpotWonDetails('{transId}', '{ticket.CustId}', '{ticket.BetTypeId}');\">" +
+                $"<div class=\"detail rng-casino-detail\" onclick=\"showProgressiveJackpotWonDetails('{transId}', '{ticket.CustId}', '{ticket.BetTypeId}', '{ticket.WinlostDate}');\">" +
                 $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.ProgressiveJackpotWonDetails}</a>" +
                 $"</div>";
 
