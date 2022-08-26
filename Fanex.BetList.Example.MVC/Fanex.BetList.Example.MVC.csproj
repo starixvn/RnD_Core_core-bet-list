@@ -448,6 +448,10 @@
       <Project>{285c1010-232f-4beb-9642-f890d9302581}</Project>
       <Name>Fanex.BetList.SabaClub</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.SealEntertainment\Fanex.BetList.SealEntertainment.csproj">
+      <Project>{13c11c6a-a869-4284-9754-345dc79a7a07}</Project>
+      <Name>Fanex.BetList.SealEntertainment</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fanex.Betlist.SexyGaming\Fanex.BetList.SexyGaming.csproj">
       <Project>{b4906408-42ed-4db8-a8f1-dca5fa90288d}</Project>
       <Name>Fanex.BetList.SexyGaming</Name>
@@ -597,6 +601,7 @@
     <Content Include="App_Data\FGG.xls" />
     <Content Include="App_Data\CricketAIOP2.xls" />
     <Content Include="App_Data\VolleyballAIO.xls" />
+    <Content Include="App_Data\SealEntertainment.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
