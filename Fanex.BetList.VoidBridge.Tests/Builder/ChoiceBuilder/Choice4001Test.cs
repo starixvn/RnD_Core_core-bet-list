@@ -7,6 +7,7 @@
     using Core.Entities;
     using NSubstitute;
     using NUnit.Framework;
+    using Fanex.BetList.Core.Constants;
 
     [TestFixture]
     public class Choice4001Test
@@ -19,6 +20,7 @@
         public void Setup()
         {
             _ticket = Substitute.For<ITicket>();
+            _ticket.BetTypeId = VoidBridgeBetTypes.BaseBetTypeIdRange1;
             _ticketHelper = Substitute.For<ITicketHelper>();
             _choice = new Choice4001();
         }
@@ -43,7 +45,7 @@
         {
             ////Arrange
             _ticket.TransDesc = "1";
-            _ticketHelper.GetResourceData("VB_Casino_GT", _ticket.TransDesc).Returns("Bushido Code");
+            _ticketHelper.GetResourceData("VB_Casino_GT", _ticket.BetTypeId.ToString()).Returns("Bushido Code");
 
             ////Act
             _choice.Render(_ticket, _ticketHelper, null, false);
@@ -72,7 +74,7 @@
         {
             ////Arrange
             _ticket.TransDesc = "1";
-            _ticketHelper.GetResourceData("VB_Casino_GG", _ticket.TransDesc).Returns("Table Game");
+            _ticketHelper.GetResourceData("VB_Casino_GG", _ticket.BetTypeId.ToString()).Returns("Table Game");
 
             ////Act
             _choice.Render(_ticket, _ticketHelper, null, false);
@@ -207,7 +209,7 @@
         {
             ////Arrange
             _ticket.TransDesc = "1";
-            _ticketHelper.GetResourceData("VB_Casino_GG", _ticket.TransDesc).Returns("video slot");
+            _ticketHelper.GetResourceData("VB_Casino_GG", _ticket.BetTypeId.ToString()).Returns("video slot");
 
             ////Act
             _choice.RenderRTF(_ticket, _ticketHelper, null, false, new RTFHelper().Clone());
@@ -222,7 +224,7 @@
             ////Arrange
             _ticket.BetCheck = string.Empty;
             _ticket.TransDesc = "1";
-            _ticketHelper.GetResourceData("VB_Casino_GT", _ticket.TransDesc).Returns("Amazon 1");
+            _ticketHelper.GetResourceData("VB_Casino_GT", _ticket.BetTypeId.ToString()).Returns("Amazon 1");
 
             ////Act
             _choice.RenderRTF(_ticket, _ticketHelper, null, false, new RTFHelper().Clone());

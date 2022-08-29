@@ -30,7 +30,7 @@
             Template.betTeam = string.Format(
                 "{0}{1}{2}",
                 OpenGameTypeNameTag,
-                ticketHelper.GetResourceData(GameTypeRefId, ticket.TransDesc),
+                ticketHelper.GetResourceData(GameTypeRefId, ticket.BetTypeId.ToString()),
                 CloseGameTypeNameTag);
 
             if (!string.IsNullOrEmpty(ticket.BetCheck))
@@ -83,7 +83,7 @@
 
             Template.League.LeagueName.leagueName = string.Format(
                 GameGroupNameArea,
-                ticketHelper.GetResourceData(GameGroupRefId, ticket.TransDesc));
+                ticketHelper.GetResourceData(GameGroupRefId, ticket.BetTypeId.ToString()));
 
             if (string.IsNullOrEmpty(ticket.BetCheck))
             {

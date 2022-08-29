@@ -18,7 +18,7 @@
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            Template.betTeam = $"<span class=\"handicap\">{ticketHelper.GetResourceData(GameTypeRefId, ticket.TransDesc)}</span>";
+            Template.betTeam = $"<span class=\"handicap\">{ticketHelper.GetResourceData(GameTypeRefId, ticket.BetTypeId.ToString())}</span>";
 
             if (!string.IsNullOrEmpty(ticket.BetCheck))
             {
@@ -43,7 +43,7 @@
 
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
         {
-            Template.League.LeagueName.SetValue($"<span class=\"gamegroupname\"> {ticketHelper.GetResourceData(GameGroupRefId, ticket.TransDesc)}</span>");
+            Template.League.LeagueName.SetValue($"<span class=\"gamegroupname\"> {ticketHelper.GetResourceData(GameGroupRefId, ticket.BetTypeId.ToString())}</span>");
 
             var isSummaryTicket = string.IsNullOrEmpty(ticket.BetCheck);
             if (isSummaryTicket)

@@ -1,7 +1,6 @@
 ﻿namespace Fanex.BetList.PP.Tests.Builder.ChoiceBuilder
 {
     using System;
-    using System.Globalization;
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
     using Fanex.BetList.Core.Constants;
@@ -29,10 +28,10 @@
             _ticket.WinlostDate = DateTime.Today;
             _ticket.CustId = 2;
             _ticket.Status = BetStatus.Won;
-            _ticket.TransDesc = PragmaticPlayBetTypes.Dragons888.ToString(CultureInfo.InvariantCulture);
+            _ticket.BetTypeId = PragmaticPlayBetTypes.Dragons888;
 
-            _ticketHelper.GetResourceData(Arg.Is(Choice4101.GameTypeRefId), Arg.Is(_ticket.TransDesc)).Returns(FakeGameType);
-            _ticketHelper.GetResourceData(Arg.Is(Choice4101.GameGroupRefId), Arg.Is(_ticket.TransDesc)).Returns(FakeGameGroup);
+            _ticketHelper.GetResourceData(Arg.Is(Choice4101.GameTypeRefId), Arg.Is(_ticket.BetTypeId.ToString())).Returns(FakeGameType);
+            _ticketHelper.GetResourceData(Arg.Is(Choice4101.GameGroupRefId), Arg.Is(_ticket.BetTypeId.ToString())).Returns(FakeGameGroup);
         }
 
         [Test]
@@ -42,7 +41,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            _ticketHelper.Received().GetResourceData(Arg.Is(Choice4101.GameTypeRefId), Arg.Is(_ticket.TransDesc));
+            _ticketHelper.Received().GetResourceData(Arg.Is(Choice4101.GameTypeRefId), Arg.Is(_ticket.BetTypeId.ToString()));
         }
 
         [Test]
@@ -95,7 +94,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            _ticketHelper.Received().GetResourceData(Arg.Is(Choice4101.GameGroupRefId), Arg.Is(_ticket.TransDesc));
+            _ticketHelper.Received().GetResourceData(Arg.Is(Choice4101.GameGroupRefId), Arg.Is(_ticket.BetTypeId.ToString()));
         }
 
         [Test]
