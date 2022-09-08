@@ -1351,6 +1351,24 @@
             return BetListView(model);
         }
 
+        public ActionResult MGRNGCasino(BetListData model = null)
+        {
+            var betTypeIds = new List<int>();
+
+            for (var betTypeId = 8400; betTypeId <= 8699; betTypeId++)
+            {
+                betTypeIds.Add(betTypeId);
+            }
+
+            var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
+
+            DataSourcePath = "~/App_Data/Microgaming.xls";
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
         public ActionResult SealEntertainment(BetListData model = null)
         {
             var betTypeIds = new List<int>();

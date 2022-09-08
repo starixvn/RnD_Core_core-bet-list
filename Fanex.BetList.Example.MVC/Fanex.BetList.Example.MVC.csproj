@@ -416,6 +416,10 @@
       <Project>{054031e6-3e06-47d9-b3d1-b8a8e164e504}</Project>
       <Name>Fanex.BetList.MetricGaming</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.MGRNGCasino\Fanex.BetList.MGRNGCasino.csproj">
+      <Project>{11b79253-c62c-4f8a-a89f-373dbd29793a}</Project>
+      <Name>Fanex.BetList.MGRNGCasino</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.NumberGame\Fanex.BetList.NumberGame.csproj">
       <Project>{b26ba5c4-a25c-4e28-b3fb-a585245d5e52}</Project>
       <Name>Fanex.BetList.NumberGame</Name>
@@ -602,6 +606,7 @@
     <Content Include="App_Data\CricketAIOP2.xls" />
     <Content Include="App_Data\VolleyballAIO.xls" />
     <Content Include="App_Data\SealEntertainment.xls" />
+    <Content Include="App_Data\Microgaming.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
