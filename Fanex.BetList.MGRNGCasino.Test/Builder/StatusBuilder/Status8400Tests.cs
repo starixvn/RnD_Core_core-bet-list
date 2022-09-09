@@ -4,7 +4,7 @@
     using Fanex.BetList.Core.Entities;
     using NSubstitute;
     using NUnit.Framework;
-
+    using System;
 
     public class Status8400Tests
     {
@@ -25,7 +25,9 @@
             _ticket.BetTeam = "betteam";
             _ticket.CurrencyId = 20;
             _ticket.SiteId = "siteid";
+            _ticket.WinlostDate = DateTime.Today;
         }
+
 
         [TestCase(null)]
         [TestCase("")]
@@ -35,6 +37,27 @@
             _ticket.BetCheck = betCheck;
 
             // Act.
+            var template = _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert.
+            Assert.False(template.StatusResult.Visible);
+        }
+
+        [Test]
+        public void BuildStatusResult_NewDetailTicket_ShowResultLink()
+        {
+            // Act.
+            var template = _status.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert.
+            Assert.True(template.StatusResult.Visible);
+        }
+
+        [Test]
+        public void BuildStatusResult_OldDetailTicket_ShowResultLink()
+        {
+            // Act.
+            _ticket.WinlostDate = DateTime.Today.AddDays(-29);
             var template = _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
