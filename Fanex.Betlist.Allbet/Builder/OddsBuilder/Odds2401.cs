@@ -7,7 +7,19 @@
 
     public class Odds2401 : Odds1
     {
-        public virtual List<string> HideOddsForBetChoices => new List<string> { "1100", "1231", "1232" };
+        public virtual List<string> HideOddsForBetChoices => new List<string> {
+            "1100",
+            "1231",
+            "1232",
+            "1503",
+            "1504",
+            "1401",
+            "1404",
+            "1301",
+            "1302",
+            "1303",
+            "1304"
+        };
 
         public override Odds_Template Render(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
         {
