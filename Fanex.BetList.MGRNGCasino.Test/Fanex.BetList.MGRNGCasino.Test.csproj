@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="Builder\ChoiceBuilder\Choice8400Tests.cs" />
     <Compile Include="Builder\OddsBuilder\Odds8400Tests.cs" />
+    <Compile Include="Builder\StatusBuilder\Status8695Tests.cs" />
     <Compile Include="Builder\StatusBuilder\Status8400Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

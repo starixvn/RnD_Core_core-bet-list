@@ -9,7 +9,10 @@
         {
             for (int betTypeId = MGRNGCasinoBettypes.LuckyTwinsWilds + 1; betTypeId <= MGRNGCasinoBettypes.HighestBetTypeIdInRange; betTypeId++)
             {
-                MapIdToBaseId(betTypeId, MGRNGCasinoBettypes.LuckyTwinsWilds);
+                if (betTypeId != MGRNGCasinoBettypes.TouramentPrize)
+                {
+                    MapIdToBaseId(betTypeId, MGRNGCasinoBettypes.LuckyTwinsWilds);
+                }                    
             }
         }
     }

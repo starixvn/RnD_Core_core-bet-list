@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="Builder\ChoiceBuilder\Choice8400.cs" />
     <Compile Include="Builder\OddsBuilder\Odds8400.cs" />
+    <Compile Include="Builder\StatusBuilder\Status8695.cs" />
     <Compile Include="Builder\StatusBuilder\Status8400.cs" />
     <Compile Include="Constants\MicrogamingBettypes.cs" />
     <Compile Include="Mapper\ChoiceMapper.cs" />
