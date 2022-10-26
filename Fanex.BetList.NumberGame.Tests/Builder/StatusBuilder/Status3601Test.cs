@@ -30,7 +30,7 @@
             _status.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            Assert.AreEqual("'refnooo'", _status.Template.StatusResult.refNo);
+            Assert.AreEqual("refnooo", _status.Template.StatusResult.refNo);
         }
     }
 }
