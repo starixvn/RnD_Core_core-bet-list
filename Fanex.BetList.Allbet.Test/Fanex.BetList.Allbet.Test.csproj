@@ -74,7 +74,6 @@
     <Compile Include="Builder\ChoiceBuilder\Choice2499Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds2401Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds2404Test.cs" />
-    <Compile Include="Builder\OddsBuilder\Odds2408Test.cs" />
     <Compile Include="Builder\OddsBuilder\Odds2407Test.cs" />
     <Compile Include="Builder\StatusBuilder\Status2401Test.cs" />
     <Compile Include="Builder\StatusBuilder\Status2499Tests.cs" />
