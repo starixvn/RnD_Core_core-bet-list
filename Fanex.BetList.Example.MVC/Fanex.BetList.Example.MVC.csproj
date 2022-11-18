@@ -428,6 +428,10 @@
       <Project>{388d3111-bca2-40aa-9bba-16fb833cdf6f}</Project>
       <Name>Fanex.BetList.PGSoft</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.PlayerTips\Fanex.BetList.PlayerTips.csproj">
+      <Project>{ac384a32-dd85-4139-8ea5-3be0d045f924}</Project>
+      <Name>Fanex.BetList.PlayerTips</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.PP\Fanex.BetList.PP.csproj">
       <Project>{502c6122-7b87-4a3c-9be2-782b411675cd}</Project>
       <Name>Fanex.BetList.PP</Name>
@@ -607,6 +611,7 @@
     <Content Include="App_Data\VolleyballAIO.xls" />
     <Content Include="App_Data\SealEntertainment.xls" />
     <Content Include="App_Data\Microgaming.xls" />
+    <Content Include="App_Data\PlayerTips.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />

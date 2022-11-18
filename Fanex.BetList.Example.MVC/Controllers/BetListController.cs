@@ -42,6 +42,20 @@
             return View(model);
         }
 
+        public ActionResult PlayerTips(BetListData model = null)
+        {
+
+            var betTypes = _dataService.QueryBetTypes(8700);
+
+            DataSourcePath = "~/App_Data/PlayerTips.xls";
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
         public ActionResult ESports4(BetListData model = null)
         {
             var betTypeIds = new List<int>();
