@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFrameworks>net461;netstandard2.0</TargetFrameworks> 
+        <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>        
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyName>Fanex.BetList.Allbet</AssemblyName>
         <FileVersion>2.0.0.0</FileVersion>
         <Version>2.0.0.0-net5-03</Version>
         <PackageReleaseNotes>Support .net Core for Betlist Core package</PackageReleaseNotes>
@@ -12,8 +13,7 @@
         <PackageProjectUrl>https://nexdev.net/projects/fanex-betlistcore/wiki/Core_Bet_List</PackageProjectUrl>
     </PropertyGroup>
     <ItemGroup>
-      <PackageReference Include="TplNetCore" Version="1.0.0-beta1" />
-    <Compile Include="Mapper\OddsMapper.cs" />
+      <PackageReference Include="TplNetCore" Version="1.0.0-beta1" />    
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj" />

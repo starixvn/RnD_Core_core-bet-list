@@ -113,23 +113,13 @@ namespace Fanex.BetList.Core.Builder
             var assemblies = (List<Assembly>)_cache[CacheKey];
 
             if (assemblies == null || !assemblies.Any())
-            {
-                try
-                {
-                    assemblies = AppDomain.CurrentDomain.GetAssemblies().ToList();
-                }
-                catch
-                {
-                    assemblies = new List<Assembly>();
-                    var path = Path.GetDirectoryName(typeof(BetListBaseBuilder).Assembly.Location);
+            { 
+                assemblies = new List<Assembly>();
 
-                    foreach (var dllPath in Directory.GetFiles(path, "Fanex.BetList.*.dll"))
-                    {
-                        assemblies.Add(Assembly.LoadFile(dllPath));
-                    }
+                foreach (var dllPath in Directory.GetFiles(AppContext.BaseDirectory + "/bin", "Fanex.BetList.*.dll"))
+                {
+                    assemblies.Add(Assembly.LoadFile(dllPath));
                 }
-
-                assemblies = assemblies.Where(x => x.FullName.StartsWith("Fanex.BetList.", StringComparison.InvariantCulture)).ToList();
 
                 _cache.Set(CacheKey, assemblies, _cachePolicy);
             }
