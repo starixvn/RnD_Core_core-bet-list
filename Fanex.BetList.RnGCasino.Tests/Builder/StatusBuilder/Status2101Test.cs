@@ -7,8 +7,8 @@
     using Core.Entities;
     using Core.Templates;
     using Core.Utils;
-    using NPOI.HSSF.UserModel;
-    using NPOI.SS.UserModel;
+    using BetListNPOI.HSSF.UserModel;
+    using BetListNPOI.SS.UserModel;
     using NSubstitute;
     using NUnit.Framework;
 

@@ -1,6 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Entities
 {
-    using NPOI.SS.UserModel;
+    using BetListNPOI.SS.UserModel;
 
     /// <summary>
     /// Class TextBlock.

@@ -8,7 +8,7 @@
     using App_GlobalResources;
     using Entities;
     using Fanex.BetList.Core.Utils.TicketExt;
-    using NPOI.SS.UserModel;
+    using BetListNPOI.SS.UserModel;
     using Utils;
 
     public class Choice1011 : Choice1

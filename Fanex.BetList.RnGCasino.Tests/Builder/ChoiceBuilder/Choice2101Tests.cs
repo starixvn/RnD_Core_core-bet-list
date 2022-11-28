@@ -6,7 +6,7 @@
     using Core.Entities;
     using Core.Templates;
     using Core.Utils;
-    using NPOI.HSSF.UserModel;
+    using BetListNPOI.HSSF.UserModel;
     using NSubstitute;
     using NUnit.Framework;
 

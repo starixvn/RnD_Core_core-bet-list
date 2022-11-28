@@ -8,7 +8,7 @@
     using Entities;
     using Fanex.BetList.Core.Templates;
     using Fanex.BetList.Core.Utils.StringExt;
-    using NPOI.SS.UserModel;
+    using BetListNPOI.SS.UserModel;
 
     public class Choice5301 : Choice1
     {

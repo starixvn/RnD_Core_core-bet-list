@@ -4,7 +4,7 @@
     using System.Globalization;
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
-    using NPOI.SS.UserModel;
+    using BetListNPOI.SS.UserModel;
 
     public class Choice18000 : Choice1
     {

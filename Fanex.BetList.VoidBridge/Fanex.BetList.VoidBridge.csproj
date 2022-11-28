@@ -17,4 +17,7 @@
     <ItemGroup>
       <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj" />
     </ItemGroup>
+    <ItemGroup>
+        <InternalsVisibleTo Include="Fanex.BetList.VoidBridge.Tests" />
+    </ItemGroup>
 </Project>

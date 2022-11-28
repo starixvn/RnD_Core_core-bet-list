@@ -51,10 +51,7 @@
     <SonarQubeExclude>true</SonarQubeExclude>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Antlr3.Runtime">
-      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Fanex.RemotingRef, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <PackageReference Include="BestListNPOI" Version="1.0.0" />
       <HintPath>..\packages\Fanex.RemotingRef.1.5.0\lib\net461\Fanex.RemotingRef.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
@@ -416,10 +413,6 @@
       <Project>{054031e6-3e06-47d9-b3d1-b8a8e164e504}</Project>
       <Name>Fanex.BetList.MetricGaming</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.MGRNGCasino\Fanex.BetList.MGRNGCasino.csproj">
-      <Project>{11b79253-c62c-4f8a-a89f-373dbd29793a}</Project>
-      <Name>Fanex.BetList.MGRNGCasino</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Fanex.BetList.NumberGame\Fanex.BetList.NumberGame.csproj">
       <Project>{b26ba5c4-a25c-4e28-b3fb-a585245d5e52}</Project>
       <Name>Fanex.BetList.NumberGame</Name>
@@ -455,10 +448,6 @@
     <ProjectReference Include="..\Fanex.BetList.SabaClub\Fanex.BetList.SabaClub.csproj">
       <Project>{285c1010-232f-4beb-9642-f890d9302581}</Project>
       <Name>Fanex.BetList.SabaClub</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.SealEntertainment\Fanex.BetList.SealEntertainment.csproj">
-      <Project>{13c11c6a-a869-4284-9754-345dc79a7a07}</Project>
-      <Name>Fanex.BetList.SealEntertainment</Name>
     </ProjectReference>
     <ProjectReference Include="..\Fanex.Betlist.SexyGaming\Fanex.BetList.SexyGaming.csproj">
       <Project>{b4906408-42ed-4db8-a8f1-dca5fa90288d}</Project>
@@ -496,8 +485,6 @@
       <Project>{55a282e7-4a51-4c78-b4f9-58658bd85b97}</Project>
       <Name>Fanex.BetList.WM</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="App_Data\BetListDummyData.xls">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -608,9 +595,6 @@
     <Content Include="App_Data\ESports4.xls" />
     <Content Include="App_Data\FGG.xls" />
     <Content Include="App_Data\CricketAIOP2.xls" />
-    <Content Include="App_Data\VolleyballAIO.xls" />
-    <Content Include="App_Data\SealEntertainment.xls" />
-    <Content Include="App_Data\Microgaming.xls" />
     <Content Include="App_Data\PlayerTips.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />

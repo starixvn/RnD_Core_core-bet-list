@@ -3,7 +3,7 @@
         <TargetFrameworks>net461;netstandard2.0</TargetFrameworks> 
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <FileVersion>2.0.0.0</FileVersion>
-        <Version>2.0.0.0-net5-03</Version>
+        <Version>2.0.0.0-net5-04</Version>
         <PackageReleaseNotes>Support .net Core for Betlist Core package</PackageReleaseNotes>
         <Description>BetList core package</Description>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
@@ -12,6 +12,7 @@
         <PackageProjectUrl>https://nexdev.net/projects/fanex-betlistcore/wiki/Core_Bet_List</PackageProjectUrl>
     </PropertyGroup>
     <ItemGroup>
+      <PackageReference Include="BestListNPOI" Version="1.0.0" />
       <PackageReference Include="TplNetCore" Version="1.0.0-beta1" />
     </ItemGroup>
     <ItemGroup>

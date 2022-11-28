@@ -6,6 +6,7 @@
       <IsPackable>false</IsPackable>
     </PropertyGroup>
     <ItemGroup>      
+      <PackageReference Include="BestListNPOI" Version="1.0.0" />      
       <PackageReference Include="HtmlAgilityPack" Version="1.11.43" />      
       <PackageReference Include="Microsoft.net.test.sdk" Version="17.2.0" />  
       <PackageReference Include="NSubstitute" Version="4.3.0" />      

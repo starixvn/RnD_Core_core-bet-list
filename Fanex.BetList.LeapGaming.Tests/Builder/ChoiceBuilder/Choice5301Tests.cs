@@ -4,7 +4,7 @@
     using Core.Constants;
     using Core.Entities;
     using Fanex.BetList.Core.Utils;
-    using NPOI.HSSF.UserModel;
+    using BetListNPOI.HSSF.UserModel;
     using NSubstitute;
     using NUnit.Framework;
 
