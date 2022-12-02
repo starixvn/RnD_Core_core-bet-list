@@ -10,8 +10,5 @@
       <PackageReference Include="nunit" Version="3.13.3" />      
       <PackageReference Include="TplNetCore" Version="1.0.0-beta1" />
     </ItemGroup>
-    <ItemGroup>
-      <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj" />
-    </ItemGroup>
     
 </Project>

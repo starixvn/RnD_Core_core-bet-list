@@ -2,8 +2,8 @@
 {
     using Fanex.BetList.Core.Builder;
     using Fanex.BetList.Core.Entities;
-    using NPOI.HSSF.UserModel;
-    using NPOI.SS.UserModel;
+    using BetListNPOI.HSSF.UserModel;
+    using BetListNPOI.SS.UserModel;
 
     public static class BetListExcelBuilderExt
     {

@@ -8,9 +8,5 @@
       <PackageReference Include="NSubstitute" Version="4.3.0" />
       <PackageReference Include="nunit" Version="3.13.3" />
     </ItemGroup>
-    <ItemGroup>
-      <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj" />
-      <ProjectReference Include="..\Fanex.BetList.Core.RemotingRef\Fanex.BetList.Core.RemotingRef.csproj" />
-    </ItemGroup>
     
 </Project>

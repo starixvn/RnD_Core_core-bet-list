@@ -15,7 +15,6 @@
       <PackageReference Include="System.Net.Http" Version="4.3.4" />      
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj" />
       <ProjectReference Include="..\Fanex.BetList.CG\Fanex.BetList.CG.csproj" />
     </ItemGroup>
 </Project>

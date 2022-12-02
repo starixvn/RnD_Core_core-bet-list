@@ -51,10 +51,120 @@
     <SonarQubeExclude>true</SonarQubeExclude>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="BestListNPOI" Version="1.0.0" />
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="BestListNPOI, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BestListNPOI.1.0.0\lib\netstandard2.0\BestListNPOI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="BestListNPOI.OOXML, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BestListNPOI.1.0.0\lib\netstandard2.0\BestListNPOI.OOXML.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="BestListNPOI.OpenXml4Net, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BestListNPOI.1.0.0\lib\netstandard2.0\BestListNPOI.OpenXml4Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="BestListNPOI.OpenXmlFormats, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BestListNPOI.1.0.0\lib\netstandard2.0\BestListNPOI.OpenXmlFormats.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.8.9\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fanex.BetList.AGCasino, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.BetList.AGCasino.2.0.0-net5-03\lib\net461\Fanex.BetList.AGCasino.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fanex.BetList.Allbet, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.BetList.Allbet.2.0.0-net5-03\lib\net461\Fanex.BetList.Allbet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fanex.BetList.BetTrade, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.BetList.BetTrade.2.0.0-net5-04\lib\net461\Fanex.BetList.BetTrade.dll</HintPath>
+    </Reference>
+    <Reference Include="Fanex.BetList.Bitcoin, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.BetList.Bitcoin.2.0.0-net5-03\lib\net461\Fanex.BetList.Bitcoin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fanex.BetList.CardClub, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.BetList.CardClub.2.0.0-net5-03\lib\net461\Fanex.BetList.CardClub.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fanex.BetList.CashOut, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.BetList.CashOut.2.0.0-net5-04\lib\net461\Fanex.BetList.CashOut.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fanex.BetList.CG, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.BetList.CG.2.0.0-net5-03\lib\net461\Fanex.BetList.CG.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fanex.BetList.ColossusBets, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.BetList.ColossusBets.2.0.0-net5-04\lib\net461\Fanex.BetList.ColossusBets.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fanex.BetList.Core, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.BetList.Core.3.0.0-net5-20\lib\net461\Fanex.BetList.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fanex.BetList.Core.RemotingRef, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.BetList.Core.RemotingRef.2.0.0-net5-03\lib\net461\Fanex.BetList.Core.RemotingRef.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fanex.BetList.ESports, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.BetList.ESports.2.0.0-net5-03\lib\net461\Fanex.BetList.ESports.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fanex.BetList.FGG, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.BetList.FGG.2.0.0-net5-03\lib\net461\Fanex.BetList.FGG.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fanex.BetList.GlobalGaming, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.BetList.GlobalGaming.2.0.0-net5-04\lib\net461\Fanex.BetList.GlobalGaming.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fanex.BetList.GoldDeluxe, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.BetList.GoldDeluxe.2.0.0-net5-04\lib\net461\Fanex.BetList.GoldDeluxe.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fanex.BetList.GTCasino, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.BetList.GTCasino.2.0.0-net5-03\lib\net461\Fanex.BetList.GTCasino.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fanex.BetList.MetricGaming, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.BetList.MetricGaming.2.0.0-net5-03\lib\net461\Fanex.BetList.MetricGaming.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fanex.BetList.MyanmarOdds, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.BetList.MyanmarOdds.1.1.0\lib\net40\Fanex.BetList.MyanmarOdds.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fanex.BetList.NG2, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.BetList.NG2.2.0.0-net5-03\lib\net461\Fanex.BetList.NG2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fanex.BetList.PlayerTips, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.BetList.PlayerTips.2.0.0-net5-01\lib\net461\Fanex.BetList.PlayerTips.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fanex.BetList.RnGCasino, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.BetList.RnGCasino.2.0.0-net5-03\lib\net461\Fanex.BetList.RnGCasino.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fanex.BetList.VirtualSports, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.BetList.VirtualSports.2.0.0-net5-04\lib\net461\Fanex.BetList.VirtualSports.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fanex.BetList.VoidBridge, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.BetList.VoidBridge.2.0.0-net5-02\lib\net461\Fanex.BetList.VoidBridge.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fanex.RemotingRef, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.RemotingRef.1.5.0\lib\net461\Fanex.RemotingRef.dll</HintPath>
     </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib">
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>..\packages\NPOI.2.0.6\lib\net40\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="MessagePack, Version=1.7.3.7, Culture=neutral, PublicKeyToken=b4a0369545f0a1be, processorArchitecture=MSIL">
@@ -64,17 +174,29 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="NPOI">
+    <Reference Include="NPOI, Version=2.0.6.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
       <HintPath>..\packages\NPOI.2.0.6\lib\net40\NPOI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.6.0.0\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing.Common, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.7.0.0\lib\netstandard2.0\System.Drawing.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Net.Http, Version=4.1.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Net.Http.4.3.3\lib\net46\System.Net.Http.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Security.AccessControl, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.6.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Security.Cryptography.Algorithms, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net461\System.Security.Cryptography.Algorithms.dll</HintPath>
     </Reference>
@@ -86,6 +208,14 @@
     </Reference>
     <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Permissions.7.0.0\lib\netstandard2.0\System.Security.Permissions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
@@ -144,6 +274,10 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="TplCore, Version=1.0.4854.17253, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\TplCore.1.0.4854.17254\lib\net40\TplCore.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TplNetCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TplNetCore.1.0.0-beta1\lib\netstandard2.0\TplNetCore.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="WebGrease">
@@ -289,202 +423,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Fanex.BetList.AdvantPlayMini\Fanex.BetList.AdvantPlayMini.csproj">
-      <Project>{30dbd3b8-5473-4f18-afff-a928226a1911}</Project>
-      <Name>Fanex.BetList.AdvantPlayMini</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.AdvantPlay\Fanex.BetList.AdvantPlay.csproj">
-      <Project>{32427af1-2dae-48d8-bfe4-496efb140e7f}</Project>
-      <Name>Fanex.BetList.AdvantPlay</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.AGCasino\Fanex.BetList.AGCasino.csproj">
-      <Project>{c18e1369-66c3-4a87-82bf-10e13e6cc2a0}</Project>
-      <Name>Fanex.BetList.AGCasino</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.Allbet\Fanex.BetList.Allbet.csproj">
-      <Project>{ebf46368-f937-49df-b24d-bac01ed3a947}</Project>
-      <Name>Fanex.BetList.Allbet</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.BBIN\Fanex.BetList.BBIN.csproj">
-      <Project>{0ea42fd9-9118-41f6-ad60-1c420e67343c}</Project>
-      <Name>Fanex.BetList.BBIN</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.BetTrade\Fanex.BetList.BetTrade.csproj">
-      <Project>{386bf8aa-7ee2-46bb-aecc-6cd829671881}</Project>
-      <Name>Fanex.BetList.BetTrade</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.Betlist.BG\Fanex.BetList.BG.csproj">
-      <Project>{eb86abe8-d9d9-4fde-acde-6e1dbb4da44f}</Project>
-      <Name>Fanex.BetList.BG</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.Bitcoin\Fanex.BetList.Bitcoin.csproj">
-      <Project>{94e19d8b-f138-4384-bad5-98eed2fa2cad}</Project>
-      <Name>Fanex.BetList.Bitcoin</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.CardClub\Fanex.BetList.CardClub.csproj">
-      <Project>{d504aa63-e8d2-4819-a1da-f9451d4f0468}</Project>
-      <Name>Fanex.BetList.CardClub</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.CashOut\Fanex.BetList.CashOut.csproj">
-      <Project>{eeb53cdf-8346-4f95-9997-b7bc052d1f18}</Project>
-      <Name>Fanex.BetList.CashOut</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.CG\Fanex.BetList.CG.csproj">
-      <Project>{b52ec037-5124-46e6-99f2-d02583fe6953}</Project>
-      <Name>Fanex.BetList.CG</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.ColossusBets\Fanex.BetList.ColossusBets.csproj">
-      <Project>{89b48c7f-9ea2-40cf-879c-5509555d3b1d}</Project>
-      <Name>Fanex.BetList.ColossusBets</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.Core.RemotingRef\Fanex.BetList.Core.RemotingRef.csproj">
-      <Project>{0eadbd74-9c9f-4011-a669-034014865dc9}</Project>
-      <Name>Fanex.BetList.Core.RemotingRef</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj">
-      <Project>{b0838d04-2306-4362-af22-9fcd0be6f8e7}</Project>
-      <Name>Fanex.BetList.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.ESports\Fanex.BetList.ESports.csproj">
-      <Project>{e888ddfc-d613-4b0f-bc95-1b0fe0e606d1}</Project>
-      <Name>Fanex.BetList.ESports</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.Example.Data\Fanex.BetList.Example.Data.csproj">
-      <Project>{CF75E712-CD28-42EF-A9F7-5DDE2B4E7BA8}</Project>
-      <Name>Fanex.BetList.Example.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.Example.Extension\Fanex.BetList.Example.Extension.csproj">
-      <Project>{C170087E-7A8F-4CBC-A0F7-F869DFFE48FD}</Project>
-      <Name>Fanex.BetList.Example.Extension</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.FGG\Fanex.BetList.FGG.csproj">
-      <Project>{cdccac52-d873-49c3-bb6f-79d7753d96cd}</Project>
-      <Name>Fanex.BetList.FGG</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.Betlist.GDG\Fanex.BetList.GDG.csproj">
-      <Project>{fddc27bf-b231-4d8a-a2fb-26495c2dad8c}</Project>
-      <Name>Fanex.BetList.GDG</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.GlobalGaming\Fanex.BetList.GlobalGaming.csproj">
-      <Project>{2b8a67cf-d4c8-47fd-a7f1-db3b9525e567}</Project>
-      <Name>Fanex.BetList.GlobalGaming</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.GoldDeluxe\Fanex.BetList.GoldDeluxe.csproj">
-      <Project>{9b786951-7d5c-42c4-a9df-ec558bc44593}</Project>
-      <Name>Fanex.BetList.GoldDeluxe</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.Betlist.GTCasino\Fanex.BetList.GTCasino.csproj">
-      <Project>{74b65800-76ca-4055-95c6-0cc45d178308}</Project>
-      <Name>Fanex.BetList.GTCasino</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.Habanero\Fanex.BetList.Habanero.csproj">
-      <Project>{ac520017-0264-4680-9a92-d39b9e459f10}</Project>
-      <Name>Fanex.BetList.Habanero</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.Indo4D\Fanex.BetList.Indo4D.csproj">
-      <Project>{f29f5396-1efe-4657-8080-d9a798f864bf}</Project>
-      <Name>Fanex.BetList.Indo4D</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.Betlist.ION\Fanex.BetList.IONCasino.csproj">
-      <Project>{96ce1eca-344b-4229-b8f8-c622735fe97f}</Project>
-      <Name>Fanex.BetList.IONCasino</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.Joker\Fanex.BetList.Joker.csproj">
-      <Project>{85cde384-17a0-4a5e-81cb-6ad93e766b32}</Project>
-      <Name>Fanex.BetList.Joker</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.KenoLottery\Fanex.BetList.KenoLottery.csproj">
-      <Project>{ae7d0ff9-c449-4fa4-a399-267426354b7f}</Project>
-      <Name>Fanex.BetList.KenoLottery</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.Keno\Fanex.BetList.Keno.csproj">
-      <Project>{0b1f8272-e921-4539-8d3a-bcfc10280f4e}</Project>
-      <Name>Fanex.BetList.Keno</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.LeapGaming\Fanex.BetList.LeapGaming.csproj">
-      <Project>{e26d13f6-d1fe-49c1-990d-f3436909902c}</Project>
-      <Name>Fanex.BetList.LeapGaming</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.MaxGame\Fanex.BetList.MaxGame.csproj">
-      <Project>{1e3f40b6-bd60-4b5e-8ba5-028a30c3202c}</Project>
-      <Name>Fanex.BetList.MaxGame</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.MetricGaming\Fanex.BetList.MetricGaming.csproj">
-      <Project>{054031e6-3e06-47d9-b3d1-b8a8e164e504}</Project>
-      <Name>Fanex.BetList.MetricGaming</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.NumberGame\Fanex.BetList.NumberGame.csproj">
-      <Project>{b26ba5c4-a25c-4e28-b3fb-a585245d5e52}</Project>
-      <Name>Fanex.BetList.NumberGame</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.PGSoft\Fanex.BetList.PGSoft.csproj">
-      <Project>{388d3111-bca2-40aa-9bba-16fb833cdf6f}</Project>
-      <Name>Fanex.BetList.PGSoft</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.PlayerTips\Fanex.BetList.PlayerTips.csproj">
-      <Project>{ac384a32-dd85-4139-8ea5-3be0d045f924}</Project>
-      <Name>Fanex.BetList.PlayerTips</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.PP\Fanex.BetList.PP.csproj">
-      <Project>{502c6122-7b87-4a3c-9be2-782b411675cd}</Project>
-      <Name>Fanex.BetList.PP</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.PragmaticLiveCasino\Fanex.BetList.PragmaticLiveCasino.csproj">
-      <Project>{e56e254b-3ea9-4a8f-9854-9900b7bd0c3d}</Project>
-      <Name>Fanex.BetList.PragmaticLiveCasino</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.RnGCasino\Fanex.BetList.RnGCasino.csproj">
-      <Project>{9ea9fe4a-ac19-4ff5-908f-54a7831b41ee}</Project>
-      <Name>Fanex.BetList.RnGCasino</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.RNGWar\Fanex.BetList.RNGWar.csproj">
-      <Project>{9c8273e2-78a4-4a8a-a941-665e7790e4ac}</Project>
-      <Name>Fanex.BetList.RNGWar</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.Betlist.SAGaming\Fanex.BetList.SAGaming.csproj">
-      <Project>{43d1f975-e0a0-4966-9160-39fafa39b121}</Project>
-      <Name>Fanex.BetList.SAGaming</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.SabaClub\Fanex.BetList.SabaClub.csproj">
-      <Project>{285c1010-232f-4beb-9642-f890d9302581}</Project>
-      <Name>Fanex.BetList.SabaClub</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.Betlist.SexyGaming\Fanex.BetList.SexyGaming.csproj">
-      <Project>{b4906408-42ed-4db8-a8f1-dca5fa90288d}</Project>
-      <Name>Fanex.BetList.SexyGaming</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.Spadegaming\Fanex.BetList.Spadegaming.csproj">
-      <Project>{ebca17e0-b3af-41e5-9a1f-caa81341a3b4}</Project>
-      <Name>Fanex.BetList.Spadegaming</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.SportsLottery\Fanex.BetList.SportsLottery.csproj">
-      <Project>{f632a217-5f61-44fa-8773-274840675e2a}</Project>
-      <Name>Fanex.BetList.SportsLottery</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.TableGames\Fanex.BetList.TableGames.csproj">
-      <Project>{ced6a787-1394-4f14-9a9f-ef27e9037cab}</Project>
-      <Name>Fanex.BetList.TableGames</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.VGaming\Fanex.BetList.VGaming.csproj">
-      <Project>{a53d26dd-dc97-42ce-9afd-54558d453b81}</Project>
-      <Name>Fanex.BetList.VGaming</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.VirtualGames\Fanex.BetList.VirtualGames.csproj">
-      <Project>{64136a6a-e244-47e8-89b7-548cbe8e5d5a}</Project>
-      <Name>Fanex.BetList.VirtualGames</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.VirtualSports\Fanex.BetList.VirtualSports.csproj">
-      <Project>{f3dc05fd-883b-47f6-9f13-5506bf084cae}</Project>
-      <Name>Fanex.BetList.VirtualSports</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.VoidBridge\Fanex.BetList.Voidbridge.csproj">
-      <Project>{0f87bc2a-0625-42b3-b695-3e6384e588db}</Project>
-      <Name>Fanex.BetList.Voidbridge</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fanex.Betlist.WM\Fanex.BetList.WM.csproj">
-      <Project>{55a282e7-4a51-4c78-b4f9-58658bd85b97}</Project>
-      <Name>Fanex.BetList.WM</Name>
-    </ProjectReference>
     <Content Include="App_Data\BetListDummyData.xls">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -595,6 +533,9 @@
     <Content Include="App_Data\ESports4.xls" />
     <Content Include="App_Data\FGG.xls" />
     <Content Include="App_Data\CricketAIOP2.xls" />
+    <Content Include="App_Data\VolleyballAIO.xls" />
+    <Content Include="App_Data\SealEntertainment.xls" />
+    <Content Include="App_Data\Microgaming.xls" />
     <Content Include="App_Data\PlayerTips.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -603,6 +544,16 @@
     <Content Include="Views\BetList\All.cshtml" />
     <Content Include="Views\BetList\ColosussBetsDetails.cshtml" />
     <Content Include="Views\BetList\LicenseeId.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Fanex.BetList.Example.Data\Fanex.BetList.Example.Data.csproj">
+      <Project>{cf75e712-cd28-42ef-a9f7-5dde2b4e7ba8}</Project>
+      <Name>Fanex.BetList.Example.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fanex.BetList.Example.Extension\Fanex.BetList.Example.Extension.csproj">
+      <Project>{c170087e-7a8f-4cbc-a0f7-f869dffe48fd}</Project>
+      <Name>Fanex.BetList.Example.Extension</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
