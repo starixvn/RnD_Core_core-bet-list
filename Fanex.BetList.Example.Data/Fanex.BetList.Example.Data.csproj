@@ -107,6 +107,7 @@
     <Compile Include="TicketsExcelDAO.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Data\BetListDummyData.xls">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

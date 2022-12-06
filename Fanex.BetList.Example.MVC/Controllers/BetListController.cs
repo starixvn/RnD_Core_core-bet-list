@@ -1485,7 +1485,7 @@
 
                 var ms = new MemoryStream();
                 var resultWorkbook = builder.GetBetList();
-                resultWorkbook.Write(ms);
+                resultWorkbook.Write(ms, true);
                 ExportToExcel(ms, "BetList.xls");
             }
         }
