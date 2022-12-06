@@ -8,11 +8,11 @@
     using NUnit.Framework;
 
     [TestFixture]
-    [Ignore("Used for testing when changing old bet type")]
+    //[Ignore("Used for testing when changing old bet type")]
     public class BetListControllerTests
     {
-        private const string ActiveUrl = "http://ha.nexdev.net:7240/V5/";
-        private const string MasterURL = "http://ha.nexdev.net:7240/Main/";
+        private const string ActiveUrl = "http://betlist-demo.nexdev.net/V5/";
+        private const string MasterURL = "http://betlist-demo.nexdev.net/Main/";
 
         [TestCase("")]
         [TestCase("BetList/All")]
