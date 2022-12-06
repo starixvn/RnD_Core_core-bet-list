@@ -1,6 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Constants
 {
-    internal static class VoidBridgeBetTypes
+    internal static class VoidbridgeBetTypes
     {
         public const int BaseBetTypeIdRange1 = 4001;
         public const int HighestBetTypeIdInRangeRange1 = 4099;

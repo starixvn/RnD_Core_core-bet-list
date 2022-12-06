@@ -6,14 +6,14 @@
     {
         public StatusMapper()
         {
-            for (int betTypeId = VoidBridgeBetTypes.BaseBetTypeIdRange1 + 1; betTypeId <= VoidBridgeBetTypes.HighestBetTypeIdInRangeRange1; betTypeId++)
+            for (int betTypeId = VoidbridgeBetTypes.BaseBetTypeIdRange1 + 1; betTypeId <= VoidbridgeBetTypes.HighestBetTypeIdInRangeRange1; betTypeId++)
             {
-                MapIdToBaseId(betTypeId, VoidBridgeBetTypes.BaseBetTypeIdRange1);
+                MapIdToBaseId(betTypeId, VoidbridgeBetTypes.BaseBetTypeIdRange1);
             }
 
-            for (int betTypeId = VoidBridgeBetTypes.BaseBetTypeIdRange2; betTypeId <= VoidBridgeBetTypes.HighestBetTypeIdInRangeRange2; betTypeId++)
+            for (int betTypeId = VoidbridgeBetTypes.BaseBetTypeIdRange2; betTypeId <= VoidbridgeBetTypes.HighestBetTypeIdInRangeRange2; betTypeId++)
             {
-                MapIdToBaseId(betTypeId, VoidBridgeBetTypes.BaseBetTypeIdRange1);
+                MapIdToBaseId(betTypeId, VoidbridgeBetTypes.BaseBetTypeIdRange1);
             }
 
         }

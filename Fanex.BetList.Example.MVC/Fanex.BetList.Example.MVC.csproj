@@ -488,9 +488,9 @@
       <Project>{f3dc05fd-883b-47f6-9f13-5506bf084cae}</Project>
       <Name>Fanex.BetList.VirtualSports</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Fanex.BetList.VoidBridge\Fanex.BetList.VoidBridge.csproj">
+    <ProjectReference Include="..\Fanex.BetList.VoidBridge\Fanex.BetList.Voidbridge.csproj">
       <Project>{0f87bc2a-0625-42b3-b695-3e6384e588db}</Project>
-      <Name>Fanex.BetList.VoidBridge</Name>
+      <Name>Fanex.BetList.Voidbridge</Name>
     </ProjectReference>
     <ProjectReference Include="..\Fanex.Betlist.WM\Fanex.BetList.WM.csproj">
       <Project>{55a282e7-4a51-4c78-b4f9-58658bd85b97}</Project>

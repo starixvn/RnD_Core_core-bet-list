@@ -20,7 +20,7 @@
         public void Setup()
         {
             _ticket = Substitute.For<ITicket>();
-            _ticket.BetTypeId = VoidBridgeBetTypes.BaseBetTypeIdRange1;
+            _ticket.BetTypeId = VoidbridgeBetTypes.BaseBetTypeIdRange1;
             _ticketHelper = Substitute.For<ITicketHelper>();
             _choice = new Choice4001();
         }
