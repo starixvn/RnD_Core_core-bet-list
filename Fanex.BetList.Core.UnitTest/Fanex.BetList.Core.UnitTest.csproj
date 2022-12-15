@@ -1,14 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
+        <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>
         <IsPackable>false</IsPackable>
     </PropertyGroup>
     <ItemGroup>
-      <PackageReference Include="BestListNPOI" Version="1.0.0" />
+      <PackageReference Include="BetListNPOI" Version="2.6.0" />
       <PackageReference Include="Fanex.RemotingRef" Version="1.5.0" />
       <PackageReference Include="NSubstitute" Version="4.3.0" />
       <PackageReference Include="nunit" Version="3.13.3" />      
-      <PackageReference Include="TplNetCore" Version="1.0.0-beta1" />
+      <PackageReference Include="TplNetCore" Version="1.0.0" />
     </ItemGroup>
     
 </Project>

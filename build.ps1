@@ -9,7 +9,7 @@ Write-Host "CreatePackages: $CreatePackages"
 Write-Host "RunTests: $RunTests"
 
 $packageOutputFolder = "$PSScriptRoot\.nupkgs"
-$projectsToBuild = Get-ChildItem "$PSScriptRoot" -Exclude *Tests.csproj -Recurse
+$projectsToBuild = Get-ChildItem "$PSScriptRoot" -Include *.csproj -Exclude *Tests.csproj,*.Example.*.csproj -recurse
 $testsToRun = Get-ChildItem "$PSScriptRoot" -Include *.Tests.csproj -Recurse
 
 if ($RunTests) {

@@ -6,7 +6,7 @@
       <IsPackable>false</IsPackable>
     </PropertyGroup>
     <ItemGroup>      
-      <PackageReference Include="BestListNPOI" Version="1.0.0" />      
+      <PackageReference Include="BetListNPOI" Version="2.6.0" />      
       <PackageReference Include="HtmlAgilityPack" Version="1.11.43" />      
       <PackageReference Include="Microsoft.net.test.sdk" Version="17.2.0" />  
       <PackageReference Include="NSubstitute" Version="4.3.0" />      
@@ -14,7 +14,7 @@
       <PackageReference Include="NUnit.Console" Version="3.15.0" />      
       <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />      
       <PackageReference Include="System.Net.Http" Version="4.3.4" />      
-      <PackageReference Include="TplNetCore" Version="1.0.0-beta1" />      
+      <PackageReference Include="TplNetCore" Version="1.0.0" />      
     </ItemGroup>
     <ItemGroup>            
       <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj" />            

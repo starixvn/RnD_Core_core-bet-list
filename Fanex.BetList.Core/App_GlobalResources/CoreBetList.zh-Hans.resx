@@ -117,221 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="a" xml:space="preserve">
-    <value>客</value>
-  </data>
-  <data name="ad" xml:space="preserve">
-    <value>客/和局</value>
-  </data>
-  <data name="ah" xml:space="preserve">
-    <value>客/主</value>
-  </data>
-  <data name="all" xml:space="preserve">
-    <value>全部</value>
-  </data>
-  <data name="AM" xml:space="preserve">
-    <value>上午</value>
-  </data>
-  <data name="amount" xml:space="preserve">
-    <value>金额</value>
-  </data>
-  <data name="and" xml:space="preserve">
-    <value>和</value>
-  </data>
-  <data name="AwayFG" xml:space="preserve">
-    <value>客队先进球</value>
-  </data>
-  <data name="AwayLG" xml:space="preserve">
-    <value>客队后进球</value>
-  </data>
-  <data name="AwayToWinAnyOtherScore" xml:space="preserve">
-    <value>客赢其他比分</value>
-  </data>
-  <data name="bet" xml:space="preserve">
-    <value>投注</value>
-  </data>
-  <data name="BetList" xml:space="preserve">
-    <value>投注历史</value>
-  </data>
-  <data name="bettype" xml:space="preserve">
-    <value>投注类别</value>
-  </data>
-  <data name="casino" xml:space="preserve">
-    <value>娱乐城</value>
-  </data>
   <data name="casinoGame" xml:space="preserve">
     <value>娱乐场游戏</value>
   </data>
   <data name="choice" xml:space="preserve">
     <value>选择</value>
   </data>
-  <data name="close" xml:space="preserve">
-    <value>关闭</value>
-  </data>
-  <data name="com" xml:space="preserve">
-    <value>佣金</value>
-  </data>
-  <data name="combination" xml:space="preserve">
-    <value>组合</value>
-  </data>
-  <data name="commission" xml:space="preserve">
-    <value>佣金</value>
-  </data>
-  <data name="content" xml:space="preserve">
-    <value>内容</value>
-  </data>
-  <data name="Corners" xml:space="preserve">
-    <value>角球</value>
-  </data>
-  <data name="customer" xml:space="preserve">
-    <value>会员</value>
-  </data>
-  <data name="d" xml:space="preserve">
-    <value>和</value>
-  </data>
-  <data name="da" xml:space="preserve">
-    <value>和局/客</value>
-  </data>
-  <data name="date" xml:space="preserve">
-    <value>日期</value>
-  </data>
-  <data name="dd" xml:space="preserve">
-    <value>和局/和局</value>
-  </data>
-  <data name="dec" xml:space="preserve">
-    <value>12月</value>
-  </data>
-  <data name="details" xml:space="preserve">
-    <value>详细信息</value>
-  </data>
-  <data name="draw" xml:space="preserve">
-    <value>和局</value>
-  </data>
-  <data name="ee" xml:space="preserve">
-    <value>双/双</value>
-  </data>
-  <data name="enable" xml:space="preserve">
-    <value>启用</value>
-  </data>
-  <data name="eo" xml:space="preserve">
-    <value>双/单</value>
-  </data>
   <data name="even" xml:space="preserve">
     <value>双</value>
-  </data>
-  <data name="events" xml:space="preserve">
-    <value>赛事</value>
-  </data>
-  <data name="exactly" xml:space="preserve">
-    <value>准确的</value>
-  </data>
-  <data name="ExtraTime" xml:space="preserve">
-    <value>加时赛</value>
-  </data>
-  <data name="ExtraTimeHTDotOne" xml:space="preserve">
-    <value>半场加时赛.1</value>
-  </data>
-  <data name="ExtraTimeHTDotTwo" xml:space="preserve">
-    <value>半场加时赛.2</value>
-  </data>
-  <data name="ExtraTimeHTDotX" xml:space="preserve">
-    <value>半场加时赛.X</value>
-  </data>
-  <data name="fglg" xml:space="preserve">
-    <value>最先得分 / 最后得分</value>
-  </data>
-  <data name="first" xml:space="preserve">
-    <value>首页</value>
-  </data>
-  <data name="FirstHalf" xml:space="preserve">
-    <value>上半场</value>
-  </data>
-  <data name="FiveAndOver" xml:space="preserve">
-    <value>5或以上</value>
-  </data>
-  <data name="FiveGoals" xml:space="preserve">
-    <value>五粒进球</value>
-  </data>
-  <data name="FourAndOver" xml:space="preserve">
-    <value>4或以上</value>
-  </data>
-  <data name="FourAndOverCorners" xml:space="preserve">
-    <value>4角球或以上</value>
-  </data>
-  <data name="FourGoals" xml:space="preserve">
-    <value>四粒进球</value>
-  </data>
-  <data name="FourGoalsAndOver" xml:space="preserve">
-    <value>4球或以上</value>
-  </data>
-  <data name="from" xml:space="preserve">
-    <value>从</value>
   </data>
   <data name="ft" xml:space="preserve">
     <value>全场</value>
   </data>
-  <data name="game" xml:space="preserve">
-    <value>游戏</value>
-  </data>
-  <data name="games" xml:space="preserve">
-    <value>普通游戏</value>
-  </data>
-  <data name="go" xml:space="preserve">
-    <value>转</value>
-  </data>
-  <data name="h" xml:space="preserve">
-    <value>主</value>
-  </data>
-  <data name="ha" xml:space="preserve">
-    <value>主/客</value>
-  </data>
-  <data name="hd" xml:space="preserve">
-    <value>主/和局</value>
-  </data>
-  <data name="hdp" xml:space="preserve">
-    <value>让球</value>
-  </data>
-  <data name="hh" xml:space="preserve">
-    <value>主/主</value>
-  </data>
-  <data name="HomeFG" xml:space="preserve">
-    <value>主队先进球</value>
-  </data>
-  <data name="HomeLG" xml:space="preserve">
-    <value>主队后进球</value>
-  </data>
-  <data name="HomeToWinAnyOtherScore" xml:space="preserve">
-    <value>主赢其他比分</value>
-  </data>
-  <data name="Horse" xml:space="preserve">
-    <value>赛马赛事</value>
-  </data>
-  <data name="hr" xml:space="preserve">
-    <value>赛马赛事</value>
-  </data>
-  <data name="Internal" xml:space="preserve">
-    <value>内部</value>
-  </data>
-  <data name="last" xml:space="preserve">
-    <value>尾页</value>
-  </data>
   <data name="lblBoth" xml:space="preserve">
     <value>双方</value>
-  </data>
-  <data name="lblLose" xml:space="preserve">
-    <value>输</value>
-  </data>
-  <data name="lblM" xml:space="preserve">
-    <value>M = 总代理</value>
-  </data>
-  <data name="lblMixParlay" xml:space="preserve">
-    <value>混合过关</value>
-  </data>
-  <data name="lblNeither" xml:space="preserve">
-    <value>两者皆不</value>
-  </data>
-  <data name="lblNo" xml:space="preserve">
-    <value>否</value>
   </data>
   <data name="lblOne" xml:space="preserve">
     <value>一方</value>
@@ -339,80 +138,14 @@
   <data name="lblOr" xml:space="preserve">
     <value>或者</value>
   </data>
-  <data name="lblRunning" xml:space="preserve">
-    <value>进行中</value>
-  </data>
-  <data name="lblS" xml:space="preserve">
-    <value>S = 超级</value>
-  </data>
-  <data name="lblSystemParlay" xml:space="preserve">
-    <value>系统Parlay</value>
-  </data>
-  <data name="lblWaiting" xml:space="preserve">
-    <value>等待中</value>
-  </data>
-  <data name="lblWon" xml:space="preserve">
-    <value>赢</value>
-  </data>
-  <data name="lblYes" xml:space="preserve">
-    <value>是</value>
-  </data>
-  <data name="league" xml:space="preserve">
-    <value>联赛</value>
-  </data>
-  <data name="LiveCasino" xml:space="preserve">
-    <value>娱乐厅</value>
-  </data>
-  <data name="LiveRoulette" xml:space="preserve">
-    <value>轮盘</value>
-  </data>
   <data name="lose" xml:space="preserve">
     <value>输</value>
-  </data>
-  <data name="losingtickets" xml:space="preserve">
-    <value>输的注单总计</value>
-  </data>
-  <data name="mar" xml:space="preserve">
-    <value>3月</value>
-  </data>
-  <data name="match" xml:space="preserve">
-    <value>赛事</value>
   </data>
   <data name="member" xml:space="preserve">
     <value>会员</value>
   </data>
-  <data name="Min" xml:space="preserve">
-    <value>分钟</value>
-  </data>
-  <data name="mon" xml:space="preserve">
-    <value>一</value>
-  </data>
-  <data name="name" xml:space="preserve">
-    <value>名</value>
-  </data>
-  <data name="Neutral" xml:space="preserve">
-    <value>(中)</value>
-  </data>
   <data name="nogoal" xml:space="preserve">
     <value>两者皆不</value>
-  </data>
-  <data name="NoGoal14" xml:space="preserve">
-    <value>无进球</value>
-  </data>
-  <data name="NoGoals" xml:space="preserve">
-    <value>无进球</value>
-  </data>
-  <data name="none" xml:space="preserve">
-    <value>没有</value>
-  </data>
-  <data name="normal" xml:space="preserve">
-    <value>普通</value>
-  </data>
-  <data name="noTiebreak" xml:space="preserve">
-    <value>无抢七</value>
-  </data>
-  <data name="numbergame" xml:space="preserve">
-    <value>数字游戏</value>
   </data>
   <data name="odd" xml:space="preserve">
     <value>单</value>
@@ -420,59 +153,8 @@
   <data name="odds" xml:space="preserve">
     <value>赔率</value>
   </data>
-  <data name="oe" xml:space="preserve">
-    <value>单/双</value>
-  </data>
-  <data name="of" xml:space="preserve">
-    <value>之第</value>
-  </data>
-  <data name="OneGoal" xml:space="preserve">
-    <value>一粒进球</value>
-  </data>
-  <data name="oo" xml:space="preserve">
-    <value>单/单</value>
-  </data>
-  <data name="open" xml:space="preserve">
-    <value>开启</value>
-  </data>
-  <data name="OT" xml:space="preserve">
-    <value>加时</value>
-  </data>
-  <data name="other" xml:space="preserve">
-    <value>其他</value>
-  </data>
-  <data name="outstanding" xml:space="preserve">
-    <value>未完成交易</value>
-  </data>
   <data name="over" xml:space="preserve">
     <value>大</value>
-  </data>
-  <data name="P2" xml:space="preserve">
-    <value>第二局</value>
-  </data>
-  <data name="P2P" xml:space="preserve">
-    <value>扑克</value>
-  </data>
-  <data name="p2pGame" xml:space="preserve">
-    <value>扑克</value>
-  </data>
-  <data name="parlay" xml:space="preserve">
-    <value>过关</value>
-  </data>
-  <data name="Penalty" xml:space="preserve">
-    <value>点球</value>
-  </data>
-  <data name="place" xml:space="preserve">
-    <value>位置</value>
-  </data>
-  <data name="player" xml:space="preserve">
-    <value>玩家</value>
-  </data>
-  <data name="points" xml:space="preserve">
-    <value>分</value>
-  </data>
-  <data name="pt" xml:space="preserve">
-    <value>占成数</value>
   </data>
   <data name="race" xml:space="preserve">
     <value>赛事</value>
@@ -480,128 +162,113 @@
   <data name="refno" xml:space="preserve">
     <value>注单号码</value>
   </data>
-  <data name="refund" xml:space="preserve">
-    <value>退款</value>
-  </data>
-  <data name="RegularTime" xml:space="preserve">
-    <value>正规时间</value>
-  </data>
-  <data name="reject" xml:space="preserve">
-    <value>已取消</value>
-  </data>
-  <data name="reset" xml:space="preserve">
-    <value>重填</value>
-  </data>
-  <data name="result" xml:space="preserve">
-    <value>赛果</value>
-  </data>
-  <data name="results" xml:space="preserve">
-    <value>赛果</value>
-  </data>
-  <data name="running" xml:space="preserve">
-    <value>进行中</value>
-  </data>
-  <data name="SB" xml:space="preserve">
-    <value>体育博采</value>
-  </data>
-  <data name="scr" xml:space="preserve">
-    <value>退出</value>
-  </data>
-  <data name="SecondHalf" xml:space="preserve">
-    <value>下半场</value>
-  </data>
-  <data name="setting" xml:space="preserve">
-    <value>设定</value>
-  </data>
-  <data name="SevenAndOver" xml:space="preserve">
-    <value>7或以上</value>
-  </data>
-  <data name="SevenAndOverCorners" xml:space="preserve">
-    <value>7角球或以上</value>
-  </data>
-  <data name="SixAndOver" xml:space="preserve">
-    <value>6球或以上</value>
-  </data>
-  <data name="SixGoals" xml:space="preserve">
-    <value>六粒进球</value>
-  </data>
-  <data name="sport" xml:space="preserve">
-    <value>运动</value>
-  </data>
   <data name="stake" xml:space="preserve">
     <value>投注额</value>
   </data>
   <data name="status" xml:space="preserve">
     <value>状态</value>
   </data>
-  <data name="subTotal" xml:space="preserve">
-    <value>小计</value>
-  </data>
-  <data name="summary" xml:space="preserve">
-    <value>摘要</value>
-  </data>
-  <data name="table" xml:space="preserve">
-    <value>游戏桌</value>
-  </data>
-  <data name="Tennis" xml:space="preserve">
-    <value>网球</value>
-  </data>
-  <data name="tf" xml:space="preserve">
-    <value>大热门</value>
-  </data>
-  <data name="ThereIsNoTicketDetailAvailable" xml:space="preserve">
-    <value>无该注单资料</value>
-  </data>
-  <data name="ThreeGoals" xml:space="preserve">
-    <value>三粒进球</value>
-  </data>
-  <data name="ThreeGoalsAndOver" xml:space="preserve">
-    <value>3球或以上</value>
-  </data>
-  <data name="Tie" xml:space="preserve">
-    <value>和局</value>
-  </data>
-  <data name="time" xml:space="preserve">
-    <value>时间</value>
-  </data>
-  <data name="to" xml:space="preserve">
-    <value>到</value>
-  </data>
-  <data name="total" xml:space="preserve">
-    <value>总和</value>
-  </data>
-  <data name="ToWinByOneGoal" xml:space="preserve">
-    <value>赢1球</value>
-  </data>
-  <data name="ToWinByThreeUpGoals" xml:space="preserve">
-    <value>赢3球以上</value>
-  </data>
-  <data name="ToWinByTwoGoals" xml:space="preserve">
-    <value>赢2球</value>
-  </data>
   <data name="transfer" xml:space="preserve">
     <value>转账</value>
-  </data>
-  <data name="TwelveAndOverCorners" xml:space="preserve">
-    <value>12角球或以上</value>
-  </data>
-  <data name="TwoGoals" xml:space="preserve">
-    <value>二粒进球</value>
-  </data>
-  <data name="TwoGoalsAndOver" xml:space="preserve">
-    <value>2球或以上</value>
-  </data>
-  <data name="type" xml:space="preserve">
-    <value>类别</value>
   </data>
   <data name="under" xml:space="preserve">
     <value>小</value>
   </data>
-  <data name="UpdateAll" xml:space="preserve">
-    <value>更新全部</value>
+  <data name="winloss" xml:space="preserve">
+    <value>输赢</value>
   </data>
-  <data name="view" xml:space="preserve">
-    <value>游览</value>
+  <data name="won" xml:space="preserve">
+    <value>赢</value>
+  </data>
+  <data name="lblMixParlay" xml:space="preserve">
+    <value>混合过关</value>
+  </data>
+  <data name="total" xml:space="preserve">
+    <value>总和</value>
+  </data>
+  <data name="reject" xml:space="preserve">
+    <value>已取消</value>
+  </data>
+  <data name="running" xml:space="preserve">
+    <value>进行中</value>
+  </data>
+  <data name="draw" xml:space="preserve">
+    <value>和局</value>
+  </data>
+  <data name="waiting" xml:space="preserve">
+    <value>等待中</value>
+  </data>
+  <data name="refund" xml:space="preserve">
+    <value>退款</value>
+  </data>
+  <data name="voided" xml:space="preserve">
+    <value>作废</value>
+  </data>
+  <data name="place" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="win" xml:space="preserve">
+    <value>輸贏</value>
+  </data>
+  <data name="losingtickets" xml:space="preserve">
+    <value>输的注单总计</value>
+  </data>
+  <data name="details" xml:space="preserve">
+    <value>详细信息</value>
+  </data>
+  <data name="a" xml:space="preserve">
+    <value>客</value>
+  </data>
+  <data name="h" xml:space="preserve">
+    <value>主</value>
+  </data>
+  <data name="points" xml:space="preserve">
+    <value>分</value>
+  </data>
+  <data name="exactly" xml:space="preserve">
+    <value>准确的</value>
+  </data>
+  <data name="noTiebreak" xml:space="preserve">
+    <value>无抢七</value>
+  </data>
+  <data name="ee" xml:space="preserve">
+    <value>双/双</value>
+  </data>
+  <data name="eo" xml:space="preserve">
+    <value>双/单</value>
+  </data>
+  <data name="oe" xml:space="preserve">
+    <value>单/双</value>
+  </data>
+  <data name="oo" xml:space="preserve">
+    <value>单/单</value>
+  </data>
+  <data name="FiveAndOver" xml:space="preserve">
+    <value>5或以上</value>
+  </data>
+  <data name="FiveGoals" xml:space="preserve">
+    <value>五粒进球</value>
+  </data>
+  <data name="FourGoals" xml:space="preserve">
+    <value>四粒进球</value>
+  </data>
+  <data name="NoGoals" xml:space="preserve">
+    <value>无进球</value>
+  </data>
+  <data name="OneGoal" xml:space="preserve">
+    <value>一粒进球</value>
+  </data>
+  <data name="SevenAndOver" xml:space="preserve">
+    <value>7或以上</value>
+  </data>
+  <data name="SixGoals" xml:space="preserve">
+    <value>六粒进球</value>
+  </data>
+  <data name="ThreeGoals" xml:space="preserve">
+    <value>三粒进球</value>
+  </data>
+  <data name="TwoGoals" xml:space="preserve">
+    <value>二粒进球</value>
   </data>
   <data name="virtualtennis_scorebet_0_win" xml:space="preserve">
     <value>0-局</value>
@@ -627,11 +294,266 @@
   <data name="virtualtennis_scorebet_win_40" xml:space="preserve">
     <value>局-40</value>
   </data>
-  <data name="voided" xml:space="preserve">
-    <value>作废</value>
+  <data name="FourAndOver" xml:space="preserve">
+    <value>4或以上</value>
   </data>
-  <data name="waiting" xml:space="preserve">
+  <data name="ad" xml:space="preserve">
+    <value>客/和局</value>
+  </data>
+  <data name="ah" xml:space="preserve">
+    <value>客/主</value>
+  </data>
+  <data name="all" xml:space="preserve">
+    <value>全部</value>
+  </data>
+  <data name="AM" xml:space="preserve">
+    <value>上午</value>
+  </data>
+  <data name="amount" xml:space="preserve">
+    <value>金额</value>
+  </data>
+  <data name="and" xml:space="preserve">
+    <value>和</value>
+  </data>
+  <data name="bet" xml:space="preserve">
+    <value>投注</value>
+  </data>
+  <data name="BetList" xml:space="preserve">
+    <value>投注历史</value>
+  </data>
+  <data name="bettype" xml:space="preserve">
+    <value>投注类别</value>
+  </data>
+  <data name="casino" xml:space="preserve">
+    <value>娱乐城</value>
+  </data>
+  <data name="close" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="com" xml:space="preserve">
+    <value>佣金</value>
+  </data>
+  <data name="combination" xml:space="preserve">
+    <value>组合</value>
+  </data>
+  <data name="commission" xml:space="preserve">
+    <value>佣金</value>
+  </data>
+  <data name="content" xml:space="preserve">
+    <value>内容</value>
+  </data>
+  <data name="customer" xml:space="preserve">
+    <value>会员</value>
+  </data>
+  <data name="d" xml:space="preserve">
+    <value>和</value>
+  </data>
+  <data name="da" xml:space="preserve">
+    <value>和局/客</value>
+  </data>
+  <data name="date" xml:space="preserve">
+    <value>日期</value>
+  </data>
+  <data name="dd" xml:space="preserve">
+    <value>和局/和局</value>
+  </data>
+  <data name="dec" xml:space="preserve">
+    <value>12月</value>
+  </data>
+  <data name="enable" xml:space="preserve">
+    <value>启用</value>
+  </data>
+  <data name="events" xml:space="preserve">
+    <value>赛事</value>
+  </data>
+  <data name="fglg" xml:space="preserve">
+    <value>最先得分 / 最后得分</value>
+  </data>
+  <data name="first" xml:space="preserve">
+    <value>首页</value>
+  </data>
+  <data name="FirstHalf" xml:space="preserve">
+    <value>上半场</value>
+  </data>
+  <data name="from" xml:space="preserve">
+    <value>从</value>
+  </data>
+  <data name="game" xml:space="preserve">
+    <value>游戏</value>
+  </data>
+  <data name="games" xml:space="preserve">
+    <value>普通游戏</value>
+  </data>
+  <data name="go" xml:space="preserve">
+    <value>转</value>
+  </data>
+  <data name="ha" xml:space="preserve">
+    <value>主/客</value>
+  </data>
+  <data name="hd" xml:space="preserve">
+    <value>主/和局</value>
+  </data>
+  <data name="hdp" xml:space="preserve">
+    <value>让球</value>
+  </data>
+  <data name="hh" xml:space="preserve">
+    <value>主/主</value>
+  </data>
+  <data name="Horse" xml:space="preserve">
+    <value>赛马赛事</value>
+  </data>
+  <data name="hr" xml:space="preserve">
+    <value>赛马赛事</value>
+  </data>
+  <data name="Internal" xml:space="preserve">
+    <value>内部</value>
+  </data>
+  <data name="Neutral" xml:space="preserve">
+    <value>(中)</value>
+  </data>
+  <data name="last" xml:space="preserve">
+    <value>尾页</value>
+  </data>
+  <data name="lblLose" xml:space="preserve">
+    <value>输</value>
+  </data>
+  <data name="lblM" xml:space="preserve">
+    <value>M = 总代理</value>
+  </data>
+  <data name="lblNeither" xml:space="preserve">
+    <value>两者皆不</value>
+  </data>
+  <data name="lblNoDraw" xml:space="preserve">
+    <value>不是和局</value>
+  </data>
+  <data name="lblRunning" xml:space="preserve">
+    <value>进行中</value>
+  </data>
+  <data name="lblS" xml:space="preserve">
+    <value>S = 超级</value>
+  </data>
+  <data name="lblSystemParlay" xml:space="preserve">
+    <value>系统Parlay</value>
+  </data>
+  <data name="lblWaiting" xml:space="preserve">
     <value>等待中</value>
+  </data>
+  <data name="lblWon" xml:space="preserve">
+    <value>赢</value>
+  </data>
+  <data name="league" xml:space="preserve">
+    <value>联赛</value>
+  </data>
+  <data name="LiveCasino" xml:space="preserve">
+    <value>娱乐厅</value>
+  </data>
+  <data name="mar" xml:space="preserve">
+    <value>3月</value>
+  </data>
+  <data name="match" xml:space="preserve">
+    <value>赛事</value>
+  </data>
+  <data name="mon" xml:space="preserve">
+    <value>一</value>
+  </data>
+  <data name="name" xml:space="preserve">
+    <value>名</value>
+  </data>
+  <data name="none" xml:space="preserve">
+    <value>没有</value>
+  </data>
+  <data name="normal" xml:space="preserve">
+    <value>普通</value>
+  </data>
+  <data name="numbergame" xml:space="preserve">
+    <value>数字游戏</value>
+  </data>
+  <data name="of" xml:space="preserve">
+    <value>之第</value>
+  </data>
+  <data name="open" xml:space="preserve">
+    <value>开启</value>
+  </data>
+  <data name="OT" xml:space="preserve">
+    <value>加时</value>
+  </data>
+  <data name="other" xml:space="preserve">
+    <value>其他</value>
+  </data>
+  <data name="outstanding" xml:space="preserve">
+    <value>未完成交易</value>
+  </data>
+  <data name="P2" xml:space="preserve">
+    <value>第二局</value>
+  </data>
+  <data name="P2P" xml:space="preserve">
+    <value>扑克</value>
+  </data>
+  <data name="p2pGame" xml:space="preserve">
+    <value>扑克</value>
+  </data>
+  <data name="parlay" xml:space="preserve">
+    <value>过关</value>
+  </data>
+  <data name="player" xml:space="preserve">
+    <value>玩家</value>
+  </data>
+  <data name="pt" xml:space="preserve">
+    <value>占成数</value>
+  </data>
+  <data name="reset" xml:space="preserve">
+    <value>重填</value>
+  </data>
+  <data name="result" xml:space="preserve">
+    <value>赛果</value>
+  </data>
+  <data name="SB" xml:space="preserve">
+    <value>体育博采</value>
+  </data>
+  <data name="scr" xml:space="preserve">
+    <value>退出</value>
+  </data>
+  <data name="SecondHalf" xml:space="preserve">
+    <value>下半场</value>
+  </data>
+  <data name="setting" xml:space="preserve">
+    <value>设定</value>
+  </data>
+  <data name="sport" xml:space="preserve">
+    <value>运动</value>
+  </data>
+  <data name="subTotal" xml:space="preserve">
+    <value>小计</value>
+  </data>
+  <data name="summary" xml:space="preserve">
+    <value>摘要</value>
+  </data>
+  <data name="table" xml:space="preserve">
+    <value>游戏桌</value>
+  </data>
+  <data name="Tennis" xml:space="preserve">
+    <value>网球</value>
+  </data>
+  <data name="tf" xml:space="preserve">
+    <value>大热门</value>
+  </data>
+  <data name="Tie" xml:space="preserve">
+    <value>和局</value>
+  </data>
+  <data name="time" xml:space="preserve">
+    <value>时间</value>
+  </data>
+  <data name="to" xml:space="preserve">
+    <value>到</value>
+  </data>
+  <data name="type" xml:space="preserve">
+    <value>类别</value>
+  </data>
+  <data name="UpdateAll" xml:space="preserve">
+    <value>更新全部</value>
+  </data>
+  <data name="view" xml:space="preserve">
+    <value>游览</value>
   </data>
   <data name="warrior" xml:space="preserve">
     <value>斗士</value>
@@ -639,17 +561,98 @@
   <data name="wed" xml:space="preserve">
     <value>三</value>
   </data>
-  <data name="win" xml:space="preserve">
-    <value>輸贏</value>
+  <data name="lblYes" xml:space="preserve">
+    <value>是</value>
   </data>
-  <data name="winloss" xml:space="preserve">
-    <value>输赢</value>
+  <data name="lblNo" xml:space="preserve">
+    <value>否</value>
   </data>
-  <data name="won" xml:space="preserve">
-    <value>赢</value>
+  <data name="results" xml:space="preserve">
+    <value>赛果</value>
+  </data>
+  <data name="LiveRoulette" xml:space="preserve">
+    <value>轮盘</value>
+  </data>
+  <data name="AwayToWinAnyOtherScore" xml:space="preserve">
+    <value>客赢其他比分</value>
+  </data>
+  <data name="HomeToWinAnyOtherScore" xml:space="preserve">
+    <value>主赢其他比分</value>
+  </data>
+  <data name="Corners" xml:space="preserve">
+    <value>角球</value>
+  </data>
+  <data name="ExtraTime" xml:space="preserve">
+    <value>加时赛</value>
+  </data>
+  <data name="ExtraTimeHTDotOne" xml:space="preserve">
+    <value>半场加时赛.1</value>
+  </data>
+  <data name="ExtraTimeHTDotTwo" xml:space="preserve">
+    <value>半场加时赛.2</value>
+  </data>
+  <data name="ExtraTimeHTDotX" xml:space="preserve">
+    <value>半场加时赛.X</value>
+  </data>
+  <data name="FourAndOverCorners" xml:space="preserve">
+    <value>4角球或以上</value>
+  </data>
+  <data name="FourGoalsAndOver" xml:space="preserve">
+    <value>4球或以上</value>
+  </data>
+  <data name="Min" xml:space="preserve">
+    <value>分钟</value>
+  </data>
+  <data name="Penalty" xml:space="preserve">
+    <value>点球</value>
+  </data>
+  <data name="RegularTime" xml:space="preserve">
+    <value>正规时间</value>
+  </data>
+  <data name="SevenAndOverCorners" xml:space="preserve">
+    <value>7角球或以上</value>
+  </data>
+  <data name="SixAndOver" xml:space="preserve">
+    <value>6球或以上</value>
+  </data>
+  <data name="ThreeGoalsAndOver" xml:space="preserve">
+    <value>3球或以上</value>
+  </data>
+  <data name="ToWinByOneGoal" xml:space="preserve">
+    <value>赢1球</value>
+  </data>
+  <data name="ToWinByThreeUpGoals" xml:space="preserve">
+    <value>赢3球以上</value>
+  </data>
+  <data name="ToWinByTwoGoals" xml:space="preserve">
+    <value>赢2球</value>
+  </data>
+  <data name="TwelveAndOverCorners" xml:space="preserve">
+    <value>12角球或以上</value>
+  </data>
+  <data name="TwoGoalsAndOver" xml:space="preserve">
+    <value>2球或以上</value>
   </data>
   <data name="ZeroGoals" xml:space="preserve">
     <value>0球</value>
+  </data>
+  <data name="HomeFG" xml:space="preserve">
+    <value>主队先进球</value>
+  </data>
+  <data name="HomeLG" xml:space="preserve">
+    <value>主队后进球</value>
+  </data>
+  <data name="AwayFG" xml:space="preserve">
+    <value>客队先进球</value>
+  </data>
+  <data name="AwayLG" xml:space="preserve">
+    <value>客队后进球</value>
+  </data>
+  <data name="NoGoal14" xml:space="preserve">
+    <value>无进球</value>
+  </data>
+  <data name="ThereIsNoTicketDetailAvailable" xml:space="preserve">
+    <value>无该注单资料</value>
   </data>
   <data name="ThreeOver" xml:space="preserve">
     <value>3或以上</value>
@@ -660,12 +663,6 @@
   <data name="Away" xml:space="preserve">
     <value>客</value>
   </data>
-  <data name="FreeKick" xml:space="preserve">
-    <value>任意球</value>
-  </data>
-  <data name="Header" xml:space="preserve">
-    <value>头球</value>
-  </data>
   <data name="Home" xml:space="preserve">
     <value>主</value>
   </data>
@@ -674,6 +671,12 @@
   </data>
   <data name="NoAndUnder" xml:space="preserve">
     <value>否 &amp; 小</value>
+  </data>
+  <data name="FreeKick" xml:space="preserve">
+    <value>任意球</value>
+  </data>
+  <data name="Header" xml:space="preserve">
+    <value>头球</value>
   </data>
   <data name="OwnGoal" xml:space="preserve">
     <value>乌龙球</value>
@@ -894,6 +897,33 @@
   <data name="h34" xml:space="preserve">
     <value>主队赢第 3 &amp; 4 节</value>
   </data>
+  <data name="Mid" xml:space="preserve">
+    <value>中路</value>
+  </data>
+  <data name="Top" xml:space="preserve">
+    <value>上路</value>
+  </data>
+  <data name="TopBottom" xml:space="preserve">
+    <value>上路/下路</value>
+  </data>
+  <data name="TopMid" xml:space="preserve">
+    <value>上路/中路</value>
+  </data>
+  <data name="MidBottom" xml:space="preserve">
+    <value>中路/下路</value>
+  </data>
+  <data name="Overlord" xml:space="preserve">
+    <value>主宰</value>
+  </data>
+  <data name="Tyrant" xml:space="preserve">
+    <value>暴君</value>
+  </data>
+  <data name="OverlordMiddle" xml:space="preserve">
+    <value>主宰/中路</value>
+  </data>
+  <data name="Bottom" xml:space="preserve">
+    <value>下路</value>
+  </data>
   <data name="Bowled" xml:space="preserve">
     <value>投杀</value>
   </data>
@@ -918,20 +948,20 @@
   <data name="NotCaught" xml:space="preserve">
     <value>非接杀出局</value>
   </data>
-  <data name="a_wm_2" xml:space="preserve">
-    <value>客 赢2分</value>
-  </data>
-  <data name="a_wm_3_4" xml:space="preserve">
-    <value>客 赢3-4分</value>
-  </data>
-  <data name="a_wm_5_7" xml:space="preserve">
-    <value>客 赢5-7分</value>
+  <data name="a_wm_over_12" xml:space="preserve">
+    <value>客 赢12分以上</value>
   </data>
   <data name="a_wm_8_11" xml:space="preserve">
     <value>客 赢8-11分</value>
   </data>
-  <data name="a_wm_over_12" xml:space="preserve">
-    <value>客 赢12分以上</value>
+  <data name="a_wm_5_7" xml:space="preserve">
+    <value>客 赢5-7分</value>
+  </data>
+  <data name="a_wm_3_4" xml:space="preserve">
+    <value>客 赢3-4分</value>
+  </data>
+  <data name="a_wm_2" xml:space="preserve">
+    <value>客 赢2分</value>
   </data>
   <data name="h_wm_2" xml:space="preserve">
     <value>主 赢2分</value>
