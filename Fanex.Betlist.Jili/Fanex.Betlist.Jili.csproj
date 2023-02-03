@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Version>1.0.0.0-Jili-04</Version>
+    <PackageReleaseNotes>Init Jili Bettypes (#181791)</PackageReleaseNotes>
+    <Description>
+New bet list for Jili
+
+The result link should call this Javascript function: "showJiliBetDetails(transId, 'winlostDate', custId, transactionType);", which transactionType is:
+
+- 1, if the status is Won, Lose, Draw, or Refund
+
+- 2, if the status is Reject, or Void
+
+- 3, if the status is Running, or Waiting
+
+- otherwise, 0
+
+The [Result] links in [Status] column take the following parameters:
+
+ViewResult(matchId, race, betTypeId, sportTypeId, refNo, 'userName', 'winlostDate', refNo_MixParlay, leagueId, isoutright, CurrencyId, 'GameId3rd', custId, 'TransId3rd', 'SiteId');
+    </Description>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <Authors>Nexcel Solutions</Authors>
+    <PackageTags>Fanex BetList Jili</PackageTags>
+    <PackageProjectUrl>https://nexdev.net/projects/p111058/wiki/012023_-_Jili_-_Product_Overview</PackageProjectUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="TplNetCore" Version="1.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj" />
+  </ItemGroup>
+</Project>

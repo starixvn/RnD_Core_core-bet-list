@@ -1402,6 +1402,25 @@
             return BetListView(model);
         }
 
+        public ActionResult Jili(BetListData model = null)
+        {
+            var betTypeIds = new List<int>();
+
+            for (var betTypeId = 5100; betTypeId <= 5299; betTypeId++)
+            {
+                betTypeIds.Add(betTypeId);
+            }
+
+            var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
+
+            DataSourcePath = "~/App_Data/Jili.xls";
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
         private ViewResult BetListView(BetListData model)
         {
             return View("All", model);
