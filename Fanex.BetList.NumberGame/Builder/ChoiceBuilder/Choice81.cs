@@ -5,6 +5,7 @@
     using Constants;
     using Entities;
     using Resources;
+    using Fanex.BetList.Core.Utils.StringExt;
 
     /// <summary>
     /// 1st ball O/U.
@@ -32,5 +33,8 @@
             Template.betTeamClassName = Favorite;
             Template.Handicap.handicap = null;
         }
+
+        protected override void AdjustBetTeamToRTF()
+            => Template.betTeam = string.Join("\n", Template.betTeam.SplitHTMLIntoRows());
     }
 }
