@@ -9,6 +9,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_CodeAnalysis", "_CodeAnaly
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Example", "_Example", "{24BA1707-BE2A-4391-8A57-747DE7EAA0D4}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		.gitlab-ci.yml = .gitlab-ci.yml
+		Dockerfile = Dockerfile
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{486008E8-F444-4221-8AD0-E3C4DFAC5CB5}"
 EndProject
@@ -20,7 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.Example.Exten
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.Example.MVC.Tests", "Fanex.BetList.Example.MVC.Tests\Fanex.BetList.Example.MVC.Tests.csproj", "{CD2143D0-1838-485F-9796-EDCC0EC6A03C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.Voidbridge", "Fanex.BetList.VoidBridge\Fanex.BetList.Voidbridge.csproj", "{0F87BC2A-0625-42B3-B695-3E6384E588DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.Voidbridge", "Fanex.BetList.VoidBridge\Fanex.BetList.Voidbridge.csproj", "{0F87BC2A-0625-42B3-B695-3E6384E588DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +80,18 @@ Global
 		{CD2143D0-1838-485F-9796-EDCC0EC6A03C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{CD2143D0-1838-485F-9796-EDCC0EC6A03C}.Release|x86.ActiveCfg = Release|Any CPU
 		{CD2143D0-1838-485F-9796-EDCC0EC6A03C}.Release|x86.Build.0 = Release|Any CPU
+		{0F87BC2A-0625-42B3-B695-3E6384E588DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F87BC2A-0625-42B3-B695-3E6384E588DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F87BC2A-0625-42B3-B695-3E6384E588DB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{0F87BC2A-0625-42B3-B695-3E6384E588DB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{0F87BC2A-0625-42B3-B695-3E6384E588DB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0F87BC2A-0625-42B3-B695-3E6384E588DB}.Debug|x86.Build.0 = Debug|Any CPU
+		{0F87BC2A-0625-42B3-B695-3E6384E588DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F87BC2A-0625-42B3-B695-3E6384E588DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F87BC2A-0625-42B3-B695-3E6384E588DB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{0F87BC2A-0625-42B3-B695-3E6384E588DB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{0F87BC2A-0625-42B3-B695-3E6384E588DB}.Release|x86.ActiveCfg = Release|Any CPU
+		{0F87BC2A-0625-42B3-B695-3E6384E588DB}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
