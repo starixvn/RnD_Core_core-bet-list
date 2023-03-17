@@ -3,8 +3,8 @@
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
         <version>2.111.5.0</version>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-        <Version>3.0.0.0</Version>
-        <PackageReleaseNotes>Support .net Core for Betlist Core package (#175417)</PackageReleaseNotes>
+        <Version>3.0.0.1-FieldHookie-02</Version>
+        <PackageReleaseNotes>Change Field Hockey LiveScore to Live (#184451)</PackageReleaseNotes>
         <Description>BetList core package</Description>
         <Authors>Nexcel Solutions</Authors>
         <PackageTags>Fanex BetList</PackageTags>

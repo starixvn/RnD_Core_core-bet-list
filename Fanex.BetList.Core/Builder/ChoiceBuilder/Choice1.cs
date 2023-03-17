@@ -38,10 +38,9 @@
         private const int MuayThaiSportId = 44;
         private const int HandicapBetTypeId = 1;
         private const string LightBlue = " light-blue";
-        private readonly int[] _liveScoreSports = { 1, 28, 49, 51 };
+        private readonly int[] _liveScoreSports = { SportsbookSportTypes.Soccer, SportsbookSportTypes.Futsal, SportsbookSportTypes.BeachSoccer };
         private const string ESportsXmlTag = "p16";
         private const string InPlayXmlAttribute = "in";
-        private const int ESportsSportType = 43;
 
         #region Constructors
 
@@ -302,7 +301,7 @@
 
             if (IsShowLiveText(ticket.SportTypeId, ticket.TransDate))
             {
-                var scoreStatus = ticket.SportTypeId == ESportsSportType ? GetScoreStatus(ticket) : CoreBetList.Live;
+                var scoreStatus = ticket.SportTypeId == SportsbookSportTypes.ESports ? GetScoreStatus(ticket) : CoreBetList.Live;
 
                 Template.Score.SetValue($"<span class=\"{Favorite}\"> [{scoreStatus}]</span>");
             }
@@ -351,22 +350,12 @@
 
         private bool IsShowLiveText(int sportTypeId, DateTime transDate)
         {
-            var CutOffDate = new DateTime(2020, 11, 5, 0, 0, 0);
-            const int sportTypeOfBaseball = 8;
-            const int MaxSportsbookSportTypeId = 99;
-            if (sportTypeId == sportTypeOfBaseball)
-            {
-                return transDate >= CutOffDate;
-            }
-            var rubyAndIceHockey = new List<int> { 4, 26 };
-            var cutOfDateOfRubyAndIceHockey = new DateTime(2021, 10, 7, 0, 0, 0);
-            if (rubyAndIceHockey.Contains(sportTypeId))
-            {
-                return transDate >= cutOfDateOfRubyAndIceHockey;
+            if(LiveScoreSportType.DateTimeSupportLiveScoreBySports.ContainsKey(sportTypeId)){
+                return transDate >= LiveScoreSportType.DateTimeSupportLiveScoreBySports[sportTypeId];
             }
 
-            return sportTypeId > 0 &&
-                sportTypeId <= MaxSportsbookSportTypeId &&
+            return sportTypeId >= SportsbookSportTypes.Soccer &&
+                sportTypeId <= SportsbookSportTypes.MaxSportsbookSportType &&
                 !_liveScoreSports.Contains(sportTypeId);
         }
 
