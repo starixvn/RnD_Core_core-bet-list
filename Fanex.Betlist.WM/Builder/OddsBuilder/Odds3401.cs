@@ -40,7 +40,11 @@ namespace Fanex.BetList.Core.Builder.OddsBuilder
                 parsedTransDesc[BetChoiceDataKey].Trim() :
                 string.Empty;
 
-            return string.IsNullOrEmpty(ticket.TransDesc) || BetChoicesHideOdds.Any(i => i == betChoice);
+            return string.IsNullOrEmpty(ticket.TransDesc) || GetBetChoicesHideOdds().Any(i => i == betChoice);
+        }
+
+        public virtual IList<string> GetBetChoicesHideOdds(){
+            return BetChoicesHideOdds;
         }
     }
 }

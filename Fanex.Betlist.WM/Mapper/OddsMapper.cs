@@ -8,7 +8,9 @@
         {
             for (var betType = WMBetTypes.Baccarat + 1; betType <= WMBetTypes.HighestBetTypeIdInRange; betType++)
             {
-                MapIdToBaseId(betType, WMBetTypes.Baccarat);
+                if(betType != WMBetTypes.SicBo && betType != WMBetTypes.FishPrawnCrab){
+                    MapIdToBaseId(betType, WMBetTypes.Baccarat);
+                }
             }
         }
     }
