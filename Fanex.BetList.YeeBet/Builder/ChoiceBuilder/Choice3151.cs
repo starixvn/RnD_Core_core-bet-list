@@ -8,6 +8,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
     using Fanex.BetList.Core.Utils;
+    using Fanex.BetList.Core.Utils.Parsers;
     using Fanex.BetList.Core.Utils.StringExt;
     using Fanex.BetList.Core.Utils.TicketExt;
     using App_GlobalResources;
@@ -38,9 +39,9 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData){
             Template.betTeam = string.Empty;
             if(IsDetailTicket(ticket.TransDesc)){
-                var transDesc = ticket.ParseTransDesc();
-                if(transDesc != null && transDesc.ContainsKey(ChoiceKey)){
-                    Template.betTeam = ticketHelper.GetResourceData(RefResourceId, transDesc[ChoiceKey]);
+                var transDescOptions = ExtraInfoParser.ParseExtraInfo(ticket.TransDesc);
+                if(transDescOptions != null && transDescOptions.ContainsKey(ChoiceKey)){
+                    Template.betTeam = ticketHelper.GetResourceData(RefResourceId, transDescOptions[ChoiceKey]);
                 }
             }
         }
@@ -126,10 +127,10 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
         private static string GetTableCode(ITicket ticket)
         {
-            var transDescOption = ticket.ParseTransDesc();
-            if (transDescOption != null && transDescOption.ContainsKey(TableCodeKey))
+            var transDescOptions = ExtraInfoParser.ParseExtraInfo(ticket.TransDesc);
+            if (transDescOptions != null && transDescOptions.ContainsKey(TableCodeKey))
             {
-                return string.Format(TableIdFormat, transDescOption[TableCodeKey]);
+                return string.Format(TableIdFormat, transDescOptions[TableCodeKey]);
             }
 
             return string.Empty;

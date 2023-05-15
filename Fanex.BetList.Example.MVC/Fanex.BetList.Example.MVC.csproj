@@ -234,6 +234,9 @@
     <Reference Include="Fanex.BetList.WM, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.BetList.WM.2.0.0.1-HideOdds-02\lib\net461\Fanex.BetList.WM.dll</HintPath>
     </Reference>
+    <Reference Include="Fanex.BetList.YeeBet, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.BetList.YeeBet.1.0.0-YeeBet-01\lib\net461\Fanex.BetList.YeeBet.dll</HintPath>
+    </Reference>
     <Reference Include="Fanex.RemotingRef, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.RemotingRef.1.5.0\lib\net461\Fanex.RemotingRef.dll</HintPath>
     </Reference>
@@ -657,6 +660,7 @@
     <Content Include="App_Data\Microgaming.xls" />
     <Content Include="App_Data\PlayerTips.xls" />
     <Content Include="App_Data\Jili.xls" />
+    <Content Include="App_Data\YeeBet.xls" />
     <Content Include="App_Data\WM.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
