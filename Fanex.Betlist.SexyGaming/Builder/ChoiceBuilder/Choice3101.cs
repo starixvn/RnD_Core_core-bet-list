@@ -3,7 +3,6 @@
     using App_GlobalResources;
     using Entities;
     using Fanex.BetList.Core.Utils.TicketExt;
-    using Resource;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
@@ -68,7 +67,7 @@
 
             if (!string.IsNullOrEmpty(ticket.TransDesc))
             {
-                Template.BetType.betTypeName = $"{OpenBetIdTag}{SexyGamingLang.BetID}: {ticket.BetCheck}{CloseBetIdTag}";
+                Template.BetType.betTypeName = $"{OpenBetIdTag}{CoreBetList.BetID}: {ticket.BetCheck}{CloseBetIdTag}";
             }
         }
 

@@ -1060,4 +1060,7 @@
   <data name="h_wm_over_12" xml:space="preserve">
     <value>Home To Win By 12+ Points</value>
   </data>
+  <data name="lblEt" xml:space="preserve">
+    <value>&amp;</value>
+  </data>
 </root>

@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="numbergameno" xml:space="preserve">
-    <value>เกมหมายเลข ลำดับที่</value>
+    <value>เกมหมายเลข ลำดับที่ </value>
   </data>
   <data name="next" xml:space="preserve">
-    <value>ต่อไป</value>
+    <value>ต่อไป </value>
   </data>
   <data name="low" xml:space="preserve">
-    <value>ต่ำ</value>
+    <value>ต่ำ </value>
   </data>
   <data name="high" xml:space="preserve">
-    <value>สูง</value>
+    <value>สูง </value>
   </data>
   <data name="warrior2ndBall" xml:space="preserve">
     <value>บอลลูกที่สอง ชนะ</value>

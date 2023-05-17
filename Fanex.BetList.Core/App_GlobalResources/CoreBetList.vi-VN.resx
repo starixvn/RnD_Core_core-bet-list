@@ -133,7 +133,7 @@
     <value>Cả hai</value>
   </data>
   <data name="lblMixParlay" xml:space="preserve">
-    <value>Cá cược tổng hợp</value>
+    <value>Cược xiên</value>
   </data>
   <data name="lblOne" xml:space="preserve">
     <value>Một</value>
@@ -145,7 +145,7 @@
     <value>Thua</value>
   </data>
   <data name="losingtickets" xml:space="preserve">
-    <value>Tổng các Cược bị thua</value>
+    <value>Tổng các cược thua</value>
   </data>
   <data name="member" xml:space="preserve">
     <value>Thành viên</value>
@@ -157,7 +157,7 @@
     <value>Lẻ</value>
   </data>
   <data name="odds" xml:space="preserve">
-    <value>Tỷ lệ</value>
+    <value>Tỷ lệ cược</value>
   </data>
   <data name="over" xml:space="preserve">
     <value>Tài</value>
@@ -196,13 +196,13 @@
     <value>Đang Chờ</value>
   </data>
   <data name="winloss" xml:space="preserve">
-    <value>Thắng-thua</value>
+    <value>Thắng Thua</value>
   </data>
   <data name="won" xml:space="preserve">
     <value>Thắng</value>
   </data>
   <data name="points" xml:space="preserve">
-    <value>points</value>
+    <value>Điểm</value>
   </data>
   <data name="all" xml:space="preserve">
     <value>Tất cả</value>
@@ -214,7 +214,7 @@
     <value>và</value>
   </data>
   <data name="bet" xml:space="preserve">
-    <value>Đặt cược</value>
+    <value>cược</value>
   </data>
   <data name="BetList" xml:space="preserve">
     <value>Danh sách cược</value>
@@ -238,7 +238,7 @@
     <value>Nội dung</value>
   </data>
   <data name="customer" xml:space="preserve">
-    <value>Thành viên </value>
+    <value>Thành viên</value>
   </data>
   <data name="date" xml:space="preserve">
     <value>Ngày</value>
@@ -277,7 +277,7 @@
     <value>Đang diễn ra</value>
   </data>
   <data name="lblSystemParlay" xml:space="preserve">
-    <value>Hệ thống cá cược</value>
+    <value>Cược tổng hợp</value>
   </data>
   <data name="lblWaiting" xml:space="preserve">
     <value>Đang Chờ</value>
@@ -304,28 +304,28 @@
     <value>Mở</value>
   </data>
   <data name="outstanding" xml:space="preserve">
-    <value>Số  tiền chưa xử lý</value>
+    <value>Tiền chưa xử lý</value>
   </data>
   <data name="P2P" xml:space="preserve">
-    <value>Poker</value>
+    <value>Người chơi vs Người chơi</value>
   </data>
   <data name="parlay" xml:space="preserve">
-    <value>Cá cược tổng hợp</value>
+    <value>Cược Xiên</value>
   </data>
   <data name="player" xml:space="preserve">
-    <value>Người chơi </value>
+    <value>Người chơi</value>
   </data>
   <data name="result" xml:space="preserve">
     <value>Kết quả</value>
   </data>
   <data name="sec" xml:space="preserve">
-    <value> giây</value>
+    <value>giây</value>
   </data>
   <data name="SecondHalf" xml:space="preserve">
     <value>Hiệp 2</value>
   </data>
   <data name="setting" xml:space="preserve">
-    <value>Thiết lập</value>
+    <value>Cài đặt</value>
   </data>
   <data name="subTotal" xml:space="preserve">
     <value>Tổng phụ</value>
@@ -364,13 +364,13 @@
     <value>Ngoại trừ</value>
   </data>
   <data name="Away" xml:space="preserve">
-    <value>Đội khách</value>
+    <value>Đội Khách</value>
   </data>
   <data name="FreeKick" xml:space="preserve">
     <value>Đá phạt</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>Đội nhà</value>
+    <value>Đội Nhà</value>
   </data>
   <data name="Penalty" xml:space="preserve">
     <value>Phạt đền</value>
@@ -382,61 +382,61 @@
     <value>Không Có Bàn Thắng</value>
   </data>
   <data name="FtAsian" xml:space="preserve">
-    <value>FT. Châu Á</value>
+    <value>Toàn trận Châu Á</value>
   </data>
   <data name="HtAsian" xml:space="preserve">
     <value>Hiệp 1 Châu Á</value>
   </data>
   <data name="Seperator1X2" xml:space="preserve">
-    <value> </value>
+    <value>.</value>
   </data>
   <data name="None22" xml:space="preserve">
     <value>Không Có</value>
   </data>
   <data name="ToWinByOneGoal" xml:space="preserve">
-    <value>Chiến thắng với 1 bàn</value>
+    <value>Thắng 1 bàn</value>
   </data>
   <data name="ToWinByTwoGoals" xml:space="preserve">
-    <value>Chiến thắng với 2 bàn</value>
+    <value>Thắng 2 bàn</value>
   </data>
   <data name="ToWinByThreeUpGoals" xml:space="preserve">
-    <value>Chiến thắng với 3 bàn trở lên</value>
+    <value>Thắng 3+ bàn</value>
   </data>
   <data name="ToWinByTwoUpGoals" xml:space="preserve">
-    <value>Chiến thắng với 2 bàn trở lên</value>
+    <value>Thắng với 2+ bàn</value>
   </data>
   <data name="NoGoal408" xml:space="preserve">
     <value>Không Có Bàn Thắng</value>
   </data>
   <data name="aa" xml:space="preserve">
-    <value>Đội khách/Đội khách</value>
+    <value>Đội Khách/Đội Khách</value>
   </data>
   <data name="ad" xml:space="preserve">
-    <value>Đội khách/Hòa</value>
+    <value>Đội Khách/Hòa</value>
   </data>
   <data name="ah" xml:space="preserve">
-    <value>Đội khách/Đội nhà</value>
+    <value>Đội Khách/Đội Nhà</value>
   </data>
   <data name="da" xml:space="preserve">
-    <value>Hòa/Đội khách</value>
+    <value>Hòa/Đội Khách</value>
   </data>
   <data name="dd" xml:space="preserve">
     <value>Hòa/Hòa</value>
   </data>
   <data name="dh" xml:space="preserve">
-    <value>Hòa/Đội nhà</value>
+    <value>Hòa/Đội Nhà</value>
   </data>
   <data name="ha" xml:space="preserve">
-    <value>Đội nhà/Đội khách</value>
+    <value>Đội Nhà/Đội Khách</value>
   </data>
   <data name="hd" xml:space="preserve">
-    <value>Đội nhà/Hòa</value>
+    <value>Đội Nhà/Hòa</value>
   </data>
   <data name="hh" xml:space="preserve">
-    <value>Đội nhà/Đội nhà</value>
+    <value>Đội Nhà/Đội Nhà</value>
   </data>
   <data name="a" xml:space="preserve">
-    <value>Khách</value>
+    <value>Đội khách</value>
   </data>
   <data name="FullTime" xml:space="preserve">
     <value>Toàn Thời Gian</value>
@@ -445,10 +445,10 @@
     <value>Hiệp 1</value>
   </data>
   <data name="AOSFTExcluding" xml:space="preserve">
-    <value>AOS FT Ngoại trừ</value>
+    <value>Tỷ số khác trong toàn trận ngoại trừ</value>
   </data>
   <data name="AOSHTExcluding" xml:space="preserve">
-    <value>AOS HT Ngoại trừ</value>
+    <value>Tỷ số khác trong hiệp 1 ngoại trừ</value>
   </data>
   <data name="Cash" xml:space="preserve">
     <value>Tiền mặt</value>
@@ -460,10 +460,10 @@
     <value>Xem chi tiết giao dịch</value>
   </data>
   <data name="forRefNo" xml:space="preserve">
-    <value>Mã tham chiếu</value>
+    <value>Mã tham chiếu</value>
   </data>
   <data name="rate" xml:space="preserve">
-    <value>Tỷ lệ cược</value>
+    <value>Tỷ lệ</value>
   </data>
   <data name="ProgressiveJackpotWonDetails" xml:space="preserve">
     <value>Chi tiết cược thắng Jackpot Lũy Tiến</value>
@@ -478,13 +478,13 @@
     <value>Thắng</value>
   </data>
   <data name="halfwon" xml:space="preserve">
-    <value>Thắng một nửa</value>
+    <value>Thắng 1/2</value>
   </data>
   <data name="halflose" xml:space="preserve">
-    <value>Thua một nửa</value>
+    <value>Thua 1/2</value>
   </data>
   <data name="AbnormalBet" xml:space="preserve">
-    <value>Cược bất thường </value>
+    <value>Cược bất thường</value>
   </data>
   <data name="Equal" xml:space="preserve">
     <value>Hòa</value>
@@ -520,13 +520,13 @@
     <value>Sút</value>
   </data>
   <data name="ScoreDraw" xml:space="preserve">
-    <value>Hòa Có Bàn Thắng (Ngoại Trừ 0-0)</value>
+    <value>Hòa Có Bàn Thắng (Trừ 0-0)</value>
   </data>
   <data name="AwayToWinAnyOtherScore" xml:space="preserve">
-    <value>Đội khách Thắng với Tỷ số Khác</value>
+    <value>Đội Khách thắng với tỷ số khác</value>
   </data>
   <data name="HomeToWinAnyOtherScore" xml:space="preserve">
-    <value>Đội nhà Chiến thắng với Tỉ số Khác</value>
+    <value>Đội Nhà thắng với tỷ số khác</value>
   </data>
   <data name="Score" xml:space="preserve">
     <value>Ghi bàn</value>
@@ -535,7 +535,7 @@
     <value>Hụt</value>
   </data>
   <data name="Goal" xml:space="preserve">
-    <value>Bàn Thắng</value></data>
+    <value>Ghi bàn</value></data>
   <data name="DelayPayout" xml:space="preserve">
     <value>Chậm Trả Thưởng</value>
   </data>
@@ -549,52 +549,52 @@
     <value>Chi tiết cược thắng Jackpot</value>
   </data>
   <data name="1q" xml:space="preserve">
-    <value>Ván 1</value>
+    <value>Hiệp 1</value>
   </data>
   <data name="2q" xml:space="preserve">
-    <value>Ván 2</value>
+    <value>Hiệp 2</value>
   </data>
   <data name="3q" xml:space="preserve">
-    <value>Ván 3</value>
+    <value>Hiệp 3</value>
   </data>
   <data name="4q" xml:space="preserve">
-    <value>Ván 4</value>
+    <value>Hiệp 4</value>
   </data>
   <data name="a12" xml:space="preserve">
-    <value>Đội Khách Thắng Ván 1 &amp; 2</value>
+    <value>Đội Khách Thắng Hiệp 1 &amp; 2</value>
   </data>
   <data name="a13" xml:space="preserve">
-    <value>Đội Khách Thắng Ván 1 &amp; 3</value>
+    <value>Đội Khách Thắng Hiệp 1 &amp; 3</value>
   </data>
   <data name="a14" xml:space="preserve">
-    <value>Đội Khách Thắng Ván 1 &amp; 4</value>
+    <value>Đội Khách Thắng Hiệp 1 &amp; 4</value>
   </data>
   <data name="a23" xml:space="preserve">
-    <value>Đội Khách Thắng Ván 2 &amp; 3</value>
+    <value>Đội Khách Thắng Hiệp 2 &amp; 3</value>
   </data>
   <data name="a24" xml:space="preserve">
-    <value>Đội Khách Thắng Ván 2 &amp; 4</value>
+    <value>Đội Khách Thắng Hiệp 2 &amp; 4</value>
   </data>
   <data name="a34" xml:space="preserve">
-    <value>Đội Khách Thắng Ván 3 &amp; 4</value>
+    <value>Đội Khách Thắng Hiệp 3 &amp; 4</value>
   </data>
   <data name="h12" xml:space="preserve">
-    <value>Đội Nhà Thắng Ván 1 &amp; 2</value>
+    <value>Đội Nhà Thắng Hiệp 1 &amp; 2</value>
   </data>
   <data name="h13" xml:space="preserve">
-    <value>Đội Nhà Thắng Ván 1 &amp; 3</value>
+    <value>Đội Nhà Thắng Hiệp 1 &amp; 3</value>
   </data>
   <data name="h14" xml:space="preserve">
-    <value>Đội Nhà Thắng Ván 1 &amp; 4</value>
+    <value>Đội Nhà Thắng Hiệp 1 &amp; 4</value>
   </data>
   <data name="h23" xml:space="preserve">
-    <value>Đội Nhà Thắng Ván 2 &amp; 3</value>
+    <value>Đội Nhà Thắng Hiệp 2 &amp; 3</value>
   </data>
   <data name="h24" xml:space="preserve">
-    <value>Đội Nhà Thắng Ván 2 &amp; 4</value>
+    <value>Đội Nhà Thắng Hiệp 2 &amp; 4</value>
   </data>
   <data name="h34" xml:space="preserve">
-    <value>Đội Nhà Thắng Ván 3 &amp; 4</value>
+    <value>Đội Nhà Thắng Hiệp 3 &amp; 4</value>
   </data>
   <data name="Back" xml:space="preserve">
     <value>{0} Thắng</value>
@@ -630,33 +630,423 @@
     <value>Giữa/Dưới</value>
   </data>
   <data name="a_wm_2" xml:space="preserve">
-    <value>Đội khách thắng cách biệt 2 điểm</value>
+    <value>Đội Khách thắng cách biệt 2 điểm</value>
   </data>
   <data name="a_wm_3_4" xml:space="preserve">
-    <value>Đội khách thắng cách biệt 3 - 4 điểm</value>
+    <value>Đội Khách thắng cách biệt 3 - 4 điểm</value>
   </data>
   <data name="a_wm_5_7" xml:space="preserve">
-    <value>Đội khách thắng cách biệt 5 - 7 điểm</value>
+    <value>Đội Khách thắng cách biệt 5 - 7 điểm</value>
   </data>
   <data name="a_wm_8_11" xml:space="preserve">
-    <value>Đội khách thắng cách biệt 8 - 11 điểm</value>
+    <value>Đội Khách thắng cách biệt 8 - 11 điểm</value>
   </data>
   <data name="a_wm_over_12" xml:space="preserve">
-    <value>Đội khách thắng cách biệt 12+ điểm</value>
+    <value>Đội Khách thắng cách biệt 12+ điểm</value>
   </data>
   <data name="h_wm_2" xml:space="preserve">
-    <value>Đội nhà thắng cách biệt 2 điểm</value>
+    <value>Đội Nhà thắng cách biệt 2 điểm</value>
   </data>
   <data name="h_wm_3_4" xml:space="preserve">
-    <value>Đội nhà thắng cách biệt 3 - 4 điểm</value>
+    <value>Đội Nhà thắng cách biệt 3 - 4 điểm</value>
   </data>
   <data name="h_wm_5_7" xml:space="preserve">
-    <value>Đội nhà thắng cách biệt 5 - 7 điểm</value>
+    <value>Đội Nhà thắng cách biệt 5 - 7 điểm</value>
   </data>
   <data name="h_wm_8_11" xml:space="preserve">
-    <value>Đội nhà thắng cách biệt 8 - 11 điểm</value>
+    <value>Đội Nhà thắng cách biệt 8 - 11 điểm</value>
   </data>
   <data name="h_wm_over_12" xml:space="preserve">
-    <value>Đội nhà thắng cách biệt 12+ điểm</value>
+    <value>Đội Nhà thắng cách biệt 12+ điểm</value>
+  </data>
+  <data name="bingo" xml:space="preserve">
+    <value>Bingo</value>
+  </data>
+  <data name="casinoGame" xml:space="preserve">
+    <value>Casino</value>
+  </data>
+  <data name="ft" xml:space="preserve">
+    <value>Toàn trận</value>
+  </data>
+  <data name="race" xml:space="preserve">
+    <value>Race</value>
+  </data>
+  <data name="refno" xml:space="preserve">
+    <value>Số tham chiếu</value>
+  </data>
+  <data name="place" xml:space="preserve">
+    <value>Place</value>
+  </data>
+  <data name="win" xml:space="preserve">
+    <value>Win</value>
+  </data>
+  <data name="h" xml:space="preserve">
+    <value>Đội nhà</value>
+  </data>
+  <data name="betweenXandY" xml:space="preserve">
+    <value>Giữa {0} và {1}</value>
+  </data>
+  <data name="upPoints" xml:space="preserve">
+    <value>+</value>
+  </data>
+  <data name="exactly" xml:space="preserve">
+    <value>Chính xác</value>
+  </data>
+  <data name="noTiebreak" xml:space="preserve">
+    <value>Không có hiệp phụ</value>
+  </data>
+  <data name="virtualtennis_scorebet_0_win" xml:space="preserve">
+    <value>0- Thắng</value>
+  </data>
+  <data name="virtualtennis_scorebet_15_win" xml:space="preserve">
+    <value>15-Thắng</value>
+  </data>
+  <data name="virtualtennis_scorebet_30_win" xml:space="preserve">
+    <value>30-Thắng</value>
+  </data>
+  <data name="virtualtennis_scorebet_40_win" xml:space="preserve">
+    <value>40-Thắng</value>
+  </data>
+  <data name="virtualtennis_scorebet_win_0" xml:space="preserve">
+    <value>Thắng-0</value>
+  </data>
+  <data name="virtualtennis_scorebet_win_15" xml:space="preserve">
+    <value>Thắng-15</value>
+  </data>
+  <data name="virtualtennis_scorebet_win_30" xml:space="preserve">
+    <value>Thắng-30</value>
+  </data>
+  <data name="virtualtennis_scorebet_win_40" xml:space="preserve">
+    <value>Thắng-40</value>
+  </data>
+  <data name="casinoProgressiveBonus" xml:space="preserve">
+    <value>Thưởng Lũy Tiến Casino</value>
+  </data>
+  <data name="playtechcasino" xml:space="preserve">
+    <value>PlayTech Casino</value>
+  </data>
+  <data name="ee" xml:space="preserve">
+    <value>Chẵn/Chẵn</value>
+  </data>
+  <data name="eo" xml:space="preserve">
+    <value>Chẵn/Lẻ</value>
+  </data>
+  <data name="oe" xml:space="preserve">
+    <value>Lẻ/Chẵn</value>
+  </data>
+  <data name="oo" xml:space="preserve">
+    <value>Lẻ/Lẻ</value>
+  </data>
+  <data name="FiveAndOver" xml:space="preserve">
+    <value>5+</value>
+  </data>
+  <data name="FiveGoals" xml:space="preserve">
+    <value>5 bàn thắng</value>
+  </data>
+  <data name="FourGoals" xml:space="preserve">
+    <value>4 bàn thắng</value>
+  </data>
+  <data name="NoGoals" xml:space="preserve">
+    <value>Không có bàn thắng</value>
+  </data>
+  <data name="OneGoal" xml:space="preserve">
+    <value>1 bàn thắng</value>
+  </data>
+  <data name="SevenAndOver" xml:space="preserve">
+    <value>7+</value>
+  </data>
+  <data name="SixGoals" xml:space="preserve">
+    <value>6 bàn thắng</value>
+  </data>
+  <data name="ThreeGoals" xml:space="preserve">
+    <value>3 bàn thắng</value>
+  </data>
+  <data name="TwoGoals" xml:space="preserve">
+    <value>2 bàn thắng</value>
+  </data>
+  <data name="set" xml:space="preserve">
+    <value>Set</value>
+  </data>
+  <data name="FourAndOver" xml:space="preserve">
+    <value>4+</value>
+  </data>
+  <data name="AM" xml:space="preserve">
+    <value>AM</value>
+  </data>
+  <data name="at" xml:space="preserve">
+    <value>tại</value>
+  </data>
+  <data name="casino" xml:space="preserve">
+    <value>Casino</value>
+  </data>
+  <data name="d" xml:space="preserve">
+    <value>Hòa</value>
+  </data>
+  <data name="game" xml:space="preserve">
+    <value>Ván</value>
+  </data>
+  <data name="games" xml:space="preserve">
+    <value>Trò chơi</value>
+  </data>
+  <data name="go" xml:space="preserve">
+    <value>Bắt đầu</value>
+  </data>
+  <data name="hdp" xml:space="preserve">
+    <value>Cược chấp</value>
+  </data>
+  <data name="Horse" xml:space="preserve">
+    <value>Cuộc đua</value>
+  </data>
+  <data name="hr" xml:space="preserve">
+    <value>Cuộc đua</value>
+  </data>
+  <data name="Internal" xml:space="preserve">
+    <value>Nội bộ</value>
+  </data>
+  <data name="ip" xml:space="preserve">
+    <value>IP</value>
+  </data>
+  <data name="Neutral" xml:space="preserve">
+    <value>(N)</value>
+  </data>
+  <data name="lblM" xml:space="preserve">
+    <value>M = Master</value>
+  </data>
+  <data name="lblS" xml:space="preserve">
+    <value>S = Super</value>
+  </data>
+  <data name="LiveBaccarat" xml:space="preserve">
+    <value>Baccarat trực tiếp</value>
+  </data>
+  <data name="LiveCasino" xml:space="preserve">
+    <value>Casino trực tiếp</value>
+  </data>
+  <data name="LiveRoulette" xml:space="preserve">
+    <value>Roulette trực tiếp</value>
+  </data>
+  <data name="no" xml:space="preserve">
+    <value>#</value>
+  </data>
+  <data name="none" xml:space="preserve">
+    <value>Không có</value>
+  </data>
+  <data name="numbergame" xml:space="preserve">
+    <value>Number Game</value>
+  </data>
+  <data name="of" xml:space="preserve">
+    <value>của</value>
+  </data>
+  <data name="OT" xml:space="preserve">
+    <value>Hiệp phụ</value>
+  </data>
+  <data name="other" xml:space="preserve">
+    <value>Khác</value>
+  </data>
+  <data name="P2" xml:space="preserve">
+    <value>2 Người chơi</value>
+  </data>
+  <data name="p2pGame" xml:space="preserve">
+    <value>Trò Poker</value>
+  </data>
+  <data name="PartyBaccarat" xml:space="preserve">
+    <value>Tiệc Baccarat</value>
+  </data>
+  <data name="PartyRoulette" xml:space="preserve">
+    <value>Tiệc Roulette</value>
+  </data>
+  <data name="product" xml:space="preserve">
+    <value>Sản phẩm</value>
+  </data>
+  <data name="pt" xml:space="preserve">
+    <value>PT</value>
+  </data>
+  <data name="reset" xml:space="preserve">
+    <value>Khôi phục</value>
+  </data>
+  <data name="sport" xml:space="preserve">
+    <value>Môn thể thao</value>
+  </data>
+  <data name="type" xml:space="preserve">
+    <value>Loại</value>
+  </data>
+  <data name="warrior" xml:space="preserve">
+    <value>Chiến binh</value>
+  </data>
+  <data name="Roulette" xml:space="preserve">
+    <value>Roulette</value>
+  </data>
+  <data name="table" xml:space="preserve">
+    <value>Bàn</value>
+  </data>
+  <data name="ZeroGoals" xml:space="preserve">
+    <value>Không có bàn thắng</value>
+  </data>
+  <data name="SixAndOver" xml:space="preserve">
+    <value>6+</value>
+  </data>
+  <data name="ThreeGoalsAndOver" xml:space="preserve">
+    <value>3+</value>
+  </data>
+  <data name="ExtraTimeHTDotOne" xml:space="preserve">
+    <value>Bù giờ hiệp 1 Đội Nhà thắng</value>
+  </data>
+  <data name="ExtraTimeHTDotX" xml:space="preserve">
+    <value>Bù giờ hiệp 1 hòa</value>
+  </data>
+  <data name="ExtraTimeHTDotTwo" xml:space="preserve">
+    <value>Bù giờ hiệp 1 Đội Khách thắng</value>
+  </data>
+  <data name="Min" xml:space="preserve">
+    <value>Tối thiểu</value>
+  </data>
+  <data name="RegularTime" xml:space="preserve">
+    <value>Thời gian thi đấu</value>
+  </data>
+  <data name="ExtraTime" xml:space="preserve">
+    <value>Bù giờ</value>
+  </data>
+  <data name="SevenAndOverCorners" xml:space="preserve">
+    <value>7+ quả góc</value>
+  </data>
+  <data name="Corners" xml:space="preserve">
+    <value>Phạt Góc</value>
+  </data>
+  <data name="TwelveAndOverCorners" xml:space="preserve">
+    <value>12+ quả góc</value>
+  </data>
+  <data name="FourAndOverCorners" xml:space="preserve">
+    <value>4+ quả góc</value>
+  </data>
+  <data name="FourGoalsAndOver" xml:space="preserve">
+    <value>4+ bàn thắng</value>
+  </data>
+  <data name="TwoGoalsAndOver" xml:space="preserve">
+    <value>2+ bàn thắng</value>
+  </data>
+  <data name="HomeFG" xml:space="preserve">
+    <value>Đội Nhà ghi bàn đầu</value>
+  </data>
+  <data name="HomeLG" xml:space="preserve">
+    <value>Đội Nhà ghi bàn cuối</value>
+  </data>
+  <data name="AwayFG" xml:space="preserve">
+    <value>Đội Khách ghi bàn đầu</value>
+  </data>
+  <data name="AwayLG" xml:space="preserve">
+    <value>Đội Khách ghi bàn cuối</value>
+  </data>
+  <data name="ThereIsNoTicketDetailAvailable" xml:space="preserve">
+    <value>Không có thông tin vé cược.</value>
+  </data>
+  <data name="Bought" xml:space="preserve">
+    <value>Mua</value>
+  </data>
+  <data name="Sold" xml:space="preserve">
+    <value>Bán</value>
+  </data>
+  <data name="AOS" xml:space="preserve">
+    <value>Tỷ số khác</value>
+  </data>
+  <data name="Up" xml:space="preserve">
+    <value>+</value>
+  </data>
+  <data name="ThreeOver" xml:space="preserve">
+    <value>3+</value>
+  </data>
+  <data name="NoAndOver" xml:space="preserve">
+    <value>Không &amp; Tài</value>
+  </data>
+  <data name="NoAndUnder" xml:space="preserve">
+    <value>Không &amp; Xỉu</value>
+  </data>
+  <data name="YesAndOver" xml:space="preserve">
+    <value>Có &amp; Tài</value>
+  </data>
+  <data name="YesAndUnder" xml:space="preserve">
+    <value>Có &amp; Xỉu</value>
+  </data>
+  <data name="FirstHalfShort" xml:space="preserve">
+    <value>Hiệp 1</value>
+  </data>
+  <data name="SecondHalfShort" xml:space="preserve">
+    <value>Hiệp 2</value>
+  </data>
+  <data name="ThreeAndOver" xml:space="preserve">
+    <value>3+</value>
+  </data>
+  <data name="history" xml:space="preserve">
+    <value>Lịch sử</value>
+  </data>
+  <data name="BoughtLabel" xml:space="preserve">
+    <value>Mua từ Số:</value>
+  </data>
+  <data name="CashOut" xml:space="preserve">
+    <value>Bán vé cược</value>
+  </data>
+  <data name="CashOutLabel" xml:space="preserve">
+    <value>Bán vé cược Số:</value>
+  </data>
+  <data name="FT455" xml:space="preserve">
+    <value>Toàn trận</value>
+  </data>
+  <data name="InPlay" xml:space="preserve">
+    <value>ĐANG DIỄN RA</value>
+  </data>
+  <data name="NineAndOver" xml:space="preserve">
+    <value>9+</value>
+  </data>
+  <data name="ZeroToFour" xml:space="preserve">
+    <value>0-4</value>
+  </data>
+  <data name="SabaLuckySpinProgramPattern" xml:space="preserve">
+    <value>{0}{1}</value>
+  </data>
+  <data name="TxId" xml:space="preserve">
+    <value>Mã Giao Dịch</value>
+  </data>
+  <data name="BetID" xml:space="preserve">
+    <value>Mã Cược</value>
+  </data>
+  <data name="aos12" xml:space="preserve">
+    <value>Tỷ số khác cho Hiệp 1 &amp; 2</value>
+  </data>
+  <data name="aos13" xml:space="preserve">
+    <value>Tỷ số khác cho Hiệp 1 &amp; 3</value>
+  </data>
+  <data name="aos14" xml:space="preserve">
+    <value>Tỷ số khác cho Hiệp 1 &amp; 4</value>
+  </data>
+  <data name="aos23" xml:space="preserve">
+    <value>Tỷ số khác cho Hiệp 2 &amp; 3</value>
+  </data>
+  <data name="aos24" xml:space="preserve">
+    <value>Tỷ số khác cho Hiệp 2 &amp; 4</value>
+  </data>
+  <data name="aos34" xml:space="preserve">
+    <value>Tỷ số khác cho Hiệp 3 &amp; 4</value>
+  </data>
+  <data name="Caught" xml:space="preserve">
+    <value>Bắt bóng</value>
+  </data>
+  <data name="NotCaught" xml:space="preserve">
+    <value>Bắt hụt</value>
+  </data>
+  <data name="Bowled" xml:space="preserve">
+    <value>Bowled</value>
+  </data>
+  <data name="LBW" xml:space="preserve">
+    <value>Chân chắn bóng</value>
+  </data>
+  <data name="RunOut" xml:space="preserve">
+    <value>Run Out</value>
+  </data>
+  <data name="Stumped" xml:space="preserve">
+    <value>Stumped</value>
+  </data>
+  <data name="Others" xml:space="preserve">
+    <value>Khác</value>
+  </data>
+  <data name="Caught2" xml:space="preserve">
+    <value>Bắt bóng</value>
   </data>
 </root>

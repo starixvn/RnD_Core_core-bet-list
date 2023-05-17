@@ -13,7 +13,7 @@
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            var betTeamPattern = $"{{0}} <span class=\"{Underdog}\">&</span> {{1}}";
+            var betTeamPattern = $"{{0}} <span class=\"{Underdog}\">{CoreBetList.lblEt}</span> {{1}}";
 
             switch (ticket.BetTeam.ToLowerInvariant())
             {

@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
-        <FileVersion>2.0.0.1</FileVersion>
-        <Version>2.0.0.1</Version>
-        <PackageReleaseNotes>Fix bug export excel: Remove html tag (#183438)</PackageReleaseNotes>
+        <AssemblyVersion>2.0.0.2</AssemblyVersion>
+        <FileVersion>2.0.0.2</FileVersion>
+        <Version>2.0.0.2</Version>
+        <PackageReleaseNotes>Update translation (#187163)</PackageReleaseNotes>
         <Description>BetList core package</Description>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <Authors>Nexcel Solutions</Authors>

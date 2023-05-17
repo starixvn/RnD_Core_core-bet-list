@@ -1,10 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
-        <version>2.111.5.0</version>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-        <Version>3.0.0.1</Version>
-        <PackageReleaseNotes>Change Field Hockey LiveScore to Live (#184451)</PackageReleaseNotes>
+        <Version>3.0.0.4</Version>
+        <PackageReleaseNotes>Update translation (#187163)</PackageReleaseNotes>
         <Description>BetList core package</Description>
         <Authors>Nexcel Solutions</Authors>
         <PackageTags>Fanex BetList</PackageTags>

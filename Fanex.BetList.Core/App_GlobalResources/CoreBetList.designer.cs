@@ -2885,5 +2885,16 @@ namespace Fanex.BetList.Core.App_GlobalResources {
                 return ResourceManager.GetString("ZeroToFour", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;.
+        /// </summary>
+        public static string lblEt
+        {
+            get
+            {
+                return ResourceManager.GetString("lblEt", resourceCulture);
+            }
+        }        
     }
 }

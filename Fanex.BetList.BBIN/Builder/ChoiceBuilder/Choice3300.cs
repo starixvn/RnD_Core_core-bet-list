@@ -6,7 +6,6 @@
     using System.Text;
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Resource;
     using Fanex.BetList.Core.Templates;
     using Fanex.BetList.Core.Utils;
     using Fanex.BetList.Core.Utils.StringExt;
@@ -54,7 +53,7 @@
 
             if (!ticket.IsSummaryTicket())
             {
-                Template.BetType.betTypeName = $"{OpenBetIdTag}{BBinResources.BetId}: {ticket.BetCheck}{CloseBetIdTag}";
+                Template.BetType.betTypeName = $"{OpenBetIdTag}{CoreBetList.BetID}: {ticket.BetCheck}{CloseBetIdTag}";
             }
         }
 

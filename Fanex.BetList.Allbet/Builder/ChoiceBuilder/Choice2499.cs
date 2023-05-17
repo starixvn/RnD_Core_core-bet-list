@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
     using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Resource;
+    using App_GlobalResources;
 
     public class Choice2499 : Choice2401
     {
@@ -20,7 +20,7 @@
 
             if (!string.IsNullOrEmpty(ticket.MatchCode))
             {
-                Template.BetType.betTypeName = $"{OpenBetIdTag}{AllbetLang.BetID}: {ticket.BetCheck}{CloseBetIdTag}";
+                Template.BetType.betTypeName = $"{OpenBetIdTag}{CoreBetList.BetID}: {ticket.BetCheck}{CloseBetIdTag}";
             }
         }
 

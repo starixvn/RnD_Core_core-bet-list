@@ -121,7 +121,7 @@
     <value>คาสิโนเกม</value>
   </data>
   <data name="choice" xml:space="preserve">
-    <value>เลือก</value>
+    <value>ตัวเลือก</value>
   </data>
   <data name="even" xml:space="preserve">
     <value>คู่</value>
@@ -166,7 +166,7 @@
     <value>สถานะ</value>
   </data>
   <data name="transfer" xml:space="preserve">
-    <value>ตั้งค่าใหม่</value>
+    <value>โอน</value>
   </data>
   <data name="under" xml:space="preserve">
     <value>น้อยกว่า</value>
@@ -202,7 +202,7 @@
     <value>โมฆะ</value>
   </data>
   <data name="place" xml:space="preserve">
-    <value>วาง</value>
+    <value>อันดับ</value>
   </data>
   <data name="win" xml:space="preserve">
     <value>ชนะ</value>
@@ -214,7 +214,7 @@
     <value>รายละเอียด</value>
   </data>
   <data name="points" xml:space="preserve">
-    <value>points</value>
+    <value>แต้ม</value>
   </data>
   <data name="ee" xml:space="preserve">
     <value>คู่/คู่</value>
@@ -244,7 +244,7 @@
     <value>1 ประตู</value>
   </data>
   <data name="SevenAndOver" xml:space="preserve">
-    <value>7 หรือม่ากกว่า</value>
+    <value>7 ประตู หรือมากกว่า</value>
   </data>
   <data name="SixGoals" xml:space="preserve">
     <value>6 ประตู</value>
@@ -262,13 +262,13 @@
     <value>ทีมเยือน/เสมอกัน</value>
   </data>
   <data name="ah" xml:space="preserve">
-    <value>ทีมเยือน/หน้าหลัก</value>
+    <value>ทีมเยือน/เจ้าบ้าน</value>
   </data>
   <data name="all" xml:space="preserve">
     <value>ทั้งหมด</value>
   </data>
   <data name="AM" xml:space="preserve">
-    <value>โมงเช้า</value>
+    <value>AM</value>
   </data>
   <data name="amount" xml:space="preserve">
     <value>จำนวนเงิน</value>
@@ -343,16 +343,16 @@
     <value>ไป</value>
   </data>
   <data name="ha" xml:space="preserve">
-    <value>หน้าหลัก/ทีมเยือน</value>
+    <value>เจ้าบ้าน/ทีมเยือน</value>
   </data>
   <data name="hd" xml:space="preserve">
-    <value>หน้าหลัก/เสมอกัน</value>
+    <value>เจ้าบ้าน/เสมอกัน</value>
   </data>
   <data name="hdp" xml:space="preserve">
-    <value>แฮนดิแคป </value>
+    <value>แฮนดิแคป</value>
   </data>
   <data name="hh" xml:space="preserve">
-    <value>หน้าหลัก/หน้าหลัก</value>
+    <value>เจ้าบ้าน/เจ้าบ้าน</value>
   </data>
   <data name="Horse" xml:space="preserve">
     <value>การแข่งขันความเร็ว</value>
@@ -415,7 +415,7 @@
     <value>ชื่อ</value>
   </data>
   <data name="none" xml:space="preserve">
-    <value>ไม่ใช่ </value>
+    <value>ไม่ใช่</value>
   </data>
   <data name="normal" xml:space="preserve">
     <value>ธรรมดา</value>
@@ -463,7 +463,7 @@
     <value>ผลการแข่งขัน</value>
   </data>
   <data name="SB" xml:space="preserve">
-    <value>สปอตร์</value>
+    <value>สปอร์ต</value>
   </data>
   <data name="scr" xml:space="preserve">
     <value>ไม่เข้ารอบ</value>
@@ -568,16 +568,16 @@
     <value>ไม่มีการทำประตู</value>
   </data>
   <data name="FtAsian" xml:space="preserve">
-    <value>เต็มเวลาเอเชียน</value>
+    <value>เอเชียน เต็มเวลา</value>
   </data>
   <data name="HtAsian" xml:space="preserve">
-    <value>และเอเชียนครึ่งแรก</value>
+    <value>เอเชียน ครึ่งแรก</value>
   </data>
   <data name="Seperator1X2" xml:space="preserve">
-    <value> </value>
+    <value>.</value>
   </data>
   <data name="None22" xml:space="preserve">
-    <value>ไม่ใช</value>
+    <value>ไม่ใช่</value>
   </data>
   <data name="ToWinByOneGoal" xml:space="preserve">
     <value>เพื่อชนะที่ 1 ประตู</value>
@@ -595,7 +595,7 @@
     <value>ทีมเยือน/ทีมเยือน</value>
   </data>
   <data name="dh" xml:space="preserve">
-    <value>เสมอกัน/หน้าหลัก</value>
+    <value>เสมอกัน/เจ้าบ้าน</value>
   </data>
   <data name="NoGoal408" xml:space="preserve">
     <value>ไม่มีประตู</value>
@@ -787,7 +787,7 @@
     <value>เลย์ของ {0}</value>
   </data>
   <data name="Caught" xml:space="preserve">
-    <value>ตามทัน</value>
+    <value>คอท</value>
   </data>
   <data name="NotCaught" xml:space="preserve">
     <value>ตามไม่ทัน</value>
@@ -821,5 +821,242 @@
   </data>
   <data name="h_wm_over_12" xml:space="preserve">
     <value>เจ้าบ้าน ชนะอย่างน้อย 12+ แต้ม</value>
+  </data>
+  <data name="bingo" xml:space="preserve">
+    <value>บิงโก</value>
+  </data>
+  <data name="refno" xml:space="preserve">
+    <value>หมายเลขอ้างอิง</value>
+  </data>
+  <data name="betweenXandY" xml:space="preserve">
+    <value>ระหว่าง {0} และ {1}</value>
+  </data>
+  <data name="exactly" xml:space="preserve">
+    <value>ตรงตัว</value>
+  </data>
+  <data name="noTiebreak" xml:space="preserve">
+    <value>ไม่มีไทเบรค</value>
+  </data>
+  <data name="virtualtennis_scorebet_0_win" xml:space="preserve">
+    <value>0-ชนะ</value>
+  </data>
+  <data name="virtualtennis_scorebet_15_win" xml:space="preserve">
+    <value>15-ชนะ</value>
+  </data>
+  <data name="virtualtennis_scorebet_30_win" xml:space="preserve">
+    <value>30-ชนะ</value>
+  </data>
+  <data name="virtualtennis_scorebet_40_win" xml:space="preserve">
+    <value>40-ชนะ</value>
+  </data>
+  <data name="virtualtennis_scorebet_win_0" xml:space="preserve">
+    <value>ชนะ-0</value>
+  </data>
+  <data name="virtualtennis_scorebet_win_15" xml:space="preserve">
+    <value>ชนะ-15</value>
+  </data>
+  <data name="virtualtennis_scorebet_win_30" xml:space="preserve">
+    <value>ชนะ-30</value>
+  </data>
+  <data name="virtualtennis_scorebet_win_40" xml:space="preserve">
+    <value>ชนะ-40</value>
+  </data>
+  <data name="casinoProgressiveBonus" xml:space="preserve">
+    <value>โบนัสสะสมคาสิโน</value>
+  </data>
+  <data name="playtechcasino" xml:space="preserve">
+    <value>PlayTech คาสิโน</value>
+  </data>
+  <data name="set" xml:space="preserve">
+    <value>Set</value>
+  </data>
+  <data name="at" xml:space="preserve">
+    <value>ที่</value>
+  </data>
+  <data name="d" xml:space="preserve">
+    <value>เสมอกัน</value>
+  </data>
+  <data name="games" xml:space="preserve">
+    <value>เกม</value>
+  </data>
+  <data name="lblNoDraw" xml:space="preserve">
+    <value>ไม่มีเสมอ</value>
+  </data>
+  <data name="LiveBaccarat" xml:space="preserve">
+    <value>บาคาร่าสด</value>
+  </data>
+  <data name="no" xml:space="preserve">
+    <value>#</value>
+  </data>
+  <data name="PartyBaccarat" xml:space="preserve">
+    <value>ปาร์ตี้บาคาร่า</value>
+  </data>
+  <data name="PartyRoulette" xml:space="preserve">
+    <value>ปาร์ตี้รูเล็ต</value>
+  </data>
+  <data name="product" xml:space="preserve">
+    <value>ผลิตภัณฑ์</value>
+  </data>
+  <data name="sec" xml:space="preserve">
+    <value>วินาที</value>
+  </data>
+  <data name="Roulette" xml:space="preserve">
+    <value>รูเลท</value>
+  </data>
+  <data name="ZeroGoals" xml:space="preserve">
+    <value>0 ประตู</value>
+  </data>
+  <data name="SixAndOver" xml:space="preserve">
+    <value>ตั้งแต่ 6 ขึ้นไป</value>
+  </data>
+  <data name="ThreeGoalsAndOver" xml:space="preserve">
+    <value>ตั้งแต่ 3 ขึ้นไป</value>
+  </data>
+  <data name="ExtraTimeHTDotOne" xml:space="preserve">
+    <value>ต่อเวลาครึ่งแรก.เจ้าบ้าน</value>
+  </data>
+  <data name="ExtraTimeHTDotX" xml:space="preserve">
+    <value>ต่อเวลาครึ่งแรก.เสมอ</value>
+  </data>
+  <data name="ExtraTimeHTDotTwo" xml:space="preserve">
+    <value>ต่อเวลาครึ่งแรก.ทีมเยือน</value>
+  </data>
+  <data name="Min" xml:space="preserve">
+    <value>Min</value>
+  </data>
+  <data name="RegularTime" xml:space="preserve">
+    <value>เวลาปกติ</value>
+  </data>
+  <data name="ExtraTime" xml:space="preserve">
+    <value>ช่วงต่อเวลา</value>
+  </data>
+  <data name="SevenAndOverCorners" xml:space="preserve">
+    <value>เตะมุม 7 ครั้งหรือมากกว่า</value>
+  </data>
+  <data name="Corners" xml:space="preserve">
+    <value>เตะมุม</value>
+  </data>
+  <data name="TwelveAndOverCorners" xml:space="preserve">
+    <value>เตะมุม 12 ครั้งหรือมากกว่า</value>
+  </data>
+  <data name="FourAndOverCorners" xml:space="preserve">
+    <value>เตะมุม 4 ครั้งหรือมากกว่า</value>
+  </data>
+  <data name="FourGoalsAndOver" xml:space="preserve">
+    <value>มี 4 ประตูหรือมากกว่า</value>
+  </data>
+  <data name="TwoGoalsAndOver" xml:space="preserve">
+    <value>มี 2 ประตูหรือมากกว่า</value>
+  </data>
+  <data name="HomeFG" xml:space="preserve">
+    <value>ลูกแรกโดยเจ้าบ้าน</value>
+  </data>
+  <data name="HomeLG" xml:space="preserve">
+    <value>ลููกสุดท้ายโดยเจ้าบ้าน</value>
+  </data>
+  <data name="AwayFG" xml:space="preserve">
+    <value>ลูกแรกโดยทีมเยือน</value>
+  </data>
+  <data name="AwayLG" xml:space="preserve">
+    <value>ลูกสุดท้ายโดยทีมเยือน</value>
+  </data>
+  <data name="ThereIsNoTicketDetailAvailable" xml:space="preserve">
+    <value>ไม่มีรายละเอียดตั๋วเดิมพัน</value>
+  </data>
+  <data name="Sold" xml:space="preserve">
+    <value>ขาย</value>
+  </data>
+  <data name="AOS" xml:space="preserve">
+    <value>AOS</value>
+  </data>
+  <data name="Up" xml:space="preserve">
+    <value>+</value>
+  </data>
+  <data name="NoAndOver" xml:space="preserve">
+    <value>ไม่มี หรือ มากกว่า</value>
+  </data>
+  <data name="NoAndUnder" xml:space="preserve">
+    <value>ไม่่มี หรือ น้อยกว่า</value>
+  </data>
+  <data name="YesAndOver" xml:space="preserve">
+    <value>มี หรือ มากกว่า</value>
+  </data>
+  <data name="YesAndUnder" xml:space="preserve">
+    <value>มี หรือ น้อยกว่า</value>
+  </data>
+  <data name="FirstHalfShort" xml:space="preserve">
+    <value>ครึ่งแรก</value>
+  </data>
+  <data name="SecondHalfShort" xml:space="preserve">
+    <value>ครึ่งหลัง</value>
+  </data>
+  <data name="history" xml:space="preserve">
+    <value>ประวัติ</value>
+  </data>
+  <data name="FT455" xml:space="preserve">
+    <value>เต็มเวลา</value>
+  </data>
+  <data name="InPlay" xml:space="preserve">
+    <value>อินเพลย์</value>
+  </data>
+  <data name="NineAndOver" xml:space="preserve">
+    <value>ตั้งแต่ 9 ขึ้นไป</value>
+  </data>
+  <data name="ZeroToFour" xml:space="preserve">
+    <value>0-4</value>
+  </data>
+  <data name="SabaLuckySpinProgramPattern" xml:space="preserve">
+    <value>{0}{1}</value>
+  </data>
+  <data name="TxId" xml:space="preserve">
+    <value>TxID</value>
+  </data>
+  <data name="Mid" xml:space="preserve">
+    <value>กลาง</value>
+  </data>
+  <data name="TopBottom" xml:space="preserve">
+    <value>บนหรือล่าง</value>
+  </data>
+  <data name="Top" xml:space="preserve">
+    <value>บน</value>
+  </data>
+  <data name="Bottom" xml:space="preserve">
+    <value>ล่าง</value>
+  </data>
+  <data name="Overlord" xml:space="preserve">
+    <value>Overlord</value>
+  </data>
+  <data name="Tyrant" xml:space="preserve">
+    <value>Tyrant</value>
+  </data>
+  <data name="OverlordMiddle" xml:space="preserve">
+    <value>Overlord or Middle</value>
+  </data>
+  <data name="MidBottom" xml:space="preserve">
+    <value>กลางหรือล่าง</value>
+  </data>
+  <data name="TopMid" xml:space="preserve">
+    <value>บนหรือกลาง</value>
+  </data>
+  <data name="Bowled" xml:space="preserve">
+    <value>โบลด์</value>
+  </data>
+  <data name="LBW" xml:space="preserve">
+    <value>LBW</value>
+  </data>
+  <data name="RunOut" xml:space="preserve">
+    <value>Run Out</value>
+  </data>
+  <data name="Stumped" xml:space="preserve">
+    <value>Stumped</value>
+  </data>
+  <data name="Others" xml:space="preserve">
+    <value>Others</value>
+  </data>
+  <data name="Caught2" xml:space="preserve">
+    <value>Caught</value>
+  </data>
+  <data name="lblEt" xml:space="preserve">
+    <value>และ</value>
   </data>
 </root>

@@ -118,15 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="TransactionType" xml:space="preserve">
-    <value>Transaction Type</value>
+    <value>Loại Giao Dịch </value>
   </data>
   <data name="YouOwnPercent" xml:space="preserve">
-    <value>You own {0}% of this ticket</value>
+    <value>Bạn sở hữu {0}% của vé cược này</value>
   </data>
   <data name="YouSoldPercent" xml:space="preserve">
-    <value>You have sold {0}% of this ticket for {1}</value>
+    <value>Bạn đã bán {0}% của vé cược này cho {1}</value>
   </data>
   <data name="YouSoldZeroPercent" xml:space="preserve">
-    <value>You have sold 0% of this ticket</value>
+    <value>Bạn đã bán 0% của vé cược này</value>
   </data>
 </root>
