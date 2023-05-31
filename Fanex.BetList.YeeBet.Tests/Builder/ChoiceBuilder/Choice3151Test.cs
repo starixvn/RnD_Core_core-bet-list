@@ -147,7 +147,7 @@ namespace Fanex.BetList.SexyGaming.Tests.Builder.ChoiceBuilder
         {
              return string.Format(
                 "<div class=\"detail yeebet-casino-detail\"" +
-                " onclick='showYeeBetDetails(&quot;{0}&quot;,&quot;{1}&quot;,&quot;{2}&quot;,&quot;{3}&quot;);'>" +
+                " onclick='showYeeBetBetDetails(&quot;{0}&quot;,&quot;{1}&quot;,&quot;{2}&quot;,&quot;{3}&quot;);'>" +
                 "<a class=\"detail-link\"" +
                 " href=\"javascript:void(&quot;&quot;);\">Details</a></div>",
                 ticket.TransId.ToString(),

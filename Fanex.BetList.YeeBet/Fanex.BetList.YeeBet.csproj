@@ -3,9 +3,23 @@
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <FileVersion>1.0.0.0</FileVersion>
-        <Version>1.0.0.0-YeeBet-01</Version>
+        <Version>1.0.0.0-YeeBet-02</Version>
         <PackageReleaseNotes>Implement BetList for YeeBet(#186046)</PackageReleaseNotes>
-        <Description>BetList core package</Description>
+        <Description>
+        New bet list for YeeBet
+
+        If the Ticket.TransDesc is null or empty, the ticket will be considered as a summary ticket. Otherwise, it's a detail one.
+
+        The result link should call this Javascript function: "showYeeBetBetDetails(transId, 'winlostDate', custId, transactionType);", which transactionType is:
+
+        - 1, if the status is Won, Lose, Draw, or Refund
+
+        - 2, if the status is Reject, or Void
+
+        - 3, if the status is Running, or Waiting
+
+        - otherwise, 0
+        </Description>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <Authors>Nexcel Solutions</Authors>
         <PackageTags>Fanex BetList</PackageTags>

@@ -108,7 +108,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         {
             var detailFunctionBuilder = new StringBuilder();
 
-            detailFunctionBuilder.Append("showYeeBetDetails(&quot;")
+            detailFunctionBuilder.Append("showYeeBetBetDetails(&quot;")
                 .Append(ticket.TransId.ToString())
                 .Append("&quot;")
                 .Append(",&quot;")
