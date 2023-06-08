@@ -6,7 +6,7 @@
     {
         public ChoiceMapper()
         {
-            for (int betTypeId = PGSoftBetTypes.CaiShenWins + 1; betTypeId <= PGSoftBetTypes.HighestBetTypeIdInRange; betTypeId++)
+            for (int betTypeId = PGSoftBetTypes.CaiShenWins + 1; betTypeId <= PGSoftBetTypes.PromotionPrize; betTypeId++)
             {
                 MapIdToBaseId(betTypeId, PGSoftBetTypes.CaiShenWins);
             }

@@ -6,7 +6,7 @@
     using NSubstitute;
     using NUnit.Framework;
 
-    public class Status4301Tests
+    public class Status6001Tests
     {
         private IStatus _status;
         private ITicket _ticket;
