@@ -83,7 +83,7 @@
 
             if (HasLicenseeTxId(ticket))
             {
-                var licenseeTxId = string.Join(null, new[] { CoreBetList.TxId, ": ", Template.LicenseeTxId.Value });
+                var licenseeTxId = string.Join(null, new[] { CoreBetList.LicTxId, ": ", Template.LicenseeTxId.Value });
                 rtfTrans = new HSSFRichTextString(string.Join(null, new[] { licenseeTxId, "\n", refNo, "\n", Template.transTime }));
             }
 

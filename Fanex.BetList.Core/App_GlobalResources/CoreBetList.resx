@@ -1063,4 +1063,7 @@
   <data name="lblEt" xml:space="preserve">
     <value>&amp;</value>
   </data>
+  <data name="LicTxId" xml:space="preserve">
+    <value>LicTxID</value>
+  </data>
 </root>

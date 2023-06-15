@@ -2,8 +2,8 @@
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-        <Version>3.0.0.4</Version>
-        <PackageReleaseNotes>Update translation (#187163)</PackageReleaseNotes>
+        <Version>3.0.0.5-LicTxId-01</Version>
+        <PackageReleaseNotes>Show LicTxID instead of TxID(#189634)</PackageReleaseNotes>
         <Description>BetList core package</Description>
         <Authors>Nexcel Solutions</Authors>
         <PackageTags>Fanex BetList</PackageTags>

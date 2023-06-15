@@ -36,7 +36,7 @@
         {
             // Arrange
             var txid = "1212124343434";
-            var licensee = $"<div class=\"licenseeTxid\">TxID: {txid}</div>";
+            var licensee = $"<div class=\"licenseeTxid\">LicTxID: {txid}</div>";
             _ticket.ExtraInfo = $"<p28 lt='{txid}'/>";
 
             // Act

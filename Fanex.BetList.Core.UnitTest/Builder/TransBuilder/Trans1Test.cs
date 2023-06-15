@@ -43,7 +43,7 @@
         {
             // Arrange
             var txid = "1212124343434";
-            var licensee = $"<div class=\"licenseeTxid\">TxID: {txid}</div>";
+            var licensee = $"<div class=\"licenseeTxid\">LicTxID: {txid}</div>";
             _ticket.ExtraInfo = $"<p1 lt='{txid}'/>";
 
             // Act
@@ -149,7 +149,7 @@
             var excelText = _trans.RenderRTF(_ticket, null);
 
             // Assert
-            Assert.AreEqual("TxID: 123456789\nRef No: 1243432423\n12/12/2012 12:12:12 PM", excelText.ToString());
+            Assert.AreEqual("LicTxID: 123456789\nRef No: 1243432423\n12/12/2012 12:12:12 PM", excelText.ToString());
         }
 
         [Test]

@@ -42,7 +42,7 @@ namespace Fanex.BetList.Core
 		public class Trans_LicenseeTxId_Block: Block
 		{
 			protected static string s2 = "<div class=\"licenseeTxid\">";
-			protected static string s3{get{return App_GlobalResources.CoreBetList.TxId;}}
+			protected static string s3{get{return App_GlobalResources.CoreBetList.LicTxId;}}
 			protected static string s4 = ": ";
 			public string Value = "{Value}";
 			protected static string s5 = "</div>";

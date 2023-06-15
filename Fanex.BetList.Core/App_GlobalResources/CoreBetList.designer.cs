@@ -2895,6 +2895,17 @@ namespace Fanex.BetList.Core.App_GlobalResources {
             {
                 return ResourceManager.GetString("lblEt", resourceCulture);
             }
-        }        
+        }  
+
+        /// <summary>
+        ///   Looks up a localized string similar to Licensee TransID.
+        /// </summary>
+        public static string LicTxId
+        {
+            get
+            {
+                return ResourceManager.GetString("LicTxId", resourceCulture);
+            }
+        }      
     }
 }

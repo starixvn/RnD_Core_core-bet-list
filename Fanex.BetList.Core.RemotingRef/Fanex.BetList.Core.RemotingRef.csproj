@@ -10,7 +10,7 @@
         <PackageProjectUrl>https://nexdev.net/projects/fanex-betlistcore/wiki/Core_Bet_List</PackageProjectUrl>
     </PropertyGroup>
     <ItemGroup>
-      <PackageReference Include="Fanex.BetList.Core" Version="3.0.0" />
+      <PackageReference Include="Fanex.BetList.Core" Version="3.0.0.5-LicTxId-01" />
       <PackageReference Include="Fanex.RemotingRef" Version="1.5.0.1" />
     </ItemGroup>
 </Project>
