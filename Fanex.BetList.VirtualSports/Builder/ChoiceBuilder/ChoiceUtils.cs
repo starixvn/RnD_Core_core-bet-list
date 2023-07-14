@@ -24,6 +24,23 @@
         public static void AppendMatchOrRoundInfo(this Choice_Template template, string matchRoundInfo)
             => template.Match.Append($"<div class=\"match\">{matchRoundInfo}</div>");
 
+
+        public static string ParseMatchInfo3(string transDesc, ITicketHelper ticketHelper)
+        {
+            var matchCode = ParseNeccessaryInfoFromTransDesc(transDesc, MatchInfoPattern);
+            var matchDay = ticketHelper.GetResourceData("LVS_MatchCode", "2");
+            var cup = ticketHelper.GetResourceData("LVS_MatchCode", "1");
+            var items = matchCode.Split(',');            
+            if (items.Length >= 3)
+            {
+                var code = items[1].Trim();
+                var groupCode = code.Replace("{", string.Empty).Replace("}", string.Empty);
+                var groupName = ticketHelper.GetResourceData("LVS_MatchCode", groupCode);
+                matchCode = matchCode.Replace(code, groupName);
+            }
+
+            return matchCode.Replace("{1}", cup).Replace("{2}", matchDay);
+        }
         public static string ParseMatchInfo(string transDesc, ITicketHelper ticketHelper)
         {
             var matchCode = ParseNeccessaryInfoFromTransDesc(transDesc, MatchInfoPattern);
@@ -34,7 +51,10 @@
         public static string ParseExcludingScoresInfo(string transDesc)
             => ParseNeccessaryInfoFromTransDesc(transDesc, ExcludingScoresPattern);
 
-        private static string ParseNeccessaryInfoFromTransDesc(string transDesc, string pattern)
+        public static string ParseNeccessaryInfoFromTransDesc(string transDesc)
+        => ParseNeccessaryInfoFromTransDesc(transDesc, MatchInfoPattern);
+
+        public static string ParseNeccessaryInfoFromTransDesc(string transDesc, string pattern)
         {
             if (!string.IsNullOrEmpty(transDesc))
             {

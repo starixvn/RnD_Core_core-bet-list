@@ -9,6 +9,16 @@
             MapVirtualSportsBetTypes();
 
             MapVirtualSports2BetTypes();
+
+            MapForVirtualSports3();
+        }
+
+        private void MapForVirtualSports3()
+        {
+            for (var id = VirtualSports3BetTypes.FulltimeOneXTwo + 1; id <= VirtualSports3BetTypes.HighestBetTypeIdInRange; id++)
+            {
+                MapIdToBaseId(id, VirtualSports3BetTypes.FulltimeOneXTwo);
+            }
         }
 
         private void MapVirtualSportsBetTypes()

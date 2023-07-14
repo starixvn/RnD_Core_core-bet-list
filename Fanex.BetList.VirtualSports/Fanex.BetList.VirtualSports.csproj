@@ -1,10 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <FileVersion>2.0.0.0</FileVersion>
-        <Version>2.0.0.0</Version>
-        <PackageReleaseNotes>Support .net Core for Betlist Core package (#175417)</PackageReleaseNotes>
+        <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>         
+        <Version>2.0.0.2</Version>
+        <PackageReleaseNotes>Support new bettype for VS 3 (#189205)</PackageReleaseNotes>
         <Description>BetList core package</Description>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <Authors>Nexcel Solutions</Authors>
