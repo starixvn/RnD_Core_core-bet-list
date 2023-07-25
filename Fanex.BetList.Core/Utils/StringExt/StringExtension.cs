@@ -47,7 +47,7 @@
             {
                 var xmlDoc = value.ParseXml();
 
-                return xmlDoc.Descendants(xmlTag).FirstOrDefault().Attribute(attributeName) != null;
+                return xmlDoc.Descendants(xmlTag).FirstOrDefault()?.Attribute(attributeName) != null;
             }
 
             return false;
@@ -59,13 +59,24 @@
             {
                 var xmlDoc = value.ParseXml();
 
-                return xmlDoc.Descendants(xmlTag).FirstOrDefault().Attribute(attributeName)?.Value;
+                return xmlDoc.Descendants(xmlTag).FirstOrDefault()?.Attribute(attributeName)?.Value;
             }
 
             return string.Empty;
         }
 
-        public static XDocument ParseXml(this string value) => XDocument.Parse($"<root>{value}</root>");
+        public static XDocument ParseXml(this string value)
+        {
+            try
+            {
+                return XDocument.Parse($"<root>{value}</root>");
+            }
+            catch
+            {
+                return new XDocument();
+            }
+            
+        }
 
         public static string StripHTML(this string value)
         {

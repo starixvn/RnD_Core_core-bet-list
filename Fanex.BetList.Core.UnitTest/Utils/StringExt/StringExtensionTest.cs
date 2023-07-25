@@ -3,6 +3,8 @@ namespace Fanex.BetList.Core.UnitTest.Utils.StringExt
 {
     using Fanex.BetList.Core.Utils.StringExt;
     using NUnit.Framework;
+    using System.Xml.Linq;
+    using System.Linq;
 
     public class StringExtensionTest
     {
@@ -60,6 +62,125 @@ namespace Fanex.BetList.Core.UnitTest.Utils.StringExt
             // Assert
             var expected = 4;
             Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void Parse_InvalidXML_ReturnNewXDocument()
+        {
+            // Arrange
+            var value = "<p1 cc=\"99\" cc=\"91\" />";
+
+            // Act
+            var result = StringExtension.ParseXml(value);
+
+            // Assert
+            Assert.AreEqual(0, result.DescendantNodes().Count());
+        }
+
+        
+        [Test]
+        public void Parse_ValidXML_ReturnNeRightXDocument()
+        {
+            // Arrange
+            var value = "<p1 cc=\"99\" cd=\"91\" />";
+
+            // Act
+            var result = StringExtension.ParseXml(value);
+
+            // Assert
+            Assert.AreEqual(2, result.DescendantNodes().Count());
+        }
+
+        
+        [Test]
+        public void HasXmlTag_InvalidXML_ReturnFalse()
+        {
+            // Arrange
+            var value = "<p1 cc=\"99\" cc=\"91\" />";
+
+            // Act
+            var result = StringExtension.HasXmlTag(value, "p1");
+
+            // Assert
+            Assert.AreEqual(false, result);
+        }
+
+        [Test]
+        public void HasXmlTag_ValidXMLHasXmlTag_ReturnTrue()
+        {
+            // Arrange
+            var value = "<p1 ct=\"99\" cc=\"91\" />";
+
+            // Act
+            var result = StringExtension.HasXmlTag(value, "p1");
+
+            // Assert
+            Assert.AreEqual(true, result);
+        }
+
+        [Test]
+        public void HasXmlTag_ValidXMLNoXmlTag_ReturnTrue()
+        {
+            // Arrange
+            var value = "<p1 ct=\"99\" cc=\"91\" />";
+
+            // Act
+            var result = StringExtension.HasXmlTag(value, "p2");
+
+            // Assert
+            Assert.AreEqual(false, result);
+        }
+        
+        [Test]
+        public void HasAttributeInXmlTag_InvalidXML_ReturnFalse()
+        {
+            // Arrange
+            var value = "<p1 cc=\"99\" cc=\"91\" />";
+
+            // Act
+            var result = StringExtension.HasAttributeInXmlTag(value, "p1", "cc");
+
+            // Assert
+            Assert.AreEqual(false, result);
+        }
+
+        [Test]
+        public void HasAttributeInXmlTag_ValidXMLHasAttributeInXmlTag_ReturnTrue()
+        {
+            // Arrange
+            var value = "<p1 ct=\"99\" cc=\"91\" />";
+
+            // Act
+            var result = StringExtension.HasAttributeInXmlTag(value, "p1", "cc");
+
+            // Assert
+            Assert.AreEqual(true, result);
+        }
+        
+        [Test]
+        public void GetXmlTagAttributeValue_InvalidXML_ReturnStringEmpty()
+        {
+            // Arrange
+            var value = "<p1 cc=\"99\" cc=\"91\" />";
+
+            // Act
+            var result = StringExtension.GetXmlTagAttributeValue(value, "p1", "cc");
+
+            // Assert
+            Assert.AreEqual(string.Empty, result);
+        }
+
+        [Test]
+        public void GetXmlTagAttributeValue_ValidXML_ReturnValue()
+        {
+            // Arrange
+            var value = "<p1 ct=\"99\" cc=\"91\" />";
+
+            // Act
+            var result = StringExtension.GetXmlTagAttributeValue(value, "p1", "cc");
+
+            // Assert
+            Assert.AreEqual("91", result);
         }
     }
 }
