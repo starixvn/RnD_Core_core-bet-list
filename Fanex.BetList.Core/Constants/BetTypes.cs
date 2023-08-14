@@ -303,6 +303,10 @@
         public const int QuarterCorrectScore = 644;
         public const int FirstHalfSecondHalfResult = 645;
         public const int MatchHandicapTotal = 646;
+        public const int EndingGame = 647;
+        public const int FirstHalfEndingGame = 648;
+        public const int SecondHalfEndingGame = 649;
+        public const int QuarterXEndingGame = 650;
         public const int MatchHandicap = 701;
         public const int MatchNumberOfGames = 702;
         public const int MatchCorrectScore = 703;

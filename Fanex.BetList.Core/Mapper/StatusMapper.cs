@@ -99,6 +99,10 @@
             MapIdToBaseId(BetTypes.QuarterXAwayTeamLastDigitScore, BetTypes.FirstHalfRaceToXPoints);
             MapIdToBaseId(BetTypes.QuarterX1X2, BetTypes.FirstHalfRaceToXPoints);
             MapIdToBaseId(BetTypes.QuarterXDoubleChance, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.EndingGame, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.FirstHalfEndingGame, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.SecondHalfEndingGame, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.QuarterXEndingGame, BetTypes.FirstHalfRaceToXPoints);
         }
 
         private void MapForBadminton()

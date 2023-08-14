@@ -121,6 +121,9 @@
             MapIdToBaseId(BetTypes.AwayTeamQuartersWinOverUnder, BetTypes.HomeTeamQuartersWinOverUnder);
             MapIdToBaseId(BetTypes.QuarterDrawOverUnder, BetTypes.HomeTeamQuartersWinOverUnder);
             MapIdToBaseId(BetTypes.FirstHalfSecondHalfResult, BetTypes.Quarter1Quarter2Result);
+            MapIdToBaseId(BetTypes.EndingGame, BetTypes.VolleyballCorrectScore);
+            MapIdToBaseId(BetTypes.FirstHalfEndingGame, BetTypes.VolleyballCorrectScore);
+            MapIdToBaseId(BetTypes.SecondHalfEndingGame, BetTypes.VolleyballCorrectScore);
         }
 
         private void MapForFastMarkets()

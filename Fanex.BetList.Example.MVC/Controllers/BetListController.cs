@@ -1452,6 +1452,18 @@
             return BetListView(model);
         }
 
+        public ActionResult BasketballAIO3(BetListData model = null)
+        {
+            var bettypeIds = new int[4] { 647, 648, 649, 650};
+            var betTypes = _dataService.QueryBetTypes(bettypeIds);
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            DataSourcePath = "~/App_Data/BasketballAIOP3.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+
+            return BetListView(model);
+        }
+
         private ViewResult BetListView(BetListData model)
         {
             return View("All", model);
