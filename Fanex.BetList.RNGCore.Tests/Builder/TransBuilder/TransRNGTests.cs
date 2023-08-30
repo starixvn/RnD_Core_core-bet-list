@@ -1,19 +1,19 @@
-﻿namespace Fanex.BetList.VGaming.Tests.Builder.TransBuilder
+namespace Fanex.BetList.VGaming.Tests.Builder.TransBuilder
 {
     using Fanex.BetList.Core.Builder.TransBuilder;
     using Fanex.BetList.Core.Entities;
     using NSubstitute;
     using NUnit.Framework;
 
-    public class Trans3802Tests
+    public class TransRNGTests
     {
-        private Trans3802 _trans;
+        private TransRNG _trans;
         private ITicket _ticket;
 
         [SetUp]
         public void Setup()
         {
-            _trans = new Trans3802();
+            _trans = new TransRNG();
             _ticket = Substitute.For<ITicket>();
         }
 
