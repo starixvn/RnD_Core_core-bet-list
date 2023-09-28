@@ -93,7 +93,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.Indo4D", "Fan
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.IONCasino", "Fanex.Betlist.ION\Fanex.BetList.IONCasino.csproj", "{E55AD0AE-835E-4B6B-B69E-149703304422}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.Betlist.Jili", "Fanex.Betlist.Jili\Fanex.Betlist.Jili.csproj", "{4B571714-1091-4C10-8955-5F0A6241C4F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.Jili", "Fanex.Betlist.Jili\Fanex.BetList.Jili.csproj", "{4B571714-1091-4C10-8955-5F0A6241C4F1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.Joker", "Fanex.BetList.Joker\Fanex.BetList.Joker.csproj", "{E57AD527-4103-404E-A251-73C056C420DF}"
 EndProject
