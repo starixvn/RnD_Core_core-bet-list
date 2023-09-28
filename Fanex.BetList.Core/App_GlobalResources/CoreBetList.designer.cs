@@ -1609,6 +1609,24 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reached Company Max Payout.
+        /// </summary>
+        public static string MaxPayoutAlert {
+            get {
+                return ResourceManager.GetString("MaxPayoutAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This ticket has reached Max Payout set by company. For more information, please refer to Rules and Regulations..
+        /// </summary>
+        public static string MaxPayoutAlertInfo {
+            get {
+                return ResourceManager.GetString("MaxPayoutAlertInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Member.
         /// </summary>
         public static string member {

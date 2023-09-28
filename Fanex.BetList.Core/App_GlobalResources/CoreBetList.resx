@@ -1069,4 +1069,10 @@
   <data name="Boost" xml:space="preserve">
     <value>+{0}% Boost</value>
   </data>
+  <data name="MaxPayoutAlert" xml:space="preserve">
+    <value>Reached Company Max Payout</value>
+  </data>
+  <data name="MaxPayoutAlertInfo" xml:space="preserve">
+    <value>This ticket has reached Max Payout set by company. See the Rules and Regulations for more information.</value>
+  </data>
 </root>

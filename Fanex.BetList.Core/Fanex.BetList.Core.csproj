@@ -2,9 +2,29 @@
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-        <Version>3.0.0.9-beta-01</Version>
-        <PackageReleaseNotes>Dont show Odds for parlay in Void/Reject/Abnormal ticket(#186192)</PackageReleaseNotes>
-        <Description>BetList core package</Description>
+        <Version>3.0.0.7</Version>
+        <PackageReleaseNotes>Company Max Payout Alert(#194491)</PackageReleaseNotes>
+        <Description>
+          Add 3 css classes:
+            .icon-max-payout {
+            background: url(Images/icon-alert-circle.png) no-repeat scroll center center transparent;
+            display: inline-block;
+            height: 16px;
+            width: 16px;
+            position: relative;
+            top: 3px;
+            margin-right: 2px;
+            cursor: pointer;
+            }
+
+            .max-payout {
+                color: #E54748;
+            }
+
+            .max-payout &gt; span {
+                margin-left: 4px;
+            }
+        </Description>
         <Authors>Nexcel Solutions</Authors>
         <PackageTags>Fanex BetList</PackageTags>
         <PackageProjectUrl>https://nexdev.net/projects/fanex-betlistcore/wiki/Core_Bet_List</PackageProjectUrl>
@@ -13,18 +33,5 @@
       <PackageReference Include="BetListNPOI" Version="2.6.0" />
       <PackageReference Include="System.Runtime.Caching" Version="6.0.0" />
       <PackageReference Include="TplNetCore" Version="1.0.0" />    
-    </ItemGroup>
-    <ItemGroup>
-      <Compile Update="App_GlobalResources\CoreBetList.designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>CoreBetList.resx</DependentUpon>
-      </Compile>
-    </ItemGroup>
-    <ItemGroup>
-      <EmbeddedResource Update="App_GlobalResources\CoreBetList.resx">
-        <Generator>PublicResXFileCodeGenerator</Generator>
-        <LastGenOutput>CoreBetList.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
     </ItemGroup>    
 </Project>

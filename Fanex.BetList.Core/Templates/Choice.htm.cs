@@ -28,6 +28,7 @@ namespace Fanex.BetList.Core
 			public Choice_Match_Block Match = new Choice_Match_Block();
 			public Choice_League_Block League = new Choice_League_Block();
 			public Choice_EventDate_Block EventDate = new Choice_EventDate_Block();
+			public Choice_Max_Payout_Block MaxPayout = new Choice_Max_Payout_Block();
 			protected static string s5 = "</div>";
 			public override void ToString(ref StringBuilder bd)
 			{
@@ -50,6 +51,7 @@ namespace Fanex.BetList.Core
 					if(null != Match) Match.ToString(ref bd);
 					if(null != League) League.ToString(ref bd);
 					if(null != EventDate) EventDate.ToString(ref bd);
+					if(null != MaxPayout) MaxPayout.ToString(ref bd);
 					bd.Append(s5);
 				}
 				if(IsAssigned){bd.Append(Value);}
@@ -278,6 +280,26 @@ namespace Fanex.BetList.Core
 					bd.Append(s31);
 					bd.Append(eventDate);
 					bd.Append(s32);
+				}
+				if(IsAssigned){bd.Append(Value);}
+			}
+		}
+
+		public class Choice_Max_Payout_Block: Block
+		{
+			protected static string s33 = "<div class=\"max-payout\">";
+			public string maxPayout = "{maxPayout}";
+			protected static string s34{get{return App_GlobalResources.CoreBetList.MaxPayoutAlertInfo;}}
+			protected static string s35 = "</div>";
+			public override void ToString(ref StringBuilder bd)
+			{
+				if(!Visible) return;
+				if(RenderChild)
+				{
+					bd.Append(s33);
+					bd.Append(maxPayout);
+					bd.Append(string.Format("<span class=\"icon-max-payout\" title=\"{0}\"></span>", s34));
+					bd.Append(s35);
 				}
 				if(IsAssigned){bd.Append(Value);}
 			}

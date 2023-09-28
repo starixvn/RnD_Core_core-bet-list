@@ -1062,4 +1062,10 @@
   <data name="Boost" xml:space="preserve">
     <value>+เพิ่ม {0}%</value>
   </data>
+  <data name="MaxPayoutAlert" xml:space="preserve">
+    <value>ถึงระดับการจ่ายเงินเดิมพันสูงสุดของบริษัทแล้ว</value>
+  </data>
+  <data name="MaxPayoutAlertInfo" xml:space="preserve">
+    <value>ตั๋วเดิมพันนี้ ได้ถึงระดับการจ่ายเงินเดิมพันสูงสุดที่บริษัทได้กำหนดไว้ กรุณาศึกษากฎและข้อบังคับสำหรับข้อมูลเพิ่มเติม</value>
+  </data>
 </root>

@@ -978,4 +978,10 @@
   <data name="h_wm_over_12" xml:space="preserve">
     <value>主 赢12分以上</value>
   </data>
+  <data name="MaxPayoutAlert" xml:space="preserve">
+    <value>已达公司最高派彩</value>
+  </data>
+  <data name="MaxPayoutAlertInfo" xml:space="preserve">
+    <value>注单已达公司所设的最高派彩上限。更多详情请参考投注规则与规定。</value>
+  </data>
 </root>

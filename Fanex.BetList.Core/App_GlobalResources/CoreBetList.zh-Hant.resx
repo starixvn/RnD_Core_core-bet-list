@@ -975,4 +975,10 @@
   <data name="Boost" xml:space="preserve">
     <value>+{0}% 優惠</value>
   </data>
+  <data name="MaxPayoutAlert" xml:space="preserve">
+    <value>已達公司最高派彩</value>
+  </data>
+  <data name="MaxPayoutAlertInfo" xml:space="preserve">
+    <value>注單已達公司所設的最高派彩上限。更多詳情請參考投注規則與規定。</value>
+  </data>
 </root>

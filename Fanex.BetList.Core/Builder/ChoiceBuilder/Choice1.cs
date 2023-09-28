@@ -41,6 +41,7 @@
         private readonly int[] _liveScoreSports = { SportsbookSportTypes.Soccer, SportsbookSportTypes.Futsal, SportsbookSportTypes.BeachSoccer };
         private const string ESportsXmlTag = "p16";
         private const string InPlayXmlAttribute = "in";
+        private const string MaxPayoutXmlTag = "l255";
 
         #region Constructors
 
@@ -205,6 +206,9 @@
             // the 5th line
             BuildEventKickoffDateTimeInfo(rtfHelper);
 
+            // the 6th line
+            BuildMaxPayoutInfo(rtfHelper);
+
             var choiceRtf = rtfHelper.RTFRenderer.Render();
             rtfHelper.RTFRenderer.Clear();
             return choiceRtf;
@@ -243,6 +247,8 @@
             BuildBetTeamClassNameAndHandicap(ticket);
 
             BuildEventKickoffDateTime(ticket);
+
+            BuildMaxPayout(ticket);
         }
 
         protected virtual void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
@@ -448,6 +454,16 @@
             }
         }
 
+        protected virtual void BuildMaxPayout(ITicket ticket)
+        {
+            if(ticket.Status.Equals(BetStatus.Won, StringComparison.OrdinalIgnoreCase)
+                && ticket.ExtraInfo.HasXmlTag(MaxPayoutXmlTag)){
+                Template.MaxPayout.maxPayout = string.Format("({0})", CoreBetList.MaxPayoutAlert);
+            } else {
+                Template.MaxPayout.Hide();
+            }
+        }
+
         #endregion Build Html Block
 
         public virtual string GetBetTypeName(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData = null)
@@ -617,6 +633,16 @@
                 && !string.IsNullOrEmpty(Template.EventDate.eventDate))
             {
                 rtfHelper.RTFRenderer.AddText("\n" + Template.EventDate.eventDate);
+            }
+        }
+
+        protected virtual void BuildMaxPayoutInfo(RTFHelper rtfHelper)
+        {
+            if (Template.MaxPayout != null
+                && Template.MaxPayout.Visible
+                && !string.IsNullOrEmpty(Template.MaxPayout.maxPayout))
+            {
+                rtfHelper.RTFRenderer.AddText("\n" + Template.MaxPayout.maxPayout);
             }
         }
 

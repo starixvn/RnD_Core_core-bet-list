@@ -1476,6 +1476,17 @@
             return BetListView(model);
         }
 
+        public ActionResult MaxPayout(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes();
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            DataSourcePath = "~/App_Data/MaxPayout.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
         private ViewResult BetListView(BetListData model)
         {
             return View("All", model);
