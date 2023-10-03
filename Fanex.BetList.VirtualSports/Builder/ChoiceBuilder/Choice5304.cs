@@ -1,8 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
-{
-    using System.Collections.Generic;
+{    
     using Entities;
-    using Templates;
 
     public class Choice5304 : Choice2703
     {

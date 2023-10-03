@@ -28,18 +28,8 @@
         public static string ParseMatchInfo3(string transDesc, ITicketHelper ticketHelper)
         {
             var matchCode = ParseNeccessaryInfoFromTransDesc(transDesc, MatchInfoPattern);
-            var matchDay = ticketHelper.GetResourceData("LVS_MatchCode", "2");
-            var cup = ticketHelper.GetResourceData("LVS_MatchCode", "1");
-            var items = matchCode.Split(',');            
-            if (items.Length >= 3)
-            {
-                var code = items[1].Trim();
-                var groupCode = code.Replace("{", string.Empty).Replace("}", string.Empty);
-                var groupName = ticketHelper.GetResourceData("LVS_MatchCode", groupCode);
-                matchCode = matchCode.Replace(code, groupName);
-            }
 
-            return matchCode.Replace("{1}", cup).Replace("{2}", matchDay);
+            return GetMatchInfoOfVS3(matchCode, ticketHelper);
         }
         public static string ParseMatchInfo(string transDesc, ITicketHelper ticketHelper)
         {
@@ -69,6 +59,24 @@
             }
 
             return string.Empty;
+        }
+
+        private static string GetMatchInfoOfVS3(string matchCode, ITicketHelper ticketHelper)
+        {
+            var str1 = matchCode;
+            var chArray = new[] { '{' };
+            foreach (string str2 in str1.Split(chArray))
+            {
+                var length = str2.IndexOf('}');
+                if (length != -1)
+                {
+                    var ResourceId = str2.Substring(0, length);
+                    var refIdAndResourceId = ticketHelper.GetResourceData("LVS_MatchCode", ResourceId);
+                    matchCode = matchCode.Replace("{" + ResourceId + "}", refIdAndResourceId);
+                }
+            }
+
+            return matchCode;
         }
     }
 }

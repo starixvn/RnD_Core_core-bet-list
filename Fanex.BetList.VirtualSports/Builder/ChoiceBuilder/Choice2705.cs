@@ -9,11 +9,16 @@
     /// </summary>
     public class Choice2705 : Choice1
     {
-        private string _matchRoundInfo;
+        protected string _matchRoundInfo;
+
+        protected virtual void GeneralMatchRoundInfo(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            _matchRoundInfo = VirtualSportsChoiceUtils.ParseMatchInfo(ticket.TransDesc, ticketHelper);
+        }
 
         public override Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
         {
-            _matchRoundInfo = VirtualSportsChoiceUtils.ParseMatchInfo(ticket.TransDesc, ticketHelper);
+            GeneralMatchRoundInfo(ticket, ticketHelper);
 
             return base.Render(ticket, ticketHelper, ticketData, isShowScoreMap);
         }
