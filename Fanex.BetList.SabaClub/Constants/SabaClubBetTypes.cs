@@ -8,6 +8,7 @@
         public const int CasinoHoldemPoker = 1650;
         public const int HiLo = 1651;
         public const int TexasHoldemPoker = 1652;
+        public const int Pontoon = 1679;
         public const int JackpotContribution = 1698;        
         public const int JackpotPrize = 1699;
     }

@@ -11,5 +11,7 @@
         public const int JackpotContribution = 3898;        
         public const int JackpotPrize = 3899;
         public const int PaiGowPoker = 3842;
+
+        public const int Pontoon = 3871;
     }
 }
