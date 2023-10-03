@@ -128,5 +128,7 @@
         int CurrencyId { get; set; }
 
         string SiteId { get; set; }
+
+        string JackpotInfo { get; set; }
     }
 }

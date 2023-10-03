@@ -26,12 +26,12 @@
         }
 
         private static bool TicketHasJackpotInfo(ITicket ticket)
-            => !string.IsNullOrEmpty(ticket.ExtraInfo) && ticket.ExtraInfo.ToLowerInvariant().Contains(JackpotInfo);
+            => !string.IsNullOrEmpty(ticket.JackpotInfo) && ticket.JackpotInfo.ToLowerInvariant().Contains(JackpotInfo);
 
         private static Choice_League_Block BuildShowProgressiveJackpotWonDetails(ITicket ticket)
         {
-            var indexOfJackpotTransId = ticket.ExtraInfo.LastIndexOf(JackpotTransIdInfo, StringComparison.InvariantCultureIgnoreCase) + 4;
-            var transId = ticket.ExtraInfo.Substring(indexOfJackpotTransId, ticket.ExtraInfo.Length - indexOfJackpotTransId);
+            var indexOfJackpotTransId = ticket.JackpotInfo.LastIndexOf(JackpotTransIdInfo, StringComparison.InvariantCultureIgnoreCase) + 4;
+            var transId = ticket.JackpotInfo.Substring(indexOfJackpotTransId, ticket.JackpotInfo.Length - indexOfJackpotTransId);
             var detailLinkMarkup =
                 $"<div class=\"detail rng-casino-detail\" onclick=\"showProgressiveJackpotWonDetails('{transId}', '{ticket.CustId}', '{ticket.BetTypeId}', '{ticket.WinlostDate}');\">" +
                 $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.ProgressiveJackpotWonDetails}</a>" +

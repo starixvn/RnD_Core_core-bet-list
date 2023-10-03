@@ -64,6 +64,7 @@
         RefCode = 56,
         WalletType = 57,
         BonusId = 58,
-        SettlementStatus = 59
+        SettlementStatus = 59,
+        JackpotInfo = 60
     }
 }

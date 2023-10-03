@@ -203,6 +203,7 @@
                 ticket.RefCode = Convert.ToInt64(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.RefCode)));
                 ticket.WalletType = Convert.ToByte(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.WalletType)));
                 ticket.SettlementStatus = Convert.ToByte(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.SettlementStatus)));
+                //ticket.JackpotInfo = Convert.ToByte(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.JackpotInfo)));
             }
             catch
             {

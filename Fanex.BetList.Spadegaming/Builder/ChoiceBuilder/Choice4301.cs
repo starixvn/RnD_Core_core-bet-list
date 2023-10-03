@@ -57,12 +57,12 @@
         }
 
         private static bool TicketHasJackpotInfo(ITicket ticket)
-            => !string.IsNullOrEmpty(ticket.ExtraInfo) && ticket.ExtraInfo.ToLowerInvariant().Contains(JackpotInfo);
+            => !string.IsNullOrEmpty(ticket.JackpotInfo) && ticket.JackpotInfo.ToLowerInvariant().Contains(JackpotInfo);
 
         private static string BuildShowJackpotWonDetails(ITicket ticket)
         {
-            var indexOfJackpotTransId = ticket.ExtraInfo.LastIndexOf(JackpotTransIdInfo, StringComparison.InvariantCultureIgnoreCase) + 4;
-            var transId = ticket.ExtraInfo.Substring(indexOfJackpotTransId, ticket.ExtraInfo.Length - indexOfJackpotTransId);
+            var indexOfJackpotTransId = ticket.JackpotInfo.LastIndexOf(JackpotTransIdInfo, StringComparison.InvariantCultureIgnoreCase) + 4;
+            var transId = ticket.JackpotInfo.Substring(indexOfJackpotTransId, ticket.JackpotInfo.Length - indexOfJackpotTransId);
             var detailLinkMarkup =
                 $"<div class=\"detail SG-detail\" onclick=\"showSGJackpotWonDetails('{transId}', '{ticket.CustId}', '{ticket.BetTypeId}', '{ticket.WinlostDate}');\">" +
                 $"<a style=\"color:#755200;font-weight:bold\" href=\"javascript:void('');\">{CoreBetList.JackpotWonDetails}</a>" +

@@ -27,7 +27,7 @@
         {
             // Arrange
             _ticket.BetCheck = "234234234";
-            _ticket.ExtraInfo = jackpotInfo;
+            _ticket.JackpotInfo = jackpotInfo;
             _ticket.CustId = 1;
             _ticket.BetTypeId = 2198;
             _ticket.WinlostDate = new DateTime(2022, 8, 24);
@@ -44,7 +44,7 @@
         public void BuildLeague_TicketIsNotDetailed_NotShowProgressiveJackpotWonDetails()
         {
             // Arrange
-            _ticket.ExtraInfo = "jp=1,jpw=1233213123";
+            _ticket.JackpotInfo = "jp=1,jpw=1233213123";
             _ticket.CustId = 1;
             _ticket.BetTypeId = 2198;
             _ticket.WinlostDate = new DateTime(2022, 8, 24);
@@ -64,7 +64,7 @@
         {
             // Arrange
             _ticket.BetCheck = "234234234";
-            _ticket.ExtraInfo = jackpotInfo;
+            _ticket.JackpotInfo = jackpotInfo;
             _ticket.CustId = 1;
             _ticket.BetTypeId = 2198;
             _ticket.WinlostDate = new DateTime(2022, 8, 24);

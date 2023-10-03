@@ -29,7 +29,7 @@ namespace Fanex.BetList.VGaming.Tests.Builder.ChoiceBuilder
         public void BuildLeague_DetailTicketHasJackpotPrize_ShowJackpotDetailLink()
         {
             // Arrange
-            _ticket.ExtraInfo = "jp=1;jpw=xxxxxxxxxxx";
+            _ticket.JackpotInfo = "jp=1;jpw=xxxxxxxxxxx";
             _ticket.BetCheck = "betcheck";
             _ticket.CustId = 123;
             _ticket.BetTypeId = VGamingBetTypes.FourGuardians;
