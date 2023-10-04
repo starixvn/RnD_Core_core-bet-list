@@ -299,7 +299,7 @@ span.icon-boost {
 }
 
 .icon-max-payout {
-    background: url(Images/icon-alert-circle.png) no-repeat scroll center center transparent;
+    background: url(Images/icon-info-circle.png) no-repeat scroll center center transparent;
     display: inline-block;
     height: 16px;
     width: 16px;
@@ -310,7 +310,8 @@ span.icon-boost {
 }
 
 .max-payout {
-    color: #E54748;
+    color: #B50000;
+    font-style: italic;
 }
 
 .max-payout > span {

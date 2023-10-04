@@ -1049,7 +1049,10 @@
   <data name="Caught2" xml:space="preserve">
     <value>Bắt bóng</value>
   </data>
-  <data name="Boost" xml:space="preserve">
-    <value>+Tăng {0}%</value>
+  <data name="MaxPayoutAlert" xml:space="preserve">
+    <value>Đã Đạt Thanh Toán Tối Đa Của Công Ty</value>
+  </data>
+  <data name="MaxPayoutAlertInfo" xml:space="preserve">
+    <value>Vé cược này đã đạt đến mức Thanh Toán Tối Đa mà công ty quy định. Vui lòng xem Quy Định và Điều Khoản để biết thêm thông tin.</value>
   </data>
 </root>

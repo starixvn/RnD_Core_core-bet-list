@@ -2,12 +2,12 @@
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-        <Version>3.0.0.7</Version>
+        <Version>3.0.0.7-MaxPayout-05</Version>
         <PackageReleaseNotes>Company Max Payout Alert(#194491)</PackageReleaseNotes>
         <Description>
           Add 3 css classes:
             .icon-max-payout {
-            background: url(Images/icon-alert-circle.png) no-repeat scroll center center transparent;
+            background: url(Images/icon-info-circle.png) no-repeat scroll center center transparent;
             display: inline-block;
             height: 16px;
             width: 16px;
@@ -15,15 +15,16 @@
             top: 3px;
             margin-right: 2px;
             cursor: pointer;
-            }
+        }
 
-            .max-payout {
-                color: #E54748;
-            }
+        .max-payout {
+            color: #B50000;
+            font-style: italic;
+        }
 
-            .max-payout &gt; span {
-                margin-left: 4px;
-            }
+        .max-payout &gt; span {
+            margin-left: 4px;
+        }
         </Description>
         <Authors>Nexcel Solutions</Authors>
         <PackageTags>Fanex BetList</PackageTags>

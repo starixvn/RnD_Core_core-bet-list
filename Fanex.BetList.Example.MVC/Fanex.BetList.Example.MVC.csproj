@@ -112,7 +112,7 @@
       <HintPath>..\packages\Fanex.BetList.ColossusBets.2.0.0-net5-04\lib\net461\Fanex.BetList.ColossusBets.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.BetList.Core, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.BetList.Core.3.0.0.7-MaxPayout-02\lib\net461\Fanex.BetList.Core.dll</HintPath>
+      <HintPath>..\packages\Fanex.BetList.Core.3.0.0.7-MaxPayout-04\lib\net461\Fanex.BetList.Core.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.BetList.Core.RemotingRef, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.BetList.Core.RemotingRef.2.0.0-net5-03\lib\net461\Fanex.BetList.Core.RemotingRef.dll</HintPath>
@@ -427,8 +427,7 @@
     <Content Include="Content\AGCasino.css" />
     <Content Include="Content\BBin.css" />
     <Content Include="Content\GTCasino.css" />
-    <Content Include="Content\images\ico_parlay_boost.svg" />
-    <Content Include="Content\images\icon-alert-circle.png" />
+    <Content Include="Content\images\icon-info-circle.png" />
     <Content Include="Content\SAGaming.css" />
     <Content Include="Content\SexyGaming.css" />
     <Content Include="Content\Allbet.css" />

@@ -246,7 +246,7 @@ div.match + div.league + div.no-details {
 }
 
 .icon-max-payout {
-    background: url(Images/icon-alert-circle.png) no-repeat scroll center center transparent;
+    background: url(Images/icon-info-circle.png) no-repeat scroll center center transparent;
     display: inline-block;
     height: 16px;
     width: 16px;
@@ -254,10 +254,11 @@ div.match + div.league + div.no-details {
     top: 3px;
     margin-right: 2px;
     cursor: pointer;
+    font-style: italic;
 }
 
 .max-payout {
-    color: #E54748;
+    color: #B50000;
 }
 
 .max-payout > span {
