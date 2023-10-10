@@ -475,6 +475,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to +{0}% Boost.
+        /// </summary>
+        public static string Boost {
+            get {
+                return ResourceManager.GetString("Boost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bottom.
         /// </summary>
         public static string Bottom {
@@ -1366,6 +1375,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &amp;.
+        /// </summary>
+        public static string lblEt {
+            get {
+                return ResourceManager.GetString("lblEt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lose.
         /// </summary>
         public static string lblLose {
@@ -1506,6 +1524,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         public static string league {
             get {
                 return ResourceManager.GetString("league", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LicTxID.
+        /// </summary>
+        public static string LicTxId {
+            get {
+                return ResourceManager.GetString("LicTxId", resourceCulture);
             }
         }
         
@@ -2885,27 +2912,5 @@ namespace Fanex.BetList.Core.App_GlobalResources {
                 return ResourceManager.GetString("ZeroToFour", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;.
-        /// </summary>
-        public static string lblEt
-        {
-            get
-            {
-                return ResourceManager.GetString("lblEt", resourceCulture);
-            }
-        }  
-
-        /// <summary>
-        ///   Looks up a localized string similar to Licensee TransID.
-        /// </summary>
-        public static string LicTxId
-        {
-            get
-            {
-                return ResourceManager.GetString("LicTxId", resourceCulture);
-            }
-        }      
     }
 }

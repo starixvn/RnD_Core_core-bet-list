@@ -94,16 +94,14 @@
             return string.IsNullOrWhiteSpace(ticketHelper.ClientDetailSystemParlayFunction)
                         ? JoinSystemParlayDetailJsFunc(
                             ticket.RefNo,
-                            ticket.WinlostDate.ToString(CultureInfo.InvariantCulture),
-                            ticket.TransId.ToString(CultureInfo.InvariantCulture),
-                            ticket.BetId.ToString(),
+                            ticket.WinlostDate.ToString(CultureInfo.InvariantCulture),                           
                             ticket.CustId.ToString(),
                             ticket.BetTeam)
                         : ticketHelper.ClientDetailSystemParlayFunction;
         }
 
-        private static string JoinSystemParlayDetailJsFunc(string refNo, string winlossDate, string transId, string betId, string custId, string betTeam)
-            => $"showCombMPDetail('{refNo}', '{winlossDate}', '{transId}', '{betId}', {custId}, '{betTeam}');";
+        private static string JoinSystemParlayDetailJsFunc(string refNo, string winlossDate, string custId, string betTeam)
+            => $"showCombMPDetail('{refNo}', '{winlossDate}', {custId}, '{betTeam}');";
 
         private static string JoinSystemParlaySubbetsFunc(ITicket ticket, ITicketHelper ticketHelper)
         {

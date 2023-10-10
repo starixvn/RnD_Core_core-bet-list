@@ -146,7 +146,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            var expectedDetailJsFunction = $"<div class=\"detail\" onclick=\"showCombMPDetail('100411681798', '03/28/2016 12:00:00', '5554525358', '', 13369475, '2');\"><a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a></div>";
+            var expectedDetailJsFunction = $"<div class=\"detail\" onclick=\"showCombMPDetail('100411681798', '03/28/2016 12:00:00', 13369475, '2');\"><a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a></div>";
             StringAssert.Contains(expectedDetailJsFunction, _choice.Template.ToString());
         }
 

@@ -42,6 +42,18 @@
             return View(model);
         }
 
+        public ActionResult ParlayBoost(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes(29);
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            DataSourcePath = "~/App_Data/ParlayBoost.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
         public ActionResult VirtualSports3(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(5302, 5303, 5304);

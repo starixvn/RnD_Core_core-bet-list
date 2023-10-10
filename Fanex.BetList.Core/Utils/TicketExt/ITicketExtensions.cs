@@ -5,6 +5,31 @@
 
     public static class ITicketExtensions
     {
+        public static bool IsWon(this ITicket ticket)
+        {
+            var statusId = ticket.StatusId != null ? ticket.StatusId.ToString() : string.Empty;
+            var status = ticket.Status ?? string.Empty;
+
+            status = status.Trim().ToLowerInvariant();
+
+            var isWon = statusId == BetStatusId.Won || status == BetStatus.Won || status == BetStatus.HalfWon;
+
+            return isWon;
+        }
+
+        public static bool IsRunningWaiting(this ITicket ticket)
+        {
+            var statusId = ticket.StatusId != null ? ticket.StatusId.ToString() : string.Empty;
+            var status = ticket.Status ?? string.Empty;
+
+            status = status.Trim().ToLowerInvariant();
+
+            var isRunning = statusId == BetStatusId.Running || status == BetStatus.Running;            
+            var isWaiting = statusId == BetStatusId.Waiting || status == BetStatus.Waiting;
+
+            return isWaiting || isRunning;
+        }
+
         public static bool IsSettled(this ITicket ticket)
         {
             var statusId = ticket.StatusId != null ? ticket.StatusId.ToString() : string.Empty;

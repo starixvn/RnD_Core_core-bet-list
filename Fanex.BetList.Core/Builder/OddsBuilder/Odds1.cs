@@ -10,7 +10,7 @@
     {
         private const string OddsValueOpenTag = "<div class=\"underdog\">";
         private const string OddsTypeOpenTag = "<div class=\"oddstype\">";
-        private const string CloseTag = "</div>";
+        protected const string CloseTag = "</div>";
 
         public Odds1()
         {

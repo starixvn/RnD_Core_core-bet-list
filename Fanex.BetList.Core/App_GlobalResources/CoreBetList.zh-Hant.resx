@@ -972,4 +972,7 @@
   <data name="h_wm_over_12" xml:space="preserve">
     <value>主 贏12分以上</value>
   </data>
+  <data name="Boost" xml:space="preserve">
+    <value>+{0}% 優惠</value>
+  </data>
 </root>

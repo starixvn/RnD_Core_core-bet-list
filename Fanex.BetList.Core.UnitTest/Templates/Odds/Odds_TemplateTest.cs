@@ -28,7 +28,7 @@
     [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleClass", Justification = "Reviewed.")]
     public class Odds_TemplateTest
     {
-        private const string OddsTemplate = "<span class=\"underdog\">{0}</span><br /><span class=\"oddstype\">{1}</span>";
+        private const string OddsTemplate = "<span class=\"underdog {0}\">{1}</span><br /><span class=\"oddstype\">{2}</span>";
 
         /// <summary>
         /// Visible the property is true return HTML string.
@@ -39,6 +39,7 @@
             // Arrange
             var odds = "1";
             var oddType = "MY";
+            var className = "{oddsClassName}";
             var oddsHtml = string.Empty;
             var block = new Odds_Template();
             block.odds = odds;
@@ -48,7 +49,7 @@
             oddsHtml = block.ToString();
 
             // Assert
-            var expectedHtml = string.Format(OddsTemplate, odds, oddType);
+            var expectedHtml = string.Format(OddsTemplate, className, odds, oddType);
             Assert.AreEqual(expectedHtml, oddsHtml);
         }
 
@@ -80,6 +81,7 @@
             var odds = "1";
             var oddType = "MY";
             var value = "Tennis";
+            var className = "{oddsClassName}";
             var oddsHtml = string.Empty;
             var block = new WrapperOdds_Template();
             block.odds = odds;
@@ -91,7 +93,7 @@
             oddsHtml = block.ToString();
 
             // Assert
-            var expectedHtml = string.Format(OddsTemplate, odds, oddType) + value;
+            var expectedHtml = string.Format(OddsTemplate, className, odds, oddType) + value;
             Assert.AreEqual(expectedHtml, oddsHtml);
         }
     }

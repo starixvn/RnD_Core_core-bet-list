@@ -1059,4 +1059,7 @@
   <data name="lblEt" xml:space="preserve">
     <value>และ</value>
   </data>
+  <data name="Boost" xml:space="preserve">
+    <value>+เพิ่ม {0}%</value>
+  </data>
 </root>

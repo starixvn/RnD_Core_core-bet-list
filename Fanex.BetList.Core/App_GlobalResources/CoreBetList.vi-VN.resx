@@ -1049,4 +1049,7 @@
   <data name="Caught2" xml:space="preserve">
     <value>Bắt bóng</value>
   </data>
+  <data name="Boost" xml:space="preserve">
+    <value>+Tăng {0}%</value>
+  </data>
 </root>

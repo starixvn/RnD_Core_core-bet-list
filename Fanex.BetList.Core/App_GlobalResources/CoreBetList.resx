@@ -1066,4 +1066,7 @@
   <data name="LicTxId" xml:space="preserve">
     <value>LicTxID</value>
   </data>
+  <data name="Boost" xml:space="preserve">
+    <value>+{0}% Boost</value>
+  </data>
 </root>

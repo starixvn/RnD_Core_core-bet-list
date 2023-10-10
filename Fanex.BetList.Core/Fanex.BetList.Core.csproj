@@ -2,8 +2,8 @@
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-        <Version>3.0.0.6</Version>
-        <PackageReleaseNotes>Basketball 4 new bettypes(#191334)</PackageReleaseNotes>
+        <Version>3.0.0.8-beta-12</Version>
+        <PackageReleaseNotes>Support Parlay Boost(#186192)</PackageReleaseNotes>
         <Description>BetList core package</Description>
         <Authors>Nexcel Solutions</Authors>
         <PackageTags>Fanex BetList</PackageTags>
@@ -13,5 +13,18 @@
       <PackageReference Include="BetListNPOI" Version="2.6.0" />
       <PackageReference Include="System.Runtime.Caching" Version="6.0.0" />
       <PackageReference Include="TplNetCore" Version="1.0.0" />    
+    </ItemGroup>
+    <ItemGroup>
+      <Compile Update="App_GlobalResources\CoreBetList.designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>CoreBetList.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Update="App_GlobalResources\CoreBetList.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>CoreBetList.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
     </ItemGroup>    
 </Project>

@@ -12,21 +12,25 @@ namespace Fanex.BetList.Core
 	{
 		public class Odds_Template : Template
 		{
-			protected static string s0 = "<span class=\"underdog\">";
+			protected static string s0 = "<span class=\"underdog ";
+			public string oddsClassName = "{oddsClassName}";
+			protected static string s1 = "\">";
 			public string odds = "{odds}";
-			protected static string s1 = "</span><br /><span class=\"oddstype\">";
+			protected static string s2 = "</span><br /><span class=\"oddstype\">";
 			public string oddsType = "{oddsType}";
-			protected static string s2 = "</span>";
+			protected static string s3 = "</span>";
 			public override void ToString(ref StringBuilder bd)
 			{
 				if(!Visible) return;
 				if(RenderChild)
 				{
 					bd.Append(s0);
-					bd.Append(odds);
+					bd.Append(oddsClassName);
 					bd.Append(s1);
-					bd.Append(oddsType);
+					bd.Append(odds);
 					bd.Append(s2);
+					bd.Append(oddsType);
+					bd.Append(s3);
 				}
 				if(IsAssigned){bd.Append(Value);}
 			}

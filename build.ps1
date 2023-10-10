@@ -1,7 +1,7 @@
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [bool] $CreatePackages = $true,
-    [bool] $RunTests = $false
+    [bool] $RunTests = $true
 )
 
 Write-Host "Run Parameters:" -ForegroundColor Cyan

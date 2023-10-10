@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using Constants;
+    using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Utils.TicketExt;
 
     public static class ConvertByBetType
@@ -172,6 +173,23 @@
             return string.Format(Formatter.DECIMALFORMAT3, odds);
         }
 
+        public static string Odds4(object oddsValue, object betType, object sportType, object oddsType)
+        {
+            var odds = GetOddsByBetType(Convert.ToDouble(oddsValue), Convert.ToInt32(betType), Convert.ToInt32(sportType), Convert.ToInt32(oddsType));
+
+            if (odds < 0)
+            {
+                return string.Format(Minus, string.Format(Formatter.DECIMALFORMAT4, odds));
+            }
+
+            if (odds.Equals(0))
+            {
+                return "-";
+            }
+
+            return string.Format(Formatter.DECIMALFORMAT4, odds);
+        }
+
         public static string VirtualHorseRacingOdds(object oddsValue, object betType, object sportType, object oddsType)
         {
             var odds = GetOddsByBetType(Convert.ToDouble(oddsValue), Convert.ToInt32(betType), Convert.ToInt32(sportType), Convert.ToInt32(oddsType));
@@ -255,5 +273,8 @@
                 ? string.Format(Minus, string.Format(Formatter.DECIMALFORMAT20, positionTaking))
                 : string.Format(Formatter.DECIMALFORMAT20, positionTaking);
         }
+
+        public static string FormatBoostRate(decimal rate)
+        => string.Format(CoreBetList.Boost, Formatter.DecFormat(rate*100, 0));
     }
 }
