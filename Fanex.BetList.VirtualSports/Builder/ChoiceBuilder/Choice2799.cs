@@ -2,21 +2,26 @@
 {
     using System.Collections.Generic;
     using System.Text;
+    using App_GlobalResources;
     using Entities;
     using BetListNPOI.SS.UserModel;
+    using Fanex.BetList.Core.Utils.StringExt;
 
     public class Choice2799 : Choice1
     {
+        private const string MaxPayoutXmlTag = "l255";
         protected override void BuildChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             string betTypeName = GetBetTypeName(ticket, ticketHelper);
             string mixParlaySubBetsFuncName = BuildMixParlaySubBetsFuncName(ticket, ticketHelper);
             string offeredCombinations = BuildOfferedCombinationBlock(ticket, ticketHelper);
+            string maxPayout = BuildMaxPayoutBlock(ticket, ticketHelper);
             var mixParlayMarkup = new StringBuilder("<div class=\"vs-mix-parlay\">");
 
             mixParlayMarkup
                 .Append($"<a id=\"hidden0\" href=\"{mixParlaySubBetsFuncName}\">{betTypeName}</a>")
                 .Append(offeredCombinations)
+                .Append(maxPayout)
                 .Append($"<div id=\"divEvent_{ticket.TransId}{ticketHelper.Index}\" style=\"display: none\" ></div>")
                 .Append("</div>");
 
@@ -51,6 +56,16 @@
                 : ticketHelper.ClientSystemParlaySubbetsDetailFunction;
         }
 
+        private static string BuildMaxPayoutBlock(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            if(!ticket.ExtraInfo.HasXmlTag(MaxPayoutXmlTag)){
+                return string.Empty;
+            }
+            var maxPayoutBlock =  new StringBuilder($"<div class=\"max-payout\" id=\"maxPayout_{ticket.TransId}{ticketHelper.Index}\">({CoreBetList.MaxPayoutAlert})<span class=\"icon-max-payout\" title=\"{CoreBetList.MaxPayoutAlertInfo}\"></span></div>");
+
+            return maxPayoutBlock.ToString();
+        }
+
         public override List<IRichTextString> RenderRTF(
             ITicket ticket,
             ITicketHelper ticketHelper,
@@ -62,6 +77,7 @@
 
             clonedRtfHelper.RTFRenderer.AddText(GetBetTypeName(ticket, ticketHelper), clonedRtfHelper.PosFont);
             AppendRTFOfferedCombinations(clonedRtfHelper, ticket, ticketHelper);
+            AppendRTFMaxPayout(clonedRtfHelper, ticket);
 
             IRichTextString choice = clonedRtfHelper.RTFRenderer.Render();
 
@@ -80,6 +96,13 @@
                 {
                     rtfHelper.RTFRenderer.AddText($"\n{combination}", rtfHelper.NormalFont);
                 }
+            }
+        }
+
+        private static void AppendRTFMaxPayout(RTFHelper rtfHelper, ITicket ticket)
+        { 
+            if(ticket.ExtraInfo.HasXmlTag(MaxPayoutXmlTag)){
+                rtfHelper.RTFRenderer.AddText($"\n({CoreBetList.MaxPayoutAlert})", rtfHelper.NormalFont);
             }
         }
     }
