@@ -2,7 +2,9 @@
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-        <Version>3.0.0.7-MaxPayout-05</Version>
+        <AssemblyVersion>3.0.1.0</AssemblyVersion>
+        <FileVersion>3.0.1.0</FileVersion>
+        <Version>3.0.1.0-MaxPayout-02</Version>
         <PackageReleaseNotes>Company Max Payout Alert(#194491)</PackageReleaseNotes>
         <Description>
           Add 3 css classes:

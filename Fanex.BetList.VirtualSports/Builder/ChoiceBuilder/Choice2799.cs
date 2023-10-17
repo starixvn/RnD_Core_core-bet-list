@@ -6,6 +6,7 @@
     using Entities;
     using BetListNPOI.SS.UserModel;
     using Fanex.BetList.Core.Utils.StringExt;
+    using System;
 
     public class Choice2799 : Choice1
     {
@@ -58,12 +59,13 @@
 
         private static string BuildMaxPayoutBlock(ITicket ticket, ITicketHelper ticketHelper)
         {
-            if(!ticket.ExtraInfo.HasXmlTag(MaxPayoutXmlTag)){
-                return string.Empty;
-            }
-            var maxPayoutBlock =  new StringBuilder($"<div class=\"max-payout\" id=\"maxPayout_{ticket.TransId}{ticketHelper.Index}\">({CoreBetList.MaxPayoutAlert})<span class=\"icon-max-payout\" title=\"{CoreBetList.MaxPayoutAlertInfo}\"></span></div>");
+            if(ticket.Status.Equals(BetStatus.Won, StringComparison.OrdinalIgnoreCase) && ticket.ExtraInfo.HasXmlTag(MaxPayoutXmlTag)){
+                var maxPayoutBlock =  new StringBuilder($"<div class=\"max-payout\" id=\"maxPayout_{ticket.TransId}{ticketHelper.Index}\">({CoreBetList.MaxPayoutAlert})<span class=\"icon-max-payout\" title=\"{CoreBetList.MaxPayoutAlertInfo}\"></span></div>");
 
-            return maxPayoutBlock.ToString();
+                return maxPayoutBlock.ToString();
+            }
+
+            return string.Empty;
         }
 
         public override List<IRichTextString> RenderRTF(
