@@ -22,7 +22,7 @@
 
         public override Odds_Template Render(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
         {
-            if (IsMixParlay(ticket))
+            if (IsMixParlay(ticket) && IsShowOdds(ticket))
             {
                 base.Render(ticket, ticketData, funcGetOddsTypeName);
                 var oddsType = string.IsNullOrEmpty(ticket.OddsType) ? (object)0 : ticket.OddsType;
@@ -147,5 +147,7 @@
         }
 
         bool IsMixParlay(ITicket ticket) => ticket.BetTeam == "1";
+
+        bool IsShowOdds(ITicket ticket ) => ticket.IsRunningWaiting() || ticket.IsSettled();
     }
 }

@@ -2,8 +2,8 @@
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-        <Version>3.0.0.8-beta-12</Version>
-        <PackageReleaseNotes>Support Parlay Boost(#186192)</PackageReleaseNotes>
+        <Version>3.0.0.9-beta-01</Version>
+        <PackageReleaseNotes>Dont show Odds for parlay in Void/Reject/Abnormal ticket(#186192)</PackageReleaseNotes>
         <Description>BetList core package</Description>
         <Authors>Nexcel Solutions</Authors>
         <PackageTags>Fanex BetList</PackageTags>
