@@ -3,7 +3,7 @@
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>    
         <AssemblyVersion>2.0.0.4</AssemblyVersion>
         <FileVersion>2.0.0.4</FileVersion>
-        <Version>2.0.0.4-MaxPayout-03</Version>
+        <Version>2.0.0.4</Version>
         <PackageReleaseNotes>Company Max Payout Alert(#194491)</PackageReleaseNotes>
         <Description>BetList core package</Description>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>

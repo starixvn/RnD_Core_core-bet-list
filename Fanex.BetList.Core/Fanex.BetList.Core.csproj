@@ -4,7 +4,7 @@
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <AssemblyVersion>3.0.1.0</AssemblyVersion>
         <FileVersion>3.0.1.0</FileVersion>
-        <Version>3.0.1.0-MaxPayout-02</Version>
+        <Version>3.0.1.0</Version>
         <PackageReleaseNotes>Company Max Payout Alert(#194491)</PackageReleaseNotes>
         <Description>
           Add 3 css classes:
