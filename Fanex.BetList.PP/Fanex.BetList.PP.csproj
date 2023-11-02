@@ -1,10 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
-        <FileVersion>2.0.0.1</FileVersion>
-        <Version>2.0.0.1</Version>
-        <PackageReleaseNotes>Company Max Payout Alert(#194491)</PackageReleaseNotes>
+        <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>
+        <Version>2.0.0.2</Version>
+        <PackageReleaseNotes>HF - Show Game type for promotion ticket(#196014)</PackageReleaseNotes>
         <Description>BetList core package</Description>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <Authors>Nexcel Solutions</Authors>

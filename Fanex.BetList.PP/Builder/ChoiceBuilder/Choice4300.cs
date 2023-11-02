@@ -11,7 +11,7 @@
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             var mainTicketGameType = GetMainTicketGameTypeName(ticket, ticketHelper);
-            var gameType = ticketHelper.GetResourceData(GameTypeRefId, ticket.TransDesc);
+            var gameType = ticketHelper.GetResourceData(GameTypeRefId, ticket.BetTypeId.ToString());
 
             if (string.IsNullOrEmpty(ticket.BetCheck))
             {
