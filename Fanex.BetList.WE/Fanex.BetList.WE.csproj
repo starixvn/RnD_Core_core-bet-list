@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
+        <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+        <Version>1.0.0.0-WE-01</Version>
+        <InfomationalVersion>1.0.0.0</InfomationalVersion>
+        <PackageReleaseNotes>Support .net Core for WE (#175417)</PackageReleaseNotes>
+        <Description>BetList core package</Description>
+        <Authors>Nexcel Solutions</Authors>
+        <PackageTags>Fanex BetList</PackageTags>
+        <PackageProjectUrl>https://nexdev.net/projects/p111063/wiki/102023_-_WE_Live_Casino_-_Bet_List</PackageProjectUrl>
+    </PropertyGroup>
+    <ItemGroup>
+      <PackageReference Include="TplNetCore" Version="1.0.0" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj" />
+      <ProjectReference Include="..\Fanex.BetList.LiveCasinoCore\Fanex.BetList.LiveCasinoCore.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <InternalsVisibleTo Include="Fanex.BetList.WE.Tests" />
+    </ItemGroup>
+</Project>
