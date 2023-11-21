@@ -95,7 +95,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             return string.Empty;
         }
 
-        private static Choice_League_Block BuildDetailLink(ITicket ticket)
+        private Choice_League_Block BuildDetailLink(ITicket ticket)
         {
             var detailLinkMarkupBuilder = new StringBuilder();
             var detailFunction = BuildDetailFunction(ticket);
@@ -116,7 +116,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             return detailTemplateBlock;
         }
 
-        private static string BuildDetailFunction(ITicket ticket)
+        public virtual string BuildDetailFunction(ITicket ticket)
         {
             var detailFunctionBuilder = new StringBuilder();
 

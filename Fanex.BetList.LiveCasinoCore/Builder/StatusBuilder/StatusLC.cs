@@ -8,7 +8,7 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
         {
             base.BuildStatusResult(ticket);
 
-            if (IsHideStatus(ticket))
+            if (IsHideStatusResult(ticket))
             {
                 Template.StatusResult.Hide();
             }
@@ -20,7 +20,7 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
             }
         }
 
-        public virtual bool IsHideStatus(ITicket ticket){
+        public virtual bool IsHideStatusResult(ITicket ticket){
             return string.IsNullOrEmpty(ticket.TransDesc);
         }
     }

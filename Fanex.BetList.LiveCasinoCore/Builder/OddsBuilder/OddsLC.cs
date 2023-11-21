@@ -21,7 +21,7 @@ namespace Fanex.BetList.Core.Builder.OddsBuilder
 
         public virtual bool IsHiddenOdds(ITicket ticket)
         {
-            return string.IsNullOrEmpty(ticket.TransDesc) || ticket.Odds == 0;
+            return string.IsNullOrEmpty(ticket.TransDesc);
         }
     }
 }
