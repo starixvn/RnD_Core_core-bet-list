@@ -2,10 +2,21 @@
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
-        <Version>1.0.0.0-WE-04</Version>
+        <Version>1.0.0.0-WE-05</Version>
         <InfomationalVersion>1.0.0.0</InfomationalVersion>
         <PackageReleaseNotes>Support .net Core for WE (#175417)</PackageReleaseNotes>
-        <Description>BetList core package</Description>
+        <Description>New bet list for WE Live Casino
+
+The result link should call this Javascript function: "showWELiveCasinoDetails(transId, 'winlostDate', custId, transactionType);", which transactionType is:
+
+- 1, if the status is Won, Lose, Draw, or Refund
+
+- 2, if the status is Reject, or Void
+
+- 3, if the status is Running, or Waiting
+
+- otherwise, 0
+        </Description>
         <Authors>Nexcel Solutions</Authors>
         <PackageTags>Fanex BetList</PackageTags>
         <PackageProjectUrl>https://nexdev.net/projects/p111063/wiki/102023_-_WE_Live_Casino_-_Bet_List</PackageProjectUrl>

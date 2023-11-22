@@ -15,7 +15,8 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         public override string GetDisplayTableCode(ITicketHelper ticketHelper, string tableCode)
             => ticketHelper.GetResourceData(TableCodeRefPrefix, tableCode);
 
-        public override string BuildDetailFunction(ITicket ticket){
+        public override string BuildDetailFunction(ITicket ticket)
+        {
             var detailFunctionBuilder = new StringBuilder();
 
             detailFunctionBuilder.Append("showWELiveCasinoBetDetails(&quot;")
