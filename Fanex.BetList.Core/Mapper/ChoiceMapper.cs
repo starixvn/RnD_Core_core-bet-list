@@ -23,6 +23,7 @@
             MapForCricketAIOP2();
             MapForCricketAIOP4();
             MapForVolleyballAIO();
+            MapForSabaPromotion();
         }
 
         private void MapForOtherBetTypes()
@@ -564,6 +565,11 @@
             MapIdToBaseId(BetTypes.VolleyballSetXPointsCorrectScore15Points, BetTypes.VolleyballSetXPointsCorrectScore);
 
             MapIdToBaseId(BetTypes.VolleyballSetXMoneyline, BetTypes.QuarterXMoneyline);
+        }
+
+        private void MapForSabaPromotion()
+        {
+            MapIdToBaseId(BetTypes.CasinoRoyaleTournamentPrize, BetTypes.SabaRedEnvelope);
         }
     }
 }

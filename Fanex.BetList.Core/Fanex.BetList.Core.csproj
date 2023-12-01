@@ -2,11 +2,11 @@
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-        <AssemblyVersion>3.0.1.3</AssemblyVersion>
-        <FileVersion>3.0.1.3</FileVersion>
-        <Version>3.0.1.3</Version>
-        <PackageReleaseNotes>Fix Status null render Company Max Payout Alert</PackageReleaseNotes>
+        <Version>3.0.1.5-SapaPromotion-01</Version>
+        <InfomationalVersion>3.0.1.5</InfomationalVersion>
+        <PackageReleaseNotes>Casino Royale Tournament Prize(#194981)</PackageReleaseNotes>
         <Description>
+        	Bet List for new bettype 17006 'Casino Royale Tournament Prize'
         </Description>
         <Authors>Nexcel Solutions</Authors>
         <PackageTags>Fanex BetList</PackageTags>

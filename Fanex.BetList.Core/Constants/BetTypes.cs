@@ -360,6 +360,7 @@
         public const int SabaLuckySpin = 17000;
         public const int SabaLoyaltyPointsExchange = 17003;
         public const int SabaRedEnvelope = 17004;
+        public const int  CasinoRoyaleTournamentPrize = 17006;
 
         public const int SuperOverWinner = 9400;
         public const int TossWinner = 9401;
