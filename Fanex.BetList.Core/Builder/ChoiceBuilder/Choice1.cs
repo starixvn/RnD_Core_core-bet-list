@@ -456,7 +456,7 @@
 
         protected virtual void BuildMaxPayout(ITicket ticket)
         {
-            if(ticket.Status.Equals(BetStatus.Won, StringComparison.OrdinalIgnoreCase)
+            if(string.Equals(ticket.Status, BetStatus.Won, StringComparison.OrdinalIgnoreCase)
                 && ticket.ExtraInfo.HasXmlTag(MaxPayoutXmlTag)){
                 Template.MaxPayout.maxPayout = string.Format("({0})", CoreBetList.MaxPayoutAlert);
             } else {
