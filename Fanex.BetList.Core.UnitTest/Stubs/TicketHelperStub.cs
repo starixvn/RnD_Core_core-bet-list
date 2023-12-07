@@ -32,6 +32,8 @@ namespace Fanex.BetList.Core.UnitTest.Stubs
 
         public bool ShowLeague { get; set; }
 
+        public bool HideSabaText { get; set; }
+        
         public bool ShowSystemParlayDetail { get; set; }
 
         public bool ShowSystemParlayPlayerComm { get; set; }

@@ -1,8 +1,10 @@
 ﻿namespace Fanex.BetList.Core.TicketHelper
 {
     using System;
+    using System.Linq;
     using System.Collections.Generic;
     using Entities;
+    using Fanex.BetList.Core.App_GlobalResources;
     using Mapper;
 
     public class TicketHelper : ITicketHelper
@@ -42,6 +44,8 @@
 
         public Func<string, bool> IsVnIp { get; set; }
 
+        public bool HideSabaText { get; set; }
+        
         /// <summary>
         /// Gets or sets Method to get *Parlay details.
         /// </summary>
@@ -98,6 +102,18 @@
         public string GetLeagueNameById(object leagueId)
             => _cacheRef.GetLeagueName(leagueId.ToString());
 
+        public string GetLeagueNameById(object leagueId, object leagueGroupId)
+        {
+            var leagueName = GetLeagueNameById(leagueId);
+            var leagueGroupIdsNeedRemoveText = new List<object> { 42, 74, 108, 113, 122, 151 };
+            if (HideSabaText && leagueGroupIdsNeedRemoveText.Any(i => i == leagueGroupId))
+            {                
+                leagueName = leagueName.Replace(CoreBetList.Saba, string.Empty);
+            }
+
+            return leagueName; 
+        }
+            
         public string GetSportNameById(object sportId)
             => _cacheRef.GetSportName(sportId.ToString());
 

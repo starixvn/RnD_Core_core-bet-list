@@ -129,7 +129,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             Assert.AreEqual(_ticket.LiveAwayScore.ToString(), _choice.Template.Score.awayScore);
         }
 
-        [TestCase(8,2020, 11, 4, 0, 0, 0)]
+        [TestCase(8, 2020, 11, 4, 0, 0, 0)]
         [TestCase(8, 2020, 11, 3, 0, 0, 0)]
         [TestCase(4, 2021, 10, 6, 0, 0, 0)]
         [TestCase(26, 2021, 10, 6, 0, 0, 0)]
@@ -1205,6 +1205,57 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Assert
             var oddsSpread = " <span class='sport'>(75)</span>";
             Assert.IsFalse(_choice.Template.Handicap.handicap.Contains(oddsSpread));
+        }
+
+        [TestCase("Saba Super league name")]
+        [TestCase("SABA Super league name")]
+        [TestCase("English Saba Super league name")]
+        [TestCase("English SABA Super league name")]
+        public void BuildLeague_HideSabaTextIsFasle_ShowSabaText(string leagueName)
+        {
+            // Arrange
+            _ticketHelper.HideSabaText = false;
+            _ticketHelper.GetLeagueNameById(Arg.Any<int>(), Arg.Any<int>()).Returns<string>(leagueName);
+            _ticket.leagueGroupId = 42;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual(leagueName, _choice.Template.League.LeagueName.leagueName);
+        }
+
+        [TestCase("Saba Super league name", "Super league name")]
+        [TestCase("SABA Super league name", "Super league name")]
+        [TestCase("English Saba Super league name", "English Super league name")]
+        [TestCase("English SABA Super league name", "English Super league name")]
+        public void BuildLeague_HideSabaTextIsTrue_LeagueGroupIdNeedRemove_HideSabaText(string leagueName, string expectedLeagueName)
+        {
+            // Arrange
+            _ticketHelper.HideSabaText = true;
+            _ticketHelper.GetLeagueNameById(Arg.Any<int>(), Arg.Any<int>()).Returns<string>(leagueName);
+            _ticket.leagueGroupId = 42;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual(expectedLeagueName, _choice.Template.League.LeagueName.leagueName);
+        }
+
+        [TestCase("Saba Super league name", "Saba Super league name")]
+        public void BuildLeague_HideSabaTextIsTrue_LeagueGroupIdNoNeedRemove_ShowSabaText(string leagueName, string expectedLeagueName)
+        {
+            // Arrange
+            _ticketHelper.HideSabaText = true;
+            _ticketHelper.GetLeagueNameById(Arg.Any<int>(), Arg.Any<int>()).Returns<string>(leagueName);
+            _ticket.leagueGroupId = 0;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert
+            Assert.AreEqual(expectedLeagueName, _choice.Template.League.LeagueName.leagueName);
         }
     }
 }

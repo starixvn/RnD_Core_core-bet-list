@@ -405,7 +405,7 @@
                 return;
             }
 
-            Template.League.LeagueName.leagueName = ticketHelper.GetLeagueNameById(ticket.LeagueId);
+            Template.League.LeagueName.leagueName = ticketHelper.GetLeagueNameById(ticket.LeagueId, ticket.LeagueGroupId);
         }
 
         protected virtual void BuildSport(ITicket ticket, ITicketHelper ticketHelper)

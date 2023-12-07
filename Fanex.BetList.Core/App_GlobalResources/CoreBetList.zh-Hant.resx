@@ -981,4 +981,7 @@
   <data name="MaxPayoutAlertInfo" xml:space="preserve">
     <value>注單已達公司所設的最高派彩上限。更多詳情請參考投注規則與規定。</value>
   </data>
+  <data name="Saba" xml:space="preserve">
+    <value>沙巴</value>
+  </data>
 </root>

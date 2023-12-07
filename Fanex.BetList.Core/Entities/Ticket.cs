@@ -125,7 +125,9 @@
         public int CurrencyId { get; set; }
 
         public string SiteId { get; set; }
-        
+
         public string JackpotInfo { get; set; }
+
+        public int LeagueGroupId { get; set; }
     }
 }

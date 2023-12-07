@@ -68,9 +68,13 @@
         /// <returns><c>true</c> if [IP is from VN]; otherwise, <c>false</c>.</returns>
         Func<string, bool> IsVnIp { get; set; }
 
+        bool HideSabaText { get; set; }
+        
         #region METHODS TO RESOLVE NAMES FROM IDS
 
         string GetLeagueNameById(object leagueId);
+
+        string GetLeagueNameById(object leagueId, object leagueGroupId);
 
         string GetTeamNameById(object teamId);
 

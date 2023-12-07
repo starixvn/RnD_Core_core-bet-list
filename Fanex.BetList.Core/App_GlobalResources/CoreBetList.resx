@@ -1075,4 +1075,7 @@
   <data name="MaxPayoutAlertInfo" xml:space="preserve">
     <value>This ticket has reached Max Payout set by company. See the Rules and Regulations for more information.</value>
   </data>
+  <data name="Saba" xml:space="preserve">
+    <value>SABA</value>
+  </data>
 </root>

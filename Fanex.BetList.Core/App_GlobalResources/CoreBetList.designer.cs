@@ -2239,6 +2239,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SABA.
+        /// </summary>
+        public static string Saba {
+            get {
+                return ResourceManager.GetString("Saba", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to {0} {1}.
         /// </summary>
         public static string SabaLuckySpinProgramPattern {

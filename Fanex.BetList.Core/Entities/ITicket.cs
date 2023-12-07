@@ -130,5 +130,7 @@
         string SiteId { get; set; }
 
         string JackpotInfo { get; set; }
+
+        int LeagueGroupId { get; set; }
     }
 }
