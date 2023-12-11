@@ -30,10 +30,8 @@ namespace Fanex.BetList.Core.UnitTest.Stubs
 
         public bool ShowMatch { get; set; }
 
-        public bool ShowLeague { get; set; }
+        public bool ShowLeague { get; set; }        
 
-        public bool HideSabaText { get; set; }
-        
         public bool ShowSystemParlayDetail { get; set; }
 
         public bool ShowSystemParlayPlayerComm { get; set; }
@@ -44,9 +42,16 @@ namespace Fanex.BetList.Core.UnitTest.Stubs
 
         public Func<string, bool> IsVnIp { get; set; }
 
+        public bool HideSabaText { get; set; }
+
         public string GetLeagueNameById(object leagueId)
         {
             return _leagueName + leagueId.ToString();
+        }
+
+        public string GetLeagueNameById(object leagueId, object leagueGroupId)
+        {
+            return _leagueName + leagueId.ToString() + leagueGroupId;
         }
 
         public string GetTeamNameById(object teamId)

@@ -6,6 +6,7 @@
     using Entities;
     using Fanex.BetList.Core.App_GlobalResources;
     using Mapper;
+    using System.Text.RegularExpressions;
 
     public class TicketHelper : ITicketHelper
     {
@@ -105,10 +106,15 @@
         public string GetLeagueNameById(object leagueId, object leagueGroupId)
         {
             var leagueName = GetLeagueNameById(leagueId);
-            var leagueGroupIdsNeedRemoveText = new List<object> { 42, 74, 108, 113, 122, 151 };
-            if (HideSabaText && leagueGroupIdsNeedRemoveText.Any(i => i == leagueGroupId))
-            {                
-                leagueName = leagueName.Replace(CoreBetList.Saba, string.Empty);
+            var leagueGroupIdsNeedRemoveText = new List<int> { 42, 74, 108, 113, 122, 151 };
+            if (HideSabaText && leagueGroupIdsNeedRemoveText.Any(i => i == (int)leagueGroupId))
+            {
+                var sabaWord = GetResourceData("Saba", "Saba");
+                var sabaWords = new List<string> { $" {sabaWord}", $"{sabaWord} ", sabaWord};
+                foreach(var word in sabaWords)
+                {
+                    leagueName = Regex.Replace(leagueName, word, string.Empty, RegexOptions.IgnoreCase);
+                }                
             }
 
             return leagueName; 

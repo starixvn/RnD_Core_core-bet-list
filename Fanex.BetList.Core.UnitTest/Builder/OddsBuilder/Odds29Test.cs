@@ -102,7 +102,7 @@
             ////Arrange
             _ticket.StatusId = 1;
             _ticket.Odds = 2;
-            _ticket.MOdds = 0.1m;
+            _ticket.MasterOdds = 0.1m;
             _ticket.OddsSpread = 2;
             _ticket.BetTeam = "1";            
             var boostOddsHtml = "<span class='underdog'>2.1</span><br/>";

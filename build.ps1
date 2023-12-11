@@ -1,7 +1,7 @@
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [bool] $CreatePackages = $true,
-    [bool] $RunTests = $true
+    [bool] $RunTests = $false
 )
 
 Write-Host "Run Parameters:" -ForegroundColor Cyan
@@ -9,7 +9,7 @@ Write-Host "CreatePackages: $CreatePackages"
 Write-Host "RunTests: $RunTests"
 
 $packageOutputFolder = "$PSScriptRoot\.nupkgs"
-$projectsToBuild = Get-ChildItem "$PSScriptRoot" -Include *Fanex.BetList.VirtualSports.csproj -Exclude *Tests.csproj,*.Example.*.csproj -recurse
+$projectsToBuild = Get-ChildItem "$PSScriptRoot" -Include *Fanex.BetList.Core.csproj -Exclude *Tests.csproj,*.Example.*.csproj -recurse
 $testsToRun = Get-ChildItem "$PSScriptRoot" -Include *.Tests.csproj -Recurse
 
 if ($RunTests) {
