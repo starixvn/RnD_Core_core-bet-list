@@ -2,7 +2,7 @@
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
-        <Version>1.0.0.0-WE-05</Version>
+        <Version>1.0.0.0-WE-06</Version>
         <InfomationalVersion>1.0.0.0</InfomationalVersion>
         <PackageReleaseNotes>Support .net Core for WE (#175417)</PackageReleaseNotes>
         <Description>BetList core package</Description>

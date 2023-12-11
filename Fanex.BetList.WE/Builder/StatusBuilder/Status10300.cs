@@ -8,9 +8,7 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
         private const int SupportedResultDays = -30;
 
         public override bool IsHideStatusResult(ITicket ticket)
-        {
-            return string.IsNullOrEmpty(ticket.TransDesc) || !IsSupportViewResultLink(ticket);
-        }
+        => base.IsHideStatusResult(ticket) || !IsSupportViewResultLink(ticket);
 
         private static bool IsSupportViewResultLink(ITicket ticket)
         {

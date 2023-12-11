@@ -14,14 +14,13 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
             }
             else
             {
-                var externalLink = string.Format("{0}, '{1}', {2}, '{3}'", ticket.BetId ?? 0, ticket.MatchCode, ticket.CustId, ticket.TransDesc);
-
+                var externalLink = $"{ticket.CurrencyId}, '{ticket.MatchCode}', {ticket.CustId}, '{ticket.BetCheck}', '{ticket.SiteId}'";
                 Template.StatusResult.betId = externalLink;
             }
         }
 
         public virtual bool IsHideStatusResult(ITicket ticket){
-            return string.IsNullOrEmpty(ticket.TransDesc);
+            return string.IsNullOrEmpty(ticket.BetCheck);
         }
     }
 }
