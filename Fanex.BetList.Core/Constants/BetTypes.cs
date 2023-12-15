@@ -362,6 +362,8 @@
         public const int SabaRedEnvelope = 17004;
         public const int  CasinoRoyaleTournamentPrize = 17006;
 
+        public const int SabaRewardRiskFreeRebate = 17007;
+
         public const int SuperOverWinner = 9400;
         public const int TossWinner = 9401;
 

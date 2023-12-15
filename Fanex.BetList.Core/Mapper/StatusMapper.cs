@@ -126,6 +126,7 @@
             MapIdToBaseId(BetTypes.SabaLoyaltyPointsExchange, BetTypes.SabaLuckySpin);
             MapIdToBaseId(BetTypes.SabaRedEnvelope, BetTypes.SabaLuckySpin);
             MapIdToBaseId(BetTypes.CasinoRoyaleTournamentPrize, BetTypes.SabaLuckySpin);
+            MapIdToBaseId(BetTypes.SabaRewardRiskFreeRebate, BetTypes.SabaLuckySpin);
         }
 
         private void MapForCornerMatches()
