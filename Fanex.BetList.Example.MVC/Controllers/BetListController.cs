@@ -1486,7 +1486,16 @@
 
             return BetListView(model);
         }
-
+        
+	public ActionResult Live22(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes();
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            DataSourcePath = "~/App_Data/Live22.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+	}
+	
         public ActionResult WE(BetListData model = null)
         {
             var betTypeIds = new List<int>();

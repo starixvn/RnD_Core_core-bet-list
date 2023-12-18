@@ -112,7 +112,7 @@
       <HintPath>..\packages\Fanex.BetList.ColossusBets.2.0.0-net5-04\lib\net461\Fanex.BetList.ColossusBets.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.BetList.Core, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.BetList.Core.3.0.1.5-SapaPromotion-01\lib\net461\Fanex.BetList.Core.dll</HintPath>
+      <HintPath>..\packages\Fanex.BetList.Core.3.0.1.5\lib\net461\Fanex.BetList.Core.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.BetList.Core.RemotingRef, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.BetList.Core.RemotingRef.2.0.0-net5-03\lib\net461\Fanex.BetList.Core.RemotingRef.dll</HintPath>
@@ -162,6 +162,9 @@
     <Reference Include="Fanex.BetList.LiveCasinoCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.BetList.LiveCasinoCore.1.0.0-WE-05\lib\net461\Fanex.BetList.LiveCasinoCore.dll</HintPath>
     </Reference>
+    <Reference Include="Fanex.BetList.Live22, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.BetList.Live22.1.0.0-Live22-01\lib\net461\Fanex.BetList.Live22.dll</HintPath>
+    </Reference>
     <Reference Include="Fanex.BetList.MaxGame, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.BetList.MaxGame.2.0.0.1-LicTxId-01\lib\net461\Fanex.BetList.MaxGame.dll</HintPath>
     </Reference>
@@ -198,8 +201,8 @@
     <Reference Include="Fanex.BetList.RnGCasino, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.BetList.RnGCasino.2.0.0.1\lib\net461\Fanex.BetList.RnGCasino.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.BetList.RNGCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.BetList.RNGCore.1.0.0\lib\net461\Fanex.BetList.RNGCore.dll</HintPath>
+    <Reference Include="Fanex.BetList.RNGCore, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.BetList.RNGCore.1.0.0.1-Live22-01\lib\net461\Fanex.BetList.RNGCore.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.BetList.RNGWar, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.BetList.RNGWar.2.0.0-net5-03\lib\net461\Fanex.BetList.RNGWar.dll</HintPath>
