@@ -2,9 +2,9 @@
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
-        <Version>1.0.0.0-WE-06</Version>
+        <Version>1.0.0.0-WE-07</Version>
         <InfomationalVersion>1.0.0.0</InfomationalVersion>
-        <PackageReleaseNotes>Support .net Core for WE (#175417)</PackageReleaseNotes>
+        <PackageReleaseNotes>Support .net Core for WE (#195884)</PackageReleaseNotes>
         <Description>New bet list for WE Live Casino
 
 The result link should call this Javascript function: "showWELiveCasinoDetails(transId, 'winlostDate', custId, transactionType);", which transactionType is:
