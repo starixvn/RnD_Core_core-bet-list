@@ -43,6 +43,9 @@
         public string GetLeagueName(string leagueId)
             => _remotingRefService.GetLeagueName(leagueId, CurrentLanguage);
 
+        public string GetLeagueName(string leagueId, string leagueGroupId)
+            => _remotingRefService.GetLeagueName(leagueId, leagueGroupId, CurrentLanguage, string.Empty);
+
         public string GetLeagueName3rd(string league3rdId)
             => _remotingRefService.GetLeagueName3rd(league3rdId, CurrentLanguage);
 

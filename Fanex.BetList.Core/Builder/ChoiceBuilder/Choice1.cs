@@ -356,7 +356,8 @@
 
         private bool IsShowLiveText(int sportTypeId, DateTime transDate)
         {
-            if(LiveScoreSportType.DateTimeSupportLiveScoreBySports.ContainsKey(sportTypeId)){
+            if (LiveScoreSportType.DateTimeSupportLiveScoreBySports.ContainsKey(sportTypeId))
+            {
                 return transDate >= LiveScoreSportType.DateTimeSupportLiveScoreBySports[sportTypeId];
             }
 
@@ -405,7 +406,9 @@
                 return;
             }
 
-            Template.League.LeagueName.leagueName = ticketHelper.GetLeagueNameById(ticket.LeagueId, ticket.LeagueGroupId);
+            Template.League.LeagueName.leagueName = ticketHelper.HideSabaText ?
+            ticketHelper.GetLeagueNameById(ticket.LeagueId, ticket.LeagueGroupId) :
+            ticketHelper.GetLeagueNameById(ticket.LeagueId);
         }
 
         protected virtual void BuildSport(ITicket ticket, ITicketHelper ticketHelper)
@@ -456,10 +459,13 @@
 
         protected virtual void BuildMaxPayout(ITicket ticket)
         {
-            if(string.Equals(ticket.Status, BetStatus.Won, StringComparison.OrdinalIgnoreCase)
-                && ticket.ExtraInfo.HasXmlTag(MaxPayoutXmlTag)){
+            if (string.Equals(ticket.Status, BetStatus.Won, StringComparison.OrdinalIgnoreCase)
+                && ticket.ExtraInfo.HasXmlTag(MaxPayoutXmlTag))
+            {
                 Template.MaxPayout.maxPayout = string.Format("({0})", CoreBetList.MaxPayoutAlert);
-            } else {
+            }
+            else
+            {
                 Template.MaxPayout.Hide();
             }
         }

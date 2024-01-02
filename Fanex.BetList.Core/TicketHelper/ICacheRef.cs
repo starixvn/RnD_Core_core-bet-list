@@ -22,6 +22,8 @@
 
         string GetLeagueName(string leagueId);
 
+        string GetLeagueName(string leagueId, string leagueGroupId);
+        
         string GetLeagueName3rd(string league3rdId);
 
         string GetHorseTeamName(string codeId);
