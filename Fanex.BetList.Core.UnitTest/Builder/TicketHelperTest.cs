@@ -18,6 +18,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         public void Setup()
         {
             _cacheRef = Substitute.For<ICacheRef>();
+            _cacheRef.GetResourceData("Saba", "Saba").Returns("Saba");
             ticketHelper = new TicketHelper(_cacheRef);
         }
 

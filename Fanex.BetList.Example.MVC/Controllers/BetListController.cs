@@ -189,7 +189,7 @@
 
             return BetListView(model);
         }
-        
+
         public ActionResult CG(BetListData model = null)
         {
             var betTypeIds = new List<int>();
@@ -1509,7 +1509,7 @@
 
         public ActionResult BasketballAIO3(BetListData model = null)
         {
-            var bettypeIds = new int[4] { 647, 648, 649, 650};
+            var bettypeIds = new int[4] { 647, 648, 649, 650 };
             var betTypes = _dataService.QueryBetTypes(bettypeIds);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
@@ -1529,8 +1529,8 @@
 
             return BetListView(model);
         }
-        
-	public ActionResult Live22(BetListData model = null)
+
+        public ActionResult Live22(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes();
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
@@ -1540,7 +1540,7 @@
 
             return BetListView(model);
         }
-	
+
         public ActionResult WE(BetListData model = null)
         {
             var betTypeIds = new List<int>();

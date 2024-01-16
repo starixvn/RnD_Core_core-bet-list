@@ -61,11 +61,49 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Assert
             var expectedBetTypeName =
                 $"<div class=\"combinationLink\">" +
-                $"<div onclick=\"showSingleMatchParlayDetail('222', '333', 'won', 1)\"><a href=\"javascript:void('');\">{BetTypeName}</a></div></div>" +
+                $"<span onclick=\"showSingleMatchParlayDetail('222', '333', 'won', 1)\"><a href=\"javascript:void('');\">{BetTypeName}</a></span></div>" +
                 $"<div id=\"divEvent_2221\" style=\"display: none\" ></div>";
             Assert.AreEqual(expectedBetTypeName, template.BetType.betTypeName);
         }
 
+        [Test]
+        public void BuildBetType_SoccerHasLive_ShowLiveScore()
+        {
+            // Act
+            ticket.Status = "running";
+            ticket.SportTypeId = 1;
+            ticket.IsLive = true;
+            ticket.LiveHomeScore = 1;
+            ticket.LiveAwayScore =2;
+            var template = choice.Render(ticket, ticketHelper, null, false);
+
+            // Assert
+            var expectedBetTypeName =
+                $"<div class=\"combinationLink\">" +
+                $"<span onclick=\"showSingleMatchParlayDetail('222', '333', 'running', 1)\"><a href=\"javascript:void('');\">{BetTypeName}</a></span><span class=\"favorite\"> [1-2]</span></div>" +
+                $"<div id=\"divEvent_2221\" style=\"display: none\" ></div>";
+            Assert.AreEqual(expectedBetTypeName, template.BetType.betTypeName);
+        }
+
+        [Test]
+        public void BuildBetType_BasketballHasLive_ShowLiveText()
+        {
+            // Act
+            ticket.Status = "running";
+            ticket.SportTypeId = 2;
+            ticket.IsLive = true;
+            ticket.LiveHomeScore = 1;
+            ticket.LiveAwayScore =2;
+            var template = choice.Render(ticket, ticketHelper, null, false);
+
+            // Assert
+            var expectedBetTypeName =
+                $"<div class=\"combinationLink\">" +
+                $"<span onclick=\"showSingleMatchParlayDetail('222', '333', 'running', 1)\"><a href=\"javascript:void('');\">{BetTypeName}</a></span><span class=\"favorite\"> [Live]</span></div>" +
+                $"<div id=\"divEvent_2221\" style=\"display: none\" ></div>";
+            Assert.AreEqual(expectedBetTypeName, template.BetType.betTypeName);
+        }
+        
         [Test]
         public void RenderRTF_BetType_RenderExpectedText()
         {

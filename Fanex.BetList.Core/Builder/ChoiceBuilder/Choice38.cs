@@ -1,7 +1,10 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
+    using Fanex.BetList.Core.App_GlobalResources;
+    using Fanex.BetList.Core.Constants;
     using Fanex.BetList.Core.Entities;
+    using Fanex.BetList.Core.Templates;
     using Fanex.BetList.Core.Utils.StringExt;
 
     /// <summary>
@@ -26,17 +29,20 @@
             Template.BetType.betTypeName = BuildSingleMatchParlayDetailLink(ticket, ticketHelper);
         }
 
+        protected override void BuildScore(ITicket ticket)
+        => Template.Score = null;
+        
         public override string GetBetTypeName(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData = null)
             => ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
 
-        private static string BuildSingleMatchParlayDetailLink(ITicket ticket, ITicketHelper ticketHelper)
+        private string BuildSingleMatchParlayDetailLink(ITicket ticket, ITicketHelper ticketHelper)
         {
             var betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
             var detailLink =
                 "<div class=\"combinationLink\">" +
-                    $"<div onclick=\"showSingleMatchParlayDetail('{ticket.TransId}', '{ticket.CustId}', '{ticket.Status}', {ticketHelper.Index})\">" +
+                    $"<span onclick=\"showSingleMatchParlayDetail('{ticket.TransId}', '{ticket.CustId}', '{ticket.Status}', {ticketHelper.Index})\">" +
                         $"<a href=\"javascript:void('');\">{betTypeName}</a>" +
-                    "</div>" +
+                    "</span>" + BuildLiveScore(ticket) +
                 "</div>";
 
             var detailBlock = $"<div id=\"divEvent_{ticket.TransId}{ticketHelper.Index}\" style=\"display: none\" ></div>";
@@ -44,6 +50,24 @@
             return detailLink + detailBlock;
         }
 
+        private string BuildLiveScore(ITicket ticket)
+        {
+            var score = new Choice_Score_Block();
+            if (ticket.SportTypeId == SportsbookSportTypes.Soccer)
+            {
+                score.homeScore = ticket.LiveHomeScore.ToString();
+                score.awayScore = ticket.LiveAwayScore.ToString();
+            }
+            else
+            {                
+                score.SetValue($"<span class=\"{Favorite}\"> [{CoreBetList.Live}]</span>");
+            }
+
+            score.Visible = ticket.IsLive;
+
+            return score.ToString();
+        }
+         
         #endregion BUILD HTML
 
         #region BUILD EXCEL
