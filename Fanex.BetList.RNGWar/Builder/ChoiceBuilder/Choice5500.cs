@@ -6,16 +6,15 @@
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.Utils.StringExt;
     using Fanex.BetList.Core.Utils.TicketExt;
 
-    public class Choice5500 : Choice1
+    public class Choice5500 : ChoiceRNG
     {
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
         {
-            var bettype = $"<span class=\"gamegroupname\"> {ticketHelper.GetBetTypeNameById(ticket.BetTypeId)}</span>";
+            var bettype = $"<span class=\"handicap\"> {ticketHelper.GetBetTypeNameById(ticket.BetTypeId)}</span>";
             Template.League.LeagueName.SetValue(bettype);
-            if (string.IsNullOrEmpty(ticket.BetCheck))
+            if (IsSummaryTicket(ticket.BetCheck))
             {
                 Template.League.Append(BuildDetailLink(ticket));
             }
@@ -23,32 +22,6 @@
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
             => Template.betTeam = string.IsNullOrEmpty(ticket.BetCheck) ? string.Empty : $"{ticket.BetCheck}";
-
-        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-            => Template.BetType.betTypeName = string.Empty;
-
-        protected override void BuildScore(ITicket ticket)
-            => Template.Score = null;
-
-        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
-        {
-            Template.Handicap = null;
-            Template.betTeamClassName = Underdog;
-        }
-
-        protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
-            => Template.Match = null;
-
-        protected override void BuildMatchInfo(ref RTFHelper rtfHelper)
-        {
-            var sportName = Template.League.sportTypeName;
-            var bettype = Template.League.LeagueName.ToString().StripHTML();
-
-            if (!string.IsNullOrEmpty(sportName) && !string.IsNullOrEmpty(bettype))
-            {
-                rtfHelper.RTFRenderer.AddText($"\n{sportName}{bettype}");
-            }
-        }
 
         private static Choice_League_Block BuildDetailLink(ITicket ticket)
         {
