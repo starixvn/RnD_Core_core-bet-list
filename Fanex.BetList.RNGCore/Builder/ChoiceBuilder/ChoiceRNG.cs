@@ -4,11 +4,14 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Utils.StringExt;
     using Fanex.BetList.Core.Utils.TicketExt;
+    using Fanex.BetList.Core.TransId3rdHelper;
     using System;
     using System.Collections.Generic;
 
     public class ChoiceRNG : Choice1
     {
+        private string _parseTransId3rd;
+
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
             Template.Handicap = null;
@@ -44,5 +47,13 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
         protected virtual bool IsSummaryTicket(string betCheck)
             => !IsDetailTicket(betCheck);
+            
+        protected virtual string GetTransId3rd(string transId3rd){
+            if(_parseTransId3rd == null){
+                _parseTransId3rd = TransId3rdRNGHelper.GetTransId3rd(transId3rd);
+            }
+
+            return _parseTransId3rd;
+        }
     }
 }

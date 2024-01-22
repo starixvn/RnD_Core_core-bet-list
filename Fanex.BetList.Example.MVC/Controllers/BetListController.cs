@@ -1494,7 +1494,9 @@
             DataSourcePath = "~/App_Data/Live22.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
-	}
+
+            return BetListView(model);
+        }
 	
         public ActionResult WE(BetListData model = null)
         {

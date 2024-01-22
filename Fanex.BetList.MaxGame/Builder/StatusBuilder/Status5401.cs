@@ -4,25 +4,28 @@
     using Fanex.BetList.Core.Utils;
     using Fanex.BetList.Core.Utils.TicketExt;
 
-    public class Status5401 : Status1
+    public class Status5401 : StatusRNG
     {
         protected override void BuildStatusResult(ITicket ticket)
         {
-            const int daySupportResultLink = 7;
-            if (string.IsNullOrEmpty(ticket.BetCheck) ||
-                ticket.IsTicketHide3rdResultLink(daySupportResultLink))
+            if (IsHideRNGResult(ticket))
             {
                 Template.StatusResult.Hide();
             }
             else
             {
                 base.BuildStatusResult(ticket);
-
                 var transDate3rd = Formatter.FullDateFormat(ticket.EventDate.Value);
-
                 Template.StatusResult.winlostDate = transDate3rd;
-                Template.StatusResult.betId = $"{ticket.CurrencyId}, '{ticket.BetTeam}', {ticket.CustId}, '{ticket.BetCheck}', '{ticket.SiteId}'";
             }
+        }
+
+        protected override bool IsHideRNGResult(ITicket ticket)
+        {
+            const int daySupportResultLink = 7;
+
+            return string.IsNullOrEmpty(ticket.BetCheck) ||
+                ticket.IsTicketHide3rdResultLink(daySupportResultLink);
         }
     }
 }

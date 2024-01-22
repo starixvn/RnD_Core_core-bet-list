@@ -15,7 +15,6 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
             else
             {
                 base.BuildStatusResult(ticket);
-
                 Template.StatusResult.betId = $"{ticket.CurrencyId}, '{ticket.BetTeam}', {ticket.CustId}, '{ticket.BetCheck}', '{ticket.SiteId}'";
             }
         }
