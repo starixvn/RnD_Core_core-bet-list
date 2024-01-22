@@ -12,7 +12,8 @@
                 SabaClubBetTypes.CasinoHoldemPoker,
                 SabaClubBetTypes.HiLo,
                 SabaClubBetTypes.TexasHoldemPoker,
-                SabaClubBetTypes.Pontoon
+                SabaClubBetTypes.Pontoon,
+                SabaClubBetTypes.ChineseBlackjack
             };
 
             for (var id = SabaClubBetTypes.MinRange + 1; id < SabaClubBetTypes.Blackjack; id++)
