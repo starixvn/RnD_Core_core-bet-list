@@ -1,0 +1,1071 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="bingo" xml:space="preserve">
+    <value>Bingo</value>
+  </data>
+  <data name="casinoGame" xml:space="preserve">
+    <value>Permainan Kasino</value>
+  </data>
+  <data name="choice" xml:space="preserve">
+    <value>Pilihan</value>
+  </data>
+  <data name="even" xml:space="preserve">
+    <value>Genap</value>
+  </data>
+  <data name="ft" xml:space="preserve">
+    <value>Babak Penuh</value>
+  </data>
+  <data name="lblBoth" xml:space="preserve">
+    <value>Kedua</value>
+  </data>
+  <data name="lblOne" xml:space="preserve">
+    <value>Satu</value>
+  </data>
+  <data name="lblOr" xml:space="preserve">
+    <value>atau</value>
+  </data>
+  <data name="lose" xml:space="preserve">
+    <value>Kalah</value>
+  </data>
+  <data name="member" xml:space="preserve">
+    <value>Anggota</value>
+  </data>
+  <data name="nogoal" xml:space="preserve">
+    <value>Tidak Ada Gol</value>
+  </data>
+  <data name="odd" xml:space="preserve">
+    <value>Ganjil</value>
+  </data>
+  <data name="odds" xml:space="preserve">
+    <value>Harga</value>
+  </data>
+  <data name="over" xml:space="preserve">
+    <value>Atas</value>
+  </data>
+  <data name="pending" xml:space="preserve">
+    <value>Tertunda</value>
+  </data>
+  <data name="race" xml:space="preserve">
+    <value>Balap</value>
+  </data>
+  <data name="refno" xml:space="preserve">
+    <value>Ref No</value>
+  </data>
+  <data name="stake" xml:space="preserve">
+    <value>Taruhan</value>
+  </data>
+  <data name="status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="transfer" xml:space="preserve">
+    <value>Transfer</value>
+  </data>
+  <data name="under" xml:space="preserve">
+    <value>Bawah</value>
+  </data>
+  <data name="winloss" xml:space="preserve">
+    <value>Menang-Kalah</value>
+  </data>
+  <data name="won" xml:space="preserve">
+    <value>Menang</value>
+  </data>
+  <data name="lblMixParlay" xml:space="preserve">
+    <value>Mix Parlay</value>
+  </data>
+  <data name="total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="place" xml:space="preserve">
+    <value>Tempat</value>
+  </data>
+  <data name="win" xml:space="preserve">
+    <value>Menang</value>
+  </data>
+  <data name="reject" xml:space="preserve">
+    <value>Ditolak</value>
+  </data>
+  <data name="running" xml:space="preserve">
+    <value>Berjalan</value>
+  </data>
+  <data name="draw" xml:space="preserve">
+    <value>Seri</value>
+  </data>
+  <data name="waiting" xml:space="preserve">
+    <value>Menunggu</value>
+  </data>
+  <data name="refund" xml:space="preserve">
+    <value>Dikembalikan</value>
+  </data>
+  <data name="voided" xml:space="preserve">
+    <value>Tidak berlaku</value>
+  </data>
+  <data name="losingtickets" xml:space="preserve">
+    <value>Total tiket yang kalah</value>
+  </data>
+  <data name="details" xml:space="preserve">
+    <value>Rincian</value>
+  </data>
+  <data name="a" xml:space="preserve">
+    <value>Tamu</value>
+  </data>
+  <data name="h" xml:space="preserve">
+    <value>Tuan Rumah</value>
+  </data>
+  <data name="betweenXandY" xml:space="preserve">
+    <value>Antara {0} dan {1}</value>
+  </data>
+  <data name="points" xml:space="preserve">
+    <value>Poin</value>
+  </data>
+  <data name="upPoints" xml:space="preserve">
+    <value>Poin UP</value>
+  </data>
+  <data name="exactly" xml:space="preserve">
+    <value>Tepatnya</value>
+  </data>
+  <data name="noTiebreak" xml:space="preserve">
+    <value>Tanpa Tiebreak</value>
+  </data>
+  <data name="virtualtennis_scorebet_0_win" xml:space="preserve">
+    <value>0-Menang</value>
+  </data>
+  <data name="virtualtennis_scorebet_15_win" xml:space="preserve">
+    <value>15-Menang</value>
+  </data>
+  <data name="virtualtennis_scorebet_30_win" xml:space="preserve">
+    <value>30-Menang</value>
+  </data>
+  <data name="virtualtennis_scorebet_40_win" xml:space="preserve">
+    <value>40-Menang</value>
+  </data>
+  <data name="virtualtennis_scorebet_win_0" xml:space="preserve">
+    <value>Menang-0</value>
+  </data>
+  <data name="virtualtennis_scorebet_win_15" xml:space="preserve">
+    <value>Menang-15</value>
+  </data>
+  <data name="virtualtennis_scorebet_win_30" xml:space="preserve">
+    <value>Menang-30</value>
+  </data>
+  <data name="virtualtennis_scorebet_win_40" xml:space="preserve">
+    <value>Menang-40</value>
+  </data>
+  <data name="casinoProgressiveBonus" xml:space="preserve">
+    <value>Bonus Progresif Kasino</value>
+  </data>
+  <data name="playtechcasino" xml:space="preserve">
+    <value>Kasino PlayTech</value>
+  </data>
+  <data name="ee" xml:space="preserve">
+    <value>Genap/Genap</value>
+  </data>
+  <data name="eo" xml:space="preserve">
+    <value>Genap/Ganjil</value>
+  </data>
+  <data name="oe" xml:space="preserve">
+    <value>Ganjil/Genap</value>
+  </data>
+  <data name="oo" xml:space="preserve">
+    <value>Ganjil/Ganjil</value>
+  </data>
+  <data name="FiveAndOver" xml:space="preserve">
+    <value>5+</value>
+  </data>
+  <data name="FiveGoals" xml:space="preserve">
+    <value>5 Gol</value>
+  </data>
+  <data name="FourGoals" xml:space="preserve">
+    <value>4 Gol</value>
+  </data>
+  <data name="NoGoals" xml:space="preserve">
+    <value>Tidak Ada Gol</value>
+  </data>
+  <data name="OneGoal" xml:space="preserve">
+    <value>1 Gol</value>
+  </data>
+  <data name="SevenAndOver" xml:space="preserve">
+    <value>7+</value>
+  </data>
+  <data name="SixGoals" xml:space="preserve">
+    <value>6 Gol</value>
+  </data>
+  <data name="ThreeGoals" xml:space="preserve">
+    <value>3 Gol</value>
+  </data>
+  <data name="TwoGoals" xml:space="preserve">
+    <value>2 Gol</value>
+  </data>
+  <data name="set" xml:space="preserve">
+    <value>Set</value>
+  </data>
+  <data name="FourAndOver" xml:space="preserve">
+    <value>4+</value>
+  </data>
+  <data name="ad" xml:space="preserve">
+    <value>Tamu/Seri</value>
+  </data>
+  <data name="ah" xml:space="preserve">
+    <value>Tamu/Tuan Rumah</value>
+  </data>
+  <data name="all" xml:space="preserve">
+    <value>Semua</value>
+  </data>
+  <data name="AM" xml:space="preserve">
+    <value>AM</value>
+  </data>
+  <data name="amount" xml:space="preserve">
+    <value>Jumlah</value>
+  </data>
+  <data name="and" xml:space="preserve">
+    <value>dan</value>
+  </data>
+  <data name="at" xml:space="preserve">
+    <value>di</value>
+  </data>
+  <data name="bet" xml:space="preserve">
+    <value>taruhan</value>
+  </data>
+  <data name="BetList" xml:space="preserve">
+    <value>Daftar Taruhan</value>
+  </data>
+  <data name="bettype" xml:space="preserve">
+    <value>Jenis Taruhan</value>
+  </data>
+  <data name="casino" xml:space="preserve">
+    <value>Kasino</value>
+  </data>
+  <data name="close" xml:space="preserve">
+    <value>Tutup</value>
+  </data>
+  <data name="combination" xml:space="preserve">
+    <value>Kombinasi</value>
+  </data>
+  <data name="commission" xml:space="preserve">
+    <value>Komisi</value>
+  </data>
+  <data name="content" xml:space="preserve">
+    <value>Konten</value>
+  </data>
+  <data name="customer" xml:space="preserve">
+    <value>Pelanggan</value>
+  </data>
+  <data name="d" xml:space="preserve">
+    <value>Seri</value>
+  </data>
+  <data name="da" xml:space="preserve">
+    <value>Seri/Tamu</value>
+  </data>
+  <data name="date" xml:space="preserve">
+    <value>Tanggal</value>
+  </data>
+  <data name="dd" xml:space="preserve">
+    <value>Seri/Seri</value>
+  </data>
+  <data name="dec" xml:space="preserve">
+    <value>Desember</value>
+  </data>
+  <data name="enable" xml:space="preserve">
+    <value>Aktifkan</value>
+  </data>
+  <data name="events" xml:space="preserve">
+    <value>Acara</value>
+  </data>
+  <data name="fglg" xml:space="preserve">
+    <value>Gol Pertama/Gol Terakhir</value>
+  </data>
+  <data name="first" xml:space="preserve">
+    <value>Pertama</value>
+  </data>
+  <data name="FirstHalf" xml:space="preserve">
+    <value>Babak 1</value>
+  </data>
+  <data name="from" xml:space="preserve">
+    <value>Dari</value>
+  </data>
+  <data name="game" xml:space="preserve">
+    <value>Permainan</value>
+  </data>
+  <data name="games" xml:space="preserve">
+    <value>Permainan</value>
+  </data>
+  <data name="go" xml:space="preserve">
+    <value>Lanjut</value>
+  </data>
+  <data name="ha" xml:space="preserve">
+    <value>Tuan Rumah/Tamu</value>
+  </data>
+  <data name="hd" xml:space="preserve">
+    <value>Tuan Rumah/Seri</value>
+  </data>
+  <data name="hdp" xml:space="preserve">
+    <value>Handicap</value>
+  </data>
+  <data name="hh" xml:space="preserve">
+    <value>Tuan Rumah/Tuan Rumah</value>
+  </data>
+  <data name="Horse" xml:space="preserve">
+    <value>Balapan</value>
+  </data>
+  <data name="hr" xml:space="preserve">
+    <value>Balapan</value>
+  </data>
+  <data name="Internal" xml:space="preserve">
+    <value>Internal</value>
+  </data>
+  <data name="ip" xml:space="preserve">
+    <value>IP</value>
+  </data>
+  <data name="Neutral" xml:space="preserve">
+    <value>(N)</value>
+  </data>
+  <data name="last" xml:space="preserve">
+    <value>Terakhir</value>
+  </data>
+  <data name="lblLose" xml:space="preserve">
+    <value>Kalah</value>
+  </data>
+  <data name="lblM" xml:space="preserve">
+    <value>M = Master</value>
+  </data>
+  <data name="lblNeither" xml:space="preserve">
+    <value>Tidak Ada</value>
+  </data>
+  <data name="lblNoDraw" xml:space="preserve">
+    <value>Tanpa Seri</value>
+  </data>
+  <data name="lblRunning" xml:space="preserve">
+    <value>Berjalan</value>
+  </data>
+  <data name="lblS" xml:space="preserve">
+    <value>S = Super</value>
+  </data>
+  <data name="lblSystemParlay" xml:space="preserve">
+    <value>Parlay Sistem</value>
+  </data>
+  <data name="lblWaiting" xml:space="preserve">
+    <value>Menunggu</value>
+  </data>
+  <data name="lblWon" xml:space="preserve">
+    <value>Menang</value>
+  </data>
+  <data name="league" xml:space="preserve">
+    <value>Liga</value>
+  </data>
+  <data name="LiveBaccarat" xml:space="preserve">
+    <value>Baccarat Langsung</value>
+  </data>
+  <data name="LiveCasino" xml:space="preserve">
+    <value>Kasino Langsung</value>
+  </data>
+  <data name="LiveRoulette" xml:space="preserve">
+    <value>Roulette Langsung</value>
+  </data>
+  <data name="mar" xml:space="preserve">
+    <value>Maret</value>
+  </data>
+  <data name="match" xml:space="preserve">
+    <value>Pertandingan</value>
+  </data>
+  <data name="mon" xml:space="preserve">
+    <value>Senin</value>
+  </data>
+  <data name="name" xml:space="preserve">
+    <value>Nama</value>
+  </data>
+  <data name="no" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="none" xml:space="preserve">
+    <value>Tidak Ada</value>
+  </data>
+  <data name="normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="numbergame" xml:space="preserve">
+    <value>Permainan Angka</value>
+  </data>
+  <data name="of" xml:space="preserve">
+    <value>dari</value>
+  </data>
+  <data name="open" xml:space="preserve">
+    <value>Buka</value>
+  </data>
+  <data name="OT" xml:space="preserve">
+    <value>OT</value>
+  </data>
+  <data name="other" xml:space="preserve">
+    <value>Lainnya</value>
+  </data>
+  <data name="outstanding" xml:space="preserve">
+    <value>Belum Lunas</value>
+  </data>
+  <data name="P2" xml:space="preserve">
+    <value>Dua Pemain</value>
+  </data>
+  <data name="P2P" xml:space="preserve">
+    <value>Pemain-Ke-Pemain</value>
+  </data>
+  <data name="p2pGame" xml:space="preserve">
+    <value>Permainan Poker</value>
+  </data>
+  <data name="parlay" xml:space="preserve">
+    <value>Parlay</value>
+  </data>
+  <data name="PartyBaccarat" xml:space="preserve">
+    <value>Baccarat Pesta</value>
+  </data>
+  <data name="PartyRoulette" xml:space="preserve">
+    <value>Roulette Pesta</value>
+  </data>
+  <data name="player" xml:space="preserve">
+    <value>Pemain</value>
+  </data>
+  <data name="product" xml:space="preserve">
+    <value>Produk</value>
+  </data>
+  <data name="pt" xml:space="preserve">
+    <value>Penempatan Posisi</value>
+  </data>
+  <data name="reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="result" xml:space="preserve">
+    <value>Hasil</value>
+  </data>
+  <data name="SB" xml:space="preserve">
+    <value>Buku Olahraga</value>
+  </data>
+  <data name="scr" xml:space="preserve">
+    <value>SCR</value>
+  </data>
+  <data name="sec" xml:space="preserve">
+    <value>detik</value>
+  </data>
+  <data name="SecondHalf" xml:space="preserve">
+    <value>Paruh Kedua</value>
+  </data>
+  <data name="setting" xml:space="preserve">
+    <value>Pengaturan</value>
+  </data>
+  <data name="sport" xml:space="preserve">
+    <value>Olahraga</value>
+  </data>
+  <data name="subTotal" xml:space="preserve">
+    <value>Sub Total</value>
+  </data>
+  <data name="summary" xml:space="preserve">
+    <value>Ringkasan</value>
+  </data>
+  <data name="Tennis" xml:space="preserve">
+    <value>Tenis</value>
+  </data>
+  <data name="tf" xml:space="preserve">
+    <value>TF</value>
+  </data>
+  <data name="Tie" xml:space="preserve">
+    <value>Seri</value>
+  </data>
+  <data name="time" xml:space="preserve">
+    <value>Waktu</value>
+  </data>
+  <data name="to" xml:space="preserve">
+    <value>Ke</value>
+  </data>
+  <data name="type" xml:space="preserve">
+    <value>Jenis</value>
+  </data>
+  <data name="UpdateAll" xml:space="preserve">
+    <value>Perbarui Semua</value>
+  </data>
+  <data name="view" xml:space="preserve">
+    <value>Tampilan</value>
+  </data>
+  <data name="warrior" xml:space="preserve">
+    <value>Prajurit</value>
+  </data>
+  <data name="wed" xml:space="preserve">
+    <value>Rabu</value>
+  </data>
+  <data name="lblYes" xml:space="preserve">
+    <value>Ya</value>
+  </data>
+  <data name="lblNo" xml:space="preserve">
+    <value>Tidak</value>
+  </data>
+  <data name="results" xml:space="preserve">
+    <value>Hasil</value>
+  </data>
+  <data name="Roulette" xml:space="preserve">
+    <value>Roulette</value>
+  </data>
+  <data name="table" xml:space="preserve">
+    <value>Meja</value>
+  </data>
+  <data name="AwayToWinAnyOtherScore" xml:space="preserve">
+    <value>Menang Tandang dengan AOS</value>
+  </data>
+  <data name="HomeToWinAnyOtherScore" xml:space="preserve">
+    <value>Menang Tuan Rumah dengan AOS</value>
+  </data>
+  <data name="ZeroGoals" xml:space="preserve">
+    <value>0 Gol</value>
+  </data>
+  <data name="SixAndOver" xml:space="preserve">
+    <value>6+</value>
+  </data>
+  <data name="ThreeGoalsAndOver" xml:space="preserve">
+    <value>3+</value>
+  </data>
+  <data name="ExtraTimeHTDotOne" xml:space="preserve">
+    <value>Waktu Ekstra ParuhWaktu.1</value>
+  </data>
+  <data name="ExtraTimeHTDotX" xml:space="preserve">
+    <value>Waktu Ekstra ParuhWaktu.X</value>
+  </data>
+  <data name="ExtraTimeHTDotTwo" xml:space="preserve">
+    <value>Waktu Ekstra ParuhWaktu.2</value>
+  </data>
+  <data name="Min" xml:space="preserve">
+    <value>Min</value>
+  </data>
+  <data name="ToWinByOneGoal" xml:space="preserve">
+    <value>untuk Menang dengan Selisih 1 Gol</value>
+  </data>
+  <data name="ToWinByTwoGoals" xml:space="preserve">
+    <value>Untuk Menang dengan Selisih 2 Gol</value>
+  </data>
+  <data name="ToWinByThreeUpGoals" xml:space="preserve">
+    <value>Untuk Menang dengan Selisih 3+ Gol</value>
+  </data>
+  <data name="RegularTime" xml:space="preserve">
+    <value>Waktu Reguler</value>
+  </data>
+  <data name="ExtraTime" xml:space="preserve">
+    <value>Waktu Ekstra</value>
+  </data>
+  <data name="Penalty" xml:space="preserve">
+    <value>Penalti</value>
+  </data>
+  <data name="SevenAndOverCorners" xml:space="preserve">
+    <value>7&amp;Lebih Sudut</value>
+  </data>
+  <data name="Corners" xml:space="preserve">
+    <value>Sudut</value>
+  </data>
+  <data name="TwelveAndOverCorners" xml:space="preserve">
+    <value>12&amp;Lebih Sudut</value>
+  </data>
+  <data name="FourAndOverCorners" xml:space="preserve">
+    <value>4&amp;Lebih Sudut</value>
+  </data>
+  <data name="FourGoalsAndOver" xml:space="preserve">
+    <value>4 Gol &amp;Lebih</value>
+  </data>
+  <data name="TwoGoalsAndOver" xml:space="preserve">
+    <value>2 Gol &amp;Lebih</value>
+  </data>
+  <data name="HomeFG" xml:space="preserve">
+    <value>Gol Tuan Rumah</value>
+  </data>
+  <data name="HomeLG" xml:space="preserve">
+    <value>Gol Terakhir Tuan Rumah</value>
+  </data>
+  <data name="AwayFG" xml:space="preserve">
+    <value>Gol Tim Tamu</value>
+  </data>
+  <data name="AwayLG" xml:space="preserve">
+    <value>Gol Terakhir Tim Tamu</value>
+  </data>
+  <data name="NoGoal14" xml:space="preserve">
+    <value>Tidak Ada Gol</value>
+  </data>
+  <data name="ThereIsNoTicketDetailAvailable" xml:space="preserve">
+    <value>Tidak ada detail tiket yang tersedia.</value>
+  </data>
+  <data name="Bought" xml:space="preserve">
+    <value>Dibeli</value>
+  </data>
+  <data name="Sold" xml:space="preserve">
+    <value>Terjual</value>
+  </data>
+  <data name="AOS" xml:space="preserve">
+    <value>Skor Lainnya</value>
+  </data>
+  <data name="Up" xml:space="preserve">
+    <value>UP</value>
+  </data>
+  <data name="ThreeOver" xml:space="preserve">
+    <value>3+</value>
+  </data>
+  <data name="Excluding" xml:space="preserve">
+    <value>Kecuali</value>
+  </data>
+  <data name="Away" xml:space="preserve">
+    <value>Tamu</value>
+  </data>
+  <data name="FreeKick" xml:space="preserve">
+    <value>Tendangan Bebas</value>
+  </data>
+  <data name="Header" xml:space="preserve">
+    <value>Sundulan</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Tuan Rumah</value>
+  </data>
+  <data name="NoAndOver" xml:space="preserve">
+    <value>Tidak &amp; Lebih</value>
+  </data>
+  <data name="NoAndUnder" xml:space="preserve">
+    <value>Tidak &amp; Kurang</value>
+  </data>
+  <data name="OwnGoal" xml:space="preserve">
+    <value>Gol Bunuh Diri</value>
+  </data>
+  <data name="ScoreDraw" xml:space="preserve">
+    <value>Seri dengan Skor Apapun (Tidak Termasuk 0-0)</value>
+  </data>
+  <data name="Shot" xml:space="preserve">
+    <value>Tembakan</value>
+  </data>
+  <data name="YesAndOver" xml:space="preserve">
+    <value>Ya &amp; Atas</value>
+  </data>
+  <data name="YesAndUnder" xml:space="preserve">
+    <value>Ya &amp; Bawah</value>
+  </data>
+  <data name="ToWinByTwoUpGoals" xml:space="preserve">
+    <value>Untuk Menang dengan Selisih 2+ Gol</value>
+  </data>
+  <data name="FirstHalfShort" xml:space="preserve">
+    <value>Paruh Pertama</value>
+  </data>
+  <data name="SecondHalfShort" xml:space="preserve">
+    <value>Paruh Kedua</value>
+  </data>
+  <data name="ThreeAndOver" xml:space="preserve">
+    <value>3+</value>
+  </data>
+  <data name="AOSFTExcluding" xml:space="preserve">
+    <value>AOS Babak Penuh Kecuali</value>
+  </data>
+  <data name="AOSHTExcluding" xml:space="preserve">
+    <value>AOS Babak 1 Kecuali</value>
+  </data>
+  <data name="FullTime" xml:space="preserve">
+    <value>Babak Penuh</value>
+  </data>
+  <data name="HalfTime" xml:space="preserve">
+    <value>Babak 1</value>
+  </data>
+  <data name="Live" xml:space="preserve">
+    <value>Langsung</value>
+  </data>
+  <data name="aa" xml:space="preserve">
+    <value>Tamu/Tamu</value>
+  </data>
+  <data name="history" xml:space="preserve">
+    <value>Riwayat</value>
+  </data>
+  <data name="dh" xml:space="preserve">
+    <value>Seri/Tuan Rumah</value>
+  </data>
+  <data name="BoughtLabel" xml:space="preserve">
+    <value>Dibeli dari No.:</value>
+  </data>
+  <data name="CashOut" xml:space="preserve">
+    <value>Fitur Bayar Sekarang</value>
+  </data>
+  <data name="CashOutLabel" xml:space="preserve">
+    <value>Fitur Bayar Sekarang dari No.:</value>
+  </data>
+  <data name="FtAsian" xml:space="preserve">
+    <value>Asian Babak Penuh</value>
+  </data>
+  <data name="HtAsian" xml:space="preserve">
+    <value>Asian Babak 1</value>
+  </data>
+  <data name="FT455" xml:space="preserve">
+    <value>Babak Penuh</value>
+  </data>
+  <data name="None22" xml:space="preserve">
+    <value>Tidak Ada</value>
+  </data>
+  <data name="NoGoal408" xml:space="preserve">
+    <value>Tidak Ada Gol</value>
+  </data>
+  <data name="rate" xml:space="preserve">
+    <value>Rate</value>
+  </data>
+  <data name="forRefNo" xml:space="preserve">
+    <value>Untuk Ref No</value>
+  </data>
+  <data name="ProgressiveJackpotWonDetails" xml:space="preserve">
+    <value>Detail Jackpot Progresif yang Dimenangkan</value>
+  </data>
+  <data name="Bonus" xml:space="preserve">
+    <value>Bonus</value>
+  </data>
+  <data name="Cash" xml:space="preserve">
+    <value>Tunai</value>
+  </data>
+  <data name="ShowTransactionDetails" xml:space="preserve">
+    <value>Tampilkan Detail Transaksi</value>
+  </data>
+  <data name="ResultPending" xml:space="preserve">
+    <value>Hasil Tertunda</value>
+  </data>
+  <data name="UnderSettlement" xml:space="preserve">
+    <value>Sedang Dalam Penyelesaian</value>
+  </data>
+  <data name="InPlay" xml:space="preserve">
+    <value>SEDANG BERLANGSUNG</value>
+  </data>
+  <data name="halfwon" xml:space="preserve">
+    <value>Setengah Menang</value>
+  </data>
+  <data name="halflose" xml:space="preserve">
+    <value>Setengah Kalah</value>
+  </data>
+  <data name="AbnormalBet" xml:space="preserve">
+    <value>Taruhan Abnormal</value>
+  </data>
+  <data name="Equal" xml:space="preserve">
+    <value>Sama</value>
+  </data>
+  <data name="Rebate" xml:space="preserve">
+    <value>Rabat</value>
+  </data>
+  <data name="Exact" xml:space="preserve">
+    <value>Tepat</value>
+  </data>
+  <data name="CornerBefore" xml:space="preserve">
+    <value>Sudut Sebelum {0}:00</value>
+  </data>
+  <data name="NoCornerBefore" xml:space="preserve">
+    <value>Tidak Ada Sudut Sebelum {0}:00</value>
+  </data>
+  <data name="Promotion" xml:space="preserve">
+    <value>Promosi</value>
+  </data>
+  <data name="NineAndOver" xml:space="preserve">
+    <value>9+</value>
+  </data>
+  <data name="ZeroToFour" xml:space="preserve">
+    <value>0-4</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Skor</value>
+  </data>
+  <data name="Miss" xml:space="preserve">
+    <value>Gagal</value>
+  </data>
+  <data name="SabaLuckySpinProgramPattern" xml:space="preserve">
+    <value>{0} {1}</value>
+  </data>
+  <data name="Goal" xml:space="preserve">
+    <value>Gol</value>
+  </data>
+  <data name="DelayPayout" xml:space="preserve">
+    <value>Pembayaran Ditunda</value>
+  </data>
+  <data name="TxId" xml:space="preserve">
+    <value>IDTx</value>
+  </data>
+  <data name="BetID" xml:space="preserve">
+    <value>IDBet</value>
+  </data>
+  <data name="TeamNameRoundGoal" xml:space="preserve">
+    <value>{0} Putaran {1}: Gol @{2}</value>
+  </data>
+  <data name="TeamNameRoundMiss" xml:space="preserve">
+    <value>{0} Putaran {1}: Gagal @{2}</value>
+  </data>
+  <data name="JackpotWonDetails" xml:space="preserve">
+    <value>Detail Jackpot yang Dimenangkan</value>
+  </data>
+  <data name="h12" xml:space="preserve">
+    <value>Tuan Rumah Menang Kuartal 1 &amp; 2</value>
+  </data>
+  <data name="h13" xml:space="preserve">
+    <value>Tuan Rumah Menang Kuartal 1 &amp; 3</value>
+  </data>
+  <data name="h14" xml:space="preserve">
+    <value>Tuan Rumah Menang Kuartal 1 &amp; 4</value>
+  </data>
+  <data name="h23" xml:space="preserve">
+    <value>Tuan Rumah Menang Kuartal 2 &amp; 3</value>
+  </data>
+  <data name="h24" xml:space="preserve">
+    <value>Tuan Rumah Menang Kuartal 2 &amp; 4</value>
+  </data>
+  <data name="h34" xml:space="preserve">
+    <value>Tuan Rumah Menang Kuartal 3 &amp; 4</value>
+  </data>
+  <data name="a12" xml:space="preserve">
+    <value>Tandang Menang Kuartal 1 &amp; 2</value>
+  </data>
+  <data name="a13" xml:space="preserve">
+    <value>Tandang Menang Kuartal 1 &amp; 3</value>
+  </data>
+  <data name="a14" xml:space="preserve">
+    <value>Tandang Menang Kuartal 1 &amp; 4</value>
+  </data>
+  <data name="a24" xml:space="preserve">
+    <value>Tandang Menang Kuartal 2 &amp; 4</value>
+  </data>
+  <data name="a23" xml:space="preserve">
+    <value>Tandang Menang Kuartal 2 &amp; 3</value>
+  </data>
+  <data name="a34" xml:space="preserve">
+    <value>Tandang Menang Kuartal 3 &amp; 4</value>
+  </data>
+  <data name="aos12" xml:space="preserve">
+    <value>AOS Untuk Kuartal 1 &amp; 2</value>
+  </data>
+  <data name="aos13" xml:space="preserve">
+    <value>AOS Untuk Kuartal 1 &amp; 3</value>
+  </data>
+  <data name="aos14" xml:space="preserve">
+    <value>AOS Untuk Kuartal 1 &amp; 4</value>
+  </data>
+  <data name="aos23" xml:space="preserve">
+    <value>AOS Untuk Kuartal 2 &amp; 3</value>
+  </data>
+  <data name="aos24" xml:space="preserve">
+    <value>AOS Untuk Kuartal 2 &amp; 4</value>
+  </data>
+  <data name="aos34" xml:space="preserve">
+    <value>AOS Untuk Kuartal 3 &amp; 4</value>
+  </data>
+  <data name="1q" xml:space="preserve">
+    <value>Kuartal 1</value>
+  </data>
+  <data name="2q" xml:space="preserve">
+    <value>Kuartal 2</value>
+  </data>
+  <data name="3q" xml:space="preserve">
+    <value>Kuartal 3</value>
+  </data>
+  <data name="4q" xml:space="preserve">
+    <value>Kuartal 4</value>
+  </data>
+  <data name="Caught" xml:space="preserve">
+    <value>Tertangkap</value>
+  </data>
+  <data name="NotCaught" xml:space="preserve">
+    <value>Tidak Tertangkap</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back {0}</value>
+  </data>
+  <data name="Lay" xml:space="preserve">
+    <value>Lay {0}</value>
+  </data>
+  <data name="Mid" xml:space="preserve">
+    <value>Tengah</value>
+  </data>
+  <data name="TopBottom" xml:space="preserve">
+    <value>Atas atau Bawah</value>
+  </data>
+  <data name="Top" xml:space="preserve">
+    <value>Atas</value>
+  </data>
+  <data name="Bottom" xml:space="preserve">
+    <value>Bawah</value>
+  </data>
+  <data name="Overlord" xml:space="preserve">
+    <value>Penguasa</value>
+  </data>
+  <data name="Tyrant" xml:space="preserve">
+    <value>Tiran</value>
+  </data>
+  <data name="OverlordMiddle" xml:space="preserve">
+    <value>Penguasa atau Tengah</value>
+  </data>
+  <data name="MidBottom" xml:space="preserve">
+    <value>Tengah atau Bawah</value>
+  </data>
+  <data name="TopMid" xml:space="preserve">
+    <value>Atas atau Tengah</value>
+  </data>
+  <data name="Bowled" xml:space="preserve">
+    <value>Bolos</value>
+  </data>
+  <data name="LBW" xml:space="preserve">
+    <value>Tertangkap Sebelum Menyentuh Stump</value>
+  </data>
+  <data name="RunOut" xml:space="preserve">
+    <value>Run Out</value>
+  </data>
+  <data name="Stumped" xml:space="preserve">
+    <value>Stumped</value>
+  </data>
+  <data name="Others" xml:space="preserve">
+    <value>Lainnya</value>
+  </data>
+  <data name="Caught2" xml:space="preserve">
+    <value>Tertangkap</value>
+  </data>
+  <data name="a_wm_2" xml:space="preserve">
+    <value>Tandang Menang dengan Selisih 2 Poin</value>
+  </data>
+  <data name="a_wm_3_4" xml:space="preserve">
+    <value>Tandang Menang dengan Selisih 3 - 4 Poin</value>
+  </data>
+  <data name="a_wm_5_7" xml:space="preserve">
+    <value>Tandang Menang dengan Selisih 5 - 7 Poin</value>
+  </data>
+  <data name="a_wm_8_11" xml:space="preserve">
+    <value>Tandang Menang dengan Selisih 8 - 11 Poin</value>
+  </data>
+  <data name="a_wm_over_12" xml:space="preserve">
+    <value>Tandang Menang dengan Selisih 12+ Poin</value>
+  </data>
+  <data name="h_wm_2" xml:space="preserve">
+    <value>Tuan Rumah Menang dengan Selisih 2 Poin</value>
+  </data>
+  <data name="h_wm_3_4" xml:space="preserve">
+    <value>Tuan Rumah Menang dengan Selisih 3 - 4 Poin</value>
+  </data>
+  <data name="h_wm_5_7" xml:space="preserve">
+    <value>Tuan Rumah Menang dengan Selisih 5 - 7 Poin</value>
+  </data>
+  <data name="h_wm_8_11" xml:space="preserve">
+    <value>Tuan Rumah Menang dengan Selisih 8 - 11 Poin</value>
+  </data>
+  <data name="h_wm_over_12" xml:space="preserve">
+    <value>Tuan Rumah Menang dengan Selisih 12+ Poin</value>
+  </data>
+  <data name="com" xml:space="preserve">
+    <value>Komisi</value>
+  </data>
+  <data name="Boost" xml:space="preserve">
+    <value>+{0}% Peningkatan</value>
+  </data>
+  <data name="MaxPayoutAlert" xml:space="preserve">
+    <value>Mencapai Pembayaran Maksimal Perusahaan</value>
+  </data>
+  <data name="MaxPayoutAlertInfo" xml:space="preserve">
+    <value>Tiket ini telah mencapai Max Payout yang ditetapkan oleh perusahaan. Lihat Aturan dan Peraturan untuk informasi lebih lanjut.</value>
+  </data>
+  <data name="Saba" xml:space="preserve">
+    <value>SABA</value>
+  </data>
+</root>
