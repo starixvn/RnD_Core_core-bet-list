@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>    
-        <Version>2.0.0.5-beta-01</Version>
-        <PackageReleaseNotes>Support new bettype for VS 3 (#194634)</PackageReleaseNotes>
+        <Version>2.0.0.6</Version>
+        <PackageReleaseNotes>Remove representation bettype 1203, 1205 (#198523)</PackageReleaseNotes>
         <Description>BetList core package</Description>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <Authors>Nexcel Solutions</Authors>
