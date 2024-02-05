@@ -691,6 +691,7 @@
     <Content Include="App_Data\BasketballAIOP3.xls" />
     <Content Include="App_Data\ParlayBoost.xls" />
     <Content Include="App_Data\MaxPayout.xls" />
+    <Content Include="App_Data\VirtualSports4.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />

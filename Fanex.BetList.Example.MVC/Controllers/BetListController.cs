@@ -66,6 +66,25 @@
             return BetListView(model);
         }
 
+        public ActionResult VirtualSports4(BetListData model = null)
+        {
+            var betTypeIds = new List<int>();
+
+            for (var betTypeId = 10400; betTypeId <= 10449; betTypeId++)
+            {
+                betTypeIds.Add(betTypeId);
+            }
+
+            var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            DataSourcePath = "~/App_Data/VirtualSports4.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
         public ActionResult PlayerTips(BetListData model = null)
         {
 

@@ -11,6 +11,16 @@
             MapVirtualSports2BetTypes();
 
             MapForVirtualSports3();
+
+            MapForVirtualSports4();
+        }
+
+        private void MapForVirtualSports4()
+        {
+            for (var id = VirtualSports4BetTypes.MatchWinner + 1; id <= VirtualSports4BetTypes.MixParlay; id++)
+            {
+                MapIdToBaseId(id, VirtualSports4BetTypes.MatchWinner);
+            }
         }
 
         private void MapForVirtualSports3()

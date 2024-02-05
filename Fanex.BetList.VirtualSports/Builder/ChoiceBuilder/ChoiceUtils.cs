@@ -1,6 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System;
+    using System.Collections.Generic;
     using System.Text.RegularExpressions;
     using Entities;
     using Templates;
@@ -9,6 +10,7 @@
     {
         private const string MatchInfoPattern = "m=\"([^\"]*)\"";
         private const string ExcludingScoresPattern = "s=\"([^\"]*)\"";
+        internal const string VS4MatchCode = "EGVS_MatchCode";
 
         public static void AppendKickOffTime(this Choice_Template template, ITicket ticket)
             => template.Match.Append($"<div class=\"match\">{ParseKickOffTime(ticket)}</div>");
@@ -36,6 +38,13 @@
             var matchCode = ParseNeccessaryInfoFromTransDesc(transDesc, MatchInfoPattern);
 
             return ticketHelper.GetBetRadarMatchCodeFormat(matchCode);
+        }
+
+        public static string ParseMatchInfoVS(string refId, string transDesc, ITicketHelper ticketHelper)
+        {
+            var matchCode = ParseNeccessaryInfoFromTransDesc(transDesc, MatchInfoPattern);
+
+            return GetMatchInfoOfVS(refId, matchCode, ticketHelper);
         }
 
         public static string ParseExcludingScoresInfo(string transDesc)
@@ -72,6 +81,24 @@
                 {
                     var ResourceId = str2.Substring(0, length);
                     var refIdAndResourceId = ticketHelper.GetResourceData("LVS_MatchCode", ResourceId);
+                    matchCode = matchCode.Replace("{" + ResourceId + "}", refIdAndResourceId);
+                }
+            }
+
+            return matchCode;
+        }
+
+        private static string GetMatchInfoOfVS(string refId, string matchCode, ITicketHelper ticketHelper)
+        {
+            var str1 = matchCode;
+            var chArray = new[] { '{' };
+            foreach (string str2 in str1.Split(chArray))
+            {
+                var length = str2.IndexOf('}');
+                if (length != -1)
+                {
+                    var ResourceId = str2.Substring(0, length);
+                    var refIdAndResourceId = ticketHelper.GetResourceData(refId, ResourceId);
                     matchCode = matchCode.Replace("{" + ResourceId + "}", refIdAndResourceId);
                 }
             }

@@ -17,11 +17,22 @@
             MapIdToBaseId(BetRadarVirtualBasketballBetTypes.HomeTeamOverUnder, BetRadarVirtualSoccerBetTypes.OverUnder);
             MapIdToBaseId(BetRadarVirtualBasketballBetTypes.AwayTeamOverUnder, BetRadarVirtualSoccerBetTypes.OverUnder);
             MapForVirtualSports3();
+            MapForVirtualSports4();
         }
 
         private void MapForVirtualSports3()
         {
             MapIdToBaseId(VirtualSports3BetTypes.FirstOneXTwo, VirtualSports3BetTypes.FulltimeOneXTwo);
+        }
+        
+        private void MapForVirtualSports4()
+        {
+            for (int bettype = VirtualSports4BetTypes.MatchWinner + 1; bettype < VirtualSports4BetTypes.MixParlay; bettype++)
+            {
+                MapIdToBaseId(bettype, VirtualSports4BetTypes.MatchWinner);
+            }
+
+            MapIdToBaseId(VirtualSports4BetTypes.MixParlay, BetRadarSharedBetTypes.MixParlay);
         }
     }
 }
