@@ -18,7 +18,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             if (IsDetailTicket(ticket.BetCheck))
             {
-                Template.betTeam += $" {ticket.BetCheck}";
+                Template.betTeam += $" {GetTransId3rd(ticket.BetCheck)}";
             }
         }
 

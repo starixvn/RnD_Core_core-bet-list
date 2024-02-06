@@ -9,6 +9,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Entities;
     using Fanex.BetList.Core.Utils.Parsers;
     using Fanex.BetList.Core.Utils.TicketExt;
+    using Fanex.BetList.Core.TransId3rdHelper;
     using Templates;
     using Utils;
 
@@ -26,6 +27,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         private const string GameTableIdFormat = " <span class=\"gamegroupname\">{0}</span>";
 
         private Dictionary<string, string> _parsedTransDesc;
+        private string _parseTransId3rd;
 
         public override Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
         {
@@ -52,7 +54,8 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             if (!string.IsNullOrEmpty(ticket.TransDesc))
             {
-                Template.BetType.betTypeName = $"{OpenBetIdTag}{CoreBetList.BetID}: {ticket.BetCheck}{CloseBetIdTag}";
+                _parseTransId3rd = TransId3rdLCHelper.GetTransId3rd(ticket.BetCheck);
+                Template.BetType.betTypeName = $"{OpenBetIdTag}{CoreBetList.BetID}: {_parseTransId3rd}{CloseBetIdTag}";
             }
         }
 
@@ -168,6 +171,14 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             Template.BetType.betTypeName = Template.BetType.betTypeName
                 .Replace(OpenBetIdTag, string.Empty)
                 .Replace(CloseBetIdTag, string.Empty);
+        }
+
+        protected virtual string GetTransId3rd(string transId3rd){
+            if(_parseTransId3rd == null){
+                _parseTransId3rd = TransId3rdLCHelper.GetTransId3rd(transId3rd);
+            }
+
+            return _parseTransId3rd;
         }
     }
 }
