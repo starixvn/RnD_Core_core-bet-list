@@ -47,11 +47,15 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         protected override void BuildMatchInfo(ref RTFHelper rtfHelper)
         {
             var sportTypeName = Template.League.sportTypeName;
-            var gameGroupName = Template.League.LeagueName.ToString().StripHTML();
 
-            if (!string.IsNullOrEmpty(sportTypeName) && !string.IsNullOrEmpty(gameGroupName))
+            if (!string.IsNullOrEmpty(sportTypeName))
             {
-                rtfHelper.RTFRenderer.AddText($"\n{sportTypeName}{gameGroupName}");
+                rtfHelper.RTFRenderer.AddText($"\n{sportTypeName}");
+
+                if(Template.League.LeagueName != null){
+                    var gameGroupName = Template.League.LeagueName.ToString().StripHTML();
+                    rtfHelper.RTFRenderer.AddText(gameGroupName);
+                }
             }
         }
 
