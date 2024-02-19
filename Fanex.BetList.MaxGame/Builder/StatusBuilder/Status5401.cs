@@ -8,16 +8,10 @@
     {
         protected override void BuildStatusResult(ITicket ticket)
         {
-            if (IsHideRNGResult(ticket))
-            {
-                Template.StatusResult.Hide();
-            }
-            else
-            {
-                base.BuildStatusResult(ticket);
-                var transDate3rd = Formatter.FullDateFormat(ticket.EventDate.Value);
-                Template.StatusResult.winlostDate = transDate3rd;
-            }
+            base.BuildStatusResult(ticket);
+            
+            var transDate3rd = Formatter.FullDateFormat(ticket.EventDate.Value);
+            Template.StatusResult.winlostDate = transDate3rd;
         }
 
         protected override bool IsHideRNGResult(ITicket ticket)

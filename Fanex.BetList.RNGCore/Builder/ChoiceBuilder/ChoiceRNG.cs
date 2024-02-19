@@ -4,13 +4,33 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Utils.StringExt;
     using Fanex.BetList.Core.Utils.TicketExt;
-    using Fanex.BetList.Core.TransId3rdHelper;
     using System;
     using System.Collections.Generic;
 
     public class ChoiceRNG : Choice1
     {
-        private string _parseTransId3rd;
+        protected virtual string BuildDetailsLink(ITicket ticket)
+        => string.Empty;
+
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {
+            Template.betTeam = $"<span class=\"handicap\">{ticketHelper.GetBetTypeNameById(ticket.BetTypeId)}</span>";
+
+            if (IsDetailTicket(ticket.BetCheck))
+            {
+                Template.betTeam += $" {GetTransId3rd(ticket.BetCheck)}";
+            }
+        }
+
+        protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            Template.League.LeagueName = null;
+
+            if (IsSummaryTicket(ticket.BetCheck))
+            {
+                Template.League.Append(BuildDetailsLink(ticket));
+            }
+        }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
@@ -40,20 +60,25 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
             => Template.BetType = null;
-            
+
 
         protected virtual bool IsDetailTicket(string betCheck)
-                => !string.IsNullOrEmpty(betCheck);
+            => !string.IsNullOrEmpty(betCheck);
 
         protected virtual bool IsSummaryTicket(string betCheck)
             => !IsDetailTicket(betCheck);
-            
-        protected virtual string GetTransId3rd(string transId3rd){
-            if(_parseTransId3rd == null){
-                _parseTransId3rd = TransId3rdRNGHelper.GetTransId3rd(transId3rd);
+
+        protected virtual string GetTransId3rd(string transId3rd)
+        {
+            const string transId3rdSeparator = "|$|";
+            if (transId3rd == null || !transId3rd.Contains(transId3rdSeparator))
+            {
+                return transId3rd;
             }
 
-            return _parseTransId3rd;
+            var transIdParts = transId3rd.Split(new string[] { transId3rdSeparator }, StringSplitOptions.RemoveEmptyEntries);
+
+            return transIdParts[transIdParts.Length - 1];
         }
     }
 }
