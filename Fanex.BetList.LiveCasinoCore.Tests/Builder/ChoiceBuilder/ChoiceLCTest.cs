@@ -185,7 +185,7 @@ namespace Fanex.BetList.SexyGaming.Tests.Builder.ChoiceBuilder
         {
             return string.Format(
                 "<div class=\"detail live-casino-detail\"" +
-                " onclick='showLiveCasinoBetDetails(&quot;{0}&quot;,&quot;{1}&quot;,&quot;{2}&quot;,&quot;{3}&quot;);'>" +
+                " onclick=''>" +
                 "<a class=\"detail-link\"" +
                 " href=\"javascript:void(&quot;&quot;);\">Details</a></div>",
                 ticket.TransId.ToString(),

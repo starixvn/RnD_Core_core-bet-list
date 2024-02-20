@@ -9,7 +9,6 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Entities;
     using Fanex.BetList.Core.Utils.Parsers;
     using Fanex.BetList.Core.Utils.TicketExt;
-    using Fanex.BetList.Core.TransId3rdHelper;
     using Templates;
     using Utils;
 
@@ -27,7 +26,6 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         private const string GameTableIdFormat = " <span class=\"gamegroupname\">{0}</span>";
 
         private Dictionary<string, string> _parsedTransDesc;
-        private string _parseTransId3rd;
 
         public override Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
         {
@@ -54,7 +52,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             if (!string.IsNullOrEmpty(ticket.TransDesc))
             {
-                _parseTransId3rd = TransId3rdLCHelper.GetTransId3rd(ticket.BetCheck);
+                var _parseTransId3rd = GetTransId3rd(ticket.BetCheck);
                 Template.BetType.betTypeName = $"{OpenBetIdTag}{CoreBetList.BetID}: {_parseTransId3rd}{CloseBetIdTag}";
             }
         }
@@ -79,14 +77,12 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             RemoveHtmlTagFromBetTypeName();
         }
 
-        public virtual string GetDisplayChoice(ITicketHelper ticketHelper, string choice){
-            return choice;
-        }
+        public virtual string GetDisplayChoice(ITicketHelper ticketHelper, string choice)
+            => choice;
 
-        public virtual string GetDisplayTableCode(ITicketHelper ticketHelper, string tableCode){
-            return tableCode;
-        }
-
+        public virtual string GetDisplayTableCode(ITicketHelper ticketHelper, string tableCode)
+            => tableCode;
+            
         private string GetBetChoice(ITicketHelper ticketHelper)
         {
             const string BetChoiceDataKey = "choice";
@@ -120,24 +116,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         }
 
         public virtual string BuildDetailFunction(ITicket ticket)
-        {
-            var detailFunctionBuilder = new StringBuilder();
-
-            detailFunctionBuilder.Append("showLiveCasinoBetDetails(&quot;")
-                .Append(ticket.TransId.ToString())
-                .Append("&quot;")
-                .Append(",&quot;")
-                .Append(ticket.WinlostDate.ToString(CultureInfo.InvariantCulture))
-                .Append("&quot;")
-                .Append(",&quot;")
-                .Append(ticket.CustId.ToString())
-                .Append("&quot;")
-                .Append(",&quot;")
-                .Append(ticket.GetTransactionType())
-                .Append("&quot;);");
-
-            return detailFunctionBuilder.ToString();
-        }
+            => string.Empty;
 
         private static string BuildBetTypeName(ITicket ticket, ITicketHelper ticketHelper)
         {
@@ -173,12 +152,17 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                 .Replace(CloseBetIdTag, string.Empty);
         }
 
-        protected virtual string GetTransId3rd(string transId3rd){
-            if(_parseTransId3rd == null){
-                _parseTransId3rd = TransId3rdLCHelper.GetTransId3rd(transId3rd);
+        protected virtual string GetTransId3rd(string transId3rd)
+        {
+            const string transId3rdSeparator = "|$|";
+            if (transId3rd == null || !transId3rd.Contains(transId3rdSeparator))
+            {
+                return transId3rd;
             }
 
-            return _parseTransId3rd;
+            var transIdParts = transId3rd.Split(new string[] { transId3rdSeparator }, StringSplitOptions.RemoveEmptyEntries);
+
+            return transIdParts[transIdParts.Length - 1];
         }
     }
 }

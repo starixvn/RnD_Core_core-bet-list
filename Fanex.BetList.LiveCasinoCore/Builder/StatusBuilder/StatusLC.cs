@@ -6,20 +6,20 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
     {
         protected override void BuildStatusResult(ITicket ticket)
         {
-            base.BuildStatusResult(ticket);
-
             if (IsHideStatusResult(ticket))
             {
                 Template.StatusResult.Hide();
             }
             else
             {
+                base.BuildStatusResult(ticket);
                 var externalLink = $"{ticket.CurrencyId}, '{ticket.MatchCode}', {ticket.CustId}, '{ticket.BetCheck}', '{ticket.SiteId}'";
                 Template.StatusResult.betId = externalLink;
             }
         }
 
-        public virtual bool IsHideStatusResult(ITicket ticket){
+        public virtual bool IsHideStatusResult(ITicket ticket)
+        {
             return string.IsNullOrEmpty(ticket.BetCheck);
         }
     }
