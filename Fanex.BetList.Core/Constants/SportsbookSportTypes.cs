@@ -11,5 +11,6 @@ namespace Fanex.BetList.Core.Constants
         public const int Futsal = 49;
         public const int BeachSoccer = 51;
         public const int MaxSportsbookSportType = 99;
+        public const int SabaPromotion = 246;
     }
 }

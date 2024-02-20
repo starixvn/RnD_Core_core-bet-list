@@ -5,6 +5,7 @@
     using System.Collections.Generic;
     using Entities;
     using Fanex.BetList.Core.App_GlobalResources;
+    using Fanex.BetList.Core.Constants;
     using Mapper;
     using System.Text.RegularExpressions;
 
@@ -104,24 +105,23 @@
             => _cacheRef.GetLeagueName(leagueId.ToString());
 
         public string GetLeagueNameById(object leagueId, object leagueGroupId)
+        => _cacheRef.GetLeagueName(leagueId.ToString(), leagueGroupId.ToString());
+            
+        public string GetSportNameById(object sportId)
         {
-            var leagueName = GetLeagueNameById(leagueId);
-            var leagueGroupIdsNeedRemoveText = new List<int> { 42, 74, 108, 113, 122, 151 };
-            if (HideSabaText && leagueGroupIdsNeedRemoveText.Any(i => i == (int)leagueGroupId))
+            var name = _cacheRef.GetSportName(sportId.ToString());
+            if (HideSabaText && sportId.Equals(SportsbookSportTypes.SabaPromotion))
             {
                 var sabaWord = GetResourceData("Saba", "Saba");
                 var sabaWords = new List<string> { $" {sabaWord}", $"{sabaWord} ", sabaWord};
                 foreach(var word in sabaWords)
                 {
-                    leagueName = Regex.Replace(leagueName, word, string.Empty, RegexOptions.IgnoreCase);
+                    name = Regex.Replace(name, word, string.Empty, RegexOptions.IgnoreCase);
                 }                
             }
 
-            return leagueName; 
+            return name;
         }
-            
-        public string GetSportNameById(object sportId)
-            => _cacheRef.GetSportName(sportId.ToString());
 
         public string GetTeamNameById(object teamId)
             => _cacheRef.GetTeamName(teamId.ToString());
