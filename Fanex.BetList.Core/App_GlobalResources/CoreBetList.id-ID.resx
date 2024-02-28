@@ -153,11 +153,8 @@
   <data name="odd" xml:space="preserve">
     <value>Ganjil</value>
   </data>
-  <data name="odds" xml:space="preserve">
-    <value>Harga</value>
-  </data>
   <data name="over" xml:space="preserve">
-    <value>Atas</value>
+    <value>Besar</value>
   </data>
   <data name="pending" xml:space="preserve">
     <value>Tertunda</value>
@@ -178,7 +175,7 @@
     <value>Transfer</value>
   </data>
   <data name="under" xml:space="preserve">
-    <value>Bawah</value>
+    <value>Kecil</value>
   </data>
   <data name="winloss" xml:space="preserve">
     <value>Menang-Kalah</value>
