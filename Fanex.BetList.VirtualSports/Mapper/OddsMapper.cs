@@ -21,7 +21,7 @@
 
         private void MapForVirtualSports4()
         {
-            for (var id = VirtualSports4BetTypes.MatchWinner; id <= VirtualSports4BetTypes.MixParlay; id++)
+            for (var id = VirtualSports4BetTypes.MatchWinner; id < VirtualSports4BetTypes.MixParlay; id++)
             {
                 ConvertByBetType.RegisterMultipleOddsTypes(id);
             }

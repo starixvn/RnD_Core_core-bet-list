@@ -3,7 +3,7 @@
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>
         <Version>2.0.0.7-VS4-01</Version>
         <InfomationalVersion>2.0.0.7</InfomationalVersion>
-        <PackageReleaseNotes>
+        <PackageReleaseNotes>Support Virtual Sport 4 - Edge Gaming (#198619)</PackageReleaseNotes>
         - Support Half Won, Half Lost status (#200093)
          </PackageReleaseNotes>
         <Description>BetList core package</Description>
