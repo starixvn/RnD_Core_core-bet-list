@@ -276,5 +276,9 @@
 
         public static string FormatBoostRate(decimal rate)
         => string.Format(CoreBetList.Boost, Formatter.DecFormat(rate*100, 0));
+
+        public static bool IsShowSecondOdds(decimal firstOdds, decimal secondOdds)
+        => firstOdds != secondOdds && secondOdds != 0 && secondOdds != 1;
+         
     }
 }

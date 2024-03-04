@@ -1,7 +1,11 @@
 ﻿namespace Fanex.BetList.Core.Builder.OddsBuilder
 {
-    using BetListNPOI.SS.UserModel;
+    using System;
     using System.Collections.Generic;
+    using System.Linq;
+    using System.Text.RegularExpressions;
+    using System.Xml.Linq;
+    using BetListNPOI.SS.UserModel;
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
@@ -11,134 +15,158 @@
 
     public class Odds29 : Odds1
     {
-        private const string OddsValueOpenTag = "<div class=\"underdog{oddsClassName}\">";
-        protected const string StrikeThrough = " strikethrough";
+        protected const string StrikeThrough = "strikethrough";
         private const int OddsSpreadForBoots = 2;
-
         private const string SportsbookTag = "p1";
-        private const string BoostRateAttribute = "bbp";
-        private const string BoostOddsAttribute = "bba";
+        private const string BonusOdds = "bbo";
+        private const string OriginalOdds = "o";
 
-
-        public override Odds_Template Render(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
+        public override Odds_Template Render(
+            ITicket ticket,
+            List<ITicketData> ticketData,
+            GetCachePropertyById funcGetOddsTypeName
+        )
         {
-            if (IsMixParlay(ticket) && IsShowOdds(ticket))
-            {
-                base.Render(ticket, ticketData, funcGetOddsTypeName);
-                var oddsType = string.IsNullOrEmpty(ticket.OddsType) ? (object)0 : ticket.OddsType;
-                Template.odds = ConvertByBetType.Odds4(ticket.Odds, ticket.BetTypeId, ticket.SportTypeId, oddsType);
-                if (IsParlayBoost(ticket))
-                {
-                    var rateText = GetBoostRate(ticket);
-                    var boostOdds = GetBoostOdds(ticket);
-
-                    Template.oddsClassName = StrikeThrough;
-                    Template.oddsType = $"<span class='underdog'>{boostOdds}</span><br/>";
-                    Template.oddsType += $"<span class='boostrate'><span class='icon-boost'></span>{rateText}</span>";
-                }
-            }
-            else
+            if (!IsMixParlay(ticket) || ticket.IsVoidReject())
             {
                 Template.odds = "-";
                 Template.oddsType = string.Empty;
+
+                return Template;
+            }
+
+            var oddsType = string.IsNullOrEmpty(ticket.OddsType) ? (object)0 : ticket.OddsType;
+            var firstOdds = GetFirstOdds(ticket);
+            var secondOdds = GetSecondOdds(ticket);
+            Template.odds = ConvertByBetType.Odds4(
+                firstOdds,
+                ticket.BetTypeId,
+                ticket.SportTypeId,
+                oddsType
+            );
+            Template.oddsType = string.Empty;
+            if (ConvertByBetType.IsShowSecondOdds(firstOdds, secondOdds))
+            {
+                var oddsFormat = ConvertByBetType.Odds4(
+                    secondOdds,
+                    ticket.BetTypeId,
+                    ticket.SportTypeId,
+                    oddsType
+                );
+                Template.odds = $"<br><span class='{StrikeThrough}'>{Template.odds}</span>";
+                Template.odds += $"<br><span class='underdog'>{oddsFormat}</span>";
+
+                if (IsShowBoostRate(ticket))
+                {
+                    Template.odds +=
+                        $"<br><span class='boostrate'><span class='icon-boost'></span>{FormatBoostRate(ticket)}</span>";
+                }
             }
 
             return Template;
         }
 
-        public override string RenderOddsValue(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
-        {
-            var template = Render(ticket, ticketData, funcGetOddsTypeName);
-            var oddsValueOpenTag = IsParlayBoost(ticket) ?
-            OddsValueOpenTag.Replace("{oddsClassName}", StrikeThrough) :
-            OddsValueOpenTag.Replace("{oddsClassName}", string.Empty);
-
-            return $"{oddsValueOpenTag}{template.odds}{CloseTag}";
-        }
+        public override string RenderOddsType(
+            ITicket ticket,
+            List<ITicketData> ticketData,
+            GetCachePropertyById funcGetOddsTypeName
+        ) => string.Empty;
 
         protected override IRichTextString BuildRTFOdds(RTFHelper rtfHelper)
         {
-            if (IsParlayBoost(Template.oddsClassName))
+            var items = SplitHTMLIntoRows(Template.odds);
+            if (items.Length >= 2)
             {
-                rtfHelper.RTFRenderer.AddText(Template.odds, rtfHelper.PosFontCrossed);
-                rtfHelper.RTFRenderer.AddText("\n" + Template.oddsType.Replace("<br/>", "\n").StripHTML(), rtfHelper.PosFont);
-            }
-            else
-            {
-                rtfHelper.RTFRenderer.AddText(Template.odds, rtfHelper.PosFont);
+                return BuildOddValue(Template.odds, rtfHelper);
             }
 
-            var rtfOdds = rtfHelper.RTFRenderer.Render();
-            rtfHelper.RTFRenderer.Clear();
-            return rtfOdds;
-
-            bool IsParlayBoost(string cssClassName)
-                => cssClassName == StrikeThrough;
-        }
-
-        public override IRichTextString RenderOddsTypeRTF(
-            ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName, RTFHelper rtfHelper)
-        {
-            if (IsParlayBoost(ticket))
-            {
-                rtfHelper.RTFRenderer.AddText("\n" + GetBoostOdds(ticket), rtfHelper.PosFont);
-                rtfHelper.RTFRenderer.AddText("\n" + GetBoostRate(ticket), rtfHelper.PosFont);
-                var oddsTypeExcel = rtfHelper.RTFRenderer.Render();
-                rtfHelper.RTFRenderer.Clear();
-
-                return oddsTypeExcel;
-            }
-
-            return base.RenderOddsTypeRTF(ticket, ticketData, funcGetOddsTypeName, rtfHelper);
+            return base.BuildRTFOdds(rtfHelper);
         }
 
         public override IRichTextString RenderOddsValueRTF(
-            ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName, RTFHelper rtfHelper)
+            ITicket ticket,
+            List<ITicketData> ticketData,
+            GetCachePropertyById funcGetOddsTypeName,
+            RTFHelper rtfHelper
+        )
         {
-            if (IsParlayBoost(ticket))
+            var oddsValue = RenderOddsValue(ticket, ticketData, funcGetOddsTypeName);
+            var items = SplitHTMLIntoRows(Template.odds);
+            if (items.Length >= 2)
             {
-                var template = Render(ticket, ticketData, funcGetOddsTypeName);
-                rtfHelper.RTFRenderer.AddText(template.odds, rtfHelper.PosFontCrossed);
-                var oddsTypeExcel = rtfHelper.RTFRenderer.Render();
-                rtfHelper.RTFRenderer.Clear();
-
-                return oddsTypeExcel;
+                return BuildOddValue(oddsValue, rtfHelper);
             }
 
             return base.RenderOddsValueRTF(ticket, ticketData, funcGetOddsTypeName, rtfHelper);
         }
 
-        private string GetBoostOdds(ITicket ticket)
-        => string.Format(Formatter.DECIMALFORMAT4, ticket.MasterOdds);
-
-        private string GetBoostRate(ITicket ticket)
+        private IRichTextString BuildOddValue(string html, RTFHelper rtfHelper)
         {
-            var rate = GetRate(ticket);
-
-            return ConvertByBetType.FormatBoostRate(rate);
-        }
-
-        decimal GetRate(ITicket ticket)
-        {
-            if (ticket.IsRunningWaiting())
+            var items = SplitHTMLIntoRows(Template.odds);
+            if (items.Length >= 2)
             {
-                var rate = ticket.ExtraInfo.HasAttributeInXmlTag(SportsbookTag, BoostRateAttribute) ?
-                ticket.ExtraInfo.GetXmlTagAttributeValue(SportsbookTag, BoostRateAttribute) :
-                "0";
+                rtfHelper.RTFRenderer.AddText("\n" + items[0], rtfHelper.PosFontCrossed);
+                rtfHelper.RTFRenderer.AddText("\n" + items[1], rtfHelper.PosFont);
+                if (items.Length == 3)
+                {
+                    rtfHelper.RTFRenderer.AddText("\n" + items[2], rtfHelper.PosFont);
+                }
+                var oddsTypeExcel = rtfHelper.RTFRenderer.Render();
+                rtfHelper.RTFRenderer.Clear();
 
-                return Cast.AsDecimal(rate);
+                return oddsTypeExcel;
             }
 
-            return Cast.AsDecimal(ticket.TransDesc);
+            return rtfHelper.RTFRenderer.Render();
         }
 
-        bool IsParlayBoost(ITicket ticket)
+        private decimal GetFirstOdds(ITicket ticket) =>
+            ticket.ExtraInfo.HasAttributeInXmlTag(SportsbookTag, OriginalOdds)
+                ? Cast.AsDecimal(
+                    ticket.ExtraInfo.GetXmlTagAttributeValue(SportsbookTag, OriginalOdds)
+                )
+                : ticket.Odds;
+
+        private decimal GetSecondOdds(ITicket ticket) =>
+            ticket.IsRunningWaiting()
+                ? Cast.AsDecimal(ticket.ExtraInfo.GetXmlTagAttributeValue(SportsbookTag, BonusOdds))
+                : ticket.MasterOdds;
+
+        private string FormatBoostRate(ITicket ticket)
+        {
+            var rate = GetBoostRate();
+
+            return ConvertByBetType.FormatBoostRate(rate);
+
+            decimal GetBoostRate()
+            {
+                var rateString = ticket.TransDesc;
+                if (ticket.IsRunningWaiting())
+                {
+                    const string boostRateAttribute = "bbp";
+                    rateString = ticket.ExtraInfo.HasAttributeInXmlTag(
+                        SportsbookTag,
+                        boostRateAttribute
+                    )
+                        ? ticket.ExtraInfo.GetXmlTagAttributeValue(
+                            SportsbookTag,
+                            boostRateAttribute
+                        )
+                        : "0";
+                }
+
+                return Cast.AsDecimal(rateString);
+            }
+        }
+
+        bool IsShowBoostRate(ITicket ticket)
         {
             if (IsMixParlay(ticket) && ticket.OddsSpread == OddsSpreadForBoots)
             {
-                var bba = ticket.ExtraInfo.HasAttributeInXmlTag(SportsbookTag, BoostOddsAttribute) ?
-                ticket.ExtraInfo.GetXmlTagAttributeValue(SportsbookTag, BoostOddsAttribute) :
-                "0";
+                const string hasBoostTicket = "bba";
+                var bba = ticket.ExtraInfo.HasAttributeInXmlTag(SportsbookTag, hasBoostTicket)
+                    ? ticket.ExtraInfo.GetXmlTagAttributeValue(SportsbookTag, hasBoostTicket)
+                    : "0";
 
                 return ticket.IsRunningWaiting() || (ticket.IsWon() && Cast.AsDecimal(bba) > 0);
             }
@@ -148,6 +176,16 @@
 
         bool IsMixParlay(ITicket ticket) => ticket.BetTeam == "1";
 
-        bool IsShowOdds(ITicket ticket ) => ticket.IsRunningWaiting() || ticket.IsSettled();
+        private static string[] SplitHTMLIntoRows(string html)
+        {
+            const string splitter = "</span>";
+            var htmlTagMatching = new Regex("</?[^<>]*>");
+
+            return Regex
+                .Split(html, splitter)
+                .Select(row => htmlTagMatching.Replace(row, string.Empty))
+                .Where(row => row != string.Empty)
+                .ToArray();
+        }
     }
 }

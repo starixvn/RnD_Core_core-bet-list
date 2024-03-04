@@ -5,6 +5,15 @@
 
     public static class ITicketExtensions
     {
+         public static bool IsVoidReject(this ITicket ticket)
+        {
+            var status = ticket.Status ?? string.Empty;
+
+            status = status.Trim().ToLowerInvariant();            
+
+            return status == BetStatus.Void || status == BetStatus.Reject;
+        }
+
         public static bool IsWon(this ITicket ticket)
         {
             var statusId = ticket.StatusId != null ? ticket.StatusId.ToString() : string.Empty;
