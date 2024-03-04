@@ -124,6 +124,8 @@
 
         string GetTableGamesBetTypeName(string tableGamesBetTypeId);
 
+        string GetVirtualSportMatchCodeFormat(string matchCode, string refId);
+
         #endregion METHODS TO RESOLVE NAMES FROM IDS
     }
 }

@@ -2,10 +2,11 @@
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>        
-        <Version>3.0.2.6-status-03</Version>
-        <InfomationalVersion>3.0.2.6</InfomationalVersion>
-        <PackageReleaseNotes>- Support Half Won, Half Lost status (#200093)</PackageReleaseNotes>
-        
+        <Version>3.0.2.5-VS4-01</Version>
+        <InfomationalVersion>3.0.2.5</InfomationalVersion>
+        <PackageReleaseNotes>
+          - Support get Virtual Sport 4 Match Code (#198619)
+         </PackageReleaseNotes>        
         <Authors>Nexcel Solutions</Authors>
         <PackageTags>Fanex BetList</PackageTags>
         <PackageProjectUrl>https://nexdev.net/projects/fanex-betlistcore/wiki/Core_Bet_List</PackageProjectUrl>

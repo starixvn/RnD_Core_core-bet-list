@@ -219,5 +219,8 @@
 
         public string GetTableGamesBetTypeName(string tableGamesBetTypeId)
             => _cacheRef.GetTableGamesBetTypeName(tableGamesBetTypeId);
+
+        public string GetVirtualSportMatchCodeFormat(string matchCode, string refId)
+            => _cacheRef.GetVirtualSportMatchCodeFormat(matchCode, refId);
     }
 }

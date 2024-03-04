@@ -61,5 +61,7 @@
 #pragma warning restore S3874 // "out" and "ref" parameters should not be used
 
         string GetTableGamesBetTypeName(string tableGamesBetTypeId);
+
+        string GetVirtualSportMatchCodeFormat(string matchCode, string refId);
     }
 }

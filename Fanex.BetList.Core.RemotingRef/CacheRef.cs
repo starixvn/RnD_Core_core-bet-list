@@ -92,5 +92,8 @@
 
         public string GetTableGamesBetTypeName(string tableGamesBetTypeId)
             => _remotingRefService.GetTableGamesBetType(tableGamesBetTypeId, CurrentLanguage, DefaultValue);
+
+        public string GetVirtualSportMatchCodeFormat(string matchCode, string refId)
+            => _remotingRefService.GetVirtualSportMatchCodeFormat(matchCode, refId, CurrentLanguage);
     }
 }
