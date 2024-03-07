@@ -6,16 +6,10 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Utils.TicketExt;
     using Fanex.BetList.Core.App_GlobalResources;
 
-    public class Choice5100 : Choice1
+    public class Choice5100 : ChoiceRNG
     {
         public const string GameGroundRefId = "JG_RNG_GG";
         public const string GameTypeRefId = "JG_RNG_GT";
-
-        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
-        {
-            Template.Handicap = null;
-            Template.betTeamClassName = Underdog;
-        }
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
@@ -23,12 +17,9 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             if (IsDetailTicket(ticket.BetCheck))
             {
-                Template.betTeam += $" {ticket.BetCheck}";
+                Template.betTeam += $" {GetTransId3rd(ticket.BetCheck)}";
             }
         }
-
-        protected override void BuildScore(ITicket ticket)
-            => Template.Score = null;
 
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
         {
@@ -40,26 +31,6 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             }
         }
 
-        protected override void AdjustBetTeamToRTF()
-            => Template.betTeam = Template.betTeam.StripHTML();
-
-        protected override void BuildMatchInfo(ref RTFHelper rtfHelper)
-        {
-            var sportTypeName = Template.League.sportTypeName;
-            var gameGroupName = Template.League.LeagueName.ToString().StripHTML();
-
-            if (!string.IsNullOrEmpty(sportTypeName) && !string.IsNullOrEmpty(gameGroupName))
-            {
-                rtfHelper.RTFRenderer.AddText($"\n{sportTypeName}{gameGroupName}");
-            }
-        }
-
-        protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
-           => Template.Match = null;
-
-        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-            => Template.BetType = null;
-
         private static string BuildJiliDetailsLink(ITicket ticket)
         {
             var detailLink = $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a>";
@@ -67,11 +38,5 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             return $"<div class=\"detail jili-detail\" onclick=\"showJiliBetDetails({parameterList});\">{detailLink}</div>";
         }
-
-        private static bool IsDetailTicket(string betCheck)
-                => !string.IsNullOrEmpty(betCheck);
-
-        private static bool IsSummaryTicket(string betCheck)
-            => !IsDetailTicket(betCheck);
     }
 }

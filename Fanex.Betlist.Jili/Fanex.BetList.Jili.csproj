@@ -1,11 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>
-    <AssemblyVersion>1.0.0.1</AssemblyVersion>
-    <FileVersion>1.0.0.1</FileVersion>
-    <Version>1.0.0.1</Version>
+    <Version>1.0.0.2-API-01</Version>
+    <InfomationalVersion>1.0.0.2</InfomationalVersion>
     <PackageId>Fanex.Betlist.Jili</PackageId>
-    <PackageReleaseNotes>Init Jili Bettypes (#181791)</PackageReleaseNotes>
+    <PackageReleaseNotes>Support new Gaming API (#200105)</PackageReleaseNotes>
     <Description>
 New bet list for Jili
 
@@ -33,5 +32,6 @@ ViewResult(matchId, race, betTypeId, sportTypeId, refNo, 'userName', 'winlostDat
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj" />
+    <ProjectReference Include="..\Fanex.BetList.RNGCore\Fanex.BetList.RNGCore.csproj" />
   </ItemGroup>
 </Project>
