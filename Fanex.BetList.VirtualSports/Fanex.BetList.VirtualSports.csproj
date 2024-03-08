@@ -1,8 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>    
-        <Version>2.0.0.6</Version>
-        <PackageReleaseNotes>Remove representation bettype 1203, 1205 (#198523)</PackageReleaseNotes>
+        <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>
+        <Version>2.0.0.7-status-02</Version>
+        <InfomationalVersion>2.0.0.7</InfomationalVersion>
+        <PackageReleaseNotes>
+        - Support Half Won, Half Lost status (#200093)
+         </PackageReleaseNotes>
         <Description>BetList core package</Description>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <Authors>Nexcel Solutions</Authors>

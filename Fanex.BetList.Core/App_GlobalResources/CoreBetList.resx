@@ -142,7 +142,7 @@
     <value>or</value>
   </data>
   <data name="lose" xml:space="preserve">
-    <value>Lose</value>
+    <value>Lost</value>
   </data>
   <data name="member" xml:space="preserve">
     <value>Member</value>
@@ -442,7 +442,7 @@
     <value>Last</value>
   </data>
   <data name="lblLose" xml:space="preserve">
-    <value>Lose</value>
+    <value>Lost</value>
   </data>
   <data name="lblM" xml:space="preserve">
     <value>M = Master</value>
@@ -848,7 +848,7 @@
     <value>Half Won</value>
   </data>
   <data name="halflose" xml:space="preserve">
-    <value>Half Lose</value>
+    <value>Half Lost</value>
   </data>
   <data name="AbnormalBet" xml:space="preserve">
     <value>Abnormal Bet</value>

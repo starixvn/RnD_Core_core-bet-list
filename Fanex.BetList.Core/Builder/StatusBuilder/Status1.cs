@@ -11,7 +11,8 @@
     using Utils;
     using Utils.StringExt;
     using Utils.TicketExt;
-
+    using Fanex.BetList.Core.Constants;
+    
     /// <summary>
     /// Sportsbook: Handicap.
     /// </summary>
@@ -76,6 +77,7 @@
             }
 
             var statusText = GetResultString(ticket.Status, ticket.SettlementStatus);
+            statusText = GetHalfWonLost(statusText, ticket);
             Template.result = string.IsNullOrEmpty(statusText) ? status : statusText;
         }
 
@@ -206,6 +208,23 @@
         protected static string GetResultString(string ticketStatus)
           => GetResultString(ticketStatus, 0);
 
+        protected virtual string GetHalfWonLost(string statusText, ITicket ticket)
+        {
+            var status = ticket.Status.ToLowerInvariant();
+            if (status == BetStatus.Won && ticket.IsSportsbook() && ticket.MasterOdds == CommonValue.HalfWonLostValue)
+            {
+                return CoreBetList.halfwon;
+            }
+            else if (status == BetStatus.Lose && ticket.IsSportsbook() && ticket.MasterOdds == -1 * CommonValue.HalfWonLostValue)
+            {
+                return CoreBetList.halflose;
+            }
+            else
+            {
+                return statusText;
+            }
+        }
+        
 #pragma warning disable S1541 // Methods and properties should not be too complex
 
         protected static string GetResultString(string ticketStatus, byte settlementStatus)
@@ -322,7 +341,6 @@
 
             return ticket.TransDate >= CutOffDate && ticket.ExtraInfo.HasAttributeInXmlTag(CashOutXmlTag, "selTime");
         }
-
         #endregion PRIVATE METHODS
     }
 }

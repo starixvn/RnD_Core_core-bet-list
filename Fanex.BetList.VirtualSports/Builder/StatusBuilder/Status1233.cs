@@ -7,12 +7,31 @@
     using Constants;
     using Entities;
     using BetListNPOI.SS.UserModel;
-
+    using Fanex.BetList.Core.Constants;
+    using Fanex.BetList.Core.App_GlobalResources;
+    
     /// <summary>
     /// Virtual Horse Racing - Win/Place.
     /// </summary>
     public class Status1233 : Status1
     {
+        protected override string GetHalfWonLost(string statusText, ITicket ticket)
+        {
+            var status = ticket.Status.ToLowerInvariant();
+            if (status == BetStatus.Won && ticket.MasterOdds == CommonValue.HalfWonLostValue)
+            {
+                return CoreBetList.halfwon;
+            }
+            else if (status == BetStatus.Lose && ticket.MasterOdds == -1 * CommonValue.HalfWonLostValue)
+            {
+                return CoreBetList.halflose;
+            }
+            else
+            {
+                return statusText;
+            }
+        }
+
         public override IRichTextString RenderRTF(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP, RTFHelper rtfHelper)
         {
             Render(ticket, ticketHelper, ticketData, isShowVNIP);
