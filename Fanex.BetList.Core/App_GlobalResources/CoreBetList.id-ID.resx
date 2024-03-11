@@ -486,9 +486,6 @@
   <data name="name" xml:space="preserve">
     <value>Nama</value>
   </data>
-  <data name="no" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="none" xml:space="preserve">
     <value>Tidak Ada</value>
   </data>
@@ -787,7 +784,7 @@
     <value>Dibeli dari No.:</value>
   </data>
   <data name="CashOut" xml:space="preserve">
-    <value>Fitur Bayar Sekarang</value>
+    <value>Penukaran Instan</value>
   </data>
   <data name="CashOutLabel" xml:space="preserve">
     <value>Fitur Bayar Sekarang dari No.:</value>

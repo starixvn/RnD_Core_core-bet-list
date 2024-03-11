@@ -1,10 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
-        <FileVersion>2.0.0.1</FileVersion>
-        <Version>2.0.0.1</Version>
-        <PackageReleaseNotes>Update translation (#187163)</PackageReleaseNotes>
+        <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>
+        <Version>2.0.0.2-Indo-01</Version>
+        <InfomationalVersion>2.0.0.2</InfomationalVersion>
+        <PackageReleaseNotes>Support Indo Translation (#196354)</PackageReleaseNotes>
         <Description>BetList core package</Description>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <Authors>Nexcel Solutions</Authors>
