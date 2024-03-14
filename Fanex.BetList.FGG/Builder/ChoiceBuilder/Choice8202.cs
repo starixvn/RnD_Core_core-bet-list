@@ -19,6 +19,8 @@
 
         private const string TableCodeKey = "tablecode";
 
+        private const string TableRefId = "FGG_GN";
+
         private Dictionary<string, string> _parsedTransDesc;
 
         public override Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
@@ -49,14 +51,12 @@
         {
             if (!string.IsNullOrEmpty(ticket.BetCheck))
             {
-                var bettypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
                 if (_parsedTransDesc != null && _parsedTransDesc.ContainsKey(TableCodeKey))
                 {
-
-                    return $"{bettypeName} {_parsedTransDesc[TableCodeKey]}";
+                    return ticketHelper.GetResourceData(TableRefId, _parsedTransDesc[TableCodeKey]);
                 }
-                 
-                return bettypeName;
+                
+                return ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
             }
 
             return string.Empty;
