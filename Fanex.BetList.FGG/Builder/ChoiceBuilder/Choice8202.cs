@@ -49,17 +49,11 @@
 
         private string GetBetChoice(ITicket ticket, ITicketHelper ticketHelper)
         {
-            if (!string.IsNullOrEmpty(ticket.BetCheck))
-            {
-                if (_parsedTransDesc != null && _parsedTransDesc.ContainsKey(TableCodeKey))
-                {
-                    return ticketHelper.GetResourceData(TableRefId, _parsedTransDesc[TableCodeKey]);
-                }
-                
-                return ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
+            if(string.IsNullOrEmpty(ticket.BetCheck)){
+                return string.Empty;
             }
 
-            return string.Empty;
+            return ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
@@ -87,9 +81,14 @@
             Template.Match = null;
         }
 
-        public static string BuildBetTypeName(ITicket ticket, ITicketHelper ticketHelper)
+        public string BuildBetTypeName(ITicket ticket, ITicketHelper ticketHelper)
         {
             var betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
+            if (_parsedTransDesc != null && _parsedTransDesc.ContainsKey(TableCodeKey))
+            {
+                var gameName = ticketHelper.GetResourceData(TableRefId, _parsedTransDesc[TableCodeKey]);
+                betTypeName += " " + gameName;
+            }
 
             return $"{OpenBetTypeNameTag}{betTypeName}{CloseSpanTag}";
         }
