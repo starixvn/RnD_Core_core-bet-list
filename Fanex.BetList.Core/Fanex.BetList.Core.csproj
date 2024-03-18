@@ -2,7 +2,7 @@
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>        
-        <Version>3.0.2.5-VS4-01</Version>
+        <Version>3.0.2.5-VS4-02</Version>
         <InfomationalVersion>3.0.2.5</InfomationalVersion>
         <PackageReleaseNotes>
           - Support get Virtual Sport 4 Match Code (#198619)
