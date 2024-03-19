@@ -1,20 +1,20 @@
-ï»¿<Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>
-        <Version>2.0.0.7-VS4-03</Version>
-        <InfomationalVersion>2.0.0.7</InfomationalVersion>
-        <PackageReleaseNotes>Support Virtual Sport 4 - Edge Gaming (#198619)</PackageReleaseNotes>
-        <Description>BetList core package</Description>
-        <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
-        <Authors>Nexcel Solutions</Authors>
-        <PackageTags>Fanex BetList</PackageTags>
-        <PackageProjectUrl>https://nexdev.net/projects/fanex-betlistcore/wiki/Core_Bet_List</PackageProjectUrl>
-    </PropertyGroup>
-    <ItemGroup>
-      <PackageReference Include="BetListNPOI" Version="2.6.0" />
-      <PackageReference Include="TplNetCore" Version="1.0.0" />
-    </ItemGroup>
-    <ItemGroup>
-      <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj" />
-    </ItemGroup>
-</Project>
+Œ Â¿ºµ³Ä £´»r¹³Â¿Ã¿¶Ä~ž•¤~£´»rŽ
+    Œ Â¿ÀµÂÄÉ—Â¿ÅÀŽ
+        Œ¤±Â·µÄ–Â±½µÇ¿Â»ÃŽ¾µÄ„†‹¾µÄÃÄ±¾´±Â´‚~€‹¾µÄ†~€Œ¤±Â·µÄ–Â±½µÇ¿Â»ÃŽ
+        Œ¦µÂÃ¹¿¾Ž‚~€~€~‡}¦£„}€„Œ¦µÂÃ¹¿¾Ž
+        Œ™¾¶¿½±Ä¹¿¾±¼¦µÂÃ¹¿¾Ž‚~€~€~‡Œ™¾¶¿½±Ä¹¿¾±¼¦µÂÃ¹¿¾Ž
+        Œ ±³»±·µ¢µ¼µ±Ãµž¿ÄµÃŽ£ÅÀÀ¿ÂÄ ¦¹ÂÄÅ±¼ £À¿ÂÄ „ } •´·µ —±½¹¾· xs‰ˆ†‰yŒ ±³»±·µ¢µ¼µ±Ãµž¿ÄµÃŽ
+        Œ”µÃ³Â¹ÀÄ¹¿¾Ž’µÄœ¹ÃÄ ³¿Âµ À±³»±·µŒ”µÃ³Â¹ÀÄ¹¿¾Ž
+        Œ—µ¾µÂ±Äµ‘ÃÃµ½²¼É™¾¶¿ŽÄÂÅµŒ—µ¾µÂ±Äµ‘ÃÃµ½²¼É™¾¶¿Ž
+        Œ‘ÅÄ¸¿ÂÃŽžµÈ³µ¼ £¿¼ÅÄ¹¿¾ÃŒ‘ÅÄ¸¿ÂÃŽ
+        Œ ±³»±·µ¤±·ÃŽ–±¾µÈ ’µÄœ¹ÃÄŒ ±³»±·µ¤±·ÃŽ
+        Œ ±³»±·µ Â¿ºµ³Ä¥Â¼Ž¸ÄÄÀÃŠ¾µÈ´µÆ~¾µÄÀÂ¿ºµ³ÄÃ¶±¾µÈ}²µÄ¼¹ÃÄ³¿ÂµÇ¹»¹“¿Âµ¯’µÄ¯œ¹ÃÄŒ ±³»±·µ Â¿ºµ³Ä¥Â¼Ž
+    Œ Â¿ÀµÂÄÉ—Â¿ÅÀŽ
+    Œ™Äµ½—Â¿ÅÀŽ
+      Œ ±³»±·µ¢µ¶µÂµ¾³µ ™¾³¼Å´µr’µÄœ¹ÃÄž Ÿ™r ¦µÂÃ¹¿¾r‚~†~€r Ž
+      Œ ±³»±·µ¢µ¶µÂµ¾³µ ™¾³¼Å´µr¤À¼žµÄ“¿Âµr ¦µÂÃ¹¿¾r~€~€r Ž
+    Œ™Äµ½—Â¿ÅÀŽ
+    Œ™Äµ½—Â¿ÅÀŽ
+      Œ Â¿ºµ³Ä¢µ¶µÂµ¾³µ ™¾³¼Å´µr~~¬–±¾µÈ~’µÄœ¹ÃÄ~“¿Âµ¬–±¾µÈ~’µÄœ¹ÃÄ~“¿Âµ~³ÃÀÂ¿ºr Ž
+    Œ™Äµ½—Â¿ÅÀŽ
+Œ Â¿ºµ³ÄŽ
