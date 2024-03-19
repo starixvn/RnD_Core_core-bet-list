@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
-        <Version>2.0.0.1-TableName-02</Version>
+        <Version>2.0.0.1-TableName-03</Version>
         <InfomationalVersion>2.0.0.1</InfomationalVersion>
         <PackageReleaseNotes>Change get TableName from RefResource (#202184)</PackageReleaseNotes>
         <Description>BetList core package</Description>

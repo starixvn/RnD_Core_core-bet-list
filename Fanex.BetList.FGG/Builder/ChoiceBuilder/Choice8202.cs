@@ -16,9 +16,8 @@
         private const string OpenBetIdTag = "<span class='bet-id'>";
         private const string OpenGameIdTag = "<span class='game-id'>";
         private const string CloseSpanTag = "</span>";
-
+        private const string GameTableIdFormat = " <span class=\"gamegroupname\">{0}</span>";
         private const string TableCodeKey = "tablecode";
-
         private const string TableRefId = "FGG_GN";
 
         private Dictionary<string, string> _parsedTransDesc;
@@ -83,14 +82,14 @@
 
         public string BuildBetTypeName(ITicket ticket, ITicketHelper ticketHelper)
         {
-            var betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
+            var betTypeName = $"{OpenBetTypeNameTag}{ticketHelper.GetBetTypeNameById(ticket.BetTypeId)}{CloseSpanTag}";
             if (_parsedTransDesc != null && _parsedTransDesc.ContainsKey(TableCodeKey))
             {
-                var gameName = ticketHelper.GetResourceData(TableRefId, _parsedTransDesc[TableCodeKey]);
-                betTypeName += " " + gameName;
+                var gameName = string.Format(GameTableIdFormat, ticketHelper.GetResourceData(TableRefId, _parsedTransDesc[TableCodeKey]));
+                betTypeName += gameName;
             }
 
-            return $"{OpenBetTypeNameTag}{betTypeName}{CloseSpanTag}";
+            return betTypeName;
         }
 
         public static Choice_League_Block BuildDetailLink(ITicket ticket)
