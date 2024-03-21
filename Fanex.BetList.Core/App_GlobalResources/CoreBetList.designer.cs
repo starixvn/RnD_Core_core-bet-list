@@ -2939,5 +2939,14 @@ namespace Fanex.BetList.Core.App_GlobalResources {
                 return ResourceManager.GetString("ZeroToFour", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Booked.
+        /// </summary>
+        public static string Booked {
+            get {
+                return ResourceManager.GetString("Booked", resourceCulture);
+            }
+        }
     }
 }

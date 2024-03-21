@@ -1078,4 +1078,7 @@
   <data name="Saba" xml:space="preserve">
     <value>SABA</value>
   </data>
+  <data name="Booked" xml:space="preserve">
+    <value>Booked</value>
+  </data>
 </root>

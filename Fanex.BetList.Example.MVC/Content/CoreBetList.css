@@ -318,3 +318,9 @@ span.icon-boost {
     margin-left: 4px;
 }
 
+.booked-icon {
+    padding: 0px 10px;
+    background-color: #F27C06;
+    color: white;
+    border-radius: 3px;
+}

@@ -28,7 +28,8 @@ namespace Fanex.BetList.Core
 			public Choice_Match_Block Match = new Choice_Match_Block();
 			public Choice_League_Block League = new Choice_League_Block();
 			public Choice_EventDate_Block EventDate = new Choice_EventDate_Block();
-			public Choice_Max_Payout_Block MaxPayout = new Choice_Max_Payout_Block();
+			public Choice_MaxPayout_Block MaxPayout = new Choice_MaxPayout_Block();
+			public Choice_Booked_Block Booked = new Choice_Booked_Block();
 			protected static string s5 = "</div>";
 			public override void ToString(ref StringBuilder bd)
 			{
@@ -52,6 +53,7 @@ namespace Fanex.BetList.Core
 					if(null != League) League.ToString(ref bd);
 					if(null != EventDate) EventDate.ToString(ref bd);
 					if(null != MaxPayout) MaxPayout.ToString(ref bd);
+					if(null != Booked) Booked.ToString(ref bd);
 					bd.Append(s5);
 				}
 				if(IsAssigned){bd.Append(Value);}
@@ -285,12 +287,13 @@ namespace Fanex.BetList.Core
 			}
 		}
 
-		public class Choice_Max_Payout_Block: Block
+		public class Choice_MaxPayout_Block: Block
 		{
 			protected static string s33 = "<div class=\"max-payout\">";
 			public string maxPayout = "{maxPayout}";
-			protected static string s34{get{return App_GlobalResources.CoreBetList.MaxPayoutAlertInfo;}}
-			protected static string s35 = "</div>";
+			protected static string s34 = "<span class=\"icon-max-payout\" title=\"";
+			protected static string s35{get{return App_GlobalResources.CoreBetList.MaxPayoutAlertInfo;}}
+			protected static string s36 = "\"></span></div>";
 			public override void ToString(ref StringBuilder bd)
 			{
 				if(!Visible) return;
@@ -298,8 +301,27 @@ namespace Fanex.BetList.Core
 				{
 					bd.Append(s33);
 					bd.Append(maxPayout);
-					bd.Append(string.Format("<span class=\"icon-max-payout\" title=\"{0}\"></span>", s34));
+					bd.Append(s34);
 					bd.Append(s35);
+					bd.Append(s36);
+				}
+				if(IsAssigned){bd.Append(Value);}
+			}
+		}
+
+		public class Choice_Booked_Block: Block
+		{
+			protected static string s37 = "<div class=\"booked\"><span class=\"booked-icon\">";
+			protected static string s38{get{return App_GlobalResources.CoreBetList.Booked;}}
+			protected static string s39 = "</span></div>";
+			public override void ToString(ref StringBuilder bd)
+			{
+				if(!Visible) return;
+				if(RenderChild)
+				{
+					bd.Append(s37);
+					bd.Append(s38);
+					bd.Append(s39);
 				}
 				if(IsAssigned){bd.Append(Value);}
 			}

@@ -2,11 +2,9 @@
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>        
-        <Version>3.0.2.3</Version>
-        <InfomationalVersion>3.0.2.9</InfomationalVersion>
-        <PackageReleaseNotes>
-          - Support get Virtual Sport 4 Match Code (#198619)
-         </PackageReleaseNotes>        
+        <Version>3.0.3.0</Version>
+        <InfomationalVersion>3.0.3.0</InfomationalVersion>
+        <PackageReleaseNotes>Support showing Booked bet ticket (#202426)</PackageReleaseNotes>
         <Authors>Nexcel Solutions</Authors>
         <PackageTags>Fanex BetList</PackageTags>
         <PackageProjectUrl>https://nexdev.net/projects/fanex-betlistcore/wiki/Core_Bet_List</PackageProjectUrl>

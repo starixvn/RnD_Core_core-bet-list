@@ -41,7 +41,7 @@
         private readonly int[] _liveScoreSports = { SportsbookSportTypes.Soccer, SportsbookSportTypes.Futsal, SportsbookSportTypes.BeachSoccer };
         private const string ESportsXmlTag = "p16";
         private const string InPlayXmlAttribute = "in";
-        private const string MaxPayoutXmlTag = "l255";
+        private const string MaxPayoutXmlTag = "l255";        
 
         #region Constructors
 
@@ -209,6 +209,9 @@
             // the 6th line
             BuildMaxPayoutInfo(rtfHelper);
 
+            // the 7th line
+            BuildBookedInfo(rtfHelper);
+
             var choiceRtf = rtfHelper.RTFRenderer.Render();
             rtfHelper.RTFRenderer.Clear();
             return choiceRtf;
@@ -249,6 +252,8 @@
             BuildEventKickoffDateTime(ticket);
 
             BuildMaxPayout(ticket);
+
+            BuildBooked(ticket);
         }
 
         protected virtual void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
@@ -470,6 +475,17 @@
             }
         }
 
+        protected virtual void BuildBooked(ITicket ticket)
+        {
+            if (ticket.ExtraInfo.HasAttributeInXmlTag(CommonValue.SportsbookTagName, CommonValue.BookedBetAttribute))
+            {
+                Template.Booked.Show();
+            }
+            else
+            {
+                Template.Booked.Hide();
+            }
+        }
         #endregion Build Html Block
 
         public virtual string GetBetTypeName(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData = null)
@@ -649,6 +665,15 @@
                 && !string.IsNullOrEmpty(Template.MaxPayout.maxPayout))
             {
                 rtfHelper.RTFRenderer.AddText("\n" + Template.MaxPayout.maxPayout);
+            }
+        }
+
+        protected virtual void BuildBookedInfo(RTFHelper rtfHelper)
+        {
+            if (Template.Booked != null
+                && Template.Booked.Visible)
+            {
+                rtfHelper.RTFRenderer.AddText("\n" + CoreBetList.Booked);
             }
         }
 

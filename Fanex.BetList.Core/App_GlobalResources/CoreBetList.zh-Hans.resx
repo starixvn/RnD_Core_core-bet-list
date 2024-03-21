@@ -987,4 +987,7 @@
   <data name="Saba" xml:space="preserve">
     <value>沙巴</value>
   </data>
+  <data name="Booked" xml:space="preserve">
+    <value>预约</value>
+  </data>
 </root>
