@@ -9,6 +9,7 @@
             MapIdToBaseId(InspireVirtualRacingBetTypes.Place, InspireVirtualRacingBetTypes.Win);
             MapForVirtualSports3();
             MapForVirtualSports4();
+            MapIdToBaseId(VirtualSports4BetTypes.MixParlay, BetRadarSharedBetTypes.MixParlay);
         }
 
         private void MapForVirtualSports3()
