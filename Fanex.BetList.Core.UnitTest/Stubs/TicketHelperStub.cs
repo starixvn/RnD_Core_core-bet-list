@@ -180,6 +180,6 @@ namespace Fanex.BetList.Core.UnitTest.Stubs
             => _betTypeName + tableGamesBetTypeId;
 
         public string GetVirtualSportMatchCodeFormat(string matchCode, string refId)
-            => _matchCode +  matchCode;
+        => "match code";
     }
 }

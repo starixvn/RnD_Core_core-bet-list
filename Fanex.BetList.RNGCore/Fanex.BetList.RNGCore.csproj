@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
-        <Version>1.0.0.2</Version>
-        <InfomationalVersion>1.0.0.2</InfomationalVersion>
-        <PackageReleaseNotes>Support new Gaming API (#200736)</PackageReleaseNotes>
+        <Version>1.0.0.4-sabaxd-01</Version>
+        <InfomationalVersion>1.0.0.4</InfomationalVersion>
+        <PackageReleaseNotes>Support Odds core (#203371)</PackageReleaseNotes>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>   
         <Description>RNG core package</Description>
         <Authors>Nexcel Solutions</Authors>

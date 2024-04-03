@@ -54,6 +54,30 @@
             return BetListView(model);
         }
 
+        public ActionResult SabaxD(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes(10801, 10802);
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            DataSourcePath = "~/App_Data/SabaxD.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
+        public ActionResult TaraPlaysxD(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes(10801, 10802);
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            DataSourcePath = "~/App_Data/SabaxD.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
         public ActionResult VirtualSports3(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(5302, 5303, 5304);
@@ -1604,6 +1628,7 @@
             var factory = new BetListExcelFactory();
             BetListExcelBuilder builder = factory.CreateBuilder();
             ITicketHelper ticketHelper = new TicketHelper();
+            ticketHelper.HideSabaText = query.HideSabaText;
             GetCachePropertyById funcGetOddsTypeName = ticketHelper.GetOddsTypeNameById;
             const short excelColumns = 12;
             builder.BuildWorksheet("BetList", excelColumns);

@@ -24,5 +24,7 @@
         public string Name { get; set; }
 
         public string DataFilePath { get; set; }
+
+        public bool HideSabaText { get; set; }
     }
 }

@@ -15,8 +15,9 @@
     var factory = new BetListHTMLFactory();
     BetListHTMLBuilder builder = factory.CreateBuilder();
 
+    var hideSabaText = Request.Path.Contains("TaraPlaysxD");
     ITicketHelper ticketHelper = new TicketHelper();
-
+    ticketHelper.HideSabaText = hideSabaText;
     GetCachePropertyById funcGetOddsTypeName = ticketHelper.GetOddsTypeNameById;
 
     var isShowScoreMap = Model.BetTypeId == 145 || Model.BetTypeId == 146 || Model.BetTypeId == 151;
@@ -35,7 +36,7 @@
                 </div>
                 <div class="col-lg-3">
                     <input type="submit" value="Submit" class="btn btn-primary" />
-                    <span class="alert alert-succes">@Html.ActionLink("Export list to excel", "ExportExcel", new { Language = Model.Language, BetTypeId = Model.BetTypeId })</span>
+                    <span class="alert alert-succes">@Html.ActionLink("Export list to excel", "ExportExcel", new { Language = Model.Language, BetTypeId = Model.BetTypeId, HideSabaText = ticketHelper.HideSabaText })</span>
                 </div>
                 <div class="col-lg-2">
                     <select class="form-control" data-val="true" id="Language" name="Language" onchange="this.form.submit()">
