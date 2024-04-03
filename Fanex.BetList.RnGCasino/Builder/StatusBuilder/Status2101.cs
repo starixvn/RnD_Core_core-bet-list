@@ -6,21 +6,8 @@
     using Entities;
     using Utils;
 
-    public class Status2101 : Status1
+    public class Status2101 : StatusRNG
     {
-        protected override void BuildStatusResult(ITicket ticket)
-        {
-            if (string.IsNullOrEmpty(ticket.BetCheck))
-            {
-                Template.StatusResult.Hide();
-            }
-            else
-            {
-                base.BuildStatusResult(ticket);
-                Template.StatusResult.betId = $"{ticket.CurrencyId}, '{ticket.BetTeam}', {ticket.CustId}, '{ticket.BetCheck}', '{ticket.SiteId}'";
-            }
-        }
-
         protected override void BuildResult(ITicket ticket, List<ITicketData> ticketData)
         {
             string status = ticket.Status.ToLowerInvariant();

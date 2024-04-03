@@ -10,7 +10,7 @@
     using Fanex.BetList.Core.Utils.TicketExt;
     using Templates;
 
-    public class Choice2101 : Choice1
+    public class Choice2101 : ChoiceRNG
     {
         private const string BetTypeOpenTag = "<span class=\"colorHandicap\">";
         private const string BetTypeCloseTag = "</span> ";
@@ -27,33 +27,12 @@
                 betChoice = BetTypeOpenTag + betChoice + BetTypeCloseTag;
             }
 
-            if (!string.IsNullOrEmpty(ticket.BetCheck))
+            if (IsDetailTicket(ticket.BetCheck))
             {
-                betChoice += ticket.BetCheck;
+                betChoice += GetTransId3rd(ticket.BetCheck);
             }
 
             Template.betTeam = betChoice;
-        }
-
-        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
-        {
-            Template.Handicap.handicap = null;
-            Template.betTeamClassName = Underdog;
-        }
-
-        protected override void BuildScore(ITicket ticket)
-        {
-            Template.Score = null;
-        }
-
-        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-        {
-            Template.BetType = null;
-        }
-
-        protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
-        {
-            Template.Match = null;
         }
 
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
@@ -66,50 +45,27 @@
             var gameGroupName = ticketHelper.GetResourceData(GameGroupRefId, ticket.TransDesc);
             Template.League.LeagueName.SetValue(string.Format(GameGroupNameArea, gameGroupName));
 
-            if (string.IsNullOrEmpty(ticket.BetCheck))
+            if (IsSummaryTicket(ticket.BetCheck))
             {
-                Template.League.Append(BuildShowRnGBetsDetails(ticket));
+                Template.League.Append(BuildDetailsLink(ticket));
             }
         }
 
         protected override void AdjustBetTeamToRTF()
         {
             base.AdjustBetTeamToRTF();
-
-            Template.betTeam = Template.betTeam.Replace(BetTypeOpenTag, string.Empty);
-            Template.betTeam = Template.betTeam.Replace(BetTypeCloseTag, string.Empty);
+            
             Template.betTeam = Template.betTeam.Trim();
         }
 
-        private static Choice_League_Block BuildShowRnGBetsDetails(ITicket ticket)
+        protected override string BuildDetailsLink(ITicket ticket)
         {
-            string[] detailsFunctionDivCompositions =
-            {
-                "<div class=\"detail rng-casino-detail\" onclick=\"showRnGCasinoDetails('",
-                ticket.TransId.ToString(CultureInfo.InvariantCulture),
-                "', ",
-                "'",
-                ticket.WinlostDate.ToString(CultureInfo.InvariantCulture),
-                "'",
-                ", ",
-                ticket.CustId.ToString(CultureInfo.InvariantCulture),
-                ", ",
-                ticket.GetTransactionType(),
-                ");\">",
-                "<a class=\"detail-link\" href=\"javascript:void('');\">",
-                CoreBetList.details,
-                "</a>",
-                "</div>"
-            };
-            string detailLinkMarkup = string.Join(null, detailsFunctionDivCompositions);
-            var detailtTemplateBlock = new Choice_League_Block();
+            var detailLink = $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a>";
+            var parameterList = $"'{ticket.TransId}', '{ticket.WinlostDate}', {ticket.CustId}, {ticket.GetTransactionType()}";
 
-            detailtTemplateBlock.SetValue(detailLinkMarkup);
-
-            return detailtTemplateBlock;
+            return $"<div class=\"detail rng-casino-detail\" onclick=\"showRnGCasinoDetails({parameterList});\">{detailLink}</div>";
         }
 
-        
         protected override void BuildMatchInfo(ref RTFHelper rtfHelper)
         {
             if (Template.League != null)

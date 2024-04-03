@@ -27,11 +27,11 @@
 
         protected override void AdjustBetTeamToRTF()
         {
-            base.AdjustBetTeamToRTF();
-
             Template.betTeam = Template.betTeam
                 .Replace(OpenTagJackpotContributionInfo, NewLine)
                 .Replace(CloseTagJackpotContribution, string.Empty);
+                
+            base.AdjustBetTeamToRTF();
         }
 
         private static string FormatDecimal(decimal number)

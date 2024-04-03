@@ -1,10 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
-        <FileVersion>2.0.0.1</FileVersion>
-        <Version>2.0.0.1</Version>
-        <PackageReleaseNotes>Company Max Payout Alert(#194491)</PackageReleaseNotes>
+        <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>
+        <Version>2.0.0.2-API-03</Version>
+        <InfomationalVersion>2.0.0.2</InfomationalVersion>
+        <PackageReleaseNotes>Support new Gaming API (#201962)</PackageReleaseNotes>
         <Description>BetList core package</Description>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <Authors>Nexcel Solutions</Authors>
@@ -16,5 +15,6 @@
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj" />
+      <ProjectReference Include="..\Fanex.BetList.RNGCore\Fanex.BetList.RNGCore.csproj" />
     </ItemGroup>
 </Project>

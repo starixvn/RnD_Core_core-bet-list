@@ -25,11 +25,11 @@
 
         protected override void AdjustBetTeamToRTF()
         {
-            base.AdjustBetTeamToRTF();
-
             Template.betTeam = Template.betTeam
                 .Replace(OpenTagJackpotRefNo, NewLine)
                 .Replace(CloseTagJackpotRefNo, string.Empty);
+                
+            base.AdjustBetTeamToRTF();
         }
     }
 }

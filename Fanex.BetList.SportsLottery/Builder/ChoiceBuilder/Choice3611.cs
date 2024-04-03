@@ -1,5 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using System;
     using System.Collections.Generic;
     using Fanex.BetList.Core.Entities;
 
@@ -12,7 +13,7 @@
         {
             var gameTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
 
-            Template.League.LeagueName.leagueName = $"{gameTypeName} [{ticket.BetCheck}]";
+            Template.League.LeagueName.leagueName = $"{gameTypeName} [{GetTransId3rd(ticket.BetCheck)}]";
         }
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
@@ -40,6 +41,19 @@
         {
             string[] strTemp = strValue.Split('=');
             return strTemp.Length > 1 ? strTemp[1] : string.Empty;
+        }
+
+        protected virtual string GetTransId3rd(string transId3rd)
+        {
+            const string transId3rdSeparator = "|$|";
+            if (transId3rd == null || !transId3rd.Contains(transId3rdSeparator))
+            {
+                return transId3rd;
+            }
+
+            var transIdParts = transId3rd.Split(new string[] { transId3rdSeparator }, StringSplitOptions.RemoveEmptyEntries);
+
+            return transIdParts[transIdParts.Length - 1];
         }
     }
 }

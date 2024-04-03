@@ -33,7 +33,8 @@
 
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
         {
-            var tableCode = GetTableCode(ticket.BetCheck);
+            var gameId3rd = GetTransId3rd(ticket.BetCheck);
+            var tableCode = GetTableCode(gameId3rd);
 
             if (string.IsNullOrEmpty(tableCode))
             {
@@ -43,7 +44,7 @@
             {
                 var tableName = ticketHelper.GetResourceData(TableRefId, tableCode);
 
-                Template.League.LeagueName.leagueName = $"{tableName} [{ticket.BetCheck}]";
+                Template.League.LeagueName.leagueName = $"{tableName} [{gameId3rd}]";
             }
         }
 
@@ -77,6 +78,19 @@
             return string.IsNullOrEmpty(betCheck) || betCheck.Length < tableCodeIndex + tableCodeLength
                 ? string.Empty
                 : betCheck.Substring(tableCodeIndex, tableCodeLength);
+        }
+
+        protected virtual string GetTransId3rd(string transId3rd)
+        {
+            const string transId3rdSeparator = "|$|";
+            if (transId3rd == null || !transId3rd.Contains(transId3rdSeparator))
+            {
+                return transId3rd;
+            }
+
+            var transIdParts = transId3rd.Split(new string[] { transId3rdSeparator }, StringSplitOptions.RemoveEmptyEntries);
+
+            return transIdParts[transIdParts.Length - 1];
         }
     }
 }
