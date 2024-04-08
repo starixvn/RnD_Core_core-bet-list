@@ -6,7 +6,7 @@
     /// <summary>
     /// Jackpot Contribution
     /// </summary>
-    public class Status3898 : Status1
+    public class Status3898 : StatusRNG
     {
         private const string Hyphen = "-";
 

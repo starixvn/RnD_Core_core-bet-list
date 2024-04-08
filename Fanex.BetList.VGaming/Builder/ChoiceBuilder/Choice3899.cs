@@ -22,15 +22,5 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                 Template.betTeam += $"{OpenTagJackpotRefNo}{CoreBetList.forRefNo}: {ticket.BetdaqId}{CloseTagJackpotRefNo}";
             }
         }
-
-        protected override void AdjustBetTeamToRTF()
-        {
-            Template.betTeam = Template.betTeam
-                .Replace(OpenTagJackpotRefNo, "\n")
-                .Replace(CloseTagJackpotRefNo, string.Empty);
-
-            base.AdjustBetTeamToRTF();
-        }
-
     }
 }

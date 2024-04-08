@@ -50,10 +50,11 @@
                 "0",
                 ticket.LeagueId,
                 "0",
-                ticket.BetId ?? 0,
-                $"'{ticket.SiteId}'",
+                ticket.CurrencyId,
+                ticket.BetTeam,
                 ticket.CustId,
-                $"'{ticket.BetCheck}'"
+                $"'{ticket.BetCheck}'",
+                $"'{ticket.SiteId}'"
             };
 
             return $"<div class=\"result\" onclick=\"ViewResult({string.Join(", ", parameterList)});\">{CoreBetList.running}</div>";

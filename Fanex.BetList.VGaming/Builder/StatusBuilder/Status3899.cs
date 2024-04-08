@@ -5,7 +5,7 @@
     /// <summary>
     /// Jackpot Prize
     /// </summary>
-    public class Status3899 : Status1
+    public class Status3899 : StatusRNG
     {
         protected override void BuildStatusResult(ITicket ticket)
         {

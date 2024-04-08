@@ -1,8 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
-        <Version>2.0.0.4</Version>
-        <PackageReleaseNotes>Support broke game (#199989)</PackageReleaseNotes>
+        <Version>2.0.0.5-API-04</Version>
+        <InfomationalVersion>2.0.0.5</InfomationalVersion>
+        <PackageReleaseNotes>Support new Gaming API (#201962)</PackageReleaseNotes>
         <Description>BetList core package</Description>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <Authors>Nexcel Solutions</Authors>

@@ -6,16 +6,19 @@
     using Fanex.BetList.Core.Utils;
     using Fanex.BetList.Core.Utils.TicketExt;
 
-    public class Status3802 : Status1
+    public class Status3802 : StatusRNG
     {
-        private const int dayAgoSupportResultPage = -10;
         private const string siteIdDefault = "4100300";
 
         protected override void BuildStatusResult(ITicket ticket)
         {
             if (ticket.IsSettled() || ticket.IsRefunded())
             {
-                if (IsSupportViewResultLink(ticket))
+                if (IsHideRNGResult(ticket))
+                {
+                    Template.StatusResult.Hide();
+                }
+                else
                 {
                     var siteId = string.IsNullOrEmpty(ticket.SiteId) ? siteIdDefault : ticket.SiteId;
 
@@ -27,11 +30,7 @@
                     Template.StatusResult.league = ticket.LeagueId.ToString(CultureInfo.InvariantCulture);
                     Template.StatusResult.userName = ticket.Currency;
                     Template.StatusResult.winlostDate = Formatter.FullDateFormat(ticket.WinlostDate);
-                    Template.StatusResult.betId = $"{ticket.BetId ?? 0}, '{siteId}', {ticket.CustId}, '{ticket.BetCheck}'";
-                }
-                else
-                {
-                    Template.StatusResult.Hide();
+                    Template.StatusResult.betId = $"{ticket.CurrencyId}, '{ticket.BetTeam}', {ticket.CustId}, '{ticket.BetCheck}', '{siteId}'";
                 }
             }
             else
@@ -40,11 +39,12 @@
             }
         }
 
-        private static bool IsSupportViewResultLink(ITicket ticket)
+        protected override bool IsHideRNGResult(ITicket ticket)
         {
-            var minDate = DateTime.Today.AddDays(dayAgoSupportResultPage);
+            const int daySupportResultLink = 10;
 
-            return ticket.WinlostDate >= minDate && !string.IsNullOrWhiteSpace(ticket.BetCheck);
+            return string.IsNullOrEmpty(ticket.BetCheck) ||
+                ticket.IsTicketHide3rdResultLink(daySupportResultLink);
         }
     }
 }

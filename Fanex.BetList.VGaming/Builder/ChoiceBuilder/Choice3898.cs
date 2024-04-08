@@ -23,14 +23,5 @@
             Template.betTeam +=
                 $"{OpenTagJackpotContributionInfo}{CoreBetList.stake}: {stake} {ticket.Currency} @ {CoreBetList.rate} {rate}{CloseTagJackpotContribution}";
         }
-
-        protected override void AdjustBetTeamToRTF()
-        {
-            Template.betTeam = Template.betTeam
-                .Replace(OpenTagJackpotContributionInfo, "\n")
-                .Replace(CloseTagJackpotContribution, string.Empty);
-
-            base.AdjustBetTeamToRTF();
-        }
     }
 }
