@@ -29,9 +29,8 @@
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
         {
             var gameId3rd = GetTransId3rd(ticket.BetCheck);
-            var tableCode = GetTableCode(gameId3rd);
 
-            Template.League.LeagueName.leagueName = string.IsNullOrEmpty(tableCode) ? string.Empty : $"[{gameId3rd}]";
+            Template.League.LeagueName.leagueName = $"[{gameId3rd}]";
         }
 
     }

@@ -113,22 +113,6 @@
             Assert.IsNull(template.Match);
         }
 
-        [TestCase("")]
-        [TestCase("P")]
-        [TestCase("PB")]
-        [TestCase("PB1")]
-        public void BuildLeague_BetCheckIsInvalid_DisplayedLeagueNameIsEmpty(string betCheck)
-        {
-            // Arrange.
-            _ticket.BetCheck = betCheck;
-
-            // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, false);
-
-            // Assert.
-            Assert.IsEmpty(template.League.LeagueName.leagueName);
-        }
-
         [Test]
         public void BuildLeague_ValidBetCheck_AppendBetCheckToLeagueNameAsGameId()
         {

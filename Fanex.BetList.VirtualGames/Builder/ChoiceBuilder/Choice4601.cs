@@ -7,7 +7,6 @@
     public class Choice4601 : Choice1
     {
         public const string ChoiceRefId = "VirtualGamesChoice";
-        public const string TableRefId = "VirtualGamesTable";
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
             => Template.BetType.betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
@@ -34,18 +33,8 @@
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
         {
             var gameId3rd = GetTransId3rd(ticket.BetCheck);
-            var tableCode = GetTableCode(gameId3rd);
-
-            if (string.IsNullOrEmpty(tableCode))
-            {
-                Template.League.LeagueName.leagueName = string.Empty;
-            }
-            else
-            {
-                var tableName = ticketHelper.GetResourceData(TableRefId, tableCode);
-
-                Template.League.LeagueName.leagueName = $"{tableName} [{gameId3rd}]";
-            }
+            
+            Template.League.LeagueName.leagueName = $"[{gameId3rd}]";
         }
 
         private static string GetBetChoiceId(string transDesc)

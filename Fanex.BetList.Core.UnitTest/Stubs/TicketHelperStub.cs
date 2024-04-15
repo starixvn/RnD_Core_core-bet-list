@@ -15,6 +15,7 @@ namespace Fanex.BetList.Core.UnitTest.Stubs
         private string _betTeamName = "BetTeam";
         private string _gameName = "Game";
         private string _oddsName = "Odds";
+        private string _matchCode = "Match Code";
 
         public int Index { get; set; }
 
@@ -177,5 +178,8 @@ namespace Fanex.BetList.Core.UnitTest.Stubs
 
         public string GetTableGamesBetTypeName(string tableGamesBetTypeId)
             => _betTypeName + tableGamesBetTypeId;
+
+        public string GetVirtualSportMatchCodeFormat(string matchCode, string refId)
+            => _matchCode +  matchCode;
     }
 }
