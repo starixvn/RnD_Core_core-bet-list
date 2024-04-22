@@ -9,23 +9,11 @@
     using Fanex.BetList.Core.Utils.TicketExt;
     using Templates;
 
-    public class Choice3701 : Choice1
+    public class Choice3701 : ChoiceLC
     {
         private const string BetTypeNameTag = "<span class='bet-type-name'>{0}</span>";
         private const string BetIdTag = "<span class='bet-id'>{0}</span>";
         private const string GameIdTag = "<span class='game-id'>{0}</span>";
-
-        protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
-            => Template.Match = null;
-
-        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
-        {
-            Template.Handicap = null;
-            Template.betTeamClassName = Favorite;
-        }
-
-        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-            => Template.betTeam = GetBetChoice(ticket);
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
@@ -48,22 +36,17 @@
             }
         }
 
-        protected override void BuildBetTypeName(ref RTFHelper rtfHelper)
-            => rtfHelper.RTFRenderer.AddText(string.Empty);
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+            => Template.betTeam = GetBetChoice(ticket);
 
-        protected override void AdjustBetTeamToRTF()
-        {
-            Template.betTeam = string.Join("\n", Template.betTeam.SplitHTMLIntoRows());
-            Template.League.LeagueName.leagueName = string.Join(string.Empty, Template.League.LeagueName.leagueName.StripHTML());
-        }
-
-        private static string GetBetChoice(ITicket ticket)
+        private string GetBetChoice(ITicket ticket)
         {
             var betTeam = new StringBuilder();
 
             if (!string.IsNullOrEmpty(ticket.BetCheck))
             {
-                betTeam.AppendFormat(BetIdTag, $"{CoreBetList.BetID}: {ticket.BetCheck}");
+                var _parseTransId3rd = GetTransId3rd(ticket.BetCheck);
+                betTeam.AppendFormat(BetIdTag, $"{CoreBetList.BetID}: {_parseTransId3rd}");
             }
 
             return betTeam.ToString();
