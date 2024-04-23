@@ -6,7 +6,12 @@
     {
         public StakeMapper()
         {
-           MapIdToBaseId(BetTypes.SabaRewardRiskFreeRebate, BetTypes.SabaLoyaltyPointsExchange);
+            MapIdToBaseId(BetTypes.SabaRewardRiskFreeRebate, BetTypes.SabaLoyaltyPointsExchange);
+
+            for (var i = BetTypes.SabaCoinsLowest; i <= BetTypes.SabaCoinsHighest; i++)
+            {
+                MapIdToBaseId(i, BetTypes.SabaLoyaltyPointsExchange);
+            }
         }
     }
 }

@@ -32,6 +32,10 @@
             MapIdToBaseId(BetTypes.ResultTotalGoals, BetTypes.FirstHalfResultTotalGoals);
             MapIdToBaseId(BetTypes.FirstHalfDoubleChance, BetTypes.DoubleChance);
             MapIdToBaseId(BetTypes.SabaLoyaltyPointsExchange, BetTypes.SabaLuckySpin);
+
+            MapIdToBaseId(BetTypes.SabaCoinsCashExchange, BetTypes.SabaRedEnvelope);
+            MapIdToBaseId(BetTypes.SixScoreChallenge, BetTypes.SabaRedEnvelope);
+            MapIdToBaseId(BetTypes.PromotionCashPrize, BetTypes.SabaRedEnvelope);
         }
 
         private void MapForBetRadar()
@@ -570,6 +574,11 @@
         private void MapForSabaPromotion()
         {
             MapIdToBaseId(BetTypes.CasinoRoyaleTournamentPrize, BetTypes.SabaRedEnvelope);
+            
+            for (var i = BetTypes.SabaCoinsLowest; i <= BetTypes.SabaCoinsHighest; i++)
+            {
+                MapIdToBaseId(i, BetTypes.SabaRedEnvelope);
+            }
         }
     }
 }

@@ -357,13 +357,18 @@
         public const int SetXGameYTotalPointZWinner = 1332;
         public const int SetXGameYAndGameYAdd1Winner = 1333;
         public const int SetXGameYAndGameYAdd1Points = 1334;
+        
+        public const int SabaCoinsLowest = 11001;
+        public const int SabaCoinsHighest = 11019;
+
         public const int SabaLuckySpin = 17000;
         public const int SabaLoyaltyPointsExchange = 17003;
         public const int SabaRedEnvelope = 17004;
         public const int  CasinoRoyaleTournamentPrize = 17006;
-
         public const int SabaRewardRiskFreeRebate = 17007;
-
+        public const int SabaCoinsCashExchange = 17008;
+        public const int SixScoreChallenge = 17009;
+        public const int PromotionCashPrize = 17010;
         public const int SuperOverWinner = 9400;
         public const int TossWinner = 9401;
 

@@ -127,6 +127,15 @@
             MapIdToBaseId(BetTypes.SabaRedEnvelope, BetTypes.SabaLuckySpin);
             MapIdToBaseId(BetTypes.CasinoRoyaleTournamentPrize, BetTypes.SabaLuckySpin);
             MapIdToBaseId(BetTypes.SabaRewardRiskFreeRebate, BetTypes.SabaLuckySpin);
+
+            for (var i = BetTypes.SabaCoinsLowest; i <= BetTypes.SabaCoinsHighest; i++)
+            {
+                MapIdToBaseId(i, BetTypes.SabaLuckySpin);
+            }
+
+            MapIdToBaseId(BetTypes.SabaCoinsCashExchange, BetTypes.SabaLuckySpin);
+            MapIdToBaseId(BetTypes.SixScoreChallenge, BetTypes.SabaLuckySpin);
+            MapIdToBaseId(BetTypes.PromotionCashPrize, BetTypes.SabaLuckySpin);
         }
 
         private void MapForCornerMatches()
