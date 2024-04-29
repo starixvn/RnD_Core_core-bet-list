@@ -12,15 +12,6 @@
     public class Choice3701 : ChoiceLC
     {
         private const string BetTypeNameTag = "<span class='bet-type-name'>{0}</span>";
-        private const string BetIdTag = "<span class='bet-id'>{0}</span>";
-        private const string GameIdTag = "<span class='game-id'>{0}</span>";
-
-        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-        {
-            base.BuildBetType(ticket, ticketHelper, ticketData);
-
-            Template.BetType.Visible = false;
-        }
 
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
         {
@@ -30,50 +21,16 @@
             {
                 Template.League.Append(BuildDetailLink(ticket));
             }
-            else
-            {
-                Template.League.LeagueName.leagueName += " " + BuildGameId(ticket);
-            }
         }
 
-        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-            => Template.betTeam = GetBetChoice(ticket);
-
-        private string GetBetChoice(ITicket ticket)
+        protected override void AdjustBetTeamToRTF()
         {
-            var betTeam = new StringBuilder();
-
-            if (!string.IsNullOrEmpty(ticket.BetCheck))
-            {
-                var _parseTransId3rd = GetTransId3rd(ticket.BetCheck);
-                betTeam.AppendFormat(BetIdTag, $"{CoreBetList.BetID}: {_parseTransId3rd}");
-            }
-
-            return betTeam.ToString();
+            Template.betTeam = string.Join("\n", Template.betTeam.SplitHTMLIntoRows());
+            Template.League.LeagueName.leagueName = string.Join(string.Empty, Template.League.LeagueName.leagueName.StripHTML());
+            base.AdjustBetTeamToRTF();
         }
 
-        private static Choice_League_Block BuildDetailLink(ITicket ticket)
-        {
-            var detailLinkMarkupBuilder = new StringBuilder();
-            var detailFunction = BuildDetailFunction(ticket);
-
-            detailLinkMarkupBuilder
-                .Append("<div class=\"detail pragmatic-live-casino-detail\" onclick='")
-                .Append(detailFunction)
-                .Append("'>")
-                .Append("<a class=\"detail-link\" href=\"javascript:void(&quot;&quot;);\">")
-                .Append(CoreBetList.details)
-                .Append("</a>")
-                .Append("</div>");
-
-            var detailTemplateBlock = new Choice_League_Block();
-
-            detailTemplateBlock.SetValue(detailLinkMarkupBuilder.ToString());
-
-            return detailTemplateBlock;
-        }
-
-        private static string BuildDetailFunction(ITicket ticket)
+        public override string BuildDetailFunction(ITicket ticket)
         {
             var detailFunctionBuilder = new StringBuilder();
 
@@ -99,8 +56,10 @@
 
             return string.Format(BetTypeNameTag, betTypeName);
         }
+        protected override bool IsDetailTicket(ITicket ticket)
+            => !string.IsNullOrEmpty(ticket.BetCheck);
 
-        private static string BuildGameId(ITicket ticket)
-            => string.Format(GameIdTag, ticket.MatchCode);
+        protected override bool IsSummaryTicket(ITicket ticket)
+            => !IsDetailTicket(ticket);
     }
 }

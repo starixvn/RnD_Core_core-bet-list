@@ -50,7 +50,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         {
             Template.BetType.betTypeName = string.Empty;
 
-            if (!string.IsNullOrEmpty(ticket.TransDesc))
+            if (IsDetailTicket(ticket))
             {
                 var _parseTransId3rd = GetTransId3rd(ticket.BetCheck);
                 Template.BetType.betTypeName = $"{OpenBetIdTag}{CoreBetList.BetID}: {_parseTransId3rd}{CloseBetIdTag}";
@@ -61,7 +61,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         {
             Template.League.LeagueName.leagueName = BuildBetTypeName(ticket, ticketHelper);
 
-            if (string.IsNullOrEmpty(ticket.TransDesc))
+            if (IsSummaryTicket(ticket))
             {
                 Template.League.Append(BuildDetailLink(ticket));
             }
@@ -94,7 +94,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             return string.Empty;
         }
 
-        private Choice_League_Block BuildDetailLink(ITicket ticket)
+        public virtual Choice_League_Block BuildDetailLink(ITicket ticket)
         {
             var detailLinkMarkupBuilder = new StringBuilder();
             var detailFunction = BuildDetailFunction(ticket);
@@ -164,5 +164,11 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             return transIdParts[transIdParts.Length - 1];
         }
+
+        protected virtual bool IsDetailTicket(ITicket ticket)
+            => !string.IsNullOrEmpty(ticket.TransDesc);
+
+        protected virtual bool IsSummaryTicket(ITicket ticket)
+            => !IsDetailTicket(ticket);
     }
 }
