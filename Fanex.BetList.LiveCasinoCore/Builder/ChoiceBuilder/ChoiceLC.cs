@@ -118,7 +118,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         public virtual string BuildDetailFunction(ITicket ticket)
             => string.Empty;
 
-        private static string BuildBetTypeName(ITicket ticket, ITicketHelper ticketHelper)
+        public static string BuildBetTypeName(ITicket ticket, ITicketHelper ticketHelper)
         {
             var betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
 

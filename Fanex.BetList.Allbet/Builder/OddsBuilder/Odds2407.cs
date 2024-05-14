@@ -17,7 +17,19 @@
             "8023",
             "8121",
             "8122",
-            "8123"
+            "8123",
+            "BB_BANKER1_DBL",
+            "BB_BANKER2_DBL",
+            "BB_BANKER3_DBL",
+            "BB_BANKER1_SPR",
+            "BB_BANKER2_SPR",
+            "BB_BANKER3_SPR",
+            "BB_PLAYER1_DBL",
+            "BB_PLAYER2_DBL",
+            "BB_PLAYER3_DBL",
+            "BB_PLAYER1_SPR",
+            "BB_PLAYER2_SPR",
+            "BB_PLAYER3_SPR"
         };
     }
 }

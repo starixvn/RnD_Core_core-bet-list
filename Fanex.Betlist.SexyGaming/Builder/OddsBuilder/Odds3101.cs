@@ -18,7 +18,15 @@ namespace Fanex.BetList.Core.Builder.OddsBuilder
             "1008",
             "1009",
             "1010",
-            "1011"
+            "1011",
+            "BAC_BANKER_PAIR",
+            "BAC_PLAYER_PAIR",
+            "BAC_BANKER_BINGO",
+            "BAC_PLAYER_BINGO",
+            "BAC_BANKER_IN1",
+            "BAC_BANKER_IN2",
+            "BAC_PLAYER_IN1",
+            "BAC_PLAYER_IN2"
         };
         private const string BetChoiceDataKey = "Choice";
 

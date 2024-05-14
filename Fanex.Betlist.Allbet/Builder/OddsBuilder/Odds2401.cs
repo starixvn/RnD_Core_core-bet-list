@@ -2,8 +2,8 @@
 {
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.Utils;
     using System.Collections.Generic;
+    using Fanex.BetList.Core.Utils.Parsers;
 
     public class Odds2401 : Odds1
     {
@@ -18,7 +18,18 @@
             "1301",
             "1302",
             "1303",
-            "1304"
+            "1304",
+            "BAC_LUCKY_SIX",
+            "BAC_BANKER_BINGO",
+            "BAC_PLAYER_BINGO",
+            "BAC_TIGER",
+            "BAC_TIGER_PAIR",
+            "BAC_BANKER_PCP",
+            "BAC_PLAYER_PCP",
+            "BAC_BANKER_IN1",
+            "BAC_BANKER_IN2",
+            "BAC_PLAYER_IN2",
+            "BAC_PLAYER_IN1"
         };
 
         public override Odds_Template Render(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
@@ -38,9 +49,9 @@
 
         private static string GetChoiceId(ITicket ticket)
         {
-            const string betChoiceKey = "Choice";
+            const string betChoiceKey = "choice";
 
-            var parsedTransDesc = ticket.ParseTransDesc();
+            var parsedTransDesc = ExtraInfoParser.ParseExtraInfo(ticket.TransDesc);
 
             if (parsedTransDesc.ContainsKey(betChoiceKey))
             {

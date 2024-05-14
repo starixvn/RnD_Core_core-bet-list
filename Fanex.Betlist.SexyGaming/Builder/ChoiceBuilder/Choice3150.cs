@@ -3,7 +3,7 @@
     using Entities;
     using System.Collections.Generic;
 
-    public class Choice3150 : Choice3101
+    public class Choice3150 : ChoiceLC
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
             => Template.betTeam = string.Empty;
@@ -12,7 +12,7 @@
         {
             Template.League.LeagueName.leagueName = BuildBetTypeName(ticket, ticketHelper);
 
-            if (string.IsNullOrEmpty(ticket.TransDesc))
+            if (IsSummaryTicket(ticket))
             {
                 Template.League.Append(BuildDetailLink(ticket));
             }

@@ -2,7 +2,7 @@
 {
     using Fanex.BetList.Core.Entities;
 
-    public class Status2401 : Status1
+    public class Status2401 : StatusLC
     {
         protected override void BuildStatusResult(ITicket ticket)
         {

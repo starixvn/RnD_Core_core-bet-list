@@ -7,106 +7,22 @@
     using System.Collections.Generic;
     using System.Globalization;
     using System.Text;
-    using System.Text.RegularExpressions;
     using Templates;
     using Utils;
 
-    public class Choice3101 : Choice1
+    public class Choice3101 : ChoiceLC
     {
-        private const string OpenBetTypeNameTag = "<span class='sexygaming-bet-type-name'>";
-        private const string CloseBetTypeNameTag = "</span>";
-
-        protected const string OpenBetIdTag = "<span class='sexygaming-bet-id'>";
-        protected const string CloseBetIdTag = "</span>";
-
-        private const string OpenGameIdTag = "<span class='sexygaming-game-id'>";
-        private const string CloseGameIdTag = "</span>";
-
         private const string GameTableIdFormat = "<span class=\"gamegroupname\">{0}</span>";
 
-        private const string AllBetRefId = "SC_BT";
-        private const string BetChoiceDataKey = "Choice";
-        private const string TableCodeKey = "TableCode";
+        private const string SexyGamingRefId = "SC_BT";
 
-        private Dictionary<string, string> _parsedTransDesc;
+        public override string GetDisplayChoice(ITicketHelper ticketHelper, string choice)
+            => ticketHelper.GetResourceData(SexyGamingRefId, choice);
 
-        public override Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
-        {
-            _parsedTransDesc = ticket.ParseTransDesc();
+        public override string GetDisplayTableCode(ITicketHelper ticketHelper, string tableCode)
+            => string.Format(GameTableIdFormat, tableCode);
 
-            return base.Render(ticket, ticketHelper, ticketData, isShowScoreMap);
-        }
-
-        protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
-        {
-            Template.Match = null;
-        }
-
-        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-            => Template.betTeam = GetBetChoice(ticketHelper);
-
-        private string GetBetChoice(ITicketHelper ticketHelper)
-        {
-            if (_parsedTransDesc != null && _parsedTransDesc.ContainsKey(BetChoiceDataKey))
-            {
-                return ticketHelper.GetResourceData(AllBetRefId, _parsedTransDesc[BetChoiceDataKey]);
-            }
-
-            return string.Empty;
-        }
-
-        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
-        {
-            Template.Handicap = null;
-            Template.betTeamClassName = Favorite;
-        }
-
-        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-        {
-            Template.BetType.betTypeName = string.Empty;
-
-            if (!string.IsNullOrEmpty(ticket.TransDesc))
-            {
-                Template.BetType.betTypeName = $"{OpenBetIdTag}{CoreBetList.BetID}: {ticket.BetCheck}{CloseBetIdTag}";
-            }
-        }
-
-        protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
-        {
-            Template.League.LeagueName.leagueName = BuildBetTypeName(ticket, ticketHelper);
-
-            if (string.IsNullOrEmpty(ticket.TransDesc))
-            {
-                Template.League.Append(BuildDetailLink(ticket));
-            }
-            else
-            {
-                Template.League.LeagueName.leagueName += " " + GetTableCode() + " " + BuildGameId(ticket);
-            }
-        }
-
-        protected static Choice_League_Block BuildDetailLink(ITicket ticket)
-        {
-            var detailLinkMarkupBuilder = new StringBuilder();
-            var detailFunction = BuildDetailFunction(ticket);
-
-            detailLinkMarkupBuilder
-                .Append("<div class=\"detail sexygaming-casino-detail\" onclick='")
-                .Append(detailFunction)
-                .Append("'>")
-                .Append("<a class=\"detail-link\" href=\"javascript:void(&quot;&quot;);\">")
-                .Append(CoreBetList.details)
-                .Append("</a>")
-                .Append("</div>");
-
-            var detailTemplateBlock = new Choice_League_Block();
-
-            detailTemplateBlock.SetValue(detailLinkMarkupBuilder.ToString());
-
-            return detailTemplateBlock;
-        }
-
-        private static string BuildDetailFunction(ITicket ticket)
+        public override string BuildDetailFunction(ITicket ticket)
         {
             var detailFunctionBuilder = new StringBuilder();
 
@@ -124,45 +40,6 @@
                 .Append("&quot;);");
 
             return detailFunctionBuilder.ToString();
-        }
-
-        protected static string BuildBetTypeName(ITicket ticket, ITicketHelper ticketHelper)
-        {
-            var betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
-
-            return $"{OpenBetTypeNameTag}{betTypeName}{CloseBetTypeNameTag}";
-        }
-
-        private string GetTableCode()
-        {
-            if (_parsedTransDesc != null && _parsedTransDesc.ContainsKey(TableCodeKey))
-            {
-                return string.Format(GameTableIdFormat, _parsedTransDesc[TableCodeKey]);
-            }
-
-            return string.Empty;
-        }
-
-        private static string BuildGameId(ITicket ticket)
-            => $"{OpenGameIdTag}{ticket.MatchCode}{CloseGameIdTag}";
-
-        protected override void AdjustBetTeamToRTF()
-        {
-            RemoveHtmlTagFromLeagueName();
-            RemoveHtmlTagFromBetTypeName();
-        }
-
-        private void RemoveHtmlTagFromLeagueName()
-        {
-            var htmlTagMatching = new Regex("</?[^<>]*>");
-            Template.League.LeagueName.leagueName = htmlTagMatching.Replace(Template.League.LeagueName.leagueName, string.Empty);
-        }
-
-        private void RemoveHtmlTagFromBetTypeName()
-        {
-            Template.BetType.betTypeName = Template.BetType.betTypeName
-                .Replace(OpenBetIdTag, string.Empty)
-                .Replace(CloseBetIdTag, string.Empty);
         }
     }
 }
