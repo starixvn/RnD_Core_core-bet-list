@@ -13,13 +13,13 @@
             var mainTicketGameType = GetMainTicketGameTypeName(ticket, ticketHelper);
             var gameType = ticketHelper.GetResourceData(GameTypeRefId, ticket.BetTypeId.ToString());
 
-            if (string.IsNullOrEmpty(ticket.BetCheck))
+            if (IsSummaryTicket(ticket.BetCheck))
             {
                 Template.betTeam = $"<span class=\"handicap\">{gameType}</span>";
                 return;
             }
 
-            Template.betTeam = $"<span class=\"handicap\">{mainTicketGameType} - {gameType}</span> {ticket.BetCheck}";
+            Template.betTeam = $"<span class=\"handicap\">{mainTicketGameType} - {gameType}</span> {GetTransId3rd(ticket.BetCheck)}";
         }
 
         private static string GetMainTicketGameTypeName(ITicket ticket, ITicketHelper ticketHelper)

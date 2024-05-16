@@ -17,7 +17,7 @@
         {
             base.BuildBetTeam(ticket, ticketHelper, ticketData);
 
-            if (!string.IsNullOrEmpty(ticket.BetCheck))
+            if (IsDetailTicket(ticket.BetCheck))
             {
                 Template.betTeam += $"{OpenTagJackpotRefNo}{CoreBetList.forRefNo}: {ticket.BetdaqId}{CloseTagJackpotRefNo}";
             }

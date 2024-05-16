@@ -6,53 +6,35 @@
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Utils.TicketExt;
+    using Fanex.BetList.Core.Utils.StringExt;
 
-    public class Choice4101 : Choice1
+    public class Choice4101 : ChoiceRNG
     {
         private const string JackpotInfo = "jp=1";
         private const string JackpotTransIdInfo = "jpw=";
         public const string GameGroupRefId = "PP_RNG_GG";
         public const string GameTypeRefId = "PP_RNG_GT";
 
-        private readonly Regex htmlTagMatching = new Regex("</?[^<>]*>");
-
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             Template.betTeam = $"<span class=\"handicap\">{ticketHelper.GetResourceData(GameTypeRefId, ticket.BetTypeId.ToString())}</span>";
 
-            if (!string.IsNullOrEmpty(ticket.BetCheck))
+            if (IsDetailTicket(ticket.BetCheck))
             {
-                Template.betTeam += " " + ticket.BetCheck;
+                Template.betTeam += " " + GetTransId3rd(ticket.BetCheck);
             }
         }
-
-        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
-        {
-            Template.Handicap = null;
-            Template.betTeamClassName = Underdog;
-        }
-
-        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-            => Template.BetType = null;
-
-        protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
-            => Template.Match = null;
-
-        protected override void BuildScore(ITicket ticket)
-            => Template.Score = null;
 
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
         {
             Template.League.LeagueName.SetValue($"<span class=\"gamegroupname\"> {ticketHelper.GetResourceData(GameGroupRefId, ticket.BetTypeId.ToString())}</span>");
 
-            var isSummaryTicket = string.IsNullOrEmpty(ticket.BetCheck);
-            if (isSummaryTicket)
+            if (IsSummaryTicket(ticket.BetCheck))
             {
                 Template.League.Append(BuildPPDetailsLink(ticket));
             }
 
-            var isDetailedTicket = !isSummaryTicket;
-            if (isDetailedTicket && TicketHasJackpotInfo(ticket))
+            if (IsDetailTicket(ticket.BetCheck) && TicketHasJackpotInfo(ticket))
             {
                 Template.League.Append(BuildShowJackpotWonDetails(ticket));
             }
@@ -81,13 +63,10 @@
             return $"<div class=\"detail pp-detail\" onclick=\"showPPDetails({parameterList});\">{detailLink}</div>";
         }
 
-        protected override void AdjustBetTeamToRTF()
-            => Template.betTeam = htmlTagMatching.Replace(Template.betTeam, string.Empty);
-
         protected override void BuildMatchInfo(ref RTFHelper rtfHelper)
         {
             string sportTypeName = Template.League.sportTypeName;
-            string gameGroupName = htmlTagMatching.Replace(Template.League.LeagueName.ToString(), string.Empty);
+            string gameGroupName = Template.League.LeagueName.ToString().StripHTML();
 
             if (!string.IsNullOrEmpty(sportTypeName) && !string.IsNullOrEmpty(gameGroupName))
             {
