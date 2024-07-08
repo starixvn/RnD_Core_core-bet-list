@@ -1577,6 +1577,24 @@
             return BetListView(model);
         }
 
+        public ActionResult FastSpin(BetListData model = null)
+        {
+            var betTypeIds = new List<int>();
+
+            for (var betTypeId = 11100; betTypeId <= 11299; betTypeId++)
+            {
+                betTypeIds.Add(betTypeId);
+            }
+            var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            DataSourcePath = "~/App_Data/FastSpin.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
+
         private ViewResult BetListView(BetListData model)
         {
             return View("All", model);
