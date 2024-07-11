@@ -15,6 +15,7 @@
             MapForCricket();
             MapForOthers();
             MapForVolleyballAIO();
+            MapForBaseball();
         }
 
         private void MapForCricket()
@@ -79,6 +80,26 @@
             }
 
             MapIdToBaseId(BetTypes.TimeMachineHDP, BetTypes.TimeMachineOverUnder);
+        }
+
+        private void MapForBaseball()
+        {
+            MapIdToBaseId(BetTypes.FirstXInningsMoneyline, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.FirstXInningsResult, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.FirstXInningsRunLine, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.FirstXInningsTotalRuns, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.FirstXInningsHomeTeamTotalRuns, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.FirstXInningsAwayTeamTotalRuns, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.XInningResult, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.XInningRunLine, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.XInningTotalRuns, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.XInningExactTotalRuns, BetTypes.FirstHalfRaceToXPoints);
+
+            MapIdToBaseId(BetTypes.BothTeamToScoreXRuns, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.LeadAfterXInnings, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.RaceToXRuns, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.XInningHitsHandicap, BetTypes.FirstHalfRaceToXPoints);
+            MapIdToBaseId(BetTypes.XInningTotalHits, BetTypes.FirstHalfRaceToXPoints);
         }
 
         private void MapForBasketBall()

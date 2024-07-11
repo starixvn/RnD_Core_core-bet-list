@@ -633,4 +633,28 @@
   <data name="h_wm_over_12" xml:space="preserve">
     <value>12점 이상으로 홈팀 승리</value>
   </data>
+  <data name="HomeWinBy1Run" xml:space="preserve">
+    <value>홈팀이 1점 차로 승리</value>
+  </data>
+  <data name="HomeWinBy2Runs" xml:space="preserve">
+    <value>홈팀이 2점 차로 승리</value>
+  </data>
+  <data name="HomeWinBy3Runs" xml:space="preserve">
+    <value>홈팀이 3점 차로 승리</value>
+  </data>
+  <data name="HomeWinBy4+Runs" xml:space="preserve">
+    <value>홈팀이 4점 이상 차로 승리</value>
+  </data>
+  <data name="AwayWinBy1Runs" xml:space="preserve">
+    <value>원정팀이 1점 차로 승리</value>
+  </data>
+  <data name="AwayWinBy2Runs" xml:space="preserve">
+    <value>원정팀이 2점 차로 승리</value>
+  </data>
+  <data name="AwayWinBy3Runs" xml:space="preserve">
+    <value>원정팀이 3점 차로 승리</value>
+  </data>
+  <data name="AwayWinBy4+Runs" xml:space="preserve">
+    <value>원정팀이 4점 이상 차로 승리</value>
+  </data>
 </root>

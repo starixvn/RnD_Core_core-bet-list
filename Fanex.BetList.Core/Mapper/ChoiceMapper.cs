@@ -24,6 +24,7 @@
             MapForCricketAIOP4();
             MapForVolleyballAIO();
             MapForSabaPromotion();
+            MapForBaseballAIO();
         }
 
         private void MapForOtherBetTypes()
@@ -579,6 +580,36 @@
             {
                 MapIdToBaseId(i, BetTypes.SabaRedEnvelope);
             }
+        }
+
+        private void MapForBaseballAIO()
+        {
+            MapIdToBaseId(BetTypes.RunLine, BetTypes.Handicap);
+            MapIdToBaseId(BetTypes.TotalRuns, BetTypes.SetXTotalGameOverUnder);
+            MapIdToBaseId(BetTypes.HomeTeamTotalRuns, BetTypes.SetXTotalGameOverUnder);
+            MapIdToBaseId(BetTypes.AwayTeamTotalRuns, BetTypes.SetXTotalGameOverUnder);
+            MapIdToBaseId(BetTypes.FirstXInningsMoneyline, BetTypes.SetXWinner);
+            MapIdToBaseId(BetTypes.FirstXInningsResult, BetTypes.VolleyballLeadingTeamAfterSetXFirstYPoints3Way);
+            MapIdToBaseId(BetTypes.FirstXInningsRunLine, BetTypes.SetXGameHandicap);
+            MapIdToBaseId(BetTypes.FirstXInningsTotalRuns, BetTypes.SetXTotalGameOverUnder);
+            MapIdToBaseId(BetTypes.FirstXInningsHomeTeamTotalRuns, BetTypes.SetXTotalGameOverUnder);
+            MapIdToBaseId(BetTypes.FirstXInningsAwayTeamTotalRuns, BetTypes.SetXTotalGameOverUnder);
+            MapIdToBaseId(BetTypes.XInningResult, BetTypes.VolleyballLeadingTeamAfterSetXFirstYPoints3Way);
+            MapIdToBaseId(BetTypes.XInningRunLine, BetTypes.SetXGameHandicap);
+            MapIdToBaseId(BetTypes.XInningTotalRuns, BetTypes.SetXTotalGameOverUnder);
+            MapIdToBaseId(BetTypes.XInningExactTotalRuns, BetTypes.QuarterXLastDigitScore);
+            MapIdToBaseId(BetTypes.BothTeamToScoreXRuns, BetTypes.GameXExtraPoints);
+            MapIdToBaseId(BetTypes.ExtraInningYesNo, BetTypes.GameXExtraPoints);
+            MapIdToBaseId(BetTypes.TotalHits, BetTypes.SetXTotalGameOverUnder);
+            MapIdToBaseId(BetTypes.HitsResult, BetTypes.VolleyballLeadingTeamAfterSetXFirstYPoints3Way);
+            MapIdToBaseId(BetTypes.TeamWithHighestInningScore, BetTypes.VolleyballLeadingTeamAfterSetXFirstYPoints3Way);
+            MapIdToBaseId(BetTypes.LeadAfterXInnings, BetTypes.VolleyballLeadingTeamAfterSetXFirstYPoints3Way);
+            MapIdToBaseId(BetTypes.FirstTeamToScore, BetTypes.TeamsToScore);
+            MapIdToBaseId(BetTypes.XInningHitsHandicap, BetTypes.SetXGameHandicap);
+            MapIdToBaseId(BetTypes.XInningTotalHits, BetTypes.SetXTotalGameOverUnder);
+            MapIdToBaseId(BetTypes.MoneyLineAndTotalRuns, BetTypes.VolleyballSetXWinnerAndTotalPoints);
+            MapIdToBaseId(BetTypes.LastTeamToScoreBaseball, BetTypes.TeamsToScore);
+            MapIdToBaseId(BetTypes.TotalRunsBands, BetTypes.ExtraTimeFirstHalfCorrectScore);
         }
     }
 }

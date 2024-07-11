@@ -1055,4 +1055,28 @@
   <data name="MaxPayoutAlertInfo" xml:space="preserve">
     <value>Vé cược này đã đạt đến mức Thanh Toán Tối Đa mà công ty quy định. Vui lòng xem Quy Định và Điều Khoản để biết thêm thông tin.</value>
   </data>
+  <data name="HomeWinBy1Run" xml:space="preserve">
+    <value>Đội nhà thắng 1 điểm</value>
+  </data>
+  <data name="HomeWinBy2Runs" xml:space="preserve">
+    <value>Đội nhà thắng 2 điểm</value>
+  </data>
+  <data name="HomeWinBy3Runs" xml:space="preserve">
+    <value>Đội nhà thắng 3 điểm</value>
+  </data>
+  <data name="HomeWinBy4+Runs" xml:space="preserve">
+    <value>Đội nhà thắng 4 điểm trở lên</value>
+  </data>
+  <data name="AwayWinBy1Runs" xml:space="preserve">
+    <value>Đội khách thắng 1 điểm</value>
+  </data>
+  <data name="AwayWinBy2Runs" xml:space="preserve">
+    <value>Đội khách thắng 2 điểm</value>
+  </data>
+  <data name="AwayWinBy3Runs" xml:space="preserve">
+    <value>Đội khách thắng 3 điểm</value>
+  </data>
+  <data name="AwayWinBy4+Runs" xml:space="preserve">
+    <value>Đội khách thắng 4 điểm trở lên</value>
+  </data>
 </root>

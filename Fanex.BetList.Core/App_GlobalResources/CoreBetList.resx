@@ -1081,4 +1081,31 @@
   <data name="Booked" xml:space="preserve">
     <value>Booked</value>
   </data>
+  <data name="More" xml:space="preserve">
+    <value>More</value>
+  </data>
+  <data name="HomeWinBy1Run" xml:space="preserve">
+    <value>Home To Win By 1 Run</value>
+  </data>
+  <data name="HomeWinBy2Runs" xml:space="preserve">
+    <value>Home To Win By 2 Runs</value>
+  </data>
+  <data name="HomeWinBy3Runs" xml:space="preserve">
+    <value>Home To Win By 3 Runs</value>
+  </data>
+  <data name="HomeWinBy4+Runs" xml:space="preserve">
+    <value>Home To Win By 4+ Runs</value>
+  </data>
+  <data name="AwayWinBy1Runs" xml:space="preserve">
+    <value>Away To Win By 1 Runs</value>
+  </data>
+  <data name="AwayWinBy2Runs" xml:space="preserve">
+    <value>Away To Win By 2 Runs</value>
+  </data>
+  <data name="AwayWinBy3Runs" xml:space="preserve">
+    <value>Away To Win By 3 Runs</value>
+  </data>
+  <data name="AwayWinBy4+Runs" xml:space="preserve">
+    <value>Away To Win By 4+ Runs</value>
+  </data>
 </root>

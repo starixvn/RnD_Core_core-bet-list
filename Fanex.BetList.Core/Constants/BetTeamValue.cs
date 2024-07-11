@@ -96,8 +96,12 @@
         public const string H2 = "h2";
         public const string H2Over = "h2+";
         public const string H3 = "h3";
+
+        public const string H4 = "h4";
         public const string H3to6 = "h3-6";
         public const string H3Over = "h3+";
+
+        public const string H4Over = "h4+";
         public const string H5to8 = "h5-8";
         public const string H6to10 = "h6-10";
         public const string H7to9 = "h7-9";
@@ -118,8 +122,12 @@
         public const string A2 = "a2";
         public const string A2Over = "a2+";
         public const string A3 = "a3";
+
+        public const string A4 = "a4";
         public const string A3to6 = "a3-6";
         public const string A3Over = "a3+";
+
+        public const string A4Over = "a4+";
         public const string A5to8 = "a5-8";
         public const string A6to10 = "a6-10";
         public const string A7to9 = "a7-9";

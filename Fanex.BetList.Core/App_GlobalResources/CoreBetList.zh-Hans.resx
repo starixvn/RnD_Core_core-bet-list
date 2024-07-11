@@ -990,4 +990,28 @@
   <data name="Booked" xml:space="preserve">
     <value>预约</value>
   </data>
+  <data name="HomeWinBy1Run" xml:space="preserve">
+    <value>主 赢1分</value>
+  </data>
+  <data name="HomeWinBy2Runs" xml:space="preserve">
+    <value>主 赢2分</value>
+  </data>
+  <data name="HomeWinBy3Runs" xml:space="preserve">
+    <value>主 赢3分</value>
+  </data>
+  <data name="HomeWinBy4+Runs" xml:space="preserve">
+    <value>主 赢4分以上</value>
+  </data>
+  <data name="AwayWinBy1Runs" xml:space="preserve">
+    <value>客 赢1分</value>
+  </data>
+  <data name="AwayWinBy2Runs" xml:space="preserve">
+    <value>客 赢2分</value>
+  </data>
+  <data name="AwayWinBy3Runs" xml:space="preserve">
+    <value>客 赢3分</value>
+  </data>
+  <data name="AwayWinBy4+Runs" xml:space="preserve">
+    <value>客 赢4分以上</value>
+  </data>
 </root>

@@ -13,11 +13,34 @@
             RegisterMultipleOddsTypesForBadmintonAIO();
             RegisterMultipleOddsTypesForPHAIO5();
             RegisterMultipleOddsTypesForVolleyballAIO();
+            RegisterMultipleOddsTypesForBaseball();
         }
 
         private void MapForScoreBox()
         {
             MapIdToBaseId(BetTypes.ScoreBoxOverUnder, BetTypes.ScoreBoxHandicap);
+        }
+
+        private static void RegisterMultipleOddsTypesForBaseball()
+        {
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.RunLine);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.TotalRuns);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.HomeTeamTotalRuns);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.AwayTeamTotalRuns);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.FirstXInningsMoneyline);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.FirstXInningsRunLine);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.FirstXInningsTotalRuns);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.FirstXInningsHomeTeamTotalRuns);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.FirstXInningsAwayTeamTotalRuns);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.XInningRunLine);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.XInningTotalRuns);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.BothTeamToScoreXRuns);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.ExtraInningYesNo);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.TotalHits);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.FirstTeamToScore);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.XInningHitsHandicap);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.XInningTotalHits);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.LastTeamToScoreBaseball);
         }
 
         private static void RegisterMultipleOddsTypesForPHAIO4B()

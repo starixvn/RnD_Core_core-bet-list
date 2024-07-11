@@ -495,4 +495,28 @@
   <data name="h_wm_over_12" xml:space="preserve">
     <value>ホームが12ポイントで以上で勝つ</value>
   </data>
+  <data name="HomeWinBy1Run" xml:space="preserve">
+    <value>ホームが1ランで勝つ</value>
+  </data>
+  <data name="HomeWinBy2Runs" xml:space="preserve">
+    <value>ホームが2ランで勝つ</value>
+  </data>
+  <data name="HomeWinBy3Runs" xml:space="preserve">
+    <value>ホームが3ランで勝つ</value>
+  </data>
+  <data name="HomeWinBy4+Runs" xml:space="preserve">
+    <value>ホームが4ラン以上で勝つ</value>
+  </data>
+  <data name="AwayWinBy1Runs" xml:space="preserve">
+    <value>アウェイが1ランで勝つ</value>
+  </data>
+  <data name="AwayWinBy2Runs" xml:space="preserve">
+    <value>アウェイが2ランで勝つ</value>
+  </data>
+  <data name="AwayWinBy3Runs" xml:space="preserve">
+    <value>アウェイが3ランで勝つ</value>
+  </data>
+  <data name="AwayWinBy4+Runs" xml:space="preserve">
+    <value>アウェイが4ラン以上で勝つ</value>
+  </data>
 </root>

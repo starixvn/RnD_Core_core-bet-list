@@ -1062,4 +1062,28 @@
   <data name="Saba" xml:space="preserve">
     <value>SABA</value>
   </data>
+  <data name="HomeWinBy1Run" xml:space="preserve">
+    <value>Tim Kandang Menang Dengan 1 Angka</value>
+  </data>
+  <data name="HomeWinBy2Runs" xml:space="preserve">
+    <value>Tim Kandang Menang Dengan 2 Angka</value>
+  </data>
+  <data name="HomeWinBy3Runs" xml:space="preserve">
+    <value>Tim Kandang Menang Dengan 3 Angka</value>
+  </data>
+  <data name="HomeWinBy4+Runs" xml:space="preserve">
+    <value>Tim Kandang Menang Dengan 4 Angka atau Lebih</value>
+  </data>
+  <data name="AwayWinBy1Runs" xml:space="preserve">
+    <value>Tim Tandang Menang Dengan 1 Angka</value>
+  </data>
+  <data name="AwayWinBy2Runs" xml:space="preserve">
+    <value>Tim Tandang Menang Dengan 2 Angka</value>
+  </data>
+  <data name="AwayWinBy3Runs" xml:space="preserve">
+    <value>Tim Tandang Menang Dengan 3 Angka</value>
+  </data>
+  <data name="AwayWinBy4+Runs" xml:space="preserve">
+    <value>Tim Tandang Menang Dengan 4 Angka atau Lebih</value>
+  </data>
 </root>

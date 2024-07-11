@@ -1068,4 +1068,28 @@
   <data name="MaxPayoutAlertInfo" xml:space="preserve">
     <value>ตั๋วเดิมพันนี้ ได้ถึงระดับการจ่ายเงินเดิมพันสูงสุดที่บริษัทได้กำหนดไว้ กรุณาศึกษากฎและข้อบังคับสำหรับข้อมูลเพิ่มเติม</value>
   </data>
+  <data name="HomeWinBy1Run" xml:space="preserve">
+    <value>เจ้าบ้านชนะ 1 รัน</value>
+  </data>
+  <data name="HomeWinBy2Runs" xml:space="preserve">
+    <value>เจ้าบ้านชนะ 2 รัน</value>
+  </data>
+  <data name="HomeWinBy3Runs" xml:space="preserve">
+    <value>เจ้าบ้านชนะ 3 รัน</value>
+  </data>
+  <data name="HomeWinBy4+Runs" xml:space="preserve">
+    <value>เจ้าบ้านชนะ 4 รันขึ้นไป</value>
+  </data>
+  <data name="AwayWinBy1Runs" xml:space="preserve">
+    <value>ทีมเยือนชนะ 1 รัน</value>
+  </data>
+  <data name="AwayWinBy2Runs" xml:space="preserve">
+    <value>ทีมเยือนชนะ 2 รัน</value>
+  </data>
+  <data name="AwayWinBy3Runs" xml:space="preserve">
+    <value>ทีมเยือนชนะ 3 รัน</value>
+  </data>
+  <data name="AwayWinBy4+Runs" xml:space="preserve">
+    <value>ทีมเยือนชนะ 4 รันขึ้นไป</value>
+  </data>
 </root>

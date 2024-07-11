@@ -357,18 +357,49 @@
         public const int SetXGameYTotalPointZWinner = 1332;
         public const int SetXGameYAndGameYAdd1Winner = 1333;
         public const int SetXGameYAndGameYAdd1Points = 1334;
-        
+
         public const int SabaCoinsLowest = 11001;
         public const int SabaCoinsHighest = 11049;
 
         public const int SabaLuckySpin = 17000;
         public const int SabaLoyaltyPointsExchange = 17003;
         public const int SabaRedEnvelope = 17004;
-        public const int  CasinoRoyaleTournamentPrize = 17006;
+        public const int CasinoRoyaleTournamentPrize = 17006;
         public const int SabaRewardRiskFreeRebate = 17007;
         public const int SabaCoinsCashExchange = 17008;
         public const int SixScoreChallenge = 17009;
         public const int PromotionCashPrize = 17010;
+
+        public const int RunLine = 8800;
+        public const int TotalRuns = 8801;
+        public const int HomeTeamTotalRuns = 8802;
+        public const int AwayTeamTotalRuns = 8803;
+        public const int FirstXInningsMoneyline = 8804;
+        public const int FirstXInningsResult = 8805;
+        public const int FirstXInningsRunLine = 8806;
+        public const int FirstXInningsTotalRuns = 8807;
+        public const int FirstXInningsHomeTeamTotalRuns = 8808;
+        public const int FirstXInningsAwayTeamTotalRuns = 8809;
+        public const int XInningResult = 8810;
+        public const int XInningRunLine = 8811;
+        public const int XInningTotalRuns = 8812;
+
+        public const int XInningExactTotalRuns = 8813;
+        public const int BothTeamToScoreXRuns = 8814;
+        public const int ExtraInningYesNo = 8815;
+        public const int TotalHits = 8816;
+        public const int HitsResult = 8817;
+        public const int TeamWithHighestInningScore = 8818;
+        public const int LeadAfterXInnings = 8819;
+        public const int RaceToXRuns = 8820;
+        public const int FirstTeamToScore = 8821;
+        public const int WinningMarginBaseball = 8822;
+        public const int XInningHitsHandicap = 8823;
+        public const int XInningTotalHits = 8824;
+        public const int MoneyLineAndTotalRuns = 8825;
+        public const int TotalRunsBands = 8826;
+        public const int LastTeamToScoreBaseball = 8827;
+
         public const int SuperOverWinner = 9400;
         public const int TossWinner = 9401;
 
