@@ -7,6 +7,7 @@
         public StakeMapper()
         {
             MapIdToBaseId(VGamingBetTypes.JackpotPrize, VGamingBetTypes.JackpotContribution);
+            MapIdToBaseId(VGamingBetTypes.PromotionPrize, VGamingBetTypes.JackpotContribution);
         }
     }
 }

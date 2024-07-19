@@ -11,6 +11,7 @@
 
         public const int ChineseBlackjack = 3876;
 
+        public const int PromotionPrize = 3897;
         public const int JackpotContribution = 3898;        
         public const int JackpotPrize = 3899;
         public const int PaiGowPoker = 3842;

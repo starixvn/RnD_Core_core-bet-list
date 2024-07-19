@@ -22,10 +22,12 @@
                 MapIdToBaseId(id, VGamingBetTypes.MinRange);
             }
 
-            for (var id = VGamingBetTypes.Blackjack + 1; id < VGamingBetTypes.JackpotContribution; id++)
+            for (var id = VGamingBetTypes.Blackjack + 1; id < VGamingBetTypes.PromotionPrize; id++)
             {
                 MapIdToBaseId(id, brokenGame.Contains(id) ? VGamingBetTypes.Blackjack : VGamingBetTypes.MinRange);
             }
+
+            MapIdToBaseId(VGamingBetTypes.PromotionPrize, VGamingBetTypes.JackpotPrize);
         }
     }
 }
