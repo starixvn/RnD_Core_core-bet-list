@@ -1631,6 +1631,23 @@
             return BetListView(model);
         }
 
+        public ActionResult Nextspin(BetListData model = null)
+        {
+            var betTypeIds = new List<int>();
+
+            for (var betTypeId = 10450; betTypeId <= 10750; betTypeId++)
+            {
+                betTypeIds.Add(betTypeId);
+            }
+            var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            DataSourcePath = "~/App_Data/Nextspin.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
 
         private ViewResult BetListView(BetListData model)
         {

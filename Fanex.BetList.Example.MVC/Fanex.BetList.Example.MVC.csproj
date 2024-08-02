@@ -180,6 +180,9 @@
     <Reference Include="Fanex.BetList.MyanmarOdds, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.BetList.MyanmarOdds.1.1.0\lib\net40\Fanex.BetList.MyanmarOdds.dll</HintPath>
     </Reference>
+    <Reference Include="Fanex.BetList.Nextspin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.BetList.Nextspin.1.0.0-beta-01\lib\net461\Fanex.BetList.Nextspin.dll</HintPath>
+    </Reference>
     <Reference Include="Fanex.BetList.NG2, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.BetList.NG2.2.0.0-net5-03\lib\net461\Fanex.BetList.NG2.dll</HintPath>
     </Reference>
@@ -561,7 +564,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -701,6 +706,7 @@
     <Content Include="App_Data\SabaxD.xls" />
     <Content Include="App_Data\FACHAI.xls" />
     <Content Include="App_Data\BaseballAIO.xls" />
+    <Content Include="App_Data\Nextspin.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />

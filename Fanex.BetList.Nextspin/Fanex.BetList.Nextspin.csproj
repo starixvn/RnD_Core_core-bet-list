@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
+        <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+        <Version>1.0.0-beta-01</Version>
+        <InfomationalVersion>1.0.0</InfomationalVersion>
+        <PackageReleaseNotes>Support BetList for Nextspin (#199982)</PackageReleaseNotes>
+        <Description>
+        New bet list for Nextspin
+
+The result link should call this Javascript function: "showNextspinBetDetails(transId, 'winlostDate', custId, transactionType);", which transactionType is:
+
+- 1, if the status is Won, Lose, Draw, or Refund
+
+- 2, if the status is Reject, or Void
+
+- 3, if the status is Running, or Waiting
+
+- otherwise, 0</Description>
+        <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+        <Authors>Nexcel Solutions</Authors>
+        <PackageTags>Fanex BetList</PackageTags>
+        <PackageProjectUrl>https://nexdev.net/projects/p111068/wiki/072024_-_NextSpin_-_Bet_List_%26_Results</PackageProjectUrl>
+    </PropertyGroup>
+    <ItemGroup>
+      <PackageReference Include="TplNetCore" Version="1.0.0" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj" />
+      <ProjectReference Include="..\Fanex.BetList.RNGCore\Fanex.BetList.RNGCore.csproj" />
+    </ItemGroup>    
+</Project>
