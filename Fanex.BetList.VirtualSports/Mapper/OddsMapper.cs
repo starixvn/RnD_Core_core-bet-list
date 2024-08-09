@@ -10,6 +10,7 @@
             MapForVirtualSports3();
             MapForVirtualSports4();
             MapIdToBaseId(VirtualSports4BetTypes.MixParlay, BetRadarSharedBetTypes.MixParlay);
+            MapIdToBaseId(VirtualSports5BetTypes.MixParlay, BetRadarSharedBetTypes.MixParlay);
         }
 
         private void MapForVirtualSports3()

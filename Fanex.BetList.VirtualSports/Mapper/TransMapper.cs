@@ -13,6 +13,8 @@
             MapForVirtualSports3();
 
             MapForVirtualSports4();
+
+            MapForVirtualSports5();
         }
 
         private void MapForVirtualSports4()
@@ -64,6 +66,14 @@
             MapIdToBaseId(BetRadarVirtualBasketballBetTypes.AwayTeamOverUnder, BetRadarVirtualSoccerBetTypes.FullTime1X2);
             MapIdToBaseId(BetRadarVirtualSoccerBetTypes.Win, BetRadarVirtualSoccerBetTypes.FullTime1X2);
             MapIdToBaseId(BetRadarVirtualSoccerBetTypes.Place, BetRadarVirtualSoccerBetTypes.FullTime1X2);
+        }
+
+        private void MapForVirtualSports5()
+        {
+            for (var id = VirtualSports5BetTypes.FullTime1X2 + 1; id <= VirtualSports5BetTypes.MixParlay; id++)
+            {
+                MapIdToBaseId(id, VirtualSports5BetTypes.FullTime1X2);
+            }
         }
     }
 }
