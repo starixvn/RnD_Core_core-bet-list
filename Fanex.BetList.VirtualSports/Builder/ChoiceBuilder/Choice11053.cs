@@ -6,9 +6,19 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Utils;
     using System.Text.RegularExpressions;
     using Entities;
-    
-    public class Choice11053 : Choice11054
+    using Fanex.BetList.Core.Templates;
+
+    public class Choice11053 : Choice11050
     {
+        private string _excludingScores;
+
+         public override Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
+        {
+            _excludingScores = VirtualSportsChoiceUtils.ParseExcludingScoresInfo(ticket.TransDesc);
+
+            return base.Render(ticket, ticketHelper, ticketData, isShowScoreMap);
+        } 
+
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             var choice = ticket.BetTeam.ToLowerInvariant();
@@ -29,12 +39,12 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             {
                 if (Template.Score.Visible)
                 {
-                    Template.Score.Append(BuildExcludingBlock(ticket.TransDesc));
+                    Template.Score.Append(BuildExcludingBlock(_excludingScores));
                 }
                 else
                 {
                     Template.Score.Visible = true;
-                    Template.Score.SetValue(BuildExcludingBlock(ticket.TransDesc));
+                    Template.Score.SetValue(BuildExcludingBlock(_excludingScores));
                 }
             }
         }
@@ -60,7 +70,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             if (IsAOS(ticket))
             {
-                choice += $"\n{CoreBetList.Excluding}: {FormatTransDesc(ticket.TransDesc)}";
+                choice += $"\n{CoreBetList.Excluding}: {BuildExcludingBlock(_excludingScores)}";
             }
 
             if (!string.IsNullOrEmpty(choice))
@@ -76,6 +86,6 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             => Regex.Replace(transDesc, ",\\s*", ", ").Replace(":", "-");
 
         private static string BuildExcludingBlock(string transDesc)
-            => $"<div class=\"excluding-choices\">{CoreBetList.Excluding}: {FormatTransDesc(transDesc)}</div>";
+        => $"<div class=\"excluding-choices\">{CoreBetList.Excluding}: {FormatTransDesc(transDesc)}</div>";
     }
 }

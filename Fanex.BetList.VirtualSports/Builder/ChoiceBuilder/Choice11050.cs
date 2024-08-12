@@ -4,8 +4,8 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.App_GlobalResources;
     using Entities;
     using Templates;
-    
-    public class Choice11050 : Choice11054
+
+    public class Choice11050 : Choice10400
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
@@ -13,10 +13,10 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             switch (betTeam)
             {
                 case "1":
-                    betTeam = ticketHelper.GetTeamNameById(ticket.HomeId);
+                    betTeam = ticketHelper.GetTeamName3rd(ticket.HomeId.ToString());
                     break;
                 case "2":
-                    betTeam = ticketHelper.GetTeamNameById(ticket.AwayId);
+                    betTeam = ticketHelper.GetTeamName3rd(ticket.AwayId.ToString());
                     break;
                 default:
                     betTeam = CoreBetList.draw;
@@ -26,10 +26,27 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             Template.betTeam = betTeam;
         }
 
+        protected override void GeneralMatchRoundInfo(ITicket ticket, ITicketHelper ticketHelper)
+        => _matchRoundInfo = VirtualSportsChoiceUtils.ParseMatchInfo("VYVS_MatchCode", ticket.TransDesc, ticketHelper);
+
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
             Template.Handicap.handicap = null;
             Template.betTeamClassName = Favorite;
+        }
+
+        protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            base.BuildLeague(ticket, ticketHelper);
+            Template.League.LeagueName.leagueName = ticketHelper.GetLeagueName3rd(ticket.LeagueId.ToString());
+        }
+
+        protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            base.BuildMatch(ticket, ticketHelper);
+
+            Template.Match.homeTeam = ticketHelper.GetTeamName3rd(ticket.HomeId.ToString());
+            Template.Match.awayTeam = ticketHelper.GetTeamName3rd(ticket.AwayId.ToString());            
         }
     }
 }

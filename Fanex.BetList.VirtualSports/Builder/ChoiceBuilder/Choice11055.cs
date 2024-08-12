@@ -5,20 +5,17 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Utils;
     using Entities;
-    using Templates;
-    
-    public class Choice11055 : Choice11054
+
+    public class Choice11055 : Choice11050
     {
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
-            base.BuildBetTeamClassNameAndHandicap(ticket);
+            Template.betTeamClassName = ticket.BetTeam.ToLowerInvariant() == BetTeamValue.O ? Favorite : Underdog;
 
             Template.Handicap.handicap = ConvertByBetType.Hdp(ticket.Handicap1);
         }
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-        {
-            Template.betTeam = BetTeamValue.H == ticket.BetTeam.ToLowerInvariant() ? CoreBetList.over : CoreBetList.under;
-        }
+        => Template.betTeam = BetTeamValue.O == ticket.BetTeam.ToLowerInvariant() ? CoreBetList.over : CoreBetList.under;
     }
 }

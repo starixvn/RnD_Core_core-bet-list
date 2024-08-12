@@ -53,6 +53,7 @@
             MapIdToBaseId(BetRadarVirtualBasketballBetTypes.HomeTeamOverUnder, InspireVirtualRacingBetTypes.Win);
             MapIdToBaseId(BetRadarVirtualBasketballBetTypes.AwayTeamOverUnder, InspireVirtualRacingBetTypes.Win);
             MapIdToBaseId(VirtualSports4BetTypes.MixParlay, BetTypes.MixParlay);
+            MapIdToBaseId(VirtualSports5BetTypes.MixParlay, BetTypes.MixParlay);
         }
     }
 }

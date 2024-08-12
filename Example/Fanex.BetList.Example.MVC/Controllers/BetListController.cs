@@ -52,6 +52,25 @@
 
             return BetListView(model);
         }
+        
+        public ActionResult VirtualSports5(BetListData model = null)
+        {
+            var betTypeIds = new List<int>();
+
+            for (var betTypeId = 11050; betTypeId <= 11099; betTypeId++)
+            {
+                betTypeIds.Add(betTypeId);
+            }
+
+            var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            DataSourcePath = "~/App_Data/VirtualSports5.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
 
         public ActionResult BaseballAIO(BetListData model = null)
         {

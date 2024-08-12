@@ -38,7 +38,7 @@
         private const int MuayThaiSportId = 44;
         private const int HandicapBetTypeId = 1;
         private const string LightBlue = " light-blue";
-        private readonly int[] _liveScoreSports = { SportsbookSportTypes.Soccer, SportsbookSportTypes.Futsal, SportsbookSportTypes.BeachSoccer };
+        private readonly int[] _liveScoreSports = { SportsbookSportTypes.Soccer, SportsbookSportTypes.Futsal, SportsbookSportTypes.BeachSoccer, SportsbookSportTypes.VirtuallySoccer };
         private const string ESportsXmlTag = "p16";
         private const string InPlayXmlAttribute = "in";
         private const string MaxPayoutXmlTag = "l255";

@@ -2,27 +2,11 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
     using Entities;
-    using Templates;
-    
-    public class Choice11054 : Choice1
+    using Fanex.BetList.Core.Utils;
+
+    public class Choice11054 : Choice11050
     {
-        private const string VS4MatchCode = "VYVS_MatchCode";
-
-        protected string _matchRoundInfo;
-
-        protected virtual void GeneralMatchRoundInfo(ITicket ticket, ITicketHelper ticketHelper)
-        {
-            _matchRoundInfo = VirtualSportsChoiceUtils.ParseMatchInfo(VS4MatchCode, ticket.TransDesc, ticketHelper);
-        }
-
-        public override Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
-        {
-            GeneralMatchRoundInfo(ticket, ticketHelper);
-
-            return base.Render(ticket, ticketHelper, ticketData, isShowScoreMap);
-        }
-
-        protected virtual void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             var awayTeamName = ticketHelper.GetTeamName3rd(ticket.AwayId.ToString());
             var homeTeamName = ticketHelper.GetTeamName3rd(ticket.HomeId.ToString());
@@ -31,29 +15,28 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             Template.betTeam = isBetHomeTeam ? homeTeamName : awayTeamName;
         }
 
-        protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
-            base.BuildMatch(ticket, ticketHelper);
+            var isBetHomeTeam = IsBetHomeTeam(ticket);
 
-            Template.AppendMatchOrRoundInfo(_matchRoundInfo);
-        }
+            string betTeamClassName;
 
-        protected override void BuildBetTeamsInfo(ITicket ticket, ref RTFHelper rtfHelper)
-        {
-            base.BuildBetTeamsInfo(ticket, ref rtfHelper);
-
-            rtfHelper.RTFRenderer.AddText($"\n{_matchRoundInfo}");
-        }
-
-        protected virtual void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
-        {
-            if (Template.League == null
-                || Template.League.LeagueName == null)
+            if (isBetHomeTeam)
             {
-                return;
+                betTeamClassName = ticket.Handicap2 >= ticket.Handicap1 ? Underdog : Favorite;
+            }
+            else
+            {
+                betTeamClassName = ticket.Handicap2 <= ticket.Handicap1 ? Underdog : Favorite;
             }
 
-            Template.League.LeagueName.leagueName = ticketHelper.GetLeagueName3rd(ticket.LeagueId.ToString());
+            Template.betTeamClassName = betTeamClassName;
+            
+
+            decimal handicap = ticket.Handicap2 > ticket.Handicap1 ? ticket.Handicap2 : ticket.Handicap1;
+            handicap = betTeamClassName == Favorite ? -handicap : handicap;
+
+            Template.Handicap.handicap = ConvertByBetType.Hdp(handicap);
         }
     }
 }
