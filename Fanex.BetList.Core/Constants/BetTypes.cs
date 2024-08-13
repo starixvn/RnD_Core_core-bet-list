@@ -359,7 +359,7 @@
         public const int SetXGameYAndGameYAdd1Points = 1334;
         
         public const int SabaCoinsLowest = 11001;
-        public const int SabaCoinsHighest = 11019;
+        public const int SabaCoinsHighest = 11049;
 
         public const int SabaLuckySpin = 17000;
         public const int SabaLoyaltyPointsExchange = 17003;
