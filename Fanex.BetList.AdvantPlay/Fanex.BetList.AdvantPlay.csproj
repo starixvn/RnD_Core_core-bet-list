@@ -2,8 +2,8 @@
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
-        <Version>2.0.0.1-beta-01</Version>
-        <InfomationalVersion>2.0.0.1</InfomationalVersion>
+        <Version>2.0.0.2</Version>
+        <InfomationalVersion>2.0.0.2</InfomationalVersion>
         <PackageReleaseNotes>Update GamingAPI for AdvantPlay (#208671)</PackageReleaseNotes>
         <Description>BetList core package</Description>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
