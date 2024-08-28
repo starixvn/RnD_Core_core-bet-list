@@ -2,9 +2,9 @@
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
-        <Version>1.0.0-beta-02</Version>
-        <InfomationalVersion>1.0.0</InfomationalVersion>
-        <PackageReleaseNotes>Support BetList for FACHAI (#206633)</PackageReleaseNotes>
+        <Version>1.0.0.1-beta-01</Version>
+        <InfomationalVersion>1.0.0.1</InfomationalVersion>
+        <PackageReleaseNotes>Support BetList Promotion for FACHAI (#209720)</PackageReleaseNotes>
         <Description>
         New bet list for FACHAI
 
