@@ -399,6 +399,14 @@
         public const int MoneyLineAndTotalRuns = 8825;
         public const int TotalRunsBands = 8826;
         public const int LastTeamToScoreBaseball = 8827;
+        public const int ToWinSeries = 8828;
+        public const int SeriesGamesHandicap = 8829;
+        public const int SeriesTotalGames = 8830; 
+        public const int SeriesCorrectScore = 8831;
+        public const int SeriesLeaderAfterGame3 = 8832;
+        public const int SeriesLeaderAfterGame4 = 8833;
+        public const int SeriesCorrectScoreAfterGame3 = 8834;
+        public const int SeriesCorrectScoreAfterGame4 = 8835;
 
         public const int SuperOverWinner = 9400;
         public const int TossWinner = 9401;

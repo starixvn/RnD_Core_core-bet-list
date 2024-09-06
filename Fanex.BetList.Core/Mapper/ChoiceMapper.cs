@@ -610,6 +610,14 @@
             MapIdToBaseId(BetTypes.MoneyLineAndTotalRuns, BetTypes.VolleyballSetXWinnerAndTotalPoints);
             MapIdToBaseId(BetTypes.LastTeamToScoreBaseball, BetTypes.TeamsToScore);
             MapIdToBaseId(BetTypes.TotalRunsBands, BetTypes.ExtraTimeFirstHalfCorrectScore);
+            MapIdToBaseId(BetTypes.ToWinSeries, BetTypes.Moneyline);
+            MapIdToBaseId(BetTypes.SeriesGamesHandicap, BetTypes.Handicap);
+            MapIdToBaseId(BetTypes.SeriesTotalGames, BetTypes.HomeTeamOverUnder);
+            MapIdToBaseId(BetTypes.SeriesCorrectScore, BetTypes.ExtraTimeFirstHalfCorrectScore);
+            MapIdToBaseId(BetTypes.SeriesLeaderAfterGame3, BetTypes.SuperOverWinner);
+            MapIdToBaseId(BetTypes.SeriesLeaderAfterGame4, BetTypes.VolleyballLeadingTeamAfterSetXFirstYPoints3Way);
+            MapIdToBaseId(BetTypes.SeriesCorrectScoreAfterGame3, BetTypes.ExtraTimeFirstHalfCorrectScore);
+            MapIdToBaseId(BetTypes.SeriesCorrectScoreAfterGame4, BetTypes.ExtraTimeFirstHalfCorrectScore);
         }
     }
 }
