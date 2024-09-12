@@ -2941,6 +2941,15 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Voucher ID:.
+        /// </summary>
+        public static string voucherid {
+            get {
+                return ResourceManager.GetString("voucherid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Waiting.
         /// </summary>
         public static string waiting {

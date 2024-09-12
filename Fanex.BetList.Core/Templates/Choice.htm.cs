@@ -30,6 +30,7 @@ namespace Fanex.BetList.Core
 			public Choice_EventDate_Block EventDate = new Choice_EventDate_Block();
 			public Choice_MaxPayout_Block MaxPayout = new Choice_MaxPayout_Block();
 			public Choice_Booked_Block Booked = new Choice_Booked_Block();
+			public Choice_VoucherId_Block VoucherId = new Choice_VoucherId_Block();
 			protected static string s5 = "</div>";
 			public override void ToString(ref StringBuilder bd)
 			{
@@ -54,6 +55,7 @@ namespace Fanex.BetList.Core
 					if(null != EventDate) EventDate.ToString(ref bd);
 					if(null != MaxPayout) MaxPayout.ToString(ref bd);
 					if(null != Booked) Booked.ToString(ref bd);
+					if(null != VoucherId) VoucherId.ToString(ref bd);
 					bd.Append(s5);
 				}
 				if(IsAssigned){bd.Append(Value);}
@@ -322,6 +324,28 @@ namespace Fanex.BetList.Core
 					bd.Append(s37);
 					bd.Append(s38);
 					bd.Append(s39);
+				}
+				if(IsAssigned){bd.Append(Value);}
+			}
+		}
+
+		public class Choice_VoucherId_Block: Block
+		{
+			protected static string s40 = "<div class=\"voucherid\"><span class=\"icon-voucherid\"></span>";
+			protected static string s41{get{return App_GlobalResources.CoreBetList.voucherid;}}
+			protected static string s42 = " ";
+			public string voucherId = "{voucherId}";
+			protected static string s43 = "</div>";
+			public override void ToString(ref StringBuilder bd)
+			{
+				if(!Visible) return;
+				if(RenderChild)
+				{
+					bd.Append(s40);
+					bd.Append(s41);
+					bd.Append(s42);
+					bd.Append(voucherId);
+					bd.Append(s43);
 				}
 				if(IsAssigned){bd.Append(Value);}
 			}

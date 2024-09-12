@@ -324,3 +324,13 @@ span.icon-boost {
     color: white;
     border-radius: 3px;
 }
+
+.icon-voucherid {
+    background: url(Images/Icon_voucher.png) no-repeat center center / 100%;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    position: relative;
+    margin-right: 2px;
+    top: 3px;
+}

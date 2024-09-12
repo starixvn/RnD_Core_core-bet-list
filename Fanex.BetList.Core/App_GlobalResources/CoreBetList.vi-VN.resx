@@ -1079,4 +1079,7 @@
   <data name="AwayWinBy4+Runs" xml:space="preserve">
     <value>Đội khách thắng 4 điểm trở lên</value>
   </data>
+  <data name="voucherid" xml:space="preserve">
+    <value>Mã số voucher:</value>
+  </data>
 </root>

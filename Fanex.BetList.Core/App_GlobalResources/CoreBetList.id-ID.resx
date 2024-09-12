@@ -1086,4 +1086,7 @@
   <data name="AwayWinBy4+Runs" xml:space="preserve">
     <value>Tim Tandang Menang Dengan 4 Angka atau Lebih</value>
   </data>
+  <data name="voucherid" xml:space="preserve">
+    <value>Kode Voucher:</value>
+  </data>
 </root>

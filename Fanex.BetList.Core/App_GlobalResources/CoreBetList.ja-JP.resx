@@ -519,4 +519,7 @@
   <data name="AwayWinBy4+Runs" xml:space="preserve">
     <value>アウェイが4ラン以上で勝つ</value>
   </data>
+  <data name="voucherid" xml:space="preserve">
+    <value> バウチャーID:</value>
+  </data>
 </root>

@@ -41,7 +41,7 @@
         private readonly int[] _liveScoreSports = { SportsbookSportTypes.Soccer, SportsbookSportTypes.Futsal, SportsbookSportTypes.BeachSoccer };
         private const string ESportsXmlTag = "p16";
         private const string InPlayXmlAttribute = "in";
-        private const string MaxPayoutXmlTag = "l255";        
+        private const string MaxPayoutXmlTag = "l255";
 
         #region Constructors
 
@@ -212,6 +212,9 @@
             // the 7th line
             BuildBookedInfo(rtfHelper);
 
+            // the 8th line
+            BuildVoucherIdInfo(rtfHelper);
+
             var choiceRtf = rtfHelper.RTFRenderer.Render();
             rtfHelper.RTFRenderer.Clear();
             return choiceRtf;
@@ -254,6 +257,8 @@
             BuildMaxPayout(ticket);
 
             BuildBooked(ticket);
+
+            BuildVoucherId(ticket);
         }
 
         protected virtual void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
@@ -475,6 +480,20 @@
             }
         }
 
+        protected virtual void BuildVoucherId(ITicket ticket)
+        {
+            if (ticket.ExtraInfo.HasAttributeInXmlTag(CommonValue.SportsbookTagName, "bb")
+                    && ticket.ExtraInfo.HasAttributeInXmlTag(CommonValue.SportsbookTagName, "obt")
+                    && ticket.ExtraInfo.GetXmlTagAttributeValue(CommonValue.SportsbookTagName, "obt") == "3")
+            {
+                Template.VoucherId.voucherId = ticket.ExtraInfo.GetXmlTagAttributeValue(CommonValue.SportsbookTagName, "vid");
+            }
+            else
+            {
+                Template.VoucherId.Hide();
+            }
+        }
+
         protected virtual void BuildBooked(ITicket ticket)
         {
             if (ticket.ExtraInfo.HasAttributeInXmlTag(CommonValue.SportsbookTagName, CommonValue.BookedBetAttribute))
@@ -665,6 +684,14 @@
                 && !string.IsNullOrEmpty(Template.MaxPayout.maxPayout))
             {
                 rtfHelper.RTFRenderer.AddText("\n" + Template.MaxPayout.maxPayout);
+            }
+        }
+
+        protected virtual void BuildVoucherIdInfo(RTFHelper rtfHelper)
+        {
+            if (Template.VoucherId != null && Template.VoucherId.Visible)
+            {
+                rtfHelper.RTFRenderer.AddText("\n" + $"{CoreBetList.voucherid} {Template.VoucherId.voucherId}");
             }
         }
 

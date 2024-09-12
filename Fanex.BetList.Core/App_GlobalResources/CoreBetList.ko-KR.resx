@@ -657,4 +657,7 @@
   <data name="AwayWinBy4+Runs" xml:space="preserve">
     <value>원정팀이 4점 이상 차로 승리</value>
   </data>
+  <data name="voucherid" xml:space="preserve">
+    <value>바우처 코드:</value>
+  </data>
 </root>

@@ -109,7 +109,7 @@
       <HintPath>..\packages\Fanex.BetList.ColossusBets.2.0.0-net5-04\lib\net461\Fanex.BetList.ColossusBets.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.BetList.Core, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.BetList.Core.3.0.3.3-baseball-03\lib\net461\Fanex.BetList.Core.dll</HintPath>
+      <HintPath>..\packages\Fanex.BetList.Core.3.0.4.1-voucherid-01\lib\net461\Fanex.BetList.Core.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.BetList.Core.RemotingRef, Version=1.1.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.BetList.Core.RemotingRef.2.0.0.2\lib\net461\Fanex.BetList.Core.RemotingRef.dll</HintPath>
@@ -458,6 +458,7 @@
     <Content Include="Content\BBin.css" />
     <Content Include="Content\GTCasino.css" />
     <Content Include="Content\images\icon-info-circle.png" />
+    <Content Include="Content\images\Icon_voucher.png" />
     <Content Include="Content\SAGaming.css" />
     <Content Include="Content\SexyGaming.css" />
     <Content Include="Content\Allbet.css" />
@@ -707,6 +708,11 @@
     <Content Include="App_Data\FACHAI.xls" />
     <Content Include="App_Data\BaseballAIO.xls" />
     <Content Include="App_Data\Nextspin.xls" />
+    <Content Include="App_Data\FastSpin.xls" />
+    <Content Include="App_Data\Live22.xls" />
+    <Content Include="App_Data\UUSlots.xls" />
+    <Content Include="App_Data\VoucherId.xls" />
+    <Content Include="App_Data\WE.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />

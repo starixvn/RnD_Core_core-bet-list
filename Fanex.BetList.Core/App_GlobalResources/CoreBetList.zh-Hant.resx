@@ -1011,4 +1011,8 @@
   <data name="AwayWinBy4+Runs" xml:space="preserve">
     <value>客 贏4分以上</value>
   </data>
+  <data name="voucherid" xml:space="preserve">
+    <value>  優惠卷代碼:
+</value>
+  </data>
 </root>

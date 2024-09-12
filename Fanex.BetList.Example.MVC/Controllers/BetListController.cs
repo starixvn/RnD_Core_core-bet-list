@@ -42,6 +42,17 @@
             return View(model);
         }
 
+        public ActionResult VourcherId(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes();
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            DataSourcePath = "~/App_Data/VoucherId.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
         public ActionResult BaseballAIO(BetListData model = null)
         {
             var betTypeIds = new List<int>();
