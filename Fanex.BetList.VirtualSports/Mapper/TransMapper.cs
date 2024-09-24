@@ -62,6 +62,8 @@
 
             MapIdToBaseId(BetRadarVirtualBasketballBetTypes.HomeTeamOverUnder, BetRadarVirtualSoccerBetTypes.FullTime1X2);
             MapIdToBaseId(BetRadarVirtualBasketballBetTypes.AwayTeamOverUnder, BetRadarVirtualSoccerBetTypes.FullTime1X2);
+            MapIdToBaseId(BetRadarVirtualSoccerBetTypes.Win, BetRadarVirtualSoccerBetTypes.FullTime1X2);
+            MapIdToBaseId(BetRadarVirtualSoccerBetTypes.Place, BetRadarVirtualSoccerBetTypes.FullTime1X2);
         }
     }
 }

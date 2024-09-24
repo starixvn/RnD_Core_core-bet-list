@@ -9,5 +9,7 @@
         public const int Handicap = 2705;
         public const int FirstHalfHandicap = 2706;
         public const int CorrectScore = 2707;
+        public const int Win = 2770;
+        public const int Place = 2771;
     }
 }
