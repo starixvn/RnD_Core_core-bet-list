@@ -163,7 +163,7 @@
       <HintPath>..\packages\Fanex.BetList.Live22.1.0.0.1-GamingAPI-01\lib\net461\Fanex.BetList.Live22.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.BetList.LiveCasinoCore, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.BetList.LiveCasinoCore.1.0.0.3-GamingAPI-01\lib\net461\Fanex.BetList.LiveCasinoCore.dll</HintPath>
+      <HintPath>..\packages\Fanex.BetList.LiveCasinoCore.1.0.0.3\lib\net461\Fanex.BetList.LiveCasinoCore.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.BetList.MaxGame, Version=2.0.0.2, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.BetList.MaxGame.2.0.0.2-GamingAPI-07\lib\net461\Fanex.BetList.MaxGame.dll</HintPath>
@@ -188,6 +188,9 @@
     </Reference>
     <Reference Include="Fanex.BetList.NumberGame, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.BetList.NumberGame.2.0.0-net5-03\lib\net461\Fanex.BetList.NumberGame.dll</HintPath>
+    </Reference>
+    <Reference Include="Fanex.BetList.ONCasino, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.BetList.ONCasino.1.0.0-Beta-01\lib\net461\Fanex.BetList.ONCasino.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.BetList.PGSoft, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.BetList.PGSoft.2.0.0-net5-03\lib\net461\Fanex.BetList.PGSoft.dll</HintPath>

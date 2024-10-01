@@ -2,7 +2,7 @@
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
-        <Version>1.0.0.3-GamingAPI-01</Version>
+        <Version>1.0.0.3</Version>
         <InfomationalVersion>1.0.0.3</InfomationalVersion>
         <PackageReleaseNotes>Support new Gaming API (#205017)</PackageReleaseNotes>
         <Description>BetList core package</Description>
