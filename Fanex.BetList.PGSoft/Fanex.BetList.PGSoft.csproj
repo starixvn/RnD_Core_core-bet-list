@@ -1,10 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <FileVersion>2.0.0.0</FileVersion>
-        <Version>2.0.0.0</Version>
-        <PackageReleaseNotes>Support .net Core for Betlist Core package (#175417)</PackageReleaseNotes>
+        <Version>2.0.0.2-API-01</Version>
+        <InfomationalVersion>2.0.0.2</InfomationalVersion>
+        <PackageReleaseNotes>Apply new Gaming API (#211635)</PackageReleaseNotes>
         <Description>BetList core package</Description>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <Authors>Nexcel Solutions</Authors>
@@ -16,6 +15,7 @@
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj" />
+      <ProjectReference Include="..\Fanex.BetList.RNGCore\Fanex.BetList.RNGCore.csproj" />
     </ItemGroup>
     
 </Project>

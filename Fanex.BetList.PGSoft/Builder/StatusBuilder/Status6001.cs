@@ -3,21 +3,13 @@
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Utils.TicketExt;
 
-    public class Status6001 : Status1
+    public class Status6001 : StatusRNG
     {   
-        protected override void BuildStatusResult(ITicket ticket)
+        protected override bool IsHideRNGResult(ITicket ticket)
         {
             const int daySupportResultLink = 30;
-            if (string.IsNullOrEmpty(ticket.BetCheck) ||
-                ticket.IsTicketHide3rdResultLink(daySupportResultLink))
-            {
-                Template.StatusResult.Hide();
-            }
-            else
-            {
-                base.BuildStatusResult(ticket);                
-                Template.StatusResult.betId = $"{ticket.CurrencyId}, '{ticket.BetTeam}', {ticket.CustId}, '{ticket.BetCheck}', '{ticket.SiteId}'";
-            }
+
+            return base.IsHideRNGResult(ticket) || ticket.IsTicketHide3rdResultLink(daySupportResultLink);
         }
     }
 }
