@@ -139,13 +139,13 @@
     <value>หรือ</value>
   </data>
   <data name="lose" xml:space="preserve">
-    <value>เสีย</value>
+    <value>แพ้</value>
   </data>
   <data name="member" xml:space="preserve">
     <value>สมาชิก</value>
   </data>
   <data name="nogoal" xml:space="preserve">
-    <value>ไม่มีการทำประตู</value>
+    <value>ไม่มีประตู</value>
   </data>
   <data name="odd" xml:space="preserve">
     <value>คี่</value>
@@ -187,7 +187,7 @@
     <value>ปฏิเสธ</value>
   </data>
   <data name="running" xml:space="preserve">
-    <value>ยอมรับการวางเดิมพันแล้ว</value>
+    <value>ที่รับแล้ว</value>
   </data>
   <data name="draw" xml:space="preserve">
     <value>เสมอ</value>
@@ -238,7 +238,7 @@
     <value>4 ประตู</value>
   </data>
   <data name="NoGoals" xml:space="preserve">
-    <value>ไม่มีประตู</value>
+    <value>ไม่มีการทำประตู</value>
   </data>
   <data name="OneGoal" xml:space="preserve">
     <value>1 ประตู</value>
@@ -373,7 +373,7 @@
     <value>หน้าสุดท้าย</value>
   </data>
   <data name="lblLose" xml:space="preserve">
-    <value>เสีย</value>
+    <value>แพ้</value>
   </data>
   <data name="lblM" xml:space="preserve">
     <value>M = มาสเตอร์</value>
@@ -382,7 +382,7 @@
     <value>ไม่เป็นทั้งสอง</value>
   </data>
   <data name="lblRunning" xml:space="preserve">
-    <value>ยอมรับการวางเดิมพันแล้ว</value>
+    <value>ที่รับแล้ว</value>
   </data>
   <data name="lblS" xml:space="preserve">
     <value>S = สูงสุด</value>
@@ -565,7 +565,7 @@
     <value>ซื้อ</value>
   </data>
   <data name="NoGoal14" xml:space="preserve">
-    <value>ไม่มีการทำประตู</value>
+    <value>ไม่มีประตู</value>
   </data>
   <data name="FtAsian" xml:space="preserve">
     <value>เอเชียน เต็มเวลา</value>
@@ -949,16 +949,16 @@
     <value>มี 2 ประตูหรือมากกว่า</value>
   </data>
   <data name="HomeFG" xml:space="preserve">
-    <value>ลูกแรกโดยเจ้าบ้าน</value>
+    <value>ประตูแรกของทีมเหย้า</value>
   </data>
   <data name="HomeLG" xml:space="preserve">
-    <value>ลููกสุดท้ายโดยเจ้าบ้าน</value>
+    <value>ประตููสุดท้ายของทีมเหย้า</value>
   </data>
   <data name="AwayFG" xml:space="preserve">
-    <value>ลูกแรกโดยทีมเยือน</value>
+    <value>ประตูแรกของทีมเยือน</value>
   </data>
   <data name="AwayLG" xml:space="preserve">
-    <value>ลูกสุดท้ายโดยทีมเยือน</value>
+    <value>ประตููสุดท้ายของทีมเยือน</value>
   </data>
   <data name="ThereIsNoTicketDetailAvailable" xml:space="preserve">
     <value>ไม่มีรายละเอียดตั๋วเดิมพัน</value>
