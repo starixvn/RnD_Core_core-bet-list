@@ -14,4 +14,10 @@
         public const int JackpotContribution = 1698;        
         public const int JackpotPrize = 1699;
     }
+
+    public static class SabaClub2BetTypes
+    {
+        public const int MinRange = 13200;
+        public const int MaxRange = 13499;
+    }
 }

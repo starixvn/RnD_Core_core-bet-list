@@ -1,6 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Constants
 {
-    public static class VGamingBetTypes
+    public static class VGamingRange1BetTypes
     {
         public const int MinRange = 3802;
         public const int Blackjack = 3820;
@@ -17,5 +17,11 @@
         public const int PaiGowPoker = 3842;
 
         public const int Pontoon = 3871;
+    }
+
+    public static class VGamingRange2BetTypes
+    {
+        public const int MinRange = 13500;
+        public const int MaxRange = 13799;
     }
 }

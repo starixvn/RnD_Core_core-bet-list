@@ -20,9 +20,9 @@ namespace Fanex.BetList.VGaming.Tests.Builder.ChoiceBuilder
         public void Setup()
         {
             _choice = new Choice3802();
-            _ticket = TestData.CreateTicket(VGamingBetTypes.MinRange);
+            _ticket = TestData.CreateTicket(VGamingRange1BetTypes.MinRange);
             _ticketHelper = Substitute.For<ITicketHelper>();
-            _ticketHelper.GetBetTypeNameById(VGamingBetTypes.MinRange).Returns("Game name 1");
+            _ticketHelper.GetBetTypeNameById(VGamingRange1BetTypes.MinRange).Returns("Game name 1");
         }
 
         [Test]
@@ -32,7 +32,7 @@ namespace Fanex.BetList.VGaming.Tests.Builder.ChoiceBuilder
             _ticket.JackpotInfo = "jp=1;jpw=xxxxxxxxxxx";
             _ticket.BetCheck = "betcheck";
             _ticket.CustId = 123;
-            _ticket.BetTypeId = VGamingBetTypes.FourGuardians;
+            _ticket.BetTypeId = VGamingRange1BetTypes.FourGuardians;
             _ticket.WinlostDate = new DateTime(2022, 8, 24);
             var expectedJSFunction = "showVGamingJackpotWonDetails('xxxxxxxxxxx', '123', '3829', '8/24/2022 12:00:00 AM')";
 
@@ -103,7 +103,7 @@ namespace Fanex.BetList.VGaming.Tests.Builder.ChoiceBuilder
         {
             // Arrange
             _ticket.BetCheck = string.Empty;
-            _ticket.BetTypeId = VGamingBetTypes.MinRange;
+            _ticket.BetTypeId = VGamingRange1BetTypes.MinRange;
             var expectedBetTeam = $"<span class=\"handicap\">Game name 1</span>";
 
             // Act.
@@ -118,7 +118,7 @@ namespace Fanex.BetList.VGaming.Tests.Builder.ChoiceBuilder
         {
             // Arrange
             _ticket.BetCheck = "123456";
-            _ticket.BetTypeId = VGamingBetTypes.MinRange;
+            _ticket.BetTypeId = VGamingRange1BetTypes.MinRange;
             var expectedBetTeam = $"<span class=\"handicap\">Game name 1</span> {_ticket.BetCheck}";
 
             // Act.

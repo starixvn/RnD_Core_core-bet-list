@@ -9,25 +9,30 @@
         {
             var brokenGame = new List<int>
             {
-                VGamingBetTypes.CasinoHoldemPoker,
-                VGamingBetTypes.TexasHoldemPoker,
-                VGamingBetTypes.PaiGowPoker,
-                VGamingBetTypes.HiLo,
-                VGamingBetTypes.Pontoon,
-                VGamingBetTypes.ChineseBlackjack
+                VGamingRange1BetTypes.CasinoHoldemPoker,
+                VGamingRange1BetTypes.TexasHoldemPoker,
+                VGamingRange1BetTypes.PaiGowPoker,
+                VGamingRange1BetTypes.HiLo,
+                VGamingRange1BetTypes.Pontoon,
+                VGamingRange1BetTypes.ChineseBlackjack
             };
 
-            for (var id = VGamingBetTypes.MinRange + 1; id < VGamingBetTypes.Blackjack; id++)
+            for (var id = VGamingRange1BetTypes.MinRange + 1; id < VGamingRange1BetTypes.Blackjack; id++)
             {
-                MapIdToBaseId(id, VGamingBetTypes.MinRange);
+                MapIdToBaseId(id, VGamingRange1BetTypes.MinRange);
             }
 
-            for (var id = VGamingBetTypes.Blackjack + 1; id < VGamingBetTypes.PromotionPrize; id++)
+            for (var id = VGamingRange1BetTypes.Blackjack + 1; id < VGamingRange1BetTypes.PromotionPrize; id++)
             {
-                MapIdToBaseId(id, brokenGame.Contains(id) ? VGamingBetTypes.Blackjack : VGamingBetTypes.MinRange);
+                MapIdToBaseId(id, brokenGame.Contains(id) ? VGamingRange1BetTypes.Blackjack : VGamingRange1BetTypes.MinRange);
             }
 
-            MapIdToBaseId(VGamingBetTypes.PromotionPrize, VGamingBetTypes.JackpotPrize);
+            MapIdToBaseId(VGamingRange1BetTypes.PromotionPrize, VGamingRange1BetTypes.JackpotPrize);
+
+            for (var betTypeId = VGamingRange2BetTypes.MinRange; betTypeId <= VGamingRange2BetTypes.MaxRange; betTypeId++)
+            {
+                MapIdToBaseId(betTypeId, VGamingRange1BetTypes.MinRange);
+            }
         }
     }
 }

@@ -16,7 +16,7 @@
             _odds = new Odds3802();
             _ticket = new Ticket
             {
-                BetTypeId = VGamingBetTypes.MinRange,
+                BetTypeId = VGamingRange1BetTypes.MinRange,
                 OddsType = "1",
                 Odds = 0.75M
             };

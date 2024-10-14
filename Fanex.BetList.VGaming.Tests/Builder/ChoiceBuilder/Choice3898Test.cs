@@ -19,9 +19,9 @@ namespace Fanex.BetList.VGaming.Tests.Builder.ChoiceBuilder
         public void Setup()
         {
             _choice = new Choice3898();
-            _ticket = TestData.CreateTicket(VGamingBetTypes.JackpotContribution);
+            _ticket = TestData.CreateTicket(VGamingRange1BetTypes.JackpotContribution);
             _ticketHelper = Substitute.For<ITicketHelper>();
-            _ticketHelper.GetBetTypeNameById(VGamingBetTypes.JackpotContribution).Returns("Jackpot Contribution");
+            _ticketHelper.GetBetTypeNameById(VGamingRange1BetTypes.JackpotContribution).Returns("Jackpot Contribution");
         }
 
         [Test]

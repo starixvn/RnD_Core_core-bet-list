@@ -25,6 +25,11 @@
             {
                 MapIdToBaseId(id, brokenGame.Contains(id) ? SabaClubBetTypes.Blackjack : SabaClubBetTypes.MinRange);
             }
+
+            for (var betTypeId = SabaClub2BetTypes.MinRange; betTypeId <= SabaClub2BetTypes.MaxRange; betTypeId++)
+            {
+                MapIdToBaseId(betTypeId, SabaClubBetTypes.MinRange);
+            }
         }
     }
 }
