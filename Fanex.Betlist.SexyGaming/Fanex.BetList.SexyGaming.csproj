@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
-        <Version>2.0.0.2-API-02</Version>
-        <InfomationalVersion>2.0.0.2</InfomationalVersion>
-        <PackageReleaseNotes>Support new Gaming API (#205017)</PackageReleaseNotes>
+        <Version>2.0.0.5-beta-02</Version>
+        <InfomationalVersion>2.0.0.5</InfomationalVersion>
+        <PackageReleaseNotes>Support view Result page via API (#212692)</PackageReleaseNotes>
         <Description>BetList core package</Description>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <Authors>Nexcel Solutions</Authors>
