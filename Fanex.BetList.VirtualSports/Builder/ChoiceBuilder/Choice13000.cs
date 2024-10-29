@@ -1,17 +1,19 @@
 namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
+    using App_GlobalResources;
     using Entities;
     using Templates;
 
     /// <summary>
-    /// BetBy Virtual Sports - FT.1X2.
+    /// Betby Virtual Sports - FT.1X2.
     /// </summary>
-    public class Choice2701 : Choice1
+    public class Choice13000 : Choice5
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            switch (ticket.BetTeam.ToLowerInvariant())
+            var betTeam = ticket.BetTeam.ToLowerInvariant();
+            switch (betTeam)
             {
                 case "1":
                     betTeam = ticketHelper.GetTeamName3rd(ticket.HomeId.ToString());
@@ -21,16 +23,12 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                     break;
                 default:
                     betTeam = CoreBetList.draw;
+                    break;
             }
+
             Template.betTeam = betTeam;
         }
-
-        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
-        {
-            Template.Handicap.handicap = null;
-            Template.betTeamClassName = Favorite;
-        }
-
+        
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
         {
             base.BuildLeague(ticket, ticketHelper);

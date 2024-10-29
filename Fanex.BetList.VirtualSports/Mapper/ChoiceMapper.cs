@@ -19,7 +19,7 @@
             MapForVirtualSports3();
             MapForVirtualSports4();
             MapForVirtualSports5();
-            MapForBetBy();
+            MapForBetby();
         }
 
         private void MapForVirtualSports3()
@@ -43,11 +43,18 @@
             MapIdToBaseId(VirtualSports5BetTypes.MixParlay, BetRadarSharedBetTypes.MixParlay);
         }
         
-        private void MapForBetBy()
+        private void MapForBetby()
         {
-            MapIdToBaseId(BetByBetTypes.MatchWinner, BetByBetTypes.FT1X2);
-            MapIdToBaseId(BetByBetTypes.HomeOverUnder, BetByBetTypes.OverUnder);
-            MapIdToBaseId(BetByBetTypes.AwayOverUnder, BetByBetTypes.OverUnder);
+            MapIdToBaseId(BetbyBetTypes.MatchWinner, BetbyBetTypes.FT1X2);
+            MapIdToBaseId(BetbyBetTypes.HomeOverUnder, BetbyBetTypes.OverUnder);
+            MapIdToBaseId(BetbyBetTypes.AwayOverUnder, BetbyBetTypes.OverUnder);
+            MapIdToBaseId(BetbyBetTypes.QuarterXHomeOverUnder, BetbyBetTypes.QuarterXOverUnder);
+            MapIdToBaseId(BetbyBetTypes.QuarterXAwayOverUnder, BetbyBetTypes.QuarterXOverUnder);
+            
+            for (var id = BetbyBetTypes.QuarterXAwayOverUnder + 1; id <= BetbyBetTypes.HighestBetTypeIdInRange; id++)
+            {
+                MapIdToBaseId(id, BetbyBetTypes.FT1X2);
+            }
         }
     }
 }

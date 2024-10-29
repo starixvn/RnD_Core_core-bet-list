@@ -13,6 +13,7 @@ namespace Fanex.BetList.Core.Constants
         public const int MaxSportsbookSportType = 99;
         public const int SabaPromotion = 246;
 
+        public const int Betby = 134;
         public const int VirtuallySoccer = 147;
     }
 }

@@ -15,6 +15,8 @@
             MapForVirtualSports4();
 
             MapForVirtualSports5();
+            
+            MapForBetby();
         }
 
         private void MapForVirtualSports4()
@@ -73,6 +75,14 @@
             for (var id = VirtualSports5BetTypes.FullTime1X2 + 1; id <= VirtualSports5BetTypes.MixParlay; id++)
             {
                 MapIdToBaseId(id, VirtualSports5BetTypes.FullTime1X2);
+            }
+        }
+        
+        private void MapForBetby()
+        {
+            for (var id = BetbyBetTypes.FT1X2 + 1; id <= BetbyBetTypes.HighestBetTypeIdInRange; id++)
+            {
+                MapIdToBaseId(id, BetbyBetTypes.FT1X2);
             }
         }
     }
