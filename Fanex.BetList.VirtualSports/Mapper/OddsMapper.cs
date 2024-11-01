@@ -32,7 +32,7 @@
 
         private void MapForBetby()
         {
-            for (var id = BetbyBetTypes.FT1X2; id < BetbyBetTypes.HighestBetTypeIdInRange; id++)
+            for (var id = BetbyBetTypes.FT1X2; id <= BetbyBetTypes.HighestBetTypeIdInRange; id++)
             {
                 ConvertByBetType.RegisterMultipleOddsTypes(id);
             }

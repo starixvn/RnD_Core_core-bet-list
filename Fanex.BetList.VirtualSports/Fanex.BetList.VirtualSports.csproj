@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>    
-        <Version>2.0.1.2-Vs6-01</Version>
+        <Version>2.0.1.2-Vs6-04</Version>
         <InfomationalVersion>2.0.1.2</InfomationalVersion>
         <PackageReleaseNotes>Support VS6 Betby (#210450)</PackageReleaseNotes>
         <Description>BetList core package</Description>

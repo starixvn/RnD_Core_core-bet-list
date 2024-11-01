@@ -45,7 +45,6 @@
         
         private void MapForBetby()
         {
-            MapIdToBaseId(BetbyBetTypes.MatchWinner, BetbyBetTypes.FT1X2);
             MapIdToBaseId(BetbyBetTypes.HomeOverUnder, BetbyBetTypes.OverUnder);
             MapIdToBaseId(BetbyBetTypes.AwayOverUnder, BetbyBetTypes.OverUnder);
             MapIdToBaseId(BetbyBetTypes.QuarterXHomeOverUnder, BetbyBetTypes.QuarterXOverUnder);

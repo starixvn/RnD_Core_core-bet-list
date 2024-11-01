@@ -2,49 +2,34 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
     using Entities;
+    using Fanex.BetList.Core.Utils;
 
     /// <summary>
     /// Betby - Handicap
     /// </summary>
-    public class Choice13003 : Choice1
+    public class Choice13003 : Choice13002
     {
-        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
-            var betTeam = ticket.BetTeam.ToLowerInvariant();
-            switch (betTeam)
+            var isBetHomeTeam = IsBetHomeTeam(ticket);
+
+            string betTeamClassName;
+
+            if (isBetHomeTeam)
             {
-                case "a":
-                    betTeam = ticketHelper.GetTeamName3rd(ticket.AwayId.ToString());
-                    break;
-                default:
-                    betTeam = ticketHelper.GetTeamName3rd(ticket.HomeId.ToString());
-                    break;
+                betTeamClassName = ticket.Handicap2 >= ticket.Handicap1 ? Underdog : Favorite;
             }
-            
-            Template.betTeam = betTeam;
-        }
-        
-        protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
-        {
-            base.BuildLeague(ticket, ticketHelper);
-            Template.League.LeagueName.leagueName = ticketHelper.GetLeagueName3rd(ticket.LeagueId.ToString());
-        }
+            else
+            {
+                betTeamClassName = ticket.Handicap2 <= ticket.Handicap1 ? Underdog : Favorite;
+            }
 
-        protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
-        {
-            base.BuildMatch(ticket, ticketHelper);
+            Template.betTeamClassName = betTeamClassName;
 
-            Template.Match.homeTeam = ticketHelper.GetTeamName3rd(ticket.HomeId.ToString());
-            Template.Match.awayTeam = ticketHelper.GetTeamName3rd(ticket.AwayId.ToString());
+            decimal handicap = ticket.Handicap2 > ticket.Handicap1 ? ticket.Handicap2 : ticket.Handicap1;
+            handicap = betTeamClassName == Favorite ? -handicap : handicap;
 
-            Template.AppendKickOffTime(ticket);
-        }
-
-        protected override void BuildBetTeamsInfo(ITicket ticket, ref RTFHelper rtfHelper)
-        {
-            base.BuildBetTeamsInfo(ticket, ref rtfHelper);
-
-            rtfHelper.RTFRenderer.AddText($"\n{VirtualSportsChoiceUtils.ParseKickOffTime(ticket)}");
+            Template.Handicap.handicap = ConvertByBetType.Hdp(handicap);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     /// <summary>
     /// Betby - Over/Under
     /// </summary>
-    public class Choice13004 : Choice13003
+    public class Choice13004 : Choice13002
     {
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {

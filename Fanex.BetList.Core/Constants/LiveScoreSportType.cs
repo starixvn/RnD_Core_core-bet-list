@@ -9,8 +9,7 @@ namespace Fanex.BetList.Core.Constants
             { SportsbookSportTypes.BaseBall, new DateTime(2020, 11, 5, 0, 0, 0) },
             { SportsbookSportTypes.IceHockey, new DateTime(2021, 10, 7, 0, 0, 0) },
             { SportsbookSportTypes.Rugby, new DateTime(2021, 10, 7, 0, 0, 0) },
-            { SportsbookSportTypes.FieldHockey, new DateTime(2023, 3, 30, 0, 0, 0) },
-            { SportsbookSportTypes.Betby, new DateTime(2024, 11, 1, 0, 0, 0) }
+            { SportsbookSportTypes.FieldHockey, new DateTime(2023, 3, 30, 0, 0, 0) }
         };
     }
     
