@@ -29,6 +29,17 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             Template.betTeam = betTeam;
         }
         
+        protected override void BuildScore(ITicket ticket)
+        {
+            if (Template.Score == null)
+            {
+                return;
+            }
+
+            Template.Score.SetValue($"<span class=\"{Favorite}\"> [{CoreBetList.Live}]</span>");
+            Template.Score.Visible = ticket.IsLive;
+        }
+
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
         {
             base.BuildLeague(ticket, ticketHelper);
