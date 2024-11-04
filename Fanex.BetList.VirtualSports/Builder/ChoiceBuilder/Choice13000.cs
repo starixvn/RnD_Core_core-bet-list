@@ -1,5 +1,6 @@
 namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using System;
     using System.Collections.Generic;
     using App_GlobalResources;
     using Entities;
@@ -60,7 +61,10 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         {
             base.BuildBetTeamsInfo(ticket, ref rtfHelper);
 
-            rtfHelper.RTFRenderer.AddText($"\n{VirtualSportsChoiceUtils.ParseKickOffTime(ticket)}");
+            var kickoffTime = VirtualSportsChoiceUtils.ParseKickOffTime(ticket);
+            if(!string.IsNullOrWhiteSpace(kickoffTime)){
+                rtfHelper.RTFRenderer.AddText($"\n{kickoffTime}");
+            }
         }
     }
 }
