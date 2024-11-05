@@ -2,7 +2,7 @@
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>        
-        <Version>3.0.4.3-beta-03</Version>
+        <Version>3.0.4.3</Version>
         <InfomationalVersion>3.0.4.3</InfomationalVersion>
         <PackageReleaseNotes>Virtual Sports 5 (#207589)</PackageReleaseNotes>
           Update translation for THAI language (#206048)

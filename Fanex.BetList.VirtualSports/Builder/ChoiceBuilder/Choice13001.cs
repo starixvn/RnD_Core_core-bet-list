@@ -16,13 +16,21 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             if (!string.IsNullOrEmpty(ticket.BetTeam) && ticket.BetTeam.Length == expectedBetTeamLength)
             {
-                var betTeam = ticket.BetTeam.ToLowerInvariant();
-                var firstChanceIndicator = betTeam[0].ToString();
-                var secondChanceIndicator = betTeam[1].ToString();
-                var firstChance = BetTeamValue.NumberOne == firstChanceIndicator ? CoreBetList.Home : CoreBetList.Away;
-                var secondChance = BetTeamValue.X == secondChanceIndicator ? CoreBetList.draw : CoreBetList.Away;
-
-                Template.betTeam = $"{firstChance} {CoreBetList.lblOr} {secondChance}";
+                switch (ticket.BetTeam.ToLowerInvariant())
+                {
+                    case BetTeamValue.HD:
+                        Template.betTeam = $"{CoreBetList.Home} {CoreBetList.lblOr} {CoreBetList.draw}";
+                        break;
+                    case BetTeamValue.HA:
+                        Template.betTeam = $"{CoreBetList.Home} {CoreBetList.lblOr} {CoreBetList.Away}";
+                        break;
+                    case BetTeamValue.DA:
+                        Template.betTeam = $"{CoreBetList.Away} {CoreBetList.lblOr} {CoreBetList.draw}";
+                        break;
+                    default:
+                        Template.betTeam = string.Empty;
+                        break;
+                }
             }
             else
             {
