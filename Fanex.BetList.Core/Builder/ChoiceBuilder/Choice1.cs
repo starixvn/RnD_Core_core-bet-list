@@ -369,7 +369,8 @@
             if (LiveScoreSportType.DateTimeSupportLiveScoreBySports.ContainsKey(sportTypeId))
             {
                 return transDate >= LiveScoreSportType.DateTimeSupportLiveScoreBySports[sportTypeId];
-            }            
+            }
+
             return sportTypeId >= SportsbookSportTypes.Soccer &&
                 sportTypeId <= SportsbookSportTypes.MaxSportsbookSportType &&
                 !_liveScoreSports.Contains(sportTypeId);

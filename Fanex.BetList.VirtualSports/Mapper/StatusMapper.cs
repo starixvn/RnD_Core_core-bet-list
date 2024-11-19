@@ -13,6 +13,8 @@
             MapForVirtualSports3();
 
             MapForVirtualSports5();
+            
+            MapForBetby();
         }
 
         private void MapForVirtualSports3()
@@ -65,6 +67,15 @@
             }
 
             MapIdToBaseId(VirtualSports5BetTypes.MixParlay, BetTypes.MixParlay);
+        }
+        
+        private void MapForBetby()
+        {
+            for (var id = BetbyBetTypes.FT1X2; id < BetbyBetTypes.HighestBetTypeIdInRange; id++)
+            {
+                MapIdToBaseId(id, InspireVirtualRacingBetTypes.Win);
+            }
+
         }
     }
 }
