@@ -84,7 +84,7 @@
 
             // Assert
             var expectedLeagueName = string.Format(
-                "<span class='allbet-bet-type-name'>{0}</span> <span class='allbet-game-id'>{1}</span>",
+                "<span class='bet-type-name'>{0}</span> <span class='game-id'>{1}</span>",
                 BetTypeName,
                 campaignName);
             Assert.AreEqual(expectedLeagueName, _choice.Template.League.LeagueName.leagueName);
@@ -93,7 +93,7 @@
         private string BuildExpectedTemplateDetailLinkHtml(ITicket ticket, string transactionType)
         {
             return string.Format(
-                "<div class=\"detail allbet-casino-detail\"" +
+                "<div class=\"detail live-casino-detail\"" +
                 " onclick='showTodayRunningBetsDetails(&quot;{0}&quot;,&quot;{1}&quot;,&quot;{2}&quot;,&quot;{3}&quot;);'>" +
                 "<a class=\"detail-link\"" +
                 " href=\"javascript:void(&quot;&quot;);\">Details</a></div>",

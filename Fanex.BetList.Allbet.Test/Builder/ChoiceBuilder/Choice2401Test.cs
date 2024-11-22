@@ -84,7 +84,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            var betIdMarkup = string.Format("<span class='allbet-bet-id'>{0}</span>", "Bet ID: " + "123");
+            var betIdMarkup = string.Format("<span class='bet-id'>{0}</span>", "BetID: " + "123");
             Assert.AreEqual(betIdMarkup, _choice.Template.BetType.betTypeName);
         }
 
@@ -166,7 +166,7 @@
             const string gameId = "12345";
             const string gameTableId = "R001 ";
 
-            _ticket.TransDesc = $"choice=1001*comms=100*site=BEST-ODDS*TableCode={gameTableId}*state=0*result=B;S6;H2:P;D10;D5*results=B;8:P;5*winResult=1001;1004";
+            _ticket.TransDesc = $"choice=1001*comms=100*site=BEST-ODDS*tablecode={gameTableId}*state=0*result=B;S6;H2:P;D10;D5*results=B;8:P;5*winResult=1001;1004";
             _ticket.MatchCode = gameId;
 
             // Act
@@ -174,7 +174,7 @@
 
             // Assert
             var expectedLeagueName = string.Format(
-                "<span class='allbet-bet-type-name'>{0}</span> <span class=\"gamegroupname\">{1}</span> <span class='allbet-game-id'>{2}</span>",
+                "<span class='bet-type-name'>{0}</span> <span class=\"gamegroupname\"><span class=\"gamegroupname\">{1}</span></span> <span class='game-id'>{2}</span>",
                 BetTypeName,
                 gameTableId,
                 gameId);
@@ -184,7 +184,7 @@
         private string BuildExpectedTemplateDetailLinkHtml(ITicket ticket, string transactionType)
         {
             return string.Format(
-                "<div class=\"detail allbet-casino-detail\"" +
+                "<div class=\"detail live-casino-detail\"" +
                 " onclick='showTodayRunningBetsDetails(&quot;{0}&quot;,&quot;{1}&quot;,&quot;{2}&quot;,&quot;{3}&quot;);'>" +
                 "<a class=\"detail-link\"" +
                 " href=\"javascript:void(&quot;&quot;);\">Details</a></div>",
