@@ -57,15 +57,16 @@
         }
 
         [Test]
-        public void BuildBetType_Always_Hide()
+        public void BuildBetType_SummaryTicket_IsEmpty()
         {
             ////Arrange
+            _ticket.TransDesc = string.Empty;
 
             ////Act
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            Assert.IsFalse(_choice.Template.BetType.Visible);
+            Assert.IsTrue(string.IsNullOrEmpty(_choice.Template.BetType.betTypeName));
         }
 
         [Test]
@@ -152,16 +153,14 @@
 
             // Assert
             var expectedLeagueName = string.Format(
-                "<span class='bet-type-name'>{0}</span> <span class='game-id'>{1}</span>",
-                BetTypeName,
-                gameId);
+                "<span class='bet-type-name'>{0}</span>", BetTypeName);
             Assert.AreEqual(expectedLeagueName, _choice.Template.League.LeagueName.leagueName);
         }
 
         private string BuildExpectedTemplateDetailLinkHtml(ITicket ticket, string transactionType)
         {
             return string.Format(
-                "<div class=\"detail pragmatic-live-casino-detail\"" +
+                "<div class=\"detail live-casino-detail\"" +
                 " onclick='showPragmaticLiveCasinoBetsDetails(&quot;{0}&quot;,&quot;{1}&quot;,&quot;{2}&quot;,&quot;{3}&quot;);'>" +
                 "<a class=\"detail-link\"" +
                 " href=\"javascript:void(&quot;&quot;);\">Details</a></div>",
@@ -227,7 +226,7 @@
             _choice.RenderRTF(_ticket, _ticketHelper, null, false, rtfHelper);
 
             // Assert
-            var expectedLeagueName = string.Format("{0} {1}", BetTypeName, gameId);
+            var expectedLeagueName = string.Format("{0}", BetTypeName);
 
             Assert.AreEqual(expectedLeagueName, _choice.Template.League.LeagueName.leagueName);
         }

@@ -50,22 +50,23 @@
                 "0",
                 _ticket.LeagueId,
                 "0",
-                _ticket.BetId ?? 0,
-                $"'{_ticket.SiteId}'",
+                _ticket.CurrencyId,
+                $"{_ticket.BetTeam}",
                 _ticket.CustId,
-                $"'{_ticket.BetCheck}'"
+                $"'{_ticket.BetCheck}'",
+                $"'{_ticket.SiteId}'"
             };
             var expectedHtml = $"<div class=\"result\" onclick=\"ViewResult({string.Join(", ", parameterList)});\">{CoreBetList.running}</div>";
 
             Assert.AreEqual(expectedHtml, template.result);
         }
 
-        [TestCase(BetStatus.Won)]
-        [TestCase(BetStatus.Lose)]
-        [TestCase(BetStatus.Draw)]
-        [TestCase(BetStatus.Refund)]
-        [TestCase(BetStatus.Reject)]
-        public void BuildResult_TicketIsNotRunning_ResultIsText(string status)
+        [TestCase(BetStatus.Won, "won")]
+        [TestCase(BetStatus.Lose, "lost")]
+        [TestCase(BetStatus.Draw, "draw")]
+        [TestCase(BetStatus.Refund, "refund")]
+        [TestCase(BetStatus.Reject, "reject")]
+        public void BuildResult_TicketIsNotRunning_ResultIsText(string status, string expected)
         {
             // Arrange.
             _ticket.Status = status;
@@ -74,7 +75,7 @@
             var template = _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.AreEqual(status, template.result.ToLower());
+            Assert.AreEqual(expected, template.result.ToLower());
         }
 
         [TestCase(null)]
@@ -89,7 +90,7 @@
 
             // Assert.
             Assert.False(template.StatusResult.Visible);
-        }       
+        }
 
         [Test]
         public void BuildStatusResult_MoreThan10Day_HideResultLink()
@@ -169,13 +170,16 @@
         public void BuildStatusResult_Settle_MatchCodeIsEmpty_ShowSiteIdDefault()
         {
             // Arrange
+            _ticket.BetTeam = "betteam";
             _ticket.MatchCode = string.Empty;
             _ticket.BetCheck = "betcheck";
             _ticket.WinlostDate = DateTime.Today;
             _ticket.Status = "Refund";
             _ticket.CustId = 123;
+            _ticket.CurrencyId = 20;
+            _ticket.SiteId = "siteid";
 
-            var expectedBetId = "123, '4100300', 123, 'betcheck'";
+            var expectedBetId = "20, 'betteam', 123, 'betcheck', 'siteid'";
 
             // Act
             _status.Render(_ticket, _ticketHelper, null, false);

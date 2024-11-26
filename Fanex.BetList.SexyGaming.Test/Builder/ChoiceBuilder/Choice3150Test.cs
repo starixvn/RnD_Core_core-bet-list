@@ -116,14 +116,14 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            var expectedLeagueName = string.Format("<span class='sexygaming-bet-type-name'>{0}</span>", BetTypeName);
+            var expectedLeagueName = string.Format("<span class='bet-type-name'>{0}</span>", BetTypeName);
             Assert.AreEqual(expectedLeagueName, _choice.Template.League.LeagueName.leagueName);
         }
 
         private string BuildExpectedTemplateDetailLinkHtml(ITicket ticket, string transactionType)
         {
             return string.Format(
-                "<div class=\"detail sexygaming-casino-detail\"" +
+                "<div class=\"detail live-casino-detail\"" +
                 " onclick='showSexyGamingBetDetails(&quot;{0}&quot;,&quot;{1}&quot;,&quot;{2}&quot;,&quot;{3}&quot;);'>" +
                 "<a class=\"detail-link\"" +
                 " href=\"javascript:void(&quot;&quot;);\">Details</a></div>",

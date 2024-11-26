@@ -83,7 +83,7 @@
             Ticket.TransDesc = "m=\"{2} 6, {1} 57853\"";
 
             // Act.
-            var builtChoice = _choice.Render(Ticket, TicketHelper, null, false);
+            var builtChoice = Choice.Render(Ticket, TicketHelper, null, false);
 
             // Assert.
             var expectedHtml = $"<div class=\"match\">{ExpectedMatchDayOrRoundInfo}</div>";

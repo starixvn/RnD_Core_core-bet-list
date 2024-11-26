@@ -30,7 +30,8 @@
             _ticket.CustId = 2;
             _ticket.Status = BetStatus.Won;
             _ticket.TransDesc = PGSoftBetTypes.CaiShenWins.ToString(CultureInfo.InvariantCulture);
-
+            _ticket.BetTypeId = PGSoftBetTypes.CaiShenWins;
+            
             _ticketHelper.GetResourceData(Arg.Is(Choice6001.GameTypeRefId), Arg.Is(_ticket.TransDesc)).Returns(FakeGameType);
             _ticketHelper.GetResourceData(Arg.Is(Choice6001.GameGroupRefId), Arg.Is(_ticket.TransDesc)).Returns(FakeGameGroup);
         }

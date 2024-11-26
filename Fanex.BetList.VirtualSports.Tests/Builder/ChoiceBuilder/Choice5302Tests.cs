@@ -36,6 +36,7 @@
             _ticketHelper.GetResourceData("LVS_MatchCode", "2").Returns("Match Day");
             _ticketHelper.GetResourceData("LVS_MatchCode", "1").Returns("Cup");
             _ticketHelper.GetResourceData("LVS_MatchCode", "1001").Returns("Group A");
+            _ticketHelper.GetVirtualSportMatchCodeFormat("{2} 6, {1001}, {1} 57853", "LVS_MatchCode").Returns("Match Day 6, Group A, Cup 57853");
         }
 
         [TestCase("1", "Team name 1")]

@@ -117,7 +117,7 @@
             _ticket.Status = "Refund";
             _ticket.CustId = 123;
 
-            var expectedBetId = "0, '4100300', 123, 'betcheck'";
+            var expectedBetId = "0, '', 123, 'betcheck', '4100300'";
 
             // Act
             _status.Render(_ticket, _ticketHelper, null, false);

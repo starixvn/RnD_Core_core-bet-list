@@ -60,12 +60,12 @@
             Assert.AreEqual(expectedHtml, template.result);
         }
 
-        [TestCase(BetStatus.Won)]
-        [TestCase(BetStatus.Lose)]
-        [TestCase(BetStatus.Draw)]
-        [TestCase(BetStatus.Refund)]
-        [TestCase(BetStatus.Reject)]
-        public void BuildResult_TicketIsNotRunning_ResultIsText(string status)
+        [TestCase(BetStatus.Won, "won")]
+        [TestCase(BetStatus.Lose, "lost")]
+        [TestCase(BetStatus.Draw, "draw")]
+        [TestCase(BetStatus.Refund, "refund")]
+        [TestCase(BetStatus.Reject, "reject")]
+        public void BuildResult_TicketIsNotRunning_ResultIsText(string status, string expected)
         {
             // Arrange.
             _ticket.Status = status;
@@ -74,7 +74,7 @@
             var template = _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.AreEqual(status, template.result.ToLower());
+            Assert.AreEqual(expected, template.result.ToLower());
         }
 
         [TestCase(null)]

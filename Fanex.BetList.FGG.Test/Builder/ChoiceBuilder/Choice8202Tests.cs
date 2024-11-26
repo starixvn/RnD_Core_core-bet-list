@@ -58,7 +58,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            var betIdMarkup = string.Format("Baccarat 4<span class='bet-id'>{0}</span>", "BetID: " + "123");
+            var betIdMarkup = string.Format("Baccarat<span class='bet-id'>{0}</span>", "BetID: " + "123");
             Assert.AreEqual(betIdMarkup, _choice.Template.betTeam);
         }
 
@@ -205,7 +205,7 @@
             _choice.RenderRTF(_ticket, _ticketHelper, null, false, rtfHelper);
 
             // Assert
-            var expectedLeagueName = string.Format("{0} {1}", Baccarat, gameId);
+            var expectedLeagueName = string.Format("{0}  {1}", Baccarat, gameId);
 
             Assert.AreEqual(expectedLeagueName, _choice.Template.League.LeagueName.leagueName);
         }

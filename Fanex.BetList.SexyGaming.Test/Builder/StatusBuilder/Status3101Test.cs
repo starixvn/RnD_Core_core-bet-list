@@ -39,6 +39,8 @@
         {
             ////Arrange            
             _ticket.WinlostDate = DateTime.Today.AddDays(-2);
+            _ticket.BetCheck = "Bet Check";
+            _ticket.Status = BetStatus.Won;
 
             ////Act
             var template = _status.Render(_ticket, _ticketHelper, null, false);
@@ -57,12 +59,13 @@
             _ticket.BetCheck = "3";
             _ticket.SiteId = "4";
             _ticket.TransDesc = "choice=ZJH_STRAIGHT*site=BEST-ODDS*tableCode=STUDIO-ZJH-3";
+            _ticket.Status = BetStatus.Won;
 
             ////Act
             var template = _status.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            Assert.AreEqual("'1', 'BEST-ODDS', 2, '3', '4'", template.StatusResult.betId);
+            Assert.AreEqual("1, 'BEST-ODDS', 2, '3', '4'", template.StatusResult.betId);
         }
     }
 }

@@ -84,7 +84,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            var betIdMarkup = string.Format("<span class='gtcasino-bet-id'>{0}</span>", "Bet ID: " + "123");
+            var betIdMarkup = string.Format("<span class='bet-id'>{0}</span>", "BetID: " + "123");
             Assert.AreEqual(betIdMarkup, _choice.Template.BetType.betTypeName);
         }
 
@@ -174,7 +174,7 @@
 
             // Assert
             var expectedLeagueName = string.Format(
-                "<span class='gtcasino-bet-type-name'>{0}</span> <span class=\"gamegroupname\">{1}</span> <span class='gtcasino-game-id'>{2}</span>",
+                "<span class='bet-type-name'>{0}</span> <span class=\"gamegroupname\">{1}</span> <span class='game-id'>{2}</span>",
                 BetTypeName,
                 gameTableId,
                 gameId);
@@ -184,7 +184,7 @@
         private string BuildExpectedTemplateDetailLinkHtml(ITicket ticket, string transactionType)
         {
             return string.Format(
-                "<div class=\"detail gt-casino-detail\"" +
+                "<div class=\"detail live-casino-detail\"" +
                 " onclick='showGTCasinoBetsDetails(&quot;{0}&quot;,&quot;{1}&quot;,&quot;{2}&quot;,&quot;{3}&quot;);'>" +
                 "<a class=\"detail-link\"" +
                 " href=\"javascript:void(&quot;&quot;);\">Details</a></div>",

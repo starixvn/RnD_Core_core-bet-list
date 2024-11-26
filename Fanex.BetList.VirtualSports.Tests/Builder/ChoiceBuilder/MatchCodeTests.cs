@@ -28,6 +28,7 @@
             TicketHelper = Substitute.For<ITicketHelper>();
             TicketHelper.GetBetRadarMatchCodeFormat(Arg.Is(TestingMatchCodePattern)).Returns(ExpectedMatchDayOrRoundInfo);
             TicketHelper.GetBetRadarMatchCodeFormat(Arg.Is(ExpectedMatchDayOrRoundInfo)).Returns(ExpectedMatchDayOrRoundInfo);
+            TicketHelper.GetVirtualSportMatchCodeFormat(Arg.Any<string>(), "LVS_MatchCode").Returns(ExpectedMatchDayOrRoundInfo);
 
             Ticket.HomeId = HomeTeamId;
             Ticket.AwayId = AwayTeamId;

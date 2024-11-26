@@ -23,6 +23,7 @@ namespace Fanex.BetList.PP.Tests.Builder.ChoiceBuilder
             _ticketHelper = Substitute.For<ITicketHelper>();
 
             _ticket.TransDesc = "4300";
+            _ticket.BetTypeId = 4300;
             _ticketHelper.GetResourceData(Arg.Is(Choice4101.GameTypeRefId), Arg.Is(_ticket.TransDesc)).Returns(FakeGameType);
             _ticketHelper.GetResourceData(Arg.Is(Choice4101.GameGroupRefId), Arg.Is(_ticket.TransDesc)).Returns(FakeGameGroup);
         }

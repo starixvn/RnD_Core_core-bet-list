@@ -94,7 +94,7 @@ namespace Fanex.BetList.VGaming.Tests.Builder.ChoiceBuilder
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            Assert.IsNull(_choice.Template.Handicap.handicap);
+            Assert.IsNull(_choice.Template.Handicap);
             Assert.AreEqual(expectedClass, _choice.Template.betTeamClassName);
         }
 
