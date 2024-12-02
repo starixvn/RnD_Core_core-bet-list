@@ -1,13 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>
-        <Version>1.0.0-beta-02</Version>
-        <InfomationalVersion>1.0.0</InfomationalVersion>
-        <PackageReleaseNotes>Integrate GPI RNG (#206917)</PackageReleaseNotes>
+        <Version>1.0.1-beta-01</Version>
+        <InfomationalVersion>1.0.1</InfomationalVersion>
+        <PackageReleaseNotes>Integrate GPI Live Casino (#213479)</PackageReleaseNotes>
         <Description>
-        New bet list for GPI RNG
+        New bet list for GPI Live Casino
 
-The result link should call this Javascript function: "showGPIBetDetails(transId, 'winlostDate', custId, transactionType);", which transactionType is:
+The result link should call this Javascript function: "showGPILCBetDetails(transId, 'winlostDate', custId, transactionType);", which transactionType is:
 
 - 1, if the status is Won, Lose, Draw, or Refund
 
@@ -19,7 +19,7 @@ The result link should call this Javascript function: "showGPIBetDetails(transId
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <Authors>Nexcel Solutions</Authors>
         <PackageTags>Fanex BetList</PackageTags>
-        <PackageProjectUrl>https://nexdev.net/projects/p111038/wiki/072024_-_GPI_-_Bet_List__Results</PackageProjectUrl>
+        <PackageProjectUrl>https://nexdev.net/projects/fanex-betlistcore/wiki/Core_Bet_List</PackageProjectUrl>
     </PropertyGroup>
     <ItemGroup>
       <PackageReference Include="TplNetCore" Version="1.0.0" />
@@ -27,6 +27,6 @@ The result link should call this Javascript function: "showGPIBetDetails(transId
     <ItemGroup>
       <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj" />
       <ProjectReference Include="..\Fanex.BetList.RNGCore\Fanex.BetList.RNGCore.csproj" />
+      <ProjectReference Include="..\Fanex.BetList.LiveCasinoCore\Fanex.BetList.LiveCasinoCore.csproj" />
     </ItemGroup>
-    
 </Project>

@@ -10,6 +10,11 @@ namespace Fanex.BetList.Core.Mapper
             {
                 MapIdToBaseId(betTypeId, GPIBetTypes.UFOFrenzy);
             }
+
+            for (int betTypeId = GPILCBetTypes.NoCommisionBaccarat1 + 1; betTypeId < GPILCBetTypes.HighestBetTypeIdInRange; betTypeId++)
+            {
+                MapIdToBaseId(betTypeId, GPILCBetTypes.NoCommisionBaccarat1);
+            }
         }
     }
 }
