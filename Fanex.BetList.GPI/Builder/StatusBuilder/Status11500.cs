@@ -4,7 +4,7 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Utils.TicketExt;
 
-    public class Status10300 : StatusLC
+    public class Status11500 : StatusLC
     {
         public override bool IsHideStatusResult(ITicket ticket)
         {

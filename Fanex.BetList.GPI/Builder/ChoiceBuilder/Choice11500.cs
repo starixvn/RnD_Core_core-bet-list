@@ -10,7 +10,16 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         public const string ChoiceRefPrefix = "GPIL_BT";
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-            => Template.betTeam = ticketHelper.GetResourceData(ChoiceRefPrefix, ticket.BetTypeId.ToString());
+        {
+            if(IsDetailTicket(ticket))
+            {
+                Template.betTeam = ticketHelper.GetResourceData(ChoiceRefPrefix, ticket.BetTypeId.ToString());
+            }
+            else
+            {
+                Template.betTeam = null;
+            }
+        }
 
         public override string BuildDetailFunction(ITicket ticket)
         {
@@ -31,5 +40,8 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             return detailFunctionBuilder.ToString();
         }
+        protected override bool IsDetailTicket(ITicket ticket)
+            => !string.IsNullOrEmpty(ticket.BetCheck);
+
     }
 }

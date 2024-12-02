@@ -1,13 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>
-        <Version>1.0.1-beta-01</Version>
+        <Version>1.0.1-beta-04</Version>
         <InfomationalVersion>1.0.1</InfomationalVersion>
         <PackageReleaseNotes>Integrate GPI Live Casino (#213479)</PackageReleaseNotes>
         <Description>
-        New bet list for GPI Live Casino
+        New bet list for GPI
 
-The result link should call this Javascript function: "showGPILCBetDetails(transId, 'winlostDate', custId, transactionType);", which transactionType is:
+For GPI RNG: The result link should call this Javascript function: "showGPIBetDetails(transId, 'winlostDate', custId, transactionType);"
+
+For GPI LiveCasino: The result link should call this Javascript function: "showGPILCBetDetails(transId, 'winlostDate', custId, transactionType);"
+
+Which transactionType is:
 
 - 1, if the status is Won, Lose, Draw, or Refund
 

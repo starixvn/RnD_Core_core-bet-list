@@ -114,107 +114,107 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.VirtualSports
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.WM", "Fanex.Betlist.WM\Fanex.BetList.WM.csproj", "{30A16C1F-AF30-4D9F-B5FF-DA7F3A92C8F7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.CG.Tests", "Fanex.BetList.CG.Tests\Fanex.BetList.CG.Tests.csproj", "{2F199D90-8A81-4E8A-B74F-3425686BE50A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.CG.Tests", "Fanex.BetList.CG.Tests\Fanex.BetList.CG.Tests.csproj", "{2F199D90-8A81-4E8A-B74F-3425686BE50A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.Core.RemotingRef.Tests", "Fanex.BetList.Core.RemotingRef.Tests\Fanex.BetList.Core.RemotingRef.Tests.csproj", "{D11AD2F0-BA2A-4975-9A22-759C798482B7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.Core.RemotingRef.Tests", "Fanex.BetList.Core.RemotingRef.Tests\Fanex.BetList.Core.RemotingRef.Tests.csproj", "{D11AD2F0-BA2A-4975-9A22-759C798482B7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.Core.UnitTest", "Fanex.BetList.Core.UnitTest\Fanex.BetList.Core.UnitTest.csproj", "{9EE233A7-6DFA-40C6-B99A-4783F7FA8E77}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.Core.UnitTest", "Fanex.BetList.Core.UnitTest\Fanex.BetList.Core.UnitTest.csproj", "{9EE233A7-6DFA-40C6-B99A-4783F7FA8E77}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.ESports.Tests", "Fanex.BetList.ESports.Tests\Fanex.BetList.ESports.Tests.csproj", "{858DA9D3-DC94-48A1-B286-FCDD7478F43B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.ESports.Tests", "Fanex.BetList.ESports.Tests\Fanex.BetList.ESports.Tests.csproj", "{858DA9D3-DC94-48A1-B286-FCDD7478F43B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.FACHAI", "Fanex.BetList.FACHAI\Fanex.BetList.FACHAI.csproj", "{334B4513-C08F-48E0-9203-F59137FE1697}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.FACHAI", "Fanex.BetList.FACHAI\Fanex.BetList.FACHAI.csproj", "{334B4513-C08F-48E0-9203-F59137FE1697}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.FACHAI.Tests", "Fanex.BetList.FACHAI.Tests\Fanex.BetList.FACHAI.Tests.csproj", "{EA277885-4072-4C17-A919-3D1443F60A7F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.FACHAI.Tests", "Fanex.BetList.FACHAI.Tests\Fanex.BetList.FACHAI.Tests.csproj", "{EA277885-4072-4C17-A919-3D1443F60A7F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.FastSpin", "Fanex.BetList.FastSpin\Fanex.BetList.FastSpin.csproj", "{776806AF-9FE9-4EB8-B2DD-D78EC28E54B1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.FastSpin", "Fanex.BetList.FastSpin\Fanex.BetList.FastSpin.csproj", "{776806AF-9FE9-4EB8-B2DD-D78EC28E54B1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.FastSpin.Tests", "Fanex.BetList.FastSpin.Tests\Fanex.BetList.FastSpin.Tests.csproj", "{B10E01AB-BDB2-4669-B076-84E0134E29A6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.FastSpin.Tests", "Fanex.BetList.FastSpin.Tests\Fanex.BetList.FastSpin.Tests.csproj", "{B10E01AB-BDB2-4669-B076-84E0134E29A6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.FGG.Test", "Fanex.BetList.FGG.Test\Fanex.BetList.FGG.Test.csproj", "{3D3CEBDA-64DC-47A0-9013-55977389246F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.FGG.Test", "Fanex.BetList.FGG.Test\Fanex.BetList.FGG.Test.csproj", "{3D3CEBDA-64DC-47A0-9013-55977389246F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.GTCasino.Test", "Fanex.BetList.GTCasino.Test\Fanex.BetList.GTCasino.Test.csproj", "{F6AD4FE5-6CE2-4756-84A0-FD9C0C9E7C38}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.GTCasino.Test", "Fanex.BetList.GTCasino.Test\Fanex.BetList.GTCasino.Test.csproj", "{F6AD4FE5-6CE2-4756-84A0-FD9C0C9E7C38}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.Habanero.Tests", "Fanex.BetList.Habanero.Tests\Fanex.BetList.Habanero.Tests.csproj", "{3C3CBE11-DBEF-4A06-A88A-96F9393862FD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.Habanero.Tests", "Fanex.BetList.Habanero.Tests\Fanex.BetList.Habanero.Tests.csproj", "{3C3CBE11-DBEF-4A06-A88A-96F9393862FD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.Indo4D.Tests", "Fanex.BetList.Indo4D.Tests\Fanex.BetList.Indo4D.Tests.csproj", "{B30580F4-5CA1-4549-97E7-5BD101D4AA6D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.Indo4D.Tests", "Fanex.BetList.Indo4D.Tests\Fanex.BetList.Indo4D.Tests.csproj", "{B30580F4-5CA1-4549-97E7-5BD101D4AA6D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.IONCasino.Test", "Fanex.BetList.IONCasino.Test\Fanex.BetList.IONCasino.Test.csproj", "{A45134AA-CA34-444E-97DB-851370BCE296}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.IONCasino.Test", "Fanex.BetList.IONCasino.Test\Fanex.BetList.IONCasino.Test.csproj", "{A45134AA-CA34-444E-97DB-851370BCE296}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.Betlist.Jili.Tests", "Fanex.Betlist.Jili.Tests\Fanex.Betlist.Jili.Tests.csproj", "{26BAF1C4-C048-4CF2-9C91-BFCFFAB205E2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.Betlist.Jili.Tests", "Fanex.Betlist.Jili.Tests\Fanex.Betlist.Jili.Tests.csproj", "{26BAF1C4-C048-4CF2-9C91-BFCFFAB205E2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.Joker.Tests", "Fanex.BetList.Joker.Tests\Fanex.BetList.Joker.Tests.csproj", "{4A66315D-4628-479D-93AA-3FFAF4E437A7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.Joker.Tests", "Fanex.BetList.Joker.Tests\Fanex.BetList.Joker.Tests.csproj", "{4A66315D-4628-479D-93AA-3FFAF4E437A7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.Keno.Tests", "Fanex.BetList.Keno.Tests\Fanex.BetList.Keno.Tests.csproj", "{EF9B83A9-199E-429A-8B55-0AF26784B752}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.Keno.Tests", "Fanex.BetList.Keno.Tests\Fanex.BetList.Keno.Tests.csproj", "{EF9B83A9-199E-429A-8B55-0AF26784B752}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.KenoLottery.Tests", "Fanex.BetList.KenoLottery.Tests\Fanex.BetList.KenoLottery.Tests.csproj", "{BFE8DD95-0DE0-4902-9647-D227936260CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.KenoLottery.Tests", "Fanex.BetList.KenoLottery.Tests\Fanex.BetList.KenoLottery.Tests.csproj", "{BFE8DD95-0DE0-4902-9647-D227936260CD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.LeapGaming.Tests", "Fanex.BetList.LeapGaming.Tests\Fanex.BetList.LeapGaming.Tests.csproj", "{336DB9D6-FF9A-4F9F-86DF-7FAE1B2BCDE7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.LeapGaming.Tests", "Fanex.BetList.LeapGaming.Tests\Fanex.BetList.LeapGaming.Tests.csproj", "{336DB9D6-FF9A-4F9F-86DF-7FAE1B2BCDE7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.Live22", "Fanex.BetList.Live22\Fanex.BetList.Live22.csproj", "{74EE3B5C-8123-40F5-88FD-D15A942495CF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.Live22", "Fanex.BetList.Live22\Fanex.BetList.Live22.csproj", "{74EE3B5C-8123-40F5-88FD-D15A942495CF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.Live22.Tests", "Fanex.BetList.Live22.Tests\Fanex.BetList.Live22.Tests.csproj", "{C475551C-010A-4A69-8CA6-34796E77225E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.Live22.Tests", "Fanex.BetList.Live22.Tests\Fanex.BetList.Live22.Tests.csproj", "{C475551C-010A-4A69-8CA6-34796E77225E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.LiveCasinoCore", "Fanex.BetList.LiveCasinoCore\Fanex.BetList.LiveCasinoCore.csproj", "{5A055EB5-99B5-4DB9-B7B1-8F59BCC87F63}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.LiveCasinoCore", "Fanex.BetList.LiveCasinoCore\Fanex.BetList.LiveCasinoCore.csproj", "{5A055EB5-99B5-4DB9-B7B1-8F59BCC87F63}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.LiveCasinoCore.Tests", "Fanex.BetList.LiveCasinoCore.Tests\Fanex.BetList.LiveCasinoCore.Tests.csproj", "{7110F3CF-DFA7-4266-B467-A91903B948AF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.LiveCasinoCore.Tests", "Fanex.BetList.LiveCasinoCore.Tests\Fanex.BetList.LiveCasinoCore.Tests.csproj", "{7110F3CF-DFA7-4266-B467-A91903B948AF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.MaxGame.Tests", "Fanex.BetList.MaxGame.Tests\Fanex.BetList.MaxGame.Tests.csproj", "{9A882AB1-7C7B-4125-8DAA-601502C39EAD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.MaxGame.Tests", "Fanex.BetList.MaxGame.Tests\Fanex.BetList.MaxGame.Tests.csproj", "{9A882AB1-7C7B-4125-8DAA-601502C39EAD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.MetricGaming.Test", "Fanex.BetList.MetricGaming.Test\Fanex.BetList.MetricGaming.Test.csproj", "{A5CA8BC6-416B-4305-9C48-17C730EF26BE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.MetricGaming.Test", "Fanex.BetList.MetricGaming.Test\Fanex.BetList.MetricGaming.Test.csproj", "{A5CA8BC6-416B-4305-9C48-17C730EF26BE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.MGRNGCasino.Test", "Fanex.BetList.MGRNGCasino.Test\Fanex.BetList.MGRNGCasino.Test.csproj", "{B32B1601-4B37-4BFD-8626-FC4AEAF7C20F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.MGRNGCasino.Test", "Fanex.BetList.MGRNGCasino.Test\Fanex.BetList.MGRNGCasino.Test.csproj", "{B32B1601-4B37-4BFD-8626-FC4AEAF7C20F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.NumberGame.Tests", "Fanex.BetList.NumberGame.Tests\Fanex.BetList.NumberGame.Tests.csproj", "{2A1CA97B-2B19-4CB8-8C06-5876D1BA5807}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.NumberGame.Tests", "Fanex.BetList.NumberGame.Tests\Fanex.BetList.NumberGame.Tests.csproj", "{2A1CA97B-2B19-4CB8-8C06-5876D1BA5807}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.PGSoft.Tests", "Fanex.BetList.PGSoft.Tests\Fanex.BetList.PGSoft.Tests.csproj", "{8E6AFCD9-FF14-4AB2-BA9A-D02DB65AAC74}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.PGSoft.Tests", "Fanex.BetList.PGSoft.Tests\Fanex.BetList.PGSoft.Tests.csproj", "{8E6AFCD9-FF14-4AB2-BA9A-D02DB65AAC74}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.PlayerTips.Tests", "Fanex.BetList.PlayerTipsTests\Fanex.BetList.PlayerTips.Tests.csproj", "{C02D2133-DE32-4799-8C20-95B00A228DA7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.PlayerTips.Tests", "Fanex.BetList.PlayerTipsTests\Fanex.BetList.PlayerTips.Tests.csproj", "{C02D2133-DE32-4799-8C20-95B00A228DA7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.PP.Tests", "Fanex.BetList.PP.Tests\Fanex.BetList.PP.Tests.csproj", "{8A1D331F-4DB4-4A23-BF17-5CC9CA050FB4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.PP.Tests", "Fanex.BetList.PP.Tests\Fanex.BetList.PP.Tests.csproj", "{8A1D331F-4DB4-4A23-BF17-5CC9CA050FB4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.PragmaticLiveCasino.Test", "Fanex.BetList.PragmaticLiveCasino.Tests\Fanex.BetList.PragmaticLiveCasino.Test.csproj", "{F14936A3-1A12-4AAF-85F2-66CE063E2FDB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.PragmaticLiveCasino.Test", "Fanex.BetList.PragmaticLiveCasino.Tests\Fanex.BetList.PragmaticLiveCasino.Test.csproj", "{F14936A3-1A12-4AAF-85F2-66CE063E2FDB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.RnGCasino.Tests", "Fanex.BetList.RnGCasino.Tests\Fanex.BetList.RnGCasino.Tests.csproj", "{4363F851-FE57-4667-B26B-ACECADAB2350}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.RnGCasino.Tests", "Fanex.BetList.RnGCasino.Tests\Fanex.BetList.RnGCasino.Tests.csproj", "{4363F851-FE57-4667-B26B-ACECADAB2350}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.RNGWar.Tests", "Fanex.BetList.RNGWar.Tests\Fanex.BetList.RNGWar.Tests.csproj", "{FFECA6E5-9517-46A5-8E23-49E45921213C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.RNGWar.Tests", "Fanex.BetList.RNGWar.Tests\Fanex.BetList.RNGWar.Tests.csproj", "{FFECA6E5-9517-46A5-8E23-49E45921213C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.SabaClub.Tests", "Fanex.BetList.SabaClub.Tests\Fanex.BetList.SabaClub.Tests.csproj", "{A6F429F1-355A-4B9E-9251-41BF0A356873}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.SabaClub.Tests", "Fanex.BetList.SabaClub.Tests\Fanex.BetList.SabaClub.Tests.csproj", "{A6F429F1-355A-4B9E-9251-41BF0A356873}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.SABAxD.Tests", "Fanex.BetList.SABAxD.Tests\Fanex.BetList.SABAxD.Tests.csproj", "{FFC25C40-8471-4E99-9EF6-E9B8746ACE96}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.SABAxD.Tests", "Fanex.BetList.SABAxD.Tests\Fanex.BetList.SABAxD.Tests.csproj", "{FFC25C40-8471-4E99-9EF6-E9B8746ACE96}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.SABAxD", "Fanex.BetList.SABAxD\Fanex.BetList.SABAxD.csproj", "{F328EFC2-E997-4E4C-B6F4-A8CB629DED9B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.SABAxD", "Fanex.BetList.SABAxD\Fanex.BetList.SABAxD.csproj", "{F328EFC2-E997-4E4C-B6F4-A8CB629DED9B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.SAGaming.Test", "Fanex.BetList.SAGaming.Test\Fanex.BetList.SAGaming.Test.csproj", "{BE47F1BF-C202-475B-A7DE-857908EAE698}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.SAGaming.Test", "Fanex.BetList.SAGaming.Test\Fanex.BetList.SAGaming.Test.csproj", "{BE47F1BF-C202-475B-A7DE-857908EAE698}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.SealEntertainment.Test", "Fanex.BetList.SealEntertainment.Test\Fanex.BetList.SealEntertainment.Test.csproj", "{5DBF2BFC-4DAA-4A08-81EA-204D4A1087F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.SealEntertainment.Test", "Fanex.BetList.SealEntertainment.Test\Fanex.BetList.SealEntertainment.Test.csproj", "{5DBF2BFC-4DAA-4A08-81EA-204D4A1087F9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.SexyGaming.Test", "Fanex.BetList.SexyGaming.Test\Fanex.BetList.SexyGaming.Test.csproj", "{B1DD7FDE-1172-43FB-AD26-E044EAAED738}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.SexyGaming.Test", "Fanex.BetList.SexyGaming.Test\Fanex.BetList.SexyGaming.Test.csproj", "{B1DD7FDE-1172-43FB-AD26-E044EAAED738}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.Spadegaming.Tests", "Fanex.BetList.Spadegaming.Tests\Fanex.BetList.Spadegaming.Tests.csproj", "{9AB563FC-C1CA-459F-9EC7-0655D9F94C0F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.Spadegaming.Tests", "Fanex.BetList.Spadegaming.Tests\Fanex.BetList.Spadegaming.Tests.csproj", "{9AB563FC-C1CA-459F-9EC7-0655D9F94C0F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.SportsLottery.Tests", "Fanex.BetList.SportsLottery.Tests\Fanex.BetList.SportsLottery.Tests.csproj", "{81D767A5-31EB-4F19-BD1E-DD1CB97CA9DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.SportsLottery.Tests", "Fanex.BetList.SportsLottery.Tests\Fanex.BetList.SportsLottery.Tests.csproj", "{81D767A5-31EB-4F19-BD1E-DD1CB97CA9DA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.TableGames.Tests", "Fanex.BetList.TableGames.Tests\Fanex.BetList.TableGames.Tests.csproj", "{B7C2B20B-9F21-4B17-962F-25CBF100CB12}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.TableGames.Tests", "Fanex.BetList.TableGames.Tests\Fanex.BetList.TableGames.Tests.csproj", "{B7C2B20B-9F21-4B17-962F-25CBF100CB12}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.UUSlots", "Fanex.BetList.UUSlots\Fanex.BetList.UUSlots.csproj", "{6B13F3DB-00A3-4CF6-B3A1-DD181CC906F4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.UUSlots", "Fanex.BetList.UUSlots\Fanex.BetList.UUSlots.csproj", "{6B13F3DB-00A3-4CF6-B3A1-DD181CC906F4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.UUSlots.Tests", "Fanex.BetList.UUSlots.Tests\Fanex.BetList.UUSlots.Tests.csproj", "{038EB615-46B8-4D2D-94A7-8D75BAE4FFA6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.UUSlots.Tests", "Fanex.BetList.UUSlots.Tests\Fanex.BetList.UUSlots.Tests.csproj", "{038EB615-46B8-4D2D-94A7-8D75BAE4FFA6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.VGaming.Tests", "Fanex.BetList.VGaming.Tests\Fanex.BetList.VGaming.Tests.csproj", "{0CB0478C-4C52-4E8C-968E-DDA9ADBB273F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.VGaming.Tests", "Fanex.BetList.VGaming.Tests\Fanex.BetList.VGaming.Tests.csproj", "{0CB0478C-4C52-4E8C-968E-DDA9ADBB273F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.VirtualGames.Tests", "Fanex.BetList.VirtualGames.Tests\Fanex.BetList.VirtualGames.Tests.csproj", "{86FA849E-1C23-425A-A37C-F3B4CC2E4769}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.VirtualGames.Tests", "Fanex.BetList.VirtualGames.Tests\Fanex.BetList.VirtualGames.Tests.csproj", "{86FA849E-1C23-425A-A37C-F3B4CC2E4769}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.VirtualSports.Tests", "Fanex.BetList.VirtualSports.Tests\Fanex.BetList.VirtualSports.Tests.csproj", "{1C7EFC7C-9EFE-4DEC-91BB-7122EFA46153}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.VirtualSports.Tests", "Fanex.BetList.VirtualSports.Tests\Fanex.BetList.VirtualSports.Tests.csproj", "{1C7EFC7C-9EFE-4DEC-91BB-7122EFA46153}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.WE", "Fanex.BetList.WE\Fanex.BetList.WE.csproj", "{77D2CE09-2BD2-4698-9F36-7F8C0FBFDFA8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.WE", "Fanex.BetList.WE\Fanex.BetList.WE.csproj", "{77D2CE09-2BD2-4698-9F36-7F8C0FBFDFA8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.WE.Tests", "Fanex.BetList.WE.Tests\Fanex.BetList.WE.Tests.csproj", "{C2D2D717-38B8-49D8-BEE8-E71DABF44CFE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.WE.Tests", "Fanex.BetList.WE.Tests\Fanex.BetList.WE.Tests.csproj", "{C2D2D717-38B8-49D8-BEE8-E71DABF44CFE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.WM.Test", "Fanex.BetList.WM.Test\Fanex.BetList.WM.Test.csproj", "{28D89125-9723-4562-8CBE-AA01F71E6376}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.WM.Test", "Fanex.BetList.WM.Test\Fanex.BetList.WM.Test.csproj", "{28D89125-9723-4562-8CBE-AA01F71E6376}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.YeeBet", "Fanex.BetList.YeeBet\Fanex.BetList.YeeBet.csproj", "{434EEBEA-4CB0-4190-886E-FDA7D39B0853}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.YeeBet", "Fanex.BetList.YeeBet\Fanex.BetList.YeeBet.csproj", "{434EEBEA-4CB0-4190-886E-FDA7D39B0853}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.YeeBet.Tests", "Fanex.BetList.YeeBet.Tests\Fanex.BetList.YeeBet.Tests.csproj", "{B314366D-7753-4097-8EAC-D9143BC4A020}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.YeeBet.Tests", "Fanex.BetList.YeeBet.Tests\Fanex.BetList.YeeBet.Tests.csproj", "{B314366D-7753-4097-8EAC-D9143BC4A020}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Example", "Example", "{2A30422E-5EFA-4820-8414-8CDE497D774B}"
 EndProject
@@ -224,11 +224,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.Example.Exten
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.Example.MVC.Tests", "Example\Fanex.BetList.Example.MVC.Tests\Fanex.BetList.Example.MVC.Tests.csproj", "{CD2143D0-1838-485F-9796-EDCC0EC6A03C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.GPI", "Fanex.BetList.GPI\Fanex.BetList.GPI.csproj", "{ED5DC714-C57A-4382-B7AA-F411B8458710}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.GPI", "Fanex.BetList.GPI\Fanex.BetList.GPI.csproj", "{ED5DC714-C57A-4382-B7AA-F411B8458710}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.GPI.Tests", "Fanex.BetList.GPI.Tests\Fanex.BetList.GPI.Tests.csproj", "{43500C30-B190-421E-B530-65540A25997E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.GPI.Tests", "Fanex.BetList.GPI.Tests\Fanex.BetList.GPI.Tests.csproj", "{43500C30-B190-421E-B530-65540A25997E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.Example.MVC", "Example\Fanex.BetList.Example.MVC\Fanex.BetList.Example.MVC.csproj", "{8ACF58AD-9149-4D94-B2EB-996FA0E3F2DA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.RNGCore", "Fanex.BetList.RNGCore\Fanex.BetList.RNGCore.csproj", "{DDFCF452-A82B-4315-8927-DBB7460EE84E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1549,6 +1551,18 @@ Global
 		{8ACF58AD-9149-4D94-B2EB-996FA0E3F2DA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{8ACF58AD-9149-4D94-B2EB-996FA0E3F2DA}.Release|x86.ActiveCfg = Release|Any CPU
 		{8ACF58AD-9149-4D94-B2EB-996FA0E3F2DA}.Release|x86.Build.0 = Release|Any CPU
+		{DDFCF452-A82B-4315-8927-DBB7460EE84E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDFCF452-A82B-4315-8927-DBB7460EE84E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDFCF452-A82B-4315-8927-DBB7460EE84E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{DDFCF452-A82B-4315-8927-DBB7460EE84E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{DDFCF452-A82B-4315-8927-DBB7460EE84E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DDFCF452-A82B-4315-8927-DBB7460EE84E}.Debug|x86.Build.0 = Debug|Any CPU
+		{DDFCF452-A82B-4315-8927-DBB7460EE84E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDFCF452-A82B-4315-8927-DBB7460EE84E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDFCF452-A82B-4315-8927-DBB7460EE84E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{DDFCF452-A82B-4315-8927-DBB7460EE84E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{DDFCF452-A82B-4315-8927-DBB7460EE84E}.Release|x86.ActiveCfg = Release|Any CPU
+		{DDFCF452-A82B-4315-8927-DBB7460EE84E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
