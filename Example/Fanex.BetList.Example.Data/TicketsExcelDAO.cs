@@ -6,9 +6,9 @@
     using System.Globalization;
     using System.IO;
     using Fanex.BetList.Core.Entities;
-    using NPOI.HSSF.UserModel;
-    using NPOI.POIFS.FileSystem;
-    using NPOI.SS.UserModel;
+    using BetListNPOI.HSSF.UserModel;
+    using BetListNPOI.POIFS.FileSystem;
+    using BetListNPOI.SS.UserModel;
 
     public class TicketsExcelDAO : ITicketsDAO
     {

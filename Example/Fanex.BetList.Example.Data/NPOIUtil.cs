@@ -1,6 +1,6 @@
 ﻿namespace Fanex.BetList.Example.Data
 {
-    using NPOI.SS.UserModel;
+    using BetListNPOI.SS.UserModel;
 
     internal static class NPOIUtil
     {

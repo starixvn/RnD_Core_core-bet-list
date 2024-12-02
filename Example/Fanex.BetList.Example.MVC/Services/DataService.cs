@@ -10,9 +10,9 @@ namespace Fanex.BetList.Example.MVC.Services
     using Fanex.BetList.Example.Data;
     using Fanex.BetList.Example.MVC.Models;
     using Fanex.BetList.Example.MVC.ViewModel;
-    using NPOI.HSSF.UserModel;
-    using NPOI.POIFS.FileSystem;
-    using NPOI.SS.UserModel;
+    using BetListNPOI.HSSF.UserModel;
+    using BetListNPOI.POIFS.FileSystem;
+    using BetListNPOI.SS.UserModel;
 
     public class DataService
     {
