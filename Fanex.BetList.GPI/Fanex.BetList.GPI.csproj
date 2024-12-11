@@ -1,35 +1,36 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>
-        <Version>1.0.1-beta-05</Version>
+        <Version>1.0.1-beta-07</Version>
         <InfomationalVersion>1.0.1</InfomationalVersion>
         <PackageReleaseNotes>Integrate GPI Live Casino (#213479)</PackageReleaseNotes>
         <Description>
-        New bet list for GPI
+            New bet list for GPI
 
-For GPI RNG: The result link should call this Javascript function: "showGPIBetDetails(transId, 'winlostDate', custId, transactionType);"
+            For GPI RNG: The result link should call this Javascript function: "showGPIBetDetails(transId, 'winlostDate', custId, transactionType);"
 
-For GPI LiveCasino: The result link should call this Javascript function: "showGPILCBetDetails(transId, 'winlostDate', custId, transactionType);"
+            For GPI LiveCasino: The result link should call this Javascript function: "showGPILCBetDetails(transId, 'winlostDate', custId, transactionType);"
 
-Which transactionType is:
+            Which transactionType is:
 
-- 1, if the status is Won, Lose, Draw, or Refund
+            - 1, if the status is Won, Lose, Draw, or Refund
 
-- 2, if the status is Reject, or Void
+            - 2, if the status is Reject, or Void
 
-- 3, if the status is Running, or Waiting
+            - 3, if the status is Running, or Waiting
 
-- otherwise, 0</Description>
+            - otherwise, 0
+        </Description>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <Authors>Nexcel Solutions</Authors>
         <PackageTags>Fanex BetList</PackageTags>
         <PackageProjectUrl>https://nexdev.net/projects/fanex-betlistcore/wiki/Core_Bet_List</PackageProjectUrl>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
     <ItemGroup>
       <PackageReference Include="TplNetCore" Version="1.0.0" />
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj" />
       <ProjectReference Include="..\Fanex.BetList.RNGCore\Fanex.BetList.RNGCore.csproj" />
       <ProjectReference Include="..\Fanex.BetList.LiveCasinoCore\Fanex.BetList.LiveCasinoCore.csproj" />
     </ItemGroup>
