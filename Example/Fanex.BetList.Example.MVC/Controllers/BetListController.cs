@@ -42,6 +42,18 @@
             return View(model);
         }
 
+        public ActionResult SabaKeno(BetListData model = null)
+        {
+            var betTypes = _dataService.QueryBetTypes(12300,12301);
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            DataSourcePath = "~/App_Data/SabaKeno.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
         public ActionResult VourcherId(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes();
