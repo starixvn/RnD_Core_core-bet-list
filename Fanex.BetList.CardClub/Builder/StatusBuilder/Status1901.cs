@@ -6,22 +6,13 @@
     /// <summary>
     /// Video Poker
     /// </summary>
-    public class Status1901 : Status1
+    public class Status1901 : StatusRNG
     {
-        protected override void BuildStatusResult(ITicket ticket)
+        protected override bool IsHideRNGResult(ITicket ticket)
         {
             const int daySupportResultLink = 90;
-            if (string.IsNullOrWhiteSpace(ticket.BetCheck) ||
-                ticket.IsTicketHide3rdResultLink(daySupportResultLink))
-            {
-                Template.StatusResult.Hide();
-            }
-            else
-            {
-                base.BuildStatusResult(ticket);
-                Template.StatusResult.refNo = $"{ticket.BetCheck}";
-                Template.StatusResult.betId = $"{ticket.CurrencyId}, '{ticket.BetTeam}', {ticket.CustId}, '{ticket.BetCheck}', '{ticket.SiteId}'";
-            }
+
+            return base.IsHideRNGResult(ticket) || ticket.IsTicketHide3rdResultLink(daySupportResultLink);
         }
     }
 }

@@ -1,20 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <FileVersion>2.0.0.0</FileVersion>
-        <Version>2.0.0.0</Version>
-        <PackageReleaseNotes>Support .net Core for Betlist Core package (#175417)</PackageReleaseNotes>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <Version>2.0.0.1-API-01</Version>
+        <PackageReleaseNotes>Using new gaming API format (#215197)</PackageReleaseNotes>
         <Description>BetList core package</Description>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <Authors>Nexcel Solutions</Authors>
         <PackageTags>Fanex BetList</PackageTags>
-        <PackageProjectUrl>https://nexdev.net/projects/fanex-betlistcore/wiki/Core_Bet_List</PackageProjectUrl>
+        <PackageProjectUrl>https://nexdev.net/projects/p111024/wiki/ArcadiaGaming_UnderMacauGames_Credit_BetList</PackageProjectUrl>
     </PropertyGroup>
     <ItemGroup>
       <PackageReference Include="TplNetCore" Version="1.0.0" />
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\Fanex.BetList.BetTrade\Fanex.BetList.BetTrade.csproj" />
+      <ProjectReference Include="..\Fanex.BetList.RNGCore\Fanex.BetList.RNGCore.csproj" />
     </ItemGroup>
 </Project>
