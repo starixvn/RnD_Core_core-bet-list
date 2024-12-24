@@ -1,5 +1,6 @@
 ﻿namespace Fanex.BetList.Example.MVC.Controllers
 {
+    using BetListNPOI.XSSF.Streaming;
     using Fanex.BetList.Core.Builder;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Factories;
@@ -1780,6 +1781,7 @@
 
         public void ExportExcel(BetListData query)
         {
+            
             var factory = new BetListExcelFactory();
             IBetListExcelBuilder builder = new BetListExcelXBuilder();//factory.CreateBuilder();
             ITicketHelper ticketHelper = new TicketHelper();
@@ -1806,6 +1808,7 @@
                            .AddRefNo(ticket, ticketHelper)
                            .AddLicenseeTxId(ticket, ticketHelper)
                            .AddUsername(ticket, ticketHelper)
+
                            .AddChoice(ticket, ticketHelper, ticketData)
                            .AddOdds(ticket, ticketData, funcGetOddsTypeName)
                            .AddOddsType(ticket, ticketData, funcGetOddsTypeName)
@@ -1819,6 +1822,15 @@
                 resultWorkbook.Write(ms, true);
                 ExportToExcel(ms, "BetList.xlsx");
             }
+            /*
+            var _workbook = new SXSSFWorkbook();
+            _workbook.CreateSheet("razor");
+            var memoryStream = new MemoryStream();
+            {
+                _workbook.Write(memoryStream);
+            }
+            ExportToExcel(memoryStream, "BetList.xlsx");
+            */
         }
 
         private void ExportToExcel(MemoryStream excelStream, string fileName)

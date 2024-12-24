@@ -17,6 +17,8 @@ namespace Fanex.BetList.Core.Builder
     using Utils.NPOIExt;
     using Utils.StringExt;
     using CellAddress = Fanex.BetList.Core.Entities.CellAddress;
+    using BetListNPOI.XSSF.Streaming;
+
     public class BetListExcelXBuilder : BetListBaseBuilder, IBetListExcelBuilder, IDisposable
     {
         #region Attributes
@@ -33,7 +35,7 @@ namespace Fanex.BetList.Core.Builder
 
         public BetListExcelXBuilder()
         {
-            _workbook = new XSSFWorkbook();
+            _workbook = new SXSSFWorkbook();
 
             _isDisposed = false;
 
@@ -330,7 +332,7 @@ namespace Fanex.BetList.Core.Builder
 
             while (rowEnum.MoveNext())
             {
-                IRow currentRow = rowEnum.Current as XSSFRow;
+                IRow currentRow = rowEnum.Current as SXSSFRow;
                 int totalLineBreaks = 0;
                 foreach (ICell cell in currentRow.Cells)
                 {

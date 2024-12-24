@@ -4,7 +4,8 @@
     using Entities;
     using BetListNPOI.XSSF.UserModel;
     using BetListNPOI.SS.UserModel;
-
+    using BetListNPOI.XSSF.Streaming;
+    
     /// <summary>
     /// Renderer for RTF.
     /// </summary>
