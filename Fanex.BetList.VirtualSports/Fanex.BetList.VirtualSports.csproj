@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>    
-        <Version>2.0.1.5-Vs6-01</Version>
-        <InfomationalVersion>2.0.1.5</InfomationalVersion>
-        <PackageReleaseNotes>Support VS6 Betby (#210450)</PackageReleaseNotes>
+        <Version>2.0.1.6-VS2-03</Version>
+        <InfomationalVersion>2.0.1.6</InfomationalVersion>
+        <PackageReleaseNotes>Virtual Sports 2 New BetType EndingGame (#215009)</PackageReleaseNotes>
         <Description>BetList core package</Description>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <Authors>Nexcel Solutions</Authors>
