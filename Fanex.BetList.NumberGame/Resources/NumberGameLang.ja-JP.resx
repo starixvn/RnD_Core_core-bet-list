@@ -118,22 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="numbergameno" xml:space="preserve">
-    <value>Number Game No</value>
+    <value>ナンバーゲーム番号</value>
   </data>
   <data name="next" xml:space="preserve">
     <value>次へ</value>
   </data>
   <data name="low" xml:space="preserve">
-    <value>Low</value>
+    <value>低い</value>
   </data>
   <data name="high" xml:space="preserve">
-    <value>High</value>
+    <value>高い</value>
   </data>
   <data name="warrior2ndBall" xml:space="preserve">
-    <value>2nd ball to win</value>
+    <value>2球目で勝利</value>
   </data>
   <data name="warrior3rdBall" xml:space="preserve">
-    <value>3rd ball to win</value>
+    <value>3球目で勝利</value>
   </data>
   <data name="lblOverOdd" xml:space="preserve">
     <value>オ－バ－ 37.5/オッド</value>
@@ -146,5 +146,14 @@
   </data>
   <data name="lblUnderEven" xml:space="preserve">
     <value>アンダー 37.5/イーブン</value>
+  </data>
+  <data name="Number" xml:space="preserve">
+    <value>番号 {0}</value>
+  </data>
+  <data name="Red" xml:space="preserve">
+    <value>赤</value>
+  </data>
+  <data name="Blue" xml:space="preserve">
+    <value>青</value>
   </data>
 </root>

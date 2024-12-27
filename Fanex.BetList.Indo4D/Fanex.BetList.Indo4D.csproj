@@ -1,14 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>
-        <Version>2.0.0.2-Indo-01</Version>
-        <InfomationalVersion>2.0.0.2</InfomationalVersion>
-        <PackageReleaseNotes>Support Indo Translation (#196354)</PackageReleaseNotes>
+        <Version>2.0.0.3-jp-01</Version>
+        <InfomationalVersion>2.0.0.3</InfomationalVersion>
+        <PackageReleaseNotes>Support Japanese Translation (#212931)</PackageReleaseNotes>
         <Description>BetList core package</Description>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <Authors>Nexcel Solutions</Authors>
         <PackageTags>Fanex BetList</PackageTags>
         <PackageProjectUrl>https://nexdev.net/projects/fanex-betlistcore/wiki/Core_Bet_List</PackageProjectUrl>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
     <ItemGroup>
       <PackageReference Include="BetListNPOI" Version="2.6.0" />
