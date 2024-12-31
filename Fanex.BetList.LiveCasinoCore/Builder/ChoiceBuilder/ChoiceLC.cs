@@ -125,7 +125,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             return $"{OpenBetTypeNameTag}{betTypeName}{CloseBetTypeNameTag}";
         }
 
-        private string GetTableCode(ITicketHelper ticketHelper)
+        protected virtual string GetTableCode(ITicketHelper ticketHelper)
         {
             const string TableCodeKey = "tablecode";
             if (_parsedTransDesc != null && _parsedTransDesc.ContainsKey(TableCodeKey))
@@ -136,7 +136,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             return string.Empty;
         }
 
-        private static string BuildGameId(ITicket ticket)
+        protected virtual string BuildGameId(ITicket ticket)
             => $" {OpenGameIdTag}{ticket.MatchCode}{CloseGameIdTag}";        
 
         private void RemoveHtmlTagFromLeagueName()
