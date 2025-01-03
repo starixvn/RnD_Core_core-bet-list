@@ -8,7 +8,7 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
         {
             base.BuildStatusResult(ticket);
 
-            if (string.IsNullOrEmpty(ticket.TransDesc))
+            if (string.IsNullOrEmpty(ticket.BetCheck))
             {
                 Template.StatusResult.Hide();
             }

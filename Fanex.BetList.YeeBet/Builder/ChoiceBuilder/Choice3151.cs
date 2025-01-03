@@ -13,20 +13,6 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     {
         public const string YeeBetRefId = "YB_BT";
 
-        protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
-        {
-            Template.League.LeagueName.leagueName = BuildBetTypeName(ticket, ticketHelper);
-
-            if (IsSummaryTicket(ticket))
-            {
-                Template.League.Append(BuildDetailLink(ticket));
-            }
-            else
-            {
-                Template.League.LeagueName.leagueName += GetTableCode(ticketHelper);
-            }
-        }
-
         public override string BuildDetailFunction(ITicket ticket)
         {
             var detailFunctionBuilder = new StringBuilder();
@@ -55,5 +41,8 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             Template.betTeam = string.Join("\n", Template.betTeam.SplitHTMLIntoRows());
             base.AdjustBetTeamToRTF();
         }
+
+        protected override bool IsDetailTicket(ITicket ticket)
+            => !string.IsNullOrEmpty(ticket.BetCheck);
     }
 }
