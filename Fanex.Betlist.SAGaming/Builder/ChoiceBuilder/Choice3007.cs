@@ -12,7 +12,7 @@
         {
             Template.League.LeagueName.leagueName = BuildBetTypeName(ticket, ticketHelper);
 
-            if (string.IsNullOrEmpty(ticket.TransDesc))
+            if (IsSummaryTicket(ticket))
             {
                 Template.League.Append(BuildDetailLink(ticket));
             }

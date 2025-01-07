@@ -11,29 +11,42 @@
     using Templates;
     using Utils;
 
-    public class Choice3001 : Choice1
+    public class Choice3001 : ChoiceLC
     {
         private const string BetTeamFormat = "<div><span class='favorite'>{0}</span>&nbsp;<span class='handicap custom'>({1})</span>{2}</div>";
-
-        private const string BetTypeNameTag = "<span class='bet-type-name'>{0}</span>";
-
+        
         private const string BetIdTag = "<span class='bet-id'>{0}</span>";
 
-        private const string GameIdTag = "<span class='sagaming-game-id'>{0}</span>";
+        private const string BetTeamAPIFormat = "<span class='favorite'>{0}</span>";
 
-        private const string TableIdFormat = "<span class=\"gamegroupname\">{0}</span>";
-
-        private const string TableCodeKey = "TableCode";
+        private const string NewGamingAPISpecialChars = "|$|";
 
         public virtual string GetRefResourceId() => "SA_BT";
 
-        protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
+        public override string GetDisplayChoice(ITicketHelper ticketHelper, string choice)
+            => string.Format(BetTeamAPIFormat, ticketHelper.GetResourceData(GetRefResourceId(), choice));
+
+        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            Template.Match = null;
+            Template.BetType.betTypeName = string.Empty;
+
+            if (IsDetailTicket(ticket))
+            {
+                BuildBetId(ticket,ticketHelper, ticketData);
+            }
         }
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
-            => Template.betTeam = GetBetChoice(ticket, ticketHelper);
+        {
+            if(IsNewDetailTicket(ticket))
+            {
+                base.BuildBetTeam(ticket, ticketHelper, ticketData);
+            }
+            else 
+            {
+                Template.betTeam = GetBetChoiceOldTicket(ticket, ticketHelper);
+            }
+        }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
@@ -41,31 +54,46 @@
             Template.betTeamClassName = string.Empty;
         }
 
-        protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        public override string BuildDetailFunction(ITicket ticket)
         {
-            Template.BetType.betTypeName = string.Empty;
+            var detailFunctionBuilder = new StringBuilder();
 
-            if (!string.IsNullOrEmpty(ticket.TransDesc))
+            detailFunctionBuilder.Append("showSAGamingDetails(&quot;")
+                .Append(ticket.TransId.ToString())
+                .Append("&quot;")
+                .Append(",&quot;")
+                .Append(ticket.WinlostDate.ToString(CultureInfo.InvariantCulture))
+                .Append("&quot;")
+                .Append(",&quot;")
+                .Append(ticket.CustId.ToString())
+                .Append("&quot;")
+                .Append(",&quot;")
+                .Append(ticket.GetTransactionType())
+                .Append("&quot;);");
+
+            return detailFunctionBuilder.ToString();
+        }
+
+        protected override void AdjustBetTeamToRTF()
+        {
+            Template.betTeam = string.Join("\n", Template.betTeam.SplitHTMLIntoRows());
+            Template.League.LeagueName.leagueName = string.Join(string.Empty, Template.League.LeagueName.leagueName.StripHTML());
+            Template.BetType.betTypeName = string.Join(string.Empty, Template.BetType.betTypeName.StripHTML());
+        }
+
+        private void BuildBetId(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {
+            if(IsNewDetailTicket(ticket))
+            {
+                base.BuildBetType(ticket, ticketHelper, ticketData);
+            }
+            else 
             {
                 Template.BetType.betTypeName = string.Format(BetIdTag, $"{CoreBetList.BetID}: {ticket.BetTeam}");
             }
         }
 
-        protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
-        {
-            Template.League.LeagueName.leagueName = BuildBetTypeName(ticket, ticketHelper);
-
-            if (string.IsNullOrEmpty(ticket.TransDesc))
-            {
-                Template.League.Append(BuildDetailLink(ticket));
-            }
-            else
-            {
-                Template.League.LeagueName.leagueName += " " + GetTableCode(ticket) + " " + BuildGameId(ticket);
-            }
-        }
-
-        private string GetBetChoice(ITicket ticket, ITicketHelper ticketHelper)
+        private string GetBetChoiceOldTicket(ITicket ticket, ITicketHelper ticketHelper)
         {
             var betTeam = new StringBuilder();
             var choiceOption = ticket.ParseBetcheck();
@@ -91,73 +119,7 @@
                 string.Empty;
         }
 
-        protected static Choice_League_Block BuildDetailLink(ITicket ticket)
-        {
-            var detailLinkMarkupBuilder = new StringBuilder();
-            var detailFunction = BuildDetailFunction(ticket);
-
-            detailLinkMarkupBuilder
-                .Append("<div class=\"detail sagaming-casino-detail\" onclick='")
-                .Append(detailFunction)
-                .Append("'>")
-                .Append("<a class=\"detail-link\" href=\"javascript:void(&quot;&quot;);\">")
-                .Append(CoreBetList.details)
-                .Append("</a>")
-                .Append("</div>");
-
-            var detailTemplateBlock = new Choice_League_Block();
-
-            detailTemplateBlock.SetValue(detailLinkMarkupBuilder.ToString());
-
-            return detailTemplateBlock;
-        }
-
-        private static string BuildDetailFunction(ITicket ticket)
-        {
-            var detailFunctionBuilder = new StringBuilder();
-
-            detailFunctionBuilder.Append("showSAGamingDetails(&quot;")
-                .Append(ticket.TransId.ToString())
-                .Append("&quot;")
-                .Append(",&quot;")
-                .Append(ticket.WinlostDate.ToString(CultureInfo.InvariantCulture))
-                .Append("&quot;")
-                .Append(",&quot;")
-                .Append(ticket.CustId.ToString())
-                .Append("&quot;")
-                .Append(",&quot;")
-                .Append(ticket.GetTransactionType())
-                .Append("&quot;);");
-
-            return detailFunctionBuilder.ToString();
-        }        
-
-        protected static string BuildBetTypeName(ITicket ticket, ITicketHelper ticketHelper)
-        {
-            var betTypeName = ticketHelper.GetBetTypeNameById(ticket.BetTypeId);
-
-            return string.Format(BetTypeNameTag, betTypeName);
-        }
-
-        private static string GetTableCode(ITicket ticket)
-        {
-            var transDescOption = ticket.ParseTransDesc();
-            if (transDescOption != null && transDescOption.ContainsKey(TableCodeKey))
-            {
-                return string.Format(TableIdFormat, transDescOption[TableCodeKey]);
-            }
-
-            return string.Empty;
-        }
-
-        private static string BuildGameId(ITicket ticket)
-            => string.Format(GameIdTag, ticket.MatchCode);
-
-        protected override void AdjustBetTeamToRTF()
-        {
-            Template.betTeam = string.Join("\n", Template.betTeam.SplitHTMLIntoRows());
-            Template.League.LeagueName.leagueName = string.Join(string.Empty, Template.League.LeagueName.leagueName.StripHTML());
-            Template.BetType.betTypeName = string.Join(string.Empty, Template.BetType.betTypeName.StripHTML());
-        }
+        private static bool IsNewDetailTicket(ITicket ticket)
+            => !string.IsNullOrEmpty(ticket.BetCheck) && ticket.BetCheck.Contains(NewGamingAPISpecialChars);
     }
 }
