@@ -1,6 +1,5 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Text;
@@ -8,23 +7,17 @@
     using Entities;
     using Fanex.BetList.Core.Utils.StringExt;
     using Fanex.BetList.Core.Utils.TicketExt;
-    using Templates;
     using Utils;
 
     public class Choice3001 : ChoiceLC
     {
         private const string BetTeamFormat = "<div><span class='favorite'>{0}</span>&nbsp;<span class='handicap custom'>({1})</span>{2}</div>";
-        
-        private const string BetIdTag = "<span class='bet-id'>{0}</span>";
-
-        private const string BetTeamAPIFormat = "<span class='favorite'>{0}</span>";
-
         private const string NewGamingAPISpecialChars = "|$|";
 
         public virtual string GetRefResourceId() => "SA_BT";
 
         public override string GetDisplayChoice(ITicketHelper ticketHelper, string choice)
-            => string.Format(BetTeamAPIFormat, ticketHelper.GetResourceData(GetRefResourceId(), choice));
+        => ticketHelper.GetResourceData(GetRefResourceId(), choice);
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
@@ -46,12 +39,6 @@
             {
                 Template.betTeam = GetBetChoiceOldTicket(ticket, ticketHelper);
             }
-        }
-
-        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
-        {
-            Template.Handicap = null;
-            Template.betTeamClassName = string.Empty;
         }
 
         public override string BuildDetailFunction(ITicket ticket)
@@ -89,7 +76,7 @@
             }
             else 
             {
-                Template.BetType.betTypeName = string.Format(BetIdTag, $"{CoreBetList.BetID}: {ticket.BetTeam}");
+                Template.BetType.betTypeName = $"{OpenBetIdTag}{CoreBetList.BetID}: {ticket.BetTeam}{CloseBetIdTag}";
             }
         }
 
@@ -115,7 +102,7 @@
             var betchoiceIds = ticket.ParseBetChoice();
 
             return betchoiceIds.ContainsKey(key) && !string.IsNullOrEmpty(betchoiceIds[key]) ?
-                string.Format(BetIdTag, $" - {betchoiceIds[key]}") :
+                $"{OpenBetIdTag} - {betchoiceIds[key]}{CloseBetIdTag}":
                 string.Empty;
         }
 

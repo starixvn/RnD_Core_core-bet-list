@@ -2,27 +2,22 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System;
     using System.Collections.Generic;
-    using System.Globalization;
     using System.Text;
     using System.Text.RegularExpressions;
     using App_GlobalResources;
     using Entities;
-    using Fanex.BetList.Core.Utils.Parsers;
-    using Fanex.BetList.Core.Utils.TicketExt;
+    using Fanex.BetList.Core.Utils.Parsers;    
     using Templates;
-    using Utils;
 
     public class ChoiceLC : Choice1
     {
+        protected const string OpenBetIdTag = "<span class='bet-id'>";
+        protected const string CloseBetIdTag = "</span>";
+
         private const string OpenBetTypeNameTag = "<span class='bet-type-name'>";
-        private const string CloseBetTypeNameTag = "</span>";
-
-        private const string OpenBetIdTag = "<span class='bet-id'>";
-        private const string CloseBetIdTag = "</span>";
-
+        private const string CloseBetTypeNameTag = "</span>";        
         private const string OpenGameIdTag = "<span class='game-id'>";
         private const string CloseGameIdTag = "</span>";
-
         private const string GameTableIdFormat = " <span class=\"gamegroupname\">{0}</span>";
 
         private Dictionary<string, string> _parsedTransDesc;

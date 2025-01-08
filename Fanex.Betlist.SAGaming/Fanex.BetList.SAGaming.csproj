@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
-        <Version>2.0.0.1-Beta-04</Version>
+        <Version>2.0.0.1-Beta-07</Version>
         <InfomationalVersion>2.0.0.1</InfomationalVersion>
         <PackageReleaseNotes>Update to use SabaPlus (#215645)</PackageReleaseNotes>
         <Description>BetList core package</Description>
@@ -9,12 +9,9 @@
         <Authors>Nexcel Solutions</Authors>
         <PackageTags>Fanex BetList</PackageTags>
         <PackageProjectUrl>https://nexdev.net/projects/p111030/wiki/SA_Gaming_-_Bet_List</PackageProjectUrl>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
-    <ItemGroup>
-      <PackageReference Include="TplNetCore" Version="1.0.0" />
-    </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\Fanex.BetList.LiveCasinoCore\Fanex.BetList.LiveCasinoCore.csproj" />
     </ItemGroup>
-
 </Project>
