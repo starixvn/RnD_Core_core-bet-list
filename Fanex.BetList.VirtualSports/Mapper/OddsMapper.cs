@@ -11,7 +11,6 @@
             MapForVirtualSports4();
             MapIdToBaseId(VirtualSports4BetTypes.MixParlay, BetRadarSharedBetTypes.MixParlay);
             MapIdToBaseId(VirtualSports5BetTypes.MixParlay, BetRadarSharedBetTypes.MixParlay);
-            MapForBetby();
         }
 
         private void MapForVirtualSports3()
@@ -25,14 +24,6 @@
         private void MapForVirtualSports4()
         {
             for (var id = VirtualSports4BetTypes.MatchWinner; id < VirtualSports4BetTypes.MixParlay; id++)
-            {
-                ConvertByBetType.RegisterMultipleOddsTypes(id);
-            }
-        }
-
-        private void MapForBetby()
-        {
-            for (var id = BetbyBetTypes.FT1X2; id <= BetbyBetTypes.HighestBetTypeIdInRange; id++)
             {
                 ConvertByBetType.RegisterMultipleOddsTypes(id);
             }
