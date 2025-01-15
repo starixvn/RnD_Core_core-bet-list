@@ -2,7 +2,7 @@
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>        
-        <Version>3.0.4.5-beta-06</Version>
+        <Version>3.0.4.5-beta-07</Version>
         <InfomationalVersion>3.0.4.5</InfomationalVersion>
         <PackageReleaseNotes>Support Excel XLSX version (#211887)</PackageReleaseNotes>
         <Authors>Nexcel Solutions</Authors>

@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>    
-        <Version>2.0.1.4-xlsx-02</Version>
-        <InfomationalVersion>2.0.1.4</InfomationalVersion>
+        <Version>2.0.1.8-xlsx-01</Version>
+        <InfomationalVersion>2.0.1.8</InfomationalVersion>
         <PackageReleaseNotes>Support Excel XLSX version (#211887)</PackageReleaseNotes>
         <Description>BetList core package</Description>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
@@ -12,8 +12,7 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
     <ItemGroup>
-      <PackageReference Include="BetListNPOI" Version="2.6.0" />
-      <PackageReference Include="Fanex.BetList.Core" Version="3.0.4.5-beta-02" />
+      <PackageReference Include="BetListNPOI" Version="2.7.2.2-beta02" />
       <PackageReference Include="TplNetCore" Version="1.0.0" />
     </ItemGroup>
     <ItemGroup>
