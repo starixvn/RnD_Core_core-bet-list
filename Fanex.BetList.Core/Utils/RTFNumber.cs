@@ -8,9 +8,9 @@
     {
         private readonly IFont _posFontText;
         private readonly IFont _negFontText;
-        private readonly RtfTextRender _renderContent;
+        private readonly IRtfTextRender _renderContent;
 
-        public RTFNumber(RtfTextRender render, IFont posFont, IFont negFont)
+        public RTFNumber(IRtfTextRender render, IFont posFont, IFont negFont)
         {
             _renderContent = render;
             _posFontText = posFont;

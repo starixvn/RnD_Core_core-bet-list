@@ -2,7 +2,7 @@
 {
     using Fanex.BetList.Core.Builder;
     using Fanex.BetList.Core.Entities;
-    using BetListNPOI.HSSF.UserModel;
+    using BetListNPOI.XSSF.UserModel;
     using BetListNPOI.SS.UserModel;
 
     public static class BetListExcelBuilderExt
@@ -13,9 +13,9 @@
         /// <param name="factory">The factory.</param>
         /// <param name="index">The index.</param>
         /// <returns>BetListExcelBuilder object.</returns>
-        public static BetListExcelBuilder AddNo(this BetListExcelBuilder factory, int index)
+        public static IBetListExcelBuilder AddNo(this IBetListExcelBuilder factory, int index)
         {
-            IRichTextString rtfNo = new HSSFRichTextString(index.ToString());
+            IRichTextString rtfNo = new XSSFRichTextString(index.ToString());
             factory.AddCell(rtfNo);
             return factory;
         }
@@ -27,9 +27,9 @@
         /// <param name="ticket">The ticket.</param>
         /// <param name="ticketHelper">The ticket helper.</param>
         /// <returns>BetListExcelBuilder object.</returns>
-        public static BetListExcelBuilder AddUsername(this BetListExcelBuilder factory, ITicket ticket, ITicketHelper ticketHelper)
+        public static IBetListExcelBuilder AddUsername(this IBetListExcelBuilder factory, ITicket ticket, ITicketHelper ticketHelper)
         {
-            IRichTextString rtfMember = new HSSFRichTextString(ticket.UserName);
+            IRichTextString rtfMember = new XSSFRichTextString(ticket.UserName);
             factory.AddCell(rtfMember, ticketHelper.Index % 2 == 0 ? factory.OddCellStyleCenterAligned : factory.EvenCellStyleCenterAligned);
 
             return factory;

@@ -16,12 +16,12 @@
 
         string RenderLicenseeTxId(ITicket ticket);
 
-        IRichTextString RenderRTF(ITicket ticket, ITicketHelper ticketHelper);
+        IRichTextString RenderRTF(ITicket ticket, RTFHelper rtfHelper);
 
-        IRichTextString RenderTransTimeRTF(ITicket ticket, ITicketHelper ticketHelper);
+        IRichTextString RenderTransTimeRTF(ITicket ticket, RTFHelper rtfHelper);
 
-        IRichTextString RenderRefNoRTF(ITicket ticket, ITicketHelper ticketHelper);
+        IRichTextString RenderRefNoRTF(ITicket ticket, RTFHelper rtfHelper);
 
-        IRichTextString RenderLicenseeTxIdRTF(ITicket ticket, ITicketHelper ticketHelper);
+        IRichTextString RenderLicenseeTxIdRTF(ITicket ticket, RTFHelper rtfHelper);
     }
 }

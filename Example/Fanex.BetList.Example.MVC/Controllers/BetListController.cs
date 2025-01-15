@@ -1781,7 +1781,7 @@
         public void ExportExcel(BetListData query)
         {
             var factory = new BetListExcelFactory();
-            BetListExcelBuilder builder = factory.CreateBuilder();
+            IBetListExcelBuilder builder = new BetListExcelXBuilder();//factory.CreateBuilder();
             ITicketHelper ticketHelper = new TicketHelper();
             ticketHelper.HideSabaText = query.HideSabaText;
             GetCachePropertyById funcGetOddsTypeName = ticketHelper.GetOddsTypeNameById;
@@ -1817,7 +1817,7 @@
                 var ms = new MemoryStream();
                 var resultWorkbook = builder.GetBetList();
                 resultWorkbook.Write(ms, true);
-                ExportToExcel(ms, "BetList.xls");
+                ExportToExcel(ms, "BetList.xlsx");
             }
         }
 
@@ -1826,7 +1826,7 @@
             Response.ContentType = "application/vnd.ms-excel";
             Response.AddHeader("Content-Disposition", string.Format("attachment;filename={0}", fileName));
             Response.Clear();
-            Response.BinaryWrite(excelStream.GetBuffer());
+            Response.BinaryWrite(excelStream.ToArray());
             Response.End();
         }
 
@@ -1841,7 +1841,7 @@
                 Response.ClearContent();
                 Response.AddHeader("content-disposition", "attachment; filename=" + file.Name);
                 Response.AddHeader("Content-Type", "application/Excel");
-                Response.ContentType = "application/vnd.xls";
+                Response.ContentType = "application/vnd.xlsx";
                 Response.AddHeader("Content-Length", file.Length.ToString());
                 Response.WriteFile(file.FullName);
                 Response.End();

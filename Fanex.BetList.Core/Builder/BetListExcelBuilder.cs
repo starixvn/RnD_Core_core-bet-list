@@ -102,13 +102,13 @@ namespace Fanex.BetList.Core.Builder
             return _workbook.CreateFont();
         }
 
-        public BetListExcelBuilder SetColumnWidth(int columnIndex, short columnWith)
+        public IBetListExcelBuilder SetColumnWidth(int columnIndex, short columnWith)
         {
             _worksheet.SetColumnWidth(columnIndex, columnWith);
             return this;
         }
 
-        public BetListExcelBuilder BuildWorksheet(string sheetName, short numberOfColumns, short singleRowHeight = 13, bool displayGridlines = false)
+        public IBetListExcelBuilder BuildWorksheet(string sheetName, short numberOfColumns, short singleRowHeight = 13, bool displayGridlines = false)
         {
             _worksheet = _workbook.CreateSheet(sheetName);
             _worksheet.DisplayGridlines = displayGridlines;
@@ -202,7 +202,7 @@ namespace Fanex.BetList.Core.Builder
             _nextCellIndex += mergeRange.LastColumn - mergeRange.FirstColumn;
         }
 
-        public BetListExcelBuilder AddChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        public IBetListExcelBuilder AddChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             IChoice choiceBuilder = CreateChoiceBuilder(ticket.BetTypeId);
             List<IRichTextString> rtfChoiceList = choiceBuilder.RenderRTF(ticket, ticketHelper, ticketData, false, RTFHelper);
@@ -215,7 +215,7 @@ namespace Fanex.BetList.Core.Builder
             return this;
         }
 
-        public BetListExcelBuilder AddOdds(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
+        public IBetListExcelBuilder AddOdds(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
         {
             IOdds oddsBuilder = CreateOddsBuilder(ticket.BetTypeId);
             IRichTextString rtfOdds = oddsBuilder.RenderRTF(ticket, ticketData, funcGetOddsTypeName, RTFHelper);
@@ -223,7 +223,7 @@ namespace Fanex.BetList.Core.Builder
             return this;
         }
 
-        public BetListExcelBuilder AddOddsValue(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
+        public IBetListExcelBuilder AddOddsValue(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
         {
             IOdds oddsBuilder = CreateOddsBuilder(ticket.BetTypeId);
             var oddsValueExcel = oddsBuilder.RenderOddsValueRTF(ticket, ticketData, funcGetOddsTypeName, RTFHelper);
@@ -232,7 +232,7 @@ namespace Fanex.BetList.Core.Builder
             return this;
         }
 
-        public BetListExcelBuilder AddOddsType(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
+        public IBetListExcelBuilder AddOddsType(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
         {
             IOdds oddsBuilder = CreateOddsBuilder(ticket.BetTypeId);
             var oddsTypeExcel = oddsBuilder.RenderOddsTypeRTF(ticket, ticketData, funcGetOddsTypeName, RTFHelper);
@@ -241,7 +241,7 @@ namespace Fanex.BetList.Core.Builder
             return this;
         }
 
-        public BetListExcelBuilder AddStake(ITicket ticket, ITicketHelper ticketHelper)
+        public IBetListExcelBuilder AddStake(ITicket ticket, ITicketHelper ticketHelper)
         {
             IStake stakeBuilder = CreateStakeBuilder(ticket.BetTypeId);
             IRichTextString rtfStake = stakeBuilder.RenderRTF(ticket, ticketHelper, RTFHelper);
@@ -250,43 +250,43 @@ namespace Fanex.BetList.Core.Builder
             return this;
         }
 
-        public BetListExcelBuilder AddTrans(ITicket ticket, ITicketHelper ticketHelper)
+        public IBetListExcelBuilder AddTrans(ITicket ticket, ITicketHelper ticketHelper)
         {
             ITrans transBuilder = CreateTransBuilder(ticket.BetTypeId);
-            IRichTextString rtfTrans = transBuilder.RenderRTF(ticket, ticketHelper);
+            IRichTextString rtfTrans = transBuilder.RenderRTF(ticket, RTFHelper);
 
             AddCell(rtfTrans, IsEven(ticketHelper.Index) ? OddCellStyleCenterAligned : EvenCellStyleCenterAligned);
             return this;
         }
 
-        public BetListExcelBuilder AddTransTime(ITicket ticket, ITicketHelper ticketHelper)
+        public IBetListExcelBuilder AddTransTime(ITicket ticket, ITicketHelper ticketHelper)
         {
             ITrans transBuilder = CreateTransBuilder(ticket.BetTypeId);
-            IRichTextString rtfTrans = transBuilder.RenderTransTimeRTF(ticket, ticketHelper);
+            IRichTextString rtfTrans = transBuilder.RenderTransTimeRTF(ticket, RTFHelper);
             AddCell(rtfTrans, IsEven(ticketHelper.Index) ? OddCellStyleCenterAligned : EvenCellStyleCenterAligned);
 
             return this;
         }
 
-        public BetListExcelBuilder AddRefNo(ITicket ticket, ITicketHelper ticketHelper)
+        public IBetListExcelBuilder AddRefNo(ITicket ticket, ITicketHelper ticketHelper)
         {
             ITrans transBuilder = CreateTransBuilder(ticket.BetTypeId);
-            IRichTextString rtfRefNo = transBuilder.RenderRefNoRTF(ticket, ticketHelper);
+            IRichTextString rtfRefNo = transBuilder.RenderRefNoRTF(ticket, RTFHelper);
             AddCell(rtfRefNo, IsEven(ticketHelper.Index) ? OddCellStyleCenterAligned : EvenCellStyleCenterAligned);
 
             return this;
         }
 
-        public BetListExcelBuilder AddLicenseeTxId(ITicket ticket, ITicketHelper ticketHelper)
+        public IBetListExcelBuilder AddLicenseeTxId(ITicket ticket, ITicketHelper ticketHelper)
         {
             ITrans transBuilder = CreateTransBuilder(ticket.BetTypeId);
-            IRichTextString rtfLicenseeTxId = transBuilder.RenderLicenseeTxIdRTF(ticket, ticketHelper);
+            IRichTextString rtfLicenseeTxId = transBuilder.RenderLicenseeTxIdRTF(ticket, RTFHelper);
             AddCell(rtfLicenseeTxId, IsEven(ticketHelper.Index) ? OddCellStyleCenterAligned : EvenCellStyleCenterAligned);
 
             return this;
         }
 
-        public BetListExcelBuilder AddStatus(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP)
+        public IBetListExcelBuilder AddStatus(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP)
         {
             IStatus statusBuilder = CreateStatusBuilder(ticket.BetTypeId);
             IRichTextString rtfStatus = statusBuilder.RenderRTF(ticket, ticketHelper, ticketData, isShowVNIP, RTFHelper);

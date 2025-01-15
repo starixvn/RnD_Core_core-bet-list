@@ -8,7 +8,7 @@
     /// <summary>
     /// Renderer for RTF.
     /// </summary>
-    public class RtfTextRender
+    public class RtfTextRender : IRtfTextRender
     {
         private readonly IFont _font;
         private readonly List<TextBlock> _blocks = new List<TextBlock>();

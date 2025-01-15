@@ -2,8 +2,7 @@
 {
     using App_GlobalResources;
     using Entities;
-    using Fanex.BetList.Core.Utils.StringExt;
-    using BetListNPOI.HSSF.UserModel;
+    using Fanex.BetList.Core.Utils.StringExt;    
     using BetListNPOI.SS.UserModel;
     using Templates;
 
@@ -74,41 +73,55 @@
             }
         }
 
-        public virtual IRichTextString RenderRTF(ITicket ticket, ITicketHelper ticketHelper)
+        public virtual IRichTextString RenderRTF(ITicket ticket, RTFHelper rtfHelper)
         {
             Render(ticket);
 
-            var refNo = string.Join(null, new[] { CoreBetList.refno, ": ", Template.TransTime.refNo });
-            var rtfTrans = new HSSFRichTextString(string.Join(null, new[] { refNo, "\n", Template.transTime }));
-
+            var refNo = string.Join(null, new[] { CoreBetList.refno, ": ", Template.TransTime.refNo, "\n" });
             if (HasLicenseeTxId(ticket))
             {
-                var licenseeTxId = string.Join(null, new[] { CoreBetList.LicTxId, ": ", Template.LicenseeTxId.Value });
-                rtfTrans = new HSSFRichTextString(string.Join(null, new[] { licenseeTxId, "\n", refNo, "\n", Template.transTime }));
+                var licenseeTxId = string.Join(null, new[] { CoreBetList.LicTxId, ": ", Template.LicenseeTxId.Value , "\n"});
+                rtfHelper.RTFRenderer.AddText(licenseeTxId);
             }
 
-            return rtfTrans;
+            rtfHelper.RTFRenderer.AddText(refNo);
+            rtfHelper.RTFRenderer.AddText(Template.transTime);
+            var transColumn = rtfHelper.RTFRenderer.Render();
+            rtfHelper.RTFRenderer.Clear();
+
+            return transColumn;
         }
 
-        public virtual IRichTextString RenderTransTimeRTF(ITicket ticket, ITicketHelper ticketHelper)
+        public virtual IRichTextString RenderTransTimeRTF(ITicket ticket, RTFHelper rtfHelper)
         {
             BuildTransTime(ticket);
 
-            return new HSSFRichTextString(Template.transTime);
+            rtfHelper.RTFRenderer.AddText(Template.transTime);
+            var transColumn = rtfHelper.RTFRenderer.Render();
+            rtfHelper.RTFRenderer.Clear();
+
+            return transColumn;
         }
 
-        public virtual IRichTextString RenderRefNoRTF(ITicket ticket, ITicketHelper ticketHelper)
+        public virtual IRichTextString RenderRefNoRTF(ITicket ticket, RTFHelper rtfHelper)
         {
             BuildRefNo(ticket);
 
-            return new HSSFRichTextString(Template.TransTime.refNo);
+            rtfHelper.RTFRenderer.AddText(Template.TransTime.refNo);
+            var transColumn = rtfHelper.RTFRenderer.Render();
+            rtfHelper.RTFRenderer.Clear();
+
+            return transColumn;
         }
 
-        public virtual IRichTextString RenderLicenseeTxIdRTF(ITicket ticket, ITicketHelper ticketHelper)
+        public virtual IRichTextString RenderLicenseeTxIdRTF(ITicket ticket, RTFHelper rtfHelper)
         {
             BuildLicenseeTxId(ticket);
 
-            return new HSSFRichTextString(Template.LicenseeTxId.Value);
+            rtfHelper.RTFRenderer.AddText(Template.LicenseeTxId.Value);
+            var transColumn = rtfHelper.RTFRenderer.Render();
+
+            return transColumn;
         }
 
         protected virtual bool HasLicenseeTxId(ITicket ticket)

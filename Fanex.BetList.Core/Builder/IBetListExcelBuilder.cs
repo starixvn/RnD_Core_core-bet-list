@@ -24,9 +24,9 @@
 
         IFont CreateFont();
 
-        BetListExcelBuilder SetColumnWidth(int columnIndex, short columnWith);
+        IBetListExcelBuilder SetColumnWidth(int columnIndex, short columnWith);
 
-        BetListExcelBuilder BuildWorksheet(string sheetName, short numberOfColumns, short singleRowHeight = 13, bool displayGridlines = false);
+        IBetListExcelBuilder BuildWorksheet(string sheetName, short numberOfColumns, short singleRowHeight = 13, bool displayGridlines = false);
 
         IWorkbook GetBetList();
 
@@ -40,24 +40,24 @@
 
         void MergeCell(CellRangeAddress mergeRange, ICellStyle cellStyle);
 
-        BetListExcelBuilder AddChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData);
+        IBetListExcelBuilder AddChoice(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData);
 
-        BetListExcelBuilder AddOdds(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName);
+        IBetListExcelBuilder AddOdds(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName);
 
-        BetListExcelBuilder AddOddsValue(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName);
+        IBetListExcelBuilder AddOddsValue(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName);
 
-        BetListExcelBuilder AddOddsType(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName);
+        IBetListExcelBuilder AddOddsType(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName);
 
-        BetListExcelBuilder AddStake(ITicket ticket, ITicketHelper ticketHelper);
+        IBetListExcelBuilder AddStake(ITicket ticket, ITicketHelper ticketHelper);
 
-        BetListExcelBuilder AddTrans(ITicket ticket, ITicketHelper ticketHelper);
+        IBetListExcelBuilder AddTrans(ITicket ticket, ITicketHelper ticketHelper);
 
-        BetListExcelBuilder AddTransTime(ITicket ticket, ITicketHelper ticketHelper);
+        IBetListExcelBuilder AddTransTime(ITicket ticket, ITicketHelper ticketHelper);
 
-        BetListExcelBuilder AddRefNo(ITicket ticket, ITicketHelper ticketHelper);
+        IBetListExcelBuilder AddRefNo(ITicket ticket, ITicketHelper ticketHelper);
 
-        BetListExcelBuilder AddLicenseeTxId(ITicket ticket, ITicketHelper ticketHelper);
+        IBetListExcelBuilder AddLicenseeTxId(ITicket ticket, ITicketHelper ticketHelper);
 
-        BetListExcelBuilder AddStatus(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP);
+        IBetListExcelBuilder AddStatus(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowVNIP);
     }
 }

@@ -2,14 +2,15 @@
 
   <PropertyGroup>
     <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
-        <Version>1.0.0.4</Version>
-        <InfomationalVersion>1.0.0.4</InfomationalVersion>
-        <PackageReleaseNotes>Support Odds core (#203371)</PackageReleaseNotes>
-        <GenerateAssemblyInfo>true</GenerateAssemblyInfo>   
-        <Description>RNG core package</Description>
-        <Authors>Nexcel Solutions</Authors>
-        <PackageTags>Fanex BetList</PackageTags>
-        <PackageProjectUrl>https://nexdev.net/projects/fanex-betlistcore/wiki/Core_Bet_List</PackageProjectUrl>
+    <Version>2.0.1.4-xlsx-01</Version>
+    <InfomationalVersion>2.0.1.4</InfomationalVersion>
+    <PackageReleaseNotes>Support Excel XLSX version (#211887)</PackageReleaseNotes>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>   
+    <Description>RNG core package</Description>
+    <Authors>Nexcel Solutions</Authors>
+    <PackageTags>Fanex BetList</PackageTags>
+    <PackageProjectUrl>https://nexdev.net/projects/fanex-betlistcore/wiki/Core_Bet_List</PackageProjectUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="TplNetCore" Version="1.0.0" />
