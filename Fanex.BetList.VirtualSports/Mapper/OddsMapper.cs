@@ -7,6 +7,7 @@
         public OddsMapper()
         {
             MapIdToBaseId(InspireVirtualRacingBetTypes.Place, InspireVirtualRacingBetTypes.Win);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetRadarVirtualBasketballBetTypes.EndingGame);
             MapForVirtualSports3();
             MapForVirtualSports4();
             MapIdToBaseId(VirtualSports4BetTypes.MixParlay, BetRadarSharedBetTypes.MixParlay);

@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>    
-        <Version>2.0.1.7-VS6-01</Version>
-        <InfomationalVersion>2.0.1.7</InfomationalVersion>
-        <PackageReleaseNotes>Change from Multiple Odds to Decimal Odds VS6 (#216783)</PackageReleaseNotes>
+        <Version>2.0.1.9-VS2-01</Version>
+        <InfomationalVersion>2.0.1.9</InfomationalVersion>
+        <PackageReleaseNotes>Support Multiple Odds to EndingGame VS2 (#215009)</PackageReleaseNotes>
         <Description>BetList core package</Description>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <Authors>Nexcel Solutions</Authors>
