@@ -2,12 +2,13 @@
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>        
-        <Version>3.0.5.2</Version>
-        <InfomationalVersion>3.0.5.2</InfomationalVersion>
-        <PackageReleaseNotes>NumberGamesSabaPromotion (#220986), Basketball New BetTypes (#217558)</PackageReleaseNotes>
+        <Version>3.0.5.3-sabacoin-01</Version>
+        <InfomationalVersion>3.0.5.3</InfomationalVersion>
+        <PackageReleaseNotes>Saba Coins Phase 2 (#215807)</PackageReleaseNotes>
         <Authors>Nexcel Solutions</Authors>
         <PackageTags>Fanex BetList</PackageTags>
         <PackageProjectUrl>https://nexdev.net/projects/fanex-betlistcore/wiki/Core_Bet_List</PackageProjectUrl>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
     <ItemGroup>
       <PackageReference Include="BetListNPOI" Version="2.6.0" />

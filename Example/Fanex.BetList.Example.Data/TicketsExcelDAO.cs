@@ -138,6 +138,7 @@
 
             try
             {
+                ticket.ExtraInfo = GetCellValue(row.GetCell(54));
                 ticket.ActualStake = Convert.ToDecimal(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.ActualStake)));
                 ticket.AgentComm = Convert.ToDecimal(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.AgentComm)));
                 ticket.AgentDiscount = Convert.ToDecimal(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.AgentDiscount)));
@@ -197,8 +198,6 @@
                 ticket.TransDesc = GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.TransDesc));
                 ticket.OddsSpread = Convert.ToDecimal(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.OddsSpread)));
                 ticket.OriginalBetType = Convert.ToInt32(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.OriginalBetType)));
-                ticket.BetdaqId = Convert.ToInt64(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.BetdaqId)));
-                ticket.ExtraInfo = GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.ExtraInfo));
                 ticket.OriginalStake = Convert.ToDecimal(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.OriginalStake)));
                 ticket.RefCode = Convert.ToInt64(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.RefCode)));
                 ticket.WalletType = Convert.ToByte(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.WalletType)));
