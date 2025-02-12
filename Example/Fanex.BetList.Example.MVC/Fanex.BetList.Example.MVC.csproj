@@ -109,7 +109,7 @@
       <HintPath>..\..\packages\Fanex.BetList.ColossusBets.2.0.0-net5-04\lib\net461\Fanex.BetList.ColossusBets.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.BetList.Core, Version=3.0.4.4, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.BetList.Core.3.0.4.3\lib\net461\Fanex.BetList.Core.dll</HintPath>
+      <HintPath>..\..\packages\Fanex.BetList.Core.3.0.4.4\lib\net461\Fanex.BetList.Core.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.BetList.Core.RemotingRef, Version=1.1.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.BetList.Core.RemotingRef.2.0.0.2\lib\net461\Fanex.BetList.Core.RemotingRef.dll</HintPath>
@@ -205,7 +205,8 @@
       <HintPath>..\..\packages\Fanex.BetList.Playtech.1.0.0-beta-01\lib\net461\Fanex.BetList.Playtech.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.BetList.PP, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Fanex.BetList.PP.2.0.0.1\lib\net461\Fanex.BetList.PP.dll</HintPath>
+      <HintPath>..\..\packages\Fanex.BetList.PP.2.0.0.4-ExtendBettype-01\lib\net461\Fanex.BetList.PP.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.BetList.PragmaticLiveCasino, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.BetList.PragmaticLiveCasino.2.0.0.1-API-01\lib\net461\Fanex.BetList.PragmaticLiveCasino.dll</HintPath>

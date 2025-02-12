@@ -17,6 +17,11 @@
             {
                 MapIdToBaseId(betTypeId, PragmaticPlayBetTypes.Dragons888);
             }
+
+            for (int betTypeId = PragmaticPlayBetTypes.ExtendLowestBetTypeIdInRange; betTypeId <= PragmaticPlayBetTypes.ExtendHighestBetTypeIdInRange; betTypeId++)
+            {
+                MapIdToBaseId(betTypeId, PragmaticPlayBetTypes.Dragons888);
+            }
         }
     }
 }

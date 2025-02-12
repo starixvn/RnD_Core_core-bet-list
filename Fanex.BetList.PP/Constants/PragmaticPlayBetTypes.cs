@@ -10,5 +10,7 @@
         public const int PromotionPrize = 4300;
         public const int CandyVillage = 6701;
         public const int HighestBetTypeIdInRange = 7000;
+        public const int ExtendLowestBetTypeIdInRange = 14000;
+        public const int ExtendHighestBetTypeIdInRange = 14999;
     }
 }

@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>
-        <Version>2.0.0.3-API-01</Version>
-        <InfomationalVersion>2.0.0.3</InfomationalVersion>
-        <PackageReleaseNotes>Support new Gaming API (#205016)</PackageReleaseNotes>
+        <Version>2.0.0.4-ExtendBettype-01</Version>
+        <InfomationalVersion>2.0.0.4</InfomationalVersion>
+        <PackageReleaseNotes>Extend Bettype range for PP RNG(#216494)</PackageReleaseNotes>
         <Description>BetList core package</Description>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <Authors>Nexcel Solutions</Authors>
