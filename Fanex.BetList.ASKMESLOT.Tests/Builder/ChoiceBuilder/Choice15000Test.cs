@@ -1,0 +1,131 @@
+namespace Fanex.BetList.GPI.Tests.Builder.ChoiceBuilder
+{
+    using System;
+    using System.Globalization;
+    using Fanex.BetList.Core.App_GlobalResources;
+    using Fanex.BetList.Core.Builder.ChoiceBuilder;
+    using Fanex.BetList.Core.Constants;
+    using Fanex.BetList.Core.Entities;
+    using NSubstitute;
+    using NUnit.Framework;
+
+    public class Choice15000Tests
+    {
+        private const string FakeGameType = "Fake Game Type";
+        private const string FakeGameGroup = "Fake Game Group";
+
+        private IChoice _choice;
+        private ITicket _ticket;
+        private ITicketHelper _ticketHelper;
+
+        [SetUp]
+        public void Setup()
+        {
+            _choice = new Choice15000();
+            _ticket = Substitute.For<ITicket>();
+            _ticketHelper = Substitute.For<ITicketHelper>();
+
+            _ticket.TransId = 1;
+            _ticket.WinlostDate = DateTime.Today;
+            _ticket.CustId = 2;
+            _ticket.Status = BetStatus.Won;
+            _ticket.BetTypeId = 15000;
+
+            _ticketHelper.GetResourceData(Arg.Is(Choice15000.GameTypeRefId), Arg.Is(_ticket.BetTypeId.ToString())).Returns(FakeGameType);
+            _ticketHelper.GetResourceData(Arg.Is(Choice15000.GameGroundRefId), Arg.Is(_ticket.BetTypeId.ToString())).Returns(FakeGameGroup);
+        }
+
+        [Test]
+        public void BuildBetTeam_Always_CallGetResourceDataOfTicketHelperToGetExpectedBetOption()
+        {
+            // Act.
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert.
+            _ticketHelper.Received().GetResourceData(Arg.Is(Choice15000.GameTypeRefId), Arg.Is(_ticket.BetTypeId.ToString()));
+        }
+
+        [Test]
+        public void BuildBetTeam_Always_BeTeamStarstsWithHtmlContainingExpectedBetOption()
+        {
+            // Act.
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert.
+            var expectedBetOptionHtml = $"<span class=\"handicap\">{FakeGameType}</span>";
+
+            StringAssert.StartsWith(expectedBetOptionHtml, template.betTeam);
+        }
+
+        [TestCase(null)]
+        [TestCase("")]
+        public void BuildBetTeam_TicketBetCheckIsNullOrEmpty_BeTeamOnlyContainsExpectedBetOption(string betCheck)
+        {
+            // Arrange.
+            _ticket.BetCheck = betCheck;
+
+            // Act.
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert.
+            var expectedBetOptionHtml = $"<span class=\"handicap\">{FakeGameType}</span>";
+
+            Assert.AreEqual(expectedBetOptionHtml, template.betTeam);
+        }
+
+        [Test]
+        public void BuildBetTeam_TicketBetCheckIsNotNullOrEmpty_BeTeamEndsWithBetCheck()
+        {
+            // Arrange.
+            const string betCheck = "BetCheck";
+
+            _ticket.BetCheck = betCheck;
+
+            // Act.
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert.
+            StringAssert.EndsWith(betCheck, template.betTeam);
+        }
+
+        [Test]
+        public void BuildLeague_Always_CallGetResourceDataOfTicketHelperToGetGameGroup()
+        {
+            // Act.
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert.
+            _ticketHelper.Received().GetResourceData(Arg.Is(Choice15000.GameGroundRefId), Arg.Is(_ticket.BetTypeId.ToString()));
+        }
+
+        [Test]
+        public void BuildLeague_Always_LeagueNameStarstsWithHtmlContainingGameGroup()
+        {
+            // Act.
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert.
+            string expectedBetOptionHtml = $"<span class=\"gamegroupname\"> {FakeGameGroup}</span>";
+
+            StringAssert.StartsWith(expectedBetOptionHtml, template.League.LeagueName.ToString());
+        }
+
+        [TestCase(null)]
+        [TestCase("")]
+        public void BuildLeague_TicketBetCheckIsNullOrEmpty_AppendLeagueNameWithDetailsLinkContainingExpectedParameters(string betCheck)
+        {
+            // Arrange.
+            _ticket.BetCheck = betCheck;
+
+            // Act.
+            var template = _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert.
+            var detailLink = $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a>";
+            var parameterList = $"'{_ticket.TransId}', '{_ticket.WinlostDate}', {_ticket.CustId}, 1";
+            var expectedHtml = $"<div class=\"detail gpi-detail\" onclick=\"showASKMESLOTBetDetails({parameterList});\">{detailLink}</div>";
+
+            StringAssert.Contains(expectedHtml, template.League.ToString());
+        }
+    }
+}

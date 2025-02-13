@@ -84,6 +84,9 @@
     <Reference Include="Fanex.BetList.Allbet, Version=2.0.0.2, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.BetList.Allbet.2.0.0.2-API-01\lib\net461\Fanex.BetList.Allbet.dll</HintPath>
     </Reference>
+    <Reference Include="Fanex.BetList.ASKMESLOT, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.BetList.ASKMESLOT.1.0.0-Beta-01\lib\net461\Fanex.BetList.ASKMESLOT.dll</HintPath>
+    </Reference>
     <Reference Include="Fanex.BetList.BBIN, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.BetList.BBIN.2.0.0-net5-03\lib\net461\Fanex.BetList.BBIN.dll</HintPath>
     </Reference>
@@ -724,6 +727,7 @@
     <Content Include="App_Data\WE.xls" />
     <Content Include="App_Data\Playtech.xls" />
     <Content Include="App_Data\VS6BetBy.xls" />
+    <Content Include="App_Data\ASKMESLOT.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
