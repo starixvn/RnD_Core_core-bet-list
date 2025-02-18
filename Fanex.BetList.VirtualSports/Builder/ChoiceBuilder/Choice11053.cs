@@ -70,7 +70,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             if (IsAOS(ticket))
             {
-                choice += $"\n{CoreBetList.Excluding}: {BuildExcludingBlock(_excludingScores)}";
+                choice += $"\n{CoreBetList.Excluding}: {FormatTransDesc(_excludingScores)}";
             }
 
             if (!string.IsNullOrEmpty(choice))
