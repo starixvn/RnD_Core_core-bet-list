@@ -12,15 +12,10 @@
 
     public class Choice3101 : ChoiceLC
     {
-        private const string GameTableIdFormat = "<span class=\"gamegroupname\">{0}</span>";
-
         private const string SexyGamingRefId = "SC_BT";
 
         public override string GetDisplayChoice(ITicketHelper ticketHelper, string choice)
             => ticketHelper.GetResourceData(SexyGamingRefId, choice);
-
-        public override string GetDisplayTableCode(ITicketHelper ticketHelper, string tableCode)
-            => string.Format(GameTableIdFormat, tableCode);
 
         public override string BuildDetailFunction(ITicket ticket)
         {

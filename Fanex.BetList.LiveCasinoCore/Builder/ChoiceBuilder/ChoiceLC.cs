@@ -160,6 +160,16 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             return transIdParts[transIdParts.Length - 1];
         }
 
+        public string GetTransDescData(string key)
+        {
+            if (_parsedTransDesc != null && _parsedTransDesc.ContainsKey(key))
+            {
+                return _parsedTransDesc[key];
+            }
+
+            return string.Empty;
+        }
+
         protected virtual bool IsDetailTicket(ITicket ticket)
             => !string.IsNullOrEmpty(ticket.TransDesc);
 

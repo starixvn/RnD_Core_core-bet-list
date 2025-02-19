@@ -2,9 +2,9 @@
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
-        <Version>1.0.0.5-sa-03</Version>
-        <InfomationalVersion>1.0.0.5</InfomationalVersion>
-        <PackageReleaseNotes>- Add OddsLC base class</PackageReleaseNotes>
+        <Version>1.0.0.6-AESexy-01</Version>
+        <InfomationalVersion>1.0.0.6</InfomationalVersion>
+        <PackageReleaseNotes>- Add function to get parsed transdesc (#217496)</PackageReleaseNotes>
         <Description>BetList core package</Description>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <Authors>Nexcel Solutions</Authors>

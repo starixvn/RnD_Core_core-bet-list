@@ -190,7 +190,7 @@
                 ticket.SuperPositionTaking = Convert.ToDecimal(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.SuperPositionTaking)));
                 ticket.SuperWinlost = Convert.ToDecimal(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.SuperWinlost)));
                 ticket.TransDate = Convert.ToDateTime(GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.TransDate)));
-                ticket.TransId = Convert.ToInt64(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.TransId)));
+                ticket.TransId = long.Parse(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.TransId)), NumberStyles.Float);
                 ticket.UserName = GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.UserName));
                 ticket.Winlost = Convert.ToDecimal(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.Winlost)));
                 ticket.WinlostDate = Convert.ToDateTime(GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.WinlostDate)));

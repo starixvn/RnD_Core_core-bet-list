@@ -6,7 +6,7 @@
     {
         public ChoiceMapper()
         {
-            for (var betType = SexyGamingBetTypes.Baccarat + 1; betType <= SexyGamingBetTypes.HighestBetTypeIdInRange; betType++)
+            for (var betType = SexyGamingBetTypes.Baccarat + 1; betType < SexyGamingBetTypes.Tips; betType++)
             {
                 MapIdToBaseId(betType, SexyGamingBetTypes.Baccarat);
             }
