@@ -29,7 +29,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             Template.betTeam = betTeam;
         }
-        
+
         protected override void BuildScore(ITicket ticket)
         {
             if (Template.Score == null)
@@ -42,15 +42,12 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         }
 
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
-        {
-            base.BuildLeague(ticket, ticketHelper);
-            Template.League.LeagueName.leagueName = ticketHelper.GetLeagueName3rd(ticket.LeagueId.ToString());
-        }
+        => Template.League.LeagueName.leagueName = ticketHelper.GetLeagueName3rd(ticket.LeagueId.ToString());
 
         protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
         {
-            base.BuildMatch(ticket, ticketHelper);
-
+            Template.Match.home_firstGoal_lastGoal = string.Empty;
+            Template.Match.away_firstGoal_lastGoal = string.Empty;
             Template.Match.homeTeam = ticketHelper.GetTeamName3rd(ticket.HomeId.ToString());
             Template.Match.awayTeam = ticketHelper.GetTeamName3rd(ticket.AwayId.ToString());
 
@@ -62,7 +59,8 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             base.BuildBetTeamsInfo(ticket, ref rtfHelper);
 
             var kickoffTime = VirtualSportsChoiceUtils.ParseKickOffTime(ticket);
-            if(!string.IsNullOrWhiteSpace(kickoffTime)){
+            if (!string.IsNullOrWhiteSpace(kickoffTime))
+            {
                 rtfHelper.RTFRenderer.AddText($"\n{kickoffTime}");
             }
         }

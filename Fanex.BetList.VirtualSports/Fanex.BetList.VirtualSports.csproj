@@ -1,14 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>    
-        <Version>2.0.2.0-VS5-01</Version>
-        <InfomationalVersion>2.0.2</InfomationalVersion>
-        <PackageReleaseNotes>HTML tags (div tag) not rendered correctly in Excel file VS5 (#218051)</PackageReleaseNotes>
+        <Version>2.0.2.1</Version>
+        <InfomationalVersion>2.0.2.1</InfomationalVersion>
+        <PackageReleaseNotes>Export excel of VS 6 is time out (#218104)</PackageReleaseNotes>
         <Description>BetList core package</Description>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <Authors>Nexcel Solutions</Authors>
         <PackageTags>Fanex BetList</PackageTags>
         <PackageProjectUrl>https://nexdev.net/projects/fanex-betlistcore/wiki/Core_Bet_List</PackageProjectUrl>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
     <ItemGroup>
       <PackageReference Include="BetListNPOI" Version="2.6.0" />
