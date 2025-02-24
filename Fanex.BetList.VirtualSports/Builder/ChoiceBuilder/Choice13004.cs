@@ -4,7 +4,6 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Constants;
     using Entities;
     using App_GlobalResources;
-    using Fanex.BetList.Core.Constants;
     using Fanex.BetList.Core.Utils;
 
     /// <summary>

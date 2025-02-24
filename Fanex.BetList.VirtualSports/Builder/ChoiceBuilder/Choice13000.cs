@@ -1,10 +1,8 @@
 namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System;
     using System.Collections.Generic;
     using App_GlobalResources;
     using Entities;
-    using Templates;
 
     /// <summary>
     /// Betby Virtual Sports - FT.1X2.

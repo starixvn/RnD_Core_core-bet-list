@@ -7,8 +7,6 @@
     using Constants;
     using Entities;
     using BetListNPOI.SS.UserModel;
-    using Fanex.BetList.Core.Constants;
-    using Fanex.BetList.Core.App_GlobalResources;
     
     /// <summary>
     /// Virtual Horse Racing - Win/Place.

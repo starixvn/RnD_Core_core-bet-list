@@ -8,11 +8,10 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            var awayTeamName = ticketHelper.GetTeamName3rd(ticket.AwayId.ToString());
-            var homeTeamName = ticketHelper.GetTeamName3rd(ticket.HomeId.ToString());
-
             var isBetHomeTeam = IsBetHomeTeam(ticket);
-            Template.betTeam = isBetHomeTeam ? homeTeamName : awayTeamName;
+            Template.betTeam = isBetHomeTeam ?
+                                    ticketHelper.GetTeamName3rd(ticket.HomeId.ToString()) :
+                                    ticketHelper.GetTeamName3rd(ticket.AwayId.ToString());
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
@@ -31,7 +30,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             }
 
             Template.betTeamClassName = betTeamClassName;
-            
+
 
             decimal handicap = ticket.Handicap2 > ticket.Handicap1 ? ticket.Handicap2 : ticket.Handicap1;
             handicap = betTeamClassName == Favorite ? -handicap : handicap;

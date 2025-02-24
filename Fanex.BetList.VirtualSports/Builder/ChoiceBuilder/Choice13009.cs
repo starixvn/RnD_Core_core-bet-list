@@ -1,7 +1,6 @@
 namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
-    using Constants;
     using Entities;
 
     /// <summary>

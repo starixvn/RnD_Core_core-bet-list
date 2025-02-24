@@ -1,8 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
     using Entities;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Constants;
 
     public class Status2809 : Status1231
     {
