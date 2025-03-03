@@ -2,12 +2,13 @@
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>        
-        <Version>3.0.4.4</Version>
-        <InfomationalVersion>3.0.4.4</InfomationalVersion>
-        <PackageReleaseNotes>Virtual Sports 5 (#207589)</PackageReleaseNotes>
+        <Version>3.0.4.9-basketball-01</Version>
+        <InfomationalVersion>3.0.4.9</InfomationalVersion>
+        <PackageReleaseNotes>Add 2 new betypes of Basketball (#217558)</PackageReleaseNotes>
         <Authors>Nexcel Solutions</Authors>
         <PackageTags>Fanex BetList</PackageTags>
         <PackageProjectUrl>https://nexdev.net/projects/fanex-betlistcore/wiki/Core_Bet_List</PackageProjectUrl>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
     <ItemGroup>
       <PackageReference Include="BetListNPOI" Version="2.6.0" />
