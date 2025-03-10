@@ -43,6 +43,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             Template.Match.away_firstGoal_lastGoal = string.Empty;
             Template.Match.homeTeam = ticketHelper.GetTeamName3rd(ticket.HomeId.ToString());
             Template.Match.awayTeam = ticketHelper.GetTeamName3rd(ticket.AwayId.ToString());
+            Template.AppendMatchOrRoundInfo(_matchRoundInfo);
         }
     }
 }

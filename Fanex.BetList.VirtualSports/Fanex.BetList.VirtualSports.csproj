@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>    
-        <Version>2.0.2.2</Version>
-        <InfomationalVersion>2.0.2.2</InfomationalVersion>
+        <Version>2.0.2.3</Version>
+        <InfomationalVersion>2.0.2.3</InfomationalVersion>
         <PackageReleaseNotes>Remove duplicated call RR on VS 5 (#218104)</PackageReleaseNotes>
         <Description>BetList core package</Description>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
