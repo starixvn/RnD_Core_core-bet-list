@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2027
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35825.156 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_CodeAnalysis", "_CodeAnalysis", "{806E6B7B-8CAA-49B4-B5AB-145030E6B66A}"
 	ProjectSection(SolutionItems) = preProject
@@ -229,6 +229,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.RNGCore", "Fanex.BetList.RNGCore\Fanex.BetList.RNGCore.csproj", "{DDFCF452-A82B-4315-8927-DBB7460EE84E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.PlayStar", "Fanex.BetList.PlayStar\Fanex.BetList.PlayStar.csproj", "{BE7A698B-DCCD-42A1-9381-DBC450E780C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.FunkyGames", "Fanex.BetList.FunkyGames\Fanex.BetList.FunkyGames.csproj", "{9A14D1F4-A052-36A7-C0FC-9978AE3DE409}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.FunkyGames.Tests", "Fanex.BetList.FunkyGames.Tests\Fanex.BetList.FunkyGames.Tests.csproj", "{668A0405-791A-D690-8CDF-11CE4C04C6F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1537,6 +1541,30 @@ Global
 		{BE7A698B-DCCD-42A1-9381-DBC450E780C7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{BE7A698B-DCCD-42A1-9381-DBC450E780C7}.Release|x86.ActiveCfg = Release|Any CPU
 		{BE7A698B-DCCD-42A1-9381-DBC450E780C7}.Release|x86.Build.0 = Release|Any CPU
+		{9A14D1F4-A052-36A7-C0FC-9978AE3DE409}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A14D1F4-A052-36A7-C0FC-9978AE3DE409}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A14D1F4-A052-36A7-C0FC-9978AE3DE409}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9A14D1F4-A052-36A7-C0FC-9978AE3DE409}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9A14D1F4-A052-36A7-C0FC-9978AE3DE409}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9A14D1F4-A052-36A7-C0FC-9978AE3DE409}.Debug|x86.Build.0 = Debug|Any CPU
+		{9A14D1F4-A052-36A7-C0FC-9978AE3DE409}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A14D1F4-A052-36A7-C0FC-9978AE3DE409}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A14D1F4-A052-36A7-C0FC-9978AE3DE409}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{9A14D1F4-A052-36A7-C0FC-9978AE3DE409}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{9A14D1F4-A052-36A7-C0FC-9978AE3DE409}.Release|x86.ActiveCfg = Release|Any CPU
+		{9A14D1F4-A052-36A7-C0FC-9978AE3DE409}.Release|x86.Build.0 = Release|Any CPU
+		{668A0405-791A-D690-8CDF-11CE4C04C6F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{668A0405-791A-D690-8CDF-11CE4C04C6F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{668A0405-791A-D690-8CDF-11CE4C04C6F7}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{668A0405-791A-D690-8CDF-11CE4C04C6F7}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{668A0405-791A-D690-8CDF-11CE4C04C6F7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{668A0405-791A-D690-8CDF-11CE4C04C6F7}.Debug|x86.Build.0 = Debug|Any CPU
+		{668A0405-791A-D690-8CDF-11CE4C04C6F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{668A0405-791A-D690-8CDF-11CE4C04C6F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{668A0405-791A-D690-8CDF-11CE4C04C6F7}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{668A0405-791A-D690-8CDF-11CE4C04C6F7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{668A0405-791A-D690-8CDF-11CE4C04C6F7}.Release|x86.ActiveCfg = Release|Any CPU
+		{668A0405-791A-D690-8CDF-11CE4C04C6F7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
