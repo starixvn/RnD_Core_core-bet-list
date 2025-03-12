@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
-        <Version>2.0.0.6-tip-02</Version>
+        <Version>2.0.0.6-tip-03</Version>
         <InfomationalVersion>2.0.0.6</InfomationalVersion>
         <PackageReleaseNotes>Add new bettype 'Tips' (#217496)</PackageReleaseNotes>
         <Description>BetList core package</Description>
