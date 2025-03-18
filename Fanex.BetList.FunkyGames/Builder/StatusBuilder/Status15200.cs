@@ -7,7 +7,7 @@
     {
         protected override bool IsHideRNGResult(ITicket ticket)
         {
-            const int daySupportResultLink = 60;
+            const int daySupportResultLink = 90;
 
             return string.IsNullOrEmpty(ticket.BetCheck) ||
                 ticket.IsTicketHide3rdResultLink(daySupportResultLink);
