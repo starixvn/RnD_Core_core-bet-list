@@ -373,6 +373,7 @@
         public const int SabaCoinsCashExchange = 17008;
         public const int SixScoreChallenge = 17009;
         public const int PromotionCashPrize = 17010;
+        public const int SabaPromotionHighestBettype = 17099;
 
         public const int RunLine = 8800;
         public const int TotalRuns = 8801;

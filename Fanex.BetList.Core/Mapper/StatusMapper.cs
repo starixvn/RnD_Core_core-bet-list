@@ -157,6 +157,11 @@
             MapIdToBaseId(BetTypes.SabaCoinsCashExchange, BetTypes.SabaLuckySpin);
             MapIdToBaseId(BetTypes.SixScoreChallenge, BetTypes.SabaLuckySpin);
             MapIdToBaseId(BetTypes.PromotionCashPrize, BetTypes.SabaLuckySpin);
+
+            for (var i = BetTypes.PromotionCashPrize + 1; i <= BetTypes.SabaPromotionHighestBettype; i++)
+            {
+                MapIdToBaseId(i, BetTypes.SabaLuckySpin);
+            }
         }
 
         private void MapForCornerMatches()

@@ -583,6 +583,11 @@
             {
                 MapIdToBaseId(i, BetTypes.SabaRedEnvelope);
             }
+            
+            for (var i = BetTypes.PromotionCashPrize + 1; i <= BetTypes.SabaPromotionHighestBettype; i++)
+            {
+                MapIdToBaseId(i, BetTypes.SabaRedEnvelope);
+            }
         }
 
         private void MapForBaseballAIO()
