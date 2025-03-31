@@ -2,14 +2,17 @@
 
   <PropertyGroup>
     <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
-        <Version>1.0.0.4</Version>
-        <InfomationalVersion>1.0.0.4</InfomationalVersion>
-        <PackageReleaseNotes>Support Odds core (#203371)</PackageReleaseNotes>
+        <Version>1.0.1-beta-02</Version>
+        <InfomationalVersion>1.0.1</InfomationalVersion>
+        <PackageReleaseNotes>
+          - Support HotDog Project (https://nexdev.net/projects/p111086/wiki/042025_-_HOTDOG-_Bet_List__Results)
+        </PackageReleaseNotes>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>   
         <Description>RNG core package</Description>
         <Authors>Nexcel Solutions</Authors>
         <PackageTags>Fanex BetList</PackageTags>
         <PackageProjectUrl>https://nexdev.net/projects/fanex-betlistcore/wiki/Core_Bet_List</PackageProjectUrl>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="TplNetCore" Version="1.0.0" />
