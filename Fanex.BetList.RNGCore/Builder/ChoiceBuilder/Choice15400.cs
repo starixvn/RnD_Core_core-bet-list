@@ -8,10 +8,13 @@
     {
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
         {
-            base.BuildLeague(ticket, ticketHelper);
-
-            var gameGroup= "ODG_RNG_GG";
+            var gameGroup = "ODG_RNG_GG";
             Template.League.LeagueName.SetValue($"<span class=\"gamegroupname\"> {ticketHelper.GetResourceData(gameGroup, ticket.BetTypeId.ToString())}</span>");
+
+            if (IsSummaryTicket(ticket.BetCheck))
+            {
+                Template.League.Append(BuildDetailsLink(ticket));
+            }
         }
         
         protected override string BuildDetailsLink(ITicket ticket)

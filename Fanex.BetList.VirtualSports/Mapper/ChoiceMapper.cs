@@ -20,6 +20,7 @@
             MapForVirtualSports4();
             MapForVirtualSports5();
             MapForBetby();
+            MapVirtualSports7();
         }
 
         private void MapForVirtualSports3()
@@ -53,6 +54,14 @@
             for (var id = BetbyBetTypes.QuarterXAwayOverUnder + 1; id <= BetbyBetTypes.HighestBetTypeIdInRange; id++)
             {
                 MapIdToBaseId(id, BetbyBetTypes.FT1X2);
+            }
+        }
+
+        private void MapVirtualSports7()
+        {   
+            for (var id = VirtualSports7BetTypes.Win + 1; id <= VirtualSports7BetTypes.HightesBettype; id++)
+            {
+                MapIdToBaseId(id, VirtualSports7BetTypes.Win);
             }
         }
     }

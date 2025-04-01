@@ -13,7 +13,7 @@
 
         private void StatusForOdinGaming()
         {
-            for (var betType = RNGBetTypes.OdinGamingMin + 1; betType < RNGBetTypes.OdinGamingMin; betType++)
+            for (var betType = RNGBetTypes.OdinGamingMin + 1; betType < RNGBetTypes.OdinGamingMax; betType++)
             {
                 MapIdToBaseId(betType, RNGBetTypes.OdinGamingMin);
             }

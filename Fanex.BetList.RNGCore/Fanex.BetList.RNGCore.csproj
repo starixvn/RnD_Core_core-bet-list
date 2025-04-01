@@ -2,10 +2,11 @@
 
   <PropertyGroup>
     <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
-        <Version>1.0.1-beta-02</Version>
+        <Version>1.0.1-beta-06</Version>
         <InfomationalVersion>1.0.1</InfomationalVersion>
         <PackageReleaseNotes>
           - Support HotDog Project (https://nexdev.net/projects/p111086/wiki/042025_-_HOTDOG-_Bet_List__Results)
+          - ODing Gmaming
         </PackageReleaseNotes>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>   
         <Description>RNG core package</Description>

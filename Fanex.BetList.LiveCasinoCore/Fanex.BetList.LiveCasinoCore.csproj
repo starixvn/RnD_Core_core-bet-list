@@ -1,20 +1,18 @@
-<Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
-        <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
-        <Version>1.0.0.6-AESexy-01</Version>
-        <InfomationalVersion>1.0.0.6</InfomationalVersion>
-        <PackageReleaseNotes>- Add function to get parsed transdesc (#217496)</PackageReleaseNotes>
-        <Description>BetList core package</Description>
-        <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
-        <Authors>Nexcel Solutions</Authors>
-        <PackageTags>Fanex BetList</PackageTags>
-        <PackageProjectUrl>https://nexdev.net/projects/upcoming-lc-product-template/wiki/Upcoming_LC_Product_-_Bet_List</PackageProjectUrl>
-    </PropertyGroup>
-    <ItemGroup>
-      <PackageReference Include="TplNetCore" Version="1.0.0" />
-    </ItemGroup>
-    <ItemGroup>
-      <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj" />
-    </ItemGroup>
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <Version>1.0.0.7-MG-05</Version>
+    <InfomationalVersion>1.0.0.7</InfomationalVersion>
+    <PackageReleaseNotes>- Support Microgaming Live (#219772)</PackageReleaseNotes>
+    <Description>BetList core package</Description>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <Authors>Nexcel Solutions</Authors>
+    <PackageTags>Fanex BetList</PackageTags>
+    <PackageProjectUrl>https://nexdev.net/projects/upcoming-lc-product-template/wiki/Upcoming_LC_Product_-_Bet_List</PackageProjectUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj" />
+  </ItemGroup>
 </Project>

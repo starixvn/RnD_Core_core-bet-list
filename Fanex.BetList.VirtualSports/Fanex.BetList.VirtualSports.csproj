@@ -1,9 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>    
-        <Version>2.0.2.4-vs5-01</Version>
-        <InfomationalVersion>2.0.2.4</InfomationalVersion>
-        <PackageReleaseNotes>Remove duplicated call RR on VS 5 (#218104)</PackageReleaseNotes>
+        <Version>2.0.2.5-vs7-01</Version>
+        <InfomationalVersion>2.0.2.5</InfomationalVersion>
+        <PackageReleaseNotes>
+          - Support Virtual Sports 7 product (#218532)
+        </PackageReleaseNotes>
         <Description>BetList core package</Description>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <Authors>Nexcel Solutions</Authors>

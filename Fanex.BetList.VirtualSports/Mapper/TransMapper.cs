@@ -17,6 +17,16 @@
             MapForVirtualSports5();
             
             MapForBetby();
+
+            MapVirtualSports7();
+        }
+
+        private void MapVirtualSports7()
+        {
+            for (var id = VirtualSports7BetTypes.Win + 1; id <= VirtualSports7BetTypes.HightesBettype; id++)
+            {
+                MapIdToBaseId(id, VirtualSports7BetTypes.Win);
+            }
         }
 
         private void MapForVirtualSports4()
