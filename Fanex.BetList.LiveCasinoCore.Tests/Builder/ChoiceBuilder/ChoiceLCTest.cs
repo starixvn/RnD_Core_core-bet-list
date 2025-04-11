@@ -1,4 +1,4 @@
-namespace Fanex.BetList.SexyGaming.Tests.Builder.ChoiceBuilder
+namespace Fanex.BetList.LiveCasinoCore.Tests.Builder.ChoiceBuilder
 {
     using System;
     using System.Globalization;
