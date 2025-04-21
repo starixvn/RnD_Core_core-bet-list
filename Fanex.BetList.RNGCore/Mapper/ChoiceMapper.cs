@@ -15,6 +15,11 @@
             {
                 MapIdToBaseId(betType, RNGBetTypes.OdinGamingMin);
             }
+
+            for (var betType = RNGBetTypes.RichGamingMin + 1; betType <= RNGBetTypes.RichGamingPromotion; betType++)
+            {
+                MapIdToBaseId(betType, RNGBetTypes.RichGamingMin);
+            }
         }
     }
 }

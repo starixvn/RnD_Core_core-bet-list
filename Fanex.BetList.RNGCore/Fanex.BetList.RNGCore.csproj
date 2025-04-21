@@ -2,11 +2,10 @@
 
   <PropertyGroup>
     <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
-        <Version>1.0.1-beta-06</Version>
-        <InfomationalVersion>1.0.1</InfomationalVersion>
+        <Version>1.0.2-richgaming-04</Version>
+        <InfomationalVersion>1.0.2</InfomationalVersion>
         <PackageReleaseNotes>
-          - Support HotDog Project (https://nexdev.net/projects/p111086/wiki/042025_-_HOTDOG-_Bet_List__Results)
-          - ODing Gmaming
+          - Support Rich Gaming (https://nexdev.net/projects/p111087/wiki/042025_-_Rich_Gaming-_Bet_List__Results)
         </PackageReleaseNotes>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>   
         <Description>RNG core package</Description>

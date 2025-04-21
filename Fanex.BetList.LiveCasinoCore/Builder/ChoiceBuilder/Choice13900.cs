@@ -7,6 +7,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using Fanex.BetList.Core.Utils.TicketExt;
     using Fanex.BetList.Core.App_GlobalResources;
 
+    /// <summary>Microgaming Live Casino Choice 13900.</summary>
     public class Choice13900 : ChoiceLC
     {
         public const string ChoiceRefPrefix = "MGL_BT";

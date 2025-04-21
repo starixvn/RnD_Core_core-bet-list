@@ -9,5 +9,9 @@
         public const int OdinGamingMin = 15400;
 
         public const int OdinGamingMax = 15499;
+
+        public const int RichGamingMin = 15800;
+
+        public const int RichGamingPromotion = 15899;
     }
 }

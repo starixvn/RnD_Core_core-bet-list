@@ -6,9 +6,11 @@
     {
         public StatusMapper()
         {
-           StatusForHotDog();
+            StatusForHotDog();
 
-           StatusForOdinGaming();
+            StatusForOdinGaming();
+
+            StatusForRichGaming();
         }
 
         private void StatusForOdinGaming()
@@ -29,6 +31,15 @@
             }
 
             MapIdToBaseId(RNGBetTypes.HotDogMax, BetTypes.SabaLuckySpin);
+        }
+
+        private void StatusForRichGaming()
+        {
+            for (var betType = RNGBetTypes.RichGamingMin + 1; betType < RNGBetTypes.RichGamingPromotion; betType++)
+            {
+                MapIdToBaseId(betType, RNGBetTypes.RichGamingMin);
+            }
+            MapIdToBaseId(RNGBetTypes.RichGamingPromotion, BetTypes.SabaLuckySpin);
         }
     }
 }
