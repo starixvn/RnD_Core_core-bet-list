@@ -58,7 +58,7 @@
         OddsSpread = 50,
         Currency = 51,
         OriginalBetType = 52,
-        BetdaqId = 53,
+        
         ExtraInfo = 54,
         OriginalStake = 55,
         RefCode = 56,

@@ -579,7 +579,12 @@
         {
             MapIdToBaseId(BetTypes.CasinoRoyaleTournamentPrize, BetTypes.SabaRedEnvelope);
             
-            for (var i = BetTypes.SabaCoinsLowest; i <= BetTypes.SabaCoinsHighest; i++)
+            for (var i = BetTypes.SabaCoinsLowest; i < BetTypes.SabaCoins_EarnCoin; i++)
+            {
+                MapIdToBaseId(i, BetTypes.SabaRedEnvelope);
+            }
+
+            for (var i = BetTypes.SabaCoins_SpendCoin + 1; i < BetTypes.SabaCoinsHighest; i++)
             {
                 MapIdToBaseId(i, BetTypes.SabaRedEnvelope);
             }
