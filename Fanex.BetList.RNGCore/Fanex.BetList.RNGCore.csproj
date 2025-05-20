@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
-        <Version>1.0.2-richgaming-04</Version>
-        <InfomationalVersion>1.0.2</InfomationalVersion>
+        <Version>1.0.5</Version>
+        <InfomationalVersion>1.0.5</InfomationalVersion>
         <PackageReleaseNotes>
           - Support Rich Gaming (https://nexdev.net/projects/p111087/wiki/042025_-_Rich_Gaming-_Bet_List__Results)
         </PackageReleaseNotes>
