@@ -2,9 +2,9 @@
   <PropertyGroup>
     <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
-    <Version>1.0.0.8-playtech-05</Version>
-    <InfomationalVersion>1.0.0.8</InfomationalVersion>
-    <PackageReleaseNotes>- Support Playtech Live (#224687)</PackageReleaseNotes>
+    <Version>1.0.0.9-wcasino-02</Version>
+    <InfomationalVersion>1.0.0.9</InfomationalVersion>
+    <PackageReleaseNotes>- Support W Casino (#224872)</PackageReleaseNotes>
     <Description>BetList core package</Description>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
     <Authors>Nexcel Solutions</Authors>

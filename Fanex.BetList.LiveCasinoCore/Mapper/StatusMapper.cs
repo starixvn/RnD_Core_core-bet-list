@@ -23,6 +23,11 @@ namespace Fanex.BetList.Core.Mapper
             {
                 MapIdToBaseId(betTypeId, LCBetTypes.PlaytechMin);
             }
+
+            for (int betTypeId = LCBetTypes.WCasinoMin + 1; betTypeId <= LCBetTypes.WCasinoMax; betTypeId++)
+            {
+                MapIdToBaseId(betTypeId, LCBetTypes.WCasinoMin);
+            }
         }
     }
 }
