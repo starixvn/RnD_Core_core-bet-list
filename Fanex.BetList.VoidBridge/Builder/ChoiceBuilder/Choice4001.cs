@@ -35,7 +35,7 @@
 
             if (!string.IsNullOrEmpty(ticket.BetCheck))
             {
-                Template.betTeam += " " + ticket.BetCheck;
+                Template.betTeam += $" {GetTransId3rd(ticket.BetCheck)}";
             }
         }
 
@@ -132,6 +132,19 @@
             Template.betTeam = Template.betTeam
                 .Replace(OpenGameTypeNameTag, string.Empty)
                 .Replace(CloseSportTypeNameTag, string.Empty);
+        }
+
+        protected virtual string GetTransId3rd(string transId3rd)
+        {
+            const string transId3rdSeparator = "|$|";
+            if (transId3rd == null || !transId3rd.Contains(transId3rdSeparator))
+            {
+                return transId3rd;
+            }
+
+            var transIdParts = transId3rd.Split(new string[] { transId3rdSeparator }, StringSplitOptions.RemoveEmptyEntries);
+
+            return transIdParts[transIdParts.Length - 1];
         }
     }
 }
