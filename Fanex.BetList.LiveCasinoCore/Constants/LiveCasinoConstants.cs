@@ -9,5 +9,9 @@
         public const string CloseBetTypeNameTag = "</span>";
         public const string OpenGameIdTag = "<span class='game-id'>";
         public const string CloseGameIdTag = "</span>";
+        public const string BreakLine = "<br />";
+        public const string Space = " ";
+        public const string NewLine = "\n";
+        public const string NoneBreakingSpace = "&nbsp;";
     }
 }

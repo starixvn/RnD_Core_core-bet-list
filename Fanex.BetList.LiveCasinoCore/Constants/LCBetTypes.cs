@@ -8,5 +8,8 @@ namespace Fanex.BetList.Core.Constants
 
         public const int PlaytechMin = 15600;        
         public const int PlaytechMax = 15799;
+
+        public const int WCasinoMin = 12000;
+        public const int WCasinoMax = 12099;
     }
 }
