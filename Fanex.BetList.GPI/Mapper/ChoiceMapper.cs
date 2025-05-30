@@ -6,12 +6,17 @@ namespace Fanex.BetList.Core.Mapper
     {
         public ChoiceMapper()
         {
-            for (int betTypeId = GPIBetTypes.UFOFrenzy + 1; betTypeId < GPIBetTypes.HighestBetTypeIdInRange; betTypeId++)
+            for (int betTypeId = GPIBetTypes.UFOFrenzy + 1; betTypeId <= GPIBetTypes.HighestBetTypeIdInRange; betTypeId++)
             {
                 MapIdToBaseId(betTypeId, GPIBetTypes.UFOFrenzy);
             }
 
-            for (int betTypeId = GPILCBetTypes.NoCommisionBaccarat1 + 1; betTypeId < GPILCBetTypes.HighestBetTypeIdInRange; betTypeId++)
+            for (int betTypeId = GPIBetTypes.LowestBetTypeIdInRange2; betTypeId <= GPIBetTypes.HighestBetTypeIdInRange2; betTypeId++)
+            {
+                MapIdToBaseId(betTypeId, GPIBetTypes.UFOFrenzy);
+            }
+
+            for (int betTypeId = GPILCBetTypes.NoCommisionBaccarat1 + 1; betTypeId <= GPILCBetTypes.HighestBetTypeIdInRange; betTypeId++)
             {
                 MapIdToBaseId(betTypeId, GPILCBetTypes.NoCommisionBaccarat1);
             }

@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>
-        <Version>1.0.1-beta-07</Version>
-        <InfomationalVersion>1.0.1</InfomationalVersion>
-        <PackageReleaseNotes>Integrate GPI Live Casino (#213479)</PackageReleaseNotes>
+        <Version>1.0.2-extends</Version>
+        <InfomationalVersion>1.0.2</InfomationalVersion>
+        <PackageReleaseNotes>Extend Bettype Range for GPI RNG (#225397)</PackageReleaseNotes>
         <Description>
             New bet list for GPI
 
