@@ -11,6 +11,10 @@
             StatusForOdinGaming();
 
             StatusForRichGaming();
+
+            StatusForAIGaming();
+
+            StatusForClotPlaying();
         }
 
         private void StatusForOdinGaming()
@@ -40,6 +44,22 @@
                 MapIdToBaseId(betType, RNGBetTypes.RichGamingMin);
             }
             MapIdToBaseId(RNGBetTypes.RichGamingPromotion, BetTypes.SabaLuckySpin);
+        }
+
+        private void StatusForAIGaming()
+        {
+            for (var betType = RNGBetTypes.AIGamingMin + 1; betType <= RNGBetTypes.AIGamingMax; betType++)
+            {
+                MapIdToBaseId(betType, RNGBetTypes.AIGamingMin);
+            }   
+        }
+
+        private void StatusForClotPlaying()
+        {
+            for (var betType = RNGBetTypes.ClotPlayingMin + 1; betType <= RNGBetTypes.ClotPlayingMax; betType++)
+            {
+                MapIdToBaseId(betType, RNGBetTypes.ClotPlayingMin);
+            }
         }
     }
 }

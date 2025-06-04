@@ -2,10 +2,10 @@
 
   <PropertyGroup>
     <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
-        <Version>1.0.5</Version>
-        <InfomationalVersion>1.0.5</InfomationalVersion>
-        <PackageReleaseNotes>
-          - Support Rich Gaming (https://nexdev.net/projects/p111087/wiki/042025_-_Rich_Gaming-_Bet_List__Results)
+        <Version>1.0.6-AIGaming-ClotPlay-02</Version>
+        <InfomationalVersion>1.0.6</InfomationalVersion>
+        <PackageReleaseNotes>- Support AIGaming (https://nexdev.net/projects/p111090/wiki/052025_-_AI_Gaming-_Bet_List__Results)
+- Support Clot Playing (https://nexdev.net/projects/p111089/wiki/052025_-_ClotPlay-_Bet_List__Results)
         </PackageReleaseNotes>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>   
         <Description>RNG core package</Description>

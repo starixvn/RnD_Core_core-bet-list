@@ -20,6 +20,17 @@
             {
                 MapIdToBaseId(betType, RNGBetTypes.RichGamingMin);
             }
+
+            for (var betType = RNGBetTypes.AIGamingMin + 1; betType <= RNGBetTypes.AIGamingMax; betType++)
+            {
+                MapIdToBaseId(betType, RNGBetTypes.AIGamingMin);
+            }
+
+            for (var betType = RNGBetTypes.ClotPlayingMin + 1; betType <= RNGBetTypes.ClotPlayingMax; betType++)
+            {
+                MapIdToBaseId(betType, RNGBetTypes.ClotPlayingMin);
+            }
+
         }
     }
 }
