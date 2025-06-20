@@ -14,6 +14,8 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     public class ChoiceLCNoTableCode : Choice1
     {
         protected virtual string RefIdForGameType => string.Empty;
+        private const string JackpotTransIdInfo = "jpw=";
+        private const string JackpotInfo = "jp=1";
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
             => Template.betTeam = IsDetailTicket(ticket) ? ticketHelper.GetResourceData(RefIdForGameType, ticket.BetTypeId.ToString()) : null;
@@ -49,6 +51,11 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             else
             {
                 Template.League.LeagueName.leagueName += BuildGameId(ticket);
+            }
+            
+            if (IsDetailTicket(ticket) && IsJackpotTicket(ticket))
+            {
+                Template.League.Append(BuildShowJackpotWonDetails(ticket, ticketHelper));
             }
         }
 
@@ -87,6 +94,20 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         protected virtual bool IsSummaryTicket(ITicket ticket)
             => !IsDetailTicket(ticket);
 
+        protected virtual bool IsJackpotTicket(ITicket ticket)
+            => !string.IsNullOrEmpty(ticket.JackpotInfo) && ticket.JackpotInfo.ToLowerInvariant().Contains(JackpotInfo);
+
+        private static string BuildShowJackpotWonDetails(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            var indexOfJackpotTransId = ticket.JackpotInfo.LastIndexOf(JackpotTransIdInfo, StringComparison.InvariantCultureIgnoreCase) + 4;
+            var transId = ticket.JackpotInfo.Substring(indexOfJackpotTransId, ticket.JackpotInfo.Length - indexOfJackpotTransId);
+            var detailLinkMarkup =
+                $"<div class=\"detail jackpot-detail\" onclick=\"showJackpotWonDetails('{transId}', '{ticket.CustId}', '{ticket.BetTypeId}', '{ticket.WinlostDate}', '{ticket.SportTypeId}', '{ticketHelper.GetSportNameById(ticket.SportTypeId)}');\">" +
+                $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.JackpotWonDetails}</a>" +
+                $"</div>";
+
+            return detailLinkMarkup;
+        }
 
         private static Choice_League_Block BuildDetailLink(ITicket ticket, ITicketHelper ticketHelper)
         {
