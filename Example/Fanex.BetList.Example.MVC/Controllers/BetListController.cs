@@ -1791,6 +1791,23 @@
 
             return BetListView(model);
         }
+        public ActionResult AIAndClot(BetListData model = null)
+        {
+            var betTypeIds = new List<int>();
+
+            for (var betTypeId = 16100; betTypeId <= 16299; betTypeId++)
+            {
+                betTypeIds.Add(betTypeId);
+            }
+
+            var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            DataSourcePath = "~/App_Data/AIClot.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
 
         private ViewResult BetListView(BetListData model)
         {

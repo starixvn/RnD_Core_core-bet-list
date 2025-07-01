@@ -31,7 +31,7 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
             return base.Render(ticket, ticketHelper, ticketData, isShowVNIP);
         }
 
-        private bool IsHideRNGResult(ITicket ticket)
+        protected virtual bool IsHideRNGResult(ITicket ticket)
             => string.IsNullOrEmpty(ticket.BetCheck) || ticket.IsTicketHide3rdResultLink(ExpireDateResultLink);
     }
 }
