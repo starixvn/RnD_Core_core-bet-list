@@ -2,17 +2,17 @@
 
   <PropertyGroup>
     <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
-        <Version>1.0.7</Version>
-        <InfomationalVersion>1.0.7</InfomationalVersion>
-        <PackageReleaseNotes>- Support AIGaming (https://nexdev.net/projects/p111090/wiki/052025_-_AI_Gaming-_Bet_List__Results)
-- Support Clot Playing (https://nexdev.net/projects/p111089/wiki/052025_-_ClotPlay-_Bet_List__Results)
-        </PackageReleaseNotes>
-        <GenerateAssemblyInfo>true</GenerateAssemblyInfo>   
-        <Description>RNG core package</Description>
-        <Authors>Nexcel Solutions</Authors>
-        <PackageTags>Fanex BetList</PackageTags>
-        <PackageProjectUrl>https://nexdev.net/projects/fanex-betlistcore/wiki/Core_Bet_List</PackageProjectUrl>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.0.8</Version>
+    <InfomationalVersion>1.0.8</InfomationalVersion>
+    <PackageReleaseNotes>
+      - Support GPI Lottery (https://nexdev.net/projects/p111081/wiki/012025_-_GPI_Lottery_-_Bet_List)
+    </PackageReleaseNotes>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>   
+    <Description>RNG core package</Description>
+    <Authors>Nexcel Solutions</Authors>
+    <PackageTags>Fanex BetList</PackageTags>
+    <PackageProjectUrl>https://nexdev.net/projects/fanex-betlistcore/wiki/Core_Bet_List</PackageProjectUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="TplNetCore" Version="1.0.0" />

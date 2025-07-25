@@ -6,6 +6,11 @@
 
         public const int HotDogMax = 11999;
 
+
+        public const int GPILotteryMin = 13800;
+
+        public const int GPILotteryMax = 13899;
+
         public const int OdinGamingMin = 15400;
 
         public const int OdinGamingMax = 15499;

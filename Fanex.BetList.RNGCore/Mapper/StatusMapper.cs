@@ -15,6 +15,8 @@
             StatusForAIGaming();
 
             StatusForClotPlaying();
+
+            StatusForGPILottery();
         }
 
         private void StatusForOdinGaming()
@@ -44,6 +46,14 @@
                 MapIdToBaseId(betType, RNGBetTypes.RichGamingMin);
             }
             MapIdToBaseId(RNGBetTypes.RichGamingPromotion, BetTypes.SabaLuckySpin);
+        }
+
+        private void StatusForGPILottery()
+        {
+            for (var betType = RNGBetTypes.GPILotteryMin + 1; betType <= RNGBetTypes.GPILotteryMax; betType++)
+            {
+                MapIdToBaseId(betType, RNGBetTypes.AIGamingMin);
+            }   
         }
 
         private void StatusForAIGaming()
