@@ -21,12 +21,10 @@
 
         private void StatusForOdinGaming()
         {
-            for (var betType = RNGBetTypes.OdinGamingMin + 1; betType < RNGBetTypes.OdinGamingMax; betType++)
+            for (var betType = RNGBetTypes.OdinGamingMin + 1; betType <= RNGBetTypes.OdinGamingMax; betType++)
             {
                 MapIdToBaseId(betType, RNGBetTypes.OdinGamingMin);
             }
-
-            MapIdToBaseId(RNGBetTypes.OdinGamingMax, BetTypes.SabaLuckySpin);
         }
 
         private void StatusForHotDog()

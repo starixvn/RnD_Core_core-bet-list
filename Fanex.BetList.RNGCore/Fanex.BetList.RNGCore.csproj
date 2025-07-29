@@ -2,10 +2,11 @@
 
   <PropertyGroup>
     <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
-    <Version>1.0.8</Version>
-    <InfomationalVersion>1.0.8</InfomationalVersion>
+    <Version>1.0.9.1</Version>
+    <InfomationalVersion>1.0.9.1</InfomationalVersion>
     <PackageReleaseNotes>
-      - Support GPI Lottery (https://nexdev.net/projects/p111081/wiki/012025_-_GPI_Lottery_-_Bet_List)
+      - Support Odin Gaming (https://nexdev.net/projects/p111081/wiki/072025_-_Odin_Gaming_-_Bet_List)
+      - Hide Result link of ODIN Gaming
     </PackageReleaseNotes>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>   
     <Description>RNG core package</Description>

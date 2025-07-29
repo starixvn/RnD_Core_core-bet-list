@@ -1,16 +1,9 @@
-﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
+﻿using Fanex.BetList.Core.Entities;
+
+namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Utils.TicketExt;
-
-    public class Status15400 : StatusRNG
+    public class Status15400 : StatusRNGExpireDate
     {
-        protected override bool IsHideRNGResult(ITicket ticket)
-        {
-            const int daySupportResultLink = 30;
-
-            return string.IsNullOrEmpty(ticket.BetCheck) ||
-                ticket.IsTicketHide3rdResultLink(daySupportResultLink);
-        }
+        protected override bool IsHideRNGResult(ITicket ticket) => true;
     }
 }
