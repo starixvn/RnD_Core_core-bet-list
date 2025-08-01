@@ -234,6 +234,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.FunkyGames", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.FunkyGames.Tests", "Fanex.BetList.FunkyGames.Tests\Fanex.BetList.FunkyGames.Tests.csproj", "{668A0405-791A-D690-8CDF-11CE4C04C6F7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.Playtech", "Fanex.BetList.Playtech\Fanex.BetList.Playtech.csproj", "{AB5615DC-A830-495C-0023-247D4301F8C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetList.Playtech.Tests", "Fanex.BetList.Playtech.Tests\Fanex.BetList.Playtech.Tests.csproj", "{A4359E8B-8A77-8445-E682-805F90DD5C93}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1589,6 +1593,30 @@ Global
 		{668A0405-791A-D690-8CDF-11CE4C04C6F7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{668A0405-791A-D690-8CDF-11CE4C04C6F7}.Release|x86.ActiveCfg = Release|Any CPU
 		{668A0405-791A-D690-8CDF-11CE4C04C6F7}.Release|x86.Build.0 = Release|Any CPU
+		{AB5615DC-A830-495C-0023-247D4301F8C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB5615DC-A830-495C-0023-247D4301F8C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB5615DC-A830-495C-0023-247D4301F8C3}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{AB5615DC-A830-495C-0023-247D4301F8C3}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{AB5615DC-A830-495C-0023-247D4301F8C3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AB5615DC-A830-495C-0023-247D4301F8C3}.Debug|x86.Build.0 = Debug|Any CPU
+		{AB5615DC-A830-495C-0023-247D4301F8C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB5615DC-A830-495C-0023-247D4301F8C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB5615DC-A830-495C-0023-247D4301F8C3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{AB5615DC-A830-495C-0023-247D4301F8C3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{AB5615DC-A830-495C-0023-247D4301F8C3}.Release|x86.ActiveCfg = Release|Any CPU
+		{AB5615DC-A830-495C-0023-247D4301F8C3}.Release|x86.Build.0 = Release|Any CPU
+		{A4359E8B-8A77-8445-E682-805F90DD5C93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4359E8B-8A77-8445-E682-805F90DD5C93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4359E8B-8A77-8445-E682-805F90DD5C93}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A4359E8B-8A77-8445-E682-805F90DD5C93}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A4359E8B-8A77-8445-E682-805F90DD5C93}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A4359E8B-8A77-8445-E682-805F90DD5C93}.Debug|x86.Build.0 = Debug|Any CPU
+		{A4359E8B-8A77-8445-E682-805F90DD5C93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4359E8B-8A77-8445-E682-805F90DD5C93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4359E8B-8A77-8445-E682-805F90DD5C93}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A4359E8B-8A77-8445-E682-805F90DD5C93}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{A4359E8B-8A77-8445-E682-805F90DD5C93}.Release|x86.ActiveCfg = Release|Any CPU
+		{A4359E8B-8A77-8445-E682-805F90DD5C93}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

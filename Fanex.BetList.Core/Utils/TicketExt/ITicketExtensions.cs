@@ -5,6 +5,11 @@
 
     public static class ITicketExtensions
     {
+        private const string JackpotInfo = "jp=1";
+
+        public static bool TicketHasJackpotInfo(this ITicket ticket)
+            => !string.IsNullOrEmpty(ticket.JackpotInfo) && ticket.JackpotInfo.ToLowerInvariant().Contains(JackpotInfo);
+
         public static bool IsWon(this ITicket ticket)
         {
             var statusId = ticket.StatusId != null ? ticket.StatusId.ToString() : string.Empty;

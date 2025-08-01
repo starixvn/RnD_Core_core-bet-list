@@ -493,7 +493,22 @@
 
             return BetListView(model);
         }
-        public ActionResult Playtech(BetListData model = null)
+
+        public ActionResult PlaytechRNG(BetListData model = null)
+        {
+
+            var betTypes = _dataService.QueryBetTypes(15600);
+
+            DataSourcePath = "~/App_Data/Playtech.xls";
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
+        public ActionResult PlaytechLive(BetListData model = null)
         {
 
             var betTypes = _dataService.QueryBetTypes(15600);

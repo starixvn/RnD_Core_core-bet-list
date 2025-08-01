@@ -5,7 +5,7 @@
 
     public static class ExtraInfoParser
     {
-        public static Dictionary<string, string> ParseExtraInfo(string extraInfo)
+        public static Dictionary<string, string> ParseExtraInfo(string extraInfo, char splitChar = '*')
         {
             const int numberOfExpressionsOfEachProperty = 2;
 
@@ -16,7 +16,7 @@
                 return extraInfoItems;
             }
 
-            var splittedExtraInfoParts = extraInfo.Split(new[] { '*' }, StringSplitOptions.RemoveEmptyEntries);
+            var splittedExtraInfoParts = extraInfo.Split(new[] { splitChar }, StringSplitOptions.RemoveEmptyEntries);
 
             foreach (var part in splittedExtraInfoParts)
             {

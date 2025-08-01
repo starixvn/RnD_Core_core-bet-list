@@ -178,6 +178,7 @@
                 ticket.MatchCode = GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.MatchCode));
                 ticket.MatchId = Convert.ToInt32(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.MatchId)));
                 ticket.Odds = Convert.ToDecimal(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.Odds)));
+                ticket.OddsSpread = Convert.ToDecimal(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.OddsSpread)));
                 ticket.OddsType = GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.OddsType));
                 ticket.PlayerComm = Convert.ToDecimal(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.PlayerComm)));
                 ticket.Race = GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.Race));
@@ -203,6 +204,7 @@
                 ticket.WalletType = Convert.ToByte(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.WalletType)));
                 ticket.SettlementStatus = Convert.ToByte(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.SettlementStatus)));
                 ticket.JackpotInfo = GetCellValue(row.GetCell((int)TicketTemplateColumnIndex.JackpotInfo));
+                ticket.BetdaqId = Convert.ToInt64(GetNumericValue(row.GetCell((int)TicketTemplateColumnIndex.BetdaqId)));
             }
             catch
             {

@@ -6,10 +6,10 @@
     {
         public StatusMapper()
         {
-            for (int betTypeId = PlaytechBetTypes.BuffaloBlitz + 1; betTypeId < PlaytechBetTypes.HighestBetTypeIdInRange; betTypeId++)
+            for (int betTypeId = PlaytechBetTypes.BuffaloBlitz + 1; betTypeId < PlaytechBetTypes.JackpotContribution; betTypeId++)
             {
                 MapIdToBaseId(betTypeId, PlaytechBetTypes.BuffaloBlitz);
-            }
+            }            
         }
     }
 }
