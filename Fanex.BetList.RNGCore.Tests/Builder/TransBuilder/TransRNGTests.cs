@@ -1,4 +1,4 @@
-namespace Fanex.BetList.VGaming.Tests.Builder.TransBuilder
+namespace Fanex.BetList.RNGCore.Tests.Builder.TransBuilder
 {
     using Fanex.BetList.Core.Builder.TransBuilder;
     using Fanex.BetList.Core.Entities;

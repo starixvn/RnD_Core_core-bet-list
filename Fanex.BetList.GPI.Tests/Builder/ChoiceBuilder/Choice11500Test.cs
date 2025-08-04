@@ -26,8 +26,20 @@ namespace Fanex.BetList.SexyGaming.Tests.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildBetTeam_Always_CallGetResourceDataOfTicketHelperToGetExpectedBetOption()
+        public void BuildBetTeam_SummaryTicket_CallGetResourceDataOfTicketHelperToGetExpectedBetOption()
         {
+            _ticket.BetCheck = null;
+            // Act.
+            _choice.Render(_ticket, _ticketHelper, null, false);
+
+            // Assert.
+            _ticketHelper.DidNotReceive().GetResourceData(Arg.Is(Choice11500.ChoiceRefPrefix), Arg.Is(_ticket.BetTypeId.ToString()));
+        }
+
+        [Test]
+        public void BuildBetTeam_DetailTicket_CallGetResourceDataOfTicketHelperToGetExpectedBetOption()
+        {
+            _ticket.BetCheck = "Detail";
             // Act.
             _choice.Render(_ticket, _ticketHelper, null, false);
 

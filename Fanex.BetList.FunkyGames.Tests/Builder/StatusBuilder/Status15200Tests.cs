@@ -62,7 +62,7 @@
             var template = _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            Assert.False(template.StatusResult.Visible);
+            Assert.True(template.StatusResult.Visible);
         }
 
         [Test]

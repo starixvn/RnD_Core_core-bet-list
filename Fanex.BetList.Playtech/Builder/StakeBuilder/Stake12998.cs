@@ -1,16 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Builder.StakeBuilder
 {
-    using Fanex.BetList.Core.Entities;
-
-    public class Odds12998 : Stake1
+    public class Stake12998 : StakeContribution
     {
-        private const string Hyphen = "-";
-
-        protected override void BuildStake(ITicket ticket)
-        {
-            base.BuildStake(ticket);
-
-            Template.stake = Hyphen;
-        }
     }
 }
