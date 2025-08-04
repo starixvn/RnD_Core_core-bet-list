@@ -22,16 +22,17 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             {
                 if (ticket.TicketHasJackpotInfo())
                 {
-                    Template.League.Append(BuildShowJackpotWonDetails(ticket));
+                    Template.League.Append(BuildShowJackpotWonDetails(ticket, ticketHelper));
                 }
             }
         }
 
-        protected virtual string BuildShowJackpotWonDetails(ITicket ticket)
+        protected virtual string BuildShowJackpotWonDetails(ITicket ticket, ITicketHelper ticketHelper)
         {
             var transId = ExtraInfoParser.ParseExtraInfo(ticket.JackpotInfo, ',')[JackpotTransIdInfo];
+            var sportTypeName = ticketHelper.GetSportNameById(ticket.SportTypeId);
             var detailLinkMarkup =
-                $"<div class=\"detail jackpot-detail\" onclick=\"showJackpotWonDetails('{transId}', '{ticket.CustId}', '{ticket.BetTypeId}', '{ticket.WinlostDate}');\">" +
+                $"<div class=\"detail jackpot-detail\" onclick=\"showRNGJackpotWonDetails('{transId}', '{ticket.CustId}', '{ticket.BetTypeId}', '{ticket.WinlostDate}', '{sportTypeName}');\">" +
                 $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.JackpotWonDetails}</a>" +
                 $"</div>";
 

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
-    <Version>1.0.9.2-jackpot-04</Version>
+    <Version>1.0.9.2-jackpot-05</Version>
     <InfomationalVersion>1.0.9.2</InfomationalVersion>
     <PackageReleaseNotes>
       - Implement Jackpot + Contribution for RNG product (#234576)<br/>
