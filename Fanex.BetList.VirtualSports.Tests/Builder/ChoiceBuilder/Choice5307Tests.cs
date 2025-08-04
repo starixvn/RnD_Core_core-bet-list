@@ -79,7 +79,7 @@
         public void BuildMatch_TransDescContainsFullMatchDayOrRoundInfo_AppendMatchDayOrRoundInfoRightAfterMatch()
         {
             // Arrange.
-            var ExpectedMatchDayOrRoundInfo ="Match Day 6, Cup 57853";
+            var ExpectedMatchDayOrRoundInfo = "Round 16-1, Nation Cup 6666";
             Ticket.TransDesc = "m=\"{2} 6, {1} 57853\"";
 
             // Act.

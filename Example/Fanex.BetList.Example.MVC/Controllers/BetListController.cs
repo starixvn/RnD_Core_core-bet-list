@@ -1047,7 +1047,7 @@
             var betTypes = _dataService.QueryBetTypes(2701, 2702, 2703, 2704, 2705, 2706, 2707, 2799, 2801, 2802, 2803, 2804, 2805, 2806, 2807, 2808, 2809, 2811, 2812, 2813);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/BetRadarVS2.xls";
+            DataSourcePath = "~/App_Data/BetRadarVirtualSports.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 

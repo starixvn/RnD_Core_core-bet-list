@@ -52,7 +52,7 @@
             {
                 MapIdToBaseId(betTypeId, InspireVirtualRacingBetTypes.Win);
             }
-
+            MapIdToBaseId(BetRadarVirtualSoccerBetTypes.VSTournament, BetTypes.SabaLuckySpin);
             MapIdToBaseId(BetRadarSharedBetTypes.MixParlay, BetTypes.MixParlay);
             MapIdToBaseId(BetRadarVirtualBasketballBetTypes.HomeTeamOverUnder, InspireVirtualRacingBetTypes.Win);
             MapIdToBaseId(BetRadarVirtualBasketballBetTypes.AwayTeamOverUnder, InspireVirtualRacingBetTypes.Win);
