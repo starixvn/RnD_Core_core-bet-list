@@ -493,7 +493,22 @@
 
             return BetListView(model);
         }
-        public ActionResult Playtech(BetListData model = null)
+
+        public ActionResult PlaytechRNG(BetListData model = null)
+        {
+
+            var betTypes = _dataService.QueryBetTypes(15600);
+
+            DataSourcePath = "~/App_Data/Playtech.xls";
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            model = GetDataSource(model, DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
+        public ActionResult PlaytechLive(BetListData model = null)
         {
 
             var betTypes = _dataService.QueryBetTypes(15600);
@@ -1032,7 +1047,7 @@
             var betTypes = _dataService.QueryBetTypes(2701, 2702, 2703, 2704, 2705, 2706, 2707, 2799, 2801, 2802, 2803, 2804, 2805, 2806, 2807, 2808, 2809, 2811, 2812, 2813);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/BetRadarVS2.xls";
+            DataSourcePath = "~/App_Data/BetRadarVirtualSports.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 

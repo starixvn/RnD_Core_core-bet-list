@@ -1,12 +1,10 @@
-namespace Fanex.BetList.MaxGame.Tests.Builder.ChoiceBuilder
+namespace Fanex.BetList.RNGCore.Tests.Builder.ChoiceBuilder
 {
-    using System;
-    using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Builder.ChoiceBuilder;
-    using Fanex.BetList.Core.Constants;
     using Fanex.BetList.Core.Entities;
     using NSubstitute;
     using NUnit.Framework;
+    using System;
 
     public class ChoiceRNGTests
     {

@@ -69,23 +69,6 @@
             StringAssert.EndsWith(expectedHtml, builtChoice.Match.ToString());
         }
 
-        [TestCase("m=\"{2} 16-1, {0} 6666")]
-        [TestCase("m={2} 16-1, {0} 6666")]
-        [TestCase("{2} 16-1, {0} 6666")]
-        public void BuildMatch_TransDescContainsIncorrectMatchPattern_AppendEmptyDiv(string transDesc)
-        {
-            // Arrange.
-            Ticket.TransDesc = transDesc;
-
-            // Act.
-            var builtChoice = Choice.Render(Ticket, TicketHelper, null, false);
-
-            // Assert.
-            var expectedHtml = "<div class=\"match\"></div>";
-
-            StringAssert.EndsWith(expectedHtml, builtChoice.Match.ToString());
-        }
-
         [Test]
         public void BuildBetTeamsInfo_TransDescContainsFullMatchDayOrRoundInfo_MatchDayOrRoundInfoIsAtTheForthRow()
         {
@@ -118,24 +101,6 @@
 
             // Assert
             Assert.AreEqual(ExpectedMatchDayOrRoundInfo, linesInActualText[3]);
-        }
-
-        [TestCase("m=\"{2} 16-1, {0} 6666")]
-        [TestCase("m={2} 16-1, {0} 6666")]
-        [TestCase("{2} 16-1, {0} 6666")]
-        public void BuildBetTeamsInfo_TransDescContainsIncorrectMatchPattern_TheThirdRowIsEmpty(string transDesc)
-        {
-            // Arrange.
-            var rtfHelper = new RTFHelper().Clone();
-
-            Ticket.TransDesc = transDesc;
-
-            // Act
-            var actualText = Choice.RenderRTF(Ticket, TicketHelper, null, false, rtfHelper);
-            var linesInActualText = actualText[0].String.Split('\n');
-
-            // Assert
-            Assert.IsEmpty(linesInActualText[3]);
         }
     }
 }

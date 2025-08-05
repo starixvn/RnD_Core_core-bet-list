@@ -1,7 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Utils;
+    using Fanex.BetList.Core.Entities;    
     using Fanex.BetList.Core.Utils.TicketExt;
 
     public class Status12500 : StatusRNG

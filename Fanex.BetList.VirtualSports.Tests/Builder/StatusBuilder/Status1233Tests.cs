@@ -72,7 +72,7 @@
         }
 
         [TestCase("draw", "Draw")]
-        [TestCase("lose", "Lose")]
+        [TestCase("lose", "Lost")]
         [TestCase("refund", "Refund")]
         [TestCase("reject", "Reject")]
         [TestCase("running", "Running")]

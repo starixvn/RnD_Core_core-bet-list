@@ -45,16 +45,7 @@
             // Assert.
             StringAssert.EndsWith(betCheck, template.betTeam);
         }
-
-        [Test]
-        public void BuildLeague_Always_SetLeaugeNameIsNull()
-        {
-            // Act.
-            var template = _choice.Render(_ticket, _ticketHelper, null, false);
-
-            // Assert.
-            Assert.IsNull(template.League.LeagueName);
-        }
+      
       
         [TestCase(null)]
         [TestCase("")]

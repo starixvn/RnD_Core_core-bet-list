@@ -116,7 +116,7 @@
       <HintPath>..\..\packages\Fanex.BetList.ColossusBets.2.0.0-net5-04\lib\net461\Fanex.BetList.ColossusBets.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.BetList.Core, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Fanex.BetList.Core.3.0.5.3\lib\net461\Fanex.BetList.Core.dll</HintPath>
+      <HintPath>..\..\packages\Fanex.BetList.Core.3.0.5.4-jackpot-01\lib\net461\Fanex.BetList.Core.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.BetList.Core.RemotingRef, Version=1.1.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.BetList.Core.RemotingRef.2.0.0.2\lib\net461\Fanex.BetList.Core.RemotingRef.dll</HintPath>
@@ -216,8 +216,8 @@
     <Reference Include="Fanex.BetList.PlayerTips, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.BetList.PlayerTips.2.0.0-net5-01\lib\net461\Fanex.BetList.PlayerTips.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.BetList.Playtech, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Fanex.BetList.Playtech.1.0.0-beta-01\lib\net461\Fanex.BetList.Playtech.dll</HintPath>
+    <Reference Include="Fanex.BetList.Playtech, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.BetList.Playtech.1.0.1-jackpot-02\lib\net461\Fanex.BetList.Playtech.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.BetList.PP, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.BetList.PP.2.0.1.4-xlsx-01\lib\net461\Fanex.BetList.PP.dll</HintPath>
@@ -230,8 +230,8 @@
       <HintPath>..\..\packages\Fanex.BetList.RnGCasino.2.0.1.4-xlsx-01\lib\net461\Fanex.BetList.RnGCasino.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fanex.BetList.RNGCore, Version=1.0.8.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Fanex.BetList.RNGCore.1.0.8-gpi-01\lib\net461\Fanex.BetList.RNGCore.dll</HintPath>
+    <Reference Include="Fanex.BetList.RNGCore, Version=1.0.9.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.BetList.RNGCore.1.0.9.2-jackpot-01\lib\net461\Fanex.BetList.RNGCore.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.BetList.RNGWar, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.BetList.RNGWar.2.0.1-beta-03\lib\net461\Fanex.BetList.RNGWar.dll</HintPath>
@@ -752,6 +752,9 @@
     <Content Include="App_Data\SabaKeno.xls" />
     <Content Include="App_Data\AIClot.xls" />
     <Content Include="App_Data\RNGProduct.xls" />
+    <Content Include="App_Data\GPILC.xls" />
+    <Content Include="App_Data\PlaytechLive.xls" />
+    <Content Include="App_Data\WCasino.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />

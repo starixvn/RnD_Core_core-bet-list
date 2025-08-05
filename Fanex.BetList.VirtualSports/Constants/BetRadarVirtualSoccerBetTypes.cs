@@ -11,5 +11,8 @@
         public const int CorrectScore = 2707;
         public const int Win = 2770;
         public const int Place = 2771;
+
+        public const int VSTournament = 2798;
     }
 }
+

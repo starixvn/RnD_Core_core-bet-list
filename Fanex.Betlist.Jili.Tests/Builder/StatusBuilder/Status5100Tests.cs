@@ -19,6 +19,7 @@ namespace Fanex.BetList.Jili.Tests.Builder.StatusBuilder
             _ticket = Substitute.For<ITicket>();
             _ticketHelper = Substitute.For<ITicketHelper>();
 
+            _ticket.TransDesc = "TransDesc";
             _ticket.BetCheck = "BetCheck";
             _ticket.CustId = 456;
             _ticket.Status = BetStatus.Won;
@@ -71,7 +72,7 @@ namespace Fanex.BetList.Jili.Tests.Builder.StatusBuilder
             var template = _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            var expectedParameters = $"20, '{_ticket.BetTeam}', {_ticket.CustId}, '{_ticket.BetCheck}', '{_ticket.SiteId}'";
+            var expectedParameters = $"20, 'betteam', 456, 'BetCheck', 'siteid', 'TransDesc'";
 
             Assert.AreEqual(expectedParameters, template.StatusResult.betId);
         }
