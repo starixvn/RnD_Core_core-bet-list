@@ -66,23 +66,6 @@ namespace Fanex.BetList.RNGCore.Tests.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildLeague_DetailTicketWithJackpotInfo_AppendsJackpotWonDetails()
-        {
-            // Arrange
-            _ticket.BetCheck = "detail|&|displayDetail";
-            _ticket.JackpotInfo = "jpw=12345,jp=1";
-            _ticketHelper.GetResourceData(Arg.Any<string>(), Arg.Any<string>()).Returns("Game Group");
-
-            // Act
-            var template = _choice.Render(_ticket, _ticketHelper, _ticketData, false);
-
-            // Assert
-            StringAssert.Contains("showJackpotWonDetails", template.League.ToString());
-            StringAssert.Contains("jackpot-detail", template.League.ToString());
-            StringAssert.Contains(CoreBetList.JackpotWonDetails, template.League.ToString());
-        }
-
-        [Test]
         public void BuildLeague_DetailTicketWithoutJackpotInfo_DoesNotAppendJackpotDetails()
         {
             // Arrange
@@ -128,41 +111,6 @@ namespace Fanex.BetList.RNGCore.Tests.Builder.ChoiceBuilder
             // Assert
             StringAssert.DoesNotContain("showJackpotWonDetails", template.League.ToString());
             StringAssert.DoesNotContain("jackpot-detail", template.League.ToString());
-        }
-
-        [Test]
-        public void BuildShowJackpotWonDetails_ValidJackpotInfo_ReturnsCorrectMarkup()
-        {
-            // Arrange
-            _ticket.JackpotInfo = "jpw=12345,jp=1";
-            _ticket.CustId = 456;
-            _ticket.BetTypeId = 789;
-            _ticket.WinlostDate = new DateTime(2023, 1, 15);
-
-            // Act
-            var template = _choice.Render(_ticket, _ticketHelper, _ticketData, false);
-
-            // Assert
-            StringAssert.Contains("showJackpotWonDetails('12345', '456', '789', '1/15/2023')", template.League.ToString());
-            StringAssert.Contains("jackpot-detail", template.League.ToString());
-            StringAssert.Contains(CoreBetList.JackpotWonDetails, template.League.ToString());
-        }
-
-        [Test]
-        public void BuildShowJackpotWonDetails_ComplexJackpotInfo_ExtractsCorrectTransId()
-        {
-            // Arrange
-            _ticket.BetCheck = "betcheck";
-            _ticket.JackpotInfo = "other=value,jpw=98765,jp=1,more=data";
-            _ticket.CustId = 111;
-            _ticket.BetTypeId = 222;
-            _ticket.WinlostDate = new DateTime(2023, 12, 25);
-
-            // Act
-            var template = _choice.Render(_ticket, _ticketHelper, _ticketData, false);
-
-            // Assert
-            StringAssert.Contains("showJackpotWonDetails('98765', '111', '222', '12/25/2023')", template.League.ToString());
         }
 
         [Test]

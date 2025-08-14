@@ -2,10 +2,10 @@
 
   <PropertyGroup>
     <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
-    <Version>1.0.9.2-jackpot-05</Version>
-    <InfomationalVersion>1.0.9.2</InfomationalVersion>
+    <Version>1.0.9.3-ss-01</Version>
+    <InfomationalVersion>1.0.9.3</InfomationalVersion>
     <PackageReleaseNotes>
-      - Implement Jackpot + Contribution for RNG product (#234576)<br/>
+      - Support SmartSoft (#235780)<br/>
     </PackageReleaseNotes>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>   
     <Description>RNG core package</Description>

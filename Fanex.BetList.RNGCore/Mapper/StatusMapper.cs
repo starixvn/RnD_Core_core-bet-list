@@ -6,6 +6,8 @@
     {
         public StatusMapper()
         {
+            StatusForSmartSoft();
+
             StatusForHotDog();
 
             StatusForOdinGaming();
@@ -17,6 +19,14 @@
             StatusForClotPlaying();
 
             StatusForGPILottery();
+        }
+
+        private void StatusForSmartSoft()
+        {
+            for (var betType = RNGBetTypes.SmartSoftMin + 1; betType <= RNGBetTypes.SmartSoftMax; betType++)
+            {
+                MapIdToBaseId(betType, RNGBetTypes.SmartSoftMin);
+            }
         }
 
         private void StatusForOdinGaming()
