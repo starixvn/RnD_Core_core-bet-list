@@ -14,6 +14,7 @@
             RegisterMultipleOddsTypesForPHAIO5();
             RegisterMultipleOddsTypesForVolleyballAIO();
             RegisterMultipleOddsTypesForBaseball();
+            RegisterMultipleOddsTypesForBasketball();
         }
 
         private void MapForScoreBox()
@@ -104,6 +105,27 @@
             ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.VolleyballSetXMoneyline);
             ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.SetXPointsHandicap);
             ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.SetXTotalPointsOverUnder);
+        }
+
+        private static void RegisterMultipleOddsTypesForBasketball()
+        {
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.PlayerPointsOverUnder);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.PlayerAssistsOverUnder);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.PlayerReboundsOverUnder);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.Player3PTFGMadeOverUnder);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.PlayerBlocksOverUnder);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.PlayerStealsOverUnder);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.PlayerPointsReboundsAssistsOverUnder);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.PlayerReboundsAssistsOverUnder);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.PlayerPointsReboundsOverUnder);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.PlayerStealsBlocksOverUnder);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.PlayerPerformanceDoublesAndOthers);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.PlayerPerformanceTriplesAndOthers);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.PlayerTripleDouble);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.MostPointsScored);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.MostRebounds);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.MostAssists);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.MostSteals);
         }
     }
 }

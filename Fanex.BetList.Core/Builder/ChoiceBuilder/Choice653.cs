@@ -1,0 +1,21 @@
+﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
+{
+    using Entities;
+    using System.Collections.Generic;
+
+    public class Choice653 : Choice1
+    {
+        protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
+        {
+            var teamName = ticket.TransDesc != null ? $"{ticketHelper.GetTeamNameById(ticket.TransDesc)}" : string.Empty;
+            var betoption = $"<span class=\"favorite\">{ticket.BetTeam}</span>";
+            Template.betTeam = $"{teamName} {betoption}";
+        }
+
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            Template.betTeamClassName = Underdog;
+            Template.Handicap.handicap = null;
+        }
+    }
+}

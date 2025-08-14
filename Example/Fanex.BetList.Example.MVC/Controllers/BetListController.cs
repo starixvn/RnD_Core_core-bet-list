@@ -8,12 +8,13 @@
     using Fanex.BetList.Example.MVC.Models;
     using Fanex.BetList.Example.MVC.Services;
     using Fanex.BetList.Example.MVC.ViewModel;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Rendering;
     using System.Collections.Generic;
     using System.Globalization;
     using System.IO;
     using System.Linq;
     using System.Threading;
-    using System.Web.Mvc;
 
     public class BetListController : Controller
     {
@@ -22,20 +23,36 @@
 
         private string DataSourcePath
         {
-            get { return Session["DataSourcePath"].ToString(); }
-            set { Session["DataSourcePath"] = value; }
+            get { return HttpContext.Session.GetString("DataSourcePath") ?? string.Empty; }
+            set { HttpContext.Session.SetString("DataSourcePath", value); }
         }
 
-        public BetListController()
+        public BetListController(DataService dataService)
         {
-            _dataService = new DataService();
+            _dataService = dataService;
+        }
+
+        public ActionResult Basketball_Player(BetListData model = null)
+        {
+            var bettypeIds = new int[50];
+            for (var i = 0; i <= 29; i++)
+            {
+                bettypeIds[i] = i + 618;
+            }
+            var betTypes = _dataService.QueryBetTypes(bettypeIds);
+
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            DataSourcePath = "App_Data/BasketballAIO_Player.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+
+            return BetListView(model);
         }
 
         public ActionResult All(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes();
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/BetListDummyData.xls";
+            DataSourcePath = "App_Data/BetListDummyData.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -59,7 +76,7 @@
             var betTypes = _dataService.QueryBetTypes(12300, 12301);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/RNGProduct.xls";
+            DataSourcePath = "App_Data/RNGProduct.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -71,7 +88,7 @@
             var betTypes = _dataService.QueryBetTypes(12300,12301);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/SabaKeno.xls";
+            DataSourcePath = "App_Data/SabaKeno.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -82,7 +99,7 @@
         {
             var betTypes = _dataService.QueryBetTypes();
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/VoucherId.xls";
+            DataSourcePath = "App_Data/VoucherId.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -101,7 +118,7 @@
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/VirtualSports5.xls";
+            DataSourcePath = "App_Data/VirtualSports5.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -120,7 +137,7 @@
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/BaseballAIO.xls";
+            DataSourcePath = "App_Data/BaseballAIO.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -132,7 +149,7 @@
             var betTypes = _dataService.QueryBetTypes(29);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/ParlayBoost.xls";
+            DataSourcePath = "App_Data/ParlayBoost.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -144,7 +161,7 @@
             var betTypes = _dataService.QueryBetTypes(10801, 10802);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/SabaxD.xls";
+            DataSourcePath = "App_Data/SabaxD.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -156,7 +173,7 @@
             var betTypes = _dataService.QueryBetTypes(10801, 10802);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/SabaxD.xls";
+            DataSourcePath = "App_Data/SabaxD.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -168,7 +185,7 @@
             var betTypes = _dataService.QueryBetTypes(5302, 5303, 5304);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/VirtualSports3.xls";
+            DataSourcePath = "App_Data/VirtualSports3.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -187,7 +204,7 @@
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/VirtualSports4.xls";
+            DataSourcePath = "App_Data/VirtualSports4.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -199,7 +216,7 @@
 
             var betTypes = _dataService.QueryBetTypes(8700);
 
-            DataSourcePath = "~/App_Data/PlayerTips.xls";
+            DataSourcePath = "App_Data/PlayerTips.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
@@ -219,7 +236,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
-            DataSourcePath = "~/App_Data/ESports4.xls";
+            DataSourcePath = "App_Data/ESports4.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
@@ -233,7 +250,7 @@
 
             var betTypes = _dataService.QueryBetTypes(7901, 7902);
 
-            DataSourcePath = "~/App_Data/Bitcoin.xls";
+            DataSourcePath = "App_Data/Bitcoin.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
@@ -247,7 +264,7 @@
 
             var betTypes = _dataService.QueryBetTypes(3802, 3820, 3829, 3898, 3899);
 
-            DataSourcePath = "~/App_Data/VGaming.xls";
+            DataSourcePath = "App_Data/VGaming.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
@@ -267,7 +284,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
-            DataSourcePath = "~/App_Data/Habanero.xls";
+            DataSourcePath = "App_Data/Habanero.xls";
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
             model.DataFilePath = DataSourcePath;
@@ -286,7 +303,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
-            DataSourcePath = "~/App_Data/CG.xls";
+            DataSourcePath = "App_Data/CG.xls";
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
             model.DataFilePath = DataSourcePath;
@@ -305,7 +322,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
-            DataSourcePath = "~/App_Data/AdvantPlay.xls";
+            DataSourcePath = "App_Data/AdvantPlay.xls";
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
             model.DataFilePath = DataSourcePath;
@@ -324,7 +341,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
-            DataSourcePath = "~/App_Data/AdvantPlayMini.xls";
+            DataSourcePath = "App_Data/AdvantPlayMini.xls";
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
             model.DataFilePath = DataSourcePath;
@@ -342,7 +359,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
-            DataSourcePath = "~/App_Data/CricketAIOP1.xls";
+            DataSourcePath = "App_Data/CricketAIOP1.xls";
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
             model.DataFilePath = DataSourcePath;
@@ -361,7 +378,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
-            DataSourcePath = "~/App_Data/CricketAIOP2.xls";
+            DataSourcePath = "App_Data/CricketAIOP2.xls";
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
             model.DataFilePath = DataSourcePath;
@@ -381,7 +398,7 @@
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
 
-            DataSourcePath = $"~/App_Data/SportsLottery.xls";
+            DataSourcePath = $"App_Data/SportsLottery.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -399,7 +416,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
-            DataSourcePath = "~/App_Data/MaxGame.xls";
+            DataSourcePath = "App_Data/MaxGame.xls";
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
             model.DataFilePath = DataSourcePath;
@@ -418,7 +435,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
-            DataSourcePath = "~/App_Data/Happy5LinkedGames.xls";
+            DataSourcePath = "App_Data/Happy5LinkedGames.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
@@ -438,7 +455,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
-            DataSourcePath = "~/App_Data/LeapGaming.xls";
+            DataSourcePath = "App_Data/LeapGaming.xls";
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
             model.DataFilePath = DataSourcePath;
@@ -458,7 +475,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
-            DataSourcePath = "~/App_Data/GDG.xls";
+            DataSourcePath = "App_Data/GDG.xls";
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
             model.DataFilePath = DataSourcePath;
@@ -468,7 +485,7 @@
 
         public ActionResult BG(BetListData model = null)
         {
-            DataSourcePath = "~/App_Data/BG.xls";
+            DataSourcePath = "App_Data/BG.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(_dataService.QueryBetTypes(29));
             model = GetDataSource(model, DataSourcePath);
@@ -479,7 +496,7 @@
 
         public ActionResult GodOfFortune(BetListData model = null)
         {
-            DataSourcePath = "~/App_Data/GodOfFurtune.xls";
+            DataSourcePath = "App_Data/GodOfFurtune.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(_dataService.QueryBetTypes(29));
             model = GetDataSource(model, DataSourcePath);
@@ -498,7 +515,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
-            DataSourcePath = "~/App_Data/WM.xls";
+            DataSourcePath = "App_Data/WM.xls";
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
             model.DataFilePath = DataSourcePath;
@@ -511,7 +528,7 @@
 
             var betTypes = _dataService.QueryBetTypes(15600);
 
-            DataSourcePath = "~/App_Data/Playtech.xls";
+            DataSourcePath = "App_Data/Playtech.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
@@ -525,7 +542,7 @@
 
             var betTypes = _dataService.QueryBetTypes(15600);
 
-            DataSourcePath = "~/App_Data/PlaytechLive.xls";
+            DataSourcePath = "App_Data/PlaytechLive.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
@@ -539,7 +556,7 @@
             var betTypes = _dataService.QueryBetTypes();
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
 
-            DataSourcePath = "~/App_Data/MyanmarOdds.xls";
+            DataSourcePath = "App_Data/MyanmarOdds.xls";
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
             model.DataFilePath = DataSourcePath;
@@ -552,7 +569,7 @@
             var betTypes = _dataService.QueryBetTypes();
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
 
-            DataSourcePath = "~/App_Data/TimeMachine.xls";
+            DataSourcePath = "App_Data/TimeMachine.xls";
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
             model.DataFilePath = DataSourcePath;
@@ -571,7 +588,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
-            DataSourcePath = "~/App_Data/Joker.xls";
+            DataSourcePath = "App_Data/Joker.xls";
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
             model.DataFilePath = DataSourcePath;
@@ -590,7 +607,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
-            DataSourcePath = "~/App_Data/PGSoft.xls";
+            DataSourcePath = "App_Data/PGSoft.xls";
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
             model.DataFilePath = DataSourcePath;
@@ -608,7 +625,7 @@
             var betTypes = _dataService.QueryBetTypes(bettypeIds);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/BasketballAIOP2.xls";
+            DataSourcePath = "App_Data/BasketballAIOP2.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
 
             return BetListView(model);
@@ -617,7 +634,7 @@
         public ActionResult LicenseeId(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes();
-            DataSourcePath = "~/App_Data/LicenseeId.xls";
+            DataSourcePath = "App_Data/LicenseeId.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, sourcePath: DataSourcePath);
@@ -629,7 +646,7 @@
         public ActionResult RNGWAR(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(5500);
-            DataSourcePath = "~/App_Data/RNGWAR.xls";
+            DataSourcePath = "App_Data/RNGWAR.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, sourcePath: DataSourcePath);
@@ -641,7 +658,7 @@
         public ActionResult BBIN(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(3300);
-            DataSourcePath = "~/App_Data/BBIN.xls";
+            DataSourcePath = "App_Data/BBIN.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, sourcePath: DataSourcePath);
@@ -652,7 +669,7 @@
 
         public ActionResult DelayPayout(BetListData model = null)
         {
-            DataSourcePath = "~/App_Data/DelayPayout.xls";
+            DataSourcePath = "App_Data/DelayPayout.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(_dataService.QueryBetTypes(1, 2, 3));
             model = GetDataSource(model, DataSourcePath);
@@ -664,7 +681,7 @@
         public ActionResult IONCasino(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(5601, 5602, 5603, 5604);
-            DataSourcePath = "~/App_Data/IONCasino.xls";
+            DataSourcePath = "App_Data/IONCasino.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, sourcePath: DataSourcePath);
@@ -676,7 +693,7 @@
         public ActionResult GTCasino(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(3201, 3202, 3203, 3204, 3205, 3206);
-            DataSourcePath = "~/App_Data/GTCasino.xls";
+            DataSourcePath = "App_Data/GTCasino.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, sourcePath: DataSourcePath);
@@ -697,7 +714,7 @@
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
 
-            DataSourcePath = $"~/App_Data/{nameof(TableGames)}.xls";
+            DataSourcePath = $"App_Data/{nameof(TableGames)}.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -707,7 +724,7 @@
         public ActionResult SAGaming(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(3001, 3002, 3003, 3004, 3005, 3006, 3007);
-            DataSourcePath = "~/App_Data/SAGaming.xls";
+            DataSourcePath = "App_Data/SAGaming.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, sourcePath: DataSourcePath);
@@ -720,7 +737,7 @@
         {
             var betTypes = _dataService.QueryBetTypes(5001, 5002, 5003, 5004, 5005, 5006, 5007);
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/Indo4D.xls";
+            DataSourcePath = "App_Data/Indo4D.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -732,7 +749,7 @@
 
             var betTypes = _dataService.QueryBetTypes(1612, 1634, 1640, 1698, 1699);
 
-            DataSourcePath = "~/App_Data/SabaClub.xls";
+            DataSourcePath = "App_Data/SabaClub.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
@@ -743,7 +760,7 @@
         public ActionResult SexyGaming(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(3101, 3102, 3103, 3104, 3105, 3149, 3150);
-            DataSourcePath = "~/App_Data/SexyGaming.xls";
+            DataSourcePath = "App_Data/SexyGaming.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, sourcePath: DataSourcePath);
@@ -756,7 +773,7 @@
         {
             var betTypes = _dataService.QueryBetTypes(133, 134, 135, 140, 141, 145, 146, 147, 148, 149, 150, 151, 152);
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/BetListDummyData.xls";
+            DataSourcePath = "App_Data/BetListDummyData.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -767,7 +784,7 @@
         {
             var betTypes = _dataService.QueryBetTypes(128, 129, 130, 131, 136, 137, 138, 139, 143, 144, 14, 127, 16, 6, 126);
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/11NewBetTypeData.xls";
+            DataSourcePath = "App_Data/11NewBetTypeData.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -794,7 +811,7 @@
             }
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/60NewBetTypeBetRadarData.xls";
+            DataSourcePath = "App_Data/60NewBetTypeBetRadarData.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -806,7 +823,7 @@
             var betTypes = _dataService.QueryBetTypes(153, 154, 155, 156, 1301, 1302, 1303, 1305, 1306, 1311, 1312, 1316, 1317, 1318, 1324);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/SportingSolutionBetTypesData.xls";
+            DataSourcePath = "App_Data/SportingSolutionBetTypesData.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -818,7 +835,7 @@
             var betTypes = _dataService.QueryBetTypes(1701, 1702, 1703, 1704, 1705);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/GoldDeluxe.xls";
+            DataSourcePath = "App_Data/GoldDeluxe.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
 
             return BetListView(model);
@@ -829,7 +846,7 @@
             var betTypes = _dataService.QueryBetTypes(801, 803, 804, 805, 806);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/MetricGaming.xls";
+            DataSourcePath = "App_Data/MetricGaming.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -839,7 +856,7 @@
         public ActionResult Allbet(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(2401, 2402, 2403, 2404, 2405, 2406);
-            DataSourcePath = "~/App_Data/Allbet.xls";
+            DataSourcePath = "App_Data/Allbet.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, sourcePath: DataSourcePath);
@@ -852,7 +869,7 @@
         {
             var betTypes = _dataService.QueryBetTypes(1801, 1802, 1803, 1804);
 
-            DataSourcePath = "~/App_Data/AGCasino.xls";
+            DataSourcePath = "App_Data/AGCasino.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, sourcePath: DataSourcePath);
@@ -866,7 +883,7 @@
             var betTypes = _dataService.QueryBetTypes(18000, 18001, 18002, 18003, 18004, 18005);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/ColossusBets.xls";
+            DataSourcePath = "App_Data/ColossusBets.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -875,7 +892,7 @@
 
         public ActionResult ColosussBetsDetails()
         {
-            var betListData = GetDataSource(new BetListData(), sourcePath: "~/App_Data/ColossusBetsDetails.xls");
+            var betListData = GetDataSource(new BetListData(), sourcePath: "App_Data/ColossusBetsDetails.xls");
 
             return View(betListData);
         }
@@ -884,7 +901,7 @@
         {
             ViewBag.BetTypes = new List<SelectListItem>();
 
-            DataSourcePath = "~/App_Data/GlobalGaming.xls";
+            DataSourcePath = "App_Data/GlobalGaming.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -896,7 +913,7 @@
             var betTypes = _dataService.QueryBetTypes(901, 902);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/BetTrade.xls";
+            DataSourcePath = "App_Data/BetTrade.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -908,7 +925,7 @@
             var betTypes = _dataService.QueryBetTypes(4, 30, 151, 159, 161, 162, 171, 191, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 461, 462, 463, 464);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/PHAllInOne.xls";
+            DataSourcePath = "App_Data/PHAllInOne.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -924,7 +941,7 @@
             }
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/PHAllInOneP2.xls";
+            DataSourcePath = "App_Data/PHAllInOneP2.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -934,7 +951,7 @@
         public ActionResult PHAllInOneP2b(BetListData model = null)
         {
             ViewBag.BetTypes = new List<SelectListItem>();
-            DataSourcePath = "~/App_Data/PHAllInOneP2b.xls";
+            DataSourcePath = "App_Data/PHAllInOneP2b.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -943,7 +960,7 @@
 
         public ActionResult RnGCasino(BetListData model = null)
         {
-            DataSourcePath = "~/App_Data/RnGCasinoSingleWallet.xls";
+            DataSourcePath = "App_Data/RnGCasinoSingleWallet.xls";
 
             ViewBag.BetTypes = CreateRNGDropDown();
             model = GetDataSource(model, DataSourcePath);
@@ -976,7 +993,7 @@
 
         public ActionResult FastMarkets(BetListData model = null)
         {
-            DataSourcePath = "~/App_Data/FastMarkets.xls";
+            DataSourcePath = "App_Data/FastMarkets.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(_dataService.QueryBetTypes(221, 222, 223, 224, 225));
             model = GetDataSource(model, DataSourcePath);
@@ -987,7 +1004,7 @@
 
         public ActionResult Voidbridge(BetListData model = null)
         {
-            DataSourcePath = "~/App_Data/VoidBridge.xls";
+            DataSourcePath = "App_Data/VoidBridge.xls";
 
             ViewBag.BetTypes = new List<SelectListItem>();
             model = GetDataSource(model, DataSourcePath);
@@ -1001,7 +1018,7 @@
             var betTypes = _dataService.QueryBetTypes(81, 82, 83, 84, 85, 86, 87, 88, 89, 90);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/NumberGame.xls";
+            DataSourcePath = "App_Data/NumberGame.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
 
             return BetListView(model);
@@ -1012,7 +1029,7 @@
             var betTypes = _dataService.QueryBetTypes();
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/LiveSports.xls";
+            DataSourcePath = "App_Data/LiveSports.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -1024,7 +1041,7 @@
             var betTypes = _dataService.QueryBetTypes(1201, 1203, 1204, 1205, 1206, 1220, 1224, 1231, 1232, 1233, 1235, 1236);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/VirtualSports.xls";
+            DataSourcePath = "App_Data/VirtualSports.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -1036,7 +1053,7 @@
             var betTypes = _dataService.QueryBetTypes(601, 602, 603, 604, 605, 606, 607, 608, 609, 610, 611, 612, 613, 614, 615, 616, 617);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/BasketballAIO.xls";
+            DataSourcePath = "App_Data/BasketballAIO.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
 
             return BetListView(model);
@@ -1047,7 +1064,7 @@
             var betTypes = _dataService.QueryBetTypes(911);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/CashOut.xls";
+            DataSourcePath = "App_Data/CashOut.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -1059,7 +1076,7 @@
             var betTypes = _dataService.QueryBetTypes(2701, 2702, 2703, 2704, 2705, 2706, 2707, 2799, 2801, 2802, 2803, 2804, 2805, 2806, 2807, 2808, 2809, 2811, 2812, 2813);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/BetRadarVirtualSports.xls";
+            DataSourcePath = "App_Data/BetRadarVirtualSports.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -1078,7 +1095,7 @@
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/KenoLottery.xls";
+            DataSourcePath = "App_Data/KenoLottery.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -1090,7 +1107,7 @@
             var betTypes = _dataService.QueryBetTypes(1501, 1515, 1516);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/Keno.xls";
+            DataSourcePath = "App_Data/Keno.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -1109,7 +1126,7 @@
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/PHAllInOneP3.xls";
+            DataSourcePath = "App_Data/PHAllInOneP3.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -1121,7 +1138,7 @@
             var betTypes = _dataService.QueryBetTypes();
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/BonusSystem.xls";
+            DataSourcePath = "App_Data/BonusSystem.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
 
             return BetListView(model);
@@ -1132,7 +1149,7 @@
             var betTypes = _dataService.QueryBetTypes(24, 410, 1224, 151, 143, 163, 144, 171, 172, 415, 186, 431, 408, 426, 601, 602, 608, 614);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/ChangingToHomeAway.xls";
+            DataSourcePath = "App_Data/ChangingToHomeAway.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -1144,7 +1161,7 @@
             var betTypes = _dataService.QueryBetTypes(16, 28, 453, 408, 171, 426, 416, 430, 177);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/CorrectTranslations.xls";
+            DataSourcePath = "App_Data/CorrectTranslations.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -1156,7 +1173,7 @@
             var betTypes = _dataService.QueryBetTypes(2178, 2319, 2919);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/OneRnGCasino.xls";
+            DataSourcePath = "App_Data/OneRnGCasino.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -1165,7 +1182,7 @@
 
         public ActionResult FastMarkets2(BetListData model = null)
         {
-            DataSourcePath = "~/App_Data/FastMarkets2.xls";
+            DataSourcePath = "App_Data/FastMarkets2.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(_dataService.QueryBetTypes(221, 222, 223, 224, 225, 226, 227));
             model = GetDataSource(model, DataSourcePath);
@@ -1176,7 +1193,7 @@
 
         public ActionResult Asian1x2HDP(BetListData model = null)
         {
-            DataSourcePath = "~/App_Data/Asian1x2HDP.xls";
+            DataSourcePath = "App_Data/Asian1x2HDP.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(_dataService.QueryBetTypes(465, 466));
             model = GetDataSource(model, DataSourcePath);
@@ -1187,7 +1204,7 @@
 
         public ActionResult UpcomingSports(BetListData model = null)
         {
-            DataSourcePath = "~/App_Data/UpcomingSports.xls";
+            DataSourcePath = "App_Data/UpcomingSports.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(_dataService.QueryBetTypes(1, 2, 3, 10, 20, 29));
             model = GetDataSource(model, DataSourcePath);
@@ -1207,7 +1224,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
-            DataSourcePath = "~/App_Data/PP.xls";
+            DataSourcePath = "App_Data/PP.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
@@ -1218,7 +1235,7 @@
 
         public ActionResult Parlay(BetListData model = null)
         {
-            DataSourcePath = "~/App_Data/Parlay.xls";
+            DataSourcePath = "App_Data/Parlay.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(_dataService.QueryBetTypes(29));
             model = GetDataSource(model, DataSourcePath);
@@ -1229,7 +1246,7 @@
 
         public ActionResult BetBuilder(BetListData model = null)
         {
-            DataSourcePath = "~/App_Data/BetBuilder.xls";
+            DataSourcePath = "App_Data/BetBuilder.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(_dataService.QueryBetTypes(38));
             model = GetDataSource(model, DataSourcePath);
@@ -1249,7 +1266,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
-            DataSourcePath = "~/App_Data/CardClub.xls";
+            DataSourcePath = "App_Data/CardClub.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
@@ -1260,7 +1277,7 @@
 
         public ActionResult SettlementStatus(BetListData model = null)
         {
-            DataSourcePath = "~/App_Data/SettlementStatus.xls";
+            DataSourcePath = "App_Data/SettlementStatus.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(_dataService.QueryBetTypes(1, 2, 3));
             model = GetDataSource(model, DataSourcePath);
@@ -1280,7 +1297,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
-            DataSourcePath = "~/App_Data/ESports2.xls";
+            DataSourcePath = "App_Data/ESports2.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
@@ -1300,7 +1317,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
-            DataSourcePath = "~/App_Data/Happy5.xls";
+            DataSourcePath = "App_Data/Happy5.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
@@ -1320,7 +1337,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
-            DataSourcePath = "~/App_Data/ESports2InPlay.xls";
+            DataSourcePath = "App_Data/ESports2InPlay.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
@@ -1341,7 +1358,7 @@
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
 
-            DataSourcePath = "~/App_Data/AbnormalBet.xls";
+            DataSourcePath = "App_Data/AbnormalBet.xls";
 
             model = GetDataSource(model, DataSourcePath);
             model.DataFilePath = DataSourcePath;
@@ -1354,7 +1371,7 @@
             var betTypes = _dataService.QueryBetTypes(467, 468, 469);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/PHAllInOneP4A.xls";
+            DataSourcePath = "App_Data/PHAllInOneP4A.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -1366,7 +1383,7 @@
             var betTypes = _dataService.QueryBetTypes();
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/RefundResult.xls";
+            DataSourcePath = "App_Data/RefundResult.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -1378,7 +1395,7 @@
             var betTypes = _dataService.QueryBetTypes();
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/RebateBonus.xls";
+            DataSourcePath = "App_Data/RebateBonus.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
 
             return BetListView(model);
@@ -1396,7 +1413,7 @@
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/PHAllInOneP4B.xls";
+            DataSourcePath = "App_Data/PHAllInOneP4B.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -1408,7 +1425,7 @@
             var betTypes = _dataService.QueryBetTypes();
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/NonPeakHoursPromotion.xls";
+            DataSourcePath = "App_Data/NonPeakHoursPromotion.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
 
             return BetListView(model);
@@ -1426,7 +1443,7 @@
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/BadmintonAIO.xls";
+            DataSourcePath = "App_Data/BadmintonAIO.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -1438,7 +1455,7 @@
             var betTypes = _dataService.QueryBetTypes(4601);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/VirtualGames.xls";
+            DataSourcePath = "App_Data/VirtualGames.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -1457,7 +1474,7 @@
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/PHAllInOneP5.xls";
+            DataSourcePath = "App_Data/PHAllInOneP5.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -1470,7 +1487,7 @@
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/PHAllInOneP51.xls";
+            DataSourcePath = "App_Data/PHAllInOneP51.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -1488,7 +1505,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
-            DataSourcePath = "~/App_Data/SG.xls";
+            DataSourcePath = "App_Data/SG.xls";
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
             model.DataFilePath = DataSourcePath;
@@ -1499,7 +1516,7 @@
         public ActionResult PragmaticLiveCasino(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(3701, 3702, 3703, 3704, 3705, 3706, 3707, 3708, 3709);
-            DataSourcePath = "~/App_Data/PragmaticLiveCasino.xls";
+            DataSourcePath = "App_Data/PragmaticLiveCasino.xls";
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, sourcePath: DataSourcePath);
@@ -1516,7 +1533,7 @@
             {
                 betTypeIds.Add(betTypeId);
             }
-            DataSourcePath = "~/App_Data/FGG.xls";
+            DataSourcePath = "App_Data/FGG.xls";
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
@@ -1537,7 +1554,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
-            DataSourcePath = "~/App_Data/VolleyballAIO.xls";
+            DataSourcePath = "App_Data/VolleyballAIO.xls";
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
             model.DataFilePath = DataSourcePath;
@@ -1556,7 +1573,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
-            DataSourcePath = "~/App_Data/Microgaming.xls";
+            DataSourcePath = "App_Data/Microgaming.xls";
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
             model.DataFilePath = DataSourcePath;
@@ -1574,7 +1591,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
-            DataSourcePath = "~/App_Data/SealEntertainment.xls";
+            DataSourcePath = "App_Data/SealEntertainment.xls";
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
             model.DataFilePath = DataSourcePath;
@@ -1593,7 +1610,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
-            DataSourcePath = "~/App_Data/Jili.xls";
+            DataSourcePath = "App_Data/Jili.xls";
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
             model.DataFilePath = DataSourcePath;
@@ -1612,7 +1629,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
-            DataSourcePath = "~/App_Data/YeeBet.xls";
+            DataSourcePath = "App_Data/YeeBet.xls";
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             model = GetDataSource(model, DataSourcePath);
             model.DataFilePath = DataSourcePath;
@@ -1626,7 +1643,7 @@
             var betTypes = _dataService.QueryBetTypes(bettypeIds);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/BasketballAIOP3.xls";
+            DataSourcePath = "App_Data/BasketballAIOP3.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
 
             return BetListView(model);
@@ -1636,7 +1653,7 @@
         {
             var betTypes = _dataService.QueryBetTypes();
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/MaxPayout.xls";
+            DataSourcePath = "App_Data/MaxPayout.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -1647,7 +1664,7 @@
         {
             var betTypes = _dataService.QueryBetTypes();
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/Live22.xls";
+            DataSourcePath = "App_Data/Live22.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -1665,7 +1682,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/WE.xls";
+            DataSourcePath = "App_Data/WE.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -1683,7 +1700,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/UUSlots.xls";
+            DataSourcePath = "App_Data/UUSlots.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -1700,7 +1717,7 @@
             }
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/FastSpin.xls";
+            DataSourcePath = "App_Data/FastSpin.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -1718,7 +1735,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/FACHAI.xls";
+            DataSourcePath = "App_Data/FACHAI.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -1735,7 +1752,7 @@
             }
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/Nextspin.xls";
+            DataSourcePath = "App_Data/Nextspin.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -1753,7 +1770,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/ONCasino.xls";
+            DataSourcePath = "App_Data/ONCasino.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -1771,7 +1788,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/GPILC.xls";
+            DataSourcePath = "App_Data/GPILC.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -1789,7 +1806,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/VS6Betby.xls";
+            DataSourcePath = "App_Data/VS6Betby.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -1807,7 +1824,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/ASKMESLOT.xls";
+            DataSourcePath = "App_Data/ASKMESLOT.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -1824,7 +1841,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/WCasino.xls";
+            DataSourcePath = "App_Data/WCasino.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -1841,7 +1858,7 @@
 
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
-            DataSourcePath = "~/App_Data/AIClot.xls";
+            DataSourcePath = "App_Data/AIClot.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -1894,7 +1911,7 @@
             return model;
         }
 
-        public void ExportExcel(BetListData query)
+        public FileResult ExportExcel(BetListData query)
         {
             var factory = new BetListExcelFactory();
             BetListExcelBuilder builder = factory.CreateBuilder();
@@ -1933,35 +1950,30 @@
                 var ms = new MemoryStream();
                 var resultWorkbook = builder.GetBetList();
                 resultWorkbook.Write(ms, true);
-                ExportToExcel(ms, "BetList.xls");
+                ms.Position = 0;
+                return ExportToExcel(ms, "BetList.xls");
             }
+            
+            return File(new byte[0], "application/vnd.ms-excel", "BetList.xls");
         }
 
-        private void ExportToExcel(MemoryStream excelStream, string fileName)
+        private FileResult ExportToExcel(MemoryStream excelStream, string fileName)
         {
-            Response.ContentType = "application/vnd.ms-excel";
-            Response.AddHeader("Content-Disposition", string.Format("attachment;filename={0}", fileName));
-            Response.Clear();
-            Response.BinaryWrite(excelStream.GetBuffer());
-            Response.End();
+            return File(excelStream.GetBuffer(), "application/vnd.ms-excel", fileName);
         }
 
-        public void DownloadExcelFile(string dataFilePath)
+        public FileResult DownloadExcelFile(string dataFilePath)
         {
-            FileInfo file = new FileInfo(Server.MapPath(dataFilePath));
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "App_Data", Path.GetFileName(dataFilePath));
+            var fileInfo = new FileInfo(filePath);
 
-            if (file.Exists)
+            if (fileInfo.Exists)
             {
-                Response.Clear();
-                Response.ClearHeaders();
-                Response.ClearContent();
-                Response.AddHeader("content-disposition", "attachment; filename=" + file.Name);
-                Response.AddHeader("Content-Type", "application/Excel");
-                Response.ContentType = "application/vnd.xls";
-                Response.AddHeader("Content-Length", file.Length.ToString());
-                Response.WriteFile(file.FullName);
-                Response.End();
+                var fileBytes = System.IO.File.ReadAllBytes(fileInfo.FullName);
+                return File(fileBytes, "application/vnd.xls", fileInfo.Name);
             }
+            
+            return File(new byte[0], "application/vnd.xls", "file_not_found.xls");
         }
     }
 }
