@@ -31,8 +31,9 @@ namespace Fanex.BetList.Playtech.Tests.Builder.ChoiceBuilder
             _ticket.Status = BetStatus.Won;
             _ticket.BetTypeId = 12500;
 
-            _ticketHelper.GetResourceData(Arg.Is(Choice12500.GameTypeRefId), Arg.Is(_ticket.BetTypeId.ToString())).Returns(FakeGameType);
-            _ticketHelper.GetResourceData(Arg.Is(Choice12500.GameGroundRefId), Arg.Is(_ticket.BetTypeId.ToString())).Returns(FakeGameGroup);
+            _ticketHelper.GetResourceData(Arg.Is("PT_RNG_GG"), Arg.Is(_ticket.BetTypeId.ToString())).Returns(FakeGameGroup);
+            _ticketHelper.GetBetTypeNameById(Arg.Is(_ticket.BetTypeId), Arg.Is(_ticket.RefNo), Arg.Is(_ticket.BetId), Arg.Is(_ticket.BetCheck))
+                .Returns(FakeGameType);
         }
 
         [Test]
@@ -42,7 +43,8 @@ namespace Fanex.BetList.Playtech.Tests.Builder.ChoiceBuilder
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            _ticketHelper.Received().GetResourceData(Arg.Is(Choice12500.GameTypeRefId), Arg.Is(_ticket.BetTypeId.ToString()));
+            _ticketHelper.Received().GetBetTypeNameById(Arg.Is(_ticket.BetTypeId), Arg.Is(_ticket.RefNo), Arg.Is(_ticket.BetId), Arg.Is(_ticket.BetCheck));
+            //_ticketHelper.Received().GetResourceData(Arg.Is(Choice12500.GameTypeRefId), Arg.Is(_ticket.BetTypeId.ToString()));
         }
 
         [Test]
@@ -95,7 +97,7 @@ namespace Fanex.BetList.Playtech.Tests.Builder.ChoiceBuilder
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            _ticketHelper.Received().GetResourceData(Arg.Is(Choice12500.GameGroundRefId), Arg.Is(_ticket.BetTypeId.ToString()));
+            _ticketHelper.Received().GetBetTypeNameById(Arg.Is(_ticket.BetTypeId), Arg.Is(_ticket.RefNo), Arg.Is(_ticket.BetId), Arg.Is(_ticket.BetCheck));
         }
 
         [Test]
