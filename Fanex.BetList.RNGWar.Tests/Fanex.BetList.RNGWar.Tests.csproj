@@ -16,7 +16,7 @@
       <PackageReference Include="TplNetCore" Version="1.0.0" />      
     </ItemGroup>
     <ItemGroup>            
-      <ProjectReference Include="..\Fanex.Betlist.RNGWar\Fanex.BetList.RNGWar.csproj" />            
+      <ProjectReference Include="..\Fanex.BetList.RNGWar\Fanex.BetList.RNGWar.csproj" />            
       <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj" />
     </ItemGroup>
 </Project>

@@ -18,6 +18,6 @@
     </ItemGroup>
     <ItemGroup>            
       <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj" />            
-      <ProjectReference Include="..\Fanex.Betlist.LeapGaming\Fanex.BetList.LeapGaming.csproj" /> 
+      <ProjectReference Include="..\Fanex.BetList.LeapGaming\Fanex.BetList.LeapGaming.csproj" /> 
     </ItemGroup>
 </Project>

@@ -17,6 +17,6 @@
     </ItemGroup>
     <ItemGroup>            
       <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj" />            
-      <ProjectReference Include="..\Fanex.Betlist.Keno\Fanex.BetList.Keno.csproj" /> 
+      <ProjectReference Include="..\Fanex.BetList.Keno\Fanex.BetList.Keno.csproj" /> 
     </ItemGroup>
 </Project>

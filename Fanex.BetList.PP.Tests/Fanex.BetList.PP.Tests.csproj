@@ -17,7 +17,7 @@
     </ItemGroup>
     <ItemGroup>            
       
-      <ProjectReference Include="..\Fanex.Betlist.PP\Fanex.BetList.PP.csproj" />            
+      <ProjectReference Include="..\Fanex.BetList.PP\Fanex.BetList.PP.csproj" />            
       
       <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj" /> 
     </ItemGroup>
