@@ -50,7 +50,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.ESports", "Fa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.FGG", "Fanex.BetList.FGG\Fanex.BetList.FGG.csproj", "{81277346-EFB8-4D7C-86C5-066E3AC9AF77}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.GTCasino", "Fanex.Betlist.GTCasino\Fanex.BetList.GTCasino.csproj", "{A09D061E-E8F9-4D10-A259-33A0F4F2EB76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.GTCasino", "Fanex.BetList.GTCasino\Fanex.BetList.GTCasino.csproj", "{A09D061E-E8F9-4D10-A259-33A0F4F2EB76}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.Habanero", "Fanex.BetList.Habanero\Fanex.BetList.Habanero.csproj", "{3F644FD7-011D-4946-A036-0DF5432BA967}"
 EndProject

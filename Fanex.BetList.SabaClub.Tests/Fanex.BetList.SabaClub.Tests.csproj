@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-      <OutputType>Library</OutputType>
-      <TargetFrameworks>net6.0</TargetFrameworks>
-      <Nullable>enable</Nullable>
-      <IsPackable>false</IsPackable>
-    </PropertyGroup>
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFrameworks>net6.0</TargetFrameworks>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
     <ItemGroup>      
       <PackageReference Include="HtmlAgilityPack" Version="1.11.43" />      
       <PackageReference Include="Microsoft.net.test.sdk" Version="17.2.0" />  
@@ -17,7 +17,7 @@
     </ItemGroup>
     <ItemGroup>            
       <ProjectReference Include="..\Fanex.BetList.SabaClub\Fanex.BetList.SabaClub.csproj" />            
-      <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj" />            
+      <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj" />
       <ProjectReference Include="..\Fanex.BetList.Core.UnitTest\Fanex.BetList.Core.UnitTest.csproj" />
     </ItemGroup>
 </Project>
