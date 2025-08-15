@@ -30,7 +30,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.BBIN", "Fanex
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.BBIN.Tests", "Fanex.BetList.BBIN.Tests\Fanex.BetList.BBIN.Tests.csproj", "{890E54B2-3A00-4317-BC7E-0A0B46015538}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.BG", "Fanex.Betlist.BG\Fanex.BetList.BG.csproj", "{45672BCB-C8AA-4E98-B615-A6943942B256}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.BG", "Fanex.BetList.BG\Fanex.BetList.BG.csproj", "{45672BCB-C8AA-4E98-B615-A6943942B256}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.BetList.BG.Test", "Fanex.BetList.BG.Test\Fanex.BetList.BG.Test.csproj", "{73FFDDF0-69C6-402B-A44E-5F106568DDEB}"
 EndProject

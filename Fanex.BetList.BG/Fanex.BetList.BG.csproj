@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <FileVersion>2.0.0.0</FileVersion>
+        <Version>2.0.0.0</Version>
+        <PackageReleaseNotes>Support .net Core for Betlist Core package (#175417)</PackageReleaseNotes>
+        <Description>BetList core package</Description>
+        <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+        <Authors>Nexcel Solutions</Authors>
+        <PackageTags>Fanex BetList</PackageTags>
+        <PackageProjectUrl>https://nexdev.net/projects/fanex-betlistcore/wiki/Core_Bet_List</PackageProjectUrl>
+    </PropertyGroup>
+    <ItemGroup>
+      <PackageReference Include="TplNetCore" Version="1.0.0" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj" />
+    </ItemGroup>
+</Project>
