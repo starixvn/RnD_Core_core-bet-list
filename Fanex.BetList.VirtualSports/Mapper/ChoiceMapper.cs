@@ -53,7 +53,7 @@
             
             MapIdToBaseId(BetbyBetTypes.FirstHalf1X2, BetbyBetTypes.FT1X2);
             MapIdToBaseId(BetbyBetTypes.FirstHalfDrawNoBet, BetbyBetTypes.MatchWinner);
-            MapIdToBaseId(BetbyBetTypes.FirstHalfHandicap, BetbyBetTypes.MatchWinner);
+            MapIdToBaseId(BetbyBetTypes.FirstHalfHandicap, BetbyBetTypes.Handicap);
             MapIdToBaseId(BetbyBetTypes.FirstHalfOverUnder, BetbyBetTypes.OverUnder);
             MapIdToBaseId(BetbyBetTypes.FirstHalfHomeTeamOverUnder, BetbyBetTypes.OverUnder);
             MapIdToBaseId(BetbyBetTypes.FirstHalfAwayTeamOverUnder, BetbyBetTypes.OverUnder);
