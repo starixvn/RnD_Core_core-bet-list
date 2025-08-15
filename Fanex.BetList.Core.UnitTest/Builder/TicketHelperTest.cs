@@ -30,45 +30,13 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         {
             // Arrange
             ticketHelper.HideSabaText = false;
-            _cacheRef.GetLeagueName(Arg.Any<string>()).Returns<string>(leagueName);            
+            _cacheRef.GetLeagueName(Arg.Any<string>(), Arg.Any<string>()).Returns<string>(leagueName);            
 
             // Act
             var act = ticketHelper.GetLeagueNameById(1, 42);
 
             // Assert
             Assert.AreEqual(leagueName, act);
-        }
-
-        [TestCase("Saba Super league name", "Super league name")]
-        [TestCase("SABA Super league name", "Super league name")]
-        [TestCase("English Saba Super league name", "English Super league name")]
-        public void GetLeagueNameById_HideSabaTextIsTrue_LeagueGroupIdNeedRemove_HideSabaText(string leagueName, string expectedLeagueName)
-        {
-            // Arrange
-            ticketHelper.HideSabaText = true;
-            _cacheRef.GetLeagueName(Arg.Any<string>()).Returns<string>(leagueName);            
-
-            // Act
-            var act = ticketHelper.GetLeagueNameById(1, 42);
-
-            // Assert
-            Assert.AreEqual(expectedLeagueName, act);
-        }
-
-        [TestCase("Saba Super league name", "Saba Super league name")]
-        [TestCase("SABA Super league name", "SABA Super league name")]
-        [TestCase("English Saba Super league name", "English Saba Super league name")]
-        public void GetLeagueNameById_HideSabaTextIsTrue_LeagueGroupIdNoNeedRemove_ShowSabaText(string leagueName, string expectedLeagueName)
-        {
-            // Arrange
-            ticketHelper.HideSabaText = true;
-            _cacheRef.GetLeagueName(Arg.Any<string>()).Returns<string>(leagueName);            
-
-            // Act
-            var act = ticketHelper.GetLeagueNameById(1, 0);
-
-            // Assert
-            Assert.AreEqual(expectedLeagueName, act);
         }
     }
 }

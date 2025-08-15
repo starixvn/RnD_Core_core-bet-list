@@ -54,7 +54,7 @@
         [TestCase(BetStatus.Void, "2")]
         [TestCase(BetStatus.Running, "3")]
         [TestCase(BetStatus.Waiting, "3")]
-        public void BuildLeague_ForTodaySummaryTicket_ReturnDetailLinkHtml(string ticketStatus, string transactionType)
+        public void BuildLeague_ForTodaySummaryTicket_DontHaveDetailLinkHtml(string ticketStatus, string transactionType)
         {
             ////Arrange
             _ticket.TransDesc = string.Empty;
@@ -66,7 +66,7 @@
 
             ////Assert
             string expectedTemplate = BuildExpectedTemplateDetailLinkHtml(_ticket, transactionType);
-            Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedTemplate));
+            Assert.IsFalse(_choice.Template.League.ToString().Contains(expectedTemplate));
         }
 
         [TestCase(BetStatus.Won, "1")]
@@ -77,7 +77,7 @@
         [TestCase(BetStatus.Void, "2")]
         [TestCase(BetStatus.Running, "3")]
         [TestCase(BetStatus.Waiting, "3")]
-        public void BuildLeague_ForYesterdaySummaryTicket_ReturnDetailLinkHtml(string ticketStatus, string transactionType)
+        public void BuildLeague_ForYesterdaySummaryTicket_DontHaveDetailLinkHtml(string ticketStatus, string transactionType)
         {
             ////Arrange
             _ticket.TransDesc = string.Empty;
@@ -89,11 +89,11 @@
 
             ////Assert
             string expectedTemplate = BuildExpectedTemplateDetailLinkHtml(_ticket, transactionType);
-            Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedTemplate));
+            Assert.IsFalse(_choice.Template.League.ToString().Contains(expectedTemplate));
         }
 
         [Test]
-        public void BuildLeague_ForPreviousDaysSummaryTicket_ReturnDetailLinkHtml()
+        public void BuildLeague_ForPreviousDaysSummaryTicket_DontHaveDetailLinkHtml()
         {
             ////Arrange
             _ticket.TransDesc = string.Empty;
@@ -103,8 +103,8 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            string expectedTemplate = BuildExpectedTemplateDetailLinkHtml(_ticket, "0");
-            Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedTemplate));
+            string expectedTemplate = BuildExpectedTemplateDetailLinkHtml(_ticket, "0");            
+            Assert.IsFalse(_choice.Template.League.ToString().Contains(expectedTemplate));
         }
 
         [Test]
@@ -122,15 +122,10 @@
 
         private string BuildExpectedTemplateDetailLinkHtml(ITicket ticket, string transactionType)
         {
-            return string.Format(
-                "<div class=\"detail live-casino-detail\"" +
-                " onclick='showSexyGamingBetDetails(&quot;{0}&quot;,&quot;{1}&quot;,&quot;{2}&quot;,&quot;{3}&quot;);'>" +
+            return $"<div class=\"detail live-casino-detail\"" +
+                $" onclick='showSexyGamingBetDetails(&quot;{ticket.TransId}&quot;,&quot;{ticket.WinlostDate}&quot;,&quot;{ticket.CustId}&quot;,&quot;{transactionType}&quot;);'>" +
                 "<a class=\"detail-link\"" +
-                " href=\"javascript:void(&quot;&quot;);\">Details</a></div>",
-                ticket.TransId.ToString(),
-                ticket.WinlostDate.ToString(CultureInfo.InvariantCulture),
-                ticket.CustId.ToString(),
-                transactionType);
+                " href=\"javascript:void(&quot;&quot;);\">Details</a></div>";
         }
     }
 }

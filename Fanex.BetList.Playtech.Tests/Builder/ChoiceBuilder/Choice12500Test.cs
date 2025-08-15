@@ -34,6 +34,7 @@ namespace Fanex.BetList.Playtech.Tests.Builder.ChoiceBuilder
             _ticketHelper.GetResourceData(Arg.Is("PT_RNG_GG"), Arg.Is(_ticket.BetTypeId.ToString())).Returns(FakeGameGroup);
             _ticketHelper.GetBetTypeNameById(Arg.Is(_ticket.BetTypeId), Arg.Is(_ticket.RefNo), Arg.Is(_ticket.BetId), Arg.Is(_ticket.BetCheck))
                 .Returns(FakeGameType);
+            _ticketHelper.GetBetTypeNameById(Arg.Is(_ticket.BetTypeId)).Returns(FakeGameType);
         }
 
         [Test]
@@ -43,7 +44,7 @@ namespace Fanex.BetList.Playtech.Tests.Builder.ChoiceBuilder
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            _ticketHelper.Received().GetBetTypeNameById(Arg.Is(_ticket.BetTypeId), Arg.Is(_ticket.RefNo), Arg.Is(_ticket.BetId), Arg.Is(_ticket.BetCheck));
+            _ticketHelper.Received().GetBetTypeNameById(Arg.Is(_ticket.BetTypeId));
             //_ticketHelper.Received().GetResourceData(Arg.Is(Choice12500.GameTypeRefId), Arg.Is(_ticket.BetTypeId.ToString()));
         }
 
@@ -97,7 +98,7 @@ namespace Fanex.BetList.Playtech.Tests.Builder.ChoiceBuilder
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            _ticketHelper.Received().GetBetTypeNameById(Arg.Is(_ticket.BetTypeId), Arg.Is(_ticket.RefNo), Arg.Is(_ticket.BetId), Arg.Is(_ticket.BetCheck));
+            _ticketHelper.Received().GetBetTypeNameById(Arg.Is(_ticket.BetTypeId));
         }
 
         [Test]
@@ -124,8 +125,8 @@ namespace Fanex.BetList.Playtech.Tests.Builder.ChoiceBuilder
 
             // Assert.
             var detailLink = $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a>";
-            var parameterList = $"'{_ticket.TransId}', '{_ticket.WinlostDate}', {_ticket.CustId}, 1";
-            var expectedHtml = $"<div class=\"detail playtech-detail\" onclick=\"showPlaytechBetDetails({parameterList});\">{detailLink}</div>";
+            var parameterList = $"'{_ticket.TransId}', '{_ticket.WinlostDate}', {_ticket.CustId}, 1, 0, ''";
+            var expectedHtml = $"<div class=\"detail rng-detail\" onclick=\"showRNGBetDetails({parameterList});\">{detailLink}</div>";
 
             StringAssert.Contains(expectedHtml, template.League.ToString());
         }

@@ -174,7 +174,7 @@
 
             // Assert
             var expectedLeagueName = string.Format(
-                "<span class='sexygaming-bet-type-name'>{0}</span> <span class=\"gamegroupname\">{1}</span> <span class='sexygaming-game-id'>{2}</span>",
+                "<span class='bet-type-name'>{0}</span> <span class=\"gamegroupname\">{1}</span> <span class='game-id'>{2}</span>",
                 BetTypeName,
                 gameTableId,
                 gameId);

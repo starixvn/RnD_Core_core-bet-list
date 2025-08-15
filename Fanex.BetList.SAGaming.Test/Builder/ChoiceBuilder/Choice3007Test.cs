@@ -119,7 +119,7 @@
         private string BuildExpectedTemplateDetailLinkHtml(ITicket ticket, string transactionType)
         {
             return string.Format(
-                "<div class=\"detail sagaming-casino-detail\"" +
+                "<div class=\"detail live-casino-detail\"" +
                 " onclick='showSAGamingDetails(&quot;{0}&quot;,&quot;{1}&quot;,&quot;{2}&quot;,&quot;{3}&quot;);'>" +
                 "<a class=\"detail-link\"" +
                 " href=\"javascript:void(&quot;&quot;);\">Details</a></div>",

@@ -115,6 +115,7 @@ namespace Fanex.BetList.RNGCore.Tests.Builder.ChoiceBuilder
         }
 
         [Test]
+            _ticket.BetCheck = "detail|&|displayDetail";
 	[Test]
         public void BuildDetailsLink_SummaryTicket_ReturnsCorrectMarkup()
         {

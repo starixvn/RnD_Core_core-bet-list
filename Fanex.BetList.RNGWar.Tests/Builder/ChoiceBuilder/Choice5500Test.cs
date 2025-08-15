@@ -35,7 +35,7 @@
         {
             // Arrange
             _ticket.BetCheck = "transId3rd";
-            var bettypeName = "<span class=\"gamegroupname\"> RNG War</span>";
+            var bettypeName = "<span class=\"handicap\"> RNG War</span>";
 
             // Act
             var act = _choice.Render(_ticket, _ticketHelper, null, false);
@@ -115,7 +115,7 @@
             var act = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.IsEmpty(act.BetType.betTypeName);
+            Assert.IsNull(act.BetType);
         }
 
         [Test]

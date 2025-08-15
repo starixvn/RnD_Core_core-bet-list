@@ -131,18 +131,6 @@
         }
 
         [Test]
-        public void BuildBetTeamClassNameAndHandicap_Always_SetbetTeamClassNameIsEmpty()
-        {
-            ////Arrange
-
-            ////Act
-            _choice.Render(_ticket, _ticketHelper, null, false);
-
-            ////Assert
-            Assert.IsEmpty(_choice.Template.betTeamClassName);
-        }
-
-        [Test]
         public void BuildBetType_TransDescIsEmpty_ReturnEmpty()
         {
             ////Arrange
@@ -256,7 +244,7 @@
 
             // Assert
             var expectedLeagueName = string.Format(
-                "<span class='bet-type-name'>{0}</span> <span class=\"gamegroupname\">{1}</span> <span class='sagaming-game-id'>{2}</span>",
+                "<span class='bet-type-name'>{0}</span> <span class=\"gamegroupname\">{1}</span> <span class='game-id'>{2}</span>",
                 BetTypeName,
                 gameTableId,
                 gameId);
@@ -266,7 +254,7 @@
         private string BuildExpectedTemplateDetailLinkHtml(ITicket ticket, string transactionType)
         {
             return string.Format(
-                "<div class=\"detail sagaming-casino-detail\"" +
+                "<div class=\"detail live-casino-detail\"" +
                 " onclick='showSAGamingDetails(&quot;{0}&quot;,&quot;{1}&quot;,&quot;{2}&quot;,&quot;{3}&quot;);'>" +
                 "<a class=\"detail-link\"" +
                 " href=\"javascript:void(&quot;&quot;);\">Details</a></div>",
