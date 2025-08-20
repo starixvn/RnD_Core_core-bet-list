@@ -6,6 +6,11 @@
     {
         public ChoiceMapper()
         {
+            for (var betType = RNGBetTypes.SmartSoftMin + 1; betType <= RNGBetTypes.SmartSoftMax; betType++)
+            {
+                MapIdToBaseId(betType, RNGBetTypes.SmartSoftMin);
+            }
+
             for (var betType = RNGBetTypes.GPILotteryMin + 1; betType <= RNGBetTypes.GPILotteryMax; betType++)
             {
                 MapIdToBaseId(betType, RNGBetTypes.GPILotteryMin);
