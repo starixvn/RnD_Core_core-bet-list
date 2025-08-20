@@ -457,6 +457,159 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to have #assists# assists and #winner# to Win.
+        /// </summary>
+        public static string bet_performance_assists_and_winner {
+            get {
+                return ResourceManager.GetString("bet_performance_assists_and_winner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to have #points# points and #assists# assists.
+        /// </summary>
+        public static string bet_performance_points_and_assists {
+            get {
+                return ResourceManager.GetString("bet_performance_points_and_assists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to have #points# points, #assists# assists and #winner# (#handicap#).
+        /// </summary>
+        public static string bet_performance_points_and_assists_and_handicap {
+            get {
+                return ResourceManager.GetString("bet_performance_points_and_assists_and_handicap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to have #points# points, #assists# assists and #rebounds# total rebounds.
+        /// </summary>
+        public static string bet_performance_points_and_assists_and_rebounds {
+            get {
+                return ResourceManager.GetString("bet_performance_points_and_assists_and_rebounds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to have #points# points, #assists# assists, #rebounds# total rebounds and #winner# to Win with Handicap (#handicap#).
+        /// </summary>
+        public static string bet_performance_points_and_assists_and_rebounds_and_handicap {
+            get {
+                return ResourceManager.GetString("bet_performance_points_and_assists_and_rebounds_and_handicap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to have #points# points, #assists# assists, #rebounds# total rebounds and #winner# to Win.
+        /// </summary>
+        public static string bet_performance_points_and_assists_and_rebounds_and_winner {
+            get {
+                return ResourceManager.GetString("bet_performance_points_and_assists_and_rebounds_and_winner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to have #points# points, #assists# assists and #winner# to Win.
+        /// </summary>
+        public static string bet_performance_points_and_assists_and_winner {
+            get {
+                return ResourceManager.GetString("bet_performance_points_and_assists_and_winner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to have #points# points and #winner# (#handicap#).
+        /// </summary>
+        public static string bet_performance_points_and_handicap {
+            get {
+                return ResourceManager.GetString("bet_performance_points_and_handicap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to have #points# points and #winner# Total Points Over #over#.
+        /// </summary>
+        public static string bet_performance_points_and_over {
+            get {
+                return ResourceManager.GetString("bet_performance_points_and_over", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to have #points# points and #rebounds# total rebounds.
+        /// </summary>
+        public static string bet_performance_points_and_rebounds {
+            get {
+                return ResourceManager.GetString("bet_performance_points_and_rebounds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to have #points# points, #rebounds# total rebounds and #winner# (#handicap#).
+        /// </summary>
+        public static string bet_performance_points_and_rebounds_and_handicap {
+            get {
+                return ResourceManager.GetString("bet_performance_points_and_rebounds_and_handicap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to have #points# points, #rebounds# total rebounds and #winner# to Win.
+        /// </summary>
+        public static string bet_performance_points_and_rebounds_and_winner {
+            get {
+                return ResourceManager.GetString("bet_performance_points_and_rebounds_and_winner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to have #points# points and #winner# to Win.
+        /// </summary>
+        public static string bet_performance_points_and_winner {
+            get {
+                return ResourceManager.GetString("bet_performance_points_and_winner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to have #points# points, #winner# to Win and #winner# Total Points Over #over#.
+        /// </summary>
+        public static string bet_performance_points_and_winner_and_over {
+            get {
+                return ResourceManager.GetString("bet_performance_points_and_winner_and_over", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to have #rebounds# total rebounds and #winner# to Win.
+        /// </summary>
+        public static string bet_performance_rebounds_and_winner {
+            get {
+                return ResourceManager.GetString("bet_performance_rebounds_and_winner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to have #three_points# three point field goals and #winner# to Win.
+        /// </summary>
+        public static string bet_performance_three_points_and_winner {
+            get {
+                return ResourceManager.GetString("bet_performance_three_points_and_winner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to have #three_points# three point field goals, #winner# to Win and #winner# Total Points Over #over#.
+        /// </summary>
+        public static string bet_performance_three_points_and_winner_and_over {
+            get {
+                return ResourceManager.GetString("bet_performance_three_points_and_winner_and_over", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to BetID.
         /// </summary>
         public static string BetID {

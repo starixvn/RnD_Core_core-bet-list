@@ -660,4 +660,40 @@
   <data name="voucherid" xml:space="preserve">
     <value>바우처 코드:</value>
   </data>
+  <data name="bet_performance_points_and_winner" xml:space="preserve">
+    <value>#points# 포인트와 {1} 승리</value>
+  </data>
+  <data name="bet_performance_points_and_over" xml:space="preserve">
+    <value>#points# 포인트와 {1} 총 포인트 오버 {2}</value>
+  </data>
+  <data name="bet_performance_three_points_and_winner" xml:space="preserve">
+    <value>#points# 3점 슛과 {1} 승리</value>
+  </data>
+  <data name="bet_performance_assists_and_winner" xml:space="preserve">
+    <value>#points# 어시스트와 {1} 승리</value>
+  </data>
+  <data name="bet_performance_rebounds_and_winner" xml:space="preserve">
+    <value>#points# 총 리바운드와 {1} 승리</value>
+  </data>
+  <data name="bet_performance_points_and_assists" xml:space="preserve">
+    <value>#points# 포인트와 {1} 어시스트</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_winner" xml:space="preserve">
+    <value>#points# 포인트, {1} 어시스트와 {2} 승리</value>
+  </data>
+  <data name="bet_performance_points_and_rebounds" xml:space="preserve">
+    <value>#points# 포인트와 {1} 총 리바운드</value>
+  </data>
+  <data name="bet_performance_points_and_rebounds_and_winner" xml:space="preserve">
+    <value>#points# 포인트, {1} 총 리바운드와 {2} 승리</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_rebounds" xml:space="preserve">
+    <value>#points# 포인트, {1} 어시스트와 {2} 총 리바운드</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_rebounds_and_winner" xml:space="preserve">
+    <value>#points# 포인트, {1} 어시스트, {2} 총 리바운드와 {3} 승리</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_rebounds_and_handicap" xml:space="preserve">
+    <value>#points# 포인트, {1} 어시스트, {2} 총 리바운드와 {3} 핸디캡 {4}으로 승리</value>
+  </data>
 </root>

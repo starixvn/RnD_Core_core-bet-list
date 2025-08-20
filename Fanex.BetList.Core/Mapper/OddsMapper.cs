@@ -119,13 +119,13 @@
             ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.PlayerReboundsAssistsOverUnder);
             ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.PlayerPointsReboundsOverUnder);
             ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.PlayerStealsBlocksOverUnder);
-            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.PlayerPerformanceDoublesAndOthers);
-            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.PlayerPerformanceTriplesAndOthers);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.PlayerDoubleDouble);
             ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.PlayerTripleDouble);
             ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.MostPointsScored);
             ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.MostRebounds);
             ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.MostAssists);
             ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.MostSteals);
+            ConvertByBetType.RegisterMultipleOddsTypes(BetTypes.Most3PointShotsScored);
         }
     }
 }

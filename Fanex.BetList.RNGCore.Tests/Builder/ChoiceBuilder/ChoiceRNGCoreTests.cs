@@ -66,7 +66,6 @@ namespace Fanex.BetList.RNGCore.Tests.Builder.ChoiceBuilder
         }
 
         [Test]
-	[Test]
         public void BuildLeague_DetailTicketWithoutJackpotInfo_DoesNotAppendJackpotDetails()
         {
             // Arrange
@@ -114,9 +113,7 @@ namespace Fanex.BetList.RNGCore.Tests.Builder.ChoiceBuilder
             StringAssert.DoesNotContain("jackpot-detail", template.League.ToString());
         }
 
-        [Test]
-            _ticket.BetCheck = "detail|&|displayDetail";
-	[Test]
+	    [Test]
         public void BuildDetailsLink_SummaryTicket_ReturnsCorrectMarkup()
         {
             // Arrange

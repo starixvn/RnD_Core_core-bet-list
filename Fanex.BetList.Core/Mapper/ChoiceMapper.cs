@@ -166,13 +166,16 @@
             MapIdToBaseId(BetTypes.PlayerReboundsBands, BetTypes.PlayerPointsAtLeast);
             MapIdToBaseId(BetTypes.Player3PTFGMadeBands, BetTypes.PlayerPointsAtLeast);
             
-            MapIdToBaseId(BetTypes.PlayerPerformanceTriplesAndOthers, BetTypes.PlayerPerformanceDoublesAndOthers);
-            
-            // Most Player Performance bet types mapping to Choice680 (PlayerTripleDouble)
-            MapIdToBaseId(BetTypes.MostPointsScored, BetTypes.PlayerTripleDouble);
-            MapIdToBaseId(BetTypes.MostRebounds, BetTypes.PlayerTripleDouble);
-            MapIdToBaseId(BetTypes.MostSteals, BetTypes.PlayerTripleDouble);
-            MapIdToBaseId(BetTypes.MostAssists, BetTypes.PlayerTripleDouble);
+            MapIdToBaseId(BetTypes.PlayerPerformanceDoublesandOthers, BetTypes.PlayerPerformanceandOthers);
+            MapIdToBaseId(BetTypes.PlayerPlayerPerformanceTriplesandOthersDoubleDouble, BetTypes.PlayerPerformanceandOthers);
+
+            MapIdToBaseId(BetTypes.PlayerTripleDouble, BetTypes.PlayerDoubleDouble);
+
+            // Most Player Performance bet types mapping to Choice680 (MostPointsScored)
+            MapIdToBaseId(BetTypes.MostPointsScored, BetTypes.MostPointsScored);
+            MapIdToBaseId(BetTypes.MostRebounds, BetTypes.MostPointsScored);
+            MapIdToBaseId(BetTypes.MostSteals, BetTypes.MostPointsScored);
+            MapIdToBaseId(BetTypes.Most3PointShotsScored, BetTypes.MostPointsScored);
         }
 
         private void MapForFastMarkets()

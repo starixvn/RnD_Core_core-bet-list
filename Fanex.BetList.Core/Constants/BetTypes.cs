@@ -1,4 +1,6 @@
-﻿namespace Fanex.BetList.Core.Constants
+﻿using System;
+
+namespace Fanex.BetList.Core.Constants
 {
     public static class BetTypes
     {
@@ -339,17 +341,16 @@
         public const int PlayerReboundsAssistsOverUnder = 672;
         public const int PlayerPointsReboundsOverUnder = 673;
         public const int PlayerStealsBlocksOverUnder = 674;
-        public const int PlayerAssistsReboundsOverUnder = 675;
-        public const int PlayerPerformanceAndOthers = 676;
-        public const int PlayerPerformanceDoublesAndOthers = 677;
-        public const int PlayerDoubleDouble = 678;
-        public const int PlayerPerformanceTriplesAndOthers = 679;
-        public const int PlayerTripleDouble = 680;
-        public const int MostPointsScored = 681;
-        public const int MostRebounds = 682;
-        public const int MostSteals = 683;
-        public const int MostAssists = 684;
-        public const int Most3PointShotsScored = 689;
+        public const int PlayerPerformanceandOthers = 675;
+        public const int PlayerPerformanceDoublesandOthers = 676;
+        public const int PlayerDoubleDouble = 677;
+        public const int PlayerPlayerPerformanceTriplesandOthersDoubleDouble = 678;
+        public const int PlayerTripleDouble = 679;
+        public const int MostPointsScored = 680;
+        public const int MostRebounds = 681;
+        public const int MostSteals = 682;
+        public const int MostAssists = 683;
+        public const int Most3PointShotsScored = 684;
         
         public const int MatchHandicap = 701;
         public const int MatchNumberOfGames = 702;

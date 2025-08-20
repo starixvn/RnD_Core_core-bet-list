@@ -1095,4 +1095,40 @@
   <data name="voucherid" xml:space="preserve">
     <value>รหัสคูปอง:</value>
   </data>
+  <data name="bet_performance_points_and_winner" xml:space="preserve">
+    <value>ได้ #points# แต้ม และ {1} ชนะ</value>
+  </data>
+  <data name="bet_performance_points_and_over" xml:space="preserve">
+    <value>ได้ #points# แต้ม และ {1} ทำแต้มรวมทั้งหมดมากกว่า {2}</value>
+  </data>
+  <data name="bet_performance_three_points_and_winner" xml:space="preserve">
+    <value>ได้ #points# จากการทำ 3 แต้ม และ {1} ชนะ</value>
+  </data>
+  <data name="bet_performance_assists_and_winner" xml:space="preserve">
+    <value>ทำ #points# แอสซิสต์ และ {1} ชนะ</value>
+  </data>
+  <data name="bet_performance_rebounds_and_winner" xml:space="preserve">
+    <value>ทำทั้งหมด #points# รีบาวด์ และ {1} ชนะ</value>
+  </data>
+  <data name="bet_performance_points_and_assists" xml:space="preserve">
+    <value>ได้ #points# แต้ม และ {1} แอสซิสต์</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_winner" xml:space="preserve">
+    <value>ได้ #points# แต้ม, {1} แอสซิสต์ และ {2} ชนะ</value>
+  </data>
+  <data name="bet_performance_points_and_rebounds" xml:space="preserve">
+    <value>ไค้ #points# แต้ม และได้ {1} รีบาวด์</value>
+  </data>
+  <data name="bet_performance_points_and_rebounds_and_winner" xml:space="preserve">
+    <value>ไค้ #points# แต้ม, {1} รีบาวด์ และ {2} ชนะ</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_rebounds" xml:space="preserve">
+    <value>ได้ #points# แต้ม, {1} แอสซิสต์ และ {2} รีบาวด์</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_rebounds_and_winner" xml:space="preserve">
+    <value>ได้ #points# แต้ม, {1} แอสซิสต์, {2} รีบาวด์ และ {3} ชนะ</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_rebounds_and_handicap" xml:space="preserve">
+    <value>ได้ #points# แต้ม, {1} แอสซิสต์, {2} รีบาวด์ และ {3} ชนะด้วยผลต่าง {4}</value>
+  </data>
 </root>

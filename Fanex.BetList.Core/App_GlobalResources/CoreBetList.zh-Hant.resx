@@ -1015,4 +1015,40 @@
     <value>  優惠卷代碼:
 </value>
   </data>
+  <data name="bet_performance_points_and_winner" xml:space="preserve">
+    <value>有#points#分且{1}獲勝</value>
+  </data>
+  <data name="bet_performance_points_and_over" xml:space="preserve">
+    <value>有#points#分且{1}總分大於{2}</value>
+  </data>
+  <data name="bet_performance_three_points_and_winner" xml:space="preserve">
+    <value>有#points#個三分球命中且{1}獲勝</value>
+  </data>
+  <data name="bet_performance_assists_and_winner" xml:space="preserve">
+    <value>有#points#次助攻且{1}獲勝</value>
+  </data>
+  <data name="bet_performance_rebounds_and_winner" xml:space="preserve">
+    <value>有#points#個總籃板且{1}獲勝</value>
+  </data>
+  <data name="bet_performance_points_and_assists" xml:space="preserve">
+    <value>有#points#分和{1}次助攻</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_winner" xml:space="preserve">
+    <value>有#points#分,{1}次助攻且{2}獲勝</value>
+  </data>
+  <data name="bet_performance_points_and_rebounds" xml:space="preserve">
+    <value>有#points#分和{1}個總籃板</value>
+  </data>
+  <data name="bet_performance_points_and_rebounds_and_winner" xml:space="preserve">
+    <value>有#points#分,{1}個總籃板且{2}獲勝</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_rebounds" xml:space="preserve">
+    <value>有#points#分,{1}次助攻和{2}個總籃板</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_rebounds_and_winner" xml:space="preserve">
+    <value>有#points#分,{1}次助攻,{2}個總籃板且{3}獲勝</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_rebounds_and_handicap" xml:space="preserve">
+    <value>有#points#分,{1}次助攻,{2}個總籃板且{3}以{4}讓分獲勝</value>
+  </data>
 </root>
