@@ -1,10 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>    
-        <Version>2.0.2.6-vs2-vs6-01</Version>
-        <InfomationalVersion>2.0.2.6</InfomationalVersion>
+        <Version>2.0.2.7-hfvs6-01</Version>
+        <InfomationalVersion>2.0.2.7</InfomationalVersion>
         <PackageReleaseNotes>
-          - Support VS Tournament (VS2)(#235084)
           - Support new bet types (VS6)(#235084)
         </PackageReleaseNotes>
         <Description>BetList core package</Description>
