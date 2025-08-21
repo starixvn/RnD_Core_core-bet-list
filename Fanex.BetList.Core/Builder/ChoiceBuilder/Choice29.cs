@@ -6,6 +6,7 @@
     using Entities;
     using System.Collections.Generic;
     using System.Globalization;
+    using System.Text;
 
     /// <summary>
     /// Combination Mix Parlay.
@@ -135,13 +136,13 @@
         private static string BuildCombinationOfferNameForNewSystemParlay(ITicket ticket, ITicketHelper ticketHelper)
         {
             var combinationMPOfferNames = ticketHelper.GetCombinationMPOfferNameList(ticket.BetTeam, ticket.BetCheck, ticket.Handicap1, ticket.Handicap2);
-            var offerNameList = string.Empty;
+            var offerNameList = new StringBuilder();
 
             if (combinationMPOfferNames != null)
             {
                 foreach (var name in combinationMPOfferNames)
                 {
-                    offerNameList += $"<div>{name}</div>";
+                    offerNameList.Append($"<div>{name}</div>");
                 }
             }
 
@@ -149,7 +150,7 @@
                 "<div class=\"offer-name-list\" id=\"combinationOfferName_{0}{1}\">{2}</div>",
                 ticket.TransId,
                 ticketHelper.Index,
-                offerNameList);
+                offerNameList.ToString());
         }
 
         private static string BuildMixParlayMarkups(

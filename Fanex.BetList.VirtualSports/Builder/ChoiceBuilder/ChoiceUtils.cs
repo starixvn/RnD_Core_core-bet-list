@@ -5,7 +5,7 @@
     using System.Text.RegularExpressions;
     using Templates;
 
-    internal static class VirtualSportsChoiceUtils
+    public static class VirtualSportsChoiceUtils
     {
         private const string MatchInfoPattern = "m=\"([^\"]*)\"";
         private const string ExcludingScoresPattern = "s=\"([^\"]*)\"";

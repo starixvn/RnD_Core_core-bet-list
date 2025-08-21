@@ -1,6 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Constants
 {
-    internal static class KenoBetTypes
+    public static class KenoBetTypes
     {
         public const int BaseBetTypeId = 1501;
         public const int HighestBetTypeIdInRange = 1599;

@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System.Collections.Generic;
     using App_GlobalResources;
     using Constants;
     using Entities;
+    using System.Collections.Generic;
 
     /// <summary>
     /// BAIO - FT Winning Margin 14 Way
@@ -12,74 +12,48 @@
     {
         protected const string BasketballRefId = "WMBasketball";
 
+        private static readonly Dictionary<string, string> BetTeamResourceKeys = new Dictionary<string, string>
+        {
+            { BetTeamValue.H1to2, "1-2" },
+            { BetTeamValue.H3to6, "3-6" },
+            { BetTeamValue.H7to9, "7-9" },
+            { BetTeamValue.H10to13, "10-13" },
+            { BetTeamValue.H14to16, "14-16" },
+            { BetTeamValue.H17to20, "17-20" },
+            { BetTeamValue.H21Over, "21+" },
+            { BetTeamValue.A1to2, "1-2" },
+            { BetTeamValue.A3to6, "3-6" },
+            { BetTeamValue.A7to9, "7-9" },
+            { BetTeamValue.A10to13, "10-13" },
+            { BetTeamValue.A14to16, "14-16" },
+            { BetTeamValue.A17to20, "17-20" },
+            { BetTeamValue.A21Over, "21+" }
+        };
+
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            var betTeam = string.Empty;
+            var betTeam = GetBetTeamValue(ticket, ticketHelper);
+            Template.betTeam = betTeam;
+        }
 
-            switch (ticket.BetTeam.ToLowerInvariant())
+        private string GetBetTeamValue(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            var betTeamLower = ticket.BetTeam?.ToLowerInvariant();
+            
+            if (string.IsNullOrEmpty(betTeamLower) || !BetTeamResourceKeys.ContainsKey(betTeamLower))
             {
-                case BetTeamValue.H1to2:
-                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "1-2"), CoreBetList.Home);
-                    break;
-
-                case BetTeamValue.H3to6:
-                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "3-6"), CoreBetList.Home);
-                    break;
-
-                case BetTeamValue.H7to9:
-                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "7-9"), CoreBetList.Home);
-                    break;
-
-                case BetTeamValue.H10to13:
-                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "10-13"), CoreBetList.Home);
-                    break;
-
-                case BetTeamValue.H14to16:
-                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "14-16"), CoreBetList.Home);
-                    break;
-
-                case BetTeamValue.H17to20:
-                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "17-20"), CoreBetList.Home);
-                    break;
-
-                case BetTeamValue.H21Over:
-                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "21+"), CoreBetList.Home);
-                    break;
-
-                case BetTeamValue.A1to2:
-                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "1-2"), CoreBetList.Away);
-                    break;
-
-                case BetTeamValue.A3to6:
-                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "3-6"), CoreBetList.Away);
-                    break;
-
-                case BetTeamValue.A7to9:
-                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "7-9"), CoreBetList.Away);
-                    break;
-
-                case BetTeamValue.A10to13:
-                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "10-13"), CoreBetList.Away);
-                    break;
-
-                case BetTeamValue.A14to16:
-                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "14-16"), CoreBetList.Away);
-                    break;
-
-                case BetTeamValue.A17to20:
-                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "17-20"), CoreBetList.Away);
-                    break;
-
-                case BetTeamValue.A21Over:
-                    betTeam = string.Format(ticketHelper.GetResourceData(BasketballRefId, "21+"), CoreBetList.Away);
-                    break;
-
-                default:
-                    betTeam = string.Empty;
-                    break;
+                return string.Empty;
             }
 
-            Template.betTeam = betTeam;
+            var resourceKey = BetTeamResourceKeys[betTeamLower];
+            var teamType = GetTeamType(betTeamLower);
+            
+            return string.Format(ticketHelper.GetResourceData(BasketballRefId, resourceKey), teamType);
+        }
+
+        private string GetTeamType(string betTeam)
+        {
+            return betTeam.Length > 0 && betTeam[0] == 'h' ? CoreBetList.Home : CoreBetList.Away;
         }
     }
 }

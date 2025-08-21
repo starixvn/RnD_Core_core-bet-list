@@ -4,6 +4,7 @@
     using Entities;
     using BetListNPOI.HSSF.UserModel;
     using BetListNPOI.SS.UserModel;
+    using System.Text;
 
     /// <summary>
     /// Renderer for RTF.
@@ -40,14 +41,14 @@
         /// <returns>IRichTextString object.</returns>
         public IRichTextString Render()
         {
-            string s = string.Empty;
+            var s = new StringBuilder();
 
             foreach (var block in _blocks)
             {
-                s += block.Text;
+                s.Append(block.Text);
             }
 
-            IRichTextString result = new HSSFRichTextString(s);
+            IRichTextString result = new HSSFRichTextString(s.ToString());
             int textIndex = 0;
             foreach (var block in _blocks)
             {

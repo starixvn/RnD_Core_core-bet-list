@@ -2,7 +2,6 @@
 {
     using System;
     using System.Globalization;
-    using System.Web;
     using System.Net;
     /// <summary>
     /// Formatting utilities.
@@ -196,6 +195,21 @@
             return string.Format(DECIMALFORMAT3, objectToFormat);
         }
 
+        public static string FormatNumber3(object objectToFormat, string culture)
+        {
+            if (Convert.IsDBNull(objectToFormat) || objectToFormat == null)
+            {
+                return DefaultFormattedNumericValue;
+            }
+
+            if (culture == CULTNAMEVI)
+            {
+                return string.Format(DECIMALFORMAT3VI, objectToFormat);
+            }
+
+            return string.Format(DECIMALFORMAT3, objectToFormat);
+        }
+
         public static string FormatNumber2C(object objectToFormat, string culture)
         {
             if (Convert.IsDBNull(objectToFormat) || objectToFormat == null)
@@ -239,21 +253,6 @@
             }
 
             return string.Format(DECIMALFORMAT3C, objectToFormat);
-        }
-
-        public static string FormatNumber3(object objectToFormat, string culture)
-        {
-            if (Convert.IsDBNull(objectToFormat) || objectToFormat == null)
-            {
-                return DefaultFormattedNumericValue;
-            }
-
-            if (culture == CULTNAMEVI)
-            {
-                return string.Format(DECIMALFORMAT3VI, objectToFormat);
-            }
-
-            return string.Format(DECIMALFORMAT3, objectToFormat);
         }
 
         public static string FormatNumber4(object objectToFormat, string culture)
@@ -511,14 +510,14 @@
         {
             decimal value = 0;
 
-            if ((amount != null) && (amount is double))
+            if (amount is double v)
             {
-                value = (decimal)((double)amount);
+                value = (decimal)v;
             }
 
-            if ((amount != null) && (amount is decimal))
+            if (amount is decimal v1)
             {
-                value = (decimal)amount;
+                value = v1;
             }
 
             if (value < 0)

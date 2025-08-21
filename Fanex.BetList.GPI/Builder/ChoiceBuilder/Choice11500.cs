@@ -11,14 +11,9 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            if(IsDetailTicket(ticket))
-            {
-                Template.betTeam = ticketHelper.GetResourceData(ChoiceRefPrefix, ticket.BetTypeId.ToString());
-            }
-            else
-            {
-                Template.betTeam = null;
-            }
+            Template.betTeam = IsDetailTicket(ticket) ?
+            ticketHelper.GetResourceData(ChoiceRefPrefix, ticket.BetTypeId.ToString()) :
+            null;
         }
 
         public override string BuildDetailFunction(ITicket ticket)

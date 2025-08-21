@@ -92,7 +92,7 @@
         {
             string homeTeamName = ticketHelper.GetTeamNameById(ticket.HomeId);
             string neutral = string.Format(" {0}", CoreBetList.Neutral);
-            homeTeamName = string.Join(null, new[] { homeTeamName, ticket.IsNeutral ? neutral : string.Empty });
+            homeTeamName = string.Join(null, homeTeamName, ticket.IsNeutral ? neutral : string.Empty);
 
             return homeTeamName;
         }
@@ -128,12 +128,12 @@
 
             if (!string.IsNullOrEmpty(homeFGLG))
             {
-                homeFGLG = string.Join(null, new[] { HtmlCharacters.NoneBreakingSpace, homeFGLG });
+                homeFGLG = string.Join(null, HtmlCharacters.NoneBreakingSpace, homeFGLG);
             }
 
             if (!string.IsNullOrEmpty(awayFGLG))
             {
-                awayFGLG = string.Join(null, new[] { HtmlCharacters.NoneBreakingSpace, awayFGLG });
+                awayFGLG = string.Join(null, HtmlCharacters.NoneBreakingSpace, awayFGLG);
             }
         }
 
@@ -580,7 +580,7 @@
                 Template.Handicap.handicap = Template.Handicap.handicap.Replace("<span class='favorite'>", string.Empty);
                 Template.Handicap.handicap = Template.Handicap.handicap.Replace("<span class='sport'>", string.Empty);
                 Template.Handicap.handicap = Template.Handicap.handicap.Replace("</span>", string.Empty);
-                choice += string.Join(null, new[] { Space, Template.Handicap.handicap });
+                choice += string.Join(null, Space, Template.Handicap.handicap);
             }
 
             if (Template.Score != null && Template.Score.Visible)
@@ -590,7 +590,7 @@
 
             if (isMixParlay)
             {
-                choice += string.Join(null, new[] { " @ ", Formatter.FormatNumber3(ticket.Odds, null) });
+                choice += string.Join(null, " @ ", Formatter.FormatNumber3(ticket.Odds, null));
             }
 
             if (!string.IsNullOrEmpty(choice))
@@ -617,13 +617,13 @@
             {
                 var choice = string.Empty;
 
-                var isAddNewLine = BuildHomeTeam(rtfHelper);
+                BuildHomeTeam(rtfHelper);
 
                 BuildTicketFG_LG(ticket);
 
-                isAddNewLine = BuildHomeTeamFG_LG(rtfHelper);
+                BuildHomeTeamFG_LG(rtfHelper);
 
-                isAddNewLine = BuildAwayTeam(rtfHelper);
+                var isAddNewLine = BuildAwayTeam(rtfHelper);
 
                 if (!string.IsNullOrEmpty(Template.Match.away_firstGoal_lastGoal))
                 {
@@ -704,7 +704,7 @@
             }
         }
 
-        private bool BuildHomeTeam(RTFHelper rtfHelper)
+        private void BuildHomeTeam(RTFHelper rtfHelper)
         {
             var choice = string.Empty;
 
@@ -716,11 +716,7 @@
             if (!string.IsNullOrEmpty(choice))
             {
                 rtfHelper.RTFRenderer.AddText("\n" + choice + Space);
-
-                return true;
             }
-
-            return false;
         }
 
         private void BuildTicketFG_LG(ITicket ticket)
@@ -733,24 +729,20 @@
             }
         }
 
-        private bool BuildHomeTeamFG_LG(RTFHelper rtfHelper)
+        private void BuildHomeTeamFG_LG(RTFHelper rtfHelper)
         {
             var choice = string.Empty;
 
             if (!string.IsNullOrEmpty(Template.Match.home_firstGoal_lastGoal))
             {
-                choice = string.Join(null, new[] { Template.Match.home_firstGoal_lastGoal, Space });
+                choice = string.Join(null, Template.Match.home_firstGoal_lastGoal, Space);
             }
 
             if (!string.IsNullOrEmpty(choice))
             {
                 choice = choice.Replace(HtmlCharacters.NoneBreakingSpace, Space);
                 rtfHelper.RTFRenderer.AddText(choice, rtfHelper.PosFont);
-
-                return true;
             }
-
-            return false;
         }
 
         private bool BuildAwayTeam(RTFHelper rtfHelper)
@@ -764,7 +756,7 @@
 
             if (!string.IsNullOrEmpty(Template.Match.awayTeam))
             {
-                choice += string.Join(null, new[] { Space, Template.Match.awayTeam });
+                choice += string.Join(null, Space, Template.Match.awayTeam);
             }
 
             if (!string.IsNullOrEmpty(choice))
@@ -781,7 +773,7 @@
         private static string[] GetBetStatusPart(string[] source, string partName)
         {
             var part = source?.FirstOrDefault(item => item.StartsWith(partName, StringComparison.InvariantCulture)) ?? string.Empty;
-            var partValue = part.Split(new[] { ':', '-' });
+            var partValue = part.Split(':', '-');
 
             return partValue;
         }

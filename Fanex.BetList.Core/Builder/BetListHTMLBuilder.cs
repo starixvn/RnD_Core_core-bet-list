@@ -77,7 +77,7 @@
                         bool isShowScoreMap)
         {
             string choice = BuildChoice(ticket, ticketHelper, ticketData, isShowScoreMap);
-            _content.Append(string.Join(null, new[] { openTag, choice, closeTag }));
+            _content.Append(string.Join(null, openTag, choice, closeTag));
 
             return this;
         }
@@ -140,7 +140,7 @@
         public BetListHTMLBuilder AddOdds(ITicket ticket, List<ITicketData> ticketData, string openTag, string closeTag, GetCachePropertyById funcGetOddsTypeName)
         {
             string odds = BuildOdds(ticket, ticketData, funcGetOddsTypeName);
-            _content.Append(string.Join(null, new[] { openTag, odds, closeTag }));
+            _content.Append(string.Join(null, openTag, odds, closeTag));
 
             return this;
         }
@@ -184,7 +184,7 @@
         {
             string stake = BuildStake(ticket, ticketHelper);
 
-            _content.Append(string.Join(null, new[] { openTag, stake, closeTag }));
+            _content.Append(string.Join(null, openTag, stake, closeTag));
             return this;
         }
 
@@ -210,7 +210,7 @@
         public BetListHTMLBuilder AddTrans(ITicket ticket, string openTag, string closeTag)
         {
             string trans = BuildTrans(ticket);
-            _content.Append(string.Join(null, new[] { openTag, trans, closeTag }));
+            _content.Append(string.Join(null, openTag, trans, closeTag));
             return this;
         }
 
@@ -260,7 +260,7 @@
         public BetListHTMLBuilder AddStatus(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, string openTag, string closeTag, bool isShowVNIP)
         {
             string status = BuildStatus(ticket, ticketHelper, ticketData, isShowVNIP);
-            _content.Append(string.Join(null, new[] { openTag, status, closeTag }));
+            _content.Append(string.Join(null, openTag, status, closeTag));
             return this;
         }
 

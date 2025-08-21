@@ -7,12 +7,10 @@ namespace Fanex.BetList.Core.Builder.TransBuilder
     public class TransRNG : Trans1
     {
         private const string TxIdKey = "lt";
-        private IDictionary<string, string> ExtraInfo = null;
+        private IDictionary<string, string> ExtraInfo;
         protected override void BuildLicenseeTxId(ITicket ticket)
         {
-            if(ExtraInfo == null){
-                ExtraInfo = ExtraInfoParser.ParseExtraInfo(ticket.MatchCode);
-            }
+            ExtraInfo = ExtraInfoParser.ParseExtraInfo(ticket.MatchCode);
 
             if (HasLicenseeTxId(ticket))
             {

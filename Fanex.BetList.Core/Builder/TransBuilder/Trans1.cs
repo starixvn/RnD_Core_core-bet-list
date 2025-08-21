@@ -78,13 +78,13 @@
         {
             Render(ticket);
 
-            var refNo = string.Join(null, new[] { CoreBetList.refno, ": ", Template.TransTime.refNo });
-            var rtfTrans = new HSSFRichTextString(string.Join(null, new[] { refNo, "\n", Template.transTime }));
+            var refNo = string.Join(null, CoreBetList.refno, ": ", Template.TransTime.refNo);
+            var rtfTrans = new HSSFRichTextString(string.Join(null, refNo, "\n", Template.transTime));
 
             if (HasLicenseeTxId(ticket))
             {
-                var licenseeTxId = string.Join(null, new[] { CoreBetList.LicTxId, ": ", Template.LicenseeTxId.Value });
-                rtfTrans = new HSSFRichTextString(string.Join(null, new[] { licenseeTxId, "\n", refNo, "\n", Template.transTime }));
+                var licenseeTxId = string.Join(null, CoreBetList.LicTxId, ": ", Template.LicenseeTxId.Value);
+                rtfTrans = new HSSFRichTextString(string.Join(null, licenseeTxId, "\n", refNo, "\n", Template.transTime));
             }
 
             return rtfTrans;

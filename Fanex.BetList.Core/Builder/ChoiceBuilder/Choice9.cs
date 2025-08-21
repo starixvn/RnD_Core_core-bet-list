@@ -105,7 +105,7 @@
                         normal = tmpRtfHelper.NormalFont;
                     }
 
-                    CombineSubRichTextString(tmpRtfChoice, ref tmpRtfHelper, pos, normal);
+                    tmpRtfHelper = CombineSubRichTextString(tmpRtfChoice, tmpRtfHelper, pos, normal);
                 }
 
                 ticketHelper.IsShowOddsWithChoice = showOdds;
@@ -124,9 +124,10 @@
         /// <param name="tmpRtfHelper">The temporary RTF helper.</param>
         /// <param name="posFont">The position font.</param>
         /// <param name="normalFont">The normal font.</param>
-        private static void CombineSubRichTextString(List<IRichTextString> tmpRtfChoice, ref RTFHelper tmpRtfHelper, IFont posFont, IFont normalFont)
+        /// <returns>The modified RTF helper.</returns>
+        private static RTFHelper CombineSubRichTextString(List<IRichTextString> tmpRtfChoice, RTFHelper tmpRtfHelper, IFont posFont, IFont normalFont)
         {
-            foreach (var rtfString in tmpRtfChoice)
+            tmpRtfChoice.ForEach(rtfString =>
             {
                 // Remove extra line-breaks
                 while (rtfString.String.StartsWith("\n", StringComparison.OrdinalIgnoreCase))
@@ -139,7 +140,9 @@
                 string theRest = rtfString.String.Remove(0, eventName.Length);
                 tmpRtfHelper.RTFRenderer.AddText("\n" + eventName, posFont);
                 tmpRtfHelper.RTFRenderer.AddText(theRest, normalFont);
-            }
+            });
+
+            return tmpRtfHelper;
         }
 
         /// <summary>
@@ -149,7 +152,7 @@
         /// <returns>IChoice object.</returns>
         private static IChoice CreateChoiceBuilder(int bettype)
         {
-            string typeName = string.Join(null, new[] { CHOICEBUILDERNAMESPACE, ".Choice", bettype.ToString() });
+            string typeName = string.Join(null, CHOICEBUILDERNAMESPACE, ".Choice", bettype.ToString());
             Type type = Type.GetType(typeName);
 
             if (type == null)

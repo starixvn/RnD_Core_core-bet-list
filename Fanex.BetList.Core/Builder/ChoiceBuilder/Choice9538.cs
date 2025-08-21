@@ -48,12 +48,12 @@
         private static string GetTeamName(ITicket ticket, ITicketHelper ticketHelper)
         {
             var betTeam = ticket.BetTeam.ToLowerInvariant();
-            if (betTeam.StartsWith("h") || betTeam.StartsWith("1"))
+            if (betTeam.Length > 0 && (betTeam[0] == 'h' || betTeam[0] == '1'))
             {
                 return ticketHelper.GetTeamNameById(ticket.HomeId);
             }
 
-            if (betTeam.StartsWith("a") || betTeam.StartsWith("2"))
+            if (betTeam.Length > 0 && (betTeam[0] == 'a' || betTeam[0] == '2'))
             {
                 return ticketHelper.GetTeamNameById(ticket.AwayId);
             }

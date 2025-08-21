@@ -1,38 +1,38 @@
 namespace Fanex.BetList.Core.Entities
 {
+    using Fanex.BetList.Core.Extensions;
     using System.Collections.Generic;
-    using System.IO;
     using System.Linq;
     using System.Runtime.Serialization;
     using System.Runtime.Serialization.Json;
-    using System.Text;
 
     [DataContract]
     public class BasketballPlayerModel
     {
+        public BasketballPlayerModel()
+        {
+            Statistics = new List<Item>();
+            Results = new List<Item>();
+            AllItems = new List<Item>();
+        }
+
         public BasketballPlayerModel(string json, ITicketHelper ticketHelper)
         {
             Statistics = new List<Item>();
             Results = new List<Item>();
             AllItems = new List<Item>();
-            try
-            {
-                var serializer = new DataContractJsonSerializer(typeof(BasketballPlayerModel));
-                using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(json)))
-                {
-                    var obj = (BasketballPlayerModel)serializer.ReadObject(ms);
+            
+            var serializer = new DataContractJsonSerializer(typeof(BasketballPlayerModel));
+            var obj = serializer.SafeDeserializeFromString<BasketballPlayerModel>(json);
 
-                    Statistics = obj.Statistics ?? new List<Item>();
-                    Results = obj.Results ?? new List<Item>();
-                    PlayerId = obj.PlayerId;
-                    PlayerName = obj.PlayerName;
-                    IsHome = obj.IsHome;
-                    TeamId = obj.TeamId;
-                    TeamName = ticketHelper.GetTeamNameById(obj.TeamId);
-                    AllItems = Statistics.Concat(Results).ToList();
-                }
-            }
-            catch { }
+            Statistics = obj.Statistics ?? new List<Item>();
+            Results = obj.Results ?? new List<Item>();
+            PlayerId = obj.PlayerId;
+            PlayerName = obj.PlayerName;
+            IsHome = obj.IsHome;
+            TeamId = obj.TeamId;
+            TeamName = ticketHelper.GetTeamNameById(obj.TeamId);
+            AllItems = Statistics.Concat(Results).ToList();
         }
 
         [DataMember(Name = "s")]

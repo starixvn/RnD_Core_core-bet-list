@@ -5,13 +5,11 @@
     using Fanex.BetList.Core.Utils.TicketExt;
     using System;
     using System.Globalization;
-    using System.Text.RegularExpressions;
 
     public class Choice3802 : ChoiceRNG
     {
         private const string JackpotTransIdInfo = "jpw=";
         private const string JackpotInfo = "jp=1";
-        private readonly Regex htmlTagMatching = new Regex("</?[^<>]*>");
         
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
         {

@@ -9,7 +9,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     public class Choice10801 : ChoiceRNG
     {
         private string SportName = string.Empty;
-        private bool HideSabaText = false;
+        private bool HideSabaText;
         
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {

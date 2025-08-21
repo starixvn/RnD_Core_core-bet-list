@@ -50,12 +50,29 @@
             Template.stake = ConvertByBetType.Stake(ticket.Stake);
         }
 
+        protected virtual void BuildStake(RTFHelper rtfHelper)
+        {
+            Template.stake = Template.stake.Replace("<br/>&nbsp;", "\n");
+
+            rtfHelper.RTFRenderer.AddText(Template.stake, rtfHelper.PosFont);
+        }
+
         protected virtual void BuildBonus(ITicket ticket, ITicketHelper ticketHelper)
         {
             BuildNormalBonus(ticket);
             BuildRebateBonus(ticket);
             BuildNonPeakHoursPromotion(ticket);
             BuildGodOfFortune(ticket, ticketHelper);
+        }
+
+        protected virtual void BuildBonus(RTFHelper rtfHelper)
+        {
+            if (!Template.Bonus.Visible)
+            {
+                return;
+            }
+
+            rtfHelper.RTFRenderer.AddText(GetBonusIndicatingText(), rtfHelper.PosFont);
         }
 
         protected void BuildNormalBonus(ITicket ticket)
@@ -156,23 +173,6 @@
             const string requiredAttributeName = "i";
 
             return ticket.ExtraInfo.HasAttributeInXmlTag(nonPeakHoursPromotionXmlTag, requiredAttributeName);
-        }
-
-        protected virtual void BuildStake(RTFHelper rtfHelper)
-        {
-            Template.stake = Template.stake.Replace("<br/>&nbsp;", "\n");
-
-            rtfHelper.RTFRenderer.AddText(Template.stake, rtfHelper.PosFont);
-        }
-
-        protected virtual void BuildBonus(RTFHelper rtfHelper)
-        {
-            if (!Template.Bonus.Visible)
-            {
-                return;
-            }
-
-            rtfHelper.RTFRenderer.AddText(GetBonusIndicatingText(), rtfHelper.PosFont);
         }
 
         protected string GetBonusIndicatingText()

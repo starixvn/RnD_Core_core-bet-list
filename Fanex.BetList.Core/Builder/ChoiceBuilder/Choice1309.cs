@@ -49,8 +49,8 @@
             else
             {
                 Template.betTeam = ticket.Handicap2 > ticket.Handicap1
-                    ? string.Join(null, new[] { CoreBetList.draw, "&nbsp;(", CoreBetList.h, "+", ConvertByBetType.Hdp(ticket.Handicap2) + ")" })
-                    : string.Join(null, new[] { CoreBetList.draw, "&nbsp;(", CoreBetList.a, "+", ConvertByBetType.Hdp(ticket.Handicap1), ")" });
+                    ? string.Join(null, CoreBetList.draw, "&nbsp;(", CoreBetList.h, "+", ConvertByBetType.Hdp(ticket.Handicap2) + ")")
+                    : string.Join(null, CoreBetList.draw, "&nbsp;(", CoreBetList.a, "+", ConvertByBetType.Hdp(ticket.Handicap1), ")");
             }
         }
 

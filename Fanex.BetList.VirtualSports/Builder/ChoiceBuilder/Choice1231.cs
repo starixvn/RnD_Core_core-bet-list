@@ -32,7 +32,7 @@
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            Template.betTeam = string.Join(null, new[] { ticket.MatchCode, " - ", ticketHelper.GetHorseTeamNameById(ticket.HomeId) });
+            Template.betTeam = string.Join(null, ticket.MatchCode, " - ", ticketHelper.GetHorseTeamNameById(ticket.HomeId));
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)

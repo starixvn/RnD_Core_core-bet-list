@@ -78,7 +78,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                 return transId3rd;
             }
 
-            var transIdParts = transId3rd.Split(new string[] { transId3rdSeparator }, StringSplitOptions.RemoveEmptyEntries);
+            var transIdParts = transId3rd.Split(new[] { transId3rdSeparator }, StringSplitOptions.RemoveEmptyEntries);
 
             return transIdParts[transIdParts.Length - 1];
         }

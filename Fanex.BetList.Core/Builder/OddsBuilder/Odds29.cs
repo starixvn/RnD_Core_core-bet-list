@@ -1,13 +1,12 @@
 ﻿namespace Fanex.BetList.Core.Builder.OddsBuilder
 {
     using BetListNPOI.SS.UserModel;
-    using System.Collections.Generic;
-    using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
     using Fanex.BetList.Core.Utils;
     using Fanex.BetList.Core.Utils.StringExt;
     using Fanex.BetList.Core.Utils.TicketExt;
+    using System.Collections.Generic;
 
     public class Odds29 : Odds1
     {

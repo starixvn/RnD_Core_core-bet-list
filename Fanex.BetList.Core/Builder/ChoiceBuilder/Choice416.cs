@@ -60,17 +60,17 @@
 
             if (Template.Handicap != null && Template.Handicap.Visible && Template.Handicap.handicap != null)
             {
-                choice += string.Join(null, new[] { Space, Template.Handicap.handicap });
+                choice += string.Join(null, Space, Template.Handicap.handicap);
             }
 
             if (Template.Score != null && Template.Score.Visible && ticket.IsLive)
             {
-                choice += string.Join(null, new[] { " [", Template.Score.homeScore, "-", Template.Score.awayScore, "]" });
+                choice += string.Join(null, " [", Template.Score.homeScore, "-", Template.Score.awayScore, "]");
             }
 
             if (isMixParlay)
             {
-                choice += string.Join(null, new[] { " @ ", Formatter.FormatNumber3(ticket.Odds, null) });
+                choice += string.Join(null, " @ ", Formatter.FormatNumber3(ticket.Odds, null));
             }
 
             if (!string.IsNullOrEmpty(ticket.TransDesc))

@@ -10,18 +10,9 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            var betTeam = ticket.BetTeam.ToLowerInvariant();
-            switch (betTeam)
-            {
-                case "a":
-                    betTeam = ticketHelper.GetTeamName3rd(ticket.AwayId.ToString());
-                    break;
-                default:
-                    betTeam = ticketHelper.GetTeamName3rd(ticket.HomeId.ToString());
-                    break;
-            }
-            
-            Template.betTeam = betTeam;
+            Template.betTeam = ticket.BetTeam.ToLowerInvariant() == "a" ?
+            ticketHelper.GetTeamName3rd(ticket.AwayId.ToString()) :
+            ticketHelper.GetTeamName3rd(ticket.HomeId.ToString());
         }
     }
 }

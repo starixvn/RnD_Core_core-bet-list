@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using Fanex.BetList.Core.Entities;
+    using System.Linq;
 
     /// <summary>
     /// Goal Within 60 Seconds
@@ -51,14 +52,12 @@
             if (!string.IsNullOrWhiteSpace(ticket.TransDesc))
             {
                 var descriptions = ticket.TransDesc.Split(';');
-                foreach (var description in descriptions)
-                {
-                    if (description.StartsWith(name, StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        var indexOfEqual = description.IndexOf('=') + 1;
+                var matchingDescription = descriptions.FirstOrDefault(description => description.StartsWith(name, StringComparison.InvariantCultureIgnoreCase));
 
-                        return description.Substring(indexOfEqual, description.Length - indexOfEqual);
-                    }
+                if (matchingDescription != null)
+                {
+                    var indexOfEqual = matchingDescription.IndexOf('=') + 1;
+                    return matchingDescription.Substring(indexOfEqual, matchingDescription.Length - indexOfEqual);
                 }
             }
 
