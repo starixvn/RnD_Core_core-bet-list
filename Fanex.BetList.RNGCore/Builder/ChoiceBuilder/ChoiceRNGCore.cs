@@ -1,10 +1,10 @@
 namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System.Globalization;
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Utils.Parsers;
     using Fanex.BetList.Core.Utils.TicketExt;
+    using System.Globalization;
 
     public class ChoiceRNGCore : ChoiceRNG
     {

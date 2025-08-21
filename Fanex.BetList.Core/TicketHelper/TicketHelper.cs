@@ -1,12 +1,10 @@
 ﻿namespace Fanex.BetList.Core.TicketHelper
 {
-    using System;
-    using System.Linq;
-    using System.Collections.Generic;
     using Entities;
-    using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Constants;
     using Mapper;
+    using System;
+    using System.Collections.Generic;
     using System.Text.RegularExpressions;
 
     public class TicketHelper : ITicketHelper

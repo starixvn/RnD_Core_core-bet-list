@@ -1,12 +1,11 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text.RegularExpressions;
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Utils.TicketExt;
     using Fanex.BetList.Core.Utils.StringExt;
+    using Fanex.BetList.Core.Utils.TicketExt;
+    using System;
+    using System.Collections.Generic;
 
     public class Choice4101 : ChoiceRNG
     {

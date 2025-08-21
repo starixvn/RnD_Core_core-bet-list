@@ -1,8 +1,8 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System.Collections.Generic;
     using Fanex.BetList.Core.Constants;
     using Fanex.BetList.Core.Entities;
+    using System.Collections.Generic;
     using System.Linq;
 
     public class Choice4605 : Choice4601

@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using Fanex.BetList.Core.App_GlobalResources;
+﻿using Fanex.BetList.Core.App_GlobalResources;
 using Fanex.BetList.Core.Entities;
+using System.Collections.Generic;
 
 namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {

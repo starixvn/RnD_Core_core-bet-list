@@ -1,9 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
-    using System.Collections.Generic;
-    using System.Globalization;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Utils;
+    using System.Collections.Generic;
+    using System.Globalization;
 
     /// <summary>
     /// Progressive Jackpot

@@ -1,9 +1,7 @@
 namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Utils.StringExt;
-    using Fanex.BetList.Core.Utils.TicketExt;
     using System;
     using System.Collections.Generic;
 

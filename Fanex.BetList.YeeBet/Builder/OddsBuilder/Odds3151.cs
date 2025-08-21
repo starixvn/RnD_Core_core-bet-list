@@ -1,11 +1,10 @@
 namespace Fanex.BetList.Core.Builder.OddsBuilder
 {
-    using System.Collections.Generic;
-    using System.Linq;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.Utils;
     using Fanex.BetList.Core.Utils.Parsers;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class Odds3151 : Odds1
     {

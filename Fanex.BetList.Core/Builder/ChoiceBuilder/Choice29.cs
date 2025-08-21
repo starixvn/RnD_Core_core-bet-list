@@ -1,12 +1,11 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.Web;
     using App_GlobalResources;
+    using BetListNPOI.SS.UserModel;
     using Constants;
     using Entities;
-    using BetListNPOI.SS.UserModel;
+    using System.Collections.Generic;
+    using System.Globalization;
 
     /// <summary>
     /// Combination Mix Parlay.

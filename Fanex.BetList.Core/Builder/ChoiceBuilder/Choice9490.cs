@@ -2,7 +2,6 @@
 {
     using Entities;
     using System.Collections.Generic;
-    using System.Globalization;
 
     /// <summary>
     /// Home Over X Ball Y Exact Runs

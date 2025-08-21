@@ -1,10 +1,10 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using App_GlobalResources;
+    using BetListNPOI.SS.UserModel;
+    using Entities;
     using System;
     using System.Collections.Generic;
-    using App_GlobalResources;
-    using Entities;
-    using BetListNPOI.SS.UserModel;
     using Templates;
 
     /// <summary>

@@ -3,7 +3,6 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using App_GlobalResources;
     using Entities;
     using Fanex.BetList.Core.Constants;
-    using Fanex.BetList.Core.Utils.TicketExt;
     using Fanex.BetList.Core.Utils.Parsers;
     using System.Collections.Generic;
     /// <summary>W Casino Live Casino Choice 12000.</summary>

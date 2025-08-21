@@ -1,8 +1,8 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using Fanex.BetList.Core.Entities;
     using System;
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Entities;
 
     public class Choice3611 : Choice1
     {

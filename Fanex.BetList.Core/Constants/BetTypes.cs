@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Fanex.BetList.Core.Constants
+﻿namespace Fanex.BetList.Core.Constants
 {
     public static class BetTypes
     {

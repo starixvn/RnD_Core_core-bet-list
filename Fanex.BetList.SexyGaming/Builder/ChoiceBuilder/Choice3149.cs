@@ -1,8 +1,6 @@
 namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using Entities;
-    using Fanex.BetList.Core.Utils.TicketExt;
-    using System;
     using System.Collections.Generic;
 
     public class Choice3149 : Choice3101

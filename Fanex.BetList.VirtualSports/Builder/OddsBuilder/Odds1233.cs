@@ -1,12 +1,12 @@
 ﻿namespace Fanex.BetList.Core.Builder.OddsBuilder
 {
-    using System;
-    using System.Collections.Generic;
     using App_GlobalResources;
-    using Constants;
-    using Entities;
     using BetListNPOI.HSSF.UserModel;
     using BetListNPOI.SS.UserModel;
+    using Constants;
+    using Entities;
+    using System;
+    using System.Collections.Generic;
     using Templates;
     using Utils;
 

@@ -4,7 +4,6 @@
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Constants;
     using System.Collections.Generic;
-    using TplNetCore.Element;
 
     public class Choice677 : Choice1
     {
