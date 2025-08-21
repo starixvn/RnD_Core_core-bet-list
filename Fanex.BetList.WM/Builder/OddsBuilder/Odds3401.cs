@@ -6,6 +6,7 @@ namespace Fanex.BetList.Core.Builder.OddsBuilder
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
     using Fanex.BetList.Core.Utils;
+    using Fanex.BetList.Core.Utils.Parsers;
 
     public class Odds3401 : Odds1
     {
@@ -35,7 +36,7 @@ namespace Fanex.BetList.Core.Builder.OddsBuilder
 
         private bool IsHiddenOdds(ITicket ticket)
         {
-            var parsedTransDesc = ticket.ParseTransDesc();
+            var parsedTransDesc = ExtraInfoParser.ParseExtraInfo(ticket.TransDesc);
             var betChoice = parsedTransDesc != null && parsedTransDesc.ContainsKey(BetChoiceDataKey) ?
                 parsedTransDesc[BetChoiceDataKey].Trim() :
                 string.Empty;

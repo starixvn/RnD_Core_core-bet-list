@@ -3,6 +3,7 @@
     using System;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Utils;
+    using Fanex.BetList.Core.Utils.Parsers;
 
     public class Status3300 : Status1
     {
@@ -16,7 +17,7 @@
             }
             else
             {
-                var transDescItems = ticket.ParseTransDesc();
+                var transDescItems = ExtraInfoParser.ParseExtraInfo(ticket.TransDesc);
                 var gameId3rd = transDescItems.ContainsKey("gamename") ? transDescItems["gamename"] : string.Empty;
                 var externalLink = string.Format("{0}, '{1}', {2}, '{3}', '{4}'",
                     ticket.CurrencyId,

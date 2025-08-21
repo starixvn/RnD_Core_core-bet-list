@@ -4,6 +4,7 @@
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
     using Fanex.BetList.Core.Utils;
+    using Fanex.BetList.Core.Utils.Parsers;
 
     public class Odds3205 : Odds1
     {
@@ -36,7 +37,7 @@
         {
             const string betChoiceKey = "Choice";
 
-            var parsedTransDesc = ticket.ParseTransDesc();
+            var parsedTransDesc = ExtraInfoParser.ParseExtraInfo(ticket.TransDesc);
 
             if (parsedTransDesc.ContainsKey(betChoiceKey))
             {

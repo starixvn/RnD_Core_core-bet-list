@@ -4,35 +4,8 @@
     using System.Collections.Generic;
     using Fanex.BetList.Core.Entities;
 
-    internal static class TicketParser
+    public static class TicketParser
     {
-        public static Dictionary<string, string> ParseTransDesc(this ITicket ticket)
-        {
-            const int numberOfExpressionsOfEachProperty = 2;
-
-            var transDescItems = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-
-            if (string.IsNullOrEmpty(ticket.TransDesc))
-            {
-                return transDescItems;
-            }
-
-            var splittedTransDescParts = ticket.TransDesc.Split(new[] { '*' }, StringSplitOptions.RemoveEmptyEntries);
-
-            foreach (var part in splittedTransDescParts)
-            {
-                var keyValuePair = part.Split(new[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
-                var key = keyValuePair[0].Trim();
-                if (keyValuePair.Length == numberOfExpressionsOfEachProperty &&
-                    !transDescItems.ContainsKey(key))
-                {
-                    transDescItems.Add(key, keyValuePair[1].Trim());
-                }
-            }
-
-            return transDescItems;
-        }
-
         public static Dictionary<string, string> ParseBetcheck(this ITicket ticket)
         {
             const int numberOfExpressionsOfEachProperty = 2;

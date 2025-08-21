@@ -4,6 +4,7 @@
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
     using Fanex.BetList.Core.Utils;
+    using Fanex.BetList.Core.Utils.Parsers;
     using Fanex.BetList.Core.Utils.StringExt;
     using Fanex.BetList.Core.Utils.TicketExt;
     using System.Collections.Generic;
@@ -29,7 +30,7 @@
 
         public override Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
         {
-            _parsedTransDesc = ticket.ParseTransDesc();
+            _parsedTransDesc = ExtraInfoParser.ParseExtraInfo(ticket.TransDesc);
 
             return base.Render(ticket, ticketHelper, ticketData, isShowScoreMap);
         }

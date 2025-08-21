@@ -125,7 +125,7 @@ namespace Fanex.BetList.Playtech.Tests.Builder.ChoiceBuilder
 
             // Assert.
             var detailLink = $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a>";
-            var parameterList = $"'{_ticket.TransId}', '{_ticket.WinlostDate}', {_ticket.CustId}, 1, 0, ''";
+            var parameterList = $"'{_ticket.TransId}', '{_ticket.WinlostDate.ToString(CultureInfo.InvariantCulture)}', {_ticket.CustId}, 1, 0, ''";
             var expectedHtml = $"<div class=\"detail rng-detail\" onclick=\"showRNGBetDetails({parameterList});\">{detailLink}</div>";
 
             StringAssert.Contains(expectedHtml, template.League.ToString());

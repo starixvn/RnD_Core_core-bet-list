@@ -1,15 +1,14 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System;
+    using App_GlobalResources;
+    using Entities;
+    using Fanex.BetList.Core.Utils.Parsers;
+    using Fanex.BetList.Core.Utils.TicketExt;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Text;
     using System.Text.RegularExpressions;
-    using App_GlobalResources;
-    using Entities;
-    using Fanex.BetList.Core.Utils.TicketExt;
     using Templates;
-    using Utils;
 
     public class Choice3401 : Choice1
     {
@@ -28,7 +27,7 @@
 
         public override Choice_Template Render(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData, bool isShowScoreMap)
         {
-            _parsedTransDesc = ticket.ParseTransDesc();
+            _parsedTransDesc = ExtraInfoParser.ParseExtraInfo(ticket.TransDesc);
 
             return base.Render(ticket, ticketHelper, ticketData, isShowScoreMap);
         }
