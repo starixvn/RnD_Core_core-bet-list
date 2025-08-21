@@ -5,24 +5,10 @@
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Utils;
-    using Fanex.BetList.Core.Utils.TicketExt;
 
-    public class Status4101 : Status1
+    public class Status4101 : StatusRNGExpireDate
     {
-        protected override void BuildStatusResult(ITicket ticket)
-        {
-            const int daySupportResultLink = 30;
-            if (string.IsNullOrEmpty(ticket.BetCheck) ||
-                ticket.IsTicketHide3rdResultLink(daySupportResultLink))
-            {
-                Template.StatusResult.Hide();
-            }
-            else
-            {
-                base.BuildStatusResult(ticket);
-                Template.StatusResult.betId = $"{ticket.CurrencyId}, '{ticket.BetTeam}', {ticket.CustId}, '{ticket.BetCheck}', '{ticket.SiteId}'";
-            }
-        }
+        public override int ExpireDateResultLink => 30;
 
         protected override void BuildResult(ITicket ticket, List<ITicketData> ticketData)
         {
