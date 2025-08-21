@@ -1,7 +1,7 @@
 {
   "ServerUri": "https://sonarqube.nexdev.net/",
   "Organization": null,
-  "ProjectKey": "BetListCore",
+  "ProjectKey": "Pioneers-BetlistCore",
   "ProjectName": "R&D / Bet List Core",
   "Profiles": {
     "CSharp": {

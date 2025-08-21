@@ -1,5 +1,6 @@
 namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using System.Globalization;
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Utils.Parsers;
@@ -41,7 +42,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
         private static string BuildDetailsLink(ITicket ticket, ITicketHelper ticketHelper)
         {
             var detailLink = $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.details}</a>";
-            var parameterList = $"'{ticket.TransId}', '{ticket.WinlostDate}', {ticket.CustId}, {ticket.GetTransactionType()}, {ticket.SportTypeId}, '{ticketHelper.GetSportNameById(ticket.SportTypeId)}'";
+            var parameterList = $"'{ticket.TransId}', '{ticket.WinlostDate.ToString(CultureInfo.InvariantCulture)}', {ticket.CustId}, {ticket.GetTransactionType()}, {ticket.SportTypeId}, '{ticketHelper.GetSportNameById(ticket.SportTypeId)}'";
 
             return $"<div class=\"detail rng-detail\" onclick=\"showRNGBetDetails({parameterList});\">{detailLink}</div>";
         }

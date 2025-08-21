@@ -114,7 +114,7 @@ namespace Fanex.BetList.RNGCore.Tests.Builder.ChoiceBuilder
             var template = _choice.Render(_ticket, _ticketHelper, _ticketData, false);
 
             // Assert
-            StringAssert.Contains("showRNGBetDetails('999', '6/10/2023 12:00:00 AM', 888, 0, 777, 'Basketball')", template.League.ToString());
+            StringAssert.Contains("showRNGBetDetails('999', '06/10/2023 00:00:00', 888, 0, 777, 'Basketball')", template.League.ToString());
             StringAssert.Contains("rng-detail", template.League.ToString());
             StringAssert.Contains(CoreBetList.details, template.League.ToString());
         }

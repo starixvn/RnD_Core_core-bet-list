@@ -40,7 +40,7 @@ namespace Fanex.BetList.SabaClub.Tests.Builder.ChoiceBuilder
             var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.IsTrue(template.League.ToString().Contains(expectedJSFunction));
+            StringAssert.Contains(expectedJSFunction, template.League.ToString());
         }
         [Test]
         public void BuildLeague_BetCheckIsEmpty_ShowDetailLink()

@@ -54,7 +54,7 @@
 #pragma warning disable S1449 // Culture should be specified for "string" operations
 
         protected virtual void BuildTransTime(ITicket ticket)
-            => Template.transTime = ticket.TransDate.ToString();
+            => Template.transTime = ticket.TransDate.ToString("M/dd/yyyy h:mm:ss tt");
 
 #pragma warning restore S1449 // Culture should be specified for "string" operations
 
