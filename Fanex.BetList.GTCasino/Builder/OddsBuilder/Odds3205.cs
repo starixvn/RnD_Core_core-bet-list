@@ -3,7 +3,6 @@
     using System.Collections.Generic;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.Utils;
     using Fanex.BetList.Core.Utils.Parsers;
 
     public class Odds3205 : Odds1

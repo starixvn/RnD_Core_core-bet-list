@@ -1,9 +1,8 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using Fanex.BetList.Core.Entities;
     using System;
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Entities;
-    using System.Linq;
 
     /// <summary>
     /// Goal Within 60 Seconds
@@ -52,7 +51,7 @@
             if (!string.IsNullOrWhiteSpace(ticket.TransDesc))
             {
                 var descriptions = ticket.TransDesc.Split(';');
-                var matchingDescription = descriptions.FirstOrDefault(description => description.StartsWith(name, StringComparison.InvariantCultureIgnoreCase));
+                var matchingDescription = Array.Find(descriptions, description => description.StartsWith(name, StringComparison.InvariantCultureIgnoreCase));
 
                 if (matchingDescription != null)
                 {

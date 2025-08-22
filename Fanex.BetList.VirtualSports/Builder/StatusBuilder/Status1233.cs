@@ -42,7 +42,7 @@
 
             if (Template.ShowIP.Visible)
             {
-                string status = string.Join(null, new[] { "\n", Template.ShowIP.betIp });
+                string status = string.Join(null, "\n", Template.ShowIP.betIp);
                 rtfHelper.RTFRenderer.AddText(status);
             }
 
@@ -85,7 +85,7 @@
                             break;
 
                         default:
-                            Template.result = string.Join(null, new[] { winStatusMarkup, "<br/>", placeStatusMarkup });
+                            Template.result = string.Join(null, winStatusMarkup, "<br/>", placeStatusMarkup);
                             break;
                     }
                 }

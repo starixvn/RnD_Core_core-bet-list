@@ -130,14 +130,15 @@
             tmpRtfChoice.ForEach(rtfString =>
             {
                 // Remove extra line-breaks
-                while (rtfString.String.StartsWith("\n", StringComparison.OrdinalIgnoreCase))
+                string processedString = rtfString.String;
+                while (processedString.StartsWith("\n", StringComparison.OrdinalIgnoreCase))
                 {
-                    rtfString.String.Remove(0, 1);
+                    processedString = processedString.Remove(0, 1);
                 }
 
-                int lineBreakIndex = rtfString.String.IndexOf("\n", StringComparison.InvariantCulture);
-                string eventName = rtfString.String.Substring(0, lineBreakIndex);
-                string theRest = rtfString.String.Remove(0, eventName.Length);
+                int lineBreakIndex = processedString.IndexOf("\n", StringComparison.InvariantCulture);
+                string eventName = processedString.Substring(0, lineBreakIndex);
+                string theRest = processedString.Remove(0, eventName.Length);
                 tmpRtfHelper.RTFRenderer.AddText("\n" + eventName, posFont);
                 tmpRtfHelper.RTFRenderer.AddText(theRest, normalFont);
             });

@@ -110,11 +110,10 @@ namespace Fanex.BetList.Core.Builder
 
         private List<Assembly> GetBetListAssemblies()
         {
-            var assemblies = (List<Assembly>)_cache[CacheKey];
+            var assemblies = (List<Assembly>)_cache[CacheKey] ?? new List<Assembly>();
 
-            if (assemblies == null || !assemblies.Any())
+            if (!assemblies.Any())
             {
-                assemblies = new List<Assembly>();
                 var path = AppContext.BaseDirectory + "/bin";
                 if (!Directory.Exists(path))
                 {

@@ -5,7 +5,7 @@ namespace Fanex.BetList.Core.Constants
     
     public static class LiveScoreSportType
     {
-        private static readonly Dictionary<int, DateTime> _dateTimeSupportLiveScoreBySports = new Dictionary<int, DateTime>()
+        private static readonly Dictionary<int, DateTime> _dateTimeSupportLiveScoreBySports = new Dictionary<int, DateTime>
         {
             { SportsbookSportTypes.BaseBall, new DateTime(2020, 11, 5, 0, 0, 0) },
             { SportsbookSportTypes.IceHockey, new DateTime(2021, 10, 7, 0, 0, 0) },

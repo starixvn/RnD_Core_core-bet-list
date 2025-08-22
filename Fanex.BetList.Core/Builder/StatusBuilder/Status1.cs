@@ -1,18 +1,17 @@
 ﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
+    using App_GlobalResources;
+    using BetListNPOI.SS.UserModel;
+    using Constants;
+    using Entities;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
-    using App_GlobalResources;
-    using Constants;
-    using Entities;
-    using BetListNPOI.SS.UserModel;
     using Templates;
     using Utils;
     using Utils.StringExt;
     using Utils.TicketExt;
-    using Fanex.BetList.Core.Constants;
-    
+
     /// <summary>
     /// Sportsbook: Handicap.
     /// </summary>

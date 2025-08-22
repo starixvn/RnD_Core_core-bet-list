@@ -73,7 +73,7 @@
             var template = _status.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            var expectedParameters = $"20, '{_ticket.BetTeam}', {_ticket.CustId}, '{_ticket.BetCheck}', '{_ticket.SiteId}'";
+            var expectedParameters = $"20, '{_ticket.BetTeam}', {_ticket.CustId}, '{_ticket.BetCheck}', '{_ticket.SiteId}', ''";
 
             Assert.AreEqual(expectedParameters, template.StatusResult.betId);
         }

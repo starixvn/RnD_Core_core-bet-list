@@ -8,7 +8,7 @@
         public static Dictionary<string, string> ParseExtraInfo(string extraInfo)
             => ParseExtraInfo(extraInfo, '*');
 
-        public static Dictionary<string, string> ParseExtraInfo(string extraInfo, char splitChar = '*')
+        public static Dictionary<string, string> ParseExtraInfo(string extraInfo, char splitChar)
         {
             const int numberOfExpressionsOfEachProperty = 2;
 

@@ -150,7 +150,7 @@
                 "<div class=\"offer-name-list\" id=\"combinationOfferName_{0}{1}\">{2}</div>",
                 ticket.TransId,
                 ticketHelper.Index,
-                offerNameList.ToString());
+                offerNameList);
         }
 
         private static string BuildMixParlayMarkups(

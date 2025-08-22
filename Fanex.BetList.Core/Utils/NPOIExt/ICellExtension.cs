@@ -21,37 +21,37 @@
             }
             else
             {
-                if (value is string)
+                if (value is string v)
                 {
-                    cell.SetCellValue((string)value);
+                    cell.SetCellValue(v);
                 }
-                else if (value is int)
+                else if (value is int i)
                 {
-                    cell.SetCellValue((int)value);
+                    cell.SetCellValue(i);
                 }
-                else if (value is long)
+                else if (value is long l)
                 {
-                    cell.SetCellValue((long)value);
+                    cell.SetCellValue(l);
                 }
-                else if (value is double)
+                else if (value is double d)
                 {
-                    cell.SetCellValue((double)value);
+                    cell.SetCellValue(d);
                 }
-                else if (value is decimal)
+                else if (value is decimal dec)
                 {
-                    cell.SetCellValue((decimal)value);
+                    cell.SetCellValue(dec);
                 }
-                else if (value is bool)
+                else if (value is bool b)
                 {
-                    cell.SetCellValue((bool)value);
+                    cell.SetCellValue(b);
                 }
-                else if (value is DateTime)
+                else if (value is DateTime dt)
                 {
-                    cell.SetCellValue((DateTime)value);
+                    cell.SetCellValue(dt);
                 }
-                else if (value is IRichTextString)
+                else if (value is IRichTextString irt)
                 {
-                    cell.SetCellValue((IRichTextString)value);
+                    cell.SetCellValue(irt);
                 }
                 else
                 {

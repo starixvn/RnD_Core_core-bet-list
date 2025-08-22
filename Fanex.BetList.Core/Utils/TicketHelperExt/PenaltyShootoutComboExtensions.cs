@@ -10,25 +10,48 @@
     {
         public static IEnumerable<RoundOption> GetRoundInfo(ITicket ticket, ITicketHelper ticketHelper)
         {
-            if (!string.IsNullOrEmpty(ticket.BetTeam) && !string.IsNullOrEmpty(ticket.BetCheck))
+            if (string.IsNullOrEmpty(ticket.BetTeam) || string.IsNullOrEmpty(ticket.BetCheck))
             {
-                var options = ticket.BetTeam.ToCharArray();
-                var odds = ticket.BetCheck.Split(',');
-                var numberOfRound = Math.Max(options.Length, odds.Length) / 2;
-                var awayIndex = numberOfRound;
-                for (var i = 0; i < numberOfRound; i++, awayIndex++)
-                {
-                    var oddsHome = i < odds.Length ? odds[i].Trim() : string.Empty;
-                    var optionHome = i < options.Length ? options[i].ToString().ToLowerInvariant() : string.Empty;
-                    var oddsAway = awayIndex < odds.Length ? odds[awayIndex].Trim() : string.Empty;
-                    var optionAway = awayIndex < options.Length ? options[awayIndex].ToString().ToLowerInvariant() : string.Empty;
-                    var homeName = ticketHelper.GetTeamNameById(ticket.HomeId);
-                    var awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
+                yield break;
+            }
 
-                    yield return new RoundOption(i + 1, optionHome, oddsHome, homeName);
-                    yield return new RoundOption(i + 1, optionAway, oddsAway, awayName);
+            var options = ticket.BetTeam.ToCharArray();
+            var odds = ticket.BetCheck.Split(',');
+            var numberOfRound = Math.Max(options.Length, odds.Length) / 2;
+            var awayIndex = numberOfRound;
+            
+            for (var i = 0; i < numberOfRound; i++, awayIndex++)
+            {
+                var roundOptions = CreateRoundOptions(i, awayIndex, options, odds, ticket, ticketHelper);
+                foreach (var option in roundOptions)
+                {
+                    yield return option;
                 }
             }
+        }
+
+        private static IEnumerable<RoundOption> CreateRoundOptions(int roundIndex, int awayIndex, char[] options, string[] odds, ITicket ticket, ITicketHelper ticketHelper)
+        {
+            var oddsHome = GetOddsAtIndex(odds, roundIndex);
+            var optionHome = GetOptionAtIndex(options, roundIndex);
+            var oddsAway = GetOddsAtIndex(odds, awayIndex);
+            var optionAway = GetOptionAtIndex(options, awayIndex);
+            
+            var homeName = ticketHelper.GetTeamNameById(ticket.HomeId);
+            var awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
+
+            yield return new RoundOption(roundIndex + 1, optionHome, oddsHome, homeName);
+            yield return new RoundOption(roundIndex + 1, optionAway, oddsAway, awayName);
+        }
+
+        private static string GetOddsAtIndex(string[] odds, int index)
+        {
+            return index < odds.Length ? odds[index].Trim() : string.Empty;
+        }
+
+        private static string GetOptionAtIndex(char[] options, int index)
+        {
+            return index < options.Length ? options[index].ToString().ToLowerInvariant() : string.Empty;
         }
 
         public class RoundOption
@@ -53,26 +76,32 @@
 
             private string GetDisplayText()
             {
-                var text = string.Empty;
-
                 if (string.IsNullOrEmpty(Option) || Option == "-" || string.IsNullOrEmpty(OddsString))
                 {
-                    return text;
-                }
-                    
-
-                if (Option == BetTeamValue.S)
-                {
-                    text = CoreBetList.TeamNameRoundGoal;
+                    return string.Empty;
                 }
 
-                if (Option == BetTeamValue.M)
+                var text = GetOptionText(Option);
+                if (string.IsNullOrEmpty(text))
                 {
-                    text = CoreBetList.TeamNameRoundMiss;
+                    return string.Empty;
                 }
 
                 double.TryParse(OddsString, out double odds);
                 return string.Format(text, TeamName, Round, string.Format(Formatter.DECIMALFORMAT2C, odds));
+            }
+
+            private static string GetOptionText(string option)
+            {
+                switch (option)
+                {
+                    case BetTeamValue.S:
+                        return CoreBetList.TeamNameRoundGoal;
+                    case BetTeamValue.M:
+                        return CoreBetList.TeamNameRoundMiss;
+                    default:
+                        return string.Empty;
+                }
             }
         }
     }

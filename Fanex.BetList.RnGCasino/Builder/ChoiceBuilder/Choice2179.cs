@@ -1,6 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
@@ -33,8 +34,16 @@
         {
             var indexOfJackpotTransId = ticket.JackpotInfo.LastIndexOf(JackpotTransIdInfo, StringComparison.InvariantCultureIgnoreCase) + 4;
             var transId = ticket.JackpotInfo.Substring(indexOfJackpotTransId, ticket.JackpotInfo.Length - indexOfJackpotTransId);
+            var parames = new List<object>
+            {
+                $"'{transId}'",
+                $"'{ticket.CustId}'",
+                $"'{ticket.BetTypeId}'",
+                $"'{ticket.WinlostDate.ToString(CultureInfo.InvariantCulture)}'"
+            };
+            var parameterList = string.Join(", ", parames);
             var detailLinkMarkup =
-                $"<div class=\"detail rng-casino-detail\" onclick=\"showProgressiveJackpotWonDetails('{transId}', '{ticket.CustId}', '{ticket.BetTypeId}', '{ticket.WinlostDate.ToString(CultureInfo.InvariantCulture)}');\">" +
+                $"<div class=\"detail rng-casino-detail\" onclick=\"showProgressiveJackpotWonDetails({parameterList});\">" +
                 $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.ProgressiveJackpotWonDetails}</a>" +
                 $"</div>";
 

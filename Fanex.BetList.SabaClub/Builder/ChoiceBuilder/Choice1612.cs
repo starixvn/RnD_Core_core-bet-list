@@ -64,8 +64,16 @@
         {
             var indexOfJackpotTransId = ticket.JackpotInfo.LastIndexOf(JackpotTransIdInfo, StringComparison.InvariantCultureIgnoreCase) + 4;
             var transId = ticket.JackpotInfo.Substring(indexOfJackpotTransId, ticket.JackpotInfo.Length - indexOfJackpotTransId);
+            var parames = new List<object>
+            {
+                $"'{transId}'",
+                $"'{ticket.CustId}'",
+                $"'{ticket.BetTypeId}'",
+                $"'{ticket.WinlostDate.ToString(CultureInfo.InvariantCulture)}'"
+            };
+            var parameterList = string.Join(", ", parames);
             var detailLinkMarkup =
-                $"<div class=\"detail sabaclub-detail\" onclick=\"showSabaClubJackpotWonDetails('{transId}', '{ticket.CustId}', '{ticket.BetTypeId}', '{ticket.WinlostDate.ToString(CultureInfo.InvariantCulture)}');\">" +
+                $"<div class=\"detail sabaclub-detail\" onclick=\"showSabaClubJackpotWonDetails({parameterList});\">" +
                 $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.JackpotWonDetails}</a>" +
                 $"</div>";
 

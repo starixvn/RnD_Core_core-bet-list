@@ -13,7 +13,7 @@
 
         private const byte PercentageFactor = 100;
 
-        private static List<int> multipleOddsBettypes = new List<int>(new[]
+        private static readonly List<int> multipleOddsBettypes = new List<int>(new[]
         {
             BetTypes.Handicap,
             BetTypes.OddEven,

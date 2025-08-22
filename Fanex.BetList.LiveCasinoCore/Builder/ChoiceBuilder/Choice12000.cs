@@ -31,7 +31,9 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             if (IsDetailTicket(ticket))
             {
                 var _parseTransId3rd = GetTransId3rd(ticket.BetCheck);
-                Template.BetType.betTypeName = $"{ticketHelper.GetResourceData(RefIdForGameType, ticket.BetTypeId.ToString())}{LiveCasinoConstants.BreakLine}{LiveCasinoConstants.OpenBetIdTag}{CoreBetList.BetID}: {_parseTransId3rd}{LiveCasinoConstants.CloseBetIdTag}";
+                var gameType = ticketHelper.GetResourceData(RefIdForGameType, ticket.BetTypeId.ToString());
+                var betIdSection = $"{LiveCasinoConstants.OpenBetIdTag}{CoreBetList.BetID}: {_parseTransId3rd}{LiveCasinoConstants.CloseBetIdTag}";
+                Template.BetType.betTypeName = $"{gameType}{LiveCasinoConstants.BreakLine}{betIdSection}";
             }
         }
 
@@ -41,7 +43,8 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             if (Template.BetType != null && !string.IsNullOrEmpty(Template.BetType.betTypeName))
             {
-                choice = Template.BetType.betTypeName.Replace(LiveCasinoConstants.NoneBreakingSpace, LiveCasinoConstants.Space).Replace(LiveCasinoConstants.BreakLine, LiveCasinoConstants.NewLine);
+                choice = Template.BetType.betTypeName.Replace(LiveCasinoConstants.NoneBreakingSpace, LiveCasinoConstants.Space)
+                    .Replace(LiveCasinoConstants.BreakLine, LiveCasinoConstants.NewLine);
                 rtfHelper.RTFRenderer.AddText(LiveCasinoConstants.NewLine + choice);
             }
         }

@@ -1,13 +1,10 @@
 namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System.Globalization;
-    using System.Text;
-
     using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Templates;
     using Fanex.BetList.Core.Utils.StringExt;
     using Fanex.BetList.Core.Utils.TicketExt;
-    using Entities;
+    using System.Globalization;
+    using System.Text;
 
     public class Choice3151 : ChoiceLC
     {

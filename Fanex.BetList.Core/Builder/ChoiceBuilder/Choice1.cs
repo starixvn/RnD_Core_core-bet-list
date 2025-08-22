@@ -772,7 +772,7 @@
 
         private static string[] GetBetStatusPart(string[] source, string partName)
         {
-            var part = source?.FirstOrDefault(item => item.StartsWith(partName, StringComparison.InvariantCulture)) ?? string.Empty;
+            var part = source != null ? Array.Find(source, item => item.StartsWith(partName, StringComparison.InvariantCulture)) ?? string.Empty : string.Empty;
             var partValue = part.Split(':', '-');
 
             return partValue;

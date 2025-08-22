@@ -52,18 +52,7 @@
             int textIndex = 0;
             foreach (var block in _blocks)
             {
-                IFont font = _font;
-                if (font == null)
-                {
-                    font = block.Font;
-                }
-                else
-                {
-                    if (block.Font != null)
-                    {
-                        font = block.Font;
-                    }
-                }
+                IFont font = block.Font ?? _font;
 
                 if (font != null)
                 {
