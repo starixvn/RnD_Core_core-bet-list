@@ -109,22 +109,27 @@
         /// <![CDATA[Refund HT]]>
         /// <![CDATA[1FL:1-2]]>
         /// </param>
-        /// <param name="homeFGLG">The home FGLG.</param>
-        /// <param name="awayFGLG">The away FGLG.</param>
-        protected virtual void BuildFG_LGLabel(string betStatus, ref string homeFGLG, ref string awayFGLG)
+        /// <returns>A tuple containing the home and away FGLG values.</returns>
+        protected virtual (string homeFGLG, string awayFGLG) BuildFG_LGLabel(string betStatus)
         {
             if (string.IsNullOrWhiteSpace(betStatus))
             {
-                return;
+                return (string.Empty, string.Empty);
             }
 
             string[] betStatusParts = betStatus.ToLowerInvariant().Split(';');
+            string homeFGLG = string.Empty;
+            string awayFGLG = string.Empty;
 
             string[] fglg = GetBetStatusPart(betStatusParts, BetStatusFl);
-            CalculateFG_LGLabel(FirstGoalCssClass, LastGoalCssClass, fglg, ref homeFGLG, ref awayFGLG);
+            var (homeFGLG1, awayFGLG1) = CalculateFG_LGLabel(FirstGoalCssClass, LastGoalCssClass, fglg);
+            homeFGLG += homeFGLG1;
+            awayFGLG += awayFGLG1;
 
             string[] fhfglg = GetBetStatusPart(betStatusParts, BetStatus1Fl);
-            CalculateFG_LGLabel(FirstHalfFirstGoalCssClass, FirstHalfLastGoalCssClass, fhfglg, ref homeFGLG, ref awayFGLG);
+            var (homeFGLG2, awayFGLG2) = CalculateFG_LGLabel(FirstHalfFirstGoalCssClass, FirstHalfLastGoalCssClass, fhfglg);
+            homeFGLG += homeFGLG2;
+            awayFGLG += awayFGLG2;
 
             if (!string.IsNullOrEmpty(homeFGLG))
             {
@@ -135,10 +140,14 @@
             {
                 awayFGLG = string.Join(null, HtmlCharacters.NoneBreakingSpace, awayFGLG);
             }
+
+            return (homeFGLG, awayFGLG);
         }
 
+
+
         /// <summary>
-        /// Calculates the (F) (L) (1F) (1L) label.
+        /// Calculates the (F) (L) (1F) (1L) label for Excel.
         /// </summary>
         /// <param name="betStatus">The bet status.
         /// <![CDATA[Refund HT;1FL:1-2;FL:2-0]]>
@@ -149,22 +158,29 @@
         /// <![CDATA[Refund HT]]>
         /// <![CDATA[1FL:1-2]]>
         /// </param>
-        /// <param name="homeFGLG">The home FGLG.</param>
-        /// <param name="awayFGLG">The away FGLG.</param>
-        protected virtual void CalculateFG_LG_Excel(string betStatus, ref string homeFGLG, ref string awayFGLG)
+        /// <returns>A tuple containing the home and away FGLG values.</returns>
+        protected virtual (string homeFGLG, string awayFGLG) CalculateFG_LG_Excel(string betStatus)
         {
             if (betStatus == null)
             {
-                return;
+                return (string.Empty, string.Empty);
             }
 
             string[] betStatusParts = betStatus.ToLowerInvariant().Split(';');
+            string homeFGLG = string.Empty;
+            string awayFGLG = string.Empty;
 
             string[] fglg = GetBetStatusPart(betStatusParts, BetStatusFl);
-            UpdateFG_LG_Excel(FirstGoalTextName, LastGoalTextName, fglg, ref homeFGLG, ref awayFGLG);
+            var (homeFGLG1, awayFGLG1) = UpdateFG_LG_Excel(FirstGoalTextName, LastGoalTextName, fglg);
+            homeFGLG += homeFGLG1;
+            awayFGLG += awayFGLG1;
 
             string[] fhfglg = GetBetStatusPart(betStatusParts, BetStatus1Fl);
-            UpdateFG_LG_Excel(FirstHalfFirstGoalTextName, FirstHalfLastGoalTextName, fhfglg, ref homeFGLG, ref awayFGLG);
+            var (homeFGLG2, awayFGLG2) = UpdateFG_LG_Excel(FirstHalfFirstGoalTextName, FirstHalfLastGoalTextName, fhfglg);
+            homeFGLG += homeFGLG2;
+            awayFGLG += awayFGLG2;
+
+            return (homeFGLG, awayFGLG);
         }
 
         protected void UpdateAllMatchMemberToNull()
@@ -403,9 +419,9 @@
             Template.Match.homeTeam = GetHomeTeamName(ticket, ticketHelper);
             Template.Match.awayTeam = ticketHelper.GetTeamNameById(ticket.AwayId);
 
-            Template.Match.home_firstGoal_lastGoal = string.Empty;
-            Template.Match.away_firstGoal_lastGoal = string.Empty;
-            BuildFG_LGLabel(ticket.EventStatus, ref Template.Match.home_firstGoal_lastGoal, ref Template.Match.away_firstGoal_lastGoal);
+            var (homeFGLG, awayFGLG) = BuildFG_LGLabel(ticket.EventStatus);
+            Template.Match.home_firstGoal_lastGoal = homeFGLG;
+            Template.Match.away_firstGoal_lastGoal = awayFGLG;
         }
 
         protected virtual void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
@@ -723,9 +739,9 @@
         {
             if (ticket.EventStatus != null && Template.Match != null)
             {
-                Template.Match.home_firstGoal_lastGoal = string.Empty;
-                Template.Match.away_firstGoal_lastGoal = string.Empty;
-                CalculateFG_LG_Excel(ticket.EventStatus, ref Template.Match.home_firstGoal_lastGoal, ref Template.Match.away_firstGoal_lastGoal);
+                var (homeFGLG, awayFGLG) = CalculateFG_LG_Excel(ticket.EventStatus);
+                Template.Match.home_firstGoal_lastGoal = homeFGLG;
+                Template.Match.away_firstGoal_lastGoal = awayFGLG;
             }
         }
 
@@ -778,15 +794,18 @@
             return partValue;
         }
 
-        private static void CalculateFG_LGLabel(string firstClassName, string lastClassName, string[] statusPart, ref string homeFGLG, ref string awayFGLG)
+        private static (string homeFGLG, string awayFGLG) CalculateFG_LGLabel(string firstClassName, string lastClassName, string[] statusPart)
         {
             const string goalIndicatorHtmlFormat = "<div class='{0}'>&nbsp;</div>";
             const int numberOfExpectedIndicators = 3;
 
             if (statusPart.Length != numberOfExpectedIndicators)
             {
-                return;
+                return (string.Empty, string.Empty);
             }
+
+            string homeFGLG = string.Empty;
+            string awayFGLG = string.Empty;
 
             var firstGoalIndicator = statusPart[1];
             var lastGoalIndicator = statusPart[2];
@@ -810,16 +829,21 @@
             {
                 awayFGLG += string.Format(goalIndicatorHtmlFormat, lastClassName);
             }
+
+            return (homeFGLG, awayFGLG);
         }
 
-        private static void UpdateFG_LG_Excel(string firstTextName, string lastTextName, string[] statusPart, ref string homeFGLG, ref string awayFGLG)
+        private static (string homeFGLG, string awayFGLG) UpdateFG_LG_Excel(string firstTextName, string lastTextName, string[] statusPart)
         {
             const int numberOfExpectedIndicators = 3;
 
             if (statusPart.Length != numberOfExpectedIndicators)
             {
-                return;
+                return (string.Empty, string.Empty);
             }
+
+            string homeFGLG = string.Empty;
+            string awayFGLG = string.Empty;
 
             var firstGoalIndicator = statusPart[1];
             var lastGoalIndicator = statusPart[2];
@@ -843,6 +867,8 @@
             {
                 awayFGLG += lastTextName;
             }
+
+            return (homeFGLG, awayFGLG);
         }
 
         private static bool IsCashOutBetTicket(ITicket ticket) => ticket.BetdaqId == 1 && !IsBetTrade(ticket.BetTypeId);

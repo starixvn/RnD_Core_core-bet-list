@@ -41,11 +41,10 @@
             Template.betTeamClassName = Favorite;
         }
 
-        protected override void CalculateFG_LG_Excel(string betStatus, ref string homeFGLG, ref string awayFGLG)
+        protected override (string homeFGLG, string awayFGLG) CalculateFG_LG_Excel(string betStatus)
         {
             // There's no first goal last goal for this bettype
-            homeFGLG = string.Empty;
-            awayFGLG = string.Empty;
+            return (string.Empty, string.Empty);
         }
     }
 }

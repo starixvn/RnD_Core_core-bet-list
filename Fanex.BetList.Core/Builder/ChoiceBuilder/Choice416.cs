@@ -88,8 +88,7 @@
         private string BuildTransDescChoice(string betTeam, string transDesc)
         {
             string betTeamValue = betTeam.ToLowerInvariant();
-            string result = string.Empty;
-
+            string result;
             if (betTeamValue.StartsWith(BetTeamValue.AOS, StringComparison.InvariantCulture)
                 && betTeamValue.EndsWith(BetTeamValue.AOS, StringComparison.InvariantCulture))
             {
