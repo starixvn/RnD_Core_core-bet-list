@@ -25,17 +25,15 @@
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            string lotteryBetTypeId;
-
-            Template.betTeam = ticketHelper.GetLotteryBetChoiceName(_choiceId, out lotteryBetTypeId);
+            var betChoiceInfo = ticketHelper.GetLotteryBetChoiceInfo(_choiceId);
+            Template.betTeam = betChoiceInfo != null ? betChoiceInfo.ChoiceName : string.Empty;
         }
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            string lotteryBetTypeId;
-
-            ticketHelper.GetLotteryBetChoiceName(_choiceId, out lotteryBetTypeId);
-            Template.BetType.betTypeName = ticketHelper.GetLotteryBetTypeName(lotteryBetTypeId);
+            var betChoiceInfo = ticketHelper.GetLotteryBetChoiceInfo(_choiceId);
+            var bettypeId = betChoiceInfo != null ? betChoiceInfo.BetTypeId : string.Empty;
+            Template.BetType.betTypeName = ticketHelper.GetLotteryBetTypeName(bettypeId);
         }
 
         protected override void BuildSport(ITicket ticket, ITicketHelper ticketHelper)

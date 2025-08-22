@@ -788,8 +788,12 @@
 
         private static string[] GetBetStatusPart(string[] source, string partName)
         {
-            var part = source != null ? Array.Find(source, item => item.StartsWith(partName, StringComparison.InvariantCulture)) ?? string.Empty : string.Empty;
-            var partValue = part.Split(':', '-');
+            var part = source != null
+                ? Array.Find(source, item => item.StartsWith(partName, StringComparison.InvariantCulture)) ?? string.Empty
+                : string.Empty;
+
+            // Fix for S3220: Explicitly specify the separator as a char array to avoid partial overload match
+            var partValue = part.Split(new[] { ':', '-' }, StringSplitOptions.None);
 
             return partValue;
         }

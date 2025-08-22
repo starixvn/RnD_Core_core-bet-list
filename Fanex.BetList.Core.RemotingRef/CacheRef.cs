@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.Threading;
     using Core.TicketHelper;
+    using Core.Entities;
     using Fanex.RemotingRef;
 
     public sealed class CacheRef : ICacheRef
@@ -62,6 +63,18 @@
 
 #pragma warning restore S3874 // "out" and "ref" parameters should not be used
 
+        /// <summary>
+        /// Gets keno bet choice information including name and bet type ID
+        /// </summary>
+        /// <param name="kenoBetChoiceId">The keno bet choice ID</param>
+        /// <returns>BetChoiceInfo containing the choice name and bet type ID</returns>
+        public BetChoiceInfo GetKenoBetChoiceInfo(string kenoBetChoiceId)
+        {
+            string kenoBetTypeId;
+            string choiceName = _remotingRefService.GetKenoBetChoice(kenoBetChoiceId, CurrentLanguage, out kenoBetTypeId);
+            return new BetChoiceInfo(choiceName, kenoBetTypeId);
+        }
+
         public string GetKenoBetTypeName(string kenoBetTypeId)
             => _remotingRefService.GetKenoBetType(kenoBetTypeId, CurrentLanguage);
 
@@ -81,6 +94,18 @@
 
 #pragma warning restore S3874 // "out" and "ref" parameters should not be used
 
+        /// <summary>
+        /// Gets lottery bet choice information including name and bet type ID
+        /// </summary>
+        /// <param name="lotteryBetChoiceId">The lottery bet choice ID</param>
+        /// <returns>BetChoiceInfo containing the choice name and bet type ID</returns>
+        public BetChoiceInfo GetLotteryBetChoiceInfo(string lotteryBetChoiceId)
+        {
+            string lotteryBetTypeId;
+            string choiceName = _remotingRefService.GetLotteryBetChoice(lotteryBetChoiceId, CurrentLanguage, out lotteryBetTypeId);
+            return new BetChoiceInfo(choiceName, lotteryBetTypeId);
+        }
+
         public string GetLotteryBetTypeName(string lotteryBettypeId)
             => _remotingRefService.GetLotteryBetType(lotteryBettypeId, CurrentLanguage);
 
@@ -89,6 +114,18 @@
 
         public string GetTableGamesBetChoiceName(string tableGamesBetChoiceId, out string tableGamesBetTypeId)
             => _remotingRefService.GetTableGamesBetChoice(tableGamesBetChoiceId, CurrentLanguage, out tableGamesBetTypeId);
+
+        /// <summary>
+        /// Gets table games bet choice information including name and bet type ID
+        /// </summary>
+        /// <param name="tableGamesBetChoiceId">The table games bet choice ID</param>
+        /// <returns>BetChoiceInfo containing the choice name and bet type ID</returns>
+        public BetChoiceInfo GetTableGamesBetChoiceInfo(string tableGamesBetChoiceId)
+        {
+            string tableGamesBetTypeId;
+            string choiceName = _remotingRefService.GetTableGamesBetChoice(tableGamesBetChoiceId, CurrentLanguage, out tableGamesBetTypeId);
+            return new BetChoiceInfo(choiceName, tableGamesBetTypeId);
+        }
 
         public string GetTableGamesBetTypeName(string tableGamesBetTypeId)
             => _remotingRefService.GetTableGamesBetType(tableGamesBetTypeId, CurrentLanguage, DefaultValue);

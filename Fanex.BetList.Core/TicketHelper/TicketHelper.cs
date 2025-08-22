@@ -185,8 +185,17 @@
                 decimal handicap2)
             => _cacheRef.GetCombinationTypeCombo(betTeam, betCheck, Convert.ToInt32(handicap1), Convert.ToInt32(handicap2));
 
-        public string GetKenoBetChoiceName(string kenoBetChoiceId, out string kenoBetTypeId)
-            => _cacheRef.GetKenoBetChoiceName(kenoBetChoiceId, out kenoBetTypeId);
+        /// <summary>
+        /// Gets keno bet choice information including name and bet type ID
+        /// </summary>
+        /// <param name="kenoBetChoiceId">The keno bet choice ID</param>
+        /// <returns>BetChoiceInfo containing the choice name and bet type ID</returns>
+        public BetChoiceInfo GetKenoBetChoiceInfo(string kenoBetChoiceId)
+        {
+            string kenoBetTypeId;
+            string choiceName = _cacheRef.GetKenoBetChoiceName(kenoBetChoiceId, out kenoBetTypeId);
+            return new BetChoiceInfo(choiceName, kenoBetTypeId);
+        }
 
         public string GetKenoBetTypeName(string kenoBetTypeId)
             => _cacheRef.GetKenoBetTypeName(kenoBetTypeId);
@@ -197,8 +206,17 @@
         public string GetFastMarketSituation(string betType, string betTeam, decimal handicap1, decimal handicap2)
             => _cacheRef.GetFastMarketsChoice(betType, betTeam, Convert.ToInt32(handicap1), Convert.ToInt32(handicap2));
 
-        public string GetLotteryBetChoiceName(string lotteryBetChoiceId, out string lotteryBetTypeId)
-            => _cacheRef.GetLotteryBetChoiceName(lotteryBetChoiceId, out lotteryBetTypeId);
+        /// <summary>
+        /// Gets lottery bet choice information including name and bet type ID
+        /// </summary>
+        /// <param name="lotteryBetChoiceId">The lottery bet choice ID</param>
+        /// <returns>BetChoiceInfo containing the choice name and bet type ID</returns>
+        public BetChoiceInfo GetLotteryBetChoiceInfo(string lotteryBetChoiceId)
+        {
+            string lotteryBetTypeId;
+            string choiceName = _cacheRef.GetLotteryBetChoiceName(lotteryBetChoiceId, out lotteryBetTypeId);
+            return new BetChoiceInfo(choiceName, lotteryBetTypeId);
+        }
 
         public string GetLotteryBetTypeName(string lotteryBetTypeId)
             => _cacheRef.GetLotteryBetTypeName(lotteryBetTypeId);
@@ -212,8 +230,17 @@
         public string GetBetRadarMatchCodeFormat(string matchCode)
             => _cacheRef.GetBetRadarMatchCodeFormat(matchCode);
 
-        public string GetTableGamesBetChoiceName(string tableGamesBetChoiceId, out string tableGamesBetTypeId)
-            => _cacheRef.GetTableGamesBetChoiceName(tableGamesBetChoiceId, out tableGamesBetTypeId);
+        /// <summary>
+        /// Gets table games bet choice information including name and bet type ID
+        /// </summary>
+        /// <param name="tableGamesBetChoiceId">The table games bet choice ID</param>
+        /// <returns>BetChoiceInfo containing the choice name and bet type ID</returns>
+        public BetChoiceInfo GetTableGamesBetChoiceInfo(string tableGamesBetChoiceId)
+        {
+            string tableGamesBetTypeId;
+            string choiceName = _cacheRef.GetTableGamesBetChoiceName(tableGamesBetChoiceId, out tableGamesBetTypeId);
+            return new BetChoiceInfo(choiceName, tableGamesBetTypeId);
+        }
 
         public string GetTableGamesBetTypeName(string tableGamesBetTypeId)
             => _cacheRef.GetTableGamesBetTypeName(tableGamesBetTypeId);

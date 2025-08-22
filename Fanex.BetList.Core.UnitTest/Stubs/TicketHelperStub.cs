@@ -122,6 +122,18 @@ namespace Fanex.BetList.Core.UnitTest.Stubs
             return _gameName + kenoBetChoiceID;
         }
 
+        /// <summary>
+        /// Gets keno bet choice information including name and bet type ID
+        /// </summary>
+        /// <param name="kenoBetChoiceId">The keno bet choice ID</param>
+        /// <returns>BetChoiceInfo containing the choice name and bet type ID</returns>
+        public BetChoiceInfo GetKenoBetChoiceInfo(string kenoBetChoiceId)
+        {
+            string kenoBetTypeId = _gameName + kenoBetChoiceId;
+            string choiceName = _gameName + kenoBetChoiceId;
+            return new BetChoiceInfo(choiceName, kenoBetTypeId);
+        }
+
         public string GetKenoBetTypeName(string kenoBettypeID)
         {
             return _betTypeName + kenoBettypeID;
@@ -142,6 +154,18 @@ namespace Fanex.BetList.Core.UnitTest.Stubs
             lotteryBettypeId = _gameName + lotteryBetChoiceId;
 
             return _gameName + lotteryBettypeId;
+        }
+
+        /// <summary>
+        /// Gets lottery bet choice information including name and bet type ID
+        /// </summary>
+        /// <param name="lotteryBetChoiceId">The lottery bet choice ID</param>
+        /// <returns>BetChoiceInfo containing the choice name and bet type ID</returns>
+        public BetChoiceInfo GetLotteryBetChoiceInfo(string lotteryBetChoiceId)
+        {
+            string lotteryBetTypeId = _gameName + lotteryBetChoiceId;
+            string choiceName = _gameName + lotteryBetChoiceId;
+            return new BetChoiceInfo(choiceName, lotteryBetTypeId);
         }
 
         public string GetLotteryBetTypeName(string lotteryBettypeId)
@@ -173,7 +197,19 @@ namespace Fanex.BetList.Core.UnitTest.Stubs
         {
             tableGamesBetTypeId = _gameName + tableGamesBetChoiceId;
 
-            return _gameName + tableGamesBetTypeId;
+            return _gameName + tableGamesBetChoiceId;
+        }
+
+        /// <summary>
+        /// Gets table games bet choice information including name and bet type ID
+        /// </summary>
+        /// <param name="tableGamesBetChoiceId">The table games bet choice ID</param>
+        /// <returns>BetChoiceInfo containing the choice name and bet type ID</returns>
+        public BetChoiceInfo GetTableGamesBetChoiceInfo(string tableGamesBetChoiceId)
+        {
+            string tableGamesBetTypeId = _gameName + tableGamesBetChoiceId;
+            string choiceName = _gameName + tableGamesBetChoiceId;
+            return new BetChoiceInfo(choiceName, tableGamesBetTypeId);
         }
 
         public string GetTableGamesBetTypeName(string tableGamesBetTypeId)

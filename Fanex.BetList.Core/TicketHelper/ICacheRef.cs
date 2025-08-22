@@ -1,6 +1,7 @@
 ﻿namespace Fanex.BetList.Core.TicketHelper
 {
     using System.Collections.Generic;
+    using Entities;
 
     public interface ICacheRef
     {
@@ -36,6 +37,13 @@
 
 #pragma warning restore S3874 // "out" and "ref" parameters should not be used
 
+        /// <summary>
+        /// Gets keno bet choice information including name and bet type ID
+        /// </summary>
+        /// <param name="kenoBetChoiceId">The keno bet choice ID</param>
+        /// <returns>BetChoiceInfo containing the choice name and bet type ID</returns>
+        BetChoiceInfo GetKenoBetChoiceInfo(string kenoBetChoiceId);
+
         string GetKenoBetTypeName(string kenoBetTypeId);
 
         string GetResourceData(string refId, string resourceId);
@@ -50,6 +58,13 @@
 
 #pragma warning restore S3874 // "out" and "ref" parameters should not be used
 
+        /// <summary>
+        /// Gets lottery bet choice information including name and bet type ID
+        /// </summary>
+        /// <param name="lotteryBetChoiceId">The lottery bet choice ID</param>
+        /// <returns>BetChoiceInfo containing the choice name and bet type ID</returns>
+        BetChoiceInfo GetLotteryBetChoiceInfo(string lotteryBetChoiceId);
+
         string GetLotteryBetTypeName(string lotteryBettypeId);
 
         string GetBetRadarMatchCodeFormat(string matchCode);
@@ -59,6 +74,13 @@
         string GetTableGamesBetChoiceName(string tableGamesBetChoiceId, out string tableGamesBetTypeId);
 
 #pragma warning restore S3874 // "out" and "ref" parameters should not be used
+
+        /// <summary>
+        /// Gets table games bet choice information including name and bet type ID
+        /// </summary>
+        /// <param name="tableGamesBetChoiceId">The table games bet choice ID</param>
+        /// <returns>BetChoiceInfo containing the choice name and bet type ID</returns>
+        BetChoiceInfo GetTableGamesBetChoiceInfo(string tableGamesBetChoiceId);
 
         string GetTableGamesBetTypeName(string tableGamesBetTypeId);
 
