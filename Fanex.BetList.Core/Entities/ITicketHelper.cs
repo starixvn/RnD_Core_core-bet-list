@@ -117,11 +117,7 @@
 
         IList<string> GetCombinationMPOfferNameList(string betTeam, string betCheck, decimal handicap1, decimal handicap2);
 
-        /// <summary>
-        /// Gets keno bet choice information including name and bet type ID
-        /// </summary>
-        /// <param name="kenoBetChoiceId">The keno bet choice ID</param>
-        /// <returns>BetChoiceInfo containing the choice name and bet type ID</returns>
+        string GetKenoBetChoiceName(string kenoBetChoiceId, out string kenoBetTypeId);
         BetChoiceInfo GetKenoBetChoiceInfo(string kenoBetChoiceId);       
 
         string GetKenoBetTypeName(string kenoBetTypeId);
@@ -130,11 +126,8 @@
 
         string GetFastMarketSituation(string betType, string betTeam, decimal handicap1, decimal handicap2);
 
-        /// <summary>
-        /// Gets lottery bet choice information including name and bet type ID
-        /// </summary>
-        /// <param name="lotteryBetChoiceId">The lottery bet choice ID</param>
-        /// <returns>BetChoiceInfo containing the choice name and bet type ID</returns>
+        string GetLotteryBetChoiceName(string lotteryBetChoiceId, out string lotteryBetTypeId);
+
         BetChoiceInfo GetLotteryBetChoiceInfo(string lotteryBetChoiceId);
       
         string GetLotteryBetTypeName(string lotteryBetTypeId);
@@ -145,11 +138,8 @@
 
         string GetBetRadarMatchCodeFormat(string matchCode);
 
-        /// <summary>
-        /// Gets table games bet choice information including name and bet type ID
-        /// </summary>
-        /// <param name="tableGamesBetChoiceId">The table games bet choice ID</param>
-        /// <returns>BetChoiceInfo containing the choice name and bet type ID</returns>
+        string GetTableGamesBetChoiceName(string tableGamesBetChoiceId, out string tableGamesBetTypeId);
+
         BetChoiceInfo GetTableGamesBetChoiceInfo(string tableGamesBetChoiceId);
 
         string GetTableGamesBetTypeName(string tableGamesBetTypeId);
