@@ -1,21 +1,11 @@
 namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Reflection;
     using Core.Builder.ChoiceBuilder;
     using Core.Entities;
     using NSubstitute;
     using NUnit.Framework;
+    using System.Collections.Generic;
     using System.Runtime.Serialization;
-    using System.Runtime.Serialization.Json;
-    using System.Text;
-    using BetListNPOI.SS.UserModel;
-    using BetListNPOI.HSSF.UserModel;
-    using BetListNPOI.SS.Util;
-    using BetListNPOI.POIFS.FileSystem;
-    using Core.Builder.SystemParlayBuilder;
-    using Core.Templates;
 
     [TestFixture]
     public class Choice654Test
@@ -346,6 +336,118 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 
             // Assert
             Assert.IsNull(_choice.Template.Handicap.handicap);
+        }
+
+        [Test]
+        public void BuildBetTeamClassNameAndHandicap_WithHandicap1Value_ShouldSetCorrectHandicap()
+        {
+            // Arrange
+            _ticket.Handicap1 = 1.5m;
+            _ticket.Handicap2 = 2.0m;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, _ticketData, false);
+
+            // Assert
+            Assert.AreEqual("underdog", _choice.Template.betTeamClassName);
+            // Since Choice654 overrides and sets betTeamClassName to "underdog", 
+            // the base class will set handicap to positive Handicap2 (2.0)
+            Assert.AreEqual("2", _choice.Template.Handicap.handicap);
+        }
+
+        [Test]
+        public void BuildBetTeamClassNameAndHandicap_WithHandicap2GreaterThanHandicap1_ShouldSetHandicap2Value()
+        {
+            // Arrange
+            _ticket.Handicap1 = 1.0m;
+            _ticket.Handicap2 = 2.5m;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, _ticketData, false);
+
+            // Assert
+            Assert.AreEqual("underdog", _choice.Template.betTeamClassName);
+            // Since betTeamClassName is "underdog", handicap should be positive Handicap2
+            Assert.AreEqual("2", _choice.Template.Handicap.handicap);
+        }
+
+        [Test]
+        public void BuildBetTeamClassNameAndHandicap_WithHandicap1GreaterThanHandicap2_ShouldSetHandicap1Value()
+        {
+            // Arrange
+            _ticket.Handicap1 = 3.0m;
+            _ticket.Handicap2 = 1.5m;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, _ticketData, false);
+
+            // Assert
+            Assert.AreEqual("underdog", _choice.Template.betTeamClassName);
+            // Since betTeamClassName is "underdog", handicap should be positive Handicap1
+            Assert.AreEqual("3", _choice.Template.Handicap.handicap);
+        }
+
+        [Test]
+        public void BuildBetTeamClassNameAndHandicap_WithEqualHandicapValues_ShouldSetHandicap1Value()
+        {
+            // Arrange
+            _ticket.Handicap1 = 2.0m;
+            _ticket.Handicap2 = 2.0m;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, _ticketData, false);
+
+            // Assert
+            Assert.AreEqual("underdog", _choice.Template.betTeamClassName);
+            // When equal, it uses Handicap1
+            Assert.AreEqual("2", _choice.Template.Handicap.handicap);
+        }
+
+        [Test]
+        public void BuildBetTeamClassNameAndHandicap_WithZeroHandicapValues_ShouldSetZeroHandicap()
+        {
+            // Arrange
+            _ticket.Handicap1 = 0.0m;
+            _ticket.Handicap2 = 0.0m;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, _ticketData, false);
+
+            // Assert
+            Assert.AreEqual("underdog", _choice.Template.betTeamClassName);
+            Assert.AreEqual("0", _choice.Template.Handicap.handicap);
+        }
+
+        [Test]
+        public void BuildBetTeamClassNameAndHandicap_WithNegativeHandicapValues_ShouldSetCorrectHandicap()
+        {
+            // Arrange
+            _ticket.Handicap1 = -1.5m;
+            _ticket.Handicap2 = -2.0m;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, _ticketData, false);
+
+            // Assert
+            Assert.AreEqual("underdog", _choice.Template.betTeamClassName);
+            // Since betTeamClassName is "underdog", handicap should be positive (absolute value of the larger)
+            Assert.AreEqual("-1.5", _choice.Template.Handicap.handicap);
+        }
+
+        [Test]
+        public void BuildBetTeamClassNameAndHandicap_WithDecimalHandicapValues_ShouldSetCorrectHandicap()
+        {
+            // Arrange
+            _ticket.Handicap1 = 0.75m;
+            _ticket.Handicap2 = 1.25m;
+
+            // Act
+            _choice.Render(_ticket, _ticketHelper, _ticketData, false);
+
+            // Assert
+            Assert.AreEqual("underdog", _choice.Template.betTeamClassName);
+            // Since betTeamClassName is "underdog", handicap should be positive Handicap2
+            Assert.AreEqual("1.25", _choice.Template.Handicap.handicap);
         }
 
         [Test]

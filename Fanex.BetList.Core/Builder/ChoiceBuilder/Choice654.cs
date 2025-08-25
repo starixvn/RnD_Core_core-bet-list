@@ -3,9 +3,10 @@
     using Entities;
     using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Constants;
+    using Fanex.BetList.Core.Utils;
     using System.Collections.Generic;
 
-    public class Choice654 : Choice653
+    public class Choice654 : Choice1
     {
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
@@ -16,5 +17,13 @@
 
             Template.betTeam = $"{ticketHelper.GetTeamNameById(playerInfo.PlayerId)} ({ticketHelper.GetTeamNameById(playerInfo.TeamId)}) - {overUnder}";
         }
+        protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
+        {
+            var handicap = ticket.Handicap2 > ticket.Handicap1 ? ticket.Handicap2 : ticket.Handicap1;
+            Template.Handicap.handicap = ConvertByBetType.Hdp(handicap);
+
+            Template.betTeamClassName = Underdog;
+        }
+
     }
 }
