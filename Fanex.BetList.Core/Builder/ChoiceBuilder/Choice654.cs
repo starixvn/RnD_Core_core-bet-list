@@ -10,7 +10,7 @@
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             var playerInfo = new BasketballPlayerInfo(ticket.TransDesc);
-            var overUnder = BetTeamValue.O == ticket.BetTeam.ToLowerInvariant() ?
+            var overUnder = !string.IsNullOrEmpty(ticket.BetTeam) && BetTeamValue.O == ticket.BetTeam.ToLowerInvariant() ?
                $"<span class=\"favorite\">{CoreBetList.over}</span>" :
                CoreBetList.under;
 

@@ -1,7 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using Entities;
-    using Fanex.BetList.Core.Extensions;
+    using Fanex.BetList.Core.Utils;
     using System.Collections.Generic;
     using System.Runtime.Serialization;
     using System.Runtime.Serialization.Json;
@@ -11,7 +11,15 @@
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             var players = new BasketballPlayers(ticket.TransDesc);
-            if (players.Players.Count >= 2)
+            if (players.Players.Count == 1)
+            {
+                var playerId = players.Players[0].PlayerId;
+                var playerName = ticketHelper.GetTeamNameById(playerId);
+                var betchoice = $"{playerName}";
+                var playerOption = $"<span class=\"favorite\">{playerName}</span>";
+                Template.betTeam = $"{betchoice} - {playerOption}";
+            }
+            else if (players.Players.Count >= 2)
             {
                 var playerId1 = players.Players[0].PlayerId;
                 var playerName1 = ticketHelper.GetTeamNameById(playerId1);
@@ -21,6 +29,10 @@
                 var playerOption = $"<span class=\"favorite\">{playerName1}</span>";
 
                 Template.betTeam = $"{betchoice} - {playerOption}";
+            }
+            else
+            {
+                Template.betTeam = string.Empty;
             }
         }
     }

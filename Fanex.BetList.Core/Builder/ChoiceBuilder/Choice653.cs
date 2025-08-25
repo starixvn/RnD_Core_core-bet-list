@@ -1,7 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using Entities;
-    using Fanex.BetList.Core.Extensions;
+    using Fanex.BetList.Core.Utils;
     using System.Collections.Generic;
     using System.Runtime.Serialization;
     using System.Runtime.Serialization.Json;

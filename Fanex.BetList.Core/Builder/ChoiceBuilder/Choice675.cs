@@ -2,7 +2,7 @@
 {
     using Entities;
     using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Extensions;
+    using Fanex.BetList.Core.Utils;
     using System.Collections.Generic;
     using System.Linq;
     using System.Runtime.Serialization;

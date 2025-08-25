@@ -1,7 +1,7 @@
 using System.IO;
 using System.Runtime.Serialization.Json;
 
-namespace Fanex.BetList.Core.Extensions
+namespace Fanex.BetList.Core.Utils
 {
     public static class DataContractJsonSerializerExtensions
     {

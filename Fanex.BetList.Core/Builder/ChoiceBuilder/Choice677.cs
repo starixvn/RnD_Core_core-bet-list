@@ -10,7 +10,7 @@
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             var playerInfo = new BasketballPlayerInfo(ticket.TransDesc);
-            var yesNo = BetTeamValue.N == ticket.BetTeam.ToLowerInvariant() ? 
+            var yesNo = !string.IsNullOrEmpty(ticket.BetTeam) && BetTeamValue.N == ticket.BetTeam.ToLowerInvariant() ? 
                 CoreBetList.lblNo : 
                 CoreBetList.lblYes;
 
