@@ -13,5 +13,10 @@
         public const string Space = " ";
         public const string NewLine = "\n";
         public const string NoneBreakingSpace = "&nbsp;";
+
+        public const string OpenTagJackpotContributionInfo = "<div class=\"favorite\">";
+        public const string OpenTagJackpotRefNo = "<div class=\"jackpotRefNo\">";
+        public const string CloseTagDiv = "</div>";
+
     }
 }

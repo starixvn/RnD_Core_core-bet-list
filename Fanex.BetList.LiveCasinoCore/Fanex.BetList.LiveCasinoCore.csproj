@@ -2,9 +2,10 @@
   <PropertyGroup>
     <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
-    <Version>1.0.1-playtech-03</Version>
-    <InfomationalVersion>1.0.1</InfomationalVersion>
-    <PackageReleaseNotes>- Show Table Code (#224687)</PackageReleaseNotes>
+    <Version>1.0.2-contribution-03</Version>
+    <InfomationalVersion>1.0.2</InfomationalVersion>
+    <PackageReleaseNotes>
+      - Support Playtech Live casino Contribution, Jackpot (#230127)</PackageReleaseNotes>
     <Description>BetList core package</Description>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
     <Authors>Nexcel Solutions</Authors>
