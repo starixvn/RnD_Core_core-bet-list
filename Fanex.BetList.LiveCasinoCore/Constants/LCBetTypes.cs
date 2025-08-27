@@ -12,5 +12,8 @@ namespace Fanex.BetList.Core.Constants
 
         public const int WCasinoMin = 12000;
         public const int WCasinoMax = 12099;
+
+        public const int OFAMin = 12250;
+        public const int OFAMax = 12299;
     }
 }

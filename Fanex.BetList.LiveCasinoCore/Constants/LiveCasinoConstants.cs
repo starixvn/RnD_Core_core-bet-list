@@ -2,6 +2,8 @@
 {
     public static class LiveCasinoConstants
     {
+        public const string ChoiceKey = "choice";
+        public const string TableCodeKey = "tablecode";
         public const string OpenBetIdTag = "<span class='bet-id'>";
         public const string CloseBetIdTag = "</span>";
 

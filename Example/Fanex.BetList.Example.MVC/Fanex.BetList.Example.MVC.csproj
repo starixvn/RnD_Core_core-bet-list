@@ -538,6 +538,7 @@
     <Content Include="App_Data\GPILC.xls" />
     <Content Include="App_Data\PlaytechLive.xls" />
     <Content Include="App_Data\WCasino.xls" />
+    <Content Include="App_Data\LCProduct.xls" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
