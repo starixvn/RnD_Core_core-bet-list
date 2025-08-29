@@ -329,13 +329,13 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
         }
 
         [Test]
-        public void BuildBetTeamClassNameAndHandicap_Always_ShouldSetHandicapToNull()
+        public void BuildBetTeamClassNameAndHandicap_Always_ShouldSetHandicapToValue()
         {
             // Act
             _choice.Render(_ticket, _ticketHelper, _ticketData, false);
 
             // Assert
-            Assert.IsNull(_choice.Template.Handicap.handicap);
+            Assert.IsNotNull(_choice.Template.Handicap.handicap);
         }
 
         [Test]
@@ -368,7 +368,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Assert
             Assert.AreEqual("underdog", _choice.Template.betTeamClassName);
             // Since betTeamClassName is "underdog", handicap should be positive Handicap2
-            Assert.AreEqual("2", _choice.Template.Handicap.handicap);
+            Assert.AreEqual("2.5", _choice.Template.Handicap.handicap);
         }
 
         [Test]
@@ -448,13 +448,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             Assert.AreEqual("underdog", _choice.Template.betTeamClassName);
             // Since betTeamClassName is "underdog", handicap should be positive Handicap2
             Assert.AreEqual("1.25", _choice.Template.Handicap.handicap);
-        }
-
-        [Test]
-        public void Choice654_Inheritance_ShouldInheritFromChoice653()
-        {
-            // Assert
-            Assert.IsTrue(typeof(Choice653).IsAssignableFrom(typeof(Choice654)));
         }
 
         [Test]

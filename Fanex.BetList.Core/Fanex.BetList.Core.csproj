@@ -2,7 +2,7 @@
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>        
-        <Version>3.0.5.6-Basketball-04</Version>
+        <Version>3.0.5.6-Basketball-05</Version>
         <InfomationalVersion>3.0.5.6</InfomationalVersion>
         <PackageReleaseNotes>
             Support new bettype of Basketball (#235372)

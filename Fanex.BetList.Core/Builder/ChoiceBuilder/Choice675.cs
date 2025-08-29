@@ -17,8 +17,9 @@
             betTeam = string.IsNullOrEmpty(betTeam) ? betTeamModel.ResourceKey() : betTeamModel.Format(betTeam);
             betTeam = $"<span class=\"favorite\">{betTeam}</span>";
             var playerName = ticketHelper.GetTeamNameById(betTeamModel.PlayerId);
+            var teamName = ticketHelper.GetTeamNameById(betTeamModel.TeamId);
 
-            Template.betTeam = $"{playerName} {betTeam}";
+            Template.betTeam = $"{playerName} ({teamName}) {betTeam}";
         }
     }
 
