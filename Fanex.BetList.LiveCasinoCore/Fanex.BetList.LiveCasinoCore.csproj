@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
-    <Version>1.0.2-contribution-06</Version>
+    <Version>1.0.2-contribution-13</Version>
     <InfomationalVersion>1.0.2</InfomationalVersion>
     <PackageReleaseNotes>
       - Support Playtech Live casino Contribution, Jackpot (#230127)

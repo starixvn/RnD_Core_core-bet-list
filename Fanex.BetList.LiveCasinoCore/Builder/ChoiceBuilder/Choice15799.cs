@@ -22,5 +22,13 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             Template.Handicap = null;
             Template.betTeamClassName = Underdog;
         }
+
+        protected override void AdjustBetTeamToRTF()
+        {   
+            Template.betTeam = Template.betTeam.Replace(LiveCasinoConstants.OpenTagJackpotRefNo, string.Empty)
+                .Replace(LiveCasinoConstants.CloseTagDiv, string.Empty);
+
+            base.AdjustBetTeamToRTF();
+        }
     }
 }

@@ -25,5 +25,12 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                 $"{LiveCasinoConstants.OpenTagJackpotContributionInfo}{CoreBetList.stake}: {stake} {ticket.Currency}{LiveCasinoConstants.CloseTagDiv}";
             }
         }
+
+        protected override void AdjustBetTeamToRTF()
+        {
+            Template.betTeam = Template.betTeam.Replace(LiveCasinoConstants.OpenTagJackpotContributionInfo, LiveCasinoConstants.NewLine)
+                                             .Replace(LiveCasinoConstants.CloseTagDiv, string.Empty);
+            base.AdjustBetTeamToRTF();
+        }
     }
 }
