@@ -29,7 +29,13 @@
 
             MapIdToBaseId(VGamingRange1BetTypes.PromotionPrize, VGamingRange1BetTypes.JackpotPrize);
 
-            for (var betTypeId = VGamingRange2BetTypes.MinRange; betTypeId <= VGamingRange2BetTypes.MaxRange; betTypeId++)
+            for (var betTypeId = VGamingRange2BetTypes.MinRange; betTypeId < VGamingRange2BetTypes.Freespin; betTypeId++)
+            {
+                MapIdToBaseId(betTypeId, VGamingRange1BetTypes.MinRange);
+            }
+
+            MapIdToBaseId(VGamingRange2BetTypes.Freespin, VGamingRange1BetTypes.JackpotPrize);
+            for (var betTypeId = VGamingRange2BetTypes.Freespin + 1; betTypeId <= VGamingRange2BetTypes.MaxRange; betTypeId++)
             {
                 MapIdToBaseId(betTypeId, VGamingRange1BetTypes.MinRange);
             }

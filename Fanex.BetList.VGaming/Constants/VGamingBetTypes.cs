@@ -22,6 +22,7 @@
     public static class VGamingRange2BetTypes
     {
         public const int MinRange = 13500;
+        public const int Freespin = 13797;
         public const int MaxRange = 13799;
     }
 }
