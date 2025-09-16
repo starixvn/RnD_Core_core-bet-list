@@ -2,6 +2,8 @@
 {
     public static class LiveCasinoConstants
     {
+        public const string ChoiceKey = "choice";
+        public const string TableCodeKey = "tablecode";
         public const string OpenBetIdTag = "<span class='bet-id'>";
         public const string CloseBetIdTag = "</span>";
 
@@ -13,5 +15,10 @@
         public const string Space = " ";
         public const string NewLine = "\n";
         public const string NoneBreakingSpace = "&nbsp;";
+
+        public const string OpenTagJackpotContributionInfo = "<div class=\"favorite\">";
+        public const string OpenTagJackpotRefNo = "<div class=\"jackpotRefNo\">";
+        public const string CloseTagDiv = "</div>";
+
     }
 }

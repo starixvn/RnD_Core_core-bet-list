@@ -19,7 +19,7 @@ namespace Fanex.BetList.Core.Mapper
                 }
             }
 
-            for (int betTypeId = LCBetTypes.PlaytechMin + 1; betTypeId <= LCBetTypes.PlaytechMax; betTypeId++)
+            for (int betTypeId = LCBetTypes.PlaytechMin + 1; betTypeId < LCBetTypes.PlaytechJackpotContribution; betTypeId++)
             {
                 MapIdToBaseId(betTypeId, LCBetTypes.PlaytechMin);
             }
@@ -27,6 +27,11 @@ namespace Fanex.BetList.Core.Mapper
             for (int betTypeId = LCBetTypes.WCasinoMin + 1; betTypeId <= LCBetTypes.WCasinoMax; betTypeId++)
             {
                 MapIdToBaseId(betTypeId, LCBetTypes.WCasinoMin);
+            }
+
+            for (int betTypeId = LCBetTypes.OFAMin + 1; betTypeId <= LCBetTypes.OFAMax; betTypeId++)
+            {
+                MapIdToBaseId(betTypeId, LCBetTypes.OFAMin);
             }
         }
     }

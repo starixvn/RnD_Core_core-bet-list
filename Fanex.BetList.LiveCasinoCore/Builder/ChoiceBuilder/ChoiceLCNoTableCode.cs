@@ -3,6 +3,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
     using App_GlobalResources;
     using Entities;
     using Fanex.BetList.Core.Constants;
+    using Fanex.BetList.Core.Utils.Parsers;
     using Fanex.BetList.Core.Utils.TicketExt;
     using System;
     using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
     public class ChoiceLCNoTableCode : Choice1
     {
+        private const string JackpotTransIdInfo = "jpw";
         protected virtual string RefIdForGameType => string.Empty;
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
@@ -49,7 +51,24 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
             else
             {
                 Template.League.LeagueName.leagueName += BuildGameId(ticket);
+
+                if(ticket.TicketHasJackpotInfo())
+                {
+                    Template.League.Append(BuildShowJackpotWonDetails(ticket, ticketHelper));
+                }
             }
+        }
+
+        protected virtual string BuildShowJackpotWonDetails(ITicket ticket, ITicketHelper ticketHelper)
+        {
+            var transId = ExtraInfoParser.ParseExtraInfo(ticket.JackpotInfo, ',')[JackpotTransIdInfo];
+            var sportTypeName = ticketHelper.GetSportNameById(ticket.SportTypeId);
+            var detailLinkMarkup =
+                $"<div class=\"detail jackpot-detail\" onclick=\"showLCJackpotWonDetails('{transId}', '{ticket.CustId}', '{ticket.BetTypeId}', '{ticket.WinlostDate}', '{sportTypeName}');\">" +
+                $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.JackpotWonDetails}</a>" +
+                $"</div>";
+
+            return detailLinkMarkup;
         }
 
         protected virtual string BuildGameId(ITicket ticket)
