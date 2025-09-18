@@ -15,7 +15,7 @@
                $"<span class=\"favorite\">{CoreBetList.over}</span>" :
                CoreBetList.under;
 
-            Template.betTeam = $"{ticketHelper.GetTeamNameById(playerInfo.PlayerId)} ({ticketHelper.GetTeamNameById(playerInfo.TeamId)}) - {overUnder}";
+            Template.betTeam = $"{ticketHelper.GetTeamNameById(playerInfo.PlayerId)} - {overUnder}";
         }
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {

@@ -13,13 +13,18 @@
             var playerInfo = new BasketballPlayerInfo(ticket.TransDesc);
             var betoption = $"<span class=\"favorite\">{ticket.BetTeam}</span>";
 
-            Template.betTeam = $"{ticketHelper.GetTeamNameById(playerInfo.PlayerId)} ({ticketHelper.GetTeamNameById(playerInfo.TeamId)}) - {betoption}";
+            Template.betTeam = $"{ticketHelper.GetTeamNameById(playerInfo.PlayerId)} - {betoption}";
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
         {
             Template.betTeamClassName = Underdog;
             Template.Handicap.handicap = null;
+        }
+        
+        protected override void AdjustBetTeamToRTF()
+        {
+            Template.betTeam = Template.betTeam.Replace("</br>", "\n");
         }
     }
 

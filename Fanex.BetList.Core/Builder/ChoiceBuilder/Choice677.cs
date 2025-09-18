@@ -14,7 +14,7 @@
                 CoreBetList.lblNo : 
                 CoreBetList.lblYes;
 
-            Template.betTeam = $"{ticketHelper.GetTeamNameById(playerInfo.PlayerId)} ({ticketHelper.GetTeamNameById(playerInfo.TeamId)}) - <span class=\"favorite\">{yesNo}</span>";
+            Template.betTeam = $"{ticketHelper.GetTeamNameById(playerInfo.PlayerId)} - <span class=\"favorite\">{yesNo}</span>";
         }
     }
 }

@@ -132,6 +132,16 @@
             MapIdToBaseId(BetTypes.FirstHalfEndingGame, BetTypes.FirstHalfRaceToXPoints);
             MapIdToBaseId(BetTypes.SecondHalfEndingGame, BetTypes.FirstHalfRaceToXPoints);
             MapIdToBaseId(BetTypes.QuarterXEndingGame, BetTypes.FirstHalfRaceToXPoints);
+
+            for (var i = BetTypes.PlayerPointsAtLeast; i <= BetTypes.Player3PTFGMadeBands; i++)
+            {
+                if(i != BetTypes.PlayerPerformanceandOthers && i != BetTypes.PlayerPerformanceDoublesandOthers && i != BetTypes.PlayerPlayerPerformanceTriplesandOthersDoubleDouble){
+                   MapIdToBaseId(i, BetTypes.FirstHalfRaceToXPoints);
+                }
+            }
+
+            MapIdToBaseId(BetTypes.PlayerPerformanceDoublesandOthers, BetTypes.PlayerPerformanceandOthers);
+            MapIdToBaseId(BetTypes.PlayerPlayerPerformanceTriplesandOthersDoubleDouble, BetTypes.PlayerPerformanceandOthers);
         }
 
         private void MapForBadminton()
