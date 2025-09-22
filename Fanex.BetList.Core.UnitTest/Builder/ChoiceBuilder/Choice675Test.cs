@@ -31,11 +31,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Arrange
             const string transDesc = "{\"pid\":\"123\",\"pname\":\"John Doe\",\"isH\":true,\"tid\":1,\"s\":[{\"t\":\"points\",\"value\":\"25\"}],\"r\":[{\"t\":\"assists\",\"value\":\"8\"}]}";
             const string playerName = "John Doe";
-            const string teamName = "Lakers";
 
             _ticket.TransDesc = transDesc;
             _ticketHelper.GetTeamNameById("123").Returns(playerName);
-            _ticketHelper.GetTeamNameById(1).Returns(teamName);
 
             // Act
             _choice.Render(_ticket, _ticketHelper, _ticketData, false);
@@ -43,10 +41,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Assert
             Assert.IsNotNull(_choice.Template.betTeam);
             Assert.IsTrue(_choice.Template.betTeam.Contains(playerName));
-            Assert.IsTrue(_choice.Template.betTeam.Contains(teamName));
             Assert.IsTrue(_choice.Template.betTeam.Contains("<span class=\"favorite\">"));
             // Check new format: playerName teamName betTeam (without parentheses)
-            var expectedFormat = $"{playerName} ({teamName})";
+            var expectedFormat = $"{playerName}";
             Assert.IsTrue(_choice.Template.betTeam.StartsWith(expectedFormat), 
                 $"Expected betTeam to start with '{expectedFormat}', but got '{_choice.Template.betTeam}'");
         }
@@ -57,7 +54,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Arrange
             _ticket.TransDesc = string.Empty;
             _ticketHelper.GetTeamNameById(Arg.Any<string>()).Returns(string.Empty);
-            _ticketHelper.GetTeamNameById(Arg.Any<int>()).Returns(string.Empty);
 
             // Act
             _choice.Render(_ticket, _ticketHelper, _ticketData, false);
@@ -103,11 +99,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Arrange
             const string transDesc = "{\"pid\":\"789\",\"pname\":\"Mike Johnson\",\"isH\":true,\"tid\":3,\"s\":[{\"t\":\"points\",\"value\":\"30\"},{\"t\":\"rebounds\",\"value\":\"15\"},{\"t\":\"assists\",\"value\":\"10\"}],\"r\":[{\"t\":\"steals\",\"value\":\"3\"},{\"t\":\"blocks\",\"value\":\"2\"}]}";
             const string playerName = "Mike Johnson";
-            const string teamName = "Bulls";
 
             _ticket.TransDesc = transDesc;
             _ticketHelper.GetTeamNameById("789").Returns(playerName);
-            _ticketHelper.GetTeamNameById(3).Returns(teamName);
 
             // Act
             _choice.Render(_ticket, _ticketHelper, _ticketData, false);
@@ -115,10 +109,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Assert
             Assert.IsNotNull(_choice.Template.betTeam);
             Assert.IsTrue(_choice.Template.betTeam.Contains(playerName));
-            Assert.IsTrue(_choice.Template.betTeam.Contains(teamName));
             Assert.IsTrue(_choice.Template.betTeam.Contains("<span class=\"favorite\">"));
             // Check new format: playerName teamName betTeam (without parentheses)
-            var expectedFormat = $"{playerName} ({teamName})";
+            var expectedFormat = $"{playerName}";
             Assert.IsTrue(_choice.Template.betTeam.StartsWith(expectedFormat), 
                 $"Expected betTeam to start with '{expectedFormat}', but got '{_choice.Template.betTeam}'");
         }
@@ -129,11 +122,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Arrange
             const string transDesc = "{\"pid\":\"999\",\"pname\":\"Empty Player\",\"isH\":false,\"tid\":4,\"s\":[],\"r\":[]}";
             const string playerName = "Empty Player";
-            const string teamName = "Heat";
 
             _ticket.TransDesc = transDesc;
             _ticketHelper.GetTeamNameById("999").Returns(playerName);
-            _ticketHelper.GetTeamNameById(4).Returns(teamName);
 
             // Act
             _choice.Render(_ticket, _ticketHelper, _ticketData, false);
@@ -141,10 +132,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Assert
             Assert.IsNotNull(_choice.Template.betTeam);
             Assert.IsTrue(_choice.Template.betTeam.Contains(playerName));
-            Assert.IsTrue(_choice.Template.betTeam.Contains(teamName));
             Assert.IsTrue(_choice.Template.betTeam.Contains("<span class=\"favorite\">"));
             // Check new format: playerName teamName betTeam (without parentheses)
-            var expectedFormat = $"{playerName} ({teamName})";
+            var expectedFormat = $"{playerName}";
             Assert.IsTrue(_choice.Template.betTeam.StartsWith(expectedFormat), 
                 $"Expected betTeam to start with '{expectedFormat}', but got '{_choice.Template.betTeam}'");
         }
@@ -155,11 +145,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Arrange
             const string transDesc = "{\"pid\":\"111\",\"pname\":\"Test Player\",\"isH\":true,\"tid\":5,\"s\":[{\"t\":\"points\",\"value\":\"20\"}]}";
             const string playerName = "Test Player";
-            const string teamName = "Warriors";
 
             _ticket.TransDesc = transDesc;
             _ticketHelper.GetTeamNameById("111").Returns(playerName);
-            _ticketHelper.GetTeamNameById(5).Returns(teamName);
 
             // Act
             _choice.Render(_ticket, _ticketHelper, _ticketData, false);
@@ -167,10 +155,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Assert
             Assert.IsNotNull(_choice.Template.betTeam);
             Assert.IsTrue(_choice.Template.betTeam.Contains(playerName));
-            Assert.IsTrue(_choice.Template.betTeam.Contains(teamName));
             Assert.IsTrue(_choice.Template.betTeam.Contains("<span class=\"favorite\">"));
             // Check new format: playerName teamName betTeam (without parentheses)
-            var expectedFormat = $"{playerName} ({teamName})";
+            var expectedFormat = $"{playerName}";
             Assert.IsTrue(_choice.Template.betTeam.StartsWith(expectedFormat), 
                 $"Expected betTeam to start with '{expectedFormat}', but got '{_choice.Template.betTeam}'");
         }
@@ -181,11 +168,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Arrange
             const string transDesc = "{\"pid\":\"222\",\"pname\":\"Mixed Player\",\"isH\":false,\"tid\":6,\"s\":[{\"t\":\"rebounds\",\"value\":\"8\"}],\"r\":[{\"t\":\"assists\",\"value\":\"5\"}]}";
             const string playerName = "Mixed Player";
-            const string teamName = "Celtics";
 
             _ticket.TransDesc = transDesc;
             _ticketHelper.GetTeamNameById("222").Returns(playerName);
-            _ticketHelper.GetTeamNameById(6).Returns(teamName);
 
             // Act
             _choice.Render(_ticket, _ticketHelper, _ticketData, false);
@@ -193,10 +178,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Assert
             Assert.IsNotNull(_choice.Template.betTeam);
             Assert.IsTrue(_choice.Template.betTeam.Contains(playerName));
-            Assert.IsTrue(_choice.Template.betTeam.Contains(teamName));
             Assert.IsTrue(_choice.Template.betTeam.Contains("<span class=\"favorite\">"));
             // Check new format: playerName teamName betTeam (without parentheses)
-            var expectedFormat = $"{playerName} ({teamName})";
+            var expectedFormat = $"{playerName}";
             Assert.IsTrue(_choice.Template.betTeam.StartsWith(expectedFormat), 
                 $"Expected betTeam to start with '{expectedFormat}', but got '{_choice.Template.betTeam}'");
         }
@@ -207,11 +191,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Arrange
             const string transDesc = "{\"pid\":\"333\",\"pname\":\"Player-O'Connor\",\"isH\":true,\"tid\":7,\"s\":[{\"t\":\"points\",\"value\":\"18\"}]}";
             const string playerName = "Player-O'Connor";
-            const string teamName = "Rockets";
 
             _ticket.TransDesc = transDesc;
             _ticketHelper.GetTeamNameById("333").Returns(playerName);
-            _ticketHelper.GetTeamNameById(7).Returns(teamName);
 
             // Act
             _choice.Render(_ticket, _ticketHelper, _ticketData, false);
@@ -219,10 +201,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Assert
             Assert.IsNotNull(_choice.Template.betTeam);
             Assert.IsTrue(_choice.Template.betTeam.Contains(playerName));
-            Assert.IsTrue(_choice.Template.betTeam.Contains(teamName));
             Assert.IsTrue(_choice.Template.betTeam.Contains("<span class=\"favorite\">"));
             // Check new format: playerName teamName betTeam (without parentheses)
-            var expectedFormat = $"{playerName} ({teamName})";
+            var expectedFormat = $"{playerName}";
             Assert.IsTrue(_choice.Template.betTeam.StartsWith(expectedFormat), 
                 $"Expected betTeam to start with '{expectedFormat}', but got '{_choice.Template.betTeam}'");
         }
@@ -233,11 +214,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Arrange
             const string transDesc = "{\"pid\":\"555\",\"pname\":\"Test Player\",\"isH\":true,\"tid\":10,\"s\":[{\"t\":\"points\",\"value\":\"22\"}]}";
             const string playerName = "Test Player";
-            const string teamName = "Test Team";
 
             _ticket.TransDesc = transDesc;
             _ticketHelper.GetTeamNameById("555").Returns(playerName);
-            _ticketHelper.GetTeamNameById(10).Returns(teamName);
 
             // Act
             _choice.Render(_ticket, _ticketHelper, _ticketData, false);
@@ -246,7 +225,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             Assert.IsNotNull(_choice.Template.betTeam);
             
             // Check that betTeam starts with "playerName teamName" (new format without parentheses)
-            var expectedStart = $"{playerName} ({teamName})";
+            var expectedStart = $"{playerName}";
             Assert.IsTrue(_choice.Template.betTeam.StartsWith(expectedStart), 
                 $"Expected betTeam to start with '{expectedStart}', but got '{_choice.Template.betTeam}'");
             
@@ -254,7 +233,7 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             Assert.IsTrue(_choice.Template.betTeam.Contains("<span class=\"favorite\">"));
             
             // Verify the complete format: "playerName teamName <span class=\"favorite\">betTeam</span>"
-            var expectedPattern = $"{playerName} ({teamName}) <span class=\"favorite\">";
+            var expectedPattern = $"{playerName}</br><span class=\"favorite\">";
             Assert.IsTrue(_choice.Template.betTeam.Contains(expectedPattern), 
                 $"Expected betTeam to contain '{expectedPattern}', but got '{_choice.Template.betTeam}'");
         }
@@ -265,11 +244,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Arrange
             const string transDesc = "{\"pid\":\"444\",\"pname\":\"High Scorer\",\"isH\":false,\"tid\":8,\"s\":[{\"t\":\"points\",\"value\":\"50\"},{\"t\":\"rebounds\",\"value\":\"25\"}],\"r\":[{\"t\":\"assists\",\"value\":\"15\"}]}";
             const string playerName = "High Scorer";
-            const string teamName = "Nets";
 
             _ticket.TransDesc = transDesc;
             _ticketHelper.GetTeamNameById("444").Returns(playerName);
-            _ticketHelper.GetTeamNameById(8).Returns(teamName);
 
             // Act
             _choice.Render(_ticket, _ticketHelper, _ticketData, false);
@@ -277,10 +254,9 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Assert
             Assert.IsNotNull(_choice.Template.betTeam);
             Assert.IsTrue(_choice.Template.betTeam.Contains(playerName));
-            Assert.IsTrue(_choice.Template.betTeam.Contains(teamName));
             Assert.IsTrue(_choice.Template.betTeam.Contains("<span class=\"favorite\">"));
             // Check new format: playerName teamName betTeam (without parentheses)
-            var expectedFormat = $"{playerName} ({teamName})";
+            var expectedFormat = $"{playerName}";
             Assert.IsTrue(_choice.Template.betTeam.StartsWith(expectedFormat), 
                 $"Expected betTeam to start with '{expectedFormat}', but got '{_choice.Template.betTeam}'");
         }

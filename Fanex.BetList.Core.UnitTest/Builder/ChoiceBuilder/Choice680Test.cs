@@ -1,21 +1,11 @@
 namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
 {
-    using System;
     using System.Collections.Generic;
-    using System.Reflection;
     using Core.Builder.ChoiceBuilder;
     using Core.Entities;
     using NSubstitute;
     using NUnit.Framework;
     using System.Runtime.Serialization;
-    using System.Runtime.Serialization.Json;
-    using System.Text;
-    using BetListNPOI.SS.UserModel;
-    using BetListNPOI.HSSF.UserModel;
-    using BetListNPOI.SS.Util;
-    using BetListNPOI.POIFS.FileSystem;
-    using Core.Builder.SystemParlayBuilder;
-    using Core.Templates;
 
     [TestFixture]
     public class Choice680Test

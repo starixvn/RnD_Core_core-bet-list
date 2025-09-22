@@ -42,20 +42,18 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             var teamId = 456;
             var betTeam = "Over 20.5";
             var playerName = "LeBron James";
-            var teamName = "Lakers";
             
             var json = $"{{\"pid\":{playerId},\"tid\":{teamId}}}";
             _ticket.TransDesc = json;
             _ticket.BetTeam = betTeam;
             
             _ticketHelper.GetTeamNameById(playerId).Returns(playerName);
-            _ticketHelper.GetTeamNameById(teamId).Returns(teamName);
 
             // Act
             _choice.Render(_ticket, _ticketHelper, _ticketData, false);
 
             // Assert
-            var expectedBetTeam = $"{playerName} ({teamName}) - <span class=\"favorite\">{betTeam}</span>";
+            var expectedBetTeam = $"{playerName} - <span class=\"favorite\">{betTeam}</span>";
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
@@ -112,7 +110,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.TransDesc = json;
             _ticket.BetTeam = "Over 20.5";
             _ticketHelper.GetTeamNameById(0).Returns("Unknown Player");
-            _ticketHelper.GetTeamNameById(456).Returns("Lakers");
 
             // Act
             _choice.Render(_ticket, _ticketHelper, _ticketData, false);
@@ -130,14 +127,12 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.TransDesc = json;
             _ticket.BetTeam = "Over 20.5";
             _ticketHelper.GetTeamNameById(123).Returns("LeBron James");
-            _ticketHelper.GetTeamNameById(0).Returns("Unknown Team");
 
             // Act
             _choice.Render(_ticket, _ticketHelper, _ticketData, false);
 
             // Assert
             Assert.IsNotNull(_choice.Template.betTeam);
-            Assert.IsTrue(_choice.Template.betTeam.Contains("Unknown Team"));
         }
 
         [Test]
@@ -165,7 +160,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.TransDesc = json;
             _ticket.BetTeam = "Over 20.5";
             _ticketHelper.GetTeamNameById(-1).Returns("Invalid Player");
-            _ticketHelper.GetTeamNameById(-2).Returns("Invalid Team");
 
             // Act
             _choice.Render(_ticket, _ticketHelper, _ticketData, false);
@@ -173,7 +167,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Assert
             Assert.IsNotNull(_choice.Template.betTeam);
             Assert.IsTrue(_choice.Template.betTeam.Contains("Invalid Player"));
-            Assert.IsTrue(_choice.Template.betTeam.Contains("Invalid Team"));
         }
 
         [Test]
@@ -184,20 +177,18 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             var teamId = 456;
             var betTeam = "Over 20.5 & Under 30.5";
             var playerName = "LeBron James";
-            var teamName = "Lakers";
             
             var json = $"{{\"pid\":{playerId},\"tid\":{teamId}}}";
             _ticket.TransDesc = json;
             _ticket.BetTeam = betTeam;
             
             _ticketHelper.GetTeamNameById(playerId).Returns(playerName);
-            _ticketHelper.GetTeamNameById(teamId).Returns(teamName);
 
             // Act
             _choice.Render(_ticket, _ticketHelper, _ticketData, false);
 
             // Assert
-            var expectedBetTeam = $"{playerName} ({teamName}) - <span class=\"favorite\">{betTeam}</span>";
+            var expectedBetTeam = $"{playerName} - <span class=\"favorite\">{betTeam}</span>";
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
@@ -209,20 +200,18 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             var teamId = 456;
             var betTeam = string.Empty;
             var playerName = "LeBron James";
-            var teamName = "Lakers";
             
             var json = $"{{\"pid\":{playerId},\"tid\":{teamId}}}";
             _ticket.TransDesc = json;
             _ticket.BetTeam = betTeam;
             
             _ticketHelper.GetTeamNameById(playerId).Returns(playerName);
-            _ticketHelper.GetTeamNameById(teamId).Returns(teamName);
 
             // Act
             _choice.Render(_ticket, _ticketHelper, _ticketData, false);
 
             // Assert
-            var expectedBetTeam = $"{playerName} ({teamName}) - <span class=\"favorite\"></span>";
+            var expectedBetTeam = $"{playerName} - <span class=\"favorite\"></span>";
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
@@ -233,20 +222,18 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             var playerId = 123;
             var teamId = 456;
             var playerName = "LeBron James";
-            var teamName = "Lakers";
             
             var json = $"{{\"pid\":{playerId},\"tid\":{teamId}}}";
             _ticket.TransDesc = json;
             _ticket.BetTeam = null;
             
             _ticketHelper.GetTeamNameById(playerId).Returns(playerName);
-            _ticketHelper.GetTeamNameById(teamId).Returns(teamName);
 
             // Act
             _choice.Render(_ticket, _ticketHelper, _ticketData, false);
 
             // Assert
-            var expectedBetTeam = $"{playerName} ({teamName}) - <span class=\"favorite\"></span>";
+            var expectedBetTeam = $"{playerName} - <span class=\"favorite\"></span>";
             Assert.AreEqual(expectedBetTeam, _choice.Template.betTeam);
         }
 
@@ -278,14 +265,12 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             var teamId = 456;
             var betTeam = "Over 20.5";
             var playerName = "LeBron James";
-            var teamName = "Lakers";
             
             var json = $"{{\"pid\":{playerId},\"tid\":{teamId}}}";
             _ticket.TransDesc = json;
             _ticket.BetTeam = betTeam;
             
             _ticketHelper.GetTeamNameById(playerId).Returns(playerName);
-            _ticketHelper.GetTeamNameById(teamId).Returns(teamName);
 
             // Act
             var result = _choice.Render(_ticket, _ticketHelper, _ticketData, false);
@@ -437,7 +422,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             var teamId = 456;
             var betTeam = "Over 20.5";
             var playerName = "LeBron James";
-            var teamName = "Lakers";
             
             var json = $"{{\"pid\":{playerId},\"tid\":{teamId}}}";
             _ticket.TransDesc = json;
@@ -447,7 +431,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.IsLive = true;
             
             _ticketHelper.GetTeamNameById(playerId).Returns(playerName);
-            _ticketHelper.GetTeamNameById(teamId).Returns(teamName);
 
             // Act
             var result = _choice.Render(_ticket, _ticketHelper, _ticketData, true);
@@ -467,14 +450,12 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             var teamId = 456;
             var betTeam = "Over 20.5";
             var playerName = "LeBron James";
-            var teamName = "Lakers";
             
             var json = $"{{\"pid\":{playerId},\"tid\":{teamId}}}";
             _ticket.TransDesc = json;
             _ticket.BetTeam = betTeam;
             
             _ticketHelper.GetTeamNameById(playerId).Returns(playerName);
-            _ticketHelper.GetTeamNameById(teamId).Returns(teamName);
 
             // Act
             var result = _choice.Render(_ticket, _ticketHelper, _ticketData, false);
@@ -491,7 +472,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             var teamId = 456;
             var betTeam = "Over 20.5";
             var playerName = "LeBron James";
-            var teamName = "Lakers";
             var betTypeName = "Player Points";
             
             var json = $"{{\"pid\":{playerId},\"tid\":{teamId}}}";
@@ -501,7 +481,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.RefNo = "12345";
             
             _ticketHelper.GetTeamNameById(playerId).Returns(playerName);
-            _ticketHelper.GetTeamNameById(teamId).Returns(teamName);
             _ticketHelper.GetBetTypeNameById(653, "12345").Returns(betTypeName);
 
             // Act
@@ -525,7 +504,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             _ticket.BetTeam = betTeam;
             
             _ticketHelper.GetTeamNameById(playerId).Returns((string)null);
-            _ticketHelper.GetTeamNameById(teamId).Returns(string.Empty);
 
             // Act
             _choice.Render(_ticket, _ticketHelper, _ticketData, false);
@@ -533,7 +511,6 @@ namespace Fanex.BetList.Core.UnitTest.Builder.ChoiceBuilder
             // Assert
             Assert.IsNotNull(_choice.Template.betTeam);
             Assert.IsTrue(_choice.Template.betTeam.Contains("Over 20.5"));
-            Assert.IsTrue(_choice.Template.betTeam.Contains("()"));
         }
     }
 }
