@@ -475,7 +475,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to have #points# points, #assists# assists and #winner# (#handicap#).
+        ///   Looks up a localized string similar to have #points# points, #assists# assists and #winner# to Win with Handicap #handicap#.
         /// </summary>
         public static string bet_performance_points_and_assists_and_handicap {
             get {
@@ -493,7 +493,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to have #points# points, #assists# assists, #rebounds# total rebounds and #winner# to Win with Handicap (#handicap#).
+        ///   Looks up a localized string similar to have #points# points, #assists# assists, #rebounds# total rebounds and #winner# to Win with Handicap #handicap#.
         /// </summary>
         public static string bet_performance_points_and_assists_and_rebounds_and_handicap {
             get {
@@ -520,7 +520,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to have #points# points and #winner# (#handicap#).
+        ///   Looks up a localized string similar to have #points# points and #winner# to Win with Handicap #handicap#.
         /// </summary>
         public static string bet_performance_points_and_handicap {
             get {
@@ -547,7 +547,7 @@ namespace Fanex.BetList.Core.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to have #points# points, #rebounds# total rebounds and #winner# (#handicap#).
+        ///   Looks up a localized string similar to have #points# points, #rebounds# total rebounds and #winner# to Win with Handicap #handicap#.
         /// </summary>
         public static string bet_performance_points_and_rebounds_and_handicap {
             get {

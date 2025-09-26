@@ -58,7 +58,7 @@
         public List<Item> Results { get; set; }
 
         [DataMember(Name = "pid")]
-        public string PlayerId { get; set; }
+        public int PlayerId { get; set; }
 
         [DataMember(Name = "pname")]
         public string PlayerName { get; set; }

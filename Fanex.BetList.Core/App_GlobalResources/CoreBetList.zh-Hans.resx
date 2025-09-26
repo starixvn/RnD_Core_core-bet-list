@@ -1018,39 +1018,54 @@
     <value>优惠券代码:</value>
   </data>
   <data name="bet_performance_points_and_winner" xml:space="preserve">
-    <value>有#points#分且{1}获胜</value>
+    <value>有#points#分且#winner#获胜</value>
   </data>
   <data name="bet_performance_points_and_over" xml:space="preserve">
-    <value>有#points#分且{1}总分大于{2}</value>
+    <value>有#points#分且#winner#总分大于#over#</value>
   </data>
   <data name="bet_performance_three_points_and_winner" xml:space="preserve">
-    <value>有#points#个三分球命中且{1}获胜</value>
+    <value>有#three_points#个三分球命中且#winner#获胜</value>
   </data>
   <data name="bet_performance_assists_and_winner" xml:space="preserve">
-    <value>有#points#次助攻且{1}获胜</value>
+    <value>有#assists#次助攻且#winner#获胜</value>
   </data>
   <data name="bet_performance_rebounds_and_winner" xml:space="preserve">
-    <value>有#points#个总篮板且{1}获胜</value>
+    <value>有#rebounds#个总篮板且#winner#获胜</value>
   </data>
   <data name="bet_performance_points_and_assists" xml:space="preserve">
-    <value>有#points#分和{1}次助攻</value>
+    <value>有#points#分和 #assists#次助攻</value>
   </data>
   <data name="bet_performance_points_and_assists_and_winner" xml:space="preserve">
-    <value>有#points#分,{1}次助攻且{2}获胜</value>
+    <value>有#points#分, #assists#次助攻且#winner#获胜</value>
   </data>
   <data name="bet_performance_points_and_rebounds" xml:space="preserve">
-    <value>有#points#分和{1}个总篮板</value>
+    <value>有#points#分和#rebounds#个总篮板</value>
   </data>
   <data name="bet_performance_points_and_rebounds_and_winner" xml:space="preserve">
-    <value>有#points#分,{1}个总篮板且{2}获胜</value>
+    <value>有#points#分,#rebounds#个总篮板且#winner#获胜</value>
   </data>
   <data name="bet_performance_points_and_assists_and_rebounds" xml:space="preserve">
-    <value>有#points#分,{1}次助攻和{2}个总篮板</value>
+    <value>ได้ #points# แต้ม, #assists# แอสซิสต์ และ #rebounds# รีบาวด์</value>
   </data>
   <data name="bet_performance_points_and_assists_and_rebounds_and_winner" xml:space="preserve">
-    <value>有#points#分,{1}次助攻,{2}个总篮板且{3}获胜</value>
+    <value>ได้ #points# แต้ม, #assists# แอสซิสต์, #rebounds# รีบาวด์ และ #winner# ชนะ</value>
   </data>
   <data name="bet_performance_points_and_assists_and_rebounds_and_handicap" xml:space="preserve">
-    <value>有#points#分,{1}次助攻,{2}个总篮板且{3}以{4}让分获胜</value>
+    <value>ได้ #points# แต้ม, #assists# แอสซิสต์, #rebounds# รีบาวด์ และ #winner# ชนะด้วยผลต่าง #handicap#</value>
+  </data>
+  <data name="bet_performance_points_and_handicap" xml:space="preserve">
+    <value>有#points#分且#winner#以#handicap#让分获胜</value>
+  </data>
+  <data name="bet_performance_points_and_winner_and_over" xml:space="preserve">
+    <value>有#points#分, #winner#获胜和 #winner# 总分大于#over#</value>
+  </data>
+  <data name="bet_performance_three_points_and_winner_and_over" xml:space="preserve">
+    <value>有#three_points#个三分球命中, #winner#获胜和 #winner# 总分大于#over#</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_handicap" xml:space="preserve">
+    <value>有#points#分, #assists#次助攻且#winner#以#handicap#让分获胜</value>
+  </data>
+  <data name="bet_performance_points_and_rebounds_and_handicap" xml:space="preserve">
+    <value>ได้ #points# แต้ม, #rebounds# รีบาวด์ และ #winner# ชนะด้วยผลต่าง #handicap#</value>
   </data>
 </root>

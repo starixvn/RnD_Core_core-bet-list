@@ -1118,7 +1118,7 @@
     <value>have #points# points and #winner# Total Points Over #over#</value>
   </data>
   <data name="bet_performance_points_and_handicap" xml:space="preserve">
-    <value>have #points# points and #winner# (#handicap#)</value>
+    <value>have #points# points and #winner# to Win with Handicap #handicap#</value>
   </data>
   <data name="bet_performance_points_and_winner_and_over" xml:space="preserve">
     <value>have #points# points, #winner# to Win and #winner# Total Points Over #over#</value>
@@ -1142,7 +1142,7 @@
     <value>have #points# points, #assists# assists and #winner# to Win</value>
   </data>
   <data name="bet_performance_points_and_assists_and_handicap" xml:space="preserve">
-    <value>have #points# points, #assists# assists and #winner# (#handicap#)</value>
+    <value>have #points# points, #assists# assists and #winner# to Win with Handicap #handicap#</value>
   </data>
   <data name="bet_performance_points_and_rebounds" xml:space="preserve">
     <value>have #points# points and #rebounds# total rebounds</value>
@@ -1151,7 +1151,7 @@
     <value>have #points# points, #rebounds# total rebounds and #winner# to Win</value>
   </data>
   <data name="bet_performance_points_and_rebounds_and_handicap" xml:space="preserve">
-    <value>have #points# points, #rebounds# total rebounds and #winner# (#handicap#)</value>
+    <value>have #points# points, #rebounds# total rebounds and #winner# to Win with Handicap #handicap#</value>
   </data>
   <data name="bet_performance_points_and_assists_and_rebounds" xml:space="preserve">
     <value>have #points# points, #assists# assists and #rebounds# total rebounds</value>
@@ -1160,6 +1160,6 @@
     <value>have #points# points, #assists# assists, #rebounds# total rebounds and #winner# to Win</value>
   </data>
   <data name="bet_performance_points_and_assists_and_rebounds_and_handicap" xml:space="preserve">
-    <value>have #points# points, #assists# assists, #rebounds# total rebounds and #winner# to Win with Handicap (#handicap#)</value>
+    <value>have #points# points, #assists# assists, #rebounds# total rebounds and #winner# to Win with Handicap #handicap#</value>
   </data>
 </root>
