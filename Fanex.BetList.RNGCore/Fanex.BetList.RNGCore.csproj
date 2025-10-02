@@ -2,10 +2,10 @@
 
   <PropertyGroup>
     <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
-    <Version>1.0.9.5-sabaclub-01</Version>
-    <InfomationalVersion>1.0.9.5</InfomationalVersion>
+    <Version>1.0.9.6-bgaming-02</Version>
+    <InfomationalVersion>1.0.9.6</InfomationalVersion>
     <PackageReleaseNotes>
-      Support new format TransId3rd (#239774)<br/>
+      - Support BGaming (#239087)<br/>
     </PackageReleaseNotes>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>   
     <Description>RNG core package</Description>
