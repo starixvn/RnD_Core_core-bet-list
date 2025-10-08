@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>    
-        <Version>2.0.2.7-hfvs6-01</Version>
-        <InfomationalVersion>2.0.2.7</InfomationalVersion>
+        <Version>2.0.2.8-eSoccer-01</Version>
+        <InfomationalVersion>2.0.2.8</InfomationalVersion>
         <PackageReleaseNotes>
-          - Support new bet types (VS6)(#235084)
+          - SSupport eSoccer Vs6 (#240845)
         </PackageReleaseNotes>
         <Description>BetList core package</Description>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>

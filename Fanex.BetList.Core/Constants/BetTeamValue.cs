@@ -147,5 +147,10 @@
         public const string Ro = "ro";
         public const string Ot = "ot";
 
+        public const string OO = "oo";
+        public const string OU = "ou";
+        public const string EO = "eo";
+        public const string EU = "eu";
+
     }
 }

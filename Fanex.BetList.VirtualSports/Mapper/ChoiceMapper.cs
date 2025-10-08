@@ -63,6 +63,12 @@
             {
                 MapIdToBaseId(id, BetbyBetTypes.FT1X2);
             }
+
+            MapIdToBaseId(BetbyBetTypes.FirstHalfBothTeamsToScore, BetbyBetTypes.BothTeamsToScore);
+            MapIdToBaseId(BetbyBetTypes.FirstHalfBothTeamsToScoreResult, BetbyBetTypes.BothTeamsToScoreResult);
+            MapIdToBaseId(BetbyBetTypes.FirstHalfResultTotalGoal, BetbyBetTypes.ResultTotalGoal);
+            MapIdToBaseId(BetbyBetTypes.FirstHalfDoubleChance, BetbyBetTypes.DoubleChance);
+            MapIdToBaseId(BetbyBetTypes.FirstHalfCorrectScore, BetbyBetTypes.CorrectScore);
         }
 
         private void MapVirtualSports7()
