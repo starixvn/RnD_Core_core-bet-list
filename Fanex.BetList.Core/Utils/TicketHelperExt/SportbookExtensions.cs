@@ -12,7 +12,7 @@ namespace Fanex.BetList.Core.Utils.TicketHelperExt
     private const int ThreeOptionsBetTeamLength = 3;
     private const string DoubleChangeFormat = "{0}/{1}";
 
-    private const string SeparationFormat = "{1} <span class=\"underdog\">{2}</span> {3}";
+    private const string SeparationFormat = "{0} <span class=\"underdog\">{1}</span> {2}";
 
     public static string BuildTwoOptionsSeperationChoice(string betTeam, Func<char, string> firstChoice, Func<char, string> secondChoice, string separaterString)
     {
