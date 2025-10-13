@@ -14,7 +14,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            Template.betTeam = SportbookExtensions.BuildYesNoChoice(ticket.BetTeam);
+            Template.betTeam = SportbookExtensions.BuildYesNoChoice(ticket.BetTeam.ToLowerInvariant());
         }
     }
 }
