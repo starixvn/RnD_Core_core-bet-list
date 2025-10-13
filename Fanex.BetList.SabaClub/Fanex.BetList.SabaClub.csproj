@@ -1,19 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
-        <Version>2.0.0.4-ExtendRange-01</Version>
-        <InfomationalVersion>2.0.0.4</InfomationalVersion>
-        <PackageReleaseNotes>Extend bettype range (13200 -> 13499) (#211931)</PackageReleaseNotes>
+        <Version>2.0.0.5-beta-03</Version>
+        <InfomationalVersion>2.0.0.5</InfomationalVersion>
+        <PackageReleaseNotes>
+          Support new format TransId3rd (#239774)<br/>
+        </PackageReleaseNotes>
         <Description>BetList core package</Description>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <Authors>Nexcel Solutions</Authors>
         <PackageTags>Fanex BetList</PackageTags>
         <PackageProjectUrl>https://nexdev.net/projects/fanex-betlistcore/wiki/Core_Bet_List</PackageProjectUrl>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
     <ItemGroup>
       <PackageReference Include="TplNetCore" Version="1.0.0" />
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj" />
+      <ProjectReference Include="..\Fanex.BetList.RNGCore\Fanex.BetList.RNGCore.csproj" />
     </ItemGroup>
-</Project>
+</Project>  

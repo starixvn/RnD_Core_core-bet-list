@@ -1,17 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
-    using Fanex.BetList.Core.Entities;
-
     /// <summary>
     /// Jackpot Prize
     /// </summary>
-    public class Status1699 : Status1
+    public class Status1699 : StatusJackpot
     {
-        protected override void BuildStatusResult(ITicket ticket)
-        {
-            base.BuildStatusResult(ticket);
-
-            Template.StatusResult.Hide();
-        }
     }
 }

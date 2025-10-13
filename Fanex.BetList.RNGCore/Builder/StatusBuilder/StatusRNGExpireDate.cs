@@ -7,7 +7,7 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
     public class StatusRNGExpireDate : Status1
     {
-        private string sportName = string.Empty;
+        protected string sportName = string.Empty;
 
         public virtual int ExpireDateResultLink => 0;
 
