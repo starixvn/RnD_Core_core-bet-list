@@ -1082,4 +1082,55 @@
   <data name="voucherid" xml:space="preserve">
     <value>Mã số voucher:</value>
   </data>
+  <data name="bet_performance_points_and_winner" xml:space="preserve">
+    <value>có #points# điểm và #winner# thắng</value>
+  </data>
+  <data name="bet_performance_points_and_over" xml:space="preserve">
+    <value>có #points# điểm và #winner# tổng điểm trên #over#</value>
+  </data>
+  <data name="bet_performance_three_points_and_winner" xml:space="preserve">
+    <value>có #three_points# lần ném 3 điểm thành công và #winner# thắng</value>
+  </data>
+  <data name="bet_performance_assists_and_winner" xml:space="preserve">
+    <value>có #assists# kiến tạo và #winner# thắng</value>
+  </data>
+  <data name="bet_performance_rebounds_and_winner" xml:space="preserve">
+    <value>có tổng #rebounds# lần tranh bóng bật bảng và #winner# thắng</value>
+  </data>
+  <data name="bet_performance_points_and_assists" xml:space="preserve">
+    <value>có #points# điểm và  #assists# kiến tạo</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_winner" xml:space="preserve">
+    <value>có #points# điểm, #assists# kiến tạo và #winner# thắng</value>
+  </data>
+  <data name="bet_performance_points_and_rebounds" xml:space="preserve">
+    <value>có #points# điểm và tổng #rebounds# lần tranh bóng bật bảng</value>
+  </data>
+  <data name="bet_performance_points_and_rebounds_and_winner" xml:space="preserve">
+    <value>có #points# điểm,tổng #rebounds# lần tranh bóng bật bảng và #winner# thắng</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_rebounds" xml:space="preserve">
+    <value>có #points# điểm,#assists# kiến tạo và tổng #rebounds# lần tranh bóng bật bảng</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_rebounds_and_winner" xml:space="preserve">
+    <value>có #points# điểm,#assists# kiến tạo,tổng #rebounds# lần tranh bóng bật bảng và #winner# thắng</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_rebounds_and_handicap" xml:space="preserve">
+    <value>có #points# điểm,#assists# kiến tạo,tổng #rebounds# lần tranh bóng bật bảng và #winner# thắng với cược chấp #handicap#</value>
+  </data>
+  <data name="bet_performance_points_and_handicap" xml:space="preserve">
+    <value>có #points# điểm và #winner# thắng với cược chấp #handicap#</value>
+  </data>
+  <data name="bet_performance_points_and_winner_and_over" xml:space="preserve">
+    <value>có #points# điểm, #winner# thắng và #winner# Tổng điểm trên #over#</value>
+  </data>
+  <data name="bet_performance_three_points_and_winner_and_over" xml:space="preserve">
+    <value>có #three_points# lần ném 3 điểm, #winner# thắng và #winner# Tổng điểm trên #over#</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_handicap" xml:space="preserve">
+    <value>có #points# điểm, #assists# kiến tạo và #winner# thắng với cược chấp #handicap#</value>
+  </data>
+  <data name="bet_performance_points_and_rebounds_and_handicap" xml:space="preserve">
+    <value>có #points# điểm,tổng #rebounds# lần tranh bóng bật bảng và #winner# thắng với cược chấp #handicap#</value>
+  </data>
 </root>

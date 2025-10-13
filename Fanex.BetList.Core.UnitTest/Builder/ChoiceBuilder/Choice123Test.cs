@@ -68,7 +68,7 @@
         {
             // Arrange
             const string LEAGUE_NAME = "League name";
-            _ticketHelper.GetLeagueNameById(Arg.Any<int>(), Arg.Any<int>()).Returns<string>(LEAGUE_NAME);
+            _ticketHelper.GetLeagueNameById(Arg.Any<int>()).Returns<string>(LEAGUE_NAME);
 
             // Act
             _choice.Render(_ticket, _ticketHelper, null, false);

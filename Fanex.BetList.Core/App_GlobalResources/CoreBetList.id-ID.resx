@@ -1089,4 +1089,55 @@
   <data name="voucherid" xml:space="preserve">
     <value>Kode Voucher:</value>
   </data>
+  <data name="bet_performance_points_and_winner" xml:space="preserve">
+    <value>memiliki #points# poin dan #winner# untuk menang</value>
+  </data>
+  <data name="bet_performance_points_and_over" xml:space="preserve">
+    <value>memiliki #points# poin dan #winner# total poin lebih dari #over#</value>
+  </data>
+  <data name="bet_performance_points_and_handicap" xml:space="preserve">
+    <value>memiliki #points# poin dan #winner# untuk menang dengan handicap #handicap#</value>
+  </data>
+  <data name="bet_performance_points_and_winner_and_over" xml:space="preserve">
+    <value>memiliki #points# poin, #winner# menang dan total poin #winner# lebih dari #over#</value>
+  </data>
+  <data name="bet_performance_three_points_and_winner" xml:space="preserve">
+    <value>memiliki #three_points# tembakan tiga angka dan #winner# untuk menang</value>
+  </data>
+  <data name="bet_performance_three_points_and_winner_and_over" xml:space="preserve">
+    <value>memiliki #three_points# tembakan tiga angka, #winner# menang dan total poin #winner# lebih dari #over#</value>
+  </data>
+  <data name="bet_performance_assists_and_winner" xml:space="preserve">
+    <value>memiliki #assists# assist dan #winner# untuk menang</value>
+  </data>
+  <data name="bet_performance_rebounds_and_winner" xml:space="preserve">
+    <value>memiliki #rebounds# rebound total dan #winner# untuk menang</value>
+  </data>
+  <data name="bet_performance_points_and_assists" xml:space="preserve">
+    <value>memiliki #points# poin dan  #assists# assist</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_winner" xml:space="preserve">
+    <value>memiliki #points# poin,  #assists# assist dan #winner# untuk menang</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_handicap" xml:space="preserve">
+    <value>memiliki #points# poin,  #assists# assist dan #winner# untuk menang dengan handicap #handicap#</value>
+  </data>
+  <data name="bet_performance_points_and_rebounds" xml:space="preserve">
+    <value>memiliki #points# poin dan #rebounds# rebound total</value>
+  </data>
+  <data name="bet_performance_points_and_rebounds_and_winner" xml:space="preserve">
+    <value>memiliki #points# poin, #rebounds# rebound total dan #winner# untuk menang</value>
+  </data>
+  <data name="bet_performance_points_and_rebounds_and_handicap" xml:space="preserve">
+    <value>memiliki #points# poin, #rebounds# rebound total dan #winner# untuk menang dengan handicap #handicap#</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_rebounds" xml:space="preserve">
+    <value>memiliki #points# poin, #assists# assist dan #rebounds# rebound total</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_rebounds_and_winner" xml:space="preserve">
+    <value>memiliki #points# poin, #assists# assist, #rebounds# rebound total dan #winner# untuk menang</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_rebounds_and_handicap" xml:space="preserve">
+    <value>memiliki #points# poin, #assists# assist, #rebounds# rebound total dan #winner# untuk menang dengan handicap #handicap#</value>
+  </data>
 </root>

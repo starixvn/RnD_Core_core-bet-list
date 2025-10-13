@@ -1,9 +1,7 @@
 namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Utils.StringExt;
-    using Fanex.BetList.Core.Utils.TicketExt;
     using System;
     using System.Collections.Generic;
 
@@ -80,7 +78,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                 return transId3rd;
             }
 
-            var transIdParts = transId3rd.Split(new string[] { transId3rdSeparator }, StringSplitOptions.RemoveEmptyEntries);
+            var transIdParts = transId3rd.Split(new[] { transId3rdSeparator }, StringSplitOptions.RemoveEmptyEntries);
 
             return transIdParts[transIdParts.Length - 1];
         }

@@ -1,8 +1,8 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using Fanex.BetList.Core.Entities;
     using System;
     using System.Collections.Generic;
-    using Fanex.BetList.Core.Entities;
 
     public class Choice3611 : Choice1
     {
@@ -51,7 +51,7 @@
                 return transId3rd;
             }
 
-            var transIdParts = transId3rd.Split(new string[] { transId3rdSeparator }, StringSplitOptions.RemoveEmptyEntries);
+            var transIdParts = transId3rd.Split(new[] { transId3rdSeparator }, StringSplitOptions.RemoveEmptyEntries);
 
             return transIdParts[transIdParts.Length - 1];
         }

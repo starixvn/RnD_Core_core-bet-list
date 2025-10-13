@@ -1,12 +1,12 @@
 namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using App_GlobalResources;
+    using Entities;
+    using Fanex.BetList.Core.Utils.Parsers;    
     using System;
     using System.Collections.Generic;
     using System.Text;
     using System.Text.RegularExpressions;
-    using App_GlobalResources;
-    using Entities;
-    using Fanex.BetList.Core.Utils.Parsers;    
     using Templates;
 
     public class ChoiceLC : Choice1
@@ -155,7 +155,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
                 return transId3rd;
             }
 
-            var transIdParts = transId3rd.Split(new string[] { transId3rdSeparator }, StringSplitOptions.RemoveEmptyEntries);
+            var transIdParts = transId3rd.Split(new[] { transId3rdSeparator }, StringSplitOptions.RemoveEmptyEntries);
 
             return transIdParts[transIdParts.Length - 1];
         }

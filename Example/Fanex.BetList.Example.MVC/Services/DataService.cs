@@ -5,8 +5,8 @@ namespace Fanex.BetList.Example.MVC.Services
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using System.Runtime.Caching;
-    using System.Web.Hosting;
+    using Microsoft.Extensions.Caching.Memory;
+    using Microsoft.Extensions.Hosting;
     using Fanex.BetList.Example.Data;
     using Fanex.BetList.Example.MVC.Models;
     using Fanex.BetList.Example.MVC.ViewModel;
@@ -16,7 +16,7 @@ namespace Fanex.BetList.Example.MVC.Services
 
     public class DataService
     {
-        private static readonly string BetTypeFilePath = HostingEnvironment.MapPath("~/App_Data/BetTypes.xls");
+        private static readonly string BetTypeFilePath = "App_Data/BetTypes.xls";
 
         public List<BetType> QueryBetTypes(params int[] betTypeIds)
         {
@@ -48,7 +48,7 @@ namespace Fanex.BetList.Example.MVC.Services
 
         public BetListData GetBetListData(string sourcePath, int betTypeId)
         {
-            var absolutePath = HostingEnvironment.MapPath(sourcePath);
+            var absolutePath = sourcePath;
 
             var betListData = new BetListData();
 
@@ -56,8 +56,8 @@ namespace Fanex.BetList.Example.MVC.Services
             betListData.Tickets = ticketDAO.GetTickets();
             betListData.TicketData = ticketDAO.GetTicketData().ToList();
 
-            CacheItemPolicy policy = new CacheItemPolicy();
-            policy.ChangeMonitors.Add(new HostFileChangeMonitor(new List<string> { absolutePath }));
+            // Note: File change monitoring removed for .NET 8 compatibility
+            // Consider implementing with FileSystemWatcher if needed
 
             return betListData;
         }

@@ -27,13 +27,13 @@
         [TestCase(BetStatus.Running, "Running")]
         [TestCase(BetStatus.Reject, "Reject")]
         [TestCase(BetStatus.Won, "Won")]
-        [TestCase(BetStatus.Lose, "Lose")]
+        [TestCase(BetStatus.Lose, "Lost")]
         [TestCase(BetStatus.Draw, "Draw")]
         [TestCase(BetStatus.Waiting, "Waiting")]
         [TestCase(BetStatus.Void, "Void")]
         [TestCase(BetStatus.Refund, "Refund")]
         [TestCase(BetStatus.HalfWon, "Half Won")]
-        [TestCase(BetStatus.HalfLose, "Half Lose")]
+        [TestCase(BetStatus.HalfLose, "Half Lost")]
         public void BuildResult_Status_Result(string status, string expectedResult)
         {
             // Arrange
@@ -61,7 +61,7 @@
             Assert.AreEqual(expectedResult, _status.Template.result);
         }
 
-        [TestCase(0, "Lose")]
+        [TestCase(0, "Lost")]
         [TestCase(1, "Delayed Payout")]
         public void BuildResult_LoseTicket_ShowExpectedResult(byte settlementStatus, string expectedResult)
         {
@@ -122,13 +122,13 @@
         [TestCase(BetStatus.Running, "Running")]
         [TestCase(BetStatus.Reject, "Reject")]
         [TestCase(BetStatus.Won, "Won")]
-        [TestCase(BetStatus.Lose, "Lose")]
+        [TestCase(BetStatus.Lose, "Lost")]
         [TestCase(BetStatus.Draw, "Draw")]
         [TestCase(BetStatus.Waiting, "Waiting")]
         [TestCase(BetStatus.Void, "Void")]
         [TestCase(BetStatus.Refund, "Refund")]
         [TestCase(BetStatus.HalfWon, "Half Won")]
-        [TestCase(BetStatus.HalfLose, "Half Lose")]
+        [TestCase(BetStatus.HalfLose, "Half Lost")]
         public void BuildResult_IsNotCashOutAllTicket_Result(string status, string expectedResult)
         {
             // Arrange
@@ -149,13 +149,13 @@
         [TestCase(BetStatus.Running, "Running")]
         [TestCase(BetStatus.Reject, "Reject")]
         [TestCase(BetStatus.Won, "Won")]
-        [TestCase(BetStatus.Lose, "Lose")]
+        [TestCase(BetStatus.Lose, "Lost")]
         [TestCase(BetStatus.Draw, "Draw")]
         [TestCase(BetStatus.Waiting, "Waiting")]
         [TestCase(BetStatus.Void, "Void")]
         [TestCase(BetStatus.Refund, "Refund")]
         [TestCase(BetStatus.HalfWon, "Half Won")]
-        [TestCase(BetStatus.HalfLose, "Half Lose")]
+        [TestCase(BetStatus.HalfLose, "Half Lost")]
         public void BuildResult_IsNotCashOutTicket_Result(string status, string expectedResult)
         {
             // Arrange

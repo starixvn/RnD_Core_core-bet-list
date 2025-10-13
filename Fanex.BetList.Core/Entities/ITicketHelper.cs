@@ -8,6 +8,21 @@
     public delegate IList<ITicket> GetParlayTicketsById(object id);
 
     /// <summary>
+    /// Represents a bet choice with its associated type information
+    /// </summary>
+    public class BetChoiceInfo
+    {
+        public string ChoiceName { get; set; }
+        public string BetTypeId { get; set; }
+
+        public BetChoiceInfo(string choiceName, string betTypeId)
+        {
+            ChoiceName = choiceName;
+            BetTypeId = betTypeId;
+        }
+    }
+
+    /// <summary>
     /// Interface ITicketHelper.
     /// </summary>
     public interface ITicketHelper
@@ -103,6 +118,7 @@
         IList<string> GetCombinationMPOfferNameList(string betTeam, string betCheck, decimal handicap1, decimal handicap2);
 
         string GetKenoBetChoiceName(string kenoBetChoiceId, out string kenoBetTypeId);
+        BetChoiceInfo GetKenoBetChoiceInfo(string kenoBetChoiceId);       
 
         string GetKenoBetTypeName(string kenoBetTypeId);
 
@@ -112,6 +128,8 @@
 
         string GetLotteryBetChoiceName(string lotteryBetChoiceId, out string lotteryBetTypeId);
 
+        BetChoiceInfo GetLotteryBetChoiceInfo(string lotteryBetChoiceId);
+      
         string GetLotteryBetTypeName(string lotteryBetTypeId);
 
         string GetTeamName3rd(string team3rdId);
@@ -121,6 +139,8 @@
         string GetBetRadarMatchCodeFormat(string matchCode);
 
         string GetTableGamesBetChoiceName(string tableGamesBetChoiceId, out string tableGamesBetTypeId);
+
+        BetChoiceInfo GetTableGamesBetChoiceInfo(string tableGamesBetChoiceId);
 
         string GetTableGamesBetTypeName(string tableGamesBetTypeId);
 

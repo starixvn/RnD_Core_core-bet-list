@@ -1,0 +1,50 @@
+﻿
+namespace Fanex.BetList.Core.Builder.OddsBuilder
+{
+    using System.Collections.Generic;
+    using System.Linq;
+    using Fanex.BetList.Core.Entities;
+    using Fanex.BetList.Core.Templates;
+    using Fanex.BetList.Core.Utils.Parsers;
+    
+    public class Odds3401 : Odds1
+    {
+        private const string BetChoiceDataKey = "Choice";
+
+        private readonly IList<string> BetChoicesHideOdds = new List<string>
+        {
+            "14002",
+            "14004",
+            "14006",
+            "10013",
+            "10014"
+        };       
+
+        public override Odds_Template Render(ITicket ticket, List<ITicketData> ticketData, GetCachePropertyById funcGetOddsTypeName)
+        {
+            if (IsHiddenOdds(ticket))
+            {
+                Template.odds = "-";
+                Template.oddsType = string.Empty;
+
+                return Template;
+            }
+
+            return base.Render(ticket, ticketData, funcGetOddsTypeName);
+        }
+
+        private bool IsHiddenOdds(ITicket ticket)
+        {
+            var parsedTransDesc = ExtraInfoParser.ParseExtraInfo(ticket.TransDesc);
+            var betChoice = parsedTransDesc != null && parsedTransDesc.ContainsKey(BetChoiceDataKey) ?
+                parsedTransDesc[BetChoiceDataKey].Trim() :
+                string.Empty;
+
+            return string.IsNullOrEmpty(ticket.TransDesc) || GetBetChoicesHideOdds().Any(i => i == betChoice);
+        }
+
+        public virtual IList<string> GetBetChoicesHideOdds(){
+            return BetChoicesHideOdds;
+        }
+    }
+}

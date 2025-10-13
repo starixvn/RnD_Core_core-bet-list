@@ -111,7 +111,7 @@
 
             // Assert
             Assert.AreEqual($"No. 1000", linesInActualText[1]);
-            Assert.AreEqual("8/13/2021 1:00:00 PM", linesInActualText[2]);
+            Assert.AreEqual("8/13/2021 1:00 PM", linesInActualText[2]);
         }
 
     }

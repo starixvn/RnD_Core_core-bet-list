@@ -76,7 +76,7 @@
             return choice;
         }
 
-        private class MemberChoice
+        private sealed class MemberChoice
         {
             public MemberChoice()
             {

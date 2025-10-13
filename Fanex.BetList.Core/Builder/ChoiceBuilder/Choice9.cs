@@ -1,10 +1,10 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using App_GlobalResources;
+    using BetListNPOI.SS.UserModel;
+    using Entities;
     using System;
     using System.Collections.Generic;
-    using App_GlobalResources;
-    using Entities;
-    using BetListNPOI.SS.UserModel;
     using Templates;
 
     /// <summary>
@@ -105,7 +105,7 @@
                         normal = tmpRtfHelper.NormalFont;
                     }
 
-                    CombineSubRichTextString(tmpRtfChoice, ref tmpRtfHelper, pos, normal);
+                    tmpRtfHelper = CombineSubRichTextString(tmpRtfChoice, tmpRtfHelper, pos, normal);
                 }
 
                 ticketHelper.IsShowOddsWithChoice = showOdds;
@@ -124,22 +124,26 @@
         /// <param name="tmpRtfHelper">The temporary RTF helper.</param>
         /// <param name="posFont">The position font.</param>
         /// <param name="normalFont">The normal font.</param>
-        private static void CombineSubRichTextString(List<IRichTextString> tmpRtfChoice, ref RTFHelper tmpRtfHelper, IFont posFont, IFont normalFont)
+        /// <returns>The modified RTF helper.</returns>
+        private static RTFHelper CombineSubRichTextString(List<IRichTextString> tmpRtfChoice, RTFHelper tmpRtfHelper, IFont posFont, IFont normalFont)
         {
-            foreach (var rtfString in tmpRtfChoice)
+            tmpRtfChoice.ForEach(rtfString =>
             {
                 // Remove extra line-breaks
-                while (rtfString.String.StartsWith("\n", StringComparison.OrdinalIgnoreCase))
+                string processedString = rtfString.String;
+                while (processedString.StartsWith("\n", StringComparison.OrdinalIgnoreCase))
                 {
-                    rtfString.String.Remove(0, 1);
+                    processedString = processedString.Remove(0, 1);
                 }
 
-                int lineBreakIndex = rtfString.String.IndexOf("\n", StringComparison.InvariantCulture);
-                string eventName = rtfString.String.Substring(0, lineBreakIndex);
-                string theRest = rtfString.String.Remove(0, eventName.Length);
+                int lineBreakIndex = processedString.IndexOf("\n", StringComparison.InvariantCulture);
+                string eventName = processedString.Substring(0, lineBreakIndex);
+                string theRest = processedString.Remove(0, eventName.Length);
                 tmpRtfHelper.RTFRenderer.AddText("\n" + eventName, posFont);
                 tmpRtfHelper.RTFRenderer.AddText(theRest, normalFont);
-            }
+            });
+
+            return tmpRtfHelper;
         }
 
         /// <summary>
@@ -149,7 +153,7 @@
         /// <returns>IChoice object.</returns>
         private static IChoice CreateChoiceBuilder(int bettype)
         {
-            string typeName = string.Join(null, new[] { CHOICEBUILDERNAMESPACE, ".Choice", bettype.ToString() });
+            string typeName = string.Join(null, CHOICEBUILDERNAMESPACE, ".Choice", bettype.ToString());
             Type type = Type.GetType(typeName);
 
             if (type == null)

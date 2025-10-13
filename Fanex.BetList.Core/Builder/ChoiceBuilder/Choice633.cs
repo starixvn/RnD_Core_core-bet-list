@@ -1,6 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
     using System.Collections.Generic;
+    using System.Linq;
     using App_GlobalResources;
     using Entities;
     using Fanex.BetList.Core.Constants;
@@ -21,14 +22,10 @@
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
             var betteams = string.IsNullOrWhiteSpace(ticket.BetTeam) ? new char[0] : ticket.BetTeam.ToLowerInvariant().ToCharArray();
-            var betTeamsText = new List<string>();
-            foreach (var item in betteams)
-            {
-                if (betTeamPatterns.ContainsKey(item.ToString()))
-                {
-                    betTeamsText.Add(betTeamPatterns[item.ToString()]);
-                }
-            }
+            var betTeamsText = betteams
+                .Where(item => betTeamPatterns.ContainsKey(item.ToString()))
+                .Select(item => betTeamPatterns[item.ToString()])
+                .ToList();
 
             Template.betTeam = string.Join("/", betTeamsText);
         }

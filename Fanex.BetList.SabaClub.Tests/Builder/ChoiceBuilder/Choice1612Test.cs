@@ -34,13 +34,13 @@ namespace Fanex.BetList.SabaClub.Tests.Builder.ChoiceBuilder
             _ticket.CustId = 123;
             _ticket.BetTypeId = SabaClubBetTypes.FourGuardians;
             _ticket.WinlostDate = new DateTime(2022, 8, 24);
-            var expectedJSFunction = "showSabaClubJackpotWonDetails('xxxxxxxxxxx', '123', '1640', '8/24/2022 12:00:00 AM')";
+            var expectedJSFunction = "showSabaClubJackpotWonDetails('xxxxxxxxxxx', '123', '1640', '08/24/2022 00:00:00')";
 
             // Act
             var template = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.IsTrue(template.League.ToString().Contains(expectedJSFunction));
+            StringAssert.Contains(expectedJSFunction, template.League.ToString());
         }
         [Test]
         public void BuildLeague_BetCheckIsEmpty_ShowDetailLink()

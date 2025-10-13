@@ -133,6 +133,48 @@
 
             MapIdToBaseId(BetTypes.QuarterXHomeTeamOverUnderDec, BetTypes.QuarterXOverUnder);
             MapIdToBaseId(BetTypes.QuarterXAwayTeamOverUnderDec, BetTypes.QuarterXOverUnder);
+            
+            MapIdToBaseId(BetTypes.PlayerAssistsOverUnder, BetTypes.PlayerPointsOverUnder);
+            MapIdToBaseId(BetTypes.PlayerReboundsOverUnder, BetTypes.PlayerPointsOverUnder);
+            MapIdToBaseId(BetTypes.Player3PTFGMadeOverUnder, BetTypes.PlayerPointsOverUnder);
+            MapIdToBaseId(BetTypes.PlayerBlocksOverUnder, BetTypes.PlayerPointsOverUnder);
+            MapIdToBaseId(BetTypes.PlayerStealsOverUnder, BetTypes.PlayerPointsOverUnder);
+            MapIdToBaseId(BetTypes.PlayerPointsReboundsAssistsOverUnder, BetTypes.PlayerPointsOverUnder);
+            MapIdToBaseId(BetTypes.PlayerReboundsAssistsOverUnder, BetTypes.PlayerPointsOverUnder);
+            MapIdToBaseId(BetTypes.PlayerPointsReboundsOverUnder, BetTypes.PlayerPointsOverUnder);
+            MapIdToBaseId(BetTypes.PlayerStealsBlocksOverUnder, BetTypes.PlayerPointsOverUnder);
+            
+            // Player At Least bet types mapping to PlayerPointsAtLeast (653)
+            MapIdToBaseId(BetTypes.PlayerAssistsAtLeast, BetTypes.PlayerPointsAtLeast);
+            MapIdToBaseId(BetTypes.PlayerReboundsAtLeast, BetTypes.PlayerPointsAtLeast);
+            MapIdToBaseId(BetTypes.Player3PTFGMadeAtLeast, BetTypes.PlayerPointsAtLeast);
+            MapIdToBaseId(BetTypes.PlayerBlocksAtLeast, BetTypes.PlayerPointsAtLeast);
+            MapIdToBaseId(BetTypes.PlayerStealsAtLeast, BetTypes.PlayerPointsAtLeast);
+            MapIdToBaseId(BetTypes.PlayerPointsReboundsAssistsAtLeast, BetTypes.PlayerPointsAtLeast);
+            MapIdToBaseId(BetTypes.PlayerReboundsAssistsAtLeast, BetTypes.PlayerPointsAtLeast);
+            
+            // Player Exact bet types mapping to PlayerPointsAtLeast (653)
+            MapIdToBaseId(BetTypes.PlayerPointsExact, BetTypes.PlayerPointsAtLeast);
+            MapIdToBaseId(BetTypes.PlayerAssistsExact, BetTypes.PlayerPointsAtLeast);
+            MapIdToBaseId(BetTypes.PlayerReboundsExact, BetTypes.PlayerPointsAtLeast);
+            MapIdToBaseId(BetTypes.Player3PTFGMadeExact, BetTypes.PlayerPointsAtLeast);
+            
+            // Player Bands bet types mapping to PlayerPointsAtLeast (653)
+            MapIdToBaseId(BetTypes.PlayerPointsBands, BetTypes.PlayerPointsAtLeast);
+            MapIdToBaseId(BetTypes.PlayerAssistsBands, BetTypes.PlayerPointsAtLeast);
+            MapIdToBaseId(BetTypes.PlayerReboundsBands, BetTypes.PlayerPointsAtLeast);
+            MapIdToBaseId(BetTypes.Player3PTFGMadeBands, BetTypes.PlayerPointsAtLeast);
+            
+            MapIdToBaseId(BetTypes.PlayerPerformanceDoublesandOthers, BetTypes.PlayerPerformanceandOthers);
+            MapIdToBaseId(BetTypes.PlayerPlayerPerformanceTriplesandOthersDoubleDouble, BetTypes.PlayerPerformanceandOthers);
+
+            MapIdToBaseId(BetTypes.PlayerTripleDouble, BetTypes.PlayerDoubleDouble);
+
+            // Most Player Performance bet types mapping to Choice680 (MostPointsScored)
+            MapIdToBaseId(BetTypes.MostAssists, BetTypes.MostPointsScored);
+            MapIdToBaseId(BetTypes.MostRebounds, BetTypes.MostPointsScored);
+            MapIdToBaseId(BetTypes.MostSteals, BetTypes.MostPointsScored);
+            MapIdToBaseId(BetTypes.Most3PointShotsScored, BetTypes.MostPointsScored);
         }
 
         private void MapForFastMarkets()

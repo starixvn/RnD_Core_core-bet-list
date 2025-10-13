@@ -522,4 +522,55 @@
   <data name="voucherid" xml:space="preserve">
     <value> バウチャーID:</value>
   </data>
+  <data name="bet_performance_points_and_winner" xml:space="preserve">
+    <value>ポイント#points#で#winner#で勝利</value>
+  </data>
+  <data name="bet_performance_points_and_over" xml:space="preserve">
+    <value>ポイント#points#で#winner#の合計得点が#over#を超える</value>
+  </data>
+  <data name="bet_performance_three_points_and_winner" xml:space="preserve">
+    <value>3ポイント#three_points#本し、#winner#で勝利</value>
+  </data>
+  <data name="bet_performance_assists_and_winner" xml:space="preserve">
+    <value>アシスト#assists#回で#winner#勝利</value>
+  </data>
+  <data name="bet_performance_rebounds_and_winner" xml:space="preserve">
+    <value>リバウンド#rebounds#回で#winner#で勝利</value>
+  </data>
+  <data name="bet_performance_points_and_assists" xml:space="preserve">
+    <value>ポイント#points#、 #assists#アシストを記録</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_winner" xml:space="preserve">
+    <value>ポイント#points#、 #assists#アシストを記録し、#winner#で勝利</value>
+  </data>
+  <data name="bet_performance_points_and_rebounds" xml:space="preserve">
+    <value>ポイント#points#、#rebounds#回のリバウンドを記録</value>
+  </data>
+  <data name="bet_performance_points_and_rebounds_and_winner" xml:space="preserve">
+    <value>ポイント#points#、#rebounds#回のリバウンドを記録し、#winner#で勝利</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_rebounds" xml:space="preserve">
+    <value>ポイント#points#、アシスト#assists#回、リバウンド#rebounds#回</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_rebounds_and_winner" xml:space="preserve">
+    <value>ポイント#points#、アシスト#assists#回、リバウンド#rebounds#回し、#winner#で勝利</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_rebounds_and_handicap" xml:space="preserve">
+    <value>ポイント#points#、アシスト#assists#回、リバウンド#rebounds#回し、#winner#が#handicap#のハンディキャップで勝利する</value>
+  </data>
+  <data name="bet_performance_points_and_handicap" xml:space="preserve">
+    <value>#points#得点し、#winner#が#handicap#のハンディキャップで勝利する</value>
+  </data>
+  <data name="bet_performance_points_and_winner_and_over" xml:space="preserve">
+    <value>#points#得点、#winner#勝利、#winner#総得点が#over#を超える</value>
+  </data>
+  <data name="bet_performance_three_points_and_winner_and_over" xml:space="preserve">
+    <value>#three_points#本のスリーポイント成功、#winner#勝利、#winner#総得点が#over#を超える</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_handicap" xml:space="preserve">
+    <value>#points#得点、 #assists#アシストし、#winner#が#handicap#のハンディキャップで勝利する</value>
+  </data>
+  <data name="bet_performance_points_and_rebounds_and_handicap" xml:space="preserve">
+    <value>#points#得点、#rebounds#リバウンドし、#winner#が#handicap#のハンディキャップで勝利する</value>
+  </data>
 </root>

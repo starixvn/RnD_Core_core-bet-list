@@ -1,18 +1,17 @@
 ﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
+    using App_GlobalResources;
+    using BetListNPOI.SS.UserModel;
+    using Constants;
+    using Entities;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
-    using App_GlobalResources;
-    using Constants;
-    using Entities;
-    using BetListNPOI.SS.UserModel;
     using Templates;
     using Utils;
     using Utils.StringExt;
     using Utils.TicketExt;
-    using Fanex.BetList.Core.Constants;
-    
+
     /// <summary>
     /// Sportsbook: Handicap.
     /// </summary>
@@ -182,13 +181,13 @@
             if (Template.NewCashOutAmount != null && Template.NewCashOutAmount.Visible)
             {
                 var amountText = ticket.IsSettled() ? $": {ConvertByBetType.Winloss(ticket.Winlost + ticket.ActualStake)}" : string.Empty;
-                status = string.Join(null, new[] { "\n", $"({CoreBetList.CashOut}{amountText})" });
+                status = string.Join(null, "\n", $"({CoreBetList.CashOut}{amountText})");
                 rtfHelper.RTFRenderer.AddText(status);
             }
 
             if (Template.ShowIP != null && Template.ShowIP.Visible)
             {
-                status = string.Join(null, new[] { "\n", Template.ShowIP.betIp });
+                status = string.Join(null, "\n", Template.ShowIP.betIp);
                 rtfHelper.RTFRenderer.AddText(status);
             }
 
@@ -204,9 +203,6 @@
         }
 
         #endregion RENDER EXCEL
-
-        protected static string GetResultString(string ticketStatus)
-          => GetResultString(ticketStatus, 0);
 
         protected virtual string GetHalfWonLost(string statusText, ITicket ticket)
         {
@@ -225,6 +221,9 @@
             }
         }
         
+        protected static string GetResultString(string ticketStatus)
+          => GetResultString(ticketStatus, 0);
+
 #pragma warning disable S1541 // Methods and properties should not be too complex
 
         protected static string GetResultString(string ticketStatus, byte settlementStatus)

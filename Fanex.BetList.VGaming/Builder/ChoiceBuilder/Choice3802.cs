@@ -1,19 +1,16 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
+    using Fanex.BetList.Core.App_GlobalResources;
+    using Fanex.BetList.Core.Entities;
+    using Fanex.BetList.Core.Utils.TicketExt;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
-    using System.Text.RegularExpressions;
-    using Fanex.BetList.Core.App_GlobalResources;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Templates;
-    using Fanex.BetList.Core.Utils.TicketExt;
 
     public class Choice3802 : ChoiceRNG
     {
         private const string JackpotTransIdInfo = "jpw=";
         private const string JackpotInfo = "jp=1";
-        private readonly Regex htmlTagMatching = new Regex("</?[^<>]*>");
         
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
         {
@@ -32,8 +29,16 @@
         {
             var indexOfJackpotTransId = ticket.JackpotInfo.LastIndexOf(JackpotTransIdInfo, StringComparison.InvariantCultureIgnoreCase) + 4;
             var transId = ticket.JackpotInfo.Substring(indexOfJackpotTransId, ticket.JackpotInfo.Length - indexOfJackpotTransId);
+            var parames = new List<object>
+            {
+                $"'{transId}'",
+                $"'{ticket.CustId}'",
+                $"'{ticket.BetTypeId}'",
+                $"'{ticket.WinlostDate.ToString(CultureInfo.InvariantCulture)}'"
+            };
+            var parameterList = string.Join(", ", parames);
             var detailLinkMarkup =
-                $"<div class=\"detail vgaming-detail\" onclick=\"showVGamingJackpotWonDetails('{transId}', '{ticket.CustId}', '{ticket.BetTypeId}', '{ticket.WinlostDate}');\">" +
+                $"<div class=\"detail vgaming-detail\" onclick=\"showVGamingJackpotWonDetails({parameterList});\">" +
                 $"<a class=\"detail-link\" href=\"javascript:void('');\">{CoreBetList.JackpotWonDetails}</a>" +
                 $"</div>";
 

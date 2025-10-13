@@ -1,4 +1,4 @@
-namespace Fanex.BetList.SexyGaming.Test.Builder.StatusBuilder
+namespace Fanex.BetList.YeeBet.Test.Builder.StatusBuilder
 {
     using Core.Builder.StatusBuilder;
     using Core.Entities;
@@ -38,6 +38,7 @@ namespace Fanex.BetList.SexyGaming.Test.Builder.StatusBuilder
         {
             ////Arrange
             _ticket.BetId = 1;
+            _ticket.BetCheck = "betcheck";
             _ticket.CustId = 123;
             _ticket.TransDesc = "TransDesc";
             _ticket.MatchCode = "MatchCode";

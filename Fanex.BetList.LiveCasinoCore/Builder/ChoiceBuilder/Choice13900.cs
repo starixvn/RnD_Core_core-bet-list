@@ -1,11 +1,11 @@
 namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System.Globalization;
-    using System.Collections.Generic;
-    using System.Text;
+    using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Utils.TicketExt;
-    using Fanex.BetList.Core.App_GlobalResources;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Text;
 
     /// <summary>Microgaming Live Casino Choice 13900.</summary>
     public class Choice13900 : ChoiceLC

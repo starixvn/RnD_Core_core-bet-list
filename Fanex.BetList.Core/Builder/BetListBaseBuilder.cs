@@ -45,7 +45,7 @@ namespace Fanex.BetList.Core.Builder
         public IChoice CreateChoiceBuilder(int bettype)
         {
             var betTypeId = MapperCollector.GetChoiceBaseBetTypeOf(bettype);
-            var typeName = string.Join(null, new[] { ChoiceBuilderNamespace, ChoiceName, betTypeId.ToString().Replace('-', '_') });
+            var typeName = ChoiceBuilderNamespace + ChoiceName + betTypeId.ToString().Replace('-', '_');
 
             return CreateInstance<IChoice, Choice1>(typeName);
         }
@@ -53,7 +53,7 @@ namespace Fanex.BetList.Core.Builder
         public IOdds CreateOddsBuilder(int bettype)
         {
             var betTypeId = MapperCollector.GetOddsBaseBetTypeOf(bettype);
-            var typeName = string.Join(null, new[] { OddsBuilderNamespace, OddsName, betTypeId.ToString().Replace('-', '_') });
+            var typeName = OddsBuilderNamespace + OddsName + betTypeId.ToString().Replace('-', '_');
 
             return CreateInstance<IOdds, Odds1>(typeName);
         }
@@ -61,7 +61,7 @@ namespace Fanex.BetList.Core.Builder
         public IStake CreateStakeBuilder(int bettype)
         {
             var betTypeId = MapperCollector.GetStakeBaseBetTypeOf(bettype);
-            var typeName = string.Join(null, new[] { StakeBuilderNamespace, StakeName, betTypeId.ToString().Replace('-', '_') });
+            var typeName = StakeBuilderNamespace + StakeName + betTypeId.ToString().Replace('-', '_');
 
             return CreateInstance<IStake, Stake1>(typeName);
         }
@@ -69,7 +69,7 @@ namespace Fanex.BetList.Core.Builder
         public IStatus CreateStatusBuilder(int bettype)
         {
             var betTypeId = MapperCollector.GetStatusBaseBetTypeOf(bettype);
-            var typeName = string.Join(null, new[] { StatusBuilderNamespace, StatusName, betTypeId.ToString().Replace('-', '_') });
+            var typeName = StatusBuilderNamespace + StatusName + betTypeId.ToString().Replace('-', '_');
 
             return CreateInstance<IStatus, Status1>(typeName);
         }
@@ -77,7 +77,7 @@ namespace Fanex.BetList.Core.Builder
         public ITrans CreateTransBuilder(int bettype)
         {
             var betTypeId = MapperCollector.GetTransBaseBetTypeOf(bettype);
-            var typeName = string.Join(null, new[] { TransBuilderNamespace, TransName, betTypeId.ToString().Replace('-', '_') });
+            var typeName = TransBuilderNamespace + TransName + betTypeId.ToString().Replace('-', '_');
 
             return CreateInstance<ITrans, Trans1>(typeName);
         }
@@ -110,11 +110,10 @@ namespace Fanex.BetList.Core.Builder
 
         private List<Assembly> GetBetListAssemblies()
         {
-            var assemblies = (List<Assembly>)_cache[CacheKey];
+            var assemblies = (List<Assembly>)_cache[CacheKey] ?? new List<Assembly>();
 
-            if (assemblies == null || !assemblies.Any())
+            if (!assemblies.Any())
             {
-                assemblies = new List<Assembly>();
                 var path = AppContext.BaseDirectory + "/bin";
                 if (!Directory.Exists(path))
                 {

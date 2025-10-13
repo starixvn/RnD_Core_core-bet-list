@@ -1,12 +1,12 @@
 ﻿namespace Fanex.BetList.Core.Builder.OddsBuilder
 {
-    using System;
-    using System.Collections.Generic;
     using App_GlobalResources;
-    using Constants;
-    using Entities;
     using BetListNPOI.HSSF.UserModel;
     using BetListNPOI.SS.UserModel;
+    using Constants;
+    using Entities;
+    using System;
+    using System.Collections.Generic;
     using Templates;
     using Utils;
 
@@ -29,13 +29,13 @@
                     string oddsWin = Formatter.FormatNumber3(winTicket.Odds);
                     string oddsPlace = Formatter.FormatNumber3(placeTicket.Odds);
 
-                    var oddsWinMarkup = string.Join(null, new[] { CoreBetList.win, ": ", "<b>", oddsWin, "</b>" });
-                    var oddsPlaceMarkup = string.Join(null, new[] { CoreBetList.place, ": ", "<b>", oddsPlace, "</b>" });
+                    var oddsWinMarkup = string.Join(null, CoreBetList.win, ": ", "<b>", oddsWin, "</b>");
+                    var oddsPlaceMarkup = string.Join(null, CoreBetList.place, ": ", "<b>", oddsPlace, "</b>");
 
-                    var oddsWinContent = string.Join(null, new[] { "<span class='blue' style='font-weight:normal;'>", oddsWinMarkup, "</span>" });
-                    var oddsPlaceContent = string.Join(null, new[] { "<span class='' style='font-weight:normal;'>", oddsPlaceMarkup, "</span>" });
+                    var oddsWinContent = string.Join(null, "<span class='blue' style='font-weight:normal;'>", oddsWinMarkup, "</span>");
+                    var oddsPlaceContent = string.Join(null, "<span class='' style='font-weight:normal;'>", oddsPlaceMarkup, "</span>");
 
-                    Template.odds = string.Join(null, new[] { oddsWinContent, "<br>", oddsPlaceContent });
+                    Template.odds = string.Join(null, oddsWinContent, "<br>", oddsPlaceContent);
                 }
                 else
                 {
@@ -75,11 +75,11 @@
             var rtfNumberRenderer = new RTFNumber(rtfHelper.RTFRenderer, rtfHelper.PosFont, rtfHelper.NegFont);
 
             // Add Win
-            rtfHelper.RTFRenderer.AddText(string.Join(null, new[] { CoreBetList.win, ": " }), rtfHelper.PosFont);
+            rtfHelper.RTFRenderer.AddText(string.Join(null, CoreBetList.win, ": "), rtfHelper.PosFont);
             rtfNumberRenderer.Render(oddsWinVal);
 
             // Add Place
-            rtfHelper.RTFRenderer.AddText(string.Join(null, new[] { "\n", CoreBetList.place, ": " }), rtfHelper.PosFont);
+            rtfHelper.RTFRenderer.AddText(string.Join(null, "\n", CoreBetList.place, ": "), rtfHelper.PosFont);
             rtfNumberRenderer.Render(oddsPlaceVal);
 
             var rtfOdds = rtfHelper.RTFRenderer.Render();
@@ -89,8 +89,8 @@
 
         private static string ExtractStringBetweenTag(string tag, string source)
         {
-            string startTag = string.Join(null, new[] { "<", tag, ">" });
-            string endTag = string.Join(null, new[] { "</", tag, ">" });
+            string startTag = string.Join(null, "<", tag, ">");
+            string endTag = string.Join(null, "</", tag, ">");
 
             int startIndex = source.IndexOf(startTag, StringComparison.CurrentCulture) + startTag.Length;
             int endIndex = source.IndexOf(endTag, startIndex, StringComparison.CurrentCulture);

@@ -2,7 +2,7 @@
 {
     using System;
 
-    internal static class TransDescParser
+    public static class TransDescParser
     {
         public static Tuple<string, string> ParseTransDesc(string transDesc)
         {

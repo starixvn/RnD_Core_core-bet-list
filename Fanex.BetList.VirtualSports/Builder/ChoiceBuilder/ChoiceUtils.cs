@@ -1,12 +1,11 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text.RegularExpressions;
     using Entities;
+    using System;
+    using System.Text.RegularExpressions;
     using Templates;
 
-    internal static class VirtualSportsChoiceUtils
+    public static class VirtualSportsChoiceUtils
     {
         private const string MatchInfoPattern = "m=\"([^\"]*)\"";
         private const string ExcludingScoresPattern = "s=\"([^\"]*)\"";

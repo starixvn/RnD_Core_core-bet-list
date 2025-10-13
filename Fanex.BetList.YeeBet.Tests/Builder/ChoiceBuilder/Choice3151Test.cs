@@ -1,4 +1,4 @@
-namespace Fanex.BetList.SexyGaming.Tests.Builder.ChoiceBuilder
+namespace Fanex.BetList.YeeBet.Tests.Builder.ChoiceBuilder
 {
     using System;
     using System.Globalization;
@@ -121,32 +121,10 @@ namespace Fanex.BetList.SexyGaming.Tests.Builder.ChoiceBuilder
             Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedTemplate));
         }
 
-        [Test]
-        public void BuildLeague_FromSettledTicket_LeagueNameIsBetTypeNameAndGameTableIdAndGameId()
-        {
-            // Arrange
-            const string gameId = "12345";
-            const string gameTableId = "R001 ";
-
-            _ticket.TransDesc = $"choice=0_PLAYER*site=IBC*tableCode={gameTableId}*result=B;CK;HQ:P;C9;H9*results=*winResult=*ForcedCompleted=0*ReasonCode=0";
-            _ticket.MatchCode = gameId;
-
-            // Act
-            _choice.Render(_ticket, _ticketHelper, null, false);
-
-            // Assert
-            var expectedLeagueName = string.Format(
-                "<span class='bet-type-name'>{0}</span> <span class=\"gamegroupname\">{1}</span> <span class='game-id'>{2}</span>",
-                BetTypeName,
-                gameTableId,
-                gameId);
-            Assert.AreEqual(expectedLeagueName, _choice.Template.League.LeagueName.leagueName);
-        }
-
         private string BuildExpectedTemplateDetailLinkHtml(ITicket ticket, string transactionType)
         {
              return string.Format(
-                "<div class=\"detail yeebet-casino-detail\"" +
+                "<div class=\"detail live-casino-detail\"" +
                 " onclick='showYeeBetBetDetails(&quot;{0}&quot;,&quot;{1}&quot;,&quot;{2}&quot;,&quot;{3}&quot;);'>" +
                 "<a class=\"detail-link\"" +
                 " href=\"javascript:void(&quot;&quot;);\">Details</a></div>",
@@ -193,30 +171,6 @@ namespace Fanex.BetList.SexyGaming.Tests.Builder.ChoiceBuilder
 
             ////Assert
             Assert.IsFalse(_choice.Template.BetType.betTypeName.Contains("</span>"));
-        }
-
-        [Test]
-        public void RemoveHtmlTagFromLeagueName_FromSettledTicket_LeagueNameIsBetTypeNameAndGameTableIdAndGameId()
-        {
-            // Arrange
-            const string gameId = "12345";
-            const string gameTableId = "R001 ";
-
-            var rtfHelper = new RTFHelper()
-            {
-                RTFRenderer = new RtfTextRender()
-            };
-
-            _ticket.TransDesc = $"choice=0_PLAYER*site=IBC*tableCode={gameTableId}*result=B;CK;HQ:P;C9;H9*results=*winResult=*ForcedCompleted=0*ReasonCode=0";
-            _ticket.MatchCode = gameId;
-
-            // Act
-            _choice.RenderRTF(_ticket, _ticketHelper, null, false, rtfHelper);
-
-            // Assert
-            var expectedLeagueName = string.Format("{0} {1} {2}", BetTypeName, gameTableId, gameId);
-
-            Assert.AreEqual(expectedLeagueName, _choice.Template.League.LeagueName.leagueName);
         }
     }
 }

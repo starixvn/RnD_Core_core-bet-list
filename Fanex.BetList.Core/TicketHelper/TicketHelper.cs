@@ -1,12 +1,10 @@
 ﻿namespace Fanex.BetList.Core.TicketHelper
 {
-    using System;
-    using System.Linq;
-    using System.Collections.Generic;
     using Entities;
-    using Fanex.BetList.Core.App_GlobalResources;
     using Fanex.BetList.Core.Constants;
     using Mapper;
+    using System;
+    using System.Collections.Generic;
     using System.Text.RegularExpressions;
 
     public class TicketHelper : ITicketHelper
@@ -190,6 +188,12 @@
         public string GetKenoBetChoiceName(string kenoBetChoiceId, out string kenoBetTypeId)
             => _cacheRef.GetKenoBetChoiceName(kenoBetChoiceId, out kenoBetTypeId);
 
+        public BetChoiceInfo GetKenoBetChoiceInfo(string kenoBetChoiceId)
+        {   
+            string choiceName = _cacheRef.GetKenoBetChoiceName(kenoBetChoiceId, out string kenoBetTypeId);
+            return new BetChoiceInfo(choiceName, kenoBetTypeId);
+        }
+
         public string GetKenoBetTypeName(string kenoBetTypeId)
             => _cacheRef.GetKenoBetTypeName(kenoBetTypeId);
 
@@ -202,6 +206,12 @@
         public string GetLotteryBetChoiceName(string lotteryBetChoiceId, out string lotteryBetTypeId)
             => _cacheRef.GetLotteryBetChoiceName(lotteryBetChoiceId, out lotteryBetTypeId);
 
+        public BetChoiceInfo GetLotteryBetChoiceInfo(string lotteryBetChoiceId)
+        {
+            string choiceName = _cacheRef.GetLotteryBetChoiceName(lotteryBetChoiceId, out string lotteryBetTypeId);
+            return new BetChoiceInfo(choiceName, lotteryBetTypeId);
+        }
+
         public string GetLotteryBetTypeName(string lotteryBetTypeId)
             => _cacheRef.GetLotteryBetTypeName(lotteryBetTypeId);
 
@@ -213,9 +223,14 @@
 
         public string GetBetRadarMatchCodeFormat(string matchCode)
             => _cacheRef.GetBetRadarMatchCodeFormat(matchCode);
-
         public string GetTableGamesBetChoiceName(string tableGamesBetChoiceId, out string tableGamesBetTypeId)
             => _cacheRef.GetTableGamesBetChoiceName(tableGamesBetChoiceId, out tableGamesBetTypeId);
+
+        public BetChoiceInfo GetTableGamesBetChoiceInfo(string tableGamesBetChoiceId)
+        {
+            string choiceName = _cacheRef.GetTableGamesBetChoiceName(tableGamesBetChoiceId, out string tableGamesBetTypeId);
+            return new BetChoiceInfo(choiceName, tableGamesBetTypeId);
+        }
 
         public string GetTableGamesBetTypeName(string tableGamesBetTypeId)
             => _cacheRef.GetTableGamesBetTypeName(tableGamesBetTypeId);

@@ -32,7 +32,7 @@
 
         protected override void BuildBetTeam(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            Template.betTeam = string.Join(null, new[] { ticket.MatchCode, " - ", ticketHelper.GetHorseTeamNameById(ticket.HomeId) });
+            Template.betTeam = string.Join(null, ticket.MatchCode, " - ", ticketHelper.GetHorseTeamNameById(ticket.HomeId));
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)
@@ -41,11 +41,10 @@
             Template.betTeamClassName = Favorite;
         }
 
-        protected override void CalculateFG_LG_Excel(string betStatus, ref string homeFGLG, ref string awayFGLG)
+        protected override (string homeFGLG, string awayFGLG) CalculateFG_LG_Excel(string betStatus)
         {
             // There's no first goal last goal for this bettype
-            homeFGLG = string.Empty;
-            awayFGLG = string.Empty;
+            return (string.Empty, string.Empty);
         }
     }
 }

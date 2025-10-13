@@ -1,9 +1,8 @@
 ﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.Text.RegularExpressions;
     using Entities;
+    using System.Collections.Generic;
+    using System.Text.RegularExpressions;
     using Utils;
 
     public class Status2101 : StatusRNG

@@ -90,12 +90,17 @@
 
         private static bool CacheHasMapperData()
         {
-            return (IDictionary<int, int>)_cache[string.Format(CacheKey, Choice)] != null
-                || (IDictionary<int, int>)_cache[string.Format(CacheKey, Status)] != null
-                || (IDictionary<int, int>)_cache[string.Format(CacheKey, Stake)] != null
-                || (IDictionary<int, int>)_cache[string.Format(CacheKey, Odds)] != null
-                || (IDictionary<int, int>)_cache[string.Format(CacheKey, Trans)] != null
-                || (IDictionary<int, int>)_cache[string.Format(CacheKey, Representative)] != null;
+            var cacheKeys = new[] { Choice, Status, Stake, Odds, Trans, Representative };
+            
+            foreach (var key in cacheKeys)
+            {
+                if ((IDictionary<int, int>)_cache[string.Format(CacheKey, key)] != null)
+                {
+                    return true;
+                }
+            }
+            
+            return false;
         }
 
         private static void CollectAndCacheMapperData(IList<Assembly> assemblies)
@@ -122,7 +127,7 @@
 
         private static IDictionary<int, int> CollectMapperDataOf(string componentName, IList<Assembly> assemblies)
         {
-            string typeName = string.Join(null, new[] { string.Format(BetListMapperNamespace, componentName) });
+            string typeName = string.Join(null, string.Format(BetListMapperNamespace, componentName));
 
             IDictionary<int, int> mapperData = new Dictionary<int, int>();
 

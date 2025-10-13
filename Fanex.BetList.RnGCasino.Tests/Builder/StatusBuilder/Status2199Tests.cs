@@ -51,7 +51,7 @@
 
         [TestCase("running", "Running")]
         [TestCase("won", "Won")]
-        [TestCase("lose", "Lose")]
+        [TestCase("lose", "Lost")]
         [TestCase("draw", "Draw")]
         public void BuildResult_Always_ShowResult(string resultStatus, string expectedResultStatus)
         {

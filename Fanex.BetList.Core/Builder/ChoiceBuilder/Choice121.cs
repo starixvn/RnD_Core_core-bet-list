@@ -34,11 +34,12 @@
             string awayName = ticketHelper.GetTeamNameById(ticket.AwayId);
 
             Template.Match.homeTeam = homeName;
-            Template.Match.home_firstGoal_lastGoal = string.Empty;
             Template.Match.awayTeam = awayName;
             Template.Match.away_firstGoal_lastGoal = string.Empty;
 
-            BuildFG_LGLabel(ticket.EventStatus, ref Template.Match.home_firstGoal_lastGoal, ref Template.Match.away_firstGoal_lastGoal);
+            var (homeFGLG, awayFGLG) = BuildFG_LGLabel(ticket.EventStatus);
+            Template.Match.home_firstGoal_lastGoal = homeFGLG;
+            Template.Match.away_firstGoal_lastGoal = awayFGLG;
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)

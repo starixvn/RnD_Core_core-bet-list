@@ -28,7 +28,7 @@
         protected override void BuildMatch(ITicket ticket, ITicketHelper ticketHelper)
         {
             var matchNo = $"<div class='handicap'>{string.Format(BitcoinLang.Number, ticket.MatchId)}</div>";
-            var expireDate = $"<div class='handicap'>{ticket.EventDate.ToString()}</div>";
+            var expireDate = $"<div class='handicap'>{ticket.EventDate.Value.ToString("M/dd/yyyy h:mm tt")}</div>";
             Template.Match.homeTeam = string.Empty;
             Template.Match.VS = null;
             Template.Match.awayTeam = string.Empty;

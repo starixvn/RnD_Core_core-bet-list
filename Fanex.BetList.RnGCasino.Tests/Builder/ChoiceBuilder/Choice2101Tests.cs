@@ -126,7 +126,7 @@
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            Assert.IsTrue(string.IsNullOrEmpty(choiceTemplate.Handicap.handicap));
+            Assert.IsNull(choiceTemplate.Handicap);
         }
 
         [Test]
@@ -248,7 +248,7 @@
             Choice_Template choiceTemplate = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            string expectedJsFunction = string.Format("showRnGCasinoDetails('123', '{0}', 456, 0);", winLostDate.ToString(CultureInfo.InvariantCulture));
+            string expectedJsFunction = $"showRnGCasinoDetails('123', '{winLostDate}', 456, 0);";
             bool containingExpectedJsFunction = choiceTemplate.League.ToString().Contains(expectedJsFunction);
             Assert.IsTrue(containingExpectedJsFunction);
         }
@@ -274,10 +274,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            string expectedJsFunction = string.Format(
-                "showRnGCasinoDetails('123', '{0}', 456, {1});",
-                _ticket.WinlostDate.ToString(CultureInfo.InvariantCulture),
-                transctionType);
+            string expectedJsFunction = $"showRnGCasinoDetails('123', '{_ticket.WinlostDate}', 456, {transctionType});";
             Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedJsFunction));
         }
 
@@ -302,10 +299,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            string expectedJsFunction = string.Format(
-                "showRnGCasinoDetails('123', '{0}', 456, {1});",
-                _ticket.WinlostDate.ToString(CultureInfo.InvariantCulture),
-                transctionType);
+            string expectedJsFunction = $"showRnGCasinoDetails('123', '{_ticket.WinlostDate}', 456, {transctionType});";
             Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedJsFunction));
         }
 
@@ -323,9 +317,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             ////Assert
-            string expectedJsFunction = string.Format(
-                "showRnGCasinoDetails('123', '{0}', 456, 0);",
-                _ticket.WinlostDate.ToString(CultureInfo.InvariantCulture));
+            string expectedJsFunction = $"showRnGCasinoDetails('123', '{_ticket.WinlostDate}', 456, 0);";
             Assert.IsTrue(_choice.Template.League.ToString().Contains(expectedJsFunction));
         }
 

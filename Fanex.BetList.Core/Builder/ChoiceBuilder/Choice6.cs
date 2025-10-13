@@ -32,7 +32,7 @@
                     break;
             }
 
-            Template.betTeam = string.Join(null, new[] { HtmlCharacters.NoneBreakingSpace, betTeam });
+            Template.betTeam = string.Join(null, HtmlCharacters.NoneBreakingSpace, betTeam);
         }
 
         protected override void BuildBetTeamClassNameAndHandicap(ITicket ticket)

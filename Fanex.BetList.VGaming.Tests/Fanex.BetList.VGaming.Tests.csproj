@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
       <OutputType>Library</OutputType>
-      <TargetFrameworks>net8.0</TargetFrameworks>
+      <TargetFrameworks>net6.0</TargetFrameworks>
       <Nullable>enable</Nullable>
       <IsPackable>false</IsPackable>
     </PropertyGroup>
@@ -16,8 +16,8 @@
       <PackageReference Include="TplNetCore" Version="1.0.0" />      
     </ItemGroup>
     <ItemGroup>            
-      <ProjectReference Include="..\Fanex.Betlist.VGaming\Fanex.BetList.VGaming.csproj" />            
+      <ProjectReference Include="..\Fanex.BetList.VGaming\Fanex.BetList.VGaming.csproj" />            
       <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj" />            
-      <ProjectReference Include="..\Fanex.BetList.Core.UnitTest\Fanex.BetList.Core.UnitTest.csproj" />                  
+      <ProjectReference Include="..\Fanex.BetList.Core.UnitTest\Fanex.BetList.Core.Tests.csproj" />                  
     </ItemGroup>
 </Project>

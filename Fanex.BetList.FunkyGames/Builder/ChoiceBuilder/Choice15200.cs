@@ -8,7 +8,7 @@
     {
         protected override void BuildLeague(ITicket ticket, ITicketHelper ticketHelper)
         {
-            var gameGroup= "FG_RNG_GG";
+            const string gameGroup = "FG_RNG_GG";
             Template.League.LeagueName.SetValue($"<span class=\"gamegroupname\"> {ticketHelper.GetResourceData(gameGroup, ticket.BetTypeId.ToString())}</span>");
 
             if (IsSummaryTicket(ticket.BetCheck))

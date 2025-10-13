@@ -79,7 +79,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            _ticketHelper.Received().GetTableGamesBetChoiceName(Arg.Is(choiceId), out string anyBetTypeId);
+            _ticketHelper.Received().GetTableGamesBetChoiceInfo(Arg.Is(choiceId));
         }
 
         [TestCase("betChoice=1705152116,;referID=")]

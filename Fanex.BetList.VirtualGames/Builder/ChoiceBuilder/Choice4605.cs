@@ -1,9 +1,8 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System.Collections.Generic;
     using Fanex.BetList.Core.Constants;
     using Fanex.BetList.Core.Entities;
-    using System.Linq;
+    using System.Collections.Generic;
 
     public class Choice4605 : Choice4601
     {
@@ -16,7 +15,7 @@
                 VirtualGamesBetTypes.CricketTowers
             };
 
-            if (noChoices.Any(i => i == ticket.BetTypeId))
+            if (noChoices.Exists(i => i == ticket.BetTypeId))
             {
                 Template.betTeam = string.Empty;
             }

@@ -39,9 +39,8 @@
             }
             else
             {
-                string kenoBetTypeId;
-
-                memberChoice = ticketHelper.GetKenoBetChoiceName(_choiceId, out kenoBetTypeId);
+                var betChoiceInfo = ticketHelper.GetKenoBetChoiceInfo(_choiceId);
+                memberChoice = betChoiceInfo != null ? betChoiceInfo.ChoiceName : string.Empty;
             }
 
             Template.betTeam = memberChoice;
@@ -49,11 +48,9 @@
 
         protected override void BuildBetType(ITicket ticket, ITicketHelper ticketHelper, List<ITicketData> ticketData)
         {
-            string kenoBetTypeId;
-
-            ticketHelper.GetKenoBetChoiceName(_choiceId, out kenoBetTypeId);
-
-            Template.BetType.betTypeName = ticketHelper.GetKenoBetTypeName(kenoBetTypeId);
+            var betChoiceInfo = ticketHelper.GetKenoBetChoiceInfo(_choiceId);
+            var bettypeId = betChoiceInfo != null ? betChoiceInfo.BetTypeId : string.Empty;
+            Template.BetType.betTypeName = ticketHelper.GetKenoBetTypeName(bettypeId);
         }
 
         protected override void BuildSport(ITicket ticket, ITicketHelper ticketHelper)
@@ -81,8 +78,8 @@
 
         private static string BuildIndexBigSmallBetTeam(string mappedChoiceId, ITicket ticket, ITicketHelper ticketHelper)
         {
-            string kenoBetTypeId;
-            string memberChoicePattern = ticketHelper.GetKenoBetChoiceName(mappedChoiceId, out kenoBetTypeId);
+            var betChoiceInfo = ticketHelper.GetKenoBetChoiceInfo(mappedChoiceId);
+            var memberChoicePattern = betChoiceInfo != null ? betChoiceInfo.ChoiceName : string.Empty;
             decimal bets = 0;
             int range = 0;
 

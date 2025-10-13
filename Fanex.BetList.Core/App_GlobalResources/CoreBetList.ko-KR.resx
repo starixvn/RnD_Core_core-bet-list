@@ -660,4 +660,55 @@
   <data name="voucherid" xml:space="preserve">
     <value>바우처 코드:</value>
   </data>
+  <data name="bet_performance_points_and_winner" xml:space="preserve">
+    <value>#points# 포인트와 #winner# 승리</value>
+  </data>
+  <data name="bet_performance_points_and_over" xml:space="preserve">
+    <value>#points# 포인트와 #winner# 총 포인트 오버 #over#</value>
+  </data>
+  <data name="bet_performance_three_points_and_winner" xml:space="preserve">
+    <value>#three_points# 3점 슛과 #winner# 승리</value>
+  </data>
+  <data name="bet_performance_assists_and_winner" xml:space="preserve">
+    <value>#assists# 어시스트와 #winner# 승리</value>
+  </data>
+  <data name="bet_performance_rebounds_and_winner" xml:space="preserve">
+    <value>#rebounds# 총 리바운드와 #winner# 승리</value>
+  </data>
+  <data name="bet_performance_points_and_assists" xml:space="preserve">
+    <value>#points# 포인트와  #assists# 어시스트</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_winner" xml:space="preserve">
+    <value>#points# 포인트,  #assists# 어시스트와 #winner# 승리</value>
+  </data>
+  <data name="bet_performance_points_and_rebounds" xml:space="preserve">
+    <value>#points# 포인트와 #rebounds# 총 리바운드</value>
+  </data>
+  <data name="bet_performance_points_and_rebounds_and_winner" xml:space="preserve">
+    <value>#points# 포인트, #rebounds# 총 리바운드와 #winner# 승리</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_rebounds" xml:space="preserve">
+    <value>#points# 포인트, #assists# 어시스트와 #rebounds# 총 리바운드</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_rebounds_and_winner" xml:space="preserve">
+    <value>#points# 포인트, #assists# 어시스트, #rebounds# 총 리바운드와 #winner# 승리</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_rebounds_and_handicap" xml:space="preserve">
+    <value>#points# 포인트, #assists# 어시스트, #rebounds# 총 리바운드와 #winner# 핸디캡 #handicap#으로 승리</value>
+  </data>
+  <data name="bet_performance_points_and_handicap" xml:space="preserve">
+    <value>#points#점과 #winner# 핸디캡 #handicap#으로 승리</value>
+  </data>
+  <data name="bet_performance_points_and_winner_and_over" xml:space="preserve">
+    <value>#points#점을 기록하고, #winner# 승리 및 #winner# 총점 #over# 초과</value>
+  </data>
+  <data name="bet_performance_three_points_and_winner_and_over" xml:space="preserve">
+    <value>#three_points#개의 3점슛 성공, #winner# 승리 및 #winner# 총점 #over# 초과</value>
+  </data>
+  <data name="bet_performance_points_and_assists_and_handicap" xml:space="preserve">
+    <value>#points#점,  #assists# 어시스트와 #winner# 핸디캡 #handicap#으로 승리</value>
+  </data>
+  <data name="bet_performance_points_and_rebounds_and_handicap" xml:space="preserve">
+    <value>#points#점, #rebounds# 리바운드와 #winner# 핸디캡 #handicap#으로 승리</value>
+  </data>
 </root>

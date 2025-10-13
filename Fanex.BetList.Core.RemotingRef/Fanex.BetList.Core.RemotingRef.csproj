@@ -2,15 +2,17 @@
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>         
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-        <Version>2.0.0.2-VS4-01</Version>
-        <InfomationalVersion>2.0.0.2</InfomationalVersion>
+        <Version>2.0.0.3-basketball-01</Version>
+        <InfomationalVersion>2.0.0.3</InfomationalVersion>
         <PackageReleaseNotes>
-          - Support get Virtual Sport 4 Match Code (#198619)
-         </PackageReleaseNotes>
+          - Support Basketball Player (#235372)
+          - Fix Sonarqube (#236678)
+        </PackageReleaseNotes>
         <Description>BetList core package</Description>
         <Authors>Nexcel Solutions</Authors>
         <PackageTags>Fanex BetList</PackageTags>
         <PackageProjectUrl>https://nexdev.net/projects/fanex-betlistcore/wiki/Core_Bet_List</PackageProjectUrl>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
     <ItemGroup>
       <PackageReference Include="Fanex.RemotingRef" Version="1.5.4-vs-01" />

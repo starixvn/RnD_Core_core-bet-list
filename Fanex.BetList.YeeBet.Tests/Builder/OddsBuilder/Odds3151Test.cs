@@ -3,7 +3,7 @@ using Fanex.BetList.Core.Constants;
 using Fanex.BetList.Core.Entities;
 using NUnit.Framework;
 
-namespace Fanax.BetList.Allbet.Test.Builder.OddBuilder
+namespace Fanax.BetList.YeeBet.Test.Builder.OddBuilder
 {
     public class Odds3151Test
     {

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
       <OutputType>Library</OutputType>
-      <TargetFrameworks>net8.0</TargetFrameworks>
+      <TargetFrameworks>net6.0</TargetFrameworks>
       <Nullable>enable</Nullable>
       <IsPackable>false</IsPackable>
     </PropertyGroup>
@@ -17,6 +17,6 @@
     </ItemGroup>
     <ItemGroup>            
       <ProjectReference Include="..\Fanex.BetList.Core\Fanex.BetList.Core.csproj" />            
-      <ProjectReference Include="..\Fanex.Betlist.FastSpin\Fanex.BetList.FastSpin.csproj" /> 
+      <ProjectReference Include="..\Fanex.BetList.FastSpin\Fanex.BetList.FastSpin.csproj" /> 
     </ItemGroup>
 </Project>

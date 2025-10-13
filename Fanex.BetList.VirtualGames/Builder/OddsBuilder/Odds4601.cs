@@ -1,10 +1,9 @@
 ﻿namespace Fanex.BetList.Core.Builder.OddsBuilder
 {
-    using System.Collections.Generic;
-    using System.Linq;
     using Fanex.BetList.Core.Constants;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Templates;
+    using System.Collections.Generic;
 
     public class Odds4601 : Odds1
     {
@@ -18,7 +17,7 @@
             };
 
             if (ticket.Status.ToLowerInvariant().Equals(BetStatus.Draw) ||
-                noOdds.Any(i => i == ticket.BetTypeId))
+                noOdds.Exists(i => i == ticket.BetTypeId))
             {
                 Template.odds = "-";
                 Template.oddsType = string.Empty;

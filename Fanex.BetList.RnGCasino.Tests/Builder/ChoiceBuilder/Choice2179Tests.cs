@@ -35,7 +35,7 @@
             var choice = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            var expectedDetailLink = $"<div class=\"detail rng-casino-detail\" onclick=\"showProgressiveJackpotWonDetails('1233213123', '1', '2198', '8/24/2022 12:00:00 AM');\">" +
+            var expectedDetailLink = $"<div class=\"detail rng-casino-detail\" onclick=\"showProgressiveJackpotWonDetails('1233213123', '1', '2198', '08/24/2022 00:00:00');\">" +
                  $"<a class=\"detail-link\" href=\"javascript:void('');\">Progressive Jackpot Won Details</a></div>";
             Assert.True(choice.League.ToString().Contains(expectedDetailLink));
         }
@@ -53,7 +53,7 @@
             var choice = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            var expectedDetailLink = $"<div class=\"detail rng-casino-detail\" onclick=\"showProgressiveJackpotWonDetails('1233213123', '1', '2198', '8/24/2022 12:00:00 AM');\">" +
+            var expectedDetailLink = $"<div class=\"detail rng-casino-detail\" onclick=\"showProgressiveJackpotWonDetails('1233213123', '1', '2198', '08/24/2022 00:00:00');\">" +
                  $"<a class=\"detail-link\" href=\"javascript:void('');\">Progressive Jackpot Won Details</a></div>";
             Assert.False(choice.League.ToString().Contains(expectedDetailLink));
         }
@@ -73,7 +73,7 @@
             var choice = _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert
-            var expectedDetailLink = $"<div class=\"detail rng-casino-detail\" onclick=\"showProgressiveJackpotWonDetails('1233213123', '1', '2198', '8/24/2022 12:00:00 AM');\">" +
+            var expectedDetailLink = $"<div class=\"detail rng-casino-detail\" onclick=\"showProgressiveJackpotWonDetails('1233213123', '1', '2198', '08/24/2022 00:00:00');\">" +
                  $"<a class=\"detail-link\" href=\"javascript:void('');\">Progressive Jackpot Won Details</a></div>";
             Assert.False(choice.League.ToString().Contains(expectedDetailLink));
         }

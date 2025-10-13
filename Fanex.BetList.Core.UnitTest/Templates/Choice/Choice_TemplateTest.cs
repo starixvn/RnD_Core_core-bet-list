@@ -45,7 +45,10 @@
             {
                 ticketStatus = ticketStatus,
                 betTeamClassName = betTeamClass,
-                betTeam = betTeam
+                betTeam = betTeam,
+                MaxPayout = null,
+                Booked = null,
+                VoucherId = null,
             };
 
             // Act
@@ -111,7 +114,10 @@
                 EventDate = null,
                 ticketStatus = ticketStatus,
                 betTeamClassName = betTeamClass,
-                betTeam = betTeam
+                betTeam = betTeam,
+                MaxPayout = null,
+                Booked = null,
+                VoucherId = null,
             };
 
             // Act
@@ -130,7 +136,9 @@
                                                 string.Empty,
                                                 string.Empty,
                                                 string.Empty,
-                                                string.Empty);
+                                                string.Empty,
+                                                string.Empty,
+                                                App_GlobalResources.CoreBetList.MaxPayoutAlertInfo);
             Assert.AreEqual(expectedHtml, choiceHtml);
         }
 
@@ -150,7 +158,10 @@
             {
                 ticketStatus = ticketStatus,
                 betTeamClassName = betTeamClass,
-                betTeam = betTeam
+                betTeam = betTeam,
+                MaxPayout = null,
+                Booked = null,
+                VoucherId = null
             };
             block.SetValueExtend(new StringBuilder(value));
             block.SetAssigned(true);

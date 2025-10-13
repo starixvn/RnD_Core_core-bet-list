@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  betlist-mvc:
+    build:
+      context: ../..
+      dockerfile: Example/Fanex.BetList.Example.MVC/Dockerfile
+    container_name: betlist-mvc-app
+    ports:
+      - "8080:80"
+      - "8443:443"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:80;https://+:443
+    volumes:
+      - ./App_Data:/app/App_Data
+      - ./DLL:/app/DLL
+    restart: unless-stopped
+    networks:
+      - betlist-network
+
+  # Optional: Add a database service if needed
+  # sqlserver:
+  #   image: mcr.microsoft.com/mssql/server:2022-latest
+  #   container_name: betlist-sqlserver
+  #   environment:
+  #     - ACCEPT_EULA=Y
+  #     - SA_PASSWORD=YourStrong@Passw0rd
+  #     - MSSQL_PID=Express
+  #   ports:
+  #     - "1433:1433"
+  #   volumes:
+  #     - sqlserver_data:/var/opt/mssql
+  #   networks:
+  #     - betlist-network
+
+networks:
+  betlist-network:
+    driver: bridge
+
+# volumes:
+#   sqlserver_data:

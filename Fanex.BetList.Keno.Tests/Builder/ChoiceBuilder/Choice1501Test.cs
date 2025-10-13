@@ -78,7 +78,7 @@
             _choice.Render(_ticket, _ticketHelper, null, false);
 
             // Assert.
-            _ticketHelper.Received().GetKenoBetChoiceName(Arg.Is(choiceId), out string anyBetTypeId);
+            _ticketHelper.Received().GetKenoBetChoiceInfo(Arg.Is(choiceId));
         }
 
         [TestCase("betChoice=1705152116,33;referID=", "35", "Index Big Bets: {0} Range: {1}")]
@@ -89,7 +89,7 @@
             _ticket.Stake = 150;
             _ticket.BetCheck = "100";
             _ticket.TransDesc = transDesc;
-            _ticketHelper.GetKenoBetChoiceName(Arg.Is(choiceId), out string anyBetTypeId).Returns(betChoice);
+            _ticketHelper.GetKenoBetChoiceInfo(Arg.Is(choiceId)).Returns(new BetChoiceInfo(betChoice, choiceId));
 
             // Act.
             var template = _choice.Render(_ticket, _ticketHelper, null, false);

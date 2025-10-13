@@ -1,8 +1,6 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System;
     using System.Collections.Generic;
-    using System.Globalization;
     using System.Text.RegularExpressions;
     using App_GlobalResources;
     using Constants;

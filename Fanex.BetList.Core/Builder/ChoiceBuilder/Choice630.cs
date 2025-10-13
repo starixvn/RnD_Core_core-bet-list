@@ -1,8 +1,7 @@
 ﻿namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 {
-    using System.Collections.Generic;
-    using Constants;
     using Entities;
+    using System.Collections.Generic;
 
     /// <summary>
     /// BAIO - Quarter X 1X2

@@ -60,41 +60,22 @@
 
             if (Template.Handicap != null && Template.Handicap.Visible && Template.Handicap.handicap != null)
             {
-                choice += string.Join(null, new[] { Space, Template.Handicap.handicap });
+                choice += string.Join(null, Space, Template.Handicap.handicap);
             }
 
             if (Template.Score != null && Template.Score.Visible && ticket.IsLive)
             {
-                choice += string.Join(null, new[] { " [", Template.Score.homeScore, "-", Template.Score.awayScore, "]" });
+                choice += string.Join(null, " [", Template.Score.homeScore, "-", Template.Score.awayScore, "]");
             }
 
             if (isMixParlay)
             {
-                choice += string.Join(null, new[] { " @ ", Formatter.FormatNumber3(ticket.Odds, null) });
+                choice += string.Join(null, " @ ", Formatter.FormatNumber3(ticket.Odds, null));
             }
 
             if (!string.IsNullOrEmpty(ticket.TransDesc))
             {
-                string betTeam = ticket.BetTeam.ToLowerInvariant();
-
-                if (betTeam.StartsWith(BetTeamValue.AOS, StringComparison.InvariantCulture)
-                    && betTeam.EndsWith(BetTeamValue.AOS, StringComparison.InvariantCulture))
-                {
-                    choice += BuildHtExcludingString(ticket.TransDesc);
-                    choice += BuildFtExcludingString(ticket.TransDesc);
-                }
-
-                if (betTeam.StartsWith(BetTeamValue.AOS, StringComparison.InvariantCulture)
-                    && !betTeam.EndsWith(BetTeamValue.AOS, StringComparison.InvariantCulture))
-                {
-                    choice += BuildHtExcludingString(ticket.TransDesc);
-                }
-
-                if (!betTeam.StartsWith(BetTeamValue.AOS, StringComparison.InvariantCulture)
-                    && betTeam.EndsWith(BetTeamValue.AOS, StringComparison.InvariantCulture))
-                {
-                    choice += BuildFtExcludingString(ticket.TransDesc);
-                }
+                choice += BuildTransDescChoice(ticket.BetTeam, ticket.TransDesc);
             }
 
             if (!string.IsNullOrEmpty(choice))
@@ -102,6 +83,33 @@
                 choice = choice.Replace(HtmlCharacters.NoneBreakingSpace, Space);
                 rtfHelper.RTFRenderer.AddText(choice, rtfHelper.PosFont);
             }
+        }
+
+        private string BuildTransDescChoice(string betTeam, string transDesc)
+        {
+            string betTeamValue = betTeam.ToLowerInvariant();
+            string result;
+            if (betTeamValue.StartsWith(BetTeamValue.AOS, StringComparison.InvariantCulture)
+                && betTeamValue.EndsWith(BetTeamValue.AOS, StringComparison.InvariantCulture))
+            {
+                result = BuildHtExcludingString(transDesc) + BuildFtExcludingString(transDesc);
+            }
+            else if (betTeamValue.StartsWith(BetTeamValue.AOS, StringComparison.InvariantCulture)
+                && !betTeamValue.EndsWith(BetTeamValue.AOS, StringComparison.InvariantCulture))
+            {
+                result = BuildHtExcludingString(transDesc);
+            }
+            else if (!betTeamValue.StartsWith(BetTeamValue.AOS, StringComparison.InvariantCulture)
+                && betTeamValue.EndsWith(BetTeamValue.AOS, StringComparison.InvariantCulture))
+            {
+                result = BuildFtExcludingString(transDesc);
+            }
+            else
+            {
+                result = string.Empty;
+            }
+
+            return result;
         }
 
         private static string FormatTransDesc(string transDesc, bool isFullTime)
