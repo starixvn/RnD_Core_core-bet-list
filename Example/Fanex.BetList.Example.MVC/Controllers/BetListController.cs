@@ -1,20 +1,19 @@
 ﻿namespace Fanex.BetList.Example.MVC.Controllers
 {
-    using Fanex.BetList.Core.Builder;
-    using Fanex.BetList.Core.Entities;
-    using Fanex.BetList.Core.Factories;
-    using Fanex.BetList.Core.TicketHelper;
-    using Fanex.BetList.Example.Extension.BetListExcelBuilderExt;
-    using Fanex.BetList.Example.MVC.Models;
-    using Fanex.BetList.Example.MVC.Services;
-    using Fanex.BetList.Example.MVC.ViewModel;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Mvc.Rendering;
     using System.Collections.Generic;
     using System.Globalization;
     using System.IO;
     using System.Linq;
     using System.Threading;
+    using Fanex.BetList.Core.Builder;
+    using Fanex.BetList.Core.Entities;
+    using Fanex.BetList.Core.Factories;
+    using Fanex.BetList.Core.TicketHelper;
+    using Fanex.BetList.Example.MVC.Models;
+    using Fanex.BetList.Example.MVC.Services;
+    using Fanex.BetList.Example.MVC.ViewModel;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Rendering;
 
     public class BetListController : Controller
     {
@@ -85,7 +84,7 @@
 
         public ActionResult SabaKeno(BetListData model = null)
         {
-            var betTypes = _dataService.QueryBetTypes(12300,12301);
+            var betTypes = _dataService.QueryBetTypes(12300, 12301);
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             DataSourcePath = "App_Data/SabaKeno.xls";
@@ -105,7 +104,7 @@
 
             return BetListView(model);
         }
-        
+
         public ActionResult VirtualSports5(BetListData model = null)
         {
             var betTypeIds = new List<int>();
@@ -213,7 +212,6 @@
 
         public ActionResult PlayerTips(BetListData model = null)
         {
-
             var betTypes = _dataService.QueryBetTypes(8700);
 
             DataSourcePath = "App_Data/PlayerTips.xls";
@@ -247,7 +245,6 @@
 
         public ActionResult Bitcoin(BetListData model = null)
         {
-
             var betTypes = _dataService.QueryBetTypes(7901, 7902);
 
             DataSourcePath = "App_Data/Bitcoin.xls";
@@ -261,7 +258,6 @@
 
         public ActionResult VGaming(BetListData model = null)
         {
-
             var betTypes = _dataService.QueryBetTypes(3802, 3820, 3829, 3898, 3899);
 
             DataSourcePath = "App_Data/VGaming.xls";
@@ -348,6 +344,7 @@
 
             return BetListView(model);
         }
+
         public ActionResult CricketAIO(BetListData model = null)
         {
             var betTypeIds = new List<int>();
@@ -463,7 +460,6 @@
             return BetListView(model);
         }
 
-
         public ActionResult GDG(BetListData model = null)
         {
             var betTypeIds = new List<int>();
@@ -504,6 +500,7 @@
 
             return BetListView(model);
         }
+
         public ActionResult WM(BetListData model = null)
         {
             var betTypeIds = new List<int>();
@@ -525,7 +522,6 @@
 
         public ActionResult PlaytechRNG(BetListData model = null)
         {
-
             var betTypes = _dataService.QueryBetTypes(15600);
 
             DataSourcePath = "App_Data/Playtech.xls";
@@ -539,7 +535,6 @@
 
         public ActionResult PlaytechLive(BetListData model = null)
         {
-
             var betTypes = _dataService.QueryBetTypes(15600);
 
             DataSourcePath = "App_Data/PlaytechLive.xls";
@@ -746,7 +741,6 @@
 
         public ActionResult SabaClub(BetListData model = null)
         {
-
             var betTypes = _dataService.QueryBetTypes(1612, 1634, 1640, 1698, 1699);
 
             DataSourcePath = "App_Data/SabaClub.xls";
@@ -757,6 +751,7 @@
 
             return BetListView(model);
         }
+
         public ActionResult SexyGaming(BetListData model = null)
         {
             var betTypes = _dataService.QueryBetTypes(3101, 3102, 3103, 3104, 3105, 3149, 3150);
@@ -1116,7 +1111,7 @@
 
         public ActionResult PHAIO3(BetListData model = null)
         {
-            var betTypeIds = new List<int> { 22 };
+            List<int> betTypeIds = [22];
 
             for (var betTypeId = 448; betTypeId <= 460; betTypeId++)
             {
@@ -1483,7 +1478,7 @@
 
         public ActionResult PHAIO51(BetListData model = null)
         {
-            var betTypeIds = new List<int>() { 367 };
+            List<int> betTypeIds = [367];
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
 
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
@@ -1580,6 +1575,7 @@
 
             return BetListView(model);
         }
+
         public ActionResult SealEntertainment(BetListData model = null)
         {
             var betTypeIds = new List<int>();
@@ -1723,7 +1719,7 @@
 
             return BetListView(model);
         }
-        
+
         public ActionResult FACHAI(BetListData model = null)
         {
             var betTypeIds = new List<int>();
@@ -1759,7 +1755,7 @@
             return BetListView(model);
         }
 
-	   public ActionResult ONCasino(BetListData model = null)
+        public ActionResult ONCasino(BetListData model = null)
         {
             var betTypeIds = new List<int>();
 
@@ -1830,6 +1826,7 @@
 
             return BetListView(model);
         }
+
         public ActionResult WCasino(BetListData model = null)
         {
             var betTypeIds = new List<int>();
@@ -1847,6 +1844,7 @@
 
             return BetListView(model);
         }
+
         public ActionResult AIAndClot(BetListData model = null)
         {
             var betTypeIds = new List<int>();
@@ -1859,6 +1857,24 @@
             var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
             ViewBag.BetTypes = CreateSelectListItem(betTypes);
             DataSourcePath = "App_Data/AIClot.xls";
+            model = GetDataSource(model, sourcePath: DataSourcePath);
+            model.DataFilePath = DataSourcePath;
+
+            return BetListView(model);
+        }
+
+        public ActionResult Gamini(BetListData model = null)
+        {
+            var betTypeIds = new List<int>();
+
+            for (var betTypeId = 16800; betTypeId <= 16899; betTypeId++)
+            {
+                betTypeIds.Add(betTypeId);
+            }
+
+            var betTypes = _dataService.QueryBetTypes(betTypeIds.ToArray());
+            ViewBag.BetTypes = CreateSelectListItem(betTypes);
+            DataSourcePath = "App_Data/Gemini.xls";
             model = GetDataSource(model, sourcePath: DataSourcePath);
             model.DataFilePath = DataSourcePath;
 
@@ -1898,14 +1914,11 @@
                   .Where(ticketData => model.BetTypeId == ticketData.BetTypeId)
                   .Select(ticket => ticket)
                   .ToList();
-
-                model.TicketData = model.TicketData ?? new List<ITicketData>();
-                model.Tickets = model.Tickets ?? new List<ITicket>();
             }
             else
             {
-                model.TicketData = betListData.TicketData ?? new List<ITicketData>();
-                model.Tickets = betListData.Tickets ?? new List<ITicket>();
+                model.TicketData = betListData.TicketData ?? [];
+                model.Tickets = betListData.Tickets;
             }
 
             return model;
@@ -1953,8 +1966,8 @@
                 ms.Position = 0;
                 return ExportToExcel(ms, "BetList.xls");
             }
-            
-            return File(new byte[0], "application/vnd.ms-excel", "BetList.xls");
+
+            return File([], "application/vnd.ms-excel", "BetList.xls");
         }
 
         private FileResult ExportToExcel(MemoryStream excelStream, string fileName)
@@ -1972,8 +1985,8 @@
                 var fileBytes = System.IO.File.ReadAllBytes(fileInfo.FullName);
                 return File(fileBytes, "application/vnd.xls", fileInfo.Name);
             }
-            
-            return File(new byte[0], "application/vnd.xls", "file_not_found.xls");
+
+            return File([], "application/vnd.xls", "file_not_found.xls");
         }
     }
 }
