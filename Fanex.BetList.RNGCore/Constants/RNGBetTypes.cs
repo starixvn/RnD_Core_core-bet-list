@@ -33,5 +33,9 @@
         public const int BGamingMin = 16400;
 
         public const int BGamingMax = 16799;
+        
+        public const int VPGamingMin = 16900;
+        
+        public const int VPGamingMax = 16999;
     }
 }
