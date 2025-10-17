@@ -12,8 +12,10 @@
     <PackageReference Include="BetListNPOI" Version="2.6.0" />
     <PackageReference Include="BouncyCastle.Cryptography" Version="2.4.0" />
     <PackageReference Include="Enums.NET" Version="5.0.0" />
+    <PackageReference Include="Fanex.BetList.Core" Version="3.0.5.7" />
     <PackageReference Include="ExtendedNumerics.BigDecimal" Version="3000.0.1.312" />
     <PackageReference Include="Fanex.RemotingRef" Version="1.5.5.1" />
+    <PackageReference Include="Fanex.BetList.Core.RemotingRef" Version="2.0.0.3" />
     <PackageReference Include="MathNet.Numerics" Version="5.0.0" />
     <PackageReference Include="Microsoft.IO.RecyclableMemoryStream" Version="3.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
@@ -40,8 +42,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Fanex.BetList.Core.RemotingRef\Fanex.BetList.Core.RemotingRef.csproj" />
-    <ProjectReference Include="..\..\Fanex.BetList.Core\Fanex.BetList.Core.csproj" />
     <ProjectReference Include="..\Fanex.BetList.Example.Data\Fanex.BetList.Example.Data.csproj" />
     <ProjectReference Include="..\Fanex.BetList.Example.Extension\Fanex.BetList.Example.Extension.csproj" />
   </ItemGroup>
