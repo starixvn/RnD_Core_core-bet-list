@@ -74,8 +74,6 @@ app.MapControllerRoute(
 
 // Map Web API routes (replaces WebApiConfig)
 app.MapControllers();
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapHealthChecks("/health");
-});
+app.MapHealthChecks("/health");
+
 app.Run();
