@@ -1,23 +1,24 @@
 ﻿namespace Fanex.BetList.Core.Builder.StatusBuilder
 {
-    using System;
-    using System.Globalization;
     using Fanex.BetList.Core.Entities;
     using Fanex.BetList.Core.Utils;
     using Fanex.BetList.Core.Utils.TicketExt;
+    using System.Globalization;
 
-    public class Status1612 : Status1
+    public class Status1612 : StatusRNGExpireDate
     {
-        private const int dayAgoSupportResultPage = -10;
-        private const string siteIdDefault = "4100300";
-
+        public override int ExpireDateResultLink => 10;
         protected override void BuildStatusResult(ITicket ticket)
         {
             if (ticket.IsSettled() || ticket.IsRefunded())
             {
-                if (IsSupportViewResultLink(ticket))
+                if (IsHideRNGResult(ticket))
                 {
-                    var siteId = string.IsNullOrEmpty(ticket.MatchCode) ? siteIdDefault : ticket.MatchCode;
+                    Template.StatusResult.Hide();
+                }
+                else
+                {
+                    var externalLink = $"{ticket.CurrencyId}, '{ticket.BetTeam}', {ticket.CustId}, '{ticket.BetCheck}', '{ticket.SiteId}', '{sportName}'";
 
                     Template.StatusResult.matchId = ticket.MatchId.ToString(CultureInfo.InvariantCulture);
                     Template.StatusResult.betType = ticket.BetTypeId.ToString(CultureInfo.InvariantCulture);
@@ -27,24 +28,13 @@
                     Template.StatusResult.league = ticket.LeagueId.ToString(CultureInfo.InvariantCulture);
                     Template.StatusResult.userName = ticket.UserName;
                     Template.StatusResult.winlostDate = Formatter.FullDateFormat(ticket.WinlostDate);
-                    Template.StatusResult.betId = $"{ticket.BetId ?? 0}, '{siteId}', {ticket.CustId}, '{ticket.BetCheck}'";
-                }
-                else
-                {
-                    Template.StatusResult.Hide();
+                    Template.StatusResult.betId = externalLink;
                 }
             }
             else
             {
                 Template.StatusResult.Hide();
             }
-        }
-
-        private static bool IsSupportViewResultLink(ITicket ticket)
-        {
-            var minDate = DateTime.Today.AddDays(dayAgoSupportResultPage);
-
-            return ticket.WinlostDate >= minDate && !string.IsNullOrWhiteSpace(ticket.BetCheck);
         }
     }
 }
