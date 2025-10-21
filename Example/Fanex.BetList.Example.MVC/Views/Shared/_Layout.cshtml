@@ -4,19 +4,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    <link rel="Stylesheet" href="~/Content/CoreBetList.css" />
-    <link href="~/Content/GTCasino.css" rel="stylesheet" />
-    <link href="~/Content/SexyGaming.css" rel="stylesheet" />
-    <link href="~/Content/Allbet.css" rel="stylesheet" />
-    <link href="~/Content/SAGaming.css" rel="stylesheet" />
-    <link href="~/Content/bbin.css" rel="stylesheet" />
-    <link href="~/Content/AGCasino.css" rel="stylesheet" />
-    <link href="~/Content/FGG.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/jquery-1.9.0.min.js" type="text/javascript"></script>
-    <script src="~/Scripts/bootstrap.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/CoreBetList.css" />
+    <link rel="stylesheet" href="~/GTCasino.css" />
+    <link rel="stylesheet" href="~/SexyGaming.css" />
+    <link rel="stylesheet" href="~/Allbet.css" />
+    <link rel="stylesheet" href="~/SAGaming.css" />
+    <link rel="stylesheet" href="~/BBin.css" />
+    <link rel="stylesheet" href="~/AGCasino.css" />
+    <link rel="stylesheet" href="~/FGG.css" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     @RenderSection("head", false)
 </head>
 <body>
@@ -40,7 +39,6 @@
         </ul>
     </div>
     @RenderBody()
-    @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
 </body>
 </html>

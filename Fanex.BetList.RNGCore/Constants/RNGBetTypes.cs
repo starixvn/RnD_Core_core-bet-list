@@ -29,5 +29,9 @@
         public const int AIGamingMin = 16200;
 
         public const int AIGamingMax = 16299;
+        
+        public const int BGamingMin = 16400;
+
+        public const int BGamingMax = 16799;
     }
 }

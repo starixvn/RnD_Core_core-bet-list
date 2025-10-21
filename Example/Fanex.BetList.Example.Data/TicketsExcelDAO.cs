@@ -13,9 +13,9 @@
     public class TicketsExcelDAO : ITicketsDAO
     {
         private readonly string _dashboardFile;
-        private IWorkbook _workbook;
-        private IFormulaEvaluator _formulaEvaluator;
-        private DataFormatter _dataFormatter;
+        private IWorkbook? _workbook;
+        private IFormulaEvaluator? _formulaEvaluator;
+        private DataFormatter? _dataFormatter;
 
         public TicketsExcelDAO(string filePath)
         {
@@ -29,6 +29,11 @@
         public IList<ITicket> GetTickets()
         {
             this.LazyLoadWorkbook();
+
+            if (_workbook == null)
+            {
+                return new List<ITicket>();
+            }
 
             ISheet betTicketSheet = _workbook.GetSheet("BetTickets");
 
@@ -59,6 +64,11 @@
         public IList<ITicketData> GetTicketData()
         {
             this.LazyLoadWorkbook();
+
+            if (_workbook == null)
+            {
+                return new List<ITicketData>();
+            }
 
             ISheet ticketDataSheet = _workbook.GetSheet("ReferenceData");
 

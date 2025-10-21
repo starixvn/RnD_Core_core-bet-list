@@ -1,82 +1,30 @@
 ﻿namespace Fanex.BetList.Core.Mapper
 {
     using Constants;
-
+    using System.Collections.Generic;
     public class StatusMapper : BaseMapper
     {
+        private static readonly IEnumerable<RangeMapping> StatusMapping = new List<RangeMapping>
+        {
+            new RangeMapping { MinRange = RNGBetTypes.SmartSoftMin + 1, MaxRange = RNGBetTypes.SmartSoftMax, BaseId = RNGBetTypes.SmartSoftMin },
+            new RangeMapping { MinRange = RNGBetTypes.HotDogMin + 1, MaxRange = RNGBetTypes.HotDogMax, BaseId = RNGBetTypes.HotDogMin },
+            new RangeMapping { MinRange = RNGBetTypes.HotDogMax, MaxRange = RNGBetTypes.HotDogMax - 1, BaseId = BetTypes.SabaLuckySpin },
+            new RangeMapping { MinRange = RNGBetTypes.OdinGamingMin + 1, MaxRange = RNGBetTypes.OdinGamingMax, BaseId = RNGBetTypes.OdinGamingMin },
+            new RangeMapping { MinRange = RNGBetTypes.RichGamingMin + 1, MaxRange = RNGBetTypes.RichGamingPromotion - 1, BaseId = RNGBetTypes.RichGamingMin },
+            new RangeMapping { MinRange = RNGBetTypes.RichGamingPromotion, MaxRange = RNGBetTypes.RichGamingPromotion, BaseId = BetTypes.SabaLuckySpin },
+            new RangeMapping { MinRange = RNGBetTypes.AIGamingMin + 1, MaxRange = RNGBetTypes.AIGamingMax, BaseId = RNGBetTypes.AIGamingMin },
+            new RangeMapping { MinRange = RNGBetTypes.ClotPlayingMin + 1, MaxRange = RNGBetTypes.ClotPlayingMax, BaseId = RNGBetTypes.ClotPlayingMin },
+            new RangeMapping { MinRange = RNGBetTypes.GPILotteryMin + 1, MaxRange = RNGBetTypes.GPILotteryMax, BaseId = RNGBetTypes.GPILotteryMin },
+            new RangeMapping { MinRange = RNGBetTypes.BGamingMin + 1, MaxRange = RNGBetTypes.BGamingMax, BaseId = RNGBetTypes.BGamingMin },
+        };
         public StatusMapper()
         {
-            StatusForSmartSoft();
-
-            StatusForHotDog();
-
-            StatusForOdinGaming();
-
-            StatusForRichGaming();
-
-            StatusForAIGaming();
-
-            StatusForClotPlaying();
-
-            StatusForGPILottery();
-        }
-
-        private void StatusForSmartSoft()
-        {
-            for (var betType = RNGBetTypes.SmartSoftMin + 1; betType <= RNGBetTypes.SmartSoftMax; betType++)
+            foreach (var mapping in StatusMapping)
             {
-                MapIdToBaseId(betType, RNGBetTypes.SmartSoftMin);
-            }
-        }
-
-        private void StatusForOdinGaming()
-        {
-            for (var betType = RNGBetTypes.OdinGamingMin + 1; betType <= RNGBetTypes.OdinGamingMax; betType++)
-            {
-                MapIdToBaseId(betType, RNGBetTypes.OdinGamingMin);
-            }
-        }
-
-        private void StatusForHotDog()
-        {
-            for (var betType = RNGBetTypes.HotDogMin + 1; betType < RNGBetTypes.HotDogMax; betType++)
-            {
-                MapIdToBaseId(betType, RNGBetTypes.HotDogMin);
-            }
-
-            MapIdToBaseId(RNGBetTypes.HotDogMax, BetTypes.SabaLuckySpin);
-        }
-
-        private void StatusForRichGaming()
-        {
-            for (var betType = RNGBetTypes.RichGamingMin + 1; betType < RNGBetTypes.RichGamingPromotion; betType++)
-            {
-                MapIdToBaseId(betType, RNGBetTypes.RichGamingMin);
-            }
-            MapIdToBaseId(RNGBetTypes.RichGamingPromotion, BetTypes.SabaLuckySpin);
-        }
-
-        private void StatusForGPILottery()
-        {
-            for (var betType = RNGBetTypes.GPILotteryMin + 1; betType <= RNGBetTypes.GPILotteryMax; betType++)
-            {
-                MapIdToBaseId(betType, RNGBetTypes.AIGamingMin);
-            }   
-        }
-
-        private void StatusForAIGaming()
-        {
-            for (var betType = RNGBetTypes.AIGamingMin + 1; betType <= RNGBetTypes.AIGamingMax; betType++)
-            {
-                MapIdToBaseId(betType, RNGBetTypes.AIGamingMin);
-            }   
-        }
-
-        private void StatusForClotPlaying()
-        {
-            for (var betType = RNGBetTypes.ClotPlayingMin + 1; betType <= RNGBetTypes.ClotPlayingMax; betType++)
-            {
-                MapIdToBaseId(betType, RNGBetTypes.ClotPlayingMin);
+                for (var betType = mapping.MinRange; betType <= mapping.MaxRange; betType++)
+                {
+                    MapIdToBaseId(betType, mapping.BaseId);
+                }
             }
         }
     }
