@@ -24,7 +24,7 @@
         
         protected override void AdjustBetTeamToRTF()
         {
-            Template.betTeam = Template.betTeam.Replace("</br>", "\n");
+            Template.betTeam = Template.betTeam.Replace("<br/>", "\n");
             base.AdjustBetTeamToRTF();
         }
     }

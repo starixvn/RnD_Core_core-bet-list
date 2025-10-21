@@ -18,7 +18,7 @@
             betTeam = $"<span class=\"favorite\">{betTeam}</span>";
             var playerName = ticketHelper.GetTeamNameById(betTeamModel.PlayerId);
 
-            Template.betTeam = $"{playerName}</br>{betTeam}";
+            Template.betTeam = $"{playerName}<br/>{betTeam}";
         }
     }
 
