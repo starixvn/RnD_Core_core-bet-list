@@ -2,6 +2,8 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Runtime.Serialization.Json;
+    using Fanex.BetList.Core.Entities;
 
     public static class ExtraInfoParser
     {
@@ -32,6 +34,31 @@
             }
 
             return extraInfoItems;
+        }
+
+        public static LegOddsTransDesc ParseLegOddsTransDesc(string transDesc)
+        {
+            if (string.IsNullOrEmpty(transDesc))
+            {
+                return new LegOddsTransDesc();
+            }
+
+            try
+            {
+                var serializer = new DataContractJsonSerializer(typeof(LegOddsTransDesc));
+
+                var result = serializer.SafeDeserializeFromString<LegOddsTransDesc>(transDesc);
+                if (result != null && result.LegOddsbyMatch != null)
+                {
+                    return result;
+                }
+
+                return new LegOddsTransDesc();
+            }
+            catch
+            {
+                return new LegOddsTransDesc();
+            }
         }
     }
 }
