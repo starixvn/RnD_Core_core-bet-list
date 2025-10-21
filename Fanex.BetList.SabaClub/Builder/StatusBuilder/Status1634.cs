@@ -11,7 +11,7 @@
         protected override void BuildResult(ITicket ticket, List<ITicketData> ticketData)
         {
             string status = ticket.Status.ToLowerInvariant();
-
+            
             if (!string.IsNullOrEmpty(ticket.BetCheck) && BetStatus.Running == status)
             {
                 Template.result = BuildRunningResultLink(ticket);
@@ -36,8 +36,8 @@
             }
         }
 
-        private static string BuildRunningResultLink(ITicket ticket)
-        {
+        private string BuildRunningResultLink(ITicket ticket)
+        { 
             var parameterList = new object[]
             {
                 ticket.MatchId,
@@ -50,10 +50,12 @@
                 "0",
                 ticket.LeagueId,
                 "0",
-                ticket.BetId ?? 0,
-                $"'{ticket.MatchCode}'",
+                ticket.CurrencyId,
+                $"'{ticket.BetTeam}'",
                 ticket.CustId,
-                $"'{ticket.BetCheck}'"
+                $"'{ticket.BetCheck}'",
+                $"'{ticket.SiteId}'",
+                $"'{sportName}'"
             };
 
             return $"<div class=\"result\" onclick=\"ViewResult({string.Join(", ", parameterList)});\">{CoreBetList.running}</div>";
