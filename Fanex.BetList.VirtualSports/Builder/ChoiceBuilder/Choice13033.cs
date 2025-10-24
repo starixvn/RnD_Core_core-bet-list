@@ -49,7 +49,7 @@ namespace Fanex.BetList.Core.Builder.ChoiceBuilder
 
             if (Template.Score != null && Template.Score.Visible && ticket.IsLive)
             {
-                choice += $" [{Template.Score.homeScore}-{Template.Score.awayScore}]";
+                choice += $" [{CoreBetList.Live}]";
             }
 
             if (isMixParlay)
