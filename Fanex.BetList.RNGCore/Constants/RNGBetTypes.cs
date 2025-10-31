@@ -37,5 +37,9 @@
         public const int GeminiMin = 16800;
         
         public const int GeminiMax = 16899;
+        
+        public const int VPGamingMin = 16900;
+        
+        public const int VPGamingMax = 16999;
     }
 }
