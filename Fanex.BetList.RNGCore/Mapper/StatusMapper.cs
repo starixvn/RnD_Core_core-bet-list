@@ -16,7 +16,10 @@
             new RangeMapping { MinRange = RNGBetTypes.ClotPlayingMin + 1, MaxRange = RNGBetTypes.ClotPlayingMax, BaseId = RNGBetTypes.ClotPlayingMin },
             new RangeMapping { MinRange = RNGBetTypes.GPILotteryMin + 1, MaxRange = RNGBetTypes.GPILotteryMax, BaseId = RNGBetTypes.GPILotteryMin },
             new RangeMapping { MinRange = RNGBetTypes.BGamingMin + 1, MaxRange = RNGBetTypes.BGamingMax, BaseId = RNGBetTypes.BGamingMin },
+            new RangeMapping { MinRange = RNGBetTypes.GeminiMin + 1, MaxRange = RNGBetTypes.GeminiMax, BaseId = RNGBetTypes.GeminiMin },
+            new RangeMapping { MinRange = RNGBetTypes.VPGamingMin + 1, MaxRange = RNGBetTypes.VPGamingMax, BaseId = RNGBetTypes.VPGamingMin },
         };
+        
         public StatusMapper()
         {
             foreach (var mapping in StatusMapping)

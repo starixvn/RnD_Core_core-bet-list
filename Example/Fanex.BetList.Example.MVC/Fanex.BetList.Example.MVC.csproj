@@ -42,6 +42,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Fanex.BetList.RNGCore\Fanex.BetList.RNGCore.csproj" />
     <ProjectReference Include="..\Fanex.BetList.Example.Data\Fanex.BetList.Example.Data.csproj" />
     <ProjectReference Include="..\Fanex.BetList.Example.Extension\Fanex.BetList.Example.Extension.csproj" />
   </ItemGroup>

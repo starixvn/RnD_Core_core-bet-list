@@ -2,10 +2,10 @@
 
   <PropertyGroup>
     <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
-    <Version>1.1.0</Version>
-    <InfomationalVersion>1.1.0</InfomationalVersion>
+    <Version>1.1.0.1</Version>
+    <InfomationalVersion>1.1.0.1</InfomationalVersion>
     <PackageReleaseNotes>
-      - Support BGaming (#239087)<br/>
+        - Support Gemini, Vertext (#239526,#241271)<br/>
     </PackageReleaseNotes>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>   
     <Description>RNG core package</Description>

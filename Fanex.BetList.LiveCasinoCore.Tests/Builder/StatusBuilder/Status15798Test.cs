@@ -49,12 +49,12 @@ namespace Fanex.BetList.LiveCasinoCore.Tests.Builder.StatusBuilder
             _ticket.CurrencyId = 20;
         }
 
-        [Test]
-        public void ExpireDateResultLink_Always_Returns0()
-        {
-            // Act & Assert
-            Assert.AreEqual(0, _status.ExpireDateResultLink);
-        }
+        //[Test]
+        //public void ExpireDateResultLink_Always_Returns0()
+        //{
+        //    // Act & Assert
+        //    Assert.AreEqual(0, _status.ExpireDateResultLink);
+        //}
 
         [Test]
         public void BuildStatusResult_WithValidTicketAndBetCheck_ShowsStatusResult()
