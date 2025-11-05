@@ -2,10 +2,10 @@
 
   <PropertyGroup>
     <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
-    <Version>1.1.0.2</Version>
+    <Version>1.1.0.3-WowGaming-01</Version>
     <InfomationalVersion>1.1.0.1</InfomationalVersion>
     <PackageReleaseNotes>
-      - Support SmartSoft GameId3rd (#239885)<br/>
+        - Support WOW Gaming (#241776)<br/>
     </PackageReleaseNotes>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>   
     <Description>RNG core package</Description>

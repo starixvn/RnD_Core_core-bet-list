@@ -10,6 +10,7 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
         protected string sportName = string.Empty;
 
         public virtual int ExpireDateResultLink => 0;
+        public virtual int ExpireDateResultLinkByMonths => 0;
 
         protected override void BuildStatusResult(ITicket ticket)
         {
