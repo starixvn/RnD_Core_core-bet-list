@@ -2,6 +2,6 @@
 {
     public class Status12150 : StatusRNGExpireDate
     {
-        public override int ExpireDateResultLink => 90;
+        public override int ExpireDateResultLink => 5;
     }
 }
