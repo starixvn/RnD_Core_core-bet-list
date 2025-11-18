@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
-    <Version>1.1.0.3-WowGaming-01</Version>
+    <Version>1.1.0.3</Version>
     <InfomationalVersion>1.1.0.1</InfomationalVersion>
     <PackageReleaseNotes>
         - Support WOW Gaming (#241776)<br/>
