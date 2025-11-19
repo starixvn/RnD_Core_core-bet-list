@@ -59,6 +59,14 @@
             return statusId == BetStatusId.Refund || status == BetStatus.Refund;
         }
 
+        public static bool IsDraw(this ITicket ticket)
+        {
+            var statusId = ticket.StatusId?.ToString();
+            var status = ticket.Status?.Trim().ToLowerInvariant();
+
+            return statusId == BetStatusId.Draw || status == BetStatus.Draw;
+        }
+
         public static bool IsSportsbook(this ITicket ticket)
             => IsSportsbook(ticket.SportTypeId);
 

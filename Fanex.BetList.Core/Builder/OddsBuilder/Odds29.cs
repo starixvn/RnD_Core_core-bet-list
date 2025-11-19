@@ -186,7 +186,7 @@
 
         bool IsChangedOdds(ITicket ticket)
         {
-            if(ticket.IsSettled() && IsBetBuilderPlus(ticket))
+            if(ticket.IsSettled() && IsBetBuilderPlus(ticket) && !ticket.IsDraw())
             {
                 var odds = GetOddsBetBuilderPlus(ticket);
 

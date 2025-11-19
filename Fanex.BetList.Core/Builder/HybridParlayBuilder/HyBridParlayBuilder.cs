@@ -8,6 +8,7 @@ namespace Fanex.BetList.Core.Builder.HybridParlayBuilder
     using Fanex.BetList.Core.Utils;
     using System.Text;
     using Fanex.BetList.Core.App_GlobalResources;
+    using System;
 
     public class HyBridParlayBuilder : IHybridParlayBuilder
     {
@@ -69,16 +70,19 @@ namespace Fanex.BetList.Core.Builder.HybridParlayBuilder
             var matchMainTicket = matchTickets.Last();
             var oddsType = string.IsNullOrEmpty(matchMainTicket.OddsType) ? (object)0 : matchMainTicket.OddsType;
 
-            matchMainTicket.Odds = isSingle ? RecalculateTicketOdds(matchMainTicket) : matchMainTicket.Odds ;
+            matchMainTicket.Odds = isSingle ? RecalculateTicketOdds(matchMainTicket) : matchMainTicket.Odds;
 
             template.Odds.odds = matchMainTicket.Odds == 0 ? string.Empty : ConvertByBetType.Odds(matchMainTicket.Odds, matchMainTicket.BetTypeId, matchMainTicket.SportTypeId, oddsType);
-            if(mainLegOddsInfo != null && matchMainTicket.Odds != mainLegOddsInfo.LegOdds)
+            if(mainLegOddsInfo != null && matchMainTicket.Odds == 1)
+            {
+                template.Odds.odds = ConvertByBetType.Odds(mainLegOddsInfo.LegOdds, matchMainTicket.BetTypeId, matchMainTicket.SportTypeId, oddsType);
+            }
+
+            template.Odds.OldOdds.Hide();
+            if(mainLegOddsInfo != null && matchMainTicket.Odds != mainLegOddsInfo.LegOdds && matchMainTicket.Odds != 1)
             {
                 template.Odds.OldOdds.oldOdds = ConvertByBetType.Odds(mainLegOddsInfo.LegOdds, matchMainTicket.BetTypeId, matchMainTicket.SportTypeId, oddsType);
                 template.Odds.OldOdds.Show();
-            } else
-            {
-                template.Odds.OldOdds.Hide();
             }
 
             foreach (var matchTicket in matchTickets)
@@ -178,25 +182,29 @@ namespace Fanex.BetList.Core.Builder.HybridParlayBuilder
             
             var mainLegOdds = mainLegOddsInfo?.LegOdds ?? 0;
             
-            if (matchMainTicket.Odds < 1) return CoreBetList.halflose;
+            if (matchMainTicket.Odds < 1) return CoreBetList.lose;
             if (matchMainTicket.Odds == 1) return CoreBetList.draw;
-            if (matchMainTicket.Odds > 1 && matchMainTicket.Odds == mainLegOdds) return CoreBetList.won;
-            if (matchMainTicket.Odds > 1 && matchMainTicket.Odds < mainLegOdds) return CoreBetList.halfwon;
+            if (matchMainTicket.Odds > 1 && matchMainTicket.Odds <= mainLegOdds) return CoreBetList.won;
             
             return string.Empty;
         }
 
-        public decimal RecalculateTicketOdds(ITicket matchMainTicket)
+        public static decimal RecalculateTicketOdds(ITicket matchMainTicket)
         {
+            var odds = matchMainTicket.Odds;
             switch(matchMainTicket.Status.ToLowerInvariant())
             {
                 case BetStatus.HalfWon:
-                    return 1 + (matchMainTicket.Odds - 1) / 2;
+                    odds = 1 + (odds - 1) / 2;
+                    break;
                 case BetStatus.HalfLose:
-                    return 0.5M;
+                    odds = 0.5M;
+                    break;
                 default:
-                    return matchMainTicket.Odds;
+                    break;
             }
+
+            return Math.Floor(odds*100)/100;
         }
     }
 }
