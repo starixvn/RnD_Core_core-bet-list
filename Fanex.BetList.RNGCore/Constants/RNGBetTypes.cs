@@ -41,5 +41,9 @@
         public const int VPGamingMin = 16900;
         
         public const int VPGamingMax = 16999;
+
+        public const int WOWGamingMin = 17100;
+
+        public const int WOWGamingMax = 17199;
     }
 }

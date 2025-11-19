@@ -106,5 +106,18 @@
 
             return ticket.WinlostDate < minDate;
         }
+
+        
+        public static bool IsTicketHide3rdResultLinkByMonths(this ITicket ticket, int monthsSupport3rdResultPage)
+        {
+            var today = DateTime.Today;
+            var ticketDate = ticket.WinlostDate.Date;
+            var firstDayOfMonth = new DateTime(today.Year, today.Month, 1);
+            
+            var startDate = firstDayOfMonth.AddMonths(-monthsSupport3rdResultPage);
+            var endDate = firstDayOfMonth.AddMonths(1).AddDays(-1).Date;
+
+            return ticketDate < startDate || ticketDate > endDate;
+        }
     }
 }
