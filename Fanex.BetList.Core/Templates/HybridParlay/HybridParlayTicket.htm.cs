@@ -63,7 +63,7 @@ namespace Fanex.BetList.Core
 		public class HybridParlayTicket_BetType_Block: Block
 		{
 			protected static string s7 = "<span class=\"bettype\">";
-			public string bettypeName = "{bettypeName}";
+			public string betTypeName = "{betTypeName}";
 			protected static string s8 = "&nbsp;</span>";
 			public override void ToString(ref StringBuilder bd)
 			{
@@ -71,7 +71,7 @@ namespace Fanex.BetList.Core
 				if(RenderChild)
 				{
 					bd.Append(s7);
-					bd.Append(bettypeName);
+					bd.Append(betTypeName);
 					bd.Append(s8);
 				}
 				if(IsAssigned){bd.Append(Value);}

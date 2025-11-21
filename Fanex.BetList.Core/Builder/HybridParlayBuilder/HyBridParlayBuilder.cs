@@ -30,7 +30,7 @@ namespace Fanex.BetList.Core.Builder.HybridParlayBuilder
             decimal stake,
             bool isShowScoreMap)
         {
-            if (!detailTickets.Any())
+            if (detailTickets == null || !detailTickets.Any())
             {
                 return string.Empty;
             }
@@ -94,7 +94,7 @@ namespace Fanex.BetList.Core.Builder.HybridParlayBuilder
                 matchDetailTicket.BetType.Hide();
                 template.Odds.Hide();
                 template.BetType.Show();
-                template.BetType.betTypeName = matchDetailTicket.BetType.bettypeName;
+                template.BetType.betTypeName = matchDetailTicket.BetType.betTypeName;
                 template.Status.status = matchDetailTicket.Status.status;
                 template.matchClass = template.Status.status == CoreBetList.voided ? "void" : extraVoidTicketClass;
                 
@@ -167,7 +167,7 @@ namespace Fanex.BetList.Core.Builder.HybridParlayBuilder
             var choice = builder.Render(matchTicket, ticketHelper, null, false);
             var status = builderStatus.Render(matchTicket, ticketHelper, null, false);
             template.transId = matchTicket.TransId.ToString();
-            template.BetType.bettypeName = choice.BetType.betTypeName;
+            template.BetType.betTypeName = choice.BetType.betTypeName;
             template.betTeamClassName = choice.betTeamClassName;
             template.Handicap.handicap = choice.Handicap.handicap;
             template.Handicap.Visible = choice.Handicap.Visible;

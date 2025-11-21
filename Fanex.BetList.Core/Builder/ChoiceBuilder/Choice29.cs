@@ -9,6 +9,7 @@
     using System.Text;
     using System.Net;
     using Fanex.BetList.Core.Utils.StringExt;
+    using System.Linq;
 
     /// <summary>
     /// Combination Mix Parlay.
@@ -48,7 +49,8 @@
         {
             if(IsBetBuilderPlus(ticket))
             {
-                return ticketHelper.GetResourceData(BetBuilderPlusRefId, OddsSpreadForBetBuilderPlus.ToString()).Replace("+" ,BetBuilderPlusBettypeNameSuffix);
+                return ticketHelper.GetResourceData(BetBuilderPlusRefId, OddsSpreadForBetBuilderPlus.ToString())
+                            .Replace("+", BetBuilderPlusBettypeNameSuffix);
             }
 
             if (ticket.BetTeam == "1")
@@ -188,9 +190,12 @@
             var combinationMPOfferNames = ticketHelper.GetCombinationMPOfferNameList(ticket.BetTeam, ticket.BetCheck, ticket.Handicap1, ticket.Handicap2);
             var offerNameList = new StringBuilder();
 
-            if (combinationMPOfferNames != null && combinationMPOfferNames.Count > 0)
+            if (combinationMPOfferNames != null && combinationMPOfferNames.Any())
             {
-                offerNameList.Append($"<div>{combinationMPOfferNames[0]}</div>");
+                foreach (var name in combinationMPOfferNames)
+                {
+                    offerNameList.Append($"<div>{name}</div>");
+                }
             }
 
             return string.Format(
