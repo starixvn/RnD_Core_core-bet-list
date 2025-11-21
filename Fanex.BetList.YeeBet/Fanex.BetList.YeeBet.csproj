@@ -2,7 +2,7 @@
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
         <Version>1.0.0.1-Beta-03</Version>
-        <InfomationalVersion>1.0.0.1</InfomationalVersion>
+        <InformationalVersion>1.0.0.1</InformationalVersion>
         <PackageReleaseNotes>YeeBet(#215833)</PackageReleaseNotes>
         <Description>
         New bet list for YeeBet

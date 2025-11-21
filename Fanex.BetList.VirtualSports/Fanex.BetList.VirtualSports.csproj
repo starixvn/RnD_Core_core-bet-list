@@ -2,7 +2,7 @@
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>    
         <Version>2.0.2.7-hfvs6-01</Version>
-        <InfomationalVersion>2.0.2.7</InfomationalVersion>
+        <InformationalVersion>2.0.2.7</InformationalVersion>
         <PackageReleaseNotes>
           - Support new bet types (VS6)(#235084)
         </PackageReleaseNotes>

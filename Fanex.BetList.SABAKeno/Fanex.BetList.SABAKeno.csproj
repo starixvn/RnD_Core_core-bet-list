@@ -3,7 +3,7 @@
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <Version>1.0.0.0-beta-01</Version>
-        <InfomationalVersion>1.0.0.0</InfomationalVersion>
+        <InformationalVersion>1.0.0.0</InformationalVersion>
         <PackageReleaseNotes>Init (#203371)</PackageReleaseNotes>
         <Description>
         New bet list for SABA Keno

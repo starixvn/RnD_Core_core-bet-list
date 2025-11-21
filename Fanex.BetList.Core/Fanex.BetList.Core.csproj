@@ -2,8 +2,8 @@
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>        
-        <Version>3.0.6.4-betbuilderPlus-01</Version>
-        <InfomationalVersion>3.0.6.4</InfomationalVersion>
+        <Version>3.0.6.4-betbuilderPlus-10</Version>
+        <InformationalVersion>3.0.6.4</InformationalVersion>
         <PackageReleaseNotes>Add BetBuilder Plus for Hybrid Parlay (#242225)</PackageReleaseNotes>
         <Authors>Nexcel Solutions</Authors>
         <PackageTags>Fanex BetList</PackageTags>

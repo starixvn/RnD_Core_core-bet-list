@@ -64,7 +64,7 @@
             var statusId = ticket.StatusId?.ToString();
             var status = ticket.Status?.Trim().ToLowerInvariant();
 
-            return statusId == BetStatusId.Draw || status == BetStatus.Draw;
+            return BetStatusId.Draw == statusId || BetStatus.Draw == status;
         }
 
         public static bool IsSportsbook(this ITicket ticket)

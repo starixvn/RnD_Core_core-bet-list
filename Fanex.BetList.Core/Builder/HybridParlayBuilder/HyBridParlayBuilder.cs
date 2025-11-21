@@ -9,6 +9,7 @@ namespace Fanex.BetList.Core.Builder.HybridParlayBuilder
     using System.Text;
     using Fanex.BetList.Core.App_GlobalResources;
     using System;
+    using Fanex.BetList.Core.Utils.TicketExt;
 
     public class HyBridParlayBuilder : IHybridParlayBuilder
     {
@@ -33,7 +34,7 @@ namespace Fanex.BetList.Core.Builder.HybridParlayBuilder
             {
                 return string.Empty;
             }
-            var extraVoidTicketClass = detailTickets.All(x => string.IsNullOrWhiteSpace(x.Status)) || detailTickets.All(x => x.Status?.ToLowerInvariant() == BetStatus.Void) ? "void" : string.Empty;
+            var extraVoidTicketClass = detailTickets.All(x => string.IsNullOrWhiteSpace(x.Status)) ? "void" : string.Empty;
             var choice = new StringBuilder();
             var combinationOfferName = string.Empty;
             var combinationOfferNameList = ticketHelper.GetCombinationMPOfferNameList(betTeam, betCheck, hdp1, hdp2);
@@ -47,7 +48,8 @@ namespace Fanex.BetList.Core.Builder.HybridParlayBuilder
             var hybridParlayMatches = detailTickets.OrderBy(x => x.TransId).GroupBy(x => x.MatchId);
             foreach (var match in hybridParlayMatches)
             {
-                choice.Append(BuildMatchTicket(ticketHelper, match.ToList(), mainLegOddsInfo.FirstOrDefault(x => x.MatchId == match.Key), extraVoidTicketClass, isShowScoreMap));
+                var matchLegOddsInfo = mainLegOddsInfo.FirstOrDefault(x => x.MatchId == match.Key) ?? new LegOddsInfo();
+                choice.Append(BuildMatchTicket(ticketHelper, match.ToList(), matchLegOddsInfo, extraVoidTicketClass, isShowScoreMap));
             }
             
 
@@ -64,7 +66,8 @@ namespace Fanex.BetList.Core.Builder.HybridParlayBuilder
             template.MatchTicketsList.MatchTicketsList = string.Empty;
             var isSingle = matchTickets.Count ==  1;
             var isVoidMatch = matchTickets.All(x => x.Status?.ToLowerInvariant() == BetStatus.Void);
-            var isNotHaveStatus = matchTickets.Any(x => string.IsNullOrWhiteSpace(x.Status));
+            var isNotHaveStatus = matchTickets.Any(x => string.IsNullOrWhiteSpace(x.Status))
+                && !matchTickets.Any(x => x.Status?.ToLowerInvariant() == BetStatus.Reject);
             var selectionStatusDisplayValues = new List<string>();
             
             var matchMainTicket = matchTickets.Last();
@@ -72,45 +75,47 @@ namespace Fanex.BetList.Core.Builder.HybridParlayBuilder
 
             matchMainTicket.Odds = isSingle ? RecalculateTicketOdds(matchMainTicket) : matchMainTicket.Odds;
 
-            template.Odds.odds = matchMainTicket.Odds == 0 ? string.Empty : ConvertByBetType.Odds(matchMainTicket.Odds, matchMainTicket.BetTypeId, matchMainTicket.SportTypeId, oddsType);
-            if(mainLegOddsInfo != null && matchMainTicket.Odds == 1)
-            {
-                template.Odds.odds = ConvertByBetType.Odds(mainLegOddsInfo.LegOdds, matchMainTicket.BetTypeId, matchMainTicket.SportTypeId, oddsType);
-            }
-
+            template.Odds.odds = ConvertByBetType.Odds(mainLegOddsInfo?.LegOdds, matchMainTicket.BetTypeId, matchMainTicket.SportTypeId, oddsType);
             template.Odds.OldOdds.Hide();
-            if(mainLegOddsInfo != null && matchMainTicket.Odds != mainLegOddsInfo.LegOdds && matchMainTicket.Odds != 1)
-            {
-                template.Odds.OldOdds.oldOdds = ConvertByBetType.Odds(mainLegOddsInfo.LegOdds, matchMainTicket.BetTypeId, matchMainTicket.SportTypeId, oddsType);
-                template.Odds.OldOdds.Show();
-            }
 
-            foreach (var matchTicket in matchTickets)
+            if(isSingle)
             {
-                var matchDetailTicket = BuildMatchDetailTicket(ticketHelper, matchTicket, isNotHaveStatus);
+                var matchDetailTicket = BuildMatchDetailTicket(ticketHelper, matchMainTicket, isNotHaveStatus);
                 selectionStatusDisplayValues.Add(matchDetailTicket.Status.status);
-                if(isSingle)
+                if(IsShowChangeOddsSingleSelection(mainLegOddsInfo, matchDetailTicket.Status.status, matchMainTicket))
                 {
-                    matchDetailTicket.Status.Hide();
-                    matchDetailTicket.Odds.Show();
-                    matchDetailTicket.Odds.odds = template.Odds;
-                    matchDetailTicket.BetType.Hide();
-                    template.Odds.Hide();
-                    template.BetType.Show();
-                    template.BetType.betTypeName = matchDetailTicket.BetType.bettypeName;
-                    template.Status.status = matchDetailTicket.Status.status;
-                    template.matchClass = template.Status.status == CoreBetList.voided ? "void" : extraVoidTicketClass;
+                    template.Odds.odds = ConvertByBetType.Odds(matchMainTicket.Odds, matchMainTicket.BetTypeId, matchMainTicket.SportTypeId, oddsType);
+                    template.Odds.OldOdds.oldOdds = ConvertByBetType.Odds(mainLegOddsInfo?.LegOdds, matchMainTicket.BetTypeId, matchMainTicket.SportTypeId, oddsType);
+                    template.Odds.OldOdds.Show();
                 }
-                else
+                matchDetailTicket.Status.Hide();
+                matchDetailTicket.Odds.Show();
+                matchDetailTicket.Odds.odds = template.Odds;
+                matchDetailTicket.BetType.Hide();
+                template.Odds.Hide();
+                template.BetType.Show();
+                template.BetType.betTypeName = matchDetailTicket.BetType.bettypeName;
+                template.Status.status = matchDetailTicket.Status.status;
+                template.matchClass = template.Status.status == CoreBetList.voided ? "void" : extraVoidTicketClass;
+                
+                template.MatchTicketsList.MatchTicketsList += matchDetailTicket;
+            }
+            else
+            {
+                foreach (var matchTicket in matchTickets)
                 {
+                    var matchDetailTicket = BuildMatchDetailTicket(ticketHelper, matchTicket, isNotHaveStatus);
+                    
+                    selectionStatusDisplayValues.Add(matchDetailTicket.Status.status);
                     template.matchClass = extraVoidTicketClass;
                     matchDetailTicket.Odds.Hide();
                     matchDetailTicket.BetType.Show();
                     template.BetType.Hide();
-                }
 
-                template.MatchTicketsList.MatchTicketsList += matchDetailTicket;
+                    template.MatchTicketsList.MatchTicketsList += matchDetailTicket;
+                }
             }
+            
 
             template.MatchTicketsList.listBuilderClassName = string.Empty;
             if(isSingle)
@@ -120,6 +125,13 @@ namespace Fanex.BetList.Core.Builder.HybridParlayBuilder
             else 
             {
                 template.Status.status = BuildMatchStatus(matchTickets, selectionStatusDisplayValues, matchMainTicket, mainLegOddsInfo);
+                
+                if(IsShowChangeOddsMultipleSelections(mainLegOddsInfo, selectionStatusDisplayValues, template.Status.status,  matchMainTicket))
+                {
+                    template.Odds.odds = ConvertByBetType.Odds(matchMainTicket.Odds, matchMainTicket.BetTypeId, matchMainTicket.SportTypeId, oddsType);
+                    template.Odds.OldOdds.oldOdds = ConvertByBetType.Odds(mainLegOddsInfo?.LegOdds, matchMainTicket.BetTypeId, matchMainTicket.SportTypeId, oddsType);
+                    template.Odds.OldOdds.Show();
+                }
             }
 
             if(isVoidMatch)
@@ -138,7 +150,8 @@ namespace Fanex.BetList.Core.Builder.HybridParlayBuilder
             template.EventDate.eventDate = choice.EventDate.eventDate;
             template.MatchDetail.Score.score = choice.Score;
             template.MatchDetail.Score.Visible = choice.Score.Visible;
-            if(isNotHaveStatus && template.Status.status != CoreBetList.reject || string.IsNullOrEmpty(template.Status.status))
+            if ((isNotHaveStatus && template.Status.status != CoreBetList.reject) 
+                || string.IsNullOrEmpty(template.Status.status))
             {
                 template.Status.Hide();
             }
@@ -205,6 +218,29 @@ namespace Fanex.BetList.Core.Builder.HybridParlayBuilder
             }
 
             return Math.Floor(odds*100)/100;
+        }
+
+        private static bool IsShowChangeOddsSingleSelection(LegOddsInfo mainLegOddsInfo, string selectionStatusDisplayValue, ITicket matchMainTicket)
+        {
+            var isSingleShowChangeOdds = IsSettledLegStatus(selectionStatusDisplayValue) && selectionStatusDisplayValue != CoreBetList.lose;
+
+            return isSingleShowChangeOdds && mainLegOddsInfo != null && matchMainTicket.Odds != mainLegOddsInfo.LegOdds && matchMainTicket.Odds != 1;
+        }
+        private static bool IsShowChangeOddsMultipleSelections(LegOddsInfo mainLegOddsInfo, IList<string> selectionStatusDisplayValues, string mainTicketStatus, ITicket matchMainTicket)
+        {
+            var isFullLostMatch = selectionStatusDisplayValues.Any(x => x == CoreBetList.lose);
+            var isSettledLegsShowChangeOdds =  !isFullLostMatch && IsSettledLegStatus(mainTicketStatus);
+
+            return isSettledLegsShowChangeOdds && mainLegOddsInfo != null && matchMainTicket.Odds != mainLegOddsInfo.LegOdds && matchMainTicket.Odds != 1;
+        }
+
+        private static bool IsSettledLegStatus(string status)
+        {
+            return status == CoreBetList.won
+                || status == CoreBetList.draw
+                || status == CoreBetList.lose
+                || status == CoreBetList.halfwon
+                || status == CoreBetList.halflose;
         }
     }
 }

@@ -4,12 +4,10 @@
     using BetListNPOI.SS.UserModel;
     using Constants;
     using Entities;
-    using Fanex.BetList.Core.Utils.Parsers;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Text;
     using System.Net;
-    using System;
     using Fanex.BetList.Core.Utils.StringExt;
 
     /// <summary>
@@ -77,7 +75,7 @@
 
         private static string BuildSystemParlayDetailDiv(ITicket ticket, ITicketHelper ticketHelper, string betTypeName)
         {
-            return ticketHelper.ShowSystemParlayDetail && IsAcceptedTicket(ticket)
+            return ticketHelper.ShowSystemParlayDetail && IsAcceptedTicket(ticket) && !IsBetBuilderPlus(ticket)
                     ? JoinDetailSystemParlayDiv(ticket, ticketHelper, betTypeName)
                     : string.Empty;
         }
@@ -139,7 +137,7 @@
 
         private static string JoinBetBuilderPlusJsFunc(ITicket ticket, ITicketHelper ticketHelper)
         {
-            var transDesc = string.IsNullOrEmpty(ticket.TransDesc) ? "''" : WebUtility.HtmlEncode(ticket.TransDesc);
+            var transDesc = string.IsNullOrEmpty(ticket.TransDesc) ? "{}" : WebUtility.HtmlEncode(ticket.TransDesc);
 
             return $"javascript:showBetBuilderPlus('{ticket.TransId}', {ticketHelper.Index}, '{ticket.RefNo}', {ticket.CustId}, {transDesc}, {(int)ticket.Handicap1}, {(int)ticket.Handicap2}, '{ticket.BetCheck}', '{ticket.BetTeam}', '{ticket.Currency}', {ticket.Stake});";
         }
@@ -248,9 +246,11 @@
 
         protected override void BuildBetTypeName(ref RTFHelper rtfHelper)
         {
-            var betTypeName = Template.BetType.betTypeName.Replace(BetBuilderPlusBettypeNameSuffix, "+").StripHTML();
+            var betTypeName = Template.BetType.betTypeName
+                .Replace(BetBuilderPlusBettypeNameSuffix, "+")
+                .StripHTML();
 
-            rtfHelper.RTFRenderer.AddText(string.Join("\n", betTypeName));
+            rtfHelper.RTFRenderer.AddText(betTypeName);
         }
 
         private static void BuildRTFCombinationMPOfferNames(RTFHelper tmpRtfHelper, ITicket ticket, ITicketHelper ticketHelper)
@@ -290,7 +290,14 @@
         private static void BuildRTFCombinationMPOfferNamesForBetBuilderPlus(RTFHelper tmpRtfHelper, ITicket ticket, ITicketHelper ticketHelper)
         {
             var combinationOfferName = GetBetBuilderPlusCombinationOfferName(ticket, ticketHelper);
-            tmpRtfHelper.RTFRenderer.AddText($"\n{combinationOfferName}", tmpRtfHelper.NormalFont);
+            if(ticket.Status?.ToLowerInvariant() == BetStatus.Void)
+            {
+                tmpRtfHelper.RTFRenderer.AddText($"\n{combinationOfferName}", tmpRtfHelper.NormalFontCrossed);
+            }
+            else
+            {
+                tmpRtfHelper.RTFRenderer.AddText($"\n{combinationOfferName}", tmpRtfHelper.NormalFont);
+            }
         }
         #endregion Build RTF Choice
     }
