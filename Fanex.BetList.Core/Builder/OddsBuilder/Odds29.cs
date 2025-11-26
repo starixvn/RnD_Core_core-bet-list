@@ -29,6 +29,7 @@
                 base.Render(ticket, ticketData, funcGetOddsTypeName);
                 var oddsType = string.IsNullOrEmpty(ticket.OddsType) ? (object)0 : ticket.OddsType;
                 Template.odds = ConvertByBetType.Odds4(GetOddsBetBuilderPlus(ticket), ticket.BetTypeId, ticket.SportTypeId, oddsType);
+                Template.oddsType = string.Empty;
                 if (IsChangedOdds(ticket) && ticket.MasterOdds != 0)
                 {
                     Template.oddsClassName = ChangeOdds;
