@@ -16,6 +16,7 @@
         protected const string ChangeOdds = " strikethrough change-odds";
         private const int OddsSpreadForBoots = 2;
         private const int OddsSpreadForBetBuilderPlus = 3;
+        private const string BetTeamForMixParlay = "1";
         private const string SportsbookTag = "p1";
         private const string BoostRateAttribute = "bbp";
         private const string BoostOddsAttribute = "bba";
@@ -197,9 +198,9 @@
             return false;
         }
 
-        bool IsMixParlay(ITicket ticket) => ticket.BetTeam == "1";
+        bool IsMixParlay(ITicket ticket) => ticket.BetTeam == BetTeamForMixParlay;
 
-        bool IsBetBuilderPlus(ITicket ticket) => ticket.OddsSpread == OddsSpreadForBetBuilderPlus;
+        bool IsBetBuilderPlus(ITicket ticket) => ticket.BetTeam == BetTeamForMixParlay && ticket.OddsSpread == OddsSpreadForBetBuilderPlus;
 
         bool IsShowOdds(ITicket ticket ) => ticket.IsRunningWaiting() || ticket.IsSettled();
     }

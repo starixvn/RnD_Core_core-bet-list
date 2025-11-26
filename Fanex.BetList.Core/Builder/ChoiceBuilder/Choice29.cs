@@ -20,6 +20,7 @@
         private const string ResourceId = "LuckyBet";
         private const string BetBuilderPlusRefId = "BetBuilderPlus";
         private const int OddsSpreadForBetBuilderPlus = 3;
+        private const string BetTeamForMixParlay = "1";
         private const string BetBuilderPlusBettypeNameSuffix = "<sup>+</sup>";
 
         #region Build Choice
@@ -53,7 +54,7 @@
                             .Replace("+", BetBuilderPlusBettypeNameSuffix);
             }
 
-            if (ticket.BetTeam == "1")
+            if (ticket.BetTeam == BetTeamForMixParlay)
             {
                 return ticketHelper.GetBetTypeNameById(BetTypes.MixParlay);
             }
@@ -224,7 +225,7 @@
                 systemParlayDetailDiv);
         }
 
-        private static bool IsBetBuilderPlus(ITicket ticket) => ticket.OddsSpread == OddsSpreadForBetBuilderPlus;
+        private static bool IsBetBuilderPlus(ITicket ticket) => ticket.BetTeam == BetTeamForMixParlay && ticket.OddsSpread == OddsSpreadForBetBuilderPlus;
 
         #endregion Build Choice
 
