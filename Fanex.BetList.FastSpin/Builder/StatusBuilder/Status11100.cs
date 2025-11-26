@@ -7,7 +7,7 @@ namespace Fanex.BetList.Core.Builder.StatusBuilder
     {
         protected override bool IsHideRNGResult(ITicket ticket)
         {
-            const int daySupportResultLink = 15;
+            const int daySupportResultLink = 7;
 
             return base.IsHideRNGResult(ticket) || ticket.IsTicketHide3rdResultLink(daySupportResultLink);
         }
