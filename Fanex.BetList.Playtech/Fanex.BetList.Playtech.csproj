@@ -2,7 +2,7 @@
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>
         <Version>1.0.1-jackpot-06</Version>
-        <InfomationalVersion>1.0.1</InfomationalVersion>
+        <InformationalVersion>1.0.1</InformationalVersion>
         <PackageReleaseNotes>Support Playtech Jackpot(#234576)</PackageReleaseNotes>
         <Description>
             New bet list for Playtech

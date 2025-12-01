@@ -3,7 +3,7 @@
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks> 
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <Version>1.0.0.1-GamingAPI-01</Version>
-        <InfomationalVersion>1.0.0.1-GamingAPI-01</InfomationalVersion>
+        <InformationalVersion>1.0.0.1-GamingAPI-01</InformationalVersion>
         <PackageReleaseNotes>Support new Gaming API for Live22 (#195885)</PackageReleaseNotes>
         <Description>
         New bet list for Live22

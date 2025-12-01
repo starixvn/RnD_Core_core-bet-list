@@ -2,7 +2,7 @@
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>
         <Version>1.0.2-extends</Version>
-        <InfomationalVersion>1.0.2</InfomationalVersion>
+        <InformationalVersion>1.0.2</InformationalVersion>
         <PackageReleaseNotes>Extend Bettype Range for GPI RNG (#225397)</PackageReleaseNotes>
         <Description>
             New bet list for GPI

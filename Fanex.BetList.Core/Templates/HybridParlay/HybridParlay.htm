@@ -1,0 +1,32 @@
+<div class="line"></div>
+<div class="hybrid-parlay-match-ticket-list {matchClass}">
+    <!--MatchTicketsList-->
+        <ul class="list-builder {listBuilderClassName}">
+            {MatchTicketsList}
+        </ul>
+    <!--/MatchTicketsList-->
+        <div class="hybrid-parlay-match">
+            <!--Odds-->
+            <span class="odds"> @ <!--OldOdds--><span class="old-odds">{oldOdds}&nbsp;</span><!--/OldOdds--><span class="cur-odds">{odds}</span></span>
+            <!--/Odds-->
+            <!--BetType-->
+            <div class="bettype"> {betTypeName}</div>
+            <!--/BetType-->
+            <!--MatchDetail-->
+            <div class="match">
+                <span>{homeTeam}</span>{home_firstGoal_lastGoal}
+                <span>&nbsp;-&nbsp;vs&nbsp;-&nbsp;</span>
+                <span>{awayTeam}</span>{away_firstGoal_lastGoal}
+                <!--Score-->
+                {score}
+                <!--/Score-->
+            </div>
+            <div class="league">
+                <span class="sport">{sportTypeName}</span>
+                <span class="leagueName">&nbsp;{leagueName}</span>
+            </div>
+            <!--/MatchDetail-->
+        </div>
+    <!--EventDate--><div class="event-date">{eventDate}</div><!--/EventDate-->
+    <!--Status--><div class="status match-status">{status}</div><!--/Status-->
+</div>

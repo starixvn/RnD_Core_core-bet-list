@@ -2,7 +2,7 @@
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0;net6.0</TargetFrameworks>
         <Version>2.0.0.4-ExtendBettype-01</Version>
-        <InfomationalVersion>2.0.0.4</InfomationalVersion>
+        <InformationalVersion>2.0.0.4</InformationalVersion>
         <PackageReleaseNotes>Extend Bettype range for PP RNG(#216494)</PackageReleaseNotes>
         <Description>BetList core package</Description>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
